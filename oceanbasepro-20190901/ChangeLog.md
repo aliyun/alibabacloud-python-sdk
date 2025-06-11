@@ -1,3 +1,26 @@
+2025-06-11 Version: 10.0.0
+- Support API CreateOasOutlineTask.
+- Support API DescribeInstanceAvailableZones.
+- Update API BatchKillProcessList: add request parameters ByObSessionId.
+- Update API DescribeDataBackupSet: update response parameters Body.Data.$.SetId' type has changed.
+- Update API DescribeDataBackupSet: update response parameters Body.Data.$.SetId' format has changed.
+- Update API DescribeInstanceTopology: add response parameters Body.InstanceTopology.Replicas.$.OnlineNodeNum.
+- Update API DescribeInstances: add request parameters WithOBCloudInstances.
+- Update API DescribeInstances: add response parameters Body.Instances.$.Migratable.
+- Update API DescribeInstances: add response parameters Body.Instances.$.MigrationInfo.
+- Update API DescribeOasSQLPlans: add response parameters Body.Data.$.Plans.$.SqlText.
+- Update API DescribeOasTopSQLList: add request parameters CustomColumns.
+- Update API DescribeOasTopSQLList: add response parameters Body.Data.$.CustomColumns.
+- Update API DescribeOasTopSQLList: add response parameters Body.Data.$.ObDbId.
+- Update API DescribeOutlineBinding: add response parameters Body.OutlineBinding.SqlText.
+- Update API DescribeOutlineBinding: add response parameters Body.OutlineBinding.SqlTextConcurrentNum.
+- Update API DescribeProcessStatsComposition: add request parameters MergeDynamicSql.
+- Update API DescribeProcessStatsComposition: add response parameters Body.Data.AllProcessList.$.DynamicSql.
+- Update API DescribeProcessStatsComposition: add response parameters Body.Data.AllProcessList.$.ProcessSqlLists.
+- Update API DescribeProcessStatsComposition: add response parameters Body.Data.AllProcessList.$.ServerSn.
+- Update API DescribeTenant: add response parameters Body.Tenant.TenantConnections.$.InternetSqlPort.
+
+
 2025-04-01 Version: 9.1.0
 - Support API DescribeSqlAuditStat.
 - Update API CreateProjectModifyRecords: add request parameters TransferMapping.

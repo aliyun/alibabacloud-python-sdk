@@ -335,10 +335,12 @@ class DataExtraInfoSubDbsValue(TeaModel):
 class BatchKillProcessListRequest(TeaModel):
     def __init__(
         self,
+        by_ob_session_id: bool = None,
         instance_id: str = None,
         session_list: str = None,
         tenant_id: str = None,
     ):
+        self.by_ob_session_id = by_ob_session_id
         # The ID of the OceanBase cluster.
         # 
         # This parameter is required.
@@ -361,6 +363,8 @@ class BatchKillProcessListRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.by_ob_session_id is not None:
+            result['ByObSessionId'] = self.by_ob_session_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.session_list is not None:
@@ -371,6 +375,8 @@ class BatchKillProcessListRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ByObSessionId') is not None:
+            self.by_ob_session_id = m.get('ByObSessionId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('SessionList') is not None:
@@ -2049,6 +2055,208 @@ class CreateMySqlDataSourceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateMySqlDataSourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateOasOutlineTaskRequest(TeaModel):
+    def __init__(
+        self,
+        by_sql_id: bool = None,
+        database_name: str = None,
+        dynamic_sql: bool = None,
+        end_time: str = None,
+        index_name: str = None,
+        instance_id: str = None,
+        is_concurrent_limit: bool = None,
+        max_concurrent: int = None,
+        plan_data: str = None,
+        sql_id: str = None,
+        sql_text: str = None,
+        start_time: str = None,
+        statement_id: str = None,
+        table_name: str = None,
+        tenant_id: str = None,
+        uid: str = None,
+    ):
+        self.by_sql_id = by_sql_id
+        # This parameter is required.
+        self.database_name = database_name
+        self.dynamic_sql = dynamic_sql
+        self.end_time = end_time
+        self.index_name = index_name
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.is_concurrent_limit = is_concurrent_limit
+        self.max_concurrent = max_concurrent
+        self.plan_data = plan_data
+        # SQL ID
+        self.sql_id = sql_id
+        # This parameter is required.
+        self.sql_text = sql_text
+        self.start_time = start_time
+        self.statement_id = statement_id
+        self.table_name = table_name
+        # This parameter is required.
+        self.tenant_id = tenant_id
+        self.uid = uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.by_sql_id is not None:
+            result['BySqlId'] = self.by_sql_id
+        if self.database_name is not None:
+            result['DatabaseName'] = self.database_name
+        if self.dynamic_sql is not None:
+            result['DynamicSql'] = self.dynamic_sql
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.index_name is not None:
+            result['IndexName'] = self.index_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.is_concurrent_limit is not None:
+            result['IsConcurrentLimit'] = self.is_concurrent_limit
+        if self.max_concurrent is not None:
+            result['MaxConcurrent'] = self.max_concurrent
+        if self.plan_data is not None:
+            result['PlanData'] = self.plan_data
+        if self.sql_id is not None:
+            result['SqlId'] = self.sql_id
+        if self.sql_text is not None:
+            result['SqlText'] = self.sql_text
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.statement_id is not None:
+            result['StatementId'] = self.statement_id
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.uid is not None:
+            result['UId'] = self.uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BySqlId') is not None:
+            self.by_sql_id = m.get('BySqlId')
+        if m.get('DatabaseName') is not None:
+            self.database_name = m.get('DatabaseName')
+        if m.get('DynamicSql') is not None:
+            self.dynamic_sql = m.get('DynamicSql')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('IndexName') is not None:
+            self.index_name = m.get('IndexName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IsConcurrentLimit') is not None:
+            self.is_concurrent_limit = m.get('IsConcurrentLimit')
+        if m.get('MaxConcurrent') is not None:
+            self.max_concurrent = m.get('MaxConcurrent')
+        if m.get('PlanData') is not None:
+            self.plan_data = m.get('PlanData')
+        if m.get('SqlId') is not None:
+            self.sql_id = m.get('SqlId')
+        if m.get('SqlText') is not None:
+            self.sql_text = m.get('SqlText')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StatementId') is not None:
+            self.statement_id = m.get('StatementId')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('UId') is not None:
+            self.uid = m.get('UId')
+        return self
+
+
+class CreateOasOutlineTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateOasOutlineTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateOasOutlineTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateOasOutlineTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13587,7 +13795,7 @@ class DescribeDataBackupSetResponseBodyData(TeaModel):
         method: str = None,
         policy: str = None,
         progress: str = None,
-        set_id: int = None,
+        set_id: str = None,
         start_time: str = None,
         status: str = None,
         storage_class: str = None,
@@ -15549,6 +15757,162 @@ class DescribeInstanceResponse(TeaModel):
         return self
 
 
+class DescribeInstanceAvailableZonesRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DescribeInstanceAvailableZonesResponseBodyZoneList(TeaModel):
+    def __init__(
+        self,
+        is_in_cluster: bool = None,
+        logical_zone_name: str = None,
+        replicate_zone_index: str = None,
+        zone: str = None,
+    ):
+        self.is_in_cluster = is_in_cluster
+        self.logical_zone_name = logical_zone_name
+        self.replicate_zone_index = replicate_zone_index
+        self.zone = zone
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_in_cluster is not None:
+            result['IsInCluster'] = self.is_in_cluster
+        if self.logical_zone_name is not None:
+            result['LogicalZoneName'] = self.logical_zone_name
+        if self.replicate_zone_index is not None:
+            result['ReplicateZoneIndex'] = self.replicate_zone_index
+        if self.zone is not None:
+            result['Zone'] = self.zone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsInCluster') is not None:
+            self.is_in_cluster = m.get('IsInCluster')
+        if m.get('LogicalZoneName') is not None:
+            self.logical_zone_name = m.get('LogicalZoneName')
+        if m.get('ReplicateZoneIndex') is not None:
+            self.replicate_zone_index = m.get('ReplicateZoneIndex')
+        if m.get('Zone') is not None:
+            self.zone = m.get('Zone')
+        return self
+
+
+class DescribeInstanceAvailableZonesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        zone_list: List[DescribeInstanceAvailableZonesResponseBodyZoneList] = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.zone_list = zone_list
+
+    def validate(self):
+        if self.zone_list:
+            for k in self.zone_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ZoneList'] = []
+        if self.zone_list is not None:
+            for k in self.zone_list:
+                result['ZoneList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.zone_list = []
+        if m.get('ZoneList') is not None:
+            for k in m.get('ZoneList'):
+                temp_model = DescribeInstanceAvailableZonesResponseBodyZoneList()
+                self.zone_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeInstanceAvailableZonesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeInstanceAvailableZonesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeInstanceAvailableZonesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeInstanceCreatableZoneRequest(TeaModel):
     def __init__(
         self,
@@ -16912,6 +17276,7 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas(TeaModel):
         self,
         logical_zone: str = None,
         node_num: int = None,
+        online_node_num: int = None,
         read_only_replica_type: str = None,
         replica_resource: DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResource = None,
         replica_type: str = None,
@@ -16924,6 +17289,7 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas(TeaModel):
         self.logical_zone = logical_zone
         # The number of nodes of the replica.
         self.node_num = node_num
+        self.online_node_num = online_node_num
         # The type of the read-only replica.
         self.read_only_replica_type = read_only_replica_type
         # The information about the replica resources.
@@ -16953,6 +17319,8 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas(TeaModel):
             result['LogicalZone'] = self.logical_zone
         if self.node_num is not None:
             result['NodeNum'] = self.node_num
+        if self.online_node_num is not None:
+            result['OnlineNodeNum'] = self.online_node_num
         if self.read_only_replica_type is not None:
             result['ReadOnlyReplicaType'] = self.read_only_replica_type
         if self.replica_resource is not None:
@@ -16975,6 +17343,8 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas(TeaModel):
             self.logical_zone = m.get('LogicalZone')
         if m.get('NodeNum') is not None:
             self.node_num = m.get('NodeNum')
+        if m.get('OnlineNodeNum') is not None:
+            self.online_node_num = m.get('OnlineNodeNum')
         if m.get('ReadOnlyReplicaType') is not None:
             self.read_only_replica_type = m.get('ReadOnlyReplicaType')
         if m.get('ReplicaResource') is not None:
@@ -17839,6 +18209,7 @@ class DescribeInstancesRequest(TeaModel):
         page_size: int = None,
         resource_group_id: str = None,
         search_key: str = None,
+        with_obcloud_instances: bool = None,
     ):
         # The ID of the OceanBase cluster.
         self.instance_id = instance_id
@@ -17856,6 +18227,7 @@ class DescribeInstancesRequest(TeaModel):
         self.resource_group_id = resource_group_id
         # The keyword for fuzzy search, which can be an instance ID, instance name, tenant ID, or tenant name.
         self.search_key = search_key
+        self.with_obcloud_instances = with_obcloud_instances
 
     def validate(self):
         pass
@@ -17878,6 +18250,8 @@ class DescribeInstancesRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.search_key is not None:
             result['SearchKey'] = self.search_key
+        if self.with_obcloud_instances is not None:
+            result['WithOBCloudInstances'] = self.with_obcloud_instances
         return result
 
     def from_map(self, m: dict = None):
@@ -17894,6 +18268,8 @@ class DescribeInstancesRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SearchKey') is not None:
             self.search_key = m.get('SearchKey')
+        if m.get('WithOBCloudInstances') is not None:
+            self.with_obcloud_instances = m.get('WithOBCloudInstances')
         return self
 
 
@@ -17971,6 +18347,104 @@ class DescribeInstancesResponseBodyInstancesDataDiskAutoScaleConfig(TeaModel):
             self.upper_threshold = m.get('UpperThreshold')
         if m.get('Upperbound') is not None:
             self.upperbound = m.get('Upperbound')
+        return self
+
+
+class DescribeInstancesResponseBodyInstancesMigrationInfoCheckResult(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        code_name: str = None,
+        level: str = None,
+        module: str = None,
+        module_name: str = None,
+        sub_module: str = None,
+        sub_module_name: str = None,
+    ):
+        self.code = code
+        self.code_name = code_name
+        self.level = level
+        self.module = module
+        self.module_name = module_name
+        self.sub_module = sub_module
+        self.sub_module_name = sub_module_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.code_name is not None:
+            result['CodeName'] = self.code_name
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.module is not None:
+            result['Module'] = self.module
+        if self.module_name is not None:
+            result['ModuleName'] = self.module_name
+        if self.sub_module is not None:
+            result['SubModule'] = self.sub_module
+        if self.sub_module_name is not None:
+            result['SubModuleName'] = self.sub_module_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('CodeName') is not None:
+            self.code_name = m.get('CodeName')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Module') is not None:
+            self.module = m.get('Module')
+        if m.get('ModuleName') is not None:
+            self.module_name = m.get('ModuleName')
+        if m.get('SubModule') is not None:
+            self.sub_module = m.get('SubModule')
+        if m.get('SubModuleName') is not None:
+            self.sub_module_name = m.get('SubModuleName')
+        return self
+
+
+class DescribeInstancesResponseBodyInstancesMigrationInfo(TeaModel):
+    def __init__(
+        self,
+        check_result: DescribeInstancesResponseBodyInstancesMigrationInfoCheckResult = None,
+        migratable: bool = None,
+    ):
+        self.check_result = check_result
+        self.migratable = migratable
+
+    def validate(self):
+        if self.check_result:
+            self.check_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_result is not None:
+            result['CheckResult'] = self.check_result.to_map()
+        if self.migratable is not None:
+            result['Migratable'] = self.migratable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckResult') is not None:
+            temp_model = DescribeInstancesResponseBodyInstancesMigrationInfoCheckResult()
+            self.check_result = temp_model.from_map(m['CheckResult'])
+        if m.get('Migratable') is not None:
+            self.migratable = m.get('Migratable')
         return self
 
 
@@ -18255,6 +18729,8 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         instance_type: str = None,
         maintain_time: str = None,
         mem: int = None,
+        migratable: bool = None,
+        migration_info: DescribeInstancesResponseBodyInstancesMigrationInfo = None,
         ob_rpm_version: str = None,
         pay_type: str = None,
         replica_mode: str = None,
@@ -18327,6 +18803,8 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         self.maintain_time = maintain_time
         # The memory size of the instance, in GB.
         self.mem = mem
+        self.migratable = migratable
+        self.migration_info = migration_info
         # The version of the OceanBase Database RedHat Package Managerment (RPM) package.
         self.ob_rpm_version = ob_rpm_version
         # The billing method for the OceanBase cluster. Valid values:  
@@ -18399,6 +18877,8 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
     def validate(self):
         if self.data_disk_auto_scale_config:
             self.data_disk_auto_scale_config.validate()
+        if self.migration_info:
+            self.migration_info.validate()
         if self.resource:
             self.resource.validate()
 
@@ -18452,6 +18932,10 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             result['MaintainTime'] = self.maintain_time
         if self.mem is not None:
             result['Mem'] = self.mem
+        if self.migratable is not None:
+            result['Migratable'] = self.migratable
+        if self.migration_info is not None:
+            result['MigrationInfo'] = self.migration_info.to_map()
         if self.ob_rpm_version is not None:
             result['ObRpmVersion'] = self.ob_rpm_version
         if self.pay_type is not None:
@@ -18523,6 +19007,11 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             self.maintain_time = m.get('MaintainTime')
         if m.get('Mem') is not None:
             self.mem = m.get('Mem')
+        if m.get('Migratable') is not None:
+            self.migratable = m.get('Migratable')
+        if m.get('MigrationInfo') is not None:
+            temp_model = DescribeInstancesResponseBodyInstancesMigrationInfo()
+            self.migration_info = temp_model.from_map(m['MigrationInfo'])
         if m.get('ObRpmVersion') is not None:
             self.ob_rpm_version = m.get('ObRpmVersion')
         if m.get('PayType') is not None:
@@ -20675,6 +21164,7 @@ class DescribeOasSQLPlansResponseBodyDataPlans(TeaModel):
         server: str = None,
         server_id: int = None,
         sql_id: str = None,
+        sql_text: str = None,
         table_scan: bool = None,
         timeout_percentage: float = None,
         uid: str = None,
@@ -20743,6 +21233,7 @@ class DescribeOasSQLPlansResponseBodyDataPlans(TeaModel):
         self.server_id = server_id
         # SQL ID.
         self.sql_id = sql_id
+        self.sql_text = sql_text
         # Whether a full table scan is performed.
         self.table_scan = table_scan
         # Percentage of timeouts.
@@ -20823,6 +21314,8 @@ class DescribeOasSQLPlansResponseBodyDataPlans(TeaModel):
             result['ServerId'] = self.server_id
         if self.sql_id is not None:
             result['SqlId'] = self.sql_id
+        if self.sql_text is not None:
+            result['SqlText'] = self.sql_text
         if self.table_scan is not None:
             result['TableScan'] = self.table_scan
         if self.timeout_percentage is not None:
@@ -20897,6 +21390,8 @@ class DescribeOasSQLPlansResponseBodyDataPlans(TeaModel):
             self.server_id = m.get('ServerId')
         if m.get('SqlId') is not None:
             self.sql_id = m.get('SqlId')
+        if m.get('SqlText') is not None:
+            self.sql_text = m.get('SqlText')
         if m.get('TableScan') is not None:
             self.table_scan = m.get('TableScan')
         if m.get('TimeoutPercentage') is not None:
@@ -22426,6 +22921,7 @@ class DescribeOasTopSQLListRequest(TeaModel):
     def __init__(
         self,
         accept_language: str = None,
+        custom_columns: str = None,
         db_name: str = None,
         dynamic_sql: bool = None,
         end_time: str = None,
@@ -22447,6 +22943,7 @@ class DescribeOasTopSQLListRequest(TeaModel):
         # - zh: Chinese
         # - en: English
         self.accept_language = accept_language
+        self.custom_columns = custom_columns
         # The name of the database.
         self.db_name = db_name
         self.dynamic_sql = dynamic_sql
@@ -22498,6 +22995,8 @@ class DescribeOasTopSQLListRequest(TeaModel):
         result = dict()
         if self.accept_language is not None:
             result['AcceptLanguage'] = self.accept_language
+        if self.custom_columns is not None:
+            result['CustomColumns'] = self.custom_columns
         if self.db_name is not None:
             result['DbName'] = self.db_name
         if self.dynamic_sql is not None:
@@ -22534,6 +23033,8 @@ class DescribeOasTopSQLListRequest(TeaModel):
         m = m or dict()
         if m.get('AcceptLanguage') is not None:
             self.accept_language = m.get('AcceptLanguage')
+        if m.get('CustomColumns') is not None:
+            self.custom_columns = m.get('CustomColumns')
         if m.get('DbName') is not None:
             self.db_name = m.get('DbName')
         if m.get('DynamicSql') is not None:
@@ -22564,6 +23065,39 @@ class DescribeOasTopSQLListRequest(TeaModel):
             self.start_time = m.get('StartTime')
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
+        return self
+
+
+class DescribeOasTopSQLListResponseBodyDataCustomColumns(TeaModel):
+    def __init__(
+        self,
+        expression: str = None,
+        value: str = None,
+    ):
+        self.expression = expression
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expression is not None:
+            result['Expression'] = self.expression
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Expression') is not None:
+            self.expression = m.get('Expression')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -23091,6 +23625,7 @@ class DescribeOasTopSQLListResponseBodyData(TeaModel):
         avg_wait_time: float = None,
         client_ip: str = None,
         cpu_percentage: float = None,
+        custom_columns: DescribeOasTopSQLListResponseBodyDataCustomColumns = None,
         db_name: str = None,
         dist_plan_percentage: float = None,
         dynamic_sql: bool = None,
@@ -23112,6 +23647,7 @@ class DescribeOasTopSQLListResponseBodyData(TeaModel):
         max_wait_time: float = None,
         miss_plan_percentage: float = None,
         miss_plans: float = None,
+        ob_db_id: str = None,
         remote_plan_percentage: float = None,
         remote_plans: float = None,
         ret_code_4012count: int = None,
@@ -23204,6 +23740,7 @@ class DescribeOasTopSQLListResponseBodyData(TeaModel):
         self.client_ip = client_ip
         # CPU percentage.
         self.cpu_percentage = cpu_percentage
+        self.custom_columns = custom_columns
         # The name of the database.
         self.db_name = db_name
         # Distributed plan percentage during the execution period.
@@ -23244,6 +23781,7 @@ class DescribeOasTopSQLListResponseBodyData(TeaModel):
         self.miss_plan_percentage = miss_plan_percentage
         # Missed hit count of the execution plan during the execution period.
         self.miss_plans = miss_plans
+        self.ob_db_id = ob_db_id
         # Remote plan percentage during the execution period.
         self.remote_plan_percentage = remote_plan_percentage
         # Remote execution count during the execution period.
@@ -23300,6 +23838,8 @@ class DescribeOasTopSQLListResponseBodyData(TeaModel):
         self.weak_consistency_percentage = weak_consistency_percentage
 
     def validate(self):
+        if self.custom_columns:
+            self.custom_columns.validate()
         if self.sql_list:
             for k in self.sql_list:
                 if k:
@@ -23375,6 +23915,8 @@ class DescribeOasTopSQLListResponseBodyData(TeaModel):
             result['ClientIp'] = self.client_ip
         if self.cpu_percentage is not None:
             result['CpuPercentage'] = self.cpu_percentage
+        if self.custom_columns is not None:
+            result['CustomColumns'] = self.custom_columns.to_map()
         if self.db_name is not None:
             result['DbName'] = self.db_name
         if self.dist_plan_percentage is not None:
@@ -23417,6 +23959,8 @@ class DescribeOasTopSQLListResponseBodyData(TeaModel):
             result['MissPlanPercentage'] = self.miss_plan_percentage
         if self.miss_plans is not None:
             result['MissPlans'] = self.miss_plans
+        if self.ob_db_id is not None:
+            result['ObDbId'] = self.ob_db_id
         if self.remote_plan_percentage is not None:
             result['RemotePlanPercentage'] = self.remote_plan_percentage
         if self.remote_plans is not None:
@@ -23543,6 +24087,9 @@ class DescribeOasTopSQLListResponseBodyData(TeaModel):
             self.client_ip = m.get('ClientIp')
         if m.get('CpuPercentage') is not None:
             self.cpu_percentage = m.get('CpuPercentage')
+        if m.get('CustomColumns') is not None:
+            temp_model = DescribeOasTopSQLListResponseBodyDataCustomColumns()
+            self.custom_columns = temp_model.from_map(m['CustomColumns'])
         if m.get('DbName') is not None:
             self.db_name = m.get('DbName')
         if m.get('DistPlanPercentage') is not None:
@@ -23585,6 +24132,8 @@ class DescribeOasTopSQLListResponseBodyData(TeaModel):
             self.miss_plan_percentage = m.get('MissPlanPercentage')
         if m.get('MissPlans') is not None:
             self.miss_plans = m.get('MissPlans')
+        if m.get('ObDbId') is not None:
+            self.ob_db_id = m.get('ObDbId')
         if m.get('RemotePlanPercentage') is not None:
             self.remote_plan_percentage = m.get('RemotePlanPercentage')
         if m.get('RemotePlans') is not None:
@@ -23811,6 +24360,8 @@ class DescribeOutlineBindingResponseBodyOutlineBinding(TeaModel):
         bind_plan: str = None,
         max_concurrent: int = None,
         outline_id: int = None,
+        sql_text: str = None,
+        sql_text_concurrent_num: int = None,
         table_name: str = None,
     ):
         # The bound index.
@@ -23821,6 +24372,8 @@ class DescribeOutlineBindingResponseBodyOutlineBinding(TeaModel):
         self.max_concurrent = max_concurrent
         # OutlineID.
         self.outline_id = outline_id
+        self.sql_text = sql_text
+        self.sql_text_concurrent_num = sql_text_concurrent_num
         # The name of the tenant. The tenant name must start with a letter or an underscore (_), and contain 2 to 20 characters, which can be uppercase letters, lowercase letters, digits, and underscores (_). It cannot be set to sys.
         self.table_name = table_name
 
@@ -23841,6 +24394,10 @@ class DescribeOutlineBindingResponseBodyOutlineBinding(TeaModel):
             result['MaxConcurrent'] = self.max_concurrent
         if self.outline_id is not None:
             result['OutlineId'] = self.outline_id
+        if self.sql_text is not None:
+            result['SqlText'] = self.sql_text
+        if self.sql_text_concurrent_num is not None:
+            result['SqlTextConcurrentNum'] = self.sql_text_concurrent_num
         if self.table_name is not None:
             result['TableName'] = self.table_name
         return result
@@ -23855,6 +24412,10 @@ class DescribeOutlineBindingResponseBodyOutlineBinding(TeaModel):
             self.max_concurrent = m.get('MaxConcurrent')
         if m.get('OutlineId') is not None:
             self.outline_id = m.get('OutlineId')
+        if m.get('SqlText') is not None:
+            self.sql_text = m.get('SqlText')
+        if m.get('SqlTextConcurrentNum') is not None:
+            self.sql_text_concurrent_num = m.get('SqlTextConcurrentNum')
         if m.get('TableName') is not None:
             self.table_name = m.get('TableName')
         return self
@@ -24482,6 +25043,7 @@ class DescribeProcessStatsCompositionRequest(TeaModel):
         self,
         client_ip: str = None,
         instance_id: str = None,
+        merge_dynamic_sql: bool = None,
         server_ip: str = None,
         sql_text: str = None,
         status: str = None,
@@ -24495,6 +25057,7 @@ class DescribeProcessStatsCompositionRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.merge_dynamic_sql = merge_dynamic_sql
         # The IP address of the server.
         self.server_ip = server_ip
         # The SQL statement, which can contain LIKE clauses. You can specify only part of the clauses in the SQL statement.
@@ -24521,6 +25084,8 @@ class DescribeProcessStatsCompositionRequest(TeaModel):
             result['ClientIp'] = self.client_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.merge_dynamic_sql is not None:
+            result['MergeDynamicSql'] = self.merge_dynamic_sql
         if self.server_ip is not None:
             result['ServerIp'] = self.server_ip
         if self.sql_text is not None:
@@ -24541,6 +25106,8 @@ class DescribeProcessStatsCompositionRequest(TeaModel):
             self.client_ip = m.get('ClientIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('MergeDynamicSql') is not None:
+            self.merge_dynamic_sql = m.get('MergeDynamicSql')
         if m.get('ServerIp') is not None:
             self.server_ip = m.get('ServerIp')
         if m.get('SqlText') is not None:
@@ -24556,13 +25123,14 @@ class DescribeProcessStatsCompositionRequest(TeaModel):
         return self
 
 
-class DescribeProcessStatsCompositionResponseBodyDataAllProcessList(TeaModel):
+class DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSqlListsProcessSqlList(TeaModel):
     def __init__(
         self,
         client_ip: str = None,
         command: str = None,
         cpu_time: int = None,
         database: str = None,
+        dynamic_sql: str = None,
         execute_time: int = None,
         plan_id: str = None,
         proxy_sess_id: str = None,
@@ -24575,39 +25143,21 @@ class DescribeProcessStatsCompositionResponseBodyDataAllProcessList(TeaModel):
         trace_id: str = None,
         user: str = None,
     ):
-        # The IP address of the client.
         self.client_ip = client_ip
-        # The type of the SQL statement being executed in the session.
         self.command = command
-        # The CPU time spent on executing the current SQL statement, in seconds. 
-        # 
-        # > This parameter is introduced since OceanBase Database V3.2.4 BP5.
         self.cpu_time = cpu_time
-        # The name of the database.
         self.database = database
-        # The definition of this parameter varies based on whether the SQL statement is executed.
-        # * When the request is accepted and the result is not returned to the client, this parameter indicates the time interval between the time when the request is accepted and the current time, in seconds.
-        # * When the request is not accepted, this parameter indicates the duration for which the current status lasts, in seconds.
+        self.dynamic_sql = dynamic_sql
         self.execute_time = execute_time
-        # The ID of the execution plan.
         self.plan_id = plan_id
-        # The session ID of the client. If an OceanBase Database Proxy (ODP) is used for connection, the session ID of the ODP is returned.
         self.proxy_sess_id = proxy_sess_id
-        # The IP address of the server.
         self.server_ip = server_ip
-        # The ID of the session.
         self.session_id = session_id
-        # The ID of the SQL statement.
         self.sql_id = sql_id
-        # The SQL text.
         self.sql_text = sql_text
-        # The status of the session.
         self.status = status
-        # The ID of the tenant.
         self.tenant_id = tenant_id
-        # The ID of the trace.
         self.trace_id = trace_id
-        # The user to which the session belongs.
         self.user = user
 
     def validate(self):
@@ -24627,6 +25177,8 @@ class DescribeProcessStatsCompositionResponseBodyDataAllProcessList(TeaModel):
             result['CpuTime'] = self.cpu_time
         if self.database is not None:
             result['Database'] = self.database
+        if self.dynamic_sql is not None:
+            result['DynamicSql'] = self.dynamic_sql
         if self.execute_time is not None:
             result['ExecuteTime'] = self.execute_time
         if self.plan_id is not None:
@@ -24661,6 +25213,8 @@ class DescribeProcessStatsCompositionResponseBodyDataAllProcessList(TeaModel):
             self.cpu_time = m.get('CpuTime')
         if m.get('Database') is not None:
             self.database = m.get('Database')
+        if m.get('DynamicSql') is not None:
+            self.dynamic_sql = m.get('DynamicSql')
         if m.get('ExecuteTime') is not None:
             self.execute_time = m.get('ExecuteTime')
         if m.get('PlanId') is not None:
@@ -24669,6 +25223,293 @@ class DescribeProcessStatsCompositionResponseBodyDataAllProcessList(TeaModel):
             self.proxy_sess_id = m.get('ProxySessId')
         if m.get('ServerIp') is not None:
             self.server_ip = m.get('ServerIp')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('SqlId') is not None:
+            self.sql_id = m.get('SqlId')
+        if m.get('SqlText') is not None:
+            self.sql_text = m.get('SqlText')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        if m.get('User') is not None:
+            self.user = m.get('User')
+        return self
+
+
+class DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSqlLists(TeaModel):
+    def __init__(
+        self,
+        client_ip: str = None,
+        command: str = None,
+        cpu_time: int = None,
+        database: str = None,
+        dynamic_sql: str = None,
+        execute_time: int = None,
+        plan_id: str = None,
+        process_sql_list: List[DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSqlListsProcessSqlList] = None,
+        proxy_sess_id: str = None,
+        server_ip: str = None,
+        session_id: int = None,
+        sql_id: str = None,
+        sql_text: str = None,
+        status: str = None,
+        tenant_id: str = None,
+        trace_id: str = None,
+        user: str = None,
+    ):
+        self.client_ip = client_ip
+        self.command = command
+        self.cpu_time = cpu_time
+        self.database = database
+        self.dynamic_sql = dynamic_sql
+        self.execute_time = execute_time
+        self.plan_id = plan_id
+        self.process_sql_list = process_sql_list
+        self.proxy_sess_id = proxy_sess_id
+        self.server_ip = server_ip
+        self.session_id = session_id
+        self.sql_id = sql_id
+        self.sql_text = sql_text
+        self.status = status
+        self.tenant_id = tenant_id
+        self.trace_id = trace_id
+        self.user = user
+
+    def validate(self):
+        if self.process_sql_list:
+            for k in self.process_sql_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_ip is not None:
+            result['ClientIp'] = self.client_ip
+        if self.command is not None:
+            result['Command'] = self.command
+        if self.cpu_time is not None:
+            result['CpuTime'] = self.cpu_time
+        if self.database is not None:
+            result['Database'] = self.database
+        if self.dynamic_sql is not None:
+            result['DynamicSql'] = self.dynamic_sql
+        if self.execute_time is not None:
+            result['ExecuteTime'] = self.execute_time
+        if self.plan_id is not None:
+            result['PlanId'] = self.plan_id
+        result['ProcessSqlList'] = []
+        if self.process_sql_list is not None:
+            for k in self.process_sql_list:
+                result['ProcessSqlList'].append(k.to_map() if k else None)
+        if self.proxy_sess_id is not None:
+            result['ProxySessId'] = self.proxy_sess_id
+        if self.server_ip is not None:
+            result['ServerIp'] = self.server_ip
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.sql_id is not None:
+            result['SqlId'] = self.sql_id
+        if self.sql_text is not None:
+            result['SqlText'] = self.sql_text
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        if self.user is not None:
+            result['User'] = self.user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientIp') is not None:
+            self.client_ip = m.get('ClientIp')
+        if m.get('Command') is not None:
+            self.command = m.get('Command')
+        if m.get('CpuTime') is not None:
+            self.cpu_time = m.get('CpuTime')
+        if m.get('Database') is not None:
+            self.database = m.get('Database')
+        if m.get('DynamicSql') is not None:
+            self.dynamic_sql = m.get('DynamicSql')
+        if m.get('ExecuteTime') is not None:
+            self.execute_time = m.get('ExecuteTime')
+        if m.get('PlanId') is not None:
+            self.plan_id = m.get('PlanId')
+        self.process_sql_list = []
+        if m.get('ProcessSqlList') is not None:
+            for k in m.get('ProcessSqlList'):
+                temp_model = DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSqlListsProcessSqlList()
+                self.process_sql_list.append(temp_model.from_map(k))
+        if m.get('ProxySessId') is not None:
+            self.proxy_sess_id = m.get('ProxySessId')
+        if m.get('ServerIp') is not None:
+            self.server_ip = m.get('ServerIp')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('SqlId') is not None:
+            self.sql_id = m.get('SqlId')
+        if m.get('SqlText') is not None:
+            self.sql_text = m.get('SqlText')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        if m.get('User') is not None:
+            self.user = m.get('User')
+        return self
+
+
+class DescribeProcessStatsCompositionResponseBodyDataAllProcessList(TeaModel):
+    def __init__(
+        self,
+        client_ip: str = None,
+        command: str = None,
+        cpu_time: int = None,
+        database: str = None,
+        dynamic_sql: str = None,
+        execute_time: int = None,
+        plan_id: str = None,
+        process_sql_lists: List[DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSqlLists] = None,
+        proxy_sess_id: str = None,
+        server_ip: str = None,
+        server_sn: str = None,
+        session_id: int = None,
+        sql_id: str = None,
+        sql_text: str = None,
+        status: str = None,
+        tenant_id: str = None,
+        trace_id: str = None,
+        user: str = None,
+    ):
+        # The IP address of the client.
+        self.client_ip = client_ip
+        # The type of the SQL statement being executed in the session.
+        self.command = command
+        # The CPU time spent on executing the current SQL statement, in seconds. 
+        # 
+        # > This parameter is introduced since OceanBase Database V3.2.4 BP5.
+        self.cpu_time = cpu_time
+        # The name of the database.
+        self.database = database
+        self.dynamic_sql = dynamic_sql
+        # The definition of this parameter varies based on whether the SQL statement is executed.
+        # * When the request is accepted and the result is not returned to the client, this parameter indicates the time interval between the time when the request is accepted and the current time, in seconds.
+        # * When the request is not accepted, this parameter indicates the duration for which the current status lasts, in seconds.
+        self.execute_time = execute_time
+        # The ID of the execution plan.
+        self.plan_id = plan_id
+        self.process_sql_lists = process_sql_lists
+        # The session ID of the client. If an OceanBase Database Proxy (ODP) is used for connection, the session ID of the ODP is returned.
+        self.proxy_sess_id = proxy_sess_id
+        # The IP address of the server.
+        self.server_ip = server_ip
+        self.server_sn = server_sn
+        # The ID of the session.
+        self.session_id = session_id
+        # The ID of the SQL statement.
+        self.sql_id = sql_id
+        # The SQL text.
+        self.sql_text = sql_text
+        # The status of the session.
+        self.status = status
+        # The ID of the tenant.
+        self.tenant_id = tenant_id
+        # The ID of the trace.
+        self.trace_id = trace_id
+        # The user to which the session belongs.
+        self.user = user
+
+    def validate(self):
+        if self.process_sql_lists:
+            for k in self.process_sql_lists:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_ip is not None:
+            result['ClientIp'] = self.client_ip
+        if self.command is not None:
+            result['Command'] = self.command
+        if self.cpu_time is not None:
+            result['CpuTime'] = self.cpu_time
+        if self.database is not None:
+            result['Database'] = self.database
+        if self.dynamic_sql is not None:
+            result['DynamicSql'] = self.dynamic_sql
+        if self.execute_time is not None:
+            result['ExecuteTime'] = self.execute_time
+        if self.plan_id is not None:
+            result['PlanId'] = self.plan_id
+        result['ProcessSqlLists'] = []
+        if self.process_sql_lists is not None:
+            for k in self.process_sql_lists:
+                result['ProcessSqlLists'].append(k.to_map() if k else None)
+        if self.proxy_sess_id is not None:
+            result['ProxySessId'] = self.proxy_sess_id
+        if self.server_ip is not None:
+            result['ServerIp'] = self.server_ip
+        if self.server_sn is not None:
+            result['ServerSn'] = self.server_sn
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.sql_id is not None:
+            result['SqlId'] = self.sql_id
+        if self.sql_text is not None:
+            result['SqlText'] = self.sql_text
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        if self.user is not None:
+            result['User'] = self.user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientIp') is not None:
+            self.client_ip = m.get('ClientIp')
+        if m.get('Command') is not None:
+            self.command = m.get('Command')
+        if m.get('CpuTime') is not None:
+            self.cpu_time = m.get('CpuTime')
+        if m.get('Database') is not None:
+            self.database = m.get('Database')
+        if m.get('DynamicSql') is not None:
+            self.dynamic_sql = m.get('DynamicSql')
+        if m.get('ExecuteTime') is not None:
+            self.execute_time = m.get('ExecuteTime')
+        if m.get('PlanId') is not None:
+            self.plan_id = m.get('PlanId')
+        self.process_sql_lists = []
+        if m.get('ProcessSqlLists') is not None:
+            for k in m.get('ProcessSqlLists'):
+                temp_model = DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSqlLists()
+                self.process_sql_lists.append(temp_model.from_map(k))
+        if m.get('ProxySessId') is not None:
+            self.proxy_sess_id = m.get('ProxySessId')
+        if m.get('ServerIp') is not None:
+            self.server_ip = m.get('ServerIp')
+        if m.get('ServerSn') is not None:
+            self.server_sn = m.get('ServerSn')
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
         if m.get('SqlId') is not None:
@@ -36170,6 +37011,7 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
         internet_max_connection_num: int = None,
         internet_port: int = None,
         internet_rpc_port: int = None,
+        internet_sql_port: int = None,
         intranet_address: str = None,
         intranet_address_master_zone_id: str = None,
         intranet_address_slave_zone_id: str = None,
@@ -36218,6 +37060,7 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
         self.internet_port = internet_port
         # The port for direct loads of public connections.
         self.internet_rpc_port = internet_rpc_port
+        self.internet_sql_port = internet_sql_port
         # The intranet address for accessing the tenant.
         self.intranet_address = intranet_address
         # The primary zone corresponding to the address for accessing the tenant.
@@ -36283,6 +37126,8 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
             result['InternetPort'] = self.internet_port
         if self.internet_rpc_port is not None:
             result['InternetRpcPort'] = self.internet_rpc_port
+        if self.internet_sql_port is not None:
+            result['InternetSqlPort'] = self.internet_sql_port
         if self.intranet_address is not None:
             result['IntranetAddress'] = self.intranet_address
         if self.intranet_address_master_zone_id is not None:
@@ -36341,6 +37186,8 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
             self.internet_port = m.get('InternetPort')
         if m.get('InternetRpcPort') is not None:
             self.internet_rpc_port = m.get('InternetRpcPort')
+        if m.get('InternetSqlPort') is not None:
+            self.internet_sql_port = m.get('InternetSqlPort')
         if m.get('IntranetAddress') is not None:
             self.intranet_address = m.get('IntranetAddress')
         if m.get('IntranetAddressMasterZoneId') is not None:

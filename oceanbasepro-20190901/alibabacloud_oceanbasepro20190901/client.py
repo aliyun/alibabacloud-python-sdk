@@ -55,6 +55,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.by_ob_session_id):
+            body['ByObSessionId'] = request.by_ob_session_id
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.session_list):
@@ -75,16 +77,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.BatchKillProcessListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.BatchKillProcessListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.BatchKillProcessListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def batch_kill_process_list_with_options_async(
         self,
@@ -100,6 +96,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.by_ob_session_id):
+            body['ByObSessionId'] = request.by_ob_session_id
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.session_list):
@@ -120,16 +118,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.BatchKillProcessListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.BatchKillProcessListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.BatchKillProcessListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def batch_kill_process_list(
         self,
@@ -191,16 +183,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.BatchKillSessionListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.BatchKillSessionListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.BatchKillSessionListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def batch_kill_session_list_with_options_async(
         self,
@@ -236,16 +222,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.BatchKillSessionListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.BatchKillSessionListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.BatchKillSessionListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def batch_kill_session_list(
         self,
@@ -303,16 +283,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CancelProjectModifyRecordResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CancelProjectModifyRecordResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CancelProjectModifyRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def cancel_project_modify_record_with_options_async(
         self,
@@ -344,16 +318,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CancelProjectModifyRecordResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CancelProjectModifyRecordResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CancelProjectModifyRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def cancel_project_modify_record(
         self,
@@ -413,16 +381,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateBackupSetDownloadLinkResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateBackupSetDownloadLinkResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateBackupSetDownloadLinkResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_backup_set_download_link_with_options_async(
         self,
@@ -456,16 +418,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateBackupSetDownloadLinkResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateBackupSetDownloadLinkResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateBackupSetDownloadLinkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_backup_set_download_link(
         self,
@@ -535,16 +491,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateDatabaseResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateDatabaseResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateDatabaseResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_database_with_options_async(
         self,
@@ -588,16 +538,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateDatabaseResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateDatabaseResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateDatabaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_database(
         self,
@@ -691,16 +635,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_instance_with_options_async(
         self,
@@ -768,16 +706,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_instance(
         self,
@@ -835,16 +767,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateLabelResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateLabelResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateLabelResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_label_with_options_async(
         self,
@@ -876,16 +802,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateLabelResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateLabelResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateLabelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_label(
         self,
@@ -965,16 +885,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateMySqlDataSourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateMySqlDataSourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateMySqlDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_my_sql_data_source_with_options_async(
         self,
@@ -1028,16 +942,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateMySqlDataSourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateMySqlDataSourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateMySqlDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_my_sql_data_source(
         self,
@@ -1064,6 +972,162 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_my_sql_data_source_with_options_async(request, runtime)
+
+    def create_oas_outline_task_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.CreateOasOutlineTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.CreateOasOutlineTaskResponse:
+        """
+        @summary CreateOasOutlineTask
+        
+        @param request: CreateOasOutlineTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOasOutlineTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.by_sql_id):
+            body['BySqlId'] = request.by_sql_id
+        if not UtilClient.is_unset(request.database_name):
+            body['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.dynamic_sql):
+            body['DynamicSql'] = request.dynamic_sql
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.index_name):
+            body['IndexName'] = request.index_name
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.is_concurrent_limit):
+            body['IsConcurrentLimit'] = request.is_concurrent_limit
+        if not UtilClient.is_unset(request.max_concurrent):
+            body['MaxConcurrent'] = request.max_concurrent
+        if not UtilClient.is_unset(request.plan_data):
+            body['PlanData'] = request.plan_data
+        if not UtilClient.is_unset(request.sql_id):
+            body['SqlId'] = request.sql_id
+        if not UtilClient.is_unset(request.sql_text):
+            body['SqlText'] = request.sql_text
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.statement_id):
+            body['StatementId'] = request.statement_id
+        if not UtilClient.is_unset(request.table_name):
+            body['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.uid):
+            body['UId'] = request.uid
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateOasOutlineTask',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateOasOutlineTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_oas_outline_task_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.CreateOasOutlineTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.CreateOasOutlineTaskResponse:
+        """
+        @summary CreateOasOutlineTask
+        
+        @param request: CreateOasOutlineTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOasOutlineTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.by_sql_id):
+            body['BySqlId'] = request.by_sql_id
+        if not UtilClient.is_unset(request.database_name):
+            body['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.dynamic_sql):
+            body['DynamicSql'] = request.dynamic_sql
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.index_name):
+            body['IndexName'] = request.index_name
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.is_concurrent_limit):
+            body['IsConcurrentLimit'] = request.is_concurrent_limit
+        if not UtilClient.is_unset(request.max_concurrent):
+            body['MaxConcurrent'] = request.max_concurrent
+        if not UtilClient.is_unset(request.plan_data):
+            body['PlanData'] = request.plan_data
+        if not UtilClient.is_unset(request.sql_id):
+            body['SqlId'] = request.sql_id
+        if not UtilClient.is_unset(request.sql_text):
+            body['SqlText'] = request.sql_text
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.statement_id):
+            body['StatementId'] = request.statement_id
+        if not UtilClient.is_unset(request.table_name):
+            body['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.uid):
+            body['UId'] = request.uid
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateOasOutlineTask',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateOasOutlineTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_oas_outline_task(
+        self,
+        request: ocean_base_pro_20190901_models.CreateOasOutlineTaskRequest,
+    ) -> ocean_base_pro_20190901_models.CreateOasOutlineTaskResponse:
+        """
+        @summary CreateOasOutlineTask
+        
+        @param request: CreateOasOutlineTaskRequest
+        @return: CreateOasOutlineTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_oas_outline_task_with_options(request, runtime)
+
+    async def create_oas_outline_task_async(
+        self,
+        request: ocean_base_pro_20190901_models.CreateOasOutlineTaskRequest,
+    ) -> ocean_base_pro_20190901_models.CreateOasOutlineTaskResponse:
+        """
+        @summary CreateOasOutlineTask
+        
+        @param request: CreateOasOutlineTaskRequest
+        @return: CreateOasOutlineTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_oas_outline_task_with_options_async(request, runtime)
 
     def create_ocean_base_data_source_with_options(
         self,
@@ -1125,16 +1189,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateOceanBaseDataSourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateOceanBaseDataSourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateOceanBaseDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_ocean_base_data_source_with_options_async(
         self,
@@ -1196,16 +1254,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateOceanBaseDataSourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateOceanBaseDataSourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateOceanBaseDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_ocean_base_data_source(
         self,
@@ -1285,16 +1337,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_oms_mysql_data_source_with_options_async(
         self,
@@ -1348,16 +1394,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_oms_mysql_data_source(
         self,
@@ -1473,16 +1513,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateProjectResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateProjectResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_project_with_options_async(
         self,
@@ -1568,16 +1602,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateProjectResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateProjectResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_project(
         self,
@@ -1645,16 +1673,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateProjectModifyRecordsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateProjectModifyRecordsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateProjectModifyRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_project_modify_records_with_options_async(
         self,
@@ -1696,16 +1718,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateProjectModifyRecordsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateProjectModifyRecordsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateProjectModifyRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_project_modify_records(
         self,
@@ -1773,16 +1789,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateRdsPostgreSQLDataSourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateRdsPostgreSQLDataSourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateRdsPostgreSQLDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_rds_postgre_sqldata_source_with_options_async(
         self,
@@ -1824,16 +1834,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateRdsPostgreSQLDataSourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateRdsPostgreSQLDataSourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateRdsPostgreSQLDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_rds_postgre_sqldata_source(
         self,
@@ -1895,16 +1899,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateSecurityIpGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateSecurityIpGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateSecurityIpGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_security_ip_group_with_options_async(
         self,
@@ -1940,16 +1938,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateSecurityIpGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateSecurityIpGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateSecurityIpGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_security_ip_group(
         self,
@@ -2009,16 +2001,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateTagResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateTagResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateTagResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_tag_with_options_async(
         self,
@@ -2052,16 +2038,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateTagResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateTagResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_tag(
         self,
@@ -2123,16 +2103,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateTagValueResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateTagValueResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateTagValueResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_tag_value_with_options_async(
         self,
@@ -2168,16 +2142,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateTagValueResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateTagValueResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateTagValueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_tag_value(
         self,
@@ -2269,16 +2237,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateTenantResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateTenantResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateTenantResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_tenant_with_options_async(
         self,
@@ -2344,16 +2306,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateTenantResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateTenantResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateTenantResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_tenant(
         self,
@@ -2419,16 +2375,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateTenantReadOnlyConnectionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateTenantReadOnlyConnectionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateTenantReadOnlyConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_tenant_read_only_connection_with_options_async(
         self,
@@ -2468,16 +2418,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateTenantReadOnlyConnectionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateTenantReadOnlyConnectionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateTenantReadOnlyConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_tenant_read_only_connection(
         self,
@@ -2541,16 +2485,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateTenantSecurityIpGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateTenantSecurityIpGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateTenantSecurityIpGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_tenant_security_ip_group_with_options_async(
         self,
@@ -2588,16 +2526,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateTenantSecurityIpGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateTenantSecurityIpGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateTenantSecurityIpGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_tenant_security_ip_group(
         self,
@@ -2671,16 +2603,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateTenantUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateTenantUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateTenantUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_tenant_user_with_options_async(
         self,
@@ -2728,16 +2654,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateTenantUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.CreateTenantUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateTenantUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_tenant_user(
         self,
@@ -2795,16 +2715,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteDataSourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteDataSourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DeleteDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_data_source_with_options_async(
         self,
@@ -2836,16 +2750,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteDataSourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteDataSourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DeleteDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_data_source(
         self,
@@ -2907,16 +2815,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteDatabasesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteDatabasesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DeleteDatabasesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_databases_with_options_async(
         self,
@@ -2952,16 +2854,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteDatabasesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteDatabasesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DeleteDatabasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_databases(
         self,
@@ -3027,16 +2923,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DeleteInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_instances_with_options_async(
         self,
@@ -3076,16 +2966,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DeleteInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_instances(
         self,
@@ -3151,16 +3035,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteProjectResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteProjectResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DeleteProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_project_with_options_async(
         self,
@@ -3192,16 +3070,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteProjectResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteProjectResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DeleteProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_project(
         self,
@@ -3261,16 +3133,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteSecurityIpGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteSecurityIpGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DeleteSecurityIpGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_security_ip_group_with_options_async(
         self,
@@ -3304,16 +3170,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteSecurityIpGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteSecurityIpGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DeleteSecurityIpGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_security_ip_group(
         self,
@@ -3371,16 +3231,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteTagResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteTagResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DeleteTagResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_tag_with_options_async(
         self,
@@ -3412,16 +3266,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteTagResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteTagResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DeleteTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_tag(
         self,
@@ -3481,16 +3329,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteTagValueResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteTagValueResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DeleteTagValueResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_tag_value_with_options_async(
         self,
@@ -3524,16 +3366,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteTagValueResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteTagValueResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DeleteTagValueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_tag_value(
         self,
@@ -3595,16 +3431,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteTenantSecurityIpGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteTenantSecurityIpGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DeleteTenantSecurityIpGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_tenant_security_ip_group_with_options_async(
         self,
@@ -3640,16 +3470,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteTenantSecurityIpGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteTenantSecurityIpGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DeleteTenantSecurityIpGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_tenant_security_ip_group(
         self,
@@ -3711,16 +3535,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteTenantUsersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteTenantUsersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DeleteTenantUsersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_tenant_users_with_options_async(
         self,
@@ -3756,16 +3574,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteTenantUsersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteTenantUsersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DeleteTenantUsersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_tenant_users(
         self,
@@ -3825,16 +3637,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteTenantsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteTenantsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DeleteTenantsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_tenants_with_options_async(
         self,
@@ -3868,16 +3674,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteTenantsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DeleteTenantsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DeleteTenantsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_tenants(
         self,
@@ -3971,16 +3771,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeAnomalySQLListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeAnomalySQLListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeAnomalySQLListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_anomaly_sqllist_with_options_async(
         self,
@@ -4048,16 +3842,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeAnomalySQLListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeAnomalySQLListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeAnomalySQLListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_anomaly_sqllist(
         self,
@@ -4119,16 +3907,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeAvailableCpuResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeAvailableCpuResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeAvailableCpuResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_available_cpu_resource_with_options_async(
         self,
@@ -4164,16 +3946,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeAvailableCpuResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeAvailableCpuResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeAvailableCpuResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_available_cpu_resource(
         self,
@@ -4237,16 +4013,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeAvailableMemResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeAvailableMemResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeAvailableMemResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_available_mem_resource_with_options_async(
         self,
@@ -4284,16 +4054,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeAvailableMemResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeAvailableMemResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeAvailableMemResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_available_mem_resource(
         self,
@@ -4355,16 +4119,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeAvailableSpecResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeAvailableSpecResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeAvailableSpecResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_available_spec_with_options_async(
         self,
@@ -4400,16 +4158,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeAvailableSpecResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeAvailableSpecResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeAvailableSpecResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_available_spec(
         self,
@@ -4477,16 +4229,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeAvailableZoneResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeAvailableZoneResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeAvailableZoneResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_available_zone_with_options_async(
         self,
@@ -4528,16 +4274,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeAvailableZoneResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeAvailableZoneResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeAvailableZoneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_available_zone(
         self,
@@ -4597,16 +4337,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeBackupEncryptedStringResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeBackupEncryptedStringResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeBackupEncryptedStringResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_backup_encrypted_string_with_options_async(
         self,
@@ -4640,16 +4374,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeBackupEncryptedStringResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeBackupEncryptedStringResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeBackupEncryptedStringResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_backup_encrypted_string(
         self,
@@ -4709,16 +4437,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeBackupSetDownloadLinkResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeBackupSetDownloadLinkResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeBackupSetDownloadLinkResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_backup_set_download_link_with_options_async(
         self,
@@ -4752,16 +4474,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeBackupSetDownloadLinkResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeBackupSetDownloadLinkResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeBackupSetDownloadLinkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_backup_set_download_link(
         self,
@@ -4823,16 +4539,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeCharsetResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeCharsetResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeCharsetResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_charset_with_options_async(
         self,
@@ -4868,16 +4578,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeCharsetResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeCharsetResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeCharsetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_charset(
         self,
@@ -4947,16 +4651,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeDataBackupSetResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeDataBackupSetResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeDataBackupSetResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_data_backup_set_with_options_async(
         self,
@@ -5000,16 +4698,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeDataBackupSetResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeDataBackupSetResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeDataBackupSetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_data_backup_set(
         self,
@@ -5079,16 +4771,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeDatabasesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeDatabasesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeDatabasesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_databases_with_options_async(
         self,
@@ -5132,16 +4818,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeDatabasesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeDatabasesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeDatabasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_databases(
         self,
@@ -5201,16 +4881,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_with_options_async(
         self,
@@ -5244,16 +4918,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance(
         self,
@@ -5280,6 +4948,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_with_options_async(request, runtime)
+
+    def describe_instance_available_zones_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeInstanceAvailableZonesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeInstanceAvailableZonesResponse:
+        """
+        @summary DescribeInstanceAvailableZones
+        
+        @param request: DescribeInstanceAvailableZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceAvailableZonesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceAvailableZones',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeInstanceAvailableZonesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instance_available_zones_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeInstanceAvailableZonesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeInstanceAvailableZonesResponse:
+        """
+        @summary DescribeInstanceAvailableZones
+        
+        @param request: DescribeInstanceAvailableZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceAvailableZonesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceAvailableZones',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeInstanceAvailableZonesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instance_available_zones(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeInstanceAvailableZonesRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeInstanceAvailableZonesResponse:
+        """
+        @summary DescribeInstanceAvailableZones
+        
+        @param request: DescribeInstanceAvailableZonesRequest
+        @return: DescribeInstanceAvailableZonesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_instance_available_zones_with_options(request, runtime)
+
+    async def describe_instance_available_zones_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeInstanceAvailableZonesRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeInstanceAvailableZonesResponse:
+        """
+        @summary DescribeInstanceAvailableZones
+        
+        @param request: DescribeInstanceAvailableZonesRequest
+        @return: DescribeInstanceAvailableZonesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_instance_available_zones_with_options_async(request, runtime)
 
     def describe_instance_creatable_zone_with_options(
         self,
@@ -5311,16 +5075,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceCreatableZoneResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceCreatableZoneResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeInstanceCreatableZoneResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_creatable_zone_with_options_async(
         self,
@@ -5352,16 +5110,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceCreatableZoneResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceCreatableZoneResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeInstanceCreatableZoneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance_creatable_zone(
         self,
@@ -5421,16 +5173,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceSSLResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceSSLResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeInstanceSSLResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_sslwith_options_async(
         self,
@@ -5464,16 +5210,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceSSLResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceSSLResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeInstanceSSLResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance_ssl(
         self,
@@ -5533,16 +5273,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceSecurityConfigsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceSecurityConfigsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeInstanceSecurityConfigsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_security_configs_with_options_async(
         self,
@@ -5576,16 +5310,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceSecurityConfigsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceSecurityConfigsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeInstanceSecurityConfigsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance_security_configs(
         self,
@@ -5645,16 +5373,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceSummaryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceSummaryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeInstanceSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_summary_with_options_async(
         self,
@@ -5688,16 +5410,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceSummaryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceSummaryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeInstanceSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance_summary(
         self,
@@ -5757,16 +5473,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceTagsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceTagsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeInstanceTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_tags_with_options_async(
         self,
@@ -5800,16 +5510,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceTagsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceTagsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeInstanceTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance_tags(
         self,
@@ -5867,16 +5571,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceTenantModesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceTenantModesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeInstanceTenantModesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_tenant_modes_with_options_async(
         self,
@@ -5908,16 +5606,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceTenantModesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceTenantModesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeInstanceTenantModesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance_tenant_modes(
         self,
@@ -5975,16 +5667,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceTopologyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceTopologyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeInstanceTopologyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_topology_with_options_async(
         self,
@@ -6016,16 +5702,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceTopologyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstanceTopologyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeInstanceTopologyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance_topology(
         self,
@@ -6079,6 +5759,8 @@ class Client(OpenApiClient):
             body['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.search_key):
             body['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.with_obcloud_instances):
+            body['WithOBCloudInstances'] = request.with_obcloud_instances
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -6093,16 +5775,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instances_with_options_async(
         self,
@@ -6130,6 +5806,8 @@ class Client(OpenApiClient):
             body['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.search_key):
             body['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.with_obcloud_instances):
+            body['WithOBCloudInstances'] = request.with_obcloud_instances
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -6144,16 +5822,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instances(
         self,
@@ -6231,16 +5903,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeMetricsDataResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeMetricsDataResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeMetricsDataResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_metrics_data_with_options_async(
         self,
@@ -6292,16 +5958,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeMetricsDataResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeMetricsDataResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeMetricsDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_metrics_data(
         self,
@@ -6375,16 +6035,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeNodeMetricsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeNodeMetricsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeNodeMetricsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_node_metrics_with_options_async(
         self,
@@ -6432,16 +6086,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeNodeMetricsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeNodeMetricsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeNodeMetricsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_node_metrics(
         self,
@@ -6533,16 +6181,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeOasAnomalySQLListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeOasAnomalySQLListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeOasAnomalySQLListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_oas_anomaly_sqllist_with_options_async(
         self,
@@ -6608,16 +6250,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeOasAnomalySQLListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeOasAnomalySQLListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeOasAnomalySQLListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_oas_anomaly_sqllist(
         self,
@@ -6689,16 +6325,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeOasSQLDetailsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeOasSQLDetailsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeOasSQLDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_oas_sqldetails_with_options_async(
         self,
@@ -6744,16 +6374,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeOasSQLDetailsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeOasSQLDetailsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeOasSQLDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_oas_sqldetails(
         self,
@@ -6827,16 +6451,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeOasSQLHistoryListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeOasSQLHistoryListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeOasSQLHistoryListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_oas_sqlhistory_list_with_options_async(
         self,
@@ -6884,16 +6502,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeOasSQLHistoryListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeOasSQLHistoryListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeOasSQLHistoryListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_oas_sqlhistory_list(
         self,
@@ -6969,16 +6581,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeOasSQLPlansResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeOasSQLPlansResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeOasSQLPlansResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_oas_sqlplans_with_options_async(
         self,
@@ -7028,16 +6634,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeOasSQLPlansResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeOasSQLPlansResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeOasSQLPlansResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_oas_sqlplans(
         self,
@@ -7125,16 +6725,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeOasSlowSQLListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeOasSlowSQLListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeOasSlowSQLListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_oas_slow_sqllist_with_options_async(
         self,
@@ -7196,16 +6790,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeOasSlowSQLListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeOasSlowSQLListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeOasSlowSQLListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_oas_slow_sqllist(
         self,
@@ -7249,6 +6837,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.accept_language):
             body['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.custom_columns):
+            body['CustomColumns'] = request.custom_columns
         if not UtilClient.is_unset(request.db_name):
             body['DbName'] = request.db_name
         if not UtilClient.is_unset(request.dynamic_sql):
@@ -7293,16 +6883,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeOasTopSQLListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeOasTopSQLListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeOasTopSQLListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_oas_top_sqllist_with_options_async(
         self,
@@ -7320,6 +6904,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.accept_language):
             body['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.custom_columns):
+            body['CustomColumns'] = request.custom_columns
         if not UtilClient.is_unset(request.db_name):
             body['DbName'] = request.db_name
         if not UtilClient.is_unset(request.dynamic_sql):
@@ -7364,16 +6950,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeOasTopSQLListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeOasTopSQLListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeOasTopSQLListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_oas_top_sqllist(
         self,
@@ -7441,16 +7021,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeOutlineBindingResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeOutlineBindingResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeOutlineBindingResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_outline_binding_with_options_async(
         self,
@@ -7492,16 +7066,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeOutlineBindingResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeOutlineBindingResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeOutlineBindingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_outline_binding(
         self,
@@ -7563,16 +7131,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeParametersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeParametersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeParametersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_parameters_with_options_async(
         self,
@@ -7608,16 +7170,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeParametersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeParametersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeParametersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_parameters(
         self,
@@ -7687,16 +7243,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeParametersHistoryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeParametersHistoryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeParametersHistoryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_parameters_history_with_options_async(
         self,
@@ -7740,16 +7290,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeParametersHistoryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeParametersHistoryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeParametersHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_parameters_history(
         self,
@@ -7795,6 +7339,8 @@ class Client(OpenApiClient):
             body['ClientIp'] = request.client_ip
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.merge_dynamic_sql):
+            body['MergeDynamicSql'] = request.merge_dynamic_sql
         if not UtilClient.is_unset(request.server_ip):
             body['ServerIp'] = request.server_ip
         if not UtilClient.is_unset(request.sql_text):
@@ -7821,16 +7367,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeProcessStatsCompositionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeProcessStatsCompositionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeProcessStatsCompositionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_process_stats_composition_with_options_async(
         self,
@@ -7850,6 +7390,8 @@ class Client(OpenApiClient):
             body['ClientIp'] = request.client_ip
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.merge_dynamic_sql):
+            body['MergeDynamicSql'] = request.merge_dynamic_sql
         if not UtilClient.is_unset(request.server_ip):
             body['ServerIp'] = request.server_ip
         if not UtilClient.is_unset(request.sql_text):
@@ -7876,16 +7418,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeProcessStatsCompositionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeProcessStatsCompositionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeProcessStatsCompositionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_process_stats_composition(
         self,
@@ -7943,16 +7479,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeProjectResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeProjectResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_project_with_options_async(
         self,
@@ -7984,16 +7514,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeProjectResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeProjectResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_project(
         self,
@@ -8051,16 +7575,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeProjectComponentsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeProjectComponentsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeProjectComponentsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_project_components_with_options_async(
         self,
@@ -8092,16 +7610,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeProjectComponentsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeProjectComponentsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeProjectComponentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_project_components(
         self,
@@ -8159,16 +7671,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeProjectProgressResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeProjectProgressResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeProjectProgressResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_project_progress_with_options_async(
         self,
@@ -8200,16 +7706,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeProjectProgressResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeProjectProgressResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeProjectProgressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_project_progress(
         self,
@@ -8279,16 +7779,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeProjectStepMetricResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeProjectStepMetricResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeProjectStepMetricResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_project_step_metric_with_options_async(
         self,
@@ -8332,16 +7826,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeProjectStepMetricResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeProjectStepMetricResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeProjectStepMetricResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_project_step_metric(
         self,
@@ -8399,16 +7887,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeProjectStepsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeProjectStepsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeProjectStepsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_project_steps_with_options_async(
         self,
@@ -8440,16 +7922,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeProjectStepsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeProjectStepsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeProjectStepsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_project_steps(
         self,
@@ -8507,16 +7983,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeProxyServiceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeProxyServiceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeProxyServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_proxy_service_with_options_async(
         self,
@@ -8548,16 +8018,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeProxyServiceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeProxyServiceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeProxyServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_proxy_service(
         self,
@@ -8621,16 +8085,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeRecommendIndexResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeRecommendIndexResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeRecommendIndexResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_recommend_index_with_options_async(
         self,
@@ -8668,16 +8126,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeRecommendIndexResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeRecommendIndexResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeRecommendIndexResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_recommend_index(
         self,
@@ -8751,16 +8203,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeRestorableTenantsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeRestorableTenantsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeRestorableTenantsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_restorable_tenants_with_options_async(
         self,
@@ -8804,16 +8250,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeRestorableTenantsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeRestorableTenantsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeRestorableTenantsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_restorable_tenants(
         self,
@@ -8873,16 +8313,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSQLDetailsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSQLDetailsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeSQLDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_sqldetails_with_options_async(
         self,
@@ -8916,16 +8350,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSQLDetailsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSQLDetailsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeSQLDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_sqldetails(
         self,
@@ -8993,16 +8421,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSQLHistoryListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSQLHistoryListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeSQLHistoryListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_sqlhistory_list_with_options_async(
         self,
@@ -9044,16 +8466,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSQLHistoryListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSQLHistoryListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeSQLHistoryListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_sqlhistory_list(
         self,
@@ -9113,16 +8529,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSQLPlansResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSQLPlansResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeSQLPlansResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_sqlplans_with_options_async(
         self,
@@ -9156,16 +8566,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSQLPlansResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSQLPlansResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeSQLPlansResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_sqlplans(
         self,
@@ -9235,16 +8639,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSQLSamplesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSQLSamplesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeSQLSamplesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_sqlsamples_with_options_async(
         self,
@@ -9288,16 +8686,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSQLSamplesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSQLSamplesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeSQLSamplesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_sqlsamples(
         self,
@@ -9367,16 +8759,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSQLTuningAdvicesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSQLTuningAdvicesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeSQLTuningAdvicesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_sqltuning_advices_with_options_async(
         self,
@@ -9420,16 +8806,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSQLTuningAdvicesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSQLTuningAdvicesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeSQLTuningAdvicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_sqltuning_advices(
         self,
@@ -9503,16 +8883,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSampleSqlRawTextsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSampleSqlRawTextsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeSampleSqlRawTextsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_sample_sql_raw_texts_with_options_async(
         self,
@@ -9560,16 +8934,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSampleSqlRawTextsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSampleSqlRawTextsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeSampleSqlRawTextsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_sample_sql_raw_texts(
         self,
@@ -9627,16 +8995,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSecurityIpGroupsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSecurityIpGroupsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeSecurityIpGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_security_ip_groups_with_options_async(
         self,
@@ -9668,16 +9030,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSecurityIpGroupsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSecurityIpGroupsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeSecurityIpGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_security_ip_groups(
         self,
@@ -9737,16 +9093,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSessionListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSessionListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeSessionListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_session_list_with_options_async(
         self,
@@ -9780,16 +9130,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSessionListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSessionListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeSessionListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_session_list(
         self,
@@ -9857,16 +9201,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSlowSQLHistoryListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSlowSQLHistoryListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeSlowSQLHistoryListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_slow_sqlhistory_list_with_options_async(
         self,
@@ -9908,16 +9246,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSlowSQLHistoryListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSlowSQLHistoryListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeSlowSQLHistoryListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_slow_sqlhistory_list(
         self,
@@ -10007,16 +9339,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSlowSQLListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSlowSQLListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeSlowSQLListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_slow_sqllist_with_options_async(
         self,
@@ -10080,16 +9406,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSlowSQLListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSlowSQLListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeSlowSQLListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_slow_sqllist(
         self,
@@ -10157,16 +9477,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSqlAuditStatResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSqlAuditStatResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeSqlAuditStatResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_sql_audit_stat_with_options_async(
         self,
@@ -10208,16 +9522,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSqlAuditStatResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeSqlAuditStatResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeSqlAuditStatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_sql_audit_stat(
         self,
@@ -10277,16 +9585,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeStandbyCreateModeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeStandbyCreateModeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeStandbyCreateModeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_standby_create_mode_with_options_async(
         self,
@@ -10320,16 +9622,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeStandbyCreateModeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeStandbyCreateModeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeStandbyCreateModeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_standby_create_mode(
         self,
@@ -10387,16 +9683,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTagValuesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTagValuesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTagValuesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_tag_values_with_options_async(
         self,
@@ -10428,16 +9718,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTagValuesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTagValuesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTagValuesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_tag_values(
         self,
@@ -10497,16 +9781,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTenantResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_tenant_with_options_async(
         self,
@@ -10540,16 +9818,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTenantResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_tenant(
         self,
@@ -10615,16 +9887,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantEncryptionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantEncryptionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTenantEncryptionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_tenant_encryption_with_options_async(
         self,
@@ -10664,16 +9930,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantEncryptionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantEncryptionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTenantEncryptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_tenant_encryption(
         self,
@@ -10747,16 +10007,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantMetricsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantMetricsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTenantMetricsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_tenant_metrics_with_options_async(
         self,
@@ -10804,16 +10058,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantMetricsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantMetricsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTenantMetricsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_tenant_metrics(
         self,
@@ -10873,16 +10121,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantReadableScnResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantReadableScnResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTenantReadableScnResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_tenant_readable_scn_with_options_async(
         self,
@@ -10916,16 +10158,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantReadableScnResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantReadableScnResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTenantReadableScnResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_tenant_readable_scn(
         self,
@@ -10987,16 +10223,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantSecurityConfigsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantSecurityConfigsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTenantSecurityConfigsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_tenant_security_configs_with_options_async(
         self,
@@ -11032,16 +10262,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantSecurityConfigsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantSecurityConfigsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTenantSecurityConfigsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_tenant_security_configs(
         self,
@@ -11101,16 +10325,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantSecurityIpGroupsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantSecurityIpGroupsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTenantSecurityIpGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_tenant_security_ip_groups_with_options_async(
         self,
@@ -11144,16 +10362,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantSecurityIpGroupsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantSecurityIpGroupsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTenantSecurityIpGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_tenant_security_ip_groups(
         self,
@@ -11215,16 +10427,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantTagsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantTagsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTenantTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_tenant_tags_with_options_async(
         self,
@@ -11260,16 +10466,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantTagsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantTagsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTenantTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_tenant_tags(
         self,
@@ -11329,16 +10529,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantUserRolesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantUserRolesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTenantUserRolesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_tenant_user_roles_with_options_async(
         self,
@@ -11372,16 +10566,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantUserRolesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantUserRolesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTenantUserRolesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_tenant_user_roles(
         self,
@@ -11447,16 +10635,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantUsersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantUsersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTenantUsersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_tenant_users_with_options_async(
         self,
@@ -11496,16 +10678,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantUsersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantUsersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTenantUsersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_tenant_users(
         self,
@@ -11565,16 +10741,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantZonesReadResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantZonesReadResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTenantZonesReadResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_tenant_zones_read_with_options_async(
         self,
@@ -11608,16 +10778,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantZonesReadResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantZonesReadResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTenantZonesReadResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_tenant_zones_read(
         self,
@@ -11685,16 +10849,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTenantsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_tenants_with_options_async(
         self,
@@ -11736,16 +10894,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTenantsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTenantsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_tenants(
         self,
@@ -11796,16 +10948,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTimeZonesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTimeZonesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTimeZonesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_time_zones_with_options_async(
         self,
@@ -11830,16 +10976,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTimeZonesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTimeZonesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTimeZonesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_time_zones(self) -> ocean_base_pro_20190901_models.DescribeTimeZonesResponse:
         """
@@ -11921,16 +11061,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTopSQLListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTopSQLListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTopSQLListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_top_sqllist_with_options_async(
         self,
@@ -11994,16 +11128,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTopSQLListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeTopSQLListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTopSQLListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_top_sqllist(
         self,
@@ -12065,16 +11193,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeZonesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeZonesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeZonesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_zones_with_options_async(
         self,
@@ -12110,16 +11232,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeZonesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.DescribeZonesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeZonesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_zones(
         self,
@@ -12179,16 +11295,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.GetUploadOssUrlResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.GetUploadOssUrlResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.GetUploadOssUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_upload_oss_url_with_options_async(
         self,
@@ -12222,16 +11332,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.GetUploadOssUrlResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.GetUploadOssUrlResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.GetUploadOssUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_upload_oss_url(
         self,
@@ -12293,16 +11397,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.KillProcessListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.KillProcessListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.KillProcessListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def kill_process_list_with_options_async(
         self,
@@ -12338,16 +11436,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.KillProcessListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.KillProcessListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.KillProcessListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def kill_process_list(
         self,
@@ -12398,16 +11490,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ListAllLabelsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ListAllLabelsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ListAllLabelsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_all_labels_with_options_async(
         self,
@@ -12432,16 +11518,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ListAllLabelsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ListAllLabelsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ListAllLabelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_all_labels(self) -> ocean_base_pro_20190901_models.ListAllLabelsResponse:
         """
@@ -12505,16 +11585,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ListDataSourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ListDataSourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ListDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_data_source_with_options_async(
         self,
@@ -12560,16 +11634,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ListDataSourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ListDataSourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ListDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_data_source(
         self,
@@ -12643,16 +11711,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ListProjectFullVerifyResultResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ListProjectFullVerifyResultResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ListProjectFullVerifyResultResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_project_full_verify_result_with_options_async(
         self,
@@ -12700,16 +11762,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ListProjectFullVerifyResultResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ListProjectFullVerifyResultResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ListProjectFullVerifyResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_project_full_verify_result(
         self,
@@ -12767,16 +11823,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ListProjectModifyRecordsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ListProjectModifyRecordsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ListProjectModifyRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_project_modify_records_with_options_async(
         self,
@@ -12808,16 +11858,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ListProjectModifyRecordsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ListProjectModifyRecordsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ListProjectModifyRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_project_modify_records(
         self,
@@ -12907,16 +11951,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ListProjectsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ListProjectsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ListProjectsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_projects_with_options_async(
         self,
@@ -12980,16 +12018,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ListProjectsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ListProjectsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ListProjectsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_projects(
         self,
@@ -13063,16 +12095,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ListWorkerInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ListWorkerInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ListWorkerInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_worker_instances_with_options_async(
         self,
@@ -13120,16 +12146,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ListWorkerInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ListWorkerInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ListWorkerInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_worker_instances(
         self,
@@ -13193,16 +12213,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyDatabaseDescriptionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyDatabaseDescriptionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyDatabaseDescriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_database_description_with_options_async(
         self,
@@ -13240,16 +12254,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyDatabaseDescriptionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyDatabaseDescriptionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyDatabaseDescriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_database_description(
         self,
@@ -13313,16 +12321,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyDatabaseUserRolesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyDatabaseUserRolesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyDatabaseUserRolesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_database_user_roles_with_options_async(
         self,
@@ -13360,16 +12362,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyDatabaseUserRolesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyDatabaseUserRolesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyDatabaseUserRolesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_database_user_roles(
         self,
@@ -13429,16 +12425,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyInstanceNameResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyInstanceNameResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyInstanceNameResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_name_with_options_async(
         self,
@@ -13472,16 +12462,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyInstanceNameResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyInstanceNameResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyInstanceNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_name(
         self,
@@ -13543,16 +12527,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyInstanceNodeNumResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyInstanceNodeNumResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyInstanceNodeNumResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_node_num_with_options_async(
         self,
@@ -13588,16 +12566,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyInstanceNodeNumResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyInstanceNodeNumResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyInstanceNodeNumResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_node_num(
         self,
@@ -13661,16 +12633,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyInstanceSSLResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyInstanceSSLResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyInstanceSSLResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_sslwith_options_async(
         self,
@@ -13708,16 +12674,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyInstanceSSLResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyInstanceSSLResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyInstanceSSLResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_ssl(
         self,
@@ -13789,16 +12749,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyInstanceSpecResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyInstanceSpecResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyInstanceSpecResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_spec_with_options_async(
         self,
@@ -13840,16 +12794,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyInstanceSpecResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyInstanceSpecResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyInstanceSpecResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_spec(
         self,
@@ -13909,16 +12857,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyInstanceTagsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyInstanceTagsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyInstanceTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_tags_with_options_async(
         self,
@@ -13952,16 +12894,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyInstanceTagsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyInstanceTagsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyInstanceTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_tags(
         self,
@@ -14025,16 +12961,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyInstanceTemporaryCapacityResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyInstanceTemporaryCapacityResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyInstanceTemporaryCapacityResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_temporary_capacity_with_options_async(
         self,
@@ -14072,16 +13002,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyInstanceTemporaryCapacityResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyInstanceTemporaryCapacityResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyInstanceTemporaryCapacityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_temporary_capacity(
         self,
@@ -14145,16 +13069,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyParametersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyParametersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyParametersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_parameters_with_options_async(
         self,
@@ -14192,16 +13110,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyParametersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyParametersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyParametersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_parameters(
         self,
@@ -14263,16 +13175,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifySecurityIpsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifySecurityIpsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifySecurityIpsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_security_ips_with_options_async(
         self,
@@ -14308,16 +13214,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifySecurityIpsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifySecurityIpsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifySecurityIpsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_security_ips(
         self,
@@ -14375,16 +13275,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTagNameResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTagNameResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyTagNameResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_tag_name_with_options_async(
         self,
@@ -14416,16 +13310,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTagNameResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTagNameResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyTagNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_tag_name(
         self,
@@ -14483,16 +13371,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTagValueNameResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTagValueNameResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyTagValueNameResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_tag_value_name_with_options_async(
         self,
@@ -14528,16 +13410,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTagValueNameResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTagValueNameResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyTagValueNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_tag_value_name(
         self,
@@ -14601,16 +13477,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantEncryptionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantEncryptionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyTenantEncryptionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_tenant_encryption_with_options_async(
         self,
@@ -14648,16 +13518,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantEncryptionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantEncryptionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyTenantEncryptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_tenant_encryption(
         self,
@@ -14733,16 +13597,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantPrimaryZoneResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantPrimaryZoneResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyTenantPrimaryZoneResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_tenant_primary_zone_with_options_async(
         self,
@@ -14792,16 +13650,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantPrimaryZoneResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantPrimaryZoneResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyTenantPrimaryZoneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_tenant_primary_zone(
         self,
@@ -14869,16 +13721,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyTenantResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_tenant_resource_with_options_async(
         self,
@@ -14920,16 +13766,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyTenantResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_tenant_resource(
         self,
@@ -14993,16 +13833,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantSecurityIpGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantSecurityIpGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyTenantSecurityIpGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_tenant_security_ip_group_with_options_async(
         self,
@@ -15040,16 +13874,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantSecurityIpGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantSecurityIpGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyTenantSecurityIpGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_tenant_security_ip_group(
         self,
@@ -15111,16 +13939,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantTagsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantTagsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyTenantTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_tenant_tags_with_options_async(
         self,
@@ -15156,16 +13978,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantTagsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantTagsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyTenantTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_tenant_tags(
         self,
@@ -15229,16 +14045,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantUserDescriptionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantUserDescriptionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyTenantUserDescriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_tenant_user_description_with_options_async(
         self,
@@ -15276,16 +14086,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantUserDescriptionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantUserDescriptionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyTenantUserDescriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_tenant_user_description(
         self,
@@ -15351,16 +14155,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantUserPasswordResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantUserPasswordResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyTenantUserPasswordResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_tenant_user_password_with_options_async(
         self,
@@ -15400,16 +14198,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantUserPasswordResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantUserPasswordResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyTenantUserPasswordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_tenant_user_password(
         self,
@@ -15479,16 +14271,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantUserRolesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantUserRolesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyTenantUserRolesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_tenant_user_roles_with_options_async(
         self,
@@ -15532,16 +14318,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantUserRolesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantUserRolesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyTenantUserRolesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_tenant_user_roles(
         self,
@@ -15605,16 +14385,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantUserStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantUserStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyTenantUserStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_tenant_user_status_with_options_async(
         self,
@@ -15652,16 +14426,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantUserStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ModifyTenantUserStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyTenantUserStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_tenant_user_status(
         self,
@@ -15719,16 +14487,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ReleaseProjectResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ReleaseProjectResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ReleaseProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def release_project_with_options_async(
         self,
@@ -15760,16 +14522,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ReleaseProjectResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ReleaseProjectResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ReleaseProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def release_project(
         self,
@@ -15827,16 +14583,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ReleaseWorkerInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ReleaseWorkerInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ReleaseWorkerInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def release_worker_instance_with_options_async(
         self,
@@ -15868,16 +14618,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ReleaseWorkerInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ReleaseWorkerInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ReleaseWorkerInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def release_worker_instance(
         self,
@@ -15939,16 +14683,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.RemoveStandbyInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.RemoveStandbyInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.RemoveStandbyInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def remove_standby_instance_with_options_async(
         self,
@@ -15984,16 +14722,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.RemoveStandbyInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.RemoveStandbyInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.RemoveStandbyInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def remove_standby_instance(
         self,
@@ -16051,16 +14783,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ResumeProjectResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ResumeProjectResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ResumeProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def resume_project_with_options_async(
         self,
@@ -16092,16 +14818,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ResumeProjectResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.ResumeProjectResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ResumeProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def resume_project(
         self,
@@ -16159,16 +14879,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.RetryProjectModifyRecordsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.RetryProjectModifyRecordsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.RetryProjectModifyRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def retry_project_modify_records_with_options_async(
         self,
@@ -16200,16 +14914,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.RetryProjectModifyRecordsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.RetryProjectModifyRecordsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.RetryProjectModifyRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def retry_project_modify_records(
         self,
@@ -16267,16 +14975,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.StartProjectResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.StartProjectResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.StartProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def start_project_with_options_async(
         self,
@@ -16308,16 +15010,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.StartProjectResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.StartProjectResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.StartProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def start_project(
         self,
@@ -16375,16 +15071,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.StartProjectsByLabelResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.StartProjectsByLabelResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.StartProjectsByLabelResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def start_projects_by_label_with_options_async(
         self,
@@ -16416,16 +15106,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.StartProjectsByLabelResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.StartProjectsByLabelResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.StartProjectsByLabelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def start_projects_by_label(
         self,
@@ -16483,16 +15167,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.StopProjectResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.StopProjectResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.StopProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def stop_project_with_options_async(
         self,
@@ -16524,16 +15202,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.StopProjectResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.StopProjectResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.StopProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def stop_project(
         self,
@@ -16591,16 +15263,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.StopProjectModifyRecordsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.StopProjectModifyRecordsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.StopProjectModifyRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def stop_project_modify_records_with_options_async(
         self,
@@ -16632,16 +15298,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.StopProjectModifyRecordsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.StopProjectModifyRecordsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.StopProjectModifyRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def stop_project_modify_records(
         self,
@@ -16699,16 +15359,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.StopProjectsByLabelResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.StopProjectsByLabelResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.StopProjectsByLabelResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def stop_projects_by_label_with_options_async(
         self,
@@ -16740,16 +15394,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.StopProjectsByLabelResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.StopProjectsByLabelResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.StopProjectsByLabelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def stop_projects_by_label(
         self,
@@ -16811,16 +15459,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.SwitchoverInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.SwitchoverInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.SwitchoverInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def switchover_instance_with_options_async(
         self,
@@ -16856,16 +15498,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.SwitchoverInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.SwitchoverInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.SwitchoverInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def switchover_instance(
         self,
@@ -16941,16 +15577,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.UpdateProjectConfigResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.UpdateProjectConfigResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.UpdateProjectConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_project_config_with_options_async(
         self,
@@ -17000,16 +15630,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.UpdateProjectConfigResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                ocean_base_pro_20190901_models.UpdateProjectConfigResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.UpdateProjectConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_project_config(
         self,
