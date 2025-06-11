@@ -44484,6 +44484,7 @@ class UpsertChunksRequestTextChunks(TeaModel):
 class UpsertChunksRequest(TeaModel):
     def __init__(
         self,
+        allow_insert_with_filter: bool = None,
         collection: str = None,
         dbinstance_id: str = None,
         file_name: str = None,
@@ -44494,6 +44495,7 @@ class UpsertChunksRequest(TeaModel):
         should_replace_file: bool = None,
         text_chunks: List[UpsertChunksRequestTextChunks] = None,
     ):
+        self.allow_insert_with_filter = allow_insert_with_filter
         # Document collection name.
         # 
         # > Created by the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) API. You can use the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) API to view the already created document collections.
@@ -44541,6 +44543,8 @@ class UpsertChunksRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.allow_insert_with_filter is not None:
+            result['AllowInsertWithFilter'] = self.allow_insert_with_filter
         if self.collection is not None:
             result['Collection'] = self.collection
         if self.dbinstance_id is not None:
@@ -44565,6 +44569,8 @@ class UpsertChunksRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllowInsertWithFilter') is not None:
+            self.allow_insert_with_filter = m.get('AllowInsertWithFilter')
         if m.get('Collection') is not None:
             self.collection = m.get('Collection')
         if m.get('DBInstanceId') is not None:
@@ -44592,6 +44598,7 @@ class UpsertChunksRequest(TeaModel):
 class UpsertChunksShrinkRequest(TeaModel):
     def __init__(
         self,
+        allow_insert_with_filter: bool = None,
         collection: str = None,
         dbinstance_id: str = None,
         file_name: str = None,
@@ -44602,6 +44609,7 @@ class UpsertChunksShrinkRequest(TeaModel):
         should_replace_file: bool = None,
         text_chunks_shrink: str = None,
     ):
+        self.allow_insert_with_filter = allow_insert_with_filter
         # Document collection name.
         # 
         # > Created by the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) API. You can use the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) API to view the already created document collections.
@@ -44646,6 +44654,8 @@ class UpsertChunksShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.allow_insert_with_filter is not None:
+            result['AllowInsertWithFilter'] = self.allow_insert_with_filter
         if self.collection is not None:
             result['Collection'] = self.collection
         if self.dbinstance_id is not None:
@@ -44668,6 +44678,8 @@ class UpsertChunksShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllowInsertWithFilter') is not None:
+            self.allow_insert_with_filter = m.get('AllowInsertWithFilter')
         if m.get('Collection') is not None:
             self.collection = m.get('Collection')
         if m.get('DBInstanceId') is not None:

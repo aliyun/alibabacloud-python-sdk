@@ -24670,6 +24670,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.text_chunks):
             request.text_chunks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.text_chunks, 'TextChunks', 'json')
         query = {}
+        if not UtilClient.is_unset(request.allow_insert_with_filter):
+            query['AllowInsertWithFilter'] = request.allow_insert_with_filter
         if not UtilClient.is_unset(request.collection):
             query['Collection'] = request.collection
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -24729,6 +24731,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.text_chunks):
             request.text_chunks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.text_chunks, 'TextChunks', 'json')
         query = {}
+        if not UtilClient.is_unset(request.allow_insert_with_filter):
+            query['AllowInsertWithFilter'] = request.allow_insert_with_filter
         if not UtilClient.is_unset(request.collection):
             query['Collection'] = request.collection
         if not UtilClient.is_unset(request.dbinstance_id):
