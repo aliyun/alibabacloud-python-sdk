@@ -1,3 +1,14 @@
+2025-06-11 Version: 6.3.1
+- Update API InsertMediaToSearchLib: add request parameters ImagesInput.
+- Update API SearchMedia: add response parameters Body.MediaInfoList.$.FileInfoList.$.FileBasicInfo.ImagesInput.
+- Update API SearchMedia: add response parameters Body.MediaInfoList.$.MediaBasicInfo.Namespace.
+- Update API SearchMedia: add response parameters Body.MediaInfoList.$.MediaBasicInfo.VisionDescription.
+- Update API SearchMediaByAILabel: add request parameters Namespace.
+- Update API SearchMediaByFace: add request parameters Namespace.
+- Update API SearchMediaByHybrid: add request parameters Namespace.
+- Update API SearchMediaByMultimodal: add request parameters Namespace.
+
+
 2025-06-05 Version: 6.3.0
 - Support API CreateRecognitionEntity.
 - Support API CreateRecognitionLib.

@@ -18038,6 +18038,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.images_input):
+            query['ImagesInput'] = request.images_input
         if not UtilClient.is_unset(request.input):
             query['Input'] = request.input
         if not UtilClient.is_unset(request.media_id):
@@ -18081,6 +18083,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.images_input):
+            query['ImagesInput'] = request.images_input
         if not UtilClient.is_unset(request.input):
             query['Input'] = request.input
         if not UtilClient.is_unset(request.media_id):
@@ -27080,6 +27084,8 @@ class Client(OpenApiClient):
             query['MediaType'] = request.media_type
         if not UtilClient.is_unset(request.multimodal_search_type):
             query['MultimodalSearchType'] = request.multimodal_search_type
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.page_no):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -27135,6 +27141,8 @@ class Client(OpenApiClient):
             query['MediaType'] = request.media_type
         if not UtilClient.is_unset(request.multimodal_search_type):
             query['MultimodalSearchType'] = request.multimodal_search_type
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.page_no):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -27218,6 +27226,8 @@ class Client(OpenApiClient):
             query['FaceSearchToken'] = request.face_search_token
         if not UtilClient.is_unset(request.media_type):
             query['MediaType'] = request.media_type
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.page_no):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -27267,6 +27277,8 @@ class Client(OpenApiClient):
             query['FaceSearchToken'] = request.face_search_token
         if not UtilClient.is_unset(request.media_type):
             query['MediaType'] = request.media_type
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.page_no):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -27342,6 +27354,8 @@ class Client(OpenApiClient):
             query['MediaId'] = request.media_id
         if not UtilClient.is_unset(request.media_type):
             query['MediaType'] = request.media_type
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.page_no):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -27387,6 +27401,8 @@ class Client(OpenApiClient):
             query['MediaId'] = request.media_id
         if not UtilClient.is_unset(request.media_type):
             query['MediaType'] = request.media_type
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.page_no):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -27458,6 +27474,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.media_type):
             query['MediaType'] = request.media_type
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.page_no):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -27503,6 +27521,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.media_type):
             query['MediaType'] = request.media_type
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.page_no):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.page_size):

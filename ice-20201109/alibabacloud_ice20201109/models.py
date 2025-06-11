@@ -44200,12 +44200,14 @@ class GetWorkflowTaskResponse(TeaModel):
 class InsertMediaToSearchLibRequest(TeaModel):
     def __init__(
         self,
+        images_input: str = None,
         input: str = None,
         media_id: str = None,
         media_type: str = None,
         msg_body: str = None,
         search_lib_name: str = None,
     ):
+        self.images_input = images_input
         # The URL of the video, audio, or image file that you want to import to the search library.
         # 
         # Note: Make sure that you specify a correct file name and the bucket in which the file resides is in the same region where this operation is called. Otherwise, the file cannot be found or the operation may fail.
@@ -44238,6 +44240,8 @@ class InsertMediaToSearchLibRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.images_input is not None:
+            result['ImagesInput'] = self.images_input
         if self.input is not None:
             result['Input'] = self.input
         if self.media_id is not None:
@@ -44252,6 +44256,8 @@ class InsertMediaToSearchLibRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ImagesInput') is not None:
+            self.images_input = m.get('ImagesInput')
         if m.get('Input') is not None:
             self.input = m.get('Input')
         if m.get('MediaId') is not None:
@@ -70139,6 +70145,7 @@ class SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo(TeaModel):
         file_url: str = None,
         format_name: str = None,
         height: str = None,
+        images_input: str = None,
         modified_time: str = None,
         region: str = None,
         width: str = None,
@@ -70163,6 +70170,7 @@ class SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo(TeaModel):
         self.format_name = format_name
         # The height of the file.
         self.height = height
+        self.images_input = images_input
         # The time when the file was last modified.
         self.modified_time = modified_time
         # The region in which the file is stored.
@@ -70199,6 +70207,8 @@ class SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo(TeaModel):
             result['FormatName'] = self.format_name
         if self.height is not None:
             result['Height'] = self.height
+        if self.images_input is not None:
+            result['ImagesInput'] = self.images_input
         if self.modified_time is not None:
             result['ModifiedTime'] = self.modified_time
         if self.region is not None:
@@ -70229,6 +70239,8 @@ class SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo(TeaModel):
             self.format_name = m.get('FormatName')
         if m.get('Height') is not None:
             self.height = m.get('Height')
+        if m.get('ImagesInput') is not None:
+            self.images_input = m.get('ImagesInput')
         if m.get('ModifiedTime') is not None:
             self.modified_time = m.get('ModifiedTime')
         if m.get('Region') is not None:
@@ -70318,6 +70330,7 @@ class SearchMediaResponseBodyMediaInfoListMediaBasicInfo(TeaModel):
         media_tags: str = None,
         media_type: str = None,
         modified_time: str = None,
+        namespace: str = None,
         reference_id: str = None,
         snapshots: str = None,
         source: str = None,
@@ -70327,6 +70340,7 @@ class SearchMediaResponseBodyMediaInfoListMediaBasicInfo(TeaModel):
         transcode_status: str = None,
         upload_source: str = None,
         user_data: str = None,
+        vision_description: str = None,
     ):
         # The business to which the media asset belongs.
         self.biz = biz
@@ -70356,6 +70370,7 @@ class SearchMediaResponseBodyMediaInfoListMediaBasicInfo(TeaModel):
         self.media_type = media_type
         # The time when the media asset was modified.
         self.modified_time = modified_time
+        self.namespace = namespace
         # The custom ID of the media asset. The ID is a string that contains 6 to 64 characters. Only letters, digits, hyphens (-), and underscores (_) are supported. Each custom ID is unique.
         self.reference_id = reference_id
         # The snapshots of the media asset.
@@ -70374,6 +70389,7 @@ class SearchMediaResponseBodyMediaInfoListMediaBasicInfo(TeaModel):
         self.upload_source = upload_source
         # The user data.
         self.user_data = user_data
+        self.vision_description = vision_description
 
     def validate(self):
         pass
@@ -70412,6 +70428,8 @@ class SearchMediaResponseBodyMediaInfoListMediaBasicInfo(TeaModel):
             result['MediaType'] = self.media_type
         if self.modified_time is not None:
             result['ModifiedTime'] = self.modified_time
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
         if self.reference_id is not None:
             result['ReferenceId'] = self.reference_id
         if self.snapshots is not None:
@@ -70430,6 +70448,8 @@ class SearchMediaResponseBodyMediaInfoListMediaBasicInfo(TeaModel):
             result['UploadSource'] = self.upload_source
         if self.user_data is not None:
             result['UserData'] = self.user_data
+        if self.vision_description is not None:
+            result['VisionDescription'] = self.vision_description
         return result
 
     def from_map(self, m: dict = None):
@@ -70462,6 +70482,8 @@ class SearchMediaResponseBodyMediaInfoListMediaBasicInfo(TeaModel):
             self.media_type = m.get('MediaType')
         if m.get('ModifiedTime') is not None:
             self.modified_time = m.get('ModifiedTime')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
         if m.get('ReferenceId') is not None:
             self.reference_id = m.get('ReferenceId')
         if m.get('Snapshots') is not None:
@@ -70480,6 +70502,8 @@ class SearchMediaResponseBodyMediaInfoListMediaBasicInfo(TeaModel):
             self.upload_source = m.get('UploadSource')
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
+        if m.get('VisionDescription') is not None:
+            self.vision_description = m.get('VisionDescription')
         return self
 
 
@@ -70690,6 +70714,7 @@ class SearchMediaByAILabelRequest(TeaModel):
         media_id: str = None,
         media_type: str = None,
         multimodal_search_type: str = None,
+        namespace: str = None,
         page_no: int = None,
         page_size: int = None,
         search_lib_name: str = None,
@@ -70713,6 +70738,7 @@ class SearchMediaByAILabelRequest(TeaModel):
         # *   AiCategory: queries media assets based on AI categories.
         # *   FullSearch (default): queries all media assets.
         self.multimodal_search_type = multimodal_search_type
+        self.namespace = namespace
         # The page number. Default value: 1.
         self.page_no = page_no
         # The number of entries per page. Default value: 10. Maximum value: 50.
@@ -70749,6 +70775,8 @@ class SearchMediaByAILabelRequest(TeaModel):
             result['MediaType'] = self.media_type
         if self.multimodal_search_type is not None:
             result['MultimodalSearchType'] = self.multimodal_search_type
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
         if self.page_no is not None:
             result['PageNo'] = self.page_no
         if self.page_size is not None:
@@ -70773,6 +70801,8 @@ class SearchMediaByAILabelRequest(TeaModel):
             self.media_type = m.get('MediaType')
         if m.get('MultimodalSearchType') is not None:
             self.multimodal_search_type = m.get('MultimodalSearchType')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
         if m.get('PageNo') is not None:
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
@@ -71434,6 +71464,7 @@ class SearchMediaByFaceRequest(TeaModel):
         entity_id: str = None,
         face_search_token: str = None,
         media_type: str = None,
+        namespace: str = None,
         page_no: int = None,
         page_size: int = None,
         person_image_url: str = None,
@@ -71450,6 +71481,7 @@ class SearchMediaByFaceRequest(TeaModel):
         # *   image
         # *   video
         self.media_type = media_type
+        self.namespace = namespace
         # The page number. Default value: 1.
         self.page_no = page_no
         # The number of entries per page. Default value: 10. Maximum value: 50.
@@ -71476,6 +71508,8 @@ class SearchMediaByFaceRequest(TeaModel):
             result['FaceSearchToken'] = self.face_search_token
         if self.media_type is not None:
             result['MediaType'] = self.media_type
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
         if self.page_no is not None:
             result['PageNo'] = self.page_no
         if self.page_size is not None:
@@ -71494,6 +71528,8 @@ class SearchMediaByFaceRequest(TeaModel):
             self.face_search_token = m.get('FaceSearchToken')
         if m.get('MediaType') is not None:
             self.media_type = m.get('MediaType')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
         if m.get('PageNo') is not None:
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
@@ -71643,6 +71679,7 @@ class SearchMediaByHybridRequest(TeaModel):
         self,
         media_id: str = None,
         media_type: str = None,
+        namespace: str = None,
         page_no: int = None,
         page_size: int = None,
         search_lib_name: str = None,
@@ -71651,6 +71688,7 @@ class SearchMediaByHybridRequest(TeaModel):
         # The ID of the media asset. The details of the media asset are returned.
         self.media_id = media_id
         self.media_type = media_type
+        self.namespace = namespace
         self.page_no = page_no
         self.page_size = page_size
         self.search_lib_name = search_lib_name
@@ -71669,6 +71707,8 @@ class SearchMediaByHybridRequest(TeaModel):
             result['MediaId'] = self.media_id
         if self.media_type is not None:
             result['MediaType'] = self.media_type
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
         if self.page_no is not None:
             result['PageNo'] = self.page_no
         if self.page_size is not None:
@@ -71685,6 +71725,8 @@ class SearchMediaByHybridRequest(TeaModel):
             self.media_id = m.get('MediaId')
         if m.get('MediaType') is not None:
             self.media_type = m.get('MediaType')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
         if m.get('PageNo') is not None:
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
@@ -71880,6 +71922,7 @@ class SearchMediaByMultimodalRequest(TeaModel):
     def __init__(
         self,
         media_type: str = None,
+        namespace: str = None,
         page_no: int = None,
         page_size: int = None,
         search_lib_name: str = None,
@@ -71892,6 +71935,7 @@ class SearchMediaByMultimodalRequest(TeaModel):
         # *   image
         # *   video (default)
         self.media_type = media_type
+        self.namespace = namespace
         # The page number. Default value: 1.
         self.page_no = page_no
         # The number of entries per page. Default value: 10. Maximum value: 50.
@@ -71912,6 +71956,8 @@ class SearchMediaByMultimodalRequest(TeaModel):
         result = dict()
         if self.media_type is not None:
             result['MediaType'] = self.media_type
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
         if self.page_no is not None:
             result['PageNo'] = self.page_no
         if self.page_size is not None:
@@ -71926,6 +71972,8 @@ class SearchMediaByMultimodalRequest(TeaModel):
         m = m or dict()
         if m.get('MediaType') is not None:
             self.media_type = m.get('MediaType')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
         if m.get('PageNo') is not None:
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
