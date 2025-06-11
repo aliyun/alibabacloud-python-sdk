@@ -282,7 +282,7 @@ class Client(OpenApiClient):
         @summary Adds a user to a group.
         
         @description If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot add a user to a group that is synchronized by using SCIM.
-        This topic provides an example of how to add the user `u-00q8wbq42wiltcrk***` to the group `g-00jqzghi2n3o5hkh****`.
+        This topic provides an example on how to add the user `u-00q8wbq42wiltcrk***` to the group `g-00jqzghi2n3o5hkh****`.
         
         @param request: AddUserToGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -324,7 +324,7 @@ class Client(OpenApiClient):
         @summary Adds a user to a group.
         
         @description If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot add a user to a group that is synchronized by using SCIM.
-        This topic provides an example of how to add the user `u-00q8wbq42wiltcrk***` to the group `g-00jqzghi2n3o5hkh****`.
+        This topic provides an example on how to add the user `u-00q8wbq42wiltcrk***` to the group `g-00jqzghi2n3o5hkh****`.
         
         @param request: AddUserToGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -365,7 +365,7 @@ class Client(OpenApiClient):
         @summary Adds a user to a group.
         
         @description If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot add a user to a group that is synchronized by using SCIM.
-        This topic provides an example of how to add the user `u-00q8wbq42wiltcrk***` to the group `g-00jqzghi2n3o5hkh****`.
+        This topic provides an example on how to add the user `u-00q8wbq42wiltcrk***` to the group `g-00jqzghi2n3o5hkh****`.
         
         @param request: AddUserToGroupRequest
         @return: AddUserToGroupResponse
@@ -381,7 +381,7 @@ class Client(OpenApiClient):
         @summary Adds a user to a group.
         
         @description If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot add a user to a group that is synchronized by using SCIM.
-        This topic provides an example of how to add the user `u-00q8wbq42wiltcrk***` to the group `g-00jqzghi2n3o5hkh****`.
+        This topic provides an example on how to add the user `u-00q8wbq42wiltcrk***` to the group `g-00jqzghi2n3o5hkh****`.
         
         @param request: AddUserToGroupRequest
         @return: AddUserToGroupResponse
@@ -656,6 +656,8 @@ class Client(OpenApiClient):
             query['RelayState'] = request.relay_state
         if not UtilClient.is_unset(request.session_duration):
             query['SessionDuration'] = request.session_duration
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -702,6 +704,8 @@ class Client(OpenApiClient):
             query['RelayState'] = request.relay_state
         if not UtilClient.is_unset(request.session_duration):
             query['SessionDuration'] = request.session_duration
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -761,12 +765,13 @@ class Client(OpenApiClient):
         """
         @summary Creates a directory.
         
-        @description A directory is a CloudSSO instance. Before you can use CloudSSO, you must create a directory. The directory is used to manage all CloudSSO resources.
+        @description ### [](#)Operation description
+        A directory is a CloudSSO instance. Before you can use CloudSSO, you must create a directory. The directory is used to manage all CloudSSO resources.
         To create a directory, you must select a region. Alibaba Cloud stores data in the directory only in the region that you select. However, you can deploy Alibaba Cloud resources including Elastic Compute Service (ECS) instances and ApsaraDB RDS instances in other regions. You can also use your cloud account for logons and access the Alibaba Cloud resources in other regions. You can select a region to create a directory based on your security compliance requirements and the geographic location of specific users. If you do not have strict security compliance requirements, we recommend that you select a region that is the closest to the geographical location of the specific users. This way, access to cloud resources is accelerated. You can create the CloudSSO directory in the China (Shanghai), China (Hong Kong), US (Silicon Valley), or Germany (Frankfurt) region.
         This topic provides an example on how to create a directory named `example` in the China (Shanghai) region.
-        ## Limits
-        - You can create only one directory for a management account.
-        - If you want to change the region of a directory, you must delete the directory and then create a directory in a different region.
+        ### [](#)Limits
+        You can create only one directory for a management account.
+        If you want to change the region of a directory, you must delete the directory and then create a directory in a different region.
         
         @param request: CreateDirectoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -803,12 +808,13 @@ class Client(OpenApiClient):
         """
         @summary Creates a directory.
         
-        @description A directory is a CloudSSO instance. Before you can use CloudSSO, you must create a directory. The directory is used to manage all CloudSSO resources.
+        @description ### [](#)Operation description
+        A directory is a CloudSSO instance. Before you can use CloudSSO, you must create a directory. The directory is used to manage all CloudSSO resources.
         To create a directory, you must select a region. Alibaba Cloud stores data in the directory only in the region that you select. However, you can deploy Alibaba Cloud resources including Elastic Compute Service (ECS) instances and ApsaraDB RDS instances in other regions. You can also use your cloud account for logons and access the Alibaba Cloud resources in other regions. You can select a region to create a directory based on your security compliance requirements and the geographic location of specific users. If you do not have strict security compliance requirements, we recommend that you select a region that is the closest to the geographical location of the specific users. This way, access to cloud resources is accelerated. You can create the CloudSSO directory in the China (Shanghai), China (Hong Kong), US (Silicon Valley), or Germany (Frankfurt) region.
         This topic provides an example on how to create a directory named `example` in the China (Shanghai) region.
-        ## Limits
-        - You can create only one directory for a management account.
-        - If you want to change the region of a directory, you must delete the directory and then create a directory in a different region.
+        ### [](#)Limits
+        You can create only one directory for a management account.
+        If you want to change the region of a directory, you must delete the directory and then create a directory in a different region.
         
         @param request: CreateDirectoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -844,12 +850,13 @@ class Client(OpenApiClient):
         """
         @summary Creates a directory.
         
-        @description A directory is a CloudSSO instance. Before you can use CloudSSO, you must create a directory. The directory is used to manage all CloudSSO resources.
+        @description ### [](#)Operation description
+        A directory is a CloudSSO instance. Before you can use CloudSSO, you must create a directory. The directory is used to manage all CloudSSO resources.
         To create a directory, you must select a region. Alibaba Cloud stores data in the directory only in the region that you select. However, you can deploy Alibaba Cloud resources including Elastic Compute Service (ECS) instances and ApsaraDB RDS instances in other regions. You can also use your cloud account for logons and access the Alibaba Cloud resources in other regions. You can select a region to create a directory based on your security compliance requirements and the geographic location of specific users. If you do not have strict security compliance requirements, we recommend that you select a region that is the closest to the geographical location of the specific users. This way, access to cloud resources is accelerated. You can create the CloudSSO directory in the China (Shanghai), China (Hong Kong), US (Silicon Valley), or Germany (Frankfurt) region.
         This topic provides an example on how to create a directory named `example` in the China (Shanghai) region.
-        ## Limits
-        - You can create only one directory for a management account.
-        - If you want to change the region of a directory, you must delete the directory and then create a directory in a different region.
+        ### [](#)Limits
+        You can create only one directory for a management account.
+        If you want to change the region of a directory, you must delete the directory and then create a directory in a different region.
         
         @param request: CreateDirectoryRequest
         @return: CreateDirectoryResponse
@@ -864,12 +871,13 @@ class Client(OpenApiClient):
         """
         @summary Creates a directory.
         
-        @description A directory is a CloudSSO instance. Before you can use CloudSSO, you must create a directory. The directory is used to manage all CloudSSO resources.
+        @description ### [](#)Operation description
+        A directory is a CloudSSO instance. Before you can use CloudSSO, you must create a directory. The directory is used to manage all CloudSSO resources.
         To create a directory, you must select a region. Alibaba Cloud stores data in the directory only in the region that you select. However, you can deploy Alibaba Cloud resources including Elastic Compute Service (ECS) instances and ApsaraDB RDS instances in other regions. You can also use your cloud account for logons and access the Alibaba Cloud resources in other regions. You can select a region to create a directory based on your security compliance requirements and the geographic location of specific users. If you do not have strict security compliance requirements, we recommend that you select a region that is the closest to the geographical location of the specific users. This way, access to cloud resources is accelerated. You can create the CloudSSO directory in the China (Shanghai), China (Hong Kong), US (Silicon Valley), or Germany (Frankfurt) region.
         This topic provides an example on how to create a directory named `example` in the China (Shanghai) region.
-        ## Limits
-        - You can create only one directory for a management account.
-        - If you want to change the region of a directory, you must delete the directory and then create a directory in a different region.
+        ### [](#)Limits
+        You can create only one directory for a management account.
+        If you want to change the region of a directory, you must delete the directory and then create a directory in a different region.
         
         @param request: CreateDirectoryRequest
         @return: CreateDirectoryResponse
@@ -995,7 +1003,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudsso_20210515_models.CreateSCIMServerCredentialResponse:
         """
-        @summary Creates a Cross-domain Identity Management (SCIM) credential.
+        @summary Creates a System for Cross-domain Identity Management (SCIM) credential.
         
         @description SCIM credentials are required for SCIM synchronization. You can create up to two SCIM credentials.
         This topic provides an example on how to create a SCIM credential within the directory `d-00fc2p61***`.
@@ -1033,7 +1041,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudsso_20210515_models.CreateSCIMServerCredentialResponse:
         """
-        @summary Creates a Cross-domain Identity Management (SCIM) credential.
+        @summary Creates a System for Cross-domain Identity Management (SCIM) credential.
         
         @description SCIM credentials are required for SCIM synchronization. You can create up to two SCIM credentials.
         This topic provides an example on how to create a SCIM credential within the directory `d-00fc2p61***`.
@@ -1070,7 +1078,7 @@ class Client(OpenApiClient):
         request: cloudsso_20210515_models.CreateSCIMServerCredentialRequest,
     ) -> cloudsso_20210515_models.CreateSCIMServerCredentialResponse:
         """
-        @summary Creates a Cross-domain Identity Management (SCIM) credential.
+        @summary Creates a System for Cross-domain Identity Management (SCIM) credential.
         
         @description SCIM credentials are required for SCIM synchronization. You can create up to two SCIM credentials.
         This topic provides an example on how to create a SCIM credential within the directory `d-00fc2p61***`.
@@ -1086,7 +1094,7 @@ class Client(OpenApiClient):
         request: cloudsso_20210515_models.CreateSCIMServerCredentialRequest,
     ) -> cloudsso_20210515_models.CreateSCIMServerCredentialResponse:
         """
-        @summary Creates a Cross-domain Identity Management (SCIM) credential.
+        @summary Creates a System for Cross-domain Identity Management (SCIM) credential.
         
         @description SCIM credentials are required for SCIM synchronization. You can create up to two SCIM credentials.
         This topic provides an example on how to create a SCIM credential within the directory `d-00fc2p61***`.
@@ -1127,6 +1135,8 @@ class Client(OpenApiClient):
             query['LastName'] = request.last_name
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.user_name):
             query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
@@ -1178,6 +1188,8 @@ class Client(OpenApiClient):
             query['LastName'] = request.last_name
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.user_name):
             query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
@@ -1501,9 +1513,10 @@ class Client(OpenApiClient):
         """
         @summary Deletes an access configuration.
         
-        @description This topic provides an example on how to delete the access configuration whose ID is `ac-001j9mcm3k7335bc***`.
-        ## Prerequisites
+        @description ### [](#)Prerequisites
         The access configuration that you want to delete is de-provisioned from the accounts in your resource directory. For more information, see [DeprovisionAccessConfiguration](https://help.aliyun.com/document_detail/338352.html).
+        ### [](#)Operation description
+        This topic provides an example on how to delete the access configuration whose ID is `ac-001j9mcm3k7335bc***`.
         
         @param request: DeleteAccessConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1544,9 +1557,10 @@ class Client(OpenApiClient):
         """
         @summary Deletes an access configuration.
         
-        @description This topic provides an example on how to delete the access configuration whose ID is `ac-001j9mcm3k7335bc***`.
-        ## Prerequisites
+        @description ### [](#)Prerequisites
         The access configuration that you want to delete is de-provisioned from the accounts in your resource directory. For more information, see [DeprovisionAccessConfiguration](https://help.aliyun.com/document_detail/338352.html).
+        ### [](#)Operation description
+        This topic provides an example on how to delete the access configuration whose ID is `ac-001j9mcm3k7335bc***`.
         
         @param request: DeleteAccessConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1586,9 +1600,10 @@ class Client(OpenApiClient):
         """
         @summary Deletes an access configuration.
         
-        @description This topic provides an example on how to delete the access configuration whose ID is `ac-001j9mcm3k7335bc***`.
-        ## Prerequisites
+        @description ### [](#)Prerequisites
         The access configuration that you want to delete is de-provisioned from the accounts in your resource directory. For more information, see [DeprovisionAccessConfiguration](https://help.aliyun.com/document_detail/338352.html).
+        ### [](#)Operation description
+        This topic provides an example on how to delete the access configuration whose ID is `ac-001j9mcm3k7335bc***`.
         
         @param request: DeleteAccessConfigurationRequest
         @return: DeleteAccessConfigurationResponse
@@ -1603,9 +1618,10 @@ class Client(OpenApiClient):
         """
         @summary Deletes an access configuration.
         
-        @description This topic provides an example on how to delete the access configuration whose ID is `ac-001j9mcm3k7335bc***`.
-        ## Prerequisites
+        @description ### [](#)Prerequisites
         The access configuration that you want to delete is de-provisioned from the accounts in your resource directory. For more information, see [DeprovisionAccessConfiguration](https://help.aliyun.com/document_detail/338352.html).
+        ### [](#)Operation description
+        This topic provides an example on how to delete the access configuration whose ID is `ac-001j9mcm3k7335bc***`.
         
         @param request: DeleteAccessConfigurationRequest
         @return: DeleteAccessConfigurationResponse
@@ -1621,15 +1637,16 @@ class Client(OpenApiClient):
         """
         @summary Deletes a directory.
         
-        @description This topic provides an example on how to delete a directory whose ID is `d-00fc2p61***`.
-        ## Prerequisites
+        @description ### [](#)Prerequisites
         No resources are contained in the directory that you want to delete.
         Access permissions on the accounts in your resource directory are removed from all users and groups. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
         Users are deleted. For more information, see [DeleteUser](https://help.aliyun.com/document_detail/341671.html).
         Groups are deleted. For more information, see [DeleteGroup](https://help.aliyun.com/document_detail/341821.html).
         Access configurations are deleted. For more information, see [DeleteAccessConfiguration](https://help.aliyun.com/document_detail/336907.html).
         System for Cross-domain Identity Management (SCIM) credentials are deleted. For more information, see [DeleteSCIMServerCredential](https://help.aliyun.com/document_detail/341842.html).
-        SSO logon configurations are deleted. For more information, see [ClearExternalSAMLIdentityProvider](https://help.aliyun.com/document_detail/341573.html).
+        Single sign-on (SSO) logon configurations are deleted. For more information, see [ClearExternalSAMLIdentityProvider](https://help.aliyun.com/document_detail/341573.html).
+        ### [](#)Operation description
+        This topic provides an example on how to delete a directory whose ID is `d-00fc2p61***`.
         
         @param request: DeleteDirectoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1666,15 +1683,16 @@ class Client(OpenApiClient):
         """
         @summary Deletes a directory.
         
-        @description This topic provides an example on how to delete a directory whose ID is `d-00fc2p61***`.
-        ## Prerequisites
+        @description ### [](#)Prerequisites
         No resources are contained in the directory that you want to delete.
         Access permissions on the accounts in your resource directory are removed from all users and groups. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
         Users are deleted. For more information, see [DeleteUser](https://help.aliyun.com/document_detail/341671.html).
         Groups are deleted. For more information, see [DeleteGroup](https://help.aliyun.com/document_detail/341821.html).
         Access configurations are deleted. For more information, see [DeleteAccessConfiguration](https://help.aliyun.com/document_detail/336907.html).
         System for Cross-domain Identity Management (SCIM) credentials are deleted. For more information, see [DeleteSCIMServerCredential](https://help.aliyun.com/document_detail/341842.html).
-        SSO logon configurations are deleted. For more information, see [ClearExternalSAMLIdentityProvider](https://help.aliyun.com/document_detail/341573.html).
+        Single sign-on (SSO) logon configurations are deleted. For more information, see [ClearExternalSAMLIdentityProvider](https://help.aliyun.com/document_detail/341573.html).
+        ### [](#)Operation description
+        This topic provides an example on how to delete a directory whose ID is `d-00fc2p61***`.
         
         @param request: DeleteDirectoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1710,15 +1728,16 @@ class Client(OpenApiClient):
         """
         @summary Deletes a directory.
         
-        @description This topic provides an example on how to delete a directory whose ID is `d-00fc2p61***`.
-        ## Prerequisites
+        @description ### [](#)Prerequisites
         No resources are contained in the directory that you want to delete.
         Access permissions on the accounts in your resource directory are removed from all users and groups. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
         Users are deleted. For more information, see [DeleteUser](https://help.aliyun.com/document_detail/341671.html).
         Groups are deleted. For more information, see [DeleteGroup](https://help.aliyun.com/document_detail/341821.html).
         Access configurations are deleted. For more information, see [DeleteAccessConfiguration](https://help.aliyun.com/document_detail/336907.html).
         System for Cross-domain Identity Management (SCIM) credentials are deleted. For more information, see [DeleteSCIMServerCredential](https://help.aliyun.com/document_detail/341842.html).
-        SSO logon configurations are deleted. For more information, see [ClearExternalSAMLIdentityProvider](https://help.aliyun.com/document_detail/341573.html).
+        Single sign-on (SSO) logon configurations are deleted. For more information, see [ClearExternalSAMLIdentityProvider](https://help.aliyun.com/document_detail/341573.html).
+        ### [](#)Operation description
+        This topic provides an example on how to delete a directory whose ID is `d-00fc2p61***`.
         
         @param request: DeleteDirectoryRequest
         @return: DeleteDirectoryResponse
@@ -1733,15 +1752,16 @@ class Client(OpenApiClient):
         """
         @summary Deletes a directory.
         
-        @description This topic provides an example on how to delete a directory whose ID is `d-00fc2p61***`.
-        ## Prerequisites
+        @description ### [](#)Prerequisites
         No resources are contained in the directory that you want to delete.
         Access permissions on the accounts in your resource directory are removed from all users and groups. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
         Users are deleted. For more information, see [DeleteUser](https://help.aliyun.com/document_detail/341671.html).
         Groups are deleted. For more information, see [DeleteGroup](https://help.aliyun.com/document_detail/341821.html).
         Access configurations are deleted. For more information, see [DeleteAccessConfiguration](https://help.aliyun.com/document_detail/336907.html).
         System for Cross-domain Identity Management (SCIM) credentials are deleted. For more information, see [DeleteSCIMServerCredential](https://help.aliyun.com/document_detail/341842.html).
-        SSO logon configurations are deleted. For more information, see [ClearExternalSAMLIdentityProvider](https://help.aliyun.com/document_detail/341573.html).
+        Single sign-on (SSO) logon configurations are deleted. For more information, see [ClearExternalSAMLIdentityProvider](https://help.aliyun.com/document_detail/341573.html).
+        ### [](#)Operation description
+        This topic provides an example on how to delete a directory whose ID is `d-00fc2p61***`.
         
         @param request: DeleteDirectoryRequest
         @return: DeleteDirectoryResponse
@@ -1757,11 +1777,13 @@ class Client(OpenApiClient):
         """
         @summary Deletes a group.
         
-        @description If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a group that is synchronized by using SCIM.
-        ## Prerequisites
+        @description ### [](#)Prerequisites
         The group that you want to delete is not associated with the following resources. If the group is associated with the resources, the deletion fails.
         Users: You must remove users from the group. For more information, see [RemoveUserFromGroup](https://help.aliyun.com/document_detail/335116.html).
         Access permissions: You must remove the access permissions on the accounts in your resource directory from the group. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
+        ### [](#)Operation description
+        If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a group that is synchronized by using SCIM.
+        This topic provides an example on how to delete the group `g-00jqzghi2n3o5hkh***`.
         
         @param request: DeleteGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1800,11 +1822,13 @@ class Client(OpenApiClient):
         """
         @summary Deletes a group.
         
-        @description If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a group that is synchronized by using SCIM.
-        ## Prerequisites
+        @description ### [](#)Prerequisites
         The group that you want to delete is not associated with the following resources. If the group is associated with the resources, the deletion fails.
         Users: You must remove users from the group. For more information, see [RemoveUserFromGroup](https://help.aliyun.com/document_detail/335116.html).
         Access permissions: You must remove the access permissions on the accounts in your resource directory from the group. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
+        ### [](#)Operation description
+        If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a group that is synchronized by using SCIM.
+        This topic provides an example on how to delete the group `g-00jqzghi2n3o5hkh***`.
         
         @param request: DeleteGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1842,11 +1866,13 @@ class Client(OpenApiClient):
         """
         @summary Deletes a group.
         
-        @description If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a group that is synchronized by using SCIM.
-        ## Prerequisites
+        @description ### [](#)Prerequisites
         The group that you want to delete is not associated with the following resources. If the group is associated with the resources, the deletion fails.
         Users: You must remove users from the group. For more information, see [RemoveUserFromGroup](https://help.aliyun.com/document_detail/335116.html).
         Access permissions: You must remove the access permissions on the accounts in your resource directory from the group. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
+        ### [](#)Operation description
+        If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a group that is synchronized by using SCIM.
+        This topic provides an example on how to delete the group `g-00jqzghi2n3o5hkh***`.
         
         @param request: DeleteGroupRequest
         @return: DeleteGroupResponse
@@ -1861,11 +1887,13 @@ class Client(OpenApiClient):
         """
         @summary Deletes a group.
         
-        @description If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a group that is synchronized by using SCIM.
-        ## Prerequisites
+        @description ### [](#)Prerequisites
         The group that you want to delete is not associated with the following resources. If the group is associated with the resources, the deletion fails.
         Users: You must remove users from the group. For more information, see [RemoveUserFromGroup](https://help.aliyun.com/document_detail/335116.html).
         Access permissions: You must remove the access permissions on the accounts in your resource directory from the group. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
+        ### [](#)Operation description
+        If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a group that is synchronized by using SCIM.
+        This topic provides an example on how to delete the group `g-00jqzghi2n3o5hkh***`.
         
         @param request: DeleteGroupRequest
         @return: DeleteGroupResponse
@@ -1881,7 +1909,7 @@ class Client(OpenApiClient):
         """
         @summary Unbinds a multi-factor authentication (MFA) device from a user.
         
-        @description This topic provides an example on how to unbind the MFA device `mfa-00ujhet8pycljj7j***` from the user `u-00q8wbq42wiltcrk****`.
+        @description This topic provides an example on how to unbind the MFA device whose ID is `mfa-00ujhet8pycljj7j***` from the user whose ID is `u-00q8wbq42wiltcrk****`.
         
         @param request: DeleteMFADeviceForUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1922,7 +1950,7 @@ class Client(OpenApiClient):
         """
         @summary Unbinds a multi-factor authentication (MFA) device from a user.
         
-        @description This topic provides an example on how to unbind the MFA device `mfa-00ujhet8pycljj7j***` from the user `u-00q8wbq42wiltcrk****`.
+        @description This topic provides an example on how to unbind the MFA device whose ID is `mfa-00ujhet8pycljj7j***` from the user whose ID is `u-00q8wbq42wiltcrk****`.
         
         @param request: DeleteMFADeviceForUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1962,7 +1990,7 @@ class Client(OpenApiClient):
         """
         @summary Unbinds a multi-factor authentication (MFA) device from a user.
         
-        @description This topic provides an example on how to unbind the MFA device `mfa-00ujhet8pycljj7j***` from the user `u-00q8wbq42wiltcrk****`.
+        @description This topic provides an example on how to unbind the MFA device whose ID is `mfa-00ujhet8pycljj7j***` from the user whose ID is `u-00q8wbq42wiltcrk****`.
         
         @param request: DeleteMFADeviceForUserRequest
         @return: DeleteMFADeviceForUserResponse
@@ -1977,7 +2005,7 @@ class Client(OpenApiClient):
         """
         @summary Unbinds a multi-factor authentication (MFA) device from a user.
         
-        @description This topic provides an example on how to unbind the MFA device `mfa-00ujhet8pycljj7j***` from the user `u-00q8wbq42wiltcrk****`.
+        @description This topic provides an example on how to unbind the MFA device whose ID is `mfa-00ujhet8pycljj7j***` from the user whose ID is `u-00q8wbq42wiltcrk****`.
         
         @param request: DeleteMFADeviceForUserRequest
         @return: DeleteMFADeviceForUserResponse
@@ -1991,7 +2019,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudsso_20210515_models.DeleteSCIMServerCredentialResponse:
         """
-        @summary Deletes a Cross-domain Identity Management (SCIM) credential.
+        @summary Deletes a System for Cross-domain Identity Management (SCIM) credential.
         
         @description After a SCIM credential is deleted, the synchronization task that uses the SCIM credential fails.
         This topic provides an example on how to delete the SCIM credential whose ID is `scimcred-004whl0kvfwcypbi***`.
@@ -2031,7 +2059,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudsso_20210515_models.DeleteSCIMServerCredentialResponse:
         """
-        @summary Deletes a Cross-domain Identity Management (SCIM) credential.
+        @summary Deletes a System for Cross-domain Identity Management (SCIM) credential.
         
         @description After a SCIM credential is deleted, the synchronization task that uses the SCIM credential fails.
         This topic provides an example on how to delete the SCIM credential whose ID is `scimcred-004whl0kvfwcypbi***`.
@@ -2070,7 +2098,7 @@ class Client(OpenApiClient):
         request: cloudsso_20210515_models.DeleteSCIMServerCredentialRequest,
     ) -> cloudsso_20210515_models.DeleteSCIMServerCredentialResponse:
         """
-        @summary Deletes a Cross-domain Identity Management (SCIM) credential.
+        @summary Deletes a System for Cross-domain Identity Management (SCIM) credential.
         
         @description After a SCIM credential is deleted, the synchronization task that uses the SCIM credential fails.
         This topic provides an example on how to delete the SCIM credential whose ID is `scimcred-004whl0kvfwcypbi***`.
@@ -2086,7 +2114,7 @@ class Client(OpenApiClient):
         request: cloudsso_20210515_models.DeleteSCIMServerCredentialRequest,
     ) -> cloudsso_20210515_models.DeleteSCIMServerCredentialResponse:
         """
-        @summary Deletes a Cross-domain Identity Management (SCIM) credential.
+        @summary Deletes a System for Cross-domain Identity Management (SCIM) credential.
         
         @description After a SCIM credential is deleted, the synchronization task that uses the SCIM credential fails.
         This topic provides an example on how to delete the SCIM credential whose ID is `scimcred-004whl0kvfwcypbi***`.
@@ -2105,12 +2133,14 @@ class Client(OpenApiClient):
         """
         @summary Deletes a user.
         
-        @description If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a user that is synchronized by using SCIM.
-        ## Prerequisites
-        The user that you want to delete is not associated with the following resources. If the user is associated with the resources, the deletion fails.
-        Multi-factor authentication (MFA) devices: You must unbind the MFA devices from the user. For more information, see [DeleteMFADeviceForUser](https://help.aliyun.com/document_detail/341675.html).
+        @description ### [](#)Prerequisites
+        Before you delete a user, make sure that the user is not associated with the following resources. Otherwise, the deletion fails.
+        Multi-factor authentication (MFA) devices: You must delete the MFA devices bound to the user. For more information, see [DeleteMFADeviceForUser](https://help.aliyun.com/document_detail/341675.html).
         Access permissions: You must remove the access permissions on the accounts in your resource directory from the user. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
         Groups: You must remove the user from groups. For more information, see [RemoveUserFromGroup](https://help.aliyun.com/document_detail/335116.html).
+        ### [](#)Precautions
+        If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a user that is synchronized by using SCIM.
+        This topic provides an example on how to delete the user whose ID is `u-00q8wbq42wiltcrk***`.
         
         @param request: DeleteUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2149,12 +2179,14 @@ class Client(OpenApiClient):
         """
         @summary Deletes a user.
         
-        @description If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a user that is synchronized by using SCIM.
-        ## Prerequisites
-        The user that you want to delete is not associated with the following resources. If the user is associated with the resources, the deletion fails.
-        Multi-factor authentication (MFA) devices: You must unbind the MFA devices from the user. For more information, see [DeleteMFADeviceForUser](https://help.aliyun.com/document_detail/341675.html).
+        @description ### [](#)Prerequisites
+        Before you delete a user, make sure that the user is not associated with the following resources. Otherwise, the deletion fails.
+        Multi-factor authentication (MFA) devices: You must delete the MFA devices bound to the user. For more information, see [DeleteMFADeviceForUser](https://help.aliyun.com/document_detail/341675.html).
         Access permissions: You must remove the access permissions on the accounts in your resource directory from the user. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
         Groups: You must remove the user from groups. For more information, see [RemoveUserFromGroup](https://help.aliyun.com/document_detail/335116.html).
+        ### [](#)Precautions
+        If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a user that is synchronized by using SCIM.
+        This topic provides an example on how to delete the user whose ID is `u-00q8wbq42wiltcrk***`.
         
         @param request: DeleteUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2192,12 +2224,14 @@ class Client(OpenApiClient):
         """
         @summary Deletes a user.
         
-        @description If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a user that is synchronized by using SCIM.
-        ## Prerequisites
-        The user that you want to delete is not associated with the following resources. If the user is associated with the resources, the deletion fails.
-        Multi-factor authentication (MFA) devices: You must unbind the MFA devices from the user. For more information, see [DeleteMFADeviceForUser](https://help.aliyun.com/document_detail/341675.html).
+        @description ### [](#)Prerequisites
+        Before you delete a user, make sure that the user is not associated with the following resources. Otherwise, the deletion fails.
+        Multi-factor authentication (MFA) devices: You must delete the MFA devices bound to the user. For more information, see [DeleteMFADeviceForUser](https://help.aliyun.com/document_detail/341675.html).
         Access permissions: You must remove the access permissions on the accounts in your resource directory from the user. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
         Groups: You must remove the user from groups. For more information, see [RemoveUserFromGroup](https://help.aliyun.com/document_detail/335116.html).
+        ### [](#)Precautions
+        If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a user that is synchronized by using SCIM.
+        This topic provides an example on how to delete the user whose ID is `u-00q8wbq42wiltcrk***`.
         
         @param request: DeleteUserRequest
         @return: DeleteUserResponse
@@ -2212,12 +2246,14 @@ class Client(OpenApiClient):
         """
         @summary Deletes a user.
         
-        @description If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a user that is synchronized by using SCIM.
-        ## Prerequisites
-        The user that you want to delete is not associated with the following resources. If the user is associated with the resources, the deletion fails.
-        Multi-factor authentication (MFA) devices: You must unbind the MFA devices from the user. For more information, see [DeleteMFADeviceForUser](https://help.aliyun.com/document_detail/341675.html).
+        @description ### [](#)Prerequisites
+        Before you delete a user, make sure that the user is not associated with the following resources. Otherwise, the deletion fails.
+        Multi-factor authentication (MFA) devices: You must delete the MFA devices bound to the user. For more information, see [DeleteMFADeviceForUser](https://help.aliyun.com/document_detail/341675.html).
         Access permissions: You must remove the access permissions on the accounts in your resource directory from the user. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
         Groups: You must remove the user from groups. For more information, see [RemoveUserFromGroup](https://help.aliyun.com/document_detail/335116.html).
+        ### [](#)Precautions
+        If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a user that is synchronized by using SCIM.
+        This topic provides an example on how to delete the user whose ID is `u-00q8wbq42wiltcrk***`.
         
         @param request: DeleteUserRequest
         @return: DeleteUserResponse
@@ -2846,7 +2882,7 @@ class Client(OpenApiClient):
         """
         @summary Enables CloudSSO.
         
-        @description You can call this operation only if your account belongs to the management account that is used to enable a resource directory and has permissions to enable CloudSSO. For more information, see [Enable CloudSSO](https://help.aliyun.com/document_detail/262819.html).
+        @description You can call this operation only if your account belongs to the management account that is used to enable a resource directory and has the permissions to enable CloudSSO. For more information, see [Enable CloudSSO](https://help.aliyun.com/document_detail/262819.html).
         If you call this operation, you agree to the [Alibaba Cloud International Website Product Terms of Service](https://www.alibabacloud.com/help/doc-detail/42416.htm).
         
         @param request: EnableServiceRequest
@@ -2877,7 +2913,7 @@ class Client(OpenApiClient):
         """
         @summary Enables CloudSSO.
         
-        @description You can call this operation only if your account belongs to the management account that is used to enable a resource directory and has permissions to enable CloudSSO. For more information, see [Enable CloudSSO](https://help.aliyun.com/document_detail/262819.html).
+        @description You can call this operation only if your account belongs to the management account that is used to enable a resource directory and has the permissions to enable CloudSSO. For more information, see [Enable CloudSSO](https://help.aliyun.com/document_detail/262819.html).
         If you call this operation, you agree to the [Alibaba Cloud International Website Product Terms of Service](https://www.alibabacloud.com/help/doc-detail/42416.htm).
         
         @param request: EnableServiceRequest
@@ -2905,7 +2941,7 @@ class Client(OpenApiClient):
         """
         @summary Enables CloudSSO.
         
-        @description You can call this operation only if your account belongs to the management account that is used to enable a resource directory and has permissions to enable CloudSSO. For more information, see [Enable CloudSSO](https://help.aliyun.com/document_detail/262819.html).
+        @description You can call this operation only if your account belongs to the management account that is used to enable a resource directory and has the permissions to enable CloudSSO. For more information, see [Enable CloudSSO](https://help.aliyun.com/document_detail/262819.html).
         If you call this operation, you agree to the [Alibaba Cloud International Website Product Terms of Service](https://www.alibabacloud.com/help/doc-detail/42416.htm).
         
         @return: EnableServiceResponse
@@ -2917,7 +2953,7 @@ class Client(OpenApiClient):
         """
         @summary Enables CloudSSO.
         
-        @description You can call this operation only if your account belongs to the management account that is used to enable a resource directory and has permissions to enable CloudSSO. For more information, see [Enable CloudSSO](https://help.aliyun.com/document_detail/262819.html).
+        @description You can call this operation only if your account belongs to the management account that is used to enable a resource directory and has the permissions to enable CloudSSO. For more information, see [Enable CloudSSO](https://help.aliyun.com/document_detail/262819.html).
         If you call this operation, you agree to the [Alibaba Cloud International Website Product Terms of Service](https://www.alibabacloud.com/help/doc-detail/42416.htm).
         
         @return: EnableServiceResponse
@@ -2933,7 +2969,7 @@ class Client(OpenApiClient):
         """
         @summary Queries information about an access configuration.
         
-        @description This topic provides an example on how to query the information about the access configuration whose ID is `ac-00ccule7tadaijxc***`.
+        @description This topic provides an example on how to query information about the access configuration whose ID is `ac-00ccule7tadaijxc***`.
         
         @param request: GetAccessConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2972,7 +3008,7 @@ class Client(OpenApiClient):
         """
         @summary Queries information about an access configuration.
         
-        @description This topic provides an example on how to query the information about the access configuration whose ID is `ac-00ccule7tadaijxc***`.
+        @description This topic provides an example on how to query information about the access configuration whose ID is `ac-00ccule7tadaijxc***`.
         
         @param request: GetAccessConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3010,7 +3046,7 @@ class Client(OpenApiClient):
         """
         @summary Queries information about an access configuration.
         
-        @description This topic provides an example on how to query the information about the access configuration whose ID is `ac-00ccule7tadaijxc***`.
+        @description This topic provides an example on how to query information about the access configuration whose ID is `ac-00ccule7tadaijxc***`.
         
         @param request: GetAccessConfigurationRequest
         @return: GetAccessConfigurationResponse
@@ -3025,7 +3061,7 @@ class Client(OpenApiClient):
         """
         @summary Queries information about an access configuration.
         
-        @description This topic provides an example on how to query the information about the access configuration whose ID is `ac-00ccule7tadaijxc***`.
+        @description This topic provides an example on how to query information about the access configuration whose ID is `ac-00ccule7tadaijxc***`.
         
         @param request: GetAccessConfigurationRequest
         @return: GetAccessConfigurationResponse
@@ -3146,7 +3182,7 @@ class Client(OpenApiClient):
         @summary Queries information about a Security Assertion Markup Language (SAML) service provider (SP).
         
         @description During SAML 2.0-based single sign-on (SSO) logon, CloudSSO is an SP, and the identity management system of an enterprise is an identity provider (IdP).
-        This topic provides an example on how to query the information about the SP within the directory `d-00fc2p61***`.
+        This topic provides an example on how to query information about the SP within the directory `d-00fc2p61***`.
         
         @param request: GetDirectorySAMLServiceProviderInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3184,7 +3220,7 @@ class Client(OpenApiClient):
         @summary Queries information about a Security Assertion Markup Language (SAML) service provider (SP).
         
         @description During SAML 2.0-based single sign-on (SSO) logon, CloudSSO is an SP, and the identity management system of an enterprise is an identity provider (IdP).
-        This topic provides an example on how to query the information about the SP within the directory `d-00fc2p61***`.
+        This topic provides an example on how to query information about the SP within the directory `d-00fc2p61***`.
         
         @param request: GetDirectorySAMLServiceProviderInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3221,7 +3257,7 @@ class Client(OpenApiClient):
         @summary Queries information about a Security Assertion Markup Language (SAML) service provider (SP).
         
         @description During SAML 2.0-based single sign-on (SSO) logon, CloudSSO is an SP, and the identity management system of an enterprise is an identity provider (IdP).
-        This topic provides an example on how to query the information about the SP within the directory `d-00fc2p61***`.
+        This topic provides an example on how to query information about the SP within the directory `d-00fc2p61***`.
         
         @param request: GetDirectorySAMLServiceProviderInfoRequest
         @return: GetDirectorySAMLServiceProviderInfoResponse
@@ -3237,7 +3273,7 @@ class Client(OpenApiClient):
         @summary Queries information about a Security Assertion Markup Language (SAML) service provider (SP).
         
         @description During SAML 2.0-based single sign-on (SSO) logon, CloudSSO is an SP, and the identity management system of an enterprise is an identity provider (IdP).
-        This topic provides an example on how to query the information about the SP within the directory `d-00fc2p61***`.
+        This topic provides an example on how to query information about the SP within the directory `d-00fc2p61***`.
         
         @param request: GetDirectorySAMLServiceProviderInfoRequest
         @return: GetDirectorySAMLServiceProviderInfoResponse
@@ -3461,7 +3497,7 @@ class Client(OpenApiClient):
         """
         @summary Queries information about a group.
         
-        @description This topic provides an example on how to query the information about the group `g-00jqzghi2n3o5hkh***` in the directory `d-00fc2p61****`.
+        @description This topic provides an example on how to query information about the group `g-00jqzghi2n3o5hkh***` in the directory `d-00fc2p61****`.
         
         @param request: GetGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3500,7 +3536,7 @@ class Client(OpenApiClient):
         """
         @summary Queries information about a group.
         
-        @description This topic provides an example on how to query the information about the group `g-00jqzghi2n3o5hkh***` in the directory `d-00fc2p61****`.
+        @description This topic provides an example on how to query information about the group `g-00jqzghi2n3o5hkh***` in the directory `d-00fc2p61****`.
         
         @param request: GetGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3538,7 +3574,7 @@ class Client(OpenApiClient):
         """
         @summary Queries information about a group.
         
-        @description This topic provides an example on how to query the information about the group `g-00jqzghi2n3o5hkh***` in the directory `d-00fc2p61****`.
+        @description This topic provides an example on how to query information about the group `g-00jqzghi2n3o5hkh***` in the directory `d-00fc2p61****`.
         
         @param request: GetGroupRequest
         @return: GetGroupResponse
@@ -3553,7 +3589,7 @@ class Client(OpenApiClient):
         """
         @summary Queries information about a group.
         
-        @description This topic provides an example on how to query the information about the group `g-00jqzghi2n3o5hkh***` in the directory `d-00fc2p61****`.
+        @description This topic provides an example on how to query information about the group `g-00jqzghi2n3o5hkh***` in the directory `d-00fc2p61****`.
         
         @param request: GetGroupRequest
         @return: GetGroupResponse
@@ -3665,8 +3701,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the multi-factor authentication (MFA) setting of all users.
         
-        @description If you enable username-password logon for CloudSSO users, you can also configure MFA for the users.
-        This topic provides an example on how to query the MFA setting of all CloudSSO users that belong to the directory named `00q8wbq42wiltcrk***`.
+        @description If you enable username-password logon for CloudSSO users, you can query the MFA setting for the users.
+        This topic provides an example on how to query the MFA setting of all CloudSSO users that belong to the directory named `u-00q8wbq42wiltcrk***`.
         
         @param request: GetMFAAuthenticationSettingInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3703,8 +3739,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the multi-factor authentication (MFA) setting of all users.
         
-        @description If you enable username-password logon for CloudSSO users, you can also configure MFA for the users.
-        This topic provides an example on how to query the MFA setting of all CloudSSO users that belong to the directory named `00q8wbq42wiltcrk***`.
+        @description If you enable username-password logon for CloudSSO users, you can query the MFA setting for the users.
+        This topic provides an example on how to query the MFA setting of all CloudSSO users that belong to the directory named `u-00q8wbq42wiltcrk***`.
         
         @param request: GetMFAAuthenticationSettingInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3740,8 +3776,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the multi-factor authentication (MFA) setting of all users.
         
-        @description If you enable username-password logon for CloudSSO users, you can also configure MFA for the users.
-        This topic provides an example on how to query the MFA setting of all CloudSSO users that belong to the directory named `00q8wbq42wiltcrk***`.
+        @description If you enable username-password logon for CloudSSO users, you can query the MFA setting for the users.
+        This topic provides an example on how to query the MFA setting of all CloudSSO users that belong to the directory named `u-00q8wbq42wiltcrk***`.
         
         @param request: GetMFAAuthenticationSettingInfoRequest
         @return: GetMFAAuthenticationSettingInfoResponse
@@ -3756,8 +3792,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the multi-factor authentication (MFA) setting of all users.
         
-        @description If you enable username-password logon for CloudSSO users, you can also configure MFA for the users.
-        This topic provides an example on how to query the MFA setting of all CloudSSO users that belong to the directory named `00q8wbq42wiltcrk***`.
+        @description If you enable username-password logon for CloudSSO users, you can query the MFA setting for the users.
+        This topic provides an example on how to query the MFA setting of all CloudSSO users that belong to the directory named `u-00q8wbq42wiltcrk***`.
         
         @param request: GetMFAAuthenticationSettingInfoRequest
         @return: GetMFAAuthenticationSettingInfoResponse
@@ -3773,7 +3809,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the multi-factor authentication (MFA) setting of all users.
         
-        @description > This operation is no longer maintained and updated. You can call the [GetMFAAuthenticationSettingInfo](https://help.aliyun.com/document_detail/611286.html) operation to query more detailed information.
+        @description >  This operation is no longer maintained and updated. You can call the [GetMFAAuthenticationSettingInfo](https://help.aliyun.com/document_detail/611286.html) operation to query more detailed information.
         This topic provides an example on how to query the MFA setting of the users that belong to the directory named `d-00fc2p61***`. The returned result shows that MFA is enabled for all the users.
         
         @param request: GetMFAAuthenticationSettingsRequest
@@ -3811,7 +3847,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the multi-factor authentication (MFA) setting of all users.
         
-        @description > This operation is no longer maintained and updated. You can call the [GetMFAAuthenticationSettingInfo](https://help.aliyun.com/document_detail/611286.html) operation to query more detailed information.
+        @description >  This operation is no longer maintained and updated. You can call the [GetMFAAuthenticationSettingInfo](https://help.aliyun.com/document_detail/611286.html) operation to query more detailed information.
         This topic provides an example on how to query the MFA setting of the users that belong to the directory named `d-00fc2p61***`. The returned result shows that MFA is enabled for all the users.
         
         @param request: GetMFAAuthenticationSettingsRequest
@@ -3848,7 +3884,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the multi-factor authentication (MFA) setting of all users.
         
-        @description > This operation is no longer maintained and updated. You can call the [GetMFAAuthenticationSettingInfo](https://help.aliyun.com/document_detail/611286.html) operation to query more detailed information.
+        @description >  This operation is no longer maintained and updated. You can call the [GetMFAAuthenticationSettingInfo](https://help.aliyun.com/document_detail/611286.html) operation to query more detailed information.
         This topic provides an example on how to query the MFA setting of the users that belong to the directory named `d-00fc2p61***`. The returned result shows that MFA is enabled for all the users.
         
         @param request: GetMFAAuthenticationSettingsRequest
@@ -3864,7 +3900,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the multi-factor authentication (MFA) setting of all users.
         
-        @description > This operation is no longer maintained and updated. You can call the [GetMFAAuthenticationSettingInfo](https://help.aliyun.com/document_detail/611286.html) operation to query more detailed information.
+        @description >  This operation is no longer maintained and updated. You can call the [GetMFAAuthenticationSettingInfo](https://help.aliyun.com/document_detail/611286.html) operation to query more detailed information.
         This topic provides an example on how to query the MFA setting of the users that belong to the directory named `d-00fc2p61***`. The returned result shows that MFA is enabled for all the users.
         
         @param request: GetMFAAuthenticationSettingsRequest
@@ -3881,7 +3917,7 @@ class Client(OpenApiClient):
         """
         @summary Checks whether multi-factor authentication (MFA) is enabled for users.
         
-        @description This topic provides an example on how to check whether MFA is enabled for users in the directory whose ID is `00fc2p61***`. The returned result shows that MFA is in the Enabled state.
+        @description This topic provides an example on how to check whether MFA is enabled for users in the directory whose ID is `d-00fc2p61***`. The returned result shows that MFA is in the Enabled state.
         
         @param request: GetMFAAuthenticationStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3918,7 +3954,7 @@ class Client(OpenApiClient):
         """
         @summary Checks whether multi-factor authentication (MFA) is enabled for users.
         
-        @description This topic provides an example on how to check whether MFA is enabled for users in the directory whose ID is `00fc2p61***`. The returned result shows that MFA is in the Enabled state.
+        @description This topic provides an example on how to check whether MFA is enabled for users in the directory whose ID is `d-00fc2p61***`. The returned result shows that MFA is in the Enabled state.
         
         @param request: GetMFAAuthenticationStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3954,7 +3990,7 @@ class Client(OpenApiClient):
         """
         @summary Checks whether multi-factor authentication (MFA) is enabled for users.
         
-        @description This topic provides an example on how to check whether MFA is enabled for users in the directory whose ID is `00fc2p61***`. The returned result shows that MFA is in the Enabled state.
+        @description This topic provides an example on how to check whether MFA is enabled for users in the directory whose ID is `d-00fc2p61***`. The returned result shows that MFA is in the Enabled state.
         
         @param request: GetMFAAuthenticationStatusRequest
         @return: GetMFAAuthenticationStatusResponse
@@ -3969,7 +4005,7 @@ class Client(OpenApiClient):
         """
         @summary Checks whether multi-factor authentication (MFA) is enabled for users.
         
-        @description This topic provides an example on how to check whether MFA is enabled for users in the directory whose ID is `00fc2p61***`. The returned result shows that MFA is in the Enabled state.
+        @description This topic provides an example on how to check whether MFA is enabled for users in the directory whose ID is `d-00fc2p61***`. The returned result shows that MFA is in the Enabled state.
         
         @param request: GetMFAAuthenticationStatusRequest
         @return: GetMFAAuthenticationStatusResponse
@@ -5577,6 +5613,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.status_notifications):
             query['StatusNotifications'] = request.status_notifications
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5622,6 +5660,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.status_notifications):
             query['StatusNotifications'] = request.status_notifications
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6937,6 +6977,8 @@ class Client(OpenApiClient):
             query['ProvisionType'] = request.provision_type
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6984,6 +7026,8 @@ class Client(OpenApiClient):
             query['ProvisionType'] = request.provision_type
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7505,8 +7549,8 @@ class Client(OpenApiClient):
         """
         @summary Resets the password of a user.
         
-        @description If you forget your password or your password expires or is at risk, you must contact a CloudSSO administrator to reset your password.
-        >  After you enable SSO logon, your password cannot be reset.
+        @description If a user forgets the password, the password expires, or the password poses security risks, a CloudSSO administrator can reset the password for the user.
+        >  After you enable single sign-on (SSO) logon, the password of a user cannot be reset.
         This topic provides an example on how to reset the password of the user `u-00q8wbq42wiltcrk***`. The new password is automatically generated by the system.
         
         @param request: ResetUserPasswordRequest
@@ -7552,8 +7596,8 @@ class Client(OpenApiClient):
         """
         @summary Resets the password of a user.
         
-        @description If you forget your password or your password expires or is at risk, you must contact a CloudSSO administrator to reset your password.
-        >  After you enable SSO logon, your password cannot be reset.
+        @description If a user forgets the password, the password expires, or the password poses security risks, a CloudSSO administrator can reset the password for the user.
+        >  After you enable single sign-on (SSO) logon, the password of a user cannot be reset.
         This topic provides an example on how to reset the password of the user `u-00q8wbq42wiltcrk***`. The new password is automatically generated by the system.
         
         @param request: ResetUserPasswordRequest
@@ -7598,8 +7642,8 @@ class Client(OpenApiClient):
         """
         @summary Resets the password of a user.
         
-        @description If you forget your password or your password expires or is at risk, you must contact a CloudSSO administrator to reset your password.
-        >  After you enable SSO logon, your password cannot be reset.
+        @description If a user forgets the password, the password expires, or the password poses security risks, a CloudSSO administrator can reset the password for the user.
+        >  After you enable single sign-on (SSO) logon, the password of a user cannot be reset.
         This topic provides an example on how to reset the password of the user `u-00q8wbq42wiltcrk***`. The new password is automatically generated by the system.
         
         @param request: ResetUserPasswordRequest
@@ -7615,8 +7659,8 @@ class Client(OpenApiClient):
         """
         @summary Resets the password of a user.
         
-        @description If you forget your password or your password expires or is at risk, you must contact a CloudSSO administrator to reset your password.
-        >  After you enable SSO logon, your password cannot be reset.
+        @description If a user forgets the password, the password expires, or the password poses security risks, a CloudSSO administrator can reset the password for the user.
+        >  After you enable single sign-on (SSO) logon, the password of a user cannot be reset.
         This topic provides an example on how to reset the password of the user `u-00q8wbq42wiltcrk***`. The new password is automatically generated by the system.
         
         @param request: ResetUserPasswordRequest
@@ -7737,10 +7781,10 @@ class Client(OpenApiClient):
         """
         @summary Configures a Security Assertion Markup Language (SAML) identity provider (IdP).
         
-        @description During SAML 2.0-based single sign-on (SSO) logon, CloudSSO is an SP, and the identity management system of an enterprise is an IdP.
+        @description During SAML 2.0-based single sign-on (SSO) logon, CloudSSO is a service provider (SP), and the identity management system of an enterprise is an IdP.
         You can use one of the following methods to configure a SAML IdP. You can obtain the required metadata file or parameter values from your IdP.
-        Use the metadata file. You can specify the `EncodedMetadataDocument` parameter to upload the metadata file.
-        Manually configure the IdP. You can manually specify the following parameters for your IdP: `EntityId`, `LoginUrl`, `WantRequestSigned`, and `X509Certificate`.
+        Use the metadata file: You can specify the `EncodedMetadataDocument` parameter to upload the metadata file.
+        Manually configure the IdP: You can manually specify the following parameters for your IdP: `EntityId`, `LoginUrl`, `WantRequestSigned`, and `X509Certificate`.
         If you have configured a SAML IdP, the existing configurations are replaced after you call this operation.
         If the IdP is configured by using the metadata file, all existing configurations are replaced with new configurations.
         If the IdP is manually configured, the original parameter values that are different from the new parameter values are replaced.
@@ -7796,10 +7840,10 @@ class Client(OpenApiClient):
         """
         @summary Configures a Security Assertion Markup Language (SAML) identity provider (IdP).
         
-        @description During SAML 2.0-based single sign-on (SSO) logon, CloudSSO is an SP, and the identity management system of an enterprise is an IdP.
+        @description During SAML 2.0-based single sign-on (SSO) logon, CloudSSO is a service provider (SP), and the identity management system of an enterprise is an IdP.
         You can use one of the following methods to configure a SAML IdP. You can obtain the required metadata file or parameter values from your IdP.
-        Use the metadata file. You can specify the `EncodedMetadataDocument` parameter to upload the metadata file.
-        Manually configure the IdP. You can manually specify the following parameters for your IdP: `EntityId`, `LoginUrl`, `WantRequestSigned`, and `X509Certificate`.
+        Use the metadata file: You can specify the `EncodedMetadataDocument` parameter to upload the metadata file.
+        Manually configure the IdP: You can manually specify the following parameters for your IdP: `EntityId`, `LoginUrl`, `WantRequestSigned`, and `X509Certificate`.
         If you have configured a SAML IdP, the existing configurations are replaced after you call this operation.
         If the IdP is configured by using the metadata file, all existing configurations are replaced with new configurations.
         If the IdP is manually configured, the original parameter values that are different from the new parameter values are replaced.
@@ -7854,10 +7898,10 @@ class Client(OpenApiClient):
         """
         @summary Configures a Security Assertion Markup Language (SAML) identity provider (IdP).
         
-        @description During SAML 2.0-based single sign-on (SSO) logon, CloudSSO is an SP, and the identity management system of an enterprise is an IdP.
+        @description During SAML 2.0-based single sign-on (SSO) logon, CloudSSO is a service provider (SP), and the identity management system of an enterprise is an IdP.
         You can use one of the following methods to configure a SAML IdP. You can obtain the required metadata file or parameter values from your IdP.
-        Use the metadata file. You can specify the `EncodedMetadataDocument` parameter to upload the metadata file.
-        Manually configure the IdP. You can manually specify the following parameters for your IdP: `EntityId`, `LoginUrl`, `WantRequestSigned`, and `X509Certificate`.
+        Use the metadata file: You can specify the `EncodedMetadataDocument` parameter to upload the metadata file.
+        Manually configure the IdP: You can manually specify the following parameters for your IdP: `EntityId`, `LoginUrl`, `WantRequestSigned`, and `X509Certificate`.
         If you have configured a SAML IdP, the existing configurations are replaced after you call this operation.
         If the IdP is configured by using the metadata file, all existing configurations are replaced with new configurations.
         If the IdP is manually configured, the original parameter values that are different from the new parameter values are replaced.
@@ -7877,10 +7921,10 @@ class Client(OpenApiClient):
         """
         @summary Configures a Security Assertion Markup Language (SAML) identity provider (IdP).
         
-        @description During SAML 2.0-based single sign-on (SSO) logon, CloudSSO is an SP, and the identity management system of an enterprise is an IdP.
+        @description During SAML 2.0-based single sign-on (SSO) logon, CloudSSO is a service provider (SP), and the identity management system of an enterprise is an IdP.
         You can use one of the following methods to configure a SAML IdP. You can obtain the required metadata file or parameter values from your IdP.
-        Use the metadata file. You can specify the `EncodedMetadataDocument` parameter to upload the metadata file.
-        Manually configure the IdP. You can manually specify the following parameters for your IdP: `EntityId`, `LoginUrl`, `WantRequestSigned`, and `X509Certificate`.
+        Use the metadata file: You can specify the `EncodedMetadataDocument` parameter to upload the metadata file.
+        Manually configure the IdP: You can manually specify the following parameters for your IdP: `EntityId`, `LoginUrl`, `WantRequestSigned`, and `X509Certificate`.
         If you have configured a SAML IdP, the existing configurations are replaced after you call this operation.
         If the IdP is configured by using the metadata file, all existing configurations are replaced with new configurations.
         If the IdP is manually configured, the original parameter values that are different from the new parameter values are replaced.
@@ -8235,7 +8279,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudsso_20210515_models.SetSCIMSynchronizationStatusResponse:
         """
-        @summary Enables or disables Cross-domain Identity Management (SCIM) synchronization.
+        @summary Enables or disables System for Cross-domain Identity Management (SCIM) synchronization.
         
         @description You can synchronize users or groups from an external identity provider (IdP) that supports SCIM 2.0 to CloudSSO only after SCIM synchronization is enabled. If you disable SCIM synchronization, you can no longer synchronize users or groups to CloudSSO. The following list describes the impacts after SCIM synchronization is enabled or disabled:
         After you enable SCIM synchronization, you cannot modify or delete the users or groups that are synchronized to CloudSSO by using SCIM. In addition, you cannot add users to or remove users from the groups. However, you can change the passwords of the users and enable or disable the logon of the users.
@@ -8277,7 +8321,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudsso_20210515_models.SetSCIMSynchronizationStatusResponse:
         """
-        @summary Enables or disables Cross-domain Identity Management (SCIM) synchronization.
+        @summary Enables or disables System for Cross-domain Identity Management (SCIM) synchronization.
         
         @description You can synchronize users or groups from an external identity provider (IdP) that supports SCIM 2.0 to CloudSSO only after SCIM synchronization is enabled. If you disable SCIM synchronization, you can no longer synchronize users or groups to CloudSSO. The following list describes the impacts after SCIM synchronization is enabled or disabled:
         After you enable SCIM synchronization, you cannot modify or delete the users or groups that are synchronized to CloudSSO by using SCIM. In addition, you cannot add users to or remove users from the groups. However, you can change the passwords of the users and enable or disable the logon of the users.
@@ -8318,7 +8362,7 @@ class Client(OpenApiClient):
         request: cloudsso_20210515_models.SetSCIMSynchronizationStatusRequest,
     ) -> cloudsso_20210515_models.SetSCIMSynchronizationStatusResponse:
         """
-        @summary Enables or disables Cross-domain Identity Management (SCIM) synchronization.
+        @summary Enables or disables System for Cross-domain Identity Management (SCIM) synchronization.
         
         @description You can synchronize users or groups from an external identity provider (IdP) that supports SCIM 2.0 to CloudSSO only after SCIM synchronization is enabled. If you disable SCIM synchronization, you can no longer synchronize users or groups to CloudSSO. The following list describes the impacts after SCIM synchronization is enabled or disabled:
         After you enable SCIM synchronization, you cannot modify or delete the users or groups that are synchronized to CloudSSO by using SCIM. In addition, you cannot add users to or remove users from the groups. However, you can change the passwords of the users and enable or disable the logon of the users.
@@ -8336,7 +8380,7 @@ class Client(OpenApiClient):
         request: cloudsso_20210515_models.SetSCIMSynchronizationStatusRequest,
     ) -> cloudsso_20210515_models.SetSCIMSynchronizationStatusResponse:
         """
-        @summary Enables or disables Cross-domain Identity Management (SCIM) synchronization.
+        @summary Enables or disables System for Cross-domain Identity Management (SCIM) synchronization.
         
         @description You can synchronize users or groups from an external identity provider (IdP) that supports SCIM 2.0 to CloudSSO only after SCIM synchronization is enabled. If you disable SCIM synchronization, you can no longer synchronize users or groups to CloudSSO. The following list describes the impacts after SCIM synchronization is enabled or disabled:
         After you enable SCIM synchronization, you cannot modify or delete the users or groups that are synchronized to CloudSSO by using SCIM. In addition, you cannot add users to or remove users from the groups. However, you can change the passwords of the users and enable or disable the logon of the users.
@@ -8481,7 +8525,7 @@ class Client(OpenApiClient):
         """
         @summary Changes the name of a directory.
         
-        @description After you change the name of a directory, the URL that is used to log on to the Cloud SSO user portal is changed. You must notify the Cloud SSO users of the correct URL.
+        @description After you change the name of a directory, the URL that is used to log on to the CloudSSO user portal is changed. You must notify the CloudSSO users of the correct URL.
         This topic provides an example on how to change the name of a directory to `new-example`.
         
         @param request: UpdateDirectoryRequest
@@ -8521,7 +8565,7 @@ class Client(OpenApiClient):
         """
         @summary Changes the name of a directory.
         
-        @description After you change the name of a directory, the URL that is used to log on to the Cloud SSO user portal is changed. You must notify the Cloud SSO users of the correct URL.
+        @description After you change the name of a directory, the URL that is used to log on to the CloudSSO user portal is changed. You must notify the CloudSSO users of the correct URL.
         This topic provides an example on how to change the name of a directory to `new-example`.
         
         @param request: UpdateDirectoryRequest
@@ -8560,7 +8604,7 @@ class Client(OpenApiClient):
         """
         @summary Changes the name of a directory.
         
-        @description After you change the name of a directory, the URL that is used to log on to the Cloud SSO user portal is changed. You must notify the Cloud SSO users of the correct URL.
+        @description After you change the name of a directory, the URL that is used to log on to the CloudSSO user portal is changed. You must notify the CloudSSO users of the correct URL.
         This topic provides an example on how to change the name of a directory to `new-example`.
         
         @param request: UpdateDirectoryRequest
@@ -8576,7 +8620,7 @@ class Client(OpenApiClient):
         """
         @summary Changes the name of a directory.
         
-        @description After you change the name of a directory, the URL that is used to log on to the Cloud SSO user portal is changed. You must notify the Cloud SSO users of the correct URL.
+        @description After you change the name of a directory, the URL that is used to log on to the CloudSSO user portal is changed. You must notify the CloudSSO users of the correct URL.
         This topic provides an example on how to change the name of a directory to `new-example`.
         
         @param request: UpdateDirectoryRequest
@@ -8591,11 +8635,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudsso_20210515_models.UpdateGroupResponse:
         """
-        @summary Modifies information about a group.
+        @summary Modifies the information about a group.
         
         @description You can modify `GroupName` and `Description` for a group.
-        >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify the information about a group that is synchronized by using SCIM.
-        This topic provides an example on how to change the name of the group `g-00jqzghi2n3o5hkh***` to `NewTestGroup`.
+        >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify information about a group that is synchronized by using SCIM.
+        This topic provides an example on how to modify the name of the group `g-00jqzghi2n3o5hkh***` to `NewTestGroup`.
         
         @param request: UpdateGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8636,11 +8680,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudsso_20210515_models.UpdateGroupResponse:
         """
-        @summary Modifies information about a group.
+        @summary Modifies the information about a group.
         
         @description You can modify `GroupName` and `Description` for a group.
-        >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify the information about a group that is synchronized by using SCIM.
-        This topic provides an example on how to change the name of the group `g-00jqzghi2n3o5hkh***` to `NewTestGroup`.
+        >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify information about a group that is synchronized by using SCIM.
+        This topic provides an example on how to modify the name of the group `g-00jqzghi2n3o5hkh***` to `NewTestGroup`.
         
         @param request: UpdateGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8680,11 +8724,11 @@ class Client(OpenApiClient):
         request: cloudsso_20210515_models.UpdateGroupRequest,
     ) -> cloudsso_20210515_models.UpdateGroupResponse:
         """
-        @summary Modifies information about a group.
+        @summary Modifies the information about a group.
         
         @description You can modify `GroupName` and `Description` for a group.
-        >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify the information about a group that is synchronized by using SCIM.
-        This topic provides an example on how to change the name of the group `g-00jqzghi2n3o5hkh***` to `NewTestGroup`.
+        >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify information about a group that is synchronized by using SCIM.
+        This topic provides an example on how to modify the name of the group `g-00jqzghi2n3o5hkh***` to `NewTestGroup`.
         
         @param request: UpdateGroupRequest
         @return: UpdateGroupResponse
@@ -8697,11 +8741,11 @@ class Client(OpenApiClient):
         request: cloudsso_20210515_models.UpdateGroupRequest,
     ) -> cloudsso_20210515_models.UpdateGroupResponse:
         """
-        @summary Modifies information about a group.
+        @summary Modifies the information about a group.
         
         @description You can modify `GroupName` and `Description` for a group.
-        >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify the information about a group that is synchronized by using SCIM.
-        This topic provides an example on how to change the name of the group `g-00jqzghi2n3o5hkh***` to `NewTestGroup`.
+        >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify information about a group that is synchronized by using SCIM.
+        This topic provides an example on how to modify the name of the group `g-00jqzghi2n3o5hkh***` to `NewTestGroup`.
         
         @param request: UpdateGroupRequest
         @return: UpdateGroupResponse
@@ -8947,7 +8991,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudsso_20210515_models.UpdateSCIMServerCredentialStatusResponse:
         """
-        @summary Enables or disables a Cross-domain Identity Management (SCIM) credential.
+        @summary Enables or disables a System for Cross-domain Identity Management (SCIM) credential.
         
         @description This topic provides an example on how to disable the SCIM credential whose ID is `scimcred-004whl0kvfwcypbi***`. After the SCIM credential is disabled, the synchronization task that uses the SCIM credential fails. You can call this operation again to enable the SCIM credential.
         
@@ -8988,7 +9032,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudsso_20210515_models.UpdateSCIMServerCredentialStatusResponse:
         """
-        @summary Enables or disables a Cross-domain Identity Management (SCIM) credential.
+        @summary Enables or disables a System for Cross-domain Identity Management (SCIM) credential.
         
         @description This topic provides an example on how to disable the SCIM credential whose ID is `scimcred-004whl0kvfwcypbi***`. After the SCIM credential is disabled, the synchronization task that uses the SCIM credential fails. You can call this operation again to enable the SCIM credential.
         
@@ -9028,7 +9072,7 @@ class Client(OpenApiClient):
         request: cloudsso_20210515_models.UpdateSCIMServerCredentialStatusRequest,
     ) -> cloudsso_20210515_models.UpdateSCIMServerCredentialStatusResponse:
         """
-        @summary Enables or disables a Cross-domain Identity Management (SCIM) credential.
+        @summary Enables or disables a System for Cross-domain Identity Management (SCIM) credential.
         
         @description This topic provides an example on how to disable the SCIM credential whose ID is `scimcred-004whl0kvfwcypbi***`. After the SCIM credential is disabled, the synchronization task that uses the SCIM credential fails. You can call this operation again to enable the SCIM credential.
         
@@ -9043,7 +9087,7 @@ class Client(OpenApiClient):
         request: cloudsso_20210515_models.UpdateSCIMServerCredentialStatusRequest,
     ) -> cloudsso_20210515_models.UpdateSCIMServerCredentialStatusResponse:
         """
-        @summary Enables or disables a Cross-domain Identity Management (SCIM) credential.
+        @summary Enables or disables a System for Cross-domain Identity Management (SCIM) credential.
         
         @description This topic provides an example on how to disable the SCIM credential whose ID is `scimcred-004whl0kvfwcypbi***`. After the SCIM credential is disabled, the synchronization task that uses the SCIM credential fails. You can call this operation again to enable the SCIM credential.
         
@@ -9062,8 +9106,7 @@ class Client(OpenApiClient):
         @summary Modifies information about a user.
         
         @description You can modify `FirstName`, `LastName`, `DisplayName`, `Email`, and `Description` for a user. You cannot modify `UserName` for a user.
-        >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify the information about a user that is synchronized by using SCIM.
-        This topic provides an example on how to change the email address of the user whose ID is `u-00q8wbq42wiltcrk***` to `AliceLee@example.com`.
+        >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify information about a user that is synchronized by using SCIM.
         
         @param request: UpdateUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9113,8 +9156,7 @@ class Client(OpenApiClient):
         @summary Modifies information about a user.
         
         @description You can modify `FirstName`, `LastName`, `DisplayName`, `Email`, and `Description` for a user. You cannot modify `UserName` for a user.
-        >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify the information about a user that is synchronized by using SCIM.
-        This topic provides an example on how to change the email address of the user whose ID is `u-00q8wbq42wiltcrk***` to `AliceLee@example.com`.
+        >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify information about a user that is synchronized by using SCIM.
         
         @param request: UpdateUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9163,8 +9205,7 @@ class Client(OpenApiClient):
         @summary Modifies information about a user.
         
         @description You can modify `FirstName`, `LastName`, `DisplayName`, `Email`, and `Description` for a user. You cannot modify `UserName` for a user.
-        >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify the information about a user that is synchronized by using SCIM.
-        This topic provides an example on how to change the email address of the user whose ID is `u-00q8wbq42wiltcrk***` to `AliceLee@example.com`.
+        >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify information about a user that is synchronized by using SCIM.
         
         @param request: UpdateUserRequest
         @return: UpdateUserResponse
@@ -9180,8 +9221,7 @@ class Client(OpenApiClient):
         @summary Modifies information about a user.
         
         @description You can modify `FirstName`, `LastName`, `DisplayName`, `Email`, and `Description` for a user. You cannot modify `UserName` for a user.
-        >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify the information about a user that is synchronized by using SCIM.
-        This topic provides an example on how to change the email address of the user whose ID is `u-00q8wbq42wiltcrk***` to `AliceLee@example.com`.
+        >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify information about a user that is synchronized by using SCIM.
         
         @param request: UpdateUserRequest
         @return: UpdateUserResponse

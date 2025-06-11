@@ -1,3 +1,16 @@
+2025-06-11 Version: 1.6.2
+- Update API CreateAccessConfiguration: add request parameters Tags.
+- Update API CreateAccessConfiguration: add response parameters Body.AccessConfiguration.Tags.
+- Update API CreateUser: add request parameters Tags.
+- Update API CreateUser: add response parameters Body.User.Tags.
+- Update API GetAccessConfiguration: add response parameters Body.AccessConfiguration.Tags.
+- Update API GetUser: add response parameters Body.User.Tags.
+- Update API ListAccessConfigurations: add request parameters Tags.
+- Update API ListAccessConfigurations: add response parameters Body.AccessConfigurations.$.Tags.
+- Update API ListUsers: add request parameters Tags.
+- Update API ListUsers: add response parameters Body.Users.$.Tags.
+
+
 2024-12-13 Version: 1.6.1
 - Update API GetDirectorySAMLServiceProviderInfo: update response param.
 - Update API GetExternalSAMLIdentityProvider: update response param.
