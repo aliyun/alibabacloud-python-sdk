@@ -1,3 +1,6 @@
+2025-06-11 Version: 2.0.3
+- Generated python 2018-12-01 for cr.
+
 2025-06-10 Version: 2.0.2
 - Update API CreateNamespace: add request parameters DefaultRepoConfiguration.
 - Update API GetNamespace: add response parameters Body.DefaultRepoConfiguration.
