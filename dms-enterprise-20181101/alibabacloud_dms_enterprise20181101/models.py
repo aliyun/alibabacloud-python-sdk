@@ -67,6 +67,63 @@ class AsyncTaskVO(TeaModel):
         return self
 
 
+class ColumnKnowledgeInfo(TeaModel):
+    def __init__(
+        self,
+        asset_description: str = None,
+        asset_modified_gmt: str = None,
+        column_name: str = None,
+        column_type: str = None,
+        description: str = None,
+        position: int = None,
+    ):
+        self.asset_description = asset_description
+        self.asset_modified_gmt = asset_modified_gmt
+        self.column_name = column_name
+        self.column_type = column_type
+        self.description = description
+        self.position = position
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asset_description is not None:
+            result['AssetDescription'] = self.asset_description
+        if self.asset_modified_gmt is not None:
+            result['AssetModifiedGmt'] = self.asset_modified_gmt
+        if self.column_name is not None:
+            result['ColumnName'] = self.column_name
+        if self.column_type is not None:
+            result['ColumnType'] = self.column_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.position is not None:
+            result['Position'] = self.position
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssetDescription') is not None:
+            self.asset_description = m.get('AssetDescription')
+        if m.get('AssetModifiedGmt') is not None:
+            self.asset_modified_gmt = m.get('AssetModifiedGmt')
+        if m.get('ColumnName') is not None:
+            self.column_name = m.get('ColumnName')
+        if m.get('ColumnType') is not None:
+            self.column_type = m.get('ColumnType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Position') is not None:
+            self.position = m.get('Position')
+        return self
+
+
 class DLCatalog(TeaModel):
     def __init__(
         self,
@@ -1445,6 +1502,71 @@ class StsTokenVO(TeaModel):
             self.expiration = m.get('Expiration')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
+        return self
+
+
+class TableKnowledgeInfo(TeaModel):
+    def __init__(
+        self,
+        asset_description: str = None,
+        asset_modified_gmt: str = None,
+        column_list: List[ColumnKnowledgeInfo] = None,
+        description: str = None,
+        summary: str = None,
+        table_name: str = None,
+    ):
+        self.asset_description = asset_description
+        self.asset_modified_gmt = asset_modified_gmt
+        self.column_list = column_list
+        self.description = description
+        self.summary = summary
+        self.table_name = table_name
+
+    def validate(self):
+        if self.column_list:
+            for k in self.column_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asset_description is not None:
+            result['AssetDescription'] = self.asset_description
+        if self.asset_modified_gmt is not None:
+            result['AssetModifiedGmt'] = self.asset_modified_gmt
+        result['ColumnList'] = []
+        if self.column_list is not None:
+            for k in self.column_list:
+                result['ColumnList'].append(k.to_map() if k else None)
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssetDescription') is not None:
+            self.asset_description = m.get('AssetDescription')
+        if m.get('AssetModifiedGmt') is not None:
+            self.asset_modified_gmt = m.get('AssetModifiedGmt')
+        self.column_list = []
+        if m.get('ColumnList') is not None:
+            for k in m.get('ColumnList'):
+                temp_model = ColumnKnowledgeInfo()
+                self.column_list.append(temp_model.from_map(k))
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
         return self
 
 
@@ -18300,6 +18422,146 @@ class EditLogicDatabaseResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = EditLogicDatabaseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EditMetaKnowledgeAssetRequest(TeaModel):
+    def __init__(
+        self,
+        asset_description: str = None,
+        column_name: str = None,
+        db_id: int = None,
+        table_name: str = None,
+        table_schema_name: str = None,
+    ):
+        # This parameter is required.
+        self.asset_description = asset_description
+        self.column_name = column_name
+        # This parameter is required.
+        self.db_id = db_id
+        # This parameter is required.
+        self.table_name = table_name
+        self.table_schema_name = table_schema_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asset_description is not None:
+            result['AssetDescription'] = self.asset_description
+        if self.column_name is not None:
+            result['ColumnName'] = self.column_name
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.table_schema_name is not None:
+            result['TableSchemaName'] = self.table_schema_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssetDescription') is not None:
+            self.asset_description = m.get('AssetDescription')
+        if m.get('ColumnName') is not None:
+            self.column_name = m.get('ColumnName')
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('TableSchemaName') is not None:
+            self.table_schema_name = m.get('TableSchemaName')
+        return self
+
+
+class EditMetaKnowledgeAssetResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class EditMetaKnowledgeAssetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EditMetaKnowledgeAssetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EditMetaKnowledgeAssetResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -36220,6 +36482,141 @@ class GetTableDesignProjectInfoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetTableDesignProjectInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetTableKnowledgeInfoRequest(TeaModel):
+    def __init__(
+        self,
+        db_id: int = None,
+        table_name: str = None,
+        table_schema_name: str = None,
+    ):
+        # This parameter is required.
+        self.db_id = db_id
+        # This parameter is required.
+        self.table_name = table_name
+        self.table_schema_name = table_schema_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.table_schema_name is not None:
+            result['TableSchemaName'] = self.table_schema_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('TableSchemaName') is not None:
+            self.table_schema_name = m.get('TableSchemaName')
+        return self
+
+
+class GetTableKnowledgeInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        table: TableKnowledgeInfo = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+        self.table = table
+
+    def validate(self):
+        if self.table:
+            self.table.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.table is not None:
+            result['Table'] = self.table.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Table') is not None:
+            temp_model = TableKnowledgeInfo()
+            self.table = temp_model.from_map(m['Table'])
+        return self
+
+
+class GetTableKnowledgeInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTableKnowledgeInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTableKnowledgeInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -54202,6 +54599,281 @@ class ListStandardGroupsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListStandardGroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTableColumnsRequest(TeaModel):
+    def __init__(
+        self,
+        db_id: int = None,
+        table_name: str = None,
+        table_schema_name: str = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.db_id = db_id
+        # This parameter is required.
+        self.table_name = table_name
+        self.table_schema_name = table_schema_name
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.table_schema_name is not None:
+            result['TableSchemaName'] = self.table_schema_name
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('TableSchemaName') is not None:
+            self.table_schema_name = m.get('TableSchemaName')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class ListTableColumnsResponseBodyColumnListColumn(TeaModel):
+    def __init__(
+        self,
+        auto_increment: bool = None,
+        column_id: str = None,
+        column_name: str = None,
+        column_type: str = None,
+        data_length: int = None,
+        data_precision: int = None,
+        data_scale: int = None,
+        default_value: str = None,
+        description: str = None,
+        function_type: str = None,
+        nullable: bool = None,
+        security_level: str = None,
+        sensitive: bool = None,
+    ):
+        self.auto_increment = auto_increment
+        self.column_id = column_id
+        self.column_name = column_name
+        self.column_type = column_type
+        self.data_length = data_length
+        self.data_precision = data_precision
+        self.data_scale = data_scale
+        self.default_value = default_value
+        self.description = description
+        self.function_type = function_type
+        self.nullable = nullable
+        self.security_level = security_level
+        self.sensitive = sensitive
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_increment is not None:
+            result['AutoIncrement'] = self.auto_increment
+        if self.column_id is not None:
+            result['ColumnId'] = self.column_id
+        if self.column_name is not None:
+            result['ColumnName'] = self.column_name
+        if self.column_type is not None:
+            result['ColumnType'] = self.column_type
+        if self.data_length is not None:
+            result['DataLength'] = self.data_length
+        if self.data_precision is not None:
+            result['DataPrecision'] = self.data_precision
+        if self.data_scale is not None:
+            result['DataScale'] = self.data_scale
+        if self.default_value is not None:
+            result['DefaultValue'] = self.default_value
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.function_type is not None:
+            result['FunctionType'] = self.function_type
+        if self.nullable is not None:
+            result['Nullable'] = self.nullable
+        if self.security_level is not None:
+            result['SecurityLevel'] = self.security_level
+        if self.sensitive is not None:
+            result['Sensitive'] = self.sensitive
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoIncrement') is not None:
+            self.auto_increment = m.get('AutoIncrement')
+        if m.get('ColumnId') is not None:
+            self.column_id = m.get('ColumnId')
+        if m.get('ColumnName') is not None:
+            self.column_name = m.get('ColumnName')
+        if m.get('ColumnType') is not None:
+            self.column_type = m.get('ColumnType')
+        if m.get('DataLength') is not None:
+            self.data_length = m.get('DataLength')
+        if m.get('DataPrecision') is not None:
+            self.data_precision = m.get('DataPrecision')
+        if m.get('DataScale') is not None:
+            self.data_scale = m.get('DataScale')
+        if m.get('DefaultValue') is not None:
+            self.default_value = m.get('DefaultValue')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FunctionType') is not None:
+            self.function_type = m.get('FunctionType')
+        if m.get('Nullable') is not None:
+            self.nullable = m.get('Nullable')
+        if m.get('SecurityLevel') is not None:
+            self.security_level = m.get('SecurityLevel')
+        if m.get('Sensitive') is not None:
+            self.sensitive = m.get('Sensitive')
+        return self
+
+
+class ListTableColumnsResponseBodyColumnList(TeaModel):
+    def __init__(
+        self,
+        column: List[ListTableColumnsResponseBodyColumnListColumn] = None,
+    ):
+        self.column = column
+
+    def validate(self):
+        if self.column:
+            for k in self.column:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Column'] = []
+        if self.column is not None:
+            for k in self.column:
+                result['Column'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.column = []
+        if m.get('Column') is not None:
+            for k in m.get('Column'):
+                temp_model = ListTableColumnsResponseBodyColumnListColumn()
+                self.column.append(temp_model.from_map(k))
+        return self
+
+
+class ListTableColumnsResponseBody(TeaModel):
+    def __init__(
+        self,
+        column_list: ListTableColumnsResponseBodyColumnList = None,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.column_list = column_list
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.column_list:
+            self.column_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.column_list is not None:
+            result['ColumnList'] = self.column_list.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ColumnList') is not None:
+            temp_model = ListTableColumnsResponseBodyColumnList()
+            self.column_list = temp_model.from_map(m['ColumnList'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListTableColumnsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTableColumnsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTableColumnsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

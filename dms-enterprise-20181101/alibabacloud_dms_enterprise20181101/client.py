@@ -9299,6 +9299,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.edit_logic_database_with_options_async(request, runtime)
 
+    def edit_meta_knowledge_asset_with_options(
+        self,
+        request: dms_enterprise_20181101_models.EditMetaKnowledgeAssetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.EditMetaKnowledgeAssetResponse:
+        """
+        @summary 编辑指定guid的元数据业务知识
+        
+        @param request: EditMetaKnowledgeAssetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EditMetaKnowledgeAssetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asset_description):
+            query['AssetDescription'] = request.asset_description
+        if not UtilClient.is_unset(request.column_name):
+            query['ColumnName'] = request.column_name
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.table_schema_name):
+            query['TableSchemaName'] = request.table_schema_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EditMetaKnowledgeAsset',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.EditMetaKnowledgeAssetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def edit_meta_knowledge_asset_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.EditMetaKnowledgeAssetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.EditMetaKnowledgeAssetResponse:
+        """
+        @summary 编辑指定guid的元数据业务知识
+        
+        @param request: EditMetaKnowledgeAssetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EditMetaKnowledgeAssetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asset_description):
+            query['AssetDescription'] = request.asset_description
+        if not UtilClient.is_unset(request.column_name):
+            query['ColumnName'] = request.column_name
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.table_schema_name):
+            query['TableSchemaName'] = request.table_schema_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EditMetaKnowledgeAsset',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.EditMetaKnowledgeAssetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def edit_meta_knowledge_asset(
+        self,
+        request: dms_enterprise_20181101_models.EditMetaKnowledgeAssetRequest,
+    ) -> dms_enterprise_20181101_models.EditMetaKnowledgeAssetResponse:
+        """
+        @summary 编辑指定guid的元数据业务知识
+        
+        @param request: EditMetaKnowledgeAssetRequest
+        @return: EditMetaKnowledgeAssetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.edit_meta_knowledge_asset_with_options(request, runtime)
+
+    async def edit_meta_knowledge_asset_async(
+        self,
+        request: dms_enterprise_20181101_models.EditMetaKnowledgeAssetRequest,
+    ) -> dms_enterprise_20181101_models.EditMetaKnowledgeAssetResponse:
+        """
+        @summary 编辑指定guid的元数据业务知识
+        
+        @param request: EditMetaKnowledgeAssetRequest
+        @return: EditMetaKnowledgeAssetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.edit_meta_knowledge_asset_with_options_async(request, runtime)
+
     def enable_user_with_options(
         self,
         request: dms_enterprise_20181101_models.EnableUserRequest,
@@ -16098,6 +16210,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_table_design_project_info_with_options_async(request, runtime)
+
+    def get_table_knowledge_info_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetTableKnowledgeInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetTableKnowledgeInfoResponse:
+        """
+        @summary 获取指定guid的元数据知识
+        
+        @param request: GetTableKnowledgeInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableKnowledgeInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.table_schema_name):
+            query['TableSchemaName'] = request.table_schema_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTableKnowledgeInfo',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetTableKnowledgeInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_table_knowledge_info_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetTableKnowledgeInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetTableKnowledgeInfoResponse:
+        """
+        @summary 获取指定guid的元数据知识
+        
+        @param request: GetTableKnowledgeInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableKnowledgeInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.table_schema_name):
+            query['TableSchemaName'] = request.table_schema_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTableKnowledgeInfo',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetTableKnowledgeInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_table_knowledge_info(
+        self,
+        request: dms_enterprise_20181101_models.GetTableKnowledgeInfoRequest,
+    ) -> dms_enterprise_20181101_models.GetTableKnowledgeInfoResponse:
+        """
+        @summary 获取指定guid的元数据知识
+        
+        @param request: GetTableKnowledgeInfoRequest
+        @return: GetTableKnowledgeInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_table_knowledge_info_with_options(request, runtime)
+
+    async def get_table_knowledge_info_async(
+        self,
+        request: dms_enterprise_20181101_models.GetTableKnowledgeInfoRequest,
+    ) -> dms_enterprise_20181101_models.GetTableKnowledgeInfoResponse:
+        """
+        @summary 获取指定guid的元数据知识
+        
+        @param request: GetTableKnowledgeInfoRequest
+        @return: GetTableKnowledgeInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_table_knowledge_info_with_options_async(request, runtime)
 
     def get_table_topology_with_options(
         self,
@@ -23578,6 +23794,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_standard_groups_with_options_async(request, runtime)
+
+    def list_table_columns_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListTableColumnsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListTableColumnsResponse:
+        """
+        @summary 获取表字段信息
+        
+        @param request: ListTableColumnsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTableColumnsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.table_schema_name):
+            query['TableSchemaName'] = request.table_schema_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTableColumns',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListTableColumnsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_table_columns_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListTableColumnsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListTableColumnsResponse:
+        """
+        @summary 获取表字段信息
+        
+        @param request: ListTableColumnsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTableColumnsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.table_schema_name):
+            query['TableSchemaName'] = request.table_schema_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTableColumns',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListTableColumnsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_table_columns(
+        self,
+        request: dms_enterprise_20181101_models.ListTableColumnsRequest,
+    ) -> dms_enterprise_20181101_models.ListTableColumnsResponse:
+        """
+        @summary 获取表字段信息
+        
+        @param request: ListTableColumnsRequest
+        @return: ListTableColumnsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_table_columns_with_options(request, runtime)
+
+    async def list_table_columns_async(
+        self,
+        request: dms_enterprise_20181101_models.ListTableColumnsRequest,
+    ) -> dms_enterprise_20181101_models.ListTableColumnsResponse:
+        """
+        @summary 获取表字段信息
+        
+        @param request: ListTableColumnsRequest
+        @return: ListTableColumnsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_table_columns_with_options_async(request, runtime)
 
     def list_tables_with_options(
         self,
