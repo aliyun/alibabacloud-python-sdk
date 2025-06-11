@@ -1,3 +1,10 @@
+2025-06-11 Version: 3.1.14
+- Update API DescribeDBClusterAttribute: add response parameters Body.DBCluster.AppointmentElectZookeeperDisableWrite.
+- Update API DescribeDBClusterAttribute: add response parameters Body.DBCluster.AppointmentElectZookeeperTime.
+- Update API DescribeDBClusterAttribute: add response parameters Body.DBCluster.AppointmentRestartNodeList.
+- Update API DescribeDBClusterAttribute: add response parameters Body.DBCluster.AppointmentRestartNodeTime.
+
+
 2025-02-07 Version: 3.1.13
 - Update API DescribeTransferHistory: update response param.
 - Update API TransferVersion: add param SourceClusterName.
