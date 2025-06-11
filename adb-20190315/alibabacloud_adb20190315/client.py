@@ -1429,7 +1429,7 @@ class Client(OpenApiClient):
 
     def create_dbresource_group_with_options(
         self,
-        request: adb_20190315_models.CreateDBResourceGroupRequest,
+        tmp_req: adb_20190315_models.CreateDBResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.CreateDBResourceGroupResponse:
         """
@@ -1438,20 +1438,40 @@ class Client(OpenApiClient):
         @description ## Precautions
         This operation is applicable only for elastic clusters of 32 cores or more.
         
-        @param request: CreateDBResourceGroupRequest
+        @param tmp_req: CreateDBResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateDBResourceGroupResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = adb_20190315_models.CreateDBResourceGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.engine_params):
+            request.engine_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.engine_params, 'EngineParams', 'json')
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cluster_mode):
+            query['ClusterMode'] = request.cluster_mode
+        if not UtilClient.is_unset(request.cluster_size_resource):
+            query['ClusterSizeResource'] = request.cluster_size_resource
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.engine_params_shrink):
+            query['EngineParams'] = request.engine_params_shrink
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.group_type):
             query['GroupType'] = request.group_type
+        if not UtilClient.is_unset(request.max_cluster_count):
+            query['MaxClusterCount'] = request.max_cluster_count
+        if not UtilClient.is_unset(request.max_compute_resource):
+            query['MaxComputeResource'] = request.max_compute_resource
+        if not UtilClient.is_unset(request.min_cluster_count):
+            query['MinClusterCount'] = request.min_cluster_count
+        if not UtilClient.is_unset(request.min_compute_resource):
+            query['MinComputeResource'] = request.min_compute_resource
         if not UtilClient.is_unset(request.node_num):
             query['NodeNum'] = request.node_num
         if not UtilClient.is_unset(request.owner_account):
@@ -1483,7 +1503,7 @@ class Client(OpenApiClient):
 
     async def create_dbresource_group_with_options_async(
         self,
-        request: adb_20190315_models.CreateDBResourceGroupRequest,
+        tmp_req: adb_20190315_models.CreateDBResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.CreateDBResourceGroupResponse:
         """
@@ -1492,20 +1512,40 @@ class Client(OpenApiClient):
         @description ## Precautions
         This operation is applicable only for elastic clusters of 32 cores or more.
         
-        @param request: CreateDBResourceGroupRequest
+        @param tmp_req: CreateDBResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateDBResourceGroupResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = adb_20190315_models.CreateDBResourceGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.engine_params):
+            request.engine_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.engine_params, 'EngineParams', 'json')
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cluster_mode):
+            query['ClusterMode'] = request.cluster_mode
+        if not UtilClient.is_unset(request.cluster_size_resource):
+            query['ClusterSizeResource'] = request.cluster_size_resource
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.engine_params_shrink):
+            query['EngineParams'] = request.engine_params_shrink
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.group_type):
             query['GroupType'] = request.group_type
+        if not UtilClient.is_unset(request.max_cluster_count):
+            query['MaxClusterCount'] = request.max_cluster_count
+        if not UtilClient.is_unset(request.max_compute_resource):
+            query['MaxComputeResource'] = request.max_compute_resource
+        if not UtilClient.is_unset(request.min_cluster_count):
+            query['MinClusterCount'] = request.min_cluster_count
+        if not UtilClient.is_unset(request.min_compute_resource):
+            query['MinComputeResource'] = request.min_compute_resource
         if not UtilClient.is_unset(request.node_num):
             query['NodeNum'] = request.node_num
         if not UtilClient.is_unset(request.owner_account):
@@ -5627,6 +5667,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -5672,6 +5714,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -16078,17 +16122,33 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = adb_20190315_models.ModifyDBResourceGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.engine_params):
+            request.engine_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.engine_params, 'EngineParams', 'json')
         if not UtilClient.is_unset(tmp_req.pool_user_list):
             request.pool_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.pool_user_list, 'PoolUserList', 'json')
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cluster_mode):
+            query['ClusterMode'] = request.cluster_mode
+        if not UtilClient.is_unset(request.cluster_size_resource):
+            query['ClusterSizeResource'] = request.cluster_size_resource
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.engine_params_shrink):
+            query['EngineParams'] = request.engine_params_shrink
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.group_type):
             query['GroupType'] = request.group_type
+        if not UtilClient.is_unset(request.max_cluster_count):
+            query['MaxClusterCount'] = request.max_cluster_count
+        if not UtilClient.is_unset(request.max_compute_resource):
+            query['MaxComputeResource'] = request.max_compute_resource
+        if not UtilClient.is_unset(request.min_cluster_count):
+            query['MinClusterCount'] = request.min_cluster_count
+        if not UtilClient.is_unset(request.min_compute_resource):
+            query['MinComputeResource'] = request.min_compute_resource
         if not UtilClient.is_unset(request.node_num):
             query['NodeNum'] = request.node_num
         if not UtilClient.is_unset(request.owner_account):
@@ -16139,17 +16199,33 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = adb_20190315_models.ModifyDBResourceGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.engine_params):
+            request.engine_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.engine_params, 'EngineParams', 'json')
         if not UtilClient.is_unset(tmp_req.pool_user_list):
             request.pool_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.pool_user_list, 'PoolUserList', 'json')
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cluster_mode):
+            query['ClusterMode'] = request.cluster_mode
+        if not UtilClient.is_unset(request.cluster_size_resource):
+            query['ClusterSizeResource'] = request.cluster_size_resource
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.engine_params_shrink):
+            query['EngineParams'] = request.engine_params_shrink
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.group_type):
             query['GroupType'] = request.group_type
+        if not UtilClient.is_unset(request.max_cluster_count):
+            query['MaxClusterCount'] = request.max_cluster_count
+        if not UtilClient.is_unset(request.max_compute_resource):
+            query['MaxComputeResource'] = request.max_compute_resource
+        if not UtilClient.is_unset(request.min_cluster_count):
+            query['MinClusterCount'] = request.min_cluster_count
+        if not UtilClient.is_unset(request.min_compute_resource):
+            query['MinComputeResource'] = request.min_compute_resource
         if not UtilClient.is_unset(request.node_num):
             query['NodeNum'] = request.node_num
         if not UtilClient.is_unset(request.owner_account):

@@ -1,3 +1,35 @@
+2025-06-11 Version: 5.0.4
+- Update API CreateDBResourceGroup: add request parameters ClusterMode.
+- Update API CreateDBResourceGroup: add request parameters ClusterSizeResource.
+- Update API CreateDBResourceGroup: add request parameters Engine.
+- Update API CreateDBResourceGroup: add request parameters EngineParams.
+- Update API CreateDBResourceGroup: add request parameters MaxClusterCount.
+- Update API CreateDBResourceGroup: add request parameters MaxComputeResource.
+- Update API CreateDBResourceGroup: add request parameters MinClusterCount.
+- Update API CreateDBResourceGroup: add request parameters MinComputeResource.
+- Update API DescribeDBClusterNetInfo: add request parameters Engine.
+- Update API DescribeDBResourceGroup: add response parameters Body.GroupsInfo.$.ClusterMode.
+- Update API DescribeDBResourceGroup: add response parameters Body.GroupsInfo.$.ClusterSizeResource.
+- Update API DescribeDBResourceGroup: add response parameters Body.GroupsInfo.$.ConnectionString.
+- Update API DescribeDBResourceGroup: add response parameters Body.GroupsInfo.$.ElasticMinComputeResource.
+- Update API DescribeDBResourceGroup: add response parameters Body.GroupsInfo.$.Engine.
+- Update API DescribeDBResourceGroup: add response parameters Body.GroupsInfo.$.EngineParams.
+- Update API DescribeDBResourceGroup: add response parameters Body.GroupsInfo.$.MaxClusterCount.
+- Update API DescribeDBResourceGroup: add response parameters Body.GroupsInfo.$.MaxComputeResource.
+- Update API DescribeDBResourceGroup: add response parameters Body.GroupsInfo.$.MinClusterCount.
+- Update API DescribeDBResourceGroup: add response parameters Body.GroupsInfo.$.MinComputeResource.
+- Update API DescribeDBResourceGroup: add response parameters Body.GroupsInfo.$.Port.
+- Update API DescribeDBResourceGroup: add response parameters Body.GroupsInfo.$.RunningClusterCount.
+- Update API DescribeDBResourceGroup: add response parameters Body.GroupsInfo.$.Status.
+- Update API ModifyDBResourceGroup: add request parameters ClusterMode.
+- Update API ModifyDBResourceGroup: add request parameters ClusterSizeResource.
+- Update API ModifyDBResourceGroup: add request parameters EngineParams.
+- Update API ModifyDBResourceGroup: add request parameters MaxClusterCount.
+- Update API ModifyDBResourceGroup: add request parameters MaxComputeResource.
+- Update API ModifyDBResourceGroup: add request parameters MinClusterCount.
+- Update API ModifyDBResourceGroup: add request parameters MinComputeResource.
+
+
 2025-05-27 Version: 5.0.3
 - Update API DescribeDBClusters: add request parameters DBClusterVersion.
 
