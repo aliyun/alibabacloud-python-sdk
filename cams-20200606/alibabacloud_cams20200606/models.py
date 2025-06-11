@@ -3422,6 +3422,7 @@ class CreateChatappTemplateRequest(TeaModel):
         self,
         allow_category_change: bool = None,
         category: str = None,
+        category_change_paused: bool = None,
         components: List[CreateChatappTemplateRequestComponents] = None,
         cust_space_id: str = None,
         cust_waba_id: str = None,
@@ -3454,6 +3455,7 @@ class CreateChatappTemplateRequest(TeaModel):
         # 
         # This parameter is required.
         self.category = category
+        self.category_change_paused = category_change_paused
         # The components of the message template.
         # 
         # >  If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, the Text sub-parameter of the Components parameter must be empty.
@@ -3507,6 +3509,8 @@ class CreateChatappTemplateRequest(TeaModel):
             result['AllowCategoryChange'] = self.allow_category_change
         if self.category is not None:
             result['Category'] = self.category
+        if self.category_change_paused is not None:
+            result['CategoryChangePaused'] = self.category_change_paused
         result['Components'] = []
         if self.components is not None:
             for k in self.components:
@@ -3535,6 +3539,8 @@ class CreateChatappTemplateRequest(TeaModel):
             self.allow_category_change = m.get('AllowCategoryChange')
         if m.get('Category') is not None:
             self.category = m.get('Category')
+        if m.get('CategoryChangePaused') is not None:
+            self.category_change_paused = m.get('CategoryChangePaused')
         self.components = []
         if m.get('Components') is not None:
             for k in m.get('Components'):
@@ -3564,6 +3570,7 @@ class CreateChatappTemplateShrinkRequest(TeaModel):
         self,
         allow_category_change: bool = None,
         category: str = None,
+        category_change_paused: bool = None,
         components_shrink: str = None,
         cust_space_id: str = None,
         cust_waba_id: str = None,
@@ -3596,6 +3603,7 @@ class CreateChatappTemplateShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.category = category
+        self.category_change_paused = category_change_paused
         # The components of the message template.
         # 
         # >  If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, the Text sub-parameter of the Components parameter must be empty.
@@ -3646,6 +3654,8 @@ class CreateChatappTemplateShrinkRequest(TeaModel):
             result['AllowCategoryChange'] = self.allow_category_change
         if self.category is not None:
             result['Category'] = self.category
+        if self.category_change_paused is not None:
+            result['CategoryChangePaused'] = self.category_change_paused
         if self.components_shrink is not None:
             result['Components'] = self.components_shrink
         if self.cust_space_id is not None:
@@ -3672,6 +3682,8 @@ class CreateChatappTemplateShrinkRequest(TeaModel):
             self.allow_category_change = m.get('AllowCategoryChange')
         if m.get('Category') is not None:
             self.category = m.get('Category')
+        if m.get('CategoryChangePaused') is not None:
+            self.category_change_paused = m.get('CategoryChangePaused')
         if m.get('Components') is not None:
             self.components_shrink = m.get('Components')
         if m.get('CustSpaceId') is not None:
@@ -5877,8 +5889,10 @@ class GetChatappTemplateDetailResponseBodyDataComponents(TeaModel):
 class GetChatappTemplateDetailResponseBodyData(TeaModel):
     def __init__(
         self,
+        allow_send: bool = None,
         audit_status: str = None,
         category: str = None,
+        category_change_paused: bool = None,
         components: List[GetChatappTemplateDetailResponseBodyDataComponents] = None,
         example: Dict[str, str] = None,
         language: str = None,
@@ -5889,6 +5903,7 @@ class GetChatappTemplateDetailResponseBodyData(TeaModel):
         template_code: str = None,
         template_type: str = None,
     ):
+        self.allow_send = allow_send
         # The review status of the message template. Valid values:
         # 
         # *   **pass**: The message template is approved.
@@ -5916,6 +5931,7 @@ class GetChatappTemplateDetailResponseBodyData(TeaModel):
         # 
         # > If Category is set to text_video_button, users cannot open a web page by clicking the button. Users can open only the video in the message. In this case, you do not need to specify the Url parameter for the URL button in the template.
         self.category = category
+        self.category_change_paused = category_change_paused
         # The components of the message template.
         self.components = components
         # The examples of variables.
@@ -5951,10 +5967,14 @@ class GetChatappTemplateDetailResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.allow_send is not None:
+            result['AllowSend'] = self.allow_send
         if self.audit_status is not None:
             result['AuditStatus'] = self.audit_status
         if self.category is not None:
             result['Category'] = self.category
+        if self.category_change_paused is not None:
+            result['CategoryChangePaused'] = self.category_change_paused
         result['Components'] = []
         if self.components is not None:
             for k in self.components:
@@ -5979,10 +5999,14 @@ class GetChatappTemplateDetailResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllowSend') is not None:
+            self.allow_send = m.get('AllowSend')
         if m.get('AuditStatus') is not None:
             self.audit_status = m.get('AuditStatus')
         if m.get('Category') is not None:
             self.category = m.get('Category')
+        if m.get('CategoryChangePaused') is not None:
+            self.category_change_paused = m.get('CategoryChangePaused')
         self.components = []
         if m.get('Components') is not None:
             for k in m.get('Components'):
@@ -11524,6 +11548,7 @@ class ModifyChatappTemplateRequest(TeaModel):
     def __init__(
         self,
         category: str = None,
+        category_change_paused: bool = None,
         components: List[ModifyChatappTemplateRequestComponents] = None,
         cust_space_id: str = None,
         cust_waba_id: str = None,
@@ -11549,6 +11574,7 @@ class ModifyChatappTemplateRequest(TeaModel):
         # 
         # > This parameter applies only to Viber message templates.
         self.category = category
+        self.category_change_paused = category_change_paused
         # The components of the message template.
         # 
         # >  If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, you do not need to set the Text sub-parameter of the Components parameter because the value is automatically generated.
@@ -11598,6 +11624,8 @@ class ModifyChatappTemplateRequest(TeaModel):
         result = dict()
         if self.category is not None:
             result['Category'] = self.category
+        if self.category_change_paused is not None:
+            result['CategoryChangePaused'] = self.category_change_paused
         result['Components'] = []
         if self.components is not None:
             for k in self.components:
@@ -11626,6 +11654,8 @@ class ModifyChatappTemplateRequest(TeaModel):
         m = m or dict()
         if m.get('Category') is not None:
             self.category = m.get('Category')
+        if m.get('CategoryChangePaused') is not None:
+            self.category_change_paused = m.get('CategoryChangePaused')
         self.components = []
         if m.get('Components') is not None:
             for k in m.get('Components'):
@@ -11656,6 +11686,7 @@ class ModifyChatappTemplateShrinkRequest(TeaModel):
     def __init__(
         self,
         category: str = None,
+        category_change_paused: bool = None,
         components_shrink: str = None,
         cust_space_id: str = None,
         cust_waba_id: str = None,
@@ -11681,6 +11712,7 @@ class ModifyChatappTemplateShrinkRequest(TeaModel):
         # 
         # > This parameter applies only to Viber message templates.
         self.category = category
+        self.category_change_paused = category_change_paused
         # The components of the message template.
         # 
         # >  If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, you do not need to set the Text sub-parameter of the Components parameter because the value is automatically generated.
@@ -11727,6 +11759,8 @@ class ModifyChatappTemplateShrinkRequest(TeaModel):
         result = dict()
         if self.category is not None:
             result['Category'] = self.category
+        if self.category_change_paused is not None:
+            result['CategoryChangePaused'] = self.category_change_paused
         if self.components_shrink is not None:
             result['Components'] = self.components_shrink
         if self.cust_space_id is not None:
@@ -11753,6 +11787,8 @@ class ModifyChatappTemplateShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('Category') is not None:
             self.category = m.get('Category')
+        if m.get('CategoryChangePaused') is not None:
+            self.category_change_paused = m.get('CategoryChangePaused')
         if m.get('Components') is not None:
             self.components_shrink = m.get('Components')
         if m.get('CustSpaceId') is not None:
@@ -11909,6 +11945,183 @@ class ModifyChatappTemplateResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyChatappTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyChatappTemplatePropertiesRequest(TeaModel):
+    def __init__(
+        self,
+        allow_send: bool = None,
+        category_change_paused: bool = None,
+        cust_space_id: str = None,
+        language: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        template_code: str = None,
+        template_type: str = None,
+    ):
+        self.allow_send = allow_send
+        self.category_change_paused = category_change_paused
+        # This parameter is required.
+        self.cust_space_id = cust_space_id
+        # This parameter is required.
+        self.language = language
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.template_code = template_code
+        # This parameter is required.
+        self.template_type = template_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_send is not None:
+            result['AllowSend'] = self.allow_send
+        if self.category_change_paused is not None:
+            result['CategoryChangePaused'] = self.category_change_paused
+        if self.cust_space_id is not None:
+            result['CustSpaceId'] = self.cust_space_id
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        if self.template_type is not None:
+            result['TemplateType'] = self.template_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowSend') is not None:
+            self.allow_send = m.get('AllowSend')
+        if m.get('CategoryChangePaused') is not None:
+            self.category_change_paused = m.get('CategoryChangePaused')
+        if m.get('CustSpaceId') is not None:
+            self.cust_space_id = m.get('CustSpaceId')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        if m.get('TemplateType') is not None:
+            self.template_type = m.get('TemplateType')
+        return self
+
+
+class ModifyChatappTemplatePropertiesResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        model: Dict[str, Any] = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.message = message
+        self.model = model
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyChatappTemplatePropertiesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyChatappTemplatePropertiesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyChatappTemplatePropertiesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12651,6 +12864,7 @@ class QueryChatappBindWabaResponseBodyData(TeaModel):
         business_name: str = None,
         currency: str = None,
         id: str = None,
+        marketing_message_lite_status: str = None,
         message_template_namespace: str = None,
         name: str = None,
         primary_business_location: str = None,
@@ -12677,6 +12891,7 @@ class QueryChatappBindWabaResponseBodyData(TeaModel):
         self.currency = currency
         # The ID of the WhatsApp Business account.
         self.id = id
+        self.marketing_message_lite_status = marketing_message_lite_status
         # The namespace of the message template.
         self.message_template_namespace = message_template_namespace
         # The name of the WhatsApp Business account.
@@ -12705,6 +12920,8 @@ class QueryChatappBindWabaResponseBodyData(TeaModel):
             result['Currency'] = self.currency
         if self.id is not None:
             result['Id'] = self.id
+        if self.marketing_message_lite_status is not None:
+            result['MarketingMessageLiteStatus'] = self.marketing_message_lite_status
         if self.message_template_namespace is not None:
             result['MessageTemplateNamespace'] = self.message_template_namespace
         if self.name is not None:
@@ -12727,6 +12944,8 @@ class QueryChatappBindWabaResponseBodyData(TeaModel):
             self.currency = m.get('Currency')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('MarketingMessageLiteStatus') is not None:
+            self.marketing_message_lite_status = m.get('MarketingMessageLiteStatus')
         if m.get('MessageTemplateNamespace') is not None:
             self.message_template_namespace = m.get('MessageTemplateNamespace')
         if m.get('Name') is not None:

@@ -1506,6 +1506,8 @@ class Client(OpenApiClient):
             body['AllowCategoryChange'] = request.allow_category_change
         if not UtilClient.is_unset(request.category):
             body['Category'] = request.category
+        if not UtilClient.is_unset(request.category_change_paused):
+            body['CategoryChangePaused'] = request.category_change_paused
         if not UtilClient.is_unset(request.components_shrink):
             body['Components'] = request.components_shrink
         if not UtilClient.is_unset(request.cust_space_id):
@@ -1572,6 +1574,8 @@ class Client(OpenApiClient):
             body['AllowCategoryChange'] = request.allow_category_change
         if not UtilClient.is_unset(request.category):
             body['Category'] = request.category
+        if not UtilClient.is_unset(request.category_change_paused):
+            body['CategoryChangePaused'] = request.category_change_paused
         if not UtilClient.is_unset(request.components_shrink):
             body['Components'] = request.components_shrink
         if not UtilClient.is_unset(request.cust_space_id):
@@ -5221,6 +5225,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.category):
             body['Category'] = request.category
+        if not UtilClient.is_unset(request.category_change_paused):
+            body['CategoryChangePaused'] = request.category_change_paused
         if not UtilClient.is_unset(request.components_shrink):
             body['Components'] = request.components_shrink
         if not UtilClient.is_unset(request.cust_space_id):
@@ -5284,6 +5290,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.category):
             body['Category'] = request.category
+        if not UtilClient.is_unset(request.category_change_paused):
+            body['CategoryChangePaused'] = request.category_change_paused
         if not UtilClient.is_unset(request.components_shrink):
             body['Components'] = request.components_shrink
         if not UtilClient.is_unset(request.cust_space_id):
@@ -5352,6 +5360,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_chatapp_template_with_options_async(request, runtime)
+
+    def modify_chatapp_template_properties_with_options(
+        self,
+        request: cams_20200606_models.ModifyChatappTemplatePropertiesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ModifyChatappTemplatePropertiesResponse:
+        """
+        @summary 修改模板上的一些属性
+        
+        @param request: ModifyChatappTemplatePropertiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyChatappTemplatePropertiesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.allow_send):
+            query['AllowSend'] = request.allow_send
+        if not UtilClient.is_unset(request.category_change_paused):
+            query['CategoryChangePaused'] = request.category_change_paused
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyChatappTemplateProperties',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ModifyChatappTemplatePropertiesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_chatapp_template_properties_with_options_async(
+        self,
+        request: cams_20200606_models.ModifyChatappTemplatePropertiesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ModifyChatappTemplatePropertiesResponse:
+        """
+        @summary 修改模板上的一些属性
+        
+        @param request: ModifyChatappTemplatePropertiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyChatappTemplatePropertiesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.allow_send):
+            query['AllowSend'] = request.allow_send
+        if not UtilClient.is_unset(request.category_change_paused):
+            query['CategoryChangePaused'] = request.category_change_paused
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyChatappTemplateProperties',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ModifyChatappTemplatePropertiesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_chatapp_template_properties(
+        self,
+        request: cams_20200606_models.ModifyChatappTemplatePropertiesRequest,
+    ) -> cams_20200606_models.ModifyChatappTemplatePropertiesResponse:
+        """
+        @summary 修改模板上的一些属性
+        
+        @param request: ModifyChatappTemplatePropertiesRequest
+        @return: ModifyChatappTemplatePropertiesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_chatapp_template_properties_with_options(request, runtime)
+
+    async def modify_chatapp_template_properties_async(
+        self,
+        request: cams_20200606_models.ModifyChatappTemplatePropertiesRequest,
+    ) -> cams_20200606_models.ModifyChatappTemplatePropertiesResponse:
+        """
+        @summary 修改模板上的一些属性
+        
+        @param request: ModifyChatappTemplatePropertiesRequest
+        @return: ModifyChatappTemplatePropertiesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_chatapp_template_properties_with_options_async(request, runtime)
 
     def modify_flow_with_options(
         self,

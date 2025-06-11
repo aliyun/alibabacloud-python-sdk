@@ -1,3 +1,12 @@
+2025-06-11 Version: 2.1.0
+- Support API ModifyChatappTemplateProperties.
+- Update API CreateChatappTemplate: add request parameters CategoryChangePaused.
+- Update API GetChatappTemplateDetail: add response parameters Body.Data.AllowSend.
+- Update API GetChatappTemplateDetail: add response parameters Body.Data.CategoryChangePaused.
+- Update API ModifyChatappTemplate: add request parameters CategoryChangePaused.
+- Update API QueryChatappBindWaba: add response parameters Body.Data.MarketingMessageLiteStatus.
+
+
 2025-04-21 Version: 2.0.0
 - Update API ListChatappTemplate: add request parameters Category.
 - Update API ListChatappTemplate: add request parameters OwnerId.
