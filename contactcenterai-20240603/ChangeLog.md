@@ -1,3 +1,7 @@
+2025-06-11 Version: 3.6.4
+- Update API GetTaskResult: add response parameters Body.data.asrResult.$.roleName.
+
+
 2025-05-27 Version: 3.6.3
 - Update API CreateTask: add request parameters body.callBackUrl.
 
