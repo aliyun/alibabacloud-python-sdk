@@ -2238,7 +2238,7 @@ class Client(OpenApiClient):
 
     def create_dataset_with_options(
         self,
-        request: imm_20200930_models.CreateDatasetRequest,
+        tmp_req: imm_20200930_models.CreateDatasetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateDatasetResponse:
         """
@@ -2249,11 +2249,15 @@ class Client(OpenApiClient):
         A project has an upper limit on the number of datasets that can be created in the project. You can call the [GetProjcet](https://help.aliyun.com/document_detail/478155.html) operation to query the dataset limit of the project.
         After creating a dataset, you can call the [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) operation to index metadata. Metadata indexing enhances [data retrieval efficiency and statistics collection](https://help.aliyun.com/document_detail/478175.html), and enables intelligent data management.
         
-        @param request: CreateDatasetRequest
+        @param tmp_req: CreateDatasetRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateDatasetResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateDatasetShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.workflow_parameters):
+            request.workflow_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.workflow_parameters, 'WorkflowParameters', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_max_bind_count):
             query['DatasetMaxBindCount'] = request.dataset_max_bind_count
@@ -2273,6 +2277,8 @@ class Client(OpenApiClient):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.workflow_parameters_shrink):
+            query['WorkflowParameters'] = request.workflow_parameters_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2294,7 +2300,7 @@ class Client(OpenApiClient):
 
     async def create_dataset_with_options_async(
         self,
-        request: imm_20200930_models.CreateDatasetRequest,
+        tmp_req: imm_20200930_models.CreateDatasetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateDatasetResponse:
         """
@@ -2305,11 +2311,15 @@ class Client(OpenApiClient):
         A project has an upper limit on the number of datasets that can be created in the project. You can call the [GetProjcet](https://help.aliyun.com/document_detail/478155.html) operation to query the dataset limit of the project.
         After creating a dataset, you can call the [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) operation to index metadata. Metadata indexing enhances [data retrieval efficiency and statistics collection](https://help.aliyun.com/document_detail/478175.html), and enables intelligent data management.
         
-        @param request: CreateDatasetRequest
+        @param tmp_req: CreateDatasetRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateDatasetResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateDatasetShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.workflow_parameters):
+            request.workflow_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.workflow_parameters, 'WorkflowParameters', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_max_bind_count):
             query['DatasetMaxBindCount'] = request.dataset_max_bind_count
@@ -2329,6 +2339,8 @@ class Client(OpenApiClient):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.workflow_parameters_shrink):
+            query['WorkflowParameters'] = request.workflow_parameters_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13926,17 +13938,21 @@ class Client(OpenApiClient):
 
     def update_dataset_with_options(
         self,
-        request: imm_20200930_models.UpdateDatasetRequest,
+        tmp_req: imm_20200930_models.UpdateDatasetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.UpdateDatasetResponse:
         """
         @summary Updates a dataset.
         
-        @param request: UpdateDatasetRequest
+        @param tmp_req: UpdateDatasetRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateDatasetResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.UpdateDatasetShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.workflow_parameters):
+            request.workflow_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.workflow_parameters, 'WorkflowParameters', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_max_bind_count):
             query['DatasetMaxBindCount'] = request.dataset_max_bind_count
@@ -13956,6 +13972,8 @@ class Client(OpenApiClient):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.workflow_parameters_shrink):
+            query['WorkflowParameters'] = request.workflow_parameters_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13977,17 +13995,21 @@ class Client(OpenApiClient):
 
     async def update_dataset_with_options_async(
         self,
-        request: imm_20200930_models.UpdateDatasetRequest,
+        tmp_req: imm_20200930_models.UpdateDatasetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.UpdateDatasetResponse:
         """
         @summary Updates a dataset.
         
-        @param request: UpdateDatasetRequest
+        @param tmp_req: UpdateDatasetRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateDatasetResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.UpdateDatasetShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.workflow_parameters):
+            request.workflow_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.workflow_parameters, 'WorkflowParameters', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_max_bind_count):
             query['DatasetMaxBindCount'] = request.dataset_max_bind_count
@@ -14007,6 +14029,8 @@ class Client(OpenApiClient):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.workflow_parameters_shrink):
+            query['WorkflowParameters'] = request.workflow_parameters_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

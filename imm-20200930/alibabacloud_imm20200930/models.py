@@ -2950,6 +2950,110 @@ class Image(TeaModel):
         return self
 
 
+class ImageInsight(TeaModel):
+    def __init__(
+        self,
+        caption: str = None,
+        description: str = None,
+    ):
+        self.caption = caption
+        self.description = description
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.caption is not None:
+            result['Caption'] = self.caption
+        if self.description is not None:
+            result['Description'] = self.description
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Caption') is not None:
+            self.caption = m.get('Caption')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        return self
+
+
+class VideoInsight(TeaModel):
+    def __init__(
+        self,
+        caption: str = None,
+        description: str = None,
+    ):
+        self.caption = caption
+        self.description = description
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.caption is not None:
+            result['Caption'] = self.caption
+        if self.description is not None:
+            result['Description'] = self.description
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Caption') is not None:
+            self.caption = m.get('Caption')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        return self
+
+
+class Insights(TeaModel):
+    def __init__(
+        self,
+        image: ImageInsight = None,
+        video: VideoInsight = None,
+    ):
+        self.image = image
+        self.video = video
+
+    def validate(self):
+        if self.image:
+            self.image.validate()
+        if self.video:
+            self.video.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image is not None:
+            result['Image'] = self.image.to_map()
+        if self.video is not None:
+            result['Video'] = self.video.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Image') is not None:
+            temp_model = ImageInsight()
+            self.image = temp_model.from_map(m['Image'])
+        if m.get('Video') is not None:
+            temp_model = VideoInsight()
+            self.video = temp_model.from_map(m['Video'])
+        return self
+
+
 class Label(TeaModel):
     def __init__(
         self,
@@ -3362,6 +3466,7 @@ class File(TeaModel):
         image_height: int = None,
         image_score: ImageScore = None,
         image_width: int = None,
+        insights: Insights = None,
         labels: List[Label] = None,
         language: str = None,
         lat_long: str = None,
@@ -3446,6 +3551,7 @@ class File(TeaModel):
         self.image_height = image_height
         self.image_score = image_score
         self.image_width = image_width
+        self.insights = insights
         self.labels = labels
         self.language = language
         self.lat_long = lat_long
@@ -3520,6 +3626,8 @@ class File(TeaModel):
                     k.validate()
         if self.image_score:
             self.image_score.validate()
+        if self.insights:
+            self.insights.validate()
         if self.labels:
             for k in self.labels:
                 if k:
@@ -3633,6 +3741,8 @@ class File(TeaModel):
             result['ImageScore'] = self.image_score.to_map()
         if self.image_width is not None:
             result['ImageWidth'] = self.image_width
+        if self.insights is not None:
+            result['Insights'] = self.insights.to_map()
         result['Labels'] = []
         if self.labels is not None:
             for k in self.labels:
@@ -3832,6 +3942,9 @@ class File(TeaModel):
             self.image_score = temp_model.from_map(m['ImageScore'])
         if m.get('ImageWidth') is not None:
             self.image_width = m.get('ImageWidth')
+        if m.get('Insights') is not None:
+            temp_model = Insights()
+            self.insights = temp_model.from_map(m['Insights'])
         self.labels = []
         if m.get('Labels') is not None:
             for k in m.get('Labels'):
@@ -6921,6 +7034,39 @@ class WebofficeWatermark(TeaModel):
             self.value = m.get('Value')
         if m.get('Vertical') is not None:
             self.vertical = m.get('Vertical')
+        return self
+
+
+class WorkflowParameter(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -10678,6 +10824,7 @@ class CreateDatasetRequest(TeaModel):
         description: str = None,
         project_name: str = None,
         template_id: str = None,
+        workflow_parameters: List[WorkflowParameter] = None,
     ):
         # The maximum number of bindings for the dataset. Valid values: 1 to 10. Default value: 10.
         self.dataset_max_bind_count = dataset_max_bind_count
@@ -10705,6 +10852,113 @@ class CreateDatasetRequest(TeaModel):
         self.project_name = project_name
         # The ID of the workflow template. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
         self.template_id = template_id
+        self.workflow_parameters = workflow_parameters
+
+    def validate(self):
+        if self.workflow_parameters:
+            for k in self.workflow_parameters:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_max_bind_count is not None:
+            result['DatasetMaxBindCount'] = self.dataset_max_bind_count
+        if self.dataset_max_entity_count is not None:
+            result['DatasetMaxEntityCount'] = self.dataset_max_entity_count
+        if self.dataset_max_file_count is not None:
+            result['DatasetMaxFileCount'] = self.dataset_max_file_count
+        if self.dataset_max_relation_count is not None:
+            result['DatasetMaxRelationCount'] = self.dataset_max_relation_count
+        if self.dataset_max_total_file_size is not None:
+            result['DatasetMaxTotalFileSize'] = self.dataset_max_total_file_size
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        result['WorkflowParameters'] = []
+        if self.workflow_parameters is not None:
+            for k in self.workflow_parameters:
+                result['WorkflowParameters'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetMaxBindCount') is not None:
+            self.dataset_max_bind_count = m.get('DatasetMaxBindCount')
+        if m.get('DatasetMaxEntityCount') is not None:
+            self.dataset_max_entity_count = m.get('DatasetMaxEntityCount')
+        if m.get('DatasetMaxFileCount') is not None:
+            self.dataset_max_file_count = m.get('DatasetMaxFileCount')
+        if m.get('DatasetMaxRelationCount') is not None:
+            self.dataset_max_relation_count = m.get('DatasetMaxRelationCount')
+        if m.get('DatasetMaxTotalFileSize') is not None:
+            self.dataset_max_total_file_size = m.get('DatasetMaxTotalFileSize')
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        self.workflow_parameters = []
+        if m.get('WorkflowParameters') is not None:
+            for k in m.get('WorkflowParameters'):
+                temp_model = WorkflowParameter()
+                self.workflow_parameters.append(temp_model.from_map(k))
+        return self
+
+
+class CreateDatasetShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_max_bind_count: int = None,
+        dataset_max_entity_count: int = None,
+        dataset_max_file_count: int = None,
+        dataset_max_relation_count: int = None,
+        dataset_max_total_file_size: int = None,
+        dataset_name: str = None,
+        description: str = None,
+        project_name: str = None,
+        template_id: str = None,
+        workflow_parameters_shrink: str = None,
+    ):
+        # The maximum number of bindings for the dataset. Valid values: 1 to 10. Default value: 10.
+        self.dataset_max_bind_count = dataset_max_bind_count
+        # The maximum number of metadata entities in the dataset. Default value: 10000000000.
+        self.dataset_max_entity_count = dataset_max_entity_count
+        # The maximum number of files in the dataset. Valid values: 1 to 100000000. Default value: 100000000.
+        self.dataset_max_file_count = dataset_max_file_count
+        # The maximum number of metadata relationships in the dataset. Default value: 100000000000.
+        self.dataset_max_relation_count = dataset_max_relation_count
+        # The maximum total file size for the dataset. If the total file size of the dataset exceeds this limit, indexes can no longer be added. Default value: 90000000000000000. Unit: bytes.
+        self.dataset_max_total_file_size = dataset_max_total_file_size
+        # The name of the dataset. The dataset name must be unique in the same project. The name must meet the following requirements:
+        # 
+        # *   The name must be 1 to 128 characters in length.
+        # *   The name can contain only letters, digits, hyphens (-), and underscores (_).
+        # *   The name must start with a letter or underscore (_).
+        # 
+        # This parameter is required.
+        self.dataset_name = dataset_name
+        # The description of the dataset. The description must be 1 to 256 characters in length. You can leave this parameter empty.
+        self.description = description
+        # The name of the project.[](~~478153~~)
+        # 
+        # This parameter is required.
+        self.project_name = project_name
+        # The ID of the workflow template. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
+        self.template_id = template_id
+        self.workflow_parameters_shrink = workflow_parameters_shrink
 
     def validate(self):
         pass
@@ -10733,6 +10987,8 @@ class CreateDatasetRequest(TeaModel):
             result['ProjectName'] = self.project_name
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
+        if self.workflow_parameters_shrink is not None:
+            result['WorkflowParameters'] = self.workflow_parameters_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -10755,6 +11011,8 @@ class CreateDatasetRequest(TeaModel):
             self.project_name = m.get('ProjectName')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
+        if m.get('WorkflowParameters') is not None:
+            self.workflow_parameters_shrink = m.get('WorkflowParameters')
         return self
 
 
@@ -29340,6 +29598,7 @@ class UpdateDatasetRequest(TeaModel):
         description: str = None,
         project_name: str = None,
         template_id: str = None,
+        workflow_parameters: List[WorkflowParameter] = None,
     ):
         self.dataset_max_bind_count = dataset_max_bind_count
         self.dataset_max_entity_count = dataset_max_entity_count
@@ -29352,6 +29611,98 @@ class UpdateDatasetRequest(TeaModel):
         # This parameter is required.
         self.project_name = project_name
         self.template_id = template_id
+        self.workflow_parameters = workflow_parameters
+
+    def validate(self):
+        if self.workflow_parameters:
+            for k in self.workflow_parameters:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_max_bind_count is not None:
+            result['DatasetMaxBindCount'] = self.dataset_max_bind_count
+        if self.dataset_max_entity_count is not None:
+            result['DatasetMaxEntityCount'] = self.dataset_max_entity_count
+        if self.dataset_max_file_count is not None:
+            result['DatasetMaxFileCount'] = self.dataset_max_file_count
+        if self.dataset_max_relation_count is not None:
+            result['DatasetMaxRelationCount'] = self.dataset_max_relation_count
+        if self.dataset_max_total_file_size is not None:
+            result['DatasetMaxTotalFileSize'] = self.dataset_max_total_file_size
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        result['WorkflowParameters'] = []
+        if self.workflow_parameters is not None:
+            for k in self.workflow_parameters:
+                result['WorkflowParameters'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetMaxBindCount') is not None:
+            self.dataset_max_bind_count = m.get('DatasetMaxBindCount')
+        if m.get('DatasetMaxEntityCount') is not None:
+            self.dataset_max_entity_count = m.get('DatasetMaxEntityCount')
+        if m.get('DatasetMaxFileCount') is not None:
+            self.dataset_max_file_count = m.get('DatasetMaxFileCount')
+        if m.get('DatasetMaxRelationCount') is not None:
+            self.dataset_max_relation_count = m.get('DatasetMaxRelationCount')
+        if m.get('DatasetMaxTotalFileSize') is not None:
+            self.dataset_max_total_file_size = m.get('DatasetMaxTotalFileSize')
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        self.workflow_parameters = []
+        if m.get('WorkflowParameters') is not None:
+            for k in m.get('WorkflowParameters'):
+                temp_model = WorkflowParameter()
+                self.workflow_parameters.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateDatasetShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_max_bind_count: int = None,
+        dataset_max_entity_count: int = None,
+        dataset_max_file_count: int = None,
+        dataset_max_relation_count: int = None,
+        dataset_max_total_file_size: int = None,
+        dataset_name: str = None,
+        description: str = None,
+        project_name: str = None,
+        template_id: str = None,
+        workflow_parameters_shrink: str = None,
+    ):
+        self.dataset_max_bind_count = dataset_max_bind_count
+        self.dataset_max_entity_count = dataset_max_entity_count
+        self.dataset_max_file_count = dataset_max_file_count
+        self.dataset_max_relation_count = dataset_max_relation_count
+        self.dataset_max_total_file_size = dataset_max_total_file_size
+        # This parameter is required.
+        self.dataset_name = dataset_name
+        self.description = description
+        # This parameter is required.
+        self.project_name = project_name
+        self.template_id = template_id
+        self.workflow_parameters_shrink = workflow_parameters_shrink
 
     def validate(self):
         pass
@@ -29380,6 +29731,8 @@ class UpdateDatasetRequest(TeaModel):
             result['ProjectName'] = self.project_name
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
+        if self.workflow_parameters_shrink is not None:
+            result['WorkflowParameters'] = self.workflow_parameters_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -29402,6 +29755,8 @@ class UpdateDatasetRequest(TeaModel):
             self.project_name = m.get('ProjectName')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
+        if m.get('WorkflowParameters') is not None:
+            self.workflow_parameters_shrink = m.get('WorkflowParameters')
         return self
 
 
