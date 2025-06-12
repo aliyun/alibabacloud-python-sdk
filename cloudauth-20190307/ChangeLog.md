@@ -1,3 +1,7 @@
+2025-06-12 Version: 3.9.2
+- Update API CredentialVerifyV2: add request parameters ImageContext.
+
+
 2025-06-10 Version: 3.9.1
 - Update API DescribeCardVerify: add response parameters Body.ResultObject.FaceDetail.
 

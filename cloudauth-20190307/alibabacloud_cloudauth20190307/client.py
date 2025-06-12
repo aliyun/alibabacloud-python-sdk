@@ -1520,6 +1520,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.user_name):
             query['UserName'] = request.user_name
         body = {}
+        if not UtilClient.is_unset(request.image_context):
+            body['ImageContext'] = request.image_context
         if not UtilClient.is_unset(request.image_file):
             body['ImageFile'] = request.image_file
         req = open_api_models.OpenApiRequest(
@@ -1587,6 +1589,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.user_name):
             query['UserName'] = request.user_name
         body = {}
+        if not UtilClient.is_unset(request.image_context):
+            body['ImageContext'] = request.image_context
         if not UtilClient.is_unset(request.image_file):
             body['ImageFile'] = request.image_file
         req = open_api_models.OpenApiRequest(

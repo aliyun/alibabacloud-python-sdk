@@ -2204,6 +2204,7 @@ class CredentialVerifyV2Request(TeaModel):
         cred_name: str = None,
         cred_type: str = None,
         identify_num: str = None,
+        image_context: str = None,
         image_file: str = None,
         image_url: str = None,
         is_check: str = None,
@@ -2219,6 +2220,7 @@ class CredentialVerifyV2Request(TeaModel):
         self.cred_name = cred_name
         self.cred_type = cred_type
         self.identify_num = identify_num
+        self.image_context = image_context
         self.image_file = image_file
         self.image_url = image_url
         self.is_check = is_check
@@ -2250,6 +2252,8 @@ class CredentialVerifyV2Request(TeaModel):
             result['CredType'] = self.cred_type
         if self.identify_num is not None:
             result['IdentifyNum'] = self.identify_num
+        if self.image_context is not None:
+            result['ImageContext'] = self.image_context
         if self.image_file is not None:
             result['ImageFile'] = self.image_file
         if self.image_url is not None:
@@ -2284,6 +2288,8 @@ class CredentialVerifyV2Request(TeaModel):
             self.cred_type = m.get('CredType')
         if m.get('IdentifyNum') is not None:
             self.identify_num = m.get('IdentifyNum')
+        if m.get('ImageContext') is not None:
+            self.image_context = m.get('ImageContext')
         if m.get('ImageFile') is not None:
             self.image_file = m.get('ImageFile')
         if m.get('ImageUrl') is not None:
@@ -2350,6 +2356,7 @@ class CredentialVerifyV2AdvanceRequest(TeaModel):
         cred_name: str = None,
         cred_type: str = None,
         identify_num: str = None,
+        image_context: str = None,
         image_file_object: BinaryIO = None,
         image_url: str = None,
         is_check: str = None,
@@ -2365,6 +2372,7 @@ class CredentialVerifyV2AdvanceRequest(TeaModel):
         self.cred_name = cred_name
         self.cred_type = cred_type
         self.identify_num = identify_num
+        self.image_context = image_context
         self.image_file_object = image_file_object
         self.image_url = image_url
         self.is_check = is_check
@@ -2396,6 +2404,8 @@ class CredentialVerifyV2AdvanceRequest(TeaModel):
             result['CredType'] = self.cred_type
         if self.identify_num is not None:
             result['IdentifyNum'] = self.identify_num
+        if self.image_context is not None:
+            result['ImageContext'] = self.image_context
         if self.image_file_object is not None:
             result['ImageFile'] = self.image_file_object
         if self.image_url is not None:
@@ -2430,6 +2440,8 @@ class CredentialVerifyV2AdvanceRequest(TeaModel):
             self.cred_type = m.get('CredType')
         if m.get('IdentifyNum') is not None:
             self.identify_num = m.get('IdentifyNum')
+        if m.get('ImageContext') is not None:
+            self.image_context = m.get('ImageContext')
         if m.get('ImageFile') is not None:
             self.image_file_object = m.get('ImageFile')
         if m.get('ImageUrl') is not None:
@@ -2463,6 +2475,7 @@ class CredentialVerifyV2ShrinkRequest(TeaModel):
         cred_name: str = None,
         cred_type: str = None,
         identify_num: str = None,
+        image_context: str = None,
         image_file: str = None,
         image_url: str = None,
         is_check: str = None,
@@ -2478,6 +2491,7 @@ class CredentialVerifyV2ShrinkRequest(TeaModel):
         self.cred_name = cred_name
         self.cred_type = cred_type
         self.identify_num = identify_num
+        self.image_context = image_context
         self.image_file = image_file
         self.image_url = image_url
         self.is_check = is_check
@@ -2506,6 +2520,8 @@ class CredentialVerifyV2ShrinkRequest(TeaModel):
             result['CredType'] = self.cred_type
         if self.identify_num is not None:
             result['IdentifyNum'] = self.identify_num
+        if self.image_context is not None:
+            result['ImageContext'] = self.image_context
         if self.image_file is not None:
             result['ImageFile'] = self.image_file
         if self.image_url is not None:
@@ -2538,6 +2554,8 @@ class CredentialVerifyV2ShrinkRequest(TeaModel):
             self.cred_type = m.get('CredType')
         if m.get('IdentifyNum') is not None:
             self.identify_num = m.get('IdentifyNum')
+        if m.get('ImageContext') is not None:
+            self.image_context = m.get('ImageContext')
         if m.get('ImageFile') is not None:
             self.image_file = m.get('ImageFile')
         if m.get('ImageUrl') is not None:
