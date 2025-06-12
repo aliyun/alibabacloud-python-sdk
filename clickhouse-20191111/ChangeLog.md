@@ -1,3 +1,6 @@
+2025-06-12 Version: 3.1.15
+- Generated python 2019-11-11 for clickhouse.
+
 2025-06-11 Version: 3.1.14
 - Update API DescribeDBClusterAttribute: add response parameters Body.DBCluster.AppointmentElectZookeeperDisableWrite.
 - Update API DescribeDBClusterAttribute: add response parameters Body.DBCluster.AppointmentElectZookeeperTime.
