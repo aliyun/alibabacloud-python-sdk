@@ -4967,9 +4967,9 @@ class Client(OpenApiClient):
         @summary Creates an auto provisioning group.
         
         @description ## [](#)Usage notes
-        Auto Provisioning is a service that allows quick deployment of an instance cluster that consists of preemptible instances and pay-as-you-go instances. Auto Provisioning supports push-button deployment of instance clusters across different billing methods, instance families, and zones. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](https://help.aliyun.com/document_detail/200772.html).
-        Auto Provisioning uses auto provisioning groups to schedule and maintain computing resources. You can use auto provisioning groups to obtain a steady supply of computing resources. This helps reduce the impact on compute capacity when preemptible instances are reclaimed.
-        Auto Provisioning is provided free of charge. However, you are charged for instance resources that are created in auto provisioning groups. For more information, see [Overview of preemptible instances](https://help.aliyun.com/document_detail/52088.html) and [Pay-as-you-go](https://help.aliyun.com/document_detail/40653.html).
+        Auto Provisioning is a service that allows quick deployment of an instance cluster that consists of spot instances and pay-as-you-go instances. Auto Provisioning supports push-button deployment of instance clusters across different billing methods, instance families, and zones. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](https://help.aliyun.com/document_detail/200772.html).
+        Auto Provisioning uses auto provisioning groups to schedule and maintain computing resources. You can use auto provisioning groups to obtain a steady supply of computing resources. This helps reduce the impact on compute capacity when spot instances are reclaimed.
+        Auto Provisioning is provided free of charge. However, you are charged for instance resources that are created in auto provisioning groups. For more information, see [Overview of spot instances](https://help.aliyun.com/document_detail/52088.html) and [Pay-as-you-go](https://help.aliyun.com/document_detail/40653.html).
         When you specify both a launch template (`LaunchTemplateId`) and extended configurations (`LaunchConfiguration.*` parameters), LaunchTemplateId takes precedence.
         
         @param tmp_req: CreateAutoProvisioningGroupRequest
@@ -5080,9 +5080,9 @@ class Client(OpenApiClient):
         @summary Creates an auto provisioning group.
         
         @description ## [](#)Usage notes
-        Auto Provisioning is a service that allows quick deployment of an instance cluster that consists of preemptible instances and pay-as-you-go instances. Auto Provisioning supports push-button deployment of instance clusters across different billing methods, instance families, and zones. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](https://help.aliyun.com/document_detail/200772.html).
-        Auto Provisioning uses auto provisioning groups to schedule and maintain computing resources. You can use auto provisioning groups to obtain a steady supply of computing resources. This helps reduce the impact on compute capacity when preemptible instances are reclaimed.
-        Auto Provisioning is provided free of charge. However, you are charged for instance resources that are created in auto provisioning groups. For more information, see [Overview of preemptible instances](https://help.aliyun.com/document_detail/52088.html) and [Pay-as-you-go](https://help.aliyun.com/document_detail/40653.html).
+        Auto Provisioning is a service that allows quick deployment of an instance cluster that consists of spot instances and pay-as-you-go instances. Auto Provisioning supports push-button deployment of instance clusters across different billing methods, instance families, and zones. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](https://help.aliyun.com/document_detail/200772.html).
+        Auto Provisioning uses auto provisioning groups to schedule and maintain computing resources. You can use auto provisioning groups to obtain a steady supply of computing resources. This helps reduce the impact on compute capacity when spot instances are reclaimed.
+        Auto Provisioning is provided free of charge. However, you are charged for instance resources that are created in auto provisioning groups. For more information, see [Overview of spot instances](https://help.aliyun.com/document_detail/52088.html) and [Pay-as-you-go](https://help.aliyun.com/document_detail/40653.html).
         When you specify both a launch template (`LaunchTemplateId`) and extended configurations (`LaunchConfiguration.*` parameters), LaunchTemplateId takes precedence.
         
         @param tmp_req: CreateAutoProvisioningGroupRequest
@@ -5192,9 +5192,9 @@ class Client(OpenApiClient):
         @summary Creates an auto provisioning group.
         
         @description ## [](#)Usage notes
-        Auto Provisioning is a service that allows quick deployment of an instance cluster that consists of preemptible instances and pay-as-you-go instances. Auto Provisioning supports push-button deployment of instance clusters across different billing methods, instance families, and zones. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](https://help.aliyun.com/document_detail/200772.html).
-        Auto Provisioning uses auto provisioning groups to schedule and maintain computing resources. You can use auto provisioning groups to obtain a steady supply of computing resources. This helps reduce the impact on compute capacity when preemptible instances are reclaimed.
-        Auto Provisioning is provided free of charge. However, you are charged for instance resources that are created in auto provisioning groups. For more information, see [Overview of preemptible instances](https://help.aliyun.com/document_detail/52088.html) and [Pay-as-you-go](https://help.aliyun.com/document_detail/40653.html).
+        Auto Provisioning is a service that allows quick deployment of an instance cluster that consists of spot instances and pay-as-you-go instances. Auto Provisioning supports push-button deployment of instance clusters across different billing methods, instance families, and zones. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](https://help.aliyun.com/document_detail/200772.html).
+        Auto Provisioning uses auto provisioning groups to schedule and maintain computing resources. You can use auto provisioning groups to obtain a steady supply of computing resources. This helps reduce the impact on compute capacity when spot instances are reclaimed.
+        Auto Provisioning is provided free of charge. However, you are charged for instance resources that are created in auto provisioning groups. For more information, see [Overview of spot instances](https://help.aliyun.com/document_detail/52088.html) and [Pay-as-you-go](https://help.aliyun.com/document_detail/40653.html).
         When you specify both a launch template (`LaunchTemplateId`) and extended configurations (`LaunchConfiguration.*` parameters), LaunchTemplateId takes precedence.
         
         @param request: CreateAutoProvisioningGroupRequest
@@ -5211,9 +5211,9 @@ class Client(OpenApiClient):
         @summary Creates an auto provisioning group.
         
         @description ## [](#)Usage notes
-        Auto Provisioning is a service that allows quick deployment of an instance cluster that consists of preemptible instances and pay-as-you-go instances. Auto Provisioning supports push-button deployment of instance clusters across different billing methods, instance families, and zones. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](https://help.aliyun.com/document_detail/200772.html).
-        Auto Provisioning uses auto provisioning groups to schedule and maintain computing resources. You can use auto provisioning groups to obtain a steady supply of computing resources. This helps reduce the impact on compute capacity when preemptible instances are reclaimed.
-        Auto Provisioning is provided free of charge. However, you are charged for instance resources that are created in auto provisioning groups. For more information, see [Overview of preemptible instances](https://help.aliyun.com/document_detail/52088.html) and [Pay-as-you-go](https://help.aliyun.com/document_detail/40653.html).
+        Auto Provisioning is a service that allows quick deployment of an instance cluster that consists of spot instances and pay-as-you-go instances. Auto Provisioning supports push-button deployment of instance clusters across different billing methods, instance families, and zones. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](https://help.aliyun.com/document_detail/200772.html).
+        Auto Provisioning uses auto provisioning groups to schedule and maintain computing resources. You can use auto provisioning groups to obtain a steady supply of computing resources. This helps reduce the impact on compute capacity when spot instances are reclaimed.
+        Auto Provisioning is provided free of charge. However, you are charged for instance resources that are created in auto provisioning groups. For more information, see [Overview of spot instances](https://help.aliyun.com/document_detail/52088.html) and [Pay-as-you-go](https://help.aliyun.com/document_detail/40653.html).
         When you specify both a launch template (`LaunchTemplateId`) and extended configurations (`LaunchConfiguration.*` parameters), LaunchTemplateId takes precedence.
         
         @param request: CreateAutoProvisioningGroupRequest
@@ -16928,7 +16928,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeAccountAttributesResponse:
         """
-        @summary Queries the quotas of Elastic Compute Service (ECS) resources that you can create in an Alibaba Cloud region. For a specific region, you can query the maximum numbers of security groups, elastic network interfaces (ENIs), vCPUs for pay-as-you-go instances, vCPUs for preemptible instances, and dedicated hosts that you can create and the capacity quotas for pay-as-you-go disks that you can create. You can also query information such as network types or whether an account has completed real-name verification.
+        @summary Queries the quotas of Elastic Compute Service (ECS) resources that you can create in an Alibaba Cloud region. For a specific region, you can query the maximum numbers of security groups, elastic network interfaces (ENIs), vCPUs for pay-as-you-go instances, vCPUs for spot instances, and dedicated hosts that you can create and the capacity quotas for pay-as-you-go disks that you can create. You can also query information such as network types or whether an account has completed real-name verification.
         
         @description After you [create](https://account.alibabacloud.com/register/intl_register.htm) an Alibaba Cloud account, you can create a specific number of ECS instances in different regions within the account. For more information, see [Limits](https://help.aliyun.com/document_detail/25412.html).
         You can apply for a quota increase in the [Quota Center console](https://quotas.console.aliyun.com/products).
@@ -16976,7 +16976,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeAccountAttributesResponse:
         """
-        @summary Queries the quotas of Elastic Compute Service (ECS) resources that you can create in an Alibaba Cloud region. For a specific region, you can query the maximum numbers of security groups, elastic network interfaces (ENIs), vCPUs for pay-as-you-go instances, vCPUs for preemptible instances, and dedicated hosts that you can create and the capacity quotas for pay-as-you-go disks that you can create. You can also query information such as network types or whether an account has completed real-name verification.
+        @summary Queries the quotas of Elastic Compute Service (ECS) resources that you can create in an Alibaba Cloud region. For a specific region, you can query the maximum numbers of security groups, elastic network interfaces (ENIs), vCPUs for pay-as-you-go instances, vCPUs for spot instances, and dedicated hosts that you can create and the capacity quotas for pay-as-you-go disks that you can create. You can also query information such as network types or whether an account has completed real-name verification.
         
         @description After you [create](https://account.alibabacloud.com/register/intl_register.htm) an Alibaba Cloud account, you can create a specific number of ECS instances in different regions within the account. For more information, see [Limits](https://help.aliyun.com/document_detail/25412.html).
         You can apply for a quota increase in the [Quota Center console](https://quotas.console.aliyun.com/products).
@@ -17023,7 +17023,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeAccountAttributesRequest,
     ) -> ecs_20140526_models.DescribeAccountAttributesResponse:
         """
-        @summary Queries the quotas of Elastic Compute Service (ECS) resources that you can create in an Alibaba Cloud region. For a specific region, you can query the maximum numbers of security groups, elastic network interfaces (ENIs), vCPUs for pay-as-you-go instances, vCPUs for preemptible instances, and dedicated hosts that you can create and the capacity quotas for pay-as-you-go disks that you can create. You can also query information such as network types or whether an account has completed real-name verification.
+        @summary Queries the quotas of Elastic Compute Service (ECS) resources that you can create in an Alibaba Cloud region. For a specific region, you can query the maximum numbers of security groups, elastic network interfaces (ENIs), vCPUs for pay-as-you-go instances, vCPUs for spot instances, and dedicated hosts that you can create and the capacity quotas for pay-as-you-go disks that you can create. You can also query information such as network types or whether an account has completed real-name verification.
         
         @description After you [create](https://account.alibabacloud.com/register/intl_register.htm) an Alibaba Cloud account, you can create a specific number of ECS instances in different regions within the account. For more information, see [Limits](https://help.aliyun.com/document_detail/25412.html).
         You can apply for a quota increase in the [Quota Center console](https://quotas.console.aliyun.com/products).
@@ -17039,7 +17039,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeAccountAttributesRequest,
     ) -> ecs_20140526_models.DescribeAccountAttributesResponse:
         """
-        @summary Queries the quotas of Elastic Compute Service (ECS) resources that you can create in an Alibaba Cloud region. For a specific region, you can query the maximum numbers of security groups, elastic network interfaces (ENIs), vCPUs for pay-as-you-go instances, vCPUs for preemptible instances, and dedicated hosts that you can create and the capacity quotas for pay-as-you-go disks that you can create. You can also query information such as network types or whether an account has completed real-name verification.
+        @summary Queries the quotas of Elastic Compute Service (ECS) resources that you can create in an Alibaba Cloud region. For a specific region, you can query the maximum numbers of security groups, elastic network interfaces (ENIs), vCPUs for pay-as-you-go instances, vCPUs for spot instances, and dedicated hosts that you can create and the capacity quotas for pay-as-you-go disks that you can create. You can also query information such as network types or whether an account has completed real-name verification.
         
         @description After you [create](https://account.alibabacloud.com/register/intl_register.htm) an Alibaba Cloud account, you can create a specific number of ECS instances in different regions within the account. For more information, see [Limits](https://help.aliyun.com/document_detail/25412.html).
         You can apply for a quota increase in the [Quota Center console](https://quotas.console.aliyun.com/products).
@@ -19006,6 +19006,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DescribeClusters is deprecated
         
+        @summary 查询集群
+        
         @param request: DescribeClustersRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeClustersResponse
@@ -19050,6 +19052,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DescribeClusters is deprecated
         
+        @summary 查询集群
+        
         @param request: DescribeClustersRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeClustersResponse
@@ -19093,6 +19097,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DescribeClusters is deprecated
         
+        @summary 查询集群
+        
         @param request: DescribeClustersRequest
         @return: DescribeClustersResponse
         Deprecated
@@ -19106,6 +19112,8 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.DescribeClustersResponse:
         """
         @deprecated OpenAPI DescribeClusters is deprecated
+        
+        @summary 查询集群
         
         @param request: DescribeClustersRequest
         @return: DescribeClustersResponse
@@ -27098,6 +27106,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DescribeLimitation is deprecated
         
+        @summary 查询账号限制
+        
         @param request: DescribeLimitationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeLimitationResponse
@@ -27142,6 +27152,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DescribeLimitation is deprecated
         
+        @summary 查询账号限制
+        
         @param request: DescribeLimitationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeLimitationResponse
@@ -27185,6 +27197,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DescribeLimitation is deprecated
         
+        @summary 查询账号限制
+        
         @param request: DescribeLimitationRequest
         @return: DescribeLimitationResponse
         Deprecated
@@ -27198,6 +27212,8 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.DescribeLimitationResponse:
         """
         @deprecated OpenAPI DescribeLimitation is deprecated
+        
+        @summary 查询账号限制
         
         @param request: DescribeLimitationRequest
         @return: DescribeLimitationResponse
@@ -32600,14 +32616,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSpotAdviceResponse:
         """
-        @summary Queries information about preemptible instances in a region in the previous 30 days. The information includes the average release rate of preemptible instances and the percentage of the average preemptible instance price relative to the pay-as-you-go instance price.
+        @summary Queries information about spot instances in a region in the previous 30 days. The information includes the average release rate of spot instances and the percentage of the average spot instance price relative to the pay-as-you-go instance price.
         
-        @description    This operation is applicable only to I/O optimized preemptible instances that reside in virtual private clouds (VPCs).
+        @description    This operation is applicable only to I/O optimized spot instances that reside in virtual private clouds (VPCs).
         You can use one of the following methods to call this operation:
         Specify `Cores` and `Memory` or `MinCores` and `MinMemory` to query information about the instance types that meet the specified vCPU and memory requirements.
         Specify `InstanceTypes.N` to query information about the specified instance types.
         Specify `Cores` and `Memory` or `MinCores` and `MinMemory`, and then specify `InstanceTypeFamily` or `InstanceFamilyLevel` to query information about the instance types that meet the specified vCPU and memory requirements within the specified instance family or at a specified instance family level.
-        You can calculate the average price of preemptible instances based on the percentage of the average preemptible instance price relative to the pay-as-you-go instance price and the pay-as-you-go instance price.
+        You can calculate the average price of spot instances based on the percentage of the average spot instance price relative to the pay-as-you-go instance price and the pay-as-you-go instance price.
         
         @param request: DescribeSpotAdviceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32670,14 +32686,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSpotAdviceResponse:
         """
-        @summary Queries information about preemptible instances in a region in the previous 30 days. The information includes the average release rate of preemptible instances and the percentage of the average preemptible instance price relative to the pay-as-you-go instance price.
+        @summary Queries information about spot instances in a region in the previous 30 days. The information includes the average release rate of spot instances and the percentage of the average spot instance price relative to the pay-as-you-go instance price.
         
-        @description    This operation is applicable only to I/O optimized preemptible instances that reside in virtual private clouds (VPCs).
+        @description    This operation is applicable only to I/O optimized spot instances that reside in virtual private clouds (VPCs).
         You can use one of the following methods to call this operation:
         Specify `Cores` and `Memory` or `MinCores` and `MinMemory` to query information about the instance types that meet the specified vCPU and memory requirements.
         Specify `InstanceTypes.N` to query information about the specified instance types.
         Specify `Cores` and `Memory` or `MinCores` and `MinMemory`, and then specify `InstanceTypeFamily` or `InstanceFamilyLevel` to query information about the instance types that meet the specified vCPU and memory requirements within the specified instance family or at a specified instance family level.
-        You can calculate the average price of preemptible instances based on the percentage of the average preemptible instance price relative to the pay-as-you-go instance price and the pay-as-you-go instance price.
+        You can calculate the average price of spot instances based on the percentage of the average spot instance price relative to the pay-as-you-go instance price and the pay-as-you-go instance price.
         
         @param request: DescribeSpotAdviceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32739,14 +32755,14 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSpotAdviceRequest,
     ) -> ecs_20140526_models.DescribeSpotAdviceResponse:
         """
-        @summary Queries information about preemptible instances in a region in the previous 30 days. The information includes the average release rate of preemptible instances and the percentage of the average preemptible instance price relative to the pay-as-you-go instance price.
+        @summary Queries information about spot instances in a region in the previous 30 days. The information includes the average release rate of spot instances and the percentage of the average spot instance price relative to the pay-as-you-go instance price.
         
-        @description    This operation is applicable only to I/O optimized preemptible instances that reside in virtual private clouds (VPCs).
+        @description    This operation is applicable only to I/O optimized spot instances that reside in virtual private clouds (VPCs).
         You can use one of the following methods to call this operation:
         Specify `Cores` and `Memory` or `MinCores` and `MinMemory` to query information about the instance types that meet the specified vCPU and memory requirements.
         Specify `InstanceTypes.N` to query information about the specified instance types.
         Specify `Cores` and `Memory` or `MinCores` and `MinMemory`, and then specify `InstanceTypeFamily` or `InstanceFamilyLevel` to query information about the instance types that meet the specified vCPU and memory requirements within the specified instance family or at a specified instance family level.
-        You can calculate the average price of preemptible instances based on the percentage of the average preemptible instance price relative to the pay-as-you-go instance price and the pay-as-you-go instance price.
+        You can calculate the average price of spot instances based on the percentage of the average spot instance price relative to the pay-as-you-go instance price and the pay-as-you-go instance price.
         
         @param request: DescribeSpotAdviceRequest
         @return: DescribeSpotAdviceResponse
@@ -32759,14 +32775,14 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSpotAdviceRequest,
     ) -> ecs_20140526_models.DescribeSpotAdviceResponse:
         """
-        @summary Queries information about preemptible instances in a region in the previous 30 days. The information includes the average release rate of preemptible instances and the percentage of the average preemptible instance price relative to the pay-as-you-go instance price.
+        @summary Queries information about spot instances in a region in the previous 30 days. The information includes the average release rate of spot instances and the percentage of the average spot instance price relative to the pay-as-you-go instance price.
         
-        @description    This operation is applicable only to I/O optimized preemptible instances that reside in virtual private clouds (VPCs).
+        @description    This operation is applicable only to I/O optimized spot instances that reside in virtual private clouds (VPCs).
         You can use one of the following methods to call this operation:
         Specify `Cores` and `Memory` or `MinCores` and `MinMemory` to query information about the instance types that meet the specified vCPU and memory requirements.
         Specify `InstanceTypes.N` to query information about the specified instance types.
         Specify `Cores` and `Memory` or `MinCores` and `MinMemory`, and then specify `InstanceTypeFamily` or `InstanceFamilyLevel` to query information about the instance types that meet the specified vCPU and memory requirements within the specified instance family or at a specified instance family level.
-        You can calculate the average price of preemptible instances based on the percentage of the average preemptible instance price relative to the pay-as-you-go instance price and the pay-as-you-go instance price.
+        You can calculate the average price of spot instances based on the percentage of the average spot instance price relative to the pay-as-you-go instance price and the pay-as-you-go instance price.
         
         @param request: DescribeSpotAdviceRequest
         @return: DescribeSpotAdviceResponse
@@ -32780,9 +32796,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSpotPriceHistoryResponse:
         """
-        @summary Queries the historical prices of preemptible instances within up to the previous 30 days. You can set the maximum price of a preemptible instance based on the historical prices.
+        @summary Queries the historical prices of spot instances within up to the previous 30 days. You can set the maximum price of a spot instance based on the historical prices.
         
-        @description    This operation is applicable only to I/O optimized preemptible instances.
+        @description    This operation is applicable only to I/O optimized spot instances.
         The data returned by the interface may be paginated. If the returned data contains the `NextOffset` parameter, you can set the `Offset` parameter in the request to the value of the `NextOffset` parameter for subsequent data query.
         
         @param request: DescribeSpotPriceHistoryRequest
@@ -32846,9 +32862,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSpotPriceHistoryResponse:
         """
-        @summary Queries the historical prices of preemptible instances within up to the previous 30 days. You can set the maximum price of a preemptible instance based on the historical prices.
+        @summary Queries the historical prices of spot instances within up to the previous 30 days. You can set the maximum price of a spot instance based on the historical prices.
         
-        @description    This operation is applicable only to I/O optimized preemptible instances.
+        @description    This operation is applicable only to I/O optimized spot instances.
         The data returned by the interface may be paginated. If the returned data contains the `NextOffset` parameter, you can set the `Offset` parameter in the request to the value of the `NextOffset` parameter for subsequent data query.
         
         @param request: DescribeSpotPriceHistoryRequest
@@ -32911,9 +32927,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSpotPriceHistoryRequest,
     ) -> ecs_20140526_models.DescribeSpotPriceHistoryResponse:
         """
-        @summary Queries the historical prices of preemptible instances within up to the previous 30 days. You can set the maximum price of a preemptible instance based on the historical prices.
+        @summary Queries the historical prices of spot instances within up to the previous 30 days. You can set the maximum price of a spot instance based on the historical prices.
         
-        @description    This operation is applicable only to I/O optimized preemptible instances.
+        @description    This operation is applicable only to I/O optimized spot instances.
         The data returned by the interface may be paginated. If the returned data contains the `NextOffset` parameter, you can set the `Offset` parameter in the request to the value of the `NextOffset` parameter for subsequent data query.
         
         @param request: DescribeSpotPriceHistoryRequest
@@ -32927,9 +32943,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSpotPriceHistoryRequest,
     ) -> ecs_20140526_models.DescribeSpotPriceHistoryResponse:
         """
-        @summary Queries the historical prices of preemptible instances within up to the previous 30 days. You can set the maximum price of a preemptible instance based on the historical prices.
+        @summary Queries the historical prices of spot instances within up to the previous 30 days. You can set the maximum price of a spot instance based on the historical prices.
         
-        @description    This operation is applicable only to I/O optimized preemptible instances.
+        @description    This operation is applicable only to I/O optimized spot instances.
         The data returned by the interface may be paginated. If the returned data contains the `NextOffset` parameter, you can set the `Offset` parameter in the request to the value of the `NextOffset` parameter for subsequent data query.
         
         @param request: DescribeSpotPriceHistoryRequest
@@ -43172,7 +43188,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceAutoReleaseTimeResponse:
         """
-        @summary Changes the automatic release time of a pay-as-you-go or preemptible Elastic Compute Service (ECS) instance or cancels the automatic release of the instance.
+        @summary Changes the automatic release time of a pay-as-you-go or spot instance or cancels the automatic release of the instance.
         
         @param request: ModifyInstanceAutoReleaseTimeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -43219,7 +43235,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceAutoReleaseTimeResponse:
         """
-        @summary Changes the automatic release time of a pay-as-you-go or preemptible Elastic Compute Service (ECS) instance or cancels the automatic release of the instance.
+        @summary Changes the automatic release time of a pay-as-you-go or spot instance or cancels the automatic release of the instance.
         
         @param request: ModifyInstanceAutoReleaseTimeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -43265,7 +43281,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceAutoReleaseTimeRequest,
     ) -> ecs_20140526_models.ModifyInstanceAutoReleaseTimeResponse:
         """
-        @summary Changes the automatic release time of a pay-as-you-go or preemptible Elastic Compute Service (ECS) instance or cancels the automatic release of the instance.
+        @summary Changes the automatic release time of a pay-as-you-go or spot instance or cancels the automatic release of the instance.
         
         @param request: ModifyInstanceAutoReleaseTimeRequest
         @return: ModifyInstanceAutoReleaseTimeResponse
@@ -43278,7 +43294,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceAutoReleaseTimeRequest,
     ) -> ecs_20140526_models.ModifyInstanceAutoReleaseTimeResponse:
         """
-        @summary Changes the automatic release time of a pay-as-you-go or preemptible Elastic Compute Service (ECS) instance or cancels the automatic release of the instance.
+        @summary Changes the automatic release time of a pay-as-you-go or spot instance or cancels the automatic release of the instance.
         
         @param request: ModifyInstanceAutoReleaseTimeRequest
         @return: ModifyInstanceAutoReleaseTimeResponse
@@ -43651,7 +43667,7 @@ class Client(OpenApiClient):
         The network type of the instance must be Virtual Private Cloud (VPC).
         The instance and the destination dedicated host to which to migrate the instance must belong to the same account and reside in the same region and zone.
         A pay-as-you-go instance can be migrated to a subscription dedicated host. A subscription instance can be migrated only between subscription dedicated hosts. The expiration date of the subscription instance cannot be later than that of the destination dedicated host.
-        You can migrate only pay-as-you-go instances from a shared host to a dedicated host. You cannot migrate subscription instances or preemptible instances from a shared host to a dedicated host.
+        You can migrate only pay-as-you-go instances from a shared host to a dedicated host. You cannot migrate subscription instances or spot instances from a shared host to a dedicated host.
         You can redeploy an instance to a specific dedicated host cluster.
         
         @param request: ModifyInstanceDeploymentRequest
@@ -43724,7 +43740,7 @@ class Client(OpenApiClient):
         The network type of the instance must be Virtual Private Cloud (VPC).
         The instance and the destination dedicated host to which to migrate the instance must belong to the same account and reside in the same region and zone.
         A pay-as-you-go instance can be migrated to a subscription dedicated host. A subscription instance can be migrated only between subscription dedicated hosts. The expiration date of the subscription instance cannot be later than that of the destination dedicated host.
-        You can migrate only pay-as-you-go instances from a shared host to a dedicated host. You cannot migrate subscription instances or preemptible instances from a shared host to a dedicated host.
+        You can migrate only pay-as-you-go instances from a shared host to a dedicated host. You cannot migrate subscription instances or spot instances from a shared host to a dedicated host.
         You can redeploy an instance to a specific dedicated host cluster.
         
         @param request: ModifyInstanceDeploymentRequest
@@ -43796,7 +43812,7 @@ class Client(OpenApiClient):
         The network type of the instance must be Virtual Private Cloud (VPC).
         The instance and the destination dedicated host to which to migrate the instance must belong to the same account and reside in the same region and zone.
         A pay-as-you-go instance can be migrated to a subscription dedicated host. A subscription instance can be migrated only between subscription dedicated hosts. The expiration date of the subscription instance cannot be later than that of the destination dedicated host.
-        You can migrate only pay-as-you-go instances from a shared host to a dedicated host. You cannot migrate subscription instances or preemptible instances from a shared host to a dedicated host.
+        You can migrate only pay-as-you-go instances from a shared host to a dedicated host. You cannot migrate subscription instances or spot instances from a shared host to a dedicated host.
         You can redeploy an instance to a specific dedicated host cluster.
         
         @param request: ModifyInstanceDeploymentRequest
@@ -43817,7 +43833,7 @@ class Client(OpenApiClient):
         The network type of the instance must be Virtual Private Cloud (VPC).
         The instance and the destination dedicated host to which to migrate the instance must belong to the same account and reside in the same region and zone.
         A pay-as-you-go instance can be migrated to a subscription dedicated host. A subscription instance can be migrated only between subscription dedicated hosts. The expiration date of the subscription instance cannot be later than that of the destination dedicated host.
-        You can migrate only pay-as-you-go instances from a shared host to a dedicated host. You cannot migrate subscription instances or preemptible instances from a shared host to a dedicated host.
+        You can migrate only pay-as-you-go instances from a shared host to a dedicated host. You cannot migrate subscription instances or spot instances from a shared host to a dedicated host.
         You can redeploy an instance to a specific dedicated host cluster.
         
         @param request: ModifyInstanceDeploymentRequest
@@ -54048,11 +54064,11 @@ class Client(OpenApiClient):
         Amount:10, //Set the number of ECS instances that you want to create to 10.
         InstanceChargeType:"PostPaid", //Set the billing method to PostPaid, which specifies the pay-as-you-go billing method.
         SpotStrategy:"NoSpot" //Set this parameter to NoSpot, which is the default value and specifies that the instances are created as pay-as-you-go instances.
-        *Example: Create 20 preemptible instances that use a specific bidding policy and a protection period**\
+        *Example: Create 20 spot instances that use a specific bidding policy and a protection period**\
         Amount:20, //Set the number of ECS instances that you want to create to 20.
         InstanceChargeType:"PostPaid",
-        SpotStrategy:"SpotAsPriceGo", //Set the bidding policy to SpotAsPriceGo, which specifies that the instances are created as preemptible instances for which the market price at the time of purchase is automatically used as the bid price.
-        SpotDuration:1 //Set the protection period of the preemptible instances to 1. Unit: hours.
+        SpotStrategy:"SpotAsPriceGo", //Set the bidding policy to SpotAsPriceGo, which specifies that the instances are created as spot instances for which the market price at the time of purchase is automatically used as the bid price.
+        SpotDuration:1 //Set the protection period of the spot instances to 1. Unit: hours.
         Use a launch template created by calling the [CreateLaunchTemplate](https://help.aliyun.com/document_detail/2679729.html) operation to create ECS instances in the China (Hangzhou) region. Examples:
         *Example: Create 10 ECS instances based on a launch template**\
         RegionId:"cn-hangzhou", //Set the region ID to cn-hangzhou, which specifies the China (Hangzhou) region.
@@ -54313,11 +54329,11 @@ class Client(OpenApiClient):
         Amount:10, //Set the number of ECS instances that you want to create to 10.
         InstanceChargeType:"PostPaid", //Set the billing method to PostPaid, which specifies the pay-as-you-go billing method.
         SpotStrategy:"NoSpot" //Set this parameter to NoSpot, which is the default value and specifies that the instances are created as pay-as-you-go instances.
-        *Example: Create 20 preemptible instances that use a specific bidding policy and a protection period**\
+        *Example: Create 20 spot instances that use a specific bidding policy and a protection period**\
         Amount:20, //Set the number of ECS instances that you want to create to 20.
         InstanceChargeType:"PostPaid",
-        SpotStrategy:"SpotAsPriceGo", //Set the bidding policy to SpotAsPriceGo, which specifies that the instances are created as preemptible instances for which the market price at the time of purchase is automatically used as the bid price.
-        SpotDuration:1 //Set the protection period of the preemptible instances to 1. Unit: hours.
+        SpotStrategy:"SpotAsPriceGo", //Set the bidding policy to SpotAsPriceGo, which specifies that the instances are created as spot instances for which the market price at the time of purchase is automatically used as the bid price.
+        SpotDuration:1 //Set the protection period of the spot instances to 1. Unit: hours.
         Use a launch template created by calling the [CreateLaunchTemplate](https://help.aliyun.com/document_detail/2679729.html) operation to create ECS instances in the China (Hangzhou) region. Examples:
         *Example: Create 10 ECS instances based on a launch template**\
         RegionId:"cn-hangzhou", //Set the region ID to cn-hangzhou, which specifies the China (Hangzhou) region.
@@ -54577,11 +54593,11 @@ class Client(OpenApiClient):
         Amount:10, //Set the number of ECS instances that you want to create to 10.
         InstanceChargeType:"PostPaid", //Set the billing method to PostPaid, which specifies the pay-as-you-go billing method.
         SpotStrategy:"NoSpot" //Set this parameter to NoSpot, which is the default value and specifies that the instances are created as pay-as-you-go instances.
-        *Example: Create 20 preemptible instances that use a specific bidding policy and a protection period**\
+        *Example: Create 20 spot instances that use a specific bidding policy and a protection period**\
         Amount:20, //Set the number of ECS instances that you want to create to 20.
         InstanceChargeType:"PostPaid",
-        SpotStrategy:"SpotAsPriceGo", //Set the bidding policy to SpotAsPriceGo, which specifies that the instances are created as preemptible instances for which the market price at the time of purchase is automatically used as the bid price.
-        SpotDuration:1 //Set the protection period of the preemptible instances to 1. Unit: hours.
+        SpotStrategy:"SpotAsPriceGo", //Set the bidding policy to SpotAsPriceGo, which specifies that the instances are created as spot instances for which the market price at the time of purchase is automatically used as the bid price.
+        SpotDuration:1 //Set the protection period of the spot instances to 1. Unit: hours.
         Use a launch template created by calling the [CreateLaunchTemplate](https://help.aliyun.com/document_detail/2679729.html) operation to create ECS instances in the China (Hangzhou) region. Examples:
         *Example: Create 10 ECS instances based on a launch template**\
         RegionId:"cn-hangzhou", //Set the region ID to cn-hangzhou, which specifies the China (Hangzhou) region.
@@ -54666,11 +54682,11 @@ class Client(OpenApiClient):
         Amount:10, //Set the number of ECS instances that you want to create to 10.
         InstanceChargeType:"PostPaid", //Set the billing method to PostPaid, which specifies the pay-as-you-go billing method.
         SpotStrategy:"NoSpot" //Set this parameter to NoSpot, which is the default value and specifies that the instances are created as pay-as-you-go instances.
-        *Example: Create 20 preemptible instances that use a specific bidding policy and a protection period**\
+        *Example: Create 20 spot instances that use a specific bidding policy and a protection period**\
         Amount:20, //Set the number of ECS instances that you want to create to 20.
         InstanceChargeType:"PostPaid",
-        SpotStrategy:"SpotAsPriceGo", //Set the bidding policy to SpotAsPriceGo, which specifies that the instances are created as preemptible instances for which the market price at the time of purchase is automatically used as the bid price.
-        SpotDuration:1 //Set the protection period of the preemptible instances to 1. Unit: hours.
+        SpotStrategy:"SpotAsPriceGo", //Set the bidding policy to SpotAsPriceGo, which specifies that the instances are created as spot instances for which the market price at the time of purchase is automatically used as the bid price.
+        SpotDuration:1 //Set the protection period of the spot instances to 1. Unit: hours.
         Use a launch template created by calling the [CreateLaunchTemplate](https://help.aliyun.com/document_detail/2679729.html) operation to create ECS instances in the China (Hangzhou) region. Examples:
         *Example: Create 10 ECS instances based on a launch template**\
         RegionId:"cn-hangzhou", //Set the region ID to cn-hangzhou, which specifies the China (Hangzhou) region.
@@ -55376,6 +55392,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.password_name):
+            query['PasswordName'] = request.password_name
         if not UtilClient.is_unset(request.port_number):
             query['PortNumber'] = request.port_number
         if not UtilClient.is_unset(request.region_id):
@@ -55447,6 +55465,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.password_name):
+            query['PasswordName'] = request.password_name
         if not UtilClient.is_unset(request.port_number):
             query['PortNumber'] = request.port_number
         if not UtilClient.is_unset(request.region_id):
@@ -55692,12 +55712,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.StopInstancesResponse:
         """
-        @summary Stops Elastic Compute Service (ECS) instances. You can specify parameters to determine whether to forcefully stop the instances, the stop mode, and the batch operation mode.
+        @summary Stops Elastic Compute Service (ECS) instances. You can specify parameters to determine whether to forcefully stop the instances and the stop mode.
         
-        @description This operation is an asynchronous operation. After you call this operation to stop ECS instances, the operation sets the status of the ECS instances to Stopping and begins the stop process. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the ECS instances. When the status of the ECS instances changes to `Stopped`, the instances are stopped.
-        ### [](#)Precautions
+        @description This operation is an asynchronous operation. After you call this operation to stop an ECS instance, the operation sets the status of the ECS instance to Stopping and begins the stop process. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the ECS instance. When the status of the ECS instance changes to `Stopped`, the instance is stopped.
+        ### [](#)Considerations
+        The instance is unavailable after you stop the instance. Make sure that stopping the instance does not affect your business. You can also call the [StartInstance](https://help.aliyun.com/document_detail/2679679.html) or [StartInstances](https://help.aliyun.com/document_detail/2679680.html) operation to start the instance.
         You cannot call this operation to stop ECS instances that are locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
-        After you enable the default economical mode for all pay-as-you-go ECS instances located in virtual private clouds (VPCs) in your account, you can set `StoppedMode` to KeepCharging for the pay-as-you-go ECS instances that you want to stop to enable standard mode. This way, the instances continue to be billed after they are stopped. The instance type resources and public IP addresses of the instances are retained.
         
         @param request: StopInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -55750,12 +55770,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.StopInstancesResponse:
         """
-        @summary Stops Elastic Compute Service (ECS) instances. You can specify parameters to determine whether to forcefully stop the instances, the stop mode, and the batch operation mode.
+        @summary Stops Elastic Compute Service (ECS) instances. You can specify parameters to determine whether to forcefully stop the instances and the stop mode.
         
-        @description This operation is an asynchronous operation. After you call this operation to stop ECS instances, the operation sets the status of the ECS instances to Stopping and begins the stop process. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the ECS instances. When the status of the ECS instances changes to `Stopped`, the instances are stopped.
-        ### [](#)Precautions
+        @description This operation is an asynchronous operation. After you call this operation to stop an ECS instance, the operation sets the status of the ECS instance to Stopping and begins the stop process. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the ECS instance. When the status of the ECS instance changes to `Stopped`, the instance is stopped.
+        ### [](#)Considerations
+        The instance is unavailable after you stop the instance. Make sure that stopping the instance does not affect your business. You can also call the [StartInstance](https://help.aliyun.com/document_detail/2679679.html) or [StartInstances](https://help.aliyun.com/document_detail/2679680.html) operation to start the instance.
         You cannot call this operation to stop ECS instances that are locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
-        After you enable the default economical mode for all pay-as-you-go ECS instances located in virtual private clouds (VPCs) in your account, you can set `StoppedMode` to KeepCharging for the pay-as-you-go ECS instances that you want to stop to enable standard mode. This way, the instances continue to be billed after they are stopped. The instance type resources and public IP addresses of the instances are retained.
         
         @param request: StopInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -55807,12 +55827,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.StopInstancesRequest,
     ) -> ecs_20140526_models.StopInstancesResponse:
         """
-        @summary Stops Elastic Compute Service (ECS) instances. You can specify parameters to determine whether to forcefully stop the instances, the stop mode, and the batch operation mode.
+        @summary Stops Elastic Compute Service (ECS) instances. You can specify parameters to determine whether to forcefully stop the instances and the stop mode.
         
-        @description This operation is an asynchronous operation. After you call this operation to stop ECS instances, the operation sets the status of the ECS instances to Stopping and begins the stop process. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the ECS instances. When the status of the ECS instances changes to `Stopped`, the instances are stopped.
-        ### [](#)Precautions
+        @description This operation is an asynchronous operation. After you call this operation to stop an ECS instance, the operation sets the status of the ECS instance to Stopping and begins the stop process. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the ECS instance. When the status of the ECS instance changes to `Stopped`, the instance is stopped.
+        ### [](#)Considerations
+        The instance is unavailable after you stop the instance. Make sure that stopping the instance does not affect your business. You can also call the [StartInstance](https://help.aliyun.com/document_detail/2679679.html) or [StartInstances](https://help.aliyun.com/document_detail/2679680.html) operation to start the instance.
         You cannot call this operation to stop ECS instances that are locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
-        After you enable the default economical mode for all pay-as-you-go ECS instances located in virtual private clouds (VPCs) in your account, you can set `StoppedMode` to KeepCharging for the pay-as-you-go ECS instances that you want to stop to enable standard mode. This way, the instances continue to be billed after they are stopped. The instance type resources and public IP addresses of the instances are retained.
         
         @param request: StopInstancesRequest
         @return: StopInstancesResponse
@@ -55825,12 +55845,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.StopInstancesRequest,
     ) -> ecs_20140526_models.StopInstancesResponse:
         """
-        @summary Stops Elastic Compute Service (ECS) instances. You can specify parameters to determine whether to forcefully stop the instances, the stop mode, and the batch operation mode.
+        @summary Stops Elastic Compute Service (ECS) instances. You can specify parameters to determine whether to forcefully stop the instances and the stop mode.
         
-        @description This operation is an asynchronous operation. After you call this operation to stop ECS instances, the operation sets the status of the ECS instances to Stopping and begins the stop process. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the ECS instances. When the status of the ECS instances changes to `Stopped`, the instances are stopped.
-        ### [](#)Precautions
+        @description This operation is an asynchronous operation. After you call this operation to stop an ECS instance, the operation sets the status of the ECS instance to Stopping and begins the stop process. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the ECS instance. When the status of the ECS instance changes to `Stopped`, the instance is stopped.
+        ### [](#)Considerations
+        The instance is unavailable after you stop the instance. Make sure that stopping the instance does not affect your business. You can also call the [StartInstance](https://help.aliyun.com/document_detail/2679679.html) or [StartInstances](https://help.aliyun.com/document_detail/2679680.html) operation to start the instance.
         You cannot call this operation to stop ECS instances that are locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
-        After you enable the default economical mode for all pay-as-you-go ECS instances located in virtual private clouds (VPCs) in your account, you can set `StoppedMode` to KeepCharging for the pay-as-you-go ECS instances that you want to stop to enable standard mode. This way, the instances continue to be billed after they are stopped. The instance type resources and public IP addresses of the instances are retained.
         
         @param request: StopInstancesRequest
         @return: StopInstancesResponse

@@ -1,3 +1,8 @@
+2025-06-12 Version: 7.0.9
+- Update API DescribeTerminalSessions: add response parameters Body.Sessions.$.Connections.$.FailedDetail.
+- Update API StartTerminalSession: add request parameters PasswordName.
+
+
 2025-05-29 Version: 7.0.8
 - Update API DescribeInstanceAttribute: add response parameters Body.NetworkOptions.
 
