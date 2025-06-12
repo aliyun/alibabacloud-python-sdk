@@ -41,6 +41,106 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def operate_app_instance_for_partner_with_options(
+        self,
+        request: website_build_20250429_models.OperateAppInstanceForPartnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.OperateAppInstanceForPartnerResponse:
+        """
+        @summary 合作伙伴操作应用
+        
+        @param request: OperateAppInstanceForPartnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OperateAppInstanceForPartnerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.extend):
+            query['Extend'] = request.extend
+        if not UtilClient.is_unset(request.operate_event):
+            query['OperateEvent'] = request.operate_event
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OperateAppInstanceForPartner',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.OperateAppInstanceForPartnerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def operate_app_instance_for_partner_with_options_async(
+        self,
+        request: website_build_20250429_models.OperateAppInstanceForPartnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.OperateAppInstanceForPartnerResponse:
+        """
+        @summary 合作伙伴操作应用
+        
+        @param request: OperateAppInstanceForPartnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OperateAppInstanceForPartnerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.extend):
+            query['Extend'] = request.extend
+        if not UtilClient.is_unset(request.operate_event):
+            query['OperateEvent'] = request.operate_event
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OperateAppInstanceForPartner',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.OperateAppInstanceForPartnerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def operate_app_instance_for_partner(
+        self,
+        request: website_build_20250429_models.OperateAppInstanceForPartnerRequest,
+    ) -> website_build_20250429_models.OperateAppInstanceForPartnerResponse:
+        """
+        @summary 合作伙伴操作应用
+        
+        @param request: OperateAppInstanceForPartnerRequest
+        @return: OperateAppInstanceForPartnerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.operate_app_instance_for_partner_with_options(request, runtime)
+
+    async def operate_app_instance_for_partner_async(
+        self,
+        request: website_build_20250429_models.OperateAppInstanceForPartnerRequest,
+    ) -> website_build_20250429_models.OperateAppInstanceForPartnerResponse:
+        """
+        @summary 合作伙伴操作应用
+        
+        @param request: OperateAppInstanceForPartnerRequest
+        @return: OperateAppInstanceForPartnerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.operate_app_instance_for_partner_with_options_async(request, runtime)
+
     def operate_app_service_for_partner_with_options(
         self,
         request: website_build_20250429_models.OperateAppServiceForPartnerRequest,
