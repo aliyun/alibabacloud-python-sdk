@@ -1,3 +1,9 @@
+2025-06-12 Version: 1.27.0
+- Support API ExportCustomSourceAnalysisTask.
+- Support API GetCustomSourceTopicAnalysisTask.
+- Support API SubmitCustomSourceTopicAnalysis.
+
+
 2025-06-09 Version: 1.26.5
 - Update API GetHotTopicBroadcast: add response parameters Body.Data.Data.$.PubTime.
 - Update API GetHotTopicBroadcast: add response parameters Body.Data.Data.$.Url.

@@ -2113,6 +2113,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.export_analysis_tag_detail_by_task_id_with_options_async(request, runtime)
 
+    def export_custom_source_analysis_task_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.ExportCustomSourceAnalysisTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ExportCustomSourceAnalysisTaskResponse:
+        """
+        @summary 导出-自定义数据源-选题视角分析任务结果
+        
+        @param request: ExportCustomSourceAnalysisTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportCustomSourceAnalysisTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportCustomSourceAnalysisTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ExportCustomSourceAnalysisTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_custom_source_analysis_task_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.ExportCustomSourceAnalysisTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ExportCustomSourceAnalysisTaskResponse:
+        """
+        @summary 导出-自定义数据源-选题视角分析任务结果
+        
+        @param request: ExportCustomSourceAnalysisTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportCustomSourceAnalysisTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportCustomSourceAnalysisTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ExportCustomSourceAnalysisTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_custom_source_analysis_task(
+        self,
+        request: ai_miao_bi_20230801_models.ExportCustomSourceAnalysisTaskRequest,
+    ) -> ai_miao_bi_20230801_models.ExportCustomSourceAnalysisTaskResponse:
+        """
+        @summary 导出-自定义数据源-选题视角分析任务结果
+        
+        @param request: ExportCustomSourceAnalysisTaskRequest
+        @return: ExportCustomSourceAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.export_custom_source_analysis_task_with_options(request, runtime)
+
+    async def export_custom_source_analysis_task_async(
+        self,
+        request: ai_miao_bi_20230801_models.ExportCustomSourceAnalysisTaskRequest,
+    ) -> ai_miao_bi_20230801_models.ExportCustomSourceAnalysisTaskResponse:
+        """
+        @summary 导出-自定义数据源-选题视角分析任务结果
+        
+        @param request: ExportCustomSourceAnalysisTaskRequest
+        @return: ExportCustomSourceAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.export_custom_source_analysis_task_with_options_async(request, runtime)
+
     def export_generated_content_with_options(
         self,
         request: ai_miao_bi_20230801_models.ExportGeneratedContentRequest,
@@ -3352,6 +3452,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_custom_hot_topic_broadcast_job_with_options_async(request, runtime)
+
+    def get_custom_source_topic_analysis_task_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetCustomSourceTopicAnalysisTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetCustomSourceTopicAnalysisTaskResponse:
+        """
+        @summary 获取自定义数据源-选题视角分析任务结果
+        
+        @param request: GetCustomSourceTopicAnalysisTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCustomSourceTopicAnalysisTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetCustomSourceTopicAnalysisTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetCustomSourceTopicAnalysisTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_custom_source_topic_analysis_task_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetCustomSourceTopicAnalysisTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetCustomSourceTopicAnalysisTaskResponse:
+        """
+        @summary 获取自定义数据源-选题视角分析任务结果
+        
+        @param request: GetCustomSourceTopicAnalysisTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCustomSourceTopicAnalysisTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetCustomSourceTopicAnalysisTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetCustomSourceTopicAnalysisTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_custom_source_topic_analysis_task(
+        self,
+        request: ai_miao_bi_20230801_models.GetCustomSourceTopicAnalysisTaskRequest,
+    ) -> ai_miao_bi_20230801_models.GetCustomSourceTopicAnalysisTaskResponse:
+        """
+        @summary 获取自定义数据源-选题视角分析任务结果
+        
+        @param request: GetCustomSourceTopicAnalysisTaskRequest
+        @return: GetCustomSourceTopicAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_custom_source_topic_analysis_task_with_options(request, runtime)
+
+    async def get_custom_source_topic_analysis_task_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetCustomSourceTopicAnalysisTaskRequest,
+    ) -> ai_miao_bi_20230801_models.GetCustomSourceTopicAnalysisTaskResponse:
+        """
+        @summary 获取自定义数据源-选题视角分析任务结果
+        
+        @param request: GetCustomSourceTopicAnalysisTaskRequest
+        @return: GetCustomSourceTopicAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_custom_source_topic_analysis_task_with_options_async(request, runtime)
 
     def get_custom_text_with_options(
         self,
@@ -14908,6 +15108,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.submit_custom_hot_topic_broadcast_job_with_options_async(request, runtime)
+
+    def submit_custom_source_topic_analysis_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.SubmitCustomSourceTopicAnalysisRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SubmitCustomSourceTopicAnalysisResponse:
+        """
+        @summary 从自定义数据源提交选题热点分析
+        
+        @param tmp_req: SubmitCustomSourceTopicAnalysisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitCustomSourceTopicAnalysisResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.SubmitCustomSourceTopicAnalysisShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.news):
+            request.news_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.news, 'News', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.file_type):
+            body['FileType'] = request.file_type
+        if not UtilClient.is_unset(request.file_url):
+            body['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.max_topic_size):
+            body['MaxTopicSize'] = request.max_topic_size
+        if not UtilClient.is_unset(request.news_shrink):
+            body['News'] = request.news_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitCustomSourceTopicAnalysis',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SubmitCustomSourceTopicAnalysisResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_custom_source_topic_analysis_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.SubmitCustomSourceTopicAnalysisRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SubmitCustomSourceTopicAnalysisResponse:
+        """
+        @summary 从自定义数据源提交选题热点分析
+        
+        @param tmp_req: SubmitCustomSourceTopicAnalysisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitCustomSourceTopicAnalysisResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.SubmitCustomSourceTopicAnalysisShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.news):
+            request.news_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.news, 'News', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.file_type):
+            body['FileType'] = request.file_type
+        if not UtilClient.is_unset(request.file_url):
+            body['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.max_topic_size):
+            body['MaxTopicSize'] = request.max_topic_size
+        if not UtilClient.is_unset(request.news_shrink):
+            body['News'] = request.news_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitCustomSourceTopicAnalysis',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SubmitCustomSourceTopicAnalysisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_custom_source_topic_analysis(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitCustomSourceTopicAnalysisRequest,
+    ) -> ai_miao_bi_20230801_models.SubmitCustomSourceTopicAnalysisResponse:
+        """
+        @summary 从自定义数据源提交选题热点分析
+        
+        @param request: SubmitCustomSourceTopicAnalysisRequest
+        @return: SubmitCustomSourceTopicAnalysisResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_custom_source_topic_analysis_with_options(request, runtime)
+
+    async def submit_custom_source_topic_analysis_async(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitCustomSourceTopicAnalysisRequest,
+    ) -> ai_miao_bi_20230801_models.SubmitCustomSourceTopicAnalysisResponse:
+        """
+        @summary 从自定义数据源提交选题热点分析
+        
+        @param request: SubmitCustomSourceTopicAnalysisRequest
+        @return: SubmitCustomSourceTopicAnalysisResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_custom_source_topic_analysis_with_options_async(request, runtime)
 
     def submit_custom_topic_selection_perspective_analysis_task_with_options(
         self,

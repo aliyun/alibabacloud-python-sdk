@@ -4210,6 +4210,139 @@ class ExportAnalysisTagDetailByTaskIdResponse(TeaModel):
         return self
 
 
+class ExportCustomSourceAnalysisTaskRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.task_id = task_id
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class ExportCustomSourceAnalysisTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ExportCustomSourceAnalysisTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExportCustomSourceAnalysisTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExportCustomSourceAnalysisTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ExportGeneratedContentRequest(TeaModel):
     def __init__(
         self,
@@ -6559,6 +6692,280 @@ class GetCustomHotTopicBroadcastJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetCustomHotTopicBroadcastJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetCustomSourceTopicAnalysisTaskRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.task_id = task_id
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResultsClusterNews(TeaModel):
+    def __init__(
+        self,
+        title: str = None,
+        url: str = None,
+    ):
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResults(TeaModel):
+    def __init__(
+        self,
+        cluster_news: List[GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResultsClusterNews] = None,
+        topic: str = None,
+    ):
+        self.cluster_news = cluster_news
+        self.topic = topic
+
+    def validate(self):
+        if self.cluster_news:
+            for k in self.cluster_news:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ClusterNews'] = []
+        if self.cluster_news is not None:
+            for k in self.cluster_news:
+                result['ClusterNews'].append(k.to_map() if k else None)
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cluster_news = []
+        if m.get('ClusterNews') is not None:
+            for k in m.get('ClusterNews'):
+                temp_model = GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResultsClusterNews()
+                self.cluster_news.append(temp_model.from_map(k))
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        return self
+
+
+class GetCustomSourceTopicAnalysisTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        cluster_count: int = None,
+        cluster_results: List[GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResults] = None,
+        error_message: str = None,
+        max_clustered_topic_news_size: int = None,
+        parsed_news_size: int = None,
+        status: str = None,
+    ):
+        self.cluster_count = cluster_count
+        self.cluster_results = cluster_results
+        self.error_message = error_message
+        self.max_clustered_topic_news_size = max_clustered_topic_news_size
+        self.parsed_news_size = parsed_news_size
+        self.status = status
+
+    def validate(self):
+        if self.cluster_results:
+            for k in self.cluster_results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_count is not None:
+            result['ClusterCount'] = self.cluster_count
+        result['ClusterResults'] = []
+        if self.cluster_results is not None:
+            for k in self.cluster_results:
+                result['ClusterResults'].append(k.to_map() if k else None)
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.max_clustered_topic_news_size is not None:
+            result['MaxClusteredTopicNewsSize'] = self.max_clustered_topic_news_size
+        if self.parsed_news_size is not None:
+            result['ParsedNewsSize'] = self.parsed_news_size
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterCount') is not None:
+            self.cluster_count = m.get('ClusterCount')
+        self.cluster_results = []
+        if m.get('ClusterResults') is not None:
+            for k in m.get('ClusterResults'):
+                temp_model = GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResults()
+                self.cluster_results.append(temp_model.from_map(k))
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('MaxClusteredTopicNewsSize') is not None:
+            self.max_clustered_topic_news_size = m.get('MaxClusteredTopicNewsSize')
+        if m.get('ParsedNewsSize') is not None:
+            self.parsed_news_size = m.get('ParsedNewsSize')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetCustomSourceTopicAnalysisTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetCustomSourceTopicAnalysisTaskResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetCustomSourceTopicAnalysisTaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetCustomSourceTopicAnalysisTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetCustomSourceTopicAnalysisTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetCustomSourceTopicAnalysisTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -45548,6 +45955,337 @@ class SubmitCustomHotTopicBroadcastJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SubmitCustomHotTopicBroadcastJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitCustomSourceTopicAnalysisRequestNewsComments(TeaModel):
+    def __init__(
+        self,
+        text: str = None,
+    ):
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class SubmitCustomSourceTopicAnalysisRequestNews(TeaModel):
+    def __init__(
+        self,
+        comments: List[SubmitCustomSourceTopicAnalysisRequestNewsComments] = None,
+        content: str = None,
+        pub_time: str = None,
+        title: str = None,
+        url: str = None,
+    ):
+        self.comments = comments
+        self.content = content
+        self.pub_time = pub_time
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        if self.comments:
+            for k in self.comments:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Comments'] = []
+        if self.comments is not None:
+            for k in self.comments:
+                result['Comments'].append(k.to_map() if k else None)
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.pub_time is not None:
+            result['PubTime'] = self.pub_time
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.comments = []
+        if m.get('Comments') is not None:
+            for k in m.get('Comments'):
+                temp_model = SubmitCustomSourceTopicAnalysisRequestNewsComments()
+                self.comments.append(temp_model.from_map(k))
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('PubTime') is not None:
+            self.pub_time = m.get('PubTime')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class SubmitCustomSourceTopicAnalysisRequest(TeaModel):
+    def __init__(
+        self,
+        file_type: str = None,
+        file_url: str = None,
+        max_topic_size: int = None,
+        news: List[SubmitCustomSourceTopicAnalysisRequestNews] = None,
+        workspace_id: str = None,
+    ):
+        self.file_type = file_type
+        self.file_url = file_url
+        self.max_topic_size = max_topic_size
+        self.news = news
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.news:
+            for k in self.news:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.max_topic_size is not None:
+            result['MaxTopicSize'] = self.max_topic_size
+        result['News'] = []
+        if self.news is not None:
+            for k in self.news:
+                result['News'].append(k.to_map() if k else None)
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('MaxTopicSize') is not None:
+            self.max_topic_size = m.get('MaxTopicSize')
+        self.news = []
+        if m.get('News') is not None:
+            for k in m.get('News'):
+                temp_model = SubmitCustomSourceTopicAnalysisRequestNews()
+                self.news.append(temp_model.from_map(k))
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class SubmitCustomSourceTopicAnalysisShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        file_type: str = None,
+        file_url: str = None,
+        max_topic_size: int = None,
+        news_shrink: str = None,
+        workspace_id: str = None,
+    ):
+        self.file_type = file_type
+        self.file_url = file_url
+        self.max_topic_size = max_topic_size
+        self.news_shrink = news_shrink
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.max_topic_size is not None:
+            result['MaxTopicSize'] = self.max_topic_size
+        if self.news_shrink is not None:
+            result['News'] = self.news_shrink
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('MaxTopicSize') is not None:
+            self.max_topic_size = m.get('MaxTopicSize')
+        if m.get('News') is not None:
+            self.news_shrink = m.get('News')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class SubmitCustomSourceTopicAnalysisResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+        task_name: str = None,
+    ):
+        self.task_id = task_id
+        self.task_name = task_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        return self
+
+
+class SubmitCustomSourceTopicAnalysisResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: SubmitCustomSourceTopicAnalysisResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = SubmitCustomSourceTopicAnalysisResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SubmitCustomSourceTopicAnalysisResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitCustomSourceTopicAnalysisResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitCustomSourceTopicAnalysisResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
