@@ -1,3 +1,10 @@
+2025-06-12 Version: 3.4.3
+- Update API GetApplicationGroup: add response parameters Body.ApplicationGroup.ErrorDetail.
+- Update API GetApplicationGroup: add response parameters Body.ApplicationGroup.ErrorType.
+- Update API ListApplicationGroups: add response parameters Body.ApplicationGroups.$.ErrorDetail.
+- Update API ListApplicationGroups: add response parameters Body.ApplicationGroups.$.ErrorType.
+
+
 2025-05-12 Version: 3.4.2
 - Generated python 2019-06-01 for oos.
 

@@ -6217,6 +6217,8 @@ class GetApplicationGroupResponseBodyApplicationGroup(TeaModel):
         deploy_parameters: str = None,
         deploy_region_id: str = None,
         description: str = None,
+        error_detail: str = None,
+        error_type: str = None,
         import_tag_key: str = None,
         import_tag_value: str = None,
         name: str = None,
@@ -6242,6 +6244,8 @@ class GetApplicationGroupResponseBodyApplicationGroup(TeaModel):
         self.deploy_region_id = deploy_region_id
         # The description of the application group.
         self.description = description
+        self.error_detail = error_detail
+        self.error_type = error_type
         # The tag key.
         self.import_tag_key = import_tag_key
         # The tag value.
@@ -6284,6 +6288,10 @@ class GetApplicationGroupResponseBodyApplicationGroup(TeaModel):
             result['DeployRegionId'] = self.deploy_region_id
         if self.description is not None:
             result['Description'] = self.description
+        if self.error_detail is not None:
+            result['ErrorDetail'] = self.error_detail
+        if self.error_type is not None:
+            result['ErrorType'] = self.error_type
         if self.import_tag_key is not None:
             result['ImportTagKey'] = self.import_tag_key
         if self.import_tag_value is not None:
@@ -6320,6 +6328,10 @@ class GetApplicationGroupResponseBodyApplicationGroup(TeaModel):
             self.deploy_region_id = m.get('DeployRegionId')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ErrorDetail') is not None:
+            self.error_detail = m.get('ErrorDetail')
+        if m.get('ErrorType') is not None:
+            self.error_type = m.get('ErrorType')
         if m.get('ImportTagKey') is not None:
             self.import_tag_key = m.get('ImportTagKey')
         if m.get('ImportTagValue') is not None:
@@ -9938,6 +9950,8 @@ class ListApplicationGroupsResponseBodyApplicationGroups(TeaModel):
         deploy_parameters: str = None,
         deploy_region_id: str = None,
         description: str = None,
+        error_detail: str = None,
+        error_type: str = None,
         import_tag_key: str = None,
         import_tag_value: str = None,
         name: str = None,
@@ -9957,6 +9971,8 @@ class ListApplicationGroupsResponseBodyApplicationGroups(TeaModel):
         self.deploy_region_id = deploy_region_id
         # The description of the application group.
         self.description = description
+        self.error_detail = error_detail
+        self.error_type = error_type
         # The tag key.
         self.import_tag_key = import_tag_key
         # The tag value.
@@ -9991,6 +10007,10 @@ class ListApplicationGroupsResponseBodyApplicationGroups(TeaModel):
             result['DeployRegionId'] = self.deploy_region_id
         if self.description is not None:
             result['Description'] = self.description
+        if self.error_detail is not None:
+            result['ErrorDetail'] = self.error_detail
+        if self.error_type is not None:
+            result['ErrorType'] = self.error_type
         if self.import_tag_key is not None:
             result['ImportTagKey'] = self.import_tag_key
         if self.import_tag_value is not None:
@@ -10019,6 +10039,10 @@ class ListApplicationGroupsResponseBodyApplicationGroups(TeaModel):
             self.deploy_region_id = m.get('DeployRegionId')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ErrorDetail') is not None:
+            self.error_detail = m.get('ErrorDetail')
+        if m.get('ErrorType') is not None:
+            self.error_type = m.get('ErrorType')
         if m.get('ImportTagKey') is not None:
             self.import_tag_key = m.get('ImportTagKey')
         if m.get('ImportTagValue') is not None:
