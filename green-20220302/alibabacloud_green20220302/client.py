@@ -93,16 +93,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.DescribeFileModerationResultResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.DescribeFileModerationResultResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.DescribeFileModerationResultResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_file_moderation_result_with_options_async(
         self,
@@ -136,16 +130,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.DescribeFileModerationResultResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.DescribeFileModerationResultResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.DescribeFileModerationResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_file_moderation_result(
         self,
@@ -206,16 +194,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.DescribeImageModerationResultResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.DescribeImageModerationResultResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.DescribeImageModerationResultResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_image_moderation_result_with_options_async(
         self,
@@ -250,16 +232,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.DescribeImageModerationResultResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.DescribeImageModerationResultResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.DescribeImageModerationResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_image_moderation_result(
         self,
@@ -325,16 +301,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.DescribeImageResultExtResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.DescribeImageResultExtResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.DescribeImageResultExtResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_image_result_ext_with_options_async(
         self,
@@ -368,16 +338,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.DescribeImageResultExtResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.DescribeImageResultExtResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.DescribeImageResultExtResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_image_result_ext(
         self,
@@ -428,16 +392,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.DescribeUploadTokenResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.DescribeUploadTokenResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.DescribeUploadTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_upload_token_with_options_async(
         self,
@@ -462,16 +420,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.DescribeUploadTokenResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.DescribeUploadTokenResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.DescribeUploadTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_upload_token(self) -> green_20220302_models.DescribeUploadTokenResponse:
         """
@@ -525,16 +477,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.DescribeUrlModerationResultResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.DescribeUrlModerationResultResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.DescribeUrlModerationResultResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_url_moderation_result_with_options_async(
         self,
@@ -570,16 +516,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.DescribeUrlModerationResultResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.DescribeUrlModerationResultResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.DescribeUrlModerationResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_url_moderation_result(
         self,
@@ -647,16 +587,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.FileModerationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.FileModerationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.FileModerationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def file_moderation_with_options_async(
         self,
@@ -690,16 +624,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.FileModerationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.FileModerationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.FileModerationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def file_moderation(
         self,
@@ -759,16 +687,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.ImageAsyncModerationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.ImageAsyncModerationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.ImageAsyncModerationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def image_async_moderation_with_options_async(
         self,
@@ -802,16 +724,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.ImageAsyncModerationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.ImageAsyncModerationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.ImageAsyncModerationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def image_async_moderation(
         self,
@@ -871,16 +787,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.ImageBatchModerationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.ImageBatchModerationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.ImageBatchModerationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def image_batch_moderation_with_options_async(
         self,
@@ -914,16 +824,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.ImageBatchModerationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.ImageBatchModerationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.ImageBatchModerationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def image_batch_moderation(
         self,
@@ -985,16 +889,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.ImageModerationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.ImageModerationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.ImageModerationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def image_moderation_with_options_async(
         self,
@@ -1030,16 +928,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.ImageModerationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.ImageModerationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.ImageModerationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def image_moderation(
         self,
@@ -1077,7 +969,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.ManualCallbackResponse:
         """
-        @summary 内容安全人审结果回调接口
+        @summary Content Security Manual Review Result Callback Interface
         
         @param request: ManualCallbackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1111,16 +1003,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.ManualCallbackResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.ManualCallbackResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.ManualCallbackResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def manual_callback_with_options_async(
         self,
@@ -1128,7 +1014,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.ManualCallbackResponse:
         """
-        @summary 内容安全人审结果回调接口
+        @summary Content Security Manual Review Result Callback Interface
         
         @param request: ManualCallbackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1162,23 +1048,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.ManualCallbackResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.ManualCallbackResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.ManualCallbackResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def manual_callback(
         self,
         request: green_20220302_models.ManualCallbackRequest,
     ) -> green_20220302_models.ManualCallbackResponse:
         """
-        @summary 内容安全人审结果回调接口
+        @summary Content Security Manual Review Result Callback Interface
         
         @param request: ManualCallbackRequest
         @return: ManualCallbackResponse
@@ -1191,7 +1071,7 @@ class Client(OpenApiClient):
         request: green_20220302_models.ManualCallbackRequest,
     ) -> green_20220302_models.ManualCallbackResponse:
         """
-        @summary 内容安全人审结果回调接口
+        @summary Content Security Manual Review Result Callback Interface
         
         @param request: ManualCallbackRequest
         @return: ManualCallbackResponse
@@ -1205,7 +1085,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.ManualModerationResponse:
         """
-        @summary 内容安全人审提交请求接口
+        @summary Content Security Manual Review Request Interface
         
         @param request: ManualModerationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1231,16 +1111,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.ManualModerationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.ManualModerationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.ManualModerationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def manual_moderation_with_options_async(
         self,
@@ -1248,7 +1122,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.ManualModerationResponse:
         """
-        @summary 内容安全人审提交请求接口
+        @summary Content Security Manual Review Request Interface
         
         @param request: ManualModerationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1274,23 +1148,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.ManualModerationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.ManualModerationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.ManualModerationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def manual_moderation(
         self,
         request: green_20220302_models.ManualModerationRequest,
     ) -> green_20220302_models.ManualModerationResponse:
         """
-        @summary 内容安全人审提交请求接口
+        @summary Content Security Manual Review Request Interface
         
         @param request: ManualModerationRequest
         @return: ManualModerationResponse
@@ -1303,7 +1171,7 @@ class Client(OpenApiClient):
         request: green_20220302_models.ManualModerationRequest,
     ) -> green_20220302_models.ManualModerationResponse:
         """
-        @summary 内容安全人审提交请求接口
+        @summary Content Security Manual Review Request Interface
         
         @param request: ManualModerationRequest
         @return: ManualModerationResponse
@@ -1317,7 +1185,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.ManualModerationResultResponse:
         """
-        @summary 获取人审结果
+        @summary Retrieve manual review results
         
         @param request: ManualModerationResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1341,16 +1209,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.ManualModerationResultResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.ManualModerationResultResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.ManualModerationResultResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def manual_moderation_result_with_options_async(
         self,
@@ -1358,7 +1220,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.ManualModerationResultResponse:
         """
-        @summary 获取人审结果
+        @summary Retrieve manual review results
         
         @param request: ManualModerationResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1382,23 +1244,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.ManualModerationResultResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.ManualModerationResultResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.ManualModerationResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def manual_moderation_result(
         self,
         request: green_20220302_models.ManualModerationResultRequest,
     ) -> green_20220302_models.ManualModerationResultResponse:
         """
-        @summary 获取人审结果
+        @summary Retrieve manual review results
         
         @param request: ManualModerationResultRequest
         @return: ManualModerationResultResponse
@@ -1411,7 +1267,7 @@ class Client(OpenApiClient):
         request: green_20220302_models.ManualModerationResultRequest,
     ) -> green_20220302_models.ManualModerationResultResponse:
         """
-        @summary 获取人审结果
+        @summary Retrieve manual review results
         
         @param request: ManualModerationResultRequest
         @return: ManualModerationResultResponse
@@ -1425,7 +1281,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.TextModerationResponse:
         """
-        @summary 文本审核
+        @summary Provides moderation services for multiple business scenarios and identifies various violation risks.
+        
+        @description Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/464388.html?#section-itm-m2s-ugq) of Text Moderation 2.0.
         
         @param request: TextModerationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1451,16 +1309,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.TextModerationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.TextModerationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.TextModerationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def text_moderation_with_options_async(
         self,
@@ -1468,7 +1320,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.TextModerationResponse:
         """
-        @summary 文本审核
+        @summary Provides moderation services for multiple business scenarios and identifies various violation risks.
+        
+        @description Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/464388.html?#section-itm-m2s-ugq) of Text Moderation 2.0.
         
         @param request: TextModerationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1494,23 +1348,19 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.TextModerationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.TextModerationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.TextModerationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def text_moderation(
         self,
         request: green_20220302_models.TextModerationRequest,
     ) -> green_20220302_models.TextModerationResponse:
         """
-        @summary 文本审核
+        @summary Provides moderation services for multiple business scenarios and identifies various violation risks.
+        
+        @description Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/464388.html?#section-itm-m2s-ugq) of Text Moderation 2.0.
         
         @param request: TextModerationRequest
         @return: TextModerationResponse
@@ -1523,7 +1373,9 @@ class Client(OpenApiClient):
         request: green_20220302_models.TextModerationRequest,
     ) -> green_20220302_models.TextModerationResponse:
         """
-        @summary 文本审核
+        @summary Provides moderation services for multiple business scenarios and identifies various violation risks.
+        
+        @description Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/464388.html?#section-itm-m2s-ugq) of Text Moderation 2.0.
         
         @param request: TextModerationRequest
         @return: TextModerationResponse
@@ -1565,16 +1417,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.TextModerationPlusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.TextModerationPlusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.TextModerationPlusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def text_moderation_plus_with_options_async(
         self,
@@ -1610,16 +1456,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.TextModerationPlusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.TextModerationPlusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.TextModerationPlusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def text_moderation_plus(
         self,
@@ -1683,16 +1523,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.UrlAsyncModerationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.UrlAsyncModerationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.UrlAsyncModerationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def url_async_moderation_with_options_async(
         self,
@@ -1726,16 +1560,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.UrlAsyncModerationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.UrlAsyncModerationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.UrlAsyncModerationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def url_async_moderation(
         self,
@@ -1795,16 +1623,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.VideoModerationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.VideoModerationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.VideoModerationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def video_moderation_with_options_async(
         self,
@@ -1838,16 +1660,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.VideoModerationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.VideoModerationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.VideoModerationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def video_moderation(
         self,
@@ -1907,16 +1723,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.VideoModerationCancelResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.VideoModerationCancelResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.VideoModerationCancelResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def video_moderation_cancel_with_options_async(
         self,
@@ -1950,16 +1760,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.VideoModerationCancelResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.VideoModerationCancelResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.VideoModerationCancelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def video_moderation_cancel(
         self,
@@ -1993,7 +1797,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.VideoModerationResultResponse:
         """
-        @summary Obtains the moderation results of a Video Moderation 2.0 task
+        @summary Get Video Detection Results
         
         @description This operation is free of charge. We recommend that you query moderation results at least 30 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for at most 24 hours. After 24 hours, the results are deleted.
         
@@ -2021,16 +1825,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.VideoModerationResultResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.VideoModerationResultResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.VideoModerationResultResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def video_moderation_result_with_options_async(
         self,
@@ -2038,7 +1836,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.VideoModerationResultResponse:
         """
-        @summary Obtains the moderation results of a Video Moderation 2.0 task
+        @summary Get Video Detection Results
         
         @description This operation is free of charge. We recommend that you query moderation results at least 30 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for at most 24 hours. After 24 hours, the results are deleted.
         
@@ -2066,23 +1864,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.VideoModerationResultResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.VideoModerationResultResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.VideoModerationResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def video_moderation_result(
         self,
         request: green_20220302_models.VideoModerationResultRequest,
     ) -> green_20220302_models.VideoModerationResultResponse:
         """
-        @summary Obtains the moderation results of a Video Moderation 2.0 task
+        @summary Get Video Detection Results
         
         @description This operation is free of charge. We recommend that you query moderation results at least 30 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for at most 24 hours. After 24 hours, the results are deleted.
         
@@ -2097,7 +1889,7 @@ class Client(OpenApiClient):
         request: green_20220302_models.VideoModerationResultRequest,
     ) -> green_20220302_models.VideoModerationResultResponse:
         """
-        @summary Obtains the moderation results of a Video Moderation 2.0 task
+        @summary Get Video Detection Results
         
         @description This operation is free of charge. We recommend that you query moderation results at least 30 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for at most 24 hours. After 24 hours, the results are deleted.
         
@@ -2139,16 +1931,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.VoiceModerationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.VoiceModerationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.VoiceModerationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def voice_moderation_with_options_async(
         self,
@@ -2182,16 +1968,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.VoiceModerationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.VoiceModerationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.VoiceModerationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def voice_moderation(
         self,
@@ -2251,16 +2031,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.VoiceModerationCancelResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.VoiceModerationCancelResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.VoiceModerationCancelResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def voice_moderation_cancel_with_options_async(
         self,
@@ -2294,16 +2068,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.VoiceModerationCancelResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.VoiceModerationCancelResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.VoiceModerationCancelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def voice_moderation_cancel(
         self,
@@ -2363,16 +2131,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.VoiceModerationResultResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.VoiceModerationResultResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.VoiceModerationResultResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def voice_moderation_result_with_options_async(
         self,
@@ -2406,16 +2168,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                green_20220302_models.VoiceModerationResultResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                green_20220302_models.VoiceModerationResultResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            green_20220302_models.VoiceModerationResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def voice_moderation_result(
         self,

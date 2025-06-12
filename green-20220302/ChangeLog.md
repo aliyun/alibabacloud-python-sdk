@@ -1,3 +1,13 @@
+2025-06-12 Version: 2.20.5
+- Update API DescribeImageModerationResult: add response parameters Body.Data.ManualTaskId.
+- Update API ImageBatchModeration: add response parameters Body.Data.ManualTaskId.
+- Update API ImageModeration: add response parameters Body.Data.ManualTaskId.
+- Update API TextModeration: add response parameters Body.Data.manualTaskId.
+- Update API TextModerationPlus: add response parameters Body.Data.ManualTaskId.
+- Update API VideoModerationResult: add response parameters Body.Data.ManualTaskId.
+- Update API VoiceModerationResult: add response parameters Body.Data.ManualTaskId.
+
+
 2025-03-19 Version: 2.20.4
 - Generated python 2022-03-02 for Green.
 

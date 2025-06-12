@@ -214,6 +214,7 @@ class DescribeFileModerationResultResponseBodyDataPageResultTextResult(TeaModel)
     ):
         # The description.
         self.description = description
+        # The description of the labels.
         self.descriptions = descriptions
         # The details of the labels.
         self.labels = labels
@@ -447,6 +448,7 @@ class DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabe
         label: str = None,
         label_sum: int = None,
     ):
+        # The description of the labels.
         self.description = description
         # The details of the labels.
         self.label = label
@@ -779,6 +781,7 @@ class DescribeImageModerationResultResponseBodyDataResult(TeaModel):
         self.description = description
         # The labels returned after the image moderation.
         self.label = label
+        # Risk Level
         self.risk_level = risk_level
 
     def validate(self):
@@ -819,6 +822,7 @@ class DescribeImageModerationResultResponseBodyData(TeaModel):
         data_id: str = None,
         frame: str = None,
         frame_num: int = None,
+        manual_task_id: str = None,
         req_id: str = None,
         result: List[DescribeImageModerationResultResponseBodyDataResult] = None,
         risk_level: str = None,
@@ -829,6 +833,7 @@ class DescribeImageModerationResultResponseBodyData(TeaModel):
         self.frame = frame
         # The number of frames.
         self.frame_num = frame_num
+        self.manual_task_id = manual_task_id
         # The reqId field returned by the Image Async Moderation API.
         self.req_id = req_id
         # The results of image moderation parameters such as the label parameter and the confidence parameter.
@@ -854,6 +859,8 @@ class DescribeImageModerationResultResponseBodyData(TeaModel):
             result['Frame'] = self.frame
         if self.frame_num is not None:
             result['FrameNum'] = self.frame_num
+        if self.manual_task_id is not None:
+            result['ManualTaskId'] = self.manual_task_id
         if self.req_id is not None:
             result['ReqId'] = self.req_id
         result['Result'] = []
@@ -872,6 +879,8 @@ class DescribeImageModerationResultResponseBodyData(TeaModel):
             self.frame = m.get('Frame')
         if m.get('FrameNum') is not None:
             self.frame_num = m.get('FrameNum')
+        if m.get('ManualTaskId') is not None:
+            self.manual_task_id = m.get('ManualTaskId')
         if m.get('ReqId') is not None:
             self.req_id = m.get('ReqId')
         self.result = []
@@ -2795,12 +2804,14 @@ class ImageBatchModerationResponseBodyData(TeaModel):
     def __init__(
         self,
         data_id: str = None,
+        manual_task_id: str = None,
         result: List[ImageBatchModerationResponseBodyDataResult] = None,
         results: List[ImageBatchModerationResponseBodyDataResults] = None,
         risk_level: str = None,
     ):
         # To detect the data ID corresponding to the object.
         self.data_id = data_id
+        self.manual_task_id = manual_task_id
         # The risk labels, confidence scores, and other parameters of image detection results, in an array structure.
         self.result = result
         # The risk labels, confidence scores, and other parameters for each service\\"s image detection, in an array structure.
@@ -2826,6 +2837,8 @@ class ImageBatchModerationResponseBodyData(TeaModel):
         result = dict()
         if self.data_id is not None:
             result['DataId'] = self.data_id
+        if self.manual_task_id is not None:
+            result['ManualTaskId'] = self.manual_task_id
         result['Result'] = []
         if self.result is not None:
             for k in self.result:
@@ -2842,6 +2855,8 @@ class ImageBatchModerationResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('DataId') is not None:
             self.data_id = m.get('DataId')
+        if m.get('ManualTaskId') is not None:
+            self.manual_task_id = m.get('ManualTaskId')
         self.result = []
         if m.get('Result') is not None:
             for k in m.get('Result'):
@@ -4239,6 +4254,7 @@ class ImageModerationResponseBodyDataResult(TeaModel):
         self.description = description
         # The labels returned after the image moderation. Multiple risk labels and the corresponding scores of confidence levels may be returned for an image.
         self.label = label
+        # Risk Level
         self.risk_level = risk_level
 
     def validate(self):
@@ -4278,6 +4294,7 @@ class ImageModerationResponseBodyData(TeaModel):
         self,
         data_id: str = None,
         ext: ImageModerationResponseBodyDataExt = None,
+        manual_task_id: str = None,
         result: List[ImageModerationResponseBodyDataResult] = None,
         risk_level: str = None,
     ):
@@ -4287,6 +4304,7 @@ class ImageModerationResponseBodyData(TeaModel):
         self.data_id = data_id
         # Auxiliary reference information.
         self.ext = ext
+        self.manual_task_id = manual_task_id
         # The results of image moderation parameters such as the label parameter and the confidence parameter, which are an array structure.
         self.result = result
         # Risk Level.
@@ -4310,6 +4328,8 @@ class ImageModerationResponseBodyData(TeaModel):
             result['DataId'] = self.data_id
         if self.ext is not None:
             result['Ext'] = self.ext.to_map()
+        if self.manual_task_id is not None:
+            result['ManualTaskId'] = self.manual_task_id
         result['Result'] = []
         if self.result is not None:
             for k in self.result:
@@ -4325,6 +4345,8 @@ class ImageModerationResponseBodyData(TeaModel):
         if m.get('Ext') is not None:
             temp_model = ImageModerationResponseBodyDataExt()
             self.ext = temp_model.from_map(m['Ext'])
+        if m.get('ManualTaskId') is not None:
+            self.manual_task_id = m.get('ManualTaskId')
         self.result = []
         if m.get('Result') is not None:
             for k in m.get('Result'):
@@ -4437,11 +4459,17 @@ class ManualCallbackRequest(TeaModel):
         msg: str = None,
         req_id: str = None,
     ):
+        # Channel field
         self.channel = channel
+        # Checksum.
         self.checksum = checksum
+        # Code value
         self.code = code
+        # Returned data.
         self.data = data
+        # Message information
         self.msg = msg
+        # Platform request ID, used for troubleshooting assistance
         self.req_id = req_id
 
     def validate(self):
@@ -4491,9 +4519,11 @@ class ManualCallbackResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Error code
         self.code = code
+        # Message information
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -4571,7 +4601,11 @@ class ManualModerationRequest(TeaModel):
         service: str = None,
         service_parameters: str = None,
     ):
+        # Service.
         self.service = service
+        # Parameter set required for the review service, in JSON string format.
+        # - url: The URL of the object to be checked. Please ensure that this URL is publicly accessible.
+        # - dataId: Optional, the data ID corresponding to the object being checked.
         self.service_parameters = service_parameters
 
     def validate(self):
@@ -4604,7 +4638,9 @@ class ManualModerationResponseBodyData(TeaModel):
         data_id: str = None,
         task_id: str = None,
     ):
+        # The value of dataId passed during the API request. This field will not be present if it was not provided during the request.
         self.data_id = data_id
+        # Task ID
         self.task_id = task_id
 
     def validate(self):
@@ -4639,10 +4675,13 @@ class ManualModerationResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Status code
         self.code = code
+        # Returned data.
         self.data = data
+        # Error message
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -4725,6 +4764,8 @@ class ManualModerationResultRequest(TeaModel):
         self,
         service_parameters: str = None,
     ):
+        # Set of parameters required by the service, in JSON string format.
+        # - TaskId: The task ID returned when the task was submitted.
         self.service_parameters = service_parameters
 
     def validate(self):
@@ -4753,7 +4794,9 @@ class ManualModerationResultResponseBodyDataResult(TeaModel):
         description: str = None,
         label: str = None,
     ):
+        # Label description
         self.description = description
+        # Risk label
         self.label = label
 
     def validate(self):
@@ -4788,9 +4831,19 @@ class ManualModerationResultResponseBodyData(TeaModel):
         risk_level: str = None,
         task_id: str = None,
     ):
+        # The value of dataId passed during the API request. This field will not be present if it was not provided during the request.
         self.data_id = data_id
+        # Detailed label results.
         self.result = result
+        # Risk level, returned based on the set high and low risk scores. Possible values include:
+        # 
+        # - high: High risk
+        #  
+        # - low: Low risk
+        # 
+        #  - none: No risk detected
         self.risk_level = risk_level
+        # Task ID
         self.task_id = task_id
 
     def validate(self):
@@ -4841,10 +4894,13 @@ class ManualModerationResultResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Error code.
         self.code = code
+        # Returned data.
         self.data = data
+        # Error message
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -4928,7 +4984,17 @@ class TextModerationRequest(TeaModel):
         service: str = None,
         service_parameters: str = None,
     ):
-        # The type of the moderation service.
+        # The type of the moderation service. Valid values: nickname_detection: user nickname chat_detection: chat interactions comment_detection: dynamic comments pgc_detection: professionally-generated content (PGC) teaching materials
+        # 
+        # Valid values:
+        # 
+        # *   pgc_detection: moderation of PGC teaching materials
+        # *   nickname_detection: user nickname moderation
+        # *   comment_multilingual_pro: multi-language moderation in international business scenarios
+        # *   chat_detection: moderation of interactive content of private chats
+        # *   ad_compliance_detection: advertising law compliance identification
+        # *   comment_detection: moderation of comment content of public chats
+        # *   ai_art_detection: AI-generated text identfication
         self.service = service
         # The parameters required by the moderation service. The value is a JSON string.
         self.service_parameters = service_parameters
@@ -4965,17 +5031,21 @@ class TextModerationResponseBodyData(TeaModel):
         descriptions: str = None,
         device_id: str = None,
         labels: str = None,
+        manual_task_id: str = None,
         reason: str = None,
     ):
         # The ID of the Alibaba Cloud account.
         self.account_id = account_id
+        # The ID of the moderated object.
         self.data_id = data_id
+        # The description of the labels.
         self.descriptions = descriptions
         # The device ID.
         self.device_id = device_id
-        # Labels.
+        # The labels. Multiple labels are separated by commas (,). Valid values: ad: ad violation profanity: abuse contraband: contraband sexual_content: pornography violence: violence nonsense: irrigation spam: spam negative_content: undesirable content cyberbullying: cyberbullying C_customized: custom library that is hit
         self.labels = labels
-        # The JSON string used to locate the cause.
+        self.manual_task_id = manual_task_id
+        # The JSON string used to locate the cause. Valid values: riskTips: subcategory label riskWords: risk words adNums: hit advertising number customizedWords: customized words customizedLibs: customized libraries
         self.reason = reason
 
     def validate(self):
@@ -4997,6 +5067,8 @@ class TextModerationResponseBodyData(TeaModel):
             result['deviceId'] = self.device_id
         if self.labels is not None:
             result['labels'] = self.labels
+        if self.manual_task_id is not None:
+            result['manualTaskId'] = self.manual_task_id
         if self.reason is not None:
             result['reason'] = self.reason
         return result
@@ -5013,6 +5085,8 @@ class TextModerationResponseBodyData(TeaModel):
             self.device_id = m.get('deviceId')
         if m.get('labels') is not None:
             self.labels = m.get('labels')
+        if m.get('manualTaskId') is not None:
+            self.manual_task_id = m.get('manualTaskId')
         if m.get('reason') is not None:
             self.reason = m.get('reason')
         return self
@@ -5399,6 +5473,7 @@ class TextModerationPlusResponseBodyData(TeaModel):
         attack_level: str = None,
         attack_result: List[TextModerationPlusResponseBodyDataAttackResult] = None,
         data_id: str = None,
+        manual_task_id: str = None,
         result: List[TextModerationPlusResponseBodyDataResult] = None,
         risk_level: str = None,
         score: float = None,
@@ -5413,6 +5488,7 @@ class TextModerationPlusResponseBodyData(TeaModel):
         self.attack_result = attack_result
         # The id of data
         self.data_id = data_id
+        self.manual_task_id = manual_task_id
         # The results.
         self.result = result
         # Risk Level
@@ -5460,6 +5536,8 @@ class TextModerationPlusResponseBodyData(TeaModel):
                 result['AttackResult'].append(k.to_map() if k else None)
         if self.data_id is not None:
             result['DataId'] = self.data_id
+        if self.manual_task_id is not None:
+            result['ManualTaskId'] = self.manual_task_id
         result['Result'] = []
         if self.result is not None:
             for k in self.result:
@@ -5492,6 +5570,8 @@ class TextModerationPlusResponseBodyData(TeaModel):
                 self.attack_result.append(temp_model.from_map(k))
         if m.get('DataId') is not None:
             self.data_id = m.get('DataId')
+        if m.get('ManualTaskId') is not None:
+            self.manual_task_id = m.get('ManualTaskId')
         self.result = []
         if m.get('Result') is not None:
             for k in m.get('Result'):
@@ -6094,6 +6174,7 @@ class VideoModerationResultResponseBodyDataAudioResultAudioSummarys(TeaModel):
         label: str = None,
         label_sum: int = None,
     ):
+        # The description of the labels.
         self.description = description
         # The voice label.
         self.label = label
@@ -6145,6 +6226,7 @@ class VideoModerationResultResponseBodyDataAudioResultSliceDetails(TeaModel):
         text: str = None,
         url: str = None,
     ):
+        # The description of the labels.
         self.descriptions = descriptions
         # The end time of the text after voice-to-text conversion. Unit: seconds.
         self.end_time = end_time
@@ -6383,9 +6465,13 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLocat
         x: int = None,
         y: int = None,
     ):
+        # The height of the text area. Unit: pixels.
         self.h = h
+        # The width of the text area. Unit: pixels.
         self.w = w
+        # The distance from the top-left corner of the text area to the y-axis, with the top-left corner of the image as the origin. Unit: pixels.
         self.x = x
+        # The distance from the top-left corner of the text area to the x-axis, with the top-left corner of the image as the origin. Unit: pixels.
         self.y = y
 
     def validate(self):
@@ -6427,8 +6513,11 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLogo(
         label: str = None,
         name: str = None,
     ):
+        # Confidence score, ranging from 0 to 100, with two decimal places.
         self.confidence = confidence
+        # label
         self.label = label
+        # Logo name.
         self.name = name
 
     def validate(self):
@@ -6465,7 +6554,9 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoData(TeaM
         location: VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLocation = None,
         logo: List[VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLogo] = None,
     ):
+        # The location of the logo.
         self.location = location
+        # Logo information.
         self.logo = logo
 
     def validate(self):
@@ -6585,6 +6676,7 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResults(TeaModel):
     ):
         # If a custom image library is hit, information about the custom image library is returned.
         self.custom_image = custom_image
+        # Returns logo information when the video contains a logo.
         self.logo_data = logo_data
         # If the video contains a specific figure, the code of the identified figure is returned.
         self.public_figure = public_figure
@@ -6807,6 +6899,7 @@ class VideoModerationResultResponseBodyData(TeaModel):
         data_id: str = None,
         frame_result: VideoModerationResultResponseBodyDataFrameResult = None,
         live_id: str = None,
+        manual_task_id: str = None,
         risk_level: str = None,
         task_id: str = None,
     ):
@@ -6818,6 +6911,7 @@ class VideoModerationResultResponseBodyData(TeaModel):
         self.frame_result = frame_result
         # The unique ID of the live stream.
         self.live_id = live_id
+        self.manual_task_id = manual_task_id
         # Risk Level.
         self.risk_level = risk_level
         # The task ID.
@@ -6843,6 +6937,8 @@ class VideoModerationResultResponseBodyData(TeaModel):
             result['FrameResult'] = self.frame_result.to_map()
         if self.live_id is not None:
             result['LiveId'] = self.live_id
+        if self.manual_task_id is not None:
+            result['ManualTaskId'] = self.manual_task_id
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
         if self.task_id is not None:
@@ -6861,6 +6957,8 @@ class VideoModerationResultResponseBodyData(TeaModel):
             self.frame_result = temp_model.from_map(m['FrameResult'])
         if m.get('LiveId') is not None:
             self.live_id = m.get('LiveId')
+        if m.get('ManualTaskId') is not None:
+            self.manual_task_id = m.get('ManualTaskId')
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
         if m.get('TaskId') is not None:
@@ -7295,6 +7393,7 @@ class VoiceModerationResultResponseBodyDataSliceDetails(TeaModel):
         text: str = None,
         url: str = None,
     ):
+        # The description of the labels.
         self.descriptions = descriptions
         # The end time of the audio segment in seconds.
         self.end_time = end_time
@@ -7400,6 +7499,7 @@ class VoiceModerationResultResponseBodyData(TeaModel):
         self,
         data_id: str = None,
         live_id: str = None,
+        manual_task_id: str = None,
         risk_level: str = None,
         slice_details: List[VoiceModerationResultResponseBodyDataSliceDetails] = None,
         task_id: str = None,
@@ -7409,6 +7509,7 @@ class VoiceModerationResultResponseBodyData(TeaModel):
         self.data_id = data_id
         # The unique ID of the live stream.
         self.live_id = live_id
+        self.manual_task_id = manual_task_id
         # Risk Level.
         self.risk_level = risk_level
         # The moderation results of audio segments.
@@ -7434,6 +7535,8 @@ class VoiceModerationResultResponseBodyData(TeaModel):
             result['DataId'] = self.data_id
         if self.live_id is not None:
             result['LiveId'] = self.live_id
+        if self.manual_task_id is not None:
+            result['ManualTaskId'] = self.manual_task_id
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
         result['SliceDetails'] = []
@@ -7452,6 +7555,8 @@ class VoiceModerationResultResponseBodyData(TeaModel):
             self.data_id = m.get('DataId')
         if m.get('LiveId') is not None:
             self.live_id = m.get('LiveId')
+        if m.get('ManualTaskId') is not None:
+            self.manual_task_id = m.get('ManualTaskId')
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
         self.slice_details = []
