@@ -1,3 +1,7 @@
+2025-06-12 Version: 7.0.1
+- Update API ListApplication: add request parameters ShowHide.
+
+
 2025-02-28 Version: 7.0.0
 - Update API GetApplication: update response param.
 - Update API ValuateTemplate: update param Variables.

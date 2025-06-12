@@ -3935,6 +3935,7 @@ class ListApplicationRequest(TeaModel):
         order_type: int = None,
         resource_group_id: str = None,
         resource_id: str = None,
+        show_hide: bool = None,
         status: str = None,
         template_id: str = None,
     ):
@@ -3954,6 +3955,7 @@ class ListApplicationRequest(TeaModel):
         self.resource_group_id = resource_group_id
         # Resource Id
         self.resource_id = resource_id
+        self.show_hide = show_hide
         # The status of the applications to be returned.
         self.status = status
         # Template Id
@@ -3980,6 +3982,8 @@ class ListApplicationRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
+        if self.show_hide is not None:
+            result['ShowHide'] = self.show_hide
         if self.status is not None:
             result['Status'] = self.status
         if self.template_id is not None:
@@ -4000,6 +4004,8 @@ class ListApplicationRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
+        if m.get('ShowHide') is not None:
+            self.show_hide = m.get('ShowHide')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('TemplateId') is not None:
