@@ -12280,6 +12280,7 @@ class DescribeScriptResponseBodyScript(TeaModel):
         industry: str = None,
         is_debug_drafted: bool = None,
         is_drafted: bool = None,
+        label_config: str = None,
         long_wait_enable: bool = None,
         mini_playback_enable: bool = None,
         new_barge_in_enable: bool = None,
@@ -12304,6 +12305,7 @@ class DescribeScriptResponseBodyScript(TeaModel):
         self.industry = industry
         self.is_debug_drafted = is_debug_drafted
         self.is_drafted = is_drafted
+        self.label_config = label_config
         self.long_wait_enable = long_wait_enable
         self.mini_playback_enable = mini_playback_enable
         self.new_barge_in_enable = new_barge_in_enable
@@ -12349,6 +12351,8 @@ class DescribeScriptResponseBodyScript(TeaModel):
             result['IsDebugDrafted'] = self.is_debug_drafted
         if self.is_drafted is not None:
             result['IsDrafted'] = self.is_drafted
+        if self.label_config is not None:
+            result['LabelConfig'] = self.label_config
         if self.long_wait_enable is not None:
             result['LongWaitEnable'] = self.long_wait_enable
         if self.mini_playback_enable is not None:
@@ -12399,6 +12403,8 @@ class DescribeScriptResponseBodyScript(TeaModel):
             self.is_debug_drafted = m.get('IsDebugDrafted')
         if m.get('IsDrafted') is not None:
             self.is_drafted = m.get('IsDrafted')
+        if m.get('LabelConfig') is not None:
+            self.label_config = m.get('LabelConfig')
         if m.get('LongWaitEnable') is not None:
             self.long_wait_enable = m.get('LongWaitEnable')
         if m.get('MiniPlaybackEnable') is not None:
@@ -32198,6 +32204,7 @@ class ModifyScriptRequest(TeaModel):
         emotion_enable: bool = None,
         industry: str = None,
         instance_id: str = None,
+        label_config: str = None,
         long_wait_enable: bool = None,
         mini_playback_config_list_json_string: str = None,
         mini_playback_enable: bool = None,
@@ -32224,6 +32231,7 @@ class ModifyScriptRequest(TeaModel):
         self.industry = industry
         # This parameter is required.
         self.instance_id = instance_id
+        self.label_config = label_config
         self.long_wait_enable = long_wait_enable
         self.mini_playback_config_list_json_string = mini_playback_config_list_json_string
         self.mini_playback_enable = mini_playback_enable
@@ -32269,6 +32277,8 @@ class ModifyScriptRequest(TeaModel):
             result['Industry'] = self.industry
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.label_config is not None:
+            result['LabelConfig'] = self.label_config
         if self.long_wait_enable is not None:
             result['LongWaitEnable'] = self.long_wait_enable
         if self.mini_playback_config_list_json_string is not None:
@@ -32319,6 +32329,8 @@ class ModifyScriptRequest(TeaModel):
             self.industry = m.get('Industry')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('LabelConfig') is not None:
+            self.label_config = m.get('LabelConfig')
         if m.get('LongWaitEnable') is not None:
             self.long_wait_enable = m.get('LongWaitEnable')
         if m.get('MiniPlaybackConfigListJsonString') is not None:

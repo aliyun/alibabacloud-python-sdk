@@ -7723,6 +7723,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.GetBaseStrategyPeriodResponse:
         """
+        @summary 获取系统策略配置
+        
         @param request: GetBaseStrategyPeriodRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetBaseStrategyPeriodResponse
@@ -7758,6 +7760,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.GetBaseStrategyPeriodResponse:
         """
+        @summary 获取系统策略配置
+        
         @param request: GetBaseStrategyPeriodRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetBaseStrategyPeriodResponse
@@ -7792,6 +7796,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.GetBaseStrategyPeriodRequest,
     ) -> outbound_bot_20191226_models.GetBaseStrategyPeriodResponse:
         """
+        @summary 获取系统策略配置
+        
         @param request: GetBaseStrategyPeriodRequest
         @return: GetBaseStrategyPeriodResponse
         """
@@ -7803,6 +7809,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.GetBaseStrategyPeriodRequest,
     ) -> outbound_bot_20191226_models.GetBaseStrategyPeriodResponse:
         """
+        @summary 获取系统策略配置
+        
         @param request: GetBaseStrategyPeriodRequest
         @return: GetBaseStrategyPeriodResponse
         """
@@ -7881,6 +7889,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.GetContactBlockListResponse:
         """
+        @summary GetContactBlockList
+        
         @param request: GetContactBlockListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetContactBlockListResponse
@@ -7920,6 +7930,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.GetContactBlockListResponse:
         """
+        @summary GetContactBlockList
+        
         @param request: GetContactBlockListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetContactBlockListResponse
@@ -7958,6 +7970,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.GetContactBlockListRequest,
     ) -> outbound_bot_20191226_models.GetContactBlockListResponse:
         """
+        @summary GetContactBlockList
+        
         @param request: GetContactBlockListRequest
         @return: GetContactBlockListResponse
         """
@@ -7969,6 +7983,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.GetContactBlockListRequest,
     ) -> outbound_bot_20191226_models.GetContactBlockListResponse:
         """
+        @summary GetContactBlockList
+        
         @param request: GetContactBlockListRequest
         @return: GetContactBlockListResponse
         """
@@ -7981,6 +7997,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.GetContactWhiteListResponse:
         """
+        @summary GetContactWhiteList
+        
         @param request: GetContactWhiteListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetContactWhiteListResponse
@@ -8020,6 +8038,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.GetContactWhiteListResponse:
         """
+        @summary GetContactWhiteList
+        
         @param request: GetContactWhiteListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetContactWhiteListResponse
@@ -8058,6 +8078,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.GetContactWhiteListRequest,
     ) -> outbound_bot_20191226_models.GetContactWhiteListResponse:
         """
+        @summary GetContactWhiteList
+        
         @param request: GetContactWhiteListRequest
         @return: GetContactWhiteListResponse
         """
@@ -8069,6 +8091,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.GetContactWhiteListRequest,
     ) -> outbound_bot_20191226_models.GetContactWhiteListResponse:
         """
+        @summary GetContactWhiteList
+        
         @param request: GetContactWhiteListRequest
         @return: GetContactWhiteListResponse
         """
@@ -8353,6 +8377,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.GetJobDataUploadParamsResponse:
         """
+        @summary 获取上传信息
+        
         @param request: GetJobDataUploadParamsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetJobDataUploadParamsResponse
@@ -8394,6 +8420,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.GetJobDataUploadParamsResponse:
         """
+        @summary 获取上传信息
+        
         @param request: GetJobDataUploadParamsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetJobDataUploadParamsResponse
@@ -8434,6 +8462,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.GetJobDataUploadParamsRequest,
     ) -> outbound_bot_20191226_models.GetJobDataUploadParamsResponse:
         """
+        @summary 获取上传信息
+        
         @param request: GetJobDataUploadParamsRequest
         @return: GetJobDataUploadParamsResponse
         """
@@ -8445,6 +8475,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.GetJobDataUploadParamsRequest,
     ) -> outbound_bot_20191226_models.GetJobDataUploadParamsResponse:
         """
+        @summary 获取上传信息
+        
         @param request: GetJobDataUploadParamsRequest
         @return: GetJobDataUploadParamsResponse
         """
@@ -13603,6 +13635,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.ModifyScriptResponse:
         """
+        @summary 修改场景
+        
         @param request: ModifyScriptRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyScriptResponse
@@ -13627,6 +13661,8 @@ class Client(OpenApiClient):
             query['Industry'] = request.industry
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.label_config):
+            query['LabelConfig'] = request.label_config
         if not UtilClient.is_unset(request.long_wait_enable):
             query['LongWaitEnable'] = request.long_wait_enable
         if not UtilClient.is_unset(request.mini_playback_config_list_json_string):
@@ -13680,6 +13716,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.ModifyScriptResponse:
         """
+        @summary 修改场景
+        
         @param request: ModifyScriptRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyScriptResponse
@@ -13704,6 +13742,8 @@ class Client(OpenApiClient):
             query['Industry'] = request.industry
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.label_config):
+            query['LabelConfig'] = request.label_config
         if not UtilClient.is_unset(request.long_wait_enable):
             query['LongWaitEnable'] = request.long_wait_enable
         if not UtilClient.is_unset(request.mini_playback_config_list_json_string):
@@ -13756,6 +13796,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.ModifyScriptRequest,
     ) -> outbound_bot_20191226_models.ModifyScriptResponse:
         """
+        @summary 修改场景
+        
         @param request: ModifyScriptRequest
         @return: ModifyScriptResponse
         """
@@ -13767,6 +13809,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.ModifyScriptRequest,
     ) -> outbound_bot_20191226_models.ModifyScriptResponse:
         """
+        @summary 修改场景
+        
         @param request: ModifyScriptRequest
         @return: ModifyScriptResponse
         """

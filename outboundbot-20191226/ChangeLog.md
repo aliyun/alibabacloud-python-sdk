@@ -1,3 +1,8 @@
+2025-06-12 Version: 1.2.1
+- Update API DescribeScript: add response parameters Body.Script.LabelConfig.
+- Update API ModifyScript: add request parameters LabelConfig.
+
+
 2025-04-25 Version: 1.2.0
 - Support API CreateBeebotIntent.
 - Support API CreateBeebotIntentLgf.
