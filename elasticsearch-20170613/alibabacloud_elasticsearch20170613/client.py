@@ -7742,8 +7742,12 @@ class Client(OpenApiClient):
         @return: InstallUserPluginsResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.force):
+            query['force'] = request.force
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=request.body
         )
         params = open_api_models.Params(
@@ -7778,8 +7782,12 @@ class Client(OpenApiClient):
         @return: InstallUserPluginsResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.force):
+            query['force'] = request.force
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=request.body
         )
         params = open_api_models.Params(
@@ -10720,6 +10728,8 @@ class Client(OpenApiClient):
             query['resourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.size):
             query['size'] = request.size
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
         if not UtilClient.is_unset(request.tags):
             query['tags'] = request.tags
         if not UtilClient.is_unset(request.vpc_id):
@@ -10778,6 +10788,8 @@ class Client(OpenApiClient):
             query['resourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.size):
             query['size'] = request.size
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
         if not UtilClient.is_unset(request.tags):
             query['tags'] = request.tags
         if not UtilClient.is_unset(request.vpc_id):
@@ -18974,6 +18986,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.force):
+            query['force'] = request.force
         if not UtilClient.is_unset(request.update_strategy):
             query['updateStrategy'] = request.update_strategy
         req = open_api_models.OpenApiRequest(
@@ -19019,6 +19033,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.force):
+            query['force'] = request.force
         if not UtilClient.is_unset(request.update_strategy):
             query['updateStrategy'] = request.update_strategy
         req = open_api_models.OpenApiRequest(
