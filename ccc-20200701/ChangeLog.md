@@ -1,3 +1,12 @@
+2025-06-12 Version: 2.29.5
+- Update API GetCallDetailRecord: add response parameters Body.Data.OutsideNumberReleaseReason.
+- Update API ListCallDetailRecordsV2: add response parameters Body.Data.List.$.OutsideNumberReleaseReason.
+- Update API ListCallDetailRecordsV2: add response parameters Body.Data.List.$.SummaryIndex.
+- Update API ListOutboundNumbersOfUser: add response parameters Body.Data.List.$.Provider.
+- Update API ListOutboundNumbersOfUser: add response parameters Body.Data.List.$.ProviderCode.
+- Update API ListOutboundNumbersOfUser: add response parameters Body.Data.List.$.ProviderDisplayName.
+
+
 2024-10-11 Version: 2.29.4
 - Update API GetCallDetailRecord: update response param.
 - Update API ListCallDetailRecordsV2: add param AnalyticsReportReady.
