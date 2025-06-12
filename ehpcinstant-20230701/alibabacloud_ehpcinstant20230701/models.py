@@ -397,11 +397,15 @@ class CreateJobRequestDeploymentPolicy(TeaModel):
         allocation_spec: str = None,
         level: str = None,
         network: CreateJobRequestDeploymentPolicyNetwork = None,
+        pool: str = None,
+        priority: int = None,
         tag: List[CreateJobRequestDeploymentPolicyTag] = None,
     ):
         self.allocation_spec = allocation_spec
         self.level = level
         self.network = network
+        self.pool = pool
+        self.priority = priority
         self.tag = tag
 
     def validate(self):
@@ -424,6 +428,10 @@ class CreateJobRequestDeploymentPolicy(TeaModel):
             result['Level'] = self.level
         if self.network is not None:
             result['Network'] = self.network.to_map()
+        if self.pool is not None:
+            result['Pool'] = self.pool
+        if self.priority is not None:
+            result['Priority'] = self.priority
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -439,6 +447,10 @@ class CreateJobRequestDeploymentPolicy(TeaModel):
         if m.get('Network') is not None:
             temp_model = CreateJobRequestDeploymentPolicyNetwork()
             self.network = temp_model.from_map(m['Network'])
+        if m.get('Pool') is not None:
+            self.pool = m.get('Pool')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -615,10 +627,12 @@ class CreateJobRequestTasksTaskSpecResource(TeaModel):
         self,
         cores: float = None,
         disks: List[CreateJobRequestTasksTaskSpecResourceDisks] = None,
+        instance_types: List[str] = None,
         memory: float = None,
     ):
         self.cores = cores
         self.disks = disks
+        self.instance_types = instance_types
         self.memory = memory
 
     def validate(self):
@@ -639,6 +653,8 @@ class CreateJobRequestTasksTaskSpecResource(TeaModel):
         if self.disks is not None:
             for k in self.disks:
                 result['Disks'].append(k.to_map() if k else None)
+        if self.instance_types is not None:
+            result['InstanceTypes'] = self.instance_types
         if self.memory is not None:
             result['Memory'] = self.memory
         return result
@@ -652,6 +668,8 @@ class CreateJobRequestTasksTaskSpecResource(TeaModel):
             for k in m.get('Disks'):
                 temp_model = CreateJobRequestTasksTaskSpecResourceDisks()
                 self.disks.append(temp_model.from_map(k))
+        if m.get('InstanceTypes') is not None:
+            self.instance_types = m.get('InstanceTypes')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
         return self
@@ -694,12 +712,14 @@ class CreateJobRequestTasksTaskSpecTaskExecutorContainer(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        arg: List[str] = None,
         command: List[str] = None,
         environment_vars: List[CreateJobRequestTasksTaskSpecTaskExecutorContainerEnvironmentVars] = None,
         image: str = None,
         working_dir: str = None,
     ):
         self.app_id = app_id
+        self.arg = arg
         self.command = command
         self.environment_vars = environment_vars
         # This parameter is required.
@@ -720,6 +740,8 @@ class CreateJobRequestTasksTaskSpecTaskExecutorContainer(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.arg is not None:
+            result['Arg'] = self.arg
         if self.command is not None:
             result['Command'] = self.command
         result['EnvironmentVars'] = []
@@ -736,6 +758,8 @@ class CreateJobRequestTasksTaskSpecTaskExecutorContainer(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('Arg') is not None:
+            self.arg = m.get('Arg')
         if m.get('Command') is not None:
             self.command = m.get('Command')
         self.environment_vars = []
@@ -755,12 +779,14 @@ class CreateJobRequestTasksTaskSpecTaskExecutorVM(TeaModel):
         self,
         app_id: str = None,
         image: str = None,
+        password: str = None,
         prolog_script: str = None,
         script: str = None,
     ):
         self.app_id = app_id
         # This parameter is required.
         self.image = image
+        self.password = password
         self.prolog_script = prolog_script
         self.script = script
 
@@ -777,6 +803,8 @@ class CreateJobRequestTasksTaskSpecTaskExecutorVM(TeaModel):
             result['AppId'] = self.app_id
         if self.image is not None:
             result['Image'] = self.image
+        if self.password is not None:
+            result['Password'] = self.password
         if self.prolog_script is not None:
             result['PrologScript'] = self.prolog_script
         if self.script is not None:
@@ -789,6 +817,8 @@ class CreateJobRequestTasksTaskSpecTaskExecutorVM(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('Image') is not None:
             self.image = m.get('Image')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
         if m.get('PrologScript') is not None:
             self.prolog_script = m.get('PrologScript')
         if m.get('Script') is not None:
@@ -839,10 +869,12 @@ class CreateJobRequestTasksTaskSpecVolumeMount(TeaModel):
         self,
         mount_options: str = None,
         mount_path: str = None,
+        read_only: bool = None,
         volume_driver: str = None,
     ):
         self.mount_options = mount_options
         self.mount_path = mount_path
+        self.read_only = read_only
         self.volume_driver = volume_driver
 
     def validate(self):
@@ -858,6 +890,8 @@ class CreateJobRequestTasksTaskSpecVolumeMount(TeaModel):
             result['MountOptions'] = self.mount_options
         if self.mount_path is not None:
             result['MountPath'] = self.mount_path
+        if self.read_only is not None:
+            result['ReadOnly'] = self.read_only
         if self.volume_driver is not None:
             result['VolumeDriver'] = self.volume_driver
         return result
@@ -868,6 +902,8 @@ class CreateJobRequestTasksTaskSpecVolumeMount(TeaModel):
             self.mount_options = m.get('MountOptions')
         if m.get('MountPath') is not None:
             self.mount_path = m.get('MountPath')
+        if m.get('ReadOnly') is not None:
+            self.read_only = m.get('ReadOnly')
         if m.get('VolumeDriver') is not None:
             self.volume_driver = m.get('VolumeDriver')
         return self
@@ -3030,10 +3066,12 @@ class GetJobResponseBodyJobInfoTasksTaskSpecResource(TeaModel):
         self,
         cores: float = None,
         disks: List[GetJobResponseBodyJobInfoTasksTaskSpecResourceDisks] = None,
+        instance_types: List[str] = None,
         memory: int = None,
     ):
         self.cores = cores
         self.disks = disks
+        self.instance_types = instance_types
         self.memory = memory
 
     def validate(self):
@@ -3054,6 +3092,8 @@ class GetJobResponseBodyJobInfoTasksTaskSpecResource(TeaModel):
         if self.disks is not None:
             for k in self.disks:
                 result['Disks'].append(k.to_map() if k else None)
+        if self.instance_types is not None:
+            result['InstanceTypes'] = self.instance_types
         if self.memory is not None:
             result['Memory'] = self.memory
         return result
@@ -3067,6 +3107,8 @@ class GetJobResponseBodyJobInfoTasksTaskSpecResource(TeaModel):
             for k in m.get('Disks'):
                 temp_model = GetJobResponseBodyJobInfoTasksTaskSpecResourceDisks()
                 self.disks.append(temp_model.from_map(k))
+        if m.get('InstanceTypes') is not None:
+            self.instance_types = m.get('InstanceTypes')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
         return self
@@ -3078,10 +3120,12 @@ class GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM(TeaModel):
         image: str = None,
         prolog_script: str = None,
         script: str = None,
+        user_name: str = None,
     ):
         self.image = image
         self.prolog_script = prolog_script
         self.script = script
+        self.user_name = user_name
 
     def validate(self):
         pass
@@ -3098,6 +3142,8 @@ class GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM(TeaModel):
             result['PrologScript'] = self.prolog_script
         if self.script is not None:
             result['Script'] = self.script
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
         return result
 
     def from_map(self, m: dict = None):
@@ -3108,6 +3154,8 @@ class GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM(TeaModel):
             self.prolog_script = m.get('PrologScript')
         if m.get('Script') is not None:
             self.script = m.get('Script')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
         return self
 
 

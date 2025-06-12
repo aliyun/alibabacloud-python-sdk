@@ -1,3 +1,14 @@
+2025-06-12 Version: 2.0.3
+- Update API CreateJob: add request parameters DeploymentPolicy.Pool.
+- Update API CreateJob: add request parameters DeploymentPolicy.Priority.
+- Update API CreateJob: add request parameters Tasks.$.TaskSpec.Resource.InstanceTypes.
+- Update API CreateJob: add request parameters Tasks.$.TaskSpec.TaskExecutor.$.Container.Arg.
+- Update API CreateJob: add request parameters Tasks.$.TaskSpec.TaskExecutor.$.VM.Password.
+- Update API CreateJob: add request parameters Tasks.$.TaskSpec.VolumeMount.$.ReadOnly.
+- Update API GetJob: add response parameters Body.JobInfo.Tasks.$.TaskSpec.Resource.InstanceTypes.
+- Update API GetJob: add response parameters Body.JobInfo.Tasks.$.TaskSpec.TaskExecutor.$.VM.UserName.
+
+
 2025-05-09 Version: 2.0.2
 - Update API GetJob: add response parameters Body.JobInfo.AppExtraInfo.
 - Update API ListJobs: add response parameters Body.JobList.$.AppExtraInfo.
