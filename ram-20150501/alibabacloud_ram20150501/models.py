@@ -44,7 +44,7 @@ class AddUserToGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -155,7 +155,7 @@ class AttachPolicyToGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -266,7 +266,7 @@ class AttachPolicyToRoleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -377,7 +377,7 @@ class AttachPolicyToUserResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -495,7 +495,7 @@ class BindMFADeviceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -565,11 +565,11 @@ class ChangePasswordRequest(TeaModel):
         new_password: str = None,
         old_password: str = None,
     ):
-        # The new password that is used to log on to the Alibaba Cloud Management Console.
+        # The new password that is used to log on to the console.
         # 
         # The password must meet the complexity requirements. For more information, see [SetPasswordPolicy](https://help.aliyun.com/document_detail/28739.html).
         self.new_password = new_password
-        # The old password that is used to log on to the Alibaba Cloud Management Console.
+        # The old password that is used to log on to the console.
         self.old_password = old_password
 
     def validate(self):
@@ -601,7 +601,7 @@ class ChangePasswordResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -670,7 +670,7 @@ class ClearAccountAliasResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -817,9 +817,9 @@ class CreateAccessKeyResponseBody(TeaModel):
         access_key: CreateAccessKeyResponseBodyAccessKey = None,
         request_id: str = None,
     ):
-        # The information of the AccessKey pair.
+        # The information about the AccessKey pair.
         self.access_key = access_key
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1063,11 +1063,11 @@ class CreateLoginProfileRequest(TeaModel):
         password_reset_required: bool = None,
         user_name: str = None,
     ):
-        # Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`.
+        # Specifies whether the RAM user must bind a multi-factor authentication (MFA) device upon the next logon. Default value: `false`.
         self.mfabind_required = mfabind_required
         # The logon password of the RAM user. The password must meet the password strength requirements. For more information, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/2337691.html).
         self.password = password
-        # Specifies whether the RAM user must change the password upon logon. Default value: `false`.
+        # Specifies whether the RAM user has to change the password upon logon. Default value: `false`.
         self.password_reset_required = password_reset_required
         # The name of the RAM user.
         self.user_name = user_name
@@ -1112,9 +1112,9 @@ class CreateLoginProfileResponseBodyLoginProfile(TeaModel):
         password_reset_required: bool = None,
         user_name: str = None,
     ):
-        # The time when the logon configurations were created.
+        # The creation time.
         self.create_date = create_date
-        # Indicates whether an MFA device must be attached to the RAM user upon logon.
+        # Indicates whether an MFA device must be bound to the RAM user.
         self.mfabind_required = mfabind_required
         # Indicates whether the RAM user must change the password upon logon.
         self.password_reset_required = password_reset_required
@@ -1161,7 +1161,7 @@ class CreateLoginProfileResponseBody(TeaModel):
     ):
         # The logon configurations of the RAM user.
         self.login_profile = login_profile
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1237,7 +1237,9 @@ class CreatePolicyRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -1284,8 +1286,9 @@ class CreatePolicyRequest(TeaModel):
         self.policy_document = policy_document
         # The name of the policy.
         # 
-        # The name must be 1 to 128 characters in length, and can contain letters, digits, and hyphens (-).
+        # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         self.policy_name = policy_name
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -1348,8 +1351,9 @@ class CreatePolicyShrinkRequest(TeaModel):
         self.policy_document = policy_document
         # The name of the policy.
         # 
-        # The name must be 1 to 128 characters in length, and can contain letters, digits, and hyphens (-).
+        # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         self.policy_name = policy_name
+        # The tags.
         self.tag_shrink = tag_shrink
 
     def validate(self):
@@ -1403,8 +1407,8 @@ class CreatePolicyResponseBodyPolicy(TeaModel):
         self.policy_name = policy_name
         # The type of the policy. Valid values:
         # 
-        # *   Custom: custom policy
-        # *   System: system policy
+        # *   Custom
+        # *   System
         self.policy_type = policy_type
 
     def validate(self):
@@ -1451,7 +1455,7 @@ class CreatePolicyResponseBody(TeaModel):
     ):
         # The information about the policy.
         self.policy = policy
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1634,7 +1638,7 @@ class CreatePolicyVersionResponseBody(TeaModel):
     ):
         # The information about the policy version.
         self.policy_version = policy_version
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1710,7 +1714,9 @@ class CreateRoleRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -1754,7 +1760,7 @@ class CreateRoleRequest(TeaModel):
         # 
         # The description must be 1 to 1,024 characters in length.
         self.description = description
-        # The maximum session duration of the RAM role.
+        # The maximum session time of the RAM role.
         # 
         # Valid values: 3600 to 43200. Unit: seconds. Default value: 3600.
         # 
@@ -1764,6 +1770,7 @@ class CreateRoleRequest(TeaModel):
         # 
         # The name must be 1 to 64 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
         self.role_name = role_name
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -1827,7 +1834,7 @@ class CreateRoleShrinkRequest(TeaModel):
         # 
         # The description must be 1 to 1,024 characters in length.
         self.description = description
-        # The maximum session duration of the RAM role.
+        # The maximum session time of the RAM role.
         # 
         # Valid values: 3600 to 43200. Unit: seconds. Default value: 3600.
         # 
@@ -1837,6 +1844,7 @@ class CreateRoleShrinkRequest(TeaModel):
         # 
         # The name must be 1 to 64 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
         self.role_name = role_name
+        # The tags.
         self.tag_shrink = tag_shrink
 
     def validate(self):
@@ -1886,15 +1894,15 @@ class CreateRoleResponseBodyRole(TeaModel):
         role_id: str = None,
         role_name: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the role.
+        # The Alibaba Cloud Resource Name (ARN) of the RAM role.
         self.arn = arn
         # The trust policy that specifies the trusted entity to assume the RAM role.
         self.assume_role_policy_document = assume_role_policy_document
-        # The time when the RAM user was created.
+        # The time when the RAM role was created.
         self.create_date = create_date
         # The description of the RAM role.
         self.description = description
-        # The maximum session duration of the RAM role.
+        # The maximum session time of the RAM role.
         self.max_session_duration = max_session_duration
         # The ID of the RAM role.
         self.role_id = role_id
@@ -1951,9 +1959,9 @@ class CreateRoleResponseBody(TeaModel):
         request_id: str = None,
         role: CreateRoleResponseBodyRole = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information of the RAM role.
+        # The information about the RAM role.
         self.role = role
 
     def validate(self):
@@ -2038,7 +2046,7 @@ class CreateUserRequest(TeaModel):
         self.comments = comments
         # The display name of the RAM user.
         # 
-        # The display name must be 1 to 128 characters in length.
+        # The name must be 1 to 128 characters in length.
         self.display_name = display_name
         # The email address of the RAM user.
         # 
@@ -2046,13 +2054,13 @@ class CreateUserRequest(TeaModel):
         self.email = email
         # The mobile phone number of the RAM user.
         # 
-        # Format: Country code-Mobile phone number.
+        # Format: \\<Country code>-\\<Mobile phone number>.
         # 
         # >  This parameter applies only to the China site (aliyun.com).
         self.mobile_phone = mobile_phone
-        # The username of the RAM user.
+        # The name of the RAM user.
         # 
-        # The username must be 1 to 64 characters in length, and can contain letters, digits, periods (.), hyphens (-), and underscores (_).
+        # The name must be 1 to 64 characters in length, and can contain letters, digits, periods (.), hyphens (-), and underscores (_).
         self.user_name = user_name
 
     def validate(self):
@@ -2110,15 +2118,15 @@ class CreateUserResponseBodyUser(TeaModel):
         self.display_name = display_name
         # The email address of the RAM user.
         # 
-        # >  This parameter can be returned only on the China site (aliyun.com).
+        # >  This parameter applies only to the China site (aliyun.com).
         self.email = email
         # The mobile phone number of the RAM user.
         # 
-        # >  This parameter can be returned only on the China site (aliyun.com).
+        # >  This parameter applies only to the China site (aliyun.com).
         self.mobile_phone = mobile_phone
         # The ID of the RAM user.
         self.user_id = user_id
-        # The username of the RAM user.
+        # The name of the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -2171,7 +2179,7 @@ class CreateUserResponseBody(TeaModel):
         request_id: str = None,
         user: CreateUserResponseBodyUser = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The information about the RAM user.
         self.user = user
@@ -2250,7 +2258,7 @@ class CreateVirtualMFADeviceRequest(TeaModel):
     ):
         # The name of the MFA device.
         # 
-        # The name must be 1 to 64 characters in length and can contain letters, digits, periods (.), and hyphens (-).
+        # The name must be 1 to 64 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
         self.virtual_mfadevice_name = virtual_mfadevice_name
 
     def validate(self):
@@ -2321,9 +2329,9 @@ class CreateVirtualMFADeviceResponseBody(TeaModel):
         request_id: str = None,
         virtual_mfadevice: CreateVirtualMFADeviceResponseBodyVirtualMFADevice = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information of the MFA device.
+        # The information about the MFA device.
         self.virtual_mfadevice = virtual_mfadevice
 
     def validate(self):
@@ -2635,20 +2643,7 @@ class DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessage(TeaModel):
         # Valid values:
         # 
         # *   true
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   false
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.explicit_deny = explicit_deny
         # The policies that are matched.
         self.matched_policies = matched_policies
@@ -2811,7 +2806,7 @@ class DeleteAccessKeyRequest(TeaModel):
         user_access_key_id: str = None,
         user_name: str = None,
     ):
-        # The AccessKey ID in the AccessKey pair that you want to delete.
+        # The AccessKey ID in the AccessKey pair that you want to delete.``
         self.user_access_key_id = user_access_key_id
         # The name of the RAM user.
         self.user_name = user_name
@@ -2845,7 +2840,7 @@ class DeleteAccessKeyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2916,7 +2911,7 @@ class DeleteGroupRequest(TeaModel):
     ):
         # The name of the RAM user group.
         # 
-        # If you want to query the name of a RAM user group, call the [ListGroups](https://help.aliyun.com/document_detail/28703.html) operation.
+        # If you want to query the name of a RAM user group, you can call the [ListGroups](https://help.aliyun.com/document_detail/28703.html) operation.
         self.group_name = group_name
 
     def validate(self):
@@ -2944,7 +2939,7 @@ class DeleteGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3041,7 +3036,7 @@ class DeleteLoginProfileResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3111,6 +3106,10 @@ class DeletePolicyRequest(TeaModel):
         cascading_delete: bool = None,
         policy_name: str = None,
     ):
+        # Specifies whether to delete all versions of the policy. Valid values:
+        # 
+        # *   true: deletes all versions of the policy.
+        # *   false: does not delete all versions of the policy. If you set the parameter to false, the non-default versions of the policy are not deleted. Before you delete the policy, you must manually delete all non-default versions of the policy.
         self.cascading_delete = cascading_delete
         # The name of the policy.
         self.policy_name = policy_name
@@ -3144,7 +3143,7 @@ class DeletePolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3216,7 +3215,7 @@ class DeletePolicyVersionRequest(TeaModel):
     ):
         # The name of the policy.
         self.policy_name = policy_name
-        # The ID of the policy version.
+        # The ID of the policy version that you want to delete.
         self.version_id = version_id
 
     def validate(self):
@@ -3248,7 +3247,7 @@ class DeletePolicyVersionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3345,7 +3344,7 @@ class DeleteRoleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3444,7 +3443,7 @@ class DeleteUserResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3541,7 +3540,7 @@ class DeleteVirtualMFADeviceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3652,7 +3651,7 @@ class DetachPolicyFromGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3763,7 +3762,7 @@ class DetachPolicyFromRoleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3874,7 +3873,7 @@ class DetachPolicyFromUserResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3976,6 +3975,7 @@ class GetAccessKeyLastUsedResponseBodyAccessKeyLastUsed(TeaModel):
         self,
         last_used_date: str = None,
     ):
+        # The time when the AccessKey pair was used for the last time.
         self.last_used_date = last_used_date
 
     def validate(self):
@@ -4004,7 +4004,9 @@ class GetAccessKeyLastUsedResponseBody(TeaModel):
         access_key_last_used: GetAccessKeyLastUsedResponseBodyAccessKeyLastUsed = None,
         request_id: str = None,
     ):
+        # The details of the time when the AccessKey pair was used for the last time.
         self.access_key_last_used = access_key_last_used
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4082,7 +4084,7 @@ class GetAccountAliasResponseBody(TeaModel):
     ):
         # The alias of the Alibaba Cloud account.
         self.account_alias = account_alias
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4195,7 +4197,7 @@ class GetGroupResponseBodyGroup(TeaModel):
         self.group_id = group_id
         # The name of the RAM user group.
         self.group_name = group_name
-        # The time when the information of the RAM user group was updated.
+        # The modification time.
         self.update_date = update_date
 
     def validate(self):
@@ -4240,9 +4242,9 @@ class GetGroupResponseBody(TeaModel):
         group: GetGroupResponseBodyGroup = None,
         request_id: str = None,
     ):
-        # The information of the RAM user group.
+        # The information about the RAM user group.
         self.group = group
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4348,9 +4350,9 @@ class GetLoginProfileResponseBodyLoginProfile(TeaModel):
         password_reset_required: bool = None,
         user_name: str = None,
     ):
-        # The time when the logon configurations were created.
+        # The creation time.
         self.create_date = create_date
-        # Indicates whether an MFA device must be attached to the RAM user upon logon.
+        # Indicates whether a multi-factor authentication (MFA) device must be bound to the RAM user.
         self.mfabind_required = mfabind_required
         # Indicates whether the RAM user must change the password upon logon.
         self.password_reset_required = password_reset_required
@@ -4397,7 +4399,7 @@ class GetLoginProfileResponseBody(TeaModel):
     ):
         # The logon configurations of the RAM user.
         self.login_profile = login_profile
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4480,20 +4482,18 @@ class GetPasswordPolicyResponseBodyPasswordPolicy(TeaModel):
         require_symbols: bool = None,
         require_uppercase_characters: bool = None,
     ):
-        # Indicates whether the password has expired.
+        # Indicates whether a password expires. Valid values: `true` and `false`. Default value: `false`. If the parameter is unspecified, the default value false is returned.
         # 
-        # Valid values: `true` and `false`. Default value: `false`.
-        # 
-        # *   If the value of this parameter is `true`, the parent Alibaba Cloud account must reset the password before the RAM user can log on to the console.
-        # *   If the value of this parameter is `false`, the RAM user can change the password and then log on to the console.
+        # *   If this parameter is set to `true`, the Alibaba Cloud account to which the RAM users belong must reset the password before the RAM users can log on to the Alibaba Cloud Management Console.
+        # *   If this parameter is set to `false`, the RAM users can change the passwords after the passwords expire and then log on to the Alibaba Cloud Management Console.
         self.hard_expiry = hard_expiry
         # The maximum number of permitted logon attempts within one hour. The number of logon attempts is reset to zero if a RAM user changes the password.
         self.max_login_attemps = max_login_attemps
-        # The number of days for which a password is valid. Default value: 0. The default value indicates that the password never expires.
+        # The number of days for which a password is valid. If you reset a password, the password validity period restarts. Default value: 0. The default value indicates that the password never expires.
         self.max_password_age = max_password_age
-        # The minimum required number of characters in a password.
+        # The minimum number of characters in a password.
         self.minimum_password_length = minimum_password_length
-        # The number of previous passwords that the user is prevented from reusing. Default value: 0. The default value indicates that the RAM user is not prevented from reusing previous passwords
+        # The number of previous passwords that a RAM user is prevented from reusing. Default value: 0. The default value indicates that the RAM user can reuse previous passwords.
         self.password_reuse_prevention = password_reuse_prevention
         # Indicates whether a password must contain one or more lowercase letters.
         self.require_lowercase_characters = require_lowercase_characters
@@ -4562,9 +4562,9 @@ class GetPasswordPolicyResponseBody(TeaModel):
         password_policy: GetPasswordPolicyResponseBodyPasswordPolicy = None,
         request_id: str = None,
     ):
-        # The policy to manage passwords.
+        # The password policy.
         self.password_policy = password_policy
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4681,7 +4681,7 @@ class GetPolicyResponseBodyDefaultPolicyVersion(TeaModel):
         self.create_date = create_date
         # An attribute in the `DefaultPolicyVersion` parameter. The value of the `IsDefaultVersion` parameter is `true`.
         self.is_default_version = is_default_version
-        # The script of the default policy version.
+        # The document of the policy.
         self.policy_document = policy_document
         # The ID of the default policy version.
         self.version_id = version_id
@@ -4734,7 +4734,7 @@ class GetPolicyResponseBodyPolicy(TeaModel):
         self.attachment_count = attachment_count
         # The time when the policy was created.
         self.create_date = create_date
-        # The default version ID of the policy.
+        # The default version of the policy.
         self.default_version = default_version
         # The description of the policy.
         self.description = description
@@ -4802,11 +4802,11 @@ class GetPolicyResponseBody(TeaModel):
         policy: GetPolicyResponseBodyPolicy = None,
         request_id: str = None,
     ):
-        # The information of the default policy version.
+        # The information about the default policy version.
         self.default_policy_version = default_policy_version
-        # The basic information of the policy.
+        # The basic information about the policy.
         self.policy = policy
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4933,13 +4933,13 @@ class GetPolicyVersionResponseBodyPolicyVersion(TeaModel):
         policy_document: str = None,
         version_id: str = None,
     ):
-        # The time when the version was created.
+        # The creation time.
         self.create_date = create_date
-        # Indicates whether the version is the default version.
+        # Indicates whether the policy version is the default version.
         self.is_default_version = is_default_version
-        # The script of the policy.
+        # The document of the policy.
         self.policy_document = policy_document
-        # The ID of the version.
+        # The ID of the policy version.
         self.version_id = version_id
 
     def validate(self):
@@ -4980,9 +4980,9 @@ class GetPolicyVersionResponseBody(TeaModel):
         policy_version: GetPolicyVersionResponseBodyPolicyVersion = None,
         request_id: str = None,
     ):
-        # The information of the policy version.
+        # The information about the policy version.
         self.policy_version = policy_version
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5096,7 +5096,7 @@ class GetRoleResponseBodyRole(TeaModel):
     ):
         # The Alibaba Cloud Resource Name (ARN) of the RAM role.
         self.arn = arn
-        # The content of the policy that specifies one or more entities entrusted to assume the RAM role.
+        # The policy that specifies the trusted entity to assume the RAM role.
         self.assume_role_policy_document = assume_role_policy_document
         # The time when the RAM role was created.
         self.create_date = create_date
@@ -5165,9 +5165,9 @@ class GetRoleResponseBody(TeaModel):
         request_id: str = None,
         role: GetRoleResponseBodyRole = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information of the RAM role.
+        # The information about the RAM role.
         self.role = role
 
     def validate(self):
@@ -5242,10 +5242,10 @@ class GetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference(Tea
         self,
         allow_user_to_manage_access_keys: bool = None,
     ):
-        # Indicates whether RAM users can manage their AccessKey pairs. Valid values:
+        # Indicates whether Resource Access Management (RAM) users can manage their AccessKey pairs. Valid values:
         # 
-        # *   true: RAM users can manage their AccessKey pairs.
-        # *   false: RAM users cannot manage their AccessKey pairs.
+        # *   true
+        # *   false
         self.allow_user_to_manage_access_keys = allow_user_to_manage_access_keys
 
     def validate(self):
@@ -5278,22 +5278,22 @@ class GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference(
     ):
         # Indicates whether RAM users can change their passwords. Valid values:
         # 
-        # *   true: RAM users can change their passwords.
-        # *   false: RAM users cannot change their passwords.
+        # *   true
+        # *   false
         self.allow_user_to_change_password = allow_user_to_change_password
-        # Indicates whether RAM users can save security codes for multi-factor authentication (MFA) during logon. Each security code is valid for seven days. Valid values:
+        # Indicates whether RAM users can save security codes for MFA during logon. Each security code is valid for seven days. Valid values:
         # 
-        # *   true: RAM users can save MFA security codes during logon.
-        # *   false: RAM users cannot save MFA security codes during logon.
+        # *   true
+        # *   false
         self.enable_save_mfaticket = enable_save_mfaticket
         # The subnet mask that indicates the IP addresses from which logon to the Alibaba Cloud Management Console is allowed. This parameter applies to password-based logon and single sign-on (SSO). However, this parameter does not apply to API calls that are authenticated based on AccessKey pairs.
         # 
-        # *   If a subnet mask is specified, RAM users can log on to the Alibaba Cloud Management Console only by using the IP addresses in the subnetwork.
-        # *   If no subnet mask is specified, RAM users can log on to the Alibaba Cloud Management Console by using all IP addresses.
+        # *   If you specify a subnet mask, RAM users can use only the IP addresses in the subnet mask to log on to the Alibaba Cloud Management Console.
+        # *   If you do not specify a subnet mask, RAM users can use all IP addresses to log on to the Alibaba Cloud Management Console.
         # 
-        # If more than one subnet mask is specified, the masks are separated with semicolons (;), for example, 192.168.0.0/16;10.0.0.0/8.
+        # If you want to specify more than one subnet mask, separate the masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
         self.login_network_masks = login_network_masks
-        # The validity period of a logon session of a RAM user. Unit: hours.
+        # The validity period of the logon session of RAM users. Unit: hours.
         self.login_session_duration = login_session_duration
 
     def validate(self):
@@ -5335,8 +5335,8 @@ class GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference(TeaModel)
     ):
         # Indicates whether RAM users can manage their MFA devices. Valid values:
         # 
-        # *   true: RAM users can manage their MFA devices.
-        # *   false: RAM users cannot manage their MFA devices.
+        # *   true
+        # *   false
         self.allow_user_to_manage_mfadevices = allow_user_to_manage_mfadevices
 
     def validate(self):
@@ -5366,8 +5366,8 @@ class GetSecurityPreferenceResponseBodySecurityPreferencePublicKeyPreference(Tea
     ):
         # Indicates whether RAM users can manage their public keys. Valid values:
         # 
-        # *   true: RAM users can manage their public keys.
-        # *   false: RAM users cannot manage their public keys.
+        # *   true
+        # *   false
         self.allow_user_to_manage_public_keys = allow_user_to_manage_public_keys
 
     def validate(self):
@@ -5400,13 +5400,13 @@ class GetSecurityPreferenceResponseBodySecurityPreference(TeaModel):
     ):
         # The AccessKey pair preference.
         self.access_key_preference = access_key_preference
-        # The logon preferences.
+        # The logon preference.
         self.login_profile_preference = login_profile_preference
-        # The MFA preference.
+        # The multi-factor authentication (MFA) preference.
         self.mfapreference = mfapreference
         # The public key preference.
         # 
-        # >  The public key preference is valid only for the Japan site.
+        # >  This parameter is valid only for the Japan site.
         self.public_key_preference = public_key_preference
 
     def validate(self):
@@ -5458,7 +5458,7 @@ class GetSecurityPreferenceResponseBody(TeaModel):
         request_id: str = None,
         security_preference: GetSecurityPreferenceResponseBodySecurityPreference = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The security preferences.
         self.security_preference = security_preference
@@ -5654,7 +5654,7 @@ class GetUserResponseBody(TeaModel):
         request_id: str = None,
         user: GetUserResponseBodyUser = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The information about the RAM user.
         self.user = user
@@ -5731,7 +5731,7 @@ class GetUserMFAInfoRequest(TeaModel):
         self,
         user_name: str = None,
     ):
-        # The username of the RAM user.
+        # The name of the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -5764,8 +5764,8 @@ class GetUserMFAInfoResponseBodyMFADevice(TeaModel):
         self.serial_number = serial_number
         # The type of the MFA device. Valid values:
         # 
-        # *   VMFA: virtual MFA device
-        # *   U2F: Universal 2nd Factor (U2F) security key
+        # *   VMFA: virtual MFA device.
+        # *   U2F: Universal 2nd Factor (U2F) security key.
         self.type = type
 
     def validate(self):
@@ -5798,9 +5798,9 @@ class GetUserMFAInfoResponseBody(TeaModel):
         mfadevice: GetUserMFAInfoResponseBodyMFADevice = None,
         request_id: str = None,
     ):
-        # The information about the MFA device that is attached to the RAM user.
+        # The information about the MFA device that is bound to the RAM user.
         self.mfadevice = mfadevice
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5981,9 +5981,9 @@ class ListAccessKeysResponseBody(TeaModel):
         access_keys: ListAccessKeysResponseBodyAccessKeys = None,
         request_id: str = None,
     ):
-        # The list of AccessKey pairs that belong to the RAM user.
+        # The AccessKey pairs that belong to the RAM user.
         self.access_keys = access_keys
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6176,7 +6176,7 @@ class ListEntitiesForPolicyResponseBodyRolesRole(TeaModel):
     ):
         # The Alibaba Cloud Resource Name (ARN) of the RAM role.
         self.arn = arn
-        # The time when the policy was attached to the RAM user.
+        # The time when the policy was attached to the RAM role.
         self.attach_date = attach_date
         # The description of the RAM role.
         self.description = description
@@ -6348,13 +6348,13 @@ class ListEntitiesForPolicyResponseBody(TeaModel):
         roles: ListEntitiesForPolicyResponseBodyRoles = None,
         users: ListEntitiesForPolicyResponseBodyUsers = None,
     ):
-        # The list of the RAM user groups.
+        # The information about the Resource Access Management (RAM) user groups.
         self.groups = groups
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information of RAM roles.
+        # The information about the RAM roles.
         self.roles = roles
-        # The list of the RAM users to which the policy is attached.
+        # The information about the RAM users.
         self.users = users
 
     def validate(self):
@@ -6444,11 +6444,15 @@ class ListGroupsRequest(TeaModel):
         marker: str = None,
         max_items: int = None,
     ):
-        # The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
-        self.marker = marker
-        # The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` is `true`.
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.``
         # 
-        # Valid values: 1 to 1000. Default value: 100.
+        # When you call the operation for the first time, if the total number of returned entries exceeds the value of `MaxItems`, the entries are truncated. The system returns entries based on the value of `MaxItems` and does not return the excess entries. In this case, the value of the response parameter `IsTruncated` is `true`, and `Marker` is returned. In the next call, you can use the value of `Marker` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
+        self.marker = marker
+        # The number of entries per page.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 100.
         self.max_items = max_items
 
     def validate(self):
@@ -6484,15 +6488,15 @@ class ListGroupsResponseBodyGroupsGroup(TeaModel):
         group_name: str = None,
         update_date: str = None,
     ):
-        # The description of the RAM user group.
+        # The description.
         self.comments = comments
-        # The time when the RAM user group was created.
+        # The creation time.
         self.create_date = create_date
         # The ID of the RAM user group.
         self.group_id = group_id
         # The name of the RAM user group.
         self.group_name = group_name
-        # The time when the information of the RAM user group was updated.
+        # The update time.
         self.update_date = update_date
 
     def validate(self):
@@ -6574,11 +6578,16 @@ class ListGroupsResponseBody(TeaModel):
         marker: str = None,
         request_id: str = None,
     ):
-        # The list of the RAM user groups.
+        # The information about the RAM user groups.
         self.groups = groups
-        # Indicates whether the response is truncated.
+        # Indicates whether the response is truncated. Valid values:
+        # 
+        # *   true
+        # *   false
         self.is_truncated = is_truncated
-        # The marker. This parameter is returned only if the value of `IsTruncated` is `true`. If `true` is returned, you can call this operation again and set the `Marker` parameter to obtain the truncated part.
+        # The pagination token that is used in the next request to retrieve a new page of results.
+        # 
+        # >  This parameter is returned only when `IsTruncated` is `true`.
         self.marker = marker
         # The ID of the request.
         self.request_id = request_id
@@ -6663,7 +6672,7 @@ class ListGroupsForUserRequest(TeaModel):
         self,
         user_name: str = None,
     ):
-        # The username of the RAM user.
+        # The name of the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -6694,13 +6703,13 @@ class ListGroupsForUserResponseBodyGroupsGroup(TeaModel):
         group_name: str = None,
         join_date: str = None,
     ):
-        # The description of the RAM user group.
+        # The description.
         self.comments = comments
         # The ID of the RAM user group.
         self.group_id = group_id
         # The name of the RAM user group.
         self.group_name = group_name
-        # The time when the RAM user joined the RAM user group.
+        # The time when the RAM user was added to the RAM user group.
         self.join_date = join_date
 
     def validate(self):
@@ -6776,7 +6785,7 @@ class ListGroupsForUserResponseBody(TeaModel):
         groups: ListGroupsForUserResponseBodyGroups = None,
         request_id: str = None,
     ):
-        # The list of the RAM user groups.
+        # The information about the RAM user groups.
         self.groups = groups
         # The ID of the request.
         self.request_id = request_id
@@ -6854,7 +6863,9 @@ class ListPoliciesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -6889,14 +6900,15 @@ class ListPoliciesRequest(TeaModel):
         policy_type: str = None,
         tag: List[ListPoliciesRequestTag] = None,
     ):
-        # The `Marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
+        # The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
         self.marker = marker
         # The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be `true`.
         # 
         # Valid values: 1 to 1000. Default value: 100.
         self.max_items = max_items
-        # The type of the `Policy`. Valid values: `System` and `Custom`. If you do not specify the parameter, all policies are returned.
+        # The type of the policies. Valid values: `System` and `Custom`. If you do not specify the parameter, all policies are returned.``
         self.policy_type = policy_type
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -6947,14 +6959,15 @@ class ListPoliciesShrinkRequest(TeaModel):
         policy_type: str = None,
         tag_shrink: str = None,
     ):
-        # The `Marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
+        # The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
         self.marker = marker
         # The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be `true`.
         # 
         # Valid values: 1 to 1000. Default value: 100.
         self.max_items = max_items
-        # The type of the `Policy`. Valid values: `System` and `Custom`. If you do not specify the parameter, all policies are returned.
+        # The type of the policies. Valid values: `System` and `Custom`. If you do not specify the parameter, all policies are returned.``
         self.policy_type = policy_type
+        # The tags.
         self.tag_shrink = tag_shrink
 
     def validate(self):
@@ -6995,7 +7008,9 @@ class ListPoliciesResponseBodyPoliciesPolicyTagsTag(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The key of the tag.
         self.tag_key = tag_key
+        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -7081,6 +7096,7 @@ class ListPoliciesResponseBodyPoliciesPolicy(TeaModel):
         self.policy_name = policy_name
         # The type of the policy.
         self.policy_type = policy_type
+        # The tags.
         self.tags = tags
         # The time when the policy was modified.
         self.update_date = update_date
@@ -7180,11 +7196,11 @@ class ListPoliciesResponseBody(TeaModel):
     ):
         # Indicates whether the response is truncated.
         self.is_truncated = is_truncated
-        # The marker. This parameter is returned only if the value of `IsTruncated` is `true`. If the value of IsTruncated is `true`, you can call this operation again and set `Marker` to obtain the truncated part.
+        # The marker. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set `Marker` to obtain the truncated part.``
         self.marker = marker
-        # The list of policies.
+        # The information about the policies.
         self.policies = policies
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7387,9 +7403,9 @@ class ListPoliciesForGroupResponseBody(TeaModel):
         policies: ListPoliciesForGroupResponseBodyPolicies = None,
         request_id: str = None,
     ):
-        # The list of the policies that are attached to the RAM user group.
+        # The information about the policies.
         self.policies = policies
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7584,9 +7600,9 @@ class ListPoliciesForRoleResponseBody(TeaModel):
         policies: ListPoliciesForRoleResponseBodyPolicies = None,
         request_id: str = None,
     ):
-        # The list of the policies that are attached to the RAM role.
+        # The information about the policies.
         self.policies = policies
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7901,11 +7917,11 @@ class ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion(TeaModel):
     ):
         # The time when the version was created.
         self.create_date = create_date
-        # Indicates whether the version is the default version.
+        # Indicates whether the policy version is the default version.
         self.is_default_version = is_default_version
-        # The script of the policy.
+        # The document of the policy.
         self.policy_document = policy_document
-        # The ID of the version.
+        # The ID of the policy version.
         self.version_id = version_id
 
     def validate(self):
@@ -7981,9 +7997,9 @@ class ListPolicyVersionsResponseBody(TeaModel):
         policy_versions: ListPolicyVersionsResponseBodyPolicyVersions = None,
         request_id: str = None,
     ):
-        # The list of the policy versions.
+        # The information about the policy versions.
         self.policy_versions = policy_versions
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8059,7 +8075,9 @@ class ListRolesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -8099,6 +8117,7 @@ class ListRolesRequest(TeaModel):
         # 
         # Valid values: 1 to 1000. Default value: 100.
         self.max_items = max_items
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -8150,6 +8169,7 @@ class ListRolesShrinkRequest(TeaModel):
         # 
         # Valid values: 1 to 1000. Default value: 100.
         self.max_items = max_items
+        # The tags.
         self.tag_shrink = tag_shrink
 
     def validate(self):
@@ -8186,7 +8206,9 @@ class ListRolesResponseBodyRolesRoleTagsTag(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The key of the tag.
         self.tag_key = tag_key
+        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -8262,7 +8284,7 @@ class ListRolesResponseBodyRolesRole(TeaModel):
     ):
         # The Alibaba Cloud Resource Name (ARN) of the RAM role.
         self.arn = arn
-        # The time when the RAM role was created.
+        # The creation time.
         self.create_date = create_date
         # The description of the RAM role.
         self.description = description
@@ -8272,8 +8294,9 @@ class ListRolesResponseBodyRolesRole(TeaModel):
         self.role_id = role_id
         # The name of the RAM role.
         self.role_name = role_name
+        # The tags.
         self.tags = tags
-        # The time when the RAM role was modified.
+        # The update time.
         self.update_date = update_date
 
     def validate(self):
@@ -8371,11 +8394,11 @@ class ListRolesResponseBody(TeaModel):
     ):
         # Indicates whether the response is truncated.
         self.is_truncated = is_truncated
-        # The marker. This parameter is returned only if the value of `IsTruncated` is `true`. If the value is `true`, you can call this operation again and set the `Marker` parameter to obtain the truncated part.
+        # The marker. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set this parameter to obtain the truncated part.````
         self.marker = marker
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information of RAM roles.
+        # The information about the RAM roles.
         self.roles = roles
 
     def validate(self):
@@ -8449,6 +8472,311 @@ class ListRolesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListRolesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTagResourcesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The key of the tag. The tag key can be up to 128 characters in length.
+        self.key = key
+        # The value of the tag. The tag value can be up to 256 characters in length.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListTagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        page_size: int = None,
+        resource_names: List[str] = None,
+        resource_type: str = None,
+        tag: List[ListTagResourcesRequestTag] = None,
+    ):
+        # The pagination token that is used in the next request to retrieve a new page of results.
+        self.next_token = next_token
+        # The number of entries per page. Valid values: 1 to 100.
+        self.page_size = page_size
+        # The names of the resources. You can specify up to 50 resource names.
+        self.resource_names = resource_names
+        # The resource type.
+        # 
+        # Enumerated values:
+        # 
+        # *   role
+        # *   policy
+        self.resource_type = resource_type
+        # The tags. You can specify up to 20 tags.
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_names is not None:
+            result['ResourceNames'] = self.resource_names
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceNames') is not None:
+            self.resource_names = m.get('ResourceNames')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListTagResourcesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        page_size: int = None,
+        resource_names_shrink: str = None,
+        resource_type: str = None,
+        tag_shrink: str = None,
+    ):
+        # The pagination token that is used in the next request to retrieve a new page of results.
+        self.next_token = next_token
+        # The number of entries per page. Valid values: 1 to 100.
+        self.page_size = page_size
+        # The names of the resources. You can specify up to 50 resource names.
+        self.resource_names_shrink = resource_names_shrink
+        # The resource type.
+        # 
+        # Enumerated values:
+        # 
+        # *   role
+        # *   policy
+        self.resource_type = resource_type
+        # The tags. You can specify up to 20 tags.
+        self.tag_shrink = tag_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_names_shrink is not None:
+            result['ResourceNames'] = self.resource_names_shrink
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceNames') is not None:
+            self.resource_names_shrink = m.get('ResourceNames')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
+        return self
+
+
+class ListTagResourcesResponseBodyTagResources(TeaModel):
+    def __init__(
+        self,
+        resource_name: str = None,
+        resource_type: str = None,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        # The name of the resource.
+        self.resource_name = resource_name
+        # The resource type.
+        self.resource_type = resource_type
+        # The key of the tag.
+        self.tag_key = tag_key
+        # The value of the tag.
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
+class ListTagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        request_id: str = None,
+        tag_resources: List[ListTagResourcesResponseBodyTagResources] = None,
+    ):
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        self.next_token = next_token
+        # The request ID.
+        self.request_id = request_id
+        # The tags that are added to the resources.
+        self.tag_resources = tag_resources
+
+    def validate(self):
+        if self.tag_resources:
+            for k in self.tag_resources:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['TagResources'] = []
+        if self.tag_resources is not None:
+            for k in self.tag_resources:
+                result['TagResources'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.tag_resources = []
+        if m.get('TagResources') is not None:
+            for k in m.get('TagResources'):
+                temp_model = ListTagResourcesResponseBodyTagResources()
+                self.tag_resources.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8829,11 +9157,11 @@ class ListUsersForGroupResponseBody(TeaModel):
     ):
         # Indicates whether the response is truncated.
         self.is_truncated = is_truncated
-        # The marker. This parameter is returned only if the value of `IsTruncated` is `true`. If the value of IsTruncated is `true`, you can call this operation again and set `marker` to obtain the truncated part.
+        # The marker. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set this parameter to obtain the truncated part.````
         self.marker = marker
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The list of the RAM users.
+        # The information about the RAM users.
         self.users = users
 
     def validate(self):
@@ -8964,7 +9292,7 @@ class ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice(TeaMode
         self.activate_date = activate_date
         # The serial number of the MFA device.
         self.serial_number = serial_number
-        # The basic information of the RAM user to which the MFA device is attached.
+        # The basic information about the Resource Access Management (RAM) user to which the MFA device is bound.
         self.user = user
 
     def validate(self):
@@ -9038,9 +9366,9 @@ class ListVirtualMFADevicesResponseBody(TeaModel):
         request_id: str = None,
         virtual_mfadevices: ListVirtualMFADevicesResponseBodyVirtualMFADevices = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The list of MFA devices.
+        # The information about the MFA devices.
         self.virtual_mfadevices = virtual_mfadevices
 
     def validate(self):
@@ -9150,7 +9478,7 @@ class RemoveUserFromGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9223,7 +9551,7 @@ class SetAccountAliasRequest(TeaModel):
         # 
         # The alias must be 3 to 32 characters in length, and can contain lowercase letters, digits, and hyphens (-).
         # 
-        # > It cannot start or end with a hyphen (-), and cannot contain consecutive hyphens (-).
+        # >  It cannot start or end with a hyphen (-), and cannot contain consecutive hyphens (-).
         self.account_alias = account_alias
 
     def validate(self):
@@ -9251,7 +9579,7 @@ class SetAccountAliasResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9355,7 +9683,7 @@ class SetDefaultPolicyVersionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9432,18 +9760,16 @@ class SetPasswordPolicyRequest(TeaModel):
         require_symbols: bool = None,
         require_uppercase_characters: bool = None,
     ):
-        # Specifies whether a password will expire.
-        # 
-        # Valid values: `true` and `false`. Default value: `false`. If you leave this parameter unspecified, the default value false is used.
+        # Specifies whether a password will expire. Valid values: `true` and `false`. Default value: `false`. If you leave this parameter unspecified, the default value false is used.
         # 
         # *   If you set this parameter to `true`, the Alibaba Cloud account to which the RAM users belong must reset the passwords before the RAM users can log on to the Alibaba Cloud Management Console.
         # *   If you set this parameter to `false`, the RAM users can change the passwords after the passwords expire and then log on to the Alibaba Cloud Management Console.
         self.hard_expiry = hard_expiry
         # The maximum number of permitted logon attempts within one hour. The number of logon attempts is reset to zero if a RAM user changes the password.
         self.max_login_attemps = max_login_attemps
-        # The number of days for which a password is valid. Default value: 0. The default value indicates that the password never expires.
+        # The number of days for which a password is valid. If you reset a password, the password validity period restarts. Default value: 0. The default value indicates that the password never expires.
         self.max_password_age = max_password_age
-        # The minimum required number of characters in a password.
+        # The minimum number of characters in a password.
         # 
         # Valid values: 8 to 32. Default value: 8.
         self.minimum_password_length = minimum_password_length
@@ -9523,18 +9849,16 @@ class SetPasswordPolicyResponseBodyPasswordPolicy(TeaModel):
         require_symbols: bool = None,
         require_uppercase_characters: bool = None,
     ):
-        # Indicates whether a password expires.
-        # 
-        # Valid values: `true` and `false`. Default value: `false`. If the parameter is unspecified, the default value false is returned.
+        # Indicates whether a password expires. Valid values: `true` and `false`. Default value: `false`. If the parameter is unspecified, the default value false is returned.
         # 
         # *   If this parameter is set to `true`, the Alibaba Cloud account to which the RAM users belong must reset the password before the RAM users can log on to the Alibaba Cloud Management Console.
         # *   If this parameter is set to `false`, the RAM users can change the passwords after the passwords expire and then log on to the Alibaba Cloud Management Console.
         self.hard_expiry = hard_expiry
         # The maximum number of permitted logon attempts within one hour. The number of logon attempts is reset to zero if a RAM user changes the password.
         self.max_login_attemps = max_login_attemps
-        # The number of days for which a password is valid. Default value: 0. The default value indicates that the password never expires.
+        # The number of days for which a password is valid. If you reset a password, the password validity period restarts. Default value: 0. The default value indicates that the password never expires.
         self.max_password_age = max_password_age
-        # The minimum required number of characters in a password.
+        # The minimum number of characters in a password.
         self.minimum_password_length = minimum_password_length
         # The number of previous passwords that a RAM user is prevented from reusing. Default value: 0. The default value indicates that the RAM user can reuse previous passwords.
         self.password_reuse_prevention = password_reuse_prevention
@@ -9607,7 +9931,7 @@ class SetPasswordPolicyResponseBody(TeaModel):
     ):
         # The password policy.
         self.password_policy = password_policy
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9690,30 +10014,30 @@ class SetSecurityPreferenceRequest(TeaModel):
     ):
         # Specifies whether RAM users can change their passwords. Valid values:
         # 
-        # *   true: RAM users can change their passwords. This is the default value.
-        # *   false: RAM users cannot change their passwords.
+        # *   true (default)
+        # *   false
         self.allow_user_to_change_password = allow_user_to_change_password
         # Specifies whether RAM users can manage their AccessKey pairs. Valid values:
         # 
-        # *   true: RAM users can manage their AccessKey pairs.
-        # *   false: RAM users cannot manage their AccessKey pairs. This is the default value.
+        # *   true
+        # *   false (default)
         self.allow_user_to_manage_access_keys = allow_user_to_manage_access_keys
         # Specifies whether RAM users can manage their MFA devices. Valid values:
         # 
-        # *   true: RAM users can manage their MFA devices. This is the default value.
-        # *   false: RAM users cannot manage their MFA devices.
+        # *   true (default)
+        # *   false
         self.allow_user_to_manage_mfadevices = allow_user_to_manage_mfadevices
         # Specifies whether RAM users can manage their public keys. Valid values:
         # 
-        # *   true: RAM users can manage their public keys.
-        # *   false: RAM users cannot manage their public keys. This is the default value.
+        # *   true
+        # *   false (default)
         # 
         # >  This parameter is valid only for the Japan site.
         self.allow_user_to_manage_public_keys = allow_user_to_manage_public_keys
         # Specifies whether to remember the multi-factor authentication (MFA) devices of Resource Access Management (RAM) users for seven days. Valid values:
         # 
-        # *   true: remembers the MFA devices of RAM users for seven days.
-        # *   false: does not remember the MFA devices of RAM users for seven days.
+        # *   true
+        # *   false (default)
         self.enable_save_mfaticket = enable_save_mfaticket
         # The subnet mask that specifies the IP addresses from which you can log on to the Alibaba Cloud Management Console. This parameter takes effect on password-based logon and single sign-on (SSO). However, this parameter does not take effect on API calls that are authenticated by using AccessKey pairs.
         # 
@@ -10046,11 +10370,218 @@ class SetSecurityPreferenceResponse(TeaModel):
         return self
 
 
+class TagResourcesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The key of the tag. The tag key can be up to 128 characters in length.
+        self.key = key
+        # The value of the tag. The tag value can be up to 256 characters in length.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class TagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        resource_names: List[str] = None,
+        resource_type: str = None,
+        tag: List[TagResourcesRequestTag] = None,
+    ):
+        # The names of the resources. You can specify up to 50 resource names.
+        self.resource_names = resource_names
+        # The resource type.
+        # 
+        # Enumerated values:
+        # 
+        # *   role
+        # *   policy
+        self.resource_type = resource_type
+        # The tags. You can specify up to 20 tags.
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_names is not None:
+            result['ResourceNames'] = self.resource_names
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceNames') is not None:
+            self.resource_names = m.get('ResourceNames')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = TagResourcesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class TagResourcesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        resource_names_shrink: str = None,
+        resource_type: str = None,
+        tag_shrink: str = None,
+    ):
+        # The names of the resources. You can specify up to 50 resource names.
+        self.resource_names_shrink = resource_names_shrink
+        # The resource type.
+        # 
+        # Enumerated values:
+        # 
+        # *   role
+        # *   policy
+        self.resource_type = resource_type
+        # The tags. You can specify up to 20 tags.
+        self.tag_shrink = tag_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_names_shrink is not None:
+            result['ResourceNames'] = self.resource_names_shrink
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceNames') is not None:
+            self.resource_names_shrink = m.get('ResourceNames')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
+        return self
+
+
+class TagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class TagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UnbindMFADeviceRequest(TeaModel):
     def __init__(
         self,
         user_name: str = None,
     ):
+        # Specifies the username.
         self.user_name = user_name
 
     def validate(self):
@@ -10078,6 +10609,7 @@ class UnbindMFADeviceResponseBodyMFADevice(TeaModel):
         self,
         serial_number: str = None,
     ):
+        # The serial number of the MFA device.
         self.serial_number = serial_number
 
     def validate(self):
@@ -10106,7 +10638,9 @@ class UnbindMFADeviceResponseBody(TeaModel):
         mfadevice: UnbindMFADeviceResponseBodyMFADevice = None,
         request_id: str = None,
     ):
+        # The information about the MFA device.
         self.mfadevice = mfadevice
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10176,6 +10710,193 @@ class UnbindMFADeviceResponse(TeaModel):
         return self
 
 
+class UntagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        all: bool = None,
+        resource_names: List[str] = None,
+        resource_type: str = None,
+        tag_keys: List[str] = None,
+    ):
+        # Specifies whether to remove all tags from the resources.
+        # 
+        # Enumerated values:
+        # 
+        # *   true
+        # *   false
+        self.all = all
+        # The names of the resources. You can specify up to 50 resource names.
+        self.resource_names = resource_names
+        # The resource type.
+        # 
+        # Enumerated values:
+        # 
+        # *   role
+        # *   policy
+        self.resource_type = resource_type
+        # The keys of the tags. You can specify up to 20 tag keys.
+        self.tag_keys = tag_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all is not None:
+            result['All'] = self.all
+        if self.resource_names is not None:
+            result['ResourceNames'] = self.resource_names
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_keys is not None:
+            result['TagKeys'] = self.tag_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('ResourceNames') is not None:
+            self.resource_names = m.get('ResourceNames')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKeys') is not None:
+            self.tag_keys = m.get('TagKeys')
+        return self
+
+
+class UntagResourcesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        all: bool = None,
+        resource_names_shrink: str = None,
+        resource_type: str = None,
+        tag_keys_shrink: str = None,
+    ):
+        # Specifies whether to remove all tags from the resources.
+        # 
+        # Enumerated values:
+        # 
+        # *   true
+        # *   false
+        self.all = all
+        # The names of the resources. You can specify up to 50 resource names.
+        self.resource_names_shrink = resource_names_shrink
+        # The resource type.
+        # 
+        # Enumerated values:
+        # 
+        # *   role
+        # *   policy
+        self.resource_type = resource_type
+        # The keys of the tags. You can specify up to 20 tag keys.
+        self.tag_keys_shrink = tag_keys_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all is not None:
+            result['All'] = self.all
+        if self.resource_names_shrink is not None:
+            result['ResourceNames'] = self.resource_names_shrink
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_keys_shrink is not None:
+            result['TagKeys'] = self.tag_keys_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('ResourceNames') is not None:
+            self.resource_names_shrink = m.get('ResourceNames')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKeys') is not None:
+            self.tag_keys_shrink = m.get('TagKeys')
+        return self
+
+
+class UntagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UntagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UntagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UntagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateAccessKeyRequest(TeaModel):
     def __init__(
         self,
@@ -10185,7 +10906,7 @@ class UpdateAccessKeyRequest(TeaModel):
     ):
         # The status of the AccessKey pair. Valid values: `Active` and `Inactive`.
         self.status = status
-        # The AccessKey ID in the AccessKey pair whose status you want to change.
+        # The AccessKey ID in the AccessKey pair whose status you want to change.``
         self.user_access_key_id = user_access_key_id
         # The name of the RAM user.
         self.user_name = user_name
@@ -10223,7 +10944,7 @@ class UpdateAccessKeyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10298,7 +11019,7 @@ class UpdateGroupRequest(TeaModel):
         self.group_name = group_name
         # The new description of the RAM user group.
         # 
-        # The comments must be 1 to 128 characters in length.
+        # The new description must be 1 to 128 characters in length.
         self.new_comments = new_comments
         # The new name of the RAM user group.
         # 
@@ -10342,15 +11063,15 @@ class UpdateGroupResponseBodyGroup(TeaModel):
         group_name: str = None,
         update_date: str = None,
     ):
-        # The description of the RAM user group.
+        # The description.
         self.comments = comments
-        # The time when the RAM user group was created.
+        # The creation time.
         self.create_date = create_date
         # The ID of the RAM user group.
         self.group_id = group_id
-        # The new name of the RAM user group.
+        # The name of the RAM user group.
         self.group_name = group_name
-        # The time when the information of the RAM user group was updated.
+        # The modification time.
         self.update_date = update_date
 
     def validate(self):
@@ -10395,9 +11116,9 @@ class UpdateGroupResponseBody(TeaModel):
         group: UpdateGroupResponseBodyGroup = None,
         request_id: str = None,
     ):
-        # The information of the RAM user group.
+        # The information about the RAM user group.
         self.group = group
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10475,11 +11196,11 @@ class UpdateLoginProfileRequest(TeaModel):
         password_reset_required: bool = None,
         user_name: str = None,
     ):
-        # Specifies whether an MFA device must be attached to the RAM user upon logon.
+        # Specifies whether a multi-factor authentication (MFA) device must be bound to the RAM user upon logon.
         self.mfabind_required = mfabind_required
         # The logon password of the RAM user. The password must meet the password strength requirements.
         self.password = password
-        # Specifies whether the RAM user must change the password upon logon.
+        # Specifies whether the RAM user has to change the password upon logon.
         self.password_reset_required = password_reset_required
         # The name of the RAM user.
         self.user_name = user_name
@@ -10521,7 +11242,7 @@ class UpdateLoginProfileResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10593,7 +11314,7 @@ class UpdatePolicyDescriptionRequest(TeaModel):
     ):
         # The description of the policy.
         # 
-        # The value of the parameter must be 1 to 1,024 characters in length.
+        # The description must be 1 to 1,024 characters in length.
         self.new_description = new_description
         # The name of the policy.
         self.policy_name = policy_name
@@ -10642,8 +11363,8 @@ class UpdatePolicyDescriptionResponseBodyPolicy(TeaModel):
         self.policy_name = policy_name
         # The type of the policy. Valid values:
         # 
-        # *   Custom: custom policy
-        # *   System: system policy
+        # *   Custom
+        # *   System
         self.policy_type = policy_type
         # The time when the policy was modified.
         self.update_date = update_date
@@ -10696,7 +11417,7 @@ class UpdatePolicyDescriptionResponseBody(TeaModel):
     ):
         # The information about the policy.
         self.policy = policy
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10774,21 +11495,21 @@ class UpdateRoleRequest(TeaModel):
         new_max_session_duration: int = None,
         role_name: str = None,
     ):
-        # The policy that specifies the trusted entity to assume the RAM role.
+        # The trust policy that specifies the trusted entity to assume the RAM role.
         self.new_assume_role_policy_document = new_assume_role_policy_document
         # The new description of the RAM role.
         # 
-        # The value must be 1 to 1,024 characters in length.
+        # The description must be 1 to 1,024 characters in length.
         self.new_description = new_description
-        # The maximum session duration of the RAM role.
+        # The maximum session time of the RAM role.
         # 
-        # Valid values: 3600 to 43200. Unit: seconds.Default value: 3600.
+        # Valid values: 3600 to 43200. Unit: seconds. Default value: 3600.
         # 
         # If you do not specify this parameter, the default value is used.
         self.new_max_session_duration = new_max_session_duration
         # The name of the RAM role.
         # 
-        # The name must be 1 to 64 characters in length and can contain letters, digits, periods (.),and hyphens (-).
+        # The name must be 1 to 64 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
         self.role_name = role_name
 
     def validate(self):
@@ -10835,15 +11556,15 @@ class UpdateRoleResponseBodyRole(TeaModel):
         role_name: str = None,
         update_date: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the role.
+        # The Alibaba Cloud Resource Name (ARN) of the RAM role.
         self.arn = arn
-        # The policy that specifies the trusted entity to assume the RAM role.
+        # The trust policy that specifies the trusted entity to assume the RAM role.
         self.assume_role_policy_document = assume_role_policy_document
         # The time when the RAM role was created.
         self.create_date = create_date
         # The description of the RAM role.
         self.description = description
-        # The maximum session duration of the RAM role.
+        # The maximum session time of the RAM role.
         self.max_session_duration = max_session_duration
         # The ID of the RAM role.
         self.role_id = role_id
@@ -10906,9 +11627,9 @@ class UpdateRoleResponseBody(TeaModel):
         request_id: str = None,
         role: UpdateRoleResponseBodyRole = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information of the RAM role.
+        # The information about the RAM role.
         self.role = role
 
     def validate(self):
@@ -10998,13 +11719,13 @@ class UpdateUserRequest(TeaModel):
         self.new_display_name = new_display_name
         # The new email address of the RAM user.
         # 
-        # >  This parameter can be returned only on the China site (aliyun.com).
+        # >  This parameter applies only to the China site (aliyun.com).
         self.new_email = new_email
         # The new mobile phone number of the RAM user.
         # 
         # Format: \\<Country code>-\\<Mobile phone number>.
         # 
-        # >  This parameter can be returned only on the China site (aliyun.com).
+        # >  This parameter applies only to the China site (aliyun.com).
         self.new_mobile_phone = new_mobile_phone
         # The new username of the RAM user.
         # 
@@ -11140,7 +11861,7 @@ class UpdateUserResponseBody(TeaModel):
         request_id: str = None,
         user: UpdateUserResponseBodyUser = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The information about the RAM user.
         self.user = user

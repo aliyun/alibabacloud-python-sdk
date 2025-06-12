@@ -47,7 +47,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.AddUserToGroupResponse:
         """
-        @summary Adds a RAM user to a RAM user group.
+        @summary Adds a Resource Access Management (RAM) user to a RAM user group.
         
         @param request: AddUserToGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -84,7 +84,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.AddUserToGroupResponse:
         """
-        @summary Adds a RAM user to a RAM user group.
+        @summary Adds a Resource Access Management (RAM) user to a RAM user group.
         
         @param request: AddUserToGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -120,7 +120,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.AddUserToGroupRequest,
     ) -> ram_20150501_models.AddUserToGroupResponse:
         """
-        @summary Adds a RAM user to a RAM user group.
+        @summary Adds a Resource Access Management (RAM) user to a RAM user group.
         
         @param request: AddUserToGroupRequest
         @return: AddUserToGroupResponse
@@ -133,7 +133,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.AddUserToGroupRequest,
     ) -> ram_20150501_models.AddUserToGroupResponse:
         """
-        @summary Adds a RAM user to a RAM user group.
+        @summary Adds a Resource Access Management (RAM) user to a RAM user group.
         
         @param request: AddUserToGroupRequest
         @return: AddUserToGroupResponse
@@ -147,7 +147,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.AttachPolicyToGroupResponse:
         """
-        @summary Attaches a policy to a RAM user group.
+        @summary Attaches a policy to a Resource Access Management (RAM) user group.
         
         @param request: AttachPolicyToGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -186,7 +186,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.AttachPolicyToGroupResponse:
         """
-        @summary Attaches a policy to a RAM user group.
+        @summary Attaches a policy to a Resource Access Management (RAM) user group.
         
         @param request: AttachPolicyToGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -224,7 +224,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.AttachPolicyToGroupRequest,
     ) -> ram_20150501_models.AttachPolicyToGroupResponse:
         """
-        @summary Attaches a policy to a RAM user group.
+        @summary Attaches a policy to a Resource Access Management (RAM) user group.
         
         @param request: AttachPolicyToGroupRequest
         @return: AttachPolicyToGroupResponse
@@ -237,7 +237,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.AttachPolicyToGroupRequest,
     ) -> ram_20150501_models.AttachPolicyToGroupResponse:
         """
-        @summary Attaches a policy to a RAM user group.
+        @summary Attaches a policy to a Resource Access Management (RAM) user group.
         
         @param request: AttachPolicyToGroupRequest
         @return: AttachPolicyToGroupResponse
@@ -251,7 +251,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.AttachPolicyToRoleResponse:
         """
-        @summary Attaches a policy to a RAM role.
+        @summary Attaches a policy to a Resource Access Management (RAM) role.
         
         @param request: AttachPolicyToRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -290,7 +290,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.AttachPolicyToRoleResponse:
         """
-        @summary Attaches a policy to a RAM role.
+        @summary Attaches a policy to a Resource Access Management (RAM) role.
         
         @param request: AttachPolicyToRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -328,7 +328,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.AttachPolicyToRoleRequest,
     ) -> ram_20150501_models.AttachPolicyToRoleResponse:
         """
-        @summary Attaches a policy to a RAM role.
+        @summary Attaches a policy to a Resource Access Management (RAM) role.
         
         @param request: AttachPolicyToRoleRequest
         @return: AttachPolicyToRoleResponse
@@ -341,7 +341,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.AttachPolicyToRoleRequest,
     ) -> ram_20150501_models.AttachPolicyToRoleResponse:
         """
-        @summary Attaches a policy to a RAM role.
+        @summary Attaches a policy to a Resource Access Management (RAM) role.
         
         @param request: AttachPolicyToRoleRequest
         @return: AttachPolicyToRoleResponse
@@ -355,7 +355,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.AttachPolicyToUserResponse:
         """
-        @summary Attaches a policy to a RAM user.
+        @summary Attaches a policy to a Resource Access Management (RAM) user.
         
         @param request: AttachPolicyToUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -394,7 +394,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.AttachPolicyToUserResponse:
         """
-        @summary Attaches a policy to a RAM user.
+        @summary Attaches a policy to a Resource Access Management (RAM) user.
         
         @param request: AttachPolicyToUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -432,7 +432,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.AttachPolicyToUserRequest,
     ) -> ram_20150501_models.AttachPolicyToUserResponse:
         """
-        @summary Attaches a policy to a RAM user.
+        @summary Attaches a policy to a Resource Access Management (RAM) user.
         
         @param request: AttachPolicyToUserRequest
         @return: AttachPolicyToUserResponse
@@ -445,7 +445,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.AttachPolicyToUserRequest,
     ) -> ram_20150501_models.AttachPolicyToUserResponse:
         """
-        @summary Attaches a policy to a RAM user.
+        @summary Attaches a policy to a Resource Access Management (RAM) user.
         
         @param request: AttachPolicyToUserRequest
         @return: AttachPolicyToUserResponse
@@ -459,6 +459,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.BindMFADeviceResponse:
         """
+        @summary Binds a multi-factor authentication (MFA) device to a Resource Access Management (RAM) user.
+        
         @param request: BindMFADeviceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: BindMFADeviceResponse
@@ -498,6 +500,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.BindMFADeviceResponse:
         """
+        @summary Binds a multi-factor authentication (MFA) device to a Resource Access Management (RAM) user.
+        
         @param request: BindMFADeviceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: BindMFADeviceResponse
@@ -536,6 +540,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.BindMFADeviceRequest,
     ) -> ram_20150501_models.BindMFADeviceResponse:
         """
+        @summary Binds a multi-factor authentication (MFA) device to a Resource Access Management (RAM) user.
+        
         @param request: BindMFADeviceRequest
         @return: BindMFADeviceResponse
         """
@@ -547,6 +553,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.BindMFADeviceRequest,
     ) -> ram_20150501_models.BindMFADeviceResponse:
         """
+        @summary Binds a multi-factor authentication (MFA) device to a Resource Access Management (RAM) user.
+        
         @param request: BindMFADeviceRequest
         @return: BindMFADeviceResponse
         """
@@ -559,7 +567,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ChangePasswordResponse:
         """
-        @description >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can change their passwords.
+        @summary Changes the password that is used to log on to the console for a Resource Access Management (RAM) user.
+        
+        @description >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can manage their passwords.
         
         @param request: ChangePasswordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -596,7 +606,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ChangePasswordResponse:
         """
-        @description >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can change their passwords.
+        @summary Changes the password that is used to log on to the console for a Resource Access Management (RAM) user.
+        
+        @description >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can manage their passwords.
         
         @param request: ChangePasswordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -632,7 +644,9 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ChangePasswordRequest,
     ) -> ram_20150501_models.ChangePasswordResponse:
         """
-        @description >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can change their passwords.
+        @summary Changes the password that is used to log on to the console for a Resource Access Management (RAM) user.
+        
+        @description >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can manage their passwords.
         
         @param request: ChangePasswordRequest
         @return: ChangePasswordResponse
@@ -645,7 +659,9 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ChangePasswordRequest,
     ) -> ram_20150501_models.ChangePasswordResponse:
         """
-        @description >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can change their passwords.
+        @summary Changes the password that is used to log on to the console for a Resource Access Management (RAM) user.
+        
+        @description >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can manage their passwords.
         
         @param request: ChangePasswordRequest
         @return: ChangePasswordResponse
@@ -658,6 +674,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ClearAccountAliasResponse:
         """
+        @summary Deletes the alias of an Alibaba Cloud account.
+        
         @param request: ClearAccountAliasRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ClearAccountAliasResponse
@@ -684,6 +702,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ClearAccountAliasResponse:
         """
+        @summary Deletes the alias of an Alibaba Cloud account.
+        
         @param request: ClearAccountAliasRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ClearAccountAliasResponse
@@ -707,6 +727,8 @@ class Client(OpenApiClient):
 
     def clear_account_alias(self) -> ram_20150501_models.ClearAccountAliasResponse:
         """
+        @summary Deletes the alias of an Alibaba Cloud account.
+        
         @return: ClearAccountAliasResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -714,6 +736,8 @@ class Client(OpenApiClient):
 
     async def clear_account_alias_async(self) -> ram_20150501_models.ClearAccountAliasResponse:
         """
+        @summary Deletes the alias of an Alibaba Cloud account.
+        
         @return: ClearAccountAliasResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -725,6 +749,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.CreateAccessKeyResponse:
         """
+        @summary Creates an AccessKey pair for a Resource Access Management (RAM) user.
+        
         @param request: CreateAccessKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateAccessKeyResponse
@@ -758,6 +784,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.CreateAccessKeyResponse:
         """
+        @summary Creates an AccessKey pair for a Resource Access Management (RAM) user.
+        
         @param request: CreateAccessKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateAccessKeyResponse
@@ -790,6 +818,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.CreateAccessKeyRequest,
     ) -> ram_20150501_models.CreateAccessKeyResponse:
         """
+        @summary Creates an AccessKey pair for a Resource Access Management (RAM) user.
+        
         @param request: CreateAccessKeyRequest
         @return: CreateAccessKeyResponse
         """
@@ -801,6 +831,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.CreateAccessKeyRequest,
     ) -> ram_20150501_models.CreateAccessKeyResponse:
         """
+        @summary Creates an AccessKey pair for a Resource Access Management (RAM) user.
+        
         @param request: CreateAccessKeyRequest
         @return: CreateAccessKeyResponse
         """
@@ -913,7 +945,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.CreateLoginProfileResponse:
         """
-        @summary Enables console logon for a RAM user.
+        @summary Enables console logon for a Resource Access Management (RAM) user.
         
         @param request: CreateLoginProfileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -954,7 +986,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.CreateLoginProfileResponse:
         """
-        @summary Enables console logon for a RAM user.
+        @summary Enables console logon for a Resource Access Management (RAM) user.
         
         @param request: CreateLoginProfileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -994,7 +1026,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.CreateLoginProfileRequest,
     ) -> ram_20150501_models.CreateLoginProfileResponse:
         """
-        @summary Enables console logon for a RAM user.
+        @summary Enables console logon for a Resource Access Management (RAM) user.
         
         @param request: CreateLoginProfileRequest
         @return: CreateLoginProfileResponse
@@ -1007,7 +1039,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.CreateLoginProfileRequest,
     ) -> ram_20150501_models.CreateLoginProfileResponse:
         """
-        @summary Enables console logon for a RAM user.
+        @summary Enables console logon for a Resource Access Management (RAM) user.
         
         @param request: CreateLoginProfileRequest
         @return: CreateLoginProfileResponse
@@ -1149,6 +1181,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.CreatePolicyVersionResponse:
         """
+        @summary Creates a version for a policy.
+        
         @param request: CreatePolicyVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreatePolicyVersionResponse
@@ -1188,6 +1222,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.CreatePolicyVersionResponse:
         """
+        @summary Creates a version for a policy.
+        
         @param request: CreatePolicyVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreatePolicyVersionResponse
@@ -1226,6 +1262,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.CreatePolicyVersionRequest,
     ) -> ram_20150501_models.CreatePolicyVersionResponse:
         """
+        @summary Creates a version for a policy.
+        
         @param request: CreatePolicyVersionRequest
         @return: CreatePolicyVersionResponse
         """
@@ -1237,6 +1275,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.CreatePolicyVersionRequest,
     ) -> ram_20150501_models.CreatePolicyVersionResponse:
         """
+        @summary Creates a version for a policy.
+        
         @param request: CreatePolicyVersionRequest
         @return: CreatePolicyVersionResponse
         """
@@ -1249,9 +1289,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.CreateRoleResponse:
         """
-        @summary Creates a RAM role.
+        @summary Creates a Resource Access Management (RAM) role.
         
-        @description ## Description
+        @description ### [](#)Operation description
         For more information about RAM roles, see [Overview of RAM roles](https://help.aliyun.com/document_detail/93689.html).
         
         @param tmp_req: CreateRoleRequest
@@ -1299,9 +1339,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.CreateRoleResponse:
         """
-        @summary Creates a RAM role.
+        @summary Creates a Resource Access Management (RAM) role.
         
-        @description ## Description
+        @description ### [](#)Operation description
         For more information about RAM roles, see [Overview of RAM roles](https://help.aliyun.com/document_detail/93689.html).
         
         @param tmp_req: CreateRoleRequest
@@ -1348,9 +1388,9 @@ class Client(OpenApiClient):
         request: ram_20150501_models.CreateRoleRequest,
     ) -> ram_20150501_models.CreateRoleResponse:
         """
-        @summary Creates a RAM role.
+        @summary Creates a Resource Access Management (RAM) role.
         
-        @description ## Description
+        @description ### [](#)Operation description
         For more information about RAM roles, see [Overview of RAM roles](https://help.aliyun.com/document_detail/93689.html).
         
         @param request: CreateRoleRequest
@@ -1364,9 +1404,9 @@ class Client(OpenApiClient):
         request: ram_20150501_models.CreateRoleRequest,
     ) -> ram_20150501_models.CreateRoleResponse:
         """
-        @summary Creates a RAM role.
+        @summary Creates a Resource Access Management (RAM) role.
         
-        @description ## Description
+        @description ### [](#)Operation description
         For more information about RAM roles, see [Overview of RAM roles](https://help.aliyun.com/document_detail/93689.html).
         
         @param request: CreateRoleRequest
@@ -1501,6 +1541,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.CreateVirtualMFADeviceResponse:
         """
+        @summary Creates a multi-factor authentication (MFA) device.
+        
         @param request: CreateVirtualMFADeviceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateVirtualMFADeviceResponse
@@ -1534,6 +1576,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.CreateVirtualMFADeviceResponse:
         """
+        @summary Creates a multi-factor authentication (MFA) device.
+        
         @param request: CreateVirtualMFADeviceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateVirtualMFADeviceResponse
@@ -1566,6 +1610,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.CreateVirtualMFADeviceRequest,
     ) -> ram_20150501_models.CreateVirtualMFADeviceResponse:
         """
+        @summary Creates a multi-factor authentication (MFA) device.
+        
         @param request: CreateVirtualMFADeviceRequest
         @return: CreateVirtualMFADeviceResponse
         """
@@ -1577,6 +1623,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.CreateVirtualMFADeviceRequest,
     ) -> ram_20150501_models.CreateVirtualMFADeviceResponse:
         """
+        @summary Creates a multi-factor authentication (MFA) device.
+        
         @param request: CreateVirtualMFADeviceRequest
         @return: CreateVirtualMFADeviceResponse
         """
@@ -1685,6 +1733,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeleteAccessKeyResponse:
         """
+        @summary Deletes an AccessKey pair of a Resource Access Management (RAM) user.
+        
         @param request: DeleteAccessKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteAccessKeyResponse
@@ -1720,6 +1770,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeleteAccessKeyResponse:
         """
+        @summary Deletes an AccessKey pair of a Resource Access Management (RAM) user.
+        
         @param request: DeleteAccessKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteAccessKeyResponse
@@ -1754,6 +1806,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeleteAccessKeyRequest,
     ) -> ram_20150501_models.DeleteAccessKeyResponse:
         """
+        @summary Deletes an AccessKey pair of a Resource Access Management (RAM) user.
+        
         @param request: DeleteAccessKeyRequest
         @return: DeleteAccessKeyResponse
         """
@@ -1765,6 +1819,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeleteAccessKeyRequest,
     ) -> ram_20150501_models.DeleteAccessKeyResponse:
         """
+        @summary Deletes an AccessKey pair of a Resource Access Management (RAM) user.
+        
         @param request: DeleteAccessKeyRequest
         @return: DeleteAccessKeyResponse
         """
@@ -1777,6 +1833,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeleteGroupResponse:
         """
+        @summary Deletes a Resource Access Management (RAM) user group.
+        
         @description Before you delete a RAM user group, make sure that no policies are attached to the group and no RAM users are included in the group.
         
         @param request: DeleteGroupRequest
@@ -1812,6 +1870,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeleteGroupResponse:
         """
+        @summary Deletes a Resource Access Management (RAM) user group.
+        
         @description Before you delete a RAM user group, make sure that no policies are attached to the group and no RAM users are included in the group.
         
         @param request: DeleteGroupRequest
@@ -1846,6 +1906,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeleteGroupRequest,
     ) -> ram_20150501_models.DeleteGroupResponse:
         """
+        @summary Deletes a Resource Access Management (RAM) user group.
+        
         @description Before you delete a RAM user group, make sure that no policies are attached to the group and no RAM users are included in the group.
         
         @param request: DeleteGroupRequest
@@ -1859,6 +1921,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeleteGroupRequest,
     ) -> ram_20150501_models.DeleteGroupResponse:
         """
+        @summary Deletes a Resource Access Management (RAM) user group.
+        
         @description Before you delete a RAM user group, make sure that no policies are attached to the group and no RAM users are included in the group.
         
         @param request: DeleteGroupRequest
@@ -1873,6 +1937,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeleteLoginProfileResponse:
         """
+        @summary Disables console logon for a Resource Access Management (RAM) user.
+        
         @param request: DeleteLoginProfileRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteLoginProfileResponse
@@ -1906,6 +1972,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeleteLoginProfileResponse:
         """
+        @summary Disables console logon for a Resource Access Management (RAM) user.
+        
         @param request: DeleteLoginProfileRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteLoginProfileResponse
@@ -1938,6 +2006,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeleteLoginProfileRequest,
     ) -> ram_20150501_models.DeleteLoginProfileResponse:
         """
+        @summary Disables console logon for a Resource Access Management (RAM) user.
+        
         @param request: DeleteLoginProfileRequest
         @return: DeleteLoginProfileResponse
         """
@@ -1949,6 +2019,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeleteLoginProfileRequest,
     ) -> ram_20150501_models.DeleteLoginProfileResponse:
         """
+        @summary Disables console logon for a Resource Access Management (RAM) user.
+        
         @param request: DeleteLoginProfileRequest
         @return: DeleteLoginProfileResponse
         """
@@ -1961,6 +2033,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeletePolicyResponse:
         """
+        @summary Deletes a policy.
+        
         @param request: DeletePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeletePolicyResponse
@@ -1996,6 +2070,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeletePolicyResponse:
         """
+        @summary Deletes a policy.
+        
         @param request: DeletePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeletePolicyResponse
@@ -2030,6 +2106,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeletePolicyRequest,
     ) -> ram_20150501_models.DeletePolicyResponse:
         """
+        @summary Deletes a policy.
+        
         @param request: DeletePolicyRequest
         @return: DeletePolicyResponse
         """
@@ -2041,6 +2119,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeletePolicyRequest,
     ) -> ram_20150501_models.DeletePolicyResponse:
         """
+        @summary Deletes a policy.
+        
         @param request: DeletePolicyRequest
         @return: DeletePolicyResponse
         """
@@ -2053,6 +2133,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeletePolicyVersionResponse:
         """
+        @summary Deletes a policy version.
+        
         @param request: DeletePolicyVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeletePolicyVersionResponse
@@ -2088,6 +2170,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeletePolicyVersionResponse:
         """
+        @summary Deletes a policy version.
+        
         @param request: DeletePolicyVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeletePolicyVersionResponse
@@ -2122,6 +2206,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeletePolicyVersionRequest,
     ) -> ram_20150501_models.DeletePolicyVersionResponse:
         """
+        @summary Deletes a policy version.
+        
         @param request: DeletePolicyVersionRequest
         @return: DeletePolicyVersionResponse
         """
@@ -2133,6 +2219,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeletePolicyVersionRequest,
     ) -> ram_20150501_models.DeletePolicyVersionResponse:
         """
+        @summary Deletes a policy version.
+        
         @param request: DeletePolicyVersionRequest
         @return: DeletePolicyVersionResponse
         """
@@ -2145,6 +2233,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeleteRoleResponse:
         """
+        @summary Deletes a Resource Access Management (RAM) role.
+        
         @param request: DeleteRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteRoleResponse
@@ -2178,6 +2268,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeleteRoleResponse:
         """
+        @summary Deletes a Resource Access Management (RAM) role.
+        
         @param request: DeleteRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteRoleResponse
@@ -2210,6 +2302,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeleteRoleRequest,
     ) -> ram_20150501_models.DeleteRoleResponse:
         """
+        @summary Deletes a Resource Access Management (RAM) role.
+        
         @param request: DeleteRoleRequest
         @return: DeleteRoleResponse
         """
@@ -2221,6 +2315,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeleteRoleRequest,
     ) -> ram_20150501_models.DeleteRoleResponse:
         """
+        @summary Deletes a Resource Access Management (RAM) role.
+        
         @param request: DeleteRoleRequest
         @return: DeleteRoleResponse
         """
@@ -2233,6 +2329,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeleteUserResponse:
         """
+        @summary Deletes a Resource Access Management (RAM) user.
+        
         @description Before you delete a RAM user, make sure that no policies are attached to the RAM user and that the RAM user does not belong to any groups.
         
         @param request: DeleteUserRequest
@@ -2268,6 +2366,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeleteUserResponse:
         """
+        @summary Deletes a Resource Access Management (RAM) user.
+        
         @description Before you delete a RAM user, make sure that no policies are attached to the RAM user and that the RAM user does not belong to any groups.
         
         @param request: DeleteUserRequest
@@ -2302,6 +2402,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeleteUserRequest,
     ) -> ram_20150501_models.DeleteUserResponse:
         """
+        @summary Deletes a Resource Access Management (RAM) user.
+        
         @description Before you delete a RAM user, make sure that no policies are attached to the RAM user and that the RAM user does not belong to any groups.
         
         @param request: DeleteUserRequest
@@ -2315,6 +2417,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeleteUserRequest,
     ) -> ram_20150501_models.DeleteUserResponse:
         """
+        @summary Deletes a Resource Access Management (RAM) user.
+        
         @description Before you delete a RAM user, make sure that no policies are attached to the RAM user and that the RAM user does not belong to any groups.
         
         @param request: DeleteUserRequest
@@ -2329,6 +2433,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeleteVirtualMFADeviceResponse:
         """
+        @summary Deletes a multi-factor authentication (MFA) device.
+        
         @param request: DeleteVirtualMFADeviceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteVirtualMFADeviceResponse
@@ -2362,6 +2468,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeleteVirtualMFADeviceResponse:
         """
+        @summary Deletes a multi-factor authentication (MFA) device.
+        
         @param request: DeleteVirtualMFADeviceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteVirtualMFADeviceResponse
@@ -2394,6 +2502,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeleteVirtualMFADeviceRequest,
     ) -> ram_20150501_models.DeleteVirtualMFADeviceResponse:
         """
+        @summary Deletes a multi-factor authentication (MFA) device.
+        
         @param request: DeleteVirtualMFADeviceRequest
         @return: DeleteVirtualMFADeviceResponse
         """
@@ -2405,6 +2515,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeleteVirtualMFADeviceRequest,
     ) -> ram_20150501_models.DeleteVirtualMFADeviceResponse:
         """
+        @summary Deletes a multi-factor authentication (MFA) device.
+        
         @param request: DeleteVirtualMFADeviceRequest
         @return: DeleteVirtualMFADeviceResponse
         """
@@ -2417,7 +2529,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DetachPolicyFromGroupResponse:
         """
-        @summary Detaches a policy from a RAM user group.
+        @summary Detaches a policy from a Resource Access Management (RAM) user group.
         
         @param request: DetachPolicyFromGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2456,7 +2568,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DetachPolicyFromGroupResponse:
         """
-        @summary Detaches a policy from a RAM user group.
+        @summary Detaches a policy from a Resource Access Management (RAM) user group.
         
         @param request: DetachPolicyFromGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2494,7 +2606,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DetachPolicyFromGroupRequest,
     ) -> ram_20150501_models.DetachPolicyFromGroupResponse:
         """
-        @summary Detaches a policy from a RAM user group.
+        @summary Detaches a policy from a Resource Access Management (RAM) user group.
         
         @param request: DetachPolicyFromGroupRequest
         @return: DetachPolicyFromGroupResponse
@@ -2507,7 +2619,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DetachPolicyFromGroupRequest,
     ) -> ram_20150501_models.DetachPolicyFromGroupResponse:
         """
-        @summary Detaches a policy from a RAM user group.
+        @summary Detaches a policy from a Resource Access Management (RAM) user group.
         
         @param request: DetachPolicyFromGroupRequest
         @return: DetachPolicyFromGroupResponse
@@ -2521,7 +2633,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DetachPolicyFromRoleResponse:
         """
-        @summary Detaches a policy from a RAM role.
+        @summary Detaches a policy from a Resource Access Management (RAM) role.
         
         @param request: DetachPolicyFromRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2560,7 +2672,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DetachPolicyFromRoleResponse:
         """
-        @summary Detaches a policy from a RAM role.
+        @summary Detaches a policy from a Resource Access Management (RAM) role.
         
         @param request: DetachPolicyFromRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2598,7 +2710,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DetachPolicyFromRoleRequest,
     ) -> ram_20150501_models.DetachPolicyFromRoleResponse:
         """
-        @summary Detaches a policy from a RAM role.
+        @summary Detaches a policy from a Resource Access Management (RAM) role.
         
         @param request: DetachPolicyFromRoleRequest
         @return: DetachPolicyFromRoleResponse
@@ -2611,7 +2723,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DetachPolicyFromRoleRequest,
     ) -> ram_20150501_models.DetachPolicyFromRoleResponse:
         """
-        @summary Detaches a policy from a RAM role.
+        @summary Detaches a policy from a Resource Access Management (RAM) role.
         
         @param request: DetachPolicyFromRoleRequest
         @return: DetachPolicyFromRoleResponse
@@ -2625,7 +2737,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DetachPolicyFromUserResponse:
         """
-        @summary Detaches a policy from a RAM user.
+        @summary Detaches a policy from a Resource Access Management (RAM) user.
         
         @param request: DetachPolicyFromUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2664,7 +2776,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DetachPolicyFromUserResponse:
         """
-        @summary Detaches a policy from a RAM user.
+        @summary Detaches a policy from a Resource Access Management (RAM) user.
         
         @param request: DetachPolicyFromUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2702,7 +2814,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DetachPolicyFromUserRequest,
     ) -> ram_20150501_models.DetachPolicyFromUserResponse:
         """
-        @summary Detaches a policy from a RAM user.
+        @summary Detaches a policy from a Resource Access Management (RAM) user.
         
         @param request: DetachPolicyFromUserRequest
         @return: DetachPolicyFromUserResponse
@@ -2715,7 +2827,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DetachPolicyFromUserRequest,
     ) -> ram_20150501_models.DetachPolicyFromUserResponse:
         """
-        @summary Detaches a policy from a RAM user.
+        @summary Detaches a policy from a Resource Access Management (RAM) user.
         
         @param request: DetachPolicyFromUserRequest
         @return: DetachPolicyFromUserResponse
@@ -2820,6 +2932,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetAccountAliasResponse:
         """
+        @summary Queries the alias of an Alibaba Cloud account.
+        
         @param request: GetAccountAliasRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetAccountAliasResponse
@@ -2846,6 +2960,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetAccountAliasResponse:
         """
+        @summary Queries the alias of an Alibaba Cloud account.
+        
         @param request: GetAccountAliasRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetAccountAliasResponse
@@ -2869,6 +2985,8 @@ class Client(OpenApiClient):
 
     def get_account_alias(self) -> ram_20150501_models.GetAccountAliasResponse:
         """
+        @summary Queries the alias of an Alibaba Cloud account.
+        
         @return: GetAccountAliasResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -2876,6 +2994,8 @@ class Client(OpenApiClient):
 
     async def get_account_alias_async(self) -> ram_20150501_models.GetAccountAliasResponse:
         """
+        @summary Queries the alias of an Alibaba Cloud account.
+        
         @return: GetAccountAliasResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -2887,7 +3007,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetGroupResponse:
         """
-        @summary Queries the information of a RAM user group.
+        @summary Queries information about a Resource Access Management (RAM) user group.
         
         @param request: GetGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2922,7 +3042,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetGroupResponse:
         """
-        @summary Queries the information of a RAM user group.
+        @summary Queries information about a Resource Access Management (RAM) user group.
         
         @param request: GetGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2956,7 +3076,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.GetGroupRequest,
     ) -> ram_20150501_models.GetGroupResponse:
         """
-        @summary Queries the information of a RAM user group.
+        @summary Queries information about a Resource Access Management (RAM) user group.
         
         @param request: GetGroupRequest
         @return: GetGroupResponse
@@ -2969,7 +3089,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.GetGroupRequest,
     ) -> ram_20150501_models.GetGroupResponse:
         """
-        @summary Queries the information of a RAM user group.
+        @summary Queries information about a Resource Access Management (RAM) user group.
         
         @param request: GetGroupRequest
         @return: GetGroupResponse
@@ -2983,6 +3103,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetLoginProfileResponse:
         """
+        @summary Queries the logon configurations of a Resource Access Management (RAM) user.
+        
         @param request: GetLoginProfileRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetLoginProfileResponse
@@ -3016,6 +3138,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetLoginProfileResponse:
         """
+        @summary Queries the logon configurations of a Resource Access Management (RAM) user.
+        
         @param request: GetLoginProfileRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetLoginProfileResponse
@@ -3048,6 +3172,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.GetLoginProfileRequest,
     ) -> ram_20150501_models.GetLoginProfileResponse:
         """
+        @summary Queries the logon configurations of a Resource Access Management (RAM) user.
+        
         @param request: GetLoginProfileRequest
         @return: GetLoginProfileResponse
         """
@@ -3059,6 +3185,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.GetLoginProfileRequest,
     ) -> ram_20150501_models.GetLoginProfileResponse:
         """
+        @summary Queries the logon configurations of a Resource Access Management (RAM) user.
+        
         @param request: GetLoginProfileRequest
         @return: GetLoginProfileResponse
         """
@@ -3070,6 +3198,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetPasswordPolicyResponse:
         """
+        @summary Queries the password policy of Resource Access Management (RAM) users, including the password strength.
+        
         @param request: GetPasswordPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetPasswordPolicyResponse
@@ -3096,6 +3226,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetPasswordPolicyResponse:
         """
+        @summary Queries the password policy of Resource Access Management (RAM) users, including the password strength.
+        
         @param request: GetPasswordPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetPasswordPolicyResponse
@@ -3119,6 +3251,8 @@ class Client(OpenApiClient):
 
     def get_password_policy(self) -> ram_20150501_models.GetPasswordPolicyResponse:
         """
+        @summary Queries the password policy of Resource Access Management (RAM) users, including the password strength.
+        
         @return: GetPasswordPolicyResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -3126,6 +3260,8 @@ class Client(OpenApiClient):
 
     async def get_password_policy_async(self) -> ram_20150501_models.GetPasswordPolicyResponse:
         """
+        @summary Queries the password policy of Resource Access Management (RAM) users, including the password strength.
+        
         @return: GetPasswordPolicyResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -3137,7 +3273,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetPolicyResponse:
         """
-        @summary Queries the information of a policy.
+        @summary Queries information about a policy.
         
         @param request: GetPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3174,7 +3310,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetPolicyResponse:
         """
-        @summary Queries the information of a policy.
+        @summary Queries information about a policy.
         
         @param request: GetPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3210,7 +3346,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.GetPolicyRequest,
     ) -> ram_20150501_models.GetPolicyResponse:
         """
-        @summary Queries the information of a policy.
+        @summary Queries information about a policy.
         
         @param request: GetPolicyRequest
         @return: GetPolicyResponse
@@ -3223,7 +3359,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.GetPolicyRequest,
     ) -> ram_20150501_models.GetPolicyResponse:
         """
-        @summary Queries the information of a policy.
+        @summary Queries information about a policy.
         
         @param request: GetPolicyRequest
         @return: GetPolicyResponse
@@ -3237,7 +3373,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetPolicyVersionResponse:
         """
-        @summary Queries the information of a policy version.
+        @summary Queries the information about a policy version.
         
         @param request: GetPolicyVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3276,7 +3412,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetPolicyVersionResponse:
         """
-        @summary Queries the information of a policy version.
+        @summary Queries the information about a policy version.
         
         @param request: GetPolicyVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3314,7 +3450,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.GetPolicyVersionRequest,
     ) -> ram_20150501_models.GetPolicyVersionResponse:
         """
-        @summary Queries the information of a policy version.
+        @summary Queries the information about a policy version.
         
         @param request: GetPolicyVersionRequest
         @return: GetPolicyVersionResponse
@@ -3327,7 +3463,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.GetPolicyVersionRequest,
     ) -> ram_20150501_models.GetPolicyVersionResponse:
         """
-        @summary Queries the information of a policy version.
+        @summary Queries the information about a policy version.
         
         @param request: GetPolicyVersionRequest
         @return: GetPolicyVersionResponse
@@ -3341,7 +3477,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetRoleResponse:
         """
-        @summary Queries information of a RAM role.
+        @summary Queries information about a Resource Access Management (RAM) role.
         
         @param request: GetRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3376,7 +3512,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetRoleResponse:
         """
-        @summary Queries information of a RAM role.
+        @summary Queries information about a Resource Access Management (RAM) role.
         
         @param request: GetRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3410,7 +3546,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.GetRoleRequest,
     ) -> ram_20150501_models.GetRoleResponse:
         """
-        @summary Queries information of a RAM role.
+        @summary Queries information about a Resource Access Management (RAM) role.
         
         @param request: GetRoleRequest
         @return: GetRoleResponse
@@ -3423,7 +3559,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.GetRoleRequest,
     ) -> ram_20150501_models.GetRoleResponse:
         """
-        @summary Queries information of a RAM role.
+        @summary Queries information about a Resource Access Management (RAM) role.
         
         @param request: GetRoleRequest
         @return: GetRoleResponse
@@ -3436,6 +3572,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetSecurityPreferenceResponse:
         """
+        @summary Queries the security preferences.
+        
         @param request: GetSecurityPreferenceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetSecurityPreferenceResponse
@@ -3462,6 +3600,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetSecurityPreferenceResponse:
         """
+        @summary Queries the security preferences.
+        
         @param request: GetSecurityPreferenceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetSecurityPreferenceResponse
@@ -3485,6 +3625,8 @@ class Client(OpenApiClient):
 
     def get_security_preference(self) -> ram_20150501_models.GetSecurityPreferenceResponse:
         """
+        @summary Queries the security preferences.
+        
         @return: GetSecurityPreferenceResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -3492,6 +3634,8 @@ class Client(OpenApiClient):
 
     async def get_security_preference_async(self) -> ram_20150501_models.GetSecurityPreferenceResponse:
         """
+        @summary Queries the security preferences.
+        
         @return: GetSecurityPreferenceResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -3503,9 +3647,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetUserResponse:
         """
-        @summary Queries the information about a RAM user.
+        @summary Queries information about a Resource Access Management (RAM) user.
         
-        @description This topic provides an example on how to query the information about the RAM user `alice`.
+        @description This topic provides an example on how to query information about the RAM user `alice`.
         
         @param request: GetUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3540,9 +3684,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetUserResponse:
         """
-        @summary Queries the information about a RAM user.
+        @summary Queries information about a Resource Access Management (RAM) user.
         
-        @description This topic provides an example on how to query the information about the RAM user `alice`.
+        @description This topic provides an example on how to query information about the RAM user `alice`.
         
         @param request: GetUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3576,9 +3720,9 @@ class Client(OpenApiClient):
         request: ram_20150501_models.GetUserRequest,
     ) -> ram_20150501_models.GetUserResponse:
         """
-        @summary Queries the information about a RAM user.
+        @summary Queries information about a Resource Access Management (RAM) user.
         
-        @description This topic provides an example on how to query the information about the RAM user `alice`.
+        @description This topic provides an example on how to query information about the RAM user `alice`.
         
         @param request: GetUserRequest
         @return: GetUserResponse
@@ -3591,9 +3735,9 @@ class Client(OpenApiClient):
         request: ram_20150501_models.GetUserRequest,
     ) -> ram_20150501_models.GetUserResponse:
         """
-        @summary Queries the information about a RAM user.
+        @summary Queries information about a Resource Access Management (RAM) user.
         
-        @description This topic provides an example on how to query the information about the RAM user `alice`.
+        @description This topic provides an example on how to query information about the RAM user `alice`.
         
         @param request: GetUserRequest
         @return: GetUserResponse
@@ -3607,6 +3751,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetUserMFAInfoResponse:
         """
+        @summary Queries the multi-factor authentication (MFA) device that is bound to a Resource Access Management (RAM) user.
+        
         @param request: GetUserMFAInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetUserMFAInfoResponse
@@ -3640,6 +3786,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetUserMFAInfoResponse:
         """
+        @summary Queries the multi-factor authentication (MFA) device that is bound to a Resource Access Management (RAM) user.
+        
         @param request: GetUserMFAInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetUserMFAInfoResponse
@@ -3672,6 +3820,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.GetUserMFAInfoRequest,
     ) -> ram_20150501_models.GetUserMFAInfoResponse:
         """
+        @summary Queries the multi-factor authentication (MFA) device that is bound to a Resource Access Management (RAM) user.
+        
         @param request: GetUserMFAInfoRequest
         @return: GetUserMFAInfoResponse
         """
@@ -3683,6 +3833,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.GetUserMFAInfoRequest,
     ) -> ram_20150501_models.GetUserMFAInfoResponse:
         """
+        @summary Queries the multi-factor authentication (MFA) device that is bound to a Resource Access Management (RAM) user.
+        
         @param request: GetUserMFAInfoRequest
         @return: GetUserMFAInfoResponse
         """
@@ -3695,7 +3847,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListAccessKeysResponse:
         """
-        @summary Queries the list of all AccessKey pairs that belong to a RAM user.
+        @summary Queries all AccessKey pairs that belong to a Resource Access Management (RAM) user.
         
         @param request: ListAccessKeysRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3730,7 +3882,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListAccessKeysResponse:
         """
-        @summary Queries the list of all AccessKey pairs that belong to a RAM user.
+        @summary Queries all AccessKey pairs that belong to a Resource Access Management (RAM) user.
         
         @param request: ListAccessKeysRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3764,7 +3916,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListAccessKeysRequest,
     ) -> ram_20150501_models.ListAccessKeysResponse:
         """
-        @summary Queries the list of all AccessKey pairs that belong to a RAM user.
+        @summary Queries all AccessKey pairs that belong to a Resource Access Management (RAM) user.
         
         @param request: ListAccessKeysRequest
         @return: ListAccessKeysResponse
@@ -3777,7 +3929,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListAccessKeysRequest,
     ) -> ram_20150501_models.ListAccessKeysResponse:
         """
-        @summary Queries the list of all AccessKey pairs that belong to a RAM user.
+        @summary Queries all AccessKey pairs that belong to a Resource Access Management (RAM) user.
         
         @param request: ListAccessKeysRequest
         @return: ListAccessKeysResponse
@@ -3891,7 +4043,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListGroupsResponse:
         """
-        @summary Queries RAM user groups.
+        @summary Queries Resource Access Management (RAM) user groups.
         
         @param request: ListGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3928,7 +4080,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListGroupsResponse:
         """
-        @summary Queries RAM user groups.
+        @summary Queries Resource Access Management (RAM) user groups.
         
         @param request: ListGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3964,7 +4116,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListGroupsRequest,
     ) -> ram_20150501_models.ListGroupsResponse:
         """
-        @summary Queries RAM user groups.
+        @summary Queries Resource Access Management (RAM) user groups.
         
         @param request: ListGroupsRequest
         @return: ListGroupsResponse
@@ -3977,7 +4129,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListGroupsRequest,
     ) -> ram_20150501_models.ListGroupsResponse:
         """
-        @summary Queries RAM user groups.
+        @summary Queries Resource Access Management (RAM) user groups.
         
         @param request: ListGroupsRequest
         @return: ListGroupsResponse
@@ -3993,7 +4145,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the Resource Access Management (RAM) user groups to which a RAM user belongs.
         
-        @description This topic provides an example on how to query the RAM user groups to which the RAM user `Alice` belongs. The response shows that `Alice` belongs to the RAM user group named `Dev-Team`.
+        @description ### [](#)
+        This topic provides an example on how to query the RAM user groups to which the RAM user `Alice` belongs. The response shows that `Alice` belongs to the RAM user group named `Dev-Team`.
         
         @param request: ListGroupsForUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4030,7 +4183,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the Resource Access Management (RAM) user groups to which a RAM user belongs.
         
-        @description This topic provides an example on how to query the RAM user groups to which the RAM user `Alice` belongs. The response shows that `Alice` belongs to the RAM user group named `Dev-Team`.
+        @description ### [](#)
+        This topic provides an example on how to query the RAM user groups to which the RAM user `Alice` belongs. The response shows that `Alice` belongs to the RAM user group named `Dev-Team`.
         
         @param request: ListGroupsForUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4066,7 +4220,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the Resource Access Management (RAM) user groups to which a RAM user belongs.
         
-        @description This topic provides an example on how to query the RAM user groups to which the RAM user `Alice` belongs. The response shows that `Alice` belongs to the RAM user group named `Dev-Team`.
+        @description ### [](#)
+        This topic provides an example on how to query the RAM user groups to which the RAM user `Alice` belongs. The response shows that `Alice` belongs to the RAM user group named `Dev-Team`.
         
         @param request: ListGroupsForUserRequest
         @return: ListGroupsForUserResponse
@@ -4081,7 +4236,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the Resource Access Management (RAM) user groups to which a RAM user belongs.
         
-        @description This topic provides an example on how to query the RAM user groups to which the RAM user `Alice` belongs. The response shows that `Alice` belongs to the RAM user group named `Dev-Team`.
+        @description ### [](#)
+        This topic provides an example on how to query the RAM user groups to which the RAM user `Alice` belongs. The response shows that `Alice` belongs to the RAM user group named `Dev-Team`.
         
         @param request: ListGroupsForUserRequest
         @return: ListGroupsForUserResponse
@@ -4211,7 +4367,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListPoliciesForGroupResponse:
         """
-        @summary Queries the policies that are attached to a RAM user group.
+        @summary Queries the policies that are attached to a Resource Access Management (RAM) user group.
         
         @param request: ListPoliciesForGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4246,7 +4402,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListPoliciesForGroupResponse:
         """
-        @summary Queries the policies that are attached to a RAM user group.
+        @summary Queries the policies that are attached to a Resource Access Management (RAM) user group.
         
         @param request: ListPoliciesForGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4280,7 +4436,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListPoliciesForGroupRequest,
     ) -> ram_20150501_models.ListPoliciesForGroupResponse:
         """
-        @summary Queries the policies that are attached to a RAM user group.
+        @summary Queries the policies that are attached to a Resource Access Management (RAM) user group.
         
         @param request: ListPoliciesForGroupRequest
         @return: ListPoliciesForGroupResponse
@@ -4293,7 +4449,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListPoliciesForGroupRequest,
     ) -> ram_20150501_models.ListPoliciesForGroupResponse:
         """
-        @summary Queries the policies that are attached to a RAM user group.
+        @summary Queries the policies that are attached to a Resource Access Management (RAM) user group.
         
         @param request: ListPoliciesForGroupRequest
         @return: ListPoliciesForGroupResponse
@@ -4307,7 +4463,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListPoliciesForRoleResponse:
         """
-        @summary Queries the policies that are attached to a RAM role.
+        @summary Queries the policies that are attached to a Resource Access Management (RAM) role.
         
         @param request: ListPoliciesForRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4342,7 +4498,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListPoliciesForRoleResponse:
         """
-        @summary Queries the policies that are attached to a RAM role.
+        @summary Queries the policies that are attached to a Resource Access Management (RAM) role.
         
         @param request: ListPoliciesForRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4376,7 +4532,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListPoliciesForRoleRequest,
     ) -> ram_20150501_models.ListPoliciesForRoleResponse:
         """
-        @summary Queries the policies that are attached to a RAM role.
+        @summary Queries the policies that are attached to a Resource Access Management (RAM) role.
         
         @param request: ListPoliciesForRoleRequest
         @return: ListPoliciesForRoleResponse
@@ -4389,7 +4545,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListPoliciesForRoleRequest,
     ) -> ram_20150501_models.ListPoliciesForRoleResponse:
         """
-        @summary Queries the policies that are attached to a RAM role.
+        @summary Queries the policies that are attached to a Resource Access Management (RAM) role.
         
         @param request: ListPoliciesForRoleRequest
         @return: ListPoliciesForRoleResponse
@@ -4607,7 +4763,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListRolesResponse:
         """
-        @summary Queries the list of all RAM roles.
+        @summary Queries all Resource Access Management (RAM) roles.
         
         @param tmp_req: ListRolesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4650,7 +4806,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListRolesResponse:
         """
-        @summary Queries the list of all RAM roles.
+        @summary Queries all Resource Access Management (RAM) roles.
         
         @param tmp_req: ListRolesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4692,7 +4848,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListRolesRequest,
     ) -> ram_20150501_models.ListRolesResponse:
         """
-        @summary Queries the list of all RAM roles.
+        @summary Queries all Resource Access Management (RAM) roles.
         
         @param request: ListRolesRequest
         @return: ListRolesResponse
@@ -4705,13 +4861,137 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListRolesRequest,
     ) -> ram_20150501_models.ListRolesResponse:
         """
-        @summary Queries the list of all RAM roles.
+        @summary Queries all Resource Access Management (RAM) roles.
         
         @param request: ListRolesRequest
         @return: ListRolesResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_roles_with_options_async(request, runtime)
+
+    def list_tag_resources_with_options(
+        self,
+        tmp_req: ram_20150501_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ram_20150501_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are added to resources.
+        
+        @param tmp_req: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ram_20150501_models.ListTagResourcesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_names):
+            request.resource_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_names, 'ResourceNames', 'json')
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_names_shrink):
+            query['ResourceNames'] = request.resource_names_shrink
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2015-05-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ram_20150501_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_resources_with_options_async(
+        self,
+        tmp_req: ram_20150501_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ram_20150501_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are added to resources.
+        
+        @param tmp_req: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ram_20150501_models.ListTagResourcesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_names):
+            request.resource_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_names, 'ResourceNames', 'json')
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_names_shrink):
+            query['ResourceNames'] = request.resource_names_shrink
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2015-05-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ram_20150501_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_resources(
+        self,
+        request: ram_20150501_models.ListTagResourcesRequest,
+    ) -> ram_20150501_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are added to resources.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_tag_resources_with_options(request, runtime)
+
+    async def list_tag_resources_async(
+        self,
+        request: ram_20150501_models.ListTagResourcesRequest,
+    ) -> ram_20150501_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are added to resources.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tag_resources_with_options_async(request, runtime)
 
     def list_users_with_options(
         self,
@@ -4819,6 +5099,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListUsersForGroupResponse:
         """
+        @summary Queries Resource Access Management (RAM) users in a RAM user group.
+        
         @param request: ListUsersForGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListUsersForGroupResponse
@@ -4856,6 +5138,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListUsersForGroupResponse:
         """
+        @summary Queries Resource Access Management (RAM) users in a RAM user group.
+        
         @param request: ListUsersForGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListUsersForGroupResponse
@@ -4892,6 +5176,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListUsersForGroupRequest,
     ) -> ram_20150501_models.ListUsersForGroupResponse:
         """
+        @summary Queries Resource Access Management (RAM) users in a RAM user group.
+        
         @param request: ListUsersForGroupRequest
         @return: ListUsersForGroupResponse
         """
@@ -4903,6 +5189,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListUsersForGroupRequest,
     ) -> ram_20150501_models.ListUsersForGroupResponse:
         """
+        @summary Queries Resource Access Management (RAM) users in a RAM user group.
+        
         @param request: ListUsersForGroupRequest
         @return: ListUsersForGroupResponse
         """
@@ -4914,7 +5202,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListVirtualMFADevicesResponse:
         """
-        @summary Queries the list of all multi-factor authentication (MFA) devices.
+        @summary Queries multi-factor authentication (MFA) devices.
         
         @param request: ListVirtualMFADevicesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4942,7 +5230,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListVirtualMFADevicesResponse:
         """
-        @summary Queries the list of all multi-factor authentication (MFA) devices.
+        @summary Queries multi-factor authentication (MFA) devices.
         
         @param request: ListVirtualMFADevicesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4967,7 +5255,7 @@ class Client(OpenApiClient):
 
     def list_virtual_mfadevices(self) -> ram_20150501_models.ListVirtualMFADevicesResponse:
         """
-        @summary Queries the list of all multi-factor authentication (MFA) devices.
+        @summary Queries multi-factor authentication (MFA) devices.
         
         @return: ListVirtualMFADevicesResponse
         """
@@ -4976,7 +5264,7 @@ class Client(OpenApiClient):
 
     async def list_virtual_mfadevices_async(self) -> ram_20150501_models.ListVirtualMFADevicesResponse:
         """
-        @summary Queries the list of all multi-factor authentication (MFA) devices.
+        @summary Queries multi-factor authentication (MFA) devices.
         
         @return: ListVirtualMFADevicesResponse
         """
@@ -4989,6 +5277,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.RemoveUserFromGroupResponse:
         """
+        @summary Removes a Resource Access Management (RAM) user from a RAM user group.
+        
         @param request: RemoveUserFromGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveUserFromGroupResponse
@@ -5024,6 +5314,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.RemoveUserFromGroupResponse:
         """
+        @summary Removes a Resource Access Management (RAM) user from a RAM user group.
+        
         @param request: RemoveUserFromGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveUserFromGroupResponse
@@ -5058,6 +5350,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.RemoveUserFromGroupRequest,
     ) -> ram_20150501_models.RemoveUserFromGroupResponse:
         """
+        @summary Removes a Resource Access Management (RAM) user from a RAM user group.
+        
         @param request: RemoveUserFromGroupRequest
         @return: RemoveUserFromGroupResponse
         """
@@ -5069,6 +5363,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.RemoveUserFromGroupRequest,
     ) -> ram_20150501_models.RemoveUserFromGroupResponse:
         """
+        @summary Removes a Resource Access Management (RAM) user from a RAM user group.
+        
         @param request: RemoveUserFromGroupRequest
         @return: RemoveUserFromGroupResponse
         """
@@ -5081,7 +5377,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.SetAccountAliasResponse:
         """
-        @summary You can call this operation to specify an alias for an Alibaba Cloud account.
+        @summary Configures an alias for an Alibaba Cloud account.
         
         @param request: SetAccountAliasRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5116,7 +5412,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.SetAccountAliasResponse:
         """
-        @summary You can call this operation to specify an alias for an Alibaba Cloud account.
+        @summary Configures an alias for an Alibaba Cloud account.
         
         @param request: SetAccountAliasRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5150,7 +5446,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.SetAccountAliasRequest,
     ) -> ram_20150501_models.SetAccountAliasResponse:
         """
-        @summary You can call this operation to specify an alias for an Alibaba Cloud account.
+        @summary Configures an alias for an Alibaba Cloud account.
         
         @param request: SetAccountAliasRequest
         @return: SetAccountAliasResponse
@@ -5163,7 +5459,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.SetAccountAliasRequest,
     ) -> ram_20150501_models.SetAccountAliasResponse:
         """
-        @summary You can call this operation to specify an alias for an Alibaba Cloud account.
+        @summary Configures an alias for an Alibaba Cloud account.
         
         @param request: SetAccountAliasRequest
         @return: SetAccountAliasResponse
@@ -5177,7 +5473,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.SetDefaultPolicyVersionResponse:
         """
-        @summary Sets the default version of a policy.
+        @summary Specifies a version for a policy as the default version.
         
         @param request: SetDefaultPolicyVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5214,7 +5510,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.SetDefaultPolicyVersionResponse:
         """
-        @summary Sets the default version of a policy.
+        @summary Specifies a version for a policy as the default version.
         
         @param request: SetDefaultPolicyVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5250,7 +5546,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.SetDefaultPolicyVersionRequest,
     ) -> ram_20150501_models.SetDefaultPolicyVersionResponse:
         """
-        @summary Sets the default version of a policy.
+        @summary Specifies a version for a policy as the default version.
         
         @param request: SetDefaultPolicyVersionRequest
         @return: SetDefaultPolicyVersionResponse
@@ -5263,7 +5559,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.SetDefaultPolicyVersionRequest,
     ) -> ram_20150501_models.SetDefaultPolicyVersionResponse:
         """
-        @summary Sets the default version of a policy.
+        @summary Specifies a version for a policy as the default version.
         
         @param request: SetDefaultPolicyVersionRequest
         @return: SetDefaultPolicyVersionResponse
@@ -5277,6 +5573,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.SetPasswordPolicyResponse:
         """
+        @summary Configures the password policy for Resource Access Management (RAM) users, including the password strength.
+        
         @param request: SetPasswordPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetPasswordPolicyResponse
@@ -5326,6 +5624,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.SetPasswordPolicyResponse:
         """
+        @summary Configures the password policy for Resource Access Management (RAM) users, including the password strength.
+        
         @param request: SetPasswordPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetPasswordPolicyResponse
@@ -5374,6 +5674,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.SetPasswordPolicyRequest,
     ) -> ram_20150501_models.SetPasswordPolicyResponse:
         """
+        @summary Configures the password policy for Resource Access Management (RAM) users, including the password strength.
+        
         @param request: SetPasswordPolicyRequest
         @return: SetPasswordPolicyResponse
         """
@@ -5385,6 +5687,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.SetPasswordPolicyRequest,
     ) -> ram_20150501_models.SetPasswordPolicyResponse:
         """
+        @summary Configures the password policy for Resource Access Management (RAM) users, including the password strength.
+        
         @param request: SetPasswordPolicyRequest
         @return: SetPasswordPolicyResponse
         """
@@ -5511,13 +5815,129 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.set_security_preference_with_options_async(request, runtime)
 
+    def tag_resources_with_options(
+        self,
+        tmp_req: ram_20150501_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ram_20150501_models.TagResourcesResponse:
+        """
+        @summary Adds tags to resources.
+        
+        @param tmp_req: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ram_20150501_models.TagResourcesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_names):
+            request.resource_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_names, 'ResourceNames', 'json')
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.resource_names_shrink):
+            query['ResourceNames'] = request.resource_names_shrink
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2015-05-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ram_20150501_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_resources_with_options_async(
+        self,
+        tmp_req: ram_20150501_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ram_20150501_models.TagResourcesResponse:
+        """
+        @summary Adds tags to resources.
+        
+        @param tmp_req: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ram_20150501_models.TagResourcesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_names):
+            request.resource_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_names, 'ResourceNames', 'json')
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.resource_names_shrink):
+            query['ResourceNames'] = request.resource_names_shrink
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2015-05-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ram_20150501_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag_resources(
+        self,
+        request: ram_20150501_models.TagResourcesRequest,
+    ) -> ram_20150501_models.TagResourcesResponse:
+        """
+        @summary Adds tags to resources.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.tag_resources_with_options(request, runtime)
+
+    async def tag_resources_async(
+        self,
+        request: ram_20150501_models.TagResourcesRequest,
+    ) -> ram_20150501_models.TagResourcesResponse:
+        """
+        @summary Adds tags to resources.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.tag_resources_with_options_async(request, runtime)
+
     def unbind_mfadevice_with_options(
         self,
         request: ram_20150501_models.UnbindMFADeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.UnbindMFADeviceResponse:
         """
-        @summary Detaches a multi-factor authentication (MFA) device from a RAM user.
+        @summary Unbinds a multi-factor authentication (MFA) device from a Resource Access Management (RAM) user.
         
         @param request: UnbindMFADeviceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5552,7 +5972,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.UnbindMFADeviceResponse:
         """
-        @summary Detaches a multi-factor authentication (MFA) device from a RAM user.
+        @summary Unbinds a multi-factor authentication (MFA) device from a Resource Access Management (RAM) user.
         
         @param request: UnbindMFADeviceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5586,7 +6006,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.UnbindMFADeviceRequest,
     ) -> ram_20150501_models.UnbindMFADeviceResponse:
         """
-        @summary Detaches a multi-factor authentication (MFA) device from a RAM user.
+        @summary Unbinds a multi-factor authentication (MFA) device from a Resource Access Management (RAM) user.
         
         @param request: UnbindMFADeviceRequest
         @return: UnbindMFADeviceResponse
@@ -5599,7 +6019,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.UnbindMFADeviceRequest,
     ) -> ram_20150501_models.UnbindMFADeviceResponse:
         """
-        @summary Detaches a multi-factor authentication (MFA) device from a RAM user.
+        @summary Unbinds a multi-factor authentication (MFA) device from a Resource Access Management (RAM) user.
         
         @param request: UnbindMFADeviceRequest
         @return: UnbindMFADeviceResponse
@@ -5607,12 +6027,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.unbind_mfadevice_with_options_async(request, runtime)
 
+    def untag_resources_with_options(
+        self,
+        tmp_req: ram_20150501_models.UntagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ram_20150501_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from resources.
+        
+        @param tmp_req: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ram_20150501_models.UntagResourcesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_names):
+            request.resource_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_names, 'ResourceNames', 'json')
+        if not UtilClient.is_unset(tmp_req.tag_keys):
+            request.tag_keys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_keys, 'TagKeys', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.resource_names_shrink):
+            query['ResourceNames'] = request.resource_names_shrink
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_keys_shrink):
+            query['TagKeys'] = request.tag_keys_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2015-05-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ram_20150501_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def untag_resources_with_options_async(
+        self,
+        tmp_req: ram_20150501_models.UntagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ram_20150501_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from resources.
+        
+        @param tmp_req: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ram_20150501_models.UntagResourcesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_names):
+            request.resource_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_names, 'ResourceNames', 'json')
+        if not UtilClient.is_unset(tmp_req.tag_keys):
+            request.tag_keys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_keys, 'TagKeys', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.resource_names_shrink):
+            query['ResourceNames'] = request.resource_names_shrink
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_keys_shrink):
+            query['TagKeys'] = request.tag_keys_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2015-05-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ram_20150501_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def untag_resources(
+        self,
+        request: ram_20150501_models.UntagResourcesRequest,
+    ) -> ram_20150501_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from resources.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.untag_resources_with_options(request, runtime)
+
+    async def untag_resources_async(
+        self,
+        request: ram_20150501_models.UntagResourcesRequest,
+    ) -> ram_20150501_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from resources.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.untag_resources_with_options_async(request, runtime)
+
     def update_access_key_with_options(
         self,
         request: ram_20150501_models.UpdateAccessKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.UpdateAccessKeyResponse:
         """
+        @summary Changes the status of an AccessKey pair that belongs to a Resource Access Management (RAM) user.
+        
         @param request: UpdateAccessKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateAccessKeyResponse
@@ -5650,6 +6192,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.UpdateAccessKeyResponse:
         """
+        @summary Changes the status of an AccessKey pair that belongs to a Resource Access Management (RAM) user.
+        
         @param request: UpdateAccessKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateAccessKeyResponse
@@ -5686,6 +6230,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.UpdateAccessKeyRequest,
     ) -> ram_20150501_models.UpdateAccessKeyResponse:
         """
+        @summary Changes the status of an AccessKey pair that belongs to a Resource Access Management (RAM) user.
+        
         @param request: UpdateAccessKeyRequest
         @return: UpdateAccessKeyResponse
         """
@@ -5697,6 +6243,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.UpdateAccessKeyRequest,
     ) -> ram_20150501_models.UpdateAccessKeyResponse:
         """
+        @summary Changes the status of an AccessKey pair that belongs to a Resource Access Management (RAM) user.
+        
         @param request: UpdateAccessKeyRequest
         @return: UpdateAccessKeyResponse
         """
@@ -5709,7 +6257,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.UpdateGroupResponse:
         """
-        @summary Modifies a RAM user group.
+        @summary Modifies a Resource Access Management (RAM) user group.
         
         @param request: UpdateGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5748,7 +6296,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.UpdateGroupResponse:
         """
-        @summary Modifies a RAM user group.
+        @summary Modifies a Resource Access Management (RAM) user group.
         
         @param request: UpdateGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5786,7 +6334,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.UpdateGroupRequest,
     ) -> ram_20150501_models.UpdateGroupResponse:
         """
-        @summary Modifies a RAM user group.
+        @summary Modifies a Resource Access Management (RAM) user group.
         
         @param request: UpdateGroupRequest
         @return: UpdateGroupResponse
@@ -5799,7 +6347,7 @@ class Client(OpenApiClient):
         request: ram_20150501_models.UpdateGroupRequest,
     ) -> ram_20150501_models.UpdateGroupResponse:
         """
-        @summary Modifies a RAM user group.
+        @summary Modifies a Resource Access Management (RAM) user group.
         
         @param request: UpdateGroupRequest
         @return: UpdateGroupResponse
@@ -5813,6 +6361,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.UpdateLoginProfileResponse:
         """
+        @summary Modifies the logon configurations of a Resource Access Management (RAM) user.
+        
         @param request: UpdateLoginProfileRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateLoginProfileResponse
@@ -5852,6 +6402,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.UpdateLoginProfileResponse:
         """
+        @summary Modifies the logon configurations of a Resource Access Management (RAM) user.
+        
         @param request: UpdateLoginProfileRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateLoginProfileResponse
@@ -5890,6 +6442,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.UpdateLoginProfileRequest,
     ) -> ram_20150501_models.UpdateLoginProfileResponse:
         """
+        @summary Modifies the logon configurations of a Resource Access Management (RAM) user.
+        
         @param request: UpdateLoginProfileRequest
         @return: UpdateLoginProfileResponse
         """
@@ -5901,6 +6455,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.UpdateLoginProfileRequest,
     ) -> ram_20150501_models.UpdateLoginProfileResponse:
         """
+        @summary Modifies the logon configurations of a Resource Access Management (RAM) user.
+        
         @param request: UpdateLoginProfileRequest
         @return: UpdateLoginProfileResponse
         """
@@ -5915,7 +6471,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies the description of a custom policy.
         
-        @description You can call this operation to modify only the description of a custom policy. You cannot modify the description of a system policy.
+        @description ### [](#)
+        You can call this operation to modify only the description of a custom policy. You cannot modify the description of a system policy.
         
         @param request: UpdatePolicyDescriptionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5954,7 +6511,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies the description of a custom policy.
         
-        @description You can call this operation to modify only the description of a custom policy. You cannot modify the description of a system policy.
+        @description ### [](#)
+        You can call this operation to modify only the description of a custom policy. You cannot modify the description of a system policy.
         
         @param request: UpdatePolicyDescriptionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5992,7 +6550,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies the description of a custom policy.
         
-        @description You can call this operation to modify only the description of a custom policy. You cannot modify the description of a system policy.
+        @description ### [](#)
+        You can call this operation to modify only the description of a custom policy. You cannot modify the description of a system policy.
         
         @param request: UpdatePolicyDescriptionRequest
         @return: UpdatePolicyDescriptionResponse
@@ -6007,7 +6566,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies the description of a custom policy.
         
-        @description You can call this operation to modify only the description of a custom policy. You cannot modify the description of a system policy.
+        @description ### [](#)
+        You can call this operation to modify only the description of a custom policy. You cannot modify the description of a system policy.
         
         @param request: UpdatePolicyDescriptionRequest
         @return: UpdatePolicyDescriptionResponse
@@ -6021,9 +6581,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.UpdateRoleResponse:
         """
-        @summary Changes the description of a RAM role.
+        @summary Modifies information about a Resource Access Management (RAM) role.
         
-        @description This topic provides an example to show how to change the description of ECSAdmin to ECS administrator.
+        @description This topic provides an example on how to change the description of `ECSAdmin` to `ECS administrator`.
         
         @param request: UpdateRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6064,9 +6624,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.UpdateRoleResponse:
         """
-        @summary Changes the description of a RAM role.
+        @summary Modifies information about a Resource Access Management (RAM) role.
         
-        @description This topic provides an example to show how to change the description of ECSAdmin to ECS administrator.
+        @description This topic provides an example on how to change the description of `ECSAdmin` to `ECS administrator`.
         
         @param request: UpdateRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6106,9 +6666,9 @@ class Client(OpenApiClient):
         request: ram_20150501_models.UpdateRoleRequest,
     ) -> ram_20150501_models.UpdateRoleResponse:
         """
-        @summary Changes the description of a RAM role.
+        @summary Modifies information about a Resource Access Management (RAM) role.
         
-        @description This topic provides an example to show how to change the description of ECSAdmin to ECS administrator.
+        @description This topic provides an example on how to change the description of `ECSAdmin` to `ECS administrator`.
         
         @param request: UpdateRoleRequest
         @return: UpdateRoleResponse
@@ -6121,9 +6681,9 @@ class Client(OpenApiClient):
         request: ram_20150501_models.UpdateRoleRequest,
     ) -> ram_20150501_models.UpdateRoleResponse:
         """
-        @summary Changes the description of a RAM role.
+        @summary Modifies information about a Resource Access Management (RAM) role.
         
-        @description This topic provides an example to show how to change the description of ECSAdmin to ECS administrator.
+        @description This topic provides an example on how to change the description of `ECSAdmin` to `ECS administrator`.
         
         @param request: UpdateRoleRequest
         @return: UpdateRoleResponse
@@ -6137,6 +6697,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.UpdateUserResponse:
         """
+        @summary Modifies information about a Resource Access Management (RAM) user.
+        
         @description This topic provides an example on how to change the name of a RAM user from `zhangq***` to `xiaoq****`.
         
         @param request: UpdateUserRequest
@@ -6182,6 +6744,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.UpdateUserResponse:
         """
+        @summary Modifies information about a Resource Access Management (RAM) user.
+        
         @description This topic provides an example on how to change the name of a RAM user from `zhangq***` to `xiaoq****`.
         
         @param request: UpdateUserRequest
@@ -6226,6 +6790,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.UpdateUserRequest,
     ) -> ram_20150501_models.UpdateUserResponse:
         """
+        @summary Modifies information about a Resource Access Management (RAM) user.
+        
         @description This topic provides an example on how to change the name of a RAM user from `zhangq***` to `xiaoq****`.
         
         @param request: UpdateUserRequest
@@ -6239,6 +6805,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.UpdateUserRequest,
     ) -> ram_20150501_models.UpdateUserResponse:
         """
+        @summary Modifies information about a Resource Access Management (RAM) user.
+        
         @description This topic provides an example on how to change the name of a RAM user from `zhangq***` to `xiaoq****`.
         
         @param request: UpdateUserRequest
