@@ -1,3 +1,11 @@
+2025-06-13 Version: 7.0.10
+- Update API DescribeDiskDefaultKMSKeyId: add request parameters OwnerId.
+- Update API DescribeDiskEncryptionByDefaultStatus: add request parameters OwnerId.
+- Update API DisableDiskEncryptionByDefault: add request parameters OwnerId.
+- Update API ModifyDiskDefaultKMSKeyId: add request parameters OwnerId.
+- Update API ResetDiskDefaultKMSKeyId: add request parameters OwnerId.
+
+
 2025-06-12 Version: 7.0.9
 - Update API DescribeTerminalSessions: add response parameters Body.Sessions.$.Connections.$.FailedDetail.
 - Update API StartTerminalSession: add request parameters PasswordName.
