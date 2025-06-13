@@ -1,3 +1,8 @@
+2025-06-13 Version: 5.8.0
+- Support API DescribeHALogs.
+- Support API ReactivateDBClusterBackup.
+
+
 2025-05-14 Version: 5.7.0
 - Support API CreateGlobalDataNetwork.
 - Support API DeleteGlobalDataNetwork.

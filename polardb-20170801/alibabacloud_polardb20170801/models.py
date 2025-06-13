@@ -20930,6 +20930,256 @@ class DescribeGlobalSecurityIPGroupRelationResponse(TeaModel):
         return self
 
 
+class DescribeHALogsRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        dbnode_id: str = None,
+        end_time: str = None,
+        log_type: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        start_time: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The node ID.
+        # 
+        # >  Queries the HA failover records of the Node `DBNodeId` . You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as node IDs.
+        self.dbnode_id = dbnode_id
+        self.end_time = end_time
+        # The log type.
+        # 
+        # This parameter is required.
+        self.log_type = log_type
+        self.page_number = page_number
+        self.page_size = page_size
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.dbnode_id is not None:
+            result['DBNodeId'] = self.dbnode_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.log_type is not None:
+            result['LogType'] = self.log_type
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DBNodeId') is not None:
+            self.dbnode_id = m.get('DBNodeId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('LogType') is not None:
+            self.log_type = m.get('LogType')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeHALogsResponseBodyHaLogItems(TeaModel):
+    def __init__(
+        self,
+        switch_cause_code: str = None,
+        switch_cause_detail: str = None,
+        switch_finish_time: str = None,
+        switch_id: str = None,
+        switch_start_time: str = None,
+    ):
+        # The reason code of the failover.
+        self.switch_cause_code = switch_cause_code
+        # The reason of the failover.
+        self.switch_cause_detail = switch_cause_detail
+        # The time when the failover ended.
+        self.switch_finish_time = switch_finish_time
+        self.switch_id = switch_id
+        # The time when the failover started.
+        self.switch_start_time = switch_start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.switch_cause_code is not None:
+            result['SwitchCauseCode'] = self.switch_cause_code
+        if self.switch_cause_detail is not None:
+            result['SwitchCauseDetail'] = self.switch_cause_detail
+        if self.switch_finish_time is not None:
+            result['SwitchFinishTime'] = self.switch_finish_time
+        if self.switch_id is not None:
+            result['SwitchId'] = self.switch_id
+        if self.switch_start_time is not None:
+            result['SwitchStartTime'] = self.switch_start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SwitchCauseCode') is not None:
+            self.switch_cause_code = m.get('SwitchCauseCode')
+        if m.get('SwitchCauseDetail') is not None:
+            self.switch_cause_detail = m.get('SwitchCauseDetail')
+        if m.get('SwitchFinishTime') is not None:
+            self.switch_finish_time = m.get('SwitchFinishTime')
+        if m.get('SwitchId') is not None:
+            self.switch_id = m.get('SwitchId')
+        if m.get('SwitchStartTime') is not None:
+            self.switch_start_time = m.get('SwitchStartTime')
+        return self
+
+
+class DescribeHALogsResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbinstance_name: str = None,
+        dbinstance_type: str = None,
+        ha_log_items: List[DescribeHALogsResponseBodyHaLogItems] = None,
+        ha_status: int = None,
+        items_numbers: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_records: int = None,
+    ):
+        self.dbinstance_name = dbinstance_name
+        self.dbinstance_type = dbinstance_type
+        # The failover logs.
+        self.ha_log_items = ha_log_items
+        self.ha_status = ha_status
+        self.items_numbers = items_numbers
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_records = total_records
+
+    def validate(self):
+        if self.ha_log_items:
+            for k in self.ha_log_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_name is not None:
+            result['DBInstanceName'] = self.dbinstance_name
+        if self.dbinstance_type is not None:
+            result['DBInstanceType'] = self.dbinstance_type
+        result['HaLogItems'] = []
+        if self.ha_log_items is not None:
+            for k in self.ha_log_items:
+                result['HaLogItems'].append(k.to_map() if k else None)
+        if self.ha_status is not None:
+            result['HaStatus'] = self.ha_status
+        if self.items_numbers is not None:
+            result['ItemsNumbers'] = self.items_numbers
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_records is not None:
+            result['TotalRecords'] = self.total_records
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceName') is not None:
+            self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('DBInstanceType') is not None:
+            self.dbinstance_type = m.get('DBInstanceType')
+        self.ha_log_items = []
+        if m.get('HaLogItems') is not None:
+            for k in m.get('HaLogItems'):
+                temp_model = DescribeHALogsResponseBodyHaLogItems()
+                self.ha_log_items.append(temp_model.from_map(k))
+        if m.get('HaStatus') is not None:
+            self.ha_status = m.get('HaStatus')
+        if m.get('ItemsNumbers') is not None:
+            self.items_numbers = m.get('ItemsNumbers')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalRecords') is not None:
+            self.total_records = m.get('TotalRecords')
+        return self
+
+
+class DescribeHALogsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeHALogsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeHALogsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeHistoryTasksRequest(TeaModel):
     def __init__(
         self,
@@ -34824,6 +35074,119 @@ class OpenAITaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OpenAITaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ReactivateDBClusterBackupRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+    ):
+        # The cluster ID.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        return self
+
+
+class ReactivateDBClusterBackupResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        order_id: str = None,
+        request_id: str = None,
+    ):
+        # The cluster ID.
+        self.dbcluster_id = dbcluster_id
+        # The ID of the order.
+        self.order_id = order_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ReactivateDBClusterBackupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ReactivateDBClusterBackupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ReactivateDBClusterBackupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

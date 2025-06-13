@@ -10307,6 +10307,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_global_security_ipgroup_relation_with_options_async(request, runtime)
 
+    def describe_halogs_with_options(
+        self,
+        request: polardb_20170801_models.DescribeHALogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeHALogsResponse:
+        """
+        @summary 查询实例高可用相关日志
+        
+        @param request: DescribeHALogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHALogsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbnode_id):
+            query['DBNodeId'] = request.dbnode_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.log_type):
+            query['LogType'] = request.log_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHALogs',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeHALogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_halogs_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribeHALogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeHALogsResponse:
+        """
+        @summary 查询实例高可用相关日志
+        
+        @param request: DescribeHALogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHALogsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbnode_id):
+            query['DBNodeId'] = request.dbnode_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.log_type):
+            query['LogType'] = request.log_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHALogs',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeHALogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_halogs(
+        self,
+        request: polardb_20170801_models.DescribeHALogsRequest,
+    ) -> polardb_20170801_models.DescribeHALogsResponse:
+        """
+        @summary 查询实例高可用相关日志
+        
+        @param request: DescribeHALogsRequest
+        @return: DescribeHALogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_halogs_with_options(request, runtime)
+
+    async def describe_halogs_async(
+        self,
+        request: polardb_20170801_models.DescribeHALogsRequest,
+    ) -> polardb_20170801_models.DescribeHALogsResponse:
+        """
+        @summary 查询实例高可用相关日志
+        
+        @param request: DescribeHALogsRequest
+        @return: DescribeHALogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_halogs_with_options_async(request, runtime)
+
     def describe_history_tasks_with_options(
         self,
         request: polardb_20170801_models.DescribeHistoryTasksRequest,
@@ -18894,6 +19014,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.open_aitask_with_options_async(request, runtime)
+
+    def reactivate_dbcluster_backup_with_options(
+        self,
+        request: polardb_20170801_models.ReactivateDBClusterBackupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ReactivateDBClusterBackupResponse:
+        """
+        @summary Reactivates the backup feature.
+        
+        @param request: ReactivateDBClusterBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReactivateDBClusterBackupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReactivateDBClusterBackup',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ReactivateDBClusterBackupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reactivate_dbcluster_backup_with_options_async(
+        self,
+        request: polardb_20170801_models.ReactivateDBClusterBackupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ReactivateDBClusterBackupResponse:
+        """
+        @summary Reactivates the backup feature.
+        
+        @param request: ReactivateDBClusterBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReactivateDBClusterBackupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReactivateDBClusterBackup',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ReactivateDBClusterBackupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reactivate_dbcluster_backup(
+        self,
+        request: polardb_20170801_models.ReactivateDBClusterBackupRequest,
+    ) -> polardb_20170801_models.ReactivateDBClusterBackupResponse:
+        """
+        @summary Reactivates the backup feature.
+        
+        @param request: ReactivateDBClusterBackupRequest
+        @return: ReactivateDBClusterBackupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.reactivate_dbcluster_backup_with_options(request, runtime)
+
+    async def reactivate_dbcluster_backup_async(
+        self,
+        request: polardb_20170801_models.ReactivateDBClusterBackupRequest,
+    ) -> polardb_20170801_models.ReactivateDBClusterBackupResponse:
+        """
+        @summary Reactivates the backup feature.
+        
+        @param request: ReactivateDBClusterBackupRequest
+        @return: ReactivateDBClusterBackupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.reactivate_dbcluster_backup_with_options_async(request, runtime)
 
     def refresh_dbcluster_storage_usage_with_options(
         self,
