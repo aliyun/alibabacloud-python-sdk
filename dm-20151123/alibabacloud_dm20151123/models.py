@@ -3224,7 +3224,10 @@ class GetTrackListRequest(TeaModel):
     def __init__(
         self,
         account_name: str = None,
+        dedicated_ip: str = None,
+        dedicated_ip_pool_id: str = None,
         end_time: str = None,
+        esp: str = None,
         offset: str = None,
         offset_create_time: str = None,
         offset_create_time_desc: str = None,
@@ -3241,10 +3244,13 @@ class GetTrackListRequest(TeaModel):
         # 
         # > If not filled, it represents all addresses; if TagName is provided, this parameter must not be empty.
         self.account_name = account_name
+        self.dedicated_ip = dedicated_ip
+        self.dedicated_ip_pool_id = dedicated_ip_pool_id
         # End time, the span between start and end time cannot exceed 7 days. Format: yyyy-MM-dd.
         # 
         # This parameter is required.
         self.end_time = end_time
+        self.esp = esp
         # For the first query, set to 0; for subsequent queries, fixed at 1. 1 indicates pagination in ascending order by time. (This field is deprecated)
         self.offset = offset
         # Used for pagination. Not set for the first query, but for subsequent queries, it should be set to the value of OffsetCreateTime from the previous response. (This field is deprecated)
@@ -3278,8 +3284,14 @@ class GetTrackListRequest(TeaModel):
         result = dict()
         if self.account_name is not None:
             result['AccountName'] = self.account_name
+        if self.dedicated_ip is not None:
+            result['DedicatedIp'] = self.dedicated_ip
+        if self.dedicated_ip_pool_id is not None:
+            result['DedicatedIpPoolId'] = self.dedicated_ip_pool_id
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.esp is not None:
+            result['Esp'] = self.esp
         if self.offset is not None:
             result['Offset'] = self.offset
         if self.offset_create_time is not None:
@@ -3308,8 +3320,14 @@ class GetTrackListRequest(TeaModel):
         m = m or dict()
         if m.get('AccountName') is not None:
             self.account_name = m.get('AccountName')
+        if m.get('DedicatedIp') is not None:
+            self.dedicated_ip = m.get('DedicatedIp')
+        if m.get('DedicatedIpPoolId') is not None:
+            self.dedicated_ip_pool_id = m.get('DedicatedIpPoolId')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('Esp') is not None:
+            self.esp = m.get('Esp')
         if m.get('Offset') is not None:
             self.offset = m.get('Offset')
         if m.get('OffsetCreateTime') is not None:
@@ -3470,6 +3488,7 @@ class GetTrackListResponseBody(TeaModel):
         page_size: int = None,
         request_id: str = None,
         total: int = None,
+        total_pages: int = None,
         data: GetTrackListResponseBodyData = None,
     ):
         # Used for pagination. Not set for the first query, but for subsequent queries, it should be set to the value of OffsetCreateTime from the previous response. (This field is deprecated)
@@ -3484,6 +3503,7 @@ class GetTrackListResponseBody(TeaModel):
         self.request_id = request_id
         # Total number of items
         self.total = total
+        self.total_pages = total_pages
         # Tracking data records
         self.data = data
 
@@ -3509,6 +3529,8 @@ class GetTrackListResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.total is not None:
             result['Total'] = self.total
+        if self.total_pages is not None:
+            result['TotalPages'] = self.total_pages
         if self.data is not None:
             result['data'] = self.data.to_map()
         return result
@@ -3527,6 +3549,8 @@ class GetTrackListResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('Total') is not None:
             self.total = m.get('Total')
+        if m.get('TotalPages') is not None:
+            self.total_pages = m.get('TotalPages')
         if m.get('data') is not None:
             temp_model = GetTrackListResponseBodyData()
             self.data = temp_model.from_map(m['data'])
@@ -3578,7 +3602,10 @@ class GetTrackListByMailFromAndTagNameRequest(TeaModel):
     def __init__(
         self,
         account_name: str = None,
+        dedicated_ip: str = None,
+        dedicated_ip_pool_id: str = None,
         end_time: str = None,
+        esp: str = None,
         offset: str = None,
         offset_create_time: str = None,
         offset_create_time_desc: str = None,
@@ -3595,10 +3622,13 @@ class GetTrackListByMailFromAndTagNameRequest(TeaModel):
         # 
         # > If not filled, it represents all addresses; if there is a TagName, this parameter must not be empty.
         self.account_name = account_name
+        self.dedicated_ip = dedicated_ip
+        self.dedicated_ip_pool_id = dedicated_ip_pool_id
         # End time, with a span from the start time that cannot exceed 15 days. Format: yyyy-MM-dd.
         # 
         # This parameter is required.
         self.end_time = end_time
+        self.esp = esp
         # For the first query, set to 0; for subsequent queries, fixed at 1. 1 indicates pagination in ascending order by time. (This field is deprecated)
         self.offset = offset
         # Used for pagination. Not set for the first query; for subsequent queries, set to the value of OffsetCreateTime from the previous response. (This field is deprecated)
@@ -3632,8 +3662,14 @@ class GetTrackListByMailFromAndTagNameRequest(TeaModel):
         result = dict()
         if self.account_name is not None:
             result['AccountName'] = self.account_name
+        if self.dedicated_ip is not None:
+            result['DedicatedIp'] = self.dedicated_ip
+        if self.dedicated_ip_pool_id is not None:
+            result['DedicatedIpPoolId'] = self.dedicated_ip_pool_id
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.esp is not None:
+            result['Esp'] = self.esp
         if self.offset is not None:
             result['Offset'] = self.offset
         if self.offset_create_time is not None:
@@ -3662,8 +3698,14 @@ class GetTrackListByMailFromAndTagNameRequest(TeaModel):
         m = m or dict()
         if m.get('AccountName') is not None:
             self.account_name = m.get('AccountName')
+        if m.get('DedicatedIp') is not None:
+            self.dedicated_ip = m.get('DedicatedIp')
+        if m.get('DedicatedIpPoolId') is not None:
+            self.dedicated_ip_pool_id = m.get('DedicatedIpPoolId')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('Esp') is not None:
+            self.esp = m.get('Esp')
         if m.get('Offset') is not None:
             self.offset = m.get('Offset')
         if m.get('OffsetCreateTime') is not None:
@@ -3824,6 +3866,7 @@ class GetTrackListByMailFromAndTagNameResponseBody(TeaModel):
         page_size: int = None,
         request_id: str = None,
         total: int = None,
+        total_pages: str = None,
         track_list: GetTrackListByMailFromAndTagNameResponseBodyTrackList = None,
     ):
         # Used for pagination. Not set for the first query; for subsequent queries, set to the value of OffsetCreateTime from the previous response. (This field is deprecated)
@@ -3838,6 +3881,7 @@ class GetTrackListByMailFromAndTagNameResponseBody(TeaModel):
         self.request_id = request_id
         # (This field is deprecated)
         self.total = total
+        self.total_pages = total_pages
         # Tracking data records
         self.track_list = track_list
 
@@ -3863,6 +3907,8 @@ class GetTrackListByMailFromAndTagNameResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.total is not None:
             result['Total'] = self.total
+        if self.total_pages is not None:
+            result['TotalPages'] = self.total_pages
         if self.track_list is not None:
             result['TrackList'] = self.track_list.to_map()
         return result
@@ -3881,6 +3927,8 @@ class GetTrackListByMailFromAndTagNameResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('Total') is not None:
             self.total = m.get('Total')
+        if m.get('TotalPages') is not None:
+            self.total_pages = m.get('TotalPages')
         if m.get('TrackList') is not None:
             temp_model = GetTrackListByMailFromAndTagNameResponseBodyTrackList()
             self.track_list = temp_model.from_map(m['TrackList'])
@@ -7158,7 +7206,10 @@ class SenderStatisticsByTagNameAndBatchIDRequest(TeaModel):
     def __init__(
         self,
         account_name: str = None,
+        dedicated_ip: str = None,
+        dedicated_ip_pool_id: str = None,
         end_time: str = None,
+        esp: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -7167,10 +7218,13 @@ class SenderStatisticsByTagNameAndBatchIDRequest(TeaModel):
     ):
         # Sending address. If not filled, it represents all addresses.
         self.account_name = account_name
+        self.dedicated_ip = dedicated_ip
+        self.dedicated_ip_pool_id = dedicated_ip_pool_id
         # End time, which cannot exceed 7 days from the start time, in the format yyyy-MM-dd.
         # 
         # This parameter is required.
         self.end_time = end_time
+        self.esp = esp
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -7192,8 +7246,14 @@ class SenderStatisticsByTagNameAndBatchIDRequest(TeaModel):
         result = dict()
         if self.account_name is not None:
             result['AccountName'] = self.account_name
+        if self.dedicated_ip is not None:
+            result['DedicatedIp'] = self.dedicated_ip
+        if self.dedicated_ip_pool_id is not None:
+            result['DedicatedIpPoolId'] = self.dedicated_ip_pool_id
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.esp is not None:
+            result['Esp'] = self.esp
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.resource_owner_account is not None:
@@ -7210,8 +7270,14 @@ class SenderStatisticsByTagNameAndBatchIDRequest(TeaModel):
         m = m or dict()
         if m.get('AccountName') is not None:
             self.account_name = m.get('AccountName')
+        if m.get('DedicatedIp') is not None:
+            self.dedicated_ip = m.get('DedicatedIp')
+        if m.get('DedicatedIpPoolId') is not None:
+            self.dedicated_ip_pool_id = m.get('DedicatedIpPoolId')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('Esp') is not None:
+            self.esp = m.get('Esp')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('ResourceOwnerAccount') is not None:

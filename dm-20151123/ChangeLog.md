@@ -1,3 +1,17 @@
+2025-06-13 Version: 1.2.5
+- Update API GetTrackList: add request parameters DedicatedIp.
+- Update API GetTrackList: add request parameters DedicatedIpPoolId.
+- Update API GetTrackList: add request parameters Esp.
+- Update API GetTrackList: add response parameters Body.TotalPages.
+- Update API GetTrackListByMailFromAndTagName: add request parameters DedicatedIp.
+- Update API GetTrackListByMailFromAndTagName: add request parameters DedicatedIpPoolId.
+- Update API GetTrackListByMailFromAndTagName: add request parameters Esp.
+- Update API GetTrackListByMailFromAndTagName: add response parameters Body.TotalPages.
+- Update API SenderStatisticsByTagNameAndBatchID: add request parameters DedicatedIp.
+- Update API SenderStatisticsByTagNameAndBatchID: add request parameters DedicatedIpPoolId.
+- Update API SenderStatisticsByTagNameAndBatchID: add request parameters Esp.
+
+
 2025-05-26 Version: 1.2.4
 - Update API CreateDomain: add request parameters dkimSelector.
 

@@ -2501,8 +2501,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.account_name):
             query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dedicated_ip):
+            query['DedicatedIp'] = request.dedicated_ip
+        if not UtilClient.is_unset(request.dedicated_ip_pool_id):
+            query['DedicatedIpPoolId'] = request.dedicated_ip_pool_id
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.esp):
+            query['Esp'] = request.esp
         if not UtilClient.is_unset(request.offset):
             query['Offset'] = request.offset
         if not UtilClient.is_unset(request.offset_create_time):
@@ -2560,8 +2566,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.account_name):
             query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dedicated_ip):
+            query['DedicatedIp'] = request.dedicated_ip
+        if not UtilClient.is_unset(request.dedicated_ip_pool_id):
+            query['DedicatedIpPoolId'] = request.dedicated_ip_pool_id
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.esp):
+            query['Esp'] = request.esp
         if not UtilClient.is_unset(request.offset):
             query['Offset'] = request.offset
         if not UtilClient.is_unset(request.offset_create_time):
@@ -2645,8 +2657,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.account_name):
             query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dedicated_ip):
+            query['DedicatedIp'] = request.dedicated_ip
+        if not UtilClient.is_unset(request.dedicated_ip_pool_id):
+            query['DedicatedIpPoolId'] = request.dedicated_ip_pool_id
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.esp):
+            query['Esp'] = request.esp
         if not UtilClient.is_unset(request.offset):
             query['Offset'] = request.offset
         if not UtilClient.is_unset(request.offset_create_time):
@@ -2704,8 +2722,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.account_name):
             query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dedicated_ip):
+            query['DedicatedIp'] = request.dedicated_ip
+        if not UtilClient.is_unset(request.dedicated_ip_pool_id):
+            query['DedicatedIpPoolId'] = request.dedicated_ip_pool_id
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.esp):
+            query['Esp'] = request.esp
         if not UtilClient.is_unset(request.offset):
             query['Offset'] = request.offset
         if not UtilClient.is_unset(request.offset_create_time):
@@ -4543,8 +4567,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.account_name):
             query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dedicated_ip):
+            query['DedicatedIp'] = request.dedicated_ip
+        if not UtilClient.is_unset(request.dedicated_ip_pool_id):
+            query['DedicatedIpPoolId'] = request.dedicated_ip_pool_id
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.esp):
+            query['Esp'] = request.esp
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -4590,8 +4620,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.account_name):
             query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dedicated_ip):
+            query['DedicatedIp'] = request.dedicated_ip
+        if not UtilClient.is_unset(request.dedicated_ip_pool_id):
+            query['DedicatedIpPoolId'] = request.dedicated_ip_pool_id
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.esp):
+            query['Esp'] = request.esp
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.resource_owner_account):
