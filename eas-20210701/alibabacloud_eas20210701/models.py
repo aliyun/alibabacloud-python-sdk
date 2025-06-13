@@ -6419,6 +6419,7 @@ class DescribeBenchmarkTaskReportResponse(TeaModel):
 class DescribeGatewayResponseBody(TeaModel):
     def __init__(
         self,
+        charge_type: str = None,
         create_time: str = None,
         external_cluster_id: str = None,
         gateway_id: str = None,
@@ -6435,6 +6436,7 @@ class DescribeGatewayResponseBody(TeaModel):
         status: str = None,
         update_time: str = None,
     ):
+        self.charge_type = charge_type
         # The time when the private gateway was created. The time is displayed in UTC.
         self.create_time = create_time
         # The ID of the self-managed cluster.
@@ -6500,6 +6502,8 @@ class DescribeGatewayResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.external_cluster_id is not None:
@@ -6534,6 +6538,8 @@ class DescribeGatewayResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('ExternalClusterId') is not None:
@@ -10636,12 +10642,23 @@ class ListGatewayResponse(TeaModel):
 class ListGatewayDomainsResponseBodyCustomDomains(TeaModel):
     def __init__(
         self,
+        certificate_end_date: str = None,
         certificate_id: str = None,
+        certificate_name: str = None,
+        certificate_start_date: str = None,
+        certificate_status: str = None,
+        create_time: str = None,
         domain: str = None,
         type: str = None,
+        update_time: str = None,
     ):
+        self.certificate_end_date = certificate_end_date
         # The ID of the SSL certificate bound to the domain name. Obtain the certificate ID after you upload or purchase a certificate in the [Certificate Management Service](https://yundunnext.console.aliyun.com/?spm=5176.2020520163.console-base_help.2.4b3baJixaJixOc\\&p=cas) console.
         self.certificate_id = certificate_id
+        self.certificate_name = certificate_name
+        self.certificate_start_date = certificate_start_date
+        self.certificate_status = certificate_status
+        self.create_time = create_time
         # The custom domain name.
         self.domain = domain
         # The domain name type.
@@ -10651,6 +10668,7 @@ class ListGatewayDomainsResponseBodyCustomDomains(TeaModel):
         # *   intranet: internal network.
         # *   internet: public network.
         self.type = type
+        self.update_time = update_time
 
     def validate(self):
         pass
@@ -10661,22 +10679,46 @@ class ListGatewayDomainsResponseBodyCustomDomains(TeaModel):
             return _map
 
         result = dict()
+        if self.certificate_end_date is not None:
+            result['CertificateEndDate'] = self.certificate_end_date
         if self.certificate_id is not None:
             result['CertificateId'] = self.certificate_id
+        if self.certificate_name is not None:
+            result['CertificateName'] = self.certificate_name
+        if self.certificate_start_date is not None:
+            result['CertificateStartDate'] = self.certificate_start_date
+        if self.certificate_status is not None:
+            result['CertificateStatus'] = self.certificate_status
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
         if self.domain is not None:
             result['Domain'] = self.domain
         if self.type is not None:
             result['Type'] = self.type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CertificateEndDate') is not None:
+            self.certificate_end_date = m.get('CertificateEndDate')
         if m.get('CertificateId') is not None:
             self.certificate_id = m.get('CertificateId')
+        if m.get('CertificateName') is not None:
+            self.certificate_name = m.get('CertificateName')
+        if m.get('CertificateStartDate') is not None:
+            self.certificate_start_date = m.get('CertificateStartDate')
+        if m.get('CertificateStatus') is not None:
+            self.certificate_status = m.get('CertificateStatus')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
         return self
 
 
@@ -10991,10 +11033,12 @@ class ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs(TeaModel):
     def __init__(
         self,
         region: str = None,
+        status: str = None,
         vpc_id: str = None,
     ):
         # The region where the VPC peer resides.
         self.region = region
+        self.status = status
         # The ID of the VPC peer.
         self.vpc_id = vpc_id
 
@@ -11009,6 +11053,8 @@ class ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs(TeaModel):
         result = dict()
         if self.region is not None:
             result['Region'] = self.region
+        if self.status is not None:
+            result['Status'] = self.status
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         return result
@@ -11017,6 +11063,8 @@ class ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs(TeaModel):
         m = m or dict()
         if m.get('Region') is not None:
             self.region = m.get('Region')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         return self

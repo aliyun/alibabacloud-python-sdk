@@ -1,3 +1,14 @@
+2025-06-13 Version: 6.8.1
+- Update API DescribeGateway: add response parameters Body.ChargeType.
+- Update API ListGatewayDomains: add response parameters Body.CustomDomains.$.CertificateEndDate.
+- Update API ListGatewayDomains: add response parameters Body.CustomDomains.$.CertificateName.
+- Update API ListGatewayDomains: add response parameters Body.CustomDomains.$.CertificateStartDate.
+- Update API ListGatewayDomains: add response parameters Body.CustomDomains.$.CertificateStatus.
+- Update API ListGatewayDomains: add response parameters Body.CustomDomains.$.CreateTime.
+- Update API ListGatewayDomains: add response parameters Body.CustomDomains.$.UpdateTime.
+- Update API ListGatewayIntranetLinkedVpcPeer: add response parameters Body.PeerVpcList.$.PeerVpcs.$.Status.
+
+
 2025-05-12 Version: 6.8.0
 - Support API UpdateGroup.
 
