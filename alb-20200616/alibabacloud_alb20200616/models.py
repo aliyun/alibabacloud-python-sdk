@@ -1253,6 +1253,7 @@ class CreateAScriptsRequestAScripts(TeaModel):
         enabled: bool = None,
         ext_attribute_enabled: bool = None,
         ext_attributes: List[CreateAScriptsRequestAScriptsExtAttributes] = None,
+        position: str = None,
         script_content: str = None,
     ):
         # The name of the AScript rule.
@@ -1273,6 +1274,14 @@ class CreateAScriptsRequestAScripts(TeaModel):
         self.ext_attribute_enabled = ext_attribute_enabled
         # The extended attributes.
         self.ext_attributes = ext_attributes
+        # 可编程脚本执行位置
+        # 
+        # - RequestHead（默认值）：请求方向规则执行前
+        # 
+        # - RequestFoot：请求方向规则执行后
+        # 
+        # - ResponseHead：响应方向规则执行前
+        self.position = position
         # The content of the AScript rule.
         # 
         # This parameter is required.
@@ -1300,6 +1309,8 @@ class CreateAScriptsRequestAScripts(TeaModel):
         if self.ext_attributes is not None:
             for k in self.ext_attributes:
                 result['ExtAttributes'].append(k.to_map() if k else None)
+        if self.position is not None:
+            result['Position'] = self.position
         if self.script_content is not None:
             result['ScriptContent'] = self.script_content
         return result
@@ -1317,6 +1328,8 @@ class CreateAScriptsRequestAScripts(TeaModel):
             for k in m.get('ExtAttributes'):
                 temp_model = CreateAScriptsRequestAScriptsExtAttributes()
                 self.ext_attributes.append(temp_model.from_map(k))
+        if m.get('Position') is not None:
+            self.position = m.get('Position')
         if m.get('ScriptContent') is not None:
             self.script_content = m.get('ScriptContent')
         return self
@@ -1828,6 +1841,7 @@ class CreateHealthCheckTemplateRequest(TeaModel):
         # 
         # Default value: **3**.
         self.healthy_threshold = healthy_threshold
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The tags.
         self.tag = tag
@@ -2795,7 +2809,7 @@ class CreateLoadBalancerRequestLoadBalancerBillingConfig(TeaModel):
     ):
         # The ID of the Internet Shared Bandwidth instance that is associated with the Internet-facing ALB instance.
         self.bandwidth_package_id = bandwidth_package_id
-        # The billing method of the ALB instance.
+        # The billing method of the instance.
         # 
         # Set the value to **PostPay**, which specifies the pay-as-you-go billing method.
         # 
@@ -2832,16 +2846,18 @@ class CreateLoadBalancerRequestModificationProtectionConfig(TeaModel):
         reason: str = None,
         status: str = None,
     ):
-        # The reason for enabling the configuration read-only mode. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The reason must start with a letter.
+        # The reason for enabling the configuration read-only mode.
         # 
-        # > This parameter takes effect only if `Status` is set to **ConsoleProtection**.
+        # The reason must be 2 to 128 characters in length, can contain letters, digits, periods (.), underscores (_), and hyphens (-), and must start with a letter.
+        # 
+        # >  This parameter takes effect only when **Status** is set to **ConsoleProtection**.
         self.reason = reason
         # Specifies whether to enable the configuration read-only mode. Valid values:
         # 
-        # *   **NonProtection**: disables the configuration read-only mode. In this case, you cannot specify ModificationProtectionReason. If you specify ModificationProtectionReason, the value of the parameter is cleared.
-        # *   **ConsoleProtection**: enables the configuration read-only mode. In this case, you can specify ModificationProtectionReason.
+        # *   **NonProtection**: Disables the configuration read-only mode. In this case, the value of the **Reason** parameter that you specify does not take effect. If you specify **Reason**, the value of the parameter is cleared.
+        # *   **ConsoleProtection**: Enables the configuration read-only mode. In this case, the value of the **Reason** parameter that you specify takes effect.****\
         # 
-        # > If you set this parameter to **ConsoleProtection**, you cannot use the ALB console to modify instance configurations. However, you can call API operations to modify instance configurations.
+        # >  If the parameter is set to **ConsoleProtection**, the configuration read-only mode is enabled. You cannot modify the configurations of the ALB instance in the ALB console. However, you can call API operations to modify the configurations of the ALB instance.
         self.status = status
 
     def validate(self):
@@ -2986,10 +3002,12 @@ class CreateLoadBalancerRequest(TeaModel):
         vpc_id: str = None,
         zone_mappings: List[CreateLoadBalancerRequestZoneMappings] = None,
     ):
-        # The mode in which IP addresses are allocated. Default value: Dynamic. Valid values:
+        # The mode in which IP addresses are allocated to the ALB instance. Valid values:
         # 
-        # *   **Fixed**: The ALB instance uses a static IP address.
-        # *   **Dynamic** (default): The system dynamically allocates an IP address to each zone of the ALB instance.
+        # *   **Fixed** (default): a fixed IP address is assigned to the ALB instance in each zone.
+        # *   **Dynamic**: IP addresses are dynamically allocated to the ALB instance in each zone.
+        # 
+        # >  Starting from 00:00:00 on February 25, 2025 (UTC+8), when you call this operation to create an ALB instance, the instance is automatically the [upgraded version](https://help.aliyun.com/document_detail/2864070.html) regardless of the mode you specify. Upgraded ALB instances no longer differentiate between IP modes. Instead, they globally auto-scale IP addresses for providing load balancing services. The ALB instances you created before this date and time are not affected.
         self.address_allocated_mode = address_allocated_mode
         # The protocol version. Valid values:
         # 
@@ -3035,7 +3053,7 @@ class CreateLoadBalancerRequest(TeaModel):
         # 
         # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         self.load_balancer_name = load_balancer_name
-        # The configuration of the configuration read-only mode.
+        # The configuration read-only mode settings.
         self.modification_protection_config = modification_protection_config
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -3231,14 +3249,14 @@ class CreateRuleRequestRuleActionsCorsConfig(TeaModel):
         expose_headers: List[str] = None,
         max_age: int = None,
     ):
-        # Specifies whether to allow credentials to be carried in CORS requests. Valid values:
+        # Specifies whether credentials can be carried in CORS requests. Valid values:
         # 
-        # *   **on**: allows credentials to be carried in CORS requests.
-        # *   **off**: does not allow credentials to be carried in CORS requests.
+        # *   **on**\
+        # *   **off**\
         self.allow_credentials = allow_credentials
         # The trusted headers of CORS requests.
         self.allow_headers = allow_headers
-        # The trusted HTTP methods of CORS requests.
+        # The allowed HTTP methods of CORS requests.
         self.allow_methods = allow_methods
         # The trusted origins of CORS requests. You can specify one or more values, or only the wildcard character (`*`).
         # 
@@ -3344,10 +3362,10 @@ class CreateRuleRequestRuleActionsForwardGroupConfigServerGroupStickySession(Tea
     ):
         # Specifies whether to enable session persistence. Valid values:
         # 
-        # *   **true**: enables session persistence.
-        # *   **false** (default): disables session persistence.
+        # *   **true**\
+        # *   **false** (default)
         self.enabled = enabled
-        # The timeout period of sessions. Unit: seconds Valid values: **1** to **86400**. Default value: **1000**.
+        # The timeout period of sessions. Unit: seconds. Valid values: **1** to **86400**. Default value: **1000**.
         self.timeout = timeout
 
     def validate(self):
@@ -3467,7 +3485,7 @@ class CreateRuleRequestRuleActionsInsertHeaderConfig(TeaModel):
     ):
         # The key of the header. The header key must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The header keys specified by **InsertHeaderConfig** must be unique.
         # 
-        # >  You cannot specify the following header keys: `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`. The header keys are not case-sensitive.
+        # >  You cannot specify the following header keys: `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, `authority`, and `x-forwarded-host`. The header keys are case-insensitive.
         self.key = key
         # The value of the header to be inserted.
         # 
@@ -3479,11 +3497,11 @@ class CreateRuleRequestRuleActionsInsertHeaderConfig(TeaModel):
         #     *   **SLBId**: the ID of the ALB instance.
         #     *   **SLBPort**: the listener port.
         # 
-        # *   If **ValueType** is set to **UserDefined**, you can specify a custom header value. The header value must be 1 to 128 characters in length, and can contain wildcard characters, such as asterisks (\\*) and question marks (?), and printable characters whose ASCII values are `larger than or equal to 32 and smaller than 127`. The header value cannot start or end with a space character.
+        # *   If **ValueType** is set to **UserDefined**, a custom header value is supported. The header value must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and lower than 127`. You can use asterisks (\\*) and question marks (?) as wildcard characters. `Quotation marks (")` are not supported. The header value cannot start or end with a space character, or end with a backslash (`\\`).
         # 
         # *   If **ValueType** is set to **ReferenceHeader**, you can reference a value from request headers. The value must be 1 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and underscores (_).
         self.value = value
-        # The type of header. Valid values:
+        # The type of the header. Valid values:
         # 
         # *   **UserDefined**: a custom header value.
         # *   **ReferenceHeader**: a header value that is referenced from one of the request headers.
@@ -3548,15 +3566,15 @@ class CreateRuleRequestRuleActionsRedirectConfig(TeaModel):
         # 
         # *   If you want to specify a custom value, make sure that the following requirements are met:
         # 
-        #     *   The UTRL must be 1 to 128 characters in length, and is case-sensitive. You can use asterisks (\\*) and question marks (?) as wildcard characters.
-        #     *   The URL must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ] ^ , "`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
+        #     *   The URL must be 1 to 128 characters in length, and is case-sensitive. You can use asterisks (\\*) and question marks (?) as wildcard characters.
+        #     *   The URL must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ . + / & ~ @ : \\" * ?`. It cannot contain the following special characters: `% # ; ! ( ) [ ] ^ , \\ "`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
         self.path = path
         # The port to which requests are distributed.
         # 
         # *   **${port}** (default): If you set the value to ${port}, you cannot append other characters to the value.
         # *   You can also enter a port number. Valid values: **1 to 63335**.
         self.port = port
-        # The redirect protocol. Valid values: Valid values:
+        # The redirect protocol. Valid values:
         # 
         # *   **${protocol}** (default): If you set the value to ${protocol}, you cannot modify the value or append other characters.
         # *   **HTTP**\
@@ -3570,12 +3588,12 @@ class CreateRuleRequestRuleActionsRedirectConfig(TeaModel):
         self.protocol = protocol
         # The query string to which requests are redirected.
         # 
-        # *   Default value: **${query}**. **${host}**, **${protocol}**, and **${port}** are also supported. Each variable can be specified only once. The preceding variables can be used at the same time or combined with a custom value.
+        # *   Default value: **${query}**. **${host}**, **${protocol}**, and **${port}** are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
         # 
         # *   If you want to specify a custom value, make sure that the following requirements are met:
         # 
         #     *   The query string must be 1 to 128 characters in length.
-        #     *   It can contain printable characters, but cannot contain space characters, the special characters `# [ ] { } \\ | < > &`, or lowercase letters.
+        #     *   It can contain printable characters, excluding space characters, the special characters `# [ ] { } \\ | < > "`, and lowercase letters.
         self.query = query
 
     def validate(self):
@@ -3623,9 +3641,9 @@ class CreateRuleRequestRuleActionsRemoveHeaderConfig(TeaModel):
         self,
         key: str = None,
     ):
-        # The key of the header to be removed. The header key must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The header keys specified in RemoveHeader must be unique.
+        # The keys of the headers to be removed. The header keys must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The header keys specified in RemoveHeader must be unique.
         # 
-        # *   If Direction is set to Requests, the following header keys are not supported: `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`. The header keys are not case-sensitive.
+        # *   If Direction is set to Request, the following request headers cannot be removed: `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, `authority`, and `x-forwarded-host`. Request headers are not case-sensitive.
         # *   If Direction is set to Response, the following response header keys are not supported: `connection`, `upgrade`, `content-length`, and `transfer-encoding`. The header keys are not case-sensitive.
         self.key = key
 
@@ -3673,8 +3691,8 @@ class CreateRuleRequestRuleActionsRewriteConfig(TeaModel):
         # 
         # *   If you want to specify a custom value, make sure that the following requirements are met:
         # 
-        #     *   The UTRL must be 1 to 128 characters in length, and is case-sensitive. You can use asterisks (\\*) and question marks (?) as wildcard characters.
-        #     *   The URL must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ] ^ , "`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
+        #     *   The URL must be 1 to 128 characters in length, and is case-sensitive. You can use asterisks (\\*) and question marks (?) as wildcard characters.
+        #     *   The URL must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ . + / & ~ @ : \\" * ?`. It cannot contain the following special characters: `% # ; ! ( ) [ ] ^ , \\ "`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
         self.path = path
         # The query string of the URL to which requests are distributed.
         # 
@@ -3682,8 +3700,8 @@ class CreateRuleRequestRuleActionsRewriteConfig(TeaModel):
         # 
         # *   If you want to specify a custom value, make sure that the following requirements are met:
         # 
-        #     *   The query string must be 1 to 128 characters in length.
-        #     *   It can contain printable characters, but cannot contain space characters, the special characters `# [ ] { } \\ | < > &`, or lowercase letters.
+        #     *   The path must be 1 to 128 characters in length.
+        #     *   It can contain printable characters, excluding space characters, the special characters `# [ ] { } \\ | < > "` and lowercase letters.
         self.query = query
 
     def validate(self):
@@ -3724,7 +3742,7 @@ class CreateRuleRequestRuleActionsTrafficLimitConfig(TeaModel):
         # 
         # >  If both the **QPS** and **PerIpQps** parameters are specified, the value of the **QPS** parameter is smaller than the value of the PerIpQps parameter.
         self.per_ip_qps = per_ip_qps
-        # The number of queries per second (QPS). Valid values: **1 to 1000000**.
+        # The queries per second (QPS). Valid values: **1 to 1000000**.
         self.qps = qps
 
     def validate(self):
@@ -3756,7 +3774,7 @@ class CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGrou
         self,
         server_group_id: str = None,
     ):
-        # The ID of the VServer group.
+        # The server group ID.
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -3784,7 +3802,7 @@ class CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig(TeaModel)
         self,
         server_group_tuples: List[CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples] = None,
     ):
-        # The server group to which traffic is mirrored.
+        # The configuration of the server group to which traffic is mirrored.
         self.server_group_tuples = server_group_tuples
 
     def validate(self):
@@ -3823,7 +3841,7 @@ class CreateRuleRequestRuleActionsTrafficMirrorConfig(TeaModel):
     ):
         # The configuration of the server group to which traffic is mirrored.
         self.mirror_group_config = mirror_group_config
-        # The type of target to which network traffic is mirrored. Valid values:
+        # The type of destination to which network traffic is mirrored. Valid values:
         # 
         # *   **ForwardGroupMirror**: a server group.
         self.target_type = target_type
@@ -3885,7 +3903,7 @@ class CreateRuleRequestRuleActions(TeaModel):
         # 
         # >  Do not set all fields in **RedirectConfig** to default values, except for **httpCode**.
         self.redirect_config = redirect_config
-        # The HTTP header to be removed.
+        # The HTTP headers to be removed.
         self.remove_header_config = remove_header_config
         # The configuration of the rewrite action.
         # 
@@ -3898,9 +3916,9 @@ class CreateRuleRequestRuleActions(TeaModel):
         # The action. Valid values:
         # 
         # *   **ForwardGroup**: distributes requests to multiple vServer groups.
-        # *   **Redirect**: redirects a request.
+        # *   **Redirect**: redirects requests.
         # *   **FixedResponse**: returns a custom response.
-        # *   **Rewrite**: rewrites a request.
+        # *   **Rewrite**: rewrites requests.
         # *   **InsertHeader**: inserts headers.
         # *   **RemoveHeaderConfig:** deletes the header of a request.
         # *   **TrafficLimit**: throttles traffic.
@@ -4011,13 +4029,13 @@ class CreateRuleRequestRuleConditionsCookieConfigValues(TeaModel):
         # 
         # *   The cookie key must be 1 to 100 characters in length.
         # *   You can use asterisks (\\*) and question marks (?) as wildcard characters.
-        # *   The cookie key can contain printable characters, but cannot contain uppercase letters, space characters, or the following special characters: `; # [ ] { } \\ | < > &`.
+        # *   The value can contain printable characters, excluding uppercase letters, space characters, and the following special characters: `; # [ ] { } \\ | < > & "`.
         self.key = key
         # The cookie value.
         # 
         # *   The cookie value must be 1 to 100 characters in length.
         # *   You can use asterisks (\\*) and question marks (?) as wildcard characters.
-        # *   The cookie value can contain printable characters, but cannot contain uppercase letters, space characters, or the following special characters: `; # [ ] { } \\ | < > &`.
+        # *   The value can contain printable characters, excluding uppercase letters, space characters, and the following special characters: `; # [ ] { } \\ | < > & "`.
         self.value = value
 
     def validate(self):
@@ -4212,12 +4230,12 @@ class CreateRuleRequestRuleConditionsQueryStringConfigValues(TeaModel):
         # They key of the query string.
         # 
         # *   The key must be 1 to 100 characters in length.
-        # *   You can use asterisks (\\*) and question marks (?) as wildcard characters. The key can contain printable characters, excluding uppercase letters, space characters, and the following special characters: `# [ ] { } \\ | < > &`.
+        # *   You can use asterisks (\\*) and question marks (?) as wildcard characters. It can contain printable characters, excluding uppercase letters, space characters, and the following special characters: `# [ ] { } \\ | < > & "`.
         self.key = key
         # The value of the query string.
         # 
-        # *   The query string must be 1 to 128 characters in length.
-        # *   The value can contain printable characters, excluding uppercase letters, space characters, and the following special characters: `# [ ] { } \\ | < > &`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
+        # *   The value must be 1 to 128 characters in length.
+        # *   It can contain printable characters, but cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \\ | < > &`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
         self.value = value
 
     def validate(self):
@@ -4286,10 +4304,10 @@ class CreateRuleRequestRuleConditionsResponseHeaderConfig(TeaModel):
         key: str = None,
         values: List[str] = None,
     ):
-        # The key of the header.
+        # The header key.
         # 
-        # *   The key must be 1 to 40 characters in length,
-        # *   The key can contain letters, digits, hyphens (-), and underscores (_).
+        # *   The key must be 1 to 40 characters in length.
+        # *   It can contain letters, digits, hyphens (-), and underscores (_).
         # *   Cookie and Host are not supported.
         self.key = key
         # The header values.
@@ -4399,19 +4417,19 @@ class CreateRuleRequestRuleConditions(TeaModel):
         self.method_config = method_config
         # The configurations of the URL to which requests are forwarded.
         self.path_config = path_config
-        # The configurations of the query strings.
+        # The configuration of the query strings.
         self.query_string_config = query_string_config
         # The configuration of headers.
         self.response_header_config = response_header_config
-        # The configurations of the response status codes.
+        # The configuration of the response status codes.
         self.response_status_code_config = response_status_code_config
-        # Configurations of traffic matching based on source IP addresses. This parameter is required and valid when **Type** is set to **SourceIP**.
+        # Configuration of traffic matching based on source IP addresses. This parameter is required and valid when **Type** is set to **SourceIP**.
         self.source_ip_config = source_ip_config
         # The type of forwarding rule. Valid values:
         # 
         # *   **Host**: Requests are distributed based on hosts.
         # *   **Path**: Requests are distributed based on paths.
-        # *   **Header**: Requests are forwarded based on HTTP headers.
+        # *   **Header**: Requests are distributed based on HTTP headers.
         # *   **QueryString**: Requests are distributed based on query strings.
         # *   **Method**: Requests are distributed based on request methods.
         # *   **Cookie**: Requests are distributed based on cookies.
@@ -7789,7 +7807,7 @@ class DeleteRulesRequest(TeaModel):
         # *   **true**: checks the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The forwarding rules.
+        # The forwarding rules. You can specify at most 100 forwarding rules in each call.
         # 
         # This parameter is required.
         self.rule_ids = rule_ids
@@ -9799,6 +9817,7 @@ class GetHealthCheckTemplateAttributeResponseBody(TeaModel):
         self.healthy_threshold = healthy_threshold
         # The request ID.
         self.request_id = request_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The tags.
         self.tags = tags
@@ -10983,7 +11002,7 @@ class GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNon
         # *   **SEND_REQUEST_FAILED**: ALB failed to send a request to the backend server.
         # *   **SEND_REQUEST_TIMEOUT**: ALB failed to send a request to the backend server within the specified period of time.
         # *   **RESPONSE_FORMAT_ERROR**: The format of the response from the backend server is invalid.
-        # *   **RESPONSE_FORMAT_ERROR**: The HTTP status code returned from the backend server is not the expected one.
+        # *   **RESPONSE_MISMATCH**: The HTTP status code returned from the backend server is not the expected one.
         self.reason_code = reason_code
 
     def validate(self):
@@ -11025,7 +11044,7 @@ class GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNon
     ):
         # The backend port.
         self.port = port
-        # The cause of the abnormal state.
+        # The cause for the unhealthy state of the backend servers.
         self.reason = reason
         # The ID of the backend server.
         self.server_id = server_id
@@ -11211,7 +11230,7 @@ class GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNorm
         # 
         # > A value is returned only if **ReasonCode** is set to **RESPONSE_MISMATCH**.
         self.expected_response = expected_response
-        # The reason why the value of **Status** is Unhealthy. Only HTTP and HTTPS listeners support this parameter.
+        # The reason why the value of **Status** is Unhealthy. Only forwarding rules for HTTP and HTTPS listeners support this parameter.
         # 
         # *   **CONNECT_TIMEOUT**: ALB failed to connect to the backend server within the specified period of time.
         # *   **CONNECT_FAILED**: ALB failed to connect to the backend server.
@@ -11220,7 +11239,7 @@ class GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNorm
         # *   **SEND_REQUEST_FAILED**: ALB failed to send a request to the backend server.
         # *   **SEND_REQUEST_TIMEOUT**: ALB failed to send a request to the backend server within the specified period of time.
         # *   **RESPONSE_FORMAT_ERROR**: The format of the response from the backend server is invalid.
-        # *   **RESPONSE_FORMAT_ERROR**: The HTTP status code returned from the backend server is not the expected one.
+        # *   **RESPONSE_MISMATCH**: The HTTP status code returned from the backend server is not the expected one.
         self.reason_code = reason_code
 
     def validate(self):
@@ -11262,7 +11281,7 @@ class GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNorm
     ):
         # The backend port.
         self.port = port
-        # The cause of the abnormal state.
+        # The cause for the unhealthy state of the backend servers.
         self.reason = reason
         # The ID of the backend server.
         self.server_id = server_id
@@ -11422,7 +11441,7 @@ class GetListenerHealthStatusResponseBody(TeaModel):
         request_id: str = None,
         rule_health_status: List[GetListenerHealthStatusResponseBodyRuleHealthStatus] = None,
     ):
-        # The health check status of the server groups that are associated with the listener.
+        # The health check status of the server groups associated with the listener.
         self.listener_health_status = listener_health_status
         # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
@@ -11703,16 +11722,18 @@ class GetLoadBalancerAttributeResponseBodyModificationProtectionConfig(TeaModel)
         reason: str = None,
         status: str = None,
     ):
-        # The reason for enabling the configuration read-only mode. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The reason must start with a letter.
+        # The reason why the configuration read-only mode is enabled.
         # 
-        # This parameter is valid only if **ModificationProtectionStatus** is set to **ConsoleProtection**.
+        # The name must be 2 to 128 character characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+        # 
+        # This parameter takes effect only if **Status** is set to **ConsoleProtection**.
         self.reason = reason
-        # The status of the configuration read-only mode. Valid values:
+        # Specifies whether the configuration read-only mode is enabled. Valid values:
         # 
-        # *   **NonProtection**: The configuration read-only mode is disabled. In this case, you cannot specify ModificationProtectionReason. If you specify ModificationProtectionReason, the value of the parameter is cleared.
-        # *   **ConsoleProtection**: The configuration read-only mode is enabled. In this case, you can specify ModificationProtectionReason.
+        # *   **NonProtection**: The configuration read-only mode is disabled. In this case, the value of the **Reason** parameter that you specify does not take effect. If you set **Reason**, the value is cleared.
+        # *   **ConsoleProtection**: The configuration read-only mode is enabled. In this case, the value of the **Reason** parameter takes effect.****\
         # 
-        # > If you set this parameter to **ConsoleProtection**, you cannot use the ALB console to modify instance configurations. However, you can call API operations to modify instance configurations.
+        # >  If the parameter is set to **ConsoleProtection**, the configuration read-only mode is enabled. You cannot modify the configurations of the ALB instance in the ALB console. However, you can call API operations to modify the configurations of the ALB instance.
         self.status = status
 
     def validate(self):
@@ -12042,7 +12063,7 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
         # *   **Configuring**: The ALB instance is being modified.
         # *   **CreateFailed**: The system failed to create the ALB instance. In this case, you are not charged for the ALB instance. You can only delete the ALB instance.
         self.load_balancer_status = load_balancer_status
-        # The configuration of the configuration read-only mode.
+        # The configuration read-only mode settings.
         self.modification_protection_config = modification_protection_config
         # The region ID of the ALB instance.
         self.region_id = region_id
@@ -13625,13 +13646,14 @@ class ListHealthCheckTemplatesRequest(TeaModel):
         self.health_check_template_ids = health_check_template_ids
         # The health check templates.
         self.health_check_template_names = health_check_template_names
-        # The number of entries per page. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries to return in each call. Valid values: **1** to **100**. Default value: **20**\
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
         # *   You do not need to specify this parameter for the first request.
         # *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
         self.next_token = next_token
+        # The resource group ID. You can filter the query results based on the specified ID.
         self.resource_group_id = resource_group_id
         # The tags.
         self.tag = tag
@@ -13800,6 +13822,7 @@ class ListHealthCheckTemplatesResponseBodyHealthCheckTemplates(TeaModel):
         # 
         # Default value: **3**.
         self.healthy_threshold = healthy_threshold
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The tags.
         self.tags = tags
@@ -14011,7 +14034,7 @@ class ListListenerCertificatesRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The certificate IDs.
+        # The certificates.
         self.certificate_ids = certificate_ids
         # The type of the certificate. Valid values: **Ca** and **Server**.
         self.certificate_type = certificate_type
@@ -14019,7 +14042,7 @@ class ListListenerCertificatesRequest(TeaModel):
         # 
         # This parameter is required.
         self.listener_id = listener_id
-        # The maximum number of entries to return. Valid values: **1 to 100**. Default value: **20**.
+        # The number of entries to return in each call. Valid values: **1 to 100**. Default value: **20**.
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
@@ -15394,7 +15417,7 @@ class ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig(TeaMod
         self,
         pay_type: str = None,
     ):
-        # The billing method. Valid values:
+        # The billing method. Valid value:
         # 
         # Only **PostPay** may be returned, which indicates the pay-as-you-go billing method.
         self.pay_type = pay_type
@@ -15469,14 +15492,14 @@ class ListLoadBalancersResponseBodyLoadBalancersModificationProtectionConfig(Tea
         # 
         # The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         # 
-        # This parameter is available only if the **ModificationProtectionStatus** parameter is set to **ConsoleProtection**.
+        # This parameter takes effect only if **Status** is set to **ConsoleProtection**.
         self.reason = reason
-        # Indicates whether the configuration read-only mode is enabled for the ALB instance. Valid values:
+        # Indicates whether the configuration read-only mode is enabled. Valid values:
         # 
-        # *   **NonProtection**: Modification protection is disabled. In this case, you cannot set the ModificationProtectionReason parameter. If the ModificationProtectionReason parameter is specified, the value is cleared.
-        # *   **ConsoleProtection**: Modification protection is enabled. In this case, you can set the ModificationProtectionReason parameter.
+        # *   **NonProtection**: The configuration read-only mode is disabled. In this case, **Reason** is not returned. If **Reason** is set, the value is cleared.
+        # *   **ConsoleProtection**: The configuration read-only mode is enabled. In this case, **Reason** is returned.****\
         # 
-        # >  If the value is **ConsoleProtection**, modification protection is enabled. You cannot modify the configurations of the ALB instance in the ALB console. However, you can call API operations to modify the configurations of the ALB instance.
+        # >  If the value is **ConsoleProtection**, the configuration read-only mode is enabled. You cannot modify the configurations of the ALB instance in the ALB console. However, you can call API operations to modify the configurations of the ALB instance.
         self.status = status
 
     def validate(self):
@@ -15559,6 +15582,7 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
         load_balancer_status: str = None,
         modification_protection_config: ListLoadBalancersResponseBodyLoadBalancersModificationProtectionConfig = None,
         resource_group_id: str = None,
+        security_group_ids: List[str] = None,
         tags: List[ListLoadBalancersResponseBodyLoadBalancersTags] = None,
         vpc_id: str = None,
     ):
@@ -15619,10 +15643,11 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
         # *   **Configuring**: The ALB instance is being modified.
         # *   **CreateFailed**: The system failed to create the ALB instance.
         self.load_balancer_status = load_balancer_status
-        # The configuration of modification protection.
+        # The configuration read-only mode settings.
         self.modification_protection_config = modification_protection_config
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        self.security_group_ids = security_group_ids
         # The information about the tags.
         self.tags = tags
         # The ID of the VPC in which the ALB instance is deployed.
@@ -15690,6 +15715,8 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
             result['ModificationProtectionConfig'] = self.modification_protection_config.to_map()
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.security_group_ids is not None:
+            result['SecurityGroupIds'] = self.security_group_ids
         result['Tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -15743,6 +15770,8 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
             self.modification_protection_config = temp_model.from_map(m['ModificationProtectionConfig'])
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SecurityGroupIds') is not None:
+            self.security_group_ids = m.get('SecurityGroupIds')
         self.tags = []
         if m.get('Tags') is not None:
             for k in m.get('Tags'):
@@ -20077,7 +20106,7 @@ class LoadBalancerLeaveSecurityGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
-        # The security IDs.
+        # The security group IDs.
         # 
         # This parameter is required.
         self.security_group_ids = security_group_ids
@@ -20462,25 +20491,25 @@ class RemoveServersFromServerGroupRequestServers(TeaModel):
         # 
         # >  This parameter is required when you set **ServerType** to **Ecs**, **Eni**, **Eci**, or **Ip**.
         self.port = port
-        # The ID of the server group.
+        # The backend server ID.
         # 
         # *   If the server group is of the **Instance** type, set ServerId to the ID of a resource of the **Ecs**, **Eni**, or **Eci** type.
-        # *   If the server group is of the **Ip** type, set ServerId to IP addresses.
-        # *   If the server group is of the **Fc**, set ServerId to the Alibaba Cloud Resource Name (ARN) of a function.
+        # *   If the server group is of the **Ip** type, set this parameter to IP addresses.
+        # *   If the server group is of the **Fc** type, set ServerId to the Alibaba Cloud Resource Name (ARN) of a function.
         # 
-        # >  You can call the ListServerGroups operation to query information about the server group type so that you can set ServerId to a proper value.[](~~213627~~)
+        # >  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/2254862.html) operation to query information about the server group type so that you can set ServerId to a proper value.
         # 
         # This parameter is required.
         self.server_id = server_id
-        # The IP address of the elastic network interface (ENI) in exclusive mode.
+        # The IP address of the elastic network interface (ENI) in inclusive mode.
         self.server_ip = server_ip
         # The type of the backend server. Valid values:
         # 
-        # *   **Ecs**: ECS instance
+        # *   **Ecs**: Elastic Compute Service (ECS) instance
         # *   **Eni**: ENI
         # *   **Eci**: elastic container instance
         # *   **Ip**: IP address
-        # *   **Fc**: Function Compute
+        # *   **Fc**: Function Compute instance
         # 
         # This parameter is required.
         self.server_type = server_type
@@ -20540,7 +20569,7 @@ class RemoveServersFromServerGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.server_group_id = server_group_id
-        # The server group. You can add at most 200 backend servers to the server group.
+        # The backend servers to be removed. You can specify up to 200 backend servers.
         # 
         # This parameter is required.
         self.servers = servers
@@ -22850,9 +22879,9 @@ class UpdateListenerAttributeRequest(TeaModel):
         # 
         # > This parameter is available only when you create an HTTPS listener.
         self.http_2enabled = http_2enabled
-        # The timeout period of an idle connection. Unit: seconds. Valid values: **1 to 60**.
+        # The timeout period for idle connections. Unit: seconds. Valid values: **1 to 60**\
         # 
-        # If no request is received within the specified timeout period, ALB closes the current connection. When another request is received, ALB establishes a new connection.
+        # If no requests are received within the specified timeout period, ALB closes the current connection. When another request is received, ALB establishes a new connection.
         self.idle_timeout = idle_timeout
         # The name of the listener.
         # 
@@ -23274,10 +23303,10 @@ class UpdateLoadBalancerAddressTypeConfigRequestZoneMappings(TeaModel):
         # 
         # >  This parameter is required if you want to change the network type from internal-facing to Internet-facing.
         self.allocation_id = allocation_id
-        # The type of EIP. Valid values:
+        # The type of the EIP. Valid values:
         # 
-        # *   **Common**: an EIP.
-        # *   **Anycast**: an Anycast EIP.
+        # *   Common (default): indicates an EIP
+        # *   Anycast: indicates an Anycast EIP
         # 
         # >  For more information about the regions in which ALB supports Anycast EIPs, see [Limits](https://help.aliyun.com/document_detail/460727.html).
         self.eip_type = eip_type
@@ -23480,16 +23509,18 @@ class UpdateLoadBalancerAttributeRequestModificationProtectionConfig(TeaModel):
         reason: str = None,
         status: str = None,
     ):
-        # It must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+        # The reason for enabling the configuration read-only mode.
         # 
-        # This parameter takes effect only when **ModificationProtectionStatus** is set to **ConsoleProtection**.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+        # 
+        # This parameter takes effect only when **Status** is set to **ConsoleProtection**.
         self.reason = reason
-        # The status of the configuration read-only mode. Valid values:
+        # Specifies whether to enable the configuration read-only mode. Valid values:
         # 
-        # *   **NonProtection**: disables the configuration read-only mode. In this case, you cannot specify **ModificationProtectionReason**. If you specify **ModificationProtectionReason**, the value of the parameter is cleared.
-        # *   **ConsoleProtection**: enables the configuration read-only mode. In this case, you can specify **ModificationProtectionReason**.
+        # *   **NonProtection**: disables the configuration read-only mode. In this case, the value of the **Reason** parameter that you specify does not take effect. If you set the value of **Reason**, the value is cleared.
+        # *   **ConsoleProtection**: enables the configuration read-only mode. In this case, the value of the **Reason** parameter that you specify takes effect.****\
         # 
-        # > If you set this parameter to **ConsoleProtection**, you cannot use the ALB console to modify instance configurations. However, you can call API operations to modify instance configurations.
+        # >  If the parameter is set to **ConsoleProtection**, the configuration read-only mode is enabled. You cannot modify the configurations of the ALB instance in the ALB console. However, you can call API operations to modify the configurations of the ALB instance.
         self.status = status
 
     def validate(self):
@@ -23542,7 +23573,7 @@ class UpdateLoadBalancerAttributeRequest(TeaModel):
         self.load_balancer_id = load_balancer_id
         # The name of the ALB instance. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         self.load_balancer_name = load_balancer_name
-        # The configuration read-only mode.
+        # The configuration read-only mode settings.
         self.modification_protection_config = modification_protection_config
 
     def validate(self):
@@ -24004,7 +24035,7 @@ class UpdateRuleAttributeRequestRuleActionsCorsConfig(TeaModel):
         expose_headers: List[str] = None,
         max_age: int = None,
     ):
-        # Specifies whether to allow credentials to be carried in CORS requests. Valid values:
+        # Specifies whether credentials can be carried in CORS requests. Valid values:
         # 
         # *   **on**\
         # *   **off**\
@@ -24117,10 +24148,10 @@ class UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupStickySe
     ):
         # Specifies whether to enable session persistence. Valid values:
         # 
-        # *   **true**: enables session persistence.
+        # *   **true**\
         # *   **false** (default)
         self.enabled = enabled
-        # The timeout period of sessions. Unit: seconds Valid values: 1 to 86400.
+        # The timeout period for sessions. Unit: seconds. Valid values: 1 to 86400.
         self.timeout = timeout
 
     def validate(self):
@@ -24191,7 +24222,7 @@ class UpdateRuleAttributeRequestRuleActionsForwardGroupConfig(TeaModel):
         server_group_sticky_session: UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupStickySession = None,
         server_group_tuples: List[UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuples] = None,
     ):
-        # The configuration of session persistence.
+        # The configuration of session persistence for server groups.
         self.server_group_sticky_session = server_group_sticky_session
         # The server groups to which requests are forwarded.
         self.server_group_tuples = server_group_tuples
@@ -24241,12 +24272,12 @@ class UpdateRuleAttributeRequestRuleActionsInsertHeaderConfig(TeaModel):
     ):
         # Specifies whether to overwrite the request header values. Valid values:
         # 
-        # *   **true**: overwrites the request header.
-        # *   **false** (default): does not overwrite the request header.
+        # *   **true**\
+        # *   **false** (default)
         self.cover_enabled = cover_enabled
         # The key of the header. The key must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The header keys specified by **InsertHeaderConfig** must be unique.
         # 
-        # > The following header keys are not supported: `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`. The header keys are not case-sensitive.
+        # >  You cannot specify the following header keys: `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `x-forwarded-host`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`. The header keys are case-insensitive.
         self.key = key
         # The value of the header.
         # 
@@ -24258,7 +24289,7 @@ class UpdateRuleAttributeRequestRuleActionsInsertHeaderConfig(TeaModel):
         #     *   **SLBId**: the ID of the ALB instance.
         #     *   **SLBPort**: the listener port of the ALB instance.
         # 
-        # *   If **ValueType** is set to **UserDefined**, you can specify a custom value. The value must be 1 to 128 characters in length, and can contain asterisks (\\*), question marks (?), and printable characters whose ASCII values are `larger than or equal to 32 and smaller than 127`. It cannot start or end with a space character.
+        # *   If **ValueType** is set to **UserDefined**, a custom header value is supported. The header value must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and lower than 127`. You can use asterisks (\\*) and question marks (?) as wildcard characters. Quotation marks (`"`) are not supported. The header value cannot start or end with a space character, or end with a backslash (`\\`).
         # 
         # *   If **ValueType** is set to **ReferenceHeader**, you can reference a value from request headers. The value must be 1 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and underscores (_).
         self.value = value
@@ -24318,9 +24349,9 @@ class UpdateRuleAttributeRequestRuleActionsRedirectConfig(TeaModel):
         # *   If you want to specify a custom value, make sure that the following requirements are met:
         # 
         #     *   The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), periods (.), asterisks (\\*), and question marks (?).
-        #     *   The hostname must contain at least one period (.) but cannot start or end with a period (.).
+        #     *   The hostname contains at least one period (.) but does not start or end with a period (.).
         #     *   The rightmost domain label can contain only letters and wildcard characters. It cannot contain digits or hyphens (-).
-        #     *   Other domain labels cannot start or end with a hyphen (-).
+        #     *   The domain labels do not start or end with a hyphen (-).
         #     *   You can use asterisks (\\*) and question marks (?) anywhere in a domain label as wildcard characters.
         self.host = host
         # The forwarding method. Valid values: **301**, **302**, **303**, **307**, and **308**.
@@ -24331,8 +24362,8 @@ class UpdateRuleAttributeRequestRuleActionsRedirectConfig(TeaModel):
         # 
         # *   If you want to specify a custom value, make sure that the following requirements are met:
         # 
-        #     *   The URL must be 1 to 128 characters in length,
-        #     *   The URL must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ]^ , "`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
+        #     *   The header value must be 1 to 128 characters in length.
+        #     *   It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ . + / & ~ @ :`. It does not contain the following special characters: `% # ; ! ( ) [ ] ^ , \\ "`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
         self.path = path
         # The port to which requests are redirected. Valid values:
         # 
@@ -24344,16 +24375,16 @@ class UpdateRuleAttributeRequestRuleActionsRedirectConfig(TeaModel):
         # *   **${protocol}** (default): If you set the value to ${protocol}, you cannot append other characters.
         # *   **HTTP** or **HTTPS**.
         # 
-        # > HTTPS listeners support only HTTPS redirects.
+        # >  HTTPS listeners support only HTTPS redirects.
         self.protocol = protocol
-        # The query string to which requests are redirected. Valid values:
+        # The query string of the URL to which requests are forwarded. Valid values:
         # 
         # *   Default value: **${query}**. \\*\\*${host}**, **${protocol}**, and **${port}\\*\\* are also supported. Each variable can be specified only once. The preceding variables can be used at the same time or combined with a custom value.
         # 
         # *   If you want to specify a custom value, make sure that the following requirements are met:
         # 
-        #     *   The query string must be 1 to 128 characters in length.
-        #     *   The query string can contain printable characters, but cannot contain space characters, the special characters `# [ ] { } \\ | < > &`, or uppercase letters.
+        #     *   The header value must be 1 to 128 characters in length.
+        #     *   It can contain printable characters, excluding space characters, the special characters `# [ ] { } \\ | < > "`, and uppercase letters.
         self.query = query
 
     def validate(self):
@@ -24403,7 +24434,7 @@ class UpdateRuleAttributeRequestRuleActionsRemoveHeaderConfig(TeaModel):
     ):
         # The key of the header to be removed. The header key must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The header keys specified in RemoveHeader must be unique.
         # 
-        # *   If Direction is set to Request, the following request header keys are not supported: `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`. The header keys are not case-sensitive.
+        # *   If Direction is set to Request, the following request headers cannot be removed: `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `x-forwarded-host`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`. Request headers are not case-sensitive.
         # *   If Direction is set to Response, the following header keys are not supported: `connection`, `upgrade`, `content-length`, and `transfer-encoding`. The header keys are not case-sensitive.
         self.key = key
 
@@ -24443,7 +24474,7 @@ class UpdateRuleAttributeRequestRuleActionsRewriteConfig(TeaModel):
         #     *   The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), periods (.), asterisks (\\*), and question marks (?).
         #     *   The hostname contains at least one period (.) but does not start or end with a period (.).
         #     *   The rightmost domain label can contain only letters and wildcard characters. It cannot contain digits or hyphens (-).
-        #     *   Other domain labels cannot start or end with a hyphen (-). You can use asterisks (\\*) and question marks (?) anywhere in a domain label as wildcard characters.
+        #     *   The domain labels do not start or end with a hyphen (-). You can use asterisks (\\*) and question marks (?) anywhere in a domain label as wildcard characters.
         self.host = host
         # The URL to which requests are redirected. Valid values:
         # 
@@ -24451,8 +24482,8 @@ class UpdateRuleAttributeRequestRuleActionsRewriteConfig(TeaModel):
         # 
         # *   If you want to specify a custom value, make sure that the following requirements are met:
         # 
-        #     *   The URL must be 1 to 128 characters in length,
-        #     *   The URL must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ]^ , "`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
+        #     *   The header value must be 1 to 128 characters in length.
+        #     *   It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ . + / & ~ @ :`. It does not contain the following special characters: `% # ; ! ( ) [ ] ^ , \\ "`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
         self.path = path
         # The query string to which requests are redirected. Valid values:
         # 
@@ -24460,8 +24491,8 @@ class UpdateRuleAttributeRequestRuleActionsRewriteConfig(TeaModel):
         # 
         # *   If you want to specify a custom value, make sure that the following requirements are met:
         # 
-        #     *   The query string must be 1 to 128 characters in length.
-        #     *   The query string can contain printable characters, but cannot contain space characters, the special characters `# [ ] { } \\ | < > &`, or uppercase letters.
+        #     *   The header value must be 1 to 128 characters in length.
+        #     *   It can contain printable characters, excluding space characters, the special characters `# [ ] { } \\ | < > "`, and uppercase letters.
         self.query = query
 
     def validate(self):
@@ -24498,11 +24529,11 @@ class UpdateRuleAttributeRequestRuleActionsTrafficLimitConfig(TeaModel):
         per_ip_qps: int = None,
         qps: int = None,
     ):
-        # The number of requests per IP address. Value range: **1 to 1000000**.
+        # The number of requests per IP address. Value range: **1 to 1,000,000**.
         # 
-        # > If both the **QPS** and **PerIpQps** parameters are specified, make sure that the value of the **QPS** parameter is smaller than the value of the PerIpQps parameter.
+        # >  If both the **QPS** and **PerIpQps** parameters are specified, make sure that the value of the **QPS** parameter is smaller than the value of the PerIpQps parameter.
         self.per_ip_qps = per_ip_qps
-        # The queries per second (QPS). Value range: **1 to 1000000**.
+        # The number of queries per second (QPS). Value range: **1 to 1,000,000**.
         self.qps = qps
 
     def validate(self):
@@ -24562,7 +24593,7 @@ class UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig(
         self,
         server_group_tuples: List[UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples] = None,
     ):
-        # The server group to which network traffic is mirrored.
+        # The server group to which traffic is mirrored.
         self.server_group_tuples = server_group_tuples
 
     def validate(self):
@@ -24651,13 +24682,13 @@ class UpdateRuleAttributeRequestRuleActions(TeaModel):
         self.cors_config = cors_config
         # The configuration of the custom response.
         self.fixed_response_config = fixed_response_config
-        # The configurations of the server groups.
+        # The configuration of the server groups.
         self.forward_group_config = forward_group_config
         # The configuration of the header to be inserted.
         self.insert_header_config = insert_header_config
-        # The priority of the action. Valid values: **1 to 50000**. A smaller value specifies a higher priority. The actions of a forwarding rule are applied in descending order of priority. This parameter is required. The priority of each action within a forwarding rule must be unique. You can specify at most 20 forwarding rule priorities.
+        # The priority of the action. Valid values: **1 to 50000**. A smaller value specifies a higher priority. The actions of a forwarding rule are applied in descending order of priority. This parameter cannot be left empty. The priority of each action within a forwarding rule must be unique. You can specify up to 20 forwarding rule priorities.
         self.order = order
-        # The configuration of the redirect action. You can specify at most 20 redirect actions.
+        # The configuration of the redirect action. You can specify up to 20 redirect actions.
         self.redirect_config = redirect_config
         # The HTTP header to be removed.
         self.remove_header_config = remove_header_config
@@ -24667,14 +24698,14 @@ class UpdateRuleAttributeRequestRuleActions(TeaModel):
         self.traffic_limit_config = traffic_limit_config
         # The configuration of the traffic mirroring action.
         self.traffic_mirror_config = traffic_mirror_config
-        # The type of the task. You can specify at most 11 types of action. Valid values:
+        # The type of the task. You can specify up to 11 types of action. Valid values:
         # 
-        # *   **ForwardGroup**: forwards requests to multiple vServer groups.
+        # *   **ForwardGroup**: forwards a request to multiple vServer groups.
         # *   **Redirect**: redirects requests.
         # *   **FixedResponse**: returns a fixed response.
         # *   **Rewrite**: rewrites requests.
         # *   **InsertHeader**: inserts a header.
-        # *   **RemoveHeader**: removes headers.
+        # *   **RemoveHeader**: deletes the header of a request.
         # *   **TrafficLimit**: throttles traffic.
         # *   **trafficMirror**: mirrors network traffic.
         # *   **Cors**: forwards requests based on CORS.
@@ -24777,7 +24808,7 @@ class UpdateRuleAttributeRequestRuleConditionsCookieConfigValues(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The cookie key. The cookie key must be 1 to 100 characters in length, and can contain lowercase letters, printable ASCII characters, asterisks (\\*), and question marks (?). It cannot contain space characters or the following special characters: `# [ ] { } \\ | < > &`.
+        # The cookie key. The key must be 1 to 100 characters in length, and can contain printable characters such as lowercase letters, asterisks (\\*), and question marks (?). The key cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \\ | < > & " ;`.
         self.key = key
         # The cookie value. The cookie value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters, asterisks (\\*), and question marks (?). It cannot contain space characters or the following special characters: `# [ ] { } \\ | < > &`.
         self.value = value
@@ -24848,7 +24879,7 @@ class UpdateRuleAttributeRequestRuleConditionsHeaderConfig(TeaModel):
         key: str = None,
         values: List[str] = None,
     ):
-        # The key of the response header. The header key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). Cookie and Host are not supported.
+        # The header key. The header key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). Cookie and Host are not supported.
         self.key = key
         # The header values.
         self.values = values
@@ -24938,7 +24969,7 @@ class UpdateRuleAttributeRequestRuleConditionsPathConfig(TeaModel):
         self,
         values: List[str] = None,
     ):
-        # The URLs to which requests are forwarded.
+        # The forwarding URLs.
         self.values = values
 
     def validate(self):
@@ -24967,9 +24998,9 @@ class UpdateRuleAttributeRequestRuleConditionsQueryStringConfigValues(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the query string. The key must be 1 to 100 characters in length, and can contain lowercase letters, printable ASCII characters, asterisks (\\*), and question marks (?). It cannot contain space characters or the following special characters: `# [ ] { } \\ | < > &`.
+        # The key of the query string. The key must be 1 to 100 characters in length, and can contain printable characters such as lowercase letters, asterisks (\\*), and question marks (?). The key cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \\ | < > & "`.
         self.key = key
-        # The value of the query string. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters, asterisks (\\*), and question marks (?). It cannot contain space characters or the following special characters: `# [ ] { } \\ | < > &`.
+        # The value of the query string. The value must be 1 to 128 characters in length, and can contain printable characters such as lowercase letters, asterisks (\\*), and question marks (?). The value cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \\ | < > & "`.
         self.value = value
 
     def validate(self):
@@ -25001,7 +25032,7 @@ class UpdateRuleAttributeRequestRuleConditionsQueryStringConfig(TeaModel):
         self,
         values: List[UpdateRuleAttributeRequestRuleConditionsQueryStringConfigValues] = None,
     ):
-        # The query strings. You can specify at most 20 query strings.
+        # The query strings. You can specify up to 20 query strings.
         self.values = values
 
     def validate(self):
@@ -25040,8 +25071,8 @@ class UpdateRuleAttributeRequestRuleConditionsResponseHeaderConfig(TeaModel):
     ):
         # The header key.
         # 
-        # *   The header key must be 1 to 40 characters in length.
-        # *   The header key can contain lowercase letters, digits, hyphens (-), and underscores (_).
+        # *   The key must be 1 to 40 characters in length.
+        # *   It can contain letters, digits, hyphens (-), and underscores (_).
         # *   Cookie and Host are not supported.
         self.key = key
         # The header values.
@@ -25145,29 +25176,29 @@ class UpdateRuleAttributeRequestRuleConditions(TeaModel):
         self.cookie_config = cookie_config
         # The configuration of the header.
         self.header_config = header_config
-        # The configurations of the hosts.
+        # The configuration of the hosts.
         self.host_config = host_config
         # The configuration of the request method.
         self.method_config = method_config
-        # The configurations of the forwarding URL.
+        # The configuration of the forwarding URL.
         self.path_config = path_config
-        # The configurations of the query strings.
+        # The configuration of the query strings.
         self.query_string_config = query_string_config
         # The configuration of headers.
         self.response_header_config = response_header_config
-        # The configurations of the response status codes.
+        # The configuration of the response status codes.
         self.response_status_code_config = response_status_code_config
-        # Traffic matching based on source IP addresses. You can specify at most five IP addresses, including CIDR blocks.
+        # Traffic matching based on source IP addresses. You can specify up to five IP addresses, including CIDR blocks.
         self.source_ip_config = source_ip_config
-        # The type of forwarding rule. You can specify at most seven types of forwarding rule. Valid values:
+        # The type of forwarding rule. You can specify up to seven types of forwarding rule. Valid values:
         # 
         # *   **Host**: Requests are forwarded based on hosts.
-        # *   **Path**: Requests are forwarded based on paths.
+        # *   **Path**: Requests are forwarded based on URLs.
         # *   **Header**: Requests are forwarded based on HTTP headers.
         # *   **QueryString**: Requests are forwarded based on query strings.
         # *   **Method**: Requests are forwarded based on request methods.
         # *   **Cookie**: Requests are forwarded based on cookies.
-        # *   **SourceIp**: Responses are forwarded based on source IP addresses.
+        # *   **SourceIp**: Requests are forwarded based on source IP addresses.
         # *   **ResponseHeader**: Requests are forwarded based on HTTP response headers.
         # *   **ResponseStatusCode**: Requests are forwarded based on response status codes.
         self.type = type
@@ -25282,7 +25313,7 @@ class UpdateRuleAttributeRequest(TeaModel):
         self.priority = priority
         # The actions of the forwarding rule.
         self.rule_actions = rule_actions
-        # The match condition of the forwarding rule.
+        # The match conditions of the forwarding rule.
         self.rule_conditions = rule_conditions
         # The ID of the forwarding rule.
         # 

@@ -1,3 +1,8 @@
+2025-06-13 Version: 1.2.9
+- Update API CreateAScripts: add request parameters AScripts.$.Position.
+- Update API ListLoadBalancers: add response parameters Body.LoadBalancers.$.SecurityGroupIds.
+
+
 2025-03-05 Version: 1.2.8
 - Update API CreateHealthCheckTemplate: add param ResourceGroupId.
 - Update API CreateLoadBalancer: update param AddressAllocatedMode.
