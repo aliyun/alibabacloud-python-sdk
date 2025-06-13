@@ -1,3 +1,22 @@
+2025-06-13 Version: 1.3.3
+- Update API GetScanResult: add response parameters Body.Data.Items.$.ApiLabels.
+- Update API GetScanResult: add response parameters Body.Data.Items.$.ApiRequestTime.
+- Update API GetScanResult: add response parameters Body.Data.Items.$.ApiRiskLevel.
+- Update API GetScanResult: add response parameters Body.Data.Items.$.ApiService.
+- Update API GetScanResult: add response parameters Body.Data.Items.$.ApiTaskId.
+- Update API GetScanResult: add response parameters Body.Data.Items.$.ManualOnly.
+- Update API GetScanResult: add response parameters Body.Data.Items.$.ResourceType.
+- Update API GetScanResult: add response parameters Body.Data.Items.$.ReviewLabels.
+- Update API GetScanResult: add response parameters Body.Data.Items.$.ReviewRiskLevel.
+- Update API GetScanResult: add response parameters Body.Data.Items.$.ReviewTime.
+- Update API GetScanResult: add response parameters Body.Data.Items.$.ReviewUid.
+- Update API GetScanResult: add response parameters Body.Data.Items.$.Reviewed.
+- Update API GetServiceConfig: add response parameters Body.Data.CustomServiceConf.ManualMachineConfig.
+- Update API UpdateScanResultFeedback: add request parameters Labels.
+- Update API UpdateScanResultFeedback: add request parameters RiskLevel.
+- Update API UpdateServiceConfig: add request parameters ManualMachineConfig.
+
+
 2025-05-07 Version: 1.3.2
 - Generated python 2022-09-26 for Green.
 

@@ -7478,6 +7478,11 @@ class GetScanResultResponseBodyDataItemsResult(TeaModel):
 class GetScanResultResponseBodyDataItems(TeaModel):
     def __init__(
         self,
+        api_labels: str = None,
+        api_request_time: str = None,
+        api_risk_level: str = None,
+        api_service: str = None,
+        api_task_id: str = None,
         attack_level: str = None,
         content: str = None,
         data_id: str = None,
@@ -7490,13 +7495,20 @@ class GetScanResultResponseBodyDataItems(TeaModel):
         image_service: str = None,
         image_url: str = None,
         labels: str = None,
+        manual_only: bool = None,
         no_labels: List[str] = None,
         offset: int = None,
         page_num: int = None,
         request_from: str = None,
         request_id: str = None,
         request_time: str = None,
+        resource_type: str = None,
         result: List[GetScanResultResponseBodyDataItemsResult] = None,
+        review_labels: str = None,
+        review_risk_level: str = None,
+        review_time: str = None,
+        review_uid: str = None,
+        reviewed: bool = None,
         risk_level: str = None,
         risk_tips: str = None,
         risk_words: str = None,
@@ -7515,6 +7527,11 @@ class GetScanResultResponseBodyDataItems(TeaModel):
         voice_scan_opened: bool = None,
         voice_service: str = None,
     ):
+        self.api_labels = api_labels
+        self.api_request_time = api_request_time
+        self.api_risk_level = api_risk_level
+        self.api_service = api_service
+        self.api_task_id = api_task_id
         self.attack_level = attack_level
         self.content = content
         # dataId
@@ -7529,13 +7546,20 @@ class GetScanResultResponseBodyDataItems(TeaModel):
         # url
         self.image_url = image_url
         self.labels = labels
+        self.manual_only = manual_only
         self.no_labels = no_labels
         self.offset = offset
         self.page_num = page_num
         self.request_from = request_from
         self.request_id = request_id
         self.request_time = request_time
+        self.resource_type = resource_type
         self.result = result
+        self.review_labels = review_labels
+        self.review_risk_level = review_risk_level
+        self.review_time = review_time
+        self.review_uid = review_uid
+        self.reviewed = reviewed
         self.risk_level = risk_level
         self.risk_tips = risk_tips
         self.risk_words = risk_words
@@ -7566,6 +7590,16 @@ class GetScanResultResponseBodyDataItems(TeaModel):
             return _map
 
         result = dict()
+        if self.api_labels is not None:
+            result['ApiLabels'] = self.api_labels
+        if self.api_request_time is not None:
+            result['ApiRequestTime'] = self.api_request_time
+        if self.api_risk_level is not None:
+            result['ApiRiskLevel'] = self.api_risk_level
+        if self.api_service is not None:
+            result['ApiService'] = self.api_service
+        if self.api_task_id is not None:
+            result['ApiTaskId'] = self.api_task_id
         if self.attack_level is not None:
             result['AttackLevel'] = self.attack_level
         if self.content is not None:
@@ -7590,6 +7624,8 @@ class GetScanResultResponseBodyDataItems(TeaModel):
             result['ImageUrl'] = self.image_url
         if self.labels is not None:
             result['Labels'] = self.labels
+        if self.manual_only is not None:
+            result['ManualOnly'] = self.manual_only
         if self.no_labels is not None:
             result['NoLabels'] = self.no_labels
         if self.offset is not None:
@@ -7602,10 +7638,22 @@ class GetScanResultResponseBodyDataItems(TeaModel):
             result['RequestId'] = self.request_id
         if self.request_time is not None:
             result['RequestTime'] = self.request_time
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         result['Result'] = []
         if self.result is not None:
             for k in self.result:
                 result['Result'].append(k.to_map() if k else None)
+        if self.review_labels is not None:
+            result['ReviewLabels'] = self.review_labels
+        if self.review_risk_level is not None:
+            result['ReviewRiskLevel'] = self.review_risk_level
+        if self.review_time is not None:
+            result['ReviewTime'] = self.review_time
+        if self.review_uid is not None:
+            result['ReviewUid'] = self.review_uid
+        if self.reviewed is not None:
+            result['Reviewed'] = self.reviewed
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
         if self.risk_tips is not None:
@@ -7644,6 +7692,16 @@ class GetScanResultResponseBodyDataItems(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ApiLabels') is not None:
+            self.api_labels = m.get('ApiLabels')
+        if m.get('ApiRequestTime') is not None:
+            self.api_request_time = m.get('ApiRequestTime')
+        if m.get('ApiRiskLevel') is not None:
+            self.api_risk_level = m.get('ApiRiskLevel')
+        if m.get('ApiService') is not None:
+            self.api_service = m.get('ApiService')
+        if m.get('ApiTaskId') is not None:
+            self.api_task_id = m.get('ApiTaskId')
         if m.get('AttackLevel') is not None:
             self.attack_level = m.get('AttackLevel')
         if m.get('Content') is not None:
@@ -7668,6 +7726,8 @@ class GetScanResultResponseBodyDataItems(TeaModel):
             self.image_url = m.get('ImageUrl')
         if m.get('Labels') is not None:
             self.labels = m.get('Labels')
+        if m.get('ManualOnly') is not None:
+            self.manual_only = m.get('ManualOnly')
         if m.get('NoLabels') is not None:
             self.no_labels = m.get('NoLabels')
         if m.get('Offset') is not None:
@@ -7680,11 +7740,23 @@ class GetScanResultResponseBodyDataItems(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('RequestTime') is not None:
             self.request_time = m.get('RequestTime')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         self.result = []
         if m.get('Result') is not None:
             for k in m.get('Result'):
                 temp_model = GetScanResultResponseBodyDataItemsResult()
                 self.result.append(temp_model.from_map(k))
+        if m.get('ReviewLabels') is not None:
+            self.review_labels = m.get('ReviewLabels')
+        if m.get('ReviewRiskLevel') is not None:
+            self.review_risk_level = m.get('ReviewRiskLevel')
+        if m.get('ReviewTime') is not None:
+            self.review_time = m.get('ReviewTime')
+        if m.get('ReviewUid') is not None:
+            self.review_uid = m.get('ReviewUid')
+        if m.get('Reviewed') is not None:
+            self.reviewed = m.get('Reviewed')
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
         if m.get('RiskTips') is not None:
@@ -8094,19 +8166,67 @@ class GetServiceConfigRequest(TeaModel):
         return self
 
 
+class GetServiceConfigResponseBodyDataCustomServiceConfManualMachineConfig(TeaModel):
+    def __init__(
+        self,
+        audit_risk_levels: List[str] = None,
+        callback_id: int = None,
+        enable: bool = None,
+        manual_service: str = None,
+    ):
+        self.audit_risk_levels = audit_risk_levels
+        self.callback_id = callback_id
+        self.enable = enable
+        self.manual_service = manual_service
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audit_risk_levels is not None:
+            result['AuditRiskLevels'] = self.audit_risk_levels
+        if self.callback_id is not None:
+            result['CallbackId'] = self.callback_id
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.manual_service is not None:
+            result['ManualService'] = self.manual_service
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuditRiskLevels') is not None:
+            self.audit_risk_levels = m.get('AuditRiskLevels')
+        if m.get('CallbackId') is not None:
+            self.callback_id = m.get('CallbackId')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('ManualService') is not None:
+            self.manual_service = m.get('ManualService')
+        return self
+
+
 class GetServiceConfigResponseBodyDataCustomServiceConf(TeaModel):
     def __init__(
         self,
         keyword_filter_libs: List[str] = None,
         keyword_hit_libs: List[str] = None,
+        manual_machine_config: GetServiceConfigResponseBodyDataCustomServiceConfManualMachineConfig = None,
         similar_text_hit_libs: List[str] = None,
     ):
         self.keyword_filter_libs = keyword_filter_libs
         self.keyword_hit_libs = keyword_hit_libs
+        self.manual_machine_config = manual_machine_config
         self.similar_text_hit_libs = similar_text_hit_libs
 
     def validate(self):
-        pass
+        if self.manual_machine_config:
+            self.manual_machine_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -8118,6 +8238,8 @@ class GetServiceConfigResponseBodyDataCustomServiceConf(TeaModel):
             result['KeywordFilterLibs'] = self.keyword_filter_libs
         if self.keyword_hit_libs is not None:
             result['KeywordHitLibs'] = self.keyword_hit_libs
+        if self.manual_machine_config is not None:
+            result['ManualMachineConfig'] = self.manual_machine_config.to_map()
         if self.similar_text_hit_libs is not None:
             result['SimilarTextHitLibs'] = self.similar_text_hit_libs
         return result
@@ -8128,6 +8250,9 @@ class GetServiceConfigResponseBodyDataCustomServiceConf(TeaModel):
             self.keyword_filter_libs = m.get('KeywordFilterLibs')
         if m.get('KeywordHitLibs') is not None:
             self.keyword_hit_libs = m.get('KeywordHitLibs')
+        if m.get('ManualMachineConfig') is not None:
+            temp_model = GetServiceConfigResponseBodyDataCustomServiceConfManualMachineConfig()
+            self.manual_machine_config = temp_model.from_map(m['ManualMachineConfig'])
         if m.get('SimilarTextHitLibs') is not None:
             self.similar_text_hit_libs = m.get('SimilarTextHitLibs')
         return self
@@ -13663,14 +13788,18 @@ class UpdateScanResultFeedbackRequest(TeaModel):
     def __init__(
         self,
         feedback: str = None,
+        labels: str = None,
         query_request_id: str = None,
         region_id: str = None,
         resource_type: str = None,
+        risk_level: str = None,
     ):
         self.feedback = feedback
+        self.labels = labels
         self.query_request_id = query_request_id
         self.region_id = region_id
         self.resource_type = resource_type
+        self.risk_level = risk_level
 
     def validate(self):
         pass
@@ -13683,24 +13812,32 @@ class UpdateScanResultFeedbackRequest(TeaModel):
         result = dict()
         if self.feedback is not None:
             result['Feedback'] = self.feedback
+        if self.labels is not None:
+            result['Labels'] = self.labels
         if self.query_request_id is not None:
             result['QueryRequestId'] = self.query_request_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Feedback') is not None:
             self.feedback = m.get('Feedback')
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
         if m.get('QueryRequestId') is not None:
             self.query_request_id = m.get('QueryRequestId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
         return self
 
 
@@ -13784,6 +13921,7 @@ class UpdateServiceConfigRequest(TeaModel):
         file_config: str = None,
         keyword_filter_libs: str = None,
         keyword_hit_libs: str = None,
+        manual_machine_config: str = None,
         region_id: str = None,
         resource_type: str = None,
         scene: str = None,
@@ -13794,6 +13932,7 @@ class UpdateServiceConfigRequest(TeaModel):
         self.file_config = file_config
         self.keyword_filter_libs = keyword_filter_libs
         self.keyword_hit_libs = keyword_hit_libs
+        self.manual_machine_config = manual_machine_config
         self.region_id = region_id
         self.resource_type = resource_type
         self.scene = scene
@@ -13816,6 +13955,8 @@ class UpdateServiceConfigRequest(TeaModel):
             result['KeywordFilterLibs'] = self.keyword_filter_libs
         if self.keyword_hit_libs is not None:
             result['KeywordHitLibs'] = self.keyword_hit_libs
+        if self.manual_machine_config is not None:
+            result['ManualMachineConfig'] = self.manual_machine_config
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_type is not None:
@@ -13838,6 +13979,8 @@ class UpdateServiceConfigRequest(TeaModel):
             self.keyword_filter_libs = m.get('KeywordFilterLibs')
         if m.get('KeywordHitLibs') is not None:
             self.keyword_hit_libs = m.get('KeywordHitLibs')
+        if m.get('ManualMachineConfig') is not None:
+            self.manual_machine_config = m.get('ManualMachineConfig')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceType') is not None:

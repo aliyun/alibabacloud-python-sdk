@@ -7916,10 +7916,14 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.feedback):
             body['Feedback'] = request.feedback
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
         if not UtilClient.is_unset(request.query_request_id):
             body['QueryRequestId'] = request.query_request_id
         if not UtilClient.is_unset(request.resource_type):
             body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.risk_level):
+            body['RiskLevel'] = request.risk_level
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
@@ -7959,10 +7963,14 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.feedback):
             body['Feedback'] = request.feedback
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
         if not UtilClient.is_unset(request.query_request_id):
             body['QueryRequestId'] = request.query_request_id
         if not UtilClient.is_unset(request.resource_type):
             body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.risk_level):
+            body['RiskLevel'] = request.risk_level
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
@@ -8032,6 +8040,8 @@ class Client(OpenApiClient):
             body['KeywordFilterLibs'] = request.keyword_filter_libs
         if not UtilClient.is_unset(request.keyword_hit_libs):
             body['KeywordHitLibs'] = request.keyword_hit_libs
+        if not UtilClient.is_unset(request.manual_machine_config):
+            body['ManualMachineConfig'] = request.manual_machine_config
         if not UtilClient.is_unset(request.resource_type):
             body['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.scene):
@@ -8085,6 +8095,8 @@ class Client(OpenApiClient):
             body['KeywordFilterLibs'] = request.keyword_filter_libs
         if not UtilClient.is_unset(request.keyword_hit_libs):
             body['KeywordHitLibs'] = request.keyword_hit_libs
+        if not UtilClient.is_unset(request.manual_machine_config):
+            body['ManualMachineConfig'] = request.manual_machine_config
         if not UtilClient.is_unset(request.resource_type):
             body['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.scene):
