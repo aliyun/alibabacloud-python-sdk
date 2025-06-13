@@ -2685,6 +2685,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.feedback_dialogue_with_options_async(request, runtime)
 
+    def fetch_export_word_task_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.FetchExportWordTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.FetchExportWordTaskResponse:
+        """
+        @summary 获取异步导出文档任务结果
+        
+        @param request: FetchExportWordTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FetchExportWordTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='FetchExportWordTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.FetchExportWordTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def fetch_export_word_task_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.FetchExportWordTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.FetchExportWordTaskResponse:
+        """
+        @summary 获取异步导出文档任务结果
+        
+        @param request: FetchExportWordTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FetchExportWordTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='FetchExportWordTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.FetchExportWordTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def fetch_export_word_task(
+        self,
+        request: ai_miao_bi_20230801_models.FetchExportWordTaskRequest,
+    ) -> ai_miao_bi_20230801_models.FetchExportWordTaskResponse:
+        """
+        @summary 获取异步导出文档任务结果
+        
+        @param request: FetchExportWordTaskRequest
+        @return: FetchExportWordTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.fetch_export_word_task_with_options(request, runtime)
+
+    async def fetch_export_word_task_async(
+        self,
+        request: ai_miao_bi_20230801_models.FetchExportWordTaskRequest,
+    ) -> ai_miao_bi_20230801_models.FetchExportWordTaskResponse:
+        """
+        @summary 获取异步导出文档任务结果
+        
+        @param request: FetchExportWordTaskRequest
+        @return: FetchExportWordTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.fetch_export_word_task_with_options_async(request, runtime)
+
     def fetch_image_task_with_options(
         self,
         tmp_req: ai_miao_bi_20230801_models.FetchImageTaskRequest,
@@ -2800,6 +2904,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.fetch_image_task_with_options_async(request, runtime)
+
+    def generate_export_word_task_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GenerateExportWordTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GenerateExportWordTaskResponse:
+        """
+        @summary 生成内容导出文档任务
+        
+        @param request: GenerateExportWordTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateExportWordTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.generated_content_id):
+            body['GeneratedContentId'] = request.generated_content_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GenerateExportWordTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GenerateExportWordTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generate_export_word_task_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GenerateExportWordTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GenerateExportWordTaskResponse:
+        """
+        @summary 生成内容导出文档任务
+        
+        @param request: GenerateExportWordTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateExportWordTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.generated_content_id):
+            body['GeneratedContentId'] = request.generated_content_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GenerateExportWordTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GenerateExportWordTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generate_export_word_task(
+        self,
+        request: ai_miao_bi_20230801_models.GenerateExportWordTaskRequest,
+    ) -> ai_miao_bi_20230801_models.GenerateExportWordTaskResponse:
+        """
+        @summary 生成内容导出文档任务
+        
+        @param request: GenerateExportWordTaskRequest
+        @return: GenerateExportWordTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.generate_export_word_task_with_options(request, runtime)
+
+    async def generate_export_word_task_async(
+        self,
+        request: ai_miao_bi_20230801_models.GenerateExportWordTaskRequest,
+    ) -> ai_miao_bi_20230801_models.GenerateExportWordTaskResponse:
+        """
+        @summary 生成内容导出文档任务
+        
+        @param request: GenerateExportWordTaskRequest
+        @return: GenerateExportWordTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.generate_export_word_task_with_options_async(request, runtime)
 
     def generate_file_url_by_key_with_options(
         self,

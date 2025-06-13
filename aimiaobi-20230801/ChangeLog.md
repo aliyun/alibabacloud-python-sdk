@@ -1,3 +1,8 @@
+2025-06-13 Version: 1.28.0
+- Support API FetchExportWordTask.
+- Support API GenerateExportWordTask.
+
+
 2025-06-12 Version: 1.27.0
 - Support API ExportCustomSourceAnalysisTask.
 - Support API GetCustomSourceTopicAnalysisTask.
