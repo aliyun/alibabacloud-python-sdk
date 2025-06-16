@@ -1,3 +1,7 @@
+2025-06-16 Version: 7.1.4
+- Update API CreateArtifact: add request parameters ArtifactBuildProperty.SystemDiskSize.
+
+
 2025-05-29 Version: 7.1.3
 - Update API ListArtifacts: add response parameters Body.Artifacts.$.PermissionType.
 

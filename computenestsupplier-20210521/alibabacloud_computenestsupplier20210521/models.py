@@ -760,6 +760,7 @@ class CreateArtifactRequestArtifactBuildProperty(TeaModel):
         region_id: str = None,
         source_container_image: str = None,
         source_image_id: str = None,
+        system_disk_size: int = None,
     ):
         # The build arguments used during the image build process.
         # 
@@ -801,6 +802,7 @@ class CreateArtifactRequestArtifactBuildProperty(TeaModel):
         # 
         # >  This parameter is available only if the deployment package is a ecs image type.
         self.source_image_id = source_image_id
+        self.system_disk_size = system_disk_size
 
     def validate(self):
         if self.build_args:
@@ -834,6 +836,8 @@ class CreateArtifactRequestArtifactBuildProperty(TeaModel):
             result['SourceContainerImage'] = self.source_container_image
         if self.source_image_id is not None:
             result['SourceImageId'] = self.source_image_id
+        if self.system_disk_size is not None:
+            result['SystemDiskSize'] = self.system_disk_size
         return result
 
     def from_map(self, m: dict = None):
@@ -858,6 +862,8 @@ class CreateArtifactRequestArtifactBuildProperty(TeaModel):
             self.source_container_image = m.get('SourceContainerImage')
         if m.get('SourceImageId') is not None:
             self.source_image_id = m.get('SourceImageId')
+        if m.get('SystemDiskSize') is not None:
+            self.system_disk_size = m.get('SystemDiskSize')
         return self
 
 
