@@ -1,3 +1,10 @@
+2025-06-16 Version: 1.29.0
+- Support API ExportAuditContentResult.
+- Support API GetSmartAuditResult.
+- Support API ListAuditContentErrorTypes.
+- Support API SubmitSmartAudit.
+
+
 2025-06-13 Version: 1.28.0
 - Support API FetchExportWordTask.
 - Support API GenerateExportWordTask.

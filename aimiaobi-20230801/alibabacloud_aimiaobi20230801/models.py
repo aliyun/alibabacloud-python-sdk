@@ -4210,6 +4210,138 @@ class ExportAnalysisTagDetailByTaskIdResponse(TeaModel):
         return self
 
 
+class ExportAuditContentResultRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+        workspace_id: str = None,
+    ):
+        self.task_id = task_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class ExportAuditContentResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ExportAuditContentResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExportAuditContentResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExportAuditContentResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ExportCustomSourceAnalysisTaskRequest(TeaModel):
     def __init__(
         self,
@@ -13156,6 +13288,274 @@ class GetPropertiesResponse(TeaModel):
         return self
 
 
+class GetSmartAuditResultRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+        workspace_id: str = None,
+    ):
+        self.task_id = task_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class GetSmartAuditResultResponseBodyDataErrorItemDetails(TeaModel):
+    def __init__(
+        self,
+        check_id: str = None,
+        context: str = None,
+        context_offset: int = None,
+        error_level: int = None,
+        error_word: str = None,
+        major_code: str = None,
+        major_code_desc: str = None,
+        offset: int = None,
+        reason: str = None,
+        right_word: str = None,
+        sub_class_code: str = None,
+        sub_class_desc: str = None,
+    ):
+        self.check_id = check_id
+        self.context = context
+        self.context_offset = context_offset
+        self.error_level = error_level
+        self.error_word = error_word
+        self.major_code = major_code
+        self.major_code_desc = major_code_desc
+        self.offset = offset
+        self.reason = reason
+        self.right_word = right_word
+        self.sub_class_code = sub_class_code
+        self.sub_class_desc = sub_class_desc
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_id is not None:
+            result['CheckId'] = self.check_id
+        if self.context is not None:
+            result['Context'] = self.context
+        if self.context_offset is not None:
+            result['ContextOffset'] = self.context_offset
+        if self.error_level is not None:
+            result['ErrorLevel'] = self.error_level
+        if self.error_word is not None:
+            result['ErrorWord'] = self.error_word
+        if self.major_code is not None:
+            result['MajorCode'] = self.major_code
+        if self.major_code_desc is not None:
+            result['MajorCodeDesc'] = self.major_code_desc
+        if self.offset is not None:
+            result['Offset'] = self.offset
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.right_word is not None:
+            result['RightWord'] = self.right_word
+        if self.sub_class_code is not None:
+            result['SubClassCode'] = self.sub_class_code
+        if self.sub_class_desc is not None:
+            result['SubClassDesc'] = self.sub_class_desc
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckId') is not None:
+            self.check_id = m.get('CheckId')
+        if m.get('Context') is not None:
+            self.context = m.get('Context')
+        if m.get('ContextOffset') is not None:
+            self.context_offset = m.get('ContextOffset')
+        if m.get('ErrorLevel') is not None:
+            self.error_level = m.get('ErrorLevel')
+        if m.get('ErrorWord') is not None:
+            self.error_word = m.get('ErrorWord')
+        if m.get('MajorCode') is not None:
+            self.major_code = m.get('MajorCode')
+        if m.get('MajorCodeDesc') is not None:
+            self.major_code_desc = m.get('MajorCodeDesc')
+        if m.get('Offset') is not None:
+            self.offset = m.get('Offset')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('RightWord') is not None:
+            self.right_word = m.get('RightWord')
+        if m.get('SubClassCode') is not None:
+            self.sub_class_code = m.get('SubClassCode')
+        if m.get('SubClassDesc') is not None:
+            self.sub_class_desc = m.get('SubClassDesc')
+        return self
+
+
+class GetSmartAuditResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        error_item_details: List[GetSmartAuditResultResponseBodyDataErrorItemDetails] = None,
+        status: str = None,
+    ):
+        self.error_item_details = error_item_details
+        self.status = status
+
+    def validate(self):
+        if self.error_item_details:
+            for k in self.error_item_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ErrorItemDetails'] = []
+        if self.error_item_details is not None:
+            for k in self.error_item_details:
+                result['ErrorItemDetails'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.error_item_details = []
+        if m.get('ErrorItemDetails') is not None:
+            for k in m.get('ErrorItemDetails'):
+                temp_model = GetSmartAuditResultResponseBodyDataErrorItemDetails()
+                self.error_item_details.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetSmartAuditResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetSmartAuditResultResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetSmartAuditResultResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetSmartAuditResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSmartAuditResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSmartAuditResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetSmartClipTaskRequest(TeaModel):
     def __init__(
         self,
@@ -17238,6 +17638,250 @@ class ListAsyncTasksResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListAsyncTasksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAuditContentErrorTypesRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        workspace_id: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class ListAuditContentErrorTypesResponseBodyDataSubClasses(TeaModel):
+    def __init__(
+        self,
+        class_code: str = None,
+        class_name: str = None,
+    ):
+        self.class_code = class_code
+        self.class_name = class_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.class_code is not None:
+            result['ClassCode'] = self.class_code
+        if self.class_name is not None:
+            result['ClassName'] = self.class_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClassCode') is not None:
+            self.class_code = m.get('ClassCode')
+        if m.get('ClassName') is not None:
+            self.class_name = m.get('ClassName')
+        return self
+
+
+class ListAuditContentErrorTypesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        major_class_code: str = None,
+        major_class_name: str = None,
+        sub_classes: List[ListAuditContentErrorTypesResponseBodyDataSubClasses] = None,
+    ):
+        self.major_class_code = major_class_code
+        self.major_class_name = major_class_name
+        self.sub_classes = sub_classes
+
+    def validate(self):
+        if self.sub_classes:
+            for k in self.sub_classes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.major_class_code is not None:
+            result['MajorClassCode'] = self.major_class_code
+        if self.major_class_name is not None:
+            result['MajorClassName'] = self.major_class_name
+        result['SubClasses'] = []
+        if self.sub_classes is not None:
+            for k in self.sub_classes:
+                result['SubClasses'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MajorClassCode') is not None:
+            self.major_class_code = m.get('MajorClassCode')
+        if m.get('MajorClassName') is not None:
+            self.major_class_name = m.get('MajorClassName')
+        self.sub_classes = []
+        if m.get('SubClasses') is not None:
+            for k in m.get('SubClasses'):
+                temp_model = ListAuditContentErrorTypesResponseBodyDataSubClasses()
+                self.sub_classes.append(temp_model.from_map(k))
+        return self
+
+
+class ListAuditContentErrorTypesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListAuditContentErrorTypesResponseBodyData] = None,
+        http_status_code: int = None,
+        max_results: int = None,
+        message: str = None,
+        next_token: str = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.max_results = max_results
+        self.message = message
+        self.next_token = next_token
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListAuditContentErrorTypesResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListAuditContentErrorTypesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAuditContentErrorTypesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAuditContentErrorTypesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -47645,6 +48289,212 @@ class SubmitEnterpriseVocAnalysisTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SubmitEnterpriseVocAnalysisTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitSmartAuditRequest(TeaModel):
+    def __init__(
+        self,
+        sub_codes: List[str] = None,
+        text: str = None,
+        workspace_id: str = None,
+    ):
+        self.sub_codes = sub_codes
+        self.text = text
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sub_codes is not None:
+            result['SubCodes'] = self.sub_codes
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SubCodes') is not None:
+            self.sub_codes = m.get('SubCodes')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class SubmitSmartAuditShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        sub_codes_shrink: str = None,
+        text: str = None,
+        workspace_id: str = None,
+    ):
+        self.sub_codes_shrink = sub_codes_shrink
+        self.text = text
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sub_codes_shrink is not None:
+            result['SubCodes'] = self.sub_codes_shrink
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SubCodes') is not None:
+            self.sub_codes_shrink = m.get('SubCodes')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class SubmitSmartAuditResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class SubmitSmartAuditResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: SubmitSmartAuditResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = SubmitSmartAuditResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SubmitSmartAuditResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitSmartAuditResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitSmartAuditResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

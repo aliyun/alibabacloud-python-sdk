@@ -2113,6 +2113,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.export_analysis_tag_detail_by_task_id_with_options_async(request, runtime)
 
+    def export_audit_content_result_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.ExportAuditContentResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ExportAuditContentResultResponse:
+        """
+        @summary 导出智能审核报告
+        
+        @param request: ExportAuditContentResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportAuditContentResultResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportAuditContentResult',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ExportAuditContentResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_audit_content_result_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.ExportAuditContentResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ExportAuditContentResultResponse:
+        """
+        @summary 导出智能审核报告
+        
+        @param request: ExportAuditContentResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportAuditContentResultResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportAuditContentResult',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ExportAuditContentResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_audit_content_result(
+        self,
+        request: ai_miao_bi_20230801_models.ExportAuditContentResultRequest,
+    ) -> ai_miao_bi_20230801_models.ExportAuditContentResultResponse:
+        """
+        @summary 导出智能审核报告
+        
+        @param request: ExportAuditContentResultRequest
+        @return: ExportAuditContentResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.export_audit_content_result_with_options(request, runtime)
+
+    async def export_audit_content_result_async(
+        self,
+        request: ai_miao_bi_20230801_models.ExportAuditContentResultRequest,
+    ) -> ai_miao_bi_20230801_models.ExportAuditContentResultResponse:
+        """
+        @summary 导出智能审核报告
+        
+        @param request: ExportAuditContentResultRequest
+        @return: ExportAuditContentResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.export_audit_content_result_with_options_async(request, runtime)
+
     def export_custom_source_analysis_task_with_options(
         self,
         request: ai_miao_bi_20230801_models.ExportCustomSourceAnalysisTaskRequest,
@@ -5573,6 +5673,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_properties_with_options_async(request, runtime)
 
+    def get_smart_audit_result_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetSmartAuditResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetSmartAuditResultResponse:
+        """
+        @summary 查询智能审核结果
+        
+        @param request: GetSmartAuditResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSmartAuditResultResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSmartAuditResult',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetSmartAuditResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_smart_audit_result_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetSmartAuditResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetSmartAuditResultResponse:
+        """
+        @summary 查询智能审核结果
+        
+        @param request: GetSmartAuditResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSmartAuditResultResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSmartAuditResult',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetSmartAuditResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_smart_audit_result(
+        self,
+        request: ai_miao_bi_20230801_models.GetSmartAuditResultRequest,
+    ) -> ai_miao_bi_20230801_models.GetSmartAuditResultResponse:
+        """
+        @summary 查询智能审核结果
+        
+        @param request: GetSmartAuditResultRequest
+        @return: GetSmartAuditResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_smart_audit_result_with_options(request, runtime)
+
+    async def get_smart_audit_result_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetSmartAuditResultRequest,
+    ) -> ai_miao_bi_20230801_models.GetSmartAuditResultResponse:
+        """
+        @summary 查询智能审核结果
+        
+        @param request: GetSmartAuditResultRequest
+        @return: GetSmartAuditResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_smart_audit_result_with_options_async(request, runtime)
+
     def get_smart_clip_task_with_options(
         self,
         request: ai_miao_bi_20230801_models.GetSmartClipTaskRequest,
@@ -6712,6 +6912,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_async_tasks_with_options_async(request, runtime)
+
+    def list_audit_content_error_types_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.ListAuditContentErrorTypesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListAuditContentErrorTypesResponse:
+        """
+        @summary 获取审核维度列表
+        
+        @param request: ListAuditContentErrorTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAuditContentErrorTypesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListAuditContentErrorTypes',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListAuditContentErrorTypesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_audit_content_error_types_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListAuditContentErrorTypesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListAuditContentErrorTypesResponse:
+        """
+        @summary 获取审核维度列表
+        
+        @param request: ListAuditContentErrorTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAuditContentErrorTypesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListAuditContentErrorTypes',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListAuditContentErrorTypesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_audit_content_error_types(
+        self,
+        request: ai_miao_bi_20230801_models.ListAuditContentErrorTypesRequest,
+    ) -> ai_miao_bi_20230801_models.ListAuditContentErrorTypesResponse:
+        """
+        @summary 获取审核维度列表
+        
+        @param request: ListAuditContentErrorTypesRequest
+        @return: ListAuditContentErrorTypesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_audit_content_error_types_with_options(request, runtime)
+
+    async def list_audit_content_error_types_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListAuditContentErrorTypesRequest,
+    ) -> ai_miao_bi_20230801_models.ListAuditContentErrorTypesResponse:
+        """
+        @summary 获取审核维度列表
+        
+        @param request: ListAuditContentErrorTypesRequest
+        @return: ListAuditContentErrorTypesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_audit_content_error_types_with_options_async(request, runtime)
 
     def list_build_configs_with_options(
         self,
@@ -15832,6 +16136,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.submit_enterprise_voc_analysis_task_with_options_async(request, runtime)
+
+    def submit_smart_audit_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.SubmitSmartAuditRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SubmitSmartAuditResponse:
+        """
+        @summary 提交智能审核
+        
+        @param tmp_req: SubmitSmartAuditRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitSmartAuditResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.SubmitSmartAuditShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sub_codes):
+            request.sub_codes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sub_codes, 'SubCodes', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.sub_codes_shrink):
+            body['SubCodes'] = request.sub_codes_shrink
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitSmartAudit',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SubmitSmartAuditResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_smart_audit_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.SubmitSmartAuditRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SubmitSmartAuditResponse:
+        """
+        @summary 提交智能审核
+        
+        @param tmp_req: SubmitSmartAuditRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitSmartAuditResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.SubmitSmartAuditShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sub_codes):
+            request.sub_codes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sub_codes, 'SubCodes', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.sub_codes_shrink):
+            body['SubCodes'] = request.sub_codes_shrink
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitSmartAudit',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SubmitSmartAuditResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_smart_audit(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitSmartAuditRequest,
+    ) -> ai_miao_bi_20230801_models.SubmitSmartAuditResponse:
+        """
+        @summary 提交智能审核
+        
+        @param request: SubmitSmartAuditRequest
+        @return: SubmitSmartAuditResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_smart_audit_with_options(request, runtime)
+
+    async def submit_smart_audit_async(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitSmartAuditRequest,
+    ) -> ai_miao_bi_20230801_models.SubmitSmartAuditResponse:
+        """
+        @summary 提交智能审核
+        
+        @param request: SubmitSmartAuditRequest
+        @return: SubmitSmartAuditResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_smart_audit_with_options_async(request, runtime)
 
     def submit_smart_clip_task_with_options(
         self,
