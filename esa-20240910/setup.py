@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_esa20240910.
 
-Created on 10/06/2025
+Created on 16/06/2025
 
 @author: Alibaba Cloud SDK
 """
@@ -44,7 +44,7 @@ REQUIRES = [
     "alibabacloud_tea_fileform>=0.0.3, <1.0.0",
     "alibabacloud_tea_openapi>=0.3.15, <1.0.0",
     "alibabacloud_openapi_util>=0.2.2, <1.0.0",
-    "alibabacloud_endpoint_util>=0.0.3, <1.0.0"
+    "alibabacloud_endpoint_util>=0.0.4, <1.0.0"
 ]
 
 LONG_DESCRIPTION = ''

@@ -8922,6 +8922,7 @@ class CreateLoadBalancerRequestMonitor(TeaModel):
         header: Any = None,
         interval: int = None,
         method: str = None,
+        monitoring_region: str = None,
         path: str = None,
         port: int = None,
         timeout: int = None,
@@ -8931,20 +8932,21 @@ class CreateLoadBalancerRequestMonitor(TeaModel):
         self.consecutive_down = consecutive_down
         # Number of consecutive successful probes required to consider the target healthy, such as `3`.
         self.consecutive_up = consecutive_up
-        # Expected status codes, such as `200,202`, indicating successful HTTP responses.
+        # Expected status codes, such as `200,202`, which are successful HTTP responses.
         self.expected_codes = expected_codes
         # Whether to follow redirects.
         # 
         # - true: Yes.
         # - false: No.
         self.follow_redirects = follow_redirects
-        # Header information included in the probe, which is the HTTP header.
+        # Header information included in the probe, which is an HTTP header.
         self.header = header
-        # Monitoring interval, such as `60` seconds, representing the frequency of checks.
+        # Monitoring interval, such as `60` seconds, which is the frequency of checks.
         self.interval = interval
         # Monitor request method, such as `GET`, which is a method in the HTTP protocol.
         self.method = method
-        # Monitor check path, such as `/healthcheck`, which is the HTTP request path.
+        self.monitoring_region = monitoring_region
+        # Monitor check path, such as `/healthcheck`, which is an HTTP request path.
         self.path = path
         # Origin server port.
         self.port = port
@@ -8984,6 +8986,8 @@ class CreateLoadBalancerRequestMonitor(TeaModel):
             result['Interval'] = self.interval
         if self.method is not None:
             result['Method'] = self.method
+        if self.monitoring_region is not None:
+            result['MonitoringRegion'] = self.monitoring_region
         if self.path is not None:
             result['Path'] = self.path
         if self.port is not None:
@@ -9010,6 +9014,8 @@ class CreateLoadBalancerRequestMonitor(TeaModel):
             self.interval = m.get('Interval')
         if m.get('Method') is not None:
             self.method = m.get('Method')
+        if m.get('MonitoringRegion') is not None:
+            self.monitoring_region = m.get('MonitoringRegion')
         if m.get('Path') is not None:
             self.path = m.get('Path')
         if m.get('Port') is not None:
@@ -9027,7 +9033,7 @@ class CreateLoadBalancerRequestRandomSteering(TeaModel):
         default_weight: int = None,
         pool_weights: Dict[str, int] = None,
     ):
-        # Default weight for round-robin, used for all pools that do not have a specific weight set. The value range is an integer between 0 and 100.
+        # Default weight for all pools that do not have individual weights specified. The value range is an integer between 0 and 100.
         self.default_weight = default_weight
         # Weight configuration for each backend server pool, with the key being the pool ID and the value being the weight coefficient. The weight coefficient represents the proportion of relative traffic distribution.
         self.pool_weights = pool_weights
@@ -9128,9 +9134,9 @@ class CreateLoadBalancerRequestRules(TeaModel):
         # - on: Enable.
         # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name. This parameter does not need to be set when adding global configurations.
+        # The name of the rule. This parameter does not need to be set when adding global configurations.
         self.rule_name = rule_name
-        # The execution order of the rule. It can be left blank, in which case the rules will be executed in the order they appear in the list. If specified, it should be an integer greater than 0, with higher values indicating a higher priority for execution.
+        # The execution order of the rule. It can be left blank, in which case the rules will be executed in the order they appear in the list. If specified, it must be a positive integer, with higher values indicating higher priority.
         self.sequence = sequence
         # Whether to terminate the execution of subsequent rules.
         # 
@@ -9245,13 +9251,13 @@ class CreateLoadBalancerRequest(TeaModel):
         self.site_id = site_id
         # Load balancing strategy.
         # 
-        # - geo: Geographic strategy.
+        # - geo: Geographical strategy.
         # - random: Weighted round-robin.
         # - order: Primary and backup method.
         # 
         # This parameter is required.
         self.steering_policy = steering_policy
-        # Address pools corresponding to secondary regions. When multiple secondary regions share a set of address pools, the keys can be concatenated with commas.
+        # Address pools corresponding to secondary regions. When multiple secondary regions share the same set of address pools, the keys can be concatenated with commas.
         self.sub_region_pools = sub_region_pools
         # TTL value, the time-to-live for DNS records, with a default of 30 seconds. The value range is 10-600.
         self.ttl = ttl
@@ -9410,13 +9416,13 @@ class CreateLoadBalancerShrinkRequest(TeaModel):
         self.site_id = site_id
         # Load balancing strategy.
         # 
-        # - geo: Geographic strategy.
+        # - geo: Geographical strategy.
         # - random: Weighted round-robin.
         # - order: Primary and backup method.
         # 
         # This parameter is required.
         self.steering_policy = steering_policy
-        # Address pools corresponding to secondary regions. When multiple secondary regions share a set of address pools, the keys can be concatenated with commas.
+        # Address pools corresponding to secondary regions. When multiple secondary regions share the same set of address pools, the keys can be concatenated with commas.
         self.sub_region_pools = sub_region_pools
         # TTL value, the time-to-live for DNS records, with a default of 30 seconds. The value range is 10-600.
         self.ttl = ttl
@@ -31250,6 +31256,7 @@ class GetLoadBalancerResponseBodyMonitor(TeaModel):
         header: Any = None,
         interval: int = None,
         method: str = None,
+        monitoring_region: str = None,
         path: str = None,
         port: int = None,
         timeout: int = None,
@@ -31272,6 +31279,7 @@ class GetLoadBalancerResponseBodyMonitor(TeaModel):
         self.interval = interval
         # Health check method.
         self.method = method
+        self.monitoring_region = monitoring_region
         # Path.
         self.path = path
         # Target port.
@@ -31304,6 +31312,8 @@ class GetLoadBalancerResponseBodyMonitor(TeaModel):
             result['Interval'] = self.interval
         if self.method is not None:
             result['Method'] = self.method
+        if self.monitoring_region is not None:
+            result['MonitoringRegion'] = self.monitoring_region
         if self.path is not None:
             result['Path'] = self.path
         if self.port is not None:
@@ -31330,6 +31340,8 @@ class GetLoadBalancerResponseBodyMonitor(TeaModel):
             self.interval = m.get('Interval')
         if m.get('Method') is not None:
             self.method = m.get('Method')
+        if m.get('MonitoringRegion') is not None:
+            self.monitoring_region = m.get('MonitoringRegion')
         if m.get('Path') is not None:
             self.path = m.get('Path')
         if m.get('Port') is not None:
@@ -47140,6 +47152,7 @@ class ListLoadBalancersResponseBodyLoadBalancersMonitor(TeaModel):
         header: Any = None,
         interval: int = None,
         method: str = None,
+        monitoring_region: str = None,
         path: str = None,
         port: int = None,
         timeout: int = None,
@@ -47162,6 +47175,7 @@ class ListLoadBalancersResponseBodyLoadBalancersMonitor(TeaModel):
         self.interval = interval
         # The method for the health check.
         self.method = method
+        self.monitoring_region = monitoring_region
         # The path.
         self.path = path
         # The target port.
@@ -47194,6 +47208,8 @@ class ListLoadBalancersResponseBodyLoadBalancersMonitor(TeaModel):
             result['Interval'] = self.interval
         if self.method is not None:
             result['Method'] = self.method
+        if self.monitoring_region is not None:
+            result['MonitoringRegion'] = self.monitoring_region
         if self.path is not None:
             result['Path'] = self.path
         if self.port is not None:
@@ -47220,6 +47236,8 @@ class ListLoadBalancersResponseBodyLoadBalancersMonitor(TeaModel):
             self.interval = m.get('Interval')
         if m.get('Method') is not None:
             self.method = m.get('Method')
+        if m.get('MonitoringRegion') is not None:
+            self.monitoring_region = m.get('MonitoringRegion')
         if m.get('Path') is not None:
             self.path = m.get('Path')
         if m.get('Port') is not None:
@@ -64415,7 +64433,7 @@ class UpdateLoadBalancerRequestAdaptiveRouting(TeaModel):
         self,
         failover_across_pools: bool = None,
     ):
-        # Whether to failover across pools.
+        # Whether to fallback across pools.
         # 
         # - true: Yes.
         # - false: No.
@@ -64451,6 +64469,7 @@ class UpdateLoadBalancerRequestMonitor(TeaModel):
         header: Any = None,
         interval: int = None,
         method: str = None,
+        monitoring_region: str = None,
         path: str = None,
         port: int = None,
         timeout: int = None,
@@ -64473,13 +64492,14 @@ class UpdateLoadBalancerRequestMonitor(TeaModel):
         self.interval = interval
         # Monitor request method, such as GET, which is a method in the HTTP protocol.
         self.method = method
+        self.monitoring_region = monitoring_region
         # Monitor check path, such as /healthcheck, which is the HTTP request path.
         self.path = path
         # Origin server port.
         self.port = port
         # Application health check timeout, in seconds, with a range of 1-10.
         self.timeout = timeout
-        # Monitor protocol type, such as HTTP, used for health checks. When set to \\"off\\", no check is performed.
+        # Monitor protocol type, such as HTTP, used for health checks. When set to \\"off\\", no checks are performed.
         self.type = type
 
     def validate(self):
@@ -64505,6 +64525,8 @@ class UpdateLoadBalancerRequestMonitor(TeaModel):
             result['Interval'] = self.interval
         if self.method is not None:
             result['Method'] = self.method
+        if self.monitoring_region is not None:
+            result['MonitoringRegion'] = self.monitoring_region
         if self.path is not None:
             result['Path'] = self.path
         if self.port is not None:
@@ -64531,6 +64553,8 @@ class UpdateLoadBalancerRequestMonitor(TeaModel):
             self.interval = m.get('Interval')
         if m.get('Method') is not None:
             self.method = m.get('Method')
+        if m.get('MonitoringRegion') is not None:
+            self.monitoring_region = m.get('MonitoringRegion')
         if m.get('Path') is not None:
             self.path = m.get('Path')
         if m.get('Port') is not None:
@@ -64548,9 +64572,9 @@ class UpdateLoadBalancerRequestRandomSteering(TeaModel):
         default_weight: int = None,
         pool_weights: Dict[str, int] = None,
     ):
-        # The default round-robin weight, used for all pools that do not have a specific weight set. Value range: integers between 0-100.
+        # Default round-robin weight, used for all pools that do not have a separately specified weight. Value range: integers between 0-100.
         self.default_weight = default_weight
-        # Weight configuration for each backend server pool, where the key is the pool ID and the value is the weight coefficient. The weight coefficient represents the proportion of relative traffic distribution.
+        # Weight configuration for each backend server pool, where the key is the pool ID and the value is the weight factor. The weight factor represents the proportion of relative traffic distribution.
         self.pool_weights = pool_weights
 
     def validate(self):
@@ -64643,7 +64667,7 @@ class UpdateLoadBalancerRequestRules(TeaModel):
         self.overrides = overrides
         # Rule content, using conditional expressions to match user requests. This parameter does not need to be set when adding global configurations. There are two usage scenarios:
         # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        # - Match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
         self.rule = rule
         # Rule switch. This parameter does not need to be set when adding global configurations. Value range:
         # - on: Enable.
@@ -64651,7 +64675,7 @@ class UpdateLoadBalancerRequestRules(TeaModel):
         self.rule_enable = rule_enable
         # Rule name. This parameter does not need to be set when adding global configurations.
         self.rule_name = rule_name
-        # The execution order of the rule. It can be left empty, in which case the rules will be executed in the order they appear in the list. If specified, it must be a positive integer, with higher values indicating higher priority.
+        # The execution order of the rule. It can be left blank, in which case the rules will be executed in the order they appear in the list. If specified, it must be a positive integer, with higher values indicating higher priority.
         self.sequence = sequence
         # Whether to terminate the execution of subsequent rules.
         # - true: Yes.
@@ -64723,7 +64747,7 @@ class UpdateLoadBalancerRequest(TeaModel):
         sub_region_pools: Any = None,
         ttl: int = None,
     ):
-        # Configuration for failover across pools.
+        # Configuration for fallback across pools.
         self.adaptive_routing = adaptive_routing
         # List of default pool IDs.
         self.default_pools = default_pools
@@ -64759,7 +64783,7 @@ class UpdateLoadBalancerRequest(TeaModel):
         self.site_id = site_id
         # Load balancing policy.
         self.steering_policy = steering_policy
-        # Address pool corresponding to the secondary region. When multiple secondary regions share the same address pool, the keys can be concatenated with commas.
+        # Address pool corresponding to the secondary region. When multiple secondary regions share the same address pool, the regions can be concatenated with commas as the key.
         self.sub_region_pools = sub_region_pools
         # TTL value, the time-to-live for DNS records, with a default of 30 and a range of 10-600.
         self.ttl = ttl
@@ -64876,7 +64900,7 @@ class UpdateLoadBalancerShrinkRequest(TeaModel):
         sub_region_pools: Any = None,
         ttl: int = None,
     ):
-        # Configuration for failover across pools.
+        # Configuration for fallback across pools.
         self.adaptive_routing_shrink = adaptive_routing_shrink
         # List of default pool IDs.
         self.default_pools_shrink = default_pools_shrink
@@ -64912,7 +64936,7 @@ class UpdateLoadBalancerShrinkRequest(TeaModel):
         self.site_id = site_id
         # Load balancing policy.
         self.steering_policy = steering_policy
-        # Address pool corresponding to the secondary region. When multiple secondary regions share the same address pool, the keys can be concatenated with commas.
+        # Address pool corresponding to the secondary region. When multiple secondary regions share the same address pool, the regions can be concatenated with commas as the key.
         self.sub_region_pools = sub_region_pools
         # TTL value, the time-to-live for DNS records, with a default of 30 and a range of 10-600.
         self.ttl = ttl

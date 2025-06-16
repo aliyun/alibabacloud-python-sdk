@@ -1,3 +1,10 @@
+2025-06-16 Version: 2.26.1
+- Update API CreateLoadBalancer: add request parameters Monitor.MonitoringRegion.
+- Update API GetLoadBalancer: add response parameters Body.Monitor.MonitoringRegion.
+- Update API ListLoadBalancers: add response parameters Body.LoadBalancers.$.Monitor.MonitoringRegion.
+- Update API UpdateLoadBalancer: add request parameters Monitor.MonitoringRegion.
+
+
 2025-06-10 Version: 2.26.0
 - Support API CreateVideoProcessing.
 - Support API DeleteVideoProcessing.
