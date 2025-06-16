@@ -1,3 +1,37 @@
+2025-06-16 Version: 1.10.0
+- Support API CreateEnterpriseAcceleratePolicy.
+- Support API CreateEnterpriseAccelerateTarget.
+- Support API DeleteEnterpriseAcceleratePolicy.
+- Support API DeleteEnterpriseAccelerateTarget.
+- Support API DeleteOtpConfig.
+- Support API DisableEnterpriseAcceleratePolicy.
+- Support API EnableEnterpriseAcceleratePolicy.
+- Support API ImportEnterpriseAccelerateTargets.
+- Support API ListEnterpriseAccelerateLogs.
+- Support API ListEnterpriseAcceleratePolicies.
+- Support API ListEnterpriseAccelerateTargets.
+- Support API ModifyEnterpriseAcceleratePolicy.
+- Update API CreatePrivateAccessPolicy: add request parameters TrustedProcessGroupIds.
+- Update API CreatePrivateAccessPolicy: add request parameters TrustedProcessStatus.
+- Update API CreatePrivateAccessPolicy: add request parameters TrustedSoftwareIds.
+- Update API CreateWmBaseImage: add request parameters ImageControl.
+- Update API CreateWmExtractTask: add request parameters IsClientEmbed.
+- Update API GetPrivateAccessPolicy: add response parameters Body.Policy.TrustedProcessGroupIds.
+- Update API GetPrivateAccessPolicy: add response parameters Body.Policy.TrustedProcessStatus.
+- Update API GetPrivateAccessPolicy: add response parameters Body.Policy.TrustedSoftwareIds.
+- Update API GetUserDevice: add response parameters Body.Device.MatchDeviceGroupIds.
+- Update API ListPrivateAccessPolices: add response parameters Body.Polices.$.TrustedProcessGroupIds.
+- Update API ListPrivateAccessPolices: add response parameters Body.Polices.$.TrustedProcessStatus.
+- Update API ListPrivateAccessPolices: add response parameters Body.Polices.$.TrustedSoftwareIds.
+- Update API ListUserDevices: add request parameters DeviceGroupId.
+- Update API ListUserDevices: add response parameters Body.Devices.$.MatchDeviceGroupIds.
+- Update API ListUserPrivateAccessPolicies: add response parameters Body.Polices.$.TrustedProcessGroupIds.
+- Update API ListUserPrivateAccessPolicies: add response parameters Body.Polices.$.TrustedSoftwareIds.
+- Update API UpdatePrivateAccessPolicy: add request parameters TrustedProcessGroupIds.
+- Update API UpdatePrivateAccessPolicy: add request parameters TrustedProcessStatus.
+- Update API UpdatePrivateAccessPolicy: add request parameters TrustedSoftwareIds.
+
+
 2025-04-27 Version: 1.8.6
 - Update API CreateApprovalProcess: add request parameters MatchSchemas.EndpointHardeningSchemaId.
 - Update API CreateApprovalProcess: add request parameters MatchSchemas.SoftwareHardeningSchemaId.

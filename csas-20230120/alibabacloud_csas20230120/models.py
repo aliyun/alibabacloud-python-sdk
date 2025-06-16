@@ -44,6 +44,7 @@ class DisposalContent(TeaModel):
         alert_content_en: str = None,
         alert_title: str = None,
         alert_title_en: str = None,
+        nac_demotion_policy_ids: List[str] = None,
         notice_content: str = None,
         notice_content_en: str = None,
         notify_actions: List[str] = None,
@@ -53,6 +54,7 @@ class DisposalContent(TeaModel):
         self.alert_content_en = alert_content_en
         self.alert_title = alert_title
         self.alert_title_en = alert_title_en
+        self.nac_demotion_policy_ids = nac_demotion_policy_ids
         self.notice_content = notice_content
         self.notice_content_en = notice_content_en
         # This parameter is required.
@@ -76,6 +78,8 @@ class DisposalContent(TeaModel):
             result['AlertTitle'] = self.alert_title
         if self.alert_title_en is not None:
             result['AlertTitleEn'] = self.alert_title_en
+        if self.nac_demotion_policy_ids is not None:
+            result['NacDemotionPolicyIds'] = self.nac_demotion_policy_ids
         if self.notice_content is not None:
             result['NoticeContent'] = self.notice_content
         if self.notice_content_en is not None:
@@ -96,6 +100,8 @@ class DisposalContent(TeaModel):
             self.alert_title = m.get('AlertTitle')
         if m.get('AlertTitleEn') is not None:
             self.alert_title_en = m.get('AlertTitleEn')
+        if m.get('NacDemotionPolicyIds') is not None:
+            self.nac_demotion_policy_ids = m.get('NacDemotionPolicyIds')
         if m.get('NoticeContent') is not None:
             self.notice_content = m.get('NoticeContent')
         if m.get('NoticeContentEn') is not None:
@@ -104,6 +110,104 @@ class DisposalContent(TeaModel):
             self.notify_actions = m.get('NotifyActions')
         if m.get('ProhibitActions') is not None:
             self.prohibit_actions = m.get('ProhibitActions')
+        return self
+
+
+class OpenStructSaseUserSimpleDepartments(TeaModel):
+    def __init__(
+        self,
+        department_id: str = None,
+        name: str = None,
+    ):
+        self.department_id = department_id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.department_id is not None:
+            result['DepartmentId'] = self.department_id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DepartmentId') is not None:
+            self.department_id = m.get('DepartmentId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class OpenStructSaseUserSimple(TeaModel):
+    def __init__(
+        self,
+        departments: List[OpenStructSaseUserSimpleDepartments] = None,
+        email: str = None,
+        idp_config_id: str = None,
+        sase_user_id: str = None,
+        telephone: str = None,
+        username: str = None,
+    ):
+        self.departments = departments
+        self.email = email
+        self.idp_config_id = idp_config_id
+        self.sase_user_id = sase_user_id
+        self.telephone = telephone
+        self.username = username
+
+    def validate(self):
+        if self.departments:
+            for k in self.departments:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Departments'] = []
+        if self.departments is not None:
+            for k in self.departments:
+                result['Departments'].append(k.to_map() if k else None)
+        if self.email is not None:
+            result['Email'] = self.email
+        if self.idp_config_id is not None:
+            result['IdpConfigId'] = self.idp_config_id
+        if self.sase_user_id is not None:
+            result['SaseUserId'] = self.sase_user_id
+        if self.telephone is not None:
+            result['Telephone'] = self.telephone
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.departments = []
+        if m.get('Departments') is not None:
+            for k in m.get('Departments'):
+                temp_model = OpenStructSaseUserSimpleDepartments()
+                self.departments.append(temp_model.from_map(k))
+        if m.get('Email') is not None:
+            self.email = m.get('Email')
+        if m.get('IdpConfigId') is not None:
+            self.idp_config_id = m.get('IdpConfigId')
+        if m.get('SaseUserId') is not None:
+            self.sase_user_id = m.get('SaseUserId')
+        if m.get('Telephone') is not None:
+            self.telephone = m.get('Telephone')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
         return self
 
 
@@ -580,6 +684,116 @@ class PAL7Config(TeaModel):
         return self
 
 
+class ProcessItem(TeaModel):
+    def __init__(
+        self,
+        bundle_id: str = None,
+        dev_type: str = None,
+        directory: str = None,
+        process: str = None,
+    ):
+        self.bundle_id = bundle_id
+        self.dev_type = dev_type
+        self.directory = directory
+        self.process = process
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bundle_id is not None:
+            result['BundleId'] = self.bundle_id
+        if self.dev_type is not None:
+            result['DevType'] = self.dev_type
+        if self.directory is not None:
+            result['Directory'] = self.directory
+        if self.process is not None:
+            result['Process'] = self.process
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BundleId') is not None:
+            self.bundle_id = m.get('BundleId')
+        if m.get('DevType') is not None:
+            self.dev_type = m.get('DevType')
+        if m.get('Directory') is not None:
+            self.directory = m.get('Directory')
+        if m.get('Process') is not None:
+            self.process = m.get('Process')
+        return self
+
+
+class ProcessGroup(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        name: str = None,
+        process_group_id: str = None,
+        processes: List[ProcessItem] = None,
+    ):
+        self.description = description
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.name = name
+        self.process_group_id = process_group_id
+        self.processes = processes
+
+    def validate(self):
+        if self.processes:
+            for k in self.processes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.process_group_id is not None:
+            result['ProcessGroupId'] = self.process_group_id
+        result['Processes'] = []
+        if self.processes is not None:
+            for k in self.processes:
+                result['Processes'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ProcessGroupId') is not None:
+            self.process_group_id = m.get('ProcessGroupId')
+        self.processes = []
+        if m.get('Processes') is not None:
+            for k in m.get('Processes'):
+                temp_model = ProcessItem()
+                self.processes.append(temp_model.from_map(k))
+        return self
+
+
 class RecoveryContent(TeaModel):
     def __init__(
         self,
@@ -613,6 +827,39 @@ class RecoveryContent(TeaModel):
             self.auth_report_interval = temp_model.from_map(m['AuthReportInterval'])
         if m.get('RecoveryActions') is not None:
             self.recovery_actions = m.get('RecoveryActions')
+        return self
+
+
+class RiskSceneConfig(TeaModel):
+    def __init__(
+        self,
+        detect_channel: List[str] = None,
+        office_channel: List[str] = None,
+    ):
+        self.detect_channel = detect_channel
+        self.office_channel = office_channel
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.detect_channel is not None:
+            result['DetectChannel'] = self.detect_channel
+        if self.office_channel is not None:
+            result['OfficeChannel'] = self.office_channel
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DetectChannel') is not None:
+            self.detect_channel = m.get('DetectChannel')
+        if m.get('OfficeChannel') is not None:
+            self.office_channel = m.get('OfficeChannel')
         return self
 
 
@@ -2045,6 +2292,256 @@ class CreateDynamicRouteResponse(TeaModel):
         return self
 
 
+class CreateEnterpriseAcceleratePolicyRequest(TeaModel):
+    def __init__(
+        self,
+        acceleration_type: str = None,
+        description: str = None,
+        name: str = None,
+        priority: str = None,
+        show_in_client: int = None,
+        upstream_host: str = None,
+        upstream_port: int = None,
+        upstream_type: str = None,
+        user_attribute_group: str = None,
+    ):
+        self.acceleration_type = acceleration_type
+        self.description = description
+        self.name = name
+        self.priority = priority
+        self.show_in_client = show_in_client
+        # This parameter is required.
+        self.upstream_host = upstream_host
+        # This parameter is required.
+        self.upstream_port = upstream_port
+        # This parameter is required.
+        self.upstream_type = upstream_type
+        # This parameter is required.
+        self.user_attribute_group = user_attribute_group
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acceleration_type is not None:
+            result['AccelerationType'] = self.acceleration_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.show_in_client is not None:
+            result['ShowInClient'] = self.show_in_client
+        if self.upstream_host is not None:
+            result['UpstreamHost'] = self.upstream_host
+        if self.upstream_port is not None:
+            result['UpstreamPort'] = self.upstream_port
+        if self.upstream_type is not None:
+            result['UpstreamType'] = self.upstream_type
+        if self.user_attribute_group is not None:
+            result['UserAttributeGroup'] = self.user_attribute_group
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccelerationType') is not None:
+            self.acceleration_type = m.get('AccelerationType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('ShowInClient') is not None:
+            self.show_in_client = m.get('ShowInClient')
+        if m.get('UpstreamHost') is not None:
+            self.upstream_host = m.get('UpstreamHost')
+        if m.get('UpstreamPort') is not None:
+            self.upstream_port = m.get('UpstreamPort')
+        if m.get('UpstreamType') is not None:
+            self.upstream_type = m.get('UpstreamType')
+        if m.get('UserAttributeGroup') is not None:
+            self.user_attribute_group = m.get('UserAttributeGroup')
+        return self
+
+
+class CreateEnterpriseAcceleratePolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateEnterpriseAcceleratePolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateEnterpriseAcceleratePolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateEnterpriseAcceleratePolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateEnterpriseAccelerateTargetRequest(TeaModel):
+    def __init__(
+        self,
+        eap_id: str = None,
+        target: List[str] = None,
+    ):
+        # This parameter is required.
+        self.eap_id = eap_id
+        # This parameter is required.
+        self.target = target
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.eap_id is not None:
+            result['EapId'] = self.eap_id
+        if self.target is not None:
+            result['Target'] = self.target
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EapId') is not None:
+            self.eap_id = m.get('EapId')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        return self
+
+
+class CreateEnterpriseAccelerateTargetResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateEnterpriseAccelerateTargetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateEnterpriseAccelerateTargetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateEnterpriseAccelerateTargetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateIdpDepartmentRequest(TeaModel):
     def __init__(
         self,
@@ -2160,8 +2657,12 @@ class CreatePrivateAccessApplicationRequestPortRanges(TeaModel):
         begin: int = None,
         end: int = None,
     ):
+        # The start port. The start port must be less than or equal to the end port.
+        # 
         # This parameter is required.
         self.begin = begin
+        # The end port. The end port must be greater than or equal to the start port.
+        # 
         # This parameter is required.
         self.end = end
 
@@ -2204,21 +2705,47 @@ class CreatePrivateAccessApplicationRequest(TeaModel):
         status: str = None,
         tag_ids: List[str] = None,
     ):
+        # The addresses of the office applications. You can enter up to 1,000 addresses of office applications.
+        # 
         # This parameter is required.
         self.addresses = addresses
+        # Specifies whether to allow access from a browser. Default value: **Disabled**. Valid values:
+        # 
+        # *   **Enabled**\
+        # *   **Disabled**\
         self.browser_access_status = browser_access_status
+        # The description of the office application. The value must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
         self.description = description
+        # The browser access mode parameter. The parameter specifies the configurations of Layer 7 applications.
         self.l_7config = l_7config
+        # The browser access mode parameter. The parameter specifies the prefix of the domain name that the proxy gateway uses. The prefix must be 3 to 20 characters in length, and can contain lowercase letters, digits, and hyphens (-).
         self.l_7proxy_domain_automatic_prefix = l_7proxy_domain_automatic_prefix
+        # The browser access mode parameter. The parameter specifies the custom domain name of the proxy gateway. Enter a valid domain name.
         self.l_7proxy_domain_custom = l_7proxy_domain_custom
+        # The name of the office application. The value must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+        # 
         # This parameter is required.
         self.name = name
+        # The port ranges of the office applications. You can enter up to 65,535 port ranges. Multiple port ranges cannot be duplicated or overlapped.
+        # 
         # This parameter is required.
         self.port_ranges = port_ranges
+        # The protocol that is used by the office application. Valid values:
+        # 
+        # *   **All**\
+        # *   **TCP**\
+        # *   **UDP**\
+        # 
         # This parameter is required.
         self.protocol = protocol
+        # The status of the office application. Valid values:
+        # 
+        # *   **Enabled**\
+        # *   **Disabled**\
+        # 
         # This parameter is required.
         self.status = status
+        # The IDs of the tags for the office applications. You can add up to six custom tags to an office application.
         self.tag_ids = tag_ids
 
     def validate(self):
@@ -2298,8 +2825,12 @@ class CreatePrivateAccessApplicationShrinkRequestPortRanges(TeaModel):
         begin: int = None,
         end: int = None,
     ):
+        # The start port. The start port must be less than or equal to the end port.
+        # 
         # This parameter is required.
         self.begin = begin
+        # The end port. The end port must be greater than or equal to the start port.
+        # 
         # This parameter is required.
         self.end = end
 
@@ -2342,21 +2873,47 @@ class CreatePrivateAccessApplicationShrinkRequest(TeaModel):
         status: str = None,
         tag_ids: List[str] = None,
     ):
+        # The addresses of the office applications. You can enter up to 1,000 addresses of office applications.
+        # 
         # This parameter is required.
         self.addresses = addresses
+        # Specifies whether to allow access from a browser. Default value: **Disabled**. Valid values:
+        # 
+        # *   **Enabled**\
+        # *   **Disabled**\
         self.browser_access_status = browser_access_status
+        # The description of the office application. The value must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
         self.description = description
+        # The browser access mode parameter. The parameter specifies the configurations of Layer 7 applications.
         self.l_7config_shrink = l_7config_shrink
+        # The browser access mode parameter. The parameter specifies the prefix of the domain name that the proxy gateway uses. The prefix must be 3 to 20 characters in length, and can contain lowercase letters, digits, and hyphens (-).
         self.l_7proxy_domain_automatic_prefix = l_7proxy_domain_automatic_prefix
+        # The browser access mode parameter. The parameter specifies the custom domain name of the proxy gateway. Enter a valid domain name.
         self.l_7proxy_domain_custom = l_7proxy_domain_custom
+        # The name of the office application. The value must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+        # 
         # This parameter is required.
         self.name = name
+        # The port ranges of the office applications. You can enter up to 65,535 port ranges. Multiple port ranges cannot be duplicated or overlapped.
+        # 
         # This parameter is required.
         self.port_ranges = port_ranges
+        # The protocol that is used by the office application. Valid values:
+        # 
+        # *   **All**\
+        # *   **TCP**\
+        # *   **UDP**\
+        # 
         # This parameter is required.
         self.protocol = protocol
+        # The status of the office application. Valid values:
+        # 
+        # *   **Enabled**\
+        # *   **Disabled**\
+        # 
         # This parameter is required.
         self.status = status
+        # The IDs of the tags for the office applications. You can add up to six custom tags to an office application.
         self.tag_ids = tag_ids
 
     def validate(self):
@@ -2433,7 +2990,9 @@ class CreatePrivateAccessApplicationResponseBody(TeaModel):
         application_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the office application.
         self.application_id = application_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2509,9 +3068,23 @@ class CreatePrivateAccessPolicyRequestCustomUserAttributes(TeaModel):
         user_group_type: str = None,
         value: str = None,
     ):
+        # The ID of the identity source for the custom user group. Required when the custom user group type is **department**.
         self.idp_id = idp_id
+        # Relation of the custom user group. Values:
+        # - **Equal**: Equal.
+        # - **Unequal**: Not equal.
         self.relation = relation
+        # Type of the custom user group. Values:
+        # - **username**: Username.
+        # - **department**: Department.
+        # - **email**: Email.
+        # - **telephone**: Telephone.
         self.user_group_type = user_group_type
+        # Value of the custom user group attribute.
+        # - When the user group type is **username**, it represents the value of the username. The length is 1 to 128 characters, supporting Chinese and uppercase and lowercase English letters, and can include numbers, periods (.), underscores (_), hyphens (-), asterisks (*), at (@) symbols, and spaces.
+        # - When the user group type is **department**, it represents the value of the department. For example: OU=Department1,OU=SASE DingTalk.
+        # - When the user group type is **email**, it represents the value of the email. For example: username@example.com.
+        # - When the user group type is **telephone**, it represents the value of the telephone. For example: 13900001234.
         self.value = value
 
     def validate(self):
@@ -2561,31 +3134,68 @@ class CreatePrivateAccessPolicyRequest(TeaModel):
         status: str = None,
         tag_ids: List[str] = None,
         trigger_template_id: str = None,
+        trusted_process_group_ids: List[str] = None,
+        trusted_process_status: str = None,
+        trusted_software_ids: List[str] = None,
         user_group_ids: List[str] = None,
         user_group_mode: str = None,
     ):
+        # Set of application IDs for the private access policy. Up to 100 application IDs can be entered. Required when **ApplicationType** is **Application**. Mutually exclusive with **TagIds**.
         self.application_ids = application_ids
+        # Application type of the private access policy. Values:
+        # - **Application**: Application.
+        # - **Tag**: Tag.
+        # 
         # This parameter is required.
         self.application_type = application_type
+        # Set of custom user groups for the private access policy. Required when the user group type is **Custom**. Mutually exclusive with the user group ID set. Up to 10 custom user groups can be entered.
         self.custom_user_attributes = custom_user_attributes
+        # Description of the private access policy. The length is 1 to 128 characters, supporting Chinese and uppercase and lowercase English letters, and can include numbers, periods (.), underscores (_), hyphens (-), and spaces.
         self.description = description
+        # The execution policy for not meeting the security baseline. Values:
+        # 
+        # - **Block**: Block.
+        # - **Observe**: Observe.
         self.device_attribute_action = device_attribute_action
+        # The ID of the security baseline policy.
         self.device_attribute_id = device_attribute_id
+        # Name of the private access policy. The length is 1 to 128 characters, supporting Chinese and uppercase and lowercase English letters, and can include numbers, periods (.), underscores (_), and hyphens (-).
+        # 
         # This parameter is required.
         self.name = name
+        # Action of the private access policy. Values:
+        # - **Block**: Block.
+        # - **Allow**: Allow.
+        # 
         # This parameter is required.
         self.policy_action = policy_action
+        # The priority of the private access policy. The number 1 indicates the highest priority. Range: 1~1000, with the maximum value being the total number of private access policies.
+        # 
         # This parameter is required.
         self.priority = priority
+        # The status of the private access policy. Values:
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
+        # 
         # This parameter is required.
         self.status = status
-        # 内网访问标签ID集合。最多可输入100个内网访问标签ID。当**ApplicationType**为**Tag时**，必填。和**ApplicationIds**互斥。
+        # Set of tag IDs for the private access policy. Up to 100 tag IDs can be entered. Required when **ApplicationType** is **Tag**. Mutually exclusive with **ApplicationIds**.
         self.tag_ids = tag_ids
+        # The trigger template ID.
         self.trigger_template_id = trigger_template_id
+        # The ID of the trusted process group.
+        self.trusted_process_group_ids = trusted_process_group_ids
+        # The switch status of the trusted process. Values:
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
+        self.trusted_process_status = trusted_process_status
+        # The ID of the trusted software.
+        self.trusted_software_ids = trusted_software_ids
+        # Set of user group IDs for the private access policy. Required when the user group type is **Normal**. Mutually exclusive with the custom user group set. Up to 2000 user group IDs can be entered.
         self.user_group_ids = user_group_ids
-        # 内网访问策略的用户组类型。取值：
-        # - **Normal**：普通用户组。
-        # - **Custom**：自定义用户组。
+        # User group type of the private access policy. Values:
+        # - **Normal**: Normal user group.
+        # - **Custom**: Custom user group.
         # 
         # This parameter is required.
         self.user_group_mode = user_group_mode
@@ -2628,6 +3238,12 @@ class CreatePrivateAccessPolicyRequest(TeaModel):
             result['TagIds'] = self.tag_ids
         if self.trigger_template_id is not None:
             result['TriggerTemplateId'] = self.trigger_template_id
+        if self.trusted_process_group_ids is not None:
+            result['TrustedProcessGroupIds'] = self.trusted_process_group_ids
+        if self.trusted_process_status is not None:
+            result['TrustedProcessStatus'] = self.trusted_process_status
+        if self.trusted_software_ids is not None:
+            result['TrustedSoftwareIds'] = self.trusted_software_ids
         if self.user_group_ids is not None:
             result['UserGroupIds'] = self.user_group_ids
         if self.user_group_mode is not None:
@@ -2663,6 +3279,12 @@ class CreatePrivateAccessPolicyRequest(TeaModel):
             self.tag_ids = m.get('TagIds')
         if m.get('TriggerTemplateId') is not None:
             self.trigger_template_id = m.get('TriggerTemplateId')
+        if m.get('TrustedProcessGroupIds') is not None:
+            self.trusted_process_group_ids = m.get('TrustedProcessGroupIds')
+        if m.get('TrustedProcessStatus') is not None:
+            self.trusted_process_status = m.get('TrustedProcessStatus')
+        if m.get('TrustedSoftwareIds') is not None:
+            self.trusted_software_ids = m.get('TrustedSoftwareIds')
         if m.get('UserGroupIds') is not None:
             self.user_group_ids = m.get('UserGroupIds')
         if m.get('UserGroupMode') is not None:
@@ -2676,7 +3298,9 @@ class CreatePrivateAccessPolicyResponseBody(TeaModel):
         policy_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the private access policy.
         self.policy_id = policy_id
+        # The ID of the current request.
         self.request_id = request_id
 
     def validate(self):
@@ -3535,10 +4159,235 @@ class CreateUserGroupResponse(TeaModel):
         return self
 
 
+class CreateWmBaseImageRequestImageControlLogoVisibleControl(TeaModel):
+    def __init__(
+        self,
+        angle: int = None,
+        logo_base_64: str = None,
+        mode: str = None,
+        opacity: int = None,
+        pos_ax: float = None,
+        pos_ay: float = None,
+        pos_x: int = None,
+        pos_y: int = None,
+        space_x: int = None,
+        space_y: int = None,
+        visible: bool = None,
+    ):
+        self.angle = angle
+        self.logo_base_64 = logo_base_64
+        self.mode = mode
+        self.opacity = opacity
+        self.pos_ax = pos_ax
+        self.pos_ay = pos_ay
+        self.pos_x = pos_x
+        self.pos_y = pos_y
+        self.space_x = space_x
+        self.space_y = space_y
+        self.visible = visible
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.angle is not None:
+            result['Angle'] = self.angle
+        if self.logo_base_64 is not None:
+            result['LogoBase64'] = self.logo_base_64
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.opacity is not None:
+            result['Opacity'] = self.opacity
+        if self.pos_ax is not None:
+            result['PosAx'] = self.pos_ax
+        if self.pos_ay is not None:
+            result['PosAy'] = self.pos_ay
+        if self.pos_x is not None:
+            result['PosX'] = self.pos_x
+        if self.pos_y is not None:
+            result['PosY'] = self.pos_y
+        if self.space_x is not None:
+            result['SpaceX'] = self.space_x
+        if self.space_y is not None:
+            result['SpaceY'] = self.space_y
+        if self.visible is not None:
+            result['Visible'] = self.visible
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Angle') is not None:
+            self.angle = m.get('Angle')
+        if m.get('LogoBase64') is not None:
+            self.logo_base_64 = m.get('LogoBase64')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('Opacity') is not None:
+            self.opacity = m.get('Opacity')
+        if m.get('PosAx') is not None:
+            self.pos_ax = m.get('PosAx')
+        if m.get('PosAy') is not None:
+            self.pos_ay = m.get('PosAy')
+        if m.get('PosX') is not None:
+            self.pos_x = m.get('PosX')
+        if m.get('PosY') is not None:
+            self.pos_y = m.get('PosY')
+        if m.get('SpaceX') is not None:
+            self.space_x = m.get('SpaceX')
+        if m.get('SpaceY') is not None:
+            self.space_y = m.get('SpaceY')
+        if m.get('Visible') is not None:
+            self.visible = m.get('Visible')
+        return self
+
+
+class CreateWmBaseImageRequestImageControlTextVisibleControl(TeaModel):
+    def __init__(
+        self,
+        angle: int = None,
+        font_color: str = None,
+        font_size: int = None,
+        mode: str = None,
+        opacity: int = None,
+        pos_ax: float = None,
+        pos_ay: float = None,
+        pos_x: int = None,
+        pos_y: int = None,
+        space_x: int = None,
+        space_y: int = None,
+        visible: bool = None,
+        visible_text: str = None,
+    ):
+        self.angle = angle
+        self.font_color = font_color
+        self.font_size = font_size
+        self.mode = mode
+        self.opacity = opacity
+        self.pos_ax = pos_ax
+        self.pos_ay = pos_ay
+        self.pos_x = pos_x
+        self.pos_y = pos_y
+        self.space_x = space_x
+        self.space_y = space_y
+        self.visible = visible
+        self.visible_text = visible_text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.angle is not None:
+            result['Angle'] = self.angle
+        if self.font_color is not None:
+            result['FontColor'] = self.font_color
+        if self.font_size is not None:
+            result['FontSize'] = self.font_size
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.opacity is not None:
+            result['Opacity'] = self.opacity
+        if self.pos_ax is not None:
+            result['PosAx'] = self.pos_ax
+        if self.pos_ay is not None:
+            result['PosAy'] = self.pos_ay
+        if self.pos_x is not None:
+            result['PosX'] = self.pos_x
+        if self.pos_y is not None:
+            result['PosY'] = self.pos_y
+        if self.space_x is not None:
+            result['SpaceX'] = self.space_x
+        if self.space_y is not None:
+            result['SpaceY'] = self.space_y
+        if self.visible is not None:
+            result['Visible'] = self.visible
+        if self.visible_text is not None:
+            result['VisibleText'] = self.visible_text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Angle') is not None:
+            self.angle = m.get('Angle')
+        if m.get('FontColor') is not None:
+            self.font_color = m.get('FontColor')
+        if m.get('FontSize') is not None:
+            self.font_size = m.get('FontSize')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('Opacity') is not None:
+            self.opacity = m.get('Opacity')
+        if m.get('PosAx') is not None:
+            self.pos_ax = m.get('PosAx')
+        if m.get('PosAy') is not None:
+            self.pos_ay = m.get('PosAy')
+        if m.get('PosX') is not None:
+            self.pos_x = m.get('PosX')
+        if m.get('PosY') is not None:
+            self.pos_y = m.get('PosY')
+        if m.get('SpaceX') is not None:
+            self.space_x = m.get('SpaceX')
+        if m.get('SpaceY') is not None:
+            self.space_y = m.get('SpaceY')
+        if m.get('Visible') is not None:
+            self.visible = m.get('Visible')
+        if m.get('VisibleText') is not None:
+            self.visible_text = m.get('VisibleText')
+        return self
+
+
+class CreateWmBaseImageRequestImageControl(TeaModel):
+    def __init__(
+        self,
+        logo_visible_control: CreateWmBaseImageRequestImageControlLogoVisibleControl = None,
+        text_visible_control: CreateWmBaseImageRequestImageControlTextVisibleControl = None,
+    ):
+        self.logo_visible_control = logo_visible_control
+        self.text_visible_control = text_visible_control
+
+    def validate(self):
+        if self.logo_visible_control:
+            self.logo_visible_control.validate()
+        if self.text_visible_control:
+            self.text_visible_control.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.logo_visible_control is not None:
+            result['LogoVisibleControl'] = self.logo_visible_control.to_map()
+        if self.text_visible_control is not None:
+            result['TextVisibleControl'] = self.text_visible_control.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LogoVisibleControl') is not None:
+            temp_model = CreateWmBaseImageRequestImageControlLogoVisibleControl()
+            self.logo_visible_control = temp_model.from_map(m['LogoVisibleControl'])
+        if m.get('TextVisibleControl') is not None:
+            temp_model = CreateWmBaseImageRequestImageControlTextVisibleControl()
+            self.text_visible_control = temp_model.from_map(m['TextVisibleControl'])
+        return self
+
+
 class CreateWmBaseImageRequest(TeaModel):
     def __init__(
         self,
         height: int = None,
+        image_control: CreateWmBaseImageRequestImageControl = None,
         opacity: int = None,
         scale: int = None,
         width: int = None,
@@ -3549,6 +4398,89 @@ class CreateWmBaseImageRequest(TeaModel):
     ):
         # This parameter is required.
         self.height = height
+        self.image_control = image_control
+        # This parameter is required.
+        self.opacity = opacity
+        # This parameter is required.
+        self.scale = scale
+        # This parameter is required.
+        self.width = width
+        self.wm_info_bytes_b64 = wm_info_bytes_b64
+        self.wm_info_size = wm_info_size
+        self.wm_info_uint = wm_info_uint
+        # This parameter is required.
+        self.wm_type = wm_type
+
+    def validate(self):
+        if self.image_control:
+            self.image_control.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.image_control is not None:
+            result['ImageControl'] = self.image_control.to_map()
+        if self.opacity is not None:
+            result['Opacity'] = self.opacity
+        if self.scale is not None:
+            result['Scale'] = self.scale
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.wm_info_bytes_b64 is not None:
+            result['WmInfoBytesB64'] = self.wm_info_bytes_b64
+        if self.wm_info_size is not None:
+            result['WmInfoSize'] = self.wm_info_size
+        if self.wm_info_uint is not None:
+            result['WmInfoUint'] = self.wm_info_uint
+        if self.wm_type is not None:
+            result['WmType'] = self.wm_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('ImageControl') is not None:
+            temp_model = CreateWmBaseImageRequestImageControl()
+            self.image_control = temp_model.from_map(m['ImageControl'])
+        if m.get('Opacity') is not None:
+            self.opacity = m.get('Opacity')
+        if m.get('Scale') is not None:
+            self.scale = m.get('Scale')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('WmInfoBytesB64') is not None:
+            self.wm_info_bytes_b64 = m.get('WmInfoBytesB64')
+        if m.get('WmInfoSize') is not None:
+            self.wm_info_size = m.get('WmInfoSize')
+        if m.get('WmInfoUint') is not None:
+            self.wm_info_uint = m.get('WmInfoUint')
+        if m.get('WmType') is not None:
+            self.wm_type = m.get('WmType')
+        return self
+
+
+class CreateWmBaseImageShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        height: int = None,
+        image_control_shrink: str = None,
+        opacity: int = None,
+        scale: int = None,
+        width: int = None,
+        wm_info_bytes_b64: str = None,
+        wm_info_size: int = None,
+        wm_info_uint: str = None,
+        wm_type: str = None,
+    ):
+        # This parameter is required.
+        self.height = height
+        self.image_control_shrink = image_control_shrink
         # This parameter is required.
         self.opacity = opacity
         # This parameter is required.
@@ -3572,6 +4504,8 @@ class CreateWmBaseImageRequest(TeaModel):
         result = dict()
         if self.height is not None:
             result['Height'] = self.height
+        if self.image_control_shrink is not None:
+            result['ImageControl'] = self.image_control_shrink
         if self.opacity is not None:
             result['Opacity'] = self.opacity
         if self.scale is not None:
@@ -3592,6 +4526,8 @@ class CreateWmBaseImageRequest(TeaModel):
         m = m or dict()
         if m.get('Height') is not None:
             self.height = m.get('Height')
+        if m.get('ImageControl') is not None:
+            self.image_control_shrink = m.get('ImageControl')
         if m.get('Opacity') is not None:
             self.opacity = m.get('Opacity')
         if m.get('Scale') is not None:
@@ -4296,11 +5232,17 @@ class CreateWmExtractTaskRequestCsvControl(TeaModel):
         method: str = None,
         time_format: str = None,
     ):
+        # The timestamp watermark parameter that specifies how much information a single timestamp holds. You must keep the value of this parameter consistent for watermark embedding and watermark extraction. Otherwise, the extraction fails.
         self.embed_bits_number_in_each_time = embed_bits_number_in_each_time
+        # The lossy embedding control parameter that specifies columns to be modified You must keep the value of this parameter consistent for watermark embedding and watermark extraction. Otherwise, the extraction fails.
         self.embed_column = embed_column
+        # The lossy embedding control parameter that specifies the modification precision. You must keep the value of this parameter consistent for watermark embedding and watermark extraction. Otherwise, the extraction fails.
         self.embed_precision = embed_precision
+        # The timestamp watermark parameter that specifies the embedding position of the timestamp watermarks. You must keep the value of this parameter consistent for watermark embedding and watermark extraction. Otherwise, the extraction fails.
         self.embed_time_position = embed_time_position
+        # The CSV watermark embedding method. You must keep the value of this parameter consistent for watermark embedding and watermark extraction. Otherwise, the extraction fails.
         self.method = method
+        # The timestamp watermark parameter that specifies the timestamp format. You must keep the value of this parameter consistent for watermark embedding and watermark extraction. Otherwise, the extraction fails.
         self.time_format = time_format
 
     def validate(self):
@@ -4350,20 +5292,54 @@ class CreateWmExtractTaskRequest(TeaModel):
         document_is_capture: bool = None,
         file_url: str = None,
         filename: str = None,
+        is_client_embed: bool = None,
         video_is_long: bool = None,
         video_speed: str = None,
         wm_info_size: int = None,
         wm_type: str = None,
     ):
+        # The CSV watermark control parameter. You must keep the value of this parameter consistent for watermark embedding and watermark extraction. Otherwise, the extraction fails.
         self.csv_control = csv_control
+        # The document watermark parameter that specifies whether the file to be extracted is a screenshot of a document with a background watermark added. The system determines whether to use the extraction logic for document background watermarks based on whether the file to be extracted is an image file. By default, you do not need to configure this parameter. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.document_is_capture = document_is_capture
+        # The URL used to download the file to be extracted. The URL must be accessible over the Internet.
+        # 
         # This parameter is required.
         self.file_url = file_url
+        # The name of the file to be extracted. The system needs to check the file type based on the file name extension.
+        # 
         # This parameter is required.
         self.filename = filename
+        self.is_client_embed = is_client_embed
+        # The watermark parameter for videos that specifies whether to use the long video watermark SDK. Default value: false. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.video_is_long = video_is_long
+        # The watermark parameter for long videos that specifies the video speed factor. The value can be a floating-point number or a string. Default value: 1. This parameter indicates the speed at which a watermark is added or the time-stretching rate for videos after a watermark is added.
         self.video_speed = video_speed
+        # The watermark information size. Default value: 32. You must keep the value of this parameter consistent for watermark embedding and watermark extraction. For example, if a 40-bit watermark is used for watermark embedding, you must set this parameter to 40 for watermark extraction.
         self.wm_info_size = wm_info_size
+        # The watermark type. Valid values:
+        # 
+        # *   **PureWebappInvisible**: web page watermark
+        # *   **PureAppInvisible**: app watermark
+        # *   **PureScreenInvisible**: screen watermark
+        # *   **PureDocument**: document watermark
+        # *   **PureImage**: image watermark
+        # *   **PureAudio**: audio watermark
+        # *   **PureVideo**: video watermark
+        # *   **AigcWebappInvisible**: artificial intelligence generated content (AIGC)-based webpage watermark
+        # *   **AigcAppInvisible**: AIGC-based app watermark
+        # *   **AigcScreenInvisible**: AIGC-based screen watermark
+        # *   **AigcDocument**: AIGC-based document watermark
+        # *   **AigcImage**: AIGC-based image watermark
+        # *   **AigcAudio**: AIGC-based audio watermark
+        # *   **AigcVideo**: AIGC-based video watermark
+        # 
         # This parameter is required.
         self.wm_type = wm_type
 
@@ -4385,6 +5361,8 @@ class CreateWmExtractTaskRequest(TeaModel):
             result['FileUrl'] = self.file_url
         if self.filename is not None:
             result['Filename'] = self.filename
+        if self.is_client_embed is not None:
+            result['IsClientEmbed'] = self.is_client_embed
         if self.video_is_long is not None:
             result['VideoIsLong'] = self.video_is_long
         if self.video_speed is not None:
@@ -4406,6 +5384,8 @@ class CreateWmExtractTaskRequest(TeaModel):
             self.file_url = m.get('FileUrl')
         if m.get('Filename') is not None:
             self.filename = m.get('Filename')
+        if m.get('IsClientEmbed') is not None:
+            self.is_client_embed = m.get('IsClientEmbed')
         if m.get('VideoIsLong') is not None:
             self.video_is_long = m.get('VideoIsLong')
         if m.get('VideoSpeed') is not None:
@@ -4424,20 +5404,54 @@ class CreateWmExtractTaskShrinkRequest(TeaModel):
         document_is_capture: bool = None,
         file_url: str = None,
         filename: str = None,
+        is_client_embed: bool = None,
         video_is_long: bool = None,
         video_speed: str = None,
         wm_info_size: int = None,
         wm_type: str = None,
     ):
+        # The CSV watermark control parameter. You must keep the value of this parameter consistent for watermark embedding and watermark extraction. Otherwise, the extraction fails.
         self.csv_control_shrink = csv_control_shrink
+        # The document watermark parameter that specifies whether the file to be extracted is a screenshot of a document with a background watermark added. The system determines whether to use the extraction logic for document background watermarks based on whether the file to be extracted is an image file. By default, you do not need to configure this parameter. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.document_is_capture = document_is_capture
+        # The URL used to download the file to be extracted. The URL must be accessible over the Internet.
+        # 
         # This parameter is required.
         self.file_url = file_url
+        # The name of the file to be extracted. The system needs to check the file type based on the file name extension.
+        # 
         # This parameter is required.
         self.filename = filename
+        self.is_client_embed = is_client_embed
+        # The watermark parameter for videos that specifies whether to use the long video watermark SDK. Default value: false. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.video_is_long = video_is_long
+        # The watermark parameter for long videos that specifies the video speed factor. The value can be a floating-point number or a string. Default value: 1. This parameter indicates the speed at which a watermark is added or the time-stretching rate for videos after a watermark is added.
         self.video_speed = video_speed
+        # The watermark information size. Default value: 32. You must keep the value of this parameter consistent for watermark embedding and watermark extraction. For example, if a 40-bit watermark is used for watermark embedding, you must set this parameter to 40 for watermark extraction.
         self.wm_info_size = wm_info_size
+        # The watermark type. Valid values:
+        # 
+        # *   **PureWebappInvisible**: web page watermark
+        # *   **PureAppInvisible**: app watermark
+        # *   **PureScreenInvisible**: screen watermark
+        # *   **PureDocument**: document watermark
+        # *   **PureImage**: image watermark
+        # *   **PureAudio**: audio watermark
+        # *   **PureVideo**: video watermark
+        # *   **AigcWebappInvisible**: artificial intelligence generated content (AIGC)-based webpage watermark
+        # *   **AigcAppInvisible**: AIGC-based app watermark
+        # *   **AigcScreenInvisible**: AIGC-based screen watermark
+        # *   **AigcDocument**: AIGC-based document watermark
+        # *   **AigcImage**: AIGC-based image watermark
+        # *   **AigcAudio**: AIGC-based audio watermark
+        # *   **AigcVideo**: AIGC-based video watermark
+        # 
         # This parameter is required.
         self.wm_type = wm_type
 
@@ -4458,6 +5472,8 @@ class CreateWmExtractTaskShrinkRequest(TeaModel):
             result['FileUrl'] = self.file_url
         if self.filename is not None:
             result['Filename'] = self.filename
+        if self.is_client_embed is not None:
+            result['IsClientEmbed'] = self.is_client_embed
         if self.video_is_long is not None:
             result['VideoIsLong'] = self.video_is_long
         if self.video_speed is not None:
@@ -4478,6 +5494,8 @@ class CreateWmExtractTaskShrinkRequest(TeaModel):
             self.file_url = m.get('FileUrl')
         if m.get('Filename') is not None:
             self.filename = m.get('Filename')
+        if m.get('IsClientEmbed') is not None:
+            self.is_client_embed = m.get('IsClientEmbed')
         if m.get('VideoIsLong') is not None:
             self.video_is_long = m.get('VideoIsLong')
         if m.get('VideoSpeed') is not None:
@@ -4494,6 +5512,7 @@ class CreateWmExtractTaskResponseBodyData(TeaModel):
         self,
         task_id: str = None,
     ):
+        # The task ID. You can use task IDs to query task results.
         self.task_id = task_id
 
     def validate(self):
@@ -4522,7 +5541,9 @@ class CreateWmExtractTaskResponseBody(TeaModel):
         data: CreateWmExtractTaskResponseBodyData = None,
         request_id: str = None,
     ):
+        # The information about the watermark extraction task.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5024,6 +6045,205 @@ class DeleteDynamicRouteResponse(TeaModel):
         return self
 
 
+class DeleteEnterpriseAcceleratePolicyRequest(TeaModel):
+    def __init__(
+        self,
+        eap_id: str = None,
+    ):
+        # This parameter is required.
+        self.eap_id = eap_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.eap_id is not None:
+            result['EapId'] = self.eap_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EapId') is not None:
+            self.eap_id = m.get('EapId')
+        return self
+
+
+class DeleteEnterpriseAcceleratePolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteEnterpriseAcceleratePolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteEnterpriseAcceleratePolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteEnterpriseAcceleratePolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteEnterpriseAccelerateTargetRequest(TeaModel):
+    def __init__(
+        self,
+        eap_id: str = None,
+        target: List[str] = None,
+    ):
+        # This parameter is required.
+        self.eap_id = eap_id
+        # This parameter is required.
+        self.target = target
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.eap_id is not None:
+            result['EapId'] = self.eap_id
+        if self.target is not None:
+            result['Target'] = self.target
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EapId') is not None:
+            self.eap_id = m.get('EapId')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        return self
+
+
+class DeleteEnterpriseAccelerateTargetResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteEnterpriseAccelerateTargetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteEnterpriseAccelerateTargetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteEnterpriseAccelerateTargetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteIdpDepartmentRequest(TeaModel):
     def __init__(
         self,
@@ -5123,6 +6343,101 @@ class DeleteIdpDepartmentResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteIdpDepartmentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteOtpConfigRequest(TeaModel):
+    def __init__(
+        self,
+        username: str = None,
+    ):
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class DeleteOtpConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteOtpConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteOtpConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteOtpConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5950,6 +7265,198 @@ class DetachPolicy2ApprovalProcessResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetachPolicy2ApprovalProcessResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DisableEnterpriseAcceleratePolicyRequest(TeaModel):
+    def __init__(
+        self,
+        eap_id: str = None,
+    ):
+        # This parameter is required.
+        self.eap_id = eap_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.eap_id is not None:
+            result['EapId'] = self.eap_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EapId') is not None:
+            self.eap_id = m.get('EapId')
+        return self
+
+
+class DisableEnterpriseAcceleratePolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisableEnterpriseAcceleratePolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisableEnterpriseAcceleratePolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisableEnterpriseAcceleratePolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EnableEnterpriseAcceleratePolicyRequest(TeaModel):
+    def __init__(
+        self,
+        eap_id: str = None,
+    ):
+        # This parameter is required.
+        self.eap_id = eap_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.eap_id is not None:
+            result['EapId'] = self.eap_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EapId') is not None:
+            self.eap_id = m.get('EapId')
+        return self
+
+
+class EnableEnterpriseAcceleratePolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EnableEnterpriseAcceleratePolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableEnterpriseAcceleratePolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableEnterpriseAcceleratePolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8304,6 +9811,11 @@ class GetPrivateAccessApplicationRequest(TeaModel):
         self,
         application_id: str = None,
     ):
+        # The ID of the office application. You can obtain the value by calling the following operations:
+        # 
+        # *   [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): queries office applications.
+        # *   [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): creates an office application.
+        # 
         # This parameter is required.
         self.application_id = application_id
 
@@ -8333,7 +9845,9 @@ class GetPrivateAccessApplicationResponseBodyApplicationPortRanges(TeaModel):
         begin: int = None,
         end: int = None,
     ):
+        # The start port.
         self.begin = begin
+        # The end port.
         self.end = end
 
     def validate(self):
@@ -8379,20 +9893,45 @@ class GetPrivateAccessApplicationResponseBodyApplication(TeaModel):
         status: str = None,
         tag_ids: List[str] = None,
     ):
+        # The addresses of the office applications.
         self.addresses = addresses
+        # The ID of the office application.
         self.application_id = application_id
+        # The browser access mode. Valid values:
+        # 
+        # *   **Enabled**\
+        # *   **Disabled**\
         self.browser_access_status = browser_access_status
+        # The IDs of connectors.
         self.connector_ids = connector_ids
+        # The creation time of the office application.
         self.create_time = create_time
+        # The description of the office application.
         self.description = description
+        # The browser access mode parameter. The parameter indicates the configurations of Layer 7 applications.
         self.l_7config = l_7config
+        # The browser access mode parameter. The parameter indicates the domain name that the proxy gateway uses.
         self.l_7proxy_domain_automatic = l_7proxy_domain_automatic
+        # The browser access mode parameter. The parameter indicates the custom domain name of the proxy gateway.
         self.l_7proxy_domain_custom = l_7proxy_domain_custom
+        # The name of the office application.
         self.name = name
+        # The IDs of the private access policies.
         self.policy_ids = policy_ids
+        # The port ranges of the office applications. Multiple port ranges cannot be duplicated or overlapped.
         self.port_ranges = port_ranges
+        # The protocol that is used by the office application. Valid values:
+        # 
+        # *   **All**\
+        # *   **TCP**\
+        # *   **UDP**\
         self.protocol = protocol
+        # The status of the office application. Valid values:
+        # 
+        # *   **Enabled**\
+        # *   **Disabled**\
         self.status = status
+        # The IDs of the tags for the office applications.
         self.tag_ids = tag_ids
 
     def validate(self):
@@ -8488,7 +10027,9 @@ class GetPrivateAccessApplicationResponseBody(TeaModel):
         application: GetPrivateAccessApplicationResponseBodyApplication = None,
         request_id: str = None,
     ):
+        # The office application.
         self.application = application
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8563,6 +10104,10 @@ class GetPrivateAccessPolicyRequest(TeaModel):
         self,
         policy_id: str = None,
     ):
+        # Intranet access policy ID. The value can be obtained from:
+        # - [ListPrivateAccessPolices](~~ListPrivateAccessPolices~~): Query multiple intranet access policies in bulk.
+        # - [CreatePrivateAccessPolicy](~~CreatePrivateAccessPolicy~~): Create an intranet access policy.
+        # 
         # This parameter is required.
         self.policy_id = policy_id
 
@@ -8594,9 +10139,21 @@ class GetPrivateAccessPolicyResponseBodyPolicyCustomUserAttributes(TeaModel):
         user_group_type: str = None,
         value: str = None,
     ):
+        # The identity provider ID for the custom user group. This field is required when the custom user group type is **department**.
         self.idp_id = idp_id
+        # Custom user group relationship. Values: - **Equal**: Equal to. - **Unequal**: Not equal to.
         self.relation = relation
+        # Type of the custom user group. Values:
+        # - **username**: Username.
+        # - **department**: Department.
+        # - **email**: Email.
+        # - **telephone**: Telephone.
         self.user_group_type = user_group_type
+        # The value of the custom user group attribute.
+        # - When the user group type is **username**, it represents the value of the username. The length should be 1 to 128 characters, supporting Chinese and case-sensitive English letters, and can include numbers, periods (.), underscores (_), and hyphens (-).
+        # - When the user group type is **department**, it represents the value of the department. For example: OU=Department1,OU=SASE DingTalk.
+        # - When the user group type is **email**, it represents the value of the email. For example: username@example.com.
+        # - When the user group type is **telephone**, it represents the value of the phone number. For example: 13900001234.
         self.value = value
 
     def validate(self):
@@ -8648,24 +10205,62 @@ class GetPrivateAccessPolicyResponseBodyPolicy(TeaModel):
         status: str = None,
         tag_ids: List[str] = None,
         trigger_template_id: str = None,
+        trusted_process_group_ids: List[str] = None,
+        trusted_process_status: str = None,
+        trusted_software_ids: List[str] = None,
         user_group_ids: List[str] = None,
         user_group_mode: str = None,
     ):
+        # A collection of application IDs for the private access policy. This field has a value when the application type is Application.
         self.application_ids = application_ids
+        # The application type of the private access policy. Possible values:
+        # - **Application**: Application.
+        # - **Tag**: Tag.
         self.application_type = application_type
+        # Intranet access policy creation time.
         self.create_time = create_time
+        # Collection of custom user group attributes. Multiple custom user group attributes are combined with an OR relationship and take effect as a set.
         self.custom_user_attributes = custom_user_attributes
+        # Intranet access policy description.
         self.description = description
+        # The action to take if the security baseline is not met. Possible values:
+        # 
+        # - **Block**: Block.
+        # - **Observe**: Observe.
         self.device_attribute_action = device_attribute_action
+        # The ID of the security baseline policy.
         self.device_attribute_id = device_attribute_id
+        # Intranet access policy name.
         self.name = name
+        # Intranet access policy action. Values:
+        # - **Block**: Block.
+        # - **Allow**: Allow.
         self.policy_action = policy_action
+        # Intranet access policy ID.
         self.policy_id = policy_id
+        # Intranet access policy priority. A value of 1 indicates the highest priority.
         self.priority = priority
+        # Intranet access policy status. Values:
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
         self.status = status
+        # A collection of tag IDs for the private access policy. This field has a value when the application type is Tag.
         self.tag_ids = tag_ids
+        # The trigger template ID.
         self.trigger_template_id = trigger_template_id
+        # A list of trusted process group IDs.
+        self.trusted_process_group_ids = trusted_process_group_ids
+        # The status of the trusted process switch. Possible values:
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
+        self.trusted_process_status = trusted_process_status
+        # A list of trusted software IDs.
+        self.trusted_software_ids = trusted_software_ids
+        # Collection of user group IDs for the intranet access policy. This field is populated when the user group type is Normal.
         self.user_group_ids = user_group_ids
+        # User group type for the intranet access policy. Values:
+        # - **Normal**: Normal user group.
+        # - **Custom**: Custom user group.
         self.user_group_mode = user_group_mode
 
     def validate(self):
@@ -8710,6 +10305,12 @@ class GetPrivateAccessPolicyResponseBodyPolicy(TeaModel):
             result['TagIds'] = self.tag_ids
         if self.trigger_template_id is not None:
             result['TriggerTemplateId'] = self.trigger_template_id
+        if self.trusted_process_group_ids is not None:
+            result['TrustedProcessGroupIds'] = self.trusted_process_group_ids
+        if self.trusted_process_status is not None:
+            result['TrustedProcessStatus'] = self.trusted_process_status
+        if self.trusted_software_ids is not None:
+            result['TrustedSoftwareIds'] = self.trusted_software_ids
         if self.user_group_ids is not None:
             result['UserGroupIds'] = self.user_group_ids
         if self.user_group_mode is not None:
@@ -8749,6 +10350,12 @@ class GetPrivateAccessPolicyResponseBodyPolicy(TeaModel):
             self.tag_ids = m.get('TagIds')
         if m.get('TriggerTemplateId') is not None:
             self.trigger_template_id = m.get('TriggerTemplateId')
+        if m.get('TrustedProcessGroupIds') is not None:
+            self.trusted_process_group_ids = m.get('TrustedProcessGroupIds')
+        if m.get('TrustedProcessStatus') is not None:
+            self.trusted_process_status = m.get('TrustedProcessStatus')
+        if m.get('TrustedSoftwareIds') is not None:
+            self.trusted_software_ids = m.get('TrustedSoftwareIds')
         if m.get('UserGroupIds') is not None:
             self.user_group_ids = m.get('UserGroupIds')
         if m.get('UserGroupMode') is not None:
@@ -8762,7 +10369,9 @@ class GetPrivateAccessPolicyResponseBody(TeaModel):
         policy: GetPrivateAccessPolicyResponseBodyPolicy = None,
         request_id: str = None,
     ):
+        # Intranet access policy.
         self.policy = policy
+        # The ID of the current request.
         self.request_id = request_id
 
     def validate(self):
@@ -9192,6 +10801,7 @@ class GetUserDeviceResponseBodyDevice(TeaModel):
         ia_status: str = None,
         inner_ip: str = None,
         mac: str = None,
+        match_device_group_ids: List[str] = None,
         memory: str = None,
         nac_status: str = None,
         net_interface_info: List[GetUserDeviceResponseBodyDeviceNetInterfaceInfo] = None,
@@ -9222,6 +10832,7 @@ class GetUserDeviceResponseBodyDevice(TeaModel):
         self.ia_status = ia_status
         self.inner_ip = inner_ip
         self.mac = mac
+        self.match_device_group_ids = match_device_group_ids
         self.memory = memory
         self.nac_status = nac_status
         self.net_interface_info = net_interface_info
@@ -9289,6 +10900,8 @@ class GetUserDeviceResponseBodyDevice(TeaModel):
             result['InnerIP'] = self.inner_ip
         if self.mac is not None:
             result['Mac'] = self.mac
+        if self.match_device_group_ids is not None:
+            result['MatchDeviceGroupIds'] = self.match_device_group_ids
         if self.memory is not None:
             result['Memory'] = self.memory
         if self.nac_status is not None:
@@ -9356,6 +10969,8 @@ class GetUserDeviceResponseBodyDevice(TeaModel):
             self.inner_ip = m.get('InnerIP')
         if m.get('Mac') is not None:
             self.mac = m.get('Mac')
+        if m.get('MatchDeviceGroupIds') is not None:
+            self.match_device_group_ids = m.get('MatchDeviceGroupIds')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
         if m.get('NacStatus') is not None:
@@ -10002,6 +11617,115 @@ class GetWmExtractTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetWmExtractTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ImportEnterpriseAccelerateTargetsRequest(TeaModel):
+    def __init__(
+        self,
+        eap_id: str = None,
+        file_url: str = None,
+    ):
+        # This parameter is required.
+        self.eap_id = eap_id
+        # This parameter is required.
+        self.file_url = file_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.eap_id is not None:
+            result['EapId'] = self.eap_id
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EapId') is not None:
+            self.eap_id = m.get('EapId')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        return self
+
+
+class ImportEnterpriseAccelerateTargetsResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ImportEnterpriseAccelerateTargetsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ImportEnterpriseAccelerateTargetsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ImportEnterpriseAccelerateTargetsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12904,17 +14628,38 @@ class ListDynamicDisposalProcessesRequest(TeaModel):
         status: str = None,
         user_name: str = None,
     ):
+        # The page number to display in the paginated query. Range: 1~10000.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # Terminal device ID.
         self.dev_tag = dev_tag
+        # Disposal action.
+        # - **ztna_connect**: Prohibit connection to the zero-trust intranet.
+        # - **nac_connect**: Prohibit connection to the office network access.
+        # - **none**: No disposal action.
         self.disposal_action = disposal_action
+        # Disposal process ID.
         self.disposal_process_id = disposal_process_id
+        # The end time for querying dynamic disposal processes. Format: Unix timestamp (in seconds).
         self.end_time = end_time
+        # The number of items per page in the paginated query. Range: 1~1000.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Recovery type.
+        # - **auto**: Automatic recovery.
+        # - **console**: Console recovery.
+        # - **auth**: Recovery by authentication and reporting.
         self.recovery_type = recovery_type
+        # The start time for querying dynamic disposal processes. Format: Unix timestamp (in seconds).
         self.start_time = start_time
+        # Disposal status. Values:
+        # - **disposal**: In the disposal state.
+        # - **finished**: Already automatically recovered.
+        # - **recovery**: Recovered by authentication and reporting or console recovery.
         self.status = status
+        # Username.
         self.user_name = user_name
 
     def validate(self):
@@ -12985,13 +14730,27 @@ class ListDynamicDisposalProcessesResponseBodyDisposalProcessesDeviceBasicInfo(T
         memory: str = None,
         os_version: str = None,
     ):
+        # CPU model.
         self.cpu = cpu
+        # Device ID.
         self.dev_tag = dev_tag
+        # Device operating system type. Values:
+        # - **Windows**：Windows system.
+        # - **macOS**：macOS system.
+        # - **Linux**：Linux system.
+        # - **Android**：Android system.
+        # - **iOS**：iOS system.
+        # - **Windows_Wuying**：Wuying cloud desktop system.
         self.dev_type = dev_type
+        # Device disk model.
         self.disk = disk
+        # Device name.
         self.hostname = hostname
+        # Device MAC address.
         self.mac = mac
+        # Device memory capacity. Unit: GB.
         self.memory = memory
+        # Operating system version
         self.os_version = os_version
 
     def validate(self):
@@ -13058,17 +14817,36 @@ class ListDynamicDisposalProcessesResponseBodyDisposalProcessesDeviceStatusInfo(
         workshop: str = None,
         ztna_status: str = None,
     ):
+        # Client version.
         self.app_version = app_version
+        # Department to which the user belongs.
         self.department = department
+        # Office data protection status. Values:
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
+        # - **Unprovisioned**: Not configured.
+        # - **Unauthorized**: Unauthorized.
         self.dlp_status = dlp_status
+        # Public IP address.
         self.internet_ip = internet_ip
+        # Internet behavior management enablement status.
         self.la_status = la_status
+        # Login status.
         self.login_status = login_status
+        # Network access control status. Values:
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
+        # - **Unprovisioned**: Not configured.
         self.nac_status = nac_status
+        # Private IP address.
         self.private_ip = private_ip
+        # Unique ID of the SASE user.
         self.sase_user_id = sase_user_id
+        # Username.
         self.username = username
+        # Identified office area name.
         self.workshop = workshop
+        # ZTNA enablement status.
         self.ztna_status = ztna_status
 
     def validate(self):
@@ -13154,20 +14932,41 @@ class ListDynamicDisposalProcessesResponseBodyDisposalProcesses(TeaModel):
         status: str = None,
         user_name: str = None,
     ):
+        # User\\"s department.
         self.department = department
+        # Device ID.
         self.dev_tag = dev_tag
+        # Basic device information.
         self.device_basic_info = device_basic_info
+        # 设备状态信息。
         self.device_status_info = device_status_info
+        # List of disposal actions.
         self.disposal_actions = disposal_actions
+        # Disposal process ID.
         self.disposal_process_id = disposal_process_id
+        # Disposal time, in seconds since the epoch.
         self.disposal_time = disposal_time
+        # Dynamic policy ID.
         self.dynamic_policy_id = dynamic_policy_id
+        # Dynamic policy name.
         self.dynamic_policy_name = dynamic_policy_name
+        # Terminal device name. Length: 1~128 characters, supporting Chinese and uppercase/lowercase English letters, and can include numbers, half-width periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), slashes (/), at (@) symbols, and spaces. Entering an underscore (_) alone will additionally query all terminal devices with 4-byte UTF-8 characters in their names.
         self.hostname = hostname
+        # Recovery type.
+        # - **auto**：Automatic recovery.
+        # - **console**：Console recovery.
+        # - **auth**：Certification and reporting recovery.
         self.recovery_type = recovery_type
+        # Rule content.
         self.rule_content = rule_content
+        # SASE用户ID。
         self.sase_user_id = sase_user_id
+        # Disposal status. Values:
+        # - **disposal**: In the disposal state.
+        # - **finished**: Already automatically recovered.
+        # - **recovery**: Recovered by authentication and reporting or console recovery.
         self.status = status
+        # Username.
         self.user_name = user_name
 
     def validate(self):
@@ -13258,8 +15057,11 @@ class ListDynamicDisposalProcessesResponseBody(TeaModel):
         request_id: str = None,
         total_num: int = None,
     ):
+        # List of disposal processes.
         self.disposal_processes = disposal_processes
+        # Request ID.
         self.request_id = request_id
+        # Total number of dynamic disposal processes.
         self.total_num = total_num
 
     def validate(self):
@@ -13673,6 +15475,596 @@ class ListDynamicRoutesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListDynamicRoutesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListEnterpriseAccelerateLogsRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        department: str = None,
+        dst_addr: str = None,
+        end_time: int = None,
+        page_size: int = None,
+        search_mode: str = None,
+        start_time: int = None,
+        username: str = None,
+    ):
+        self.current_page = current_page
+        self.department = department
+        self.dst_addr = dst_addr
+        # This parameter is required.
+        self.end_time = end_time
+        self.page_size = page_size
+        self.search_mode = search_mode
+        # This parameter is required.
+        self.start_time = start_time
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.department is not None:
+            result['Department'] = self.department
+        if self.dst_addr is not None:
+            result['DstAddr'] = self.dst_addr
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.search_mode is not None:
+            result['SearchMode'] = self.search_mode
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('Department') is not None:
+            self.department = m.get('Department')
+        if m.get('DstAddr') is not None:
+            self.dst_addr = m.get('DstAddr')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SearchMode') is not None:
+            self.search_mode = m.get('SearchMode')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class ListEnterpriseAccelerateLogsResponseBodyLogs(TeaModel):
+    def __init__(
+        self,
+        department: str = None,
+        device_type: str = None,
+        dst_addr: str = None,
+        in_bytes: str = None,
+        out_bytes: str = None,
+        policy_name: str = None,
+        proxy_addr: str = None,
+        unix_time: str = None,
+        username: str = None,
+    ):
+        self.department = department
+        self.device_type = device_type
+        self.dst_addr = dst_addr
+        self.in_bytes = in_bytes
+        self.out_bytes = out_bytes
+        self.policy_name = policy_name
+        self.proxy_addr = proxy_addr
+        self.unix_time = unix_time
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.department is not None:
+            result['Department'] = self.department
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.dst_addr is not None:
+            result['DstAddr'] = self.dst_addr
+        if self.in_bytes is not None:
+            result['InBytes'] = self.in_bytes
+        if self.out_bytes is not None:
+            result['OutBytes'] = self.out_bytes
+        if self.policy_name is not None:
+            result['PolicyName'] = self.policy_name
+        if self.proxy_addr is not None:
+            result['ProxyAddr'] = self.proxy_addr
+        if self.unix_time is not None:
+            result['UnixTime'] = self.unix_time
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Department') is not None:
+            self.department = m.get('Department')
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('DstAddr') is not None:
+            self.dst_addr = m.get('DstAddr')
+        if m.get('InBytes') is not None:
+            self.in_bytes = m.get('InBytes')
+        if m.get('OutBytes') is not None:
+            self.out_bytes = m.get('OutBytes')
+        if m.get('PolicyName') is not None:
+            self.policy_name = m.get('PolicyName')
+        if m.get('ProxyAddr') is not None:
+            self.proxy_addr = m.get('ProxyAddr')
+        if m.get('UnixTime') is not None:
+            self.unix_time = m.get('UnixTime')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class ListEnterpriseAccelerateLogsResponseBody(TeaModel):
+    def __init__(
+        self,
+        logs: List[ListEnterpriseAccelerateLogsResponseBodyLogs] = None,
+        request_id: str = None,
+        total_number: int = None,
+    ):
+        self.logs = logs
+        self.request_id = request_id
+        self.total_number = total_number
+
+    def validate(self):
+        if self.logs:
+            for k in self.logs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Logs'] = []
+        if self.logs is not None:
+            for k in self.logs:
+                result['Logs'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_number is not None:
+            result['TotalNumber'] = self.total_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.logs = []
+        if m.get('Logs') is not None:
+            for k in m.get('Logs'):
+                temp_model = ListEnterpriseAccelerateLogsResponseBodyLogs()
+                self.logs.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalNumber') is not None:
+            self.total_number = m.get('TotalNumber')
+        return self
+
+
+class ListEnterpriseAccelerateLogsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListEnterpriseAccelerateLogsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListEnterpriseAccelerateLogsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListEnterpriseAcceleratePoliciesRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        name: str = None,
+        page_size: int = None,
+    ):
+        # This parameter is required.
+        self.current_page = current_page
+        self.name = name
+        # This parameter is required.
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListEnterpriseAcceleratePoliciesResponseBodyPolicies(TeaModel):
+    def __init__(
+        self,
+        acceleration_type: str = None,
+        description: str = None,
+        eap_id: str = None,
+        enabled: int = None,
+        name: str = None,
+        on_tls: int = None,
+        priority: int = None,
+        show_in_client: int = None,
+        upstream_host: str = None,
+        upstream_port: int = None,
+        upstream_type: str = None,
+        user_attribute_group: str = None,
+    ):
+        self.acceleration_type = acceleration_type
+        self.description = description
+        self.eap_id = eap_id
+        self.enabled = enabled
+        self.name = name
+        self.on_tls = on_tls
+        self.priority = priority
+        self.show_in_client = show_in_client
+        self.upstream_host = upstream_host
+        self.upstream_port = upstream_port
+        self.upstream_type = upstream_type
+        self.user_attribute_group = user_attribute_group
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acceleration_type is not None:
+            result['AccelerationType'] = self.acceleration_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.eap_id is not None:
+            result['EapId'] = self.eap_id
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.on_tls is not None:
+            result['OnTls'] = self.on_tls
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.show_in_client is not None:
+            result['ShowInClient'] = self.show_in_client
+        if self.upstream_host is not None:
+            result['UpstreamHost'] = self.upstream_host
+        if self.upstream_port is not None:
+            result['UpstreamPort'] = self.upstream_port
+        if self.upstream_type is not None:
+            result['UpstreamType'] = self.upstream_type
+        if self.user_attribute_group is not None:
+            result['UserAttributeGroup'] = self.user_attribute_group
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccelerationType') is not None:
+            self.acceleration_type = m.get('AccelerationType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EapId') is not None:
+            self.eap_id = m.get('EapId')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OnTls') is not None:
+            self.on_tls = m.get('OnTls')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('ShowInClient') is not None:
+            self.show_in_client = m.get('ShowInClient')
+        if m.get('UpstreamHost') is not None:
+            self.upstream_host = m.get('UpstreamHost')
+        if m.get('UpstreamPort') is not None:
+            self.upstream_port = m.get('UpstreamPort')
+        if m.get('UpstreamType') is not None:
+            self.upstream_type = m.get('UpstreamType')
+        if m.get('UserAttributeGroup') is not None:
+            self.user_attribute_group = m.get('UserAttributeGroup')
+        return self
+
+
+class ListEnterpriseAcceleratePoliciesResponseBody(TeaModel):
+    def __init__(
+        self,
+        policies: List[ListEnterpriseAcceleratePoliciesResponseBodyPolicies] = None,
+        request_id: str = None,
+        total: int = None,
+    ):
+        self.policies = policies
+        self.request_id = request_id
+        self.total = total
+
+    def validate(self):
+        if self.policies:
+            for k in self.policies:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Policies'] = []
+        if self.policies is not None:
+            for k in self.policies:
+                result['Policies'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.policies = []
+        if m.get('Policies') is not None:
+            for k in m.get('Policies'):
+                temp_model = ListEnterpriseAcceleratePoliciesResponseBodyPolicies()
+                self.policies.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListEnterpriseAcceleratePoliciesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListEnterpriseAcceleratePoliciesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListEnterpriseAcceleratePoliciesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListEnterpriseAccelerateTargetsRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        eap_id: str = None,
+        page_size: int = None,
+        target: str = None,
+    ):
+        # This parameter is required.
+        self.current_page = current_page
+        # This parameter is required.
+        self.eap_id = eap_id
+        # This parameter is required.
+        self.page_size = page_size
+        self.target = target
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.eap_id is not None:
+            result['EapId'] = self.eap_id
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.target is not None:
+            result['Target'] = self.target
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('EapId') is not None:
+            self.eap_id = m.get('EapId')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        return self
+
+
+class ListEnterpriseAccelerateTargetsResponseBody(TeaModel):
+    def __init__(
+        self,
+        eap_id: str = None,
+        request_id: str = None,
+        targets: List[str] = None,
+        total: int = None,
+    ):
+        self.eap_id = eap_id
+        self.request_id = request_id
+        self.targets = targets
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.eap_id is not None:
+            result['EapId'] = self.eap_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.targets is not None:
+            result['Targets'] = self.targets
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EapId') is not None:
+            self.eap_id = m.get('EapId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Targets') is not None:
+            self.targets = m.get('Targets')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListEnterpriseAccelerateTargetsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListEnterpriseAccelerateTargetsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListEnterpriseAccelerateTargetsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -16376,6 +18768,9 @@ class ListPrivateAccessPolicesResponseBodyPolices(TeaModel):
         status: str = None,
         tag_ids: List[str] = None,
         trigger_template_id: str = None,
+        trusted_process_group_ids: List[str] = None,
+        trusted_process_status: str = None,
+        trusted_software_ids: List[str] = None,
         user_group_ids: List[str] = None,
         user_group_mode: str = None,
     ):
@@ -16419,6 +18814,14 @@ class ListPrivateAccessPolicesResponseBodyPolices(TeaModel):
         self.tag_ids = tag_ids
         # The ID of the trigger template.
         self.trigger_template_id = trigger_template_id
+        # List of trusted process group IDs.
+        self.trusted_process_group_ids = trusted_process_group_ids
+        # Trusted process switch status. Values: 
+        # - **Enabled**: On.
+        # - **Disabled**: Off.
+        self.trusted_process_status = trusted_process_status
+        # List of trusted software IDs.
+        self.trusted_software_ids = trusted_software_ids
         # The IDs of user groups in the private access policy. If the value of UserGroupMode is **Normal**, this parameter is returned.
         self.user_group_ids = user_group_ids
         # The type of the user group in the private access policy. Valid values:
@@ -16469,6 +18872,12 @@ class ListPrivateAccessPolicesResponseBodyPolices(TeaModel):
             result['TagIds'] = self.tag_ids
         if self.trigger_template_id is not None:
             result['TriggerTemplateId'] = self.trigger_template_id
+        if self.trusted_process_group_ids is not None:
+            result['TrustedProcessGroupIds'] = self.trusted_process_group_ids
+        if self.trusted_process_status is not None:
+            result['TrustedProcessStatus'] = self.trusted_process_status
+        if self.trusted_software_ids is not None:
+            result['TrustedSoftwareIds'] = self.trusted_software_ids
         if self.user_group_ids is not None:
             result['UserGroupIds'] = self.user_group_ids
         if self.user_group_mode is not None:
@@ -16508,6 +18917,12 @@ class ListPrivateAccessPolicesResponseBodyPolices(TeaModel):
             self.tag_ids = m.get('TagIds')
         if m.get('TriggerTemplateId') is not None:
             self.trigger_template_id = m.get('TriggerTemplateId')
+        if m.get('TrustedProcessGroupIds') is not None:
+            self.trusted_process_group_ids = m.get('TrustedProcessGroupIds')
+        if m.get('TrustedProcessStatus') is not None:
+            self.trusted_process_status = m.get('TrustedProcessStatus')
+        if m.get('TrustedSoftwareIds') is not None:
+            self.trusted_software_ids = m.get('TrustedSoftwareIds')
         if m.get('UserGroupIds') is not None:
             self.user_group_ids = m.get('UserGroupIds')
         if m.get('UserGroupMode') is not None:
@@ -18781,6 +21196,7 @@ class ListUserDevicesRequest(TeaModel):
         current_page: int = None,
         department: str = None,
         device_belong: str = None,
+        device_group_id: str = None,
         device_statuses: List[str] = None,
         device_tags: List[str] = None,
         device_types: List[str] = None,
@@ -18804,6 +21220,7 @@ class ListUserDevicesRequest(TeaModel):
         self.current_page = current_page
         self.department = department
         self.device_belong = device_belong
+        self.device_group_id = device_group_id
         self.device_statuses = device_statuses
         self.device_tags = device_tags
         self.device_types = device_types
@@ -18841,6 +21258,8 @@ class ListUserDevicesRequest(TeaModel):
             result['Department'] = self.department
         if self.device_belong is not None:
             result['DeviceBelong'] = self.device_belong
+        if self.device_group_id is not None:
+            result['DeviceGroupId'] = self.device_group_id
         if self.device_statuses is not None:
             result['DeviceStatuses'] = self.device_statuses
         if self.device_tags is not None:
@@ -18887,6 +21306,8 @@ class ListUserDevicesRequest(TeaModel):
             self.department = m.get('Department')
         if m.get('DeviceBelong') is not None:
             self.device_belong = m.get('DeviceBelong')
+        if m.get('DeviceGroupId') is not None:
+            self.device_group_id = m.get('DeviceGroupId')
         if m.get('DeviceStatuses') is not None:
             self.device_statuses = m.get('DeviceStatuses')
         if m.get('DeviceTags') is not None:
@@ -18976,6 +21397,7 @@ class ListUserDevicesResponseBodyDevices(TeaModel):
         ia_status: str = None,
         inner_ip: str = None,
         mac: str = None,
+        match_device_group_ids: List[str] = None,
         memory: str = None,
         nac_status: str = None,
         net_interface_info: List[ListUserDevicesResponseBodyDevicesNetInterfaceInfo] = None,
@@ -19005,6 +21427,7 @@ class ListUserDevicesResponseBodyDevices(TeaModel):
         self.ia_status = ia_status
         self.inner_ip = inner_ip
         self.mac = mac
+        self.match_device_group_ids = match_device_group_ids
         self.memory = memory
         self.nac_status = nac_status
         self.net_interface_info = net_interface_info
@@ -19064,6 +21487,8 @@ class ListUserDevicesResponseBodyDevices(TeaModel):
             result['InnerIP'] = self.inner_ip
         if self.mac is not None:
             result['Mac'] = self.mac
+        if self.match_device_group_ids is not None:
+            result['MatchDeviceGroupIds'] = self.match_device_group_ids
         if self.memory is not None:
             result['Memory'] = self.memory
         if self.nac_status is not None:
@@ -19126,6 +21551,8 @@ class ListUserDevicesResponseBodyDevices(TeaModel):
             self.inner_ip = m.get('InnerIP')
         if m.get('Mac') is not None:
             self.mac = m.get('Mac')
+        if m.get('MatchDeviceGroupIds') is not None:
+            self.match_device_group_ids = m.get('MatchDeviceGroupIds')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
         if m.get('NacStatus') is not None:
@@ -20011,11 +22438,18 @@ class ListUserPrivateAccessPoliciesRequest(TeaModel):
         page_size: int = None,
         sase_user_id: str = None,
     ):
+        # Current page number.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # Intranet access policy name. Length should be between 1 to 128 characters, supporting Chinese and case-sensitive English letters, and can include numbers, periods (.), underscores (_), and hyphens (-).
         self.name = name
+        # Number of items per page for pagination. Range: 1~100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # User ID.
+        # 
         # This parameter is required.
         self.sase_user_id = sase_user_id
 
@@ -20059,9 +22493,23 @@ class ListUserPrivateAccessPoliciesResponseBodyPolicesCustomUserAttributes(TeaMo
         user_group_type: str = None,
         value: str = None,
     ):
+        # The identity provider ID of the user group. This value exists when the custom user group type is **department**.
         self.idp_id = idp_id
+        # Relation of the user group. Values:
+        # - **Equal**: Equal.
+        # - **Unequal**: Not equal.
         self.relation = relation
+        # Type of the user group. Values:
+        # - **username**: Username.
+        # - **department**: Department.
+        # - **email**: Email.
+        # - **telephone**: Telephone.
         self.user_group_type = user_group_type
+        # The value of the user group attribute.
+        # - When the user group type is **username**, it represents the value of the username. The length is 1 to 128 characters, supporting Chinese and case-sensitive English letters, and can include numbers, periods (.), underscores (_), and hyphens (-).
+        # - When the user group type is **department**, it represents the value of the department. For example: OU=Department1,OU=SASE DingTalk.
+        # - When the user group type is **email**, it represents the value of the email. For example: username@example.com.
+        # - When the user group type is **telephone**, it represents the value of the phone number. For example: 13900001234.
         self.value = value
 
     def validate(self):
@@ -20106,15 +22554,33 @@ class ListUserPrivateAccessPoliciesResponseBodyPolices(TeaModel):
         policy_action: str = None,
         policy_id: str = None,
         priority: int = None,
+        trusted_process_group_ids: List[str] = None,
+        trusted_software_ids: List[str] = None,
         user_group_mode: str = None,
     ):
+        # Set of custom user group attributes. Multiple custom user group attributes are in an OR relationship, effective as a union.
         self.custom_user_attributes = custom_user_attributes
+        # Associated security baseline.
         self.device_attribute_name = device_attribute_name
+        # Associated user group.
         self.matched_user_group = matched_user_group
+        # Intranet access policy name.
         self.name = name
+        # Action of the intranet access policy. Values:
+        # - **Block**: Block.
+        # - **Allow**: Allow.
         self.policy_action = policy_action
+        # Intranet access policy ID.
         self.policy_id = policy_id
+        # Priority of the intranet access policy. The number 1 indicates the highest priority.
         self.priority = priority
+        # List of trusted process group IDs.
+        self.trusted_process_group_ids = trusted_process_group_ids
+        # List of trusted software IDs.
+        self.trusted_software_ids = trusted_software_ids
+        # Type of the user group for the intranet access policy. Values:
+        # - **Normal**: Normal user group.
+        # - **Custom**: Custom user group.
         self.user_group_mode = user_group_mode
 
     def validate(self):
@@ -20145,6 +22611,10 @@ class ListUserPrivateAccessPoliciesResponseBodyPolices(TeaModel):
             result['PolicyId'] = self.policy_id
         if self.priority is not None:
             result['Priority'] = self.priority
+        if self.trusted_process_group_ids is not None:
+            result['TrustedProcessGroupIds'] = self.trusted_process_group_ids
+        if self.trusted_software_ids is not None:
+            result['TrustedSoftwareIds'] = self.trusted_software_ids
         if self.user_group_mode is not None:
             result['UserGroupMode'] = self.user_group_mode
         return result
@@ -20168,6 +22638,10 @@ class ListUserPrivateAccessPoliciesResponseBodyPolices(TeaModel):
             self.policy_id = m.get('PolicyId')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
+        if m.get('TrustedProcessGroupIds') is not None:
+            self.trusted_process_group_ids = m.get('TrustedProcessGroupIds')
+        if m.get('TrustedSoftwareIds') is not None:
+            self.trusted_software_ids = m.get('TrustedSoftwareIds')
         if m.get('UserGroupMode') is not None:
             self.user_group_mode = m.get('UserGroupMode')
         return self
@@ -20180,9 +22654,11 @@ class ListUserPrivateAccessPoliciesResponseBody(TeaModel):
         request_id: str = None,
         total_num: int = None,
     ):
+        # List of authorized policies.
         self.polices = polices
-        # Id of the request
+        # ID of the request.
         self.request_id = request_id
+        # Total number of authorized policies.
         self.total_num = total_num
 
     def validate(self):
@@ -20618,6 +23094,165 @@ class LookupWmInfoMappingResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = LookupWmInfoMappingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyEnterpriseAcceleratePolicyRequest(TeaModel):
+    def __init__(
+        self,
+        acceleration_type: str = None,
+        description: str = None,
+        eap_id: str = None,
+        name: str = None,
+        on_tls: int = None,
+        priority: int = None,
+        show_in_client: int = None,
+        upstream_host: str = None,
+        upstream_port: int = None,
+        upstream_type: str = None,
+        user_attribute_group: str = None,
+    ):
+        self.acceleration_type = acceleration_type
+        self.description = description
+        self.eap_id = eap_id
+        self.name = name
+        self.on_tls = on_tls
+        self.priority = priority
+        self.show_in_client = show_in_client
+        # This parameter is required.
+        self.upstream_host = upstream_host
+        # This parameter is required.
+        self.upstream_port = upstream_port
+        # This parameter is required.
+        self.upstream_type = upstream_type
+        # This parameter is required.
+        self.user_attribute_group = user_attribute_group
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acceleration_type is not None:
+            result['AccelerationType'] = self.acceleration_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.eap_id is not None:
+            result['EapId'] = self.eap_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.on_tls is not None:
+            result['OnTls'] = self.on_tls
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.show_in_client is not None:
+            result['ShowInClient'] = self.show_in_client
+        if self.upstream_host is not None:
+            result['UpstreamHost'] = self.upstream_host
+        if self.upstream_port is not None:
+            result['UpstreamPort'] = self.upstream_port
+        if self.upstream_type is not None:
+            result['UpstreamType'] = self.upstream_type
+        if self.user_attribute_group is not None:
+            result['UserAttributeGroup'] = self.user_attribute_group
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccelerationType') is not None:
+            self.acceleration_type = m.get('AccelerationType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EapId') is not None:
+            self.eap_id = m.get('EapId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OnTls') is not None:
+            self.on_tls = m.get('OnTls')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('ShowInClient') is not None:
+            self.show_in_client = m.get('ShowInClient')
+        if m.get('UpstreamHost') is not None:
+            self.upstream_host = m.get('UpstreamHost')
+        if m.get('UpstreamPort') is not None:
+            self.upstream_port = m.get('UpstreamPort')
+        if m.get('UpstreamType') is not None:
+            self.upstream_type = m.get('UpstreamType')
+        if m.get('UserAttributeGroup') is not None:
+            self.user_attribute_group = m.get('UserAttributeGroup')
+        return self
+
+
+class ModifyEnterpriseAcceleratePolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyEnterpriseAcceleratePolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyEnterpriseAcceleratePolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyEnterpriseAcceleratePolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -23296,7 +25931,9 @@ class UpdatePrivateAccessApplicationRequestPortRanges(TeaModel):
         begin: int = None,
         end: int = None,
     ):
+        # The start port. The start port must be less than or equal to the end port.
         self.begin = begin
+        # The end port. The end port must be greater than or equal to the start port.
         self.end = end
 
     def validate(self):
@@ -23339,18 +25976,44 @@ class UpdatePrivateAccessApplicationRequest(TeaModel):
         status: str = None,
         tag_ids: List[str] = None,
     ):
+        # The addresses of the office applications. You can enter up to 1,000 addresses of office applications.
         self.addresses = addresses
+        # The ID of the office application. You can obtain the value by calling the following operations:
+        # 
+        # *   [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): queries office applications.
+        # *   [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): creates an office application.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The description of the office application. The value must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
         self.description = description
+        # The browser access mode parameter. The parameter specifies the configurations of Layer 7 applications.
         self.l_7config = l_7config
+        # The browser access mode parameter. The parameter specifies the prefix of the domain name that the proxy gateway uses. The prefix must be 3 to 20 characters in length, and can contain lowercase letters, digits, and hyphens (-).
         self.l_7proxy_domain_automatic_prefix = l_7proxy_domain_automatic_prefix
+        # The browser access mode parameter. The parameter specifies the custom domain name of the proxy gateway.
         self.l_7proxy_domain_custom = l_7proxy_domain_custom
+        # 浏览器访问模式参数：私有代理域名。
         self.l_7proxy_domain_private = l_7proxy_domain_private
+        # The modification type of the office application. Valid values:
+        # 
+        # *   **Cover**: uses the values of the **Addresses**, **PortRanges**, and **TagIds** parameters to overwrite the original addresses, port ranges, and tag IDs. This is the default value.
+        # *   **Append**: adds the values of the **Addresses**, **PortRanges**, and **TagIds** parameters respectively to the original addresses, port ranges, and tag IDs.
         self.modify_type = modify_type
+        # The port ranges of the office applications. You can enter up to 65,535 port ranges. Multiple port ranges cannot be duplicated or overlapped.
         self.port_ranges = port_ranges
+        # The protocol that is used by the office application. Valid values:
+        # 
+        # *   **All**\
+        # *   **TCP**\
+        # *   **UDP**\
         self.protocol = protocol
+        # The status of the office application. Valid values:
+        # 
+        # *   **Enabled**\
+        # *   **Disabled**\
         self.status = status
+        # The IDs of the tags for the office applications. You can add up to six custom tags to an office application.
         self.tag_ids = tag_ids
 
     def validate(self):
@@ -23434,7 +26097,9 @@ class UpdatePrivateAccessApplicationShrinkRequestPortRanges(TeaModel):
         begin: int = None,
         end: int = None,
     ):
+        # The start port. The start port must be less than or equal to the end port.
         self.begin = begin
+        # The end port. The end port must be greater than or equal to the start port.
         self.end = end
 
     def validate(self):
@@ -23477,18 +26142,44 @@ class UpdatePrivateAccessApplicationShrinkRequest(TeaModel):
         status: str = None,
         tag_ids: List[str] = None,
     ):
+        # The addresses of the office applications. You can enter up to 1,000 addresses of office applications.
         self.addresses = addresses
+        # The ID of the office application. You can obtain the value by calling the following operations:
+        # 
+        # *   [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): queries office applications.
+        # *   [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): creates an office application.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The description of the office application. The value must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
         self.description = description
+        # The browser access mode parameter. The parameter specifies the configurations of Layer 7 applications.
         self.l_7config_shrink = l_7config_shrink
+        # The browser access mode parameter. The parameter specifies the prefix of the domain name that the proxy gateway uses. The prefix must be 3 to 20 characters in length, and can contain lowercase letters, digits, and hyphens (-).
         self.l_7proxy_domain_automatic_prefix = l_7proxy_domain_automatic_prefix
+        # The browser access mode parameter. The parameter specifies the custom domain name of the proxy gateway.
         self.l_7proxy_domain_custom = l_7proxy_domain_custom
+        # 浏览器访问模式参数：私有代理域名。
         self.l_7proxy_domain_private = l_7proxy_domain_private
+        # The modification type of the office application. Valid values:
+        # 
+        # *   **Cover**: uses the values of the **Addresses**, **PortRanges**, and **TagIds** parameters to overwrite the original addresses, port ranges, and tag IDs. This is the default value.
+        # *   **Append**: adds the values of the **Addresses**, **PortRanges**, and **TagIds** parameters respectively to the original addresses, port ranges, and tag IDs.
         self.modify_type = modify_type
+        # The port ranges of the office applications. You can enter up to 65,535 port ranges. Multiple port ranges cannot be duplicated or overlapped.
         self.port_ranges = port_ranges
+        # The protocol that is used by the office application. Valid values:
+        # 
+        # *   **All**\
+        # *   **TCP**\
+        # *   **UDP**\
         self.protocol = protocol
+        # The status of the office application. Valid values:
+        # 
+        # *   **Enabled**\
+        # *   **Disabled**\
         self.status = status
+        # The IDs of the tags for the office applications. You can add up to six custom tags to an office application.
         self.tag_ids = tag_ids
 
     def validate(self):
@@ -23568,6 +26259,7 @@ class UpdatePrivateAccessApplicationResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -23639,11 +26331,24 @@ class UpdatePrivateAccessPolicyRequestCustomUserAttributes(TeaModel):
         user_group_type: str = None,
         value: str = None,
     ):
+        # The identity source ID of the custom user group. Required when the custom user group type is **department**.
         self.idp_id = idp_id
+        # Relation of the custom user group. Values:
+        # - **Equal**: Equal.
+        # - **Unequal**: Not equal.
+        # 
         # This parameter is required.
         self.relation = relation
+        # Type of the custom user group. Values:
+        # - **username**: Username.
+        # - **department**: Department.
+        # - **email**: Email.
+        # - **telephone**: Telephone.
+        # 
         # This parameter is required.
         self.user_group_type = user_group_type
+        # Custom user group attribute values. - When the user group type is **username**, it represents the value of the username. The length should be 1 to 128 characters, supporting Chinese and case-sensitive English letters, and can include numbers, half-width periods (.), underscores (_), hyphens (-), asterisks (*), at symbols (@), and spaces. - When the user group type is **department**, it represents the value of the department. For example: OU=Department1,OU=SASE DingTalk. - When the user group type is **email**, it represents the value of the email. For example: username@example.com. - When the user group type is **telephone**, it represents the value of the mobile phone. For example: 13900001234.
+        # 
         # This parameter is required.
         self.value = value
 
@@ -23695,28 +26400,68 @@ class UpdatePrivateAccessPolicyRequest(TeaModel):
         status: str = None,
         tag_ids: List[str] = None,
         trigger_template_id: str = None,
+        trusted_process_group_ids: List[str] = None,
+        trusted_process_status: str = None,
+        trusted_software_ids: List[str] = None,
         user_group_ids: List[str] = None,
         user_group_mode: str = None,
     ):
+        # Set of application IDs for the private access policy. A single policy supports up to 100 private access application IDs.
         self.application_ids = application_ids
+        # Application type of the private access policy. Values:
+        # - **Application**: Application.
+        # - **Tag**: Tag.
         self.application_type = application_type
+        # Set of custom user attributes for the private access policy, required when the user group type is **Custom**. Mutually exclusive with the user group ID set. The total number of custom user groups is limited to 10.
         self.custom_user_attributes = custom_user_attributes
+        # Description of the private access policy. Length should be 1 to 128 characters, supporting Chinese and English letters (both uppercase and lowercase), and can include numbers, periods (.), underscores (_), hyphens (-), and spaces.
         self.description = description
+        # The execution strategy for not meeting the security baseline. Values:
+        # 
+        # - **Block**: Block.
+        # - **Observe**: Observe.
         self.device_attribute_action = device_attribute_action
+        # The ID of the security baseline policy.
         self.device_attribute_id = device_attribute_id
+        # The modification type of the private access policy. Values:
+        # - **Cover** (default): Use the values of **ApplicationIds**, **UserGroupIds**, and **CustomUserAttributes** to overwrite the original application ID set, user group ID set, and custom user attribute set, respectively.
+        # - **Append**: Add the values provided in **ApplicationIds**, **UserGroupIds**, and **CustomUserAttributes** to the original application ID set, user group ID set, and custom user attribute set, respectively.
         self.modify_type = modify_type
+        # Action of the private access policy. Values:
+        # - **Block**: Block.
+        # - **Allow**: Allow.
         self.policy_action = policy_action
+        # ID of the private access policy. Value sources:
+        # - [ListPrivateAccessPolicies](~~ListPrivateAccessPolicies~~): Batch query for private access policies.
+        # - [CreatePrivateAccessPolicy](~~CreatePrivateAccessPolicy~~): Create a private access policy.
+        # 
         # This parameter is required.
         self.policy_id = policy_id
+        # The priority of the private access policy. The number 1 indicates the highest priority. Range: 1~1000, with the maximum value being the total number of private access policies minus one.
         self.priority = priority
+        # The status of the private access policy. Values:
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
         self.status = status
-        # 内网访问标签ID集合。一条策略最多支持100个内网访问标签ID。
+        # Set of tag IDs for the private access policy. A single policy supports up to 100 private access tag IDs.
         self.tag_ids = tag_ids
+        # The trigger template ID.
         self.trigger_template_id = trigger_template_id
+        # Trusted process group ID.
+        self.trusted_process_group_ids = trusted_process_group_ids
+        # Trusted process switch status. Values: 
+        # 
+        # - **Enabled**: On. 
+        # 
+        # - **Disabled**: Off.
+        self.trusted_process_status = trusted_process_status
+        # Trusted Software ID.
+        self.trusted_software_ids = trusted_software_ids
+        # Set of user group IDs for the private access policy, required when the user group type is **Normal**. Mutually exclusive with the custom user group set. A single policy supports up to 10,000 user groups, and a maximum of 2,000 user group IDs can be modified at once.
         self.user_group_ids = user_group_ids
-        # 内网访问策略的用户组类型。取值：
-        # - **Normal**：普通用户组。
-        # - **Custom**：自定义用户组。
+        # User group type of the private access policy. Values:
+        # - **Normal**: Normal user group.
+        # - **Custom**: Custom user group.
         self.user_group_mode = user_group_mode
 
     def validate(self):
@@ -23759,6 +26504,12 @@ class UpdatePrivateAccessPolicyRequest(TeaModel):
             result['TagIds'] = self.tag_ids
         if self.trigger_template_id is not None:
             result['TriggerTemplateId'] = self.trigger_template_id
+        if self.trusted_process_group_ids is not None:
+            result['TrustedProcessGroupIds'] = self.trusted_process_group_ids
+        if self.trusted_process_status is not None:
+            result['TrustedProcessStatus'] = self.trusted_process_status
+        if self.trusted_software_ids is not None:
+            result['TrustedSoftwareIds'] = self.trusted_software_ids
         if self.user_group_ids is not None:
             result['UserGroupIds'] = self.user_group_ids
         if self.user_group_mode is not None:
@@ -23796,6 +26547,12 @@ class UpdatePrivateAccessPolicyRequest(TeaModel):
             self.tag_ids = m.get('TagIds')
         if m.get('TriggerTemplateId') is not None:
             self.trigger_template_id = m.get('TriggerTemplateId')
+        if m.get('TrustedProcessGroupIds') is not None:
+            self.trusted_process_group_ids = m.get('TrustedProcessGroupIds')
+        if m.get('TrustedProcessStatus') is not None:
+            self.trusted_process_status = m.get('TrustedProcessStatus')
+        if m.get('TrustedSoftwareIds') is not None:
+            self.trusted_software_ids = m.get('TrustedSoftwareIds')
         if m.get('UserGroupIds') is not None:
             self.user_group_ids = m.get('UserGroupIds')
         if m.get('UserGroupMode') is not None:
@@ -23808,6 +26565,7 @@ class UpdatePrivateAccessPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of this request.
         self.request_id = request_id
 
     def validate(self):

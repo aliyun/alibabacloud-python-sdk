@@ -633,6 +633,240 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_dynamic_route_with_options_async(request, runtime)
 
+    def create_enterprise_accelerate_policy_with_options(
+        self,
+        request: csas_20230120_models.CreateEnterpriseAcceleratePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.CreateEnterpriseAcceleratePolicyResponse:
+        """
+        @summary 创建加速策略
+        
+        @param request: CreateEnterpriseAcceleratePolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEnterpriseAcceleratePolicyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.acceleration_type):
+            body['AccelerationType'] = request.acceleration_type
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.priority):
+            body['Priority'] = request.priority
+        if not UtilClient.is_unset(request.show_in_client):
+            body['ShowInClient'] = request.show_in_client
+        if not UtilClient.is_unset(request.upstream_host):
+            body['UpstreamHost'] = request.upstream_host
+        if not UtilClient.is_unset(request.upstream_port):
+            body['UpstreamPort'] = request.upstream_port
+        if not UtilClient.is_unset(request.upstream_type):
+            body['UpstreamType'] = request.upstream_type
+        if not UtilClient.is_unset(request.user_attribute_group):
+            body['UserAttributeGroup'] = request.user_attribute_group
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateEnterpriseAcceleratePolicy',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.CreateEnterpriseAcceleratePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_enterprise_accelerate_policy_with_options_async(
+        self,
+        request: csas_20230120_models.CreateEnterpriseAcceleratePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.CreateEnterpriseAcceleratePolicyResponse:
+        """
+        @summary 创建加速策略
+        
+        @param request: CreateEnterpriseAcceleratePolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEnterpriseAcceleratePolicyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.acceleration_type):
+            body['AccelerationType'] = request.acceleration_type
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.priority):
+            body['Priority'] = request.priority
+        if not UtilClient.is_unset(request.show_in_client):
+            body['ShowInClient'] = request.show_in_client
+        if not UtilClient.is_unset(request.upstream_host):
+            body['UpstreamHost'] = request.upstream_host
+        if not UtilClient.is_unset(request.upstream_port):
+            body['UpstreamPort'] = request.upstream_port
+        if not UtilClient.is_unset(request.upstream_type):
+            body['UpstreamType'] = request.upstream_type
+        if not UtilClient.is_unset(request.user_attribute_group):
+            body['UserAttributeGroup'] = request.user_attribute_group
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateEnterpriseAcceleratePolicy',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.CreateEnterpriseAcceleratePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_enterprise_accelerate_policy(
+        self,
+        request: csas_20230120_models.CreateEnterpriseAcceleratePolicyRequest,
+    ) -> csas_20230120_models.CreateEnterpriseAcceleratePolicyResponse:
+        """
+        @summary 创建加速策略
+        
+        @param request: CreateEnterpriseAcceleratePolicyRequest
+        @return: CreateEnterpriseAcceleratePolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_enterprise_accelerate_policy_with_options(request, runtime)
+
+    async def create_enterprise_accelerate_policy_async(
+        self,
+        request: csas_20230120_models.CreateEnterpriseAcceleratePolicyRequest,
+    ) -> csas_20230120_models.CreateEnterpriseAcceleratePolicyResponse:
+        """
+        @summary 创建加速策略
+        
+        @param request: CreateEnterpriseAcceleratePolicyRequest
+        @return: CreateEnterpriseAcceleratePolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_enterprise_accelerate_policy_with_options_async(request, runtime)
+
+    def create_enterprise_accelerate_target_with_options(
+        self,
+        request: csas_20230120_models.CreateEnterpriseAccelerateTargetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.CreateEnterpriseAccelerateTargetResponse:
+        """
+        @summary 创建加速对象
+        
+        @param request: CreateEnterpriseAccelerateTargetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEnterpriseAccelerateTargetResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.eap_id):
+            body['EapId'] = request.eap_id
+        body_flat = {}
+        if not UtilClient.is_unset(request.target):
+            body_flat['Target'] = request.target
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateEnterpriseAccelerateTarget',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.CreateEnterpriseAccelerateTargetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_enterprise_accelerate_target_with_options_async(
+        self,
+        request: csas_20230120_models.CreateEnterpriseAccelerateTargetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.CreateEnterpriseAccelerateTargetResponse:
+        """
+        @summary 创建加速对象
+        
+        @param request: CreateEnterpriseAccelerateTargetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEnterpriseAccelerateTargetResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.eap_id):
+            body['EapId'] = request.eap_id
+        body_flat = {}
+        if not UtilClient.is_unset(request.target):
+            body_flat['Target'] = request.target
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateEnterpriseAccelerateTarget',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.CreateEnterpriseAccelerateTargetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_enterprise_accelerate_target(
+        self,
+        request: csas_20230120_models.CreateEnterpriseAccelerateTargetRequest,
+    ) -> csas_20230120_models.CreateEnterpriseAccelerateTargetResponse:
+        """
+        @summary 创建加速对象
+        
+        @param request: CreateEnterpriseAccelerateTargetRequest
+        @return: CreateEnterpriseAccelerateTargetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_enterprise_accelerate_target_with_options(request, runtime)
+
+    async def create_enterprise_accelerate_target_async(
+        self,
+        request: csas_20230120_models.CreateEnterpriseAccelerateTargetRequest,
+    ) -> csas_20230120_models.CreateEnterpriseAccelerateTargetResponse:
+        """
+        @summary 创建加速对象
+        
+        @param request: CreateEnterpriseAccelerateTargetRequest
+        @return: CreateEnterpriseAccelerateTargetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_enterprise_accelerate_target_with_options_async(request, runtime)
+
     def create_idp_department_with_options(
         self,
         request: csas_20230120_models.CreateIdpDepartmentRequest,
@@ -739,7 +973,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.CreatePrivateAccessApplicationResponse:
         """
-        @summary 创建内网访问应用
+        @summary Creates an office application within the current Alibaba Cloud account.
+        
+        @description By default, you can create a maximum of 500 office applications.
         
         @param tmp_req: CreatePrivateAccessApplicationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -801,7 +1037,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.CreatePrivateAccessApplicationResponse:
         """
-        @summary 创建内网访问应用
+        @summary Creates an office application within the current Alibaba Cloud account.
+        
+        @description By default, you can create a maximum of 500 office applications.
         
         @param tmp_req: CreatePrivateAccessApplicationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -862,7 +1100,9 @@ class Client(OpenApiClient):
         request: csas_20230120_models.CreatePrivateAccessApplicationRequest,
     ) -> csas_20230120_models.CreatePrivateAccessApplicationResponse:
         """
-        @summary 创建内网访问应用
+        @summary Creates an office application within the current Alibaba Cloud account.
+        
+        @description By default, you can create a maximum of 500 office applications.
         
         @param request: CreatePrivateAccessApplicationRequest
         @return: CreatePrivateAccessApplicationResponse
@@ -875,7 +1115,9 @@ class Client(OpenApiClient):
         request: csas_20230120_models.CreatePrivateAccessApplicationRequest,
     ) -> csas_20230120_models.CreatePrivateAccessApplicationResponse:
         """
-        @summary 创建内网访问应用
+        @summary Creates an office application within the current Alibaba Cloud account.
+        
+        @description By default, you can create a maximum of 500 office applications.
         
         @param request: CreatePrivateAccessApplicationRequest
         @return: CreatePrivateAccessApplicationResponse
@@ -889,7 +1131,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.CreatePrivateAccessPolicyResponse:
         """
-        @summary 创建内网访问策略
+        @summary Create Private Access Policy
+        
+        @description By default, up to 500 private access policies can be created.
         
         @param request: CreatePrivateAccessPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -922,6 +1166,12 @@ class Client(OpenApiClient):
             body_flat['TagIds'] = request.tag_ids
         if not UtilClient.is_unset(request.trigger_template_id):
             body['TriggerTemplateId'] = request.trigger_template_id
+        if not UtilClient.is_unset(request.trusted_process_group_ids):
+            body_flat['TrustedProcessGroupIds'] = request.trusted_process_group_ids
+        if not UtilClient.is_unset(request.trusted_process_status):
+            body['TrustedProcessStatus'] = request.trusted_process_status
+        if not UtilClient.is_unset(request.trusted_software_ids):
+            body_flat['TrustedSoftwareIds'] = request.trusted_software_ids
         if not UtilClient.is_unset(request.user_group_ids):
             body_flat['UserGroupIds'] = request.user_group_ids
         if not UtilClient.is_unset(request.user_group_mode):
@@ -953,7 +1203,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.CreatePrivateAccessPolicyResponse:
         """
-        @summary 创建内网访问策略
+        @summary Create Private Access Policy
+        
+        @description By default, up to 500 private access policies can be created.
         
         @param request: CreatePrivateAccessPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -986,6 +1238,12 @@ class Client(OpenApiClient):
             body_flat['TagIds'] = request.tag_ids
         if not UtilClient.is_unset(request.trigger_template_id):
             body['TriggerTemplateId'] = request.trigger_template_id
+        if not UtilClient.is_unset(request.trusted_process_group_ids):
+            body_flat['TrustedProcessGroupIds'] = request.trusted_process_group_ids
+        if not UtilClient.is_unset(request.trusted_process_status):
+            body['TrustedProcessStatus'] = request.trusted_process_status
+        if not UtilClient.is_unset(request.trusted_software_ids):
+            body_flat['TrustedSoftwareIds'] = request.trusted_software_ids
         if not UtilClient.is_unset(request.user_group_ids):
             body_flat['UserGroupIds'] = request.user_group_ids
         if not UtilClient.is_unset(request.user_group_mode):
@@ -1016,7 +1274,9 @@ class Client(OpenApiClient):
         request: csas_20230120_models.CreatePrivateAccessPolicyRequest,
     ) -> csas_20230120_models.CreatePrivateAccessPolicyResponse:
         """
-        @summary 创建内网访问策略
+        @summary Create Private Access Policy
+        
+        @description By default, up to 500 private access policies can be created.
         
         @param request: CreatePrivateAccessPolicyRequest
         @return: CreatePrivateAccessPolicyResponse
@@ -1029,7 +1289,9 @@ class Client(OpenApiClient):
         request: csas_20230120_models.CreatePrivateAccessPolicyRequest,
     ) -> csas_20230120_models.CreatePrivateAccessPolicyResponse:
         """
-        @summary 创建内网访问策略
+        @summary Create Private Access Policy
+        
+        @description By default, up to 500 private access policies can be created.
         
         @param request: CreatePrivateAccessPolicyRequest
         @return: CreatePrivateAccessPolicyResponse
@@ -1403,20 +1665,26 @@ class Client(OpenApiClient):
 
     def create_wm_base_image_with_options(
         self,
-        request: csas_20230120_models.CreateWmBaseImageRequest,
+        tmp_req: csas_20230120_models.CreateWmBaseImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.CreateWmBaseImageResponse:
         """
         @summary 创建数字水印暗水印透明底图
         
-        @param request: CreateWmBaseImageRequest
+        @param tmp_req: CreateWmBaseImageRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateWmBaseImageResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = csas_20230120_models.CreateWmBaseImageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.image_control):
+            request.image_control_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.image_control, 'ImageControl', 'json')
         body = {}
         if not UtilClient.is_unset(request.height):
             body['Height'] = request.height
+        if not UtilClient.is_unset(request.image_control_shrink):
+            body['ImageControl'] = request.image_control_shrink
         if not UtilClient.is_unset(request.opacity):
             body['Opacity'] = request.opacity
         if not UtilClient.is_unset(request.scale):
@@ -1452,20 +1720,26 @@ class Client(OpenApiClient):
 
     async def create_wm_base_image_with_options_async(
         self,
-        request: csas_20230120_models.CreateWmBaseImageRequest,
+        tmp_req: csas_20230120_models.CreateWmBaseImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.CreateWmBaseImageResponse:
         """
         @summary 创建数字水印暗水印透明底图
         
-        @param request: CreateWmBaseImageRequest
+        @param tmp_req: CreateWmBaseImageRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateWmBaseImageResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = csas_20230120_models.CreateWmBaseImageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.image_control):
+            request.image_control_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.image_control, 'ImageControl', 'json')
         body = {}
         if not UtilClient.is_unset(request.height):
             body['Height'] = request.height
+        if not UtilClient.is_unset(request.image_control_shrink):
+            body['ImageControl'] = request.image_control_shrink
         if not UtilClient.is_unset(request.opacity):
             body['Opacity'] = request.opacity
         if not UtilClient.is_unset(request.scale):
@@ -1687,7 +1961,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.CreateWmExtractTaskResponse:
         """
-        @summary 创建文件水印提取任务
+        @summary Creates a digital watermark extraction task.
         
         @param tmp_req: CreateWmExtractTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1701,6 +1975,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.csv_control_shrink):
             query['CsvControl'] = request.csv_control_shrink
+        if not UtilClient.is_unset(request.is_client_embed):
+            query['IsClientEmbed'] = request.is_client_embed
         body = {}
         if not UtilClient.is_unset(request.document_is_capture):
             body['DocumentIsCapture'] = request.document_is_capture
@@ -1742,7 +2018,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.CreateWmExtractTaskResponse:
         """
-        @summary 创建文件水印提取任务
+        @summary Creates a digital watermark extraction task.
         
         @param tmp_req: CreateWmExtractTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1756,6 +2032,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.csv_control_shrink):
             query['CsvControl'] = request.csv_control_shrink
+        if not UtilClient.is_unset(request.is_client_embed):
+            query['IsClientEmbed'] = request.is_client_embed
         body = {}
         if not UtilClient.is_unset(request.document_is_capture):
             body['DocumentIsCapture'] = request.document_is_capture
@@ -1796,7 +2074,7 @@ class Client(OpenApiClient):
         request: csas_20230120_models.CreateWmExtractTaskRequest,
     ) -> csas_20230120_models.CreateWmExtractTaskResponse:
         """
-        @summary 创建文件水印提取任务
+        @summary Creates a digital watermark extraction task.
         
         @param request: CreateWmExtractTaskRequest
         @return: CreateWmExtractTaskResponse
@@ -1809,7 +2087,7 @@ class Client(OpenApiClient):
         request: csas_20230120_models.CreateWmExtractTaskRequest,
     ) -> csas_20230120_models.CreateWmExtractTaskResponse:
         """
-        @summary 创建文件水印提取任务
+        @summary Creates a digital watermark extraction task.
         
         @param request: CreateWmExtractTaskRequest
         @return: CreateWmExtractTaskResponse
@@ -2215,6 +2493,208 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_dynamic_route_with_options_async(request, runtime)
 
+    def delete_enterprise_accelerate_policy_with_options(
+        self,
+        request: csas_20230120_models.DeleteEnterpriseAcceleratePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.DeleteEnterpriseAcceleratePolicyResponse:
+        """
+        @summary 删除加速策略
+        
+        @param request: DeleteEnterpriseAcceleratePolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEnterpriseAcceleratePolicyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.eap_id):
+            body['EapId'] = request.eap_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteEnterpriseAcceleratePolicy',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.DeleteEnterpriseAcceleratePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_enterprise_accelerate_policy_with_options_async(
+        self,
+        request: csas_20230120_models.DeleteEnterpriseAcceleratePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.DeleteEnterpriseAcceleratePolicyResponse:
+        """
+        @summary 删除加速策略
+        
+        @param request: DeleteEnterpriseAcceleratePolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEnterpriseAcceleratePolicyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.eap_id):
+            body['EapId'] = request.eap_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteEnterpriseAcceleratePolicy',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.DeleteEnterpriseAcceleratePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_enterprise_accelerate_policy(
+        self,
+        request: csas_20230120_models.DeleteEnterpriseAcceleratePolicyRequest,
+    ) -> csas_20230120_models.DeleteEnterpriseAcceleratePolicyResponse:
+        """
+        @summary 删除加速策略
+        
+        @param request: DeleteEnterpriseAcceleratePolicyRequest
+        @return: DeleteEnterpriseAcceleratePolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_enterprise_accelerate_policy_with_options(request, runtime)
+
+    async def delete_enterprise_accelerate_policy_async(
+        self,
+        request: csas_20230120_models.DeleteEnterpriseAcceleratePolicyRequest,
+    ) -> csas_20230120_models.DeleteEnterpriseAcceleratePolicyResponse:
+        """
+        @summary 删除加速策略
+        
+        @param request: DeleteEnterpriseAcceleratePolicyRequest
+        @return: DeleteEnterpriseAcceleratePolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_enterprise_accelerate_policy_with_options_async(request, runtime)
+
+    def delete_enterprise_accelerate_target_with_options(
+        self,
+        request: csas_20230120_models.DeleteEnterpriseAccelerateTargetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.DeleteEnterpriseAccelerateTargetResponse:
+        """
+        @summary 删除加速对象
+        
+        @param request: DeleteEnterpriseAccelerateTargetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEnterpriseAccelerateTargetResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.eap_id):
+            body['EapId'] = request.eap_id
+        body_flat = {}
+        if not UtilClient.is_unset(request.target):
+            body_flat['Target'] = request.target
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteEnterpriseAccelerateTarget',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.DeleteEnterpriseAccelerateTargetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_enterprise_accelerate_target_with_options_async(
+        self,
+        request: csas_20230120_models.DeleteEnterpriseAccelerateTargetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.DeleteEnterpriseAccelerateTargetResponse:
+        """
+        @summary 删除加速对象
+        
+        @param request: DeleteEnterpriseAccelerateTargetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEnterpriseAccelerateTargetResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.eap_id):
+            body['EapId'] = request.eap_id
+        body_flat = {}
+        if not UtilClient.is_unset(request.target):
+            body_flat['Target'] = request.target
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteEnterpriseAccelerateTarget',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.DeleteEnterpriseAccelerateTargetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_enterprise_accelerate_target(
+        self,
+        request: csas_20230120_models.DeleteEnterpriseAccelerateTargetRequest,
+    ) -> csas_20230120_models.DeleteEnterpriseAccelerateTargetResponse:
+        """
+        @summary 删除加速对象
+        
+        @param request: DeleteEnterpriseAccelerateTargetRequest
+        @return: DeleteEnterpriseAccelerateTargetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_enterprise_accelerate_target_with_options(request, runtime)
+
+    async def delete_enterprise_accelerate_target_async(
+        self,
+        request: csas_20230120_models.DeleteEnterpriseAccelerateTargetRequest,
+    ) -> csas_20230120_models.DeleteEnterpriseAccelerateTargetResponse:
+        """
+        @summary 删除加速对象
+        
+        @param request: DeleteEnterpriseAccelerateTargetRequest
+        @return: DeleteEnterpriseAccelerateTargetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_enterprise_accelerate_target_with_options_async(request, runtime)
+
     def delete_idp_department_with_options(
         self,
         request: csas_20230120_models.DeleteIdpDepartmentRequest,
@@ -2314,6 +2794,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_idp_department_with_options_async(request, runtime)
+
+    def delete_otp_config_with_options(
+        self,
+        request: csas_20230120_models.DeleteOtpConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.DeleteOtpConfigResponse:
+        """
+        @summary DeleteOtpConfig
+        
+        @param request: DeleteOtpConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteOtpConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.username):
+            body['Username'] = request.username
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteOtpConfig',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.DeleteOtpConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_otp_config_with_options_async(
+        self,
+        request: csas_20230120_models.DeleteOtpConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.DeleteOtpConfigResponse:
+        """
+        @summary DeleteOtpConfig
+        
+        @param request: DeleteOtpConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteOtpConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.username):
+            body['Username'] = request.username
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteOtpConfig',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.DeleteOtpConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_otp_config(
+        self,
+        request: csas_20230120_models.DeleteOtpConfigRequest,
+    ) -> csas_20230120_models.DeleteOtpConfigResponse:
+        """
+        @summary DeleteOtpConfig
+        
+        @param request: DeleteOtpConfigRequest
+        @return: DeleteOtpConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_otp_config_with_options(request, runtime)
+
+    async def delete_otp_config_async(
+        self,
+        request: csas_20230120_models.DeleteOtpConfigRequest,
+    ) -> csas_20230120_models.DeleteOtpConfigResponse:
+        """
+        @summary DeleteOtpConfig
+        
+        @param request: DeleteOtpConfigRequest
+        @return: DeleteOtpConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_otp_config_with_options_async(request, runtime)
 
     def delete_private_access_application_with_options(
         self,
@@ -3114,6 +3690,198 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.detach_policy_2approval_process_with_options_async(request, runtime)
+
+    def disable_enterprise_accelerate_policy_with_options(
+        self,
+        request: csas_20230120_models.DisableEnterpriseAcceleratePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.DisableEnterpriseAcceleratePolicyResponse:
+        """
+        @summary 禁用加速策略
+        
+        @param request: DisableEnterpriseAcceleratePolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableEnterpriseAcceleratePolicyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.eap_id):
+            body['EapId'] = request.eap_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DisableEnterpriseAcceleratePolicy',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.DisableEnterpriseAcceleratePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_enterprise_accelerate_policy_with_options_async(
+        self,
+        request: csas_20230120_models.DisableEnterpriseAcceleratePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.DisableEnterpriseAcceleratePolicyResponse:
+        """
+        @summary 禁用加速策略
+        
+        @param request: DisableEnterpriseAcceleratePolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableEnterpriseAcceleratePolicyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.eap_id):
+            body['EapId'] = request.eap_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DisableEnterpriseAcceleratePolicy',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.DisableEnterpriseAcceleratePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_enterprise_accelerate_policy(
+        self,
+        request: csas_20230120_models.DisableEnterpriseAcceleratePolicyRequest,
+    ) -> csas_20230120_models.DisableEnterpriseAcceleratePolicyResponse:
+        """
+        @summary 禁用加速策略
+        
+        @param request: DisableEnterpriseAcceleratePolicyRequest
+        @return: DisableEnterpriseAcceleratePolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.disable_enterprise_accelerate_policy_with_options(request, runtime)
+
+    async def disable_enterprise_accelerate_policy_async(
+        self,
+        request: csas_20230120_models.DisableEnterpriseAcceleratePolicyRequest,
+    ) -> csas_20230120_models.DisableEnterpriseAcceleratePolicyResponse:
+        """
+        @summary 禁用加速策略
+        
+        @param request: DisableEnterpriseAcceleratePolicyRequest
+        @return: DisableEnterpriseAcceleratePolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.disable_enterprise_accelerate_policy_with_options_async(request, runtime)
+
+    def enable_enterprise_accelerate_policy_with_options(
+        self,
+        request: csas_20230120_models.EnableEnterpriseAcceleratePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.EnableEnterpriseAcceleratePolicyResponse:
+        """
+        @summary 启用加速策略
+        
+        @param request: EnableEnterpriseAcceleratePolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableEnterpriseAcceleratePolicyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.eap_id):
+            body['EapId'] = request.eap_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EnableEnterpriseAcceleratePolicy',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.EnableEnterpriseAcceleratePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_enterprise_accelerate_policy_with_options_async(
+        self,
+        request: csas_20230120_models.EnableEnterpriseAcceleratePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.EnableEnterpriseAcceleratePolicyResponse:
+        """
+        @summary 启用加速策略
+        
+        @param request: EnableEnterpriseAcceleratePolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableEnterpriseAcceleratePolicyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.eap_id):
+            body['EapId'] = request.eap_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EnableEnterpriseAcceleratePolicy',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.EnableEnterpriseAcceleratePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_enterprise_accelerate_policy(
+        self,
+        request: csas_20230120_models.EnableEnterpriseAcceleratePolicyRequest,
+    ) -> csas_20230120_models.EnableEnterpriseAcceleratePolicyResponse:
+        """
+        @summary 启用加速策略
+        
+        @param request: EnableEnterpriseAcceleratePolicyRequest
+        @return: EnableEnterpriseAcceleratePolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.enable_enterprise_accelerate_policy_with_options(request, runtime)
+
+    async def enable_enterprise_accelerate_policy_async(
+        self,
+        request: csas_20230120_models.EnableEnterpriseAcceleratePolicyRequest,
+    ) -> csas_20230120_models.EnableEnterpriseAcceleratePolicyResponse:
+        """
+        @summary 启用加速策略
+        
+        @param request: EnableEnterpriseAcceleratePolicyRequest
+        @return: EnableEnterpriseAcceleratePolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_enterprise_accelerate_policy_with_options_async(request, runtime)
 
     def export_user_devices_with_options(
         self,
@@ -3979,7 +4747,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.GetPrivateAccessApplicationResponse:
         """
-        @summary 查询内网访问应用详情
+        @summary Queries the details of the office applications that belong to the current Alibaba Cloud account.
         
         @param request: GetPrivateAccessApplicationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4012,7 +4780,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.GetPrivateAccessApplicationResponse:
         """
-        @summary 查询内网访问应用详情
+        @summary Queries the details of the office applications that belong to the current Alibaba Cloud account.
         
         @param request: GetPrivateAccessApplicationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4044,7 +4812,7 @@ class Client(OpenApiClient):
         request: csas_20230120_models.GetPrivateAccessApplicationRequest,
     ) -> csas_20230120_models.GetPrivateAccessApplicationResponse:
         """
-        @summary 查询内网访问应用详情
+        @summary Queries the details of the office applications that belong to the current Alibaba Cloud account.
         
         @param request: GetPrivateAccessApplicationRequest
         @return: GetPrivateAccessApplicationResponse
@@ -4057,7 +4825,7 @@ class Client(OpenApiClient):
         request: csas_20230120_models.GetPrivateAccessApplicationRequest,
     ) -> csas_20230120_models.GetPrivateAccessApplicationResponse:
         """
-        @summary 查询内网访问应用详情
+        @summary Queries the details of the office applications that belong to the current Alibaba Cloud account.
         
         @param request: GetPrivateAccessApplicationRequest
         @return: GetPrivateAccessApplicationResponse
@@ -4071,7 +4839,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.GetPrivateAccessPolicyResponse:
         """
-        @summary 查询内网访问策略详情
+        @summary Query Intranet Access Policy Details
         
         @param request: GetPrivateAccessPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4104,7 +4872,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.GetPrivateAccessPolicyResponse:
         """
-        @summary 查询内网访问策略详情
+        @summary Query Intranet Access Policy Details
         
         @param request: GetPrivateAccessPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4136,7 +4904,7 @@ class Client(OpenApiClient):
         request: csas_20230120_models.GetPrivateAccessPolicyRequest,
     ) -> csas_20230120_models.GetPrivateAccessPolicyResponse:
         """
-        @summary 查询内网访问策略详情
+        @summary Query Intranet Access Policy Details
         
         @param request: GetPrivateAccessPolicyRequest
         @return: GetPrivateAccessPolicyResponse
@@ -4149,7 +4917,7 @@ class Client(OpenApiClient):
         request: csas_20230120_models.GetPrivateAccessPolicyRequest,
     ) -> csas_20230120_models.GetPrivateAccessPolicyResponse:
         """
-        @summary 查询内网访问策略详情
+        @summary Query Intranet Access Policy Details
         
         @param request: GetPrivateAccessPolicyRequest
         @return: GetPrivateAccessPolicyResponse
@@ -4616,6 +5384,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_wm_extract_task_with_options_async(request, runtime)
+
+    def import_enterprise_accelerate_targets_with_options(
+        self,
+        request: csas_20230120_models.ImportEnterpriseAccelerateTargetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ImportEnterpriseAccelerateTargetsResponse:
+        """
+        @summary 批量导入加速对象异步任务
+        
+        @param request: ImportEnterpriseAccelerateTargetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportEnterpriseAccelerateTargetsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.eap_id):
+            body['EapId'] = request.eap_id
+        if not UtilClient.is_unset(request.file_url):
+            body['FileUrl'] = request.file_url
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ImportEnterpriseAccelerateTargets',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ImportEnterpriseAccelerateTargetsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_enterprise_accelerate_targets_with_options_async(
+        self,
+        request: csas_20230120_models.ImportEnterpriseAccelerateTargetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ImportEnterpriseAccelerateTargetsResponse:
+        """
+        @summary 批量导入加速对象异步任务
+        
+        @param request: ImportEnterpriseAccelerateTargetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportEnterpriseAccelerateTargetsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.eap_id):
+            body['EapId'] = request.eap_id
+        if not UtilClient.is_unset(request.file_url):
+            body['FileUrl'] = request.file_url
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ImportEnterpriseAccelerateTargets',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ImportEnterpriseAccelerateTargetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_enterprise_accelerate_targets(
+        self,
+        request: csas_20230120_models.ImportEnterpriseAccelerateTargetsRequest,
+    ) -> csas_20230120_models.ImportEnterpriseAccelerateTargetsResponse:
+        """
+        @summary 批量导入加速对象异步任务
+        
+        @param request: ImportEnterpriseAccelerateTargetsRequest
+        @return: ImportEnterpriseAccelerateTargetsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.import_enterprise_accelerate_targets_with_options(request, runtime)
+
+    async def import_enterprise_accelerate_targets_async(
+        self,
+        request: csas_20230120_models.ImportEnterpriseAccelerateTargetsRequest,
+    ) -> csas_20230120_models.ImportEnterpriseAccelerateTargetsResponse:
+        """
+        @summary 批量导入加速对象异步任务
+        
+        @param request: ImportEnterpriseAccelerateTargetsRequest
+        @return: ImportEnterpriseAccelerateTargetsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.import_enterprise_accelerate_targets_with_options_async(request, runtime)
 
     def list_applications_for_private_access_policy_with_options(
         self,
@@ -5451,7 +6319,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListDynamicDisposalProcessesResponse:
         """
-        @summary 批量查询动态策略处置流程
+        @summary Batch Query Dynamic Policy Disposal Processes
         
         @param request: ListDynamicDisposalProcessesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5484,7 +6352,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListDynamicDisposalProcessesResponse:
         """
-        @summary 批量查询动态策略处置流程
+        @summary Batch Query Dynamic Policy Disposal Processes
         
         @param request: ListDynamicDisposalProcessesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5516,7 +6384,7 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListDynamicDisposalProcessesRequest,
     ) -> csas_20230120_models.ListDynamicDisposalProcessesResponse:
         """
-        @summary 批量查询动态策略处置流程
+        @summary Batch Query Dynamic Policy Disposal Processes
         
         @param request: ListDynamicDisposalProcessesRequest
         @return: ListDynamicDisposalProcessesResponse
@@ -5529,7 +6397,7 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListDynamicDisposalProcessesRequest,
     ) -> csas_20230120_models.ListDynamicDisposalProcessesResponse:
         """
-        @summary 批量查询动态策略处置流程
+        @summary Batch Query Dynamic Policy Disposal Processes
         
         @param request: ListDynamicDisposalProcessesRequest
         @return: ListDynamicDisposalProcessesResponse
@@ -5702,6 +6570,282 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_dynamic_routes_with_options_async(request, runtime)
+
+    def list_enterprise_accelerate_logs_with_options(
+        self,
+        request: csas_20230120_models.ListEnterpriseAccelerateLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListEnterpriseAccelerateLogsResponse:
+        """
+        @summary 查询加速策略日志列表
+        
+        @param request: ListEnterpriseAccelerateLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEnterpriseAccelerateLogsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEnterpriseAccelerateLogs',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListEnterpriseAccelerateLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_enterprise_accelerate_logs_with_options_async(
+        self,
+        request: csas_20230120_models.ListEnterpriseAccelerateLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListEnterpriseAccelerateLogsResponse:
+        """
+        @summary 查询加速策略日志列表
+        
+        @param request: ListEnterpriseAccelerateLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEnterpriseAccelerateLogsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEnterpriseAccelerateLogs',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListEnterpriseAccelerateLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_enterprise_accelerate_logs(
+        self,
+        request: csas_20230120_models.ListEnterpriseAccelerateLogsRequest,
+    ) -> csas_20230120_models.ListEnterpriseAccelerateLogsResponse:
+        """
+        @summary 查询加速策略日志列表
+        
+        @param request: ListEnterpriseAccelerateLogsRequest
+        @return: ListEnterpriseAccelerateLogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_enterprise_accelerate_logs_with_options(request, runtime)
+
+    async def list_enterprise_accelerate_logs_async(
+        self,
+        request: csas_20230120_models.ListEnterpriseAccelerateLogsRequest,
+    ) -> csas_20230120_models.ListEnterpriseAccelerateLogsResponse:
+        """
+        @summary 查询加速策略日志列表
+        
+        @param request: ListEnterpriseAccelerateLogsRequest
+        @return: ListEnterpriseAccelerateLogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_enterprise_accelerate_logs_with_options_async(request, runtime)
+
+    def list_enterprise_accelerate_policies_with_options(
+        self,
+        request: csas_20230120_models.ListEnterpriseAcceleratePoliciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListEnterpriseAcceleratePoliciesResponse:
+        """
+        @summary 查询加速策略列表
+        
+        @param request: ListEnterpriseAcceleratePoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEnterpriseAcceleratePoliciesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEnterpriseAcceleratePolicies',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListEnterpriseAcceleratePoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_enterprise_accelerate_policies_with_options_async(
+        self,
+        request: csas_20230120_models.ListEnterpriseAcceleratePoliciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListEnterpriseAcceleratePoliciesResponse:
+        """
+        @summary 查询加速策略列表
+        
+        @param request: ListEnterpriseAcceleratePoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEnterpriseAcceleratePoliciesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEnterpriseAcceleratePolicies',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListEnterpriseAcceleratePoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_enterprise_accelerate_policies(
+        self,
+        request: csas_20230120_models.ListEnterpriseAcceleratePoliciesRequest,
+    ) -> csas_20230120_models.ListEnterpriseAcceleratePoliciesResponse:
+        """
+        @summary 查询加速策略列表
+        
+        @param request: ListEnterpriseAcceleratePoliciesRequest
+        @return: ListEnterpriseAcceleratePoliciesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_enterprise_accelerate_policies_with_options(request, runtime)
+
+    async def list_enterprise_accelerate_policies_async(
+        self,
+        request: csas_20230120_models.ListEnterpriseAcceleratePoliciesRequest,
+    ) -> csas_20230120_models.ListEnterpriseAcceleratePoliciesResponse:
+        """
+        @summary 查询加速策略列表
+        
+        @param request: ListEnterpriseAcceleratePoliciesRequest
+        @return: ListEnterpriseAcceleratePoliciesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_enterprise_accelerate_policies_with_options_async(request, runtime)
+
+    def list_enterprise_accelerate_targets_with_options(
+        self,
+        request: csas_20230120_models.ListEnterpriseAccelerateTargetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListEnterpriseAccelerateTargetsResponse:
+        """
+        @summary 查询加速对象列表
+        
+        @param request: ListEnterpriseAccelerateTargetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEnterpriseAccelerateTargetsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEnterpriseAccelerateTargets',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListEnterpriseAccelerateTargetsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_enterprise_accelerate_targets_with_options_async(
+        self,
+        request: csas_20230120_models.ListEnterpriseAccelerateTargetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListEnterpriseAccelerateTargetsResponse:
+        """
+        @summary 查询加速对象列表
+        
+        @param request: ListEnterpriseAccelerateTargetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEnterpriseAccelerateTargetsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEnterpriseAccelerateTargets',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListEnterpriseAccelerateTargetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_enterprise_accelerate_targets(
+        self,
+        request: csas_20230120_models.ListEnterpriseAccelerateTargetsRequest,
+    ) -> csas_20230120_models.ListEnterpriseAccelerateTargetsResponse:
+        """
+        @summary 查询加速对象列表
+        
+        @param request: ListEnterpriseAccelerateTargetsRequest
+        @return: ListEnterpriseAccelerateTargetsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_enterprise_accelerate_targets_with_options(request, runtime)
+
+    async def list_enterprise_accelerate_targets_async(
+        self,
+        request: csas_20230120_models.ListEnterpriseAccelerateTargetsRequest,
+    ) -> csas_20230120_models.ListEnterpriseAccelerateTargetsResponse:
+        """
+        @summary 查询加速对象列表
+        
+        @param request: ListEnterpriseAccelerateTargetsRequest
+        @return: ListEnterpriseAccelerateTargetsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_enterprise_accelerate_targets_with_options_async(request, runtime)
 
     def list_excessive_device_registration_applications_with_options(
         self,
@@ -7949,7 +9093,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListUserPrivateAccessPoliciesResponse:
         """
-        @summary 列表查询用户零信任策略
+        @summary List query of user zero trust policies
         
         @param request: ListUserPrivateAccessPoliciesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7982,7 +9126,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListUserPrivateAccessPoliciesResponse:
         """
-        @summary 列表查询用户零信任策略
+        @summary List query of user zero trust policies
         
         @param request: ListUserPrivateAccessPoliciesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8014,7 +9158,7 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListUserPrivateAccessPoliciesRequest,
     ) -> csas_20230120_models.ListUserPrivateAccessPoliciesResponse:
         """
-        @summary 列表查询用户零信任策略
+        @summary List query of user zero trust policies
         
         @param request: ListUserPrivateAccessPoliciesRequest
         @return: ListUserPrivateAccessPoliciesResponse
@@ -8027,7 +9171,7 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListUserPrivateAccessPoliciesRequest,
     ) -> csas_20230120_models.ListUserPrivateAccessPoliciesResponse:
         """
-        @summary 列表查询用户零信任策略
+        @summary List query of user zero trust policies
         
         @param request: ListUserPrivateAccessPoliciesRequest
         @return: ListUserPrivateAccessPoliciesResponse
@@ -8218,6 +9362,142 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.lookup_wm_info_mapping_with_options_async(request, runtime)
+
+    def modify_enterprise_accelerate_policy_with_options(
+        self,
+        request: csas_20230120_models.ModifyEnterpriseAcceleratePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ModifyEnterpriseAcceleratePolicyResponse:
+        """
+        @summary 修改加速策略
+        
+        @param request: ModifyEnterpriseAcceleratePolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyEnterpriseAcceleratePolicyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.acceleration_type):
+            body['AccelerationType'] = request.acceleration_type
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.eap_id):
+            body['EapId'] = request.eap_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.on_tls):
+            body['OnTls'] = request.on_tls
+        if not UtilClient.is_unset(request.priority):
+            body['Priority'] = request.priority
+        if not UtilClient.is_unset(request.show_in_client):
+            body['ShowInClient'] = request.show_in_client
+        if not UtilClient.is_unset(request.upstream_host):
+            body['UpstreamHost'] = request.upstream_host
+        if not UtilClient.is_unset(request.upstream_port):
+            body['UpstreamPort'] = request.upstream_port
+        if not UtilClient.is_unset(request.upstream_type):
+            body['UpstreamType'] = request.upstream_type
+        if not UtilClient.is_unset(request.user_attribute_group):
+            body['UserAttributeGroup'] = request.user_attribute_group
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyEnterpriseAcceleratePolicy',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ModifyEnterpriseAcceleratePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_enterprise_accelerate_policy_with_options_async(
+        self,
+        request: csas_20230120_models.ModifyEnterpriseAcceleratePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ModifyEnterpriseAcceleratePolicyResponse:
+        """
+        @summary 修改加速策略
+        
+        @param request: ModifyEnterpriseAcceleratePolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyEnterpriseAcceleratePolicyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.acceleration_type):
+            body['AccelerationType'] = request.acceleration_type
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.eap_id):
+            body['EapId'] = request.eap_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.on_tls):
+            body['OnTls'] = request.on_tls
+        if not UtilClient.is_unset(request.priority):
+            body['Priority'] = request.priority
+        if not UtilClient.is_unset(request.show_in_client):
+            body['ShowInClient'] = request.show_in_client
+        if not UtilClient.is_unset(request.upstream_host):
+            body['UpstreamHost'] = request.upstream_host
+        if not UtilClient.is_unset(request.upstream_port):
+            body['UpstreamPort'] = request.upstream_port
+        if not UtilClient.is_unset(request.upstream_type):
+            body['UpstreamType'] = request.upstream_type
+        if not UtilClient.is_unset(request.user_attribute_group):
+            body['UserAttributeGroup'] = request.user_attribute_group
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyEnterpriseAcceleratePolicy',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ModifyEnterpriseAcceleratePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_enterprise_accelerate_policy(
+        self,
+        request: csas_20230120_models.ModifyEnterpriseAcceleratePolicyRequest,
+    ) -> csas_20230120_models.ModifyEnterpriseAcceleratePolicyResponse:
+        """
+        @summary 修改加速策略
+        
+        @param request: ModifyEnterpriseAcceleratePolicyRequest
+        @return: ModifyEnterpriseAcceleratePolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_enterprise_accelerate_policy_with_options(request, runtime)
+
+    async def modify_enterprise_accelerate_policy_async(
+        self,
+        request: csas_20230120_models.ModifyEnterpriseAcceleratePolicyRequest,
+    ) -> csas_20230120_models.ModifyEnterpriseAcceleratePolicyResponse:
+        """
+        @summary 修改加速策略
+        
+        @param request: ModifyEnterpriseAcceleratePolicyRequest
+        @return: ModifyEnterpriseAcceleratePolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_enterprise_accelerate_policy_with_options_async(request, runtime)
 
     def revoke_user_session_with_options(
         self,
@@ -9471,7 +10751,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdatePrivateAccessApplicationResponse:
         """
-        @summary 修改内网访问应用
+        @summary Modifies the office applications of the current Alibaba Cloud account.
         
         @param tmp_req: UpdatePrivateAccessApplicationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9535,7 +10815,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdatePrivateAccessApplicationResponse:
         """
-        @summary 修改内网访问应用
+        @summary Modifies the office applications of the current Alibaba Cloud account.
         
         @param tmp_req: UpdatePrivateAccessApplicationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9598,7 +10878,7 @@ class Client(OpenApiClient):
         request: csas_20230120_models.UpdatePrivateAccessApplicationRequest,
     ) -> csas_20230120_models.UpdatePrivateAccessApplicationResponse:
         """
-        @summary 修改内网访问应用
+        @summary Modifies the office applications of the current Alibaba Cloud account.
         
         @param request: UpdatePrivateAccessApplicationRequest
         @return: UpdatePrivateAccessApplicationResponse
@@ -9611,7 +10891,7 @@ class Client(OpenApiClient):
         request: csas_20230120_models.UpdatePrivateAccessApplicationRequest,
     ) -> csas_20230120_models.UpdatePrivateAccessApplicationResponse:
         """
-        @summary 修改内网访问应用
+        @summary Modifies the office applications of the current Alibaba Cloud account.
         
         @param request: UpdatePrivateAccessApplicationRequest
         @return: UpdatePrivateAccessApplicationResponse
@@ -9625,7 +10905,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdatePrivateAccessPolicyResponse:
         """
-        @summary 修改内网访问策略
+        @summary Modify Private Access Policy
         
         @param request: UpdatePrivateAccessPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9660,6 +10940,12 @@ class Client(OpenApiClient):
             body_flat['TagIds'] = request.tag_ids
         if not UtilClient.is_unset(request.trigger_template_id):
             body['TriggerTemplateId'] = request.trigger_template_id
+        if not UtilClient.is_unset(request.trusted_process_group_ids):
+            body_flat['TrustedProcessGroupIds'] = request.trusted_process_group_ids
+        if not UtilClient.is_unset(request.trusted_process_status):
+            body['TrustedProcessStatus'] = request.trusted_process_status
+        if not UtilClient.is_unset(request.trusted_software_ids):
+            body_flat['TrustedSoftwareIds'] = request.trusted_software_ids
         if not UtilClient.is_unset(request.user_group_ids):
             body_flat['UserGroupIds'] = request.user_group_ids
         if not UtilClient.is_unset(request.user_group_mode):
@@ -9691,7 +10977,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdatePrivateAccessPolicyResponse:
         """
-        @summary 修改内网访问策略
+        @summary Modify Private Access Policy
         
         @param request: UpdatePrivateAccessPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9726,6 +11012,12 @@ class Client(OpenApiClient):
             body_flat['TagIds'] = request.tag_ids
         if not UtilClient.is_unset(request.trigger_template_id):
             body['TriggerTemplateId'] = request.trigger_template_id
+        if not UtilClient.is_unset(request.trusted_process_group_ids):
+            body_flat['TrustedProcessGroupIds'] = request.trusted_process_group_ids
+        if not UtilClient.is_unset(request.trusted_process_status):
+            body['TrustedProcessStatus'] = request.trusted_process_status
+        if not UtilClient.is_unset(request.trusted_software_ids):
+            body_flat['TrustedSoftwareIds'] = request.trusted_software_ids
         if not UtilClient.is_unset(request.user_group_ids):
             body_flat['UserGroupIds'] = request.user_group_ids
         if not UtilClient.is_unset(request.user_group_mode):
@@ -9756,7 +11048,7 @@ class Client(OpenApiClient):
         request: csas_20230120_models.UpdatePrivateAccessPolicyRequest,
     ) -> csas_20230120_models.UpdatePrivateAccessPolicyResponse:
         """
-        @summary 修改内网访问策略
+        @summary Modify Private Access Policy
         
         @param request: UpdatePrivateAccessPolicyRequest
         @return: UpdatePrivateAccessPolicyResponse
@@ -9769,7 +11061,7 @@ class Client(OpenApiClient):
         request: csas_20230120_models.UpdatePrivateAccessPolicyRequest,
     ) -> csas_20230120_models.UpdatePrivateAccessPolicyResponse:
         """
-        @summary 修改内网访问策略
+        @summary Modify Private Access Policy
         
         @param request: UpdatePrivateAccessPolicyRequest
         @return: UpdatePrivateAccessPolicyResponse
