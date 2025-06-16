@@ -1,3 +1,8 @@
+2025-06-16 Version: 6.11.7
+- Update API GetDhcpOptionsSet: add response parameters Body.CreationTime.
+- Update API ListDhcpOptionsSets: add response parameters Body.DhcpOptionsSets.$.CreationTime.
+
+
 2025-06-16 Version: 6.11.6
 - Update API CreateRouteEntries: add request parameters DryRun.
 - Update API CreateRouteEntry: add request parameters DryRun.

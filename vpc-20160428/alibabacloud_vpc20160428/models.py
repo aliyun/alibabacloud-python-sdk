@@ -70655,6 +70655,7 @@ class GetDhcpOptionsSetResponseBody(TeaModel):
     def __init__(
         self,
         associate_vpcs: List[GetDhcpOptionsSetResponseBodyAssociateVpcs] = None,
+        creation_time: str = None,
         dhcp_options: GetDhcpOptionsSetResponseBodyDhcpOptions = None,
         dhcp_options_set_description: str = None,
         dhcp_options_set_id: str = None,
@@ -70667,6 +70668,7 @@ class GetDhcpOptionsSetResponseBody(TeaModel):
     ):
         # The information about the virtual private cloud (VPC) that is associated with the DHCP options set.
         self.associate_vpcs = associate_vpcs
+        self.creation_time = creation_time
         # The configuration information about the DHCP options set.
         self.dhcp_options = dhcp_options
         # The description of the DHCP options set.
@@ -70713,6 +70715,8 @@ class GetDhcpOptionsSetResponseBody(TeaModel):
         if self.associate_vpcs is not None:
             for k in self.associate_vpcs:
                 result['AssociateVpcs'].append(k.to_map() if k else None)
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
         if self.dhcp_options is not None:
             result['DhcpOptions'] = self.dhcp_options.to_map()
         if self.dhcp_options_set_description is not None:
@@ -70742,6 +70746,8 @@ class GetDhcpOptionsSetResponseBody(TeaModel):
             for k in m.get('AssociateVpcs'):
                 temp_model = GetDhcpOptionsSetResponseBodyAssociateVpcs()
                 self.associate_vpcs.append(temp_model.from_map(k))
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
         if m.get('DhcpOptions') is not None:
             temp_model = GetDhcpOptionsSetResponseBodyDhcpOptions()
             self.dhcp_options = temp_model.from_map(m['DhcpOptions'])
@@ -74840,6 +74846,7 @@ class ListDhcpOptionsSetsResponseBodyDhcpOptionsSets(TeaModel):
     def __init__(
         self,
         associate_vpc_count: int = None,
+        creation_time: str = None,
         dhcp_options: ListDhcpOptionsSetsResponseBodyDhcpOptionsSetsDhcpOptions = None,
         dhcp_options_set_description: str = None,
         dhcp_options_set_id: str = None,
@@ -74851,6 +74858,7 @@ class ListDhcpOptionsSetsResponseBodyDhcpOptionsSets(TeaModel):
     ):
         # The number of VPCs with which the DHCP options set is associated.
         self.associate_vpc_count = associate_vpc_count
+        self.creation_time = creation_time
         # The configuration information about the DHCP options set.
         self.dhcp_options = dhcp_options
         # The description of the DHCP options set.
@@ -74889,6 +74897,8 @@ class ListDhcpOptionsSetsResponseBodyDhcpOptionsSets(TeaModel):
         result = dict()
         if self.associate_vpc_count is not None:
             result['AssociateVpcCount'] = self.associate_vpc_count
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
         if self.dhcp_options is not None:
             result['DhcpOptions'] = self.dhcp_options.to_map()
         if self.dhcp_options_set_description is not None:
@@ -74913,6 +74923,8 @@ class ListDhcpOptionsSetsResponseBodyDhcpOptionsSets(TeaModel):
         m = m or dict()
         if m.get('AssociateVpcCount') is not None:
             self.associate_vpc_count = m.get('AssociateVpcCount')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
         if m.get('DhcpOptions') is not None:
             temp_model = ListDhcpOptionsSetsResponseBodyDhcpOptionsSetsDhcpOptions()
             self.dhcp_options = temp_model.from_map(m['DhcpOptions'])
