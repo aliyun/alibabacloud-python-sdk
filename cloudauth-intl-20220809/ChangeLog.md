@@ -1,3 +1,8 @@
+2025-06-16 Version: 3.7.1
+- Update API DocOcrMax: add request parameters IdSpoof.
+- Update API Initialize: add request parameters Pages.
+
+
 2025-05-26 Version: 3.7.0
 - Support API BankMetaVerifyIntl.
 

@@ -1635,6 +1635,7 @@ class DocOcrMaxRequest(TeaModel):
         doc_type: str = None,
         id_ocr_picture_base_64: str = None,
         id_ocr_picture_url: str = None,
+        id_spoof: str = None,
         id_threshold: str = None,
         merchant_biz_id: str = None,
         merchant_user_id: str = None,
@@ -1647,6 +1648,7 @@ class DocOcrMaxRequest(TeaModel):
         self.doc_type = doc_type
         self.id_ocr_picture_base_64 = id_ocr_picture_base_64
         self.id_ocr_picture_url = id_ocr_picture_url
+        self.id_spoof = id_spoof
         self.id_threshold = id_threshold
         self.merchant_biz_id = merchant_biz_id
         self.merchant_user_id = merchant_user_id
@@ -1671,6 +1673,8 @@ class DocOcrMaxRequest(TeaModel):
             result['IdOcrPictureBase64'] = self.id_ocr_picture_base_64
         if self.id_ocr_picture_url is not None:
             result['IdOcrPictureUrl'] = self.id_ocr_picture_url
+        if self.id_spoof is not None:
+            result['IdSpoof'] = self.id_spoof
         if self.id_threshold is not None:
             result['IdThreshold'] = self.id_threshold
         if self.merchant_biz_id is not None:
@@ -1697,6 +1701,8 @@ class DocOcrMaxRequest(TeaModel):
             self.id_ocr_picture_base_64 = m.get('IdOcrPictureBase64')
         if m.get('IdOcrPictureUrl') is not None:
             self.id_ocr_picture_url = m.get('IdOcrPictureUrl')
+        if m.get('IdSpoof') is not None:
+            self.id_spoof = m.get('IdSpoof')
         if m.get('IdThreshold') is not None:
             self.id_threshold = m.get('IdThreshold')
         if m.get('MerchantBizId') is not None:
@@ -3224,6 +3230,7 @@ class InitializeRequest(TeaModel):
         meta_info: str = None,
         model: str = None,
         ocr: str = None,
+        pages: str = None,
         procedure_priority: str = None,
         product_code: str = None,
         product_flow: str = None,
@@ -3262,6 +3269,7 @@ class InitializeRequest(TeaModel):
         self.model = model
         # OCR。
         self.ocr = ocr
+        self.pages = pages
         self.procedure_priority = procedure_priority
         self.product_code = product_code
         self.product_flow = product_flow
@@ -3333,6 +3341,8 @@ class InitializeRequest(TeaModel):
             result['Model'] = self.model
         if self.ocr is not None:
             result['Ocr'] = self.ocr
+        if self.pages is not None:
+            result['Pages'] = self.pages
         if self.procedure_priority is not None:
             result['ProcedurePriority'] = self.procedure_priority
         if self.product_code is not None:
@@ -3409,6 +3419,8 @@ class InitializeRequest(TeaModel):
             self.model = m.get('Model')
         if m.get('Ocr') is not None:
             self.ocr = m.get('Ocr')
+        if m.get('Pages') is not None:
+            self.pages = m.get('Pages')
         if m.get('ProcedurePriority') is not None:
             self.procedure_priority = m.get('ProcedurePriority')
         if m.get('ProductCode') is not None:
@@ -3462,6 +3474,7 @@ class InitializeShrinkRequest(TeaModel):
         meta_info: str = None,
         model: str = None,
         ocr: str = None,
+        pages: str = None,
         procedure_priority: str = None,
         product_code: str = None,
         product_flow: str = None,
@@ -3500,6 +3513,7 @@ class InitializeShrinkRequest(TeaModel):
         self.model = model
         # OCR。
         self.ocr = ocr
+        self.pages = pages
         self.procedure_priority = procedure_priority
         self.product_code = product_code
         self.product_flow = product_flow
@@ -3571,6 +3585,8 @@ class InitializeShrinkRequest(TeaModel):
             result['Model'] = self.model
         if self.ocr is not None:
             result['Ocr'] = self.ocr
+        if self.pages is not None:
+            result['Pages'] = self.pages
         if self.procedure_priority is not None:
             result['ProcedurePriority'] = self.procedure_priority
         if self.product_code is not None:
@@ -3647,6 +3663,8 @@ class InitializeShrinkRequest(TeaModel):
             self.model = m.get('Model')
         if m.get('Ocr') is not None:
             self.ocr = m.get('Ocr')
+        if m.get('Pages') is not None:
+            self.pages = m.get('Pages')
         if m.get('ProcedurePriority') is not None:
             self.procedure_priority = m.get('ProcedurePriority')
         if m.get('ProductCode') is not None:

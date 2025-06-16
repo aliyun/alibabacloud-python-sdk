@@ -1175,6 +1175,8 @@ class Client(OpenApiClient):
             body['IdOcrPictureBase64'] = request.id_ocr_picture_base_64
         if not UtilClient.is_unset(request.id_ocr_picture_url):
             body['IdOcrPictureUrl'] = request.id_ocr_picture_url
+        if not UtilClient.is_unset(request.id_spoof):
+            body['IdSpoof'] = request.id_spoof
         if not UtilClient.is_unset(request.id_threshold):
             body['IdThreshold'] = request.id_threshold
         if not UtilClient.is_unset(request.merchant_biz_id):
@@ -1230,6 +1232,8 @@ class Client(OpenApiClient):
             body['IdOcrPictureBase64'] = request.id_ocr_picture_base_64
         if not UtilClient.is_unset(request.id_ocr_picture_url):
             body['IdOcrPictureUrl'] = request.id_ocr_picture_url
+        if not UtilClient.is_unset(request.id_spoof):
+            body['IdSpoof'] = request.id_spoof
         if not UtilClient.is_unset(request.id_threshold):
             body['IdThreshold'] = request.id_threshold
         if not UtilClient.is_unset(request.merchant_biz_id):
@@ -2201,6 +2205,8 @@ class Client(OpenApiClient):
             query['Model'] = request.model
         if not UtilClient.is_unset(request.ocr):
             query['Ocr'] = request.ocr
+        if not UtilClient.is_unset(request.pages):
+            query['Pages'] = request.pages
         if not UtilClient.is_unset(request.procedure_priority):
             query['ProcedurePriority'] = request.procedure_priority
         if not UtilClient.is_unset(request.product_code):
@@ -2312,6 +2318,8 @@ class Client(OpenApiClient):
             query['Model'] = request.model
         if not UtilClient.is_unset(request.ocr):
             query['Ocr'] = request.ocr
+        if not UtilClient.is_unset(request.pages):
+            query['Pages'] = request.pages
         if not UtilClient.is_unset(request.procedure_priority):
             query['ProcedurePriority'] = request.procedure_priority
         if not UtilClient.is_unset(request.product_code):
