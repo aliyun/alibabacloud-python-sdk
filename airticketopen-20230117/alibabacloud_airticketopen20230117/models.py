@@ -7861,6 +7861,33 @@ class EnrichResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList(TeaMo
         return self
 
 
+class EnrichResponseBodyDataSolutionListSolutionAttribute(TeaModel):
+    def __init__(
+        self,
+        supply_source_type: str = None,
+    ):
+        self.supply_source_type = supply_source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.supply_source_type is not None:
+            result['supply_source_type'] = self.supply_source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('supply_source_type') is not None:
+            self.supply_source_type = m.get('supply_source_type')
+        return self
+
+
 class EnrichResponseBodyDataSolutionList(TeaModel):
     def __init__(
         self,
@@ -7876,6 +7903,7 @@ class EnrichResponseBodyDataSolutionList(TeaModel):
         segment_baggage_check_in_info_list: List[EnrichResponseBodyDataSolutionListSegmentBaggageCheckInInfoList] = None,
         segment_baggage_mapping_list: List[EnrichResponseBodyDataSolutionListSegmentBaggageMappingList] = None,
         segment_refund_change_rule_mapping_list: List[EnrichResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList] = None,
+        solution_attribute: EnrichResponseBodyDataSolutionListSolutionAttribute = None,
         solution_id: str = None,
     ):
         # adult fare
@@ -7902,6 +7930,7 @@ class EnrichResponseBodyDataSolutionList(TeaModel):
         self.segment_baggage_mapping_list = segment_baggage_mapping_list
         # change and refund policy
         self.segment_refund_change_rule_mapping_list = segment_refund_change_rule_mapping_list
+        self.solution_attribute = solution_attribute
         # solution ID
         self.solution_id = solution_id
 
@@ -7922,6 +7951,8 @@ class EnrichResponseBodyDataSolutionList(TeaModel):
             for k in self.segment_refund_change_rule_mapping_list:
                 if k:
                     k.validate()
+        if self.solution_attribute:
+            self.solution_attribute.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7961,6 +7992,8 @@ class EnrichResponseBodyDataSolutionList(TeaModel):
         if self.segment_refund_change_rule_mapping_list is not None:
             for k in self.segment_refund_change_rule_mapping_list:
                 result['segment_refund_change_rule_mapping_list'].append(k.to_map() if k else None)
+        if self.solution_attribute is not None:
+            result['solution_attribute'] = self.solution_attribute.to_map()
         if self.solution_id is not None:
             result['solution_id'] = self.solution_id
         return result
@@ -8003,6 +8036,9 @@ class EnrichResponseBodyDataSolutionList(TeaModel):
             for k in m.get('segment_refund_change_rule_mapping_list'):
                 temp_model = EnrichResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList()
                 self.segment_refund_change_rule_mapping_list.append(temp_model.from_map(k))
+        if m.get('solution_attribute') is not None:
+            temp_model = EnrichResponseBodyDataSolutionListSolutionAttribute()
+            self.solution_attribute = temp_model.from_map(m['solution_attribute'])
         if m.get('solution_id') is not None:
             self.solution_id = m.get('solution_id')
         return self
@@ -14822,6 +14858,33 @@ class SearchResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList(TeaMo
         return self
 
 
+class SearchResponseBodyDataSolutionListSolutionAttribute(TeaModel):
+    def __init__(
+        self,
+        supply_source_type: str = None,
+    ):
+        self.supply_source_type = supply_source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.supply_source_type is not None:
+            result['supply_source_type'] = self.supply_source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('supply_source_type') is not None:
+            self.supply_source_type = m.get('supply_source_type')
+        return self
+
+
 class SearchResponseBodyDataSolutionList(TeaModel):
     def __init__(
         self,
@@ -14837,6 +14900,7 @@ class SearchResponseBodyDataSolutionList(TeaModel):
         segment_baggage_check_in_info_list: List[SearchResponseBodyDataSolutionListSegmentBaggageCheckInInfoList] = None,
         segment_baggage_mapping_list: List[SearchResponseBodyDataSolutionListSegmentBaggageMappingList] = None,
         segment_refund_change_rule_mapping_list: List[SearchResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList] = None,
+        solution_attribute: SearchResponseBodyDataSolutionListSolutionAttribute = None,
         solution_id: str = None,
     ):
         # adult fare
@@ -14863,6 +14927,7 @@ class SearchResponseBodyDataSolutionList(TeaModel):
         self.segment_baggage_mapping_list = segment_baggage_mapping_list
         # change and refund policy
         self.segment_refund_change_rule_mapping_list = segment_refund_change_rule_mapping_list
+        self.solution_attribute = solution_attribute
         # solution ID
         self.solution_id = solution_id
 
@@ -14883,6 +14948,8 @@ class SearchResponseBodyDataSolutionList(TeaModel):
             for k in self.segment_refund_change_rule_mapping_list:
                 if k:
                     k.validate()
+        if self.solution_attribute:
+            self.solution_attribute.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -14922,6 +14989,8 @@ class SearchResponseBodyDataSolutionList(TeaModel):
         if self.segment_refund_change_rule_mapping_list is not None:
             for k in self.segment_refund_change_rule_mapping_list:
                 result['segment_refund_change_rule_mapping_list'].append(k.to_map() if k else None)
+        if self.solution_attribute is not None:
+            result['solution_attribute'] = self.solution_attribute.to_map()
         if self.solution_id is not None:
             result['solution_id'] = self.solution_id
         return result
@@ -14964,6 +15033,9 @@ class SearchResponseBodyDataSolutionList(TeaModel):
             for k in m.get('segment_refund_change_rule_mapping_list'):
                 temp_model = SearchResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList()
                 self.segment_refund_change_rule_mapping_list.append(temp_model.from_map(k))
+        if m.get('solution_attribute') is not None:
+            temp_model = SearchResponseBodyDataSolutionListSolutionAttribute()
+            self.solution_attribute = temp_model.from_map(m['solution_attribute'])
         if m.get('solution_id') is not None:
             self.solution_id = m.get('solution_id')
         return self

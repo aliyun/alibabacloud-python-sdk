@@ -1,3 +1,8 @@
+2025-06-16 Version: 4.0.4
+- Update API Enrich: add response parameters Body.data.solution_list.$.solution_attribute.
+- Update API Search: add response parameters Body.data.solution_list.$.solution_attribute.
+
+
 2025-01-09 Version: 4.0.3
 - Update API Search: update param search_control_options.
 
