@@ -2886,9 +2886,11 @@ class AllocateVpcIpv6CidrRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The type of the IPv6 address pool. Set the value to **custom**.
+        # The type of the IPv6 address pool. Valid values:
         # 
-        # >  This parameter is required.
+        # - **aliyun** (default): IPv6 CIDR block is allocated by the system.
+        # 
+        # - **custom**: custom IPv6 CIDR block.
         self.address_pool_type = address_pool_type
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
@@ -2898,16 +2900,16 @@ class AllocateVpcIpv6CidrRequest(TeaModel):
         self.ipv_6cidr_block = ipv_6cidr_block
         # The type of IPv6 CIDR block. Valid values:
         # 
-        # *   **BGP** (default)
-        # *   **ChinaMobile**\
-        # *   **ChinaUnicom**\
-        # *   **ChinaTelecom**\
-        # 
-        # > 
-        # 
-        # *   If your Alibaba Cloud account is allowed to use single-ISP bandwidth, valid values are: **ChinaTelecom**, **ChinaUnicom**, and **ChinaMobile**.
-        # 
-        # *   You can reserve only one IPv6 CIDR block of each type. After a reserved IPv6 CIDR block of a type is allocated to a VPC, you can reserve another IPv6 CIDR of the type.
+        # *   **BGP** (default): BGP (Multi-ISP)
+        # *   **BGP_International**: BGP (Multi-ISP) International
+        # *   **ChinaMobile**: China Mobile (Single-ISP)
+        # *   **ChinaUnicom**: China Unicom (Single-ISP)
+        # *   **ChinaTelecom**: China Telecom (Single-ISP)
+        # *   **ChinaMobile_L2**: China Mobile (Single-ISP)_L2
+        # *   **ChinaUnicom_L2**: China Unicom (Single-ISP)_L2
+        # *   **ChinaTelecom_L2**: China Telecom (Single-ISP)_L2
+        # > *   If your account is included in the whitelist, you can set this parameter to one of the following values: **ChinaTelecom**, **ChinaUnicom**, **ChinaMobile**, **ChinaTelecom_L2**, **ChinaUnicom_L2**, **ChinaMobile_L2**, and **BGP_International**.
+        # > *   You can reserve only one IPv6 CIDR block of each type. You can reserve another IPv6 CIDR block only after the existing one is allocated to a VPC.
         self.ipv_6isp = ipv_6isp
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -16019,6 +16021,7 @@ class CreateRouteEntriesRequestRouteEntries(TeaModel):
 class CreateRouteEntriesRequest(TeaModel):
     def __init__(
         self,
+        dry_run: bool = None,
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
@@ -16026,11 +16029,14 @@ class CreateRouteEntriesRequest(TeaModel):
         resource_owner_id: int = None,
         route_entries: List[CreateRouteEntriesRequestRouteEntries] = None,
     ):
+        self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the route table.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -16051,6 +16057,8 @@ class CreateRouteEntriesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -16069,6 +16077,8 @@ class CreateRouteEntriesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -16289,6 +16299,7 @@ class CreateRouteEntryRequest(TeaModel):
         client_token: str = None,
         description: str = None,
         destination_cidr_block: str = None,
+        dry_run: bool = None,
         next_hop_id: str = None,
         next_hop_list: List[CreateRouteEntryRequestNextHopList] = None,
         next_hop_type: str = None,
@@ -16317,6 +16328,7 @@ class CreateRouteEntryRequest(TeaModel):
         # 
         # This parameter is required.
         self.destination_cidr_block = destination_cidr_block
+        self.dry_run = dry_run
         # The ID of the next hop.
         self.next_hop_id = next_hop_id
         # The next hop list.
@@ -16371,6 +16383,8 @@ class CreateRouteEntryRequest(TeaModel):
             result['Description'] = self.description
         if self.destination_cidr_block is not None:
             result['DestinationCidrBlock'] = self.destination_cidr_block
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.next_hop_id is not None:
             result['NextHopId'] = self.next_hop_id
         result['NextHopList'] = []
@@ -16403,6 +16417,8 @@ class CreateRouteEntryRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('DestinationCidrBlock') is not None:
             self.destination_cidr_block = m.get('DestinationCidrBlock')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('NextHopId') is not None:
             self.next_hop_id = m.get('NextHopId')
         self.next_hop_list = []
@@ -17609,6 +17625,7 @@ class CreateSslVpnServerRequest(TeaModel):
         client_ip_pool: str = None,
         client_token: str = None,
         compress: bool = None,
+        dry_run: bool = None,
         enable_multi_factor_auth: bool = None,
         idaa_sapplication_id: str = None,
         idaa_sinstance_id: str = None,
@@ -17690,6 +17707,7 @@ class CreateSslVpnServerRequest(TeaModel):
         # *   **true**\
         # *   **false** (default)
         self.compress = compress
+        self.dry_run = dry_run
         # Specifies whether to enable two-factor authentication. To enable two-factor authentication, you need to specify `IDaaSInstanceId`, `IDaaSRegionId`, and `IDaaSApplicationId`. Valid values:
         # 
         # *   **true**: enables this feature.
@@ -17768,6 +17786,8 @@ class CreateSslVpnServerRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.compress is not None:
             result['Compress'] = self.compress
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.enable_multi_factor_auth is not None:
             result['EnableMultiFactorAuth'] = self.enable_multi_factor_auth
         if self.idaa_sapplication_id is not None:
@@ -17808,6 +17828,8 @@ class CreateSslVpnServerRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('Compress') is not None:
             self.compress = m.get('Compress')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('EnableMultiFactorAuth') is not None:
             self.enable_multi_factor_auth = m.get('EnableMultiFactorAuth')
         if m.get('IDaaSApplicationId') is not None:
@@ -17928,38 +17950,38 @@ class CreateTrafficMirrorFilterRequestEgressRules(TeaModel):
         action: str = None,
         destination_cidr_block: str = None,
         destination_port_range: str = None,
+        ip_version: str = None,
         priority: int = None,
         protocol: str = None,
         source_cidr_block: str = None,
         source_port_range: str = None,
     ):
-        # The action of the outbound rule. Valid values:
+        # The collection policy of the outbound rule. Valid value:
         # 
         # *   **accept**: collects network traffic.
         # *   **drop**: does not collect network traffic.
         self.action = action
         # The destination CIDR block of the outbound traffic.
         self.destination_cidr_block = destination_cidr_block
-        # The destination port range of the outbound traffic. Valid values for a port: **1** to **65535**. Separate the first port and the last port with a forward slash (/). Examples: **1/200** and **80/80**. You cannot set this parameter to only **-1/-1**. The value -1/-1 specifies all ports.
+        # The destination port range of the outbound traffic. Valid values for a port: **1** to **65535**. Separate the first port and the last port with a forward slash (/). Examples: **1/200** and **80/80**. You cannot set this parameter to only -1/-1, which specifies all ports.
         # 
-        # >  If you set **EgressRules.N.Protocol** to **ALL** or **ICMP**, you do not need to set this parameter. In this case, all ports are available.
+        # >  If **EgressRules.N.Protocol** is set to **ALL** or **ICMP**, you do not need to specify this parameter. This indicates that all ports are available.
         self.destination_port_range = destination_port_range
-        # The priority of the outbound rule. A smaller value indicates a higher priority.
-        # 
-        # The maximum value of **N** is **10**. You can configure up to 10 outbound rules for a filter.
+        self.ip_version = ip_version
+        # The priority of the outbound rule. A smaller value indicates a higher priority. The maximum value of **N** is **10**. You can configure up to 10 outbound rules for a filter.
         self.priority = priority
-        # The protocol that is used by the outbound traffic to be mirrored. Valid values:
+        # The type of the protocol that is used by the outbound traffic that you want to mirror. Valid value:
         # 
         # *   **ALL**: all protocols
-        # *   **ICMP**: ICMP
-        # *   **TCP**: TCP
-        # *   **UDP**: UDP
+        # *   **ICMP**: Internet Control Message Protocol.
+        # *   **TCP**: Transmission Control Protocol.
+        # *   **UDP**: User Datagram Protocol.
         self.protocol = protocol
         # The source CIDR block of the outbound traffic.
         self.source_cidr_block = source_cidr_block
-        # The source port range of the outbound traffic. Valid values for a port: **1** to **65535**. Separate the first port and the last port with a forward slash (/). Examples: **1/200** and **80/80**. You cannot set this parameter to only **-1/-1**. The value -1/-1 specifies all ports.
+        # The source port range of the outbound traffic. Valid values: **1** to **65535**. Separate the first port and the last port with a forward slash (/). Examples: **1/200** and **80/80**. You cannot set this parameter to only -1/-1, which specifies all ports.
         # 
-        # >  If you set **EgressRules.N.Protocol** to **ALL** or **ICMP**, you do not need to set this parameter. In this case, all ports are available.
+        # >  If **EgressRules.N.Protocol** is set to **ALL** or **ICMP**, you do not need to specify this parameter. This indicates that all ports are available.
         self.source_port_range = source_port_range
 
     def validate(self):
@@ -17977,6 +17999,8 @@ class CreateTrafficMirrorFilterRequestEgressRules(TeaModel):
             result['DestinationCidrBlock'] = self.destination_cidr_block
         if self.destination_port_range is not None:
             result['DestinationPortRange'] = self.destination_port_range
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
         if self.priority is not None:
             result['Priority'] = self.priority
         if self.protocol is not None:
@@ -17995,6 +18019,8 @@ class CreateTrafficMirrorFilterRequestEgressRules(TeaModel):
             self.destination_cidr_block = m.get('DestinationCidrBlock')
         if m.get('DestinationPortRange') is not None:
             self.destination_port_range = m.get('DestinationPortRange')
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
         if m.get('Protocol') is not None:
@@ -18012,38 +18038,38 @@ class CreateTrafficMirrorFilterRequestIngressRules(TeaModel):
         action: str = None,
         destination_cidr_block: str = None,
         destination_port_range: str = None,
+        ip_version: str = None,
         priority: int = None,
         protocol: str = None,
         source_cidr_block: str = None,
         source_port_range: str = None,
     ):
-        # The action of the inbound rule. Valid values:
+        # The collection policy of the inbound rule. Valid value:
         # 
         # *   **accept**: collects network traffic.
         # *   **drop**: does not collect network traffic.
         self.action = action
         # The destination CIDR block of the inbound traffic.
         self.destination_cidr_block = destination_cidr_block
-        # The destination port range of the inbound traffic. Valid values for a port: **1** to **65535**. Separate the first port and the last port with a forward slash (/). Examples: **1/200** and **80/80**.
+        # The destination port range of the inbound traffic. Valid value: **1** to **65535**. Separate the first port and last port with a forward slash (/). For example, **1/200** or **80/80**.
         # 
         # >  If you set **IngressRules.N.Protocol** to **ALL** or **ICMP**, you do not need to set this parameter. In this case, all ports are available.
         self.destination_port_range = destination_port_range
-        # The priority of the inbound rule. A smaller value indicates a higher priority.
-        # 
-        # The maximum value of **N** is **10**. You can configure up to 10 inbound rules for a filter.
+        self.ip_version = ip_version
+        # The priority of the inbound rule. A smaller value indicates a higher priority. The maximum value of **N** is **10**. You can configure up to 10 inbound rules for a filter.
         self.priority = priority
-        # The protocol that is used by the inbound traffic to be mirrored. Valid values:
+        # The type of the protocol is used by the inbound traffic that you want to mirror. Valid value:
         # 
         # *   **ALL**: all protocols
-        # *   **ICMP**: ICMP
-        # *   **TCP**: TCP
-        # *   **UDP**: UDP
+        # *   **ICMP**: Internet Control Message Protocol.
+        # *   **TCP**: Transmission Control Protocol.
+        # *   **UDP**: User Datagram Protocol.
         self.protocol = protocol
         # The source CIDR block of the inbound traffic.
         self.source_cidr_block = source_cidr_block
-        # The source port range of the inbound traffic. Valid values for a port: **1** to **65535**. Separate the first port and the last port with a forward slash (/). Examples: **1/200** and **80/80**.
+        # The source port range of the inbound traffic. Valid value: **1** to **65535**. Separate the first port and last port with a forward slash (/). For example, **1/200** or **80/80**.
         # 
-        # >  If you set **IngressRules.N.Protocol** to **ALL** or **ICMP**, you do not need to set this parameter. In this case, all ports are available.
+        # >  If **IngressRules.N.Protocol** is set to **ALL** or **ICMP**, you do not need to specify this parameter. This indicates that all ports are available.
         self.source_port_range = source_port_range
 
     def validate(self):
@@ -18061,6 +18087,8 @@ class CreateTrafficMirrorFilterRequestIngressRules(TeaModel):
             result['DestinationCidrBlock'] = self.destination_cidr_block
         if self.destination_port_range is not None:
             result['DestinationPortRange'] = self.destination_port_range
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
         if self.priority is not None:
             result['Priority'] = self.priority
         if self.protocol is not None:
@@ -18079,6 +18107,8 @@ class CreateTrafficMirrorFilterRequestIngressRules(TeaModel):
             self.destination_cidr_block = m.get('DestinationCidrBlock')
         if m.get('DestinationPortRange') is not None:
             self.destination_port_range = m.get('DestinationPortRange')
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
         if m.get('Protocol') is not None:
@@ -18157,9 +18187,9 @@ class CreateTrafficMirrorFilterRequest(TeaModel):
         # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false**: performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed. This is the default value.
         self.dry_run = dry_run
-        # The list of outbound rules.
+        # The information about the outbound rules.
         self.egress_rules = egress_rules
-        # The list of inbound rules.
+        # The information about inbound rules.
         self.ingress_rules = ingress_rules
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -18367,6 +18397,7 @@ class CreateTrafficMirrorFilterRulesRequestEgressRules(TeaModel):
         action: str = None,
         destination_cidr_block: str = None,
         destination_port_range: str = None,
+        ip_version: str = None,
         priority: int = None,
         protocol: str = None,
         source_cidr_block: str = None,
@@ -18383,6 +18414,7 @@ class CreateTrafficMirrorFilterRulesRequestEgressRules(TeaModel):
         # 
         # >  If you set **EgressRules.N.Protocol** to **ALL** or **ICMP**, you do not need to set this parameter. In this case, all ports are available.
         self.destination_port_range = destination_port_range
+        self.ip_version = ip_version
         # The priority of the outbound rule. A smaller value indicates a higher priority. The maximum value of **N** is **10**. You can configure up to 10 outbound rules for a filter.
         self.priority = priority
         # The protocol that is used by the outbound traffic to be mirrored. Valid values:
@@ -18414,6 +18446,8 @@ class CreateTrafficMirrorFilterRulesRequestEgressRules(TeaModel):
             result['DestinationCidrBlock'] = self.destination_cidr_block
         if self.destination_port_range is not None:
             result['DestinationPortRange'] = self.destination_port_range
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
         if self.priority is not None:
             result['Priority'] = self.priority
         if self.protocol is not None:
@@ -18432,6 +18466,8 @@ class CreateTrafficMirrorFilterRulesRequestEgressRules(TeaModel):
             self.destination_cidr_block = m.get('DestinationCidrBlock')
         if m.get('DestinationPortRange') is not None:
             self.destination_port_range = m.get('DestinationPortRange')
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
         if m.get('Protocol') is not None:
@@ -18449,6 +18485,7 @@ class CreateTrafficMirrorFilterRulesRequestIngressRules(TeaModel):
         action: str = None,
         destination_cidr_block: str = None,
         destination_port_range: str = None,
+        ip_version: str = None,
         priority: int = None,
         protocol: str = None,
         source_cidr_block: str = None,
@@ -18465,6 +18502,7 @@ class CreateTrafficMirrorFilterRulesRequestIngressRules(TeaModel):
         # 
         # >  If you set **IngressRules.N.Protocol** to **ALL** or **ICMP**, you do not need to set this parameter. In this case, all ports are available.
         self.destination_port_range = destination_port_range
+        self.ip_version = ip_version
         # The priority of the inbound rule. A smaller value indicates a higher priority. The maximum value of **N** is **10**. You can configure up to 10 inbound rules for a filter.
         self.priority = priority
         # The protocol that is used by the inbound traffic to be mirrored. Valid values:
@@ -18496,6 +18534,8 @@ class CreateTrafficMirrorFilterRulesRequestIngressRules(TeaModel):
             result['DestinationCidrBlock'] = self.destination_cidr_block
         if self.destination_port_range is not None:
             result['DestinationPortRange'] = self.destination_port_range
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
         if self.priority is not None:
             result['Priority'] = self.priority
         if self.protocol is not None:
@@ -18514,6 +18554,8 @@ class CreateTrafficMirrorFilterRulesRequestIngressRules(TeaModel):
             self.destination_cidr_block = m.get('DestinationCidrBlock')
         if m.get('DestinationPortRange') is not None:
             self.destination_port_range = m.get('DestinationPortRange')
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
         if m.get('Protocol') is not None:
@@ -19840,6 +19882,7 @@ class CreateVcoRouteEntryRequest(TeaModel):
         self,
         client_token: str = None,
         description: str = None,
+        dry_run: bool = None,
         next_hop: str = None,
         overlay_mode: str = None,
         owner_account: str = None,
@@ -19858,6 +19901,7 @@ class CreateVcoRouteEntryRequest(TeaModel):
         self.client_token = client_token
         # The description of the destination-based route.
         self.description = description
+        self.dry_run = dry_run
         # The next hop of the destination-based route.
         # 
         # This parameter is required.
@@ -19902,6 +19946,8 @@ class CreateVcoRouteEntryRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.description is not None:
             result['Description'] = self.description
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.next_hop is not None:
             result['NextHop'] = self.next_hop
         if self.overlay_mode is not None:
@@ -19928,6 +19974,8 @@ class CreateVcoRouteEntryRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('NextHop') is not None:
             self.next_hop = m.get('NextHop')
         if m.get('OverlayMode') is not None:
@@ -22099,6 +22147,7 @@ class CreateVpnAttachmentRequest(TeaModel):
         bgp_config: str = None,
         client_token: str = None,
         customer_gateway_id: str = None,
+        dry_run: bool = None,
         effect_immediately: bool = None,
         enable_dpd: bool = None,
         enable_nat_traversal: bool = None,
@@ -22153,6 +22202,7 @@ class CreateVpnAttachmentRequest(TeaModel):
         # 
         # >  This parameter is required only when you create a single-tunnel IPsec-VPN connection.
         self.customer_gateway_id = customer_gateway_id
+        self.dry_run = dry_run
         # Specifies whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:
         # 
         # *   **true**: immediately starts IPsec negotiations after the configuration is complete.
@@ -22316,6 +22366,8 @@ class CreateVpnAttachmentRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.customer_gateway_id is not None:
             result['CustomerGatewayId'] = self.customer_gateway_id
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.effect_immediately is not None:
             result['EffectImmediately'] = self.effect_immediately
         if self.enable_dpd is not None:
@@ -22370,6 +22422,8 @@ class CreateVpnAttachmentRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('CustomerGatewayId') is not None:
             self.customer_gateway_id = m.get('CustomerGatewayId')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('EffectImmediately') is not None:
             self.effect_immediately = m.get('EffectImmediately')
         if m.get('EnableDpd') is not None:
@@ -22894,6 +22948,7 @@ class CreateVpnConnectionRequest(TeaModel):
         bgp_config: str = None,
         client_token: str = None,
         customer_gateway_id: str = None,
+        dry_run: bool = None,
         effect_immediately: bool = None,
         enable_dpd: bool = None,
         enable_nat_traversal: bool = None,
@@ -22950,6 +23005,7 @@ class CreateVpnConnectionRequest(TeaModel):
         # 
         # The ID of the customer gateway.
         self.customer_gateway_id = customer_gateway_id
+        self.dry_run = dry_run
         # Specifies whether to immediately start IPsec negotiations. Valid values:
         # 
         # *   **true**: immediately starts IPsec negotiations.
@@ -23117,6 +23173,8 @@ class CreateVpnConnectionRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.customer_gateway_id is not None:
             result['CustomerGatewayId'] = self.customer_gateway_id
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.effect_immediately is not None:
             result['EffectImmediately'] = self.effect_immediately
         if self.enable_dpd is not None:
@@ -23171,6 +23229,8 @@ class CreateVpnConnectionRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('CustomerGatewayId') is not None:
             self.customer_gateway_id = m.get('CustomerGatewayId')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('EffectImmediately') is not None:
             self.effect_immediately = m.get('EffectImmediately')
         if m.get('EnableDpd') is not None:
@@ -23614,6 +23674,7 @@ class CreateVpnPbrRouteEntryRequest(TeaModel):
         self,
         client_token: str = None,
         description: str = None,
+        dry_run: bool = None,
         next_hop: str = None,
         overlay_mode: str = None,
         owner_account: str = None,
@@ -23638,6 +23699,7 @@ class CreateVpnPbrRouteEntryRequest(TeaModel):
         # 
         # The description must be 1 to 100 characters in length, and cannot start with http:// or https://.
         self.description = description
+        self.dry_run = dry_run
         # The next hop of the policy-based route.
         # 
         # This parameter is required.
@@ -23702,6 +23764,8 @@ class CreateVpnPbrRouteEntryRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.description is not None:
             result['Description'] = self.description
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.next_hop is not None:
             result['NextHop'] = self.next_hop
         if self.overlay_mode is not None:
@@ -23736,6 +23800,8 @@ class CreateVpnPbrRouteEntryRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('NextHop') is not None:
             self.next_hop = m.get('NextHop')
         if m.get('OverlayMode') is not None:
@@ -23917,6 +23983,7 @@ class CreateVpnRouteEntryRequest(TeaModel):
         self,
         client_token: str = None,
         description: str = None,
+        dry_run: bool = None,
         next_hop: str = None,
         overlay_mode: str = None,
         owner_account: str = None,
@@ -23939,6 +24006,7 @@ class CreateVpnRouteEntryRequest(TeaModel):
         # 
         # The description must be **1** to **100** characters in length, and cannot start with `http://` or `https://`.
         self.description = description
+        self.dry_run = dry_run
         # The next hop of the destination-based route.
         # 
         # This parameter is required.
@@ -23991,6 +24059,8 @@ class CreateVpnRouteEntryRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.description is not None:
             result['Description'] = self.description
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.next_hop is not None:
             result['NextHop'] = self.next_hop
         if self.overlay_mode is not None:
@@ -24021,6 +24091,8 @@ class CreateVpnRouteEntryRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('NextHop') is not None:
             self.next_hop = m.get('NextHop')
         if m.get('OverlayMode') is not None:
@@ -28971,6 +29043,7 @@ class DeleteRouteEntriesRequestRouteEntries(TeaModel):
 class DeleteRouteEntriesRequest(TeaModel):
     def __init__(
         self,
+        dry_run: bool = None,
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
@@ -28978,6 +29051,7 @@ class DeleteRouteEntriesRequest(TeaModel):
         resource_owner_id: int = None,
         route_entries: List[DeleteRouteEntriesRequestRouteEntries] = None,
     ):
+        self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the route table.
@@ -29003,6 +29077,8 @@ class DeleteRouteEntriesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -29021,6 +29097,8 @@ class DeleteRouteEntriesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -29232,6 +29310,7 @@ class DeleteRouteEntryRequest(TeaModel):
     def __init__(
         self,
         destination_cidr_block: str = None,
+        dry_run: bool = None,
         next_hop_id: str = None,
         next_hop_list: List[DeleteRouteEntryRequestNextHopList] = None,
         owner_account: str = None,
@@ -29244,6 +29323,7 @@ class DeleteRouteEntryRequest(TeaModel):
     ):
         # The destination CIDR block of the route. Only IPv4 CIDR blocks, IPv6 CIDR blocks, and prefix lists are supported.
         self.destination_cidr_block = destination_cidr_block
+        self.dry_run = dry_run
         # The ID of the next hop.
         # 
         # *   To delete a route other than an equal-cost multi-path (ECMP) route, set the **NextHopId** parameter and ignore the **NextHopList** parameter.
@@ -29278,6 +29358,8 @@ class DeleteRouteEntryRequest(TeaModel):
         result = dict()
         if self.destination_cidr_block is not None:
             result['DestinationCidrBlock'] = self.destination_cidr_block
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.next_hop_id is not None:
             result['NextHopId'] = self.next_hop_id
         result['NextHopList'] = []
@@ -29304,6 +29386,8 @@ class DeleteRouteEntryRequest(TeaModel):
         m = m or dict()
         if m.get('DestinationCidrBlock') is not None:
             self.destination_cidr_block = m.get('DestinationCidrBlock')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('NextHopId') is not None:
             self.next_hop_id = m.get('NextHopId')
         self.next_hop_list = []
@@ -45360,7 +45444,7 @@ class DescribeIpv6GatewayAttributeResponseBody(TeaModel):
         instance_charge_type: str = None,
         ipv_6gateway_id: str = None,
         name: str = None,
-        owner_id: str = None,
+        owner_id: int = None,
         region_id: str = None,
         request_id: str = None,
         resource_group_id: str = None,
@@ -45390,6 +45474,9 @@ class DescribeIpv6GatewayAttributeResponseBody(TeaModel):
         self.ipv_6gateway_id = ipv_6gateway_id
         # The name of the IPv6 gateway.
         self.name = name
+        # The ID of the Alibaba Cloud account to which the IPv6 gateway belongs.
+        # 
+        # >  This value is of the Long type. In some languages, the precision may be lost. Use this value with caution.
         self.owner_id = owner_id
         # The ID of the region where the IPv6 gateway is deployed.
         self.region_id = region_id
@@ -45758,7 +45845,7 @@ class DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway(TeaModel):
         instance_charge_type: str = None,
         ipv_6gateway_id: str = None,
         name: str = None,
-        owner_id: str = None,
+        owner_id: int = None,
         region_id: str = None,
         resource_group_id: str = None,
         status: str = None,
@@ -69163,6 +69250,98 @@ class DownloadVpnConnectionConfigRequest(TeaModel):
         return self
 
 
+class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigBgpConfigsBgpConfig(TeaModel):
+    def __init__(
+        self,
+        local_asn: str = None,
+        local_bgp_ip: str = None,
+        peer_asn: str = None,
+        peer_bgp_ip: str = None,
+        tunnel_cidr: str = None,
+        tunnel_id: str = None,
+    ):
+        self.local_asn = local_asn
+        self.local_bgp_ip = local_bgp_ip
+        self.peer_asn = peer_asn
+        self.peer_bgp_ip = peer_bgp_ip
+        self.tunnel_cidr = tunnel_cidr
+        self.tunnel_id = tunnel_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.local_asn is not None:
+            result['LocalAsn'] = self.local_asn
+        if self.local_bgp_ip is not None:
+            result['LocalBgpIp'] = self.local_bgp_ip
+        if self.peer_asn is not None:
+            result['PeerAsn'] = self.peer_asn
+        if self.peer_bgp_ip is not None:
+            result['PeerBgpIp'] = self.peer_bgp_ip
+        if self.tunnel_cidr is not None:
+            result['TunnelCidr'] = self.tunnel_cidr
+        if self.tunnel_id is not None:
+            result['TunnelId'] = self.tunnel_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LocalAsn') is not None:
+            self.local_asn = m.get('LocalAsn')
+        if m.get('LocalBgpIp') is not None:
+            self.local_bgp_ip = m.get('LocalBgpIp')
+        if m.get('PeerAsn') is not None:
+            self.peer_asn = m.get('PeerAsn')
+        if m.get('PeerBgpIp') is not None:
+            self.peer_bgp_ip = m.get('PeerBgpIp')
+        if m.get('TunnelCidr') is not None:
+            self.tunnel_cidr = m.get('TunnelCidr')
+        if m.get('TunnelId') is not None:
+            self.tunnel_id = m.get('TunnelId')
+        return self
+
+
+class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigBgpConfigs(TeaModel):
+    def __init__(
+        self,
+        bgp_config: List[DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigBgpConfigsBgpConfig] = None,
+    ):
+        self.bgp_config = bgp_config
+
+    def validate(self):
+        if self.bgp_config:
+            for k in self.bgp_config:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['BgpConfig'] = []
+        if self.bgp_config is not None:
+            for k in self.bgp_config:
+                result['BgpConfig'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.bgp_config = []
+        if m.get('BgpConfig') is not None:
+            for k in m.get('BgpConfig'):
+                temp_model = DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigBgpConfigsBgpConfig()
+                self.bgp_config.append(temp_model.from_map(k))
+        return self
+
+
 class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIkeConfig(TeaModel):
     def __init__(
         self,
@@ -69534,6 +69713,7 @@ class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfig(Te
 class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig(TeaModel):
     def __init__(
         self,
+        bgp_configs: DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigBgpConfigs = None,
         ike_config: DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIkeConfig = None,
         ipsec_config: DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIpsecConfig = None,
         local: str = None,
@@ -69542,6 +69722,7 @@ class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig(TeaModel):
         remote_subnet: str = None,
         tunnels_config: DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfig = None,
     ):
+        self.bgp_configs = bgp_configs
         # The configurations of Phase 1 negotiations.
         self.ike_config = ike_config
         # The configurations of Phase 2 negotiations.
@@ -69560,6 +69741,8 @@ class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig(TeaModel):
         self.tunnels_config = tunnels_config
 
     def validate(self):
+        if self.bgp_configs:
+            self.bgp_configs.validate()
         if self.ike_config:
             self.ike_config.validate()
         if self.ipsec_config:
@@ -69573,6 +69756,8 @@ class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.bgp_configs is not None:
+            result['BgpConfigs'] = self.bgp_configs.to_map()
         if self.ike_config is not None:
             result['IkeConfig'] = self.ike_config.to_map()
         if self.ipsec_config is not None:
@@ -69591,6 +69776,9 @@ class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BgpConfigs') is not None:
+            temp_model = DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigBgpConfigs()
+            self.bgp_configs = temp_model.from_map(m['BgpConfigs'])
         if m.get('IkeConfig') is not None:
             temp_model = DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIkeConfig()
             self.ike_config = temp_model.from_map(m['IkeConfig'])
@@ -79679,6 +79867,7 @@ class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersEgressRules(TeaMod
         action: str = None,
         destination_cidr_block: str = None,
         destination_port_range: str = None,
+        ip_version: str = None,
         priority: int = None,
         protocol: str = None,
         source_cidr_block: str = None,
@@ -79697,6 +79886,7 @@ class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersEgressRules(TeaMod
         self.destination_cidr_block = destination_cidr_block
         # The destination port range of the outbound traffic.
         self.destination_port_range = destination_port_range
+        self.ip_version = ip_version
         # The priority of the outbound rule. A smaller value indicates a higher priority.
         self.priority = priority
         # The protocol that is used by the outbound traffic to be mirrored. Valid values:
@@ -79742,6 +79932,8 @@ class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersEgressRules(TeaMod
             result['DestinationCidrBlock'] = self.destination_cidr_block
         if self.destination_port_range is not None:
             result['DestinationPortRange'] = self.destination_port_range
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
         if self.priority is not None:
             result['Priority'] = self.priority
         if self.protocol is not None:
@@ -79768,6 +79960,8 @@ class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersEgressRules(TeaMod
             self.destination_cidr_block = m.get('DestinationCidrBlock')
         if m.get('DestinationPortRange') is not None:
             self.destination_port_range = m.get('DestinationPortRange')
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
         if m.get('Protocol') is not None:
@@ -79793,6 +79987,7 @@ class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersIngressRules(TeaMo
         action: str = None,
         destination_cidr_block: str = None,
         destination_port_range: str = None,
+        ip_version: str = None,
         priority: int = None,
         protocol: str = None,
         source_cidr_block: str = None,
@@ -79811,6 +80006,7 @@ class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersIngressRules(TeaMo
         self.destination_cidr_block = destination_cidr_block
         # The destination port range of the inbound traffic.
         self.destination_port_range = destination_port_range
+        self.ip_version = ip_version
         # The priority of the inbound rule. A smaller value indicates a higher priority.
         self.priority = priority
         # The protocol that is used by the inbound traffic to be mirrored. Valid values:
@@ -79856,6 +80052,8 @@ class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersIngressRules(TeaMo
             result['DestinationCidrBlock'] = self.destination_cidr_block
         if self.destination_port_range is not None:
             result['DestinationPortRange'] = self.destination_port_range
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
         if self.priority is not None:
             result['Priority'] = self.priority
         if self.protocol is not None:
@@ -79882,6 +80080,8 @@ class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersIngressRules(TeaMo
             self.destination_cidr_block = m.get('DestinationCidrBlock')
         if m.get('DestinationPortRange') is not None:
             self.destination_port_range = m.get('DestinationPortRange')
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
         if m.get('Protocol') is not None:
@@ -82003,6 +82203,7 @@ class ListVpcGatewayEndpointsRequest(TeaModel):
         resource_owner_id: int = None,
         service_name: str = None,
         tags: List[ListVpcGatewayEndpointsRequestTags] = None,
+        vpc_id: str = None,
     ):
         # The ID of the gateway endpoint.
         self.endpoint_id = endpoint_id
@@ -82033,6 +82234,7 @@ class ListVpcGatewayEndpointsRequest(TeaModel):
         self.service_name = service_name
         # The tag list.
         self.tags = tags
+        self.vpc_id = vpc_id
 
     def validate(self):
         if self.tags:
@@ -82072,6 +82274,8 @@ class ListVpcGatewayEndpointsRequest(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['Tags'].append(k.to_map() if k else None)
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
@@ -82103,6 +82307,8 @@ class ListVpcGatewayEndpointsRequest(TeaModel):
             for k in m.get('Tags'):
                 temp_model = ListVpcGatewayEndpointsRequestTags()
                 self.tags.append(temp_model.from_map(k))
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         return self
 
 
@@ -88976,6 +89182,7 @@ class ModifyRouteEntryRequest(TeaModel):
         self,
         description: str = None,
         destination_cidr_block: str = None,
+        dry_run: bool = None,
         new_next_hop_id: str = None,
         new_next_hop_type: str = None,
         owner_account: str = None,
@@ -88993,6 +89200,7 @@ class ModifyRouteEntryRequest(TeaModel):
         self.description = description
         # The destination CIDR block of the route entry. Only IPv4 CIDR blocks, IPv6 CIDR blocks, and prefix lists are supported.
         self.destination_cidr_block = destination_cidr_block
+        self.dry_run = dry_run
         # The ID of the new next hop instance.
         self.new_next_hop_id = new_next_hop_id
         # The new next hop type of the route.
@@ -89029,6 +89237,8 @@ class ModifyRouteEntryRequest(TeaModel):
             result['Description'] = self.description
         if self.destination_cidr_block is not None:
             result['DestinationCidrBlock'] = self.destination_cidr_block
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.new_next_hop_id is not None:
             result['NewNextHopId'] = self.new_next_hop_id
         if self.new_next_hop_type is not None:
@@ -89057,6 +89267,8 @@ class ModifyRouteEntryRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('DestinationCidrBlock') is not None:
             self.destination_cidr_block = m.get('DestinationCidrBlock')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('NewNextHopId') is not None:
             self.new_next_hop_id = m.get('NewNextHopId')
         if m.get('NewNextHopType') is not None:
@@ -90089,6 +90301,7 @@ class ModifySslVpnServerRequest(TeaModel):
         client_ip_pool: str = None,
         client_token: str = None,
         compress: bool = None,
+        dry_run: bool = None,
         enable_multi_factor_auth: bool = None,
         idaa_sapplication_id: str = None,
         idaa_sinstance_id: str = None,
@@ -90162,6 +90375,7 @@ class ModifySslVpnServerRequest(TeaModel):
         # *   **true** (default)
         # *   **false**\
         self.compress = compress
+        self.dry_run = dry_run
         # Specifies whether to enable two-factor authentication. To enable two-factor authentication, you need to specify **IDaaSInstanceId**, **IDaaSRegionId**, and **IDaaSApplicationId**. Valid values:
         # 
         # *   **true**: enables the feature.
@@ -90238,6 +90452,8 @@ class ModifySslVpnServerRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.compress is not None:
             result['Compress'] = self.compress
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.enable_multi_factor_auth is not None:
             result['EnableMultiFactorAuth'] = self.enable_multi_factor_auth
         if self.idaa_sapplication_id is not None:
@@ -90278,6 +90494,8 @@ class ModifySslVpnServerRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('Compress') is not None:
             self.compress = m.get('Compress')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('EnableMultiFactorAuth') is not None:
             self.enable_multi_factor_auth = m.get('EnableMultiFactorAuth')
         if m.get('IDaaSApplicationId') is not None:

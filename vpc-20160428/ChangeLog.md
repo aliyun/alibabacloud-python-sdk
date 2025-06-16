@@ -1,3 +1,26 @@
+2025-06-16 Version: 6.11.6
+- Update API CreateRouteEntries: add request parameters DryRun.
+- Update API CreateRouteEntry: add request parameters DryRun.
+- Update API CreateSslVpnServer: add request parameters DryRun.
+- Update API CreateTrafficMirrorFilter: add request parameters EgressRules.$.IpVersion.
+- Update API CreateTrafficMirrorFilter: add request parameters IngressRules.$.IpVersion.
+- Update API CreateTrafficMirrorFilterRules: add request parameters EgressRules.$.IpVersion.
+- Update API CreateTrafficMirrorFilterRules: add request parameters IngressRules.$.IpVersion.
+- Update API CreateVcoRouteEntry: add request parameters DryRun.
+- Update API CreateVpnAttachment: add request parameters DryRun.
+- Update API CreateVpnConnection: add request parameters DryRun.
+- Update API CreateVpnPbrRouteEntry: add request parameters DryRun.
+- Update API CreateVpnRouteEntry: add request parameters DryRun.
+- Update API DeleteRouteEntries: add request parameters DryRun.
+- Update API DeleteRouteEntry: add request parameters DryRun.
+- Update API DownloadVpnConnectionConfig: add response parameters Body.VpnConnectionConfig.BgpConfigs.
+- Update API ListTrafficMirrorFilters: add response parameters Body.TrafficMirrorFilters.$.EgressRules.$.IpVersion.
+- Update API ListTrafficMirrorFilters: add response parameters Body.TrafficMirrorFilters.$.IngressRules.$.IpVersion.
+- Update API ListVpcGatewayEndpoints: add request parameters VpcId.
+- Update API ModifyRouteEntry: add request parameters DryRun.
+- Update API ModifySslVpnServer: add request parameters DryRun.
+
+
 2025-04-14 Version: 6.11.5
 - Update API DescribeIpv6GatewayAttribute: add response parameters Body.OwnerId.
 - Update API DescribeIpv6Gateways: add response parameters Body.Ipv6Gateways.$.OwnerId.
