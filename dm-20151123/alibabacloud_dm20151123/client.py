@@ -279,6 +279,8 @@ class Client(OpenApiClient):
             query['ClickTrace'] = request.click_trace
         if not UtilClient.is_unset(request.headers):
             query['Headers'] = request.headers
+        if not UtilClient.is_unset(request.ip_pool_id):
+            query['IpPoolId'] = request.ip_pool_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.receivers_name):
@@ -340,6 +342,8 @@ class Client(OpenApiClient):
             query['ClickTrace'] = request.click_trace
         if not UtilClient.is_unset(request.headers):
             query['Headers'] = request.headers
+        if not UtilClient.is_unset(request.ip_pool_id):
+            query['IpPoolId'] = request.ip_pool_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.receivers_name):
@@ -4953,6 +4957,8 @@ class Client(OpenApiClient):
             query['Headers'] = request.headers
         if not UtilClient.is_unset(request.html_body):
             query['HtmlBody'] = request.html_body
+        if not UtilClient.is_unset(request.ip_pool_id):
+            query['IpPoolId'] = request.ip_pool_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.reply_address):
@@ -5022,6 +5028,8 @@ class Client(OpenApiClient):
             query['Headers'] = request.headers
         if not UtilClient.is_unset(request.html_body):
             query['HtmlBody'] = request.html_body
+        if not UtilClient.is_unset(request.ip_pool_id):
+            query['IpPoolId'] = request.ip_pool_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.reply_address):

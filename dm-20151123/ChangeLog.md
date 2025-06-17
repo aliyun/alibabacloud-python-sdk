@@ -1,3 +1,10 @@
+2025-06-17 Version: 1.2.6
+- Update API BatchSendMail: add request parameters IpPoolId.
+- Update API QueryTaskByParam: add response parameters Body.data.$.IpPoolId.
+- Update API QueryTaskByParam: add response parameters Body.data.$.IpPoolName.
+- Update API SingleSendMail: add request parameters IpPoolId.
+
+
 2025-06-13 Version: 1.2.5
 - Update API GetTrackList: add request parameters DedicatedIp.
 - Update API GetTrackList: add request parameters DedicatedIpPoolId.

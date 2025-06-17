@@ -252,6 +252,7 @@ class BatchSendMailRequest(TeaModel):
         address_type: int = None,
         click_trace: str = None,
         headers: str = None,
+        ip_pool_id: str = None,
         owner_id: int = None,
         receivers_name: str = None,
         reply_address: str = None,
@@ -277,6 +278,7 @@ class BatchSendMailRequest(TeaModel):
         self.click_trace = click_trace
         # Currently, the standard fields that can be added to the email header are Message-ID, List-Unsubscribe, and List-Unsubscribe-Post. Standard fields will overwrite the existing values in the email header, while non-standard fields need to start with X-User- and will be appended to the email header. Currently, up to 10 headers can be passed in JSON format, and both standard and non-standard fields must comply with the syntax requirements for headers.
         self.headers = headers
+        self.ip_pool_id = ip_pool_id
         self.owner_id = owner_id
         # The name of the recipient list that has been created and uploaded. Note: The recipient list should not be deleted until at least 10 minutes after the task is triggered, otherwise it may cause sending failure.
         # 
@@ -327,6 +329,8 @@ class BatchSendMailRequest(TeaModel):
             result['ClickTrace'] = self.click_trace
         if self.headers is not None:
             result['Headers'] = self.headers
+        if self.ip_pool_id is not None:
+            result['IpPoolId'] = self.ip_pool_id
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.receivers_name is not None:
@@ -359,6 +363,8 @@ class BatchSendMailRequest(TeaModel):
             self.click_trace = m.get('ClickTrace')
         if m.get('Headers') is not None:
             self.headers = m.get('Headers')
+        if m.get('IpPoolId') is not None:
+            self.ip_pool_id = m.get('IpPoolId')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('ReceiversName') is not None:
@@ -6488,6 +6494,8 @@ class QueryTaskByParamResponseBodyDataTask(TeaModel):
         self,
         address_type: str = None,
         create_time: str = None,
+        ip_pool_id: str = None,
+        ip_pool_name: str = None,
         receivers_name: str = None,
         request_count: str = None,
         tag_name: str = None,
@@ -6500,6 +6508,8 @@ class QueryTaskByParamResponseBodyDataTask(TeaModel):
         self.address_type = address_type
         # Creation time.
         self.create_time = create_time
+        self.ip_pool_id = ip_pool_id
+        self.ip_pool_name = ip_pool_name
         # Receiver\\"s name.
         self.receivers_name = receivers_name
         # Request count.
@@ -6528,6 +6538,10 @@ class QueryTaskByParamResponseBodyDataTask(TeaModel):
             result['AddressType'] = self.address_type
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.ip_pool_id is not None:
+            result['IpPoolId'] = self.ip_pool_id
+        if self.ip_pool_name is not None:
+            result['IpPoolName'] = self.ip_pool_name
         if self.receivers_name is not None:
             result['ReceiversName'] = self.receivers_name
         if self.request_count is not None:
@@ -6550,6 +6564,10 @@ class QueryTaskByParamResponseBodyDataTask(TeaModel):
             self.address_type = m.get('AddressType')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('IpPoolId') is not None:
+            self.ip_pool_id = m.get('IpPoolId')
+        if m.get('IpPoolName') is not None:
+            self.ip_pool_name = m.get('IpPoolName')
         if m.get('ReceiversName') is not None:
             self.receivers_name = m.get('ReceiversName')
         if m.get('RequestCount') is not None:
@@ -7909,6 +7927,7 @@ class SingleSendMailRequest(TeaModel):
         from_alias: str = None,
         headers: str = None,
         html_body: str = None,
+        ip_pool_id: str = None,
         owner_id: int = None,
         reply_address: str = None,
         reply_address_alias: str = None,
@@ -7947,6 +7966,7 @@ class SingleSendMailRequest(TeaModel):
         self.headers = headers
         # Email HTML body, limited to 80K by the SDK. Note: HtmlBody and TextBody are for different types of email content, and one of them must be provided.
         self.html_body = html_body
+        self.ip_pool_id = ip_pool_id
         self.owner_id = owner_id
         # Reply-to address
         self.reply_address = reply_address
@@ -8018,6 +8038,8 @@ class SingleSendMailRequest(TeaModel):
             result['Headers'] = self.headers
         if self.html_body is not None:
             result['HtmlBody'] = self.html_body
+        if self.ip_pool_id is not None:
+            result['IpPoolId'] = self.ip_pool_id
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.reply_address is not None:
@@ -8058,6 +8080,8 @@ class SingleSendMailRequest(TeaModel):
             self.headers = m.get('Headers')
         if m.get('HtmlBody') is not None:
             self.html_body = m.get('HtmlBody')
+        if m.get('IpPoolId') is not None:
+            self.ip_pool_id = m.get('IpPoolId')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('ReplyAddress') is not None:
