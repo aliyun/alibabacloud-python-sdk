@@ -11786,6 +11786,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         host_type: str = None,
         idle_time: int = None,
         instance_network_type: str = None,
+        instance_spec: str = None,
         lock_mode: str = None,
         lock_reason: str = None,
         maintain_end_time: str = None,
@@ -11929,6 +11930,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # - **Classic**: Classic network.
         # - **VPC**: VPC network.
         self.instance_network_type = instance_network_type
+        self.instance_spec = instance_spec
         # Lock mode, with the following values:
         # 
         # - **Unlock**: Normal.
@@ -12122,6 +12124,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             result['IdleTime'] = self.idle_time
         if self.instance_network_type is not None:
             result['InstanceNetworkType'] = self.instance_network_type
+        if self.instance_spec is not None:
+            result['InstanceSpec'] = self.instance_spec
         if self.lock_mode is not None:
             result['LockMode'] = self.lock_mode
         if self.lock_reason is not None:
@@ -12262,6 +12266,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             self.idle_time = m.get('IdleTime')
         if m.get('InstanceNetworkType') is not None:
             self.instance_network_type = m.get('InstanceNetworkType')
+        if m.get('InstanceSpec') is not None:
+            self.instance_spec = m.get('InstanceSpec')
         if m.get('LockMode') is not None:
             self.lock_mode = m.get('LockMode')
         if m.get('LockReason') is not None:
