@@ -724,6 +724,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ConfirmPipelineBatchResponse:
         """
+        @summary Confirms whether to start the next batch.
+        
         @param request: ConfirmPipelineBatchRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -762,6 +764,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ConfirmPipelineBatchResponse:
         """
+        @summary Confirms whether to start the next batch.
+        
         @param request: ConfirmPipelineBatchRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -798,6 +802,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ConfirmPipelineBatchRequest,
     ) -> sae_20190506_models.ConfirmPipelineBatchResponse:
         """
+        @summary Confirms whether to start the next batch.
+        
         @param request: ConfirmPipelineBatchRequest
         @return: ConfirmPipelineBatchResponse
         """
@@ -810,6 +816,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ConfirmPipelineBatchRequest,
     ) -> sae_20190506_models.ConfirmPipelineBatchResponse:
         """
+        @summary Confirms whether to start the next batch.
+        
         @param request: ConfirmPipelineBatchRequest
         @return: ConfirmPipelineBatchResponse
         """
@@ -5528,7 +5536,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeApplicationScalingRuleResponse:
         """
-        @summary Queries a specified auto scaling policy of an application.
+        @summary Queries an Auto Scaling policy of an application.
         
         @param request: DescribeApplicationScalingRuleRequest
         @param headers: map
@@ -5568,7 +5576,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeApplicationScalingRuleResponse:
         """
-        @summary Queries a specified auto scaling policy of an application.
+        @summary Queries an Auto Scaling policy of an application.
         
         @param request: DescribeApplicationScalingRuleRequest
         @param headers: map
@@ -5606,7 +5614,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeApplicationScalingRuleRequest,
     ) -> sae_20190506_models.DescribeApplicationScalingRuleResponse:
         """
-        @summary Queries a specified auto scaling policy of an application.
+        @summary Queries an Auto Scaling policy of an application.
         
         @param request: DescribeApplicationScalingRuleRequest
         @return: DescribeApplicationScalingRuleResponse
@@ -5620,7 +5628,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeApplicationScalingRuleRequest,
     ) -> sae_20190506_models.DescribeApplicationScalingRuleResponse:
         """
-        @summary Queries a specified auto scaling policy of an application.
+        @summary Queries an Auto Scaling policy of an application.
         
         @param request: DescribeApplicationScalingRuleRequest
         @return: DescribeApplicationScalingRuleResponse
@@ -6674,6 +6682,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeInstanceLogResponse:
         """
+        @summary Queries the logs of a sidecar container instance.
+        
         @param request: DescribeInstanceLogRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -6712,6 +6722,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeInstanceLogResponse:
         """
+        @summary Queries the logs of a sidecar container instance.
+        
         @param request: DescribeInstanceLogRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -6748,6 +6760,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeInstanceLogRequest,
     ) -> sae_20190506_models.DescribeInstanceLogResponse:
         """
+        @summary Queries the logs of a sidecar container instance.
+        
         @param request: DescribeInstanceLogRequest
         @return: DescribeInstanceLogResponse
         """
@@ -6760,6 +6774,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeInstanceLogRequest,
     ) -> sae_20190506_models.DescribeInstanceLogResponse:
         """
+        @summary Queries the logs of a sidecar container instance.
+        
         @param request: DescribeInstanceLogRequest
         @return: DescribeInstanceLogResponse
         """
@@ -10478,7 +10494,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListAppServicesResponse:
         """
-        @summary Queries the list of microservices
+        @summary Queries the list of microservices.
         
         @param request: ListAppServicesRequest
         @param headers: map
@@ -10532,7 +10548,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListAppServicesResponse:
         """
-        @summary Queries the list of microservices
+        @summary Queries the list of microservices.
         
         @param request: ListAppServicesRequest
         @param headers: map
@@ -10584,7 +10600,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListAppServicesRequest,
     ) -> sae_20190506_models.ListAppServicesResponse:
         """
-        @summary Queries the list of microservices
+        @summary Queries the list of microservices.
         
         @param request: ListAppServicesRequest
         @return: ListAppServicesResponse
@@ -10598,7 +10614,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListAppServicesRequest,
     ) -> sae_20190506_models.ListAppServicesResponse:
         """
-        @summary Queries the list of microservices
+        @summary Queries the list of microservices.
         
         @param request: ListAppServicesRequest
         @return: ListAppServicesResponse
@@ -15115,6 +15131,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.untag_resources_with_options_async(request, headers, runtime)
 
+    def update_app_mode_with_options(
+        self,
+        request: sae_20190506_models.UpdateAppModeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.UpdateAppModeResponse:
+        """
+        @summary 应用闲置模式更新
+        
+        @param request: UpdateAppModeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAppModeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.enable_idle):
+            query['EnableIdle'] = request.enable_idle
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAppMode',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/app/updateAppMode',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.UpdateAppModeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_app_mode_with_options_async(
+        self,
+        request: sae_20190506_models.UpdateAppModeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.UpdateAppModeResponse:
+        """
+        @summary 应用闲置模式更新
+        
+        @param request: UpdateAppModeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAppModeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.enable_idle):
+            query['EnableIdle'] = request.enable_idle
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAppMode',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/app/updateAppMode',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.UpdateAppModeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_app_mode(
+        self,
+        request: sae_20190506_models.UpdateAppModeRequest,
+    ) -> sae_20190506_models.UpdateAppModeResponse:
+        """
+        @summary 应用闲置模式更新
+        
+        @param request: UpdateAppModeRequest
+        @return: UpdateAppModeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_app_mode_with_options(request, headers, runtime)
+
+    async def update_app_mode_async(
+        self,
+        request: sae_20190506_models.UpdateAppModeRequest,
+    ) -> sae_20190506_models.UpdateAppModeResponse:
+        """
+        @summary 应用闲置模式更新
+        
+        @param request: UpdateAppModeRequest
+        @return: UpdateAppModeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_app_mode_with_options_async(request, headers, runtime)
+
     def update_app_security_group_with_options(
         self,
         request: sae_20190506_models.UpdateAppSecurityGroupRequest,
@@ -15586,7 +15710,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateConfigMapResponse:
         """
-        @summary Update a ConfigMap.
+        @summary Updates a ConfigMap instance.
         
         @param request: UpdateConfigMapRequest
         @param headers: map
@@ -15630,7 +15754,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateConfigMapResponse:
         """
-        @summary Update a ConfigMap.
+        @summary Updates a ConfigMap instance.
         
         @param request: UpdateConfigMapRequest
         @param headers: map
@@ -15672,7 +15796,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UpdateConfigMapRequest,
     ) -> sae_20190506_models.UpdateConfigMapResponse:
         """
-        @summary Update a ConfigMap.
+        @summary Updates a ConfigMap instance.
         
         @param request: UpdateConfigMapRequest
         @return: UpdateConfigMapResponse
@@ -15686,7 +15810,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UpdateConfigMapRequest,
     ) -> sae_20190506_models.UpdateConfigMapResponse:
         """
-        @summary Update a ConfigMap.
+        @summary Updates a ConfigMap instance.
         
         @param request: UpdateConfigMapRequest
         @return: UpdateConfigMapResponse

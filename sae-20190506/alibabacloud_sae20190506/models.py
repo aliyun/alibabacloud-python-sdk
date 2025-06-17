@@ -12190,7 +12190,7 @@ class ConfirmPipelineBatchRequest(TeaModel):
         # 
         # This parameter is required.
         self.confirm = confirm
-        # e2e-vds-feh-\\*\\*\\*\
+        # The ID of the batch. You can call the [DescribeChangeOrder](https://www.alibabacloud.com/help/zh/sae/serverless-app-engine-classic/developer-reference/api-sae-2019-05-06-describechangeorder-old?spm=a2c63.p38356.help-menu-search-118957.d_0) operation to obtain the ID.
         # 
         # This parameter is required.
         self.pipeline_id = pipeline_id
@@ -24341,7 +24341,19 @@ class DescribeApplicationScalingRuleResponseBodyData(TeaModel):
         self.last_disable_time = last_disable_time
         # The details of the metric-based auto scaling policy.
         self.metric = metric
+        # The ratio of the minimum number of available instances to the current number of instances. Valid values:
+        # 
+        # *   **-1** (default value): The minimum number of available instances is not determined based on this parameter.
+        # *   **0 to 100**: The minimum number of available instances is calculated by using the following formula: Number of existing instances × Value of MinReadyInstanceRatio × 100%. The calculation result is rounded up to the nearest integer. For example, if the number of existing instances is 5 and MinReadyInstanceRatio is set to 50, the minimum number of available instances is 3.
+        # 
+        # >  If the **MinReadyInstanceRatio** and **MinReadyInstanceRatio** parameters are configured and the **MinReadyInstanceRatio** parameter is set to a number from 0 to 100, the value of the MinReadyInstanceRatio parameter takes precedence. For example, if the **MinReadyInstances** parameter is set to **5**, and the **MinReadyInstanceRatio** parameter is set to **50**, the minimum number of available instances is set to the nearest integer rounded up from the calculated result of the following formula: Nmber of existing instances × **50**.
         self.min_ready_instance_ratio = min_ready_instance_ratio
+        # The minimum number of available instances. Valid values:
+        # 
+        # *   If you set the value to **0**, business is interrupted when the application is updated.
+        # *   If you set this property to -1, the system calculates a recommended value as the minimum number of available instances by using the following formula: Recommended value = Number of existing instances × 25%. The calculation result is rounded up to the nearest integer. For example, if the number of existing instances is 5, the recommended value is calculated by using the following formula: 5 × 25% = 1.25. In this case, the minimum number of available instances is 2.
+        # 
+        # >  To ensure business continuity, make sure that at least one instance is available during application deployment and rollback.
         self.min_ready_instances = min_ready_instances
         # Indicates whether the auto scaling policy is enabled. Valid values:
         # 
@@ -24438,7 +24450,7 @@ class DescribeApplicationScalingRuleResponseBody(TeaModel):
         trace_id: str = None,
     ):
         self.code = code
-        # The returned data.
+        # The data returned.
         self.data = data
         self.error_code = error_code
         self.message = message
@@ -29357,6 +29369,7 @@ class DescribeInstanceLogRequest(TeaModel):
         container_id: str = None,
         instance_id: str = None,
     ):
+        # The ID of the sidecar container. You can call the [DescribeApplicationInstances](https://help.aliyun.com/document_detail/2834847.html) to obtain the ID.
         self.container_id = container_id
         # The ID of the request.
         # 
@@ -39605,7 +39618,7 @@ class ListApplicationsResponseBodyData(TeaModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # The applications.
+        # The queried applications.
         self.applications = applications
         # The number of application instances.
         self.current_page = current_page
@@ -48452,6 +48465,138 @@ class UntagResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UntagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateAppModeRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        enable_idle: bool = None,
+    ):
+        self.app_id = app_id
+        self.enable_idle = enable_idle
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.enable_idle is not None:
+            result['EnableIdle'] = self.enable_idle
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('EnableIdle') is not None:
+            self.enable_idle = m.get('EnableIdle')
+        return self
+
+
+class UpdateAppModeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.error_code = error_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class UpdateAppModeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateAppModeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateAppModeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

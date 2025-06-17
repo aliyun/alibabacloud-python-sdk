@@ -1,3 +1,7 @@
+2025-06-17 Version: 2.5.0
+- Support API UpdateAppMode.
+
+
 2025-06-09 Version: 2.4.0
 - Support API BindNlb.
 - Support API DescribeApplicationNlbs.
