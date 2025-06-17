@@ -1,3 +1,10 @@
+2025-06-17 Version: 1.5.0
+- Support API BatchIntrudeDomains.
+- Support API QueryExportAuctionDetail.
+- Update API QueryExportDomainExpireSnatchs: add response parameters Body.Data.$.RenewPrice.
+- Update API QueryExportDomainExpireSnatchs: add response parameters Body.Data.$.SnatchNo.
+
+
 2025-05-16 Version: 1.4.0
 - Support API QueryExportDomainExpireSnatchs.
 

@@ -133,6 +133,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.accept_demand_with_options_async(request, runtime)
 
+    def batch_intrude_domains_with_options(
+        self,
+        tmp_req: domain_20180208_models.BatchIntrudeDomainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180208_models.BatchIntrudeDomainsResponse:
+        """
+        @summary 闯入接口
+        
+        @param tmp_req: BatchIntrudeDomainsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchIntrudeDomainsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = domain_20180208_models.BatchIntrudeDomainsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.domain_names):
+            request.domain_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.domain_names, 'DomainNames', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.domain_names_shrink):
+            query['DomainNames'] = request.domain_names_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchIntrudeDomains',
+            version='2018-02-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180208_models.BatchIntrudeDomainsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_intrude_domains_with_options_async(
+        self,
+        tmp_req: domain_20180208_models.BatchIntrudeDomainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180208_models.BatchIntrudeDomainsResponse:
+        """
+        @summary 闯入接口
+        
+        @param tmp_req: BatchIntrudeDomainsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchIntrudeDomainsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = domain_20180208_models.BatchIntrudeDomainsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.domain_names):
+            request.domain_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.domain_names, 'DomainNames', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.domain_names_shrink):
+            query['DomainNames'] = request.domain_names_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchIntrudeDomains',
+            version='2018-02-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180208_models.BatchIntrudeDomainsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_intrude_domains(
+        self,
+        request: domain_20180208_models.BatchIntrudeDomainsRequest,
+    ) -> domain_20180208_models.BatchIntrudeDomainsResponse:
+        """
+        @summary 闯入接口
+        
+        @param request: BatchIntrudeDomainsRequest
+        @return: BatchIntrudeDomainsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.batch_intrude_domains_with_options(request, runtime)
+
+    async def batch_intrude_domains_async(
+        self,
+        request: domain_20180208_models.BatchIntrudeDomainsRequest,
+    ) -> domain_20180208_models.BatchIntrudeDomainsResponse:
+        """
+        @summary 闯入接口
+        
+        @param request: BatchIntrudeDomainsRequest
+        @return: BatchIntrudeDomainsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_intrude_domains_with_options_async(request, runtime)
+
     def bid_domain_with_options(
         self,
         request: domain_20180208_models.BidDomainRequest,
@@ -1912,6 +2016,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.query_exchange_rate_with_options_async(request, runtime)
+
+    def query_export_auction_detail_with_options(
+        self,
+        request: domain_20180208_models.QueryExportAuctionDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180208_models.QueryExportAuctionDetailResponse:
+        """
+        @summary 查询竞价商品详情
+        
+        @param request: QueryExportAuctionDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryExportAuctionDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auction_id):
+            query['AuctionId'] = request.auction_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryExportAuctionDetail',
+            version='2018-02-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180208_models.QueryExportAuctionDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_export_auction_detail_with_options_async(
+        self,
+        request: domain_20180208_models.QueryExportAuctionDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180208_models.QueryExportAuctionDetailResponse:
+        """
+        @summary 查询竞价商品详情
+        
+        @param request: QueryExportAuctionDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryExportAuctionDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auction_id):
+            query['AuctionId'] = request.auction_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryExportAuctionDetail',
+            version='2018-02-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180208_models.QueryExportAuctionDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_export_auction_detail(
+        self,
+        request: domain_20180208_models.QueryExportAuctionDetailRequest,
+    ) -> domain_20180208_models.QueryExportAuctionDetailResponse:
+        """
+        @summary 查询竞价商品详情
+        
+        @param request: QueryExportAuctionDetailRequest
+        @return: QueryExportAuctionDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_export_auction_detail_with_options(request, runtime)
+
+    async def query_export_auction_detail_async(
+        self,
+        request: domain_20180208_models.QueryExportAuctionDetailRequest,
+    ) -> domain_20180208_models.QueryExportAuctionDetailResponse:
+        """
+        @summary 查询竞价商品详情
+        
+        @param request: QueryExportAuctionDetailRequest
+        @return: QueryExportAuctionDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_export_auction_detail_with_options_async(request, runtime)
 
     def query_export_domain_expire_snatchs_with_options(
         self,
