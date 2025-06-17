@@ -1,3 +1,8 @@
+2025-06-17 Version: 2.0.9
+- Update API ListLeniPrivateIpAddresses: add response parameters Body.Content.Data.$.ResourceGroupId.
+- Update API ListLniPrivateIpAddress: add response parameters Body.Content.Data.$.ResourceGroupId.
+
+
 2025-05-19 Version: 2.0.8
 - Update API GetNodeInfoForPod: add response parameters Body.Content.HdeniIpv6SipQuota.
 - Update API GetNodeInfoForPod: add response parameters Body.Content.HdeniSipQuota.

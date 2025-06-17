@@ -745,7 +745,9 @@ class CreateElasticNetworkInterfaceRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -799,9 +801,11 @@ class CreateElasticNetworkInterfaceRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The Resource GroupId.
         self.resource_group_id = resource_group_id
         # The ID of the security group.
         self.security_group_id = security_group_id
+        # The resource tags.
         self.tag = tag
         # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
@@ -1022,7 +1026,9 @@ class CreateErRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -1075,6 +1081,7 @@ class CreateErRequest(TeaModel):
         self.region_id = region_id
         # Resource group instance ID
         self.resource_group_id = resource_group_id
+        # List of tags.
         self.tag = tag
 
     def validate(self):
@@ -5224,7 +5231,9 @@ class GetElasticNetworkInterfaceResponseBodyContentTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -5305,6 +5314,7 @@ class GetElasticNetworkInterfaceResponseBodyContent(TeaModel):
         self.private_ip_addresses = private_ip_addresses
         # The region ID.
         self.region_id = region_id
+        # 资源组实例ID
         self.resource_group_id = resource_group_id
         # The ID of the security group.
         self.security_group_id = security_group_id
@@ -5318,6 +5328,7 @@ class GetElasticNetworkInterfaceResponseBodyContent(TeaModel):
         # *   Available
         # *   Deleting
         self.status = status
+        # The details of the resource tags.
         self.tags = tags
         # NIC Type
         # 
@@ -6030,7 +6041,9 @@ class GetErResponseBodyContentTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -6102,6 +6115,7 @@ class GetErResponseBodyContent(TeaModel):
         self.resource_group_id = resource_group_id
         # The status of the intervention entry. Valid value:
         self.status = status
+        # List of Tags
         self.tags = tags
         # The ID of the tenant.
         self.tenant_id = tenant_id
@@ -7553,6 +7567,7 @@ class GetLeniPrivateIpAddressResponseBodyContent(TeaModel):
         self.private_ip_address = private_ip_address
         # The region ID.
         self.region_id = region_id
+        # Resource group instance ID
         self.resource_group_id = resource_group_id
         # The task status.
         self.status = status
@@ -7791,6 +7806,7 @@ class GetLniPrivateIpAddressResponseBodyContent(TeaModel):
         self.private_ip_address = private_ip_address
         # The region ID.
         self.region_id = region_id
+        # Resource group instance ID
         self.resource_group_id = resource_group_id
         # The state of the rule.
         self.status = status
@@ -8120,7 +8136,9 @@ class GetNetworkInterfaceResponseBodyContentTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -8257,6 +8275,7 @@ class GetNetworkInterfaceResponseBodyContent(TeaModel):
         self.quota = quota
         # The region ID.
         self.region_id = region_id
+        # Resource group instance ID
         self.resource_group_id = resource_group_id
         # Service network interface controller address
         self.service_mac = service_mac
@@ -8264,6 +8283,7 @@ class GetNetworkInterfaceResponseBodyContent(TeaModel):
         self.status = status
         # Lingjun subnet (Subnet) basic information
         self.subnet_base_info = subnet_base_info
+        # The details of the resource tags.
         self.tags = tags
         # The ID of the tenant.
         self.tenant_id = tenant_id
@@ -8544,10 +8564,13 @@ class GetNodeInfoForPodResponseBodyContent(TeaModel):
     ):
         # The cluster ID.
         self.cluster_id = cluster_id
+        # Lingjun Hdeni Network Interface IPV6 address Quota
         self.hdeni_ipv_6sip_quota = hdeni_ipv_6sip_quota
         # Lingjun Gaomi network interface controller quota
         self.hdeni_quota = hdeni_quota
+        # Lingjun Hdeni Network Interface IPV4 address Quota
         self.hdeni_sip_quota = hdeni_sip_quota
+        # Lingjun Elastic Network Interface IPV6 address Quota
         self.leni_ipv_6sip_quota = leni_ipv_6sip_quota
         # Lingjun Elastic Network Interface quota, including system type
         self.leni_quota = leni_quota
@@ -11865,7 +11888,9 @@ class ListElasticNetworkInterfacesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -11931,6 +11956,7 @@ class ListElasticNetworkInterfacesRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The status of the enterprise-level snapshot policy.
         # 
@@ -11942,6 +11968,7 @@ class ListElasticNetworkInterfacesRequest(TeaModel):
         # *   Available: The template is available.
         # *   Deleting
         self.status = status
+        # List of Tags
         self.tag = tag
         # The type of the variable.
         # 
@@ -12043,7 +12070,9 @@ class ListElasticNetworkInterfacesResponseBodyContentDataTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # Tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -12115,11 +12144,13 @@ class ListElasticNetworkInterfacesResponseBodyContentData(TeaModel):
         self.node_id = node_id
         # The region ID.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The ID of the security group.
         self.security_group_id = security_group_id
         # The status of the intervention entry. Valid value:
         self.status = status
+        # The list of tags.
         self.tags = tags
         # network interface controller type, the default type DEFAULT cannot be manually released
         # 
@@ -13650,7 +13681,9 @@ class ListErsRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -13720,6 +13753,7 @@ class ListErsRequest(TeaModel):
         self.region_id = region_id
         # Resource group instance ID
         self.resource_group_id = resource_group_id
+        # List of tags.
         self.tag = tag
 
     def validate(self):
@@ -13796,7 +13830,9 @@ class ListErsResponseBodyContentDataTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -13865,6 +13901,7 @@ class ListErsResponseBodyContentData(TeaModel):
         self.route_maps = route_maps
         # The task status.
         self.status = status
+        # The list of tags.
         self.tags = tags
         # The tenant ID.
         self.tenant_id = tenant_id
@@ -14375,6 +14412,7 @@ class ListLeniPrivateIpAddressesRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        # Resource group instance ID
         self.resource_group_id = resource_group_id
         # The status of the image build command risk.
         self.status = status
@@ -14438,6 +14476,7 @@ class ListLeniPrivateIpAddressesResponseBodyContentData(TeaModel):
         message: str = None,
         private_ip_address: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         status: str = None,
     ):
         # The description.
@@ -14456,6 +14495,7 @@ class ListLeniPrivateIpAddressesResponseBodyContentData(TeaModel):
         self.private_ip_address = private_ip_address
         # The region ID.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The task status.
         self.status = status
 
@@ -14484,6 +14524,8 @@ class ListLeniPrivateIpAddressesResponseBodyContentData(TeaModel):
             result['PrivateIpAddress'] = self.private_ip_address
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -14506,6 +14548,8 @@ class ListLeniPrivateIpAddressesResponseBodyContentData(TeaModel):
             self.private_ip_address = m.get('PrivateIpAddress')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -14520,6 +14564,7 @@ class ListLeniPrivateIpAddressesResponseBodyContent(TeaModel):
     ):
         # The response parameters.
         self.data = data
+        # Resource group instance ID
         self.resource_group_id = resource_group_id
         # The total number of entries.
         self.total = total
@@ -14690,6 +14735,7 @@ class ListLniPrivateIpAddressRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        # Resource group instance ID
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -14755,6 +14801,7 @@ class ListLniPrivateIpAddressResponseBodyContentData(TeaModel):
         network_interface_id: str = None,
         private_ip_address: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         status: str = None,
     ):
         # The instance description.
@@ -14773,6 +14820,7 @@ class ListLniPrivateIpAddressResponseBodyContentData(TeaModel):
         self.private_ip_address = private_ip_address
         # The region ID.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The status of the intervention entry. Valid value:
         self.status = status
 
@@ -14801,6 +14849,8 @@ class ListLniPrivateIpAddressResponseBodyContentData(TeaModel):
             result['PrivateIpAddress'] = self.private_ip_address
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -14823,6 +14873,8 @@ class ListLniPrivateIpAddressResponseBodyContentData(TeaModel):
             self.private_ip_address = m.get('PrivateIpAddress')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -14837,6 +14889,7 @@ class ListLniPrivateIpAddressResponseBodyContent(TeaModel):
     ):
         # The returned result.
         self.data = data
+        # Resource group instance ID
         self.resource_group_id = resource_group_id
         # The total number of entries returned.
         self.total = total
@@ -14982,7 +15035,9 @@ class ListNetworkInterfacesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -15040,9 +15095,11 @@ class ListNetworkInterfacesRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        # Resource group instance ID
         self.resource_group_id = resource_group_id
         # The ID of the instance to which the Lingjun subnet belongs.
         self.subnet_id = subnet_id
+        # The list of tags
         self.tag = tag
         # The ID of the VPD.
         self.vpd_id = vpd_id
@@ -15240,7 +15297,9 @@ class ListNetworkInterfacesResponseBodyContentDataTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -15373,6 +15432,7 @@ class ListNetworkInterfacesResponseBodyContentData(TeaModel):
         self.quota = quota
         # The region ID.
         self.region_id = region_id
+        # Resource group instance ID
         self.resource_group_id = resource_group_id
         # The address of the service network interface controller.
         self.service_mac = service_mac
@@ -15380,6 +15440,7 @@ class ListNetworkInterfacesResponseBodyContentData(TeaModel):
         self.status = status
         # Lingjun subnet (Subnet) basic information.
         self.subnet_base_info = subnet_base_info
+        # List of tags.
         self.tags = tags
         # The tenant ID.
         self.tenant_id = tenant_id
