@@ -9635,6 +9635,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_with_options_async(request, runtime)
 
+    def describe_ip_abroad_country_infos_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeIpAbroadCountryInfosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeIpAbroadCountryInfosResponse:
+        """
+        @summary 获取支持的海外IP区域封禁支持的国际及地域。
+        
+        @param request: DescribeIpAbroadCountryInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIpAbroadCountryInfosResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.abroad_region):
+            query['AbroadRegion'] = request.abroad_region
+        if not UtilClient.is_unset(request.country):
+            query['Country'] = request.country
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeIpAbroadCountryInfos',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeIpAbroadCountryInfosResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ip_abroad_country_infos_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeIpAbroadCountryInfosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeIpAbroadCountryInfosResponse:
+        """
+        @summary 获取支持的海外IP区域封禁支持的国际及地域。
+        
+        @param request: DescribeIpAbroadCountryInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIpAbroadCountryInfosResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.abroad_region):
+            query['AbroadRegion'] = request.abroad_region
+        if not UtilClient.is_unset(request.country):
+            query['Country'] = request.country
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeIpAbroadCountryInfos',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeIpAbroadCountryInfosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ip_abroad_country_infos(
+        self,
+        request: waf_openapi_20211001_models.DescribeIpAbroadCountryInfosRequest,
+    ) -> waf_openapi_20211001_models.DescribeIpAbroadCountryInfosResponse:
+        """
+        @summary 获取支持的海外IP区域封禁支持的国际及地域。
+        
+        @param request: DescribeIpAbroadCountryInfosRequest
+        @return: DescribeIpAbroadCountryInfosResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ip_abroad_country_infos_with_options(request, runtime)
+
+    async def describe_ip_abroad_country_infos_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeIpAbroadCountryInfosRequest,
+    ) -> waf_openapi_20211001_models.DescribeIpAbroadCountryInfosResponse:
+        """
+        @summary 获取支持的海外IP区域封禁支持的国际及地域。
+        
+        @param request: DescribeIpAbroadCountryInfosRequest
+        @return: DescribeIpAbroadCountryInfosResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ip_abroad_country_infos_with_options_async(request, runtime)
+
     def describe_major_protection_black_ips_with_options(
         self,
         request: waf_openapi_20211001_models.DescribeMajorProtectionBlackIpsRequest,
