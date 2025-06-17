@@ -3354,6 +3354,102 @@ class DeleteCdnSubTaskResponse(TeaModel):
         return self
 
 
+class DeleteCustomDomainSampleRateRequest(TeaModel):
+    def __init__(
+        self,
+        domain_names: str = None,
+    ):
+        # This parameter is required.
+        self.domain_names = domain_names
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_names is not None:
+            result['DomainNames'] = self.domain_names
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainNames') is not None:
+            self.domain_names = m.get('DomainNames')
+        return self
+
+
+class DeleteCustomDomainSampleRateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteCustomDomainSampleRateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteCustomDomainSampleRateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteCustomDomainSampleRateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteFCTriggerRequest(TeaModel):
     def __init__(
         self,
@@ -9824,6 +9920,8 @@ class DescribeCdnServiceResponseBody(TeaModel):
         self,
         changing_affect_time: str = None,
         changing_charge_type: str = None,
+        changing_dynamic_billing_type: str = None,
+        dynamic_billing_type: str = None,
         instance_id: str = None,
         internet_charge_type: str = None,
         opening_time: str = None,
@@ -9837,6 +9935,8 @@ class DescribeCdnServiceResponseBody(TeaModel):
         # *   **PayByTraffic**: pay-by-data-transfer
         # *   **PayByBandwidth**: pay-by-bandwidth
         self.changing_charge_type = changing_charge_type
+        self.changing_dynamic_billing_type = changing_dynamic_billing_type
+        self.dynamic_billing_type = dynamic_billing_type
         # The ID of the instance.
         self.instance_id = instance_id
         # The current metering method. Valid values:
@@ -9865,6 +9965,10 @@ class DescribeCdnServiceResponseBody(TeaModel):
             result['ChangingAffectTime'] = self.changing_affect_time
         if self.changing_charge_type is not None:
             result['ChangingChargeType'] = self.changing_charge_type
+        if self.changing_dynamic_billing_type is not None:
+            result['ChangingDynamicBillingType'] = self.changing_dynamic_billing_type
+        if self.dynamic_billing_type is not None:
+            result['DynamicBillingType'] = self.dynamic_billing_type
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.internet_charge_type is not None:
@@ -9883,6 +9987,10 @@ class DescribeCdnServiceResponseBody(TeaModel):
             self.changing_affect_time = m.get('ChangingAffectTime')
         if m.get('ChangingChargeType') is not None:
             self.changing_charge_type = m.get('ChangingChargeType')
+        if m.get('ChangingDynamicBillingType') is not None:
+            self.changing_dynamic_billing_type = m.get('ChangingDynamicBillingType')
+        if m.get('DynamicBillingType') is not None:
+            self.dynamic_billing_type = m.get('DynamicBillingType')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('InternetChargeType') is not None:
@@ -11799,10 +11907,17 @@ class DescribeCdnUserResourcePackageResponseBodyResourcePackageInfosResourcePack
         self,
         commodity_code: str = None,
         curr_capacity: str = None,
+        curr_capacity_base_unit: str = None,
+        curr_capacity_show_unit: str = None,
+        curr_capacity_show_value: str = None,
         display_name: str = None,
         end_time: str = None,
         init_capacity: str = None,
+        init_capacity_base_unit: str = None,
+        init_capacity_show_unit: str = None,
+        init_capacity_show_value: str = None,
         instance_id: str = None,
+        region: str = None,
         start_time: str = None,
         status: str = None,
         template_name: str = None,
@@ -11814,6 +11929,9 @@ class DescribeCdnUserResourcePackageResponseBodyResourcePackageInfosResourcePack
         # *   For a data transfer plan, the quota is measured in bytes.
         # *   For a request resource plan, the quota is measured in the number of requests.
         self.curr_capacity = curr_capacity
+        self.curr_capacity_base_unit = curr_capacity_base_unit
+        self.curr_capacity_show_unit = curr_capacity_show_unit
+        self.curr_capacity_show_value = curr_capacity_show_value
         # The name of the resource plan.
         self.display_name = display_name
         # The expiration time.
@@ -11823,8 +11941,12 @@ class DescribeCdnUserResourcePackageResponseBodyResourcePackageInfosResourcePack
         # *   For a data transfer plan, the quota is measured in bytes.
         # *   For a request resource plan, the quota is measured in the number of requests.
         self.init_capacity = init_capacity
+        self.init_capacity_base_unit = init_capacity_base_unit
+        self.init_capacity_show_unit = init_capacity_show_unit
+        self.init_capacity_show_value = init_capacity_show_value
         # The ID of the instance
         self.instance_id = instance_id
+        self.region = region
         # The effective time.
         self.start_time = start_time
         # The status of the resource plan. Valid values:
@@ -11848,14 +11970,28 @@ class DescribeCdnUserResourcePackageResponseBodyResourcePackageInfosResourcePack
             result['CommodityCode'] = self.commodity_code
         if self.curr_capacity is not None:
             result['CurrCapacity'] = self.curr_capacity
+        if self.curr_capacity_base_unit is not None:
+            result['CurrCapacityBaseUnit'] = self.curr_capacity_base_unit
+        if self.curr_capacity_show_unit is not None:
+            result['CurrCapacityShowUnit'] = self.curr_capacity_show_unit
+        if self.curr_capacity_show_value is not None:
+            result['CurrCapacityShowValue'] = self.curr_capacity_show_value
         if self.display_name is not None:
             result['DisplayName'] = self.display_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.init_capacity is not None:
             result['InitCapacity'] = self.init_capacity
+        if self.init_capacity_base_unit is not None:
+            result['InitCapacityBaseUnit'] = self.init_capacity_base_unit
+        if self.init_capacity_show_unit is not None:
+            result['InitCapacityShowUnit'] = self.init_capacity_show_unit
+        if self.init_capacity_show_value is not None:
+            result['InitCapacityShowValue'] = self.init_capacity_show_value
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.region is not None:
+            result['Region'] = self.region
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.status is not None:
@@ -11870,14 +12006,28 @@ class DescribeCdnUserResourcePackageResponseBodyResourcePackageInfosResourcePack
             self.commodity_code = m.get('CommodityCode')
         if m.get('CurrCapacity') is not None:
             self.curr_capacity = m.get('CurrCapacity')
+        if m.get('CurrCapacityBaseUnit') is not None:
+            self.curr_capacity_base_unit = m.get('CurrCapacityBaseUnit')
+        if m.get('CurrCapacityShowUnit') is not None:
+            self.curr_capacity_show_unit = m.get('CurrCapacityShowUnit')
+        if m.get('CurrCapacityShowValue') is not None:
+            self.curr_capacity_show_value = m.get('CurrCapacityShowValue')
         if m.get('DisplayName') is not None:
             self.display_name = m.get('DisplayName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('InitCapacity') is not None:
             self.init_capacity = m.get('InitCapacity')
+        if m.get('InitCapacityBaseUnit') is not None:
+            self.init_capacity_base_unit = m.get('InitCapacityBaseUnit')
+        if m.get('InitCapacityShowUnit') is not None:
+            self.init_capacity_show_unit = m.get('InitCapacityShowUnit')
+        if m.get('InitCapacityShowValue') is not None:
+            self.init_capacity_show_value = m.get('InitCapacityShowValue')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('Status') is not None:
@@ -12435,9 +12585,13 @@ class DescribeCertificateInfoByIDResponse(TeaModel):
 class DescribeCustomDomainSampleRateRequest(TeaModel):
     def __init__(
         self,
-        domain_name: str = None,
+        domain_names: str = None,
+        page_number: int = None,
+        page_size: int = None,
     ):
-        self.domain_name = domain_name
+        self.domain_names = domain_names
+        self.page_number = page_number
+        self.page_size = page_size
 
     def validate(self):
         pass
@@ -12448,14 +12602,22 @@ class DescribeCustomDomainSampleRateRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
+        if self.domain_names is not None:
+            result['DomainNames'] = self.domain_names
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
+        if m.get('DomainNames') is not None:
+            self.domain_names = m.get('DomainNames')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         return self
 
 
@@ -12496,8 +12658,14 @@ class DescribeCustomDomainSampleRateResponseBodyContent(TeaModel):
     def __init__(
         self,
         domain_content: List[DescribeCustomDomainSampleRateResponseBodyContentDomainContent] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
     ):
         self.domain_content = domain_content
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
 
     def validate(self):
         if self.domain_content:
@@ -12515,6 +12683,12 @@ class DescribeCustomDomainSampleRateResponseBodyContent(TeaModel):
         if self.domain_content is not None:
             for k in self.domain_content:
                 result['DomainContent'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
@@ -12524,6 +12698,12 @@ class DescribeCustomDomainSampleRateResponseBodyContent(TeaModel):
             for k in m.get('DomainContent'):
                 temp_model = DescribeCustomDomainSampleRateResponseBodyContentDomainContent()
                 self.domain_content.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -14369,12 +14549,16 @@ class DescribeDomainCnameResponseBodyCnameDatasData(TeaModel):
         self,
         cname: str = None,
         domain: str = None,
+        err_msg: str = None,
+        passed: str = None,
         status: int = None,
     ):
         # The CNAME assigned to the domain name by Alibaba Cloud CDN.
         self.cname = cname
         # The accelerated domain name.
         self.domain = domain
+        self.err_msg = err_msg
+        self.passed = passed
         # The CNAME detection result. Valid values:
         # 
         # *   0: The DNS can detect the CNAME assigned to the domain name.
@@ -14394,6 +14578,10 @@ class DescribeDomainCnameResponseBodyCnameDatasData(TeaModel):
             result['Cname'] = self.cname
         if self.domain is not None:
             result['Domain'] = self.domain
+        if self.err_msg is not None:
+            result['ErrMsg'] = self.err_msg
+        if self.passed is not None:
+            result['Passed'] = self.passed
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -14404,6 +14592,10 @@ class DescribeDomainCnameResponseBodyCnameDatasData(TeaModel):
             self.cname = m.get('Cname')
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')
+        if m.get('ErrMsg') is not None:
+            self.err_msg = m.get('ErrMsg')
+        if m.get('Passed') is not None:
+            self.passed = m.get('Passed')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -19355,8 +19547,6 @@ class DescribeDomainRealTimeSrcHttpCodeDataRequest(TeaModel):
         self,
         domain_name: str = None,
         end_time: str = None,
-        isp_name_en: str = None,
-        location_name_en: str = None,
         start_time: str = None,
     ):
         # The accelerated domain name. You can specify up to 100 domain names in each call. Separate multiple domain names with commas (,).
@@ -19367,10 +19557,6 @@ class DescribeDomainRealTimeSrcHttpCodeDataRequest(TeaModel):
         # 
         # > The end time must be later than the start time.
         self.end_time = end_time
-        # The name of the Internet service provider (ISP). You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query ISPs. If you leave this parameter empty, all ISPs are queried.
-        self.isp_name_en = isp_name_en
-        # The name of the region. You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query regions. If you leave this parameter empty, all regions are queried.
-        self.location_name_en = location_name_en
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
 
@@ -19387,10 +19573,6 @@ class DescribeDomainRealTimeSrcHttpCodeDataRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.isp_name_en is not None:
-            result['IspNameEn'] = self.isp_name_en
-        if self.location_name_en is not None:
-            result['LocationNameEn'] = self.location_name_en
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -19401,10 +19583,6 @@ class DescribeDomainRealTimeSrcHttpCodeDataRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('IspNameEn') is not None:
-            self.isp_name_en = m.get('IspNameEn')
-        if m.get('LocationNameEn') is not None:
-            self.location_name_en = m.get('LocationNameEn')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -32414,13 +32592,13 @@ class ModifyCustomDomainSampleRateRequest(TeaModel):
     def __init__(
         self,
         base_config_id: str = None,
-        domain_name: str = None,
+        domain_names: str = None,
         sample_rate: float = None,
         sink_id: int = None,
     ):
         self.base_config_id = base_config_id
         # This parameter is required.
-        self.domain_name = domain_name
+        self.domain_names = domain_names
         # This parameter is required.
         self.sample_rate = sample_rate
         self.sink_id = sink_id
@@ -32436,8 +32614,8 @@ class ModifyCustomDomainSampleRateRequest(TeaModel):
         result = dict()
         if self.base_config_id is not None:
             result['BaseConfigID'] = self.base_config_id
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
+        if self.domain_names is not None:
+            result['DomainNames'] = self.domain_names
         if self.sample_rate is not None:
             result['SampleRate'] = self.sample_rate
         if self.sink_id is not None:
@@ -32448,8 +32626,8 @@ class ModifyCustomDomainSampleRateRequest(TeaModel):
         m = m or dict()
         if m.get('BaseConfigID') is not None:
             self.base_config_id = m.get('BaseConfigID')
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
+        if m.get('DomainNames') is not None:
+            self.domain_names = m.get('DomainNames')
         if m.get('SampleRate') is not None:
             self.sample_rate = m.get('SampleRate')
         if m.get('SinkID') is not None:
@@ -32457,12 +32635,16 @@ class ModifyCustomDomainSampleRateRequest(TeaModel):
         return self
 
 
-class ModifyCustomDomainSampleRateResponseBody(TeaModel):
+class ModifyCustomDomainSampleRateResponseBodyContentContent(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
+        domain_name: str = None,
+        err_message: str = None,
+        sample_rate: float = None,
     ):
-        self.request_id = request_id
+        self.domain_name = domain_name
+        self.err_message = err_message
+        self.sample_rate = sample_rate
 
     def validate(self):
         pass
@@ -32473,12 +32655,90 @@ class ModifyCustomDomainSampleRateResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.sample_rate is not None:
+            result['SampleRate'] = self.sample_rate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('SampleRate') is not None:
+            self.sample_rate = m.get('SampleRate')
+        return self
+
+
+class ModifyCustomDomainSampleRateResponseBodyContent(TeaModel):
+    def __init__(
+        self,
+        content: List[ModifyCustomDomainSampleRateResponseBodyContentContent] = None,
+    ):
+        self.content = content
+
+    def validate(self):
+        if self.content:
+            for k in self.content:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['content'] = []
+        if self.content is not None:
+            for k in self.content:
+                result['content'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.content = []
+        if m.get('content') is not None:
+            for k in m.get('content'):
+                temp_model = ModifyCustomDomainSampleRateResponseBodyContentContent()
+                self.content.append(temp_model.from_map(k))
+        return self
+
+
+class ModifyCustomDomainSampleRateResponseBody(TeaModel):
+    def __init__(
+        self,
+        content: ModifyCustomDomainSampleRateResponseBodyContent = None,
+        request_id: str = None,
+    ):
+        self.content = content
+        self.request_id = request_id
+
+    def validate(self):
+        if self.content:
+            self.content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Content') is not None:
+            temp_model = ModifyCustomDomainSampleRateResponseBodyContent()
+            self.content = temp_model.from_map(m['Content'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self

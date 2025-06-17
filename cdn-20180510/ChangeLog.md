@@ -1,3 +1,29 @@
+2025-06-17 Version: 6.0.0
+- Support API DeleteCustomDomainSampleRate.
+- Update API DescribeCdnService: add response parameters Body.ChangingDynamicBillingType.
+- Update API DescribeCdnService: add response parameters Body.DynamicBillingType.
+- Update API DescribeCdnUserResourcePackage: add response parameters Body.ResourcePackageInfos.$.CurrCapacityBaseUnit.
+- Update API DescribeCdnUserResourcePackage: add response parameters Body.ResourcePackageInfos.$.CurrCapacityShowUnit.
+- Update API DescribeCdnUserResourcePackage: add response parameters Body.ResourcePackageInfos.$.CurrCapacityShowValue.
+- Update API DescribeCdnUserResourcePackage: add response parameters Body.ResourcePackageInfos.$.InitCapacityBaseUnit.
+- Update API DescribeCdnUserResourcePackage: add response parameters Body.ResourcePackageInfos.$.InitCapacityShowUnit.
+- Update API DescribeCdnUserResourcePackage: add response parameters Body.ResourcePackageInfos.$.InitCapacityShowValue.
+- Update API DescribeCdnUserResourcePackage: add response parameters Body.ResourcePackageInfos.$.Region.
+- Update API DescribeCustomDomainSampleRate: add request parameters DomainNames.
+- Update API DescribeCustomDomainSampleRate: add request parameters PageNumber.
+- Update API DescribeCustomDomainSampleRate: add request parameters PageSize.
+- Update API DescribeCustomDomainSampleRate: delete request parameters DomainName.
+- Update API DescribeCustomDomainSampleRate: update response parameters Body.Content' type has changed.
+- Update API DescribeCustomDomainSampleRate: delete response parameters Body.Content.$.
+- Update API DescribeDomainCname: add response parameters Body.CnameDatas.$.ErrMsg.
+- Update API DescribeDomainCname: add response parameters Body.CnameDatas.$.Passed.
+- Update API DescribeDomainRealTimeSrcHttpCodeData: delete request parameters IspNameEn.
+- Update API DescribeDomainRealTimeSrcHttpCodeData: delete request parameters LocationNameEn.
+- Update API ModifyCustomDomainSampleRate: add request parameters DomainNames.
+- Update API ModifyCustomDomainSampleRate: add response parameters Body.Content.
+- Update API ModifyCustomDomainSampleRate: delete request parameters DomainName.
+
+
 2025-03-12 Version: 5.0.0
 - Support API BatchSetGrayDomainFunction.
 - Support API GetGrayDomainFunction.
