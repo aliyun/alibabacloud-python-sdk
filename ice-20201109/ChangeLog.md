@@ -1,3 +1,11 @@
+2025-06-17 Version: 6.3.2
+- Update API GetMediaConvertJob: add response parameters Body.Job.CreateTime.
+- Update API GetMediaConvertJob: add response parameters Body.Job.FinishTime.
+- Update API GetMediaConvertJob: add response parameters Body.Job.Percent.
+- Update API GetMediaConvertJob: add response parameters Body.Job.Config.JobName.
+- Update API SubmitMediaConvertJob: add response parameters Body.Job.Config.JobName.
+
+
 2025-06-11 Version: 6.3.1
 - Update API InsertMediaToSearchLib: add request parameters ImagesInput.
 - Update API SearchMedia: add response parameters Body.MediaInfoList.$.FileInfoList.$.FileBasicInfo.ImagesInput.

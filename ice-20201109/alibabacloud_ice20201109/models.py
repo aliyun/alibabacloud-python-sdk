@@ -3082,178 +3082,6 @@ class MediaConvertInput(TeaModel):
         return self
 
 
-class MediaConvertSegment(TeaModel):
-    def __init__(
-        self,
-        duration: int = None,
-        force_seg_time: str = None,
-    ):
-        self.duration = duration
-        self.force_seg_time = force_seg_time
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.duration is not None:
-            result['Duration'] = self.duration
-        if self.force_seg_time is not None:
-            result['ForceSegTime'] = self.force_seg_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Duration') is not None:
-            self.duration = m.get('Duration')
-        if m.get('ForceSegTime') is not None:
-            self.force_seg_time = m.get('ForceSegTime')
-        return self
-
-
-class MediaConvertMuxConfig(TeaModel):
-    def __init__(
-        self,
-        segment: MediaConvertSegment = None,
-    ):
-        self.segment = segment
-
-    def validate(self):
-        if self.segment:
-            self.segment.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.segment is not None:
-            result['Segment'] = self.segment.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Segment') is not None:
-            temp_model = MediaConvertSegment()
-            self.segment = temp_model.from_map(m['Segment'])
-        return self
-
-
-class MediaConvertOutput(TeaModel):
-    def __init__(
-        self,
-        features: str = None,
-        name: str = None,
-        output_file: MediaObject = None,
-        override_params: str = None,
-        priority: int = None,
-        template_id: str = None,
-    ):
-        self.features = features
-        self.name = name
-        self.output_file = output_file
-        self.override_params = override_params
-        self.priority = priority
-        self.template_id = template_id
-
-    def validate(self):
-        if self.output_file:
-            self.output_file.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.features is not None:
-            result['Features'] = self.features
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.output_file is not None:
-            result['OutputFile'] = self.output_file.to_map()
-        if self.override_params is not None:
-            result['OverrideParams'] = self.override_params
-        if self.priority is not None:
-            result['Priority'] = self.priority
-        if self.template_id is not None:
-            result['TemplateId'] = self.template_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Features') is not None:
-            self.features = m.get('Features')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('OutputFile') is not None:
-            temp_model = MediaObject()
-            self.output_file = temp_model.from_map(m['OutputFile'])
-        if m.get('OverrideParams') is not None:
-            self.override_params = m.get('OverrideParams')
-        if m.get('Priority') is not None:
-            self.priority = m.get('Priority')
-        if m.get('TemplateId') is not None:
-            self.template_id = m.get('TemplateId')
-        return self
-
-
-class MediaConvertOutputDetail(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        message: str = None,
-        name: str = None,
-        status: str = None,
-        task_id: str = None,
-    ):
-        self.code = code
-        self.message = message
-        self.name = name
-        self.status = status
-        self.task_id = task_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.task_id is not None:
-            result['TaskId'] = self.task_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('TaskId') is not None:
-            self.task_id = m.get('TaskId')
-        return self
-
-
 class MediaConvertOutputGroupConfig(TeaModel):
     def __init__(
         self,
@@ -3402,10 +3230,712 @@ class MediaConvertOutputGroup(TeaModel):
         return self
 
 
+class MediaConvertOutput(TeaModel):
+    def __init__(
+        self,
+        features: str = None,
+        name: str = None,
+        output_file: MediaObject = None,
+        override_params: str = None,
+        priority: int = None,
+        template_id: str = None,
+    ):
+        self.features = features
+        self.name = name
+        self.output_file = output_file
+        self.override_params = override_params
+        self.priority = priority
+        self.template_id = template_id
+
+    def validate(self):
+        if self.output_file:
+            self.output_file.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.features is not None:
+            result['Features'] = self.features
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.output_file is not None:
+            result['OutputFile'] = self.output_file.to_map()
+        if self.override_params is not None:
+            result['OverrideParams'] = self.override_params
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Features') is not None:
+            self.features = m.get('Features')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OutputFile') is not None:
+            temp_model = MediaObject()
+            self.output_file = temp_model.from_map(m['OutputFile'])
+        if m.get('OverrideParams') is not None:
+            self.override_params = m.get('OverrideParams')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class MediaConvertJobConfig(TeaModel):
+    def __init__(
+        self,
+        inputs: List[MediaConvertInput] = None,
+        job_name: str = None,
+        output_groups: List[MediaConvertOutputGroup] = None,
+        outputs: List[MediaConvertOutput] = None,
+    ):
+        self.inputs = inputs
+        self.job_name = job_name
+        self.output_groups = output_groups
+        self.outputs = outputs
+
+    def validate(self):
+        if self.inputs:
+            for k in self.inputs:
+                if k:
+                    k.validate()
+        if self.output_groups:
+            for k in self.output_groups:
+                if k:
+                    k.validate()
+        if self.outputs:
+            for k in self.outputs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Inputs'] = []
+        if self.inputs is not None:
+            for k in self.inputs:
+                result['Inputs'].append(k.to_map() if k else None)
+        if self.job_name is not None:
+            result['JobName'] = self.job_name
+        result['OutputGroups'] = []
+        if self.output_groups is not None:
+            for k in self.output_groups:
+                result['OutputGroups'].append(k.to_map() if k else None)
+        result['Outputs'] = []
+        if self.outputs is not None:
+            for k in self.outputs:
+                result['Outputs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.inputs = []
+        if m.get('Inputs') is not None:
+            for k in m.get('Inputs'):
+                temp_model = MediaConvertInput()
+                self.inputs.append(temp_model.from_map(k))
+        if m.get('JobName') is not None:
+            self.job_name = m.get('JobName')
+        self.output_groups = []
+        if m.get('OutputGroups') is not None:
+            for k in m.get('OutputGroups'):
+                temp_model = MediaConvertOutputGroup()
+                self.output_groups.append(temp_model.from_map(k))
+        self.outputs = []
+        if m.get('Outputs') is not None:
+            for k in m.get('Outputs'):
+                temp_model = MediaConvertOutput()
+                self.outputs.append(temp_model.from_map(k))
+        return self
+
+
+class MediaConvertOutputDetailResultOutputFile(TeaModel):
+    def __init__(
+        self,
+        media: str = None,
+        type: str = None,
+        url: str = None,
+    ):
+        self.media = media
+        self.type = type
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.media is not None:
+            result['Media'] = self.media
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Media') is not None:
+            self.media = m.get('Media')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class MediaConvertOutputDetailFileMetaAudioStreamInfoList(TeaModel):
+    def __init__(
+        self,
+        bitrate: str = None,
+        channel_layout: str = None,
+        channels: str = None,
+        codec_long_name: str = None,
+        codec_name: str = None,
+        codec_tag: str = None,
+        codec_tag_string: str = None,
+        codec_time_base: str = None,
+        duration: str = None,
+        index: str = None,
+        lang: str = None,
+        sample_fmt: str = None,
+        sample_rate: str = None,
+        start_time: str = None,
+        timebase: str = None,
+    ):
+        self.bitrate = bitrate
+        self.channel_layout = channel_layout
+        self.channels = channels
+        self.codec_long_name = codec_long_name
+        self.codec_name = codec_name
+        self.codec_tag = codec_tag
+        self.codec_tag_string = codec_tag_string
+        self.codec_time_base = codec_time_base
+        self.duration = duration
+        self.index = index
+        self.lang = lang
+        self.sample_fmt = sample_fmt
+        self.sample_rate = sample_rate
+        self.start_time = start_time
+        self.timebase = timebase
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bitrate is not None:
+            result['Bitrate'] = self.bitrate
+        if self.channel_layout is not None:
+            result['ChannelLayout'] = self.channel_layout
+        if self.channels is not None:
+            result['Channels'] = self.channels
+        if self.codec_long_name is not None:
+            result['CodecLongName'] = self.codec_long_name
+        if self.codec_name is not None:
+            result['CodecName'] = self.codec_name
+        if self.codec_tag is not None:
+            result['CodecTag'] = self.codec_tag
+        if self.codec_tag_string is not None:
+            result['CodecTagString'] = self.codec_tag_string
+        if self.codec_time_base is not None:
+            result['CodecTimeBase'] = self.codec_time_base
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.index is not None:
+            result['Index'] = self.index
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.sample_fmt is not None:
+            result['SampleFmt'] = self.sample_fmt
+        if self.sample_rate is not None:
+            result['SampleRate'] = self.sample_rate
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.timebase is not None:
+            result['Timebase'] = self.timebase
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bitrate') is not None:
+            self.bitrate = m.get('Bitrate')
+        if m.get('ChannelLayout') is not None:
+            self.channel_layout = m.get('ChannelLayout')
+        if m.get('Channels') is not None:
+            self.channels = m.get('Channels')
+        if m.get('CodecLongName') is not None:
+            self.codec_long_name = m.get('CodecLongName')
+        if m.get('CodecName') is not None:
+            self.codec_name = m.get('CodecName')
+        if m.get('CodecTag') is not None:
+            self.codec_tag = m.get('CodecTag')
+        if m.get('CodecTagString') is not None:
+            self.codec_tag_string = m.get('CodecTagString')
+        if m.get('CodecTimeBase') is not None:
+            self.codec_time_base = m.get('CodecTimeBase')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('SampleFmt') is not None:
+            self.sample_fmt = m.get('SampleFmt')
+        if m.get('SampleRate') is not None:
+            self.sample_rate = m.get('SampleRate')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Timebase') is not None:
+            self.timebase = m.get('Timebase')
+        return self
+
+
+class MediaConvertOutputDetailFileMetaFileBasicInfo(TeaModel):
+    def __init__(
+        self,
+        bitrate: str = None,
+        duration: str = None,
+        file_name: str = None,
+        file_size: str = None,
+        file_status: str = None,
+        file_type: str = None,
+        file_url: str = None,
+        format_name: str = None,
+        height: str = None,
+        media_id: str = None,
+        region: str = None,
+        width: str = None,
+    ):
+        self.bitrate = bitrate
+        self.duration = duration
+        self.file_name = file_name
+        self.file_size = file_size
+        self.file_status = file_status
+        self.file_type = file_type
+        self.file_url = file_url
+        self.format_name = format_name
+        self.height = height
+        self.media_id = media_id
+        self.region = region
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bitrate is not None:
+            result['Bitrate'] = self.bitrate
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_size is not None:
+            result['FileSize'] = self.file_size
+        if self.file_status is not None:
+            result['FileStatus'] = self.file_status
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.format_name is not None:
+            result['FormatName'] = self.format_name
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.media_id is not None:
+            result['MediaId'] = self.media_id
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bitrate') is not None:
+            self.bitrate = m.get('Bitrate')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileSize') is not None:
+            self.file_size = m.get('FileSize')
+        if m.get('FileStatus') is not None:
+            self.file_status = m.get('FileStatus')
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('FormatName') is not None:
+            self.format_name = m.get('FormatName')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('MediaId') is not None:
+            self.media_id = m.get('MediaId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class MediaConvertOutputDetailFileMetaVideoStreamInfoList(TeaModel):
+    def __init__(
+        self,
+        avg_fps: str = None,
+        bit_rate: str = None,
+        codec_long_name: str = None,
+        codec_name: str = None,
+        codec_tag: str = None,
+        codec_tag_string: str = None,
+        codec_time_base: str = None,
+        dar: str = None,
+        duration: str = None,
+        fps: str = None,
+        has_bframes: str = None,
+        height: str = None,
+        index: str = None,
+        lang: str = None,
+        level: str = None,
+        num_frames: str = None,
+        pix_fmt: str = None,
+        profile: str = None,
+        rotate: str = None,
+        sar: str = None,
+        start_time: str = None,
+        time_base: str = None,
+        width: str = None,
+    ):
+        self.avg_fps = avg_fps
+        self.bit_rate = bit_rate
+        self.codec_long_name = codec_long_name
+        self.codec_name = codec_name
+        self.codec_tag = codec_tag
+        self.codec_tag_string = codec_tag_string
+        self.codec_time_base = codec_time_base
+        self.dar = dar
+        self.duration = duration
+        self.fps = fps
+        self.has_bframes = has_bframes
+        self.height = height
+        self.index = index
+        self.lang = lang
+        self.level = level
+        self.num_frames = num_frames
+        self.pix_fmt = pix_fmt
+        self.profile = profile
+        self.rotate = rotate
+        self.sar = sar
+        self.start_time = start_time
+        self.time_base = time_base
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avg_fps is not None:
+            result['Avg_fps'] = self.avg_fps
+        if self.bit_rate is not None:
+            result['Bit_rate'] = self.bit_rate
+        if self.codec_long_name is not None:
+            result['Codec_long_name'] = self.codec_long_name
+        if self.codec_name is not None:
+            result['Codec_name'] = self.codec_name
+        if self.codec_tag is not None:
+            result['Codec_tag'] = self.codec_tag
+        if self.codec_tag_string is not None:
+            result['Codec_tag_string'] = self.codec_tag_string
+        if self.codec_time_base is not None:
+            result['Codec_time_base'] = self.codec_time_base
+        if self.dar is not None:
+            result['Dar'] = self.dar
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.fps is not None:
+            result['Fps'] = self.fps
+        if self.has_bframes is not None:
+            result['Has_b_frames'] = self.has_bframes
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.index is not None:
+            result['Index'] = self.index
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.num_frames is not None:
+            result['NumFrames'] = self.num_frames
+        if self.pix_fmt is not None:
+            result['PixFmt'] = self.pix_fmt
+        if self.profile is not None:
+            result['Profile'] = self.profile
+        if self.rotate is not None:
+            result['Rotate'] = self.rotate
+        if self.sar is not None:
+            result['Sar'] = self.sar
+        if self.start_time is not None:
+            result['Start_time'] = self.start_time
+        if self.time_base is not None:
+            result['Time_base'] = self.time_base
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Avg_fps') is not None:
+            self.avg_fps = m.get('Avg_fps')
+        if m.get('Bit_rate') is not None:
+            self.bit_rate = m.get('Bit_rate')
+        if m.get('Codec_long_name') is not None:
+            self.codec_long_name = m.get('Codec_long_name')
+        if m.get('Codec_name') is not None:
+            self.codec_name = m.get('Codec_name')
+        if m.get('Codec_tag') is not None:
+            self.codec_tag = m.get('Codec_tag')
+        if m.get('Codec_tag_string') is not None:
+            self.codec_tag_string = m.get('Codec_tag_string')
+        if m.get('Codec_time_base') is not None:
+            self.codec_time_base = m.get('Codec_time_base')
+        if m.get('Dar') is not None:
+            self.dar = m.get('Dar')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Fps') is not None:
+            self.fps = m.get('Fps')
+        if m.get('Has_b_frames') is not None:
+            self.has_bframes = m.get('Has_b_frames')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('NumFrames') is not None:
+            self.num_frames = m.get('NumFrames')
+        if m.get('PixFmt') is not None:
+            self.pix_fmt = m.get('PixFmt')
+        if m.get('Profile') is not None:
+            self.profile = m.get('Profile')
+        if m.get('Rotate') is not None:
+            self.rotate = m.get('Rotate')
+        if m.get('Sar') is not None:
+            self.sar = m.get('Sar')
+        if m.get('Start_time') is not None:
+            self.start_time = m.get('Start_time')
+        if m.get('Time_base') is not None:
+            self.time_base = m.get('Time_base')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class MediaConvertOutputDetailFileMeta(TeaModel):
+    def __init__(
+        self,
+        audio_stream_info_list: List[MediaConvertOutputDetailFileMetaAudioStreamInfoList] = None,
+        file_basic_info: MediaConvertOutputDetailFileMetaFileBasicInfo = None,
+        video_stream_info_list: List[MediaConvertOutputDetailFileMetaVideoStreamInfoList] = None,
+    ):
+        self.audio_stream_info_list = audio_stream_info_list
+        self.file_basic_info = file_basic_info
+        self.video_stream_info_list = video_stream_info_list
+
+    def validate(self):
+        if self.audio_stream_info_list:
+            for k in self.audio_stream_info_list:
+                if k:
+                    k.validate()
+        if self.file_basic_info:
+            self.file_basic_info.validate()
+        if self.video_stream_info_list:
+            for k in self.video_stream_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AudioStreamInfoList'] = []
+        if self.audio_stream_info_list is not None:
+            for k in self.audio_stream_info_list:
+                result['AudioStreamInfoList'].append(k.to_map() if k else None)
+        if self.file_basic_info is not None:
+            result['FileBasicInfo'] = self.file_basic_info.to_map()
+        result['VideoStreamInfoList'] = []
+        if self.video_stream_info_list is not None:
+            for k in self.video_stream_info_list:
+                result['VideoStreamInfoList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.audio_stream_info_list = []
+        if m.get('AudioStreamInfoList') is not None:
+            for k in m.get('AudioStreamInfoList'):
+                temp_model = MediaConvertOutputDetailFileMetaAudioStreamInfoList()
+                self.audio_stream_info_list.append(temp_model.from_map(k))
+        if m.get('FileBasicInfo') is not None:
+            temp_model = MediaConvertOutputDetailFileMetaFileBasicInfo()
+            self.file_basic_info = temp_model.from_map(m['FileBasicInfo'])
+        self.video_stream_info_list = []
+        if m.get('VideoStreamInfoList') is not None:
+            for k in m.get('VideoStreamInfoList'):
+                temp_model = MediaConvertOutputDetailFileMetaVideoStreamInfoList()
+                self.video_stream_info_list.append(temp_model.from_map(k))
+        return self
+
+
+class MediaConvertOutputDetailResult(TeaModel):
+    def __init__(
+        self,
+        out_file_meta: MediaConvertOutputDetailFileMeta = None,
+        output_file: MediaConvertOutputDetailResultOutputFile = None,
+    ):
+        self.out_file_meta = out_file_meta
+        self.output_file = output_file
+
+    def validate(self):
+        if self.out_file_meta:
+            self.out_file_meta.validate()
+        if self.output_file:
+            self.output_file.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.out_file_meta is not None:
+            result['OutFileMeta'] = self.out_file_meta.to_map()
+        if self.output_file is not None:
+            result['OutputFile'] = self.output_file.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OutFileMeta') is not None:
+            temp_model = MediaConvertOutputDetailFileMeta()
+            self.out_file_meta = temp_model.from_map(m['OutFileMeta'])
+        if m.get('OutputFile') is not None:
+            temp_model = MediaConvertOutputDetailResultOutputFile()
+            self.output_file = temp_model.from_map(m['OutputFile'])
+        return self
+
+
+class MediaConvertOutputDetail(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        create_time: str = None,
+        finish_time: str = None,
+        message: str = None,
+        name: str = None,
+        result: MediaConvertOutputDetailResult = None,
+        status: str = None,
+        task_id: str = None,
+    ):
+        self.code = code
+        self.create_time = create_time
+        self.finish_time = finish_time
+        self.message = message
+        self.name = name
+        self.result = result
+        self.status = status
+        self.task_id = task_id
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.finish_time is not None:
+            result['FinishTime'] = self.finish_time
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('FinishTime') is not None:
+            self.finish_time = m.get('FinishTime')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Result') is not None:
+            temp_model = MediaConvertOutputDetailResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
 class MediaConvertOutputGroupDetail(TeaModel):
     def __init__(
         self,
         code: str = None,
+        create_time: str = None,
+        finish_time: str = None,
         message: str = None,
         name: str = None,
         outputs: List[MediaConvertOutputDetail] = None,
@@ -3413,6 +3943,8 @@ class MediaConvertOutputGroupDetail(TeaModel):
         task_id: str = None,
     ):
         self.code = code
+        self.create_time = create_time
+        self.finish_time = finish_time
         self.message = message
         self.name = name
         self.outputs = outputs
@@ -3433,6 +3965,10 @@ class MediaConvertOutputGroupDetail(TeaModel):
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.finish_time is not None:
+            result['FinishTime'] = self.finish_time
         if self.message is not None:
             result['Message'] = self.message
         if self.name is not None:
@@ -3451,6 +3987,10 @@ class MediaConvertOutputGroupDetail(TeaModel):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('FinishTime') is not None:
+            self.finish_time = m.get('FinishTime')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('Name') is not None:
@@ -3464,6 +4004,353 @@ class MediaConvertOutputGroupDetail(TeaModel):
             self.status = m.get('Status')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
+        return self
+
+
+class MediaConvertJob(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        code: str = None,
+        config: MediaConvertJobConfig = None,
+        create_time: str = None,
+        finish_time: str = None,
+        job_id: str = None,
+        message: str = None,
+        output_details: List[MediaConvertOutputDetail] = None,
+        output_group_details: List[MediaConvertOutputGroupDetail] = None,
+        percent: int = None,
+        pipeline_id: str = None,
+        request_id: str = None,
+        state: str = None,
+        user_data: str = None,
+    ):
+        self.client_token = client_token
+        self.code = code
+        self.config = config
+        self.create_time = create_time
+        self.finish_time = finish_time
+        self.job_id = job_id
+        self.message = message
+        self.output_details = output_details
+        self.output_group_details = output_group_details
+        self.percent = percent
+        self.pipeline_id = pipeline_id
+        self.request_id = request_id
+        self.state = state
+        self.user_data = user_data
+
+    def validate(self):
+        if self.config:
+            self.config.validate()
+        if self.output_details:
+            for k in self.output_details:
+                if k:
+                    k.validate()
+        if self.output_group_details:
+            for k in self.output_group_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.config is not None:
+            result['Config'] = self.config.to_map()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.finish_time is not None:
+            result['FinishTime'] = self.finish_time
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.message is not None:
+            result['Message'] = self.message
+        result['OutputDetails'] = []
+        if self.output_details is not None:
+            for k in self.output_details:
+                result['OutputDetails'].append(k.to_map() if k else None)
+        result['OutputGroupDetails'] = []
+        if self.output_group_details is not None:
+            for k in self.output_group_details:
+                result['OutputGroupDetails'].append(k.to_map() if k else None)
+        if self.percent is not None:
+            result['Percent'] = self.percent
+        if self.pipeline_id is not None:
+            result['PipelineId'] = self.pipeline_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.state is not None:
+            result['State'] = self.state
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Config') is not None:
+            temp_model = MediaConvertJobConfig()
+            self.config = temp_model.from_map(m['Config'])
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('FinishTime') is not None:
+            self.finish_time = m.get('FinishTime')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        self.output_details = []
+        if m.get('OutputDetails') is not None:
+            for k in m.get('OutputDetails'):
+                temp_model = MediaConvertOutputDetail()
+                self.output_details.append(temp_model.from_map(k))
+        self.output_group_details = []
+        if m.get('OutputGroupDetails') is not None:
+            for k in m.get('OutputGroupDetails'):
+                temp_model = MediaConvertOutputGroupDetail()
+                self.output_group_details.append(temp_model.from_map(k))
+        if m.get('Percent') is not None:
+            self.percent = m.get('Percent')
+        if m.get('PipelineId') is not None:
+            self.pipeline_id = m.get('PipelineId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class MediaConvertJobWithoutDetailConfig(TeaModel):
+    def __init__(
+        self,
+        inputs: List[MediaConvertInput] = None,
+        job_name: str = None,
+        output_groups: List[MediaConvertOutputGroup] = None,
+        outputs: List[MediaConvertOutput] = None,
+    ):
+        self.inputs = inputs
+        self.job_name = job_name
+        self.output_groups = output_groups
+        self.outputs = outputs
+
+    def validate(self):
+        if self.inputs:
+            for k in self.inputs:
+                if k:
+                    k.validate()
+        if self.output_groups:
+            for k in self.output_groups:
+                if k:
+                    k.validate()
+        if self.outputs:
+            for k in self.outputs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Inputs'] = []
+        if self.inputs is not None:
+            for k in self.inputs:
+                result['Inputs'].append(k.to_map() if k else None)
+        if self.job_name is not None:
+            result['JobName'] = self.job_name
+        result['OutputGroups'] = []
+        if self.output_groups is not None:
+            for k in self.output_groups:
+                result['OutputGroups'].append(k.to_map() if k else None)
+        result['Outputs'] = []
+        if self.outputs is not None:
+            for k in self.outputs:
+                result['Outputs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.inputs = []
+        if m.get('Inputs') is not None:
+            for k in m.get('Inputs'):
+                temp_model = MediaConvertInput()
+                self.inputs.append(temp_model.from_map(k))
+        if m.get('JobName') is not None:
+            self.job_name = m.get('JobName')
+        self.output_groups = []
+        if m.get('OutputGroups') is not None:
+            for k in m.get('OutputGroups'):
+                temp_model = MediaConvertOutputGroup()
+                self.output_groups.append(temp_model.from_map(k))
+        self.outputs = []
+        if m.get('Outputs') is not None:
+            for k in m.get('Outputs'):
+                temp_model = MediaConvertOutput()
+                self.outputs.append(temp_model.from_map(k))
+        return self
+
+
+class MediaConvertJobWithoutDetail(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        code: str = None,
+        config: MediaConvertJobWithoutDetailConfig = None,
+        create_time: str = None,
+        finish_time: str = None,
+        job_id: str = None,
+        message: str = None,
+        pipeline_id: str = None,
+        request_id: str = None,
+        state: str = None,
+        user_data: str = None,
+    ):
+        self.client_token = client_token
+        self.code = code
+        self.config = config
+        self.create_time = create_time
+        self.finish_time = finish_time
+        self.job_id = job_id
+        self.message = message
+        self.pipeline_id = pipeline_id
+        self.request_id = request_id
+        self.state = state
+        self.user_data = user_data
+
+    def validate(self):
+        if self.config:
+            self.config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.config is not None:
+            result['Config'] = self.config.to_map()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.finish_time is not None:
+            result['FinishTime'] = self.finish_time
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.pipeline_id is not None:
+            result['PipelineId'] = self.pipeline_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.state is not None:
+            result['State'] = self.state
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Config') is not None:
+            temp_model = MediaConvertJobWithoutDetailConfig()
+            self.config = temp_model.from_map(m['Config'])
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('FinishTime') is not None:
+            self.finish_time = m.get('FinishTime')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PipelineId') is not None:
+            self.pipeline_id = m.get('PipelineId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class MediaConvertSegment(TeaModel):
+    def __init__(
+        self,
+        duration: int = None,
+        force_seg_time: str = None,
+    ):
+        self.duration = duration
+        self.force_seg_time = force_seg_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.force_seg_time is not None:
+            result['ForceSegTime'] = self.force_seg_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('ForceSegTime') is not None:
+            self.force_seg_time = m.get('ForceSegTime')
+        return self
+
+
+class MediaConvertMuxConfig(TeaModel):
+    def __init__(
+        self,
+        segment: MediaConvertSegment = None,
+    ):
+        self.segment = segment
+
+    def validate(self):
+        if self.segment:
+            self.segment.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.segment is not None:
+            result['Segment'] = self.segment.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Segment') is not None:
+            temp_model = MediaConvertSegment()
+            self.segment = temp_model.from_map(m['Segment'])
         return self
 
 
@@ -30727,11 +31614,13 @@ class GetMediaConvertJobResponseBodyJobConfig(TeaModel):
     def __init__(
         self,
         inputs: List[MediaConvertInput] = None,
+        job_name: str = None,
         output_groups: List[MediaConvertOutputGroup] = None,
         outputs: List[MediaConvertOutput] = None,
     ):
         # The inputs of the transcoding task.
         self.inputs = inputs
+        self.job_name = job_name
         # The output group configurations.
         self.output_groups = output_groups
         # The output configurations.
@@ -30761,6 +31650,8 @@ class GetMediaConvertJobResponseBodyJobConfig(TeaModel):
         if self.inputs is not None:
             for k in self.inputs:
                 result['Inputs'].append(k.to_map() if k else None)
+        if self.job_name is not None:
+            result['JobName'] = self.job_name
         result['OutputGroups'] = []
         if self.output_groups is not None:
             for k in self.output_groups:
@@ -30778,6 +31669,8 @@ class GetMediaConvertJobResponseBodyJobConfig(TeaModel):
             for k in m.get('Inputs'):
                 temp_model = MediaConvertInput()
                 self.inputs.append(temp_model.from_map(k))
+        if m.get('JobName') is not None:
+            self.job_name = m.get('JobName')
         self.output_groups = []
         if m.get('OutputGroups') is not None:
             for k in m.get('OutputGroups'):
@@ -30797,10 +31690,13 @@ class GetMediaConvertJobResponseBodyJob(TeaModel):
         client_token: str = None,
         code: str = None,
         config: GetMediaConvertJobResponseBodyJobConfig = None,
+        create_time: str = None,
+        finish_time: str = None,
         job_id: str = None,
         message: str = None,
         output_details: List[MediaConvertOutputDetail] = None,
         output_group_details: List[MediaConvertOutputGroupDetail] = None,
+        percent: int = None,
         pipeline_id: str = None,
         request_id: str = None,
         state: str = None,
@@ -30812,6 +31708,8 @@ class GetMediaConvertJobResponseBodyJob(TeaModel):
         self.code = code
         # The configurations of the transcoding task.
         self.config = config
+        self.create_time = create_time
+        self.finish_time = finish_time
         # The ID of the transcoding task, which is a 32-bit string.
         self.job_id = job_id
         # The error message returned when the transcoding task failed.
@@ -30820,6 +31718,7 @@ class GetMediaConvertJobResponseBodyJob(TeaModel):
         self.output_details = output_details
         # The details of the output groups, each corresponding to an output group configuration.
         self.output_group_details = output_group_details
+        self.percent = percent
         # The ID of the queue.
         self.pipeline_id = pipeline_id
         # The ID of the request for creating the transcoding task.
@@ -30859,6 +31758,10 @@ class GetMediaConvertJobResponseBodyJob(TeaModel):
             result['Code'] = self.code
         if self.config is not None:
             result['Config'] = self.config.to_map()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.finish_time is not None:
+            result['FinishTime'] = self.finish_time
         if self.job_id is not None:
             result['JobId'] = self.job_id
         if self.message is not None:
@@ -30871,6 +31774,8 @@ class GetMediaConvertJobResponseBodyJob(TeaModel):
         if self.output_group_details is not None:
             for k in self.output_group_details:
                 result['OutputGroupDetails'].append(k.to_map() if k else None)
+        if self.percent is not None:
+            result['Percent'] = self.percent
         if self.pipeline_id is not None:
             result['PipelineId'] = self.pipeline_id
         if self.request_id is not None:
@@ -30890,6 +31795,10 @@ class GetMediaConvertJobResponseBodyJob(TeaModel):
         if m.get('Config') is not None:
             temp_model = GetMediaConvertJobResponseBodyJobConfig()
             self.config = temp_model.from_map(m['Config'])
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('FinishTime') is not None:
+            self.finish_time = m.get('FinishTime')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
         if m.get('Message') is not None:
@@ -30904,6 +31813,8 @@ class GetMediaConvertJobResponseBodyJob(TeaModel):
             for k in m.get('OutputGroupDetails'):
                 temp_model = MediaConvertOutputGroupDetail()
                 self.output_group_details.append(temp_model.from_map(k))
+        if m.get('Percent') is not None:
+            self.percent = m.get('Percent')
         if m.get('PipelineId') is not None:
             self.pipeline_id = m.get('PipelineId')
         if m.get('RequestId') is not None:
@@ -58762,7 +59673,7 @@ class ListSearchLibResponseBody(TeaModel):
         self.search_lib_info_list = search_lib_info_list
         # Indicates whether the request was successful.
         self.success = success
-        # 总数。
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -80811,11 +81722,13 @@ class SubmitMediaConvertJobResponseBodyJobConfig(TeaModel):
     def __init__(
         self,
         inputs: List[MediaConvertInput] = None,
+        job_name: str = None,
         output_groups: List[MediaConvertOutputGroup] = None,
         outputs: List[MediaConvertOutput] = None,
     ):
         # The inputs of the transcoding task.
         self.inputs = inputs
+        self.job_name = job_name
         # The output group configurations.
         self.output_groups = output_groups
         # The output configurations.
@@ -80845,6 +81758,8 @@ class SubmitMediaConvertJobResponseBodyJobConfig(TeaModel):
         if self.inputs is not None:
             for k in self.inputs:
                 result['Inputs'].append(k.to_map() if k else None)
+        if self.job_name is not None:
+            result['JobName'] = self.job_name
         result['OutputGroups'] = []
         if self.output_groups is not None:
             for k in self.output_groups:
@@ -80862,6 +81777,8 @@ class SubmitMediaConvertJobResponseBodyJobConfig(TeaModel):
             for k in m.get('Inputs'):
                 temp_model = MediaConvertInput()
                 self.inputs.append(temp_model.from_map(k))
+        if m.get('JobName') is not None:
+            self.job_name = m.get('JobName')
         self.output_groups = []
         if m.get('OutputGroups') is not None:
             for k in m.get('OutputGroups'):
