@@ -475,7 +475,9 @@ class CreateClientCertificateWithCsrResponseBody(TeaModel):
         serial_number: str = None,
         x_509certificate: str = None,
     ):
+        # CertKmcRep1.
         self.cert_kmc_rep_1 = cert_kmc_rep_1
+        # Cert Sign Buf Kmc.
         self.cert_sign_buf_kmc = cert_sign_buf_kmc
         # The certificate chain of the client certificate.
         self.certificate_chain = certificate_chain
@@ -2732,18 +2734,26 @@ class DescribeCACertificateCountResponse(TeaModel):
 class DescribeCACertificateListRequest(TeaModel):
     def __init__(
         self,
+        ca_status: str = None,
+        cert_type: str = None,
         current_page: int = None,
         identifier: str = None,
+        issuer_type: str = None,
         show_size: int = None,
+        valid_status: str = None,
     ):
+        self.ca_status = ca_status
+        self.cert_type = cert_type
         # The number of the page to return. Default value: **1**.
         self.current_page = current_page
         # The unique identifier of the client certificate or server certificate that you want to revoke.
         # 
         # >  You can call the [ListClientCertificate](https://help.aliyun.com/document_detail/330884.html) operation to query the unique identifiers of all client certificates and server certificates.
         self.identifier = identifier
+        self.issuer_type = issuer_type
         # The number of CA certificates to return on each page. Default value: **20**.
         self.show_size = show_size
+        self.valid_status = valid_status
 
     def validate(self):
         pass
@@ -2754,22 +2764,38 @@ class DescribeCACertificateListRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.ca_status is not None:
+            result['CaStatus'] = self.ca_status
+        if self.cert_type is not None:
+            result['CertType'] = self.cert_type
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
         if self.identifier is not None:
             result['Identifier'] = self.identifier
+        if self.issuer_type is not None:
+            result['IssuerType'] = self.issuer_type
         if self.show_size is not None:
             result['ShowSize'] = self.show_size
+        if self.valid_status is not None:
+            result['ValidStatus'] = self.valid_status
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CaStatus') is not None:
+            self.ca_status = m.get('CaStatus')
+        if m.get('CertType') is not None:
+            self.cert_type = m.get('CertType')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
         if m.get('Identifier') is not None:
             self.identifier = m.get('Identifier')
+        if m.get('IssuerType') is not None:
+            self.issuer_type = m.get('IssuerType')
         if m.get('ShowSize') is not None:
             self.show_size = m.get('ShowSize')
+        if m.get('ValidStatus') is not None:
+            self.valid_status = m.get('ValidStatus')
         return self
 
 
@@ -3903,6 +3929,328 @@ class GetCAInstanceStatusResponse(TeaModel):
         return self
 
 
+class ListCertRequest(TeaModel):
+    def __init__(
+        self,
+        after_date: str = None,
+        before_date: str = None,
+        current_page: int = None,
+        instance_uuid: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        show_size: int = None,
+        status: str = None,
+        type: str = None,
+    ):
+        self.after_date = after_date
+        self.before_date = before_date
+        self.current_page = current_page
+        self.instance_uuid = instance_uuid
+        self.max_results = max_results
+        self.next_token = next_token
+        self.show_size = show_size
+        self.status = status
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.after_date is not None:
+            result['AfterDate'] = self.after_date
+        if self.before_date is not None:
+            result['BeforeDate'] = self.before_date
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.instance_uuid is not None:
+            result['InstanceUuid'] = self.instance_uuid
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.show_size is not None:
+            result['ShowSize'] = self.show_size
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AfterDate') is not None:
+            self.after_date = m.get('AfterDate')
+        if m.get('BeforeDate') is not None:
+            self.before_date = m.get('BeforeDate')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('InstanceUuid') is not None:
+            self.instance_uuid = m.get('InstanceUuid')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ShowSize') is not None:
+            self.show_size = m.get('ShowSize')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListCertResponseBodyList(TeaModel):
+    def __init__(
+        self,
+        after_date: str = None,
+        after_time: int = None,
+        algorithm: str = None,
+        alias_name: str = None,
+        before_date: str = None,
+        before_time: int = None,
+        certificate_type: str = None,
+        common_name: str = None,
+        extra: str = None,
+        id: str = None,
+        identifier: str = None,
+        key_exportable: bool = None,
+        organization: str = None,
+        organization_unit: str = None,
+        serial_number: str = None,
+        status: str = None,
+        subject_dn: str = None,
+        tags: List[str] = None,
+    ):
+        self.after_date = after_date
+        self.after_time = after_time
+        self.algorithm = algorithm
+        self.alias_name = alias_name
+        self.before_date = before_date
+        self.before_time = before_time
+        self.certificate_type = certificate_type
+        self.common_name = common_name
+        self.extra = extra
+        self.id = id
+        self.identifier = identifier
+        self.key_exportable = key_exportable
+        self.organization = organization
+        self.organization_unit = organization_unit
+        self.serial_number = serial_number
+        self.status = status
+        self.subject_dn = subject_dn
+        self.tags = tags
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.after_date is not None:
+            result['AfterDate'] = self.after_date
+        if self.after_time is not None:
+            result['AfterTime'] = self.after_time
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.alias_name is not None:
+            result['AliasName'] = self.alias_name
+        if self.before_date is not None:
+            result['BeforeDate'] = self.before_date
+        if self.before_time is not None:
+            result['BeforeTime'] = self.before_time
+        if self.certificate_type is not None:
+            result['CertificateType'] = self.certificate_type
+        if self.common_name is not None:
+            result['CommonName'] = self.common_name
+        if self.extra is not None:
+            result['Extra'] = self.extra
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.identifier is not None:
+            result['Identifier'] = self.identifier
+        if self.key_exportable is not None:
+            result['KeyExportable'] = self.key_exportable
+        if self.organization is not None:
+            result['Organization'] = self.organization
+        if self.organization_unit is not None:
+            result['OrganizationUnit'] = self.organization_unit
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.subject_dn is not None:
+            result['SubjectDn'] = self.subject_dn
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AfterDate') is not None:
+            self.after_date = m.get('AfterDate')
+        if m.get('AfterTime') is not None:
+            self.after_time = m.get('AfterTime')
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('AliasName') is not None:
+            self.alias_name = m.get('AliasName')
+        if m.get('BeforeDate') is not None:
+            self.before_date = m.get('BeforeDate')
+        if m.get('BeforeTime') is not None:
+            self.before_time = m.get('BeforeTime')
+        if m.get('CertificateType') is not None:
+            self.certificate_type = m.get('CertificateType')
+        if m.get('CommonName') is not None:
+            self.common_name = m.get('CommonName')
+        if m.get('Extra') is not None:
+            self.extra = m.get('Extra')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Identifier') is not None:
+            self.identifier = m.get('Identifier')
+        if m.get('KeyExportable') is not None:
+            self.key_exportable = m.get('KeyExportable')
+        if m.get('Organization') is not None:
+            self.organization = m.get('Organization')
+        if m.get('OrganizationUnit') is not None:
+            self.organization_unit = m.get('OrganizationUnit')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SubjectDn') is not None:
+            self.subject_dn = m.get('SubjectDn')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        return self
+
+
+class ListCertResponseBody(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        list: List[ListCertResponseBodyList] = None,
+        max_results: int = None,
+        next_token: str = None,
+        page_count: int = None,
+        request_id: str = None,
+        show_size: int = None,
+        total_count: int = None,
+    ):
+        self.current_page = current_page
+        self.list = list
+        self.max_results = max_results
+        self.next_token = next_token
+        self.page_count = page_count
+        self.request_id = request_id
+        self.show_size = show_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_count is not None:
+            result['PageCount'] = self.page_count
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.show_size is not None:
+            result['ShowSize'] = self.show_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = ListCertResponseBodyList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageCount') is not None:
+            self.page_count = m.get('PageCount')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ShowSize') is not None:
+            self.show_size = m.get('ShowSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListCertResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCertResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCertResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListClientCertificateRequest(TeaModel):
     def __init__(
         self,
@@ -4711,6 +5059,103 @@ class UpdateCACertificateStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateCACertificateStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UploadPcaCertToCasRequest(TeaModel):
+    def __init__(
+        self,
+        ids: str = None,
+    ):
+        # This parameter is required.
+        self.ids = ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        return self
+
+
+class UploadPcaCertToCasResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UploadPcaCertToCasResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UploadPcaCertToCasResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UploadPcaCertToCasResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

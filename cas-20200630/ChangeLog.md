@@ -1,3 +1,12 @@
+2025-06-18 Version: 1.1.0
+- Support API ListCert.
+- Support API UploadPcaCertToCas.
+- Update API DescribeCACertificateList: add request parameters CaStatus.
+- Update API DescribeCACertificateList: add request parameters CertType.
+- Update API DescribeCACertificateList: add request parameters IssuerType.
+- Update API DescribeCACertificateList: add request parameters ValidStatus.
+
+
 2025-03-27 Version: 1.0.17
 - Update API CreateClientCertificateWithCsr: add response parameters Body.CertKmcRep1.
 - Update API CreateClientCertificateWithCsr: add response parameters Body.CertSignBufKmc.
