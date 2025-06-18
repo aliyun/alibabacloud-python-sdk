@@ -157,6 +157,478 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_dataset_document_with_options_async(request, runtime)
 
+    def async_create_clips_task_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.AsyncCreateClipsTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.AsyncCreateClipsTaskResponse:
+        """
+        @summary 生成剪辑视频
+        
+        @param tmp_req: AsyncCreateClipsTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AsyncCreateClipsTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.AsyncCreateClipsTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.color_words):
+            request.color_words_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.color_words, 'ColorWords', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.color_words_shrink):
+            body['ColorWords'] = request.color_words_shrink
+        if not UtilClient.is_unset(request.height):
+            body['Height'] = request.height
+        if not UtilClient.is_unset(request.music_url):
+            body['MusicUrl'] = request.music_url
+        if not UtilClient.is_unset(request.music_volume):
+            body['MusicVolume'] = request.music_volume
+        if not UtilClient.is_unset(request.subtitle_font_size):
+            body['SubtitleFontSize'] = request.subtitle_font_size
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.voice_style):
+            body['VoiceStyle'] = request.voice_style
+        if not UtilClient.is_unset(request.voice_volume):
+            body['VoiceVolume'] = request.voice_volume
+        if not UtilClient.is_unset(request.width):
+            body['Width'] = request.width
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AsyncCreateClipsTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.AsyncCreateClipsTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def async_create_clips_task_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.AsyncCreateClipsTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.AsyncCreateClipsTaskResponse:
+        """
+        @summary 生成剪辑视频
+        
+        @param tmp_req: AsyncCreateClipsTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AsyncCreateClipsTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.AsyncCreateClipsTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.color_words):
+            request.color_words_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.color_words, 'ColorWords', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.color_words_shrink):
+            body['ColorWords'] = request.color_words_shrink
+        if not UtilClient.is_unset(request.height):
+            body['Height'] = request.height
+        if not UtilClient.is_unset(request.music_url):
+            body['MusicUrl'] = request.music_url
+        if not UtilClient.is_unset(request.music_volume):
+            body['MusicVolume'] = request.music_volume
+        if not UtilClient.is_unset(request.subtitle_font_size):
+            body['SubtitleFontSize'] = request.subtitle_font_size
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.voice_style):
+            body['VoiceStyle'] = request.voice_style
+        if not UtilClient.is_unset(request.voice_volume):
+            body['VoiceVolume'] = request.voice_volume
+        if not UtilClient.is_unset(request.width):
+            body['Width'] = request.width
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AsyncCreateClipsTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.AsyncCreateClipsTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def async_create_clips_task(
+        self,
+        request: ai_miao_bi_20230801_models.AsyncCreateClipsTaskRequest,
+    ) -> ai_miao_bi_20230801_models.AsyncCreateClipsTaskResponse:
+        """
+        @summary 生成剪辑视频
+        
+        @param request: AsyncCreateClipsTaskRequest
+        @return: AsyncCreateClipsTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.async_create_clips_task_with_options(request, runtime)
+
+    async def async_create_clips_task_async(
+        self,
+        request: ai_miao_bi_20230801_models.AsyncCreateClipsTaskRequest,
+    ) -> ai_miao_bi_20230801_models.AsyncCreateClipsTaskResponse:
+        """
+        @summary 生成剪辑视频
+        
+        @param request: AsyncCreateClipsTaskRequest
+        @return: AsyncCreateClipsTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.async_create_clips_task_with_options_async(request, runtime)
+
+    def async_create_clips_time_line_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.AsyncCreateClipsTimeLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.AsyncCreateClipsTimeLineResponse:
+        """
+        @summary 智能剪辑timeline
+        
+        @param request: AsyncCreateClipsTimeLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AsyncCreateClipsTimeLineResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.process_prompt):
+            body['ProcessPrompt'] = request.process_prompt
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AsyncCreateClipsTimeLine',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.AsyncCreateClipsTimeLineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def async_create_clips_time_line_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.AsyncCreateClipsTimeLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.AsyncCreateClipsTimeLineResponse:
+        """
+        @summary 智能剪辑timeline
+        
+        @param request: AsyncCreateClipsTimeLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AsyncCreateClipsTimeLineResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.process_prompt):
+            body['ProcessPrompt'] = request.process_prompt
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AsyncCreateClipsTimeLine',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.AsyncCreateClipsTimeLineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def async_create_clips_time_line(
+        self,
+        request: ai_miao_bi_20230801_models.AsyncCreateClipsTimeLineRequest,
+    ) -> ai_miao_bi_20230801_models.AsyncCreateClipsTimeLineResponse:
+        """
+        @summary 智能剪辑timeline
+        
+        @param request: AsyncCreateClipsTimeLineRequest
+        @return: AsyncCreateClipsTimeLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.async_create_clips_time_line_with_options(request, runtime)
+
+    async def async_create_clips_time_line_async(
+        self,
+        request: ai_miao_bi_20230801_models.AsyncCreateClipsTimeLineRequest,
+    ) -> ai_miao_bi_20230801_models.AsyncCreateClipsTimeLineResponse:
+        """
+        @summary 智能剪辑timeline
+        
+        @param request: AsyncCreateClipsTimeLineRequest
+        @return: AsyncCreateClipsTimeLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.async_create_clips_time_line_with_options_async(request, runtime)
+
+    def async_edit_timeline_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.AsyncEditTimelineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.AsyncEditTimelineResponse:
+        """
+        @summary 编辑剪辑任务的timeline
+        
+        @param tmp_req: AsyncEditTimelineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AsyncEditTimelineResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.AsyncEditTimelineShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.timelines):
+            request.timelines_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.timelines, 'Timelines', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.auto_clips):
+            body['AutoClips'] = request.auto_clips
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.timelines_shrink):
+            body['Timelines'] = request.timelines_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AsyncEditTimeline',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.AsyncEditTimelineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def async_edit_timeline_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.AsyncEditTimelineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.AsyncEditTimelineResponse:
+        """
+        @summary 编辑剪辑任务的timeline
+        
+        @param tmp_req: AsyncEditTimelineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AsyncEditTimelineResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.AsyncEditTimelineShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.timelines):
+            request.timelines_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.timelines, 'Timelines', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.auto_clips):
+            body['AutoClips'] = request.auto_clips
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.timelines_shrink):
+            body['Timelines'] = request.timelines_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AsyncEditTimeline',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.AsyncEditTimelineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def async_edit_timeline(
+        self,
+        request: ai_miao_bi_20230801_models.AsyncEditTimelineRequest,
+    ) -> ai_miao_bi_20230801_models.AsyncEditTimelineResponse:
+        """
+        @summary 编辑剪辑任务的timeline
+        
+        @param request: AsyncEditTimelineRequest
+        @return: AsyncEditTimelineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.async_edit_timeline_with_options(request, runtime)
+
+    async def async_edit_timeline_async(
+        self,
+        request: ai_miao_bi_20230801_models.AsyncEditTimelineRequest,
+    ) -> ai_miao_bi_20230801_models.AsyncEditTimelineResponse:
+        """
+        @summary 编辑剪辑任务的timeline
+        
+        @param request: AsyncEditTimelineRequest
+        @return: AsyncEditTimelineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.async_edit_timeline_with_options_async(request, runtime)
+
+    def async_upload_video_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.AsyncUploadVideoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.AsyncUploadVideoResponse:
+        """
+        @summary 上传剪辑素材
+        
+        @param tmp_req: AsyncUploadVideoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AsyncUploadVideoResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.AsyncUploadVideoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.source_videos):
+            request.source_videos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_videos, 'SourceVideos', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.anlysis_prompt):
+            body['AnlysisPrompt'] = request.anlysis_prompt
+        if not UtilClient.is_unset(request.source_videos_shrink):
+            body['SourceVideos'] = request.source_videos_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AsyncUploadVideo',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.AsyncUploadVideoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def async_upload_video_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.AsyncUploadVideoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.AsyncUploadVideoResponse:
+        """
+        @summary 上传剪辑素材
+        
+        @param tmp_req: AsyncUploadVideoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AsyncUploadVideoResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.AsyncUploadVideoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.source_videos):
+            request.source_videos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_videos, 'SourceVideos', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.anlysis_prompt):
+            body['AnlysisPrompt'] = request.anlysis_prompt
+        if not UtilClient.is_unset(request.source_videos_shrink):
+            body['SourceVideos'] = request.source_videos_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AsyncUploadVideo',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.AsyncUploadVideoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def async_upload_video(
+        self,
+        request: ai_miao_bi_20230801_models.AsyncUploadVideoRequest,
+    ) -> ai_miao_bi_20230801_models.AsyncUploadVideoResponse:
+        """
+        @summary 上传剪辑素材
+        
+        @param request: AsyncUploadVideoRequest
+        @return: AsyncUploadVideoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.async_upload_video_with_options(request, runtime)
+
+    async def async_upload_video_async(
+        self,
+        request: ai_miao_bi_20230801_models.AsyncUploadVideoRequest,
+    ) -> ai_miao_bi_20230801_models.AsyncUploadVideoResponse:
+        """
+        @summary 上传剪辑素材
+        
+        @param request: AsyncUploadVideoRequest
+        @return: AsyncUploadVideoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.async_upload_video_with_options_async(request, runtime)
+
     def cancel_async_task_with_options(
         self,
         request: ai_miao_bi_20230801_models.CancelAsyncTaskRequest,
@@ -3560,6 +4032,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.generate_view_point_with_options_async(request, runtime)
+
+    def get_auto_clips_task_info_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetAutoClipsTaskInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetAutoClipsTaskInfoResponse:
+        """
+        @summary 获得剪辑任务状态
+        
+        @param request: GetAutoClipsTaskInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAutoClipsTaskInfoResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetAutoClipsTaskInfo',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetAutoClipsTaskInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_auto_clips_task_info_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetAutoClipsTaskInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetAutoClipsTaskInfoResponse:
+        """
+        @summary 获得剪辑任务状态
+        
+        @param request: GetAutoClipsTaskInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAutoClipsTaskInfoResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetAutoClipsTaskInfo',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetAutoClipsTaskInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_auto_clips_task_info(
+        self,
+        request: ai_miao_bi_20230801_models.GetAutoClipsTaskInfoRequest,
+    ) -> ai_miao_bi_20230801_models.GetAutoClipsTaskInfoResponse:
+        """
+        @summary 获得剪辑任务状态
+        
+        @param request: GetAutoClipsTaskInfoRequest
+        @return: GetAutoClipsTaskInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_auto_clips_task_info_with_options(request, runtime)
+
+    async def get_auto_clips_task_info_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetAutoClipsTaskInfoRequest,
+    ) -> ai_miao_bi_20230801_models.GetAutoClipsTaskInfoResponse:
+        """
+        @summary 获得剪辑任务状态
+        
+        @param request: GetAutoClipsTaskInfoRequest
+        @return: GetAutoClipsTaskInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_auto_clips_task_info_with_options_async(request, runtime)
 
     def get_categories_by_task_id_with_options(
         self,

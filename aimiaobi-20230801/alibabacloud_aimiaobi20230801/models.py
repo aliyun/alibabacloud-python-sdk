@@ -719,6 +719,1123 @@ class AddDatasetDocumentResponse(TeaModel):
         return self
 
 
+class AsyncCreateClipsTaskRequestColorWords(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        effect_color_style: str = None,
+        font_size: int = None,
+        timeline_in: int = None,
+        timeline_out: int = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.content = content
+        self.effect_color_style = effect_color_style
+        self.font_size = font_size
+        self.timeline_in = timeline_in
+        self.timeline_out = timeline_out
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.effect_color_style is not None:
+            result['EffectColorStyle'] = self.effect_color_style
+        if self.font_size is not None:
+            result['FontSize'] = self.font_size
+        if self.timeline_in is not None:
+            result['TimelineIn'] = self.timeline_in
+        if self.timeline_out is not None:
+            result['TimelineOut'] = self.timeline_out
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('EffectColorStyle') is not None:
+            self.effect_color_style = m.get('EffectColorStyle')
+        if m.get('FontSize') is not None:
+            self.font_size = m.get('FontSize')
+        if m.get('TimelineIn') is not None:
+            self.timeline_in = m.get('TimelineIn')
+        if m.get('TimelineOut') is not None:
+            self.timeline_out = m.get('TimelineOut')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class AsyncCreateClipsTaskRequest(TeaModel):
+    def __init__(
+        self,
+        color_words: List[AsyncCreateClipsTaskRequestColorWords] = None,
+        height: int = None,
+        music_url: str = None,
+        music_volume: int = None,
+        subtitle_font_size: int = None,
+        task_id: str = None,
+        voice_style: str = None,
+        voice_volume: int = None,
+        width: int = None,
+        workspace_id: str = None,
+    ):
+        self.color_words = color_words
+        self.height = height
+        self.music_url = music_url
+        self.music_volume = music_volume
+        self.subtitle_font_size = subtitle_font_size
+        # This parameter is required.
+        self.task_id = task_id
+        self.voice_style = voice_style
+        self.voice_volume = voice_volume
+        self.width = width
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.color_words:
+            for k in self.color_words:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ColorWords'] = []
+        if self.color_words is not None:
+            for k in self.color_words:
+                result['ColorWords'].append(k.to_map() if k else None)
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.music_url is not None:
+            result['MusicUrl'] = self.music_url
+        if self.music_volume is not None:
+            result['MusicVolume'] = self.music_volume
+        if self.subtitle_font_size is not None:
+            result['SubtitleFontSize'] = self.subtitle_font_size
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.voice_style is not None:
+            result['VoiceStyle'] = self.voice_style
+        if self.voice_volume is not None:
+            result['VoiceVolume'] = self.voice_volume
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.color_words = []
+        if m.get('ColorWords') is not None:
+            for k in m.get('ColorWords'):
+                temp_model = AsyncCreateClipsTaskRequestColorWords()
+                self.color_words.append(temp_model.from_map(k))
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('MusicUrl') is not None:
+            self.music_url = m.get('MusicUrl')
+        if m.get('MusicVolume') is not None:
+            self.music_volume = m.get('MusicVolume')
+        if m.get('SubtitleFontSize') is not None:
+            self.subtitle_font_size = m.get('SubtitleFontSize')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('VoiceStyle') is not None:
+            self.voice_style = m.get('VoiceStyle')
+        if m.get('VoiceVolume') is not None:
+            self.voice_volume = m.get('VoiceVolume')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class AsyncCreateClipsTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        color_words_shrink: str = None,
+        height: int = None,
+        music_url: str = None,
+        music_volume: int = None,
+        subtitle_font_size: int = None,
+        task_id: str = None,
+        voice_style: str = None,
+        voice_volume: int = None,
+        width: int = None,
+        workspace_id: str = None,
+    ):
+        self.color_words_shrink = color_words_shrink
+        self.height = height
+        self.music_url = music_url
+        self.music_volume = music_volume
+        self.subtitle_font_size = subtitle_font_size
+        # This parameter is required.
+        self.task_id = task_id
+        self.voice_style = voice_style
+        self.voice_volume = voice_volume
+        self.width = width
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.color_words_shrink is not None:
+            result['ColorWords'] = self.color_words_shrink
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.music_url is not None:
+            result['MusicUrl'] = self.music_url
+        if self.music_volume is not None:
+            result['MusicVolume'] = self.music_volume
+        if self.subtitle_font_size is not None:
+            result['SubtitleFontSize'] = self.subtitle_font_size
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.voice_style is not None:
+            result['VoiceStyle'] = self.voice_style
+        if self.voice_volume is not None:
+            result['VoiceVolume'] = self.voice_volume
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ColorWords') is not None:
+            self.color_words_shrink = m.get('ColorWords')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('MusicUrl') is not None:
+            self.music_url = m.get('MusicUrl')
+        if m.get('MusicVolume') is not None:
+            self.music_volume = m.get('MusicVolume')
+        if m.get('SubtitleFontSize') is not None:
+            self.subtitle_font_size = m.get('SubtitleFontSize')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('VoiceStyle') is not None:
+            self.voice_style = m.get('VoiceStyle')
+        if m.get('VoiceVolume') is not None:
+            self.voice_volume = m.get('VoiceVolume')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class AsyncCreateClipsTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class AsyncCreateClipsTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: AsyncCreateClipsTaskResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = AsyncCreateClipsTaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AsyncCreateClipsTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AsyncCreateClipsTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AsyncCreateClipsTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AsyncCreateClipsTimeLineRequest(TeaModel):
+    def __init__(
+        self,
+        process_prompt: str = None,
+        task_id: str = None,
+        workspace_id: str = None,
+    ):
+        self.process_prompt = process_prompt
+        # This parameter is required.
+        self.task_id = task_id
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.process_prompt is not None:
+            result['ProcessPrompt'] = self.process_prompt
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProcessPrompt') is not None:
+            self.process_prompt = m.get('ProcessPrompt')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class AsyncCreateClipsTimeLineResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class AsyncCreateClipsTimeLineResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: AsyncCreateClipsTimeLineResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = AsyncCreateClipsTimeLineResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AsyncCreateClipsTimeLineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AsyncCreateClipsTimeLineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AsyncCreateClipsTimeLineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AsyncEditTimelineRequestTimelinesClips(TeaModel):
+    def __init__(
+        self,
+        clip_id: str = None,
+        content_inner: str = None,
+        in_: int = None,
+        out: int = None,
+        video_id: str = None,
+        video_name: str = None,
+    ):
+        self.clip_id = clip_id
+        self.content_inner = content_inner
+        self.in_ = in_
+        self.out = out
+        self.video_id = video_id
+        self.video_name = video_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.clip_id is not None:
+            result['ClipId'] = self.clip_id
+        if self.content_inner is not None:
+            result['ContentInner'] = self.content_inner
+        if self.in_ is not None:
+            result['In'] = self.in_
+        if self.out is not None:
+            result['Out'] = self.out
+        if self.video_id is not None:
+            result['VideoId'] = self.video_id
+        if self.video_name is not None:
+            result['VideoName'] = self.video_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClipId') is not None:
+            self.clip_id = m.get('ClipId')
+        if m.get('ContentInner') is not None:
+            self.content_inner = m.get('ContentInner')
+        if m.get('In') is not None:
+            self.in_ = m.get('In')
+        if m.get('Out') is not None:
+            self.out = m.get('Out')
+        if m.get('VideoId') is not None:
+            self.video_id = m.get('VideoId')
+        if m.get('VideoName') is not None:
+            self.video_name = m.get('VideoName')
+        return self
+
+
+class AsyncEditTimelineRequestTimelines(TeaModel):
+    def __init__(
+        self,
+        clips: List[AsyncEditTimelineRequestTimelinesClips] = None,
+        timeline_id: str = None,
+    ):
+        # This parameter is required.
+        self.clips = clips
+        self.timeline_id = timeline_id
+
+    def validate(self):
+        if self.clips:
+            for k in self.clips:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Clips'] = []
+        if self.clips is not None:
+            for k in self.clips:
+                result['Clips'].append(k.to_map() if k else None)
+        if self.timeline_id is not None:
+            result['TimelineId'] = self.timeline_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.clips = []
+        if m.get('Clips') is not None:
+            for k in m.get('Clips'):
+                temp_model = AsyncEditTimelineRequestTimelinesClips()
+                self.clips.append(temp_model.from_map(k))
+        if m.get('TimelineId') is not None:
+            self.timeline_id = m.get('TimelineId')
+        return self
+
+
+class AsyncEditTimelineRequest(TeaModel):
+    def __init__(
+        self,
+        auto_clips: bool = None,
+        task_id: str = None,
+        timelines: List[AsyncEditTimelineRequestTimelines] = None,
+        workspace_id: str = None,
+    ):
+        self.auto_clips = auto_clips
+        # This parameter is required.
+        self.task_id = task_id
+        # This parameter is required.
+        self.timelines = timelines
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.timelines:
+            for k in self.timelines:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_clips is not None:
+            result['AutoClips'] = self.auto_clips
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        result['Timelines'] = []
+        if self.timelines is not None:
+            for k in self.timelines:
+                result['Timelines'].append(k.to_map() if k else None)
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoClips') is not None:
+            self.auto_clips = m.get('AutoClips')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        self.timelines = []
+        if m.get('Timelines') is not None:
+            for k in m.get('Timelines'):
+                temp_model = AsyncEditTimelineRequestTimelines()
+                self.timelines.append(temp_model.from_map(k))
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class AsyncEditTimelineShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        auto_clips: bool = None,
+        task_id: str = None,
+        timelines_shrink: str = None,
+        workspace_id: str = None,
+    ):
+        self.auto_clips = auto_clips
+        # This parameter is required.
+        self.task_id = task_id
+        # This parameter is required.
+        self.timelines_shrink = timelines_shrink
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_clips is not None:
+            result['AutoClips'] = self.auto_clips
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.timelines_shrink is not None:
+            result['Timelines'] = self.timelines_shrink
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoClips') is not None:
+            self.auto_clips = m.get('AutoClips')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('Timelines') is not None:
+            self.timelines_shrink = m.get('Timelines')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class AsyncEditTimelineResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        task_id: str = None,
+    ):
+        self.message = message
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class AsyncEditTimelineResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: AsyncEditTimelineResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = AsyncEditTimelineResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AsyncEditTimelineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AsyncEditTimelineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AsyncEditTimelineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AsyncUploadVideoRequestSourceVideos(TeaModel):
+    def __init__(
+        self,
+        video_extra_info: str = None,
+        video_name: str = None,
+        video_url: str = None,
+    ):
+        self.video_extra_info = video_extra_info
+        # This parameter is required.
+        self.video_name = video_name
+        # This parameter is required.
+        self.video_url = video_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.video_extra_info is not None:
+            result['VideoExtraInfo'] = self.video_extra_info
+        if self.video_name is not None:
+            result['VideoName'] = self.video_name
+        if self.video_url is not None:
+            result['VideoUrl'] = self.video_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoExtraInfo') is not None:
+            self.video_extra_info = m.get('VideoExtraInfo')
+        if m.get('VideoName') is not None:
+            self.video_name = m.get('VideoName')
+        if m.get('VideoUrl') is not None:
+            self.video_url = m.get('VideoUrl')
+        return self
+
+
+class AsyncUploadVideoRequest(TeaModel):
+    def __init__(
+        self,
+        anlysis_prompt: str = None,
+        source_videos: List[AsyncUploadVideoRequestSourceVideos] = None,
+        workspace_id: str = None,
+    ):
+        self.anlysis_prompt = anlysis_prompt
+        # This parameter is required.
+        self.source_videos = source_videos
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.source_videos:
+            for k in self.source_videos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.anlysis_prompt is not None:
+            result['AnlysisPrompt'] = self.anlysis_prompt
+        result['SourceVideos'] = []
+        if self.source_videos is not None:
+            for k in self.source_videos:
+                result['SourceVideos'].append(k.to_map() if k else None)
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnlysisPrompt') is not None:
+            self.anlysis_prompt = m.get('AnlysisPrompt')
+        self.source_videos = []
+        if m.get('SourceVideos') is not None:
+            for k in m.get('SourceVideos'):
+                temp_model = AsyncUploadVideoRequestSourceVideos()
+                self.source_videos.append(temp_model.from_map(k))
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class AsyncUploadVideoShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        anlysis_prompt: str = None,
+        source_videos_shrink: str = None,
+        workspace_id: str = None,
+    ):
+        self.anlysis_prompt = anlysis_prompt
+        # This parameter is required.
+        self.source_videos_shrink = source_videos_shrink
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.anlysis_prompt is not None:
+            result['AnlysisPrompt'] = self.anlysis_prompt
+        if self.source_videos_shrink is not None:
+            result['SourceVideos'] = self.source_videos_shrink
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnlysisPrompt') is not None:
+            self.anlysis_prompt = m.get('AnlysisPrompt')
+        if m.get('SourceVideos') is not None:
+            self.source_videos_shrink = m.get('SourceVideos')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class AsyncUploadVideoResponseBodyDataVideoInfos(TeaModel):
+    def __init__(
+        self,
+        video_extra_info: str = None,
+        video_id: str = None,
+        video_name: str = None,
+        video_url: str = None,
+    ):
+        self.video_extra_info = video_extra_info
+        self.video_id = video_id
+        self.video_name = video_name
+        self.video_url = video_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.video_extra_info is not None:
+            result['VideoExtraInfo'] = self.video_extra_info
+        if self.video_id is not None:
+            result['VideoId'] = self.video_id
+        if self.video_name is not None:
+            result['VideoName'] = self.video_name
+        if self.video_url is not None:
+            result['VideoUrl'] = self.video_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoExtraInfo') is not None:
+            self.video_extra_info = m.get('VideoExtraInfo')
+        if m.get('VideoId') is not None:
+            self.video_id = m.get('VideoId')
+        if m.get('VideoName') is not None:
+            self.video_name = m.get('VideoName')
+        if m.get('VideoUrl') is not None:
+            self.video_url = m.get('VideoUrl')
+        return self
+
+
+class AsyncUploadVideoResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+        video_infos: List[AsyncUploadVideoResponseBodyDataVideoInfos] = None,
+    ):
+        self.task_id = task_id
+        self.video_infos = video_infos
+
+    def validate(self):
+        if self.video_infos:
+            for k in self.video_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        result['VideoInfos'] = []
+        if self.video_infos is not None:
+            for k in self.video_infos:
+                result['VideoInfos'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        self.video_infos = []
+        if m.get('VideoInfos') is not None:
+            for k in m.get('VideoInfos'):
+                temp_model = AsyncUploadVideoResponseBodyDataVideoInfos()
+                self.video_infos.append(temp_model.from_map(k))
+        return self
+
+
+class AsyncUploadVideoResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: AsyncUploadVideoResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = AsyncUploadVideoResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AsyncUploadVideoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AsyncUploadVideoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AsyncUploadVideoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CancelAsyncTaskRequest(TeaModel):
     def __init__(
         self,
@@ -6764,6 +7881,413 @@ class GenerateViewPointResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GenerateViewPointResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAutoClipsTaskInfoRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.task_id = task_id
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class GetAutoClipsTaskInfoResponseBodyDataColorWords(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        effect_color_style: str = None,
+        font_size: int = None,
+        timeline_in: int = None,
+        timeline_out: int = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.content = content
+        self.effect_color_style = effect_color_style
+        self.font_size = font_size
+        self.timeline_in = timeline_in
+        self.timeline_out = timeline_out
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.effect_color_style is not None:
+            result['EffectColorStyle'] = self.effect_color_style
+        if self.font_size is not None:
+            result['FontSize'] = self.font_size
+        if self.timeline_in is not None:
+            result['TimelineIn'] = self.timeline_in
+        if self.timeline_out is not None:
+            result['TimelineOut'] = self.timeline_out
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('EffectColorStyle') is not None:
+            self.effect_color_style = m.get('EffectColorStyle')
+        if m.get('FontSize') is not None:
+            self.font_size = m.get('FontSize')
+        if m.get('TimelineIn') is not None:
+            self.timeline_in = m.get('TimelineIn')
+        if m.get('TimelineOut') is not None:
+            self.timeline_out = m.get('TimelineOut')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class GetAutoClipsTaskInfoResponseBodyDataTimelinesClips(TeaModel):
+    def __init__(
+        self,
+        clip_id: str = None,
+        content_inner: str = None,
+        in_: int = None,
+        out: int = None,
+        video_id: str = None,
+        video_name: str = None,
+    ):
+        self.clip_id = clip_id
+        self.content_inner = content_inner
+        self.in_ = in_
+        self.out = out
+        self.video_id = video_id
+        self.video_name = video_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.clip_id is not None:
+            result['ClipId'] = self.clip_id
+        if self.content_inner is not None:
+            result['ContentInner'] = self.content_inner
+        if self.in_ is not None:
+            result['In'] = self.in_
+        if self.out is not None:
+            result['Out'] = self.out
+        if self.video_id is not None:
+            result['VideoId'] = self.video_id
+        if self.video_name is not None:
+            result['VideoName'] = self.video_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClipId') is not None:
+            self.clip_id = m.get('ClipId')
+        if m.get('ContentInner') is not None:
+            self.content_inner = m.get('ContentInner')
+        if m.get('In') is not None:
+            self.in_ = m.get('In')
+        if m.get('Out') is not None:
+            self.out = m.get('Out')
+        if m.get('VideoId') is not None:
+            self.video_id = m.get('VideoId')
+        if m.get('VideoName') is not None:
+            self.video_name = m.get('VideoName')
+        return self
+
+
+class GetAutoClipsTaskInfoResponseBodyDataTimelines(TeaModel):
+    def __init__(
+        self,
+        clips: List[GetAutoClipsTaskInfoResponseBodyDataTimelinesClips] = None,
+        content: str = None,
+        timeline_id: str = None,
+    ):
+        self.clips = clips
+        self.content = content
+        self.timeline_id = timeline_id
+
+    def validate(self):
+        if self.clips:
+            for k in self.clips:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Clips'] = []
+        if self.clips is not None:
+            for k in self.clips:
+                result['Clips'].append(k.to_map() if k else None)
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.timeline_id is not None:
+            result['TimelineId'] = self.timeline_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.clips = []
+        if m.get('Clips') is not None:
+            for k in m.get('Clips'):
+                temp_model = GetAutoClipsTaskInfoResponseBodyDataTimelinesClips()
+                self.clips.append(temp_model.from_map(k))
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('TimelineId') is not None:
+            self.timeline_id = m.get('TimelineId')
+        return self
+
+
+class GetAutoClipsTaskInfoResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        color_words: List[GetAutoClipsTaskInfoResponseBodyDataColorWords] = None,
+        content: str = None,
+        media_cloud_timeline: str = None,
+        music_style: str = None,
+        music_url: str = None,
+        music_volume: int = None,
+        output_video_url: str = None,
+        status: int = None,
+        step: str = None,
+        subtitle_font_size: int = None,
+        task_id: str = None,
+        timelines: List[GetAutoClipsTaskInfoResponseBodyDataTimelines] = None,
+        voice_style: str = None,
+        voice_volume: int = None,
+    ):
+        self.color_words = color_words
+        self.content = content
+        self.media_cloud_timeline = media_cloud_timeline
+        self.music_style = music_style
+        self.music_url = music_url
+        self.music_volume = music_volume
+        self.output_video_url = output_video_url
+        self.status = status
+        self.step = step
+        self.subtitle_font_size = subtitle_font_size
+        self.task_id = task_id
+        self.timelines = timelines
+        self.voice_style = voice_style
+        self.voice_volume = voice_volume
+
+    def validate(self):
+        if self.color_words:
+            for k in self.color_words:
+                if k:
+                    k.validate()
+        if self.timelines:
+            for k in self.timelines:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ColorWords'] = []
+        if self.color_words is not None:
+            for k in self.color_words:
+                result['ColorWords'].append(k.to_map() if k else None)
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.media_cloud_timeline is not None:
+            result['MediaCloudTimeline'] = self.media_cloud_timeline
+        if self.music_style is not None:
+            result['MusicStyle'] = self.music_style
+        if self.music_url is not None:
+            result['MusicUrl'] = self.music_url
+        if self.music_volume is not None:
+            result['MusicVolume'] = self.music_volume
+        if self.output_video_url is not None:
+            result['OutputVideoUrl'] = self.output_video_url
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.step is not None:
+            result['Step'] = self.step
+        if self.subtitle_font_size is not None:
+            result['SubtitleFontSize'] = self.subtitle_font_size
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        result['Timelines'] = []
+        if self.timelines is not None:
+            for k in self.timelines:
+                result['Timelines'].append(k.to_map() if k else None)
+        if self.voice_style is not None:
+            result['VoiceStyle'] = self.voice_style
+        if self.voice_volume is not None:
+            result['VoiceVolume'] = self.voice_volume
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.color_words = []
+        if m.get('ColorWords') is not None:
+            for k in m.get('ColorWords'):
+                temp_model = GetAutoClipsTaskInfoResponseBodyDataColorWords()
+                self.color_words.append(temp_model.from_map(k))
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('MediaCloudTimeline') is not None:
+            self.media_cloud_timeline = m.get('MediaCloudTimeline')
+        if m.get('MusicStyle') is not None:
+            self.music_style = m.get('MusicStyle')
+        if m.get('MusicUrl') is not None:
+            self.music_url = m.get('MusicUrl')
+        if m.get('MusicVolume') is not None:
+            self.music_volume = m.get('MusicVolume')
+        if m.get('OutputVideoUrl') is not None:
+            self.output_video_url = m.get('OutputVideoUrl')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Step') is not None:
+            self.step = m.get('Step')
+        if m.get('SubtitleFontSize') is not None:
+            self.subtitle_font_size = m.get('SubtitleFontSize')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        self.timelines = []
+        if m.get('Timelines') is not None:
+            for k in m.get('Timelines'):
+                temp_model = GetAutoClipsTaskInfoResponseBodyDataTimelines()
+                self.timelines.append(temp_model.from_map(k))
+        if m.get('VoiceStyle') is not None:
+            self.voice_style = m.get('VoiceStyle')
+        if m.get('VoiceVolume') is not None:
+            self.voice_volume = m.get('VoiceVolume')
+        return self
+
+
+class GetAutoClipsTaskInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetAutoClipsTaskInfoResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetAutoClipsTaskInfoResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetAutoClipsTaskInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAutoClipsTaskInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAutoClipsTaskInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
