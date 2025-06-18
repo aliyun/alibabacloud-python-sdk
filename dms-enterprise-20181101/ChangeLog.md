@@ -1,3 +1,9 @@
+2025-06-18 Version: 1.73.1
+- Update API GetInstance: add response parameters Body.Instance.SellTrust.
+- Update API ListInstances: add response parameters Body.InstanceList.$.SellTrust.
+- Update API RegisterInstance: add request parameters ResourceGroup.
+
+
 2025-06-11 Version: 1.73.0
 - Support API EditMetaKnowledgeAsset.
 - Support API GetTableKnowledgeInfo.

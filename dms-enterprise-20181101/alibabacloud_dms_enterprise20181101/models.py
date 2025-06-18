@@ -28688,6 +28688,7 @@ class GetInstanceResponseBodyInstance(TeaModel):
         query_timeout: int = None,
         safe_rule_id: str = None,
         sell_sitd: str = None,
+        sell_trust: str = None,
         sid: str = None,
         standard_group: GetInstanceResponseBodyInstanceStandardGroup = None,
         state: str = None,
@@ -28749,6 +28750,7 @@ class GetInstanceResponseBodyInstance(TeaModel):
         # 
         # - **false**: Close.
         self.sell_sitd = sell_sitd
+        self.sell_trust = sell_trust
         # The SID of the database instance.
         self.sid = sid
         # The control mode of the database instance.
@@ -28822,6 +28824,8 @@ class GetInstanceResponseBodyInstance(TeaModel):
             result['SafeRuleId'] = self.safe_rule_id
         if self.sell_sitd is not None:
             result['SellSitd'] = self.sell_sitd
+        if self.sell_trust is not None:
+            result['SellTrust'] = self.sell_trust
         if self.sid is not None:
             result['Sid'] = self.sid
         if self.standard_group is not None:
@@ -28880,6 +28884,8 @@ class GetInstanceResponseBodyInstance(TeaModel):
             self.safe_rule_id = m.get('SafeRuleId')
         if m.get('SellSitd') is not None:
             self.sell_sitd = m.get('SellSitd')
+        if m.get('SellTrust') is not None:
+            self.sell_trust = m.get('SellTrust')
         if m.get('Sid') is not None:
             self.sid = m.get('Sid')
         if m.get('StandardGroup') is not None:
@@ -48456,6 +48462,7 @@ class ListInstancesResponseBodyInstanceListInstance(TeaModel):
         query_timeout: int = None,
         safe_rule_id: str = None,
         sell_sitd: bool = None,
+        sell_trust: str = None,
         sid: str = None,
         standard_group: ListInstancesResponseBodyInstanceListInstanceStandardGroup = None,
         state: str = None,
@@ -48516,6 +48523,7 @@ class ListInstancesResponseBodyInstanceListInstance(TeaModel):
         # *   **true**\
         # *   **false**\
         self.sell_sitd = sell_sitd
+        self.sell_trust = sell_trust
         # The system ID (SID) of the database instance.
         self.sid = sid
         # The control mode of the database instance.
@@ -48586,6 +48594,8 @@ class ListInstancesResponseBodyInstanceListInstance(TeaModel):
             result['SafeRuleId'] = self.safe_rule_id
         if self.sell_sitd is not None:
             result['SellSitd'] = self.sell_sitd
+        if self.sell_trust is not None:
+            result['SellTrust'] = self.sell_trust
         if self.sid is not None:
             result['Sid'] = self.sid
         if self.standard_group is not None:
@@ -48644,6 +48654,8 @@ class ListInstancesResponseBodyInstanceListInstance(TeaModel):
             self.safe_rule_id = m.get('SafeRuleId')
         if m.get('SellSitd') is not None:
             self.sell_sitd = m.get('SellSitd')
+        if m.get('SellTrust') is not None:
+            self.sell_trust = m.get('SellTrust')
         if m.get('Sid') is not None:
             self.sid = m.get('Sid')
         if m.get('StandardGroup') is not None:
@@ -61970,6 +61982,7 @@ class RegisterInstanceRequest(TeaModel):
         network_type: str = None,
         port: int = None,
         query_timeout: int = None,
+        resource_group: str = None,
         safe_rule: str = None,
         sid: str = None,
         skip_test: bool = None,
@@ -62075,6 +62088,7 @@ class RegisterInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.query_timeout = query_timeout
+        self.resource_group = resource_group
         # The name of the security rule set (GroupName) for the database instance. You can call the [ListStandardGroups](https://help.aliyun.com/document_detail/417891.html) or [GetInstance](https://help.aliyun.com/document_detail/141567.html) operation to query the name of the security rule set.
         # 
         # This parameter is required.
@@ -62151,6 +62165,8 @@ class RegisterInstanceRequest(TeaModel):
             result['Port'] = self.port
         if self.query_timeout is not None:
             result['QueryTimeout'] = self.query_timeout
+        if self.resource_group is not None:
+            result['ResourceGroup'] = self.resource_group
         if self.safe_rule is not None:
             result['SafeRule'] = self.safe_rule
         if self.sid is not None:
@@ -62207,6 +62223,8 @@ class RegisterInstanceRequest(TeaModel):
             self.port = m.get('Port')
         if m.get('QueryTimeout') is not None:
             self.query_timeout = m.get('QueryTimeout')
+        if m.get('ResourceGroup') is not None:
+            self.resource_group = m.get('ResourceGroup')
         if m.get('SafeRule') is not None:
             self.safe_rule = m.get('SafeRule')
         if m.get('Sid') is not None:

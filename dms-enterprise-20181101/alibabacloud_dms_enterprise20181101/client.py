@@ -27235,6 +27235,8 @@ class Client(OpenApiClient):
             query['Port'] = request.port
         if not UtilClient.is_unset(request.query_timeout):
             query['QueryTimeout'] = request.query_timeout
+        if not UtilClient.is_unset(request.resource_group):
+            query['ResourceGroup'] = request.resource_group
         if not UtilClient.is_unset(request.safe_rule):
             query['SafeRule'] = request.safe_rule
         if not UtilClient.is_unset(request.sid):
@@ -27322,6 +27324,8 @@ class Client(OpenApiClient):
             query['Port'] = request.port
         if not UtilClient.is_unset(request.query_timeout):
             query['QueryTimeout'] = request.query_timeout
+        if not UtilClient.is_unset(request.resource_group):
+            query['ResourceGroup'] = request.resource_group
         if not UtilClient.is_unset(request.safe_rule):
             query['SafeRule'] = request.safe_rule
         if not UtilClient.is_unset(request.sid):

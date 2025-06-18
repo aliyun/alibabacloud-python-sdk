@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_dms-enterprise20181101.
 
-Created on 11/06/2025
+Created on 18/06/2025
 
 @author: Alibaba Cloud SDK
 """
@@ -40,7 +40,7 @@ REQUIRES = [
     "alibabacloud_tea_util>=0.3.13, <1.0.0",
     "alibabacloud_tea_openapi>=0.3.15, <1.0.0",
     "alibabacloud_openapi_util>=0.2.2, <1.0.0",
-    "alibabacloud_endpoint_util>=0.0.3, <1.0.0"
+    "alibabacloud_endpoint_util>=0.0.4, <1.0.0"
 ]
 
 LONG_DESCRIPTION = ''
