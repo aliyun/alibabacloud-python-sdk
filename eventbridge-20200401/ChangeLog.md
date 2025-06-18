@@ -1,3 +1,14 @@
+2025-06-18 Version: 6.2.1
+- Update API CreateEventStreaming: add request parameters RunOptions.BusinessOption.
+- Update API CreateEventStreaming: add request parameters Sink.SinkDorisParameters.
+- Update API GetEventStreaming: add response parameters Body.Data.RunOptions.BusinessOption.
+- Update API GetEventStreaming: add response parameters Body.Data.Sink.SinkDorisParameters.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.RunOptions.BusinessOption.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Sink.SinkDorisParameters.
+- Update API UpdateEventStreaming: add request parameters RunOptions.BusinessOption.
+- Update API UpdateEventStreaming: add request parameters Sink.SinkDorisParameters.
+
+
 2025-05-27 Version: 6.2.0
 - Support API DiscoverEventSource.
 - Support API TestEventSourceConfig.

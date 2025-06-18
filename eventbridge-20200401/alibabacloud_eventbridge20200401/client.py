@@ -4585,7 +4585,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.TestEventSourceConfigResponse:
         """
-        @summary 检查EventSource配置是否可用
+        @summary Checks whether event source configurations are available.
+        
+        @description You can call this API operation to query all custom event sources.
         
         @param tmp_req: TestEventSourceConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4624,7 +4626,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.TestEventSourceConfigResponse:
         """
-        @summary 检查EventSource配置是否可用
+        @summary Checks whether event source configurations are available.
+        
+        @description You can call this API operation to query all custom event sources.
         
         @param tmp_req: TestEventSourceConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4662,7 +4666,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.TestEventSourceConfigRequest,
     ) -> eventbridge_20200401_models.TestEventSourceConfigResponse:
         """
-        @summary 检查EventSource配置是否可用
+        @summary Checks whether event source configurations are available.
+        
+        @description You can call this API operation to query all custom event sources.
         
         @param request: TestEventSourceConfigRequest
         @return: TestEventSourceConfigResponse
@@ -4675,7 +4681,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.TestEventSourceConfigRequest,
     ) -> eventbridge_20200401_models.TestEventSourceConfigResponse:
         """
-        @summary 检查EventSource配置是否可用
+        @summary Checks whether event source configurations are available.
+        
+        @description You can call this API operation to query all custom event sources.
         
         @param request: TestEventSourceConfigRequest
         @return: TestEventSourceConfigResponse
