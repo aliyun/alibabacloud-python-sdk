@@ -7893,6 +7893,8 @@ class Client(OpenApiClient):
             body['RoleFor'] = request.role_for
         if not UtilClient.is_unset(request.role_type):
             body['RoleType'] = request.role_type
+        if not UtilClient.is_unset(request.tags):
+            body['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -7948,6 +7950,8 @@ class Client(OpenApiClient):
             body['RoleFor'] = request.role_for
         if not UtilClient.is_unset(request.role_type):
             body['RoleType'] = request.role_type
+        if not UtilClient.is_unset(request.tags):
+            body['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )

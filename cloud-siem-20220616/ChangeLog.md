@@ -1,3 +1,10 @@
+2025-06-18 Version: 5.0.2
+- Update API ListEntities: add request parameters Tags.
+- Update API ListEntities: add response parameters Body.Data.ResponseData.$.IsAsset.
+- Update API ListEntities: add response parameters Body.Data.ResponseData.$.IsMalware.
+- Update API ListEntities: add response parameters Body.Data.ResponseData.$.Tags.
+
+
 2025-06-05 Version: 5.0.1
 - Update API ListAutomateResponseConfigs: add request parameters ResponseRuleType.
 - Update API ListAutomateResponseConfigs: add response parameters Body.Data.ResponseData.$.ResponseRuleType.

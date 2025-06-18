@@ -18706,6 +18706,7 @@ class ListEntitiesRequest(TeaModel):
         region_id: str = None,
         role_for: int = None,
         role_type: int = None,
+        tags: str = None,
     ):
         # This parameter is required.
         self.current_page = current_page
@@ -18721,6 +18722,7 @@ class ListEntitiesRequest(TeaModel):
         self.region_id = region_id
         self.role_for = role_for
         self.role_type = role_type
+        self.tags = tags
 
     def validate(self):
         pass
@@ -18753,6 +18755,8 @@ class ListEntitiesRequest(TeaModel):
             result['RoleFor'] = self.role_for
         if self.role_type is not None:
             result['RoleType'] = self.role_type
+        if self.tags is not None:
+            result['Tags'] = self.tags
         return result
 
     def from_map(self, m: dict = None):
@@ -18779,6 +18783,8 @@ class ListEntitiesRequest(TeaModel):
             self.role_for = m.get('RoleFor')
         if m.get('RoleType') is not None:
             self.role_type = m.get('RoleType')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
         return self
 
 
@@ -18838,8 +18844,11 @@ class ListEntitiesResponseBodyDataResponseData(TeaModel):
         gmt_modified: str = None,
         id: int = None,
         incident_uuid: str = None,
+        is_asset: str = None,
+        is_malware: str = None,
         malware_type: str = None,
         sub_user_id: int = None,
+        tags: str = None,
     ):
         self.alert_num = alert_num
         self.alert_uuid = alert_uuid
@@ -18855,8 +18864,11 @@ class ListEntitiesResponseBodyDataResponseData(TeaModel):
         self.gmt_modified = gmt_modified
         self.id = id
         self.incident_uuid = incident_uuid
+        self.is_asset = is_asset
+        self.is_malware = is_malware
         self.malware_type = malware_type
         self.sub_user_id = sub_user_id
+        self.tags = tags
 
     def validate(self):
         pass
@@ -18895,10 +18907,16 @@ class ListEntitiesResponseBodyDataResponseData(TeaModel):
             result['Id'] = self.id
         if self.incident_uuid is not None:
             result['IncidentUuid'] = self.incident_uuid
+        if self.is_asset is not None:
+            result['IsAsset'] = self.is_asset
+        if self.is_malware is not None:
+            result['IsMalware'] = self.is_malware
         if self.malware_type is not None:
             result['MalwareType'] = self.malware_type
         if self.sub_user_id is not None:
             result['SubUserId'] = self.sub_user_id
+        if self.tags is not None:
+            result['Tags'] = self.tags
         return result
 
     def from_map(self, m: dict = None):
@@ -18931,10 +18949,16 @@ class ListEntitiesResponseBodyDataResponseData(TeaModel):
             self.id = m.get('Id')
         if m.get('IncidentUuid') is not None:
             self.incident_uuid = m.get('IncidentUuid')
+        if m.get('IsAsset') is not None:
+            self.is_asset = m.get('IsAsset')
+        if m.get('IsMalware') is not None:
+            self.is_malware = m.get('IsMalware')
         if m.get('MalwareType') is not None:
             self.malware_type = m.get('MalwareType')
         if m.get('SubUserId') is not None:
             self.sub_user_id = m.get('SubUserId')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
         return self
 
 
