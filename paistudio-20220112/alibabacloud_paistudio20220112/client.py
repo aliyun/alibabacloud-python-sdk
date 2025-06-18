@@ -3643,12 +3643,16 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accelerator_type):
             query['AcceleratorType'] = request.accelerator_type
+        if not UtilClient.is_unset(request.availability_zone):
+            query['AvailabilityZone'] = request.availability_zone
         if not UtilClient.is_unset(request.filter_by_quota_id):
             query['FilterByQuotaId'] = request.filter_by_quota_id
         if not UtilClient.is_unset(request.filter_by_resource_group_ids):
             query['FilterByResourceGroupIds'] = request.filter_by_resource_group_ids
         if not UtilClient.is_unset(request.gputype):
             query['GPUType'] = request.gputype
+        if not UtilClient.is_unset(request.hyper_zone):
+            query['HyperZone'] = request.hyper_zone
         if not UtilClient.is_unset(request.machine_group_ids):
             query['MachineGroupIds'] = request.machine_group_ids
         if not UtilClient.is_unset(request.node_names):
@@ -3713,12 +3717,16 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accelerator_type):
             query['AcceleratorType'] = request.accelerator_type
+        if not UtilClient.is_unset(request.availability_zone):
+            query['AvailabilityZone'] = request.availability_zone
         if not UtilClient.is_unset(request.filter_by_quota_id):
             query['FilterByQuotaId'] = request.filter_by_quota_id
         if not UtilClient.is_unset(request.filter_by_resource_group_ids):
             query['FilterByResourceGroupIds'] = request.filter_by_resource_group_ids
         if not UtilClient.is_unset(request.gputype):
             query['GPUType'] = request.gputype
+        if not UtilClient.is_unset(request.hyper_zone):
+            query['HyperZone'] = request.hyper_zone
         if not UtilClient.is_unset(request.machine_group_ids):
             query['MachineGroupIds'] = request.machine_group_ids
         if not UtilClient.is_unset(request.node_names):

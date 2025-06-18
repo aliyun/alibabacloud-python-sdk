@@ -1,3 +1,8 @@
+2025-06-18 Version: 2.1.5
+- Update API ListNodes: add request parameters AvailabilityZone.
+- Update API ListNodes: add request parameters HyperZone.
+
+
 2025-04-16 Version: 2.1.4
 - Update API ListNodes: add request parameters ReasonCodes.
 
