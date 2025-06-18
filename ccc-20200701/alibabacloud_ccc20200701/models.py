@@ -9495,10 +9495,12 @@ class DeleteContactFlowRequest(TeaModel):
     def __init__(
         self,
         contact_flow_id: str = None,
+        force: bool = None,
         instance_id: str = None,
     ):
         # This parameter is required.
         self.contact_flow_id = contact_flow_id
+        self.force = force
         # This parameter is required.
         self.instance_id = instance_id
 
@@ -9513,6 +9515,8 @@ class DeleteContactFlowRequest(TeaModel):
         result = dict()
         if self.contact_flow_id is not None:
             result['ContactFlowId'] = self.contact_flow_id
+        if self.force is not None:
+            result['Force'] = self.force
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         return result
@@ -9521,6 +9525,8 @@ class DeleteContactFlowRequest(TeaModel):
         m = m or dict()
         if m.get('ContactFlowId') is not None:
             self.contact_flow_id = m.get('ContactFlowId')
+        if m.get('Force') is not None:
+            self.force = m.get('Force')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         return self
@@ -31361,6 +31367,7 @@ class ListContactFlowsRequest(TeaModel):
         order_by_field: str = None,
         page_number: int = None,
         page_size: int = None,
+        search_pattern: str = None,
         sort_order: str = None,
         type: str = None,
     ):
@@ -31371,6 +31378,7 @@ class ListContactFlowsRequest(TeaModel):
         self.page_number = page_number
         # This parameter is required.
         self.page_size = page_size
+        self.search_pattern = search_pattern
         self.sort_order = sort_order
         self.type = type
 
@@ -31391,6 +31399,8 @@ class ListContactFlowsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.search_pattern is not None:
+            result['SearchPattern'] = self.search_pattern
         if self.sort_order is not None:
             result['SortOrder'] = self.sort_order
         if self.type is not None:
@@ -31407,6 +31417,8 @@ class ListContactFlowsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('SearchPattern') is not None:
+            self.search_pattern = m.get('SearchPattern')
         if m.get('SortOrder') is not None:
             self.sort_order = m.get('SortOrder')
         if m.get('Type') is not None:

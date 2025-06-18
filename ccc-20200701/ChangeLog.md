@@ -1,3 +1,8 @@
+2025-06-18 Version: 2.29.6
+- Update API DeleteContactFlow: add request parameters Force.
+- Update API ListContactFlows: add request parameters SearchPattern.
+
+
 2025-06-12 Version: 2.29.5
 - Update API GetCallDetailRecord: add response parameters Body.Data.OutsideNumberReleaseReason.
 - Update API ListCallDetailRecordsV2: add response parameters Body.Data.List.$.OutsideNumberReleaseReason.

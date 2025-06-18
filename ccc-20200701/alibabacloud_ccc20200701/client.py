@@ -4447,6 +4447,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.DeleteContactFlowResponse:
         """
+        @summary -\
+        
         @param request: DeleteContactFlowRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteContactFlowResponse
@@ -4455,6 +4457,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.contact_flow_id):
             query['ContactFlowId'] = request.contact_flow_id
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
@@ -4482,6 +4486,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.DeleteContactFlowResponse:
         """
+        @summary -\
+        
         @param request: DeleteContactFlowRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteContactFlowResponse
@@ -4490,6 +4496,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.contact_flow_id):
             query['ContactFlowId'] = request.contact_flow_id
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
@@ -4516,6 +4524,8 @@ class Client(OpenApiClient):
         request: ccc20200701_models.DeleteContactFlowRequest,
     ) -> ccc20200701_models.DeleteContactFlowResponse:
         """
+        @summary -\
+        
         @param request: DeleteContactFlowRequest
         @return: DeleteContactFlowResponse
         """
@@ -4527,6 +4537,8 @@ class Client(OpenApiClient):
         request: ccc20200701_models.DeleteContactFlowRequest,
     ) -> ccc20200701_models.DeleteContactFlowResponse:
         """
+        @summary -\
+        
         @param request: DeleteContactFlowRequest
         @return: DeleteContactFlowResponse
         """
@@ -13363,6 +13375,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListContactFlowsResponse:
         """
+        @summary -\
+        
         @param request: ListContactFlowsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListContactFlowsResponse
@@ -13377,6 +13391,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_pattern):
+            query['SearchPattern'] = request.search_pattern
         if not UtilClient.is_unset(request.sort_order):
             query['SortOrder'] = request.sort_order
         if not UtilClient.is_unset(request.type):
@@ -13406,6 +13422,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListContactFlowsResponse:
         """
+        @summary -\
+        
         @param request: ListContactFlowsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListContactFlowsResponse
@@ -13420,6 +13438,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_pattern):
+            query['SearchPattern'] = request.search_pattern
         if not UtilClient.is_unset(request.sort_order):
             query['SortOrder'] = request.sort_order
         if not UtilClient.is_unset(request.type):
@@ -13448,6 +13468,8 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListContactFlowsRequest,
     ) -> ccc20200701_models.ListContactFlowsResponse:
         """
+        @summary -\
+        
         @param request: ListContactFlowsRequest
         @return: ListContactFlowsResponse
         """
@@ -13459,6 +13481,8 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListContactFlowsRequest,
     ) -> ccc20200701_models.ListContactFlowsResponse:
         """
+        @summary -\
+        
         @param request: ListContactFlowsRequest
         @return: ListContactFlowsResponse
         """
