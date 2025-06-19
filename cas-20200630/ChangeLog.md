@@ -1,3 +1,7 @@
+2025-06-19 Version: 1.1.1
+- Update API DescribeCACertificateList: add response parameters Body.CertificateList.$.Alias.
+
+
 2025-06-18 Version: 1.1.0
 - Support API ListCert.
 - Support API UploadPcaCertToCas.

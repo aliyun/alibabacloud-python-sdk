@@ -2742,17 +2742,36 @@ class DescribeCACertificateListRequest(TeaModel):
         show_size: int = None,
         valid_status: str = None,
     ):
-        self.ca_status = ca_status
-        self.cert_type = cert_type
-        # The number of the page to return. Default value: **1**.
-        self.current_page = current_page
-        # The unique identifier of the client certificate or server certificate that you want to revoke.
+        # CaStatus.
         # 
-        # >  You can call the [ListClientCertificate](https://help.aliyun.com/document_detail/330884.html) operation to query the unique identifiers of all client certificates and server certificates.
+        # - issue：inUse.
+        # - forbidden ：forbidden.
+        # - revoke：revoked.
+        self.ca_status = ca_status
+        # The type of the certificate. Valid values:
+        # 
+        # - root：rootCA.
+        # - subRoot：subCA.
+        # - externalCa：import.
+        self.cert_type = cert_type
+        # The page number. Default value: **1**.
+        self.current_page = current_page
+        # The unique identifier of the CA certificate.
+        # 
+        # >  You can call the [DescribeCACertificateList](https://help.aliyun.com/document_detail/328095.html) operation to query the unique identifiers of all CA certificates.
         self.identifier = identifier
+        # The CA Issuer Type.
+        # 
+        # - local：Private certificate.
+        # - iTrusChina： Compliance CA.
+        # - external：External Import.
         self.issuer_type = issuer_type
-        # The number of CA certificates to return on each page. Default value: **20**.
+        # The number of CA certificates per page. Default value: **20**.
         self.show_size = show_size
+        # valid time.
+        # 
+        # - valid：means in the valid period.
+        # - notValid：means expired.
         self.valid_status = valid_status
 
     def validate(self):
@@ -2804,6 +2823,7 @@ class DescribeCACertificateListResponseBodyCertificateList(TeaModel):
         self,
         after_date: int = None,
         algorithm: str = None,
+        alias: str = None,
         before_date: int = None,
         certificate_type: str = None,
         common_name: str = None,
@@ -2833,12 +2853,14 @@ class DescribeCACertificateListResponseBodyCertificateList(TeaModel):
         # *   **ECC**: the elliptic curve cryptography (ECC) algorithm.
         # *   **SM2**: the SM2 algorithm, which is developed and approved by the State Cryptography Administration of China.
         self.algorithm = algorithm
+        # The alias of the CA.
+        self.alias = alias
         # The issuance date of the CA certificate. This value is a UNIX timestamp. Unit: milliseconds.
         self.before_date = before_date
         # The type of the CA certificate. Valid values:
         # 
-        # *   **ROOT**: root CA certificate
-        # *   **SUB_ROOT**: intermediate CA certificate
+        # *   **ROOT**: a root CA certificate.
+        # *   **SUB_ROOT**: an intermediate CA certificate.
         self.certificate_type = certificate_type
         # The common name or abbreviation of the organization that is associated with the CA certificate.
         self.common_name = common_name
@@ -2879,11 +2901,11 @@ class DescribeCACertificateListResponseBodyCertificateList(TeaModel):
         self.status = status
         # The Distinguished Name (DN) attribute of the CA certificate, which indicates the user information of the certificate. The DN attribute contains the following information:
         # 
-        # *   **C**: the country code in which the organization is located
-        # *   **O**: the name of the organization
-        # *   **OU**: the name of the department or branch in the organization
-        # *   **L**: the name of the city in which the organization is located
-        # *   **CN**: the common name or abbreviation of the organization
+        # *   **C**: the code of the country in which the organization is located.
+        # *   **O**: the name of the organization.
+        # *   **OU**: the name of the department or branch in the organization.
+        # *   **L**: the name of the city in which the organization is located.
+        # *   **CN**: the common name or abbreviation of the organization.
         self.subject_dn = subject_dn
         # The content of the CA certificate.
         self.x_509certificate = x_509certificate
@@ -2903,6 +2925,8 @@ class DescribeCACertificateListResponseBodyCertificateList(TeaModel):
             result['AfterDate'] = self.after_date
         if self.algorithm is not None:
             result['Algorithm'] = self.algorithm
+        if self.alias is not None:
+            result['Alias'] = self.alias
         if self.before_date is not None:
             result['BeforeDate'] = self.before_date
         if self.certificate_type is not None:
@@ -2951,6 +2975,8 @@ class DescribeCACertificateListResponseBodyCertificateList(TeaModel):
             self.after_date = m.get('AfterDate')
         if m.get('Algorithm') is not None:
             self.algorithm = m.get('Algorithm')
+        if m.get('Alias') is not None:
+            self.alias = m.get('Alias')
         if m.get('BeforeDate') is not None:
             self.before_date = m.get('BeforeDate')
         if m.get('CertificateType') is not None:
@@ -3004,7 +3030,7 @@ class DescribeCACertificateListResponseBody(TeaModel):
         show_size: int = None,
         total_count: int = None,
     ):
-        # An array that consists of the details about the CA certificate.
+        # The details about the CA certificates.
         self.certificate_list = certificate_list
         # The page number of the returned page.
         self.current_page = current_page
