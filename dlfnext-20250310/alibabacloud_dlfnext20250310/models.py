@@ -14,6 +14,7 @@ class Catalog(TeaModel):
         options: Dict[str, str] = None,
         owner: str = None,
         status: str = None,
+        type: str = None,
         updated_at: int = None,
         updated_by: str = None,
     ):
@@ -24,6 +25,7 @@ class Catalog(TeaModel):
         self.options = options
         self.owner = owner
         self.status = status
+        self.type = type
         self.updated_at = updated_at
         self.updated_by = updated_by
 
@@ -50,6 +52,8 @@ class Catalog(TeaModel):
             result['owner'] = self.owner
         if self.status is not None:
             result['status'] = self.status
+        if self.type is not None:
+            result['type'] = self.type
         if self.updated_at is not None:
             result['updatedAt'] = self.updated_at
         if self.updated_by is not None:
@@ -72,6 +76,8 @@ class Catalog(TeaModel):
             self.owner = m.get('owner')
         if m.get('status') is not None:
             self.status = m.get('status')
+        if m.get('type') is not None:
+            self.type = m.get('type')
         if m.get('updatedAt') is not None:
             self.updated_at = m.get('updatedAt')
         if m.get('updatedBy') is not None:
@@ -741,6 +747,45 @@ class FailurePermission(TeaModel):
         return self
 
 
+class FullInstant(TeaModel):
+    def __init__(
+        self,
+        snapshot_id: int = None,
+        tag_name: str = None,
+        type: str = None,
+    ):
+        self.snapshot_id = snapshot_id
+        self.tag_name = tag_name
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.snapshot_id is not None:
+            result['snapshotId'] = self.snapshot_id
+        if self.tag_name is not None:
+            result['tagName'] = self.tag_name
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('snapshotId') is not None:
+            self.snapshot_id = m.get('snapshotId')
+        if m.get('tagName') is not None:
+            self.tag_name = m.get('tagName')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
 class Move(TeaModel):
     def __init__(
         self,
@@ -889,6 +934,319 @@ class FullSchemaChange(TeaModel):
         return self
 
 
+class IcebergNestedField(TeaModel):
+    def __init__(
+        self,
+        doc: str = None,
+        id: int = None,
+        name: str = None,
+        optional: bool = None,
+        type: str = None,
+    ):
+        self.doc = doc
+        self.id = id
+        self.name = name
+        self.optional = optional
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.doc is not None:
+            result['doc'] = self.doc
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.optional is not None:
+            result['optional'] = self.optional
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('doc') is not None:
+            self.doc = m.get('doc')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('optional') is not None:
+            self.optional = m.get('optional')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class IcebergPartitionField(TeaModel):
+    def __init__(
+        self,
+        field_id: int = None,
+        name: str = None,
+        source_id: int = None,
+        transform: str = None,
+    ):
+        self.field_id = field_id
+        self.name = name
+        self.source_id = source_id
+        self.transform = transform
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.field_id is not None:
+            result['fieldId'] = self.field_id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.source_id is not None:
+            result['sourceId'] = self.source_id
+        if self.transform is not None:
+            result['transform'] = self.transform
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fieldId') is not None:
+            self.field_id = m.get('fieldId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('sourceId') is not None:
+            self.source_id = m.get('sourceId')
+        if m.get('transform') is not None:
+            self.transform = m.get('transform')
+        return self
+
+
+class IcebergSnapshot(TeaModel):
+    def __init__(
+        self,
+        added_rows: int = None,
+        id: int = None,
+        operation: str = None,
+        parent_id: int = None,
+        schema_id: int = None,
+        sequence_number: int = None,
+        summary: Dict[str, str] = None,
+        timestamp_millis: int = None,
+    ):
+        self.added_rows = added_rows
+        self.id = id
+        self.operation = operation
+        self.parent_id = parent_id
+        self.schema_id = schema_id
+        self.sequence_number = sequence_number
+        self.summary = summary
+        self.timestamp_millis = timestamp_millis
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.added_rows is not None:
+            result['addedRows'] = self.added_rows
+        if self.id is not None:
+            result['id'] = self.id
+        if self.operation is not None:
+            result['operation'] = self.operation
+        if self.parent_id is not None:
+            result['parentId'] = self.parent_id
+        if self.schema_id is not None:
+            result['schemaId'] = self.schema_id
+        if self.sequence_number is not None:
+            result['sequenceNumber'] = self.sequence_number
+        if self.summary is not None:
+            result['summary'] = self.summary
+        if self.timestamp_millis is not None:
+            result['timestampMillis'] = self.timestamp_millis
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('addedRows') is not None:
+            self.added_rows = m.get('addedRows')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('operation') is not None:
+            self.operation = m.get('operation')
+        if m.get('parentId') is not None:
+            self.parent_id = m.get('parentId')
+        if m.get('schemaId') is not None:
+            self.schema_id = m.get('schemaId')
+        if m.get('sequenceNumber') is not None:
+            self.sequence_number = m.get('sequenceNumber')
+        if m.get('summary') is not None:
+            self.summary = m.get('summary')
+        if m.get('timestampMillis') is not None:
+            self.timestamp_millis = m.get('timestampMillis')
+        return self
+
+
+class IcebergTableMetadata(TeaModel):
+    def __init__(
+        self,
+        current_snapshot: IcebergSnapshot = None,
+        fields: List[IcebergNestedField] = None,
+        partition_fields: List[IcebergPartitionField] = None,
+        properties: Dict[str, str] = None,
+    ):
+        self.current_snapshot = current_snapshot
+        self.fields = fields
+        self.partition_fields = partition_fields
+        self.properties = properties
+
+    def validate(self):
+        if self.current_snapshot:
+            self.current_snapshot.validate()
+        if self.fields:
+            for k in self.fields:
+                if k:
+                    k.validate()
+        if self.partition_fields:
+            for k in self.partition_fields:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_snapshot is not None:
+            result['currentSnapshot'] = self.current_snapshot.to_map()
+        result['fields'] = []
+        if self.fields is not None:
+            for k in self.fields:
+                result['fields'].append(k.to_map() if k else None)
+        result['partitionFields'] = []
+        if self.partition_fields is not None:
+            for k in self.partition_fields:
+                result['partitionFields'].append(k.to_map() if k else None)
+        if self.properties is not None:
+            result['properties'] = self.properties
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('currentSnapshot') is not None:
+            temp_model = IcebergSnapshot()
+            self.current_snapshot = temp_model.from_map(m['currentSnapshot'])
+        self.fields = []
+        if m.get('fields') is not None:
+            for k in m.get('fields'):
+                temp_model = IcebergNestedField()
+                self.fields.append(temp_model.from_map(k))
+        self.partition_fields = []
+        if m.get('partitionFields') is not None:
+            for k in m.get('partitionFields'):
+                temp_model = IcebergPartitionField()
+                self.partition_fields.append(temp_model.from_map(k))
+        if m.get('properties') is not None:
+            self.properties = m.get('properties')
+        return self
+
+
+class IcebergTable(TeaModel):
+    def __init__(
+        self,
+        created_at: int = None,
+        created_by: str = None,
+        iceberg_table_metadata: IcebergTableMetadata = None,
+        id: str = None,
+        name: str = None,
+        owner: str = None,
+        path: str = None,
+        updated_at: int = None,
+        updated_by: str = None,
+        version: int = None,
+    ):
+        self.created_at = created_at
+        self.created_by = created_by
+        self.iceberg_table_metadata = iceberg_table_metadata
+        self.id = id
+        self.name = name
+        self.owner = owner
+        self.path = path
+        self.updated_at = updated_at
+        self.updated_by = updated_by
+        self.version = version
+
+    def validate(self):
+        if self.iceberg_table_metadata:
+            self.iceberg_table_metadata.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.created_by is not None:
+            result['createdBy'] = self.created_by
+        if self.iceberg_table_metadata is not None:
+            result['icebergTableMetadata'] = self.iceberg_table_metadata.to_map()
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.owner is not None:
+            result['owner'] = self.owner
+        if self.path is not None:
+            result['path'] = self.path
+        if self.updated_at is not None:
+            result['updatedAt'] = self.updated_at
+        if self.updated_by is not None:
+            result['updatedBy'] = self.updated_by
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('createdBy') is not None:
+            self.created_by = m.get('createdBy')
+        if m.get('icebergTableMetadata') is not None:
+            temp_model = IcebergTableMetadata()
+            self.iceberg_table_metadata = temp_model.from_map(m['icebergTableMetadata'])
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('owner') is not None:
+            self.owner = m.get('owner')
+        if m.get('path') is not None:
+            self.path = m.get('path')
+        if m.get('updatedAt') is not None:
+            self.updated_at = m.get('updatedAt')
+        if m.get('updatedBy') is not None:
+            self.updated_by = m.get('updatedBy')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
 class Identifier(TeaModel):
     def __init__(
         self,
@@ -919,6 +1277,81 @@ class Identifier(TeaModel):
             self.database = m.get('database')
         if m.get('object') is not None:
             self.object = m.get('object')
+        return self
+
+
+class Namespace(TeaModel):
+    def __init__(
+        self,
+        created_at: int = None,
+        created_by: str = None,
+        id: str = None,
+        location: str = None,
+        name: str = None,
+        options: Dict[str, str] = None,
+        owner: str = None,
+        updated_at: int = None,
+        updated_by: str = None,
+    ):
+        self.created_at = created_at
+        self.created_by = created_by
+        self.id = id
+        self.location = location
+        self.name = name
+        self.options = options
+        self.owner = owner
+        self.updated_at = updated_at
+        self.updated_by = updated_by
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.created_by is not None:
+            result['createdBy'] = self.created_by
+        if self.id is not None:
+            result['id'] = self.id
+        if self.location is not None:
+            result['location'] = self.location
+        if self.name is not None:
+            result['name'] = self.name
+        if self.options is not None:
+            result['options'] = self.options
+        if self.owner is not None:
+            result['owner'] = self.owner
+        if self.updated_at is not None:
+            result['updatedAt'] = self.updated_at
+        if self.updated_by is not None:
+            result['updatedBy'] = self.updated_by
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('createdBy') is not None:
+            self.created_by = m.get('createdBy')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('location') is not None:
+            self.location = m.get('location')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('options') is not None:
+            self.options = m.get('options')
+        if m.get('owner') is not None:
+            self.owner = m.get('owner')
+        if m.get('updatedAt') is not None:
+            self.updated_at = m.get('updatedAt')
+        if m.get('updatedBy') is not None:
+            self.updated_by = m.get('updatedBy')
         return self
 
 
@@ -1556,6 +1989,51 @@ class Table(TeaModel):
         return self
 
 
+class TableCompaction(TeaModel):
+    def __init__(
+        self,
+        catalog_id: str = None,
+        last_compacted_file_time: int = None,
+        max_level_0file_count: str = None,
+        table_id: str = None,
+    ):
+        self.catalog_id = catalog_id
+        self.last_compacted_file_time = last_compacted_file_time
+        self.max_level_0file_count = max_level_0file_count
+        self.table_id = table_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_id is not None:
+            result['catalogId'] = self.catalog_id
+        if self.last_compacted_file_time is not None:
+            result['lastCompactedFileTime'] = self.last_compacted_file_time
+        if self.max_level_0file_count is not None:
+            result['maxLevel0FileCount'] = self.max_level_0file_count
+        if self.table_id is not None:
+            result['tableId'] = self.table_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('catalogId') is not None:
+            self.catalog_id = m.get('catalogId')
+        if m.get('lastCompactedFileTime') is not None:
+            self.last_compacted_file_time = m.get('lastCompactedFileTime')
+        if m.get('maxLevel0FileCount') is not None:
+            self.max_level_0file_count = m.get('maxLevel0FileCount')
+        if m.get('tableId') is not None:
+            self.table_id = m.get('tableId')
+        return self
+
+
 class TableSnapshot(TeaModel):
     def __init__(
         self,
@@ -2054,10 +2532,12 @@ class CreateCatalogRequest(TeaModel):
         name: str = None,
         optimization_config: Dict[str, str] = None,
         options: Dict[str, str] = None,
+        type: str = None,
     ):
         self.name = name
         self.optimization_config = optimization_config
         self.options = options
+        self.type = type
 
     def validate(self):
         pass
@@ -2074,6 +2554,8 @@ class CreateCatalogRequest(TeaModel):
             result['optimizationConfig'] = self.optimization_config
         if self.options is not None:
             result['options'] = self.options
+        if self.type is not None:
+            result['type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
@@ -2084,6 +2566,8 @@ class CreateCatalogRequest(TeaModel):
             self.optimization_config = m.get('optimizationConfig')
         if m.get('options') is not None:
             self.options = m.get('options')
+        if m.get('type') is not None:
+            self.type = m.get('type')
         return self
 
 

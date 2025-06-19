@@ -391,6 +391,8 @@ class Client(OpenApiClient):
             body['optimizationConfig'] = request.optimization_config
         if not UtilClient.is_unset(request.options):
             body['options'] = request.options
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -433,6 +435,8 @@ class Client(OpenApiClient):
             body['optimizationConfig'] = request.optimization_config
         if not UtilClient.is_unset(request.options):
             body['options'] = request.options
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)

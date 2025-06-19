@@ -1,3 +1,7 @@
+2025-06-19 Version: 1.1.2
+- Update API CreateCatalog: add request parameters body.type.
+
+
 2025-06-11 Version: 1.1.1
 - Generated python 2025-03-10 for DlfNext.
 
