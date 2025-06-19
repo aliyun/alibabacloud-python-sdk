@@ -11932,14 +11932,20 @@ class DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery(TeaModel):
     def __init__(
         self,
         database_names: List[str] = None,
+        estimated_rows: int = None,
+        expire_logs_days: int = None,
         simple_data: str = None,
         table_names: List[str] = None,
         table_schema: DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchema = None,
+        wait_timeout: int = None,
     ):
         self.database_names = database_names
+        self.estimated_rows = estimated_rows
+        self.expire_logs_days = expire_logs_days
         self.simple_data = simple_data
         self.table_names = table_names
         self.table_schema = table_schema
+        self.wait_timeout = wait_timeout
 
     def validate(self):
         if self.table_schema:
@@ -11953,18 +11959,28 @@ class DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery(TeaModel):
         result = dict()
         if self.database_names is not None:
             result['DatabaseNames'] = self.database_names
+        if self.estimated_rows is not None:
+            result['EstimatedRows'] = self.estimated_rows
+        if self.expire_logs_days is not None:
+            result['ExpireLogsDays'] = self.expire_logs_days
         if self.simple_data is not None:
             result['SimpleData'] = self.simple_data
         if self.table_names is not None:
             result['TableNames'] = self.table_names
         if self.table_schema is not None:
             result['TableSchema'] = self.table_schema.to_map()
+        if self.wait_timeout is not None:
+            result['WaitTimeout'] = self.wait_timeout
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('DatabaseNames') is not None:
             self.database_names = m.get('DatabaseNames')
+        if m.get('EstimatedRows') is not None:
+            self.estimated_rows = m.get('EstimatedRows')
+        if m.get('ExpireLogsDays') is not None:
+            self.expire_logs_days = m.get('ExpireLogsDays')
         if m.get('SimpleData') is not None:
             self.simple_data = m.get('SimpleData')
         if m.get('TableNames') is not None:
@@ -11972,6 +11988,8 @@ class DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery(TeaModel):
         if m.get('TableSchema') is not None:
             temp_model = DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchema()
             self.table_schema = temp_model.from_map(m['TableSchema'])
+        if m.get('WaitTimeout') is not None:
+            self.wait_timeout = m.get('WaitTimeout')
         return self
 
 

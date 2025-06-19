@@ -1,3 +1,9 @@
+2025-06-19 Version: 6.2.2
+- Update API DiscoverEventSource: add response parameters Body.Data.SourceMySQLDiscovery.EstimatedRows.
+- Update API DiscoverEventSource: add response parameters Body.Data.SourceMySQLDiscovery.ExpireLogsDays.
+- Update API DiscoverEventSource: add response parameters Body.Data.SourceMySQLDiscovery.WaitTimeout.
+
+
 2025-06-18 Version: 6.2.1
 - Update API CreateEventStreaming: add request parameters RunOptions.BusinessOption.
 - Update API CreateEventStreaming: add request parameters Sink.SinkDorisParameters.
