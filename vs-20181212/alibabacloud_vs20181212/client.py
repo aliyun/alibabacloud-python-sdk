@@ -11342,6 +11342,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.forbid_vs_stream_with_options_async(request, runtime)
 
+    def get_rendering_instance_commands_status_with_options(
+        self,
+        request: vs_20181212_models.GetRenderingInstanceCommandsStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.GetRenderingInstanceCommandsStatusResponse:
+        """
+        @summary 查询命令的执行状态与结果。
+        
+        @param request: GetRenderingInstanceCommandsStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRenderingInstanceCommandsStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cmd_id):
+            query['CmdId'] = request.cmd_id
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRenderingInstanceCommandsStatus',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.GetRenderingInstanceCommandsStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_rendering_instance_commands_status_with_options_async(
+        self,
+        request: vs_20181212_models.GetRenderingInstanceCommandsStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.GetRenderingInstanceCommandsStatusResponse:
+        """
+        @summary 查询命令的执行状态与结果。
+        
+        @param request: GetRenderingInstanceCommandsStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRenderingInstanceCommandsStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cmd_id):
+            query['CmdId'] = request.cmd_id
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRenderingInstanceCommandsStatus',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.GetRenderingInstanceCommandsStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_rendering_instance_commands_status(
+        self,
+        request: vs_20181212_models.GetRenderingInstanceCommandsStatusRequest,
+    ) -> vs_20181212_models.GetRenderingInstanceCommandsStatusResponse:
+        """
+        @summary 查询命令的执行状态与结果。
+        
+        @param request: GetRenderingInstanceCommandsStatusRequest
+        @return: GetRenderingInstanceCommandsStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_rendering_instance_commands_status_with_options(request, runtime)
+
+    async def get_rendering_instance_commands_status_async(
+        self,
+        request: vs_20181212_models.GetRenderingInstanceCommandsStatusRequest,
+    ) -> vs_20181212_models.GetRenderingInstanceCommandsStatusResponse:
+        """
+        @summary 查询命令的执行状态与结果。
+        
+        @param request: GetRenderingInstanceCommandsStatusRequest
+        @return: GetRenderingInstanceCommandsStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_rendering_instance_commands_status_with_options_async(request, runtime)
+
     def get_rendering_instance_streaming_info_with_options(
         self,
         request: vs_20181212_models.GetRenderingInstanceStreamingInfoRequest,
@@ -12782,6 +12882,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.project_id):
             query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
         if not UtilClient.is_unset(request.session_id):
             query['SessionId'] = request.session_id
         if not UtilClient.is_unset(request.state):
@@ -12833,6 +12935,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.project_id):
             query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
         if not UtilClient.is_unset(request.session_id):
             query['SessionId'] = request.session_id
         if not UtilClient.is_unset(request.state):
@@ -15206,7 +15310,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.SendRenderingInstanceCommandsResponse:
         """
-        @summary 下发shell命令，同步响应。不适用于耗时命令。
+        @summary 下发shell命令，支持同步/异步响应命令。
         
         @param request: SendRenderingInstanceCommandsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15214,8 +15318,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
         if not UtilClient.is_unset(request.rendering_instance_id):
             query['RenderingInstanceId'] = request.rendering_instance_id
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
         body = {}
         if not UtilClient.is_unset(request.commands):
             body['Commands'] = request.commands
@@ -15245,7 +15353,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.SendRenderingInstanceCommandsResponse:
         """
-        @summary 下发shell命令，同步响应。不适用于耗时命令。
+        @summary 下发shell命令，支持同步/异步响应命令。
         
         @param request: SendRenderingInstanceCommandsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15253,8 +15361,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
         if not UtilClient.is_unset(request.rendering_instance_id):
             query['RenderingInstanceId'] = request.rendering_instance_id
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
         body = {}
         if not UtilClient.is_unset(request.commands):
             body['Commands'] = request.commands
@@ -15283,7 +15395,7 @@ class Client(OpenApiClient):
         request: vs_20181212_models.SendRenderingInstanceCommandsRequest,
     ) -> vs_20181212_models.SendRenderingInstanceCommandsResponse:
         """
-        @summary 下发shell命令，同步响应。不适用于耗时命令。
+        @summary 下发shell命令，支持同步/异步响应命令。
         
         @param request: SendRenderingInstanceCommandsRequest
         @return: SendRenderingInstanceCommandsResponse
@@ -15296,7 +15408,7 @@ class Client(OpenApiClient):
         request: vs_20181212_models.SendRenderingInstanceCommandsRequest,
     ) -> vs_20181212_models.SendRenderingInstanceCommandsResponse:
         """
-        @summary 下发shell命令，同步响应。不适用于耗时命令。
+        @summary 下发shell命令，支持同步/异步响应命令。
         
         @param request: SendRenderingInstanceCommandsRequest
         @return: SendRenderingInstanceCommandsResponse

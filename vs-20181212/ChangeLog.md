@@ -1,3 +1,14 @@
+2025-06-19 Version: 3.4.0
+- Support API GetRenderingInstanceCommandsStatus.
+- Update API DescribeRenderingSession: add response parameters Body.RenderingInstanceId.
+- Update API ListRenderingSessions: add request parameters RenderingInstanceId.
+- Update API ListRenderingSessions: add response parameters Body.Sessions.$.RenderingInstanceId.
+- Update API SendRenderingInstanceCommands: add request parameters Mode.
+- Update API SendRenderingInstanceCommands: add request parameters Timeout.
+- Update API SendRenderingInstanceCommands: add response parameters Body.CmdId.
+- Update API StartRenderingSession: add response parameters Body.RenderingInstanceId.
+
+
 2025-06-10 Version: 3.3.1
 - Update API DescribeRenderingInstance: add response parameters Body.AdditionalIngresses.
 - Update API DescribeRenderingInstance: add response parameters Body.Isp.

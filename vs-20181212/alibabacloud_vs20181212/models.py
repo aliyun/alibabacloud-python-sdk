@@ -13560,6 +13560,7 @@ class DescribeRenderingSessionResponseBody(TeaModel):
         isp: str = None,
         location: DescribeRenderingSessionResponseBodyLocation = None,
         port_mappings: List[DescribeRenderingSessionResponseBodyPortMappings] = None,
+        rendering_instance_id: str = None,
         request_id: str = None,
         session_id: str = None,
         start_time: str = None,
@@ -13572,6 +13573,7 @@ class DescribeRenderingSessionResponseBody(TeaModel):
         self.isp = isp
         self.location = location
         self.port_mappings = port_mappings
+        self.rendering_instance_id = rendering_instance_id
         self.request_id = request_id
         self.session_id = session_id
         self.start_time = start_time
@@ -13615,6 +13617,8 @@ class DescribeRenderingSessionResponseBody(TeaModel):
         if self.port_mappings is not None:
             for k in self.port_mappings:
                 result['PortMappings'].append(k.to_map() if k else None)
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.session_id is not None:
@@ -13648,6 +13652,8 @@ class DescribeRenderingSessionResponseBody(TeaModel):
             for k in m.get('PortMappings'):
                 temp_model = DescribeRenderingSessionResponseBodyPortMappings()
                 self.port_mappings.append(temp_model.from_map(k))
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('SessionId') is not None:
@@ -20857,6 +20863,128 @@ class ForbidVsStreamResponse(TeaModel):
         return self
 
 
+class GetRenderingInstanceCommandsStatusRequest(TeaModel):
+    def __init__(
+        self,
+        cmd_id: str = None,
+        rendering_instance_id: str = None,
+    ):
+        # This parameter is required.
+        self.cmd_id = cmd_id
+        # This parameter is required.
+        self.rendering_instance_id = rendering_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cmd_id is not None:
+            result['CmdId'] = self.cmd_id
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CmdId') is not None:
+            self.cmd_id = m.get('CmdId')
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        return self
+
+
+class GetRenderingInstanceCommandsStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        result: str = None,
+        status: str = None,
+    ):
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.result = result
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetRenderingInstanceCommandsStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetRenderingInstanceCommandsStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetRenderingInstanceCommandsStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetRenderingInstanceStreamingInfoRequest(TeaModel):
     def __init__(
         self,
@@ -23469,6 +23597,7 @@ class ListRenderingSessionsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         project_id: str = None,
+        rendering_instance_id: str = None,
         session_id: str = None,
         state: str = None,
     ):
@@ -23478,6 +23607,7 @@ class ListRenderingSessionsRequest(TeaModel):
         self.page_size = page_size
         # This parameter is required.
         self.project_id = project_id
+        self.rendering_instance_id = rendering_instance_id
         self.session_id = session_id
         self.state = state
 
@@ -23500,6 +23630,8 @@ class ListRenderingSessionsRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
         if self.session_id is not None:
             result['SessionId'] = self.session_id
         if self.state is not None:
@@ -23518,6 +23650,8 @@ class ListRenderingSessionsRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
         if m.get('State') is not None:
@@ -23530,11 +23664,13 @@ class ListRenderingSessionsResponseBodySessions(TeaModel):
         self,
         app_id: str = None,
         client_id: str = None,
+        rendering_instance_id: str = None,
         session_id: str = None,
         start_time: str = None,
     ):
         self.app_id = app_id
         self.client_id = client_id
+        self.rendering_instance_id = rendering_instance_id
         self.session_id = session_id
         self.start_time = start_time
 
@@ -23551,6 +23687,8 @@ class ListRenderingSessionsResponseBodySessions(TeaModel):
             result['AppId'] = self.app_id
         if self.client_id is not None:
             result['ClientId'] = self.client_id
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
         if self.session_id is not None:
             result['SessionId'] = self.session_id
         if self.start_time is not None:
@@ -23563,6 +23701,8 @@ class ListRenderingSessionsResponseBodySessions(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('ClientId') is not None:
             self.client_id = m.get('ClientId')
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
         if m.get('StartTime') is not None:
@@ -26429,12 +26569,16 @@ class SendRenderingInstanceCommandsRequest(TeaModel):
     def __init__(
         self,
         commands: str = None,
+        mode: str = None,
         rendering_instance_id: str = None,
+        timeout: int = None,
     ):
         # This parameter is required.
         self.commands = commands
+        self.mode = mode
         # This parameter is required.
         self.rendering_instance_id = rendering_instance_id
+        self.timeout = timeout
 
     def validate(self):
         pass
@@ -26447,25 +26591,35 @@ class SendRenderingInstanceCommandsRequest(TeaModel):
         result = dict()
         if self.commands is not None:
             result['Commands'] = self.commands
+        if self.mode is not None:
+            result['Mode'] = self.mode
         if self.rendering_instance_id is not None:
             result['RenderingInstanceId'] = self.rendering_instance_id
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Commands') is not None:
             self.commands = m.get('Commands')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
         if m.get('RenderingInstanceId') is not None:
             self.rendering_instance_id = m.get('RenderingInstanceId')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
         return self
 
 
 class SendRenderingInstanceCommandsResponseBody(TeaModel):
     def __init__(
         self,
+        cmd_id: str = None,
         request_id: str = None,
         result: str = None,
     ):
+        self.cmd_id = cmd_id
         self.request_id = request_id
         self.result = result
 
@@ -26478,6 +26632,8 @@ class SendRenderingInstanceCommandsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.cmd_id is not None:
+            result['CmdId'] = self.cmd_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.result is not None:
@@ -26486,6 +26642,8 @@ class SendRenderingInstanceCommandsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CmdId') is not None:
+            self.cmd_id = m.get('CmdId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Result') is not None:
@@ -27600,6 +27758,7 @@ class StartRenderingSessionResponseBody(TeaModel):
         is_repeated_request: bool = None,
         location: StartRenderingSessionResponseBodyLocation = None,
         port_mappings: List[StartRenderingSessionResponseBodyPortMappings] = None,
+        rendering_instance_id: str = None,
         request_id: str = None,
         session_id: str = None,
         state_info: StartRenderingSessionResponseBodyStateInfo = None,
@@ -27608,6 +27767,7 @@ class StartRenderingSessionResponseBody(TeaModel):
         self.is_repeated_request = is_repeated_request
         self.location = location
         self.port_mappings = port_mappings
+        self.rendering_instance_id = rendering_instance_id
         self.request_id = request_id
         self.session_id = session_id
         self.state_info = state_info
@@ -27638,6 +27798,8 @@ class StartRenderingSessionResponseBody(TeaModel):
         if self.port_mappings is not None:
             for k in self.port_mappings:
                 result['PortMappings'].append(k.to_map() if k else None)
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.session_id is not None:
@@ -27660,6 +27822,8 @@ class StartRenderingSessionResponseBody(TeaModel):
             for k in m.get('PortMappings'):
                 temp_model = StartRenderingSessionResponseBodyPortMappings()
                 self.port_mappings.append(temp_model.from_map(k))
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('SessionId') is not None:
