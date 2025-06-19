@@ -21680,6 +21680,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_media_basic_infos_with_options_async(request, runtime)
 
+    def list_media_convert_jobs_with_options(
+        self,
+        request: ice20201109_models.ListMediaConvertJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListMediaConvertJobsResponse:
+        """
+        @summary 查询 MediaConvertJob 列表
+        
+        @param request: ListMediaConvertJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMediaConvertJobsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_of_create_time):
+            query['EndOfCreateTime'] = request.end_of_create_time
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_of_create_time):
+            query['StartOfCreateTime'] = request.start_of_create_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMediaConvertJobs',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListMediaConvertJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_media_convert_jobs_with_options_async(
+        self,
+        request: ice20201109_models.ListMediaConvertJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListMediaConvertJobsResponse:
+        """
+        @summary 查询 MediaConvertJob 列表
+        
+        @param request: ListMediaConvertJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMediaConvertJobsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_of_create_time):
+            query['EndOfCreateTime'] = request.end_of_create_time
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_of_create_time):
+            query['StartOfCreateTime'] = request.start_of_create_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMediaConvertJobs',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListMediaConvertJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_media_convert_jobs(
+        self,
+        request: ice20201109_models.ListMediaConvertJobsRequest,
+    ) -> ice20201109_models.ListMediaConvertJobsResponse:
+        """
+        @summary 查询 MediaConvertJob 列表
+        
+        @param request: ListMediaConvertJobsRequest
+        @return: ListMediaConvertJobsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_media_convert_jobs_with_options(request, runtime)
+
+    async def list_media_convert_jobs_async(
+        self,
+        request: ice20201109_models.ListMediaConvertJobsRequest,
+    ) -> ice20201109_models.ListMediaConvertJobsResponse:
+        """
+        @summary 查询 MediaConvertJob 列表
+        
+        @param request: ListMediaConvertJobsRequest
+        @return: ListMediaConvertJobsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_media_convert_jobs_with_options_async(request, runtime)
+
     def list_media_info_jobs_with_options(
         self,
         request: ice20201109_models.ListMediaInfoJobsRequest,
@@ -29649,6 +29769,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.skip_input_verification):
+            query['SkipInputVerification'] = request.skip_input_verification
         if not UtilClient.is_unset(request.task_input):
             query['TaskInput'] = request.task_input
         if not UtilClient.is_unset(request.user_data):
@@ -29691,6 +29813,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.skip_input_verification):
+            query['SkipInputVerification'] = request.skip_input_verification
         if not UtilClient.is_unset(request.task_input):
             query['TaskInput'] = request.task_input
         if not UtilClient.is_unset(request.user_data):

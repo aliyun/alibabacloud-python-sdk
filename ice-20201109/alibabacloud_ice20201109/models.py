@@ -34651,7 +34651,7 @@ class GetMediaLiveChannelResponseBodyChannelVideoSettings(TeaModel):
         self.video_codec = video_codec
         # The video encoding settings.
         self.video_codec_setting = video_codec_setting
-        # 视频转码方式（普通转码、窄带高清转码等）
+        # The video transcoding method. Valid values: NORMAL (regular transcoding) and NBHD (Narrowband HD™ transcoding).
         self.video_codec_type = video_codec_type
         # The width of the video in pixels.
         self.width = width
@@ -54384,6 +54384,159 @@ class ListMediaBasicInfosResponse(TeaModel):
         return self
 
 
+class ListMediaConvertJobsRequest(TeaModel):
+    def __init__(
+        self,
+        end_of_create_time: str = None,
+        job_id: str = None,
+        next_page_token: str = None,
+        order_by: str = None,
+        page_size: int = None,
+        start_of_create_time: str = None,
+        status: str = None,
+    ):
+        self.end_of_create_time = end_of_create_time
+        self.job_id = job_id
+        self.next_page_token = next_page_token
+        self.order_by = order_by
+        self.page_size = page_size
+        self.start_of_create_time = start_of_create_time
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_of_create_time is not None:
+            result['EndOfCreateTime'] = self.end_of_create_time
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.next_page_token is not None:
+            result['NextPageToken'] = self.next_page_token
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.start_of_create_time is not None:
+            result['StartOfCreateTime'] = self.start_of_create_time
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndOfCreateTime') is not None:
+            self.end_of_create_time = m.get('EndOfCreateTime')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('NextPageToken') is not None:
+            self.next_page_token = m.get('NextPageToken')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('StartOfCreateTime') is not None:
+            self.start_of_create_time = m.get('StartOfCreateTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListMediaConvertJobsResponseBody(TeaModel):
+    def __init__(
+        self,
+        jobs: List[MediaConvertJobWithoutDetail] = None,
+        next_page_token: str = None,
+        request_id: str = None,
+    ):
+        self.jobs = jobs
+        # This parameter is required.
+        self.next_page_token = next_page_token
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.jobs:
+            for k in self.jobs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Jobs'] = []
+        if self.jobs is not None:
+            for k in self.jobs:
+                result['Jobs'].append(k.to_map() if k else None)
+        if self.next_page_token is not None:
+            result['NextPageToken'] = self.next_page_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.jobs = []
+        if m.get('Jobs') is not None:
+            for k in m.get('Jobs'):
+                temp_model = MediaConvertJobWithoutDetail()
+                self.jobs.append(temp_model.from_map(k))
+        if m.get('NextPageToken') is not None:
+            self.next_page_token = m.get('NextPageToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListMediaConvertJobsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListMediaConvertJobsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListMediaConvertJobsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListMediaInfoJobsRequest(TeaModel):
     def __init__(
         self,
@@ -56066,7 +56219,7 @@ class ListMediaLiveChannelsResponseBodyChannelsVideoSettings(TeaModel):
         self.video_codec = video_codec
         # The video encoding settings.
         self.video_codec_setting = video_codec_setting
-        # 视频转码方式（普通转码、窄带高清转码等）
+        # The video transcoding method. Valid values: NORMAL (regular transcoding) and NBHD (Narrowband HD™ transcoding).
         self.video_codec_type = video_codec_type
         # The width of the video in pixels.
         self.width = width
@@ -76093,10 +76246,12 @@ class StartRtcRobotInstanceResponse(TeaModel):
 class StartWorkflowRequest(TeaModel):
     def __init__(
         self,
+        skip_input_verification: bool = None,
         task_input: str = None,
         user_data: str = None,
         workflow_id: str = None,
     ):
+        self.skip_input_verification = skip_input_verification
         # The workflow input. Only media assets are supported.
         self.task_input = task_input
         # The user-defined data in the JSON format, which cannot be up to 512 bytes in length. You can specify a custom callback URL. For more information, see [Configure a callback upon editing completion](https://help.aliyun.com/document_detail/451631.html).
@@ -76113,6 +76268,8 @@ class StartWorkflowRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.skip_input_verification is not None:
+            result['SkipInputVerification'] = self.skip_input_verification
         if self.task_input is not None:
             result['TaskInput'] = self.task_input
         if self.user_data is not None:
@@ -76123,6 +76280,8 @@ class StartWorkflowRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('SkipInputVerification') is not None:
+            self.skip_input_verification = m.get('SkipInputVerification')
         if m.get('TaskInput') is not None:
             self.task_input = m.get('TaskInput')
         if m.get('UserData') is not None:

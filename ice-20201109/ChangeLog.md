@@ -1,3 +1,8 @@
+2025-06-19 Version: 6.4.0
+- Support API ListMediaConvertJobs.
+- Update API StartWorkflow: add request parameters SkipInputVerification.
+
+
 2025-06-17 Version: 6.3.2
 - Update API GetMediaConvertJob: add response parameters Body.Job.CreateTime.
 - Update API GetMediaConvertJob: add response parameters Body.Job.FinishTime.
