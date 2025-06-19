@@ -1,3 +1,8 @@
+2025-06-19 Version: 2.40.1
+- Update API CreateRun: add request parameters body.allowStructViewContent.
+- Update API CreateRun: add response parameters Body.messages.$.contentStruct.
+
+
 2025-06-10 Version: 2.40.0
 - Support API UpdateConvExtension.
 

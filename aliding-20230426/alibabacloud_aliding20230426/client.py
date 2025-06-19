@@ -6045,6 +6045,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.allow_struct_view_content):
+            body['allowStructViewContent'] = request.allow_struct_view_content
         if not UtilClient.is_unset(request.assistant_id):
             body['assistantId'] = request.assistant_id
         if not UtilClient.is_unset(request.original_assistant_id):
@@ -6098,6 +6100,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.allow_struct_view_content):
+            body['allowStructViewContent'] = request.allow_struct_view_content
         if not UtilClient.is_unset(request.assistant_id):
             body['assistantId'] = request.assistant_id
         if not UtilClient.is_unset(request.original_assistant_id):

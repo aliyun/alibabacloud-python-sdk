@@ -17689,6 +17689,7 @@ class CreateRunHeaders(TeaModel):
 class CreateRunRequest(TeaModel):
     def __init__(
         self,
+        allow_struct_view_content: bool = None,
         assistant_id: str = None,
         original_assistant_id: str = None,
         source_id_of_original_assistant_id: str = None,
@@ -17696,6 +17697,7 @@ class CreateRunRequest(TeaModel):
         stream: bool = None,
         thread_id: str = None,
     ):
+        self.allow_struct_view_content = allow_struct_view_content
         # This parameter is required.
         self.assistant_id = assistant_id
         self.original_assistant_id = original_assistant_id
@@ -17714,6 +17716,8 @@ class CreateRunRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.allow_struct_view_content is not None:
+            result['allowStructViewContent'] = self.allow_struct_view_content
         if self.assistant_id is not None:
             result['assistantId'] = self.assistant_id
         if self.original_assistant_id is not None:
@@ -17730,6 +17734,8 @@ class CreateRunRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('allowStructViewContent') is not None:
+            self.allow_struct_view_content = m.get('allowStructViewContent')
         if m.get('assistantId') is not None:
             self.assistant_id = m.get('assistantId')
         if m.get('originalAssistantId') is not None:
@@ -18548,11 +18554,396 @@ class CreateRunResponseBodyMessagesContent(TeaModel):
         return self
 
 
+class CreateRunResponseBodyMessagesContentStructPartsDataPart(TeaModel):
+    def __init__(
+        self,
+        data: Any = None,
+    ):
+        self.data = data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        return self
+
+
+class CreateRunResponseBodyMessagesContentStructPartsReasonPart(TeaModel):
+    def __init__(
+        self,
+        reason: str = None,
+    ):
+        self.reason = reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.reason is not None:
+            result['reason'] = self.reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('reason') is not None:
+            self.reason = m.get('reason')
+        return self
+
+
+class CreateRunResponseBodyMessagesContentStructPartsRecommendPartRecommends(TeaModel):
+    def __init__(
+        self,
+        mobile_url: str = None,
+        text: str = None,
+        url: str = None,
+    ):
+        self.mobile_url = mobile_url
+        self.text = text
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mobile_url is not None:
+            result['mobileUrl'] = self.mobile_url
+        if self.text is not None:
+            result['text'] = self.text
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('mobileUrl') is not None:
+            self.mobile_url = m.get('mobileUrl')
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class CreateRunResponseBodyMessagesContentStructPartsRecommendPart(TeaModel):
+    def __init__(
+        self,
+        recommends: List[CreateRunResponseBodyMessagesContentStructPartsRecommendPartRecommends] = None,
+    ):
+        self.recommends = recommends
+
+    def validate(self):
+        if self.recommends:
+            for k in self.recommends:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['recommends'] = []
+        if self.recommends is not None:
+            for k in self.recommends:
+                result['recommends'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.recommends = []
+        if m.get('recommends') is not None:
+            for k in m.get('recommends'):
+                temp_model = CreateRunResponseBodyMessagesContentStructPartsRecommendPartRecommends()
+                self.recommends.append(temp_model.from_map(k))
+        return self
+
+
+class CreateRunResponseBodyMessagesContentStructPartsReferencePartReferences(TeaModel):
+    def __init__(
+        self,
+        index: str = None,
+        name: str = None,
+        source_code: str = None,
+        source_icon: str = None,
+        summary: str = None,
+        title: str = None,
+        url: str = None,
+    ):
+        self.index = index
+        self.name = name
+        self.source_code = source_code
+        self.source_icon = source_icon
+        self.summary = summary
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.index is not None:
+            result['index'] = self.index
+        if self.name is not None:
+            result['name'] = self.name
+        if self.source_code is not None:
+            result['sourceCode'] = self.source_code
+        if self.source_icon is not None:
+            result['sourceIcon'] = self.source_icon
+        if self.summary is not None:
+            result['summary'] = self.summary
+        if self.title is not None:
+            result['title'] = self.title
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('index') is not None:
+            self.index = m.get('index')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('sourceCode') is not None:
+            self.source_code = m.get('sourceCode')
+        if m.get('sourceIcon') is not None:
+            self.source_icon = m.get('sourceIcon')
+        if m.get('summary') is not None:
+            self.summary = m.get('summary')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class CreateRunResponseBodyMessagesContentStructPartsReferencePart(TeaModel):
+    def __init__(
+        self,
+        references: List[CreateRunResponseBodyMessagesContentStructPartsReferencePartReferences] = None,
+    ):
+        self.references = references
+
+    def validate(self):
+        if self.references:
+            for k in self.references:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['references'] = []
+        if self.references is not None:
+            for k in self.references:
+                result['references'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.references = []
+        if m.get('references') is not None:
+            for k in m.get('references'):
+                temp_model = CreateRunResponseBodyMessagesContentStructPartsReferencePartReferences()
+                self.references.append(temp_model.from_map(k))
+        return self
+
+
+class CreateRunResponseBodyMessagesContentStructPartsTextPart(TeaModel):
+    def __init__(
+        self,
+        text: str = None,
+    ):
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.text is not None:
+            result['text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        return self
+
+
+class CreateRunResponseBodyMessagesContentStructParts(TeaModel):
+    def __init__(
+        self,
+        append: bool = None,
+        data_part: CreateRunResponseBodyMessagesContentStructPartsDataPart = None,
+        finish: bool = None,
+        part_desc: str = None,
+        part_id: str = None,
+        reason_part: CreateRunResponseBodyMessagesContentStructPartsReasonPart = None,
+        recommend_part: CreateRunResponseBodyMessagesContentStructPartsRecommendPart = None,
+        reference_part: CreateRunResponseBodyMessagesContentStructPartsReferencePart = None,
+        text_part: CreateRunResponseBodyMessagesContentStructPartsTextPart = None,
+        type: str = None,
+    ):
+        self.append = append
+        self.data_part = data_part
+        self.finish = finish
+        self.part_desc = part_desc
+        self.part_id = part_id
+        self.reason_part = reason_part
+        self.recommend_part = recommend_part
+        self.reference_part = reference_part
+        self.text_part = text_part
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        if self.data_part:
+            self.data_part.validate()
+        if self.reason_part:
+            self.reason_part.validate()
+        if self.recommend_part:
+            self.recommend_part.validate()
+        if self.reference_part:
+            self.reference_part.validate()
+        if self.text_part:
+            self.text_part.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.append is not None:
+            result['append'] = self.append
+        if self.data_part is not None:
+            result['dataPart'] = self.data_part.to_map()
+        if self.finish is not None:
+            result['finish'] = self.finish
+        if self.part_desc is not None:
+            result['partDesc'] = self.part_desc
+        if self.part_id is not None:
+            result['partId'] = self.part_id
+        if self.reason_part is not None:
+            result['reasonPart'] = self.reason_part.to_map()
+        if self.recommend_part is not None:
+            result['recommendPart'] = self.recommend_part.to_map()
+        if self.reference_part is not None:
+            result['referencePart'] = self.reference_part.to_map()
+        if self.text_part is not None:
+            result['textPart'] = self.text_part.to_map()
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('append') is not None:
+            self.append = m.get('append')
+        if m.get('dataPart') is not None:
+            temp_model = CreateRunResponseBodyMessagesContentStructPartsDataPart()
+            self.data_part = temp_model.from_map(m['dataPart'])
+        if m.get('finish') is not None:
+            self.finish = m.get('finish')
+        if m.get('partDesc') is not None:
+            self.part_desc = m.get('partDesc')
+        if m.get('partId') is not None:
+            self.part_id = m.get('partId')
+        if m.get('reasonPart') is not None:
+            temp_model = CreateRunResponseBodyMessagesContentStructPartsReasonPart()
+            self.reason_part = temp_model.from_map(m['reasonPart'])
+        if m.get('recommendPart') is not None:
+            temp_model = CreateRunResponseBodyMessagesContentStructPartsRecommendPart()
+            self.recommend_part = temp_model.from_map(m['recommendPart'])
+        if m.get('referencePart') is not None:
+            temp_model = CreateRunResponseBodyMessagesContentStructPartsReferencePart()
+            self.reference_part = temp_model.from_map(m['referencePart'])
+        if m.get('textPart') is not None:
+            temp_model = CreateRunResponseBodyMessagesContentStructPartsTextPart()
+            self.text_part = temp_model.from_map(m['textPart'])
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class CreateRunResponseBodyMessagesContentStruct(TeaModel):
+    def __init__(
+        self,
+        parts: List[CreateRunResponseBodyMessagesContentStructParts] = None,
+    ):
+        self.parts = parts
+
+    def validate(self):
+        if self.parts:
+            for k in self.parts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['parts'] = []
+        if self.parts is not None:
+            for k in self.parts:
+                result['parts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.parts = []
+        if m.get('parts') is not None:
+            for k in m.get('parts'):
+                temp_model = CreateRunResponseBodyMessagesContentStructParts()
+                self.parts.append(temp_model.from_map(k))
+        return self
+
+
 class CreateRunResponseBodyMessages(TeaModel):
     def __init__(
         self,
         content: CreateRunResponseBodyMessagesContent = None,
         content_desc: str = None,
+        content_struct: CreateRunResponseBodyMessagesContentStruct = None,
         create_at: int = None,
         id: str = None,
         role: str = None,
@@ -18561,6 +18952,7 @@ class CreateRunResponseBodyMessages(TeaModel):
     ):
         self.content = content
         self.content_desc = content_desc
+        self.content_struct = content_struct
         self.create_at = create_at
         self.id = id
         self.role = role
@@ -18570,6 +18962,8 @@ class CreateRunResponseBodyMessages(TeaModel):
     def validate(self):
         if self.content:
             self.content.validate()
+        if self.content_struct:
+            self.content_struct.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -18581,6 +18975,8 @@ class CreateRunResponseBodyMessages(TeaModel):
             result['content'] = self.content.to_map()
         if self.content_desc is not None:
             result['contentDesc'] = self.content_desc
+        if self.content_struct is not None:
+            result['contentStruct'] = self.content_struct.to_map()
         if self.create_at is not None:
             result['createAt'] = self.create_at
         if self.id is not None:
@@ -18600,6 +18996,9 @@ class CreateRunResponseBodyMessages(TeaModel):
             self.content = temp_model.from_map(m['content'])
         if m.get('contentDesc') is not None:
             self.content_desc = m.get('contentDesc')
+        if m.get('contentStruct') is not None:
+            temp_model = CreateRunResponseBodyMessagesContentStruct()
+            self.content_struct = temp_model.from_map(m['contentStruct'])
         if m.get('createAt') is not None:
             self.create_at = m.get('createAt')
         if m.get('id') is not None:
