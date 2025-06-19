@@ -9268,7 +9268,7 @@ class CreateDataSourceRequest(TeaModel):
         # *   Dev: development environment
         # *   Prod: production environment
         # 
-        # The parameters that you need to configure to the data source vary based on the mode in which the data source is added. For more information, see [Data source connection information (ConnectionProperties)](https://help.aliyun.com/document_detail/2852465.html).
+        # The parameters that you need to configure for the data source vary based on the mode in which the data source is added. For more information, see [Data source connection information (ConnectionProperties)](https://help.aliyun.com/document_detail/2852465.html).
         # 
         # This parameter is required.
         self.connection_properties = connection_properties
@@ -12764,9 +12764,9 @@ class CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis(TeaModel):
         blocked: bool = None,
         enabled: bool = None,
     ):
-        # Specifies whether to block the running of the instance if the analysis fails.
+        # Specifies whether to block the running of the instance if the analysis fails. If you set the Type parameter to SupplementData, this parameter is required.
         self.blocked = blocked
-        # Specifies whether to enable the analysis feature.
+        # Specifies whether to enable the analysis feature. If you set the Type parameter to SupplementData, this parameter is required.
         self.enabled = enabled
 
     def validate(self):
@@ -12801,13 +12801,13 @@ class CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy(TeaModel):
         start_time: str = None,
         type: str = None,
     ):
-        # The time when the instance finishes running. This parameter is required if you specify the RunPolicy parameter.
+        # The end time of running. Configure this parameter in the `hh:mm:ss` format. The time must be in the 24-hour clock. This parameter is required if you configure the RunPolicy parameter.
         self.end_time = end_time
         # Specifies whether the instance can be run immediately during the time period in the future. Default value: false.
         self.immediately = immediately
-        # The time when the instance starts to run. This parameter is required if you specify the RunPolicy parameter.
+        # The start time of running. Configure this parameter in the `hh:mm:ss` format. The time must be in the 24-hour clock. This parameter is required if you configure the RunPolicy parameter.
         self.start_time = start_time
-        # The type of the time period during which the data is backfilled. This parameter is required if you specify the RunPolicy parameter. Valid values:
+        # The type of the time period during which the data is backfilled. This parameter is required if you configure the RunPolicy parameter.
         # 
         # *   Daily
         # *   Weekend
@@ -12864,7 +12864,7 @@ class CreateWorkflowInstancesRequestDefaultRunProperties(TeaModel):
     ):
         # The alert settings.
         self.alert = alert
-        # The analysis of the configurations.
+        # The configurations for analysis. If you set the Type parameter to SupplementData, this parameter is required.
         self.analysis = analysis
         # The IDs of the projects that do not need to be run.
         self.exclude_project_ids = exclude_project_ids
@@ -12874,24 +12874,29 @@ class CreateWorkflowInstancesRequestDefaultRunProperties(TeaModel):
         self.include_project_ids = include_project_ids
         # The IDs of the tasks that need to be run.
         self.include_task_ids = include_task_ids
-        # The data backfill mode. Default value: ManualSelection. Valid values:
+        # The data backfill mode. Default value: ManualSelection. If you set the Type parameter to SupplementData, this parameter is required. Valid values:
         # 
-        # *   General: You can specify only one root task ID. The `IncludeTaskIds` parameter is optional. If you do not specify the IncludeTaskIds parameter, the tasks that are specified by the `RootTaskIds` parameter are included by default.``
-        # *   ManualSelection: You can specify multiple root tasks IDs. The `IncludeTaskIds` parameter is optional. If you do not specify the IncludeTaskIds parameter, the tasks that are specified by the `RootTaskIds` parameter are included by default.``
-        # *   Chain: The value of the `RootTaskIds` parameter is left empty. You must set the `IncludeTaskIds` parameter to the start task ID and the end task ID.
-        # *   AllDownstream: You can specify only one root task ID.``
+        # *   General: You can specify only `one root task ID`. The `IncludeTaskIds` parameter is optional. If you do not configure the IncludeTaskIds parameter, the tasks that are specified by the `RootTaskIds` parameter are included by default.
+        # *   ManualSelection: You can specify `multiple root task IDs`. The `IncludeTaskIds` parameter is optional. If you do not configure the IncludeTaskIds parameter, the tasks that are specified by the `RootTaskIds` parameter are included by default.
+        # *   Chain: If you set the Mode parameter to Chain, you must leave the `RootTaskIds` parameter empty and set the `IncludeTaskIds` parameter to the start task ID and the end task ID.
+        # *   AllDownstream: You can specify only one `root task ID`.
         self.mode = mode
         # The running order. Default value: Asc. Valid values:
         # 
         # *   Asc: The tasks are sorted by data timestamp in ascending order.
         # *   Desc: The tasks are sorted by data timestamp in descending order.
         self.order = order
-        # The number of tasks that can be run in parallel. If you specify the value to 2 to 10, the value indicates the number of tasks that can be run in parallel. If you specify the value to 1, the tasks are run one by one.
+        # The number of tasks that can be run in parallel. If you specify a value that ranges from 2 to 10, the value indicates the number of tasks that can be run in parallel. If you set the value to 1, the tasks are run one by one. If you set the Type parameter to SupplementData, this parameter is required.
         self.parallelism = parallelism
         self.priority = priority
         # The root task IDs.
+        # 
+        # *   If you set the Type parameter to SupplementData and the Mode parameter to a value other than Chain, the RootTaskIds parameter is required.
+        # *   If you set the Type parameter to ManualWorkflow, the RootTaskIds parameter is optional. If you do not configure the RootTaskIds parameter, the IDs of the default root nodes of the manually triggered workflow are used.
+        # *   If you set the Type parameter to Manual, the RootTaskIds parameter is required. The RootTaskIds parameter specifies the IDs of the manually triggered tasks that need to be run.
+        # *   If you set the Type parameter to SmokeTest, the RootTaskIds parameter is required. The RootTaskIds parameter specifies the IDs of the test tasks that need to be run.
         self.root_task_ids = root_task_ids
-        # The data backfill policy. If you leave this parameter empty, the runtime configuration is used.
+        # The policy for running. If you leave this parameter empty, the runtime configuration is used.
         self.run_policy = run_policy
         # The identifier of the custom resource group for scheduling. If you leave this parameter empty, the runtime configuration is used.
         self.runtime_resource = runtime_resource
@@ -12978,11 +12983,11 @@ class CreateWorkflowInstancesRequestPeriodsBizDates(TeaModel):
         end_biz_date: str = None,
         start_biz_date: str = None,
     ):
-        # The end date of the business.
+        # The data timestamp at which data is no longer backfilled. Configure this parameter in the `yyyy-mm-dd` format.
         # 
         # This parameter is required.
         self.end_biz_date = end_biz_date
-        # The start business date.
+        # The data timestamp at which the data starts to be backfilled. Configure this parameter in the `yyyy-mm-dd` format.
         # 
         # This parameter is required.
         self.start_biz_date = start_biz_date
@@ -13018,17 +13023,17 @@ class CreateWorkflowInstancesRequestPeriods(TeaModel):
         end_time: str = None,
         start_time: str = None,
     ):
-        # The list of business dates. You can specify a multi-segment business date (up to 7 segments).
+        # The data timestamps. You can specify up to seven data timestamps.
         # 
         # This parameter is required.
         self.biz_dates = biz_dates
-        # Specifies the end cycle time. Default value: 23:59:59.
+        # The end time of data backfill. Configure this parameter in the `hh:mm:ss` format. The time must be in the 24-hour clock. Default value: 23:59:59.
         # 
-        # If you enter this field, StartTime and EndTime must be filled in at the same time.
+        # If you configure this parameter, you must also configure the StartTime parameter.
         self.end_time = end_time
-        # Specifies the start cycle time. Default value: 00:00:00.
+        # The start time of data backfill. Configure this parameter in the `hh:mm:ss` format. The time must be in the 24-hour clock. Default value: 00:00:00.
         # 
-        # If you enter this field, StartTime and EndTime must be filled in at the same time.
+        # If you configure this parameter, you must also configure the EndTime parameter.
         self.start_time = start_time
 
     def validate(self):
@@ -13090,14 +13095,14 @@ class CreateWorkflowInstancesRequest(TeaModel):
         self.default_run_properties = default_run_properties
         # The environment of the workspace. Valid values:
         # 
-        # *   Prod: production environment
-        # *   Dev: development environment
+        # *   Prod
+        # *   Dev
         self.env_type = env_type
         # The name.
         # 
         # This parameter is required.
         self.name = name
-        # Make up the data cycle settings.
+        # The configuration of the data backfilling period.
         self.periods = periods
         # The project ID.
         # 
@@ -13107,10 +13112,10 @@ class CreateWorkflowInstancesRequest(TeaModel):
         self.task_parameters = task_parameters
         # The type of the workflow instance. Valid values:
         # 
-        # *   SupplementData The values of the RootTaskIds and IncludeTaskIds parameters vary based on the value of the Mode parameter. For more information, see the Mode parameter in this API operation.
-        # *   ManualWorkflow You must set the WorkflowId parameter to the ID of the manually triggered workflow. The RootTaskIds parameter is optional. If you do not specify the RootTaskIds parameter, the IDs of the default root nodes of the manually triggered workflow are used.
-        # *   Manual You need to specify only the RootTaskIds parameter. The RootTaskIds parameter specifies the IDs of the manually triggered tasks that need to be run.
-        # *   SmokeTest You need to specify only the RootTaskIds parameter. The RootTaskIds parameter specifies the IDs of the test tasks that need to be run.
+        # *   SupplementData: The values of the RootTaskIds and IncludeTaskIds parameters vary based on the value of the Mode parameter. For more information, see the Mode parameter in this API operation.
+        # *   ManualWorkflow: If you set the Type parameter to ManualWorkflow, you must set the WorkflowId parameter to the ID of the manually triggered workflow. The RootTaskIds parameter is optional. If you do not configure the RootTaskIds parameter, the IDs of the default root nodes of the manually triggered workflow are used.
+        # *   Manual: You need to configure only the RootTaskIds parameter. The RootTaskIds parameter specifies the IDs of the manually triggered tasks that need to be run.
+        # *   SmokeTest: You need to configure only the RootTaskIds parameter. The RootTaskIds parameter specifies the IDs of the test tasks that need to be run.
         # 
         # This parameter is required.
         self.type = type
@@ -13209,14 +13214,14 @@ class CreateWorkflowInstancesShrinkRequest(TeaModel):
         self.default_run_properties_shrink = default_run_properties_shrink
         # The environment of the workspace. Valid values:
         # 
-        # *   Prod: production environment
-        # *   Dev: development environment
+        # *   Prod
+        # *   Dev
         self.env_type = env_type
         # The name.
         # 
         # This parameter is required.
         self.name = name
-        # Make up the data cycle settings.
+        # The configuration of the data backfilling period.
         self.periods_shrink = periods_shrink
         # The project ID.
         # 
@@ -13226,10 +13231,10 @@ class CreateWorkflowInstancesShrinkRequest(TeaModel):
         self.task_parameters = task_parameters
         # The type of the workflow instance. Valid values:
         # 
-        # *   SupplementData The values of the RootTaskIds and IncludeTaskIds parameters vary based on the value of the Mode parameter. For more information, see the Mode parameter in this API operation.
-        # *   ManualWorkflow You must set the WorkflowId parameter to the ID of the manually triggered workflow. The RootTaskIds parameter is optional. If you do not specify the RootTaskIds parameter, the IDs of the default root nodes of the manually triggered workflow are used.
-        # *   Manual You need to specify only the RootTaskIds parameter. The RootTaskIds parameter specifies the IDs of the manually triggered tasks that need to be run.
-        # *   SmokeTest You need to specify only the RootTaskIds parameter. The RootTaskIds parameter specifies the IDs of the test tasks that need to be run.
+        # *   SupplementData: The values of the RootTaskIds and IncludeTaskIds parameters vary based on the value of the Mode parameter. For more information, see the Mode parameter in this API operation.
+        # *   ManualWorkflow: If you set the Type parameter to ManualWorkflow, you must set the WorkflowId parameter to the ID of the manually triggered workflow. The RootTaskIds parameter is optional. If you do not configure the RootTaskIds parameter, the IDs of the default root nodes of the manually triggered workflow are used.
+        # *   Manual: You need to configure only the RootTaskIds parameter. The RootTaskIds parameter specifies the IDs of the manually triggered tasks that need to be run.
+        # *   SmokeTest: You need to configure only the RootTaskIds parameter. The RootTaskIds parameter specifies the IDs of the test tasks that need to be run.
         # 
         # This parameter is required.
         self.type = type
@@ -28150,6 +28155,143 @@ class GetProjectRoleResponse(TeaModel):
         return self
 
 
+class GetRerunWorkflowInstancesResultRequest(TeaModel):
+    def __init__(
+        self,
+        operation_id: str = None,
+    ):
+        # This parameter is required.
+        self.operation_id = operation_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operation_id is not None:
+            result['OperationId'] = self.operation_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OperationId') is not None:
+            self.operation_id = m.get('OperationId')
+        return self
+
+
+class GetRerunWorkflowInstancesResultResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        failure_message: str = None,
+        status: str = None,
+    ):
+        self.failure_message = failure_message
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failure_message is not None:
+            result['FailureMessage'] = self.failure_message
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailureMessage') is not None:
+            self.failure_message = m.get('FailureMessage')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetRerunWorkflowInstancesResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: GetRerunWorkflowInstancesResultResponseBodyResult = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = GetRerunWorkflowInstancesResultResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class GetRerunWorkflowInstancesResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetRerunWorkflowInstancesResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetRerunWorkflowInstancesResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetResourceRequest(TeaModel):
     def __init__(
         self,
@@ -28853,6 +28995,12 @@ class GetSchemaRequest(TeaModel):
         self,
         id: str = None,
     ):
+        # The schema ID. You can call the ListSchemas operation to query schema IDs. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+        # 
+        # Configure this parameter in the `${Entity type}:${Instance ID or escaped URL}:${Catalog identifier}:${Database name}:${Schema name}` format. If a level does not exist, leave the level empty.
+        # 
+        # >  If you want to query the information about a MaxCompute schema, specify an empty string at the Instance ID level as a placeholder and a MaxCompute project name at the Database name level. Make sure that the schema feature is enabled for the MaxCompute project.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -30750,6 +30898,8 @@ class GetTaskInstanceResponseBodyTaskInstance(TeaModel):
         trigger_recurrence: str = None,
         trigger_time: int = None,
         trigger_type: str = None,
+        waiting_resource_time: int = None,
+        waiting_trigger_time: int = None,
         workflow_id: int = None,
         workflow_instance_id: int = None,
         workflow_instance_type: str = None,
@@ -30844,6 +30994,8 @@ class GetTaskInstanceResponseBodyTaskInstance(TeaModel):
         # *   Scheduler
         # *   Manual
         self.trigger_type = trigger_type
+        self.waiting_resource_time = waiting_resource_time
+        self.waiting_trigger_time = waiting_trigger_time
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
         # The workflow instance ID.
@@ -30950,6 +31102,10 @@ class GetTaskInstanceResponseBodyTaskInstance(TeaModel):
             result['TriggerTime'] = self.trigger_time
         if self.trigger_type is not None:
             result['TriggerType'] = self.trigger_type
+        if self.waiting_resource_time is not None:
+            result['WaitingResourceTime'] = self.waiting_resource_time
+        if self.waiting_trigger_time is not None:
+            result['WaitingTriggerTime'] = self.waiting_trigger_time
         if self.workflow_id is not None:
             result['WorkflowId'] = self.workflow_id
         if self.workflow_instance_id is not None:
@@ -31035,6 +31191,10 @@ class GetTaskInstanceResponseBodyTaskInstance(TeaModel):
             self.trigger_time = m.get('TriggerTime')
         if m.get('TriggerType') is not None:
             self.trigger_type = m.get('TriggerType')
+        if m.get('WaitingResourceTime') is not None:
+            self.waiting_resource_time = m.get('WaitingResourceTime')
+        if m.get('WaitingTriggerTime') is not None:
+            self.waiting_trigger_time = m.get('WaitingTriggerTime')
         if m.get('WorkflowId') is not None:
             self.workflow_id = m.get('WorkflowId')
         if m.get('WorkflowInstanceId') is not None:
@@ -48434,7 +48594,7 @@ class ListNodesRequest(TeaModel):
         rerun_mode: str = None,
         scene: str = None,
     ):
-        # The container ID. This parameter specifies a filter condition.
+        # The container ID, which is a filter condition. If you do not want to use this condition for filtering, you do not need to configure this parameter. The container ID that you specify is unrelated to the resource group ID indicated by the ResourceGroupId parameter.
         self.container_id = container_id
         self.name = name
         # The page number.
@@ -48445,23 +48605,19 @@ class ListNodesRequest(TeaModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The scheduling type. This parameter specifies a filter condition.
+        # The scheduling type, which is a filter condition. Valid values:
         # 
-        # Valid values:
-        # 
-        # *   Normal: Nodes are scheduled as expected.
-        # *   Pause: Nodes are paused, and the running of their descendant nodes is blocked.
-        # *   Skip: Nodes are dry run. The system does not actually run the nodes but directly prompts that the nodes are successfully run. The running duration of the nodes is 0 seconds. In addition, the nodes do not occupy resources or block the running of their descendant nodes.
+        # *   Normal: The nodes are scheduled as expected.
+        # *   Pause: The nodes are paused, and the running of their descendant nodes is blocked.
+        # *   Skip: The nodes are dry run. The system does not actually run the nodes, but directly returns a success response. The running duration of the nodes is 0 seconds. In addition, the nodes do not occupy resources or block the running of their descendant nodes.
         self.recurrence = recurrence
-        # The rerun mode. Valid values:
+        # The rerun property, which is a filter condition. If you do not want to use this condition for filtering, you do not need to configure this parameter. Valid values:
         # 
         # *   Allowed: The nodes can be rerun regardless of whether they are successfully run or fail to run.
         # *   FailureAllowed: The nodes can be rerun only after they fail to run.
         # *   Denied: The nodes cannot be rerun regardless of whether they are successfully run or fail to run.
         self.rerun_mode = rerun_mode
-        # The scene of the node. This parameter determines the location of the node.
-        # 
-        # Valid values:
+        # The location of the nodes in the left-side navigation pane of the Data Studio page, which is a filter condition. If you do not want to use this condition for filtering, you do not need to configure this parameter. Valid values:
         # 
         # *   DataworksProject
         # *   DataworksManualWorkflow
@@ -52319,7 +52475,7 @@ class ListResourcesRequest(TeaModel):
         self.owner = owner
         # The page number.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10. Maximum value: 100.
+        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
         # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
         # 
@@ -52513,7 +52669,7 @@ class ListResourcesResponseBodyPagingInfoResources(TeaModel):
         self.name = name
         # The owner of the file resource.
         self.owner = owner
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the ID.
         self.project_id = project_id
         # The script information.
         self.script = script
@@ -52631,7 +52787,7 @@ class ListResourcesResponseBodyPagingInfo(TeaModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The file resources.
+        # The queried file resources.
         self.resources = resources
         # The total number of entries returned.
         self.total_count = total_count
@@ -54326,6 +54482,7 @@ class ListTaskInstancesResponseBodyPagingInfoTaskInstances(TeaModel):
         run_number: int = None,
         runtime: ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime = None,
         runtime_resource: ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource = None,
+        script_parameters: str = None,
         started_time: int = None,
         status: str = None,
         task_id: int = None,
@@ -54335,6 +54492,8 @@ class ListTaskInstancesResponseBodyPagingInfoTaskInstances(TeaModel):
         trigger_recurrence: str = None,
         trigger_time: int = None,
         trigger_type: str = None,
+        waiting_resource_time: int = None,
+        waiting_trigger_time: int = None,
         workflow_id: int = None,
         workflow_instance_id: int = None,
         workflow_instance_type: str = None,
@@ -54389,6 +54548,7 @@ class ListTaskInstancesResponseBodyPagingInfoTaskInstances(TeaModel):
         self.runtime = runtime
         # The information about the resource group with which the instance is associated.
         self.runtime_resource = runtime_resource
+        self.script_parameters = script_parameters
         # The time when the instance started to run.
         self.started_time = started_time
         # The status of the instance.
@@ -54431,6 +54591,8 @@ class ListTaskInstancesResponseBodyPagingInfoTaskInstances(TeaModel):
         # *   Scheduler: scheduling cycle-based trigger
         # *   Manual: manual trigger
         self.trigger_type = trigger_type
+        self.waiting_resource_time = waiting_resource_time
+        self.waiting_trigger_time = waiting_trigger_time
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
         # The workflow instance ID.
@@ -54501,6 +54663,8 @@ class ListTaskInstancesResponseBodyPagingInfoTaskInstances(TeaModel):
             result['Runtime'] = self.runtime.to_map()
         if self.runtime_resource is not None:
             result['RuntimeResource'] = self.runtime_resource.to_map()
+        if self.script_parameters is not None:
+            result['ScriptParameters'] = self.script_parameters
         if self.started_time is not None:
             result['StartedTime'] = self.started_time
         if self.status is not None:
@@ -54519,6 +54683,10 @@ class ListTaskInstancesResponseBodyPagingInfoTaskInstances(TeaModel):
             result['TriggerTime'] = self.trigger_time
         if self.trigger_type is not None:
             result['TriggerType'] = self.trigger_type
+        if self.waiting_resource_time is not None:
+            result['WaitingResourceTime'] = self.waiting_resource_time
+        if self.waiting_trigger_time is not None:
+            result['WaitingTriggerTime'] = self.waiting_trigger_time
         if self.workflow_id is not None:
             result['WorkflowId'] = self.workflow_id
         if self.workflow_instance_id is not None:
@@ -54572,6 +54740,8 @@ class ListTaskInstancesResponseBodyPagingInfoTaskInstances(TeaModel):
         if m.get('RuntimeResource') is not None:
             temp_model = ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource()
             self.runtime_resource = temp_model.from_map(m['RuntimeResource'])
+        if m.get('ScriptParameters') is not None:
+            self.script_parameters = m.get('ScriptParameters')
         if m.get('StartedTime') is not None:
             self.started_time = m.get('StartedTime')
         if m.get('Status') is not None:
@@ -54590,6 +54760,10 @@ class ListTaskInstancesResponseBodyPagingInfoTaskInstances(TeaModel):
             self.trigger_time = m.get('TriggerTime')
         if m.get('TriggerType') is not None:
             self.trigger_type = m.get('TriggerType')
+        if m.get('WaitingResourceTime') is not None:
+            self.waiting_resource_time = m.get('WaitingResourceTime')
+        if m.get('WaitingTriggerTime') is not None:
+            self.waiting_trigger_time = m.get('WaitingTriggerTime')
         if m.get('WorkflowId') is not None:
             self.workflow_id = m.get('WorkflowId')
         if m.get('WorkflowInstanceId') is not None:
@@ -60566,6 +60740,313 @@ class RerunTaskInstancesResponse(TeaModel):
         return self
 
 
+class RerunWorkflowInstancesRequestFilter(TeaModel):
+    def __init__(
+        self,
+        rerun_downstream_enabled: bool = None,
+        task_ids: List[int] = None,
+        task_instance_statuses: List[str] = None,
+        task_name: str = None,
+        task_types: List[str] = None,
+    ):
+        self.rerun_downstream_enabled = rerun_downstream_enabled
+        self.task_ids = task_ids
+        self.task_instance_statuses = task_instance_statuses
+        self.task_name = task_name
+        self.task_types = task_types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rerun_downstream_enabled is not None:
+            result['RerunDownstreamEnabled'] = self.rerun_downstream_enabled
+        if self.task_ids is not None:
+            result['TaskIds'] = self.task_ids
+        if self.task_instance_statuses is not None:
+            result['TaskInstanceStatuses'] = self.task_instance_statuses
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.task_types is not None:
+            result['TaskTypes'] = self.task_types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RerunDownstreamEnabled') is not None:
+            self.rerun_downstream_enabled = m.get('RerunDownstreamEnabled')
+        if m.get('TaskIds') is not None:
+            self.task_ids = m.get('TaskIds')
+        if m.get('TaskInstanceStatuses') is not None:
+            self.task_instance_statuses = m.get('TaskInstanceStatuses')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('TaskTypes') is not None:
+            self.task_types = m.get('TaskTypes')
+        return self
+
+
+class RerunWorkflowInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        bizdate: int = None,
+        end_trigger_time: int = None,
+        env_type: str = None,
+        filter: RerunWorkflowInstancesRequestFilter = None,
+        ids: List[int] = None,
+        name: str = None,
+        project_id: int = None,
+        start_trigger_time: int = None,
+        status: str = None,
+        type: str = None,
+        workflow_id: int = None,
+    ):
+        self.bizdate = bizdate
+        self.end_trigger_time = end_trigger_time
+        self.env_type = env_type
+        self.filter = filter
+        self.ids = ids
+        self.name = name
+        # This parameter is required.
+        self.project_id = project_id
+        self.start_trigger_time = start_trigger_time
+        self.status = status
+        # This parameter is required.
+        self.type = type
+        # This parameter is required.
+        self.workflow_id = workflow_id
+
+    def validate(self):
+        if self.filter:
+            self.filter.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bizdate is not None:
+            result['Bizdate'] = self.bizdate
+        if self.end_trigger_time is not None:
+            result['EndTriggerTime'] = self.end_trigger_time
+        if self.env_type is not None:
+            result['EnvType'] = self.env_type
+        if self.filter is not None:
+            result['Filter'] = self.filter.to_map()
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.start_trigger_time is not None:
+            result['StartTriggerTime'] = self.start_trigger_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.workflow_id is not None:
+            result['WorkflowId'] = self.workflow_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bizdate') is not None:
+            self.bizdate = m.get('Bizdate')
+        if m.get('EndTriggerTime') is not None:
+            self.end_trigger_time = m.get('EndTriggerTime')
+        if m.get('EnvType') is not None:
+            self.env_type = m.get('EnvType')
+        if m.get('Filter') is not None:
+            temp_model = RerunWorkflowInstancesRequestFilter()
+            self.filter = temp_model.from_map(m['Filter'])
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('StartTriggerTime') is not None:
+            self.start_trigger_time = m.get('StartTriggerTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('WorkflowId') is not None:
+            self.workflow_id = m.get('WorkflowId')
+        return self
+
+
+class RerunWorkflowInstancesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        bizdate: int = None,
+        end_trigger_time: int = None,
+        env_type: str = None,
+        filter_shrink: str = None,
+        ids_shrink: str = None,
+        name: str = None,
+        project_id: int = None,
+        start_trigger_time: int = None,
+        status: str = None,
+        type: str = None,
+        workflow_id: int = None,
+    ):
+        self.bizdate = bizdate
+        self.end_trigger_time = end_trigger_time
+        self.env_type = env_type
+        self.filter_shrink = filter_shrink
+        self.ids_shrink = ids_shrink
+        self.name = name
+        # This parameter is required.
+        self.project_id = project_id
+        self.start_trigger_time = start_trigger_time
+        self.status = status
+        # This parameter is required.
+        self.type = type
+        # This parameter is required.
+        self.workflow_id = workflow_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bizdate is not None:
+            result['Bizdate'] = self.bizdate
+        if self.end_trigger_time is not None:
+            result['EndTriggerTime'] = self.end_trigger_time
+        if self.env_type is not None:
+            result['EnvType'] = self.env_type
+        if self.filter_shrink is not None:
+            result['Filter'] = self.filter_shrink
+        if self.ids_shrink is not None:
+            result['Ids'] = self.ids_shrink
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.start_trigger_time is not None:
+            result['StartTriggerTime'] = self.start_trigger_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.workflow_id is not None:
+            result['WorkflowId'] = self.workflow_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bizdate') is not None:
+            self.bizdate = m.get('Bizdate')
+        if m.get('EndTriggerTime') is not None:
+            self.end_trigger_time = m.get('EndTriggerTime')
+        if m.get('EnvType') is not None:
+            self.env_type = m.get('EnvType')
+        if m.get('Filter') is not None:
+            self.filter_shrink = m.get('Filter')
+        if m.get('Ids') is not None:
+            self.ids_shrink = m.get('Ids')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('StartTriggerTime') is not None:
+            self.start_trigger_time = m.get('StartTriggerTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('WorkflowId') is not None:
+            self.workflow_id = m.get('WorkflowId')
+        return self
+
+
+class RerunWorkflowInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        operation_id: str = None,
+        request_id: str = None,
+    ):
+        self.operation_id = operation_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operation_id is not None:
+            result['OperationId'] = self.operation_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OperationId') is not None:
+            self.operation_id = m.get('OperationId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RerunWorkflowInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RerunWorkflowInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RerunWorkflowInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ResumeTaskInstancesRequest(TeaModel):
     def __init__(
         self,
@@ -63881,19 +64362,25 @@ class UpdateBusinessRequest(TeaModel):
         project_id: int = None,
         project_identifier: str = None,
     ):
-        # The workflow ID. You can call the [ListBusiness](https://help.aliyun.com/document_detail/173945.html) operation to query the ID.
+        # The workflow ID.
+        # 
+        # You can call the [ListBusiness](https://help.aliyun.com/document_detail/173945.html) operation to query the ID.
         # 
         # This parameter is required.
         self.business_id = business_id
-        # The name of the workflow. You can call the [ListBusiness](https://help.aliyun.com/document_detail/173945.html) operation to query the name.
+        # The name of the workflow.
+        # 
+        # You can call the [ListBusiness](https://help.aliyun.com/document_detail/173945.html) operation to query the name.
         self.business_name = business_name
         # The description of the workflow.
         self.description = description
-        # The owner of the workflow. You can call the [ListBusiness](https://help.aliyun.com/document_detail/173945.html) operation to query the owner.
+        # The owner of the workflow.
+        # 
+        # You can call the [ListBusiness](https://help.aliyun.com/document_detail/173945.html) operation to query the owner.
         self.owner = owner
-        # The DataWorks workspace ID. You can log on to the DataWorks console and go to the Workspace page to query the ID. You must configure either this parameter or the ProjectIdentifier parameter to determine the DataWorks workspace to which the operation is applied.
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/workspace/list) and go to the Workspace page to obtain the workspace ID. You must configure either this parameter or the `ProjectIdentifier` parameter to determine the DataWorks workspace to which the operation is applied.
         self.project_id = project_id
-        # The name of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace page to query the workspace name. You must configure either this parameter or the ProjectId parameter to determine the DataWorks workspace to which the operation is applied.
+        # The name of the DataWorks workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/workspace/list) and go to the Workspace page to obtain the name. You must configure either this parameter or the `ProjectId` parameter to determine the DataWorks workspace to which the operation is applied.
         self.project_identifier = project_identifier
 
     def validate(self):
@@ -63955,8 +64442,8 @@ class UpdateBusinessResponseBody(TeaModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # true\\
-        # false
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -67818,7 +68305,7 @@ class UpdateDataSourceRequest(TeaModel):
         # *   Dev: development environment
         # *   Prod: production environment
         # 
-        # The parameters that you need to configure to the data source vary based on the mode in which the data source is added. For more information, see [Data source connection information (ConnectionProperties)](https://help.aliyun.com/document_detail/2852465.html).
+        # The parameters that you need to configure for the data source vary based on the mode in which the data source is added. For more information, see [Data source connection information (ConnectionProperties)](https://help.aliyun.com/document_detail/2852465.html).
         # 
         # This parameter is required.
         self.connection_properties = connection_properties

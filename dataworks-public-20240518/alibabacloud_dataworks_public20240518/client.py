@@ -4475,7 +4475,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateWorkflowInstancesResponse:
         """
-        @summary 创建工作流实例
+        @summary Creates a workflow instance, such as a data backfill workflow instance, based on configurations.
         
         @param tmp_req: CreateWorkflowInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4536,7 +4536,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateWorkflowInstancesResponse:
         """
-        @summary 创建工作流实例
+        @summary Creates a workflow instance, such as a data backfill workflow instance, based on configurations.
         
         @param tmp_req: CreateWorkflowInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4596,7 +4596,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateWorkflowInstancesRequest,
     ) -> dataworks_public_20240518_models.CreateWorkflowInstancesResponse:
         """
-        @summary 创建工作流实例
+        @summary Creates a workflow instance, such as a data backfill workflow instance, based on configurations.
         
         @param request: CreateWorkflowInstancesRequest
         @return: CreateWorkflowInstancesResponse
@@ -4609,7 +4609,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateWorkflowInstancesRequest,
     ) -> dataworks_public_20240518_models.CreateWorkflowInstancesResponse:
         """
-        @summary 创建工作流实例
+        @summary Creates a workflow instance, such as a data backfill workflow instance, based on configurations.
         
         @param request: CreateWorkflowInstancesRequest
         @return: CreateWorkflowInstancesResponse
@@ -10937,6 +10937,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_project_role_with_options_async(request, runtime)
 
+    def get_rerun_workflow_instances_result_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetRerunWorkflowInstancesResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetRerunWorkflowInstancesResultResponse:
+        """
+        @summary 查询异步重跑工作流实例的结果
+        
+        @param request: GetRerunWorkflowInstancesResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRerunWorkflowInstancesResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.operation_id):
+            query['OperationId'] = request.operation_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRerunWorkflowInstancesResult',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetRerunWorkflowInstancesResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_rerun_workflow_instances_result_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetRerunWorkflowInstancesResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetRerunWorkflowInstancesResultResponse:
+        """
+        @summary 查询异步重跑工作流实例的结果
+        
+        @param request: GetRerunWorkflowInstancesResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRerunWorkflowInstancesResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.operation_id):
+            query['OperationId'] = request.operation_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRerunWorkflowInstancesResult',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetRerunWorkflowInstancesResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_rerun_workflow_instances_result(
+        self,
+        request: dataworks_public_20240518_models.GetRerunWorkflowInstancesResultRequest,
+    ) -> dataworks_public_20240518_models.GetRerunWorkflowInstancesResultResponse:
+        """
+        @summary 查询异步重跑工作流实例的结果
+        
+        @param request: GetRerunWorkflowInstancesResultRequest
+        @return: GetRerunWorkflowInstancesResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_rerun_workflow_instances_result_with_options(request, runtime)
+
+    async def get_rerun_workflow_instances_result_async(
+        self,
+        request: dataworks_public_20240518_models.GetRerunWorkflowInstancesResultRequest,
+    ) -> dataworks_public_20240518_models.GetRerunWorkflowInstancesResultResponse:
+        """
+        @summary 查询异步重跑工作流实例的结果
+        
+        @param request: GetRerunWorkflowInstancesResultRequest
+        @return: GetRerunWorkflowInstancesResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_rerun_workflow_instances_result_with_options_async(request, runtime)
+
     def get_resource_with_options(
         self,
         request: dataworks_public_20240518_models.GetResourceRequest,
@@ -11235,7 +11331,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetSchemaResponse:
         """
-        @summary 获取模式详情
+        @summary Queries the information about a schema in Data Map. You can call this API operation to query the information only about MaxCompute and Hologres schemas.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this API operation to query the information only about MaxCompute and Hologres schemas.
         
         @param request: GetSchemaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11268,7 +11367,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetSchemaResponse:
         """
-        @summary 获取模式详情
+        @summary Queries the information about a schema in Data Map. You can call this API operation to query the information only about MaxCompute and Hologres schemas.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this API operation to query the information only about MaxCompute and Hologres schemas.
         
         @param request: GetSchemaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11300,7 +11402,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetSchemaRequest,
     ) -> dataworks_public_20240518_models.GetSchemaResponse:
         """
-        @summary 获取模式详情
+        @summary Queries the information about a schema in Data Map. You can call this API operation to query the information only about MaxCompute and Hologres schemas.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this API operation to query the information only about MaxCompute and Hologres schemas.
         
         @param request: GetSchemaRequest
         @return: GetSchemaResponse
@@ -11313,7 +11418,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetSchemaRequest,
     ) -> dataworks_public_20240518_models.GetSchemaResponse:
         """
-        @summary 获取模式详情
+        @summary Queries the information about a schema in Data Map. You can call this API operation to query the information only about MaxCompute and Hologres schemas.
+        
+        @description 1.  This API operation is available for all DataWorks editions.
+        2.  You can call this API operation to query the information only about MaxCompute and Hologres schemas.
         
         @param request: GetSchemaRequest
         @return: GetSchemaResponse
@@ -19666,6 +19774,154 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.rerun_task_instances_with_options_async(request, runtime)
+
+    def rerun_workflow_instances_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.RerunWorkflowInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.RerunWorkflowInstancesResponse:
+        """
+        @summary 重跑工作流实例
+        
+        @param tmp_req: RerunWorkflowInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RerunWorkflowInstancesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.RerunWorkflowInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        if not UtilClient.is_unset(tmp_req.ids):
+            request.ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.bizdate):
+            body['Bizdate'] = request.bizdate
+        if not UtilClient.is_unset(request.end_trigger_time):
+            body['EndTriggerTime'] = request.end_trigger_time
+        if not UtilClient.is_unset(request.env_type):
+            body['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.filter_shrink):
+            body['Filter'] = request.filter_shrink
+        if not UtilClient.is_unset(request.ids_shrink):
+            body['Ids'] = request.ids_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.start_trigger_time):
+            body['StartTriggerTime'] = request.start_trigger_time
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        if not UtilClient.is_unset(request.workflow_id):
+            body['WorkflowId'] = request.workflow_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RerunWorkflowInstances',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.RerunWorkflowInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def rerun_workflow_instances_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.RerunWorkflowInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.RerunWorkflowInstancesResponse:
+        """
+        @summary 重跑工作流实例
+        
+        @param tmp_req: RerunWorkflowInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RerunWorkflowInstancesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.RerunWorkflowInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        if not UtilClient.is_unset(tmp_req.ids):
+            request.ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.bizdate):
+            body['Bizdate'] = request.bizdate
+        if not UtilClient.is_unset(request.end_trigger_time):
+            body['EndTriggerTime'] = request.end_trigger_time
+        if not UtilClient.is_unset(request.env_type):
+            body['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.filter_shrink):
+            body['Filter'] = request.filter_shrink
+        if not UtilClient.is_unset(request.ids_shrink):
+            body['Ids'] = request.ids_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.start_trigger_time):
+            body['StartTriggerTime'] = request.start_trigger_time
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        if not UtilClient.is_unset(request.workflow_id):
+            body['WorkflowId'] = request.workflow_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RerunWorkflowInstances',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.RerunWorkflowInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def rerun_workflow_instances(
+        self,
+        request: dataworks_public_20240518_models.RerunWorkflowInstancesRequest,
+    ) -> dataworks_public_20240518_models.RerunWorkflowInstancesResponse:
+        """
+        @summary 重跑工作流实例
+        
+        @param request: RerunWorkflowInstancesRequest
+        @return: RerunWorkflowInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.rerun_workflow_instances_with_options(request, runtime)
+
+    async def rerun_workflow_instances_async(
+        self,
+        request: dataworks_public_20240518_models.RerunWorkflowInstancesRequest,
+    ) -> dataworks_public_20240518_models.RerunWorkflowInstancesResponse:
+        """
+        @summary 重跑工作流实例
+        
+        @param request: RerunWorkflowInstancesRequest
+        @return: RerunWorkflowInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.rerun_workflow_instances_with_options_async(request, runtime)
 
     def resume_task_instances_with_options(
         self,

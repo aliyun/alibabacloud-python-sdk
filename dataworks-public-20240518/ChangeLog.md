@@ -1,3 +1,13 @@
+2025-06-19 Version: 7.2.0
+- Support API GetRerunWorkflowInstancesResult.
+- Support API RerunWorkflowInstances.
+- Update API GetTaskInstance: add response parameters Body.TaskInstance.WaitingResourceTime.
+- Update API GetTaskInstance: add response parameters Body.TaskInstance.WaitingTriggerTime.
+- Update API ListTaskInstances: add response parameters Body.PagingInfo.TaskInstances.$.ScriptParameters.
+- Update API ListTaskInstances: add response parameters Body.PagingInfo.TaskInstances.$.WaitingResourceTime.
+- Update API ListTaskInstances: add response parameters Body.PagingInfo.TaskInstances.$.WaitingTriggerTime.
+
+
 2025-06-09 Version: 7.1.3
 - Update API CreateWorkflowInstances: add request parameters DefaultRunProperties.Priority.
 
