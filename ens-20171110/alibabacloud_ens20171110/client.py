@@ -3962,6 +3962,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.billing_cycle):
+            query['BillingCycle'] = request.billing_cycle
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.ens_region_id):
@@ -3970,6 +3972,8 @@ class Client(OpenApiClient):
             query['LoadBalancerName'] = request.load_balancer_name
         if not UtilClient.is_unset(request.load_balancer_spec):
             query['LoadBalancerSpec'] = request.load_balancer_spec
+        if not UtilClient.is_unset(request.load_balancer_type):
+            query['LoadBalancerType'] = request.load_balancer_type
         if not UtilClient.is_unset(request.network_id):
             query['NetworkId'] = request.network_id
         if not UtilClient.is_unset(request.pay_type):
@@ -4012,6 +4016,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.billing_cycle):
+            query['BillingCycle'] = request.billing_cycle
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.ens_region_id):
@@ -4020,6 +4026,8 @@ class Client(OpenApiClient):
             query['LoadBalancerName'] = request.load_balancer_name
         if not UtilClient.is_unset(request.load_balancer_spec):
             query['LoadBalancerSpec'] = request.load_balancer_spec
+        if not UtilClient.is_unset(request.load_balancer_type):
+            query['LoadBalancerType'] = request.load_balancer_type
         if not UtilClient.is_unset(request.network_id):
             query['NetworkId'] = request.network_id
         if not UtilClient.is_unset(request.pay_type):

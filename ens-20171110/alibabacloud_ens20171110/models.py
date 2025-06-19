@@ -6789,14 +6789,17 @@ class CreateKeyPairResponse(TeaModel):
 class CreateLoadBalancerRequest(TeaModel):
     def __init__(
         self,
+        billing_cycle: str = None,
         client_token: str = None,
         ens_region_id: str = None,
         load_balancer_name: str = None,
         load_balancer_spec: str = None,
+        load_balancer_type: str = None,
         network_id: str = None,
         pay_type: str = None,
         v_switch_id: str = None,
     ):
+        self.billing_cycle = billing_cycle
         # The client token that is used to ensure the idempotence of the request. This prevents repeated operations caused by multiple retries.
         # 
         # *   You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
@@ -6816,6 +6819,7 @@ class CreateLoadBalancerRequest(TeaModel):
         # 
         # This parameter is required.
         self.load_balancer_spec = load_balancer_spec
+        self.load_balancer_type = load_balancer_type
         # The network ID of the created ELB instance.
         # 
         # This parameter is required.
@@ -6838,6 +6842,8 @@ class CreateLoadBalancerRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.billing_cycle is not None:
+            result['BillingCycle'] = self.billing_cycle
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.ens_region_id is not None:
@@ -6846,6 +6852,8 @@ class CreateLoadBalancerRequest(TeaModel):
             result['LoadBalancerName'] = self.load_balancer_name
         if self.load_balancer_spec is not None:
             result['LoadBalancerSpec'] = self.load_balancer_spec
+        if self.load_balancer_type is not None:
+            result['LoadBalancerType'] = self.load_balancer_type
         if self.network_id is not None:
             result['NetworkId'] = self.network_id
         if self.pay_type is not None:
@@ -6856,6 +6864,8 @@ class CreateLoadBalancerRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BillingCycle') is not None:
+            self.billing_cycle = m.get('BillingCycle')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('EnsRegionId') is not None:
@@ -6864,6 +6874,8 @@ class CreateLoadBalancerRequest(TeaModel):
             self.load_balancer_name = m.get('LoadBalancerName')
         if m.get('LoadBalancerSpec') is not None:
             self.load_balancer_spec = m.get('LoadBalancerSpec')
+        if m.get('LoadBalancerType') is not None:
+            self.load_balancer_type = m.get('LoadBalancerType')
         if m.get('NetworkId') is not None:
             self.network_id = m.get('NetworkId')
         if m.get('PayType') is not None:
@@ -32317,6 +32329,7 @@ class DescribeLoadBalancerAttributeResponseBody(TeaModel):
         self,
         address: str = None,
         address_ipversion: str = None,
+        address_type: str = None,
         backend_servers: List[DescribeLoadBalancerAttributeResponseBodyBackendServers] = None,
         bandwidth: int = None,
         create_time: str = None,
@@ -32328,6 +32341,7 @@ class DescribeLoadBalancerAttributeResponseBody(TeaModel):
         load_balancer_name: str = None,
         load_balancer_spec: str = None,
         load_balancer_status: str = None,
+        load_balancer_type: str = None,
         network_id: str = None,
         pay_type: str = None,
         request_id: str = None,
@@ -32337,6 +32351,7 @@ class DescribeLoadBalancerAttributeResponseBody(TeaModel):
         self.address = address
         # The IP version of the ELB instance. Valid values: ipv4 and ipv6.
         self.address_ipversion = address_ipversion
+        self.address_type = address_type
         # The list of backend servers.
         self.backend_servers = backend_servers
         # The peak bandwidth of the ELB. The default value is -1, which indicates that the bandwidth is unlimited.
@@ -32362,6 +32377,7 @@ class DescribeLoadBalancerAttributeResponseBody(TeaModel):
         # *   **Active** (default): The listener for the instance can forward the received traffic based on the rule.
         # *   **InActive**: The listener for the instance does not forward the received traffic.
         self.load_balancer_status = load_balancer_status
+        self.load_balancer_type = load_balancer_type
         # The ID of the network.
         self.network_id = network_id
         # The billing method. Valid values:
@@ -32394,6 +32410,8 @@ class DescribeLoadBalancerAttributeResponseBody(TeaModel):
             result['Address'] = self.address
         if self.address_ipversion is not None:
             result['AddressIPVersion'] = self.address_ipversion
+        if self.address_type is not None:
+            result['AddressType'] = self.address_type
         result['BackendServers'] = []
         if self.backend_servers is not None:
             for k in self.backend_servers:
@@ -32420,6 +32438,8 @@ class DescribeLoadBalancerAttributeResponseBody(TeaModel):
             result['LoadBalancerSpec'] = self.load_balancer_spec
         if self.load_balancer_status is not None:
             result['LoadBalancerStatus'] = self.load_balancer_status
+        if self.load_balancer_type is not None:
+            result['LoadBalancerType'] = self.load_balancer_type
         if self.network_id is not None:
             result['NetworkId'] = self.network_id
         if self.pay_type is not None:
@@ -32436,6 +32456,8 @@ class DescribeLoadBalancerAttributeResponseBody(TeaModel):
             self.address = m.get('Address')
         if m.get('AddressIPVersion') is not None:
             self.address_ipversion = m.get('AddressIPVersion')
+        if m.get('AddressType') is not None:
+            self.address_type = m.get('AddressType')
         self.backend_servers = []
         if m.get('BackendServers') is not None:
             for k in m.get('BackendServers'):
@@ -32464,6 +32486,8 @@ class DescribeLoadBalancerAttributeResponseBody(TeaModel):
             self.load_balancer_spec = m.get('LoadBalancerSpec')
         if m.get('LoadBalancerStatus') is not None:
             self.load_balancer_status = m.get('LoadBalancerStatus')
+        if m.get('LoadBalancerType') is not None:
+            self.load_balancer_type = m.get('LoadBalancerType')
         if m.get('NetworkId') is not None:
             self.network_id = m.get('NetworkId')
         if m.get('PayType') is not None:
@@ -34490,6 +34514,7 @@ class DescribeLoadBalancersRequest(TeaModel):
         load_balancer_id: str = None,
         load_balancer_name: str = None,
         load_balancer_status: str = None,
+        load_balancer_type: str = None,
         network_id: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -34511,6 +34536,7 @@ class DescribeLoadBalancersRequest(TeaModel):
         # *   **Active**: The listener for the instance can forward the received traffic based on forwarding rules.
         # *   **InActive**: The listener for the instance does not forward the received traffic.
         self.load_balancer_status = load_balancer_status
+        self.load_balancer_type = load_balancer_type
         # The ID of the network.
         self.network_id = network_id
         # The page number. Default value: 1.
@@ -34543,6 +34569,8 @@ class DescribeLoadBalancersRequest(TeaModel):
             result['LoadBalancerName'] = self.load_balancer_name
         if self.load_balancer_status is not None:
             result['LoadBalancerStatus'] = self.load_balancer_status
+        if self.load_balancer_type is not None:
+            result['LoadBalancerType'] = self.load_balancer_type
         if self.network_id is not None:
             result['NetworkId'] = self.network_id
         if self.page_number is not None:
@@ -34569,6 +34597,8 @@ class DescribeLoadBalancersRequest(TeaModel):
             self.load_balancer_name = m.get('LoadBalancerName')
         if m.get('LoadBalancerStatus') is not None:
             self.load_balancer_status = m.get('LoadBalancerStatus')
+        if m.get('LoadBalancerType') is not None:
+            self.load_balancer_type = m.get('LoadBalancerType')
         if m.get('NetworkId') is not None:
             self.network_id = m.get('NetworkId')
         if m.get('PageNumber') is not None:
@@ -34587,11 +34617,13 @@ class DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer(TeaModel):
         self,
         address: str = None,
         address_ipversion: str = None,
+        address_type: str = None,
         create_time: str = None,
         ens_region_id: str = None,
         load_balancer_id: str = None,
         load_balancer_name: str = None,
         load_balancer_status: str = None,
+        load_balancer_type: str = None,
         network_id: str = None,
         pay_type: str = None,
         v_switch_id: str = None,
@@ -34600,6 +34632,7 @@ class DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer(TeaModel):
         self.address = address
         # The IP version. Valid values: ipv4 and ipv6.
         self.address_ipversion = address_ipversion
+        self.address_type = address_type
         # The time when the ELB instance was created. The time is displayed in UTC.
         self.create_time = create_time
         # The ID of the ENS node.
@@ -34613,6 +34646,7 @@ class DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer(TeaModel):
         # *   **Active**: The listener for the instance can forward the received traffic based on forwarding rules.
         # *   **InActive**: The listener for the instance does not forward the received traffic.
         self.load_balancer_status = load_balancer_status
+        self.load_balancer_type = load_balancer_type
         # The ID of the network.
         self.network_id = network_id
         # The billing method. Valid values:
@@ -34636,6 +34670,8 @@ class DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer(TeaModel):
             result['Address'] = self.address
         if self.address_ipversion is not None:
             result['AddressIPVersion'] = self.address_ipversion
+        if self.address_type is not None:
+            result['AddressType'] = self.address_type
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.ens_region_id is not None:
@@ -34646,6 +34682,8 @@ class DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer(TeaModel):
             result['LoadBalancerName'] = self.load_balancer_name
         if self.load_balancer_status is not None:
             result['LoadBalancerStatus'] = self.load_balancer_status
+        if self.load_balancer_type is not None:
+            result['LoadBalancerType'] = self.load_balancer_type
         if self.network_id is not None:
             result['NetworkId'] = self.network_id
         if self.pay_type is not None:
@@ -34660,6 +34698,8 @@ class DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer(TeaModel):
             self.address = m.get('Address')
         if m.get('AddressIPVersion') is not None:
             self.address_ipversion = m.get('AddressIPVersion')
+        if m.get('AddressType') is not None:
+            self.address_type = m.get('AddressType')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('EnsRegionId') is not None:
@@ -34670,6 +34710,8 @@ class DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer(TeaModel):
             self.load_balancer_name = m.get('LoadBalancerName')
         if m.get('LoadBalancerStatus') is not None:
             self.load_balancer_status = m.get('LoadBalancerStatus')
+        if m.get('LoadBalancerType') is not None:
+            self.load_balancer_type = m.get('LoadBalancerType')
         if m.get('NetworkId') is not None:
             self.network_id = m.get('NetworkId')
         if m.get('PayType') is not None:

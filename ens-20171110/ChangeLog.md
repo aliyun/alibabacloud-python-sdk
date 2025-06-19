@@ -1,3 +1,13 @@
+2025-06-19 Version: 9.0.11
+- Update API CreateLoadBalancer: add request parameters BillingCycle.
+- Update API CreateLoadBalancer: add request parameters LoadBalancerType.
+- Update API DescribeLoadBalancerAttribute: add response parameters Body.AddressType.
+- Update API DescribeLoadBalancerAttribute: add response parameters Body.LoadBalancerType.
+- Update API DescribeLoadBalancers: add request parameters LoadBalancerType.
+- Update API DescribeLoadBalancers: add response parameters Body.LoadBalancers.$.AddressType.
+- Update API DescribeLoadBalancers: add response parameters Body.LoadBalancers.$.LoadBalancerType.
+
+
 2025-06-04 Version: 9.0.10
 - Update API CopySnapshot: add request parameters InstanceBillingCycle.
 
