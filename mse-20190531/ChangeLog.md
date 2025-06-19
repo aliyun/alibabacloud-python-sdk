@@ -1,3 +1,7 @@
+2025-06-19 Version: 6.19.2
+- Update API ListClusters: add request parameters VpcId.
+
+
 2025-06-09 Version: 6.19.1
 - Update API UpdateAcl: add request parameters NetworkType.
 

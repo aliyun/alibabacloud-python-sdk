@@ -38525,6 +38525,7 @@ class ListClustersRequest(TeaModel):
         request_pars: str = None,
         resource_group_id: str = None,
         tag: List[ListClustersRequestTag] = None,
+        vpc_id: str = None,
     ):
         # The language of the response. Valid values:
         # 
@@ -38552,6 +38553,7 @@ class ListClustersRequest(TeaModel):
         self.resource_group_id = resource_group_id
         # The list of tags. A maximum number of 20 tags are supported.
         self.tag = tag
+        self.vpc_id = vpc_id
 
     def validate(self):
         if self.tag:
@@ -38585,6 +38587,8 @@ class ListClustersRequest(TeaModel):
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
@@ -38610,6 +38614,8 @@ class ListClustersRequest(TeaModel):
             for k in m.get('Tag'):
                 temp_model = ListClustersRequestTag()
                 self.tag.append(temp_model.from_map(k))
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         return self
 
 
