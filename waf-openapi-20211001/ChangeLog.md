@@ -1,3 +1,8 @@
+2025-06-19 Version: 5.4.0
+- Support API CreateDefenseResource.
+- Support API DeleteDefenseResource.
+
+
 2025-06-17 Version: 5.3.0
 - Support API DescribeIpAbroadCountryInfos.
 

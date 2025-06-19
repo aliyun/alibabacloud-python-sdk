@@ -655,6 +655,162 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_cloud_resource_with_options_async(request, runtime)
 
+    def create_defense_resource_with_options(
+        self,
+        tmp_req: waf_openapi_20211001_models.CreateDefenseResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.CreateDefenseResourceResponse:
+        """
+        @summary 创建防护对象
+        
+        @param tmp_req: CreateDefenseResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDefenseResourceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = waf_openapi_20211001_models.CreateDefenseResourceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.custom_headers):
+            request.custom_headers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_headers, 'CustomHeaders', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.custom_headers_shrink):
+            query['CustomHeaders'] = request.custom_headers_shrink
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.detail):
+            query['Detail'] = request.detail
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_user_id):
+            query['OwnerUserId'] = request.owner_user_id
+        if not UtilClient.is_unset(request.pattern):
+            query['Pattern'] = request.pattern
+        if not UtilClient.is_unset(request.product):
+            query['Product'] = request.product
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.resource_group):
+            query['ResourceGroup'] = request.resource_group
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.resource_origin):
+            query['ResourceOrigin'] = request.resource_origin
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.xff_status):
+            query['XffStatus'] = request.xff_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDefenseResource',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateDefenseResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_defense_resource_with_options_async(
+        self,
+        tmp_req: waf_openapi_20211001_models.CreateDefenseResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.CreateDefenseResourceResponse:
+        """
+        @summary 创建防护对象
+        
+        @param tmp_req: CreateDefenseResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDefenseResourceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = waf_openapi_20211001_models.CreateDefenseResourceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.custom_headers):
+            request.custom_headers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_headers, 'CustomHeaders', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.custom_headers_shrink):
+            query['CustomHeaders'] = request.custom_headers_shrink
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.detail):
+            query['Detail'] = request.detail
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_user_id):
+            query['OwnerUserId'] = request.owner_user_id
+        if not UtilClient.is_unset(request.pattern):
+            query['Pattern'] = request.pattern
+        if not UtilClient.is_unset(request.product):
+            query['Product'] = request.product
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.resource_group):
+            query['ResourceGroup'] = request.resource_group
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.resource_origin):
+            query['ResourceOrigin'] = request.resource_origin
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.xff_status):
+            query['XffStatus'] = request.xff_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDefenseResource',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateDefenseResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_defense_resource(
+        self,
+        request: waf_openapi_20211001_models.CreateDefenseResourceRequest,
+    ) -> waf_openapi_20211001_models.CreateDefenseResourceResponse:
+        """
+        @summary 创建防护对象
+        
+        @param request: CreateDefenseResourceRequest
+        @return: CreateDefenseResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_defense_resource_with_options(request, runtime)
+
+    async def create_defense_resource_async(
+        self,
+        request: waf_openapi_20211001_models.CreateDefenseResourceRequest,
+    ) -> waf_openapi_20211001_models.CreateDefenseResourceResponse:
+        """
+        @summary 创建防护对象
+        
+        @param request: CreateDefenseResourceRequest
+        @return: CreateDefenseResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_defense_resource_with_options_async(request, runtime)
+
     def create_defense_resource_group_with_options(
         self,
         request: waf_openapi_20211001_models.CreateDefenseResourceGroupRequest,
@@ -2102,6 +2258,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_cloud_resource_with_options_async(request, runtime)
+
+    def delete_defense_resource_with_options(
+        self,
+        request: waf_openapi_20211001_models.DeleteDefenseResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DeleteDefenseResourceResponse:
+        """
+        @summary 删除单个防护对象
+        
+        @param request: DeleteDefenseResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDefenseResourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDefenseResource',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DeleteDefenseResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_defense_resource_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DeleteDefenseResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DeleteDefenseResourceResponse:
+        """
+        @summary 删除单个防护对象
+        
+        @param request: DeleteDefenseResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDefenseResourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDefenseResource',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DeleteDefenseResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_defense_resource(
+        self,
+        request: waf_openapi_20211001_models.DeleteDefenseResourceRequest,
+    ) -> waf_openapi_20211001_models.DeleteDefenseResourceResponse:
+        """
+        @summary 删除单个防护对象
+        
+        @param request: DeleteDefenseResourceRequest
+        @return: DeleteDefenseResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_defense_resource_with_options(request, runtime)
+
+    async def delete_defense_resource_async(
+        self,
+        request: waf_openapi_20211001_models.DeleteDefenseResourceRequest,
+    ) -> waf_openapi_20211001_models.DeleteDefenseResourceResponse:
+        """
+        @summary 删除单个防护对象
+        
+        @param request: DeleteDefenseResourceRequest
+        @return: DeleteDefenseResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_defense_resource_with_options_async(request, runtime)
 
     def delete_defense_resource_group_with_options(
         self,
