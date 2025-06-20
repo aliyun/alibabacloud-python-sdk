@@ -13566,6 +13566,8 @@ class GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail(TeaMode
         resource_status: str = None,
         resource_type: str = None,
         tags: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
     ):
         # The ID of the Alibaba Cloud account to which the resource belongs.
         self.account_id = account_id
@@ -13603,6 +13605,9 @@ class GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail(TeaMode
         self.resource_type = resource_type
         # The tags of the resource.
         self.tags = tags
+        # This parameter is required.
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
 
     def validate(self):
         pass
@@ -13637,6 +13642,10 @@ class GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail(TeaMode
             result['ResourceType'] = self.resource_type
         if self.tags is not None:
             result['Tags'] = self.tags
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
@@ -13665,6 +13674,10 @@ class GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail(TeaMode
             self.resource_type = m.get('ResourceType')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         return self
 
 
@@ -19392,6 +19405,8 @@ class GetDiscoveredResourceResponseBodyDiscoveredResourceDetail(TeaModel):
         resource_status: str = None,
         resource_type: str = None,
         tags: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
     ):
         # The ID of the Alibaba Cloud account to which the resource belongs.
         self.account_id = account_id
@@ -19428,6 +19443,10 @@ class GetDiscoveredResourceResponseBodyDiscoveredResourceDetail(TeaModel):
         self.resource_type = resource_type
         # The tags of the resource.
         self.tags = tags
+        # This parameter is required.
+        self.v_switch_id = v_switch_id
+        # This parameter is required.
+        self.vpc_id = vpc_id
 
     def validate(self):
         pass
@@ -19462,6 +19481,10 @@ class GetDiscoveredResourceResponseBodyDiscoveredResourceDetail(TeaModel):
             result['ResourceType'] = self.resource_type
         if self.tags is not None:
             result['Tags'] = self.tags
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
@@ -19490,6 +19513,10 @@ class GetDiscoveredResourceResponseBodyDiscoveredResourceDetail(TeaModel):
             self.resource_type = m.get('ResourceType')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         return self
 
 
@@ -25030,7 +25057,9 @@ class ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDisc
         resource_type: str = None,
         tags: str = None,
         update_time: int = None,
+        v_switch_id: str = None,
         version: int = None,
+        vpc_id: str = None,
     ):
         # The ID of the Alibaba Cloud account to which the resource belongs. We recommend that you use the ResourceOwnerId parameter.
         self.account_id = account_id
@@ -25062,8 +25091,12 @@ class ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDisc
         self.tags = tags
         # The time when the resource was last updated. The value must be a timestamp in milliseconds.
         self.update_time = update_time
+        # This parameter is required.
+        self.v_switch_id = v_switch_id
         # The build version of the resource.
         self.version = version
+        # This parameter is required.
+        self.vpc_id = vpc_id
 
     def validate(self):
         pass
@@ -25098,8 +25131,12 @@ class ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDisc
             result['Tags'] = self.tags
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
         if self.version is not None:
             result['Version'] = self.version
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
@@ -25128,8 +25165,12 @@ class ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDisc
             self.tags = m.get('Tags')
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
         if m.get('Version') is not None:
             self.version = m.get('Version')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         return self
 
 
@@ -29637,7 +29678,9 @@ class ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredRes
         resource_type: str = None,
         tags: str = None,
         update_time: int = None,
+        v_switch_id: str = None,
         version: int = None,
+        vpc_id: str = None,
     ):
         # The ID of the Alibaba Cloud account to which the resource belongs.
         self.account_id = account_id
@@ -29667,8 +29710,12 @@ class ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredRes
         self.tags = tags
         # The time when the resource was last updated. The value must be a timestamp in milliseconds.
         self.update_time = update_time
+        # This parameter is required.
+        self.v_switch_id = v_switch_id
         # The version of the resource change.
         self.version = version
+        # This parameter is required.
+        self.vpc_id = vpc_id
 
     def validate(self):
         pass
@@ -29701,8 +29748,12 @@ class ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredRes
             result['Tags'] = self.tags
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
         if self.version is not None:
             result['Version'] = self.version
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
@@ -29729,8 +29780,12 @@ class ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredRes
             self.tags = m.get('Tags')
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
         if m.get('Version') is not None:
             self.version = m.get('Version')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         return self
 
 

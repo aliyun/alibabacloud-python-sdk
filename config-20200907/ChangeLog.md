@@ -1,3 +1,14 @@
+2025-06-20 Version: 3.0.15
+- Update API GetAggregateDiscoveredResource: add response parameters Body.DiscoveredResourceDetail.VSwitchId.
+- Update API GetAggregateDiscoveredResource: add response parameters Body.DiscoveredResourceDetail.VpcId.
+- Update API GetDiscoveredResource: add response parameters Body.DiscoveredResourceDetail.VSwitchId.
+- Update API GetDiscoveredResource: add response parameters Body.DiscoveredResourceDetail.VpcId.
+- Update API ListAggregateDiscoveredResources: add response parameters Body.DiscoveredResourceProfiles.DiscoveredResourceProfileList.$.VSwitchId.
+- Update API ListAggregateDiscoveredResources: add response parameters Body.DiscoveredResourceProfiles.DiscoveredResourceProfileList.$.VpcId.
+- Update API ListDiscoveredResources: add response parameters Body.DiscoveredResourceProfiles.DiscoveredResourceProfileList.$.VSwitchId.
+- Update API ListDiscoveredResources: add response parameters Body.DiscoveredResourceProfiles.DiscoveredResourceProfileList.$.VpcId.
+
+
 2025-05-06 Version: 3.0.14
 - Update API GenerateAggregateCompliancePackReport: add request parameters MultiFiles.
 
