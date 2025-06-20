@@ -1,3 +1,7 @@
+2025-06-20 Version: 2.5.1
+- Update API ListAppEvents: add response parameters Body.Data.AppEventEntity.$.CauseAnalysis.
+
+
 2025-06-17 Version: 2.5.0
 - Support API UpdateAppMode.
 

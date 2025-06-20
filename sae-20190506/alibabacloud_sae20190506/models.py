@@ -37963,6 +37963,7 @@ class ListAppEventsRequest(TeaModel):
 class ListAppEventsResponseBodyDataAppEventEntity(TeaModel):
     def __init__(
         self,
+        cause_analysis: str = None,
         event_type: str = None,
         first_timestamp: str = None,
         last_timestamp: str = None,
@@ -37971,6 +37972,7 @@ class ListAppEventsResponseBodyDataAppEventEntity(TeaModel):
         object_name: str = None,
         reason: str = None,
     ):
+        self.cause_analysis = cause_analysis
         # The type of the event. Valid values:
         self.event_type = event_type
         # The timestamp of the first occurrence of the event.
@@ -37995,6 +37997,8 @@ class ListAppEventsResponseBodyDataAppEventEntity(TeaModel):
             return _map
 
         result = dict()
+        if self.cause_analysis is not None:
+            result['CauseAnalysis'] = self.cause_analysis
         if self.event_type is not None:
             result['EventType'] = self.event_type
         if self.first_timestamp is not None:
@@ -38013,6 +38017,8 @@ class ListAppEventsResponseBodyDataAppEventEntity(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CauseAnalysis') is not None:
+            self.cause_analysis = m.get('CauseAnalysis')
         if m.get('EventType') is not None:
             self.event_type = m.get('EventType')
         if m.get('FirstTimestamp') is not None:
