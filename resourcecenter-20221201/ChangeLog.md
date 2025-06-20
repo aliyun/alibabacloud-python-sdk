@@ -1,3 +1,18 @@
+2025-06-20 Version: 1.4.0
+- Support API CreateDeliveryChannel.
+- Support API CreateMultiAccountDeliveryChannel.
+- Support API DeleteDeliveryChannel.
+- Support API DeleteMultiAccountDeliveryChannel.
+- Support API GetDeliveryChannel.
+- Support API GetDeliveryChannelStatistics.
+- Support API GetMultiAccountDeliveryChannel.
+- Support API GetMultiAccountDeliveryChannelStatistics.
+- Support API ListDeliveryChannels.
+- Support API ListMultiAccountDeliveryChannels.
+- Support API UpdateDeliveryChannel.
+- Support API UpdateMultiAccountDeliveryChannel.
+
+
 2025-04-01 Version: 1.3.0
 - Support API ListMultiAccountResourceRelationships.
 - Support API ListResourceRelationships.

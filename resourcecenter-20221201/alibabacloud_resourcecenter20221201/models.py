@@ -103,6 +103,316 @@ class AssociateDefaultFilterResponse(TeaModel):
         return self
 
 
+class CreateDeliveryChannelRequestDeliveryChannelFilter(TeaModel):
+    def __init__(
+        self,
+        resource_types: List[str] = None,
+    ):
+        self.resource_types = resource_types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_types is not None:
+            result['ResourceTypes'] = self.resource_types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceTypes') is not None:
+            self.resource_types = m.get('ResourceTypes')
+        return self
+
+
+class CreateDeliveryChannelRequestResourceChangeDeliverySlsProperties(TeaModel):
+    def __init__(
+        self,
+        oversized_data_oss_target_arn: str = None,
+    ):
+        self.oversized_data_oss_target_arn = oversized_data_oss_target_arn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.oversized_data_oss_target_arn is not None:
+            result['OversizedDataOssTargetArn'] = self.oversized_data_oss_target_arn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OversizedDataOssTargetArn') is not None:
+            self.oversized_data_oss_target_arn = m.get('OversizedDataOssTargetArn')
+        return self
+
+
+class CreateDeliveryChannelRequestResourceChangeDelivery(TeaModel):
+    def __init__(
+        self,
+        sls_properties: CreateDeliveryChannelRequestResourceChangeDeliverySlsProperties = None,
+        target_arn: str = None,
+        target_type: str = None,
+    ):
+        self.sls_properties = sls_properties
+        self.target_arn = target_arn
+        self.target_type = target_type
+
+    def validate(self):
+        if self.sls_properties:
+            self.sls_properties.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sls_properties is not None:
+            result['SlsProperties'] = self.sls_properties.to_map()
+        if self.target_arn is not None:
+            result['TargetArn'] = self.target_arn
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SlsProperties') is not None:
+            temp_model = CreateDeliveryChannelRequestResourceChangeDeliverySlsProperties()
+            self.sls_properties = temp_model.from_map(m['SlsProperties'])
+        if m.get('TargetArn') is not None:
+            self.target_arn = m.get('TargetArn')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        return self
+
+
+class CreateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties(TeaModel):
+    def __init__(
+        self,
+        oversized_data_oss_target_arn: str = None,
+    ):
+        self.oversized_data_oss_target_arn = oversized_data_oss_target_arn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.oversized_data_oss_target_arn is not None:
+            result['OversizedDataOssTargetArn'] = self.oversized_data_oss_target_arn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OversizedDataOssTargetArn') is not None:
+            self.oversized_data_oss_target_arn = m.get('OversizedDataOssTargetArn')
+        return self
+
+
+class CreateDeliveryChannelRequestResourceSnapshotDelivery(TeaModel):
+    def __init__(
+        self,
+        custom_expression: str = None,
+        delivery_time: str = None,
+        sls_properties: CreateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties = None,
+        target_arn: str = None,
+        target_type: str = None,
+    ):
+        self.custom_expression = custom_expression
+        self.delivery_time = delivery_time
+        self.sls_properties = sls_properties
+        self.target_arn = target_arn
+        self.target_type = target_type
+
+    def validate(self):
+        if self.sls_properties:
+            self.sls_properties.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_expression is not None:
+            result['CustomExpression'] = self.custom_expression
+        if self.delivery_time is not None:
+            result['DeliveryTime'] = self.delivery_time
+        if self.sls_properties is not None:
+            result['SlsProperties'] = self.sls_properties.to_map()
+        if self.target_arn is not None:
+            result['TargetArn'] = self.target_arn
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomExpression') is not None:
+            self.custom_expression = m.get('CustomExpression')
+        if m.get('DeliveryTime') is not None:
+            self.delivery_time = m.get('DeliveryTime')
+        if m.get('SlsProperties') is not None:
+            temp_model = CreateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties()
+            self.sls_properties = temp_model.from_map(m['SlsProperties'])
+        if m.get('TargetArn') is not None:
+            self.target_arn = m.get('TargetArn')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        return self
+
+
+class CreateDeliveryChannelRequest(TeaModel):
+    def __init__(
+        self,
+        delivery_channel_description: str = None,
+        delivery_channel_filter: CreateDeliveryChannelRequestDeliveryChannelFilter = None,
+        delivery_channel_name: str = None,
+        resource_change_delivery: CreateDeliveryChannelRequestResourceChangeDelivery = None,
+        resource_snapshot_delivery: CreateDeliveryChannelRequestResourceSnapshotDelivery = None,
+    ):
+        self.delivery_channel_description = delivery_channel_description
+        # This parameter is required.
+        self.delivery_channel_filter = delivery_channel_filter
+        # This parameter is required.
+        self.delivery_channel_name = delivery_channel_name
+        self.resource_change_delivery = resource_change_delivery
+        self.resource_snapshot_delivery = resource_snapshot_delivery
+
+    def validate(self):
+        if self.delivery_channel_filter:
+            self.delivery_channel_filter.validate()
+        if self.resource_change_delivery:
+            self.resource_change_delivery.validate()
+        if self.resource_snapshot_delivery:
+            self.resource_snapshot_delivery.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_channel_description is not None:
+            result['DeliveryChannelDescription'] = self.delivery_channel_description
+        if self.delivery_channel_filter is not None:
+            result['DeliveryChannelFilter'] = self.delivery_channel_filter.to_map()
+        if self.delivery_channel_name is not None:
+            result['DeliveryChannelName'] = self.delivery_channel_name
+        if self.resource_change_delivery is not None:
+            result['ResourceChangeDelivery'] = self.resource_change_delivery.to_map()
+        if self.resource_snapshot_delivery is not None:
+            result['ResourceSnapshotDelivery'] = self.resource_snapshot_delivery.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryChannelDescription') is not None:
+            self.delivery_channel_description = m.get('DeliveryChannelDescription')
+        if m.get('DeliveryChannelFilter') is not None:
+            temp_model = CreateDeliveryChannelRequestDeliveryChannelFilter()
+            self.delivery_channel_filter = temp_model.from_map(m['DeliveryChannelFilter'])
+        if m.get('DeliveryChannelName') is not None:
+            self.delivery_channel_name = m.get('DeliveryChannelName')
+        if m.get('ResourceChangeDelivery') is not None:
+            temp_model = CreateDeliveryChannelRequestResourceChangeDelivery()
+            self.resource_change_delivery = temp_model.from_map(m['ResourceChangeDelivery'])
+        if m.get('ResourceSnapshotDelivery') is not None:
+            temp_model = CreateDeliveryChannelRequestResourceSnapshotDelivery()
+            self.resource_snapshot_delivery = temp_model.from_map(m['ResourceSnapshotDelivery'])
+        return self
+
+
+class CreateDeliveryChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        delivery_channel_id: str = None,
+        request_id: str = None,
+    ):
+        self.delivery_channel_id = delivery_channel_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_channel_id is not None:
+            result['DeliveryChannelId'] = self.delivery_channel_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryChannelId') is not None:
+            self.delivery_channel_id = m.get('DeliveryChannelId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateDeliveryChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDeliveryChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDeliveryChannelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateFilterRequest(TeaModel):
     def __init__(
         self,
@@ -207,6 +517,323 @@ class CreateFilterResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateFilterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateMultiAccountDeliveryChannelRequestDeliveryChannelFilter(TeaModel):
+    def __init__(
+        self,
+        account_scopes: List[str] = None,
+        resource_types: List[str] = None,
+    ):
+        # This parameter is required.
+        self.account_scopes = account_scopes
+        self.resource_types = resource_types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_scopes is not None:
+            result['AccountScopes'] = self.account_scopes
+        if self.resource_types is not None:
+            result['ResourceTypes'] = self.resource_types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountScopes') is not None:
+            self.account_scopes = m.get('AccountScopes')
+        if m.get('ResourceTypes') is not None:
+            self.resource_types = m.get('ResourceTypes')
+        return self
+
+
+class CreateMultiAccountDeliveryChannelRequestResourceChangeDeliverySlsProperties(TeaModel):
+    def __init__(
+        self,
+        oversized_data_oss_target_arn: str = None,
+    ):
+        self.oversized_data_oss_target_arn = oversized_data_oss_target_arn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.oversized_data_oss_target_arn is not None:
+            result['OversizedDataOssTargetArn'] = self.oversized_data_oss_target_arn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OversizedDataOssTargetArn') is not None:
+            self.oversized_data_oss_target_arn = m.get('OversizedDataOssTargetArn')
+        return self
+
+
+class CreateMultiAccountDeliveryChannelRequestResourceChangeDelivery(TeaModel):
+    def __init__(
+        self,
+        sls_properties: CreateMultiAccountDeliveryChannelRequestResourceChangeDeliverySlsProperties = None,
+        target_arn: str = None,
+        target_type: str = None,
+    ):
+        self.sls_properties = sls_properties
+        self.target_arn = target_arn
+        self.target_type = target_type
+
+    def validate(self):
+        if self.sls_properties:
+            self.sls_properties.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sls_properties is not None:
+            result['SlsProperties'] = self.sls_properties.to_map()
+        if self.target_arn is not None:
+            result['TargetArn'] = self.target_arn
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SlsProperties') is not None:
+            temp_model = CreateMultiAccountDeliveryChannelRequestResourceChangeDeliverySlsProperties()
+            self.sls_properties = temp_model.from_map(m['SlsProperties'])
+        if m.get('TargetArn') is not None:
+            self.target_arn = m.get('TargetArn')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        return self
+
+
+class CreateMultiAccountDeliveryChannelRequestResourceSnapshotDeliverySlsProperties(TeaModel):
+    def __init__(
+        self,
+        oversized_data_oss_target_arn: str = None,
+    ):
+        self.oversized_data_oss_target_arn = oversized_data_oss_target_arn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.oversized_data_oss_target_arn is not None:
+            result['OversizedDataOssTargetArn'] = self.oversized_data_oss_target_arn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OversizedDataOssTargetArn') is not None:
+            self.oversized_data_oss_target_arn = m.get('OversizedDataOssTargetArn')
+        return self
+
+
+class CreateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery(TeaModel):
+    def __init__(
+        self,
+        custom_expression: str = None,
+        delivery_time: str = None,
+        sls_properties: CreateMultiAccountDeliveryChannelRequestResourceSnapshotDeliverySlsProperties = None,
+        target_arn: str = None,
+        target_type: str = None,
+    ):
+        self.custom_expression = custom_expression
+        self.delivery_time = delivery_time
+        self.sls_properties = sls_properties
+        self.target_arn = target_arn
+        self.target_type = target_type
+
+    def validate(self):
+        if self.sls_properties:
+            self.sls_properties.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_expression is not None:
+            result['CustomExpression'] = self.custom_expression
+        if self.delivery_time is not None:
+            result['DeliveryTime'] = self.delivery_time
+        if self.sls_properties is not None:
+            result['SlsProperties'] = self.sls_properties.to_map()
+        if self.target_arn is not None:
+            result['TargetArn'] = self.target_arn
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomExpression') is not None:
+            self.custom_expression = m.get('CustomExpression')
+        if m.get('DeliveryTime') is not None:
+            self.delivery_time = m.get('DeliveryTime')
+        if m.get('SlsProperties') is not None:
+            temp_model = CreateMultiAccountDeliveryChannelRequestResourceSnapshotDeliverySlsProperties()
+            self.sls_properties = temp_model.from_map(m['SlsProperties'])
+        if m.get('TargetArn') is not None:
+            self.target_arn = m.get('TargetArn')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        return self
+
+
+class CreateMultiAccountDeliveryChannelRequest(TeaModel):
+    def __init__(
+        self,
+        delivery_channel_description: str = None,
+        delivery_channel_filter: CreateMultiAccountDeliveryChannelRequestDeliveryChannelFilter = None,
+        delivery_channel_name: str = None,
+        resource_change_delivery: CreateMultiAccountDeliveryChannelRequestResourceChangeDelivery = None,
+        resource_snapshot_delivery: CreateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery = None,
+    ):
+        self.delivery_channel_description = delivery_channel_description
+        # This parameter is required.
+        self.delivery_channel_filter = delivery_channel_filter
+        # This parameter is required.
+        self.delivery_channel_name = delivery_channel_name
+        self.resource_change_delivery = resource_change_delivery
+        self.resource_snapshot_delivery = resource_snapshot_delivery
+
+    def validate(self):
+        if self.delivery_channel_filter:
+            self.delivery_channel_filter.validate()
+        if self.resource_change_delivery:
+            self.resource_change_delivery.validate()
+        if self.resource_snapshot_delivery:
+            self.resource_snapshot_delivery.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_channel_description is not None:
+            result['DeliveryChannelDescription'] = self.delivery_channel_description
+        if self.delivery_channel_filter is not None:
+            result['DeliveryChannelFilter'] = self.delivery_channel_filter.to_map()
+        if self.delivery_channel_name is not None:
+            result['DeliveryChannelName'] = self.delivery_channel_name
+        if self.resource_change_delivery is not None:
+            result['ResourceChangeDelivery'] = self.resource_change_delivery.to_map()
+        if self.resource_snapshot_delivery is not None:
+            result['ResourceSnapshotDelivery'] = self.resource_snapshot_delivery.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryChannelDescription') is not None:
+            self.delivery_channel_description = m.get('DeliveryChannelDescription')
+        if m.get('DeliveryChannelFilter') is not None:
+            temp_model = CreateMultiAccountDeliveryChannelRequestDeliveryChannelFilter()
+            self.delivery_channel_filter = temp_model.from_map(m['DeliveryChannelFilter'])
+        if m.get('DeliveryChannelName') is not None:
+            self.delivery_channel_name = m.get('DeliveryChannelName')
+        if m.get('ResourceChangeDelivery') is not None:
+            temp_model = CreateMultiAccountDeliveryChannelRequestResourceChangeDelivery()
+            self.resource_change_delivery = temp_model.from_map(m['ResourceChangeDelivery'])
+        if m.get('ResourceSnapshotDelivery') is not None:
+            temp_model = CreateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery()
+            self.resource_snapshot_delivery = temp_model.from_map(m['ResourceSnapshotDelivery'])
+        return self
+
+
+class CreateMultiAccountDeliveryChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        delivery_channel_id: str = None,
+        request_id: str = None,
+    ):
+        self.delivery_channel_id = delivery_channel_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_channel_id is not None:
+            result['DeliveryChannelId'] = self.delivery_channel_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryChannelId') is not None:
+            self.delivery_channel_id = m.get('DeliveryChannelId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateMultiAccountDeliveryChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateMultiAccountDeliveryChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateMultiAccountDeliveryChannelResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -339,6 +966,102 @@ class CreateSavedQueryResponse(TeaModel):
         return self
 
 
+class DeleteDeliveryChannelRequest(TeaModel):
+    def __init__(
+        self,
+        delivery_channel_id: str = None,
+    ):
+        # This parameter is required.
+        self.delivery_channel_id = delivery_channel_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_channel_id is not None:
+            result['DeliveryChannelId'] = self.delivery_channel_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryChannelId') is not None:
+            self.delivery_channel_id = m.get('DeliveryChannelId')
+        return self
+
+
+class DeleteDeliveryChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteDeliveryChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDeliveryChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDeliveryChannelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteFilterRequest(TeaModel):
     def __init__(
         self,
@@ -434,6 +1157,102 @@ class DeleteFilterResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteFilterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteMultiAccountDeliveryChannelRequest(TeaModel):
+    def __init__(
+        self,
+        delivery_channel_id: str = None,
+    ):
+        # This parameter is required.
+        self.delivery_channel_id = delivery_channel_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_channel_id is not None:
+            result['DeliveryChannelId'] = self.delivery_channel_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryChannelId') is not None:
+            self.delivery_channel_id = m.get('DeliveryChannelId')
+        return self
+
+
+class DeleteMultiAccountDeliveryChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteMultiAccountDeliveryChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteMultiAccountDeliveryChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteMultiAccountDeliveryChannelResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -920,7 +1739,13 @@ class ExecuteMultiAccountSQLQueryRequest(TeaModel):
         # 
         # This parameter is required.
         self.expression = expression
+        # The maximum number of entries to return on each page.
+        # 
+        # Valid values: 1 to 1000.
+        # 
+        # Default value: 1000.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
         # The search scope. The value of this parameter can be one of the following items:
         # 
@@ -1123,7 +1948,12 @@ class ExecuteSQLQueryRequest(TeaModel):
         # 
         # This parameter is required.
         self.expression = expression
+        # The number of entries per page.
+        # 
+        # *   Valid values: 1 to 1000.
+        # *   Default value: 1000.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
         # The search scope.
         # 
@@ -1304,6 +2134,469 @@ class ExecuteSQLQueryResponse(TeaModel):
         return self
 
 
+class GetDeliveryChannelRequest(TeaModel):
+    def __init__(
+        self,
+        delivery_channel_id: str = None,
+    ):
+        self.delivery_channel_id = delivery_channel_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_channel_id is not None:
+            result['DeliveryChannelId'] = self.delivery_channel_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryChannelId') is not None:
+            self.delivery_channel_id = m.get('DeliveryChannelId')
+        return self
+
+
+class GetDeliveryChannelResponseBodyDeliveryChannelFilter(TeaModel):
+    def __init__(
+        self,
+        resource_types: List[str] = None,
+    ):
+        self.resource_types = resource_types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_types is not None:
+            result['ResourceTypes'] = self.resource_types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceTypes') is not None:
+            self.resource_types = m.get('ResourceTypes')
+        return self
+
+
+class GetDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties(TeaModel):
+    def __init__(
+        self,
+        oversized_data_oss_target_arn: str = None,
+    ):
+        self.oversized_data_oss_target_arn = oversized_data_oss_target_arn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.oversized_data_oss_target_arn is not None:
+            result['OversizedDataOssTargetArn'] = self.oversized_data_oss_target_arn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OversizedDataOssTargetArn') is not None:
+            self.oversized_data_oss_target_arn = m.get('OversizedDataOssTargetArn')
+        return self
+
+
+class GetDeliveryChannelResponseBodyResourceChangeDelivery(TeaModel):
+    def __init__(
+        self,
+        sls_properties: GetDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties = None,
+        target_arn: str = None,
+        target_type: str = None,
+    ):
+        self.sls_properties = sls_properties
+        self.target_arn = target_arn
+        self.target_type = target_type
+
+    def validate(self):
+        if self.sls_properties:
+            self.sls_properties.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sls_properties is not None:
+            result['SlsProperties'] = self.sls_properties.to_map()
+        if self.target_arn is not None:
+            result['TargetArn'] = self.target_arn
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SlsProperties') is not None:
+            temp_model = GetDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties()
+            self.sls_properties = temp_model.from_map(m['SlsProperties'])
+        if m.get('TargetArn') is not None:
+            self.target_arn = m.get('TargetArn')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        return self
+
+
+class GetDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties(TeaModel):
+    def __init__(
+        self,
+        oversized_data_oss_target_arn: str = None,
+    ):
+        self.oversized_data_oss_target_arn = oversized_data_oss_target_arn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.oversized_data_oss_target_arn is not None:
+            result['OversizedDataOssTargetArn'] = self.oversized_data_oss_target_arn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OversizedDataOssTargetArn') is not None:
+            self.oversized_data_oss_target_arn = m.get('OversizedDataOssTargetArn')
+        return self
+
+
+class GetDeliveryChannelResponseBodyResourceSnapshotDelivery(TeaModel):
+    def __init__(
+        self,
+        custom_expression: str = None,
+        delivery_time: str = None,
+        sls_properties: GetDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties = None,
+        target_arn: str = None,
+        target_type: str = None,
+    ):
+        self.custom_expression = custom_expression
+        self.delivery_time = delivery_time
+        self.sls_properties = sls_properties
+        self.target_arn = target_arn
+        self.target_type = target_type
+
+    def validate(self):
+        if self.sls_properties:
+            self.sls_properties.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_expression is not None:
+            result['CustomExpression'] = self.custom_expression
+        if self.delivery_time is not None:
+            result['DeliveryTime'] = self.delivery_time
+        if self.sls_properties is not None:
+            result['SlsProperties'] = self.sls_properties.to_map()
+        if self.target_arn is not None:
+            result['TargetArn'] = self.target_arn
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomExpression') is not None:
+            self.custom_expression = m.get('CustomExpression')
+        if m.get('DeliveryTime') is not None:
+            self.delivery_time = m.get('DeliveryTime')
+        if m.get('SlsProperties') is not None:
+            temp_model = GetDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties()
+            self.sls_properties = temp_model.from_map(m['SlsProperties'])
+        if m.get('TargetArn') is not None:
+            self.target_arn = m.get('TargetArn')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        return self
+
+
+class GetDeliveryChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        delivery_channel_description: str = None,
+        delivery_channel_filter: GetDeliveryChannelResponseBodyDeliveryChannelFilter = None,
+        delivery_channel_id: str = None,
+        delivery_channel_name: str = None,
+        request_id: str = None,
+        resource_change_delivery: GetDeliveryChannelResponseBodyResourceChangeDelivery = None,
+        resource_snapshot_delivery: GetDeliveryChannelResponseBodyResourceSnapshotDelivery = None,
+    ):
+        self.delivery_channel_description = delivery_channel_description
+        self.delivery_channel_filter = delivery_channel_filter
+        self.delivery_channel_id = delivery_channel_id
+        self.delivery_channel_name = delivery_channel_name
+        self.request_id = request_id
+        self.resource_change_delivery = resource_change_delivery
+        self.resource_snapshot_delivery = resource_snapshot_delivery
+
+    def validate(self):
+        if self.delivery_channel_filter:
+            self.delivery_channel_filter.validate()
+        if self.resource_change_delivery:
+            self.resource_change_delivery.validate()
+        if self.resource_snapshot_delivery:
+            self.resource_snapshot_delivery.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_channel_description is not None:
+            result['DeliveryChannelDescription'] = self.delivery_channel_description
+        if self.delivery_channel_filter is not None:
+            result['DeliveryChannelFilter'] = self.delivery_channel_filter.to_map()
+        if self.delivery_channel_id is not None:
+            result['DeliveryChannelId'] = self.delivery_channel_id
+        if self.delivery_channel_name is not None:
+            result['DeliveryChannelName'] = self.delivery_channel_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_change_delivery is not None:
+            result['ResourceChangeDelivery'] = self.resource_change_delivery.to_map()
+        if self.resource_snapshot_delivery is not None:
+            result['ResourceSnapshotDelivery'] = self.resource_snapshot_delivery.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryChannelDescription') is not None:
+            self.delivery_channel_description = m.get('DeliveryChannelDescription')
+        if m.get('DeliveryChannelFilter') is not None:
+            temp_model = GetDeliveryChannelResponseBodyDeliveryChannelFilter()
+            self.delivery_channel_filter = temp_model.from_map(m['DeliveryChannelFilter'])
+        if m.get('DeliveryChannelId') is not None:
+            self.delivery_channel_id = m.get('DeliveryChannelId')
+        if m.get('DeliveryChannelName') is not None:
+            self.delivery_channel_name = m.get('DeliveryChannelName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceChangeDelivery') is not None:
+            temp_model = GetDeliveryChannelResponseBodyResourceChangeDelivery()
+            self.resource_change_delivery = temp_model.from_map(m['ResourceChangeDelivery'])
+        if m.get('ResourceSnapshotDelivery') is not None:
+            temp_model = GetDeliveryChannelResponseBodyResourceSnapshotDelivery()
+            self.resource_snapshot_delivery = temp_model.from_map(m['ResourceSnapshotDelivery'])
+        return self
+
+
+class GetDeliveryChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDeliveryChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDeliveryChannelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDeliveryChannelStatisticsRequest(TeaModel):
+    def __init__(
+        self,
+        delivery_channel_id: str = None,
+    ):
+        # This parameter is required.
+        self.delivery_channel_id = delivery_channel_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_channel_id is not None:
+            result['DeliveryChannelId'] = self.delivery_channel_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryChannelId') is not None:
+            self.delivery_channel_id = m.get('DeliveryChannelId')
+        return self
+
+
+class GetDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics(TeaModel):
+    def __init__(
+        self,
+        delivery_channel_id: str = None,
+        delivery_channel_name: str = None,
+        latest_change_delivery_time: str = None,
+        latest_snapshot_delivery_time: str = None,
+    ):
+        self.delivery_channel_id = delivery_channel_id
+        self.delivery_channel_name = delivery_channel_name
+        self.latest_change_delivery_time = latest_change_delivery_time
+        self.latest_snapshot_delivery_time = latest_snapshot_delivery_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_channel_id is not None:
+            result['DeliveryChannelId'] = self.delivery_channel_id
+        if self.delivery_channel_name is not None:
+            result['DeliveryChannelName'] = self.delivery_channel_name
+        if self.latest_change_delivery_time is not None:
+            result['LatestChangeDeliveryTime'] = self.latest_change_delivery_time
+        if self.latest_snapshot_delivery_time is not None:
+            result['LatestSnapshotDeliveryTime'] = self.latest_snapshot_delivery_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryChannelId') is not None:
+            self.delivery_channel_id = m.get('DeliveryChannelId')
+        if m.get('DeliveryChannelName') is not None:
+            self.delivery_channel_name = m.get('DeliveryChannelName')
+        if m.get('LatestChangeDeliveryTime') is not None:
+            self.latest_change_delivery_time = m.get('LatestChangeDeliveryTime')
+        if m.get('LatestSnapshotDeliveryTime') is not None:
+            self.latest_snapshot_delivery_time = m.get('LatestSnapshotDeliveryTime')
+        return self
+
+
+class GetDeliveryChannelStatisticsResponseBody(TeaModel):
+    def __init__(
+        self,
+        delivery_channel_statistics: GetDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics = None,
+        request_id: str = None,
+    ):
+        self.delivery_channel_statistics = delivery_channel_statistics
+        self.request_id = request_id
+
+    def validate(self):
+        if self.delivery_channel_statistics:
+            self.delivery_channel_statistics.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_channel_statistics is not None:
+            result['DeliveryChannelStatistics'] = self.delivery_channel_statistics.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryChannelStatistics') is not None:
+            temp_model = GetDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics()
+            self.delivery_channel_statistics = temp_model.from_map(m['DeliveryChannelStatistics'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetDeliveryChannelStatisticsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDeliveryChannelStatisticsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDeliveryChannelStatisticsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetExampleQueryRequest(TeaModel):
     def __init__(
         self,
@@ -1459,6 +2752,475 @@ class GetExampleQueryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetExampleQueryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetMultiAccountDeliveryChannelRequest(TeaModel):
+    def __init__(
+        self,
+        delivery_channel_id: str = None,
+    ):
+        self.delivery_channel_id = delivery_channel_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_channel_id is not None:
+            result['DeliveryChannelId'] = self.delivery_channel_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryChannelId') is not None:
+            self.delivery_channel_id = m.get('DeliveryChannelId')
+        return self
+
+
+class GetMultiAccountDeliveryChannelResponseBodyDeliveryChannelFilter(TeaModel):
+    def __init__(
+        self,
+        account_scopes: List[str] = None,
+        resource_types: List[str] = None,
+    ):
+        self.account_scopes = account_scopes
+        self.resource_types = resource_types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_scopes is not None:
+            result['AccountScopes'] = self.account_scopes
+        if self.resource_types is not None:
+            result['ResourceTypes'] = self.resource_types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountScopes') is not None:
+            self.account_scopes = m.get('AccountScopes')
+        if m.get('ResourceTypes') is not None:
+            self.resource_types = m.get('ResourceTypes')
+        return self
+
+
+class GetMultiAccountDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties(TeaModel):
+    def __init__(
+        self,
+        oversized_data_oss_target_arn: str = None,
+    ):
+        self.oversized_data_oss_target_arn = oversized_data_oss_target_arn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.oversized_data_oss_target_arn is not None:
+            result['OversizedDataOssTargetArn'] = self.oversized_data_oss_target_arn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OversizedDataOssTargetArn') is not None:
+            self.oversized_data_oss_target_arn = m.get('OversizedDataOssTargetArn')
+        return self
+
+
+class GetMultiAccountDeliveryChannelResponseBodyResourceChangeDelivery(TeaModel):
+    def __init__(
+        self,
+        sls_properties: GetMultiAccountDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties = None,
+        target_arn: str = None,
+        target_type: str = None,
+    ):
+        self.sls_properties = sls_properties
+        self.target_arn = target_arn
+        self.target_type = target_type
+
+    def validate(self):
+        if self.sls_properties:
+            self.sls_properties.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sls_properties is not None:
+            result['SlsProperties'] = self.sls_properties.to_map()
+        if self.target_arn is not None:
+            result['TargetArn'] = self.target_arn
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SlsProperties') is not None:
+            temp_model = GetMultiAccountDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties()
+            self.sls_properties = temp_model.from_map(m['SlsProperties'])
+        if m.get('TargetArn') is not None:
+            self.target_arn = m.get('TargetArn')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        return self
+
+
+class GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties(TeaModel):
+    def __init__(
+        self,
+        oversized_data_oss_target_arn: str = None,
+    ):
+        self.oversized_data_oss_target_arn = oversized_data_oss_target_arn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.oversized_data_oss_target_arn is not None:
+            result['OversizedDataOssTargetArn'] = self.oversized_data_oss_target_arn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OversizedDataOssTargetArn') is not None:
+            self.oversized_data_oss_target_arn = m.get('OversizedDataOssTargetArn')
+        return self
+
+
+class GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery(TeaModel):
+    def __init__(
+        self,
+        custom_expression: str = None,
+        delivery_time: str = None,
+        sls_properties: GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties = None,
+        target_arn: str = None,
+        target_type: str = None,
+    ):
+        self.custom_expression = custom_expression
+        self.delivery_time = delivery_time
+        self.sls_properties = sls_properties
+        self.target_arn = target_arn
+        self.target_type = target_type
+
+    def validate(self):
+        if self.sls_properties:
+            self.sls_properties.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_expression is not None:
+            result['CustomExpression'] = self.custom_expression
+        if self.delivery_time is not None:
+            result['DeliveryTime'] = self.delivery_time
+        if self.sls_properties is not None:
+            result['SlsProperties'] = self.sls_properties.to_map()
+        if self.target_arn is not None:
+            result['TargetArn'] = self.target_arn
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomExpression') is not None:
+            self.custom_expression = m.get('CustomExpression')
+        if m.get('DeliveryTime') is not None:
+            self.delivery_time = m.get('DeliveryTime')
+        if m.get('SlsProperties') is not None:
+            temp_model = GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties()
+            self.sls_properties = temp_model.from_map(m['SlsProperties'])
+        if m.get('TargetArn') is not None:
+            self.target_arn = m.get('TargetArn')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        return self
+
+
+class GetMultiAccountDeliveryChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        delivery_channel_description: str = None,
+        delivery_channel_filter: GetMultiAccountDeliveryChannelResponseBodyDeliveryChannelFilter = None,
+        delivery_channel_id: str = None,
+        delivery_channel_name: str = None,
+        request_id: str = None,
+        resource_change_delivery: GetMultiAccountDeliveryChannelResponseBodyResourceChangeDelivery = None,
+        resource_snapshot_delivery: GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery = None,
+    ):
+        self.delivery_channel_description = delivery_channel_description
+        self.delivery_channel_filter = delivery_channel_filter
+        self.delivery_channel_id = delivery_channel_id
+        self.delivery_channel_name = delivery_channel_name
+        self.request_id = request_id
+        self.resource_change_delivery = resource_change_delivery
+        self.resource_snapshot_delivery = resource_snapshot_delivery
+
+    def validate(self):
+        if self.delivery_channel_filter:
+            self.delivery_channel_filter.validate()
+        if self.resource_change_delivery:
+            self.resource_change_delivery.validate()
+        if self.resource_snapshot_delivery:
+            self.resource_snapshot_delivery.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_channel_description is not None:
+            result['DeliveryChannelDescription'] = self.delivery_channel_description
+        if self.delivery_channel_filter is not None:
+            result['DeliveryChannelFilter'] = self.delivery_channel_filter.to_map()
+        if self.delivery_channel_id is not None:
+            result['DeliveryChannelId'] = self.delivery_channel_id
+        if self.delivery_channel_name is not None:
+            result['DeliveryChannelName'] = self.delivery_channel_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_change_delivery is not None:
+            result['ResourceChangeDelivery'] = self.resource_change_delivery.to_map()
+        if self.resource_snapshot_delivery is not None:
+            result['ResourceSnapshotDelivery'] = self.resource_snapshot_delivery.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryChannelDescription') is not None:
+            self.delivery_channel_description = m.get('DeliveryChannelDescription')
+        if m.get('DeliveryChannelFilter') is not None:
+            temp_model = GetMultiAccountDeliveryChannelResponseBodyDeliveryChannelFilter()
+            self.delivery_channel_filter = temp_model.from_map(m['DeliveryChannelFilter'])
+        if m.get('DeliveryChannelId') is not None:
+            self.delivery_channel_id = m.get('DeliveryChannelId')
+        if m.get('DeliveryChannelName') is not None:
+            self.delivery_channel_name = m.get('DeliveryChannelName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceChangeDelivery') is not None:
+            temp_model = GetMultiAccountDeliveryChannelResponseBodyResourceChangeDelivery()
+            self.resource_change_delivery = temp_model.from_map(m['ResourceChangeDelivery'])
+        if m.get('ResourceSnapshotDelivery') is not None:
+            temp_model = GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery()
+            self.resource_snapshot_delivery = temp_model.from_map(m['ResourceSnapshotDelivery'])
+        return self
+
+
+class GetMultiAccountDeliveryChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetMultiAccountDeliveryChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetMultiAccountDeliveryChannelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetMultiAccountDeliveryChannelStatisticsRequest(TeaModel):
+    def __init__(
+        self,
+        delivery_channel_id: str = None,
+    ):
+        # This parameter is required.
+        self.delivery_channel_id = delivery_channel_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_channel_id is not None:
+            result['DeliveryChannelId'] = self.delivery_channel_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryChannelId') is not None:
+            self.delivery_channel_id = m.get('DeliveryChannelId')
+        return self
+
+
+class GetMultiAccountDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics(TeaModel):
+    def __init__(
+        self,
+        delivery_channel_id: str = None,
+        delivery_channel_name: str = None,
+        latest_change_delivery_time: str = None,
+        latest_snapshot_delivery_time: str = None,
+    ):
+        self.delivery_channel_id = delivery_channel_id
+        self.delivery_channel_name = delivery_channel_name
+        self.latest_change_delivery_time = latest_change_delivery_time
+        self.latest_snapshot_delivery_time = latest_snapshot_delivery_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_channel_id is not None:
+            result['DeliveryChannelId'] = self.delivery_channel_id
+        if self.delivery_channel_name is not None:
+            result['DeliveryChannelName'] = self.delivery_channel_name
+        if self.latest_change_delivery_time is not None:
+            result['LatestChangeDeliveryTime'] = self.latest_change_delivery_time
+        if self.latest_snapshot_delivery_time is not None:
+            result['LatestSnapshotDeliveryTime'] = self.latest_snapshot_delivery_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryChannelId') is not None:
+            self.delivery_channel_id = m.get('DeliveryChannelId')
+        if m.get('DeliveryChannelName') is not None:
+            self.delivery_channel_name = m.get('DeliveryChannelName')
+        if m.get('LatestChangeDeliveryTime') is not None:
+            self.latest_change_delivery_time = m.get('LatestChangeDeliveryTime')
+        if m.get('LatestSnapshotDeliveryTime') is not None:
+            self.latest_snapshot_delivery_time = m.get('LatestSnapshotDeliveryTime')
+        return self
+
+
+class GetMultiAccountDeliveryChannelStatisticsResponseBody(TeaModel):
+    def __init__(
+        self,
+        delivery_channel_statistics: GetMultiAccountDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics = None,
+        request_id: str = None,
+    ):
+        self.delivery_channel_statistics = delivery_channel_statistics
+        self.request_id = request_id
+
+    def validate(self):
+        if self.delivery_channel_statistics:
+            self.delivery_channel_statistics.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_channel_statistics is not None:
+            result['DeliveryChannelStatistics'] = self.delivery_channel_statistics.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryChannelStatistics') is not None:
+            temp_model = GetMultiAccountDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics()
+            self.delivery_channel_statistics = temp_model.from_map(m['DeliveryChannelStatistics'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetMultiAccountDeliveryChannelStatisticsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetMultiAccountDeliveryChannelStatisticsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetMultiAccountDeliveryChannelStatisticsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2709,6 +4471,179 @@ class GetSavedQueryResponse(TeaModel):
         return self
 
 
+class ListDeliveryChannelsRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class ListDeliveryChannelsResponseBodyDeliveryChannels(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        delivery_channel_description: str = None,
+        delivery_channel_id: str = None,
+        delivery_channel_name: str = None,
+    ):
+        self.create_time = create_time
+        self.delivery_channel_description = delivery_channel_description
+        self.delivery_channel_id = delivery_channel_id
+        self.delivery_channel_name = delivery_channel_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.delivery_channel_description is not None:
+            result['DeliveryChannelDescription'] = self.delivery_channel_description
+        if self.delivery_channel_id is not None:
+            result['DeliveryChannelId'] = self.delivery_channel_id
+        if self.delivery_channel_name is not None:
+            result['DeliveryChannelName'] = self.delivery_channel_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DeliveryChannelDescription') is not None:
+            self.delivery_channel_description = m.get('DeliveryChannelDescription')
+        if m.get('DeliveryChannelId') is not None:
+            self.delivery_channel_id = m.get('DeliveryChannelId')
+        if m.get('DeliveryChannelName') is not None:
+            self.delivery_channel_name = m.get('DeliveryChannelName')
+        return self
+
+
+class ListDeliveryChannelsResponseBody(TeaModel):
+    def __init__(
+        self,
+        delivery_channels: List[ListDeliveryChannelsResponseBodyDeliveryChannels] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.delivery_channels = delivery_channels
+        self.max_results = max_results
+        # This parameter is required.
+        self.next_token = next_token
+        self.request_id = request_id
+
+    def validate(self):
+        if self.delivery_channels:
+            for k in self.delivery_channels:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DeliveryChannels'] = []
+        if self.delivery_channels is not None:
+            for k in self.delivery_channels:
+                result['DeliveryChannels'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.delivery_channels = []
+        if m.get('DeliveryChannels') is not None:
+            for k in m.get('DeliveryChannels'):
+                temp_model = ListDeliveryChannelsResponseBodyDeliveryChannels()
+                self.delivery_channels.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListDeliveryChannelsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDeliveryChannelsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDeliveryChannelsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListExampleQueriesRequest(TeaModel):
     def __init__(
         self,
@@ -3016,6 +4951,179 @@ class ListFiltersResponse(TeaModel):
         return self
 
 
+class ListMultiAccountDeliveryChannelsRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class ListMultiAccountDeliveryChannelsResponseBodyDeliveryChannels(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        delivery_channel_description: str = None,
+        delivery_channel_id: str = None,
+        delivery_channel_name: str = None,
+    ):
+        self.create_time = create_time
+        self.delivery_channel_description = delivery_channel_description
+        self.delivery_channel_id = delivery_channel_id
+        self.delivery_channel_name = delivery_channel_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.delivery_channel_description is not None:
+            result['DeliveryChannelDescription'] = self.delivery_channel_description
+        if self.delivery_channel_id is not None:
+            result['DeliveryChannelId'] = self.delivery_channel_id
+        if self.delivery_channel_name is not None:
+            result['DeliveryChannelName'] = self.delivery_channel_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DeliveryChannelDescription') is not None:
+            self.delivery_channel_description = m.get('DeliveryChannelDescription')
+        if m.get('DeliveryChannelId') is not None:
+            self.delivery_channel_id = m.get('DeliveryChannelId')
+        if m.get('DeliveryChannelName') is not None:
+            self.delivery_channel_name = m.get('DeliveryChannelName')
+        return self
+
+
+class ListMultiAccountDeliveryChannelsResponseBody(TeaModel):
+    def __init__(
+        self,
+        delivery_channels: List[ListMultiAccountDeliveryChannelsResponseBodyDeliveryChannels] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.delivery_channels = delivery_channels
+        self.max_results = max_results
+        # This parameter is required.
+        self.next_token = next_token
+        self.request_id = request_id
+
+    def validate(self):
+        if self.delivery_channels:
+            for k in self.delivery_channels:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DeliveryChannels'] = []
+        if self.delivery_channels is not None:
+            for k in self.delivery_channels:
+                result['DeliveryChannels'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.delivery_channels = []
+        if m.get('DeliveryChannels') is not None:
+            for k in m.get('DeliveryChannels'):
+                temp_model = ListMultiAccountDeliveryChannelsResponseBodyDeliveryChannels()
+                self.delivery_channels.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListMultiAccountDeliveryChannelsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListMultiAccountDeliveryChannelsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListMultiAccountDeliveryChannelsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListMultiAccountResourceGroupsRequest(TeaModel):
     def __init__(
         self,
@@ -3234,8 +5342,11 @@ class ListMultiAccountResourceRelationshipsRequestRelatedResourceFilter(TeaModel
         match_type: str = None,
         value: List[str] = None,
     ):
+        # The key of the filter condition. For more information, see `Supported filter parameters`.
         self.key = key
+        # The matching method.
         self.match_type = match_type
+        # The values of the filter condition.
         self.value = value
 
     def validate(self):
@@ -3277,15 +5388,35 @@ class ListMultiAccountResourceRelationshipsRequest(TeaModel):
         resource_type: str = None,
         scope: str = None,
     ):
+        # The maximum number of entries per page.
+        # 
+        # Valid values: 1 to 500.
+        # 
+        # Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The region ID of the resource.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The filter conditions for resources associated with the resource.
         self.related_resource_filter = related_resource_filter
+        # The ID of the resource.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The type of the resource.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The search scope. Valid values:
+        # 
+        # *   ID of a resource directory: Resources within the management account and all members of the resource directory are searched. You can call the [GetResourceDirectory](https://help.aliyun.com/document_detail/159995.html) operation to query the ID.
+        # *   ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched. You can call the [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html) operation to query the ID.
+        # *   ID of a folder: Resources within all members in the folder are searched. You can call the [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html) operation to query the ID.
+        # *   ID of a member: Resources within the member are searched. You can call the [ListAccounts](https://help.aliyun.com/document_detail/160016.html) operation to query the ID.
+        # 
         # This parameter is required.
         self.scope = scope
 
@@ -3352,12 +5483,19 @@ class ListMultiAccountResourceRelationshipsResponseBodyResourceRelationships(Tea
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The ID of the management account or member.
         self.account_id = account_id
+        # The region ID of the resource.
         self.region_id = region_id
+        # The ID of the associated resource.
         self.related_resource_id = related_resource_id
+        # The region ID of the associated resource.
         self.related_resource_region_id = related_resource_region_id
+        # The type of the associated resource.
         self.related_resource_type = related_resource_type
+        # The ID of the resource.
         self.resource_id = resource_id
+        # The type of the resource.
         self.resource_type = resource_type
 
     def validate(self):
@@ -3413,10 +5551,20 @@ class ListMultiAccountResourceRelationshipsResponseBody(TeaModel):
         resource_relationships: List[ListMultiAccountResourceRelationshipsResponseBodyResourceRelationships] = None,
         scope: str = None,
     ):
+        # The maximum number of entries per page.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The resource relationships.
         self.resource_relationships = resource_relationships
+        # The search scope. Valid values:
+        # 
+        # *   ID of a resource directory: Resources within the management account and all members of the resource directory are searched.
+        # *   ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched.
+        # *   ID of a folder: Resources within all members in the folder are searched.
+        # *   ID of a member: Resources within the member are searched.
         self.scope = scope
 
     def validate(self):
@@ -3528,12 +5676,12 @@ class ListMultiAccountTagKeysRequest(TeaModel):
         # 
         # If the total number of entries returned for the current request exceeds the value of the `MaxResults` parameter, the entries are truncated. In this case, you can use the `token` to initiate another request and obtain the remaining entries.
         self.next_token = next_token
-        # The search scope. You can set the value to one of the following items:
+        # The search scope. The value of this parameter can be one of the following items:
         # 
-        # *   ID of a resource directory: Resources within the management account and all members of the resource directory are searched. You can call the [GetResourceDirectory](https://help.aliyun.com/document_detail/159995.html) operation to obtain the ID.
-        # *   ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched. You can call the [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html) operation to obtain the ID.
-        # *   ID of a folder: Resources within all members in the folder are searched. You can call the [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html) operation to obtain the ID.
-        # *   ID of a member: Resources within the member are searched. You can call the [ListAccounts](https://help.aliyun.com/document_detail/160016.html) operation to obtain the ID.
+        # *   ID of a resource directory: Resources within the management account and all members of the resource directory are searched. You can call the [GetResourceDirectory](https://help.aliyun.com/document_detail/159995.html) operation to obtain the ID of the resource directory. The ID is indicated by the `ResourceDirectoryId` parameter in the response of the operation.
+        # *   ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched. You can call the [GetResourceDirectory](https://help.aliyun.com/document_detail/159995.html) operation to obtain the ID of the Root folder. The ID is indicated by the `RootFolderId` parameter in the response of the operation.
+        # *   ID of a folder: Resources within all members in the folder are searched. You can call the [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html) operation to obtain the ID of the folder. The ID is indicated by the `FolderId` parameter in the response of the operation.
+        # *   ID of a member: Resources within the member are searched. You can call the [ListAccounts](https://help.aliyun.com/document_detail/160016.html) operation to obtain the ID of the member. The ID is indicated by the `AccountId` parameter in the response of the operation.
         # 
         # This parameter is required.
         self.scope = scope
@@ -3828,8 +5976,11 @@ class ListResourceRelationshipsRequestRelatedResourceFilter(TeaModel):
         match_type: str = None,
         value: List[str] = None,
     ):
+        # The key of the filter condition. For more information, see `Supported filter parameters`.
         self.key = key
+        # The matching method.
         self.match_type = match_type
+        # The values of the filter condition.
         self.value = value
 
     def validate(self):
@@ -3870,13 +6021,26 @@ class ListResourceRelationshipsRequest(TeaModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The maximum number of entries per page.
+        # 
+        # Valid values: 1 to 500.
+        # 
+        # Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The region ID of the resource.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The filter conditions for resources associated with the resource.
         self.related_resource_filter = related_resource_filter
+        # The ID of the resource.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The type of the resource.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
 
@@ -3938,11 +6102,17 @@ class ListResourceRelationshipsResponseBodyResourceRelationships(TeaModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The region ID of the resource.
         self.region_id = region_id
+        # The ID of the associated resource.
         self.related_resource_id = related_resource_id
+        # The region ID of the associated resource.
         self.related_resource_region_id = related_resource_region_id
+        # The type of the associated resource.
         self.related_resource_type = related_resource_type
+        # The ID of the resource.
         self.resource_id = resource_id
+        # The type of the resource.
         self.resource_type = resource_type
 
     def validate(self):
@@ -3993,9 +6163,13 @@ class ListResourceRelationshipsResponseBody(TeaModel):
         request_id: str = None,
         resource_relationships: List[ListResourceRelationshipsResponseBodyResourceRelationships] = None,
     ):
+        # The maximum number of entries per page.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The resource relationships.
         self.resource_relationships = resource_relationships
 
     def validate(self):
@@ -4177,6 +6351,7 @@ class ListResourceTypesResponseBodyResourceTypes(TeaModel):
         self.filter_keys = filter_keys
         # The name of the Alibaba Cloud service.
         self.product_name = product_name
+        # The name of supported related resource types.
         self.related_resource_types = related_resource_types
         # The resource type.
         self.resource_type = resource_type
@@ -5854,6 +8029,327 @@ class SearchResourcesResponse(TeaModel):
         return self
 
 
+class UpdateDeliveryChannelRequestDeliveryChannelFilter(TeaModel):
+    def __init__(
+        self,
+        resource_types: List[str] = None,
+    ):
+        self.resource_types = resource_types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_types is not None:
+            result['ResourceTypes'] = self.resource_types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceTypes') is not None:
+            self.resource_types = m.get('ResourceTypes')
+        return self
+
+
+class UpdateDeliveryChannelRequestResourceChangeDeliverySlsProperties(TeaModel):
+    def __init__(
+        self,
+        oversized_data_oss_target_arn: str = None,
+    ):
+        self.oversized_data_oss_target_arn = oversized_data_oss_target_arn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.oversized_data_oss_target_arn is not None:
+            result['OversizedDataOssTargetArn'] = self.oversized_data_oss_target_arn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OversizedDataOssTargetArn') is not None:
+            self.oversized_data_oss_target_arn = m.get('OversizedDataOssTargetArn')
+        return self
+
+
+class UpdateDeliveryChannelRequestResourceChangeDelivery(TeaModel):
+    def __init__(
+        self,
+        enabled: str = None,
+        sls_properties: UpdateDeliveryChannelRequestResourceChangeDeliverySlsProperties = None,
+        target_arn: str = None,
+        target_type: str = None,
+    ):
+        self.enabled = enabled
+        self.sls_properties = sls_properties
+        self.target_arn = target_arn
+        self.target_type = target_type
+
+    def validate(self):
+        if self.sls_properties:
+            self.sls_properties.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.sls_properties is not None:
+            result['SlsProperties'] = self.sls_properties.to_map()
+        if self.target_arn is not None:
+            result['TargetArn'] = self.target_arn
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('SlsProperties') is not None:
+            temp_model = UpdateDeliveryChannelRequestResourceChangeDeliverySlsProperties()
+            self.sls_properties = temp_model.from_map(m['SlsProperties'])
+        if m.get('TargetArn') is not None:
+            self.target_arn = m.get('TargetArn')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        return self
+
+
+class UpdateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties(TeaModel):
+    def __init__(
+        self,
+        oversized_data_oss_target_arn: str = None,
+    ):
+        self.oversized_data_oss_target_arn = oversized_data_oss_target_arn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.oversized_data_oss_target_arn is not None:
+            result['OversizedDataOssTargetArn'] = self.oversized_data_oss_target_arn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OversizedDataOssTargetArn') is not None:
+            self.oversized_data_oss_target_arn = m.get('OversizedDataOssTargetArn')
+        return self
+
+
+class UpdateDeliveryChannelRequestResourceSnapshotDelivery(TeaModel):
+    def __init__(
+        self,
+        custom_expression: str = None,
+        delivery_time: str = None,
+        enabled: str = None,
+        sls_properties: UpdateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties = None,
+        target_arn: str = None,
+        target_type: str = None,
+    ):
+        self.custom_expression = custom_expression
+        self.delivery_time = delivery_time
+        self.enabled = enabled
+        self.sls_properties = sls_properties
+        self.target_arn = target_arn
+        self.target_type = target_type
+
+    def validate(self):
+        if self.sls_properties:
+            self.sls_properties.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_expression is not None:
+            result['CustomExpression'] = self.custom_expression
+        if self.delivery_time is not None:
+            result['DeliveryTime'] = self.delivery_time
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.sls_properties is not None:
+            result['SlsProperties'] = self.sls_properties.to_map()
+        if self.target_arn is not None:
+            result['TargetArn'] = self.target_arn
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomExpression') is not None:
+            self.custom_expression = m.get('CustomExpression')
+        if m.get('DeliveryTime') is not None:
+            self.delivery_time = m.get('DeliveryTime')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('SlsProperties') is not None:
+            temp_model = UpdateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties()
+            self.sls_properties = temp_model.from_map(m['SlsProperties'])
+        if m.get('TargetArn') is not None:
+            self.target_arn = m.get('TargetArn')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        return self
+
+
+class UpdateDeliveryChannelRequest(TeaModel):
+    def __init__(
+        self,
+        delivery_channel_description: str = None,
+        delivery_channel_filter: UpdateDeliveryChannelRequestDeliveryChannelFilter = None,
+        delivery_channel_id: str = None,
+        delivery_channel_name: str = None,
+        resource_change_delivery: UpdateDeliveryChannelRequestResourceChangeDelivery = None,
+        resource_snapshot_delivery: UpdateDeliveryChannelRequestResourceSnapshotDelivery = None,
+    ):
+        self.delivery_channel_description = delivery_channel_description
+        self.delivery_channel_filter = delivery_channel_filter
+        # This parameter is required.
+        self.delivery_channel_id = delivery_channel_id
+        self.delivery_channel_name = delivery_channel_name
+        self.resource_change_delivery = resource_change_delivery
+        self.resource_snapshot_delivery = resource_snapshot_delivery
+
+    def validate(self):
+        if self.delivery_channel_filter:
+            self.delivery_channel_filter.validate()
+        if self.resource_change_delivery:
+            self.resource_change_delivery.validate()
+        if self.resource_snapshot_delivery:
+            self.resource_snapshot_delivery.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_channel_description is not None:
+            result['DeliveryChannelDescription'] = self.delivery_channel_description
+        if self.delivery_channel_filter is not None:
+            result['DeliveryChannelFilter'] = self.delivery_channel_filter.to_map()
+        if self.delivery_channel_id is not None:
+            result['DeliveryChannelId'] = self.delivery_channel_id
+        if self.delivery_channel_name is not None:
+            result['DeliveryChannelName'] = self.delivery_channel_name
+        if self.resource_change_delivery is not None:
+            result['ResourceChangeDelivery'] = self.resource_change_delivery.to_map()
+        if self.resource_snapshot_delivery is not None:
+            result['ResourceSnapshotDelivery'] = self.resource_snapshot_delivery.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryChannelDescription') is not None:
+            self.delivery_channel_description = m.get('DeliveryChannelDescription')
+        if m.get('DeliveryChannelFilter') is not None:
+            temp_model = UpdateDeliveryChannelRequestDeliveryChannelFilter()
+            self.delivery_channel_filter = temp_model.from_map(m['DeliveryChannelFilter'])
+        if m.get('DeliveryChannelId') is not None:
+            self.delivery_channel_id = m.get('DeliveryChannelId')
+        if m.get('DeliveryChannelName') is not None:
+            self.delivery_channel_name = m.get('DeliveryChannelName')
+        if m.get('ResourceChangeDelivery') is not None:
+            temp_model = UpdateDeliveryChannelRequestResourceChangeDelivery()
+            self.resource_change_delivery = temp_model.from_map(m['ResourceChangeDelivery'])
+        if m.get('ResourceSnapshotDelivery') is not None:
+            temp_model = UpdateDeliveryChannelRequestResourceSnapshotDelivery()
+            self.resource_snapshot_delivery = temp_model.from_map(m['ResourceSnapshotDelivery'])
+        return self
+
+
+class UpdateDeliveryChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateDeliveryChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateDeliveryChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateDeliveryChannelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateFilterRequest(TeaModel):
     def __init__(
         self,
@@ -5958,6 +8454,333 @@ class UpdateFilterResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateFilterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateMultiAccountDeliveryChannelRequestDeliveryChannelFilter(TeaModel):
+    def __init__(
+        self,
+        account_scopes: List[str] = None,
+        resource_types: List[str] = None,
+    ):
+        self.account_scopes = account_scopes
+        self.resource_types = resource_types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_scopes is not None:
+            result['AccountScopes'] = self.account_scopes
+        if self.resource_types is not None:
+            result['ResourceTypes'] = self.resource_types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountScopes') is not None:
+            self.account_scopes = m.get('AccountScopes')
+        if m.get('ResourceTypes') is not None:
+            self.resource_types = m.get('ResourceTypes')
+        return self
+
+
+class UpdateMultiAccountDeliveryChannelRequestResourceChangeDeliverySlsProperties(TeaModel):
+    def __init__(
+        self,
+        oversized_data_oss_target_arn: str = None,
+    ):
+        self.oversized_data_oss_target_arn = oversized_data_oss_target_arn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.oversized_data_oss_target_arn is not None:
+            result['OversizedDataOssTargetArn'] = self.oversized_data_oss_target_arn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OversizedDataOssTargetArn') is not None:
+            self.oversized_data_oss_target_arn = m.get('OversizedDataOssTargetArn')
+        return self
+
+
+class UpdateMultiAccountDeliveryChannelRequestResourceChangeDelivery(TeaModel):
+    def __init__(
+        self,
+        enabled: str = None,
+        sls_properties: UpdateMultiAccountDeliveryChannelRequestResourceChangeDeliverySlsProperties = None,
+        target_arn: str = None,
+        target_type: str = None,
+    ):
+        self.enabled = enabled
+        self.sls_properties = sls_properties
+        self.target_arn = target_arn
+        self.target_type = target_type
+
+    def validate(self):
+        if self.sls_properties:
+            self.sls_properties.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.sls_properties is not None:
+            result['SlsProperties'] = self.sls_properties.to_map()
+        if self.target_arn is not None:
+            result['TargetArn'] = self.target_arn
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('SlsProperties') is not None:
+            temp_model = UpdateMultiAccountDeliveryChannelRequestResourceChangeDeliverySlsProperties()
+            self.sls_properties = temp_model.from_map(m['SlsProperties'])
+        if m.get('TargetArn') is not None:
+            self.target_arn = m.get('TargetArn')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        return self
+
+
+class UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDeliverySlsProperties(TeaModel):
+    def __init__(
+        self,
+        oversized_data_oss_target_arn: str = None,
+    ):
+        self.oversized_data_oss_target_arn = oversized_data_oss_target_arn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.oversized_data_oss_target_arn is not None:
+            result['OversizedDataOssTargetArn'] = self.oversized_data_oss_target_arn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OversizedDataOssTargetArn') is not None:
+            self.oversized_data_oss_target_arn = m.get('OversizedDataOssTargetArn')
+        return self
+
+
+class UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery(TeaModel):
+    def __init__(
+        self,
+        custom_expression: str = None,
+        delivery_time: str = None,
+        enabled: str = None,
+        sls_properties: UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDeliverySlsProperties = None,
+        target_arn: str = None,
+        target_type: str = None,
+    ):
+        self.custom_expression = custom_expression
+        self.delivery_time = delivery_time
+        self.enabled = enabled
+        self.sls_properties = sls_properties
+        self.target_arn = target_arn
+        self.target_type = target_type
+
+    def validate(self):
+        if self.sls_properties:
+            self.sls_properties.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_expression is not None:
+            result['CustomExpression'] = self.custom_expression
+        if self.delivery_time is not None:
+            result['DeliveryTime'] = self.delivery_time
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.sls_properties is not None:
+            result['SlsProperties'] = self.sls_properties.to_map()
+        if self.target_arn is not None:
+            result['TargetArn'] = self.target_arn
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomExpression') is not None:
+            self.custom_expression = m.get('CustomExpression')
+        if m.get('DeliveryTime') is not None:
+            self.delivery_time = m.get('DeliveryTime')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('SlsProperties') is not None:
+            temp_model = UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDeliverySlsProperties()
+            self.sls_properties = temp_model.from_map(m['SlsProperties'])
+        if m.get('TargetArn') is not None:
+            self.target_arn = m.get('TargetArn')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        return self
+
+
+class UpdateMultiAccountDeliveryChannelRequest(TeaModel):
+    def __init__(
+        self,
+        delivery_channel_description: str = None,
+        delivery_channel_filter: UpdateMultiAccountDeliveryChannelRequestDeliveryChannelFilter = None,
+        delivery_channel_id: str = None,
+        delivery_channel_name: str = None,
+        resource_change_delivery: UpdateMultiAccountDeliveryChannelRequestResourceChangeDelivery = None,
+        resource_snapshot_delivery: UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery = None,
+    ):
+        self.delivery_channel_description = delivery_channel_description
+        self.delivery_channel_filter = delivery_channel_filter
+        # This parameter is required.
+        self.delivery_channel_id = delivery_channel_id
+        self.delivery_channel_name = delivery_channel_name
+        self.resource_change_delivery = resource_change_delivery
+        self.resource_snapshot_delivery = resource_snapshot_delivery
+
+    def validate(self):
+        if self.delivery_channel_filter:
+            self.delivery_channel_filter.validate()
+        if self.resource_change_delivery:
+            self.resource_change_delivery.validate()
+        if self.resource_snapshot_delivery:
+            self.resource_snapshot_delivery.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_channel_description is not None:
+            result['DeliveryChannelDescription'] = self.delivery_channel_description
+        if self.delivery_channel_filter is not None:
+            result['DeliveryChannelFilter'] = self.delivery_channel_filter.to_map()
+        if self.delivery_channel_id is not None:
+            result['DeliveryChannelId'] = self.delivery_channel_id
+        if self.delivery_channel_name is not None:
+            result['DeliveryChannelName'] = self.delivery_channel_name
+        if self.resource_change_delivery is not None:
+            result['ResourceChangeDelivery'] = self.resource_change_delivery.to_map()
+        if self.resource_snapshot_delivery is not None:
+            result['ResourceSnapshotDelivery'] = self.resource_snapshot_delivery.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryChannelDescription') is not None:
+            self.delivery_channel_description = m.get('DeliveryChannelDescription')
+        if m.get('DeliveryChannelFilter') is not None:
+            temp_model = UpdateMultiAccountDeliveryChannelRequestDeliveryChannelFilter()
+            self.delivery_channel_filter = temp_model.from_map(m['DeliveryChannelFilter'])
+        if m.get('DeliveryChannelId') is not None:
+            self.delivery_channel_id = m.get('DeliveryChannelId')
+        if m.get('DeliveryChannelName') is not None:
+            self.delivery_channel_name = m.get('DeliveryChannelName')
+        if m.get('ResourceChangeDelivery') is not None:
+            temp_model = UpdateMultiAccountDeliveryChannelRequestResourceChangeDelivery()
+            self.resource_change_delivery = temp_model.from_map(m['ResourceChangeDelivery'])
+        if m.get('ResourceSnapshotDelivery') is not None:
+            temp_model = UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery()
+            self.resource_snapshot_delivery = temp_model.from_map(m['ResourceSnapshotDelivery'])
+        return self
+
+
+class UpdateMultiAccountDeliveryChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateMultiAccountDeliveryChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateMultiAccountDeliveryChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateMultiAccountDeliveryChannelResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
