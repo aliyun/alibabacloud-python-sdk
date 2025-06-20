@@ -1,3 +1,7 @@
+2025-06-20 Version: 1.2.7
+- Update API SingleSendMail: add request parameters Attachments.
+
+
 2025-06-17 Version: 1.2.6
 - Update API BatchSendMail: add request parameters IpPoolId.
 - Update API QueryTaskByParam: add response parameters Body.data.$.IpPoolId.
