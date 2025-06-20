@@ -10,9 +10,13 @@ class ApproveOperationRequest(TeaModel):
         node_id: str = None,
         operation_type: str = None,
     ):
-        # Node ID
+        # The node ID.
         self.node_id = node_id
-        # Operation Type
+        # The O\\&M operation type
+        # 
+        # Valid value:
+        # 
+        # *   RepairMachine
         self.operation_type = operation_type
 
     def validate(self):
@@ -45,9 +49,9 @@ class ApproveOperationResponseBody(TeaModel):
         error_message: str = None,
         request_id: str = None,
     ):
-        # Error Message
+        # The error message.
         self.error_message = error_message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -123,19 +127,19 @@ class ChangeResourceGroupRequest(TeaModel):
         resource_region_id: str = None,
         resource_type: str = None,
     ):
-        # System-defined parameter. Value: **ChangeResourceGroup**.
+        # The ID of the resource group into which you want to change.
         # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
-        # $.parameters[1].schema.example
+        # The resource ID.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # Resource Group Change
+        # The region ID.
         # 
         # This parameter is required.
         self.resource_region_id = resource_region_id
-        # $.parameters[3].schema.enumValueTitles
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):
@@ -175,7 +179,7 @@ class ChangeResourceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -245,9 +249,7 @@ class CloseSessionRequest(TeaModel):
         session_id: str = None,
         session_token: str = None,
     ):
-        # Session ID
         self.session_id = session_id
-        # Session token
         self.session_token = session_token
 
     def validate(self):
@@ -281,9 +283,7 @@ class CloseSessionResponseBody(TeaModel):
         session_id: str = None,
         state: str = None,
     ):
-        # Request ID.
         self.request_id = request_id
-        # Session ID.
         self.session_id = session_id
         # ClosingActive
         self.state = state
@@ -363,9 +363,9 @@ class CreateClusterRequestComponentsComponentConfig(TeaModel):
         basic_args: Any = None,
         node_units: List[Any] = None,
     ):
-        # Basic component parameters
+        # The basic parameters of the component.
         self.basic_args = basic_args
-        # Node pool configuration, used to establish the correspondence between node groups and node pools. Required when ComponentType is "ACKEdge", otherwise it can be empty.
+        # The node pool configurations, which are used to establish the mappings between node groups and node pools. This parameter is required when ComponentType is set to ACKEdge. Otherwise, this parameter is left empty.
         self.node_units = node_units
 
     def validate(self):
@@ -398,9 +398,14 @@ class CreateClusterRequestComponents(TeaModel):
         component_config: CreateClusterRequestComponentsComponentConfig = None,
         component_type: str = None,
     ):
-        # Component configuration
+        # The component configurations.
         self.component_config = component_config
-        # Component type
+        # The component type.
+        # 
+        # Valid values:
+        # 
+        # *   ARMS
+        # *   ACKEdge
         self.component_type = component_type
 
     def validate(self):
@@ -435,9 +440,9 @@ class CreateClusterRequestNetworksIpAllocationPolicyBondPolicyBonds(TeaModel):
         name: str = None,
         subnet: str = None,
     ):
-        # Bond name
+        # The bond name.
         self.name = name
-        # IP source cluster subnet
+        # The cluster subnet from which the IP address originates.
         self.subnet = subnet
 
     def validate(self):
@@ -470,9 +475,9 @@ class CreateClusterRequestNetworksIpAllocationPolicyBondPolicy(TeaModel):
         bond_default_subnet: str = None,
         bonds: List[CreateClusterRequestNetworksIpAllocationPolicyBondPolicyBonds] = None,
     ):
-        # Default bond cluster subnet
+        # The default bond subnet for the cluster.
         self.bond_default_subnet = bond_default_subnet
-        # Bond information
+        # The bond information.
         self.bonds = bonds
 
     def validate(self):
@@ -513,9 +518,9 @@ class CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicyBonds(TeaMo
         name: str = None,
         subnet: str = None,
     ):
-        # Bond name
+        # The bond name.
         self.name = name
-        # IP source cluster subnet
+        # The cluster subnet from which the IP address originates.
         self.subnet = subnet
 
     def validate(self):
@@ -548,9 +553,9 @@ class CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicy(TeaModel):
         bonds: List[CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicyBonds] = None,
         machine_type: str = None,
     ):
-        # Bond information
+        # The bond information.
         self.bonds = bonds
-        # Machine type
+        # The instance type.
         self.machine_type = machine_type
 
     def validate(self):
@@ -591,9 +596,9 @@ class CreateClusterRequestNetworksIpAllocationPolicyNodePolicyBonds(TeaModel):
         name: str = None,
         subnet: str = None,
     ):
-        # Bond name
+        # The bond name.
         self.name = name
-        # IP source cluster subnet
+        # The cluster subnet from which the IP address originates.
         self.subnet = subnet
 
     def validate(self):
@@ -626,9 +631,9 @@ class CreateClusterRequestNetworksIpAllocationPolicyNodePolicy(TeaModel):
         bonds: List[CreateClusterRequestNetworksIpAllocationPolicyNodePolicyBonds] = None,
         node_id: str = None,
     ):
-        # Bond information
+        # The bond information.
         self.bonds = bonds
-        # Node ID
+        # The node ID.
         self.node_id = node_id
 
     def validate(self):
@@ -670,11 +675,11 @@ class CreateClusterRequestNetworksIpAllocationPolicy(TeaModel):
         machine_type_policy: List[CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicy] = None,
         node_policy: List[CreateClusterRequestNetworksIpAllocationPolicyNodePolicy] = None,
     ):
-        # Bond policy
+        # The bond policy.
         self.bond_policy = bond_policy
-        # Machine type allocation policy
+        # The allocation policy for the instance type.
         self.machine_type_policy = machine_type_policy
-        # Node allocation policy
+        # The node allocation policy.
         self.node_policy = node_policy
 
     def validate(self):
@@ -732,11 +737,11 @@ class CreateClusterRequestNetworksNewVpdInfoVpdSubnets(TeaModel):
         subnet_type: str = None,
         zone_id: str = None,
     ):
-        # Subnet CIDR
+        # The subnet CIDR block.
         self.subnet_cidr = subnet_cidr
-        # Subnet type
+        # The subnet type.
         self.subnet_type = subnet_type
-        # Zone ID
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -778,19 +783,19 @@ class CreateClusterRequestNetworksNewVpdInfo(TeaModel):
         vpd_cidr: str = None,
         vpd_subnets: List[CreateClusterRequestNetworksNewVpdInfoVpdSubnets] = None,
     ):
-        # Cloud Enterprise Network ID
+        # The ID of the Cloud Enterprise Network (CEN) instance.
         self.cen_id = cen_id
-        # Cloud link CIDR
+        # The CIDR block for Cloud Link.
         self.cloud_link_cidr = cloud_link_cidr
-        # Cloud link ID
+        # The Cloud Link ID.
         self.cloud_link_id = cloud_link_id
-        # VPC
+        # The VPC.
         self.monitor_vpc_id = monitor_vpc_id
-        # VPC switch
+        # The vSwitch.
         self.monitor_vswitch_id = monitor_vswitch_id
-        # Cluster Network Segment
+        # The CIDR block for the cluster.
         self.vpd_cidr = vpd_cidr
-        # Cluster subnets
+        # The cluster subnet.
         self.vpd_subnets = vpd_subnets
 
     def validate(self):
@@ -851,9 +856,9 @@ class CreateClusterRequestNetworksVpdInfo(TeaModel):
         vpd_id: str = None,
         vpd_subnets: List[str] = None,
     ):
-        # VPC ID
+        # The VPC ID.
         self.vpd_id = vpd_id
-        # List of cluster subnet IDs
+        # The IDs of the subnets for a cluster.
         self.vpd_subnets = vpd_subnets
 
     def validate(self):
@@ -892,21 +897,21 @@ class CreateClusterRequestNetworks(TeaModel):
         vpc_id: str = None,
         vpd_info: CreateClusterRequestNetworksVpdInfo = None,
     ):
-        # IP allocation policy
+        # The IP allocation policy.
         self.ip_allocation_policy = ip_allocation_policy
-        # Vpd configuration information
+        # The virtual private domain (VPD) configuration information.
         self.new_vpd_info = new_vpd_info
-        # Security group ID
+        # The security group ID.
         self.security_group_id = security_group_id
-        # IP version
+        # The IP version.
         self.tail_ip_version = tail_ip_version
-        # VSwitch ID
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # VSwitch Zone ID
+        # The ID of the zone to which the vSwitch belongs.
         self.v_switch_zone_id = v_switch_zone_id
-        # VPC ID
+        # The VPC ID.
         self.vpc_id = vpc_id
-        # Reuse VPD information
+        # The VPD information.
         self.vpd_info = vpd_info
 
     def validate(self):
@@ -971,25 +976,18 @@ class CreateClusterRequestNetworks(TeaModel):
         return self
 
 
-class CreateClusterRequestNodeGroupsNodes(TeaModel):
+class CreateClusterRequestNodeGroupsNodesDataDisk(TeaModel):
     def __init__(
         self,
-        hostname: str = None,
-        login_password: str = None,
-        node_id: str = None,
-        v_switch_id: str = None,
-        vpc_id: str = None,
+        category: str = None,
+        delete_with_node: bool = None,
+        performance_level: str = None,
+        size: int = None,
     ):
-        # Hostname
-        self.hostname = hostname
-        # Login password
-        self.login_password = login_password
-        # Node ID
-        self.node_id = node_id
-        # Virtual switch ID
-        self.v_switch_id = v_switch_id
-        # VPC ID
-        self.vpc_id = vpc_id
+        self.category = category
+        self.delete_with_node = delete_with_node
+        self.performance_level = performance_level
+        self.size = size
 
     def validate(self):
         pass
@@ -1000,6 +998,67 @@ class CreateClusterRequestNodeGroupsNodes(TeaModel):
             return _map
 
         result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.delete_with_node is not None:
+            result['DeleteWithNode'] = self.delete_with_node
+        if self.performance_level is not None:
+            result['PerformanceLevel'] = self.performance_level
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('DeleteWithNode') is not None:
+            self.delete_with_node = m.get('DeleteWithNode')
+        if m.get('PerformanceLevel') is not None:
+            self.performance_level = m.get('PerformanceLevel')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class CreateClusterRequestNodeGroupsNodes(TeaModel):
+    def __init__(
+        self,
+        data_disk: List[CreateClusterRequestNodeGroupsNodesDataDisk] = None,
+        hostname: str = None,
+        login_password: str = None,
+        node_id: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+    ):
+        self.data_disk = data_disk
+        # The hostname.
+        self.hostname = hostname
+        # The logon password.
+        self.login_password = login_password
+        # The node ID.
+        self.node_id = node_id
+        # The vSwitch ID.
+        self.v_switch_id = v_switch_id
+        # The ID of the virtual private cloud (VPC).
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        if self.data_disk:
+            for k in self.data_disk:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataDisk'] = []
+        if self.data_disk is not None:
+            for k in self.data_disk:
+                result['DataDisk'].append(k.to_map() if k else None)
         if self.hostname is not None:
             result['Hostname'] = self.hostname
         if self.login_password is not None:
@@ -1014,6 +1073,11 @@ class CreateClusterRequestNodeGroupsNodes(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.data_disk = []
+        if m.get('DataDisk') is not None:
+            for k in m.get('DataDisk'):
+                temp_model = CreateClusterRequestNodeGroupsNodesDataDisk()
+                self.data_disk.append(temp_model.from_map(k))
         if m.get('Hostname') is not None:
             self.hostname = m.get('Hostname')
         if m.get('LoginPassword') is not None:
@@ -1034,19 +1098,16 @@ class CreateClusterRequestNodeGroupsSystemDisk(TeaModel):
         performance_level: str = None,
         size: int = None,
     ):
-        # The disk type. Valid values:
+        # The disk category. Valid values:
         # 
-        # *   cloud_ssd: standard SSD
+        # *   cloud_essd
         self.category = category
         # The performance level of the ESSD that is used as the system disk. Valid values:
         # 
-        # *   PL0: A single ESSD can provide up to 10,000 random read/write IOPS.
-        # *   PL1: A single ESSD can provide up to 50,000 random read/write IOPS.
-        # 
-        # 
-        # Default value: PL1.
+        # *   PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
+        # *   PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
         self.performance_level = performance_level
-        # The size. Unit: GB.
+        # Unit: GB
         self.size = size
 
     def validate(self):
@@ -1092,26 +1153,26 @@ class CreateClusterRequestNodeGroups(TeaModel):
         user_data: str = None,
         zone_id: str = None,
     ):
-        # Whether file system mounting is supported
+        # Specifies whether to support file system mounting.
         self.file_system_mount_enabled = file_system_mount_enabled
-        # System image ID
+        # The system image ID.
         self.image_id = image_id
-        # The name of the key pair.
+        # The name of the AccessKey pair.
         self.key_pair_name = key_pair_name
         self.login_password = login_password
-        # Machine type
+        # The instance type.
         self.machine_type = machine_type
-        # Node group description
+        # The node group description.
         self.node_group_description = node_group_description
-        # Node group name
+        # The node group name.
         self.node_group_name = node_group_name
-        # Node list
+        # The nodes.
         self.nodes = nodes
-        # SystemDisk
+        # The system disk information.
         self.system_disk = system_disk
-        # Instance custom data. It needs to be Base64 encoded, and the original data should not exceed 16 KB.
+        # The user data of the instance. The user data must be Base64-encoded. The raw data can be up to 16 KB in size.
         self.user_data = user_data
-        # Zone ID
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1191,9 +1252,9 @@ class CreateClusterRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # Key
+        # The tag key.
         self.key = key
-        # Value
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -1236,29 +1297,29 @@ class CreateClusterRequest(TeaModel):
         resource_group_id: str = None,
         tag: List[CreateClusterRequestTag] = None,
     ):
-        # Cluster description
+        # The cluster description.
         self.cluster_description = cluster_description
-        # Cluster name
+        # The cluster name.
         self.cluster_name = cluster_name
-        # Cluster type
+        # The cluster type.
         self.cluster_type = cluster_type
-        # Components (software instances)
+        # The components (software instance).
         self.components = components
-        # Cluster number
+        # The cluster number.
         self.hpn_zone = hpn_zone
-        # Whether to allow skipping failed nodes, default value is False
+        # Specifies whether to allow skipping failed nodes. Default value: False.
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
-        # Network information
+        # The network information.
         self.networks = networks
-        # Node VSwitches
+        # The node vSwitch.
         self.nimiz_vswitches = nimiz_vswitches
-        # Node group list
+        # The node groups.
         self.node_groups = node_groups
-        # Open Eni Jumbo Frame
+        # Specifies whether the elastic network interface (ENI) supports the Jumbo Frames feature.
         self.open_eni_jumbo_frame = open_eni_jumbo_frame
-        # Resource group ID
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Resource tags
+        # The resource tags.
         self.tag = tag
 
     def validate(self):
@@ -1360,9 +1421,9 @@ class CreateClusterShrinkRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # Key
+        # The tag key.
         self.key = key
-        # Value
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -1405,29 +1466,29 @@ class CreateClusterShrinkRequest(TeaModel):
         resource_group_id: str = None,
         tag: List[CreateClusterShrinkRequestTag] = None,
     ):
-        # Cluster description
+        # The cluster description.
         self.cluster_description = cluster_description
-        # Cluster name
+        # The cluster name.
         self.cluster_name = cluster_name
-        # Cluster type
+        # The cluster type.
         self.cluster_type = cluster_type
-        # Components (software instances)
+        # The components (software instance).
         self.components_shrink = components_shrink
-        # Cluster number
+        # The cluster number.
         self.hpn_zone = hpn_zone
-        # Whether to allow skipping failed nodes, default value is False
+        # Specifies whether to allow skipping failed nodes. Default value: False.
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
-        # Network information
+        # The network information.
         self.networks_shrink = networks_shrink
-        # Node VSwitches
+        # The node vSwitch.
         self.nimiz_vswitches_shrink = nimiz_vswitches_shrink
-        # Node group list
+        # The node groups.
         self.node_groups_shrink = node_groups_shrink
-        # Open Eni Jumbo Frame
+        # Specifies whether the elastic network interface (ENI) supports the Jumbo Frames feature.
         self.open_eni_jumbo_frame = open_eni_jumbo_frame
-        # Resource group ID
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Resource tags
+        # The resource tags.
         self.tag = tag
 
     def validate(self):
@@ -1509,11 +1570,11 @@ class CreateClusterResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # Cluster ID
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Task Id
+        # The job ID.
         self.task_id = task_id
 
     def validate(self):
@@ -1591,9 +1652,9 @@ class CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogsLogs(TeaModel):
         datetime: str = None,
         log_content: str = None,
     ):
-        # Sent date, in the format yyyymmdd.
+        # The sending date in the yyyymmdd format.
         self.datetime = datetime
-        # Log content
+        # The log content.
         self.log_content = log_content
 
     def validate(self):
@@ -1627,11 +1688,11 @@ class CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogs(TeaModel):
         logs: List[CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogsLogs] = None,
         node_id: str = None,
     ):
-        # Instance ID
+        # The instance ID.
         self.ai_instance = ai_instance
-        # Log object
+        # The logs.
         self.logs = logs
-        # Node ID
+        # The node ID.
         self.node_id = node_id
 
     def validate(self):
@@ -1677,13 +1738,15 @@ class CreateDiagnosticTaskRequestAiJobLogInfo(TeaModel):
         end_time: str = None,
         start_time: str = None,
     ):
-        # Task logs
+        # The task logs.
         self.ai_job_logs = ai_job_logs
-        # End time. In timestamp format, unit: seconds.
-        # > Must be on the hour or half-hour mark.
+        # The end time. The value is in the timestamp format. Unit: seconds.
+        # 
+        # >  This timestamp must indicate a point in time that is accurate to the minute.
         self.end_time = end_time
-        # Start time. In timestamp format, unit: seconds.
-        # > Must be on the hour or half-hour mark.
+        # The start time. The value is in the timestamp format. Unit: seconds.
+        # 
+        # >  This timestamp must indicate a point in time that is accurate to the minute.
         self.start_time = start_time
 
     def validate(self):
@@ -1730,13 +1793,13 @@ class CreateDiagnosticTaskRequest(TeaModel):
         diagnostic_type: str = None,
         node_ids: List[str] = None,
     ):
-        # Log information
+        # The log information.
         self.ai_job_log_info = ai_job_log_info
-        # Cluster ID
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # Diagnostic type.
+        # The diagnostics type.
         self.diagnostic_type = diagnostic_type
-        # List of node IDs
+        # The IDs of the nodes.
         self.node_ids = node_ids
 
     def validate(self):
@@ -1781,13 +1844,13 @@ class CreateDiagnosticTaskShrinkRequest(TeaModel):
         diagnostic_type: str = None,
         node_ids_shrink: str = None,
     ):
-        # Log information
+        # The log information.
         self.ai_job_log_info_shrink = ai_job_log_info_shrink
-        # Cluster ID
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # Diagnostic type.
+        # The diagnostics type.
         self.diagnostic_type = diagnostic_type
-        # List of node IDs
+        # The IDs of the nodes.
         self.node_ids_shrink = node_ids_shrink
 
     def validate(self):
@@ -1828,9 +1891,9 @@ class CreateDiagnosticTaskResponseBody(TeaModel):
         diagnostic_id: str = None,
         request_id: str = None,
     ):
-        # Diagnosis ID
+        # The ID of the diagnostics task.
         self.diagnostic_id = diagnostic_id
-        # Request ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1906,13 +1969,13 @@ class CreateNetTestTaskRequestCommTestHosts(TeaModel):
         resource_id: str = None,
         server_name: str = None,
     ):
-        # IP address.
+        # The IP address.
         self.ip = ip
-        # Node ID.
+        # The node ID.
         self.node_id = node_id
-        # Resource ID
+        # The resource ID.
         self.resource_id = resource_id
-        # Service name.
+        # The name of the service.
         self.server_name = server_name
 
     def validate(self):
@@ -1955,13 +2018,13 @@ class CreateNetTestTaskRequestCommTest(TeaModel):
         model: str = None,
         type: str = None,
     ):
-        # Number of GPUs
+        # The number of GPUs.
         self.gpunum = gpunum
-        # Resource ID
+        # The host IDs.
         self.hosts = hosts
-        # Communication library model
+        # The communication library model.
         self.model = model
-        # Communication library test category: ACCL or NCCL
+        # The CommTest type, which can be ACCL or NCCL.
         self.type = type
 
     def validate(self):
@@ -2013,15 +2076,15 @@ class CreateNetTestTaskRequestDelayTestHosts(TeaModel):
         resource_id: str = None,
         server_name: str = None,
     ):
-        # Network interface bond port
+        # The bonding of network interface card.
         self.bond = bond
-        # Node IP
+        # The IP address of the node.
         self.ip = ip
-        # Node ID.
+        # The node ID.
         self.node_id = node_id
-        # Resource ID
+        # The resource ID.
         self.resource_id = resource_id
-        # Service name.
+        # The name of the service.
         self.server_name = server_name
 
     def validate(self):
@@ -2065,7 +2128,7 @@ class CreateNetTestTaskRequestDelayTest(TeaModel):
         self,
         hosts: List[CreateNetTestTaskRequestDelayTestHosts] = None,
     ):
-        # 输入测试节点的hosts
+        # The hosts of the test node.
         self.hosts = hosts
 
     def validate(self):
@@ -2105,15 +2168,15 @@ class CreateNetTestTaskRequestTrafficTestClients(TeaModel):
         resource_id: str = None,
         server_name: str = None,
     ):
-        # Network card bond interface
+        # The bonding of network interface card.
         self.bond = bond
-        # Node IP
+        # The IP address of the node.
         self.ip = ip
-        # Node ID
+        # The node ID.
         self.node_id = node_id
-        # Resource ID
+        # The resource ID.
         self.resource_id = resource_id
-        # Service name.
+        # The name of the service.
         self.server_name = server_name
 
     def validate(self):
@@ -2161,15 +2224,15 @@ class CreateNetTestTaskRequestTrafficTestServers(TeaModel):
         resource_id: str = None,
         server_name: str = None,
     ):
-        # Network card bond interface
+        # The bonding of network interface card.
         self.bond = bond
-        # Node IP
+        # The IP address of the node.
         self.ip = ip
-        # Node ID
+        # The node ID.
         self.node_id = node_id
-        # Resource ID
+        # The resource ID.
         self.resource_id = resource_id
-        # Service name.
+        # The name of the service.
         self.server_name = server_name
 
     def validate(self):
@@ -2219,20 +2282,19 @@ class CreateNetTestTaskRequestTrafficTest(TeaModel):
         servers: List[CreateNetTestTaskRequestTrafficTestServers] = None,
         traffic_model: str = None,
     ):
-        # Resource ID.
+        # The client IDs.
         self.clients = clients
-        # The duration of the workflow task in seconds.
+        # The running duration of the pipeline job. Unit: seconds.
         self.duration = duration
-        # Enter True/False when the protocol is RDMA, 
-        # this field is empty when the protocol is TCP.
+        # If the protocol is RDMA, enter True or False. If the protocol is TCP, leave this field empty.
         self.gdr = gdr
-        # Network protocol, either RDMA or TCP.
+        # The network protocol, which can be RDMA or TCP.
         self.protocol = protocol
-        # Enter the number of concurrent connections when the protocol is TCP, or enter the configured QP value when the protocol is RDMA.
+        # If the protocol is TCP, enter the number of concurrent connections. If the protocol is RDMA, enter the configured QP value.
         self.qp = qp
-        # Service list
+        # The services.
         self.servers = servers
-        # Traffic model, either MTON or Fullmesh.
+        # The traffic model, which can be MTON or Fullmesh.
         self.traffic_model = traffic_model
 
     def validate(self):
@@ -2308,22 +2370,21 @@ class CreateNetTestTaskRequest(TeaModel):
         port: str = None,
         traffic_test: CreateNetTestTaskRequestTrafficTest = None,
     ):
-        # Cluster ID
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # Cluster name
+        # The cluster name.
         self.cluster_name = cluster_name
-        # Required when the test type is communication library testing
+        # Specify when NetTestType is CommTest.
         self.comm_test = comm_test
-        # Fill in this field when the network test type is delay testing.
+        # Specify when NetTestType is DelayTest.
         self.delay_test = delay_test
-        # Network test type.
-        # For example: DelayTest for latency testing, TrafficTest for traffic testing, CommTest for communication library testing.
+        # The type of the network test. Valid values: DelayTest, TrafficTest, and CommTest.
         self.net_test_type = net_test_type
-        # Network mode
+        # The network mode.
         self.network_mode = network_mode
-        # Test port number.
+        # The port number.
         self.port = port
-        # This field is empty if the TrafficModel is Fullmesh.
+        # If the TrafficModel is Fullmesh, leave this parameter empty.
         self.traffic_test = traffic_test
 
     def validate(self):
@@ -2394,22 +2455,21 @@ class CreateNetTestTaskShrinkRequest(TeaModel):
         port: str = None,
         traffic_test_shrink: str = None,
     ):
-        # Cluster ID
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # Cluster name
+        # The cluster name.
         self.cluster_name = cluster_name
-        # Required when the test type is communication library testing
+        # Specify when NetTestType is CommTest.
         self.comm_test_shrink = comm_test_shrink
-        # Fill in this field when the network test type is delay testing.
+        # Specify when NetTestType is DelayTest.
         self.delay_test_shrink = delay_test_shrink
-        # Network test type.
-        # For example: DelayTest for latency testing, TrafficTest for traffic testing, CommTest for communication library testing.
+        # The type of the network test. Valid values: DelayTest, TrafficTest, and CommTest.
         self.net_test_type = net_test_type
-        # Network mode
+        # The network mode.
         self.network_mode = network_mode
-        # Test port number.
+        # The port number.
         self.port = port
-        # This field is empty if the TrafficModel is Fullmesh.
+        # If the TrafficModel is Fullmesh, leave this parameter empty.
         self.traffic_test_shrink = traffic_test_shrink
 
     def validate(self):
@@ -2466,9 +2526,9 @@ class CreateNetTestTaskResponseBody(TeaModel):
         request_id: str = None,
         test_id: str = None,
     ):
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # 启动测试任务ID，网络测试任务的唯一标志。
+        # The ID of the test task. The unique identifier of a network test task.
         self.test_id = test_id
 
     def validate(self):
@@ -2543,19 +2603,11 @@ class CreateNodeGroupRequestNodeGroupSystemDisk(TeaModel):
         performance_level: str = None,
         size: int = None,
     ):
-        # Disk performance level
+        # *\
         self.category = category
-        # The performance level of the disk if the disk is an ESSD. Valid values:
-        # 
-        # *   PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
-        # *   PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
-        # 
-        # 
-        # Default value: PL1.
-        # 
-        # For information about ESSD performance levels, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
+        # *\
+        # *\
         self.performance_level = performance_level
-        # System disk size
         self.size = size
 
     def validate(self):
@@ -2600,32 +2652,22 @@ class CreateNodeGroupRequestNodeGroup(TeaModel):
         system_disk: CreateNodeGroupRequestNodeGroupSystemDisk = None,
         user_data: str = None,
     ):
-        # Availability Zone
-        # 
         # This parameter is required.
         self.az = az
-        # Whether file storage mounting is supported
+        # Indicates whether file storage mounting is supported.
         self.file_system_mount_enabled = file_system_mount_enabled
-        # Image ID.
-        # 
         # This parameter is required.
         self.image_id = image_id
-        # The name of the key pair.
         self.key_pair_name = key_pair_name
         self.login_password = login_password
-        # Machine type
+        # The instance type.
         # 
         # This parameter is required.
         self.machine_type = machine_type
-        # Node group description
         self.node_group_description = node_group_description
-        # Node group name
-        # 
         # This parameter is required.
         self.node_group_name = node_group_name
-        # SystemDisk
         self.system_disk = system_disk
-        # user data
         self.user_data = user_data
 
     def validate(self):
@@ -2693,15 +2735,12 @@ class CreateNodeGroupRequest(TeaModel):
         node_group: CreateNodeGroupRequestNodeGroup = None,
         node_unit: Dict[str, Any] = None,
     ):
-        # Cluster ID
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # Node ID.
-        # 
         # This parameter is required.
         self.node_group = node_group
-        # Node information
         self.node_unit = node_unit
 
     def validate(self):
@@ -2741,15 +2780,12 @@ class CreateNodeGroupShrinkRequest(TeaModel):
         node_group_shrink: str = None,
         node_unit_shrink: str = None,
     ):
-        # Cluster ID
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # Node ID.
-        # 
         # This parameter is required.
         self.node_group_shrink = node_group_shrink
-        # Node information
         self.node_unit_shrink = node_unit_shrink
 
     def validate(self):
@@ -2787,11 +2823,10 @@ class CreateNodeGroupResponseBody(TeaModel):
         node_group_name: str = None,
         request_id: str = None,
     ):
-        # Node group ID
+        # The node group ID.
         self.node_group_id = node_group_id
-        # Node group name
         self.node_group_name = node_group_name
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -2870,11 +2905,11 @@ class CreateSessionRequest(TeaModel):
         session_type: str = None,
         start_time: str = None,
     ):
-        # Instance ID.
+        # The instance ID.
         self.node_id = node_id
-        # Session type corresponding to the session package.
+        # The type of the session corresponding to the session package.
         self.session_type = session_type
-        # Initiation time, 13-digit timestamp.
+        # The start time. The value is a 13-digit timestamp.
         self.start_time = start_time
 
     def validate(self):
@@ -2914,15 +2949,15 @@ class CreateSessionResponseBody(TeaModel):
         session_token: str = None,
         wss_endpoint: str = None,
     ):
-        # ID of the request
+        # The request ID.
         self.request_id = request_id
-        # 节点  ID。
+        # The node ID.
         self.server_sn = server_sn
-        # Session ID.
+        # The session ID.
         self.session_id = session_id
-        # Session token.
+        # The session credential.
         self.session_token = session_token
-        # WebSocket address
+        # The WebSocket address.
         self.wss_endpoint = wss_endpoint
 
     def validate(self):
@@ -3008,9 +3043,9 @@ class CreateVscRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # Resource tag key
+        # The resource tag key.
         self.key = key
-        # Resource tag value
+        # The resource tag value.
         self.value = value
 
     def validate(self):
@@ -3047,19 +3082,19 @@ class CreateVscRequest(TeaModel):
         vsc_name: str = None,
         vsc_type: str = None,
     ):
-        # Idempotent parameter
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
-        # Node ID
+        # The node ID.
         # 
         # This parameter is required.
         self.node_id = node_id
-        # Resource group ID
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Resource tags
+        # The resource tags.
         self.tag = tag
-        # User-defined name for vscId, unique on a single compute node
+        # The custom name of the VSC, which is unique on a compute node.
         self.vsc_name = vsc_name
-        # Set VSC type, primary/standard, default value is primary
+        # The VSC type. Valid values: primary and standard. Default value: primary.
         self.vsc_type = vsc_type
 
     def validate(self):
@@ -3116,9 +3151,9 @@ class CreateVscResponseBody(TeaModel):
         request_id: str = None,
         vsc_id: str = None,
     ):
-        # ID of the request
+        # The request ID.
         self.request_id = request_id
-        # Created VscId
+        # The VSC ID.
         self.vsc_id = vsc_id
 
     def validate(self):
@@ -3191,7 +3226,7 @@ class DeleteClusterRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
-        # Cluster ID
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
@@ -3221,7 +3256,7 @@ class DeleteClusterResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Request Id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3291,9 +3326,9 @@ class DeleteNodeGroupRequest(TeaModel):
         cluster_id: str = None,
         node_group_id: str = None,
     ):
-        # Cluster ID
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # Node Group ID
+        # The node group ID.
         self.node_group_id = node_group_id
 
     def validate(self):
@@ -3325,7 +3360,7 @@ class DeleteNodeGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -3395,9 +3430,9 @@ class DeleteVscRequest(TeaModel):
         client_token: str = None,
         vsc_id: str = None,
     ):
-        # Idempotent parameter
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
-        # The VscId to be deleted
+        # The ID of the VSC that you want to delete.
         # 
         # This parameter is required.
         self.vsc_id = vsc_id
@@ -3431,7 +3466,7 @@ class DeleteVscResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # ID of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3792,7 +3827,7 @@ class DescribeDiagnosticResultRequest(TeaModel):
         self,
         diagnostic_id: str = None,
     ):
-        # Diagnostic ID
+        # The diagnostic task ID.
         self.diagnostic_id = diagnostic_id
 
     def validate(self):
@@ -3828,23 +3863,23 @@ class DescribeDiagnosticResultResponseBody(TeaModel):
         node_ids: List[str] = None,
         request_id: str = None,
     ):
-        # Cluster ID
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # Device creation time.
+        # The creation time.
         self.created_time = created_time
-        # Diagnostic ID
+        # The diagnostic task ID.
         self.diagnostic_id = diagnostic_id
-        # Diagnostic Information
+        # The diagnostic information.
         self.diagnostic_results = diagnostic_results
-        # Diagnostic State
+        # The diagnostic status.
         self.diagnostic_state = diagnostic_state
-        # Diagnostic Type
+        # The type of the diagnostic task.
         self.diagnostic_type = diagnostic_type
-        # End time of node anomaly issues. Represented according to the ISO8601 standard, in a timezone-aware format, formatted as yyyy-MM-ddTHH:mm:ss+0800
+        # The end time of the instance exception. The time format with time zone based on the ISO8601 standard. The format is yyyy-MM-ddTHH:mm:ss +0800.
         self.end_time = end_time
-        # List of Node IDs
+        # The node IDs.
         self.node_ids = node_ids
-        # Request ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3948,25 +3983,21 @@ class DescribeInvocationsRequest(TeaModel):
         invoke_id: str = None,
         node_id: str = None,
     ):
-        # Sets the encoding method for the `CommandContent` and `Output` fields in the returned data. Possible values:
+        # The encoding mode of the `CommandContent` and `Output` response parameters. Valid values:
         # 
-        # - PlainText: Returns the original command content and output information.
-        # - Base64: Returns the Base64-encoded command content and output information.
-        # 
-        # Default value: Base64.
+        # *   PlainText: returns the original command content and command outputs.
+        # *   Base64 (default): returns the Base64-encoded command content and command output.
         self.content_encoding = content_encoding
-        # Indicates whether to return the output information of the command execution in the result.
+        # Specifies whether to return the command outputs in the response.
         # 
-        # - true: Return. In this case, you must specify at least the `InvokeId` or `InstanceId` parameter.
-        # - false: Do not return.
-        # 
-        # Default value: false.
+        # *   true: returns the command outputs. When this parameter is set to true, you must specify `InvokeId`, `InstanceId`, or both.
+        # *   false (default)
         self.include_output = include_output
-        # Command execution ID
+        # The execution ID.
         # 
         # This parameter is required.
         self.invoke_id = invoke_id
-        # Instance ID
+        # The instance ID.
         self.node_id = node_id
 
     def validate(self):
@@ -4020,99 +4051,121 @@ class DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode(
         timed: str = None,
         update_time: str = None,
     ):
-        # The start time of the command execution.
+        # The start time of the execution.
         self.creation_time = creation_time
-        # The length of the text that is truncated and discarded when the length of the `Output` field exceeds 24 KB.
+        # The size of the Output text that was truncated and discarded because the Output value exceeded 24 KB in size.
         self.dropped = dropped
-        # Reason code for file delivery failure. Possible values:
-        # - Empty: File delivery is normal. 
-        # - NodeNotExists: The specified instance does not exist or has been released. 
-        # - NodeReleased: The instance was released during the file delivery process. 
-        # - NodeNotRunning: The instance was not running when the file delivery task was created. 
-        # - AccountNotExists: The specified account does not exist. 
-        # - ClientNotRunning: The Cloud Assistant Agent is not running. 
-        # - ClientNotResponse: The Cloud Assistant Agent is not responding. 
-        # - ClientIsUpgrading: The Cloud Assistant Agent is currently upgrading. 
-        # - ClientNeedUpgrade: The Cloud Assistant Agent needs to be upgraded. 
-        # - DeliveryTimeout: File sending timed out. 
-        # - FileCreateFail: File creation failed. 
-        # - FileAlreadyExists: A file with the same name already exists at the specified path. 
-        # - FileContentInvalid: The file content is invalid. - FileNameInvalid: The file name is invalid. 
-        # - FilePathInvalid: The file path is invalid. 
-        # - FileAuthorityInvalid: The file permissions are invalid. 
-        # - UserGroupNotExists: The user group specified for file sending does not exist.
+        # The error code returned when the file failed to be sent to the instance. Valid values:
+        # 
+        # *   Null: The file is sent to the instance.
+        # *   NodeNotExists: The specified instance does not exist or has been released.
+        # *   NodeReleased: The instance was released while the file was being sent.
+        # *   NodeNotRunning: The instance was not running while the file sending task was being created.
+        # *   AccountNotExists: The specified account does not exist.
+        # *   ClientNotRunning: Cloud Assistant Agent is not running.
+        # *   ClientNotResponse: Cloud Assistant Agent does not respond.
+        # *   ClientIsUpgrading: Cloud Assistant Agent is being upgraded.
+        # *   ClientNeedUpgrade: Cloud Assistant Agent needs to be upgraded.
+        # *   DeliveryTimeout: The file sending task timed out.
+        # *   FileCreateFail: The file failed to be created.
+        # *   FileAlreadyExists: A file with the same name exists in the specified directory.
+        # *   FileContentInvalid: The file content is invalid.
+        # *   FileNameInvalid: The file name is invalid.
+        # *   FilePathInvalid: The specified directory is invalid.
+        # *   FileAuthorityInvalid: The specified permissions on the file are invalid.
+        # *   UserGroupNotExists: The specified user group does not exist.
         self.error_code = error_code
-        # Details of the reason for command delivery failure or execution failure, possible values: 
-        # - Empty: The command executed normally. 
-        # - the specified node does not exist: The specified instance does not exist or has been released. 
-        # - the node was released when creating the task: The instance was released during command execution. 
-        # - the node is not running when creating the task: The instance was not in a running state when the command was executed. 
-        # - the command is not applicable: The command is not applicable to the specified instance. 
-        # - the specified account does not exist: The specified account does not exist. 
-        # - the specified directory does not exist: The specified directory does not exist. 
-        # - the cron job expression is invalid: The specified execution time expression is invalid. 
-        # - the aliyun service is not running on the instance: The Cloud Assistant Agent is not running. 
-        # - the aliyun service in the instance does not respond: The Cloud Assistant Agent is not responding. 
-        # - the aliyun service in the node is upgrading now: The Cloud Assistant Agent is currently being upgraded. 
-        # - the aliyun service in the node needs upgrade: The Cloud Assistant Agent needs an upgrade. 
-        # - the command delivery has timed out: Command delivery has timed out. 
-        # - the command execution has timed out: Command execution has timed out. 
-        # - the command execution got an exception: An exception occurred during command execution. 
-        # - the command execution was interrupted: Command execution was interrupted. 
-        #  - the command execution exit code is not zero: Command execution completed with a non-zero exit code. 
-        # - the specified node has been released: The instance was released during file delivery.
+        # The error message returned when the command cannot be sent or run.
+        # 
+        # *   If this parameter is empty, the command was run as expected.
+        # *   the specified node does not exists: The specified instance does not exist or is released.
+        # *   the node has node when create task: The instance is released when the command is being run.
+        # *   the node is not running when create task: The instance is not in the Running state while the command is being run.
+        # *   the command is not applicable: The command is not applicable to the specified instance.
+        # *   the specified account does not exists: The specified account does not exist.
+        # *   the specified directory does not exists: The specified directory does not exist.
+        # *   the cron job expression is invalid: The cron expression that specifies the execution time is invalid.
+        # *   the aliyun service is not running on the instance: Cloud Assistant Agent is not running.
+        # *   the aliyun service in the instance does not response: Cloud Assistant Agent does not respond.
+        # *   the aliyun service in the node is upgrading now: Cloud Assistant Agent is being upgraded.
+        # *   the aliyun service in the node need upgrade: Cloud Assistant Agent needs to be upgraded.
+        # *   the command delivery has been timeout: The request to send the command timed out.
+        # *   the command execution has been timeout: The command execution timed out.
+        # *   the command execution got an exception: An exception occurred when the command is being run.
+        # *   the command execution has been interrupted: The command execution is interrupted.
+        # *   the command execution exit code is not zero: The command execution completes, but the exit code is not 0.
+        # *   the specified node has been released: The instance is released while the file is being sent.
         self.error_info = error_info
-        # The exit code of the command process. Possible values:
-        # - For Linux instances, it is the exit code of the Shell process. - For Windows instances, it is the exit code of the Bat or PowerShell process.
+        # The exit code of the execution. Valid values:
+        # 
+        # *   For Linux instances, the value is the exit code of the shell process.
+        # *   For Windows instances, the value is the exit code of the batch or PowerShell process.
         self.exit_code = exit_code
-        # Completion time.
+        # The end time of the execution.
         self.finish_time = finish_time
-        # The command progress status for a single instance. Possible values:
-        # -  Pending: The system is validating or sending the command.
-        # -  Invalid: The specified command type or parameters are incorrect.
-        # -  Aborted: Failed to send the command to the instance. The instance must be running, and the command should be sent within 1 minute.
-        # -  Running: The command is running on the instance.
-        # -  Success:
-        #     -  For a one-time execution command: The command has completed with an exit code of 0.
-        #     -  For a periodic execution command: The last run was successful with an exit code of 0, and the specified period has ended.
-        # -  Failed:
-        #     -  For a one-time execution command: The command has completed with a non-zero exit code.
-        #     -  For a periodic execution command: The last run was successful with a non-zero exit code, and the specified period will be terminated.
-        # -  Error: An exception occurred during command execution, and it cannot continue.
-        # -  Timeout: The command execution timed out.
-        # -  Cancelled: The command execution action has been canceled, and the command was never started.
-        # -  Stopping: The task is being stopped.
-        # -  Terminated: The command was terminated while running.
-        # -  Scheduled:
-        #     -  For a one-time execution command: Not applicable, will not appear.
-        #     -  For a periodic execution command: Waiting to run.
+        # The execution status of the command on a single instance. Valid values:
+        # 
+        # *   Pending: The command was being verified or sent.
+        # 
+        # *   Invalid: The specified command type or parameter is invalid.
+        # 
+        # *   Aborted: The command failed to be sent to the instance. To send a command to an instance, make sure that the instance is in the Running state and the command can be sent to the instance within 1 minute.
+        # 
+        # *   Running: The command is being run on the instance.
+        # 
+        # *   Success:
+        # 
+        #     *   One-time task: The execution was complete, and the exit code was 0.
+        #     *   Recurring execution: The previous occurrence of the execution is complete, and the exit code is 0. The specified recurring period during which the command is run ends.
+        # 
+        # *   Failed:
+        # 
+        #     *   One-time task: The execution was complete, but the exit code was not 0.
+        #     *   Recurring execution: The previous occurrence of the execution is complete, but the exit code is not 0. The specified recurring period during which the command is run is about to end.
+        # 
+        # *   Error: The execution cannot proceed due to an exception.
+        # 
+        # *   Timeout: The execution timed out.
+        # 
+        # *   Cancelled: The execution was canceled before it started.
+        # 
+        # *   Stopping: The command task is being stopped.
+        # 
+        # *   Terminated: The execution was terminated before completion.
+        # 
+        # *   Scheduled:
+        # 
+        #     *   One-time task: The execution state can never be Scheduled.
+        #     *   Recurring execution: The command is waiting to be run.
         self.invocation_status = invocation_status
-        # Node ID
+        # The node ID.
         self.node_id = node_id
-        # The command progress status of a single instance.
+        # The execution status of the command on a single instance.
         self.node_invoke_status = node_invoke_status
-        # The output information of the command.
+        # The command output.
         # 
-        # - If `ContentEncoding` is set to `PlainText`, the original output information is returned.
-        # - If `ContentEncoding` is set to `Base64`, the Base64-encoded output information is returned.
+        # *   If ContentEncoding is set to PlainText in the request, the original command output is returned.
+        # *   If ContentEncoding is set to Base64 in the request, the Base64-encoded command output is returned.
         self.output = output
-        # The number of times the command has been executed on this instance.
-        # -  If the execution mode is one-time, the value is 0 or 1.
-        # -  If the execution mode is periodic, the value is the number of times it has been executed.
-        self.repeats = repeats
-        # Start Time
-        self.start_time = start_time
-        # The time when `StopInvocation` was called to stop the command execution.
-        self.stop_time = stop_time
-        # Whether the queried command will be automatically executed in the future. The value range is as follows:
-        # - true: The command, when executed by calling `RunCommand` or `InvokeCommand`, has the `RepeatMode` parameter set to `Period`, `NextRebootOnly`, or `EveryReboot`. 
-        # - false: Queries commands in the following two states. 
-        # - When executing a command via `RunCommand` or `InvokeCommand`, the `RepeatMode` parameter is set to `Once`. 
-        # - Commands that have been canceled, stopped, or completed.
+        # The number of times that the command was run on the instance.
         # 
-        # Default value: false.
+        # *   If the command is set to run only once, the value is 0 or 1.
+        # *   If the command is set to run on a schedule, the value is the number of times that the command has been run on the instance.
+        self.repeats = repeats
+        # The start time.
+        self.start_time = start_time
+        # The time when the command task was stopped. If you call the StopInvocation operation to stop the command task, the value of this parameter is the time when the operation is called.
+        self.stop_time = stop_time
+        # Indicates whether the command is to be automatically run. Valid values:
+        # 
+        # *   true: The command is run by calling the `RunCommand` or `InvokeCommand` operation with `RepeatMode` set to `Period`, `NextRebootOnly`, or `EveryReboot`.
+        # 
+        # *   false (default): The command meets the following requirements.
+        # 
+        #     *   The command is run by calling the `RunCommand` or `InvokeCommand` operation with `RepeatMode` set to `Once`.
+        #     *   The command task is canceled, stopped, or completed.
         self.timed = timed
-        # Update Time
+        # The update time of the execution.
         self.update_time = update_time
 
     def validate(self):
@@ -4196,7 +4249,7 @@ class DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodes(TeaModel):
         self,
         invoke_node: List[DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode] = None,
     ):
-        # Command execution records for nodes.
+        # The command execution records of the node.
         self.invoke_node = invoke_node
 
     def validate(self):
@@ -4245,70 +4298,90 @@ class DescribeInvocationsResponseBodyInvocationsInvocation(TeaModel):
         username: str = None,
         working_dir: str = None,
     ):
-        # Command content.
+        # The executed command.
         # 
-        # - If `ContentEncoding` is set to `PlainText`, the original script content is returned.
-        # - If `ContentEncoding` is set to `Base64`, the Base64-encoded script content is returned.
+        # *   If ContentEncoding is set to PlainText in the request, the original command content is returned.
+        # *   If ContentEncoding is set to Base64 in the request, the Base64-encoded command content is returned.
         self.command_content = command_content
-        # Command description.
+        # The command description.
         self.command_description = command_description
-        # Command name.
+        # The command name.
         self.command_name = command_name
-        # The creation time of the task.
+        # The time when the command task was created.
         self.creation_time = creation_time
-        # The execution time for scheduled commands.
+        # The schedule on which the command was run.
         self.frequency = frequency
-        # The overall execution status of the command, which depends on the common execution status of all instances involved in the call. Possible values:
-        # - Pending: The system is validating or sending the command. If at least one instance has a command execution status of Pending, the overall status is Pending.
-        # - Scheduled: The scheduled command has been sent and is waiting to run. If at least one instance has a command execution status of Scheduled, the overall status is Scheduled.
-        # - Running: The command is running on the instance. If at least one instance has a command execution status of Running, the overall status is Running.
-        # - Success: The command execution status of all instances is Stopped or Success, and at least one instance\\"s command execution status is Success. The overall status is Success.
-        #     - For immediately executed tasks: The command has completed with an exit code of 0.
-        #     - For periodically executed tasks: The most recent execution was successful with an exit code of 0, and the specified times have all been completed.
-        # - Failed: The command execution status of all instances is Stopped or Failed. The overall status is Failed if any of the following conditions apply to the instance\\"s command execution status:
-        #     - Command validation failed (Invalid).
-        #     - Command sending failed (Aborted).
-        #     - Command completed but the exit code is not 0 (Failed).
-        #     - Command execution timed out (Timeout).
-        #     - Command execution encountered an error (Error).
-        # - Stopping: The task is being stopped. If at least one instance has a command execution status of Stopping, the overall status is Stopping.
-        # - Stopped: The task has been stopped. If all instances\\" command execution statuses are Stopped, the overall status is Stopped. The overall status is Stopped if the instance\\"s command execution status is any of the following:
-        #     - The task was canceled (Cancelled).
-        #     - The task was terminated (Terminated).
-        # - PartialFailed: Some instances succeeded and some failed. If the command execution statuses of all instances are Success, Failed, or Stopped, the overall status is PartialFailed.
+        # The overall execution state of the command task. The value of this parameter depends on the execution states of the command task on all the involved instances. Valid values:
         # 
-        # > The `InvokeStatus` in the response parameters is similar in meaning to this parameter, but it is recommended that you check this return value.
+        # *   Pending: The command was being verified or sent. If the execution state on at least one instance is Pending, the overall execution state is Pending.
+        # 
+        # *   Scheduled: The command that is set to run on a schedule is sent and waiting to be run. If the execution state on at least one instance is Scheduled, the overall execution state is Scheduled.
+        # 
+        # *   Running: The command is being run on the instance. When the execution state on at least one instance is Running, the overall execution state is Running.
+        # 
+        # *   Success: When the execution state on at least one instance is Success and the execution state on the other instances is Stopped or Success, the overall execution state is Success.
+        # 
+        #     *   One-time task: The execution is complete, and the exit code is 0.
+        #     *   Scheduled task: The last execution was complete, the exit code was 0, and the specified period ended.
+        # 
+        # *   Failed: When the execution state on all instances is Stopped or Failed, the overall execution state is Failed. When the execution state on an instance is one of the following values, Failed is returned as the overall execution state:
+        # 
+        #     *   Invalid: The command is invalid.
+        #     *   Aborted: The command failed to be sent.
+        #     *   Failed: The execution was complete, but the exit code was not 0.
+        #     *   Timeout: The execution timed out.
+        #     *   Error: An error occurred while the command was being run.
+        # 
+        # *   Stopping: The command task is being stopped. When the execution state on at least one instance is Stopping, the overall execution state is Stopping.
+        # 
+        # *   Stopped: The task was stopped. When the execution state on all instances is Stopped, the overall execution state is Stopped. When the execution state on an instance is one of the following values, Stopped is returned as the overall execution state:
+        # 
+        #     *   Cancelled: The task was canceled.
+        #     *   Terminated: The task was terminated.
+        # 
+        # *   PartialFailed: The execution was complete on some instances and failed on other instances. When the execution state is Success on some instances and is Failed or Stopped on the other instances, the overall execution state is PartialFailed.
+        # 
+        # >  The value of the `InvokeStatus` response parameter is similar to the value of InvocationStatus. We recommend that you ignore InvokeStatus and check the value of InvocationStatus.
         self.invocation_status = invocation_status
-        # Command execution ID.
+        # The execution ID.
         self.invoke_id = invoke_id
-        # Command execution records.
+        # The command execution records.
         self.invoke_nodes = invoke_nodes
-        # The overall execution status of the command. The overall execution status depends on the common execution status of one or more instances in the execution. Possible values: 
-        # - Running:
-        #     - For scheduled execution: The execution status remains ongoing until the scheduled command is manually stopped.
-        #     - For single execution: If there is any command process running, the overall execution status is ongoing.
-        # - Finished:
-        #     - For scheduled execution: The command process cannot be completed.
-        #     - For single execution: All instances have completed execution, or some instances\\" command processes are manually stopped and the rest have completed.
-        # - Failed:
-        #     - For scheduled execution: The command process cannot fail.
-        #     - For single execution: All instances have failed to execute.
-        # - Stopped: The command has been stopped.
-        # - Stopping: The command is being stopped.
-        # - PartialFailed: Partial failure; if the `InstanceId` parameter is set, this does not apply.
-        self.invoke_status = invoke_status
-        # Custom parameters in the command.
-        self.parameters = parameters
-        # 命令执行的方式。可能值：
+        # The overall execution status of the command task. The value of this parameter depends on the execution states of the command task on all involved instances. Valid values:
         # 
-        # Once：立即执行命令。
-        # Period：定时执行命令。
-        # NextRebootOnly：当实例下一次启动时，自动执行命令。
-        # EveryReboot：实例每一次启动都将自动执行命令。
+        # *   Running:
+        # 
+        #     *   Scheduled task: Before you stop the scheduled execution of the command, the overall execution state is always Running.
+        #     *   One-time task: If the command is being run on instances, the overall execution state is Running.
+        # 
+        # *   Finished:
+        # 
+        #     *   Scheduled task: The overall execution state can never be Finished.
+        #     *   One-time task: The execution is complete on all instances, or the execution is stopped on some instances and is complete on the other instances.
+        # 
+        # *   Failed:
+        # 
+        #     *   Scheduled task: The overall execution state can never be Failed.
+        #     *   One-time task: The execution failed on all instances.
+        # 
+        # *   Stopped: The task is stopped.
+        # 
+        # *   Stopping: The task is being stopped.
+        # 
+        # *   PartialFailed: The task fails on some instances. If you specify both this parameter and `InstanceId`, this parameter does not take effect.
+        self.invoke_status = invoke_status
+        # The custom parameters in the command.
+        self.parameters = parameters
+        # The execution mode of the command. Valid values:
+        # 
+        # *   Once: The command is run immediately.
+        # *   Period: The command is run on a schedule.
+        # *   NextRebootOnly: The command is run the next time the instances start.
+        # *   EveryReboot: runs the command every time the instances start.
         self.repeat_mode = repeat_mode
-        # Timeout for executing the command, in seconds.
+        # The timeout period for the command execution. Unit: seconds.
         self.timeout = timeout
-        # Username for executing the command.
+        # The username that is used to run the command.
         self.username = username
         # The working directory of the command on the instance.
         self.working_dir = working_dir
@@ -4392,7 +4465,7 @@ class DescribeInvocationsResponseBodyInvocations(TeaModel):
         self,
         invocation: List[DescribeInvocationsResponseBodyInvocationsInvocation] = None,
     ):
-        # File delivery record.
+        # The file sending records.
         self.invocation = invocation
 
     def validate(self):
@@ -4429,9 +4502,9 @@ class DescribeInvocationsResponseBody(TeaModel):
         invocations: DescribeInvocationsResponseBodyInvocations = None,
         request_id: str = None,
     ):
-        # Script execution record object.
+        # The command execution record.
         self.invocations = invocations
-        # Request ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4506,7 +4579,6 @@ class DescribeNetTestResultRequest(TeaModel):
         self,
         test_id: str = None,
     ):
-        # Test task ID.
         self.test_id = test_id
 
     def validate(self):
@@ -4536,11 +4608,8 @@ class DescribeNetTestResultResponseBodyCommTestHosts(TeaModel):
         resource_id: str = None,
         server_name: str = None,
     ):
-        # IP address
         self.ip = ip
-        # Resource ID
         self.resource_id = resource_id
-        # 服务名称。
         self.server_name = server_name
 
     def validate(self):
@@ -4579,13 +4648,9 @@ class DescribeNetTestResultResponseBodyCommTest(TeaModel):
         model: str = None,
         type: str = None,
     ):
-        # Number of GPUs
         self.gpunum = gpunum
-        # Resource ID
         self.hosts = hosts
-        # Communication library model
         self.model = model
-        # Communication library test category: ACCL or NCCL
         self.type = type
 
     def validate(self):
@@ -4636,13 +4701,9 @@ class DescribeNetTestResultResponseBodyDelayTestHosts(TeaModel):
         resource_id: str = None,
         server_name: str = None,
     ):
-        # Network card bond interface
         self.bond = bond
-        # Node IP
         self.ip = ip
-        # Resource ID
         self.resource_id = resource_id
-        # Service name
         self.server_name = server_name
 
     def validate(self):
@@ -4682,7 +4743,6 @@ class DescribeNetTestResultResponseBodyDelayTest(TeaModel):
         self,
         hosts: List[DescribeNetTestResultResponseBodyDelayTestHosts] = None,
     ):
-        # Input the hosts of the test nodes
         self.hosts = hosts
 
     def validate(self):
@@ -4721,13 +4781,9 @@ class DescribeNetTestResultResponseBodyTrafficTestClients(TeaModel):
         resource_id: str = None,
         server_name: str = None,
     ):
-        # Network card bond interface
         self.bond = bond
-        # Node IP
         self.ip = ip
-        # Resource ID
         self.resource_id = resource_id
-        # 服务名称。
         self.server_name = server_name
 
     def validate(self):
@@ -4770,13 +4826,9 @@ class DescribeNetTestResultResponseBodyTrafficTestServers(TeaModel):
         resource_id: str = None,
         server_name: str = None,
     ):
-        # Network card bond interface
         self.bond = bond
-        # Node IP
         self.ip = ip
-        # Resource ID
         self.resource_id = resource_id
-        # Service name
         self.server_name = server_name
 
     def validate(self):
@@ -4822,19 +4874,12 @@ class DescribeNetTestResultResponseBodyTrafficTest(TeaModel):
         servers: List[DescribeNetTestResultResponseBodyTrafficTestServers] = None,
         traffic_model: str = None,
     ):
-        # Resource ID.
         self.clients = clients
-        # Duration of the workflow task in seconds.
         self.duration = duration
-        # For RDMA, enter True/False; for TCP, this field is empty.
         self.gdr = gdr
-        # Network protocol, either RDMA or TCP.
         self.protocol = protocol
-        # For TCP, enter the number of concurrent test connections; for RDMA, enter the configured QP value.
         self.qp = qp
-        # List of servers
         self.servers = servers
-        # Traffic model, either MTON or Fullmesh.
         self.traffic_model = traffic_model
 
     def validate(self):
@@ -4915,34 +4960,21 @@ class DescribeNetTestResultResponseBody(TeaModel):
         test_id: str = None,
         traffic_test: DescribeNetTestResultResponseBodyTrafficTest = None,
     ):
-        # Cluster ID.
         self.cluster_id = cluster_id
-        # Cluster name.
         self.cluster_name = cluster_name
-        # Fill in when the traffic test type is communication library test
         self.comm_test = comm_test
-        # Diagnosis task creation time.
         self.creation_time = creation_time
-        # Fill in when the network test type is latency test
         self.delay_test = delay_test
-        # Diagnosis task completion time.
         self.finished_time = finished_time
-        # Network test type.
         self.net_test_type = net_test_type
-        # Test port number.
         self.port = port
-        # Request ID
         self.request_id = request_id
-        # Details of the diagnosis result. Returned as a JSON string.
         self.result_detial = result_detial
-        # Diagnosis task status. Possible values:
-        # - InProgress: Diagnosis in progress.
-        # - Finished: Diagnosis completed.
-        # - Failed: Diagnosis failed.
+        # *\
+        # *\
+        # *\
         self.status = status
-        # Initiated test task ID, which is the unique identifier for the network test task.
         self.test_id = test_id
-        # This field is empty if the traffic model (TrafficModel) is Fullmesh.
         self.traffic_test = traffic_test
 
     def validate(self):
@@ -5067,7 +5099,7 @@ class DescribeNodeRequest(TeaModel):
         self,
         node_id: str = None,
     ):
-        # Node ID
+        # The node ID.
         # 
         # This parameter is required.
         self.node_id = node_id
@@ -5101,22 +5133,23 @@ class DescribeNodeResponseBodyDisks(TeaModel):
         size: int = None,
         type: str = None,
     ):
-        # The category of the disk.
+        # The disk type. Valid values:
         # 
-        # *   cloud_ssd: all-flash disk.
+        # *   cloud_essd
         self.category = category
-        # The ID of the disk.
+        # The disk ID.
         self.disk_id = disk_id
-        # The performance level of the ESSD. Valid values:
+        # The performance level of the ESSD that is used as the system disk. Valid values:
         # 
         # *   PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
         # *   PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
         self.performance_level = performance_level
-        # The size of the disk. Unit: GiB.
+        # The disk size. Unit: GiB.
         self.size = size
-        # The type of the disk. Valid values:
+        # The disk type. Valid values:
         # 
         # *   system: system disk
+        # *   data: data disk
         self.type = type
 
     def validate(self):
@@ -5163,13 +5196,13 @@ class DescribeNodeResponseBodyNetworks(TeaModel):
         subnet_id: str = None,
         vpd_id: str = None,
     ):
-        # Network interface port information
+        # The port information of the elastic network interface (ENI).
         self.bond_name = bond_name
-        # Machine IP
+        # The IP address of the node.
         self.ip = ip
-        # Cluster subnet ID
+        # The subnet ID.
         self.subnet_id = subnet_id
-        # Cluster network ID
+        # The ID of the cluster network.
         self.vpd_id = vpd_id
 
     def validate(self):
@@ -5229,47 +5262,63 @@ class DescribeNodeResponseBody(TeaModel):
         user_data: str = None,
         zone_id: str = None,
     ):
-        # Cluster ID
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # Cluster name
+        # The cluster name.
         self.cluster_name = cluster_name
-        # Creation time
+        # The creation time.
         self.create_time = create_time
-        # Disk infos
+        # The disks.
         self.disks = disks
-        # Expiration time
+        # The expiration time.
         self.expired_time = expired_time
-        # Whether file storage mounting is supported
+        # Indicates whether file storage mounting is supported.
         self.file_system_mount_enabled = file_system_mount_enabled
-        # Hostname
+        # The hostname.
         self.hostname = hostname
-        # Cluster number
+        # The cluster number.
         self.hpn_zone = hpn_zone
-        # Image ID
+        # The image ID.
         self.image_id = image_id
-        # Image name
+        # The image name.
         self.image_name = image_name
-        # Machine type
+        # The instance type.
         self.machine_type = machine_type
-        # Network information
+        # The network information.
         self.networks = networks
-        # Node group ID
+        # The node group ID.
         self.node_group_id = node_group_id
-        # Node group name
+        # The node group name.
         self.node_group_name = node_group_name
-        # Node ID
+        # The node ID.
         self.node_id = node_id
-        # Node status
+        # The node status.
+        # 
+        # Valid values:
+        # 
+        # *   Extending
+        # *   UnusedNodeStopped
+        # *   UnusedNodeStopping
+        # *   Unused
+        # *   Using
+        # *   ReleaseLocking
+        # *   Operating
+        # *   Cutting
+        # *   ClusterNodeStopped
+        # *   UnusedNodeRecovering
+        # *   ClusterNodeStopping
+        # *   ClusterNodeRecovering
+        # *   Replacing
         self.operating_state = operating_state
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Resource group ID
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Unique machine identifier
+        # The serial number of the node.
         self.sn = sn
-        # The script by user defined
+        # The custom script.
         self.user_data = user_data
-        # Zone ID
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -5435,11 +5484,14 @@ class DescribeRegionsRequest(TeaModel):
         self,
         accept_language: str = None,
     ):
-        # Filter the returned results based on Chinese, English, and Japanese. For more information, see RFC7231. Valid values:
+        # The natural language that is used to filter responses. For more information, see RFC 7231.
         # 
-        # zh-CN
-        # en-US
-        # Default value: zh-CN
+        # zh-CN en-US Default value: zh-CN.
+        # 
+        # Valid values:
+        # 
+        # *   en-US
+        # *   zh-CN
         self.accept_language = accept_language
 
     def validate(self):
@@ -5468,9 +5520,9 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
         local_name: str = None,
         region_id: str = None,
     ):
-        # Region name
+        # The region name.
         self.local_name = local_name
-        # region id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -5503,9 +5555,9 @@ class DescribeRegionsResponseBody(TeaModel):
         regions: List[DescribeRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
-        # List of region information.
+        # The regions.
         self.regions = regions
-        # Request ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5587,11 +5639,11 @@ class DescribeSendFileResultsRequest(TeaModel):
         invoke_id: str = None,
         node_id: str = None,
     ):
-        # Command execution ID.
+        # The command execution ID.
         # 
         # This parameter is required.
         self.invoke_id = invoke_id
-        # Node ID
+        # The node ID.
         self.node_id = node_id
 
     def validate(self):
@@ -5630,64 +5682,51 @@ class DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeN
         start_time: str = None,
         update_time: str = None,
     ):
-        # The creation time of the file distribution task.
+        # The time when the file sending task was created.
         self.creation_time = creation_time
-        # The failure reason code for file distribution. Possible values:
-        # - Empty: The file was distributed normally. 
-        # - NodeNotExists: The specified instance does not exist or has been released. 
-        # - NodeReleased: The instance was released during the file distribution process. 
-        # - NodeNotRunning: The instance was not running when the file distribution task was created. 
-        # - AccountNotExists: The specified account does not exist. 
-        # - ClientNotRunning: The Cloud Assistant Agent is not running. 
-        # - ClientNotResponse: The Cloud Assistant Agent is not responding. 
-        # - ClientIsUpgrading: The Cloud Assistant Agent is currently being upgraded. 
-        # - ClientNeedUpgrade: The Cloud Assistant Agent needs to be upgraded. 
-        # - DeliveryTimeout: File delivery timed out. 
-        # - FileCreateFail: Failed to create the file. 
-        # - FileAlreadyExists: A file with the same name already exists at the specified path. 
-        # - FileContentInvalid: The file content is invalid. 
-        # - FileNameInvalid: The file name is invalid. 
-        # - FilePathInvalid: The file path is invalid. 
-        # - FileAuthorityInvalid: The file permissions are invalid. 
-        # - UserGroupNotExists: The user group specified for file delivery does not exist.
+        # The error code returned when the file failed to be sent to the instance. Valid values:
+        # 
+        # Null: The file is sent to the instance. NodeNotExists: The specified instance does not exist or has been released. NodeReleased: The instance was released while the file was being sent. NodeNotRunning: The instance was not running while the file sending task was being created. AccountNotExists: The specified account does not exist. ClientNotRunning: Cloud Assistant Agent is not running. ClientNotResponse: Cloud Assistant Agent did not respond. ClientIsUpgrading: Cloud Assistant Agent was being upgraded. ClientNeedUpgrade: Cloud Assistant Agent needs to be upgraded. DeliveryTimeout: The file sending task timed out. FileCreateFail: The file failed to be created. FileAlreadyExists: A file with the same name exists in the specified directory. FileContentInvalid: The file content is invalid. FileNameInvalid: The file name is invalid. FilePathInvalid: The specified directory is invalid. FileAuthorityInvalid: The specified permissions on the file are invalid. UserGroupNotExists: The specified user group does not exist.
         self.error_code = error_code
-        # Details of the reason for command delivery failure or execution failure, possible values: 
-        # - Empty: The command executed normally. 
-        # - the specified instance does not exist: The specified instance does not exist or has been released. 
-        # - the node has been released when creating task: The instance was released during the command execution. 
-        # - the node is not running when creating task: The instance was not in a running state when the command was executed. 
-        # - the command is not applicable: The command is not applicable to the specified instance. 
-        # - the specified account does not exist: The specified account does not exist. 
-        # - the specified directory does not exist: The specified directory does not exist. 
-        # - the cron job expression is invalid: The specified execution time expression is invalid. 
-        # - the aliyun service is not running on the instance: The Cloud Assistant Agent is not running. 
-        # - the aliyun service in the instance does not respond: The Cloud Assistant Agent is not responding. 
-        # - the aliyun service in the node is upgrading now: The Cloud Assistant Agent is currently being upgraded. 
-        # - the aliyun service in the node needs upgrade: The Cloud Assistant Agent needs an upgrade. 
-        # - the command delivery has timed out: Command delivery has timed out. 
-        # - the command execution has timed out: Command execution has timed out. 
-        # - the command execution got an exception: An exception occurred during command execution. 
-        # - the command execution has been interrupted: The command execution was interrupted. 
-        # - the command execution exit code is not zero: The command execution completed with a non-zero exit code. 
-        # - the specified instance has been released: The instance was released during file delivery.
+        # The error message returned if the command failed to be sent or run. Valid values:
+        # 
+        # *   null: The command is run as expected.
+        # *   the specified instance does not exists: The specified instance does not exist or is released.
+        # *   the node has released when create task: The instance is released when the command is being run.
+        # *   the node is not running when create task: The instance is not in the Running state while the command is being run.
+        # *   the command is not applicable: The command is not applicable to the specified instance.
+        # *   the specified account does not exists: The specified account does not exist.
+        # *   the specified directory does not exists: The specified directory does not exist.
+        # *   the cron job expression is invalid: The cron expression that specifies the execution time is invalid.
+        # *   the aliyun service is not running on the instance: Cloud Assistant Agent is not running.
+        # *   the aliyun service in the instance does not response: Cloud Assistant Agent does not respond.
+        # *   the aliyun service in the node is upgrading now: Cloud Assistant Agent is being upgraded.
+        # *   the aliyun service in the node need upgrade: Cloud Assistant Agent needs to be upgraded.
+        # *   the command delivery has been timeout: The request to send the command timed out.
+        # *   the command execution has been timeout: The command execution timed out.
+        # *   the command execution got an exception: An exception occurred when the command is being run.
+        # *   the command execution has been interrupted: The command execution is interrupted.
+        # *   the command execution exit code is not zero: The command execution completes, but the exit code is not 0.
+        # *   the specified instance has been released: The instance is released while the file is being sent.
         self.error_info = error_info
-        # Completion time, format: "2020-05-22T17:04:18".
+        # The time when the file sending task ends. The time is in the 2020-05-22T17:04:18 format.
         self.finish_time = finish_time
-        # Status of the task on a single instance. Possible values:
-        # - Pending: The system is validating or distributing the file.
-        # - Invalid: The specified file parameters are incorrect, and validation failed.
-        # - Running: The file is being distributed to the instance.
-        # - Aborted: Failed to distribute the file to the instance.
-        # - Success: The file distribution is complete.
-        # - Failed: The file creation failed within the instance.
-        # - Error: An exception occurred during file distribution and could not continue.
-        # - Timeout: The file distribution timed out.
+        # The status of the file sending task on an instance. Valid values:
+        # 
+        # *   Pending: The file is being verified or sent.
+        # *   Invalid: The file is invalid.
+        # *   Running: The file is being sent to the instance.
+        # *   Aborted: The file failed to be sent to the instance.
+        # *   Success: The file is sent.
+        # *   Failed: The file failed to be created on the instance.
+        # *   Error: An error occurred and interrupted the file sending task.
+        # *   Timeout: The file sending task timed out.
         self.invocation_status = invocation_status
-        # Node ID.
+        # The node ID.
         self.node_id = node_id
-        # Start Time
+        # The start time.
         self.start_time = start_time
-        # Update Time
+        # The update time.
         self.update_time = update_time
 
     def validate(self):
@@ -5743,7 +5782,7 @@ class DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodes(TeaMod
         self,
         invoke_node: List[DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode] = None,
     ):
-        # Record of file distribution for the node.
+        # The file sending records on a node.
         self.invoke_node = invoke_node
 
     def validate(self):
@@ -5791,53 +5830,56 @@ class DescribeSendFileResultsResponseBodyInvocationsInvocation(TeaModel):
         overwrite: bool = None,
         target_dir: str = None,
     ):
-        # Output information after command execution.
+        # The command output.
         # 
-        # If ContentEncoding is specified as PlainText, the original output information is returned.
-        # If ContentEncoding is specified as Base64, the Base64 encoded output information is returned.
+        # If ContentEncoding is set to PlainText in the request, the original command output is returned. If ContentEncoding is set to Base64 in the request, the Base64-encoded command output is returned.
         self.content = content
-        # File content type.
+        # The content type of the file.
         # 
-        # PlainText: Plain text.
-        # Base64: Base64 encoding.
-        # The default value is PlainText.
+        # PlainText: The file content is not encoded. Base64: The file content is encoded in Base64. Default value: PlainText.
         self.content_type = content_type
-        # Creation time of the distribution.
+        # The time when the file sending task was created.
         self.creation_time = creation_time
-        # Command description.
+        # The command description.
         self.description = description
         # The user group of the file.
         self.file_group = file_group
-        # File permissions.
+        # The permissions on the file.
         self.file_mode = file_mode
         # The owner of the file.
         self.file_owner = file_owner
-        # Overall status of the file distribution. The overall status depends on the common execution status of all instances involved in this distribution, possible values are:
+        # The overall sending status of the file. The overall sending status of the file varies based on the sending status of the file on all destination instances. Valid values:
         # 
-        # - Pending: The system is verifying or distributing the file. If at least one instance has a file distribution status of Pending, the overall execution status will be Pending.
-        # - Running: The file is being distributed on the instance. If at least one instance has a file distribution status of Running, the overall execution status will be Running.
-        # - Success: All instances have a file distribution status of Success, then the overall execution status will be Success.
-        # - Failed: All instances have a file distribution status of Failed, then the overall execution status will be Failed. If any of the following conditions occur for the file distribution status on an instance, the return value will be Failed:
-        #     - The specified file parameters are incorrect, verification failed (Invalid).
-        #     - Failed to distribute the file to the instance (Aborted).
-        #     - The file creation failed within the instance (Failed).
-        #     - The file distribution timed out (Timeout).
-        #     - An exception occurred during file distribution and could not continue (Error).
-        # - PartialFailed: Some instances successfully received the file while others failed. If the file distribution status of all instances is either Success or Failed, the overall execution status will be PartialFailed.
+        # *   Pending: The file is being verified or sent. If the sending state of the file on at least one instance is Pending, the overall sending state of the file is Pending.
+        # 
+        # *   Running: The file is being sent to the instance. If the sending state of the file on at least one instance is Running, the overall sending state of the file is Running.
+        # 
+        # *   Success: If the sending state of the file on all instances is Success, the overall sending state of the file is Success.
+        # 
+        # *   Failed: If the sending state of the file on all instances is Failed, the overall sending state of the file is Failed. If the sending state of the file on one or more instances is one of the following values, the overall sending state of the file is Failed:
+        # 
+        #     *   Invalid: The file is invalid.
+        #     *   Aborted: The file failed to be sent to the instances.
+        #     *   Failed: The file failed to be created on the instances.
+        #     *   Timeout: The file sending task timed out.
+        #     *   Error: An error occurred and interrupted the file sending task.
+        # 
+        # *   PartialFailed: The file sending task was completed on some instances but failed on other instances. If the sending state of the file is Success on some instances and is Failed on other instances, the overall sending state of the file is PartialFailed.
         self.invocation_status = invocation_status
-        # Record of file distribution.
+        # The file sending records.
         self.invoke_nodes = invoke_nodes
-        # Name of the file distribution.
+        # The name of the file sending task.
         self.name = name
-        # Number of nodes
+        # The number of nodes.
         self.node_count = node_count
-        # Whether to overwrite the file if a file with the same name already exists in the target directory.
-        # - true: Overwrite.
-        # - false: Do not overwrite.
+        # Indicates whether a file was overwritten in the destination directory if the file has the same name as the sent file.
         # 
-        # The default value is false.
+        # *   true
+        # *   false
+        # 
+        # Default value: false.
         self.overwrite = overwrite
-        # Target path.
+        # The destination directory.
         self.target_dir = target_dir
 
     def validate(self):
@@ -5915,7 +5957,7 @@ class DescribeSendFileResultsResponseBodyInvocations(TeaModel):
         self,
         invocation: List[DescribeSendFileResultsResponseBodyInvocationsInvocation] = None,
     ):
-        # Command execution ID.
+        # The command execution ID.
         self.invocation = invocation
 
     def validate(self):
@@ -5953,11 +5995,11 @@ class DescribeSendFileResultsResponseBody(TeaModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # Record of file distribution.
+        # The file sending records.
         self.invocations = invocations
-        # ID of the request
+        # The request ID.
         self.request_id = request_id
-        # Total number of commands.
+        # The total number of the commands.
         self.total_count = total_count
 
     def validate(self):
@@ -6036,7 +6078,7 @@ class DescribeTaskRequest(TeaModel):
         self,
         task_id: str = None,
     ):
-        # Task ID
+        # The task ID.
         # 
         # This parameter is required.
         self.task_id = task_id
@@ -6071,17 +6113,35 @@ class DescribeTaskResponseBodyStepsSubTasks(TeaModel):
         task_type: str = None,
         update_time: str = None,
     ):
-        # Creation Time
+        # The creation time.
         self.create_time = create_time
-        # Subtask Failure Message
+        # The error message returned for failed sub tasks.
         self.message = message
-        # Task ID
+        # The task ID.
         self.task_id = task_id
-        # Task Execution State
+        # The task status.
         self.task_state = task_state
-        # Task Type
+        # The task type.
+        # 
+        # Valid values:
+        # 
+        # *   reclone_node_sub_task
+        # *   initialize_bare_cluster
+        # *   extend_bare_cluster
+        # *   reclone_node
+        # *   reboot_node
+        # *   extend_ack_edge_cluster
+        # *   extend_cluster
+        # *   initialize_ack_edge_cluster
+        # *   cut_node_sub_task
+        # *   reboot_node_sub_task
+        # *   reclone_ack_edge_node
+        # *   initialize_cluster
+        # *   cut_cluster
+        # *   reclone_bare_node
+        # *   cut_bare_cluster
         self.task_type = task_type
-        # Update Time
+        # The update time.
         self.update_time = update_time
 
     def validate(self):
@@ -6136,21 +6196,48 @@ class DescribeTaskResponseBodySteps(TeaModel):
         sub_tasks: List[DescribeTaskResponseBodyStepsSubTasks] = None,
         update_time: str = None,
     ):
-        # Step Failure Message
+        # The error message of the step.
         self.message = message
-        # Stage Tag
+        # The stage marker.
+        # 
+        # Valid values:
+        # 
+        # *   机器释放: Machine release.
+        # *   节点并发初始化: Node concurrent initialization.
+        # *   节点释放: Node release.
+        # *   机器替换: Machine replacement.
+        # *   节点缩容: Node scale-in.
+        # *   提前续费: Early renewal.
+        # *   物理机清理: Physical machine cleanup.
+        # *   节点清理: Node cleanup.
+        # *   创建K8s集群: Create Kubernetes cluster.
+        # *   网络初始化: Network initialization.
+        # *   节点重启: Node restart.
+        # *   节点退订: Node unsubscribe.
+        # *   集群扩容: Cluster scale-out.
+        # *   异常机器释放: Abnormal machine release.
         self.stage_tag = stage_tag
-        # Start Time
+        # The start time.
         self.start_time = start_time
-        # Step Name
+        # The name of the step.
         self.step_name = step_name
-        # Step Execution State
+        # The step status.
+        # 
+        # Valid values:
+        # 
+        # *   execution_success
+        # *   execution_failed
         self.step_state = step_state
-        # Step Type
+        # The type of the step.
+        # 
+        # Valid values:
+        # 
+        # *   normal: A normal step has only one successor step.
+        # *   dispersive: A dispersive step has multiple successor steps.
         self.step_type = step_type
-        # Subtasks
+        # The sub tasks.
         self.sub_tasks = sub_tasks
-        # Update Time
+        # The update time.
         self.update_time = update_time
 
     def validate(self):
@@ -6223,25 +6310,50 @@ class DescribeTaskResponseBody(TeaModel):
         task_type: str = None,
         update_time: str = None,
     ):
-        # Cluster ID
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # Cluster Name
+        # The cluster name.
         self.cluster_name = cluster_name
-        # Start Time
+        # The create time.
         self.create_time = create_time
-        # Task Failure Message
+        # The error message returned for failed tasks.
         self.message = message
-        # List of node IDs
+        # The IDs of the nodes.
         self.node_ids = node_ids
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Execution Steps
+        # The steps.
         self.steps = steps
-        # Task State
+        # The task status.
+        # 
+        # Valid values:
+        # 
+        # *   running
+        # *   execution_success
+        # *   execution_fail
+        # *   waiting_to_run
         self.task_state = task_state
-        # Task Type
+        # The task type.
+        # 
+        # Valid values:
+        # 
+        # *   reclone_node_sub_task
+        # *   initialize_bare_cluster
+        # *   extend_bare_cluster
+        # *   reclone_node
+        # *   reboot_node
+        # *   extend_ack_edge_cluster
+        # *   extend_cluster
+        # *   initialize_ack_edge_cluster
+        # *   cut_node_sub_task
+        # *   reboot_node_sub_task
+        # *   reclone_ack_edge_node
+        # *   initialize_cluster
+        # *   cut_cluster
+        # *   reclone_bare_node
+        # *   cut_bare_cluster
         self.task_type = task_type
-        # Update Time
+        # The update time.
         self.update_time = update_time
 
     def validate(self):
@@ -6354,7 +6466,7 @@ class DescribeVscRequest(TeaModel):
         self,
         vsc_id: str = None,
     ):
-        # The VscId to be queried
+        # The VSC ID.
         # 
         # This parameter is required.
         self.vsc_id = vsc_id
@@ -6390,19 +6502,25 @@ class DescribeVscResponseBody(TeaModel):
         vsc_name: str = None,
         vsc_type: str = None,
     ):
-        # ID of the compute node where the Vsc is located
+        # The ID of the compute node in which the VSC resides.
         self.node_id = node_id
-        # ID of the request
+        # The request ID.
         self.request_id = request_id
-        # Resource Group ID
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Status of the Vsc
+        # The VSC status.
+        # 
+        # Valid values:
+        # 
+        # *   Creating
+        # *   Normal
+        # *   Deleting
         self.status = status
-        # Vsc ID
+        # The VSC ID.
         self.vsc_id = vsc_id
-        # Custom name of the Vsc
+        # The custom name of the VSC.
         self.vsc_name = vsc_name
-        # Vsc type
+        # The VSC type.
         self.vsc_type = vsc_type
 
     def validate(self):
@@ -6495,11 +6613,14 @@ class DescribeZonesRequest(TeaModel):
         self,
         accept_language: str = None,
     ):
-        # Filter the returned results based on Chinese or English. For more information, see RFC7231. Valid values:
+        # The natural language that is used to filter responses. For more information, see RFC 7231. Valid values:
         # 
-        # zh-CN
-        # en-US
-        # Default value: zh-CN
+        # zh-CN en-US Default value: zh-CN.
+        # 
+        # Valid values:
+        # 
+        # *   en-US
+        # *   zh-CN
         self.accept_language = accept_language
 
     def validate(self):
@@ -6528,9 +6649,9 @@ class DescribeZonesResponseBodyZones(TeaModel):
         local_name: str = None,
         zone_id: str = None,
     ):
-        # Zone name
+        # The zone name.
         self.local_name = local_name
-        # Zone ID
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -6563,9 +6684,9 @@ class DescribeZonesResponseBody(TeaModel):
         request_id: str = None,
         zones: List[DescribeZonesResponseBodyZones] = None,
     ):
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # List of available zones
+        # The list of zones.
         self.zones = zones
 
     def validate(self):
@@ -6647,9 +6768,9 @@ class ExtendClusterRequestIpAllocationPolicyBondPolicyBonds(TeaModel):
         name: str = None,
         subnet: str = None,
     ):
-        # Bond name
+        # The bond name.
         self.name = name
-        # IP source cluster subnet
+        # The cluster subnet from which the IP address originates.
         self.subnet = subnet
 
     def validate(self):
@@ -6682,9 +6803,9 @@ class ExtendClusterRequestIpAllocationPolicyBondPolicy(TeaModel):
         bond_default_subnet: str = None,
         bonds: List[ExtendClusterRequestIpAllocationPolicyBondPolicyBonds] = None,
     ):
-        # Default bond cluster subnet
+        # The default bond subnet for the cluster.
         self.bond_default_subnet = bond_default_subnet
-        # Bond information
+        # The bonds.
         self.bonds = bonds
 
     def validate(self):
@@ -6725,9 +6846,9 @@ class ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds(TeaModel):
         name: str = None,
         subnet: str = None,
     ):
-        # Bond name
+        # The bond name.
         self.name = name
-        # IP source cluster subnet
+        # The cluster subnet from which the IP address originates.
         self.subnet = subnet
 
     def validate(self):
@@ -6760,9 +6881,9 @@ class ExtendClusterRequestIpAllocationPolicyMachineTypePolicy(TeaModel):
         bonds: List[ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds] = None,
         machine_type: str = None,
     ):
-        # Bond information
+        # The bonds.
         self.bonds = bonds
-        # Machine Type
+        # The instance type.
         self.machine_type = machine_type
 
     def validate(self):
@@ -6803,9 +6924,9 @@ class ExtendClusterRequestIpAllocationPolicyNodePolicyBonds(TeaModel):
         name: str = None,
         subnet: str = None,
     ):
-        # Bond name
+        # The bond name.
         self.name = name
-        # IP source cluster subnet
+        # The cluster subnet from which the IP address originates.
         self.subnet = subnet
 
     def validate(self):
@@ -6839,11 +6960,11 @@ class ExtendClusterRequestIpAllocationPolicyNodePolicy(TeaModel):
         hostname: str = None,
         node_id: str = None,
     ):
-        # Bond information
+        # The bonds.
         self.bonds = bonds
-        # Host name
+        # The hostname.
         self.hostname = hostname
-        # Node ID
+        # The node ID.
         self.node_id = node_id
 
     def validate(self):
@@ -6889,11 +7010,11 @@ class ExtendClusterRequestIpAllocationPolicy(TeaModel):
         machine_type_policy: List[ExtendClusterRequestIpAllocationPolicyMachineTypePolicy] = None,
         node_policy: List[ExtendClusterRequestIpAllocationPolicyNodePolicy] = None,
     ):
-        # Specify the cluster subnet ID based on the bond name
+        # The bond policy that you specify the cluster subnet ID based on the bond name.
         self.bond_policy = bond_policy
-        # Machine type allocation policy
+        # The allocation policies for the instance type.
         self.machine_type_policy = machine_type_policy
-        # Node allocation policy
+        # The node allocation policies.
         self.node_policy = node_policy
 
     def validate(self):
@@ -6950,9 +7071,9 @@ class ExtendClusterRequestNodeGroupsNodeTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag.
+        # The tag key.
         self.key = key
-        # The value of tag.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -6979,25 +7100,18 @@ class ExtendClusterRequestNodeGroupsNodeTag(TeaModel):
         return self
 
 
-class ExtendClusterRequestNodeGroupsNodes(TeaModel):
+class ExtendClusterRequestNodeGroupsNodesDataDisk(TeaModel):
     def __init__(
         self,
-        hostname: str = None,
-        login_password: str = None,
-        node_id: str = None,
-        v_switch_id: str = None,
-        vpc_id: str = None,
+        category: str = None,
+        delete_with_node: bool = None,
+        performance_level: str = None,
+        size: int = None,
     ):
-        # Hostname
-        self.hostname = hostname
-        # Login Password
-        self.login_password = login_password
-        # Node ID
-        self.node_id = node_id
-        # VSwitch ID
-        self.v_switch_id = v_switch_id
-        # VPC ID
-        self.vpc_id = vpc_id
+        self.category = category
+        self.delete_with_node = delete_with_node
+        self.performance_level = performance_level
+        self.size = size
 
     def validate(self):
         pass
@@ -7008,6 +7122,67 @@ class ExtendClusterRequestNodeGroupsNodes(TeaModel):
             return _map
 
         result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.delete_with_node is not None:
+            result['DeleteWithNode'] = self.delete_with_node
+        if self.performance_level is not None:
+            result['PerformanceLevel'] = self.performance_level
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('DeleteWithNode') is not None:
+            self.delete_with_node = m.get('DeleteWithNode')
+        if m.get('PerformanceLevel') is not None:
+            self.performance_level = m.get('PerformanceLevel')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class ExtendClusterRequestNodeGroupsNodes(TeaModel):
+    def __init__(
+        self,
+        data_disk: List[ExtendClusterRequestNodeGroupsNodesDataDisk] = None,
+        hostname: str = None,
+        login_password: str = None,
+        node_id: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+    ):
+        self.data_disk = data_disk
+        # The hostname.
+        self.hostname = hostname
+        # The logon password.
+        self.login_password = login_password
+        # The node ID.
+        self.node_id = node_id
+        # The vSwitch ID.
+        self.v_switch_id = v_switch_id
+        # The ID of the virtual private cloud (VPC).
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        if self.data_disk:
+            for k in self.data_disk:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataDisk'] = []
+        if self.data_disk is not None:
+            for k in self.data_disk:
+                result['DataDisk'].append(k.to_map() if k else None)
         if self.hostname is not None:
             result['Hostname'] = self.hostname
         if self.login_password is not None:
@@ -7022,6 +7197,11 @@ class ExtendClusterRequestNodeGroupsNodes(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.data_disk = []
+        if m.get('DataDisk') is not None:
+            for k in m.get('DataDisk'):
+                temp_model = ExtendClusterRequestNodeGroupsNodesDataDisk()
+                self.data_disk.append(temp_model.from_map(k))
         if m.get('Hostname') is not None:
             self.hostname = m.get('Hostname')
         if m.get('LoginPassword') is not None:
@@ -7052,50 +7232,31 @@ class ExtendClusterRequestNodeGroups(TeaModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # Number of nodes to purchase. Value range: 0–500.
-        # 
-        # If the Amount parameter is set to 0, no nodes will be purchased. Existing nodes will be used for scaling.
-        # If the Amount parameter is set to 1–500, the specified number of nodes will be purchased and used for scaling.
-        # Default value: 0
+        # The number of nodes to be purchased. Valid values: 0 to 500. If you set the value of the Amount parameter to 0, you do not want to purchase nodes and scale out the cluster by using existing nodes. If you set the value of the Amount parameter to a value ranging from 1 to 500, you want to purchase a certain number of nodes for cluster scale-out. Default value: 0.
         self.amount = amount
-        # Whether to enable auto-renewal for purchased nodes.
-        # Conditions: This parameter takes effect only when the Amount parameter is set to a non-zero value and the ChargeType is PrePaid.
-        # Valid values:
-        # 
-        # True: Enable auto-renewal.
-        # False: Disable auto-renewal.
-        # Default value: False
+        # Specifies whether to enable auto-renewal for the purchased nodes. This parameter takes effect only when the Amount parameter is not set to 0 and the ChargeType parameter is set to PrePaid. Valid values: true and false. Default value: False.
         self.auto_renew = auto_renew
-        # Billing method for nodes.
-        # This parameter takes effect only when the Amount parameter is set to a value other than 0.
-        # Valid values:
-        # 
-        # PrePaid: Subscription (prepaid).
-        # PostPaid: Pay-as-you-go (postpaid).
-        # Default value: PrePaid
+        # The billing method of the node. This parameter does not take effect if you set the Amount parameter to 0. Valid values: PrePaid (subscription) and PostPaid (pay-as-you-go). Default value: PrePaid.
         self.charge_type = charge_type
-        # The hostnames of purchased nodes.
-        # This parameter takes effect only when the Amount parameter is set to a non-zero value.
+        # The hostname for the purchased node. This parameter does not take effect if you set the Amount parameter to 0.
         self.hostnames = hostnames
-        # The login password of node.
+        # The logon password of the purchased node. This parameter does not take effect if you set the Amount parameter to 0.
         self.login_password = login_password
-        # Node Group ID
+        # The node group ID.
         self.node_group_id = node_group_id
-        # The tag of node
+        # The tags.
         self.node_tag = node_tag
-        # List of Nodes
+        # The nodes.
         self.nodes = nodes
-        # Purchase duration for nodes (unit: month).
-        # Valid values: 1, 6, 12, 24, 36, 48.
-        # Conditions: This parameter takes effect only when the Amount parameter is set to a non-zero value and the ChargeType is PrePaid.
+        # The duration of the purchased node. Unit: months. Valid values: 1, 6, 12, 24, 36, and 48. This parameter takes effect only when the Amount parameter is not set to 0 and the ChargeType parameter is set to PrePaid.
         self.period = period
-        # Custom Data
+        # The user data.
         self.user_data = user_data
-        # VSwitch Id
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # Vpc Id
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
-        # Zone ID
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -7193,17 +7354,17 @@ class ExtendClusterRequest(TeaModel):
         v_switch_zone_id: str = None,
         vpd_subnets: List[str] = None,
     ):
-        # Cluster ID
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # Whether to allow skipping failed node tasks, default value is False
+        # Specifies whether to allow skipping failed nodes. Default value: False.
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
-        # IP allocation policy combination: Each policy can only choose one type, and multiple policies can be combined
+        # The combined policies for assigning IP addresses: Only one policy type can be selected for each policy, and multiple policies can be combined.
         self.ip_allocation_policy = ip_allocation_policy
-        # Node Group
+        # The node groups.
         self.node_groups = node_groups
-        # VSwitch availability zone ID
+        # The ID of the zone to which the vSwitch belongs.
         self.v_switch_zone_id = v_switch_zone_id
-        # List of cluster subnets
+        # The subnets of the cluster.
         self.vpd_subnets = vpd_subnets
 
     def validate(self):
@@ -7273,17 +7434,17 @@ class ExtendClusterShrinkRequest(TeaModel):
         v_switch_zone_id: str = None,
         vpd_subnets_shrink: str = None,
     ):
-        # Cluster ID
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # Whether to allow skipping failed node tasks, default value is False
+        # Specifies whether to allow skipping failed nodes. Default value: False.
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
-        # IP allocation policy combination: Each policy can only choose one type, and multiple policies can be combined
+        # The combined policies for assigning IP addresses: Only one policy type can be selected for each policy, and multiple policies can be combined.
         self.ip_allocation_policy_shrink = ip_allocation_policy_shrink
-        # Node Group
+        # The node groups.
         self.node_groups_shrink = node_groups_shrink
-        # VSwitch availability zone ID
+        # The ID of the zone to which the vSwitch belongs.
         self.v_switch_zone_id = v_switch_zone_id
-        # List of cluster subnets
+        # The subnets of the cluster.
         self.vpd_subnets_shrink = vpd_subnets_shrink
 
     def validate(self):
@@ -7332,9 +7493,9 @@ class ExtendClusterResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Task ID
+        # The job ID.
         self.task_id = task_id
 
     def validate(self):
@@ -7408,9 +7569,9 @@ class ListClusterNodesRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag object
+        # The tag key for the node.
         self.key = key
-        # The value of tag object
+        # The tag value for the node.
         self.value = value
 
     def validate(self):
@@ -7447,19 +7608,19 @@ class ListClusterNodesRequest(TeaModel):
         resource_group_id: str = None,
         tags: List[ListClusterNodesRequestTags] = None,
     ):
-        # Cluster ID
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # Number of items per page in a paginated query, with a default value of 20.
+        # The number of entries per page. Default value: 20.
         self.max_results = max_results
-        # Query token (Token), which is the value of the NextToken parameter returned by the previous API call.
+        # The token that determines the start position of the query. Set this parameter to the value of the NextToken parameter that is returned from the last call.
         self.next_token = next_token
-        # Node group ID
+        # The node group ID.
         self.node_group_id = node_group_id
-        # resource group id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # tag information
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -7518,13 +7679,13 @@ class ListClusterNodesResponseBodyNodesNetworks(TeaModel):
         subnet_id: str = None,
         vpd_id: str = None,
     ):
-        # Machine network interface name
+        # The name of the network port for the node.
         self.bond_name = bond_name
-        # IP address within the VPC
+        # The IP address of the node in the virtual private cloud (VPC).
         self.ip = ip
-        # VPC subnet ID
+        # The subnet ID.
         self.subnet_id = subnet_id
-        # VPC ID
+        # The VPC ID.
         self.vpd_id = vpd_id
 
     def validate(self):
@@ -7565,9 +7726,9 @@ class ListClusterNodesResponseBodyNodesTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag object
+        # The tag key.
         self.key = key
-        # The value of tag object
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -7618,45 +7779,61 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # product code
+        # The commodity code.
         self.commodity_code = commodity_code
-        # Creation time
+        # The creation time.
         self.create_time = create_time
-        # Machine expiration time
+        # The time when the node expires.
         self.expired_time = expired_time
-        # whether or not support file system mount
+        # Indicates whether file storage mounting is supported.
         self.file_system_mount_enabled = file_system_mount_enabled
-        # Hostname
+        # The hostname.
         self.hostname = hostname
-        # Hpn Zone
+        # The cluster number.
         self.hpn_zone = hpn_zone
-        # System image ID
+        # The system image ID.
         self.image_id = image_id
-        # image name
+        # The image name.
         self.image_name = image_name
-        # Machine type
+        # The node type.
         self.machine_type = machine_type
-        # Network information
+        # The network information.
         self.networks = networks
-        # Node group ID
+        # The node group ID.
         self.node_group_id = node_group_id
-        # Node group name
+        # The node group name.
         self.node_group_name = node_group_name
-        # Node ID
+        # The node ID.
         self.node_id = node_id
-        # Node status
+        # The node status.
+        # 
+        # Valid values:
+        # 
+        # *   Extending
+        # *   UnusedNodeStopped
+        # *   UnusedNodeStopping
+        # *   Unused
+        # *   Using
+        # *   ReleaseLocking
+        # *   Operating
+        # *   Cutting
+        # *   ClusterNodeStopped
+        # *   UnusedNodeRecovering
+        # *   ClusterNodeStopping
+        # *   ClusterNodeRecovering
+        # *   Replacing
         self.operating_state = operating_state
-        # Machine SN
+        # The serial number of the node.
         self.sn = sn
-        # tag information
+        # The tags.
         self.tags = tags
-        # task id
+        # The job ID.
         self.task_id = task_id
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # VPC ID
+        # The VPC ID.
         self.vpc_id = vpc_id
-        # Zone ID
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -7779,11 +7956,11 @@ class ListClusterNodesResponseBody(TeaModel):
         nodes: List[ListClusterNodesResponseBodyNodes] = None,
         request_id: str = None,
     ):
-        # The query token value returned by this call.
+        # The returned pagination token which can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # List of nodes
+        # The nodes.
         self.nodes = nodes
-        # Request ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7869,9 +8046,9 @@ class ListClustersRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag object
+        # The tag key.
         self.key = key
-        # The value of tag object
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -7906,13 +8083,13 @@ class ListClustersRequest(TeaModel):
         resource_group_id: str = None,
         tags: List[ListClustersRequestTags] = None,
     ):
-        # Number of items per page for paginated queries, with a default value of 20.
+        # The number of entries per page. Default value: 20.
         self.max_results = max_results
-        # Query token, which is the value of the NextToken parameter returned by the previous API call.
+        # The token that determines the start position of the query. Set this parameter to the value of the NextToken parameter that is returned from the last call.
         self.next_token = next_token
-        # Resource group ID
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # tag info
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -7961,9 +8138,9 @@ class ListClustersResponseBodyClustersTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag object
+        # The tag key.
         self.key = key
-        # The value of tag object
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -8010,37 +8187,50 @@ class ListClustersResponseBodyClusters(TeaModel):
         update_time: str = None,
         vpc_id: str = None,
     ):
-        # Cluster description
+        # The cluster description.
         self.cluster_description = cluster_description
-        # Cluster ID
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # Cluster name
+        # The cluster name.
         self.cluster_name = cluster_name
-        # Cluster type
+        # The cluster type.
+        # 
+        # Valid values:
+        # 
+        # *   AckEdgePro
+        # *   ExclusiveBareCluster
+        # *   Lite
         self.cluster_type = cluster_type
-        # Component information
+        # The component information.
         self.components = components
-        # IP version of the computing network
+        # The IP type of the computing network.
         self.computing_ip_version = computing_ip_version
-        # Creation time
+        # The creation time.
         self.create_time = create_time
-        # Cluster number
+        # The cluster number.
         self.hpn_zone = hpn_zone
-        # Number of nodes
+        # The number of nodes.
         self.node_count = node_count
-        # Number of node groups
+        # The number of node groups.
         self.node_group_count = node_group_count
-        # Cluster status
+        # The cluster status.
+        # 
+        # Valid values:
+        # 
+        # *   running
+        # *   expanding
+        # *   shrinking
+        # *   initializing
         self.operating_state = operating_state
-        # Resource group ID
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # tag information
+        # The tags.
         self.tags = tags
-        # Task ID
+        # The job ID.
         self.task_id = task_id
-        # Update time
+        # The update time.
         self.update_time = update_time
-        # VPC ID
+        # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -8138,11 +8328,11 @@ class ListClustersResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # Cluster information
+        # The clusters.
         self.clusters = clusters
-        # The query token value returned by this call.
+        # The returned pagination token which can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # Request ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8230,18 +8420,11 @@ class ListDiagnosticResultsRequest(TeaModel):
         next_token: str = None,
         resource_group_id: str = None,
     ):
-        # Type of diagnosis
         self.diag_type = diag_type
-        # Number of items per page in a paginated query. The maximum value is 100.
-        # 
-        # Default value:
-        # 
-        # - If no value is set or the set value is less than 20, the default is 20.
-        # - If the set value is greater than 100, the default is 100.
+        # *\
+        # *\
         self.max_results = max_results
-        # Query token (Token), the value should be the NextToken parameter value returned from the previous API call.
         self.next_token = next_token
-        # Resource group ID
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -8290,25 +8473,15 @@ class ListDiagnosticResultsResponseBodyDiagnosticResults(TeaModel):
         server_name: str = None,
         status: str = None,
     ):
-        # Cluster ID
         self.cluster_id = cluster_id
-        # Cluster name
         self.cluster_name = cluster_name
-        # Creation time of the diagnostic task.
         self.creation_time = creation_time
-        # Diagnosis content. For example, in network diagnosis, there are static configuration checks, dynamic operation checks, etc.
         self.diag_content = diag_content
-        # Diagnosis ID
         self.diag_id = diag_id
-        # Diagnosis result, success or failure.
         self.diag_result = diag_result
-        # Completion time of the diagnostic task.
         self.finished_time = finished_time
-        # Resource ID
         self.resource_id = resource_id
-        # Service name.
         self.server_name = server_name
-        # Governance status
         self.status = status
 
     def validate(self):
@@ -8375,19 +8548,11 @@ class ListDiagnosticResultsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # Diagnostic information
         self.diagnostic_results = diagnostic_results
-        # 分页查询时每页行数。最大值为100。
-        # 
-        # 默认值：
-        # 
-        # •当不设置值或设置的值小于20时，默认值为20。
-        # 
-        # •当设置的值大于100时，默认值为100。
+        # *\
+        # *\
         self.max_results = max_results
-        # NextToken for the next page. Include this value when requesting the next page.
         self.next_token = next_token
-        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -8477,9 +8642,9 @@ class ListFreeNodesRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag object
+        # The tag key.
         self.key = key
-        # The value of tag object
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -8517,19 +8682,19 @@ class ListFreeNodesRequest(TeaModel):
         resource_group_id: str = None,
         tags: List[ListFreeNodesRequestTags] = None,
     ):
-        # Cluster number
+        # The cluster number.
         self.hpn_zone = hpn_zone
-        # Machine type
+        # The instance type.
         self.machine_type = machine_type
-        # Number of items per page for paginated queries, default is 20.
+        # The number of entries per page. Default value: 20.
         self.max_results = max_results
-        # Query token (Token), the value should be the NextToken parameter value returned from the previous API call.
+        # The token that determines the start position of the query. Set this parameter to the value of the NextToken parameter that is returned from the last call.
         self.next_token = next_token
-        # return array of operating states
+        # The types of the returned nodes that are not used.
         self.operating_states = operating_states
-        # Resource group ID
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Tag information
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -8590,9 +8755,9 @@ class ListFreeNodesResponseBodyNodesTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag object
+        # The tag key.
         self.key = key
-        # The value of tag object
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -8634,27 +8799,27 @@ class ListFreeNodesResponseBodyNodes(TeaModel):
         tags: List[ListFreeNodesResponseBodyNodesTags] = None,
         zone_id: str = None,
     ):
-        # Product Code
+        # The commodity code.
         self.commodity_code = commodity_code
-        # Creation time
+        # The creation time.
         self.create_time = create_time
-        # Expiration time of the machine
+        # The time when the node expires.
         self.expired_time = expired_time
-        # Cluster number
+        # The cluster number.
         self.hpn_zone = hpn_zone
-        # Machine type
+        # The instance type.
         self.machine_type = machine_type
-        # Node ID
+        # The node ID.
         self.node_id = node_id
-        # Node status
+        # The node status.
         self.operating_state = operating_state
-        # Resource group ID
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Machine SN
+        # The serial number of the node.
         self.sn = sn
-        # Tags Info
+        # The tags.
         self.tags = tags
-        # Availability zone ID
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -8732,11 +8897,11 @@ class ListFreeNodesResponseBody(TeaModel):
         nodes: List[ListFreeNodesResponseBodyNodes] = None,
         request_id: str = None,
     ):
-        # The query token value returned by this call.
+        # The returned pagination token which can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # List of nodes
+        # The nodes.
         self.nodes = nodes
-        # Request ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8823,11 +8988,11 @@ class ListImagesRequest(TeaModel):
         image_version: str = None,
         platform: str = None,
     ):
-        # Architecture
+        # The architecture.
         self.architecture = architecture
-        # Image version
+        # The image version.
         self.image_version = image_version
-        # Platform
+        # The platform.
         self.platform = platform
 
     def validate(self):
@@ -8872,25 +9037,25 @@ class ListImagesResponseBodyImages(TeaModel):
         release_file_size: str = None,
         type: str = None,
     ):
-        # Architecture
+        # The architecture.
         self.architecture = architecture
-        # Description
+        # The description.
         self.description = description
-        # Image ID
+        # The image ID.
         self.image_id = image_id
-        # Image name
+        # The image name.
         self.image_name = image_name
-        # Image version
+        # The image version.
         self.image_version = image_version
-        # node count
+        # The number of nodes.
         self.node_count = node_count
-        # Platform
+        # The platform.
         self.platform = platform
-        # File MD5
+        # The MD5 hash value of the file.
         self.release_file_md_5 = release_file_md_5
-        # Image size
+        # The image size.
         self.release_file_size = release_file_size
-        # image type
+        # The image type.
         self.type = type
 
     def validate(self):
@@ -8956,9 +9121,9 @@ class ListImagesResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # Image details
+        # The image details.
         self.images = images
-        # NextToken for the next page, include this value when requesting the next page
+        # The token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
@@ -9047,11 +9212,8 @@ class ListMachineNetworkInfoRequestMachineHpnInfo(TeaModel):
         machine_type: str = None,
         region_id: str = None,
     ):
-        # Cluster ID
         self.hpn_zone = hpn_zone
-        # Machine type
         self.machine_type = machine_type
-        # Region ID
         self.region_id = region_id
 
     def validate(self):
@@ -9087,7 +9249,6 @@ class ListMachineNetworkInfoRequest(TeaModel):
         self,
         machine_hpn_info: List[ListMachineNetworkInfoRequestMachineHpnInfo] = None,
     ):
-        # Array
         self.machine_hpn_info = machine_hpn_info
 
     def validate(self):
@@ -9123,7 +9284,6 @@ class ListMachineNetworkInfoShrinkRequest(TeaModel):
         self,
         machine_hpn_info_shrink: str = None,
     ):
-        # Array
         self.machine_hpn_info_shrink = machine_hpn_info_shrink
 
     def validate(self):
@@ -9157,19 +9317,12 @@ class ListMachineNetworkInfoResponseBodyMachineNetworkInfo(TeaModel):
         net_arch: str = None,
         region_id: str = None,
     ):
-        # Cluster network
         self.cluster_net = cluster_net
-        # Whether jumbo frame capability is enabled
         self.enable_jumbo_frame = enable_jumbo_frame
-        # Cluster ID
         self.hpn_zone = hpn_zone
-        # Whether it is in DPU mode
         self.is_dpu_mode = is_dpu_mode
-        # Machine type
         self.machine_type = machine_type
-        # Network architecture
         self.net_arch = net_arch
-        # 地域ID。
         self.region_id = region_id
 
     def validate(self):
@@ -9222,9 +9375,8 @@ class ListMachineNetworkInfoResponseBody(TeaModel):
         machine_network_info: List[ListMachineNetworkInfoResponseBodyMachineNetworkInfo] = None,
         request_id: str = None,
     ):
-        # Array
         self.machine_network_info = machine_network_info
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -9305,7 +9457,7 @@ class ListMachineTypesRequest(TeaModel):
         self,
         name: str = None,
     ):
-        # Machine name
+        # The name of the instance type.
         self.name = name
 
     def validate(self):
@@ -9342,25 +9494,25 @@ class ListMachineTypesResponseBodyMachineTypes(TeaModel):
         total_cpu_core: int = None,
         type: str = None,
     ):
-        # Number of bonds
+        # The number of bonds.
         self.bond_num = bond_num
-        # CPU information
+        # The CPU information.
         self.cpu_info = cpu_info
-        # Disk information
+        # The disk information.
         self.disk_info = disk_info
-        # GPU information
+        # The GPU information.
         self.gpu_info = gpu_info
-        # Memory information
+        # The storage information.
         self.memory_info = memory_info
-        # Machine name
+        # The name of the instance type.
         self.name = name
-        # Network information
+        # The network information.
         self.network_info = network_info
-        # Number of nodes
+        # The number of nodes.
         self.node_count = node_count
-        # Number of CPU cores
+        # The number of vCPUs.
         self.total_cpu_core = total_cpu_core
-        # Type of machine
+        # The access type.
         self.type = type
 
     def validate(self):
@@ -9426,11 +9578,11 @@ class ListMachineTypesResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # Details of the machine types
+        # The instance types.
         self.machine_types = machine_types
-        # NextToken for the next page, include this value when requesting the next page
+        # The token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9518,19 +9670,18 @@ class ListNetTestResultsRequest(TeaModel):
         next_token: str = None,
         resource_group_id: str = None,
     ):
-        # Number of items per page in a paginated query. The maximum value is 100.
+        # The number of entries to return on each page. Maximum value: 100.
         # 
         # Default value:
         # 
-        # - If no value is set or the set value is less than 20, the default is 20.
-        # 
-        # - If the set value is greater than 100, the default is 100.
+        # *   If you do not configure this parameter or if you set this parameter to a value less than 20, the default value is 20.
+        # *   If you set this parameter to a value that is greater than 100, the default value is 100.
         self.max_results = max_results
-        # Type of network test.
+        # The type of the network test.
         self.net_test_type = net_test_type
-        # Query token (Token), which should be the value of the NextToken parameter returned from the previous API call.
+        # The token that determines the start position of the query. Set this parameter to the value of the NextToken parameter that is returned from the last call.
         self.next_token = next_token
-        # Resource group ID
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -9572,11 +9723,11 @@ class ListNetTestResultsResponseBodyNetTestResultsCommTestHosts(TeaModel):
         resource_id: str = None,
         server_name: str = None,
     ):
-        # Node IP
+        # The IP address of the node.
         self.ip = ip
-        # Resource ID
+        # The resource ID.
         self.resource_id = resource_id
-        # Service name
+        # The name of the service.
         self.server_name = server_name
 
     def validate(self):
@@ -9615,13 +9766,13 @@ class ListNetTestResultsResponseBodyNetTestResultsCommTest(TeaModel):
         model: str = None,
         type: str = None,
     ):
-        # Number of GPUs
+        # The number of GPUs.
         self.gpunum = gpunum
-        # Input hosts for the test nodes
+        # The hosts of the test node.
         self.hosts = hosts
-        # Communication library model
+        # The communication library model.
         self.model = model
-        # Communication library test category: ACCL or NCCL
+        # The CommTest type, which can be ACCL or NCCL.
         self.type = type
 
     def validate(self):
@@ -9672,13 +9823,13 @@ class ListNetTestResultsResponseBodyNetTestResultsDelayTestHosts(TeaModel):
         resource_id: str = None,
         server_name: str = None,
     ):
-        # Bond interface of the network card
+        # The bonding of network interface card.
         self.bond = bond
-        # Node IP
+        # The IP address of the node.
         self.ip = ip
-        # 资源id
+        # The resource ID.
         self.resource_id = resource_id
-        # Service name
+        # The name of the service.
         self.server_name = server_name
 
     def validate(self):
@@ -9718,7 +9869,7 @@ class ListNetTestResultsResponseBodyNetTestResultsDelayTest(TeaModel):
         self,
         hosts: List[ListNetTestResultsResponseBodyNetTestResultsDelayTestHosts] = None,
     ):
-        # Resource list
+        # The hosts.
         self.hosts = hosts
 
     def validate(self):
@@ -9757,13 +9908,13 @@ class ListNetTestResultsResponseBodyNetTestResultsTrafficTestClients(TeaModel):
         resource_id: str = None,
         server_name: str = None,
     ):
-        # Network interface bond port
+        # The bonding of network interface card.
         self.bond = bond
-        # IP address.
+        # The IP address.
         self.ip = ip
-        # Resource ID.
+        # The resource ID.
         self.resource_id = resource_id
-        # Service name.
+        # The name of the service.
         self.server_name = server_name
 
     def validate(self):
@@ -9806,13 +9957,13 @@ class ListNetTestResultsResponseBodyNetTestResultsTrafficTestServers(TeaModel):
         resource_id: str = None,
         server_name: str = None,
     ):
-        # Network interface bond port
+        # The bonding of network interface card.
         self.bond = bond
-        # Node IP
+        # The IP address of the node.
         self.ip = ip
-        # Resource ID.
+        # The resource ID.
         self.resource_id = resource_id
-        # Service name.
+        # The name of the service.
         self.server_name = server_name
 
     def validate(self):
@@ -9858,20 +10009,19 @@ class ListNetTestResultsResponseBodyNetTestResultsTrafficTest(TeaModel):
         servers: List[ListNetTestResultsResponseBodyNetTestResultsTrafficTestServers] = None,
         traffic_model: str = None,
     ):
-        # Clients
+        # The clients.
         self.clients = clients
-        # Duration of the workflow task, in seconds.
+        # The running duration of the pipeline job. Unit: seconds.
         self.duration = duration
-        # 协议为RDMA时，填写True/False，
-        # 协议为TCP时，此字段为空。
+        # If the protocol is RDMA, can be True or False. If the protocol is TCP, this field is empty.
         self.gdr = gdr
-        # Network protocol, either RDMA or TCP.
+        # The network protocol, which can be RDMA or TCP.
         self.protocol = protocol
-        # For TCP, enter the number of concurrent connections; for RDMA, enter the configured QP value.
+        # If the protocol is TCP, the number of concurrent connections. If the protocol is RDMA, the configured QP value.
         self.qp = qp
-        # This field is empty when the traffic model (TrafficModel) is Fullmesh.
+        # If the TrafficModel is Fullmesh, this parameter is empty.
         self.servers = servers
-        # Traffic model, either MTON or Fullmesh.
+        # The traffic model, which can be MTON or Fullmesh.
         self.traffic_model = traffic_model
 
     def validate(self):
@@ -9951,32 +10101,32 @@ class ListNetTestResultsResponseBodyNetTestResults(TeaModel):
         test_id: str = None,
         traffic_test: ListNetTestResultsResponseBodyNetTestResultsTrafficTest = None,
     ):
-        # Cluster ID
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # Cluster name
+        # The cluster name.
         self.cluster_name = cluster_name
-        # To be filled when the network test type is communication library test
+        # Returned when NetTestType is CommTest.
         self.comm_test = comm_test
-        # Creation time.
+        # The creation time.
         self.creation_time = creation_time
-        # Fill in when the network test type is latency test
+        # Returned when NetTestType is DelayTest.
         self.delay_test = delay_test
-        # Completion time.
+        # The finish time.
         self.finished_time = finished_time
-        # Type of network test.
+        # The type of the network test.
         self.net_test_type = net_test_type
-        # Network mode
+        # The network mode.
         self.network_mode = network_mode
-        # Test port number.
+        # The port number.
         self.port = port
-        # Status of the network test task. Possible values:</br>
-        # - InProgress: Testing in progress.</br>
-        # - Finished: Test completed.</br>
-        # - Failed: Test failed.
+        # The status of the network test task. Valid values:\\
+        # ● InProgress\\
+        # ● Finished\\
+        # ● Failed
         self.status = status
-        # Test ID. A unique identifier for the resource test task.
+        # The test ID. The unique identifier of the resource test task.
         self.test_id = test_id
-        # Fill in when the network test type is traffic test.
+        # Returned when NetTestType is TrafficTest.
         self.traffic_test = traffic_test
 
     def validate(self):
@@ -10059,19 +10209,18 @@ class ListNetTestResultsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # 分页查询时每页行数。最大值为100。
+        # The number of entries to return on each page. Maximum value: 100.
         # 
-        # 默认值：
+        # Default value:
         # 
-        # •当不设置值或设置的值小于20时，默认值为20。
-        # 
-        # •当设置的值大于100时，默认值为100。
+        # *   If you do not configure this parameter or if you set this parameter to a value less than 20, the default value is 20.
+        # *   If you set this parameter to a value that is greater than 100, the default value is 100.
         self.max_results = max_results
-        # List of nodes
+        # The results.
         self.net_test_results = net_test_results
-        # NextToken for the next page, to be included in the request for the next page
+        # The token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # ID of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10163,18 +10312,19 @@ class ListNodeGroupsRequest(TeaModel):
         next_token: str = None,
         node_group_id: str = None,
     ):
-        # Cluster ID
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # Number of items per page in a paginated query. The maximum value is 100.
+        # The number of entries per page. Maximum value: 100.
         # 
         # Default value:
         # 
-        # - If no value is set or the set value is less than 20, the default value is 20.
-        # - If the set value is greater than 100, the default value is 100.
+        # • If you do not configure this parameter or if you set this parameter to a value less than 20, the default value is 20.
+        # 
+        # • If you set this parameter to a value greater than 100, the default value is 100.
         self.max_results = max_results
-        # NextToken for the next page, include this value when requesting the next page
+        # The token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # Node group ID
+        # The node group ID.
         self.node_group_id = node_group_id
 
     def validate(self):
@@ -10226,31 +10376,31 @@ class ListNodeGroupsResponseBodyGroups(TeaModel):
         update_time: str = None,
         zone_id: str = None,
     ):
-        # Cluster ID
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # Cluster name
+        # The cluster name.
         self.cluster_name = cluster_name
-        # Creation time
+        # The creation time.
         self.create_time = create_time
-        # Description
+        # The description.
         self.description = description
-        # Whether file storage mounting is supported
+        # Indicates whether file storage mounting is supported.
         self.file_system_mount_enabled = file_system_mount_enabled
-        # Group ID.
+        # The group ID.
         self.group_id = group_id
-        # Group name.
+        # The group name.
         self.group_name = group_name
-        # Image ID
+        # The image ID.
         self.image_id = image_id
-        # Image name
+        # The image name.
         self.image_name = image_name
-        # Machine type
+        # The instance type.
         self.machine_type = machine_type
-        # Number of nodes
+        # The number of nodes.
         self.node_count = node_count
-        # Update time
+        # The update time.
         self.update_time = update_time
-        # availability zone id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -10328,11 +10478,11 @@ class ListNodeGroupsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # Cluster group information
+        # The node groups.
         self.groups = groups
-        # NextToken for the next page, include this value when requesting the next page
+        # The token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # ID of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10418,9 +10568,9 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # Tag key
+        # The tag key.
         self.key = key
-        # Tag value
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -10456,19 +10606,27 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
-        # Query token (Token), the value should be the NextToken returned from the previous API call
+        # The token that determines the start position of the query. Set this parameter to the value of the NextToken parameter that is returned from the last call.
         self.next_token = next_token
-        # Region ID
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # List of resource IDs
+        # The IDs of the resources.
         self.resource_id = resource_id
-        # Resource type
+        # The resource type.
+        # 
+        # Valid values:
+        # 
+        # *   Node
+        # *   Vcc
+        # *   Cluster
+        # *   Subnet
+        # *   Vpd
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # List of tags
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -10523,13 +10681,18 @@ class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # Resource ID
+        # The resource ID.
         self.resource_id = resource_id
-        # Resource type
+        # The resource type.
+        # 
+        # Valid values:
+        # 
+        # *   Node
+        # *   Cluster
         self.resource_type = resource_type
-        # Tag key
+        # The tag key.
         self.tag_key = tag_key
-        # Tag value
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -10606,11 +10769,11 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: ListTagResourcesResponseBodyTagResources = None,
     ):
-        # NextToken for the next page, include this returned value when requesting the next page
+        # The token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Tagged resources.
+        # The tags.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -10690,9 +10853,7 @@ class ListUserClusterTypesResponseBodyClusterTypes(TeaModel):
         access_type: str = None,
         type_name: str = None,
     ):
-        # 访问类型。
         self.access_type = access_type
-        # Type name
         self.type_name = type_name
 
     def validate(self):
@@ -10726,9 +10887,7 @@ class ListUserClusterTypesResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # List of cluster types. The number of array elements N ranges from 1 to 100.
         self.cluster_types = cluster_types
-        # The NextToken for the next page. Include this value when requesting the next page.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
@@ -10816,9 +10975,9 @@ class ListVscsRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # Tag key.
+        # The tag key.
         self.key = key
-        # Tag value.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -10855,17 +11014,17 @@ class ListVscsRequest(TeaModel):
         tag: List[ListVscsRequestTag] = None,
         vsc_name: str = None,
     ):
-        # The maximum number of data records to be read in this request.
+        # The maximum number of data entries to return.
         self.max_results = max_results
-        # Marks the position to start reading from. If empty, it starts from the beginning.
+        # The token that is used in the next request to retrieve a new page of results. If you leave this parameter empty, the query starts from the beginning.
         self.next_token = next_token
-        # List of node IDs
+        # The IDs of the nodes.
         self.node_ids = node_ids
-        # Resource group ID
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # List of tags.
+        # The tags.
         self.tag = tag
-        # Vsc name
+        # The VSC name.
         self.vsc_name = vsc_name
 
     def validate(self):
@@ -10922,9 +11081,9 @@ class ListVscsShrinkRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # Tag key.
+        # The tag key.
         self.key = key
-        # Tag value.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -10961,17 +11120,17 @@ class ListVscsShrinkRequest(TeaModel):
         tag: List[ListVscsShrinkRequestTag] = None,
         vsc_name: str = None,
     ):
-        # The maximum number of data records to be read in this request.
+        # The maximum number of data entries to return.
         self.max_results = max_results
-        # Marks the position to start reading from. If empty, it starts from the beginning.
+        # The token that is used in the next request to retrieve a new page of results. If you leave this parameter empty, the query starts from the beginning.
         self.next_token = next_token
-        # List of node IDs
+        # The IDs of the nodes.
         self.node_ids_shrink = node_ids_shrink
-        # Resource group ID
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # List of tags.
+        # The tags.
         self.tag = tag
-        # Vsc name
+        # The VSC name.
         self.vsc_name = vsc_name
 
     def validate(self):
@@ -11028,9 +11187,9 @@ class ListVscsResponseBodyVscsTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # Tag key
+        # The tag key.
         self.tag_key = tag_key
-        # Tag value
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -11068,19 +11227,25 @@ class ListVscsResponseBodyVscs(TeaModel):
         vsc_name: str = None,
         vsc_type: str = None,
     ):
-        # Lingjun node ID
+        # The ID of the Lingjun node.
         self.node_id = node_id
-        # Resource group ID
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Status of Vsc
+        # The VSC status.
+        # 
+        # Valid values:
+        # 
+        # *   Creating
+        # *   Normal
+        # *   Deleting
         self.status = status
-        # Tags
+        # The tags.
         self.tags = tags
-        # Vsc ID
+        # The VSC ID.
         self.vsc_id = vsc_id
-        # Customized name of Vsc
+        # The custom name of the VSC.
         self.vsc_name = vsc_name
-        # Vsc type, primary/standard
+        # The VSC type. Valid values: primary and standard.
         self.vsc_type = vsc_type
 
     def validate(self):
@@ -11144,17 +11309,17 @@ class ListVscsResponseBody(TeaModel):
         total_count: int = None,
         vscs: List[ListVscsResponseBodyVscs] = None,
     ):
-        # No return. Please use TotalCount
+        # No response is returned. The TotalCount parameter is used.
         self.max_results = max_results
-        # Indicates the position of the current call return read. An empty value means that the data has been fully read.
+        # The token. It can be used in the next request to retrieve a new page of results. If this parameter is empty, no next page exists.
         # 
         # This parameter is required.
         self.next_token = next_token
-        # ID of the request
+        # The request ID.
         self.request_id = request_id
-        # Total count of data under the current request conditions
+        # The total number of VSCs.
         self.total_count = total_count
-        # VSC list
+        # The VSCs.
         self.vscs = vscs
 
     def validate(self):
@@ -11249,11 +11414,11 @@ class RebootNodesRequest(TeaModel):
         ignore_failed_node_tasks: bool = None,
         nodes: List[str] = None,
     ):
-        # Cluster ID
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # Whether to allow skipping failed node tasks, default value is False
+        # Specifies whether to allow skipping failed nodes. Default value: False.
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
-        # List of nodes
+        # The nodes.
         self.nodes = nodes
 
     def validate(self):
@@ -11291,11 +11456,11 @@ class RebootNodesShrinkRequest(TeaModel):
         ignore_failed_node_tasks: bool = None,
         nodes_shrink: str = None,
     ):
-        # Cluster ID
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # Whether to allow skipping failed node tasks, default value is False
+        # Specifies whether to allow skipping failed nodes. Default value: False.
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
-        # List of nodes
+        # The nodes.
         self.nodes_shrink = nodes_shrink
 
     def validate(self):
@@ -11332,9 +11497,9 @@ class RebootNodesResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Task Id
+        # The job ID.
         self.task_id = task_id
 
     def validate(self):
@@ -11410,13 +11575,13 @@ class ReimageNodesRequestNodes(TeaModel):
         login_password: str = None,
         node_id: str = None,
     ):
-        # Hostname
+        # The hostname.
         self.hostname = hostname
-        # System image ID
+        # The system image ID.
         self.image_id = image_id
-        # Login password
+        # The logon password.
         self.login_password = login_password
-        # Node ID
+        # The node ID.
         self.node_id = node_id
 
     def validate(self):
@@ -11459,13 +11624,13 @@ class ReimageNodesRequest(TeaModel):
         nodes: List[ReimageNodesRequestNodes] = None,
         user_data: str = None,
     ):
-        # Cluster ID
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # Whether to allow skipping failed node tasks, default value is False
+        # Specifies whether to allow skipping failed nodes. Default value: False.
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
-        # Node list
+        # The nodes.
         self.nodes = nodes
-        # Custom data
+        # The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -11516,13 +11681,13 @@ class ReimageNodesShrinkRequest(TeaModel):
         nodes_shrink: str = None,
         user_data: str = None,
     ):
-        # Cluster ID
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # Whether to allow skipping failed node tasks, default value is False
+        # Specifies whether to allow skipping failed nodes. Default value: False.
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
-        # Node list
+        # The nodes.
         self.nodes_shrink = nodes_shrink
-        # Custom data
+        # The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -11563,9 +11728,9 @@ class ReimageNodesResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Task ID
+        # The job ID.
         self.task_id = task_id
 
     def validate(self):
@@ -11653,91 +11818,89 @@ class RunCommandRequest(TeaModel):
         username: str = None,
         working_dir: str = None,
     ):
-        # Ensures idempotence of the request. Generate a unique parameter value from your client to ensure that the value is unique across different requests. 
-        # ClientToken supports only ASCII characters and cannot exceed 64 characters. For more information, see How to Ensure Idempotence.
+        # The client token to ensure the idempotency of the request. Use your client to generate the token that is unique among requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see "How to ensure idempotence".
         self.client_token = client_token
-        # Command content. Please note the following:
+        # The command content. Take note of the following:
         # 
-        # - Specify `EnableParameter=true` to enable custom parameters in the command content.
-        # - Define custom parameters using the {{}} format; spaces and newlines within `{{}}` will be ignored.
-        # - The number of custom parameters cannot exceed 20.
-        # - Custom parameter names can only contain a-zA-Z0-9-_, and are case-insensitive.
-        # - A single custom parameter name cannot exceed 64 bytes.
+        # *   When `EnableParameter` is set to true, you can use custom parameters in the command.
+        # *   Define custom parameters in the {{}} format. Within `{{}}`, the spaces and line feeds before and after the parameter names are ignored.
+        # *   You can specify up to 20 custom parameters.
+        # *   A custom parameter name can contain only letters, digits, underscores (_), and hyphens (-). The name is not case-sensitive.
+        # *   Each custom parameter name is up to 64 bytes in length.
         self.command_content = command_content
-        # Command ID
+        # The ID of the command.
         self.command_id = command_id
-        # Encoding method for the script content. Valid values:
+        # The encoding mode of the command content. Valid values:
         # 
-        # - PlainText: No encoding, transmitted in plain text.
-        # - Base64: Base64 encoding.
+        # *   PlainText
+        # *   Base64
         # 
-        # Default value: PlainText. If an invalid value is provided, it will be treated as PlainText.
+        # Default value: PlainText. If the specified value of this parameter is invalid, PlainText is used by default.
         self.content_encoding = content_encoding
-        # Command description.
+        # The command description.
         self.description = description
-        # Whether the command contains custom parameters.
+        # Specifies whether to use custom parameters in the command.
         # 
         # Default value: false.
         self.enable_parameter = enable_parameter
-        # Execution time for scheduled commands. Currently, three types of scheduling methods are supported: fixed interval (based on Rate expression), one-time execution at a specific time, and clock-based scheduling (based on Cron expression).
+        # The schedule to run the command. Supported schedule types: at a fixed interval based on a rate expression, run only once at a specific time, or run at specific times based on a cron expression.
         # 
-        # Fixed interval execution: Based on the Rate expression, the command is executed at the set interval. The interval can be set in seconds (s), minutes (m), hours (h), and days (d), suitable for scenarios where tasks need to be executed at fixed intervals. The format is rate(<interval value><interval unit>), such as rate(5m) for every 5 minutes. The following restrictions apply to fixed interval execution:
-        # - The interval should not exceed 7 days and should be no less than 60 seconds, and it must be greater than the timeout of the scheduled task.
-        # - The interval is based on a fixed frequency and is independent of the actual execution time of the task. For example, if the command is set to execute every 5 minutes and the task takes 2 minutes to complete, the next round will start 3 minutes after the completion of the task.
-        # - The task will not be executed immediately upon creation. For example, if the command is set to execute every 5 minutes, it will not be executed immediately upon creation but will start 5 minutes after the task is created.
-        # One-time execution at a specific time: Executes the command once at the specified time and timezone. The format is at(yyyy-MM-dd HH:mm:ss <timezone>), which is at(year-month-day hour:minute:second <timezone>). If no timezone is specified, UTC is used by default. Timezones support the following three formats:
-        # - Full timezone name: e.g., Asia/Shanghai (China/Shanghai time), America/Los_Angeles (America/Los Angeles time), etc.
-        # - Timezone offset from GMT: e.g., GMT+8:00 (UTC+8:00), GMT-7:00 (UTC-7:00). When using the GMT format, leading zeros are not allowed in the hour position.
-        # - Timezone abbreviation: Only UTC (Coordinated Universal Time) is supported.
+        # *   To run the command at a fixed interval, use a rate expression to specify the interval. The interval can be in seconds, minutes, hours, or days. This option is suitable for scenarios in which tasks need to be executed at a fixed interval. Format: rate(\\<Execution interval value> \\<Execution interval unit>). For example, rate(5m) means to run the command every 5 minutes. When you specify an interval, take note of the following limits:
         # 
-        # For example, to execute once at 13:15:30 on June 6, 2022, in Shanghai, China, the format would be: at(2022-06-06 13:15:30 Asia/Shanghai); to execute once at 13:15:30 on June 6, 2022, in the GMT-7:00 timezone, the format would be: at(2022-06-06 13:15:30 GMT-7:00).
+        #     *   The interval can be anywhere from 60 seconds to 7 days, but must be longer than the timeout period of the scheduled task.
+        #     *   The interval is the time between two consecutive executions, irrelevant of the time required to run the command. For example, assume that you set the interval to 5 minutes and that it takes 2 minutes to run the command each time. The system waits 3 minutes before running the command again.
+        #     *   The command is not immediately executed after the task is created. For example, assume that you set the interval to 5 minutes. The task begins to be executed 5 minutes after it is created.
         # 
-        # Clock-based scheduling (based on Cron expression): Based on the Cron expression, the command is executed according to the set schedule. The format is <second> <minute> <hour> <day> <month> <weekday> <year (optional)> <timezone>, i.e., <Cron expression> <timezone>. In the specified timezone, the scheduled task execution time is calculated based on the Cron expression and then executed. If no timezone is specified, the system\\"s internal timezone of the instance running the scheduled task is used by default. For more information about Cron expressions, see Cron Expressions. Timezones support the following three formats:
-        # - Full timezone name: e.g., Asia/Shanghai (China/Shanghai time), America/Los_Angeles (America/Los Angeles time), etc.
-        # - Timezone offset from GMT: e.g., GMT+8:00 (UTC+8:00), GMT-7:00 (UTC-7:00). When using the GMT format, leading zeros are not allowed in the hour position.
-        # - Timezone abbreviation: Only UTC (Coordinated Universal Time) is supported.
+        # *   To run a command only once at a specific point in time, specify a point in time and a time zone. Format: at(yyyy-MM-dd HH:mm:ss \\<Time zone>). If you do not specify a time zone, the Coordinated Universal Time (UTC) time zone is used by default. The time zone name supports the following formats: Full name, such as Asia/Shanghai and America/Los_Angeles. The time offset from GMT. Examples: GMT+8:00 (UTC+8) and GMT-7:00 (UTC-7). If you use the GMT format, you cannot add leading zeros to the hour value. The time zone abbreviation. Only UTC is supported. For example, to configure a command to run only once at 13:15:30 on June 6, 2022 (Shanghai time), set the time to at(2022-06-06 13:15:30 Asia/Shanghai). To configure a command to run only once at 13:15:30 on June 6, 2022 (UTC-7), set the time to at(2022-06-06 13:15:30 GMT-7:00).
         # 
-        # For example, to execute the command at 10:15 AM every day in 2022 in Shanghai, China, the format would be 0 15 10 ? * * 2022 Asia/Shanghai; to execute the command every 30 minutes between 10:00 AM and 11:30 AM every day in 2022 in the GMT+8:00 timezone, the format would be 0 0/30 10-11 * * ? 2022 GMT+8:00; to execute the command every 5 minutes between 2:00 PM and 2:55 PM every day in October every two years starting from 2022 in UTC, the format would be 0 0/5 14 * 10 ? 2022/2 UTC.
+        # *   To run a command at designated points in time, use a cron expression to define the schedule. Format: \\<Cron expression> \\<Time zone>. Example: \\<Seconds> \\<Minutes> \\<Hours> \\<Day of the month> \\<Month> \\<Day of the week> \\<Year (optional)> \\<Time zone>. The system calculates the execution times of the command based on the specified cron expression and time zone and runs the command as scheduled. If you do not specify a time zone, the system time zone of the instance is used by default. For more information, see Cron expressions. The time zone name supports the following formats:
+        # 
+        #     *   Full name, such as Asia/Shanghai and America/Los_Angeles.
+        #     *   The time offset from GMT. Examples: GMT+8:00 (UTC+8) and GMT-7:00 (UTC-7). If you use the GMT format, you cannot add leading zeros to the hour value.
+        #     *   The time zone abbreviation. Only UTC is supported.
+        # 
+        #     For example, if you specify a command to run at 10:15:00 every day in 2022 in China/Shanghai time, set the time to 0 15 10 ? \\* \\* 2022 Asia/Shanghai. To configure a command to run every half an hour from 10:00:00 to 11:30:00 every day in 2022 (UTC+8), set the schedule to 0 0/30 10-11 \\* \\* ? 2022 GMT+8:00. To configure a command to run every 5 minutes from 14:00:00 to 14:55:00 every October every two years from 2022 in UTC, set the schedule to 0 0/5 14 \\* 10 ? 2022/2 UTC.
         self.frequency = frequency
-        # Bootstrap for script execution. The length must not exceed 1 KB.
+        # The launcher for script execution. Cannot exceed 1 KB.
         self.launcher = launcher
-        # Command name.
+        # The command name.
         self.name = name
-        # List of nodes.
+        # The node list.
         self.node_id_list = node_id_list
-        # When the command contains custom parameters, you need to pass in key-value pairs of these custom parameters when executing the command. For example, if the command content is `echo {{name}}`, you can pass in the key-value pair `{"name":"Jack"}` through the `Parameter` parameter. The custom parameter will automatically replace the variable value `name`, resulting in a new command, which actually executes as `echo Jack`.
+        # The key-value pairs of custom parameters to pass in when the command includes custom parameters. For example, the command content is `echo {{name}}`. You can use `Parameters` to pass in the `{"name":"Jack"}` key-value pair. The `name` key of the custom parameter is automatically replaced by the paired Jack value to generate a new command. As a result, the `echo Jack` command is run.
         # 
-        # The number of custom parameters ranges from 0 to 10, and you should note:
+        # You can specify 0 to 10 custom parameters. Take note of the following:
         # 
-        # - Keys cannot be empty strings and support up to 64 characters at most.
-        # - Values can be empty strings.
-        # - When combined with the original command content and Base64 encoded, if the command is saved, the size after Base64 encoding must not exceed 18 KB; if the command is not saved, the size after Base64 encoding must not exceed 24 KB. You can set whether to keep the command via `KeepCommand`.
-        # - The set of custom parameter names must be a subset of the parameter set defined during command creation. For parameters that are not passed in, you can use an empty string as a substitute.
+        # *   The key of a custom parameter can be up to 64 characters in length, and cannot be an empty string.
+        # *   The value of a custom parameter can be an empty string.
+        # *   If you want to retain a command, make sure that the command after Base64 encoding, including custom parameters and original command content, does not exceed 18 KB in size. If you do not want to retain the command, make sure that the command after Base64 encoding does not exceed 24 KB in size. You can set `KeepCommand` to specify whether to retain the command.
+        # *   The specified custom parameter names must be included in the custom parameter names that you specify when you create the command. You can use empty strings to represent the parameters that are not passed in.
         # 
-        # The default value is empty, indicating that the parameter is not set, thus disabling custom parameters.
+        # This parameter is left empty by default, which indicates that the custom parameter feature is disabled.
         self.parameters = parameters
-        # Set the command execution mode. Valid values:
+        # The mode to run the command. Valid values:
         # 
-        # - Once: Execute the command immediately.
-        # - Period: Execute the command at a scheduled time. When this parameter is set to `Period`, you must also specify the `Frequency` parameter.
-        # - NextRebootOnly: Automatically execute the command when the instance starts next time.
-        # - EveryReboot: Automatically execute the command every time the instance starts.
+        # *   Once: runs the command immediately.
+        # *   Period: runs the command based on a schedule. When set to `Period`, `Frequency` is required.
+        # *   NextRebootOnly: runs the command the next time the instances is started.
+        # *   EveryReboot: runs the command every time the instance is started.
         # 
         # Default value:
-        # - If the `Frequency` parameter is not specified, the default value is `Once`.
-        # - If the `Frequency` parameter is specified, regardless of whether this parameter is already set, it will be processed as `Period`.
-        self.repeat_mode = repeat_mode
-        # The mode when stopping a task (manually or due to execution timeout). Possible values:
-        # Process: Stops the current script process. ProcessTree: Stops the current process tree (a collection of the script process and all its child processes).
-        self.termination_mode = termination_mode
-        # Timeout for executing the command, in seconds. If the command cannot run due to process issues, missing modules, or the absence of the Cloud Assistant Agent, a timeout will occur. After a timeout, the command process will be forcibly terminated. Default value: 60.
-        self.timeout = timeout
-        # The username to execute the command in the instance. The length must not exceed 255 characters.
-        #     For Linux systems, the command is executed by the root user by default.
-        self.username = username
-        # You can customize the execution path of the command. The default paths are as follows:
         # 
-        # - Linux instances: The default execution path is under the /home directory of the root user.
+        # *   If you do not specify `Frequency`, the default value is `Once`.
+        # *   If you specify `Frequency`, RepeatMode is set to `Period` regardless of whether a value is already specified.
+        self.repeat_mode = repeat_mode
+        # Indicates how the command task is stopped when a command execution is manually stopped or times out. Valid values:
+        # 
+        # Process: The process of the command is stopped. ProcessTree: The process tree of the command is stopped. In this case, the process of the command and all subprocesses are stopped.
+        self.termination_mode = termination_mode
+        # The timeout period for the command. Unit: seconds. A timeout error occurs if the command cannot be run because the process slows down or because a specific module or Cloud Assistant Agent does not exist. When the specified timeout period ends, the command process is forcefully terminated. Default value: 60.
+        self.timeout = timeout
+        # The username that you use to run the command. The name can be up to 255 characters in length. For Linux instances, the root user is used by default.
+        self.username = username
+        # The working path of the command. You can specify a custom path. Default path:
+        # 
+        # Linux instances: By default, the path is in the /home directory of the root user.
         self.working_dir = working_dir
 
     def validate(self):
@@ -11840,91 +12003,89 @@ class RunCommandShrinkRequest(TeaModel):
         username: str = None,
         working_dir: str = None,
     ):
-        # Ensures idempotence of the request. Generate a unique parameter value from your client to ensure that the value is unique across different requests. 
-        # ClientToken supports only ASCII characters and cannot exceed 64 characters. For more information, see How to Ensure Idempotence.
+        # The client token to ensure the idempotency of the request. Use your client to generate the token that is unique among requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see "How to ensure idempotence".
         self.client_token = client_token
-        # Command content. Please note the following:
+        # The command content. Take note of the following:
         # 
-        # - Specify `EnableParameter=true` to enable custom parameters in the command content.
-        # - Define custom parameters using the {{}} format; spaces and newlines within `{{}}` will be ignored.
-        # - The number of custom parameters cannot exceed 20.
-        # - Custom parameter names can only contain a-zA-Z0-9-_, and are case-insensitive.
-        # - A single custom parameter name cannot exceed 64 bytes.
+        # *   When `EnableParameter` is set to true, you can use custom parameters in the command.
+        # *   Define custom parameters in the {{}} format. Within `{{}}`, the spaces and line feeds before and after the parameter names are ignored.
+        # *   You can specify up to 20 custom parameters.
+        # *   A custom parameter name can contain only letters, digits, underscores (_), and hyphens (-). The name is not case-sensitive.
+        # *   Each custom parameter name is up to 64 bytes in length.
         self.command_content = command_content
-        # Command ID
+        # The ID of the command.
         self.command_id = command_id
-        # Encoding method for the script content. Valid values:
+        # The encoding mode of the command content. Valid values:
         # 
-        # - PlainText: No encoding, transmitted in plain text.
-        # - Base64: Base64 encoding.
+        # *   PlainText
+        # *   Base64
         # 
-        # Default value: PlainText. If an invalid value is provided, it will be treated as PlainText.
+        # Default value: PlainText. If the specified value of this parameter is invalid, PlainText is used by default.
         self.content_encoding = content_encoding
-        # Command description.
+        # The command description.
         self.description = description
-        # Whether the command contains custom parameters.
+        # Specifies whether to use custom parameters in the command.
         # 
         # Default value: false.
         self.enable_parameter = enable_parameter
-        # Execution time for scheduled commands. Currently, three types of scheduling methods are supported: fixed interval (based on Rate expression), one-time execution at a specific time, and clock-based scheduling (based on Cron expression).
+        # The schedule to run the command. Supported schedule types: at a fixed interval based on a rate expression, run only once at a specific time, or run at specific times based on a cron expression.
         # 
-        # Fixed interval execution: Based on the Rate expression, the command is executed at the set interval. The interval can be set in seconds (s), minutes (m), hours (h), and days (d), suitable for scenarios where tasks need to be executed at fixed intervals. The format is rate(<interval value><interval unit>), such as rate(5m) for every 5 minutes. The following restrictions apply to fixed interval execution:
-        # - The interval should not exceed 7 days and should be no less than 60 seconds, and it must be greater than the timeout of the scheduled task.
-        # - The interval is based on a fixed frequency and is independent of the actual execution time of the task. For example, if the command is set to execute every 5 minutes and the task takes 2 minutes to complete, the next round will start 3 minutes after the completion of the task.
-        # - The task will not be executed immediately upon creation. For example, if the command is set to execute every 5 minutes, it will not be executed immediately upon creation but will start 5 minutes after the task is created.
-        # One-time execution at a specific time: Executes the command once at the specified time and timezone. The format is at(yyyy-MM-dd HH:mm:ss <timezone>), which is at(year-month-day hour:minute:second <timezone>). If no timezone is specified, UTC is used by default. Timezones support the following three formats:
-        # - Full timezone name: e.g., Asia/Shanghai (China/Shanghai time), America/Los_Angeles (America/Los Angeles time), etc.
-        # - Timezone offset from GMT: e.g., GMT+8:00 (UTC+8:00), GMT-7:00 (UTC-7:00). When using the GMT format, leading zeros are not allowed in the hour position.
-        # - Timezone abbreviation: Only UTC (Coordinated Universal Time) is supported.
+        # *   To run the command at a fixed interval, use a rate expression to specify the interval. The interval can be in seconds, minutes, hours, or days. This option is suitable for scenarios in which tasks need to be executed at a fixed interval. Format: rate(\\<Execution interval value> \\<Execution interval unit>). For example, rate(5m) means to run the command every 5 minutes. When you specify an interval, take note of the following limits:
         # 
-        # For example, to execute once at 13:15:30 on June 6, 2022, in Shanghai, China, the format would be: at(2022-06-06 13:15:30 Asia/Shanghai); to execute once at 13:15:30 on June 6, 2022, in the GMT-7:00 timezone, the format would be: at(2022-06-06 13:15:30 GMT-7:00).
+        #     *   The interval can be anywhere from 60 seconds to 7 days, but must be longer than the timeout period of the scheduled task.
+        #     *   The interval is the time between two consecutive executions, irrelevant of the time required to run the command. For example, assume that you set the interval to 5 minutes and that it takes 2 minutes to run the command each time. The system waits 3 minutes before running the command again.
+        #     *   The command is not immediately executed after the task is created. For example, assume that you set the interval to 5 minutes. The task begins to be executed 5 minutes after it is created.
         # 
-        # Clock-based scheduling (based on Cron expression): Based on the Cron expression, the command is executed according to the set schedule. The format is <second> <minute> <hour> <day> <month> <weekday> <year (optional)> <timezone>, i.e., <Cron expression> <timezone>. In the specified timezone, the scheduled task execution time is calculated based on the Cron expression and then executed. If no timezone is specified, the system\\"s internal timezone of the instance running the scheduled task is used by default. For more information about Cron expressions, see Cron Expressions. Timezones support the following three formats:
-        # - Full timezone name: e.g., Asia/Shanghai (China/Shanghai time), America/Los_Angeles (America/Los Angeles time), etc.
-        # - Timezone offset from GMT: e.g., GMT+8:00 (UTC+8:00), GMT-7:00 (UTC-7:00). When using the GMT format, leading zeros are not allowed in the hour position.
-        # - Timezone abbreviation: Only UTC (Coordinated Universal Time) is supported.
+        # *   To run a command only once at a specific point in time, specify a point in time and a time zone. Format: at(yyyy-MM-dd HH:mm:ss \\<Time zone>). If you do not specify a time zone, the Coordinated Universal Time (UTC) time zone is used by default. The time zone name supports the following formats: Full name, such as Asia/Shanghai and America/Los_Angeles. The time offset from GMT. Examples: GMT+8:00 (UTC+8) and GMT-7:00 (UTC-7). If you use the GMT format, you cannot add leading zeros to the hour value. The time zone abbreviation. Only UTC is supported. For example, to configure a command to run only once at 13:15:30 on June 6, 2022 (Shanghai time), set the time to at(2022-06-06 13:15:30 Asia/Shanghai). To configure a command to run only once at 13:15:30 on June 6, 2022 (UTC-7), set the time to at(2022-06-06 13:15:30 GMT-7:00).
         # 
-        # For example, to execute the command at 10:15 AM every day in 2022 in Shanghai, China, the format would be 0 15 10 ? * * 2022 Asia/Shanghai; to execute the command every 30 minutes between 10:00 AM and 11:30 AM every day in 2022 in the GMT+8:00 timezone, the format would be 0 0/30 10-11 * * ? 2022 GMT+8:00; to execute the command every 5 minutes between 2:00 PM and 2:55 PM every day in October every two years starting from 2022 in UTC, the format would be 0 0/5 14 * 10 ? 2022/2 UTC.
+        # *   To run a command at designated points in time, use a cron expression to define the schedule. Format: \\<Cron expression> \\<Time zone>. Example: \\<Seconds> \\<Minutes> \\<Hours> \\<Day of the month> \\<Month> \\<Day of the week> \\<Year (optional)> \\<Time zone>. The system calculates the execution times of the command based on the specified cron expression and time zone and runs the command as scheduled. If you do not specify a time zone, the system time zone of the instance is used by default. For more information, see Cron expressions. The time zone name supports the following formats:
+        # 
+        #     *   Full name, such as Asia/Shanghai and America/Los_Angeles.
+        #     *   The time offset from GMT. Examples: GMT+8:00 (UTC+8) and GMT-7:00 (UTC-7). If you use the GMT format, you cannot add leading zeros to the hour value.
+        #     *   The time zone abbreviation. Only UTC is supported.
+        # 
+        #     For example, if you specify a command to run at 10:15:00 every day in 2022 in China/Shanghai time, set the time to 0 15 10 ? \\* \\* 2022 Asia/Shanghai. To configure a command to run every half an hour from 10:00:00 to 11:30:00 every day in 2022 (UTC+8), set the schedule to 0 0/30 10-11 \\* \\* ? 2022 GMT+8:00. To configure a command to run every 5 minutes from 14:00:00 to 14:55:00 every October every two years from 2022 in UTC, set the schedule to 0 0/5 14 \\* 10 ? 2022/2 UTC.
         self.frequency = frequency
-        # Bootstrap for script execution. The length must not exceed 1 KB.
+        # The launcher for script execution. Cannot exceed 1 KB.
         self.launcher = launcher
-        # Command name.
+        # The command name.
         self.name = name
-        # List of nodes.
+        # The node list.
         self.node_id_list_shrink = node_id_list_shrink
-        # When the command contains custom parameters, you need to pass in key-value pairs of these custom parameters when executing the command. For example, if the command content is `echo {{name}}`, you can pass in the key-value pair `{"name":"Jack"}` through the `Parameter` parameter. The custom parameter will automatically replace the variable value `name`, resulting in a new command, which actually executes as `echo Jack`.
+        # The key-value pairs of custom parameters to pass in when the command includes custom parameters. For example, the command content is `echo {{name}}`. You can use `Parameters` to pass in the `{"name":"Jack"}` key-value pair. The `name` key of the custom parameter is automatically replaced by the paired Jack value to generate a new command. As a result, the `echo Jack` command is run.
         # 
-        # The number of custom parameters ranges from 0 to 10, and you should note:
+        # You can specify 0 to 10 custom parameters. Take note of the following:
         # 
-        # - Keys cannot be empty strings and support up to 64 characters at most.
-        # - Values can be empty strings.
-        # - When combined with the original command content and Base64 encoded, if the command is saved, the size after Base64 encoding must not exceed 18 KB; if the command is not saved, the size after Base64 encoding must not exceed 24 KB. You can set whether to keep the command via `KeepCommand`.
-        # - The set of custom parameter names must be a subset of the parameter set defined during command creation. For parameters that are not passed in, you can use an empty string as a substitute.
+        # *   The key of a custom parameter can be up to 64 characters in length, and cannot be an empty string.
+        # *   The value of a custom parameter can be an empty string.
+        # *   If you want to retain a command, make sure that the command after Base64 encoding, including custom parameters and original command content, does not exceed 18 KB in size. If you do not want to retain the command, make sure that the command after Base64 encoding does not exceed 24 KB in size. You can set `KeepCommand` to specify whether to retain the command.
+        # *   The specified custom parameter names must be included in the custom parameter names that you specify when you create the command. You can use empty strings to represent the parameters that are not passed in.
         # 
-        # The default value is empty, indicating that the parameter is not set, thus disabling custom parameters.
+        # This parameter is left empty by default, which indicates that the custom parameter feature is disabled.
         self.parameters_shrink = parameters_shrink
-        # Set the command execution mode. Valid values:
+        # The mode to run the command. Valid values:
         # 
-        # - Once: Execute the command immediately.
-        # - Period: Execute the command at a scheduled time. When this parameter is set to `Period`, you must also specify the `Frequency` parameter.
-        # - NextRebootOnly: Automatically execute the command when the instance starts next time.
-        # - EveryReboot: Automatically execute the command every time the instance starts.
+        # *   Once: runs the command immediately.
+        # *   Period: runs the command based on a schedule. When set to `Period`, `Frequency` is required.
+        # *   NextRebootOnly: runs the command the next time the instances is started.
+        # *   EveryReboot: runs the command every time the instance is started.
         # 
         # Default value:
-        # - If the `Frequency` parameter is not specified, the default value is `Once`.
-        # - If the `Frequency` parameter is specified, regardless of whether this parameter is already set, it will be processed as `Period`.
-        self.repeat_mode = repeat_mode
-        # The mode when stopping a task (manually or due to execution timeout). Possible values:
-        # Process: Stops the current script process. ProcessTree: Stops the current process tree (a collection of the script process and all its child processes).
-        self.termination_mode = termination_mode
-        # Timeout for executing the command, in seconds. If the command cannot run due to process issues, missing modules, or the absence of the Cloud Assistant Agent, a timeout will occur. After a timeout, the command process will be forcibly terminated. Default value: 60.
-        self.timeout = timeout
-        # The username to execute the command in the instance. The length must not exceed 255 characters.
-        #     For Linux systems, the command is executed by the root user by default.
-        self.username = username
-        # You can customize the execution path of the command. The default paths are as follows:
         # 
-        # - Linux instances: The default execution path is under the /home directory of the root user.
+        # *   If you do not specify `Frequency`, the default value is `Once`.
+        # *   If you specify `Frequency`, RepeatMode is set to `Period` regardless of whether a value is already specified.
+        self.repeat_mode = repeat_mode
+        # Indicates how the command task is stopped when a command execution is manually stopped or times out. Valid values:
+        # 
+        # Process: The process of the command is stopped. ProcessTree: The process tree of the command is stopped. In this case, the process of the command and all subprocesses are stopped.
+        self.termination_mode = termination_mode
+        # The timeout period for the command. Unit: seconds. A timeout error occurs if the command cannot be run because the process slows down or because a specific module or Cloud Assistant Agent does not exist. When the specified timeout period ends, the command process is forcefully terminated. Default value: 60.
+        self.timeout = timeout
+        # The username that you use to run the command. The name can be up to 255 characters in length. For Linux instances, the root user is used by default.
+        self.username = username
+        # The working path of the command. You can specify a custom path. Default path:
+        # 
+        # Linux instances: By default, the path is in the /home directory of the root user.
         self.working_dir = working_dir
 
     def validate(self):
@@ -12013,9 +12174,9 @@ class RunCommandResponseBody(TeaModel):
         invoke_id: str = None,
         request_id: str = None,
     ):
-        # ID of the command execution.
+        # The ID of the execution.
         self.invoke_id = invoke_id
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -12098,56 +12259,54 @@ class SendFileRequest(TeaModel):
         target_dir: str = None,
         timeout: int = None,
     ):
-        # The content of the file. After Base64 encoding, the size cannot exceed 32 KB.
+        # The content of the file. The file must not exceed 32 KB in size after it is encoded in Base64.
         # 
-        # - When the `ContentType` parameter is `PlainText`, this field is plain text.
-        # - When the `ContentType` parameter is `Base64`, this field is Base64 encoded text.
+        # *   If `ContentType` is set to `PlainText`, the value of Content is in plaintext.
+        # *   If `ContentType` is set to `Base64`, the value of Content is Base64-encoded.
         # 
         # This parameter is required.
         self.content = content
-        # The content type of the file.
+        # The content type of the file. Valid values:
         # 
-        # PlainText: Plain text.
-        # Base64: Base64 encoded.
-        # The default value is PlainText.
+        # PlainText Base64 Default value: PlainText.
         self.content_type = content_type
-        # Description information. Supports all character sets, and the length must not exceed 512 characters.
+        # The description of the file. The description can be up to 512 characters in length and can contain any characters.
         self.description = description
-        # The group of the file. Applies only to Linux instances, and the default is root. The length must not exceed 64 characters.
+        # The user group of the file. This parameter takes effect only on Linux instances. Default value: root. The value can be up to 64 characters in length.
         # 
-        # Note
-        # When using other groups, ensure that the group exists in the instance.
+        # Note If you want to use a non-root user group, make sure that the user group exists in the instances.
         self.file_group = file_group
-        # The permissions of the file. Applies only to Linux instances, and the setting method is the same as the chmod command.
+        # The permissions on the file. This parameter takes effect only on Linux instances. You can configure this parameter in the same way as you configure the chmod command.
         # 
-        # The default value is 0644, which means the user has read and write permissions, while the group and other users have read-only permissions.
+        # Default value: 0644: the owner of the file has the read and write permission. The user group of the file and other users have read-only permission.
         self.file_mode = file_mode
-        # The owner of the file. Applies only to Linux instances, and the default is root.
+        # The owner of the file. This parameter takes effect only on Linux instances. Default value: root.
         self.file_owner = file_owner
-        # The name of the file. Supports all character sets, and the length must not exceed 255 characters.
+        # The file name. The name can be up to 255 characters in length and can contain any characters.
         # 
         # This parameter is required.
         self.name = name
-        # List of nodes.
+        # The node list.
         # 
         # This parameter is required.
         self.node_id_list = node_id_list
-        # Whether to overwrite the file if a file with the same name already exists in the target directory.
-        # - true: Overwrite.
-        # - false: Do not overwrite.
+        # Specifies whether to overwrite file with the same name in the destination directory.
         # 
-        # The default value is false.
+        # *   true
+        # *   false
+        # 
+        # Default value: false.
         self.overwrite = overwrite
-        # The directory in the target Lingjun node where the file will be sent. If it does not exist, it will be automatically created.
+        # The directory in the Lingjun node to which the file is sent. If the specified directory does not exist, the system creates the directory automatically.
         # 
         # This parameter is required.
         self.target_dir = target_dir
-        # The timeout for sending the file. Unit: seconds.
+        # The timeout period for the file sending task. Unit: seconds.
         # 
-        # - A timeout may occur due to process reasons, missing modules, or missing Cloud Assistant Agent.
-        # - If the set timeout is less than 10 seconds, to ensure successful delivery, the system will automatically set the timeout to 10 seconds.
+        # *   A timeout error occurs when a file cannot be sent because the process slows down or because a specific module or Cloud Assistant Agent does not exist.
+        # *   If the specified timeout period is less than 10 seconds, the system sets the timeout period to 10 seconds to ensure that the file can be sent.
         # 
-        # The default value is 60.
+        # Default value: 60.
         self.timeout = timeout
 
     def validate(self):
@@ -12225,56 +12384,54 @@ class SendFileShrinkRequest(TeaModel):
         target_dir: str = None,
         timeout: int = None,
     ):
-        # The content of the file. After Base64 encoding, the size cannot exceed 32 KB.
+        # The content of the file. The file must not exceed 32 KB in size after it is encoded in Base64.
         # 
-        # - When the `ContentType` parameter is `PlainText`, this field is plain text.
-        # - When the `ContentType` parameter is `Base64`, this field is Base64 encoded text.
+        # *   If `ContentType` is set to `PlainText`, the value of Content is in plaintext.
+        # *   If `ContentType` is set to `Base64`, the value of Content is Base64-encoded.
         # 
         # This parameter is required.
         self.content = content
-        # The content type of the file.
+        # The content type of the file. Valid values:
         # 
-        # PlainText: Plain text.
-        # Base64: Base64 encoded.
-        # The default value is PlainText.
+        # PlainText Base64 Default value: PlainText.
         self.content_type = content_type
-        # Description information. Supports all character sets, and the length must not exceed 512 characters.
+        # The description of the file. The description can be up to 512 characters in length and can contain any characters.
         self.description = description
-        # The group of the file. Applies only to Linux instances, and the default is root. The length must not exceed 64 characters.
+        # The user group of the file. This parameter takes effect only on Linux instances. Default value: root. The value can be up to 64 characters in length.
         # 
-        # Note
-        # When using other groups, ensure that the group exists in the instance.
+        # Note If you want to use a non-root user group, make sure that the user group exists in the instances.
         self.file_group = file_group
-        # The permissions of the file. Applies only to Linux instances, and the setting method is the same as the chmod command.
+        # The permissions on the file. This parameter takes effect only on Linux instances. You can configure this parameter in the same way as you configure the chmod command.
         # 
-        # The default value is 0644, which means the user has read and write permissions, while the group and other users have read-only permissions.
+        # Default value: 0644: the owner of the file has the read and write permission. The user group of the file and other users have read-only permission.
         self.file_mode = file_mode
-        # The owner of the file. Applies only to Linux instances, and the default is root.
+        # The owner of the file. This parameter takes effect only on Linux instances. Default value: root.
         self.file_owner = file_owner
-        # The name of the file. Supports all character sets, and the length must not exceed 255 characters.
+        # The file name. The name can be up to 255 characters in length and can contain any characters.
         # 
         # This parameter is required.
         self.name = name
-        # List of nodes.
+        # The node list.
         # 
         # This parameter is required.
         self.node_id_list_shrink = node_id_list_shrink
-        # Whether to overwrite the file if a file with the same name already exists in the target directory.
-        # - true: Overwrite.
-        # - false: Do not overwrite.
+        # Specifies whether to overwrite file with the same name in the destination directory.
         # 
-        # The default value is false.
+        # *   true
+        # *   false
+        # 
+        # Default value: false.
         self.overwrite = overwrite
-        # The directory in the target Lingjun node where the file will be sent. If it does not exist, it will be automatically created.
+        # The directory in the Lingjun node to which the file is sent. If the specified directory does not exist, the system creates the directory automatically.
         # 
         # This parameter is required.
         self.target_dir = target_dir
-        # The timeout for sending the file. Unit: seconds.
+        # The timeout period for the file sending task. Unit: seconds.
         # 
-        # - A timeout may occur due to process reasons, missing modules, or missing Cloud Assistant Agent.
-        # - If the set timeout is less than 10 seconds, to ensure successful delivery, the system will automatically set the timeout to 10 seconds.
+        # *   A timeout error occurs when a file cannot be sent because the process slows down or because a specific module or Cloud Assistant Agent does not exist.
+        # *   If the specified timeout period is less than 10 seconds, the system sets the timeout period to 10 seconds to ensure that the file can be sent.
         # 
-        # The default value is 60.
+        # Default value: 60.
         self.timeout = timeout
 
     def validate(self):
@@ -12343,9 +12500,9 @@ class SendFileResponseBody(TeaModel):
         invoke_id: str = None,
         request_id: str = None,
     ):
-        # Command execution ID.
+        # The ID of the execution.
         self.invoke_id = invoke_id
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -12418,7 +12575,7 @@ class ShrinkClusterRequestNodeGroupsNodes(TeaModel):
         self,
         node_id: str = None,
     ):
-        # Node ID
+        # The node ID.
         self.node_id = node_id
 
     def validate(self):
@@ -12447,9 +12604,9 @@ class ShrinkClusterRequestNodeGroups(TeaModel):
         node_group_id: str = None,
         nodes: List[ShrinkClusterRequestNodeGroupsNodes] = None,
     ):
-        # Node group ID
+        # The node group ID.
         self.node_group_id = node_group_id
-        # List of nodes
+        # The nodes.
         self.nodes = nodes
 
     def validate(self):
@@ -12491,11 +12648,11 @@ class ShrinkClusterRequest(TeaModel):
         ignore_failed_node_tasks: bool = None,
         node_groups: List[ShrinkClusterRequestNodeGroups] = None,
     ):
-        # Cluster ID
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # Whether to allow skipping failed node tasks, default value is False
+        # Specifies whether to allow skipping failed nodes. Default value: False.
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
-        # Node group information
+        # The node groups.
         self.node_groups = node_groups
 
     def validate(self):
@@ -12541,11 +12698,11 @@ class ShrinkClusterShrinkRequest(TeaModel):
         ignore_failed_node_tasks: bool = None,
         node_groups_shrink: str = None,
     ):
-        # Cluster ID
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # Whether to allow skipping failed node tasks, default value is False
+        # Specifies whether to allow skipping failed nodes. Default value: False.
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
-        # Node group information
+        # The node groups.
         self.node_groups_shrink = node_groups_shrink
 
     def validate(self):
@@ -12582,9 +12739,9 @@ class ShrinkClusterResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # task id
+        # The job ID.
         self.task_id = task_id
 
     def validate(self):
@@ -12658,11 +12815,11 @@ class StopInvocationRequest(TeaModel):
         invoke_id: str = None,
         node_id_list: List[str] = None,
     ):
-        # Command execution ID.
+        # The execution ID.
         # 
         # This parameter is required.
         self.invoke_id = invoke_id
-        # List of nodes.
+        # The nodes.
         self.node_id_list = node_id_list
 
     def validate(self):
@@ -12695,11 +12852,11 @@ class StopInvocationShrinkRequest(TeaModel):
         invoke_id: str = None,
         node_id_list_shrink: str = None,
     ):
-        # Command execution ID.
+        # The execution ID.
         # 
         # This parameter is required.
         self.invoke_id = invoke_id
-        # List of nodes.
+        # The nodes.
         self.node_id_list_shrink = node_id_list_shrink
 
     def validate(self):
@@ -12731,7 +12888,7 @@ class StopInvocationResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12801,9 +12958,9 @@ class StopNodesRequest(TeaModel):
         ignore_failed_node_tasks: bool = None,
         nodes: List[str] = None,
     ):
-        # Whether to allow skipping failed node tasks, default value is False.
+        # Specifies whether to allow skipping failed nodes. Default value: False.
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
-        # List of nodes.
+        # The nodes.
         self.nodes = nodes
 
     def validate(self):
@@ -12836,9 +12993,9 @@ class StopNodesShrinkRequest(TeaModel):
         ignore_failed_node_tasks: bool = None,
         nodes_shrink: str = None,
     ):
-        # Whether to allow skipping failed node tasks, default value is False.
+        # Specifies whether to allow skipping failed nodes. Default value: False.
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
-        # List of nodes.
+        # The nodes.
         self.nodes_shrink = nodes_shrink
 
     def validate(self):
@@ -12871,9 +13028,9 @@ class StopNodesResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Task ID
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -12947,9 +13104,9 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # Tag key
+        # The tag key.
         self.key = key
-        # Tag value
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -12984,19 +13141,27 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
-        # Region ID
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # List of resource IDs
+        # The IDs of the resources.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # Resource type
+        # The resource type.
+        # 
+        # Valid values:
+        # 
+        # *   Node
+        # *   Vcc
+        # *   Cluster
+        # *   Vpd
+        # *   Subnet
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # Tags
+        # The tags.
         # 
         # This parameter is required.
         self.tag = tag
@@ -13046,7 +13211,7 @@ class TagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # ID of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -13119,26 +13284,31 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        # Whether to remove all, only effective when TagKey.N is empty. Valid values:
+        # Specifies whether to remove all tags. This parameter takes effect only when TagKey.N is not specified. Valid values:
         # 
-        # - True, remove all
-        # - False, do not remove all
+        # *   True
+        # *   False
         # 
-        # Default is False
+        # Default value: false.
         self.all = all
-        # Region ID
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # List of resource IDs
+        # The resource IDs.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # Resource type
+        # The resource type.
+        # 
+        # Valid values:
+        # 
+        # *   Node
+        # *   Cluster
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # List of tag keys
+        # The tag keys.
         self.tag_key = tag_key
 
     def validate(self):
@@ -13182,7 +13352,7 @@ class UntagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # request id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -13257,19 +13427,19 @@ class UpdateNodeGroupRequest(TeaModel):
         node_group_id: str = None,
         user_data: str = None,
     ):
-        # Whether file storage mounting is supported
+        # Whether file storage mounting is supported.
         self.file_system_mount_enabled = file_system_mount_enabled
-        # The default image ID of a node group remains unchanged if not explicitly set.
+        # The default image ID of the node group. if you do not set this parameter, the image ID will not change.
         self.image_id = image_id
         # The name of the key pair.
         self.key_pair_name = key_pair_name
         # 节点组内机器的登录密码
         self.login_password = login_password
-        # Node group name
+        # The node group name
         self.new_node_group_name = new_node_group_name
-        # Node group ID
+        # The node group ID.
         self.node_group_id = node_group_id
-        # user data
+        # The custom script.
         self.user_data = user_data
 
     def validate(self):
@@ -13324,7 +13494,7 @@ class UpdateNodeGroupResponseBody(TeaModel):
     ):
         # Id of the request
         self.request_id = request_id
-        # Task ID
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

@@ -47,7 +47,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ApproveOperationResponse:
         """
-        @summary Approve Operation
+        @summary Approves an O\\&M operation.
         
         @param request: ApproveOperationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -84,7 +84,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ApproveOperationResponse:
         """
-        @summary Approve Operation
+        @summary Approves an O\\&M operation.
         
         @param request: ApproveOperationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -120,7 +120,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ApproveOperationRequest,
     ) -> eflo_controller_20221215_models.ApproveOperationResponse:
         """
-        @summary Approve Operation
+        @summary Approves an O\\&M operation.
         
         @param request: ApproveOperationRequest
         @return: ApproveOperationResponse
@@ -133,7 +133,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ApproveOperationRequest,
     ) -> eflo_controller_20221215_models.ApproveOperationResponse:
         """
-        @summary Approve Operation
+        @summary Approves an O\\&M operation.
         
         @param request: ApproveOperationRequest
         @return: ApproveOperationResponse
@@ -147,7 +147,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ChangeResourceGroupResponse:
         """
-        @summary Target Resource Group
+        @summary Moves a resource from one resource group to another.
         
         @param request: ChangeResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -188,7 +188,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ChangeResourceGroupResponse:
         """
-        @summary Target Resource Group
+        @summary Moves a resource from one resource group to another.
         
         @param request: ChangeResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -228,7 +228,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ChangeResourceGroupRequest,
     ) -> eflo_controller_20221215_models.ChangeResourceGroupResponse:
         """
-        @summary Target Resource Group
+        @summary Moves a resource from one resource group to another.
         
         @param request: ChangeResourceGroupRequest
         @return: ChangeResourceGroupResponse
@@ -241,7 +241,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ChangeResourceGroupRequest,
     ) -> eflo_controller_20221215_models.ChangeResourceGroupResponse:
         """
-        @summary Target Resource Group
+        @summary Moves a resource from one resource group to another.
         
         @param request: ChangeResourceGroupRequest
         @return: ChangeResourceGroupResponse
@@ -255,9 +255,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.CloseSessionResponse:
         """
-        @summary Disconnect Connection
-        
-        @description An interface for creating a session, returning the front-end EndPoint, and initiating a periodic task to track the session status
+        @summary 断开连接
         
         @param request: CloseSessionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -294,9 +292,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.CloseSessionResponse:
         """
-        @summary Disconnect Connection
-        
-        @description An interface for creating a session, returning the front-end EndPoint, and initiating a periodic task to track the session status
+        @summary 断开连接
         
         @param request: CloseSessionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -332,9 +328,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.CloseSessionRequest,
     ) -> eflo_controller_20221215_models.CloseSessionResponse:
         """
-        @summary Disconnect Connection
-        
-        @description An interface for creating a session, returning the front-end EndPoint, and initiating a periodic task to track the session status
+        @summary 断开连接
         
         @param request: CloseSessionRequest
         @return: CloseSessionResponse
@@ -347,9 +341,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.CloseSessionRequest,
     ) -> eflo_controller_20221215_models.CloseSessionResponse:
         """
-        @summary Disconnect Connection
-        
-        @description An interface for creating a session, returning the front-end EndPoint, and initiating a periodic task to track the session status
+        @summary 断开连接
         
         @param request: CloseSessionRequest
         @return: CloseSessionResponse
@@ -363,7 +355,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.CreateClusterResponse:
         """
-        @summary Create a large-scale computing cluster
+        @summary Creates a Lingjun cluster.
         
         @param tmp_req: CreateClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -432,7 +424,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.CreateClusterResponse:
         """
-        @summary Create a large-scale computing cluster
+        @summary Creates a Lingjun cluster.
         
         @param tmp_req: CreateClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -500,7 +492,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.CreateClusterRequest,
     ) -> eflo_controller_20221215_models.CreateClusterResponse:
         """
-        @summary Create a large-scale computing cluster
+        @summary Creates a Lingjun cluster.
         
         @param request: CreateClusterRequest
         @return: CreateClusterResponse
@@ -513,7 +505,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.CreateClusterRequest,
     ) -> eflo_controller_20221215_models.CreateClusterResponse:
         """
-        @summary Create a large-scale computing cluster
+        @summary Creates a Lingjun cluster.
         
         @param request: CreateClusterRequest
         @return: CreateClusterResponse
@@ -527,7 +519,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.CreateDiagnosticTaskResponse:
         """
-        @summary Diagnostic Task Creation Interface
+        @summary Creates a diagnostics task.
         
         @param tmp_req: CreateDiagnosticTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -574,7 +566,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.CreateDiagnosticTaskResponse:
         """
-        @summary Diagnostic Task Creation Interface
+        @summary Creates a diagnostics task.
         
         @param tmp_req: CreateDiagnosticTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -620,7 +612,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.CreateDiagnosticTaskRequest,
     ) -> eflo_controller_20221215_models.CreateDiagnosticTaskResponse:
         """
-        @summary Diagnostic Task Creation Interface
+        @summary Creates a diagnostics task.
         
         @param request: CreateDiagnosticTaskRequest
         @return: CreateDiagnosticTaskResponse
@@ -633,7 +625,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.CreateDiagnosticTaskRequest,
     ) -> eflo_controller_20221215_models.CreateDiagnosticTaskResponse:
         """
-        @summary Diagnostic Task Creation Interface
+        @summary Creates a diagnostics task.
         
         @param request: CreateDiagnosticTaskRequest
         @return: CreateDiagnosticTaskResponse
@@ -647,9 +639,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.CreateNetTestTaskResponse:
         """
-        @summary Create Network Test Task
+        @summary Creates a network test task.
         
-        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
+        @description The API creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
         
         @param tmp_req: CreateNetTestTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -706,9 +698,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.CreateNetTestTaskResponse:
         """
-        @summary Create Network Test Task
+        @summary Creates a network test task.
         
-        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
+        @description The API creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
         
         @param tmp_req: CreateNetTestTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -764,9 +756,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.CreateNetTestTaskRequest,
     ) -> eflo_controller_20221215_models.CreateNetTestTaskResponse:
         """
-        @summary Create Network Test Task
+        @summary Creates a network test task.
         
-        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
+        @description The API creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
         
         @param request: CreateNetTestTaskRequest
         @return: CreateNetTestTaskResponse
@@ -779,9 +771,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.CreateNetTestTaskRequest,
     ) -> eflo_controller_20221215_models.CreateNetTestTaskResponse:
         """
-        @summary Create Network Test Task
+        @summary Creates a network test task.
         
-        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
+        @description The API creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
         
         @param request: CreateNetTestTaskRequest
         @return: CreateNetTestTaskResponse
@@ -795,9 +787,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.CreateNodeGroupResponse:
         """
-        @summary Create Node Group under Cluster
-        
-        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status
+        @summary 创建集群下的节点分组
         
         @param tmp_req: CreateNodeGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -842,9 +832,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.CreateNodeGroupResponse:
         """
-        @summary Create Node Group under Cluster
-        
-        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status
+        @summary 创建集群下的节点分组
         
         @param tmp_req: CreateNodeGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -888,9 +876,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.CreateNodeGroupRequest,
     ) -> eflo_controller_20221215_models.CreateNodeGroupResponse:
         """
-        @summary Create Node Group under Cluster
-        
-        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status
+        @summary 创建集群下的节点分组
         
         @param request: CreateNodeGroupRequest
         @return: CreateNodeGroupResponse
@@ -903,9 +889,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.CreateNodeGroupRequest,
     ) -> eflo_controller_20221215_models.CreateNodeGroupResponse:
         """
-        @summary Create Node Group under Cluster
-        
-        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status
+        @summary 创建集群下的节点分组
         
         @param request: CreateNodeGroupRequest
         @return: CreateNodeGroupResponse
@@ -919,9 +903,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.CreateSessionResponse:
         """
-        @summary Create Web Terminal Session
+        @summary Creates a Web Terminal session.
         
-        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
+        @description The API creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
         
         @param request: CreateSessionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -960,9 +944,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.CreateSessionResponse:
         """
-        @summary Create Web Terminal Session
+        @summary Creates a Web Terminal session.
         
-        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
+        @description The API creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
         
         @param request: CreateSessionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1000,9 +984,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.CreateSessionRequest,
     ) -> eflo_controller_20221215_models.CreateSessionResponse:
         """
-        @summary Create Web Terminal Session
+        @summary Creates a Web Terminal session.
         
-        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
+        @description The API creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
         
         @param request: CreateSessionRequest
         @return: CreateSessionResponse
@@ -1015,9 +999,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.CreateSessionRequest,
     ) -> eflo_controller_20221215_models.CreateSessionResponse:
         """
-        @summary Create Web Terminal Session
+        @summary Creates a Web Terminal session.
         
-        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
+        @description The API creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
         
         @param request: CreateSessionRequest
         @return: CreateSessionResponse
@@ -1031,7 +1015,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.CreateVscResponse:
         """
-        @summary Create Vsc
+        @summary Creates a virtual storage channel (VSC).
         
         @param request: CreateVscRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1078,7 +1062,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.CreateVscResponse:
         """
-        @summary Create Vsc
+        @summary Creates a virtual storage channel (VSC).
         
         @param request: CreateVscRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1124,7 +1108,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.CreateVscRequest,
     ) -> eflo_controller_20221215_models.CreateVscResponse:
         """
-        @summary Create Vsc
+        @summary Creates a virtual storage channel (VSC).
         
         @param request: CreateVscRequest
         @return: CreateVscResponse
@@ -1137,7 +1121,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.CreateVscRequest,
     ) -> eflo_controller_20221215_models.CreateVscResponse:
         """
-        @summary Create Vsc
+        @summary Creates a virtual storage channel (VSC).
         
         @param request: CreateVscRequest
         @return: CreateVscResponse
@@ -1151,7 +1135,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DeleteClusterResponse:
         """
-        @summary Delete cluster instance
+        @summary Deletes a Lingjun cluster.
         
         @param request: DeleteClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1186,7 +1170,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DeleteClusterResponse:
         """
-        @summary Delete cluster instance
+        @summary Deletes a Lingjun cluster.
         
         @param request: DeleteClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1220,7 +1204,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DeleteClusterRequest,
     ) -> eflo_controller_20221215_models.DeleteClusterResponse:
         """
-        @summary Delete cluster instance
+        @summary Deletes a Lingjun cluster.
         
         @param request: DeleteClusterRequest
         @return: DeleteClusterResponse
@@ -1233,7 +1217,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DeleteClusterRequest,
     ) -> eflo_controller_20221215_models.DeleteClusterResponse:
         """
-        @summary Delete cluster instance
+        @summary Deletes a Lingjun cluster.
         
         @param request: DeleteClusterRequest
         @return: DeleteClusterResponse
@@ -1247,9 +1231,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DeleteNodeGroupResponse:
         """
-        @summary Delete Node Group
-        
-        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status.
+        @summary 删除节点分组
         
         @param request: DeleteNodeGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1286,9 +1268,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DeleteNodeGroupResponse:
         """
-        @summary Delete Node Group
-        
-        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status.
+        @summary 删除节点分组
         
         @param request: DeleteNodeGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1324,9 +1304,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DeleteNodeGroupRequest,
     ) -> eflo_controller_20221215_models.DeleteNodeGroupResponse:
         """
-        @summary Delete Node Group
-        
-        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status.
+        @summary 删除节点分组
         
         @param request: DeleteNodeGroupRequest
         @return: DeleteNodeGroupResponse
@@ -1339,9 +1317,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DeleteNodeGroupRequest,
     ) -> eflo_controller_20221215_models.DeleteNodeGroupResponse:
         """
-        @summary Delete Node Group
-        
-        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status.
+        @summary 删除节点分组
         
         @param request: DeleteNodeGroupRequest
         @return: DeleteNodeGroupResponse
@@ -1355,7 +1331,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DeleteVscResponse:
         """
-        @summary Delete Vsc
+        @summary Deletes a virtual storage channel (VSC).
         
         @param request: DeleteVscRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1394,7 +1370,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DeleteVscResponse:
         """
-        @summary Delete Vsc
+        @summary Deletes a virtual storage channel (VSC).
         
         @param request: DeleteVscRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1432,7 +1408,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DeleteVscRequest,
     ) -> eflo_controller_20221215_models.DeleteVscResponse:
         """
-        @summary Delete Vsc
+        @summary Deletes a virtual storage channel (VSC).
         
         @param request: DeleteVscRequest
         @return: DeleteVscResponse
@@ -1445,7 +1421,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DeleteVscRequest,
     ) -> eflo_controller_20221215_models.DeleteVscResponse:
         """
-        @summary Delete Vsc
+        @summary Deletes a virtual storage channel (VSC).
         
         @param request: DeleteVscRequest
         @return: DeleteVscResponse
@@ -1555,9 +1531,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeDiagnosticResultResponse:
         """
-        @summary Diagnostic Task Query Interface
+        @summary Queries the results of a diagnostic task.
         
-        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status.
+        @description The API creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
         
         @param request: DescribeDiagnosticResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1592,9 +1568,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeDiagnosticResultResponse:
         """
-        @summary Diagnostic Task Query Interface
+        @summary Queries the results of a diagnostic task.
         
-        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status.
+        @description The API creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
         
         @param request: DescribeDiagnosticResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1628,9 +1604,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeDiagnosticResultRequest,
     ) -> eflo_controller_20221215_models.DescribeDiagnosticResultResponse:
         """
-        @summary Diagnostic Task Query Interface
+        @summary Queries the results of a diagnostic task.
         
-        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status.
+        @description The API creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
         
         @param request: DescribeDiagnosticResultRequest
         @return: DescribeDiagnosticResultResponse
@@ -1643,9 +1619,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeDiagnosticResultRequest,
     ) -> eflo_controller_20221215_models.DescribeDiagnosticResultResponse:
         """
-        @summary Diagnostic Task Query Interface
+        @summary Queries the results of a diagnostic task.
         
-        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status.
+        @description The API creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
         
         @param request: DescribeDiagnosticResultRequest
         @return: DescribeDiagnosticResultResponse
@@ -1659,7 +1635,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeInvocationsResponse:
         """
-        @summary Query the list and status of operations assistant command executions
+        @summary Queries the execution list and status of O\\&M Assistant commands.
         
         @param request: DescribeInvocationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1700,7 +1676,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeInvocationsResponse:
         """
-        @summary Query the list and status of operations assistant command executions
+        @summary Queries the execution list and status of O\\&M Assistant commands.
         
         @param request: DescribeInvocationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1740,7 +1716,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeInvocationsRequest,
     ) -> eflo_controller_20221215_models.DescribeInvocationsResponse:
         """
-        @summary Query the list and status of operations assistant command executions
+        @summary Queries the execution list and status of O\\&M Assistant commands.
         
         @param request: DescribeInvocationsRequest
         @return: DescribeInvocationsResponse
@@ -1753,7 +1729,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeInvocationsRequest,
     ) -> eflo_controller_20221215_models.DescribeInvocationsResponse:
         """
-        @summary Query the list and status of operations assistant command executions
+        @summary Queries the execution list and status of O\\&M Assistant commands.
         
         @param request: DescribeInvocationsRequest
         @return: DescribeInvocationsResponse
@@ -1767,9 +1743,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeNetTestResultResponse:
         """
-        @summary Query Network Test Result
-        
-        @description An interface for creating a session, returning the front-end EndPoint, and initiating a periodic task to track the session status
+        @summary 查询网络测试结果
         
         @param request: DescribeNetTestResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1804,9 +1778,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeNetTestResultResponse:
         """
-        @summary Query Network Test Result
-        
-        @description An interface for creating a session, returning the front-end EndPoint, and initiating a periodic task to track the session status
+        @summary 查询网络测试结果
         
         @param request: DescribeNetTestResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1840,9 +1812,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeNetTestResultRequest,
     ) -> eflo_controller_20221215_models.DescribeNetTestResultResponse:
         """
-        @summary Query Network Test Result
-        
-        @description An interface for creating a session, returning the front-end EndPoint, and initiating a periodic task to track the session status
+        @summary 查询网络测试结果
         
         @param request: DescribeNetTestResultRequest
         @return: DescribeNetTestResultResponse
@@ -1855,9 +1825,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeNetTestResultRequest,
     ) -> eflo_controller_20221215_models.DescribeNetTestResultResponse:
         """
-        @summary Query Network Test Result
-        
-        @description An interface for creating a session, returning the front-end EndPoint, and initiating a periodic task to track the session status
+        @summary 查询网络测试结果
         
         @param request: DescribeNetTestResultRequest
         @return: DescribeNetTestResultResponse
@@ -1871,7 +1839,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeNodeResponse:
         """
-        @summary Query node list
+        @summary Queries a list of nodes.
         
         @param request: DescribeNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1906,7 +1874,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeNodeResponse:
         """
-        @summary Query node list
+        @summary Queries a list of nodes.
         
         @param request: DescribeNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1940,7 +1908,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeNodeRequest,
     ) -> eflo_controller_20221215_models.DescribeNodeResponse:
         """
-        @summary Query node list
+        @summary Queries a list of nodes.
         
         @param request: DescribeNodeRequest
         @return: DescribeNodeResponse
@@ -1953,7 +1921,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeNodeRequest,
     ) -> eflo_controller_20221215_models.DescribeNodeResponse:
         """
-        @summary Query node list
+        @summary Queries a list of nodes.
         
         @param request: DescribeNodeRequest
         @return: DescribeNodeResponse
@@ -1967,7 +1935,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeRegionsResponse:
         """
-        @summary Region List
+        @summary Queries a list of regions.
         
         @param request: DescribeRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2002,7 +1970,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeRegionsResponse:
         """
-        @summary Region List
+        @summary Queries a list of regions.
         
         @param request: DescribeRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2036,7 +2004,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeRegionsRequest,
     ) -> eflo_controller_20221215_models.DescribeRegionsResponse:
         """
-        @summary Region List
+        @summary Queries a list of regions.
         
         @param request: DescribeRegionsRequest
         @return: DescribeRegionsResponse
@@ -2049,7 +2017,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeRegionsRequest,
     ) -> eflo_controller_20221215_models.DescribeRegionsResponse:
         """
-        @summary Region List
+        @summary Queries a list of regions.
         
         @param request: DescribeRegionsRequest
         @return: DescribeRegionsResponse
@@ -2063,7 +2031,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeSendFileResultsResponse:
         """
-        @summary Query the list and status of files sent by the operation assistant
+        @summary Queries the files that are sent by an O\\&M assistant and the status of the files.
         
         @param request: DescribeSendFileResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2100,7 +2068,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeSendFileResultsResponse:
         """
-        @summary Query the list and status of files sent by the operation assistant
+        @summary Queries the files that are sent by an O\\&M assistant and the status of the files.
         
         @param request: DescribeSendFileResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2136,7 +2104,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeSendFileResultsRequest,
     ) -> eflo_controller_20221215_models.DescribeSendFileResultsResponse:
         """
-        @summary Query the list and status of files sent by the operation assistant
+        @summary Queries the files that are sent by an O\\&M assistant and the status of the files.
         
         @param request: DescribeSendFileResultsRequest
         @return: DescribeSendFileResultsResponse
@@ -2149,7 +2117,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeSendFileResultsRequest,
     ) -> eflo_controller_20221215_models.DescribeSendFileResultsResponse:
         """
-        @summary Query the list and status of files sent by the operation assistant
+        @summary Queries the files that are sent by an O\\&M assistant and the status of the files.
         
         @param request: DescribeSendFileResultsRequest
         @return: DescribeSendFileResultsResponse
@@ -2163,7 +2131,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeTaskResponse:
         """
-        @summary Query Task Details
+        @summary Queries the details of a task.
         
         @param request: DescribeTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2198,7 +2166,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeTaskResponse:
         """
-        @summary Query Task Details
+        @summary Queries the details of a task.
         
         @param request: DescribeTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2232,7 +2200,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeTaskRequest,
     ) -> eflo_controller_20221215_models.DescribeTaskResponse:
         """
-        @summary Query Task Details
+        @summary Queries the details of a task.
         
         @param request: DescribeTaskRequest
         @return: DescribeTaskResponse
@@ -2245,7 +2213,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeTaskRequest,
     ) -> eflo_controller_20221215_models.DescribeTaskResponse:
         """
-        @summary Query Task Details
+        @summary Queries the details of a task.
         
         @param request: DescribeTaskRequest
         @return: DescribeTaskResponse
@@ -2259,7 +2227,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeVscResponse:
         """
-        @summary Get details of a single Vsc
+        @summary Queries information about a virtual storage channel (VSC).
         
         @param request: DescribeVscRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2294,7 +2262,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeVscResponse:
         """
-        @summary Get details of a single Vsc
+        @summary Queries information about a virtual storage channel (VSC).
         
         @param request: DescribeVscRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2328,7 +2296,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeVscRequest,
     ) -> eflo_controller_20221215_models.DescribeVscResponse:
         """
-        @summary Get details of a single Vsc
+        @summary Queries information about a virtual storage channel (VSC).
         
         @param request: DescribeVscRequest
         @return: DescribeVscResponse
@@ -2341,7 +2309,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeVscRequest,
     ) -> eflo_controller_20221215_models.DescribeVscResponse:
         """
-        @summary Get details of a single Vsc
+        @summary Queries information about a virtual storage channel (VSC).
         
         @param request: DescribeVscRequest
         @return: DescribeVscResponse
@@ -2355,7 +2323,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeZonesResponse:
         """
-        @summary List of Available Zones
+        @summary Queries a list of zones.
         
         @param request: DescribeZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2390,7 +2358,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeZonesResponse:
         """
-        @summary List of Available Zones
+        @summary Queries a list of zones.
         
         @param request: DescribeZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2424,7 +2392,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeZonesRequest,
     ) -> eflo_controller_20221215_models.DescribeZonesResponse:
         """
-        @summary List of Available Zones
+        @summary Queries a list of zones.
         
         @param request: DescribeZonesRequest
         @return: DescribeZonesResponse
@@ -2437,7 +2405,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeZonesRequest,
     ) -> eflo_controller_20221215_models.DescribeZonesResponse:
         """
-        @summary List of Available Zones
+        @summary Queries a list of zones.
         
         @param request: DescribeZonesRequest
         @return: DescribeZonesResponse
@@ -2451,7 +2419,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ExtendClusterResponse:
         """
-        @summary Cluster Scaling
+        @summary Scales out a cluster.
         
         @param tmp_req: ExtendClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2504,7 +2472,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ExtendClusterResponse:
         """
-        @summary Cluster Scaling
+        @summary Scales out a cluster.
         
         @param tmp_req: ExtendClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2556,7 +2524,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ExtendClusterRequest,
     ) -> eflo_controller_20221215_models.ExtendClusterResponse:
         """
-        @summary Cluster Scaling
+        @summary Scales out a cluster.
         
         @param request: ExtendClusterRequest
         @return: ExtendClusterResponse
@@ -2569,7 +2537,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ExtendClusterRequest,
     ) -> eflo_controller_20221215_models.ExtendClusterResponse:
         """
-        @summary Cluster Scaling
+        @summary Scales out a cluster.
         
         @param request: ExtendClusterRequest
         @return: ExtendClusterResponse
@@ -2583,7 +2551,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListClusterNodesResponse:
         """
-        @summary List of host groups under the cluster, and list of hosts under each group
+        @summary Queries a list of nodes in a cluster.
         
         @param request: ListClusterNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2630,7 +2598,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListClusterNodesResponse:
         """
-        @summary List of host groups under the cluster, and list of hosts under each group
+        @summary Queries a list of nodes in a cluster.
         
         @param request: ListClusterNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2676,7 +2644,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListClusterNodesRequest,
     ) -> eflo_controller_20221215_models.ListClusterNodesResponse:
         """
-        @summary List of host groups under the cluster, and list of hosts under each group
+        @summary Queries a list of nodes in a cluster.
         
         @param request: ListClusterNodesRequest
         @return: ListClusterNodesResponse
@@ -2689,7 +2657,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListClusterNodesRequest,
     ) -> eflo_controller_20221215_models.ListClusterNodesResponse:
         """
-        @summary List of host groups under the cluster, and list of hosts under each group
+        @summary Queries a list of nodes in a cluster.
         
         @param request: ListClusterNodesRequest
         @return: ListClusterNodesResponse
@@ -2703,7 +2671,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListClustersResponse:
         """
-        @summary Get the list of cluster instances
+        @summary Queries a list of clusters.
         
         @param request: ListClustersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2746,7 +2714,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListClustersResponse:
         """
-        @summary Get the list of cluster instances
+        @summary Queries a list of clusters.
         
         @param request: ListClustersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2788,7 +2756,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListClustersRequest,
     ) -> eflo_controller_20221215_models.ListClustersResponse:
         """
-        @summary Get the list of cluster instances
+        @summary Queries a list of clusters.
         
         @param request: ListClustersRequest
         @return: ListClustersResponse
@@ -2801,7 +2769,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListClustersRequest,
     ) -> eflo_controller_20221215_models.ListClustersResponse:
         """
-        @summary Get the list of cluster instances
+        @summary Queries a list of clusters.
         
         @param request: ListClustersRequest
         @return: ListClustersResponse
@@ -2815,9 +2783,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListDiagnosticResultsResponse:
         """
-        @summary List of Diagnostic Tasks
-        
-        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
+        @summary 诊断任务列表
         
         @param request: ListDiagnosticResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2858,9 +2824,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListDiagnosticResultsResponse:
         """
-        @summary List of Diagnostic Tasks
-        
-        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
+        @summary 诊断任务列表
         
         @param request: ListDiagnosticResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2900,9 +2864,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListDiagnosticResultsRequest,
     ) -> eflo_controller_20221215_models.ListDiagnosticResultsResponse:
         """
-        @summary List of Diagnostic Tasks
-        
-        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
+        @summary 诊断任务列表
         
         @param request: ListDiagnosticResultsRequest
         @return: ListDiagnosticResultsResponse
@@ -2915,9 +2877,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListDiagnosticResultsRequest,
     ) -> eflo_controller_20221215_models.ListDiagnosticResultsResponse:
         """
-        @summary List of Diagnostic Tasks
-        
-        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
+        @summary 诊断任务列表
         
         @param request: ListDiagnosticResultsRequest
         @return: ListDiagnosticResultsResponse
@@ -2931,7 +2891,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListFreeNodesResponse:
         """
-        @summary List of Available Physical Machines
+        @summary Queries a list of nodes that are not used.
         
         @param request: ListFreeNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2980,7 +2940,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListFreeNodesResponse:
         """
-        @summary List of Available Physical Machines
+        @summary Queries a list of nodes that are not used.
         
         @param request: ListFreeNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3028,7 +2988,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListFreeNodesRequest,
     ) -> eflo_controller_20221215_models.ListFreeNodesResponse:
         """
-        @summary List of Available Physical Machines
+        @summary Queries a list of nodes that are not used.
         
         @param request: ListFreeNodesRequest
         @return: ListFreeNodesResponse
@@ -3041,7 +3001,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListFreeNodesRequest,
     ) -> eflo_controller_20221215_models.ListFreeNodesResponse:
         """
-        @summary List of Available Physical Machines
+        @summary Queries a list of nodes that are not used.
         
         @param request: ListFreeNodesRequest
         @return: ListFreeNodesResponse
@@ -3055,7 +3015,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListImagesResponse:
         """
-        @summary Query the list of images available to the user
+        @summary Lists available images.
         
         @param request: ListImagesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3094,7 +3054,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListImagesResponse:
         """
-        @summary Query the list of images available to the user
+        @summary Lists available images.
         
         @param request: ListImagesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3132,7 +3092,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListImagesRequest,
     ) -> eflo_controller_20221215_models.ListImagesResponse:
         """
-        @summary Query the list of images available to the user
+        @summary Lists available images.
         
         @param request: ListImagesRequest
         @return: ListImagesResponse
@@ -3145,7 +3105,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListImagesRequest,
     ) -> eflo_controller_20221215_models.ListImagesResponse:
         """
-        @summary Query the list of images available to the user
+        @summary Lists available images.
         
         @param request: ListImagesRequest
         @return: ListImagesResponse
@@ -3159,9 +3119,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListMachineNetworkInfoResponse:
         """
-        @summary Query machine network configuration using HPNZone and machine type
-        
-        @description An interface for creating a session, returning the frontend EndPoint, and initiating a periodic task to track the session status
+        @summary 使用HPNZone和机型查询机型网络配置
         
         @param tmp_req: ListMachineNetworkInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3200,9 +3158,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListMachineNetworkInfoResponse:
         """
-        @summary Query machine network configuration using HPNZone and machine type
-        
-        @description An interface for creating a session, returning the frontend EndPoint, and initiating a periodic task to track the session status
+        @summary 使用HPNZone和机型查询机型网络配置
         
         @param tmp_req: ListMachineNetworkInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3240,9 +3196,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListMachineNetworkInfoRequest,
     ) -> eflo_controller_20221215_models.ListMachineNetworkInfoResponse:
         """
-        @summary Query machine network configuration using HPNZone and machine type
-        
-        @description An interface for creating a session, returning the frontend EndPoint, and initiating a periodic task to track the session status
+        @summary 使用HPNZone和机型查询机型网络配置
         
         @param request: ListMachineNetworkInfoRequest
         @return: ListMachineNetworkInfoResponse
@@ -3255,9 +3209,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListMachineNetworkInfoRequest,
     ) -> eflo_controller_20221215_models.ListMachineNetworkInfoResponse:
         """
-        @summary Query machine network configuration using HPNZone and machine type
-        
-        @description An interface for creating a session, returning the frontend EndPoint, and initiating a periodic task to track the session status
+        @summary 使用HPNZone和机型查询机型网络配置
         
         @param request: ListMachineNetworkInfoRequest
         @return: ListMachineNetworkInfoResponse
@@ -3271,7 +3223,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListMachineTypesResponse:
         """
-        @summary Query the list of machine types available to the user
+        @summary Queries a list of instance types that are available to users.
         
         @param request: ListMachineTypesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3306,7 +3258,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListMachineTypesResponse:
         """
-        @summary Query the list of machine types available to the user
+        @summary Queries a list of instance types that are available to users.
         
         @param request: ListMachineTypesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3340,7 +3292,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListMachineTypesRequest,
     ) -> eflo_controller_20221215_models.ListMachineTypesResponse:
         """
-        @summary Query the list of machine types available to the user
+        @summary Queries a list of instance types that are available to users.
         
         @param request: ListMachineTypesRequest
         @return: ListMachineTypesResponse
@@ -3353,7 +3305,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListMachineTypesRequest,
     ) -> eflo_controller_20221215_models.ListMachineTypesResponse:
         """
-        @summary Query the list of machine types available to the user
+        @summary Queries a list of instance types that are available to users.
         
         @param request: ListMachineTypesRequest
         @return: ListMachineTypesResponse
@@ -3367,9 +3319,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListNetTestResultsResponse:
         """
-        @summary Network Test List
+        @summary Lists the results of network test results.
         
-        @description An interface for creating a session, returning the frontend EndPoint, and initiating a periodic task to track the session status.
+        @description The API creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
         
         @param request: ListNetTestResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3410,9 +3362,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListNetTestResultsResponse:
         """
-        @summary Network Test List
+        @summary Lists the results of network test results.
         
-        @description An interface for creating a session, returning the frontend EndPoint, and initiating a periodic task to track the session status.
+        @description The API creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
         
         @param request: ListNetTestResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3452,9 +3404,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListNetTestResultsRequest,
     ) -> eflo_controller_20221215_models.ListNetTestResultsResponse:
         """
-        @summary Network Test List
+        @summary Lists the results of network test results.
         
-        @description An interface for creating a session, returning the frontend EndPoint, and initiating a periodic task to track the session status.
+        @description The API creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
         
         @param request: ListNetTestResultsRequest
         @return: ListNetTestResultsResponse
@@ -3467,9 +3419,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListNetTestResultsRequest,
     ) -> eflo_controller_20221215_models.ListNetTestResultsResponse:
         """
-        @summary Network Test List
+        @summary Lists the results of network test results.
         
-        @description An interface for creating a session, returning the frontend EndPoint, and initiating a periodic task to track the session status.
+        @description The API creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
         
         @param request: ListNetTestResultsRequest
         @return: ListNetTestResultsResponse
@@ -3483,7 +3435,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListNodeGroupsResponse:
         """
-        @summary Query Node Group Information Under the Cluster
+        @summary Queries node groups in a cluster.
         
         @param request: ListNodeGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3524,7 +3476,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListNodeGroupsResponse:
         """
-        @summary Query Node Group Information Under the Cluster
+        @summary Queries node groups in a cluster.
         
         @param request: ListNodeGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3564,7 +3516,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListNodeGroupsRequest,
     ) -> eflo_controller_20221215_models.ListNodeGroupsResponse:
         """
-        @summary Query Node Group Information Under the Cluster
+        @summary Queries node groups in a cluster.
         
         @param request: ListNodeGroupsRequest
         @return: ListNodeGroupsResponse
@@ -3577,7 +3529,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListNodeGroupsRequest,
     ) -> eflo_controller_20221215_models.ListNodeGroupsResponse:
         """
-        @summary Query Node Group Information Under the Cluster
+        @summary Queries node groups in a cluster.
         
         @param request: ListNodeGroupsRequest
         @return: ListNodeGroupsResponse
@@ -3591,7 +3543,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListTagResourcesResponse:
         """
-        @summary Query Resource Tags
+        @summary Queries the tags of resources.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3634,7 +3586,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListTagResourcesResponse:
         """
-        @summary Query Resource Tags
+        @summary Queries the tags of resources.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3676,7 +3628,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListTagResourcesRequest,
     ) -> eflo_controller_20221215_models.ListTagResourcesResponse:
         """
-        @summary Query Resource Tags
+        @summary Queries the tags of resources.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -3689,7 +3641,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListTagResourcesRequest,
     ) -> eflo_controller_20221215_models.ListTagResourcesResponse:
         """
-        @summary Query Resource Tags
+        @summary Queries the tags of resources.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -3702,9 +3654,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListUserClusterTypesResponse:
         """
-        @summary Query the cluster types available to the user
-        
-        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status
+        @summary 查询用户可以使用的集群类型
         
         @param request: ListUserClusterTypesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3732,9 +3682,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListUserClusterTypesResponse:
         """
-        @summary Query the cluster types available to the user
-        
-        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status
+        @summary 查询用户可以使用的集群类型
         
         @param request: ListUserClusterTypesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3759,9 +3707,7 @@ class Client(OpenApiClient):
 
     def list_user_cluster_types(self) -> eflo_controller_20221215_models.ListUserClusterTypesResponse:
         """
-        @summary Query the cluster types available to the user
-        
-        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status
+        @summary 查询用户可以使用的集群类型
         
         @return: ListUserClusterTypesResponse
         """
@@ -3770,9 +3716,7 @@ class Client(OpenApiClient):
 
     async def list_user_cluster_types_async(self) -> eflo_controller_20221215_models.ListUserClusterTypesResponse:
         """
-        @summary Query the cluster types available to the user
-        
-        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status
+        @summary 查询用户可以使用的集群类型
         
         @return: ListUserClusterTypesResponse
         """
@@ -3785,7 +3729,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListVscsResponse:
         """
-        @summary Query Vsc List
+        @summary Queries a list of virtual storage channels (VSC).
         
         @param tmp_req: ListVscsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3836,7 +3780,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListVscsResponse:
         """
-        @summary Query Vsc List
+        @summary Queries a list of virtual storage channels (VSC).
         
         @param tmp_req: ListVscsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3886,7 +3830,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListVscsRequest,
     ) -> eflo_controller_20221215_models.ListVscsResponse:
         """
-        @summary Query Vsc List
+        @summary Queries a list of virtual storage channels (VSC).
         
         @param request: ListVscsRequest
         @return: ListVscsResponse
@@ -3899,7 +3843,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListVscsRequest,
     ) -> eflo_controller_20221215_models.ListVscsResponse:
         """
-        @summary Query Vsc List
+        @summary Queries a list of virtual storage channels (VSC).
         
         @param request: ListVscsRequest
         @return: ListVscsResponse
@@ -3913,7 +3857,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.RebootNodesResponse:
         """
-        @summary Reboot Machine
+        @summary Restarts nodes.
         
         @param tmp_req: RebootNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3956,7 +3900,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.RebootNodesResponse:
         """
-        @summary Reboot Machine
+        @summary Restarts nodes.
         
         @param tmp_req: RebootNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3998,7 +3942,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.RebootNodesRequest,
     ) -> eflo_controller_20221215_models.RebootNodesResponse:
         """
-        @summary Reboot Machine
+        @summary Restarts nodes.
         
         @param request: RebootNodesRequest
         @return: RebootNodesResponse
@@ -4011,7 +3955,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.RebootNodesRequest,
     ) -> eflo_controller_20221215_models.RebootNodesResponse:
         """
-        @summary Reboot Machine
+        @summary Restarts nodes.
         
         @param request: RebootNodesRequest
         @return: RebootNodesResponse
@@ -4025,7 +3969,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ReimageNodesResponse:
         """
-        @summary Machine Reinstallation
+        @summary Reinstall a node.
         
         @param tmp_req: ReimageNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4070,7 +4014,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ReimageNodesResponse:
         """
-        @summary Machine Reinstallation
+        @summary Reinstall a node.
         
         @param tmp_req: ReimageNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4114,7 +4058,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ReimageNodesRequest,
     ) -> eflo_controller_20221215_models.ReimageNodesResponse:
         """
-        @summary Machine Reinstallation
+        @summary Reinstall a node.
         
         @param request: ReimageNodesRequest
         @return: ReimageNodesResponse
@@ -4127,7 +4071,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ReimageNodesRequest,
     ) -> eflo_controller_20221215_models.ReimageNodesResponse:
         """
-        @summary Machine Reinstallation
+        @summary Reinstall a node.
         
         @param request: ReimageNodesRequest
         @return: ReimageNodesResponse
@@ -4141,7 +4085,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.RunCommandResponse:
         """
-        @summary Execute a Shell script on one or more Lingjun machines
+        @summary Runs a Shell script on one or more Lingjun nodes.
         
         @param tmp_req: RunCommandRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4212,7 +4156,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.RunCommandResponse:
         """
-        @summary Execute a Shell script on one or more Lingjun machines
+        @summary Runs a Shell script on one or more Lingjun nodes.
         
         @param tmp_req: RunCommandRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4282,7 +4226,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.RunCommandRequest,
     ) -> eflo_controller_20221215_models.RunCommandResponse:
         """
-        @summary Execute a Shell script on one or more Lingjun machines
+        @summary Runs a Shell script on one or more Lingjun nodes.
         
         @param request: RunCommandRequest
         @return: RunCommandResponse
@@ -4295,7 +4239,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.RunCommandRequest,
     ) -> eflo_controller_20221215_models.RunCommandResponse:
         """
-        @summary Execute a Shell script on one or more Lingjun machines
+        @summary Runs a Shell script on one or more Lingjun nodes.
         
         @param request: RunCommandRequest
         @return: RunCommandResponse
@@ -4309,7 +4253,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.SendFileResponse:
         """
-        @summary Send a remote file to one or more Lingjun machines
+        @summary Sends a file to one or more Lingjun nodes.
         
         @param tmp_req: SendFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4368,7 +4312,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.SendFileResponse:
         """
-        @summary Send a remote file to one or more Lingjun machines
+        @summary Sends a file to one or more Lingjun nodes.
         
         @param tmp_req: SendFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4426,7 +4370,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.SendFileRequest,
     ) -> eflo_controller_20221215_models.SendFileResponse:
         """
-        @summary Send a remote file to one or more Lingjun machines
+        @summary Sends a file to one or more Lingjun nodes.
         
         @param request: SendFileRequest
         @return: SendFileResponse
@@ -4439,7 +4383,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.SendFileRequest,
     ) -> eflo_controller_20221215_models.SendFileResponse:
         """
-        @summary Send a remote file to one or more Lingjun machines
+        @summary Sends a file to one or more Lingjun nodes.
         
         @param request: SendFileRequest
         @return: SendFileResponse
@@ -4453,7 +4397,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ShrinkClusterResponse:
         """
-        @summary Shrink
+        @summary Scales in a cluster.
         
         @param tmp_req: ShrinkClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4496,7 +4440,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ShrinkClusterResponse:
         """
-        @summary Shrink
+        @summary Scales in a cluster.
         
         @param tmp_req: ShrinkClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4538,7 +4482,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ShrinkClusterRequest,
     ) -> eflo_controller_20221215_models.ShrinkClusterResponse:
         """
-        @summary Shrink
+        @summary Scales in a cluster.
         
         @param request: ShrinkClusterRequest
         @return: ShrinkClusterResponse
@@ -4551,7 +4495,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ShrinkClusterRequest,
     ) -> eflo_controller_20221215_models.ShrinkClusterResponse:
         """
-        @summary Shrink
+        @summary Scales in a cluster.
         
         @param request: ShrinkClusterRequest
         @return: ShrinkClusterResponse
@@ -4565,7 +4509,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.StopInvocationResponse:
         """
-        @summary Stop the operation assistant command process
+        @summary Stops the O\\&M assistant command execution.
         
         @param tmp_req: StopInvocationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4606,7 +4550,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.StopInvocationResponse:
         """
-        @summary Stop the operation assistant command process
+        @summary Stops the O\\&M assistant command execution.
         
         @param tmp_req: StopInvocationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4646,7 +4590,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.StopInvocationRequest,
     ) -> eflo_controller_20221215_models.StopInvocationResponse:
         """
-        @summary Stop the operation assistant command process
+        @summary Stops the O\\&M assistant command execution.
         
         @param request: StopInvocationRequest
         @return: StopInvocationResponse
@@ -4659,7 +4603,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.StopInvocationRequest,
     ) -> eflo_controller_20221215_models.StopInvocationResponse:
         """
-        @summary Stop the operation assistant command process
+        @summary Stops the O\\&M assistant command execution.
         
         @param request: StopInvocationRequest
         @return: StopInvocationResponse
@@ -4673,7 +4617,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.StopNodesResponse:
         """
-        @summary Shut down the nodes
+        @summary Stops nodes.
         
         @param tmp_req: StopNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4714,7 +4658,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.StopNodesResponse:
         """
-        @summary Shut down the nodes
+        @summary Stops nodes.
         
         @param tmp_req: StopNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4754,7 +4698,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.StopNodesRequest,
     ) -> eflo_controller_20221215_models.StopNodesResponse:
         """
-        @summary Shut down the nodes
+        @summary Stops nodes.
         
         @param request: StopNodesRequest
         @return: StopNodesResponse
@@ -4767,7 +4711,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.StopNodesRequest,
     ) -> eflo_controller_20221215_models.StopNodesResponse:
         """
-        @summary Shut down the nodes
+        @summary Stops nodes.
         
         @param request: StopNodesRequest
         @return: StopNodesResponse
@@ -4781,7 +4725,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.TagResourcesResponse:
         """
-        @summary Tag User Resources
+        @summary Tags resources.
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4822,7 +4766,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.TagResourcesResponse:
         """
-        @summary Tag User Resources
+        @summary Tags resources.
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4862,7 +4806,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.TagResourcesRequest,
     ) -> eflo_controller_20221215_models.TagResourcesResponse:
         """
-        @summary Tag User Resources
+        @summary Tags resources.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -4875,7 +4819,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.TagResourcesRequest,
     ) -> eflo_controller_20221215_models.TagResourcesResponse:
         """
-        @summary Tag User Resources
+        @summary Tags resources.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -4889,7 +4833,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.UntagResourcesResponse:
         """
-        @summary Remove user tags from resources
+        @summary Deletes a custom tag from a resource.
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4932,7 +4876,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.UntagResourcesResponse:
         """
-        @summary Remove user tags from resources
+        @summary Deletes a custom tag from a resource.
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4974,7 +4918,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.UntagResourcesRequest,
     ) -> eflo_controller_20221215_models.UntagResourcesResponse:
         """
-        @summary Remove user tags from resources
+        @summary Deletes a custom tag from a resource.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -4987,7 +4931,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.UntagResourcesRequest,
     ) -> eflo_controller_20221215_models.UntagResourcesResponse:
         """
-        @summary Remove user tags from resources
+        @summary Deletes a custom tag from a resource.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -5001,9 +4945,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.UpdateNodeGroupResponse:
         """
-        @summary Update Node Group
+        @summary Updates a node group.
         
-        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status.
+        @description The API creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
         
         @param request: UpdateNodeGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5050,9 +4994,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.UpdateNodeGroupResponse:
         """
-        @summary Update Node Group
+        @summary Updates a node group.
         
-        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status.
+        @description The API creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
         
         @param request: UpdateNodeGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5098,9 +5042,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.UpdateNodeGroupRequest,
     ) -> eflo_controller_20221215_models.UpdateNodeGroupResponse:
         """
-        @summary Update Node Group
+        @summary Updates a node group.
         
-        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status.
+        @description The API creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
         
         @param request: UpdateNodeGroupRequest
         @return: UpdateNodeGroupResponse
@@ -5113,9 +5057,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.UpdateNodeGroupRequest,
     ) -> eflo_controller_20221215_models.UpdateNodeGroupResponse:
         """
-        @summary Update Node Group
+        @summary Updates a node group.
         
-        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status.
+        @description The API creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
         
         @param request: UpdateNodeGroupRequest
         @return: UpdateNodeGroupResponse

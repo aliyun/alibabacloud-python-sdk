@@ -1,3 +1,8 @@
+2025-06-20 Version: 2.5.3
+- Update API CreateCluster: add request parameters NodeGroups.$.Nodes.$.DataDisk.
+- Update API ExtendCluster: add request parameters NodeGroups.$.Nodes.$.DataDisk.
+
+
 2025-05-30 Version: 2.5.2
 - Update API CreateCluster: add request parameters NodeGroups.$.LoginPassword.
 - Update API CreateNodeGroup: add request parameters NodeGroup.LoginPassword.
