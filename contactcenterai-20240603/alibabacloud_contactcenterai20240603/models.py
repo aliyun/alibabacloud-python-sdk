@@ -1722,6 +1722,7 @@ class CreateTaskRequestTranscription(TeaModel):
         auto_split: int = None,
         client_channel: int = None,
         file_name: str = None,
+        language_hints: str = None,
         level: str = None,
         role_identification: bool = None,
         service_channel: int = None,
@@ -1734,6 +1735,7 @@ class CreateTaskRequestTranscription(TeaModel):
         self.client_channel = client_channel
         # This parameter is required.
         self.file_name = file_name
+        self.language_hints = language_hints
         self.level = level
         self.role_identification = role_identification
         self.service_channel = service_channel
@@ -1759,6 +1761,8 @@ class CreateTaskRequestTranscription(TeaModel):
             result['clientChannel'] = self.client_channel
         if self.file_name is not None:
             result['fileName'] = self.file_name
+        if self.language_hints is not None:
+            result['languageHints'] = self.language_hints
         if self.level is not None:
             result['level'] = self.level
         if self.role_identification is not None:
@@ -1783,6 +1787,8 @@ class CreateTaskRequestTranscription(TeaModel):
             self.client_channel = m.get('clientChannel')
         if m.get('fileName') is not None:
             self.file_name = m.get('fileName')
+        if m.get('languageHints') is not None:
+            self.language_hints = m.get('languageHints')
         if m.get('level') is not None:
             self.level = m.get('level')
         if m.get('roleIdentification') is not None:

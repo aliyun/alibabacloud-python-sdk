@@ -1,3 +1,7 @@
+2025-06-20 Version: 3.6.5
+- Update API CreateTask: add request parameters body.transcription.languageHints.
+
+
 2025-06-11 Version: 3.6.4
 - Update API GetTaskResult: add response parameters Body.data.asrResult.$.roleName.
 
