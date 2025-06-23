@@ -36911,12 +36911,14 @@ class RunSearchGenerationRequestChatConfig(TeaModel):
     def __init__(
         self,
         enable_thinking: bool = None,
+        exclude_generate_options: List[str] = None,
         generate_level: str = None,
         generate_technology: str = None,
         search_models: List[str] = None,
         search_param: RunSearchGenerationRequestChatConfigSearchParam = None,
     ):
         self.enable_thinking = enable_thinking
+        self.exclude_generate_options = exclude_generate_options
         self.generate_level = generate_level
         self.generate_technology = generate_technology
         self.search_models = search_models
@@ -36934,6 +36936,8 @@ class RunSearchGenerationRequestChatConfig(TeaModel):
         result = dict()
         if self.enable_thinking is not None:
             result['EnableThinking'] = self.enable_thinking
+        if self.exclude_generate_options is not None:
+            result['ExcludeGenerateOptions'] = self.exclude_generate_options
         if self.generate_level is not None:
             result['GenerateLevel'] = self.generate_level
         if self.generate_technology is not None:
@@ -36948,6 +36952,8 @@ class RunSearchGenerationRequestChatConfig(TeaModel):
         m = m or dict()
         if m.get('EnableThinking') is not None:
             self.enable_thinking = m.get('EnableThinking')
+        if m.get('ExcludeGenerateOptions') is not None:
+            self.exclude_generate_options = m.get('ExcludeGenerateOptions')
         if m.get('GenerateLevel') is not None:
             self.generate_level = m.get('GenerateLevel')
         if m.get('GenerateTechnology') is not None:

@@ -1,3 +1,7 @@
+2025-06-23 Version: 1.30.1
+- Update API RunSearchGeneration: add request parameters ChatConfig.ExcludeGenerateOptions.
+
+
 2025-06-18 Version: 1.30.0
 - Support API AsyncCreateClipsTask.
 - Support API AsyncCreateClipsTimeLine.

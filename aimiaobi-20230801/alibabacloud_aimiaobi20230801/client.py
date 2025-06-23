@@ -163,7 +163,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.AsyncCreateClipsTaskResponse:
         """
-        @summary 生成剪辑视频
+        @summary 生成剪辑视频任务
         
         @param tmp_req: AsyncCreateClipsTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -220,7 +220,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.AsyncCreateClipsTaskResponse:
         """
-        @summary 生成剪辑视频
+        @summary 生成剪辑视频任务
         
         @param tmp_req: AsyncCreateClipsTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -276,7 +276,7 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.AsyncCreateClipsTaskRequest,
     ) -> ai_miao_bi_20230801_models.AsyncCreateClipsTaskResponse:
         """
-        @summary 生成剪辑视频
+        @summary 生成剪辑视频任务
         
         @param request: AsyncCreateClipsTaskRequest
         @return: AsyncCreateClipsTaskResponse
@@ -289,7 +289,7 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.AsyncCreateClipsTaskRequest,
     ) -> ai_miao_bi_20230801_models.AsyncCreateClipsTaskResponse:
         """
-        @summary 生成剪辑视频
+        @summary 生成剪辑视频任务
         
         @param request: AsyncCreateClipsTaskRequest
         @return: AsyncCreateClipsTaskResponse
