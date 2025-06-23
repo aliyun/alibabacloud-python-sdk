@@ -1,3 +1,7 @@
+2025-06-23 Version: 2.0.2
+- Update API GetConnectionTicket: add request parameters AppPolicyId.
+
+
 2025-04-07 Version: 2.0.1
 - Update API GetConnectionTicket: add request parameters AccessType.
 

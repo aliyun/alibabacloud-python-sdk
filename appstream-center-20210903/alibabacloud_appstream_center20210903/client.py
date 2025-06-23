@@ -64,6 +64,8 @@ class Client(OpenApiClient):
             body['AppInstanceGroupId'] = request.app_instance_group_id
         if not UtilClient.is_unset(request.app_instance_id):
             body['AppInstanceId'] = request.app_instance_id
+        if not UtilClient.is_unset(request.app_policy_id):
+            body['AppPolicyId'] = request.app_policy_id
         if not UtilClient.is_unset(request.app_version):
             body['AppVersion'] = request.app_version
         if not UtilClient.is_unset(request.auto_connect_in_queue):
@@ -118,16 +120,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                appstream_center_20210903_models.GetConnectionTicketResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                appstream_center_20210903_models.GetConnectionTicketResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            appstream_center_20210903_models.GetConnectionTicketResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_connection_ticket_with_options_async(
         self,
@@ -151,6 +147,8 @@ class Client(OpenApiClient):
             body['AppInstanceGroupId'] = request.app_instance_group_id
         if not UtilClient.is_unset(request.app_instance_id):
             body['AppInstanceId'] = request.app_instance_id
+        if not UtilClient.is_unset(request.app_policy_id):
+            body['AppPolicyId'] = request.app_policy_id
         if not UtilClient.is_unset(request.app_version):
             body['AppVersion'] = request.app_version
         if not UtilClient.is_unset(request.auto_connect_in_queue):
@@ -205,16 +203,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                appstream_center_20210903_models.GetConnectionTicketResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                appstream_center_20210903_models.GetConnectionTicketResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            appstream_center_20210903_models.GetConnectionTicketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_connection_ticket(
         self,
@@ -300,16 +292,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                appstream_center_20210903_models.ListPublishedAppInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                appstream_center_20210903_models.ListPublishedAppInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            appstream_center_20210903_models.ListPublishedAppInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_published_app_info_with_options_async(
         self,
@@ -369,16 +355,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                appstream_center_20210903_models.ListPublishedAppInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                appstream_center_20210903_models.ListPublishedAppInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            appstream_center_20210903_models.ListPublishedAppInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_published_app_info(
         self,
@@ -458,16 +438,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                appstream_center_20210903_models.ListRunningAppsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                appstream_center_20210903_models.ListRunningAppsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            appstream_center_20210903_models.ListRunningAppsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_running_apps_with_options_async(
         self,
@@ -521,16 +495,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                appstream_center_20210903_models.ListRunningAppsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                appstream_center_20210903_models.ListRunningAppsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            appstream_center_20210903_models.ListRunningAppsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_running_apps(
         self,
@@ -612,16 +580,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                appstream_center_20210903_models.ResetAppResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                appstream_center_20210903_models.ResetAppResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            appstream_center_20210903_models.ResetAppResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def reset_app_resources_with_options_async(
         self,
@@ -677,16 +639,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                appstream_center_20210903_models.ResetAppResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                appstream_center_20210903_models.ResetAppResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            appstream_center_20210903_models.ResetAppResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def reset_app_resources(
         self,
@@ -768,16 +724,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                appstream_center_20210903_models.RestartAppResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                appstream_center_20210903_models.RestartAppResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            appstream_center_20210903_models.RestartAppResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def restart_app_resources_with_options_async(
         self,
@@ -833,16 +783,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                appstream_center_20210903_models.RestartAppResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                appstream_center_20210903_models.RestartAppResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            appstream_center_20210903_models.RestartAppResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def restart_app_resources(
         self,
@@ -924,16 +868,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                appstream_center_20210903_models.StartAppResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                appstream_center_20210903_models.StartAppResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            appstream_center_20210903_models.StartAppResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def start_app_resources_with_options_async(
         self,
@@ -989,16 +927,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                appstream_center_20210903_models.StartAppResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                appstream_center_20210903_models.StartAppResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            appstream_center_20210903_models.StartAppResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def start_app_resources(
         self,
@@ -1096,16 +1028,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                appstream_center_20210903_models.StopAppResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                appstream_center_20210903_models.StopAppResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            appstream_center_20210903_models.StopAppResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def stop_app_with_options_async(
         self,
@@ -1177,16 +1103,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                appstream_center_20210903_models.StopAppResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                appstream_center_20210903_models.StopAppResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            appstream_center_20210903_models.StopAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def stop_app(
         self,
@@ -1268,16 +1188,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                appstream_center_20210903_models.StopAppResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                appstream_center_20210903_models.StopAppResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            appstream_center_20210903_models.StopAppResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def stop_app_resources_with_options_async(
         self,
@@ -1333,16 +1247,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                appstream_center_20210903_models.StopAppResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                appstream_center_20210903_models.StopAppResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            appstream_center_20210903_models.StopAppResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def stop_app_resources(
         self,
@@ -1424,16 +1332,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                appstream_center_20210903_models.UnbindResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                appstream_center_20210903_models.UnbindResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            appstream_center_20210903_models.UnbindResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def unbind_with_options_async(
         self,
@@ -1489,16 +1391,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                appstream_center_20210903_models.UnbindResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                appstream_center_20210903_models.UnbindResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            appstream_center_20210903_models.UnbindResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def unbind(
         self,

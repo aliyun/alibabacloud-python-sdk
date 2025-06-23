@@ -11,6 +11,7 @@ class GetConnectionTicketRequest(TeaModel):
         app_id: str = None,
         app_instance_group_id: str = None,
         app_instance_id: str = None,
+        app_policy_id: str = None,
         app_version: str = None,
         auto_connect_in_queue: bool = None,
         biz_region_id: str = None,
@@ -36,6 +37,7 @@ class GetConnectionTicketRequest(TeaModel):
         self.app_id = app_id
         self.app_instance_group_id = app_instance_group_id
         self.app_instance_id = app_instance_id
+        self.app_policy_id = app_policy_id
         self.app_version = app_version
         self.auto_connect_in_queue = auto_connect_in_queue
         self.biz_region_id = biz_region_id
@@ -75,6 +77,8 @@ class GetConnectionTicketRequest(TeaModel):
             result['AppInstanceGroupId'] = self.app_instance_group_id
         if self.app_instance_id is not None:
             result['AppInstanceId'] = self.app_instance_id
+        if self.app_policy_id is not None:
+            result['AppPolicyId'] = self.app_policy_id
         if self.app_version is not None:
             result['AppVersion'] = self.app_version
         if self.auto_connect_in_queue is not None:
@@ -127,6 +131,8 @@ class GetConnectionTicketRequest(TeaModel):
             self.app_instance_group_id = m.get('AppInstanceGroupId')
         if m.get('AppInstanceId') is not None:
             self.app_instance_id = m.get('AppInstanceId')
+        if m.get('AppPolicyId') is not None:
+            self.app_policy_id = m.get('AppPolicyId')
         if m.get('AppVersion') is not None:
             self.app_version = m.get('AppVersion')
         if m.get('AutoConnectInQueue') is not None:
