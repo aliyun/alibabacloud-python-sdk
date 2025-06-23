@@ -1,3 +1,11 @@
+2025-06-23 Version: 1.3.2
+- Update API DescribePackageDeductions: add request parameters ResourceTypes.
+- Update API DescribePackageDeductions: add response parameters Body.Deductions.$.InstanceId.
+- Update API DescribePackageDeductions: add response parameters Body.Deductions.$.InstanceType.
+- Update API DescribePackageDeductions: add response parameters Body.Deductions.$.SessionId.
+- Update API DescribePackageDeductions: add response parameters Body.Deductions.$.UsedTimeWithScale.
+
+
 2025-05-22 Version: 1.3.1
 - Update API CreateMultiOrder: add request parameters OrderItems.$.BuyChange.
 

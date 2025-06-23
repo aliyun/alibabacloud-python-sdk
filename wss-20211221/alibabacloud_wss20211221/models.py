@@ -1350,6 +1350,7 @@ class DescribePackageDeductionsRequest(TeaModel):
         page_num: int = None,
         page_size: int = None,
         resource_type: str = None,
+        resource_types: List[str] = None,
         start_time: int = None,
     ):
         self.end_time = end_time
@@ -1357,8 +1358,8 @@ class DescribePackageDeductionsRequest(TeaModel):
         self.package_ids = package_ids
         self.page_num = page_num
         self.page_size = page_size
-        # This parameter is required.
         self.resource_type = resource_type
+        self.resource_types = resource_types
         self.start_time = start_time
 
     def validate(self):
@@ -1382,6 +1383,8 @@ class DescribePackageDeductionsRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
+        if self.resource_types is not None:
+            result['ResourceTypes'] = self.resource_types
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -1400,6 +1403,8 @@ class DescribePackageDeductionsRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
+        if m.get('ResourceTypes') is not None:
+            self.resource_types = m.get('ResourceTypes')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -1413,28 +1418,36 @@ class DescribePackageDeductionsResponseBodyDeductions(TeaModel):
         desktop_name: str = None,
         desktop_type: str = None,
         end_time: str = None,
+        instance_id: str = None,
         instance_state: str = None,
+        instance_type: str = None,
         memory: int = None,
         os_type: str = None,
         region_id: str = None,
         resource_type: str = None,
+        session_id: str = None,
         sta_time: str = None,
         used_core_time: float = None,
         used_time: int = None,
+        used_time_with_scale: int = None,
     ):
         self.cpu = cpu
         self.desktop_id = desktop_id
         self.desktop_name = desktop_name
         self.desktop_type = desktop_type
         self.end_time = end_time
+        self.instance_id = instance_id
         self.instance_state = instance_state
+        self.instance_type = instance_type
         self.memory = memory
         self.os_type = os_type
         self.region_id = region_id
         self.resource_type = resource_type
+        self.session_id = session_id
         self.sta_time = sta_time
         self.used_core_time = used_core_time
         self.used_time = used_time
+        self.used_time_with_scale = used_time_with_scale
 
     def validate(self):
         pass
@@ -1455,8 +1468,12 @@ class DescribePackageDeductionsResponseBodyDeductions(TeaModel):
             result['DesktopType'] = self.desktop_type
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.instance_state is not None:
             result['InstanceState'] = self.instance_state
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
         if self.memory is not None:
             result['Memory'] = self.memory
         if self.os_type is not None:
@@ -1465,12 +1482,16 @@ class DescribePackageDeductionsResponseBodyDeductions(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
         if self.sta_time is not None:
             result['StaTime'] = self.sta_time
         if self.used_core_time is not None:
             result['UsedCoreTime'] = self.used_core_time
         if self.used_time is not None:
             result['UsedTime'] = self.used_time
+        if self.used_time_with_scale is not None:
+            result['UsedTimeWithScale'] = self.used_time_with_scale
         return result
 
     def from_map(self, m: dict = None):
@@ -1485,8 +1506,12 @@ class DescribePackageDeductionsResponseBodyDeductions(TeaModel):
             self.desktop_type = m.get('DesktopType')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('InstanceState') is not None:
             self.instance_state = m.get('InstanceState')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
         if m.get('OsType') is not None:
@@ -1495,12 +1520,16 @@ class DescribePackageDeductionsResponseBodyDeductions(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
         if m.get('StaTime') is not None:
             self.sta_time = m.get('StaTime')
         if m.get('UsedCoreTime') is not None:
             self.used_core_time = m.get('UsedCoreTime')
         if m.get('UsedTime') is not None:
             self.used_time = m.get('UsedTime')
+        if m.get('UsedTimeWithScale') is not None:
+            self.used_time_with_scale = m.get('UsedTimeWithScale')
         return self
 
 

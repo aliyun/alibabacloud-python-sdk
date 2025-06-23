@@ -162,6 +162,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> wss_20211221_models.DescribeDeliveryAddressResponse:
         """
+        @summary 查询物流地址
+        
         @param request: DescribeDeliveryAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeDeliveryAddressResponse
@@ -188,6 +190,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> wss_20211221_models.DescribeDeliveryAddressResponse:
         """
+        @summary 查询物流地址
+        
         @param request: DescribeDeliveryAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeDeliveryAddressResponse
@@ -211,6 +215,8 @@ class Client(OpenApiClient):
 
     def describe_delivery_address(self) -> wss_20211221_models.DescribeDeliveryAddressResponse:
         """
+        @summary 查询物流地址
+        
         @return: DescribeDeliveryAddressResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -218,6 +224,8 @@ class Client(OpenApiClient):
 
     async def describe_delivery_address_async(self) -> wss_20211221_models.DescribeDeliveryAddressResponse:
         """
+        @summary 查询物流地址
+        
         @return: DescribeDeliveryAddressResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -229,6 +237,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> wss_20211221_models.DescribeMultiPriceResponse:
         """
+        @summary 批量询价
+        
         @param request: DescribeMultiPriceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeMultiPriceResponse
@@ -268,6 +278,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> wss_20211221_models.DescribeMultiPriceResponse:
         """
+        @summary 批量询价
+        
         @param request: DescribeMultiPriceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeMultiPriceResponse
@@ -306,6 +318,8 @@ class Client(OpenApiClient):
         request: wss_20211221_models.DescribeMultiPriceRequest,
     ) -> wss_20211221_models.DescribeMultiPriceResponse:
         """
+        @summary 批量询价
+        
         @param request: DescribeMultiPriceRequest
         @return: DescribeMultiPriceResponse
         """
@@ -317,6 +331,8 @@ class Client(OpenApiClient):
         request: wss_20211221_models.DescribeMultiPriceRequest,
     ) -> wss_20211221_models.DescribeMultiPriceResponse:
         """
+        @summary 批量询价
+        
         @param request: DescribeMultiPriceRequest
         @return: DescribeMultiPriceResponse
         """
@@ -349,6 +365,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -396,6 +414,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -449,6 +469,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> wss_20211221_models.ModifyInstancePropertiesResponse:
         """
+        @summary 更新实例属性
+        
         @param request: ModifyInstancePropertiesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyInstancePropertiesResponse
@@ -490,6 +512,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> wss_20211221_models.ModifyInstancePropertiesResponse:
         """
+        @summary 更新实例属性
+        
         @param request: ModifyInstancePropertiesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyInstancePropertiesResponse
@@ -530,6 +554,8 @@ class Client(OpenApiClient):
         request: wss_20211221_models.ModifyInstancePropertiesRequest,
     ) -> wss_20211221_models.ModifyInstancePropertiesResponse:
         """
+        @summary 更新实例属性
+        
         @param request: ModifyInstancePropertiesRequest
         @return: ModifyInstancePropertiesResponse
         """
@@ -541,6 +567,8 @@ class Client(OpenApiClient):
         request: wss_20211221_models.ModifyInstancePropertiesRequest,
     ) -> wss_20211221_models.ModifyInstancePropertiesResponse:
         """
+        @summary 更新实例属性
+        
         @param request: ModifyInstancePropertiesRequest
         @return: ModifyInstancePropertiesResponse
         """
