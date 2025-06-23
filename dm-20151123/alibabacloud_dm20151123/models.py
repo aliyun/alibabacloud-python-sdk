@@ -464,6 +464,149 @@ class BatchSendMailResponse(TeaModel):
         return self
 
 
+class ChangeDomainDkimRecordRequest(TeaModel):
+    def __init__(
+        self,
+        dkim_rsa_length: int = None,
+        domain: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.dkim_rsa_length = dkim_rsa_length
+        self.domain = domain
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dkim_rsa_length is not None:
+            result['DkimRsaLength'] = self.dkim_rsa_length
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DkimRsaLength') is not None:
+            self.dkim_rsa_length = m.get('DkimRsaLength')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ChangeDomainDkimRecordResponseBody(TeaModel):
+    def __init__(
+        self,
+        changed: bool = None,
+        dkim_public_key: str = None,
+        dkim_rsa_length: int = None,
+        hostname: str = None,
+        request_id: str = None,
+    ):
+        self.changed = changed
+        self.dkim_public_key = dkim_public_key
+        self.dkim_rsa_length = dkim_rsa_length
+        self.hostname = hostname
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.changed is not None:
+            result['Changed'] = self.changed
+        if self.dkim_public_key is not None:
+            result['DkimPublicKey'] = self.dkim_public_key
+        if self.dkim_rsa_length is not None:
+            result['DkimRsaLength'] = self.dkim_rsa_length
+        if self.hostname is not None:
+            result['Hostname'] = self.hostname
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Changed') is not None:
+            self.changed = m.get('Changed')
+        if m.get('DkimPublicKey') is not None:
+            self.dkim_public_key = m.get('DkimPublicKey')
+        if m.get('DkimRsaLength') is not None:
+            self.dkim_rsa_length = m.get('DkimRsaLength')
+        if m.get('Hostname') is not None:
+            self.hostname = m.get('Hostname')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ChangeDomainDkimRecordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ChangeDomainDkimRecordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ChangeDomainDkimRecordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CheckDomainRequest(TeaModel):
     def __init__(
         self,
@@ -2524,6 +2667,7 @@ class DescDomainResponseBody(TeaModel):
         dkim_auth_status: str = None,
         dkim_public_key: str = None,
         dkim_rr: str = None,
+        dkim_rsa_length: int = None,
         dmarc_auth_status: int = None,
         dmarc_host_record: str = None,
         dmarc_record: str = None,
@@ -2564,6 +2708,7 @@ class DescDomainResponseBody(TeaModel):
         self.dkim_public_key = dkim_public_key
         # DKIM host record, the key that the user needs to set in the DNS for the DKIM record
         self.dkim_rr = dkim_rr
+        self.dkim_rsa_length = dkim_rsa_length
         # DMARC verification flag, indicating whether the DMARC record set by the user in DNS has passed validation, 0: Passed, 1: Not passed
         self.dmarc_auth_status = dmarc_auth_status
         # DMARC host record value
@@ -2635,6 +2780,8 @@ class DescDomainResponseBody(TeaModel):
             result['DkimPublicKey'] = self.dkim_public_key
         if self.dkim_rr is not None:
             result['DkimRR'] = self.dkim_rr
+        if self.dkim_rsa_length is not None:
+            result['DkimRsaLength'] = self.dkim_rsa_length
         if self.dmarc_auth_status is not None:
             result['DmarcAuthStatus'] = self.dmarc_auth_status
         if self.dmarc_host_record is not None:
@@ -2697,6 +2844,8 @@ class DescDomainResponseBody(TeaModel):
             self.dkim_public_key = m.get('DkimPublicKey')
         if m.get('DkimRR') is not None:
             self.dkim_rr = m.get('DkimRR')
+        if m.get('DkimRsaLength') is not None:
+            self.dkim_rsa_length = m.get('DkimRsaLength')
         if m.get('DmarcAuthStatus') is not None:
             self.dmarc_auth_status = m.get('DmarcAuthStatus')
         if m.get('DmarcHostRecord') is not None:

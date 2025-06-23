@@ -1,3 +1,8 @@
+2025-06-23 Version: 1.3.0
+- Support API ChangeDomainDkimRecord.
+- Update API DescDomain: add response parameters Body.DkimRsaLength.
+
+
 2025-06-20 Version: 1.2.7
 - Update API SingleSendMail: add request parameters Attachments.
 

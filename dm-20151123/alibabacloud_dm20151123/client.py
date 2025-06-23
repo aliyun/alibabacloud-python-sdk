@@ -416,6 +416,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_send_mail_with_options_async(request, runtime)
 
+    def change_domain_dkim_record_with_options(
+        self,
+        request: dm_20151123_models.ChangeDomainDkimRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.ChangeDomainDkimRecordResponse:
+        """
+        @summary 修改域名DKIM记录
+        
+        @param request: ChangeDomainDkimRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeDomainDkimRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dkim_rsa_length):
+            query['DkimRsaLength'] = request.dkim_rsa_length
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeDomainDkimRecord',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ChangeDomainDkimRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_domain_dkim_record_with_options_async(
+        self,
+        request: dm_20151123_models.ChangeDomainDkimRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.ChangeDomainDkimRecordResponse:
+        """
+        @summary 修改域名DKIM记录
+        
+        @param request: ChangeDomainDkimRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeDomainDkimRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dkim_rsa_length):
+            query['DkimRsaLength'] = request.dkim_rsa_length
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeDomainDkimRecord',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ChangeDomainDkimRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_domain_dkim_record(
+        self,
+        request: dm_20151123_models.ChangeDomainDkimRecordRequest,
+    ) -> dm_20151123_models.ChangeDomainDkimRecordResponse:
+        """
+        @summary 修改域名DKIM记录
+        
+        @param request: ChangeDomainDkimRecordRequest
+        @return: ChangeDomainDkimRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.change_domain_dkim_record_with_options(request, runtime)
+
+    async def change_domain_dkim_record_async(
+        self,
+        request: dm_20151123_models.ChangeDomainDkimRecordRequest,
+    ) -> dm_20151123_models.ChangeDomainDkimRecordResponse:
+        """
+        @summary 修改域名DKIM记录
+        
+        @param request: ChangeDomainDkimRecordRequest
+        @return: ChangeDomainDkimRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.change_domain_dkim_record_with_options_async(request, runtime)
+
     def check_domain_with_options(
         self,
         request: dm_20151123_models.CheckDomainRequest,
