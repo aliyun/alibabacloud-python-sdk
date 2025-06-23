@@ -1,3 +1,7 @@
+2025-06-23 Version: 3.0.1
+- Update API DescribeDomainTopAttackList: add request parameters Interval.
+
+
 2025-04-14 Version: 3.0.0
 - Support API ConfigL7GlobalRule.
 - Support API DescribeL7GlobalRule.

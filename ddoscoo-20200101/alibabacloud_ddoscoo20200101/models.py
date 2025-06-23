@@ -11210,6 +11210,7 @@ class DescribeDomainTopAttackListRequest(TeaModel):
     def __init__(
         self,
         end_time: int = None,
+        interval: int = None,
         resource_group_id: str = None,
         start_time: int = None,
     ):
@@ -11219,6 +11220,7 @@ class DescribeDomainTopAttackListRequest(TeaModel):
         # 
         # This parameter is required.
         self.end_time = end_time
+        self.interval = interval
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
@@ -11239,6 +11241,8 @@ class DescribeDomainTopAttackListRequest(TeaModel):
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.interval is not None:
+            result['Interval'] = self.interval
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.start_time is not None:
@@ -11249,6 +11253,8 @@ class DescribeDomainTopAttackListRequest(TeaModel):
         m = m or dict()
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('StartTime') is not None:
