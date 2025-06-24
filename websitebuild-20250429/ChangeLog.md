@@ -1,3 +1,8 @@
+2025-06-24 Version: 1.2.0
+- Support API CreateLogoTask.
+- Support API GetCreateLogoTask.
+
+
 2025-06-12 Version: 1.1.0
 - Support API OperateAppInstanceForPartner.
 
