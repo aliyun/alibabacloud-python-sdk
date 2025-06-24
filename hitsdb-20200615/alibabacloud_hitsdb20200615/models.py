@@ -5031,6 +5031,280 @@ class GetLdpsResourceCostResponse(TeaModel):
         return self
 
 
+class GetLindormEngineConfigRequest(TeaModel):
+    def __init__(
+        self,
+        engine_type: str = None,
+        instance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        # This parameter is required.
+        self.engine_type = engine_type
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.engine_type is not None:
+            result['EngineType'] = self.engine_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EngineType') is not None:
+            self.engine_type = m.get('EngineType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class GetLindormEngineConfigResponseBodyEngineConfigsConfigFilesConfigItems(TeaModel):
+    def __init__(
+        self,
+        config_item_key: str = None,
+        config_item_value: str = None,
+    ):
+        self.config_item_key = config_item_key
+        self.config_item_value = config_item_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_item_key is not None:
+            result['ConfigItemKey'] = self.config_item_key
+        if self.config_item_value is not None:
+            result['ConfigItemValue'] = self.config_item_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigItemKey') is not None:
+            self.config_item_key = m.get('ConfigItemKey')
+        if m.get('ConfigItemValue') is not None:
+            self.config_item_value = m.get('ConfigItemValue')
+        return self
+
+
+class GetLindormEngineConfigResponseBodyEngineConfigsConfigFiles(TeaModel):
+    def __init__(
+        self,
+        config_items: List[GetLindormEngineConfigResponseBodyEngineConfigsConfigFilesConfigItems] = None,
+        file_name: str = None,
+    ):
+        self.config_items = config_items
+        self.file_name = file_name
+
+    def validate(self):
+        if self.config_items:
+            for k in self.config_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ConfigItems'] = []
+        if self.config_items is not None:
+            for k in self.config_items:
+                result['ConfigItems'].append(k.to_map() if k else None)
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.config_items = []
+        if m.get('ConfigItems') is not None:
+            for k in m.get('ConfigItems'):
+                temp_model = GetLindormEngineConfigResponseBodyEngineConfigsConfigFilesConfigItems()
+                self.config_items.append(temp_model.from_map(k))
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        return self
+
+
+class GetLindormEngineConfigResponseBodyEngineConfigs(TeaModel):
+    def __init__(
+        self,
+        config_files: List[GetLindormEngineConfigResponseBodyEngineConfigsConfigFiles] = None,
+        engine: str = None,
+    ):
+        self.config_files = config_files
+        self.engine = engine
+
+    def validate(self):
+        if self.config_files:
+            for k in self.config_files:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ConfigFiles'] = []
+        if self.config_files is not None:
+            for k in self.config_files:
+                result['ConfigFiles'].append(k.to_map() if k else None)
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.config_files = []
+        if m.get('ConfigFiles') is not None:
+            for k in m.get('ConfigFiles'):
+                temp_model = GetLindormEngineConfigResponseBodyEngineConfigsConfigFiles()
+                self.config_files.append(temp_model.from_map(k))
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        return self
+
+
+class GetLindormEngineConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        engine_configs: List[GetLindormEngineConfigResponseBodyEngineConfigs] = None,
+        request_id: str = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.engine_configs = engine_configs
+        self.request_id = request_id
+
+    def validate(self):
+        if self.engine_configs:
+            for k in self.engine_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        result['EngineConfigs'] = []
+        if self.engine_configs is not None:
+            for k in self.engine_configs:
+                result['EngineConfigs'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        self.engine_configs = []
+        if m.get('EngineConfigs') is not None:
+            for k in m.get('EngineConfigs'):
+                temp_model = GetLindormEngineConfigResponseBodyEngineConfigs()
+                self.engine_configs.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetLindormEngineConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetLindormEngineConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetLindormEngineConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetLindormFsUsedDetailRequest(TeaModel):
     def __init__(
         self,
@@ -5104,10 +5378,13 @@ class GetLindormFsUsedDetailResponseBodyLStorageUsageList(TeaModel):
         capacity: str = None,
         disk_type: str = None,
         used: str = None,
+        used_lindorm_column_3: str = None,
+        used_lindorm_message_3: str = None,
         used_lindorm_search: str = None,
         used_lindorm_spark: str = None,
         used_lindorm_table: str = None,
         used_lindorm_tsdb: str = None,
+        used_lindorm_vector_3: str = None,
         used_other: str = None,
     ):
         # The total storage capacity. Unit: bytes.
@@ -5123,6 +5400,8 @@ class GetLindormFsUsedDetailResponseBodyLStorageUsageList(TeaModel):
         self.disk_type = disk_type
         # The storage usage. Unit: bytes.
         self.used = used
+        self.used_lindorm_column_3 = used_lindorm_column_3
+        self.used_lindorm_message_3 = used_lindorm_message_3
         # The storage usage of the search engine. Unit: bytes.
         self.used_lindorm_search = used_lindorm_search
         # The storage usage of the compute engine. Unit: bytes.
@@ -5131,6 +5410,7 @@ class GetLindormFsUsedDetailResponseBodyLStorageUsageList(TeaModel):
         self.used_lindorm_table = used_lindorm_table
         # The storage usage of the time series engine. Unit: bytes.
         self.used_lindorm_tsdb = used_lindorm_tsdb
+        self.used_lindorm_vector_3 = used_lindorm_vector_3
         # The storage usage of other resources, such as logs and recycle bins. Unit: bytes.
         self.used_other = used_other
 
@@ -5149,6 +5429,10 @@ class GetLindormFsUsedDetailResponseBodyLStorageUsageList(TeaModel):
             result['DiskType'] = self.disk_type
         if self.used is not None:
             result['Used'] = self.used
+        if self.used_lindorm_column_3 is not None:
+            result['UsedLindormColumn3'] = self.used_lindorm_column_3
+        if self.used_lindorm_message_3 is not None:
+            result['UsedLindormMessage3'] = self.used_lindorm_message_3
         if self.used_lindorm_search is not None:
             result['UsedLindormSearch'] = self.used_lindorm_search
         if self.used_lindorm_spark is not None:
@@ -5157,6 +5441,8 @@ class GetLindormFsUsedDetailResponseBodyLStorageUsageList(TeaModel):
             result['UsedLindormTable'] = self.used_lindorm_table
         if self.used_lindorm_tsdb is not None:
             result['UsedLindormTsdb'] = self.used_lindorm_tsdb
+        if self.used_lindorm_vector_3 is not None:
+            result['UsedLindormVector3'] = self.used_lindorm_vector_3
         if self.used_other is not None:
             result['UsedOther'] = self.used_other
         return result
@@ -5169,6 +5455,10 @@ class GetLindormFsUsedDetailResponseBodyLStorageUsageList(TeaModel):
             self.disk_type = m.get('DiskType')
         if m.get('Used') is not None:
             self.used = m.get('Used')
+        if m.get('UsedLindormColumn3') is not None:
+            self.used_lindorm_column_3 = m.get('UsedLindormColumn3')
+        if m.get('UsedLindormMessage3') is not None:
+            self.used_lindorm_message_3 = m.get('UsedLindormMessage3')
         if m.get('UsedLindormSearch') is not None:
             self.used_lindorm_search = m.get('UsedLindormSearch')
         if m.get('UsedLindormSpark') is not None:
@@ -5177,6 +5467,8 @@ class GetLindormFsUsedDetailResponseBodyLStorageUsageList(TeaModel):
             self.used_lindorm_table = m.get('UsedLindormTable')
         if m.get('UsedLindormTsdb') is not None:
             self.used_lindorm_tsdb = m.get('UsedLindormTsdb')
+        if m.get('UsedLindormVector3') is not None:
+            self.used_lindorm_vector_3 = m.get('UsedLindormVector3')
         if m.get('UsedOther') is not None:
             self.used_other = m.get('UsedOther')
         return self
@@ -9796,6 +10088,162 @@ class ListTagResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListTagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class MigrateSingleZoneToMultiZoneRequest(TeaModel):
+    def __init__(
+        self,
+        arbitrary_vswitch_id: str = None,
+        arbitrary_zone_id: str = None,
+        instance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        standby_vswitch_id: str = None,
+        standby_zone_id: str = None,
+    ):
+        self.arbitrary_vswitch_id = arbitrary_vswitch_id
+        self.arbitrary_zone_id = arbitrary_zone_id
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        self.standby_vswitch_id = standby_vswitch_id
+        self.standby_zone_id = standby_zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arbitrary_vswitch_id is not None:
+            result['ArbitraryVSwitchId'] = self.arbitrary_vswitch_id
+        if self.arbitrary_zone_id is not None:
+            result['ArbitraryZoneId'] = self.arbitrary_zone_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.standby_vswitch_id is not None:
+            result['StandbyVSwitchId'] = self.standby_vswitch_id
+        if self.standby_zone_id is not None:
+            result['StandbyZoneId'] = self.standby_zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ArbitraryVSwitchId') is not None:
+            self.arbitrary_vswitch_id = m.get('ArbitraryVSwitchId')
+        if m.get('ArbitraryZoneId') is not None:
+            self.arbitrary_zone_id = m.get('ArbitraryZoneId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('StandbyVSwitchId') is not None:
+            self.standby_vswitch_id = m.get('StandbyVSwitchId')
+        if m.get('StandbyZoneId') is not None:
+            self.standby_zone_id = m.get('StandbyZoneId')
+        return self
+
+
+class MigrateSingleZoneToMultiZoneResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        request_id: str = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class MigrateSingleZoneToMultiZoneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: MigrateSingleZoneToMultiZoneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = MigrateSingleZoneToMultiZoneResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
