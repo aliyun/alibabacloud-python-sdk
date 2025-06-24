@@ -1,3 +1,9 @@
+2025-06-24 Version: 2.5.2
+- Update API ListApplications: add response parameters Body.Data.Applications.$.IsStateful.
+- Update API ListApplications: add response parameters Body.Data.Applications.$.VpcId.
+- Update API ListApplications: add response parameters Body.Data.Applications.$.Children.$.IsStateful.
+
+
 2025-06-20 Version: 2.5.1
 - Update API ListAppEvents: add response parameters Body.Data.AppEventEntity.$.CauseAnalysis.
 

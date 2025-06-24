@@ -39240,6 +39240,7 @@ class ListApplicationsResponseBodyDataApplicationsChildren(TeaModel):
         base_app_id: str = None,
         cpu: int = None,
         instances: int = None,
+        is_stateful: bool = None,
         mem: int = None,
         mse_enabled: bool = None,
         namespace_id: str = None,
@@ -39260,6 +39261,7 @@ class ListApplicationsResponseBodyDataApplicationsChildren(TeaModel):
         self.base_app_id = base_app_id
         self.cpu = cpu
         self.instances = instances
+        self.is_stateful = is_stateful
         self.mem = mem
         self.mse_enabled = mse_enabled
         self.namespace_id = namespace_id
@@ -39300,6 +39302,8 @@ class ListApplicationsResponseBodyDataApplicationsChildren(TeaModel):
             result['Cpu'] = self.cpu
         if self.instances is not None:
             result['Instances'] = self.instances
+        if self.is_stateful is not None:
+            result['IsStateful'] = self.is_stateful
         if self.mem is not None:
             result['Mem'] = self.mem
         if self.mse_enabled is not None:
@@ -39344,6 +39348,8 @@ class ListApplicationsResponseBodyDataApplicationsChildren(TeaModel):
             self.cpu = m.get('Cpu')
         if m.get('Instances') is not None:
             self.instances = m.get('Instances')
+        if m.get('IsStateful') is not None:
+            self.is_stateful = m.get('IsStateful')
         if m.get('Mem') is not None:
             self.mem = m.get('Mem')
         if m.get('MseEnabled') is not None:
@@ -39422,6 +39428,7 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
         enable_idle: str = None,
         image_url: str = None,
         instances: int = None,
+        is_stateful: bool = None,
         mem: int = None,
         mse_enabled: bool = None,
         mse_namespace_id: str = None,
@@ -39433,6 +39440,7 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
         region_id: str = None,
         running_instances: int = None,
         tags: List[ListApplicationsResponseBodyDataApplicationsTags] = None,
+        vpc_id: str = None,
     ):
         # Indicates whether the application is being deleted. Valid values:
         # 
@@ -39463,6 +39471,7 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
         self.image_url = image_url
         # The number of application instances.
         self.instances = instances
+        self.is_stateful = is_stateful
         # The memory size that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
         # 
         # *   This parameter is set to **1024** if the Cpu parameter is set to 500 or 1000.
@@ -39490,6 +39499,7 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
         self.running_instances = running_instances
         # The tags of the application.
         self.tags = tags
+        self.vpc_id = vpc_id
 
     def validate(self):
         if self.children:
@@ -39533,6 +39543,8 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
             result['ImageUrl'] = self.image_url
         if self.instances is not None:
             result['Instances'] = self.instances
+        if self.is_stateful is not None:
+            result['IsStateful'] = self.is_stateful
         if self.mem is not None:
             result['Mem'] = self.mem
         if self.mse_enabled is not None:
@@ -39557,6 +39569,8 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['Tags'].append(k.to_map() if k else None)
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
@@ -39588,6 +39602,8 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
             self.image_url = m.get('ImageUrl')
         if m.get('Instances') is not None:
             self.instances = m.get('Instances')
+        if m.get('IsStateful') is not None:
+            self.is_stateful = m.get('IsStateful')
         if m.get('Mem') is not None:
             self.mem = m.get('Mem')
         if m.get('MseEnabled') is not None:
@@ -39613,6 +39629,8 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
             for k in m.get('Tags'):
                 temp_model = ListApplicationsResponseBodyDataApplicationsTags()
                 self.tags.append(temp_model.from_map(k))
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         return self
 
 
