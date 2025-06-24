@@ -10477,7 +10477,15 @@ class Client(OpenApiClient):
         @return: GetQueryOptimizeExecErrorSampleResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.sql_id):
+            query['SqlId'] = request.sql_id
+        if not UtilClient.is_unset(request.time):
+            query['Time'] = request.time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10486,7 +10494,7 @@ class Client(OpenApiClient):
             version='2020-01-16',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -10518,7 +10526,15 @@ class Client(OpenApiClient):
         @return: GetQueryOptimizeExecErrorSampleResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.sql_id):
+            query['SqlId'] = request.sql_id
+        if not UtilClient.is_unset(request.time):
+            query['Time'] = request.time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10527,7 +10543,7 @@ class Client(OpenApiClient):
             version='2020-01-16',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -10844,7 +10860,39 @@ class Client(OpenApiClient):
         @return: GetQueryOptimizeShareUrlResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.asc):
+            query['Asc'] = request.asc
+        if not UtilClient.is_unset(request.db_names):
+            query['DbNames'] = request.db_names
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.keywords):
+            query['Keywords'] = request.keywords
+        if not UtilClient.is_unset(request.logical_operator):
+            query['LogicalOperator'] = request.logical_operator
+        if not UtilClient.is_unset(request.only_optimized_sql):
+            query['OnlyOptimizedSql'] = request.only_optimized_sql
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.rules):
+            query['Rules'] = request.rules
+        if not UtilClient.is_unset(request.sql_ids):
+            query['SqlIds'] = request.sql_ids
+        if not UtilClient.is_unset(request.tag_names):
+            query['TagNames'] = request.tag_names
+        if not UtilClient.is_unset(request.time):
+            query['Time'] = request.time
+        if not UtilClient.is_unset(request.user):
+            query['User'] = request.user
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10853,7 +10901,7 @@ class Client(OpenApiClient):
             version='2020-01-16',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -10884,7 +10932,39 @@ class Client(OpenApiClient):
         @return: GetQueryOptimizeShareUrlResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.asc):
+            query['Asc'] = request.asc
+        if not UtilClient.is_unset(request.db_names):
+            query['DbNames'] = request.db_names
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.keywords):
+            query['Keywords'] = request.keywords
+        if not UtilClient.is_unset(request.logical_operator):
+            query['LogicalOperator'] = request.logical_operator
+        if not UtilClient.is_unset(request.only_optimized_sql):
+            query['OnlyOptimizedSql'] = request.only_optimized_sql
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.rules):
+            query['Rules'] = request.rules
+        if not UtilClient.is_unset(request.sql_ids):
+            query['SqlIds'] = request.sql_ids
+        if not UtilClient.is_unset(request.tag_names):
+            query['TagNames'] = request.tag_names
+        if not UtilClient.is_unset(request.time):
+            query['Time'] = request.time
+        if not UtilClient.is_unset(request.user):
+            query['User'] = request.user
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10893,7 +10973,7 @@ class Client(OpenApiClient):
             version='2020-01-16',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -10964,7 +11044,15 @@ class Client(OpenApiClient):
         @return: GetQueryOptimizeSolutionResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.rule_ids):
+            query['RuleIds'] = request.rule_ids
+        if not UtilClient.is_unset(request.sql_id):
+            query['SqlId'] = request.sql_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10973,7 +11061,7 @@ class Client(OpenApiClient):
             version='2020-01-16',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -11004,7 +11092,15 @@ class Client(OpenApiClient):
         @return: GetQueryOptimizeSolutionResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.rule_ids):
+            query['RuleIds'] = request.rule_ids
+        if not UtilClient.is_unset(request.sql_id):
+            query['SqlId'] = request.sql_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11013,7 +11109,7 @@ class Client(OpenApiClient):
             version='2020-01-16',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -11084,7 +11180,13 @@ class Client(OpenApiClient):
         @return: GetQueryOptimizeTagResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.sql_id):
+            query['SqlId'] = request.sql_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11093,7 +11195,7 @@ class Client(OpenApiClient):
             version='2020-01-16',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -11124,7 +11226,13 @@ class Client(OpenApiClient):
         @return: GetQueryOptimizeTagResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.sql_id):
+            query['SqlId'] = request.sql_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11133,7 +11241,7 @@ class Client(OpenApiClient):
             version='2020-01-16',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
