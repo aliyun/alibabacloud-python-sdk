@@ -41,6 +41,250 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_chat_group_with_options(
+        self,
+        request: cams_20200606_models.AddChatGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.AddChatGroupResponse:
+        """
+        @summary AddChatGroup
+        
+        @param request: AddChatGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddChatGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.business_number):
+            query['BusinessNumber'] = request.business_number
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.subject):
+            query['Subject'] = request.subject
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddChatGroup',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.AddChatGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_chat_group_with_options_async(
+        self,
+        request: cams_20200606_models.AddChatGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.AddChatGroupResponse:
+        """
+        @summary AddChatGroup
+        
+        @param request: AddChatGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddChatGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.business_number):
+            query['BusinessNumber'] = request.business_number
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.subject):
+            query['Subject'] = request.subject
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddChatGroup',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.AddChatGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_chat_group(
+        self,
+        request: cams_20200606_models.AddChatGroupRequest,
+    ) -> cams_20200606_models.AddChatGroupResponse:
+        """
+        @summary AddChatGroup
+        
+        @param request: AddChatGroupRequest
+        @return: AddChatGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_chat_group_with_options(request, runtime)
+
+    async def add_chat_group_async(
+        self,
+        request: cams_20200606_models.AddChatGroupRequest,
+    ) -> cams_20200606_models.AddChatGroupResponse:
+        """
+        @summary AddChatGroup
+        
+        @param request: AddChatGroupRequest
+        @return: AddChatGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_chat_group_with_options_async(request, runtime)
+
+    def add_chat_group_invite_link_with_options(
+        self,
+        request: cams_20200606_models.AddChatGroupInviteLinkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.AddChatGroupInviteLinkResponse:
+        """
+        @summary AddChatGroupInviteLink
+        
+        @param request: AddChatGroupInviteLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddChatGroupInviteLinkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.business_number):
+            query['BusinessNumber'] = request.business_number
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddChatGroupInviteLink',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.AddChatGroupInviteLinkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_chat_group_invite_link_with_options_async(
+        self,
+        request: cams_20200606_models.AddChatGroupInviteLinkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.AddChatGroupInviteLinkResponse:
+        """
+        @summary AddChatGroupInviteLink
+        
+        @param request: AddChatGroupInviteLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddChatGroupInviteLinkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.business_number):
+            query['BusinessNumber'] = request.business_number
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddChatGroupInviteLink',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.AddChatGroupInviteLinkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_chat_group_invite_link(
+        self,
+        request: cams_20200606_models.AddChatGroupInviteLinkRequest,
+    ) -> cams_20200606_models.AddChatGroupInviteLinkResponse:
+        """
+        @summary AddChatGroupInviteLink
+        
+        @param request: AddChatGroupInviteLinkRequest
+        @return: AddChatGroupInviteLinkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_chat_group_invite_link_with_options(request, runtime)
+
+    async def add_chat_group_invite_link_async(
+        self,
+        request: cams_20200606_models.AddChatGroupInviteLinkRequest,
+    ) -> cams_20200606_models.AddChatGroupInviteLinkResponse:
+        """
+        @summary AddChatGroupInviteLink
+        
+        @param request: AddChatGroupInviteLinkRequest
+        @return: AddChatGroupInviteLinkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_chat_group_invite_link_with_options_async(request, runtime)
+
     def add_chatapp_phone_number_with_options(
         self,
         request: cams_20200606_models.AddChatappPhoneNumberRequest,
@@ -1876,6 +2120,378 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_phone_message_qrdl_with_options_async(request, runtime)
+
+    def delete_chat_group_with_options(
+        self,
+        request: cams_20200606_models.DeleteChatGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.DeleteChatGroupResponse:
+        """
+        @summary DeleteChatGroup
+        
+        @param request: DeleteChatGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteChatGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.business_number):
+            query['BusinessNumber'] = request.business_number
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteChatGroup',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.DeleteChatGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_chat_group_with_options_async(
+        self,
+        request: cams_20200606_models.DeleteChatGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.DeleteChatGroupResponse:
+        """
+        @summary DeleteChatGroup
+        
+        @param request: DeleteChatGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteChatGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.business_number):
+            query['BusinessNumber'] = request.business_number
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteChatGroup',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.DeleteChatGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_chat_group(
+        self,
+        request: cams_20200606_models.DeleteChatGroupRequest,
+    ) -> cams_20200606_models.DeleteChatGroupResponse:
+        """
+        @summary DeleteChatGroup
+        
+        @param request: DeleteChatGroupRequest
+        @return: DeleteChatGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_chat_group_with_options(request, runtime)
+
+    async def delete_chat_group_async(
+        self,
+        request: cams_20200606_models.DeleteChatGroupRequest,
+    ) -> cams_20200606_models.DeleteChatGroupResponse:
+        """
+        @summary DeleteChatGroup
+        
+        @param request: DeleteChatGroupRequest
+        @return: DeleteChatGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_chat_group_with_options_async(request, runtime)
+
+    def delete_chat_group_invite_link_with_options(
+        self,
+        request: cams_20200606_models.DeleteChatGroupInviteLinkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.DeleteChatGroupInviteLinkResponse:
+        """
+        @summary DeleteChatGroupInviteLink
+        
+        @param request: DeleteChatGroupInviteLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteChatGroupInviteLinkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.business_number):
+            query['BusinessNumber'] = request.business_number
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteChatGroupInviteLink',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.DeleteChatGroupInviteLinkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_chat_group_invite_link_with_options_async(
+        self,
+        request: cams_20200606_models.DeleteChatGroupInviteLinkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.DeleteChatGroupInviteLinkResponse:
+        """
+        @summary DeleteChatGroupInviteLink
+        
+        @param request: DeleteChatGroupInviteLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteChatGroupInviteLinkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.business_number):
+            query['BusinessNumber'] = request.business_number
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteChatGroupInviteLink',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.DeleteChatGroupInviteLinkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_chat_group_invite_link(
+        self,
+        request: cams_20200606_models.DeleteChatGroupInviteLinkRequest,
+    ) -> cams_20200606_models.DeleteChatGroupInviteLinkResponse:
+        """
+        @summary DeleteChatGroupInviteLink
+        
+        @param request: DeleteChatGroupInviteLinkRequest
+        @return: DeleteChatGroupInviteLinkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_chat_group_invite_link_with_options(request, runtime)
+
+    async def delete_chat_group_invite_link_async(
+        self,
+        request: cams_20200606_models.DeleteChatGroupInviteLinkRequest,
+    ) -> cams_20200606_models.DeleteChatGroupInviteLinkResponse:
+        """
+        @summary DeleteChatGroupInviteLink
+        
+        @param request: DeleteChatGroupInviteLinkRequest
+        @return: DeleteChatGroupInviteLinkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_chat_group_invite_link_with_options_async(request, runtime)
+
+    def delete_chat_group_participants_with_options(
+        self,
+        tmp_req: cams_20200606_models.DeleteChatGroupParticipantsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.DeleteChatGroupParticipantsResponse:
+        """
+        @summary DeleteChatGroupParticipants
+        
+        @param tmp_req: DeleteChatGroupParticipantsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteChatGroupParticipantsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.DeleteChatGroupParticipantsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.list):
+            request.list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.list, 'List', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.business_number):
+            query['BusinessNumber'] = request.business_number
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.list_shrink):
+            query['List'] = request.list_shrink
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteChatGroupParticipants',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.DeleteChatGroupParticipantsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_chat_group_participants_with_options_async(
+        self,
+        tmp_req: cams_20200606_models.DeleteChatGroupParticipantsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.DeleteChatGroupParticipantsResponse:
+        """
+        @summary DeleteChatGroupParticipants
+        
+        @param tmp_req: DeleteChatGroupParticipantsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteChatGroupParticipantsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.DeleteChatGroupParticipantsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.list):
+            request.list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.list, 'List', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.business_number):
+            query['BusinessNumber'] = request.business_number
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.list_shrink):
+            query['List'] = request.list_shrink
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteChatGroupParticipants',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.DeleteChatGroupParticipantsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_chat_group_participants(
+        self,
+        request: cams_20200606_models.DeleteChatGroupParticipantsRequest,
+    ) -> cams_20200606_models.DeleteChatGroupParticipantsResponse:
+        """
+        @summary DeleteChatGroupParticipants
+        
+        @param request: DeleteChatGroupParticipantsRequest
+        @return: DeleteChatGroupParticipantsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_chat_group_participants_with_options(request, runtime)
+
+    async def delete_chat_group_participants_async(
+        self,
+        request: cams_20200606_models.DeleteChatGroupParticipantsRequest,
+    ) -> cams_20200606_models.DeleteChatGroupParticipantsResponse:
+        """
+        @summary DeleteChatGroupParticipants
+        
+        @param request: DeleteChatGroupParticipantsRequest
+        @return: DeleteChatGroupParticipantsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_chat_group_participants_with_options_async(request, runtime)
 
     def delete_chatapp_template_with_options(
         self,
@@ -4541,6 +5157,274 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.isv_get_app_id_with_options_async(request, runtime)
 
+    def list_chat_group_with_options(
+        self,
+        tmp_req: cams_20200606_models.ListChatGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ListChatGroupResponse:
+        """
+        @summary ListChatGroup
+        
+        @param tmp_req: ListChatGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListChatGroupResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.ListChatGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.page):
+            request.page_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.page, 'Page', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.business_number):
+            query['BusinessNumber'] = request.business_number
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.group_status):
+            query['GroupStatus'] = request.group_status
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_shrink):
+            query['Page'] = request.page_shrink
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.subject):
+            query['Subject'] = request.subject
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListChatGroup',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ListChatGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_chat_group_with_options_async(
+        self,
+        tmp_req: cams_20200606_models.ListChatGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ListChatGroupResponse:
+        """
+        @summary ListChatGroup
+        
+        @param tmp_req: ListChatGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListChatGroupResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.ListChatGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.page):
+            request.page_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.page, 'Page', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.business_number):
+            query['BusinessNumber'] = request.business_number
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.group_status):
+            query['GroupStatus'] = request.group_status
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_shrink):
+            query['Page'] = request.page_shrink
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.subject):
+            query['Subject'] = request.subject
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListChatGroup',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ListChatGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_chat_group(
+        self,
+        request: cams_20200606_models.ListChatGroupRequest,
+    ) -> cams_20200606_models.ListChatGroupResponse:
+        """
+        @summary ListChatGroup
+        
+        @param request: ListChatGroupRequest
+        @return: ListChatGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_chat_group_with_options(request, runtime)
+
+    async def list_chat_group_async(
+        self,
+        request: cams_20200606_models.ListChatGroupRequest,
+    ) -> cams_20200606_models.ListChatGroupResponse:
+        """
+        @summary ListChatGroup
+        
+        @param request: ListChatGroupRequest
+        @return: ListChatGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_chat_group_with_options_async(request, runtime)
+
+    def list_chat_group_participants_with_options(
+        self,
+        tmp_req: cams_20200606_models.ListChatGroupParticipantsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ListChatGroupParticipantsResponse:
+        """
+        @summary ListChatGroupParticipants
+        
+        @param tmp_req: ListChatGroupParticipantsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListChatGroupParticipantsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.ListChatGroupParticipantsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.page):
+            request.page_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.page, 'Page', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.business_number):
+            query['BusinessNumber'] = request.business_number
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_shrink):
+            query['Page'] = request.page_shrink
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListChatGroupParticipants',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ListChatGroupParticipantsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_chat_group_participants_with_options_async(
+        self,
+        tmp_req: cams_20200606_models.ListChatGroupParticipantsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ListChatGroupParticipantsResponse:
+        """
+        @summary ListChatGroupParticipants
+        
+        @param tmp_req: ListChatGroupParticipantsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListChatGroupParticipantsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.ListChatGroupParticipantsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.page):
+            request.page_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.page, 'Page', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.business_number):
+            query['BusinessNumber'] = request.business_number
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_shrink):
+            query['Page'] = request.page_shrink
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListChatGroupParticipants',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ListChatGroupParticipantsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_chat_group_participants(
+        self,
+        request: cams_20200606_models.ListChatGroupParticipantsRequest,
+    ) -> cams_20200606_models.ListChatGroupParticipantsResponse:
+        """
+        @summary ListChatGroupParticipants
+        
+        @param request: ListChatGroupParticipantsRequest
+        @return: ListChatGroupParticipantsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_chat_group_participants_with_options(request, runtime)
+
+    async def list_chat_group_participants_async(
+        self,
+        request: cams_20200606_models.ListChatGroupParticipantsRequest,
+    ) -> cams_20200606_models.ListChatGroupParticipantsResponse:
+        """
+        @summary ListChatGroupParticipants
+        
+        @param request: ListChatGroupParticipantsRequest
+        @return: ListChatGroupParticipantsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_chat_group_participants_with_options_async(request, runtime)
+
     def list_chatapp_template_with_options(
         self,
         tmp_req: cams_20200606_models.ListChatappTemplateRequest,
@@ -6602,6 +7486,8 @@ class Client(OpenApiClient):
             body['MessageType'] = request.message_type
         if not UtilClient.is_unset(request.product_action_shrink):
             body['ProductAction'] = request.product_action_shrink
+        if not UtilClient.is_unset(request.recipient_type):
+            body['RecipientType'] = request.recipient_type
         if not UtilClient.is_unset(request.tag):
             body['Tag'] = request.tag
         if not UtilClient.is_unset(request.task_id):
@@ -6701,6 +7587,8 @@ class Client(OpenApiClient):
             body['MessageType'] = request.message_type
         if not UtilClient.is_unset(request.product_action_shrink):
             body['ProductAction'] = request.product_action_shrink
+        if not UtilClient.is_unset(request.recipient_type):
+            body['RecipientType'] = request.recipient_type
         if not UtilClient.is_unset(request.tag):
             body['Tag'] = request.tag
         if not UtilClient.is_unset(request.task_id):
@@ -7160,6 +8048,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_account_webhook_with_options_async(request, runtime)
+
+    def update_chat_group_with_options(
+        self,
+        request: cams_20200606_models.UpdateChatGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.UpdateChatGroupResponse:
+        """
+        @summary UpdateChatGroup
+        
+        @param request: UpdateChatGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateChatGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.business_number):
+            query['BusinessNumber'] = request.business_number
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.profile_picture_file):
+            query['ProfilePictureFile'] = request.profile_picture_file
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.subject):
+            query['Subject'] = request.subject
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateChatGroup',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.UpdateChatGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_chat_group_with_options_async(
+        self,
+        request: cams_20200606_models.UpdateChatGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.UpdateChatGroupResponse:
+        """
+        @summary UpdateChatGroup
+        
+        @param request: UpdateChatGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateChatGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.business_number):
+            query['BusinessNumber'] = request.business_number
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.profile_picture_file):
+            query['ProfilePictureFile'] = request.profile_picture_file
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.subject):
+            query['Subject'] = request.subject
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateChatGroup',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.UpdateChatGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_chat_group(
+        self,
+        request: cams_20200606_models.UpdateChatGroupRequest,
+    ) -> cams_20200606_models.UpdateChatGroupResponse:
+        """
+        @summary UpdateChatGroup
+        
+        @param request: UpdateChatGroupRequest
+        @return: UpdateChatGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_chat_group_with_options(request, runtime)
+
+    async def update_chat_group_async(
+        self,
+        request: cams_20200606_models.UpdateChatGroupRequest,
+    ) -> cams_20200606_models.UpdateChatGroupResponse:
+        """
+        @summary UpdateChatGroup
+        
+        @param request: UpdateChatGroupRequest
+        @return: UpdateChatGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_chat_group_with_options_async(request, runtime)
 
     def update_commerce_setting_with_options(
         self,

@@ -1,3 +1,15 @@
+2025-06-24 Version: 2.2.0
+- Support API AddChatGroup.
+- Support API AddChatGroupInviteLink.
+- Support API DeleteChatGroup.
+- Support API DeleteChatGroupInviteLink.
+- Support API DeleteChatGroupParticipants.
+- Support API ListChatGroup.
+- Support API ListChatGroupParticipants.
+- Support API UpdateChatGroup.
+- Update API SendChatappMessage: add request parameters RecipientType.
+
+
 2025-06-11 Version: 2.1.0
 - Support API ModifyChatappTemplateProperties.
 - Update API CreateChatappTemplate: add request parameters CategoryChangePaused.

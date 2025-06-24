@@ -4,6 +4,340 @@ from Tea.model import TeaModel
 from typing import Dict, List, Any
 
 
+class AddChatGroupRequest(TeaModel):
+    def __init__(
+        self,
+        business_number: str = None,
+        channel_type: str = None,
+        cust_space_id: str = None,
+        description: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        subject: str = None,
+    ):
+        # This parameter is required.
+        self.business_number = business_number
+        self.channel_type = channel_type
+        # This parameter is required.
+        self.cust_space_id = cust_space_id
+        self.description = description
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.subject = subject
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_number is not None:
+            result['BusinessNumber'] = self.business_number
+        if self.channel_type is not None:
+            result['ChannelType'] = self.channel_type
+        if self.cust_space_id is not None:
+            result['CustSpaceId'] = self.cust_space_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.subject is not None:
+            result['Subject'] = self.subject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessNumber') is not None:
+            self.business_number = m.get('BusinessNumber')
+        if m.get('ChannelType') is not None:
+            self.channel_type = m.get('ChannelType')
+        if m.get('CustSpaceId') is not None:
+            self.cust_space_id = m.get('CustSpaceId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Subject') is not None:
+            self.subject = m.get('Subject')
+        return self
+
+
+class AddChatGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        unique_code: str = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.unique_code = unique_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.unique_code is not None:
+            result['UniqueCode'] = self.unique_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('UniqueCode') is not None:
+            self.unique_code = m.get('UniqueCode')
+        return self
+
+
+class AddChatGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddChatGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddChatGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AddChatGroupInviteLinkRequest(TeaModel):
+    def __init__(
+        self,
+        business_number: str = None,
+        channel_type: str = None,
+        cust_space_id: str = None,
+        group_id: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.business_number = business_number
+        self.channel_type = channel_type
+        # This parameter is required.
+        self.cust_space_id = cust_space_id
+        # This parameter is required.
+        self.group_id = group_id
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_number is not None:
+            result['BusinessNumber'] = self.business_number
+        if self.channel_type is not None:
+            result['ChannelType'] = self.channel_type
+        if self.cust_space_id is not None:
+            result['CustSpaceId'] = self.cust_space_id
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessNumber') is not None:
+            self.business_number = m.get('BusinessNumber')
+        if m.get('ChannelType') is not None:
+            self.channel_type = m.get('ChannelType')
+        if m.get('CustSpaceId') is not None:
+            self.cust_space_id = m.get('CustSpaceId')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class AddChatGroupInviteLinkResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        invite_link: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.invite_link = invite_link
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.invite_link is not None:
+            result['InviteLink'] = self.invite_link
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('InviteLink') is not None:
+            self.invite_link = m.get('InviteLink')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AddChatGroupInviteLinkResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddChatGroupInviteLinkResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddChatGroupInviteLinkResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AddChatappPhoneNumberRequest(TeaModel):
     def __init__(
         self,
@@ -1798,7 +2132,7 @@ class ChatappMigrationVerifiedRequest(TeaModel):
         phone_number: str = None,
         verify_code: str = None,
     ):
-        # The space ID of the user under the independent software vendor (ISV) account.
+        # The space ID of the RAM user within the independent software vendor (ISV) account.
         # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
@@ -1883,13 +2217,14 @@ class ChatappMigrationVerifiedResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The HTTP status code returned.
         # 
         # *   A value of OK indicates that the call is successful.
         # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
         # The error message returned.
         self.message = message
@@ -4274,6 +4609,611 @@ class CreatePhoneMessageQrdlResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreatePhoneMessageQrdlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteChatGroupRequest(TeaModel):
+    def __init__(
+        self,
+        business_number: str = None,
+        channel_type: str = None,
+        cust_space_id: str = None,
+        group_id: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.business_number = business_number
+        self.channel_type = channel_type
+        # This parameter is required.
+        self.cust_space_id = cust_space_id
+        # This parameter is required.
+        self.group_id = group_id
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_number is not None:
+            result['BusinessNumber'] = self.business_number
+        if self.channel_type is not None:
+            result['ChannelType'] = self.channel_type
+        if self.cust_space_id is not None:
+            result['CustSpaceId'] = self.cust_space_id
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessNumber') is not None:
+            self.business_number = m.get('BusinessNumber')
+        if m.get('ChannelType') is not None:
+            self.channel_type = m.get('ChannelType')
+        if m.get('CustSpaceId') is not None:
+            self.cust_space_id = m.get('CustSpaceId')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DeleteChatGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result: int = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteChatGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteChatGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteChatGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteChatGroupInviteLinkRequest(TeaModel):
+    def __init__(
+        self,
+        business_number: str = None,
+        channel_type: str = None,
+        cust_space_id: str = None,
+        group_id: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.business_number = business_number
+        self.channel_type = channel_type
+        # This parameter is required.
+        self.cust_space_id = cust_space_id
+        # This parameter is required.
+        self.group_id = group_id
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_number is not None:
+            result['BusinessNumber'] = self.business_number
+        if self.channel_type is not None:
+            result['ChannelType'] = self.channel_type
+        if self.cust_space_id is not None:
+            result['CustSpaceId'] = self.cust_space_id
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessNumber') is not None:
+            self.business_number = m.get('BusinessNumber')
+        if m.get('ChannelType') is not None:
+            self.channel_type = m.get('ChannelType')
+        if m.get('CustSpaceId') is not None:
+            self.cust_space_id = m.get('CustSpaceId')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DeleteChatGroupInviteLinkResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result: int = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteChatGroupInviteLinkResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteChatGroupInviteLinkResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteChatGroupInviteLinkResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteChatGroupParticipantsRequestList(TeaModel):
+    def __init__(
+        self,
+        participant_number: str = None,
+    ):
+        self.participant_number = participant_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.participant_number is not None:
+            result['ParticipantNumber'] = self.participant_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParticipantNumber') is not None:
+            self.participant_number = m.get('ParticipantNumber')
+        return self
+
+
+class DeleteChatGroupParticipantsRequest(TeaModel):
+    def __init__(
+        self,
+        business_number: str = None,
+        channel_type: str = None,
+        cust_space_id: str = None,
+        group_id: str = None,
+        list: List[DeleteChatGroupParticipantsRequestList] = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.business_number = business_number
+        self.channel_type = channel_type
+        # This parameter is required.
+        self.cust_space_id = cust_space_id
+        # This parameter is required.
+        self.group_id = group_id
+        self.list = list
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_number is not None:
+            result['BusinessNumber'] = self.business_number
+        if self.channel_type is not None:
+            result['ChannelType'] = self.channel_type
+        if self.cust_space_id is not None:
+            result['CustSpaceId'] = self.cust_space_id
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessNumber') is not None:
+            self.business_number = m.get('BusinessNumber')
+        if m.get('ChannelType') is not None:
+            self.channel_type = m.get('ChannelType')
+        if m.get('CustSpaceId') is not None:
+            self.cust_space_id = m.get('CustSpaceId')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = DeleteChatGroupParticipantsRequestList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DeleteChatGroupParticipantsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        business_number: str = None,
+        channel_type: str = None,
+        cust_space_id: str = None,
+        group_id: str = None,
+        list_shrink: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.business_number = business_number
+        self.channel_type = channel_type
+        # This parameter is required.
+        self.cust_space_id = cust_space_id
+        # This parameter is required.
+        self.group_id = group_id
+        self.list_shrink = list_shrink
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_number is not None:
+            result['BusinessNumber'] = self.business_number
+        if self.channel_type is not None:
+            result['ChannelType'] = self.channel_type
+        if self.cust_space_id is not None:
+            result['CustSpaceId'] = self.cust_space_id
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.list_shrink is not None:
+            result['List'] = self.list_shrink
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessNumber') is not None:
+            self.business_number = m.get('BusinessNumber')
+        if m.get('ChannelType') is not None:
+            self.channel_type = m.get('ChannelType')
+        if m.get('CustSpaceId') is not None:
+            self.cust_space_id = m.get('CustSpaceId')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('List') is not None:
+            self.list_shrink = m.get('List')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DeleteChatGroupParticipantsResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result: int = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteChatGroupParticipantsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteChatGroupParticipantsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteChatGroupParticipantsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9443,6 +10383,750 @@ class IsvGetAppIdResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = IsvGetAppIdResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListChatGroupRequestPage(TeaModel):
+    def __init__(
+        self,
+        index: int = None,
+        size: int = None,
+    ):
+        # This parameter is required.
+        self.index = index
+        # This parameter is required.
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.index is not None:
+            result['Index'] = self.index
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class ListChatGroupRequest(TeaModel):
+    def __init__(
+        self,
+        business_number: str = None,
+        channel_type: str = None,
+        cust_space_id: str = None,
+        group_status: str = None,
+        owner_id: int = None,
+        page: ListChatGroupRequestPage = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        subject: str = None,
+    ):
+        # This parameter is required.
+        self.business_number = business_number
+        self.channel_type = channel_type
+        # This parameter is required.
+        self.cust_space_id = cust_space_id
+        self.group_status = group_status
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.page = page
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.subject = subject
+
+    def validate(self):
+        if self.page:
+            self.page.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_number is not None:
+            result['BusinessNumber'] = self.business_number
+        if self.channel_type is not None:
+            result['ChannelType'] = self.channel_type
+        if self.cust_space_id is not None:
+            result['CustSpaceId'] = self.cust_space_id
+        if self.group_status is not None:
+            result['GroupStatus'] = self.group_status
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page is not None:
+            result['Page'] = self.page.to_map()
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.subject is not None:
+            result['Subject'] = self.subject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessNumber') is not None:
+            self.business_number = m.get('BusinessNumber')
+        if m.get('ChannelType') is not None:
+            self.channel_type = m.get('ChannelType')
+        if m.get('CustSpaceId') is not None:
+            self.cust_space_id = m.get('CustSpaceId')
+        if m.get('GroupStatus') is not None:
+            self.group_status = m.get('GroupStatus')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Page') is not None:
+            temp_model = ListChatGroupRequestPage()
+            self.page = temp_model.from_map(m['Page'])
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Subject') is not None:
+            self.subject = m.get('Subject')
+        return self
+
+
+class ListChatGroupShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        business_number: str = None,
+        channel_type: str = None,
+        cust_space_id: str = None,
+        group_status: str = None,
+        owner_id: int = None,
+        page_shrink: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        subject: str = None,
+    ):
+        # This parameter is required.
+        self.business_number = business_number
+        self.channel_type = channel_type
+        # This parameter is required.
+        self.cust_space_id = cust_space_id
+        self.group_status = group_status
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.page_shrink = page_shrink
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.subject = subject
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_number is not None:
+            result['BusinessNumber'] = self.business_number
+        if self.channel_type is not None:
+            result['ChannelType'] = self.channel_type
+        if self.cust_space_id is not None:
+            result['CustSpaceId'] = self.cust_space_id
+        if self.group_status is not None:
+            result['GroupStatus'] = self.group_status
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_shrink is not None:
+            result['Page'] = self.page_shrink
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.subject is not None:
+            result['Subject'] = self.subject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessNumber') is not None:
+            self.business_number = m.get('BusinessNumber')
+        if m.get('ChannelType') is not None:
+            self.channel_type = m.get('ChannelType')
+        if m.get('CustSpaceId') is not None:
+            self.cust_space_id = m.get('CustSpaceId')
+        if m.get('GroupStatus') is not None:
+            self.group_status = m.get('GroupStatus')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Page') is not None:
+            self.page_shrink = m.get('Page')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Subject') is not None:
+            self.subject = m.get('Subject')
+        return self
+
+
+class ListChatGroupResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        business_number: str = None,
+        description: str = None,
+        group_id: str = None,
+        group_status: str = None,
+        invite_link: str = None,
+        profile_picture_file: str = None,
+        subject: str = None,
+    ):
+        self.business_number = business_number
+        self.description = description
+        self.group_id = group_id
+        self.group_status = group_status
+        self.invite_link = invite_link
+        self.profile_picture_file = profile_picture_file
+        self.subject = subject
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_number is not None:
+            result['BusinessNumber'] = self.business_number
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.group_status is not None:
+            result['GroupStatus'] = self.group_status
+        if self.invite_link is not None:
+            result['InviteLink'] = self.invite_link
+        if self.profile_picture_file is not None:
+            result['ProfilePictureFile'] = self.profile_picture_file
+        if self.subject is not None:
+            result['Subject'] = self.subject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessNumber') is not None:
+            self.business_number = m.get('BusinessNumber')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('GroupStatus') is not None:
+            self.group_status = m.get('GroupStatus')
+        if m.get('InviteLink') is not None:
+            self.invite_link = m.get('InviteLink')
+        if m.get('ProfilePictureFile') is not None:
+            self.profile_picture_file = m.get('ProfilePictureFile')
+        if m.get('Subject') is not None:
+            self.subject = m.get('Subject')
+        return self
+
+
+class ListChatGroupResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        list: List[ListChatGroupResponseBodyDataList] = None,
+        total: int = None,
+    ):
+        self.list = list
+        self.total = total
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = ListChatGroupResponseBodyDataList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListChatGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: ListChatGroupResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListChatGroupResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListChatGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListChatGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListChatGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListChatGroupParticipantsRequestPage(TeaModel):
+    def __init__(
+        self,
+        index: int = None,
+        size: int = None,
+    ):
+        self.index = index
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.index is not None:
+            result['Index'] = self.index
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class ListChatGroupParticipantsRequest(TeaModel):
+    def __init__(
+        self,
+        business_number: str = None,
+        channel_type: str = None,
+        cust_space_id: str = None,
+        group_id: str = None,
+        owner_id: int = None,
+        page: ListChatGroupParticipantsRequestPage = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.business_number = business_number
+        self.channel_type = channel_type
+        # This parameter is required.
+        self.cust_space_id = cust_space_id
+        # This parameter is required.
+        self.group_id = group_id
+        self.owner_id = owner_id
+        self.page = page
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        if self.page:
+            self.page.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_number is not None:
+            result['BusinessNumber'] = self.business_number
+        if self.channel_type is not None:
+            result['ChannelType'] = self.channel_type
+        if self.cust_space_id is not None:
+            result['CustSpaceId'] = self.cust_space_id
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page is not None:
+            result['Page'] = self.page.to_map()
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessNumber') is not None:
+            self.business_number = m.get('BusinessNumber')
+        if m.get('ChannelType') is not None:
+            self.channel_type = m.get('ChannelType')
+        if m.get('CustSpaceId') is not None:
+            self.cust_space_id = m.get('CustSpaceId')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Page') is not None:
+            temp_model = ListChatGroupParticipantsRequestPage()
+            self.page = temp_model.from_map(m['Page'])
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ListChatGroupParticipantsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        business_number: str = None,
+        channel_type: str = None,
+        cust_space_id: str = None,
+        group_id: str = None,
+        owner_id: int = None,
+        page_shrink: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.business_number = business_number
+        self.channel_type = channel_type
+        # This parameter is required.
+        self.cust_space_id = cust_space_id
+        # This parameter is required.
+        self.group_id = group_id
+        self.owner_id = owner_id
+        self.page_shrink = page_shrink
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_number is not None:
+            result['BusinessNumber'] = self.business_number
+        if self.channel_type is not None:
+            result['ChannelType'] = self.channel_type
+        if self.cust_space_id is not None:
+            result['CustSpaceId'] = self.cust_space_id
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_shrink is not None:
+            result['Page'] = self.page_shrink
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessNumber') is not None:
+            self.business_number = m.get('BusinessNumber')
+        if m.get('ChannelType') is not None:
+            self.channel_type = m.get('ChannelType')
+        if m.get('CustSpaceId') is not None:
+            self.cust_space_id = m.get('CustSpaceId')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Page') is not None:
+            self.page_shrink = m.get('Page')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ListChatGroupParticipantsResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        participant_number: str = None,
+    ):
+        self.participant_number = participant_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.participant_number is not None:
+            result['ParticipantNumber'] = self.participant_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParticipantNumber') is not None:
+            self.participant_number = m.get('ParticipantNumber')
+        return self
+
+
+class ListChatGroupParticipantsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        list: List[ListChatGroupParticipantsResponseBodyDataList] = None,
+        total: int = None,
+    ):
+        self.list = list
+        self.total = total
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = ListChatGroupParticipantsResponseBodyDataList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListChatGroupParticipantsResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: ListChatGroupParticipantsResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListChatGroupParticipantsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListChatGroupParticipantsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListChatGroupParticipantsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListChatGroupParticipantsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -14648,6 +16332,7 @@ class SendChatappMessageRequest(TeaModel):
         message_type: str = None,
         payload: List[str] = None,
         product_action: SendChatappMessageRequestProductAction = None,
+        recipient_type: str = None,
         tag: str = None,
         task_id: str = None,
         template_code: str = None,
@@ -14761,6 +16446,7 @@ class SendChatappMessageRequest(TeaModel):
         self.payload = payload
         # The information about the products included in the WhatsApp catalog message or multi-product message (MPM).
         self.product_action = product_action
+        self.recipient_type = recipient_type
         # The tag information of the Viber message.
         self.tag = tag
         # The task ID.
@@ -14833,6 +16519,8 @@ class SendChatappMessageRequest(TeaModel):
             result['Payload'] = self.payload
         if self.product_action is not None:
             result['ProductAction'] = self.product_action.to_map()
+        if self.recipient_type is not None:
+            result['RecipientType'] = self.recipient_type
         if self.tag is not None:
             result['Tag'] = self.tag
         if self.task_id is not None:
@@ -14891,6 +16579,8 @@ class SendChatappMessageRequest(TeaModel):
         if m.get('ProductAction') is not None:
             temp_model = SendChatappMessageRequestProductAction()
             self.product_action = temp_model.from_map(m['ProductAction'])
+        if m.get('RecipientType') is not None:
+            self.recipient_type = m.get('RecipientType')
         if m.get('Tag') is not None:
             self.tag = m.get('Tag')
         if m.get('TaskId') is not None:
@@ -14932,6 +16622,7 @@ class SendChatappMessageShrinkRequest(TeaModel):
         message_type: str = None,
         payload_shrink: str = None,
         product_action_shrink: str = None,
+        recipient_type: str = None,
         tag: str = None,
         task_id: str = None,
         template_code: str = None,
@@ -15045,6 +16736,7 @@ class SendChatappMessageShrinkRequest(TeaModel):
         self.payload_shrink = payload_shrink
         # The information about the products included in the WhatsApp catalog message or multi-product message (MPM).
         self.product_action_shrink = product_action_shrink
+        self.recipient_type = recipient_type
         # The tag information of the Viber message.
         self.tag = tag
         # The task ID.
@@ -15114,6 +16806,8 @@ class SendChatappMessageShrinkRequest(TeaModel):
             result['Payload'] = self.payload_shrink
         if self.product_action_shrink is not None:
             result['ProductAction'] = self.product_action_shrink
+        if self.recipient_type is not None:
+            result['RecipientType'] = self.recipient_type
         if self.tag is not None:
             result['Tag'] = self.tag
         if self.task_id is not None:
@@ -15170,6 +16864,8 @@ class SendChatappMessageShrinkRequest(TeaModel):
             self.payload_shrink = m.get('Payload')
         if m.get('ProductAction') is not None:
             self.product_action_shrink = m.get('ProductAction')
+        if m.get('RecipientType') is not None:
+            self.recipient_type = m.get('RecipientType')
         if m.get('Tag') is not None:
             self.tag = m.get('Tag')
         if m.get('TaskId') is not None:
@@ -15881,6 +17577,188 @@ class UpdateAccountWebhookResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateAccountWebhookResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateChatGroupRequest(TeaModel):
+    def __init__(
+        self,
+        business_number: str = None,
+        channel_type: str = None,
+        cust_space_id: str = None,
+        description: str = None,
+        group_id: str = None,
+        owner_id: int = None,
+        profile_picture_file: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        subject: str = None,
+    ):
+        # This parameter is required.
+        self.business_number = business_number
+        self.channel_type = channel_type
+        # This parameter is required.
+        self.cust_space_id = cust_space_id
+        self.description = description
+        # This parameter is required.
+        self.group_id = group_id
+        self.owner_id = owner_id
+        self.profile_picture_file = profile_picture_file
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.subject = subject
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_number is not None:
+            result['BusinessNumber'] = self.business_number
+        if self.channel_type is not None:
+            result['ChannelType'] = self.channel_type
+        if self.cust_space_id is not None:
+            result['CustSpaceId'] = self.cust_space_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.profile_picture_file is not None:
+            result['ProfilePictureFile'] = self.profile_picture_file
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.subject is not None:
+            result['Subject'] = self.subject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessNumber') is not None:
+            self.business_number = m.get('BusinessNumber')
+        if m.get('ChannelType') is not None:
+            self.channel_type = m.get('ChannelType')
+        if m.get('CustSpaceId') is not None:
+            self.cust_space_id = m.get('CustSpaceId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ProfilePictureFile') is not None:
+            self.profile_picture_file = m.get('ProfilePictureFile')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Subject') is not None:
+            self.subject = m.get('Subject')
+        return self
+
+
+class UpdateChatGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result: int = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateChatGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateChatGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateChatGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
