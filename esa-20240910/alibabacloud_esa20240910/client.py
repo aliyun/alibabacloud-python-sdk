@@ -6353,6 +6353,8 @@ class Client(OpenApiClient):
             body['DiscardRate'] = request.discard_rate
         if not UtilClient.is_unset(request.field_name):
             body['FieldName'] = request.field_name
+        if not UtilClient.is_unset(request.filter_ver):
+            body['FilterVer'] = request.filter_ver
         if not UtilClient.is_unset(request.http_delivery_shrink):
             body['HttpDelivery'] = request.http_delivery_shrink
         if not UtilClient.is_unset(request.kafka_delivery_shrink):
@@ -6422,6 +6424,8 @@ class Client(OpenApiClient):
             body['DiscardRate'] = request.discard_rate
         if not UtilClient.is_unset(request.field_name):
             body['FieldName'] = request.field_name
+        if not UtilClient.is_unset(request.filter_ver):
+            body['FilterVer'] = request.filter_ver
         if not UtilClient.is_unset(request.http_delivery_shrink):
             body['HttpDelivery'] = request.http_delivery_shrink
         if not UtilClient.is_unset(request.kafka_delivery_shrink):
@@ -6555,6 +6559,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_slr_role_for_realtime_log_with_options_async(runtime)
 
+    def create_url_observation_with_options(
+        self,
+        request: esa20240910_models.CreateUrlObservationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateUrlObservationResponse:
+        """
+        @summary 创建网页监测配置
+        
+        @param request: CreateUrlObservationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUrlObservationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.sdk_type):
+            query['SdkType'] = request.sdk_type
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateUrlObservation',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateUrlObservationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_url_observation_with_options_async(
+        self,
+        request: esa20240910_models.CreateUrlObservationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateUrlObservationResponse:
+        """
+        @summary 创建网页监测配置
+        
+        @param request: CreateUrlObservationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUrlObservationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.sdk_type):
+            query['SdkType'] = request.sdk_type
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateUrlObservation',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateUrlObservationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_url_observation(
+        self,
+        request: esa20240910_models.CreateUrlObservationRequest,
+    ) -> esa20240910_models.CreateUrlObservationResponse:
+        """
+        @summary 创建网页监测配置
+        
+        @param request: CreateUrlObservationRequest
+        @return: CreateUrlObservationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_url_observation_with_options(request, runtime)
+
+    async def create_url_observation_async(
+        self,
+        request: esa20240910_models.CreateUrlObservationRequest,
+    ) -> esa20240910_models.CreateUrlObservationResponse:
+        """
+        @summary 创建网页监测配置
+        
+        @param request: CreateUrlObservationRequest
+        @return: CreateUrlObservationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_url_observation_with_options_async(request, runtime)
+
     def create_user_delivery_task_with_options(
         self,
         tmp_req: esa20240910_models.CreateUserDeliveryTaskRequest,
@@ -6603,6 +6711,8 @@ class Client(OpenApiClient):
             body['DiscardRate'] = request.discard_rate
         if not UtilClient.is_unset(request.field_name):
             body['FieldName'] = request.field_name
+        if not UtilClient.is_unset(request.filter_ver):
+            body['FilterVer'] = request.filter_ver
         if not UtilClient.is_unset(request.http_delivery_shrink):
             body['HttpDelivery'] = request.http_delivery_shrink
         if not UtilClient.is_unset(request.kafka_delivery_shrink):
@@ -6682,6 +6792,8 @@ class Client(OpenApiClient):
             body['DiscardRate'] = request.discard_rate
         if not UtilClient.is_unset(request.field_name):
             body['FieldName'] = request.field_name
+        if not UtilClient.is_unset(request.filter_ver):
+            body['FilterVer'] = request.filter_ver
         if not UtilClient.is_unset(request.http_delivery_shrink):
             body['HttpDelivery'] = request.http_delivery_shrink
         if not UtilClient.is_unset(request.kafka_delivery_shrink):
@@ -11322,6 +11434,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_site_origin_client_certificate_with_options_async(request, runtime)
+
+    def delete_url_observation_with_options(
+        self,
+        request: esa20240910_models.DeleteUrlObservationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteUrlObservationResponse:
+        """
+        @summary 删除网页监测配置
+        
+        @param request: DeleteUrlObservationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUrlObservationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteUrlObservation',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteUrlObservationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_url_observation_with_options_async(
+        self,
+        request: esa20240910_models.DeleteUrlObservationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteUrlObservationResponse:
+        """
+        @summary 删除网页监测配置
+        
+        @param request: DeleteUrlObservationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUrlObservationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteUrlObservation',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteUrlObservationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_url_observation(
+        self,
+        request: esa20240910_models.DeleteUrlObservationRequest,
+    ) -> esa20240910_models.DeleteUrlObservationResponse:
+        """
+        @summary 删除网页监测配置
+        
+        @param request: DeleteUrlObservationRequest
+        @return: DeleteUrlObservationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_url_observation_with_options(request, runtime)
+
+    async def delete_url_observation_async(
+        self,
+        request: esa20240910_models.DeleteUrlObservationRequest,
+    ) -> esa20240910_models.DeleteUrlObservationResponse:
+        """
+        @summary 删除网页监测配置
+        
+        @param request: DeleteUrlObservationRequest
+        @return: DeleteUrlObservationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_url_observation_with_options_async(request, runtime)
 
     def delete_user_delivery_task_with_options(
         self,
@@ -21539,6 +21751,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_compression_rules_with_options_async(request, runtime)
 
+    def list_esaipinfo_with_options(
+        self,
+        request: esa20240910_models.ListESAIPInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListESAIPInfoResponse:
+        """
+        @summary 批量查询IP是否为VIP
+        
+        @param request: ListESAIPInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListESAIPInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListESAIPInfo',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListESAIPInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_esaipinfo_with_options_async(
+        self,
+        request: esa20240910_models.ListESAIPInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListESAIPInfoResponse:
+        """
+        @summary 批量查询IP是否为VIP
+        
+        @param request: ListESAIPInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListESAIPInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListESAIPInfo',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListESAIPInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_esaipinfo(
+        self,
+        request: esa20240910_models.ListESAIPInfoRequest,
+    ) -> esa20240910_models.ListESAIPInfoResponse:
+        """
+        @summary 批量查询IP是否为VIP
+        
+        @param request: ListESAIPInfoRequest
+        @return: ListESAIPInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_esaipinfo_with_options(request, runtime)
+
+    async def list_esaipinfo_async(
+        self,
+        request: esa20240910_models.ListESAIPInfoRequest,
+    ) -> esa20240910_models.ListESAIPInfoResponse:
+        """
+        @summary 批量查询IP是否为VIP
+        
+        @param request: ListESAIPInfoRequest
+        @return: ListESAIPInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_esaipinfo_with_options_async(request, runtime)
+
     def list_edge_container_app_records_with_options(
         self,
         request: esa20240910_models.ListEdgeContainerAppRecordsRequest,
@@ -25318,6 +25622,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_upload_tasks_with_options_async(request, runtime)
+
+    def list_url_observations_with_options(
+        self,
+        request: esa20240910_models.ListUrlObservationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListUrlObservationsResponse:
+        """
+        @summary 查询网页观测配置列表
+        
+        @param request: ListUrlObservationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUrlObservationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUrlObservations',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListUrlObservationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_url_observations_with_options_async(
+        self,
+        request: esa20240910_models.ListUrlObservationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListUrlObservationsResponse:
+        """
+        @summary 查询网页观测配置列表
+        
+        @param request: ListUrlObservationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUrlObservationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUrlObservations',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListUrlObservationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_url_observations(
+        self,
+        request: esa20240910_models.ListUrlObservationsRequest,
+    ) -> esa20240910_models.ListUrlObservationsResponse:
+        """
+        @summary 查询网页观测配置列表
+        
+        @param request: ListUrlObservationsRequest
+        @return: ListUrlObservationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_url_observations_with_options(request, runtime)
+
+    async def list_url_observations_async(
+        self,
+        request: esa20240910_models.ListUrlObservationsRequest,
+    ) -> esa20240910_models.ListUrlObservationsResponse:
+        """
+        @summary 查询网页观测配置列表
+        
+        @param request: ListUrlObservationsRequest
+        @return: ListUrlObservationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_url_observations_with_options_async(request, runtime)
 
     def list_user_delivery_tasks_with_options(
         self,
@@ -29238,6 +29650,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.stop_scheduled_preload_execution_with_options_async(request, runtime)
+
+    def tag_resources_with_options(
+        self,
+        request: esa20240910_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.TagResourcesResponse:
+        """
+        @summary Adds one or more tags to resources.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_resources_with_options_async(
+        self,
+        request: esa20240910_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.TagResourcesResponse:
+        """
+        @summary Adds one or more tags to resources.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag_resources(
+        self,
+        request: esa20240910_models.TagResourcesRequest,
+    ) -> esa20240910_models.TagResourcesResponse:
+        """
+        @summary Adds one or more tags to resources.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.tag_resources_with_options(request, runtime)
+
+    async def tag_resources_async(
+        self,
+        request: esa20240910_models.TagResourcesRequest,
+    ) -> esa20240910_models.TagResourcesResponse:
+        """
+        @summary Adds one or more tags to resources.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.tag_resources_with_options_async(request, runtime)
 
     def untag_resources_with_options(
         self,
@@ -33755,6 +34283,8 @@ class Client(OpenApiClient):
             body['DiscardRate'] = request.discard_rate
         if not UtilClient.is_unset(request.field_name):
             body['FieldName'] = request.field_name
+        if not UtilClient.is_unset(request.filter_ver):
+            body['FilterVer'] = request.filter_ver
         if not UtilClient.is_unset(request.site_id):
             body['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.task_name):
@@ -33798,6 +34328,8 @@ class Client(OpenApiClient):
             body['DiscardRate'] = request.discard_rate
         if not UtilClient.is_unset(request.field_name):
             body['FieldName'] = request.field_name
+        if not UtilClient.is_unset(request.filter_ver):
+            body['FilterVer'] = request.filter_ver
         if not UtilClient.is_unset(request.site_id):
             body['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.task_name):
@@ -34339,6 +34871,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_tiered_cache_with_options_async(request, runtime)
 
+    def update_url_observation_with_options(
+        self,
+        request: esa20240910_models.UpdateUrlObservationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateUrlObservationResponse:
+        """
+        @summary 更新网页监测配置
+        
+        @param request: UpdateUrlObservationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUrlObservationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.sdk_type):
+            query['SdkType'] = request.sdk_type
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateUrlObservation',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateUrlObservationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_url_observation_with_options_async(
+        self,
+        request: esa20240910_models.UpdateUrlObservationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateUrlObservationResponse:
+        """
+        @summary 更新网页监测配置
+        
+        @param request: UpdateUrlObservationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUrlObservationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.sdk_type):
+            query['SdkType'] = request.sdk_type
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateUrlObservation',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateUrlObservationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_url_observation(
+        self,
+        request: esa20240910_models.UpdateUrlObservationRequest,
+    ) -> esa20240910_models.UpdateUrlObservationResponse:
+        """
+        @summary 更新网页监测配置
+        
+        @param request: UpdateUrlObservationRequest
+        @return: UpdateUrlObservationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_url_observation_with_options(request, runtime)
+
+    async def update_url_observation_async(
+        self,
+        request: esa20240910_models.UpdateUrlObservationRequest,
+    ) -> esa20240910_models.UpdateUrlObservationResponse:
+        """
+        @summary 更新网页监测配置
+        
+        @param request: UpdateUrlObservationRequest
+        @return: UpdateUrlObservationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_url_observation_with_options_async(request, runtime)
+
     def update_user_delivery_task_with_options(
         self,
         request: esa20240910_models.UpdateUserDeliveryTaskRequest,
@@ -34361,6 +34997,8 @@ class Client(OpenApiClient):
             body['DiscardRate'] = request.discard_rate
         if not UtilClient.is_unset(request.field_name):
             body['FieldName'] = request.field_name
+        if not UtilClient.is_unset(request.filter_ver):
+            body['FilterVer'] = request.filter_ver
         if not UtilClient.is_unset(request.task_name):
             body['TaskName'] = request.task_name
         req = open_api_models.OpenApiRequest(
@@ -34404,6 +35042,8 @@ class Client(OpenApiClient):
             body['DiscardRate'] = request.discard_rate
         if not UtilClient.is_unset(request.field_name):
             body['FieldName'] = request.field_name
+        if not UtilClient.is_unset(request.filter_ver):
+            body['FilterVer'] = request.filter_ver
         if not UtilClient.is_unset(request.task_name):
             body['TaskName'] = request.task_name
         req = open_api_models.OpenApiRequest(

@@ -1,3 +1,23 @@
+2025-06-24 Version: 2.27.0
+- Support API CreateUrlObservation.
+- Support API DeleteUrlObservation.
+- Support API ListESAIPInfo.
+- Support API ListUrlObservations.
+- Support API TagResources.
+- Support API UpdateUrlObservation.
+- Update API CreateSiteDeliveryTask: add request parameters FilterVer.
+- Update API CreateSiteDeliveryTask: add request parameters HttpDelivery.LastLogSplit.
+- Update API CreateSiteDeliveryTask: add request parameters HttpDelivery.LogSplit.
+- Update API CreateSiteDeliveryTask: add request parameters HttpDelivery.LogSplitWords.
+- Update API CreateUserDeliveryTask: add request parameters FilterVer.
+- Update API GetSiteDeliveryTask: add response parameters Body.FilterVer.
+- Update API GetSiteDeliveryTask: add response parameters Body.RawRule.
+- Update API GetUserDeliveryTask: add response parameters Body.FilterVer.
+- Update API GetUserDeliveryTask: add response parameters Body.RawRule.
+- Update API UpdateSiteDeliveryTask: add request parameters FilterVer.
+- Update API UpdateUserDeliveryTask: add request parameters FilterVer.
+
+
 2025-06-16 Version: 2.26.1
 - Update API CreateLoadBalancer: add request parameters Monitor.MonitoringRegion.
 - Update API GetLoadBalancer: add response parameters Body.Monitor.MonitoringRegion.

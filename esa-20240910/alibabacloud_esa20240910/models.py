@@ -12910,8 +12910,11 @@ class CreateSiteDeliveryTaskRequestHttpDelivery(TeaModel):
         compress: str = None,
         dest_url: str = None,
         header_param: Dict[str, HttpDeliveryHeaderParamValue] = None,
+        last_log_split: bool = None,
         log_body_prefix: str = None,
         log_body_suffix: str = None,
+        log_split: bool = None,
+        log_split_words: str = None,
         max_batch_mb: int = None,
         max_batch_size: int = None,
         max_retry: int = None,
@@ -12926,10 +12929,13 @@ class CreateSiteDeliveryTaskRequestHttpDelivery(TeaModel):
         self.dest_url = dest_url
         # The custom headers.
         self.header_param = header_param
+        self.last_log_split = last_log_split
         # The prefix of the log delivery package.
         self.log_body_prefix = log_body_prefix
         # The suffix of the log delivery package.
         self.log_body_suffix = log_body_suffix
+        self.log_split = log_split
+        self.log_split_words = log_split_words
         # The maximum size of data for each delivery. Unit: MB.
         self.max_batch_mb = max_batch_mb
         # The maximum number of entries for each delivery.
@@ -12971,10 +12977,16 @@ class CreateSiteDeliveryTaskRequestHttpDelivery(TeaModel):
         if self.header_param is not None:
             for k, v in self.header_param.items():
                 result['HeaderParam'][k] = v.to_map()
+        if self.last_log_split is not None:
+            result['LastLogSplit'] = self.last_log_split
         if self.log_body_prefix is not None:
             result['LogBodyPrefix'] = self.log_body_prefix
         if self.log_body_suffix is not None:
             result['LogBodySuffix'] = self.log_body_suffix
+        if self.log_split is not None:
+            result['LogSplit'] = self.log_split
+        if self.log_split_words is not None:
+            result['LogSplitWords'] = self.log_split_words
         if self.max_batch_mb is not None:
             result['MaxBatchMB'] = self.max_batch_mb
         if self.max_batch_size is not None:
@@ -13004,10 +13016,16 @@ class CreateSiteDeliveryTaskRequestHttpDelivery(TeaModel):
             for k, v in m.get('HeaderParam').items():
                 temp_model = HttpDeliveryHeaderParamValue()
                 self.header_param[k] = temp_model.from_map(v)
+        if m.get('LastLogSplit') is not None:
+            self.last_log_split = m.get('LastLogSplit')
         if m.get('LogBodyPrefix') is not None:
             self.log_body_prefix = m.get('LogBodyPrefix')
         if m.get('LogBodySuffix') is not None:
             self.log_body_suffix = m.get('LogBodySuffix')
+        if m.get('LogSplit') is not None:
+            self.log_split = m.get('LogSplit')
+        if m.get('LogSplitWords') is not None:
+            self.log_split_words = m.get('LogSplitWords')
         if m.get('MaxBatchMB') is not None:
             self.max_batch_mb = m.get('MaxBatchMB')
         if m.get('MaxBatchSize') is not None:
@@ -13287,6 +13305,7 @@ class CreateSiteDeliveryTaskRequest(TeaModel):
         delivery_type: str = None,
         discard_rate: float = None,
         field_name: str = None,
+        filter_ver: str = None,
         http_delivery: CreateSiteDeliveryTaskRequestHttpDelivery = None,
         kafka_delivery: CreateSiteDeliveryTaskRequestKafkaDelivery = None,
         oss_delivery: CreateSiteDeliveryTaskRequestOssDelivery = None,
@@ -13308,8 +13327,6 @@ class CreateSiteDeliveryTaskRequest(TeaModel):
         # 
         # *   cn: the Chinese mainland.
         # *   oversea: outside the Chinese mainland.
-        # 
-        # This parameter is required.
         self.data_center = data_center
         # The destination of the delivery. Valid values:
         # 
@@ -13328,6 +13345,7 @@ class CreateSiteDeliveryTaskRequest(TeaModel):
         # 
         # This parameter is required.
         self.field_name = field_name
+        self.filter_ver = filter_ver
         # The configurations for delivery to an HTTP server.
         self.http_delivery = http_delivery
         # The configurations for delivery to Kafka.
@@ -13375,6 +13393,8 @@ class CreateSiteDeliveryTaskRequest(TeaModel):
             result['DiscardRate'] = self.discard_rate
         if self.field_name is not None:
             result['FieldName'] = self.field_name
+        if self.filter_ver is not None:
+            result['FilterVer'] = self.filter_ver
         if self.http_delivery is not None:
             result['HttpDelivery'] = self.http_delivery.to_map()
         if self.kafka_delivery is not None:
@@ -13403,6 +13423,8 @@ class CreateSiteDeliveryTaskRequest(TeaModel):
             self.discard_rate = m.get('DiscardRate')
         if m.get('FieldName') is not None:
             self.field_name = m.get('FieldName')
+        if m.get('FilterVer') is not None:
+            self.filter_ver = m.get('FilterVer')
         if m.get('HttpDelivery') is not None:
             temp_model = CreateSiteDeliveryTaskRequestHttpDelivery()
             self.http_delivery = temp_model.from_map(m['HttpDelivery'])
@@ -13433,6 +13455,7 @@ class CreateSiteDeliveryTaskShrinkRequest(TeaModel):
         delivery_type: str = None,
         discard_rate: float = None,
         field_name: str = None,
+        filter_ver: str = None,
         http_delivery_shrink: str = None,
         kafka_delivery_shrink: str = None,
         oss_delivery_shrink: str = None,
@@ -13454,8 +13477,6 @@ class CreateSiteDeliveryTaskShrinkRequest(TeaModel):
         # 
         # *   cn: the Chinese mainland.
         # *   oversea: outside the Chinese mainland.
-        # 
-        # This parameter is required.
         self.data_center = data_center
         # The destination of the delivery. Valid values:
         # 
@@ -13474,6 +13495,7 @@ class CreateSiteDeliveryTaskShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.field_name = field_name
+        self.filter_ver = filter_ver
         # The configurations for delivery to an HTTP server.
         self.http_delivery_shrink = http_delivery_shrink
         # The configurations for delivery to Kafka.
@@ -13512,6 +13534,8 @@ class CreateSiteDeliveryTaskShrinkRequest(TeaModel):
             result['DiscardRate'] = self.discard_rate
         if self.field_name is not None:
             result['FieldName'] = self.field_name
+        if self.filter_ver is not None:
+            result['FilterVer'] = self.filter_ver
         if self.http_delivery_shrink is not None:
             result['HttpDelivery'] = self.http_delivery_shrink
         if self.kafka_delivery_shrink is not None:
@@ -13540,6 +13564,8 @@ class CreateSiteDeliveryTaskShrinkRequest(TeaModel):
             self.discard_rate = m.get('DiscardRate')
         if m.get('FieldName') is not None:
             self.field_name = m.get('FieldName')
+        if m.get('FilterVer') is not None:
+            self.filter_ver = m.get('FilterVer')
         if m.get('HttpDelivery') is not None:
             self.http_delivery_shrink = m.get('HttpDelivery')
         if m.get('KafkaDelivery') is not None:
@@ -13719,6 +13745,123 @@ class CreateSlrRoleForRealtimeLogResponse(TeaModel):
         return self
 
 
+class CreateUrlObservationRequest(TeaModel):
+    def __init__(
+        self,
+        sdk_type: str = None,
+        site_id: int = None,
+        url: str = None,
+    ):
+        # This parameter is required.
+        self.sdk_type = sdk_type
+        # This parameter is required.
+        self.site_id = site_id
+        # This parameter is required.
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sdk_type is not None:
+            result['SdkType'] = self.sdk_type
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SdkType') is not None:
+            self.sdk_type = m.get('SdkType')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class CreateUrlObservationResponseBody(TeaModel):
+    def __init__(
+        self,
+        config_id: str = None,
+        request_id: str = None,
+    ):
+        self.config_id = config_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateUrlObservationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateUrlObservationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateUrlObservationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateUserDeliveryTaskRequestHttpDeliveryStandardAuthParam(TeaModel):
     def __init__(
         self,
@@ -13767,21 +13910,17 @@ class CreateUserDeliveryTaskRequestHttpDelivery(TeaModel):
         compress: str = None,
         dest_url: str = None,
         header_param: Dict[str, HttpDeliveryHeaderParamValue] = None,
-        last_log_split: str = None,
+        last_log_split: bool = None,
         log_body_prefix: str = None,
         log_body_suffix: str = None,
-        log_split: str = None,
+        log_split: bool = None,
         log_split_words: str = None,
-        max_backoff_ms: int = None,
         max_batch_mb: int = None,
         max_batch_size: int = None,
         max_retry: int = None,
-        min_backoff_ms: int = None,
         query_param: Dict[str, HttpDeliveryQueryParamValue] = None,
-        response_body_key: str = None,
         standard_auth_on: bool = None,
         standard_auth_param: CreateUserDeliveryTaskRequestHttpDeliveryStandardAuthParam = None,
-        success_code: int = None,
         transform_timeout: int = None,
     ):
         # The compression method.
@@ -13800,26 +13939,18 @@ class CreateUserDeliveryTaskRequestHttpDelivery(TeaModel):
         self.log_split = log_split
         # The log separator.
         self.log_split_words = log_split_words
-        # The maximum backoff time. Unit: milliseconds.
-        self.max_backoff_ms = max_backoff_ms
         # The maximum size of data for each delivery. Unit: MB.
         self.max_batch_mb = max_batch_mb
         # The maximum number of entries for each delivery.
         self.max_batch_size = max_batch_size
         # The maximum number of retries.
         self.max_retry = max_retry
-        # The minimum backoff time. Unit: milliseconds.
-        self.min_backoff_ms = min_backoff_ms
         # The custom query parameters.
         self.query_param = query_param
-        # The response field key used for success check.
-        self.response_body_key = response_body_key
         # Specifies whether to use server authentication.
         self.standard_auth_on = standard_auth_on
         # The authentication configurations.
         self.standard_auth_param = standard_auth_param
-        # The custom code for a success.
-        self.success_code = success_code
         # The timeout period. Unit: seconds.
         self.transform_timeout = transform_timeout
 
@@ -13859,28 +13990,20 @@ class CreateUserDeliveryTaskRequestHttpDelivery(TeaModel):
             result['LogSplit'] = self.log_split
         if self.log_split_words is not None:
             result['LogSplitWords'] = self.log_split_words
-        if self.max_backoff_ms is not None:
-            result['MaxBackoffMS'] = self.max_backoff_ms
         if self.max_batch_mb is not None:
             result['MaxBatchMB'] = self.max_batch_mb
         if self.max_batch_size is not None:
             result['MaxBatchSize'] = self.max_batch_size
         if self.max_retry is not None:
             result['MaxRetry'] = self.max_retry
-        if self.min_backoff_ms is not None:
-            result['MinBackoffMS'] = self.min_backoff_ms
         result['QueryParam'] = {}
         if self.query_param is not None:
             for k, v in self.query_param.items():
                 result['QueryParam'][k] = v.to_map()
-        if self.response_body_key is not None:
-            result['ResponseBodyKey'] = self.response_body_key
         if self.standard_auth_on is not None:
             result['StandardAuthOn'] = self.standard_auth_on
         if self.standard_auth_param is not None:
             result['StandardAuthParam'] = self.standard_auth_param.to_map()
-        if self.success_code is not None:
-            result['SuccessCode'] = self.success_code
         if self.transform_timeout is not None:
             result['TransformTimeout'] = self.transform_timeout
         return result
@@ -13906,30 +14029,22 @@ class CreateUserDeliveryTaskRequestHttpDelivery(TeaModel):
             self.log_split = m.get('LogSplit')
         if m.get('LogSplitWords') is not None:
             self.log_split_words = m.get('LogSplitWords')
-        if m.get('MaxBackoffMS') is not None:
-            self.max_backoff_ms = m.get('MaxBackoffMS')
         if m.get('MaxBatchMB') is not None:
             self.max_batch_mb = m.get('MaxBatchMB')
         if m.get('MaxBatchSize') is not None:
             self.max_batch_size = m.get('MaxBatchSize')
         if m.get('MaxRetry') is not None:
             self.max_retry = m.get('MaxRetry')
-        if m.get('MinBackoffMS') is not None:
-            self.min_backoff_ms = m.get('MinBackoffMS')
         self.query_param = {}
         if m.get('QueryParam') is not None:
             for k, v in m.get('QueryParam').items():
                 temp_model = HttpDeliveryQueryParamValue()
                 self.query_param[k] = temp_model.from_map(v)
-        if m.get('ResponseBodyKey') is not None:
-            self.response_body_key = m.get('ResponseBodyKey')
         if m.get('StandardAuthOn') is not None:
             self.standard_auth_on = m.get('StandardAuthOn')
         if m.get('StandardAuthParam') is not None:
             temp_model = CreateUserDeliveryTaskRequestHttpDeliveryStandardAuthParam()
             self.standard_auth_param = temp_model.from_map(m['StandardAuthParam'])
-        if m.get('SuccessCode') is not None:
-            self.success_code = m.get('SuccessCode')
         if m.get('TransformTimeout') is not None:
             self.transform_timeout = m.get('TransformTimeout')
         return self
@@ -14194,6 +14309,7 @@ class CreateUserDeliveryTaskRequest(TeaModel):
         details: str = None,
         discard_rate: float = None,
         field_name: str = None,
+        filter_ver: str = None,
         http_delivery: CreateUserDeliveryTaskRequestHttpDelivery = None,
         kafka_delivery: CreateUserDeliveryTaskRequestKafkaDelivery = None,
         oss_delivery: CreateUserDeliveryTaskRequestOssDelivery = None,
@@ -14214,8 +14330,6 @@ class CreateUserDeliveryTaskRequest(TeaModel):
         # 
         # *   cn: the Chinese mainland.
         # *   sg: outside the Chinese mainland.
-        # 
-        # This parameter is required.
         self.data_center = data_center
         # The destination of the delivery. Valid values:
         # 
@@ -14235,6 +14349,7 @@ class CreateUserDeliveryTaskRequest(TeaModel):
         # 
         # This parameter is required.
         self.field_name = field_name
+        self.filter_ver = filter_ver
         # The configurations for delivery to an HTTP server.
         self.http_delivery = http_delivery
         # The configurations for delivery to Kafka.
@@ -14280,6 +14395,8 @@ class CreateUserDeliveryTaskRequest(TeaModel):
             result['DiscardRate'] = self.discard_rate
         if self.field_name is not None:
             result['FieldName'] = self.field_name
+        if self.filter_ver is not None:
+            result['FilterVer'] = self.filter_ver
         if self.http_delivery is not None:
             result['HttpDelivery'] = self.http_delivery.to_map()
         if self.kafka_delivery is not None:
@@ -14308,6 +14425,8 @@ class CreateUserDeliveryTaskRequest(TeaModel):
             self.discard_rate = m.get('DiscardRate')
         if m.get('FieldName') is not None:
             self.field_name = m.get('FieldName')
+        if m.get('FilterVer') is not None:
+            self.filter_ver = m.get('FilterVer')
         if m.get('HttpDelivery') is not None:
             temp_model = CreateUserDeliveryTaskRequestHttpDelivery()
             self.http_delivery = temp_model.from_map(m['HttpDelivery'])
@@ -14337,6 +14456,7 @@ class CreateUserDeliveryTaskShrinkRequest(TeaModel):
         details: str = None,
         discard_rate: float = None,
         field_name: str = None,
+        filter_ver: str = None,
         http_delivery_shrink: str = None,
         kafka_delivery_shrink: str = None,
         oss_delivery_shrink: str = None,
@@ -14357,8 +14477,6 @@ class CreateUserDeliveryTaskShrinkRequest(TeaModel):
         # 
         # *   cn: the Chinese mainland.
         # *   sg: outside the Chinese mainland.
-        # 
-        # This parameter is required.
         self.data_center = data_center
         # The destination of the delivery. Valid values:
         # 
@@ -14378,6 +14496,7 @@ class CreateUserDeliveryTaskShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.field_name = field_name
+        self.filter_ver = filter_ver
         # The configurations for delivery to an HTTP server.
         self.http_delivery_shrink = http_delivery_shrink
         # The configurations for delivery to Kafka.
@@ -14414,6 +14533,8 @@ class CreateUserDeliveryTaskShrinkRequest(TeaModel):
             result['DiscardRate'] = self.discard_rate
         if self.field_name is not None:
             result['FieldName'] = self.field_name
+        if self.filter_ver is not None:
+            result['FilterVer'] = self.filter_ver
         if self.http_delivery_shrink is not None:
             result['HttpDelivery'] = self.http_delivery_shrink
         if self.kafka_delivery_shrink is not None:
@@ -14442,6 +14563,8 @@ class CreateUserDeliveryTaskShrinkRequest(TeaModel):
             self.discard_rate = m.get('DiscardRate')
         if m.get('FieldName') is not None:
             self.field_name = m.get('FieldName')
+        if m.get('FilterVer') is not None:
+            self.filter_ver = m.get('FilterVer')
         if m.get('HttpDelivery') is not None:
             self.http_delivery_shrink = m.get('HttpDelivery')
         if m.get('KafkaDelivery') is not None:
@@ -20189,6 +20312,110 @@ class DeleteSiteOriginClientCertificateResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteSiteOriginClientCertificateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteUrlObservationRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.config_id = config_id
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class DeleteUrlObservationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteUrlObservationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteUrlObservationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteUrlObservationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -36748,6 +36975,8 @@ class GetSiteDeliveryTaskResponseBody(TeaModel):
         discard_rate: float = None,
         field_list: str = None,
         filter_rules: str = None,
+        filter_ver: str = None,
+        raw_rule: str = None,
         request_id: str = None,
         sink_config: Any = None,
         site_id: int = None,
@@ -36782,6 +37011,8 @@ class GetSiteDeliveryTaskResponseBody(TeaModel):
         self.field_list = field_list
         # The filtering rules.
         self.filter_rules = filter_rules
+        self.filter_ver = filter_ver
+        self.raw_rule = raw_rule
         # The request ID.
         self.request_id = request_id
         # The delivery configuration.
@@ -36819,6 +37050,10 @@ class GetSiteDeliveryTaskResponseBody(TeaModel):
             result['FieldList'] = self.field_list
         if self.filter_rules is not None:
             result['FilterRules'] = self.filter_rules
+        if self.filter_ver is not None:
+            result['FilterVer'] = self.filter_ver
+        if self.raw_rule is not None:
+            result['RawRule'] = self.raw_rule
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.sink_config is not None:
@@ -36847,6 +37082,10 @@ class GetSiteDeliveryTaskResponseBody(TeaModel):
             self.field_list = m.get('FieldList')
         if m.get('FilterRules') is not None:
             self.filter_rules = m.get('FilterRules')
+        if m.get('FilterVer') is not None:
+            self.filter_ver = m.get('FilterVer')
+        if m.get('RawRule') is not None:
+            self.raw_rule = m.get('RawRule')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('SinkConfig') is not None:
@@ -37926,6 +38165,8 @@ class GetUserDeliveryTaskResponseBody(TeaModel):
         discard_rate: float = None,
         field_list: str = None,
         filter_rules: str = None,
+        filter_ver: str = None,
+        raw_rule: str = None,
         request_id: str = None,
         sink_config: Any = None,
         status: str = None,
@@ -37959,6 +38200,8 @@ class GetUserDeliveryTaskResponseBody(TeaModel):
         self.field_list = field_list
         # The filtering rules.
         self.filter_rules = filter_rules
+        self.filter_ver = filter_ver
+        self.raw_rule = raw_rule
         # The request ID.
         self.request_id = request_id
         # The delivery configuration.
@@ -37991,6 +38234,10 @@ class GetUserDeliveryTaskResponseBody(TeaModel):
             result['FieldList'] = self.field_list
         if self.filter_rules is not None:
             result['FilterRules'] = self.filter_rules
+        if self.filter_ver is not None:
+            result['FilterVer'] = self.filter_ver
+        if self.raw_rule is not None:
+            result['RawRule'] = self.raw_rule
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.sink_config is not None:
@@ -38017,6 +38264,10 @@ class GetUserDeliveryTaskResponseBody(TeaModel):
             self.field_list = m.get('FieldList')
         if m.get('FilterRules') is not None:
             self.filter_rules = m.get('FilterRules')
+        if m.get('FilterVer') is not None:
+            self.filter_ver = m.get('FilterVer')
+        if m.get('RawRule') is not None:
+            self.raw_rule = m.get('RawRule')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('SinkConfig') is not None:
@@ -42104,6 +42355,149 @@ class ListCompressionRulesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListCompressionRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListESAIPInfoRequest(TeaModel):
+    def __init__(
+        self,
+        vip_info: str = None,
+    ):
+        # This parameter is required.
+        self.vip_info = vip_info
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.vip_info is not None:
+            result['VipInfo'] = self.vip_info
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VipInfo') is not None:
+            self.vip_info = m.get('VipInfo')
+        return self
+
+
+class ListESAIPInfoResponseBodyContent(TeaModel):
+    def __init__(
+        self,
+        cdn_ip: str = None,
+        ip: str = None,
+    ):
+        self.cdn_ip = cdn_ip
+        self.ip = ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cdn_ip is not None:
+            result['CdnIp'] = self.cdn_ip
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CdnIp') is not None:
+            self.cdn_ip = m.get('CdnIp')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        return self
+
+
+class ListESAIPInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        content: List[ListESAIPInfoResponseBodyContent] = None,
+        request_id: str = None,
+    ):
+        self.content = content
+        self.request_id = request_id
+
+    def validate(self):
+        if self.content:
+            for k in self.content:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Content'] = []
+        if self.content is not None:
+            for k in self.content:
+                result['Content'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.content = []
+        if m.get('Content') is not None:
+            for k in m.get('Content'):
+                temp_model = ListESAIPInfoResponseBodyContent()
+                self.content.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListESAIPInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListESAIPInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListESAIPInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -53872,6 +54266,198 @@ class ListUploadTasksResponse(TeaModel):
         return self
 
 
+class ListUrlObservationsRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        site_id: int = None,
+    ):
+        self.config_id = config_id
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class ListUrlObservationsResponseBodyConfigs(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        sdk_type: str = None,
+        url: str = None,
+    ):
+        self.config_id = config_id
+        self.sdk_type = sdk_type
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.sdk_type is not None:
+            result['SdkType'] = self.sdk_type
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('SdkType') is not None:
+            self.sdk_type = m.get('SdkType')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class ListUrlObservationsResponseBody(TeaModel):
+    def __init__(
+        self,
+        configs: List[ListUrlObservationsResponseBodyConfigs] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+        total_page: int = None,
+    ):
+        self.configs = configs
+        self.page_number = page_number
+        self.page_size = page_size
+        # Id of the request
+        self.request_id = request_id
+        self.total_count = total_count
+        self.total_page = total_page
+
+    def validate(self):
+        if self.configs:
+            for k in self.configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Configs'] = []
+        if self.configs is not None:
+            for k in self.configs:
+                result['Configs'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.configs = []
+        if m.get('Configs') is not None:
+            for k in m.get('Configs'):
+                temp_model = ListUrlObservationsResponseBodyConfigs()
+                self.configs.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        return self
+
+
+class ListUrlObservationsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListUrlObservationsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListUrlObservationsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListUserDeliveryTasksRequest(TeaModel):
     def __init__(
         self,
@@ -61118,6 +61704,191 @@ class StopScheduledPreloadExecutionResponse(TeaModel):
         return self
 
 
+class TagResourcesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag keys.
+        # 
+        # This parameter is required.
+        self.key = key
+        # The tag value.
+        # 
+        # This parameter is required.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class TagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        security_token: str = None,
+        tag: List[TagResourcesRequestTag] = None,
+    ):
+        self.owner_id = owner_id
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The ID of resource. Valid values of N: **1** to **50**.
+        # 
+        # This parameter is required.
+        self.resource_id = resource_id
+        # The resource type, which can only be **site**.
+        # 
+        # This parameter is required.
+        self.resource_type = resource_type
+        self.security_token = security_token
+        # The tags that you want to add to the resource. You can enter up to 20 tags.
+        # 
+        # This parameter is required.
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = TagResourcesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class TagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class TagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UntagResourcesRequest(TeaModel):
     def __init__(
         self,
@@ -68148,6 +68919,7 @@ class UpdateSiteDeliveryTaskRequest(TeaModel):
         business_type: str = None,
         discard_rate: float = None,
         field_name: str = None,
+        filter_ver: str = None,
         site_id: int = None,
         task_name: str = None,
     ):
@@ -68164,6 +68936,7 @@ class UpdateSiteDeliveryTaskRequest(TeaModel):
         # 
         # This parameter is required.
         self.field_name = field_name
+        self.filter_ver = filter_ver
         # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
         # The name of the delivery task.
@@ -68186,6 +68959,8 @@ class UpdateSiteDeliveryTaskRequest(TeaModel):
             result['DiscardRate'] = self.discard_rate
         if self.field_name is not None:
             result['FieldName'] = self.field_name
+        if self.filter_ver is not None:
+            result['FilterVer'] = self.filter_ver
         if self.site_id is not None:
             result['SiteId'] = self.site_id
         if self.task_name is not None:
@@ -68200,6 +68975,8 @@ class UpdateSiteDeliveryTaskRequest(TeaModel):
             self.discard_rate = m.get('DiscardRate')
         if m.get('FieldName') is not None:
             self.field_name = m.get('FieldName')
+        if m.get('FilterVer') is not None:
+            self.filter_ver = m.get('FilterVer')
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
         if m.get('TaskName') is not None:
@@ -68849,6 +69626,117 @@ class UpdateTieredCacheResponse(TeaModel):
         return self
 
 
+class UpdateUrlObservationRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        sdk_type: str = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.config_id = config_id
+        # This parameter is required.
+        self.sdk_type = sdk_type
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.sdk_type is not None:
+            result['SdkType'] = self.sdk_type
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('SdkType') is not None:
+            self.sdk_type = m.get('SdkType')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class UpdateUrlObservationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateUrlObservationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateUrlObservationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateUrlObservationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateUserDeliveryTaskRequest(TeaModel):
     def __init__(
         self,
@@ -68856,6 +69744,7 @@ class UpdateUserDeliveryTaskRequest(TeaModel):
         details: str = None,
         discard_rate: float = None,
         field_name: str = None,
+        filter_ver: str = None,
         task_name: str = None,
     ):
         # The log category. Valid values:
@@ -68872,6 +69761,7 @@ class UpdateUserDeliveryTaskRequest(TeaModel):
         # 
         # This parameter is required.
         self.field_name = field_name
+        self.filter_ver = filter_ver
         # The name of the delivery task.
         # 
         # This parameter is required.
@@ -68894,6 +69784,8 @@ class UpdateUserDeliveryTaskRequest(TeaModel):
             result['DiscardRate'] = self.discard_rate
         if self.field_name is not None:
             result['FieldName'] = self.field_name
+        if self.filter_ver is not None:
+            result['FilterVer'] = self.filter_ver
         if self.task_name is not None:
             result['TaskName'] = self.task_name
         return result
@@ -68908,6 +69800,8 @@ class UpdateUserDeliveryTaskRequest(TeaModel):
             self.discard_rate = m.get('DiscardRate')
         if m.get('FieldName') is not None:
             self.field_name = m.get('FieldName')
+        if m.get('FilterVer') is not None:
+            self.filter_ver = m.get('FilterVer')
         if m.get('TaskName') is not None:
             self.task_name = m.get('TaskName')
         return self
