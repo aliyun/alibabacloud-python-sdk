@@ -1,3 +1,8 @@
+2025-06-25 Version: 5.5.0
+- Support API CreateCerts.
+- Support API DescribeDomainUsedPorts.
+
+
 2025-06-19 Version: 5.4.0
 - Support API CreateDefenseResource.
 - Support API DeleteDefenseResource.

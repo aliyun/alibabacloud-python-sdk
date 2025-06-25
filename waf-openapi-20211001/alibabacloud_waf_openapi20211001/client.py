@@ -523,6 +523,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_api_export_with_options_async(request, runtime)
 
+    def create_certs_with_options(
+        self,
+        request: waf_openapi_20211001_models.CreateCertsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.CreateCertsResponse:
+        """
+        @summary Uploads a certificate that uses an internationally accepted algorithm for a domain name added to Web Application Firewall (WAF) in CNAME record mode.
+        
+        @param request: CreateCertsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCertsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_content):
+            query['CertContent'] = request.cert_content
+        if not UtilClient.is_unset(request.cert_key):
+            query['CertKey'] = request.cert_key
+        if not UtilClient.is_unset(request.cert_name):
+            query['CertName'] = request.cert_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCerts',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateCertsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_certs_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.CreateCertsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.CreateCertsResponse:
+        """
+        @summary Uploads a certificate that uses an internationally accepted algorithm for a domain name added to Web Application Firewall (WAF) in CNAME record mode.
+        
+        @param request: CreateCertsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCertsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_content):
+            query['CertContent'] = request.cert_content
+        if not UtilClient.is_unset(request.cert_key):
+            query['CertKey'] = request.cert_key
+        if not UtilClient.is_unset(request.cert_name):
+            query['CertName'] = request.cert_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCerts',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateCertsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_certs(
+        self,
+        request: waf_openapi_20211001_models.CreateCertsRequest,
+    ) -> waf_openapi_20211001_models.CreateCertsResponse:
+        """
+        @summary Uploads a certificate that uses an internationally accepted algorithm for a domain name added to Web Application Firewall (WAF) in CNAME record mode.
+        
+        @param request: CreateCertsRequest
+        @return: CreateCertsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_certs_with_options(request, runtime)
+
+    async def create_certs_async(
+        self,
+        request: waf_openapi_20211001_models.CreateCertsRequest,
+    ) -> waf_openapi_20211001_models.CreateCertsResponse:
+        """
+        @summary Uploads a certificate that uses an internationally accepted algorithm for a domain name added to Web Application Firewall (WAF) in CNAME record mode.
+        
+        @param request: CreateCertsRequest
+        @return: CreateCertsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_certs_with_options_async(request, runtime)
+
     def create_cloud_resource_with_options(
         self,
         tmp_req: waf_openapi_20211001_models.CreateCloudResourceRequest,
@@ -8122,6 +8238,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_detail_with_options_async(request, runtime)
+
+    def describe_domain_used_ports_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeDomainUsedPortsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeDomainUsedPortsResponse:
+        """
+        @summary 查询域名已使用的端口
+        
+        @param request: DescribeDomainUsedPortsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainUsedPortsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainUsedPorts',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDomainUsedPortsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_domain_used_ports_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeDomainUsedPortsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeDomainUsedPortsResponse:
+        """
+        @summary 查询域名已使用的端口
+        
+        @param request: DescribeDomainUsedPortsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainUsedPortsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainUsedPorts',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDomainUsedPortsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_domain_used_ports(
+        self,
+        request: waf_openapi_20211001_models.DescribeDomainUsedPortsRequest,
+    ) -> waf_openapi_20211001_models.DescribeDomainUsedPortsResponse:
+        """
+        @summary 查询域名已使用的端口
+        
+        @param request: DescribeDomainUsedPortsRequest
+        @return: DescribeDomainUsedPortsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_domain_used_ports_with_options(request, runtime)
+
+    async def describe_domain_used_ports_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeDomainUsedPortsRequest,
+    ) -> waf_openapi_20211001_models.DescribeDomainUsedPortsResponse:
+        """
+        @summary 查询域名已使用的端口
+        
+        @param request: DescribeDomainUsedPortsRequest
+        @return: DescribeDomainUsedPortsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_domain_used_ports_with_options_async(request, runtime)
 
     def describe_domains_with_options(
         self,
