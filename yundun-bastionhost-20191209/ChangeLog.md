@@ -1,3 +1,15 @@
+2025-06-25 Version: 1.3.1
+- Update API CreateHostAccount: add request parameters PrivilegeType.
+- Update API CreateHostAccount: add request parameters RotationMode.
+- Update API GetHostAccount: add response parameters Body.HostAccount.PrivilegeType.
+- Update API GetHostAccount: add response parameters Body.HostAccount.RotationMode.
+- Update API ListHostAccounts: add request parameters HostIds.
+- Update API ListHostAccounts: add response parameters Body.HostAccounts.$.PrivilegeType.
+- Update API ListHostAccounts: add response parameters Body.HostAccounts.$.RotationMode.
+- Update API ModifyHostAccount: add request parameters PrivilegeType.
+- Update API ModifyHostAccount: add request parameters RotationMode.
+
+
 2025-03-18 Version: 1.3.0
 - Support API CreateExportConfigJob.
 - Support API CreateOperationTicket.

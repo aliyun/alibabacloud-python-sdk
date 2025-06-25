@@ -78,16 +78,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AcceptApproveCommandResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AcceptApproveCommandResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AcceptApproveCommandResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def accept_approve_command_with_options_async(
         self,
@@ -126,16 +120,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AcceptApproveCommandResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AcceptApproveCommandResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AcceptApproveCommandResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def accept_approve_command(
         self,
@@ -214,16 +202,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AcceptOperationTicketResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AcceptOperationTicketResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AcceptOperationTicketResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def accept_operation_ticket_with_options_async(
         self,
@@ -270,16 +252,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AcceptOperationTicketResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AcceptOperationTicketResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AcceptOperationTicketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def accept_operation_ticket(
         self,
@@ -349,16 +325,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AddDatabasesToGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AddDatabasesToGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AddDatabasesToGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def add_databases_to_group_with_options_async(
         self,
@@ -396,16 +366,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AddDatabasesToGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AddDatabasesToGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AddDatabasesToGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def add_databases_to_group(
         self,
@@ -473,16 +437,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AddHostsToGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AddHostsToGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AddHostsToGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def add_hosts_to_group_with_options_async(
         self,
@@ -524,16 +482,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AddHostsToGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AddHostsToGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AddHostsToGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def add_hosts_to_group(
         self,
@@ -610,16 +562,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AddUsersToGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AddUsersToGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AddUsersToGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def add_users_to_group_with_options_async(
         self,
@@ -662,16 +608,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AddUsersToGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AddUsersToGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AddUsersToGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def add_users_to_group(
         self,
@@ -745,16 +685,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def attach_database_accounts_to_user_with_options_async(
         self,
@@ -792,16 +726,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def attach_database_accounts_to_user(
         self,
@@ -865,16 +793,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def attach_database_accounts_to_user_group_with_options_async(
         self,
@@ -912,16 +834,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AttachDatabaseAccountsToUserGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def attach_database_accounts_to_user_group(
         self,
@@ -985,16 +901,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AttachHostAccountsToHostShareKeyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AttachHostAccountsToHostShareKeyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AttachHostAccountsToHostShareKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def attach_host_accounts_to_host_share_key_with_options_async(
         self,
@@ -1032,16 +942,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AttachHostAccountsToHostShareKeyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AttachHostAccountsToHostShareKeyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AttachHostAccountsToHostShareKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def attach_host_accounts_to_host_share_key(
         self,
@@ -1105,16 +1009,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AttachHostAccountsToUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AttachHostAccountsToUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AttachHostAccountsToUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def attach_host_accounts_to_user_with_options_async(
         self,
@@ -1152,16 +1050,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AttachHostAccountsToUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AttachHostAccountsToUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AttachHostAccountsToUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def attach_host_accounts_to_user(
         self,
@@ -1227,16 +1119,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AttachHostAccountsToUserGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AttachHostAccountsToUserGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AttachHostAccountsToUserGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def attach_host_accounts_to_user_group_with_options_async(
         self,
@@ -1276,16 +1162,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AttachHostAccountsToUserGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AttachHostAccountsToUserGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AttachHostAccountsToUserGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def attach_host_accounts_to_user_group(
         self,
@@ -1353,16 +1233,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AttachHostGroupAccountsToUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AttachHostGroupAccountsToUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AttachHostGroupAccountsToUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def attach_host_group_accounts_to_user_with_options_async(
         self,
@@ -1400,16 +1274,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AttachHostGroupAccountsToUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AttachHostGroupAccountsToUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AttachHostGroupAccountsToUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def attach_host_group_accounts_to_user(
         self,
@@ -1473,16 +1341,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AttachHostGroupAccountsToUserGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AttachHostGroupAccountsToUserGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AttachHostGroupAccountsToUserGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def attach_host_group_accounts_to_user_group_with_options_async(
         self,
@@ -1520,16 +1382,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AttachHostGroupAccountsToUserGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.AttachHostGroupAccountsToUserGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AttachHostGroupAccountsToUserGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def attach_host_group_accounts_to_user_group(
         self,
@@ -1593,16 +1449,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ConfigInstanceSecurityGroupsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ConfigInstanceSecurityGroupsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ConfigInstanceSecurityGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def config_instance_security_groups_with_options_async(
         self,
@@ -1640,16 +1490,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ConfigInstanceSecurityGroupsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ConfigInstanceSecurityGroupsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ConfigInstanceSecurityGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def config_instance_security_groups(
         self,
@@ -1718,16 +1562,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ConfigInstanceWhiteListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ConfigInstanceWhiteListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ConfigInstanceWhiteListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def config_instance_white_list_with_options_async(
         self,
@@ -1770,16 +1608,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ConfigInstanceWhiteListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ConfigInstanceWhiteListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ConfigInstanceWhiteListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def config_instance_white_list(
         self,
@@ -1873,16 +1705,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateDatabaseResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateDatabaseResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateDatabaseResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_database_with_options_async(
         self,
@@ -1940,16 +1766,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateDatabaseResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateDatabaseResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateDatabaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_database(
         self,
@@ -2019,16 +1839,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateDatabaseAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateDatabaseAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateDatabaseAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_database_account_with_options_async(
         self,
@@ -2072,16 +1886,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateDatabaseAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateDatabaseAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateDatabaseAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_database_account(
         self,
@@ -2139,16 +1947,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateExportConfigJobResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateExportConfigJobResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateExportConfigJobResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_export_config_job_with_options_async(
         self,
@@ -2180,16 +1982,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateExportConfigJobResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateExportConfigJobResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateExportConfigJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_export_config_job(
         self,
@@ -2265,16 +2061,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateHostResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateHostResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateHostResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_host_with_options_async(
         self,
@@ -2328,16 +2118,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateHostResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateHostResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateHostResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_host(
         self,
@@ -2393,10 +2177,14 @@ class Client(OpenApiClient):
             query['Password'] = request.password
         if not UtilClient.is_unset(request.private_key):
             query['PrivateKey'] = request.private_key
+        if not UtilClient.is_unset(request.privilege_type):
+            query['PrivilegeType'] = request.privilege_type
         if not UtilClient.is_unset(request.protocol_name):
             query['ProtocolName'] = request.protocol_name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.rotation_mode):
+            query['RotationMode'] = request.rotation_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2411,16 +2199,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateHostAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateHostAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateHostAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_host_account_with_options_async(
         self,
@@ -2450,10 +2232,14 @@ class Client(OpenApiClient):
             query['Password'] = request.password
         if not UtilClient.is_unset(request.private_key):
             query['PrivateKey'] = request.private_key
+        if not UtilClient.is_unset(request.privilege_type):
+            query['PrivilegeType'] = request.privilege_type
         if not UtilClient.is_unset(request.protocol_name):
             query['ProtocolName'] = request.protocol_name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.rotation_mode):
+            query['RotationMode'] = request.rotation_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2468,16 +2254,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateHostAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateHostAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateHostAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_host_account(
         self,
@@ -2541,16 +2321,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateHostGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateHostGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateHostGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_host_group_with_options_async(
         self,
@@ -2588,16 +2362,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateHostGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateHostGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateHostGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_host_group(
         self,
@@ -2663,16 +2431,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateHostShareKeyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateHostShareKeyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateHostShareKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_host_share_key_with_options_async(
         self,
@@ -2712,16 +2474,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateHostShareKeyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateHostShareKeyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateHostShareKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_host_share_key(
         self,
@@ -2789,16 +2545,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateNetworkDomainResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateNetworkDomainResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateNetworkDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_network_domain_with_options_async(
         self,
@@ -2840,16 +2590,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateNetworkDomainResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateNetworkDomainResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateNetworkDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_network_domain(
         self,
@@ -2921,16 +2665,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateOperationTicketResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateOperationTicketResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateOperationTicketResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_operation_ticket_with_options_async(
         self,
@@ -2976,16 +2714,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateOperationTicketResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateOperationTicketResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateOperationTicketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_operation_ticket(
         self,
@@ -3047,16 +2779,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreatePolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreatePolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreatePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_policy_with_options_async(
         self,
@@ -3096,16 +2822,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreatePolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreatePolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreatePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_policy(
         self,
@@ -3183,16 +2903,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_rule_with_options_async(
         self,
@@ -3244,16 +2958,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_rule(
         self,
@@ -3348,16 +3056,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_user_with_options_async(
         self,
@@ -3426,16 +3128,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_user(
         self,
@@ -3508,16 +3204,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateUserGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateUserGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateUserGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_user_group_with_options_async(
         self,
@@ -3558,16 +3248,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateUserGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateUserGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateUserGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_user_group(
         self,
@@ -3643,16 +3327,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateUserPublicKeyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateUserPublicKeyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateUserPublicKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_user_public_key_with_options_async(
         self,
@@ -3696,16 +3374,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateUserPublicKeyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.CreateUserPublicKeyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateUserPublicKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_user_public_key(
         self,
@@ -3771,16 +3443,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteDatabaseResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteDatabaseResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteDatabaseResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_database_with_options_async(
         self,
@@ -3816,16 +3482,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteDatabaseResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteDatabaseResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteDatabaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_database(
         self,
@@ -3887,16 +3547,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteDatabaseAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteDatabaseAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteDatabaseAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_database_account_with_options_async(
         self,
@@ -3932,16 +3586,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteDatabaseAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteDatabaseAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteDatabaseAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_database_account(
         self,
@@ -4003,16 +3651,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteHostResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteHostResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteHostResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_host_with_options_async(
         self,
@@ -4048,16 +3690,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteHostResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteHostResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteHostResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_host(
         self,
@@ -4125,16 +3761,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteHostAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteHostAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteHostAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_host_account_with_options_async(
         self,
@@ -4176,16 +3806,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteHostAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteHostAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteHostAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_host_account(
         self,
@@ -4263,16 +3887,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteHostGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteHostGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteHostGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_host_group_with_options_async(
         self,
@@ -4312,16 +3930,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteHostGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteHostGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteHostGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_host_group(
         self,
@@ -4391,16 +4003,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteHostShareKeyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteHostShareKeyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteHostShareKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_host_share_key_with_options_async(
         self,
@@ -4436,16 +4042,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteHostShareKeyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteHostShareKeyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteHostShareKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_host_share_key(
         self,
@@ -4507,16 +4107,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteNetworkDomainResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteNetworkDomainResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteNetworkDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_network_domain_with_options_async(
         self,
@@ -4552,16 +4146,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteNetworkDomainResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteNetworkDomainResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteNetworkDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_network_domain(
         self,
@@ -4623,16 +4211,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeletePolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeletePolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeletePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_policy_with_options_async(
         self,
@@ -4668,16 +4250,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeletePolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeletePolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeletePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_policy(
         self,
@@ -4739,16 +4315,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_rule_with_options_async(
         self,
@@ -4784,16 +4354,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_rule(
         self,
@@ -4855,16 +4419,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_user_with_options_async(
         self,
@@ -4900,16 +4458,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_user(
         self,
@@ -4971,16 +4523,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteUserGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteUserGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteUserGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_user_group_with_options_async(
         self,
@@ -5016,16 +4562,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteUserGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteUserGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteUserGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_user_group(
         self,
@@ -5089,16 +4629,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteUserPublicKeyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteUserPublicKeyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteUserPublicKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_user_public_key_with_options_async(
         self,
@@ -5136,16 +4670,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteUserPublicKeyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DeleteUserPublicKeyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteUserPublicKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_user_public_key(
         self,
@@ -5211,16 +4739,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DescribeInstanceAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DescribeInstanceAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DescribeInstanceAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_attribute_with_options_async(
         self,
@@ -5256,16 +4778,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DescribeInstanceAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DescribeInstanceAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DescribeInstanceAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance_attribute(
         self,
@@ -5341,16 +4857,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DescribeInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DescribeInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DescribeInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instances_with_options_async(
         self,
@@ -5396,16 +4906,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DescribeInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DescribeInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DescribeInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instances(
         self,
@@ -5465,16 +4969,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DescribeRegionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DescribeRegionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DescribeRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_regions_with_options_async(
         self,
@@ -5508,16 +5006,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DescribeRegionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DescribeRegionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DescribeRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_regions(
         self,
@@ -5581,16 +5073,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def detach_database_accounts_from_user_with_options_async(
         self,
@@ -5628,16 +5114,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def detach_database_accounts_from_user(
         self,
@@ -5701,16 +5181,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def detach_database_accounts_from_user_group_with_options_async(
         self,
@@ -5748,16 +5222,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DetachDatabaseAccountsFromUserGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def detach_database_accounts_from_user_group(
         self,
@@ -5821,16 +5289,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DetachHostAccountsFromHostShareKeyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DetachHostAccountsFromHostShareKeyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DetachHostAccountsFromHostShareKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def detach_host_accounts_from_host_share_key_with_options_async(
         self,
@@ -5868,16 +5330,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DetachHostAccountsFromHostShareKeyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DetachHostAccountsFromHostShareKeyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DetachHostAccountsFromHostShareKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def detach_host_accounts_from_host_share_key(
         self,
@@ -5941,16 +5397,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DetachHostAccountsFromUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DetachHostAccountsFromUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DetachHostAccountsFromUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def detach_host_accounts_from_user_with_options_async(
         self,
@@ -5988,16 +5438,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DetachHostAccountsFromUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DetachHostAccountsFromUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DetachHostAccountsFromUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def detach_host_accounts_from_user(
         self,
@@ -6061,16 +5505,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DetachHostAccountsFromUserGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DetachHostAccountsFromUserGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DetachHostAccountsFromUserGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def detach_host_accounts_from_user_group_with_options_async(
         self,
@@ -6108,16 +5546,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DetachHostAccountsFromUserGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DetachHostAccountsFromUserGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DetachHostAccountsFromUserGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def detach_host_accounts_from_user_group(
         self,
@@ -6181,16 +5613,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DetachHostGroupAccountsFromUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DetachHostGroupAccountsFromUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DetachHostGroupAccountsFromUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def detach_host_group_accounts_from_user_with_options_async(
         self,
@@ -6228,16 +5654,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DetachHostGroupAccountsFromUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DetachHostGroupAccountsFromUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DetachHostGroupAccountsFromUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def detach_host_group_accounts_from_user(
         self,
@@ -6303,16 +5723,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DetachHostGroupAccountsFromUserGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DetachHostGroupAccountsFromUserGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DetachHostGroupAccountsFromUserGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def detach_host_group_accounts_from_user_group_with_options_async(
         self,
@@ -6352,16 +5766,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DetachHostGroupAccountsFromUserGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DetachHostGroupAccountsFromUserGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DetachHostGroupAccountsFromUserGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def detach_host_group_accounts_from_user_group(
         self,
@@ -6425,16 +5833,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DisableInstancePublicAccessResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DisableInstancePublicAccessResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DisableInstancePublicAccessResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def disable_instance_public_access_with_options_async(
         self,
@@ -6468,16 +5870,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DisableInstancePublicAccessResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DisableInstancePublicAccessResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DisableInstancePublicAccessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def disable_instance_public_access(
         self,
@@ -6539,16 +5935,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DisableRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DisableRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DisableRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def disable_rule_with_options_async(
         self,
@@ -6584,16 +5974,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DisableRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.DisableRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DisableRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def disable_rule(
         self,
@@ -6653,16 +6037,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.EnableInstancePublicAccessResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.EnableInstancePublicAccessResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.EnableInstancePublicAccessResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def enable_instance_public_access_with_options_async(
         self,
@@ -6696,16 +6074,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.EnableInstancePublicAccessResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.EnableInstancePublicAccessResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.EnableInstancePublicAccessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def enable_instance_public_access(
         self,
@@ -6767,16 +6139,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.EnableRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.EnableRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.EnableRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def enable_rule_with_options_async(
         self,
@@ -6812,16 +6178,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.EnableRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.EnableRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.EnableRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def enable_rule(
         self,
@@ -6903,16 +6263,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GenerateAssetOperationTokenResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GenerateAssetOperationTokenResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GenerateAssetOperationTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def generate_asset_operation_token_with_options_async(
         self,
@@ -6968,16 +6322,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GenerateAssetOperationTokenResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GenerateAssetOperationTokenResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GenerateAssetOperationTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def generate_asset_operation_token(
         self,
@@ -7039,16 +6387,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetDatabaseResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetDatabaseResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetDatabaseResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_database_with_options_async(
         self,
@@ -7084,16 +6426,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetDatabaseResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetDatabaseResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetDatabaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_database(
         self,
@@ -7155,16 +6491,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetDatabaseAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetDatabaseAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetDatabaseAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_database_account_with_options_async(
         self,
@@ -7200,16 +6530,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetDatabaseAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetDatabaseAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetDatabaseAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_database_account(
         self,
@@ -7269,16 +6593,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetExportConfigJobResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetExportConfigJobResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetExportConfigJobResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_export_config_job_with_options_async(
         self,
@@ -7312,16 +6630,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetExportConfigJobResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetExportConfigJobResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetExportConfigJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_export_config_job(
         self,
@@ -7379,16 +6691,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetHostResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetHostResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetHostResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_host_with_options_async(
         self,
@@ -7424,16 +6730,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetHostResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetHostResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetHostResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_host(
         self,
@@ -7495,16 +6795,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetHostAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetHostAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetHostAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_host_account_with_options_async(
         self,
@@ -7540,16 +6834,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetHostAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetHostAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetHostAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_host_account(
         self,
@@ -7611,16 +6899,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetHostGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetHostGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetHostGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_host_group_with_options_async(
         self,
@@ -7656,16 +6938,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetHostGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetHostGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetHostGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_host_group(
         self,
@@ -7727,16 +7003,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetHostShareKeyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetHostShareKeyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetHostShareKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_host_share_key_with_options_async(
         self,
@@ -7772,16 +7042,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetHostShareKeyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetHostShareKeyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetHostShareKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_host_share_key(
         self,
@@ -7846,16 +7110,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetInstanceADAuthServerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetInstanceADAuthServerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetInstanceADAuthServerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_instance_adauth_server_with_options_async(
         self,
@@ -7894,16 +7152,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetInstanceADAuthServerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetInstanceADAuthServerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetInstanceADAuthServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_instance_adauth_server(
         self,
@@ -7973,16 +7225,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetInstanceLDAPAuthServerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetInstanceLDAPAuthServerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetInstanceLDAPAuthServerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_instance_ldapauth_server_with_options_async(
         self,
@@ -8016,16 +7262,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetInstanceLDAPAuthServerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetInstanceLDAPAuthServerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetInstanceLDAPAuthServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_instance_ldapauth_server(
         self,
@@ -8083,16 +7323,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetInstanceStoreInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetInstanceStoreInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetInstanceStoreInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_instance_store_info_with_options_async(
         self,
@@ -8124,16 +7358,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetInstanceStoreInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetInstanceStoreInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetInstanceStoreInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_instance_store_info(
         self,
@@ -8193,16 +7421,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetInstanceTwoFactorResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetInstanceTwoFactorResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetInstanceTwoFactorResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_instance_two_factor_with_options_async(
         self,
@@ -8240,16 +7462,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetInstanceTwoFactorResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetInstanceTwoFactorResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetInstanceTwoFactorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_instance_two_factor(
         self,
@@ -8319,16 +7535,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetNetworkDomainResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetNetworkDomainResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetNetworkDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_network_domain_with_options_async(
         self,
@@ -8364,16 +7574,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetNetworkDomainResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetNetworkDomainResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetNetworkDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_network_domain(
         self,
@@ -8435,16 +7639,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_policy_with_options_async(
         self,
@@ -8480,16 +7678,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_policy(
         self,
@@ -8551,16 +7743,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetPolicyAssetScopeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetPolicyAssetScopeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetPolicyAssetScopeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_policy_asset_scope_with_options_async(
         self,
@@ -8596,16 +7782,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetPolicyAssetScopeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetPolicyAssetScopeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetPolicyAssetScopeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_policy_asset_scope(
         self,
@@ -8667,16 +7847,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetPolicyUserScopeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetPolicyUserScopeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetPolicyUserScopeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_policy_user_scope_with_options_async(
         self,
@@ -8712,16 +7886,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetPolicyUserScopeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetPolicyUserScopeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetPolicyUserScopeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_policy_user_scope(
         self,
@@ -8783,16 +7951,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_rule_with_options_async(
         self,
@@ -8828,16 +7990,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_rule(
         self,
@@ -8899,16 +8055,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_user_with_options_async(
         self,
@@ -8944,16 +8094,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_user(
         self,
@@ -9015,16 +8159,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetUserGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetUserGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetUserGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_user_group_with_options_async(
         self,
@@ -9060,16 +8198,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetUserGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.GetUserGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetUserGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_user_group(
         self,
@@ -9136,16 +8268,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListApproveCommandsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListApproveCommandsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListApproveCommandsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_approve_commands_with_options_async(
         self,
@@ -9186,16 +8312,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListApproveCommandsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListApproveCommandsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListApproveCommandsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_approve_commands(
         self,
@@ -9269,16 +8389,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListDatabaseAccountsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListDatabaseAccountsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListDatabaseAccountsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_database_accounts_with_options_async(
         self,
@@ -9320,16 +8434,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListDatabaseAccountsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListDatabaseAccountsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListDatabaseAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_database_accounts(
         self,
@@ -9399,16 +8507,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_database_accounts_for_user_with_options_async(
         self,
@@ -9452,16 +8554,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_database_accounts_for_user(
         self,
@@ -9531,16 +8627,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_database_accounts_for_user_group_with_options_async(
         self,
@@ -9584,16 +8674,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListDatabaseAccountsForUserGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_database_accounts_for_user_group(
         self,
@@ -9665,16 +8749,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListDatabasesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListDatabasesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListDatabasesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_databases_with_options_async(
         self,
@@ -9720,16 +8798,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListDatabasesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListDatabasesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListDatabasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_databases(
         self,
@@ -9803,16 +8875,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListDatabasesForUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListDatabasesForUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListDatabasesForUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_databases_for_user_with_options_async(
         self,
@@ -9860,16 +8926,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListDatabasesForUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListDatabasesForUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListDatabasesForUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_databases_for_user(
         self,
@@ -9943,16 +9003,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListDatabasesForUserGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListDatabasesForUserGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListDatabasesForUserGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_databases_for_user_group_with_options_async(
         self,
@@ -10000,16 +9054,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListDatabasesForUserGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListDatabasesForUserGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListDatabasesForUserGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_databases_for_user_group(
         self,
@@ -10055,6 +9103,8 @@ class Client(OpenApiClient):
             query['HostAccountName'] = request.host_account_name
         if not UtilClient.is_unset(request.host_id):
             query['HostId'] = request.host_id
+        if not UtilClient.is_unset(request.host_ids):
+            query['HostIds'] = request.host_ids
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.page_number):
@@ -10079,16 +9129,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostAccountsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostAccountsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostAccountsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_host_accounts_with_options_async(
         self,
@@ -10108,6 +9152,8 @@ class Client(OpenApiClient):
             query['HostAccountName'] = request.host_account_name
         if not UtilClient.is_unset(request.host_id):
             query['HostId'] = request.host_id
+        if not UtilClient.is_unset(request.host_ids):
+            query['HostIds'] = request.host_ids
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.page_number):
@@ -10132,16 +9178,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostAccountsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostAccountsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_host_accounts(
         self,
@@ -10207,16 +9247,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostAccountsForHostShareKeyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostAccountsForHostShareKeyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostAccountsForHostShareKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_host_accounts_for_host_share_key_with_options_async(
         self,
@@ -10256,16 +9290,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostAccountsForHostShareKeyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostAccountsForHostShareKeyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostAccountsForHostShareKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_host_accounts_for_host_share_key(
         self,
@@ -10335,16 +9363,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostAccountsForUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostAccountsForUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostAccountsForUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_host_accounts_for_user_with_options_async(
         self,
@@ -10388,16 +9410,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostAccountsForUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostAccountsForUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostAccountsForUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_host_accounts_for_user(
         self,
@@ -10467,16 +9483,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostAccountsForUserGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostAccountsForUserGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostAccountsForUserGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_host_accounts_for_user_group_with_options_async(
         self,
@@ -10520,16 +9530,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostAccountsForUserGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostAccountsForUserGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostAccountsForUserGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_host_accounts_for_user_group(
         self,
@@ -10593,16 +9597,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostGroupAccountNamesForUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostGroupAccountNamesForUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostGroupAccountNamesForUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_host_group_account_names_for_user_with_options_async(
         self,
@@ -10640,16 +9638,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostGroupAccountNamesForUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostGroupAccountNamesForUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostGroupAccountNamesForUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_host_group_account_names_for_user(
         self,
@@ -10713,16 +9705,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostGroupAccountNamesForUserGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostGroupAccountNamesForUserGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostGroupAccountNamesForUserGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_host_group_account_names_for_user_group_with_options_async(
         self,
@@ -10760,16 +9746,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostGroupAccountNamesForUserGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostGroupAccountNamesForUserGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostGroupAccountNamesForUserGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_host_group_account_names_for_user_group(
         self,
@@ -10835,16 +9815,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostGroupsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostGroupsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_host_groups_with_options_async(
         self,
@@ -10884,16 +9858,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostGroupsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostGroupsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_host_groups(
         self,
@@ -10963,16 +9931,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostGroupsForUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostGroupsForUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostGroupsForUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_host_groups_for_user_with_options_async(
         self,
@@ -11016,16 +9978,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostGroupsForUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostGroupsForUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostGroupsForUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_host_groups_for_user(
         self,
@@ -11095,16 +10051,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostGroupsForUserGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostGroupsForUserGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostGroupsForUserGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_host_groups_for_user_group_with_options_async(
         self,
@@ -11148,16 +10098,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostGroupsForUserGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostGroupsForUserGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostGroupsForUserGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_host_groups_for_user_group(
         self,
@@ -11221,16 +10165,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostShareKeysResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostShareKeysResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostShareKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_host_share_keys_with_options_async(
         self,
@@ -11268,16 +10206,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostShareKeysResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostShareKeysResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostShareKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_host_share_keys(
         self,
@@ -11355,16 +10287,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_hosts_with_options_async(
         self,
@@ -11416,16 +10342,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_hosts(
         self,
@@ -11499,16 +10419,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostsForUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostsForUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostsForUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_hosts_for_user_with_options_async(
         self,
@@ -11556,16 +10470,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostsForUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostsForUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostsForUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_hosts_for_user(
         self,
@@ -11639,16 +10547,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostsForUserGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostsForUserGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostsForUserGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_hosts_for_user_group_with_options_async(
         self,
@@ -11696,16 +10598,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostsForUserGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListHostsForUserGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostsForUserGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_hosts_for_user_group(
         self,
@@ -11773,16 +10669,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListNetworkDomainsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListNetworkDomainsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListNetworkDomainsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_network_domains_with_options_async(
         self,
@@ -11824,16 +10714,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListNetworkDomainsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListNetworkDomainsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListNetworkDomainsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_network_domains(
         self,
@@ -11901,16 +10785,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListOperationDatabaseAccountsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListOperationDatabaseAccountsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListOperationDatabaseAccountsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_operation_database_accounts_with_options_async(
         self,
@@ -11952,16 +10830,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListOperationDatabaseAccountsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListOperationDatabaseAccountsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListOperationDatabaseAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_operation_database_accounts(
         self,
@@ -12037,16 +10909,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListOperationDatabasesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListOperationDatabasesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListOperationDatabasesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_operation_databases_with_options_async(
         self,
@@ -12096,16 +10962,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListOperationDatabasesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListOperationDatabasesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListOperationDatabasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_operation_databases(
         self,
@@ -12173,16 +11033,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListOperationHostAccountsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListOperationHostAccountsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListOperationHostAccountsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_operation_host_accounts_with_options_async(
         self,
@@ -12224,16 +11078,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListOperationHostAccountsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListOperationHostAccountsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListOperationHostAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_operation_host_accounts(
         self,
@@ -12309,16 +11157,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListOperationHostsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListOperationHostsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListOperationHostsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_operation_hosts_with_options_async(
         self,
@@ -12368,16 +11210,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListOperationHostsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListOperationHostsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListOperationHostsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_operation_hosts(
         self,
@@ -12446,16 +11282,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListOperationTicketsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListOperationTicketsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListOperationTicketsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_operation_tickets_with_options_async(
         self,
@@ -12498,16 +11328,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListOperationTicketsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListOperationTicketsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListOperationTicketsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_operation_tickets(
         self,
@@ -12579,16 +11403,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListPoliciesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListPoliciesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListPoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_policies_with_options_async(
         self,
@@ -12628,16 +11446,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListPoliciesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListPoliciesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListPoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_policies(
         self,
@@ -12705,16 +11517,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListRulesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListRulesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_rules_with_options_async(
         self,
@@ -12756,16 +11562,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListRulesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListRulesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_rules(
         self,
@@ -12831,16 +11631,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListTagKeysResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListTagKeysResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListTagKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_tag_keys_with_options_async(
         self,
@@ -12880,16 +11674,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListTagKeysResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListTagKeysResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListTagKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_tag_keys(
         self,
@@ -12957,16 +11745,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListTagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListTagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_tag_resources_with_options_async(
         self,
@@ -13008,16 +11790,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListTagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListTagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_tag_resources(
         self,
@@ -13083,16 +11859,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListUserGroupsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListUserGroupsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListUserGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_user_groups_with_options_async(
         self,
@@ -13132,16 +11902,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListUserGroupsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListUserGroupsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListUserGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_user_groups(
         self,
@@ -13207,16 +11971,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListUserPublicKeysResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListUserPublicKeysResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListUserPublicKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_user_public_keys_with_options_async(
         self,
@@ -13256,16 +12014,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListUserPublicKeysResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListUserPublicKeysResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListUserPublicKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_user_public_keys(
         self,
@@ -13343,16 +12095,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListUsersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListUsersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListUsersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_users_with_options_async(
         self,
@@ -13404,16 +12150,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListUsersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ListUsersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListUsersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_users(
         self,
@@ -13480,16 +12220,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.LockUsersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.LockUsersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.LockUsersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def lock_users_with_options_async(
         self,
@@ -13530,16 +12264,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.LockUsersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.LockUsersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.LockUsersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def lock_users(
         self,
@@ -13627,16 +12355,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyDatabaseResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyDatabaseResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyDatabaseResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_database_with_options_async(
         self,
@@ -13688,16 +12410,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyDatabaseResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyDatabaseResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyDatabaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_database(
         self,
@@ -13765,16 +12481,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyDatabaseAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyDatabaseAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyDatabaseAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_database_account_with_options_async(
         self,
@@ -13816,16 +12526,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyDatabaseAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyDatabaseAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyDatabaseAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_database_account(
         self,
@@ -13904,16 +12608,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyHostResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyHostResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyHostResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_host_with_options_async(
         self,
@@ -13966,16 +12664,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyHostResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyHostResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyHostResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_host(
         self,
@@ -14037,8 +12729,12 @@ class Client(OpenApiClient):
             query['Password'] = request.password
         if not UtilClient.is_unset(request.private_key):
             query['PrivateKey'] = request.private_key
+        if not UtilClient.is_unset(request.privilege_type):
+            query['PrivilegeType'] = request.privilege_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.rotation_mode):
+            query['RotationMode'] = request.rotation_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -14053,16 +12749,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyHostAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyHostAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyHostAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_host_account_with_options_async(
         self,
@@ -14092,8 +12782,12 @@ class Client(OpenApiClient):
             query['Password'] = request.password
         if not UtilClient.is_unset(request.private_key):
             query['PrivateKey'] = request.private_key
+        if not UtilClient.is_unset(request.privilege_type):
+            query['PrivilegeType'] = request.privilege_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.rotation_mode):
+            query['RotationMode'] = request.rotation_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -14108,16 +12802,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyHostAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyHostAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyHostAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_host_account(
         self,
@@ -14183,16 +12871,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyHostGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyHostGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyHostGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_host_group_with_options_async(
         self,
@@ -14232,16 +12914,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyHostGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyHostGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyHostGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_host_group(
         self,
@@ -14309,16 +12985,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyHostShareKeyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyHostShareKeyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyHostShareKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_host_share_key_with_options_async(
         self,
@@ -14360,16 +13030,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyHostShareKeyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyHostShareKeyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyHostShareKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_host_share_key(
         self,
@@ -14433,16 +13097,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyHostsActiveAddressTypeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyHostsActiveAddressTypeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyHostsActiveAddressTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_hosts_active_address_type_with_options_async(
         self,
@@ -14480,16 +13138,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyHostsActiveAddressTypeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyHostsActiveAddressTypeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyHostsActiveAddressTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_hosts_active_address_type(
         self,
@@ -14561,16 +13213,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyHostsPortResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyHostsPortResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyHostsPortResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_hosts_port_with_options_async(
         self,
@@ -14616,16 +13262,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyHostsPortResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyHostsPortResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyHostsPortResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_hosts_port(
         self,
@@ -14721,16 +13361,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyInstanceADAuthServerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyInstanceADAuthServerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyInstanceADAuthServerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_adauth_server_with_options_async(
         self,
@@ -14788,16 +13422,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyInstanceADAuthServerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyInstanceADAuthServerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyInstanceADAuthServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_adauth_server(
         self,
@@ -14859,16 +13487,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyInstanceAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyInstanceAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyInstanceAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_attribute_with_options_async(
         self,
@@ -14904,16 +13526,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyInstanceAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyInstanceAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyInstanceAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_attribute(
         self,
@@ -14997,16 +13613,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyInstanceLDAPAuthServerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyInstanceLDAPAuthServerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyInstanceLDAPAuthServerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_ldapauth_server_with_options_async(
         self,
@@ -15064,16 +13674,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyInstanceLDAPAuthServerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyInstanceLDAPAuthServerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyInstanceLDAPAuthServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_ldapauth_server(
         self,
@@ -15139,16 +13743,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyInstanceTwoFactorResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyInstanceTwoFactorResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyInstanceTwoFactorResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_two_factor_with_options_async(
         self,
@@ -15188,16 +13786,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyInstanceTwoFactorResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyInstanceTwoFactorResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyInstanceTwoFactorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_two_factor(
         self,
@@ -15267,16 +13859,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyNetworkDomainResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyNetworkDomainResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyNetworkDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_network_domain_with_options_async(
         self,
@@ -15320,16 +13906,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyNetworkDomainResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyNetworkDomainResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyNetworkDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_network_domain(
         self,
@@ -15397,16 +13977,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_policy_with_options_async(
         self,
@@ -15448,16 +14022,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_policy(
         self,
@@ -15537,16 +14105,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_rule_with_options_async(
         self,
@@ -15600,16 +14162,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_rule(
         self,
@@ -15697,16 +14253,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_user_with_options_async(
         self,
@@ -15768,16 +14318,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_user(
         self,
@@ -15843,16 +14387,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyUserGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyUserGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyUserGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_user_group_with_options_async(
         self,
@@ -15892,16 +14430,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyUserGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyUserGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyUserGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_user_group(
         self,
@@ -15969,16 +14501,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyUserPublicKeyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyUserPublicKeyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyUserPublicKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_user_public_key_with_options_async(
         self,
@@ -16020,16 +14546,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyUserPublicKeyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ModifyUserPublicKeyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyUserPublicKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_user_public_key(
         self,
@@ -16093,16 +14613,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.MoveDatabasesToNetworkDomainResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.MoveDatabasesToNetworkDomainResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.MoveDatabasesToNetworkDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def move_databases_to_network_domain_with_options_async(
         self,
@@ -16140,16 +14654,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.MoveDatabasesToNetworkDomainResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.MoveDatabasesToNetworkDomainResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.MoveDatabasesToNetworkDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def move_databases_to_network_domain(
         self,
@@ -16213,16 +14721,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.MoveHostsToNetworkDomainResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.MoveHostsToNetworkDomainResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.MoveHostsToNetworkDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def move_hosts_to_network_domain_with_options_async(
         self,
@@ -16260,16 +14762,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.MoveHostsToNetworkDomainResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.MoveHostsToNetworkDomainResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.MoveHostsToNetworkDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def move_hosts_to_network_domain(
         self,
@@ -16333,16 +14829,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.MoveResourceGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.MoveResourceGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.MoveResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def move_resource_group_with_options_async(
         self,
@@ -16380,16 +14870,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.MoveResourceGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.MoveResourceGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.MoveResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def move_resource_group(
         self,
@@ -16454,16 +14938,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.RejectApproveCommandResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.RejectApproveCommandResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.RejectApproveCommandResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def reject_approve_command_with_options_async(
         self,
@@ -16502,16 +14980,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.RejectApproveCommandResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.RejectApproveCommandResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.RejectApproveCommandResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def reject_approve_command(
         self,
@@ -16584,16 +15056,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.RejectOperationTicketResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.RejectOperationTicketResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.RejectOperationTicketResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def reject_operation_ticket_with_options_async(
         self,
@@ -16634,16 +15100,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.RejectOperationTicketResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.RejectOperationTicketResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.RejectOperationTicketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def reject_operation_ticket(
         self,
@@ -16713,16 +15173,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.RemoveDatabasesFromGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.RemoveDatabasesFromGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.RemoveDatabasesFromGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def remove_databases_from_group_with_options_async(
         self,
@@ -16760,16 +15214,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.RemoveDatabasesFromGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.RemoveDatabasesFromGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.RemoveDatabasesFromGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def remove_databases_from_group(
         self,
@@ -16837,16 +15285,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.RemoveHostsFromGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.RemoveHostsFromGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.RemoveHostsFromGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def remove_hosts_from_group_with_options_async(
         self,
@@ -16888,16 +15330,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.RemoveHostsFromGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.RemoveHostsFromGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.RemoveHostsFromGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def remove_hosts_from_group(
         self,
@@ -16973,16 +15409,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.RemoveUsersFromGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.RemoveUsersFromGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.RemoveUsersFromGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def remove_users_from_group_with_options_async(
         self,
@@ -17024,16 +15454,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.RemoveUsersFromGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.RemoveUsersFromGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.RemoveUsersFromGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def remove_users_from_group(
         self,
@@ -17103,16 +15527,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.RenewAssetOperationTokenResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.RenewAssetOperationTokenResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.RenewAssetOperationTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def renew_asset_operation_token_with_options_async(
         self,
@@ -17148,16 +15566,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.RenewAssetOperationTokenResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.RenewAssetOperationTokenResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.RenewAssetOperationTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def renew_asset_operation_token(
         self,
@@ -17221,16 +15633,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ResetHostAccountCredentialResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ResetHostAccountCredentialResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ResetHostAccountCredentialResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def reset_host_account_credential_with_options_async(
         self,
@@ -17268,16 +15674,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ResetHostAccountCredentialResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.ResetHostAccountCredentialResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ResetHostAccountCredentialResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def reset_host_account_credential(
         self,
@@ -17345,16 +15745,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.SetPolicyAccessTimeRangeConfigResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.SetPolicyAccessTimeRangeConfigResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.SetPolicyAccessTimeRangeConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_policy_access_time_range_config_with_options_async(
         self,
@@ -17396,16 +15790,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.SetPolicyAccessTimeRangeConfigResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.SetPolicyAccessTimeRangeConfigResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.SetPolicyAccessTimeRangeConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_policy_access_time_range_config(
         self,
@@ -17473,16 +15861,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.SetPolicyApprovalConfigResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.SetPolicyApprovalConfigResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.SetPolicyApprovalConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_policy_approval_config_with_options_async(
         self,
@@ -17524,16 +15906,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.SetPolicyApprovalConfigResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.SetPolicyApprovalConfigResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.SetPolicyApprovalConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_policy_approval_config(
         self,
@@ -17603,16 +15979,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.SetPolicyAssetScopeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.SetPolicyAssetScopeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.SetPolicyAssetScopeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_policy_asset_scope_with_options_async(
         self,
@@ -17656,16 +16026,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.SetPolicyAssetScopeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.SetPolicyAssetScopeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.SetPolicyAssetScopeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_policy_asset_scope(
         self,
@@ -17733,16 +16097,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.SetPolicyCommandConfigResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.SetPolicyCommandConfigResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.SetPolicyCommandConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_policy_command_config_with_options_async(
         self,
@@ -17784,16 +16142,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.SetPolicyCommandConfigResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.SetPolicyCommandConfigResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.SetPolicyCommandConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_policy_command_config(
         self,
@@ -17861,16 +16213,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.SetPolicyIPAclConfigResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.SetPolicyIPAclConfigResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.SetPolicyIPAclConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_policy_ipacl_config_with_options_async(
         self,
@@ -17912,16 +16258,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.SetPolicyIPAclConfigResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.SetPolicyIPAclConfigResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.SetPolicyIPAclConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_policy_ipacl_config(
         self,
@@ -17989,16 +16329,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.SetPolicyProtocolConfigResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.SetPolicyProtocolConfigResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.SetPolicyProtocolConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_policy_protocol_config_with_options_async(
         self,
@@ -18040,16 +16374,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.SetPolicyProtocolConfigResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.SetPolicyProtocolConfigResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.SetPolicyProtocolConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_policy_protocol_config(
         self,
@@ -18117,16 +16445,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.SetPolicyUserScopeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.SetPolicyUserScopeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.SetPolicyUserScopeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_policy_user_scope_with_options_async(
         self,
@@ -18168,16 +16490,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.SetPolicyUserScopeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.SetPolicyUserScopeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.SetPolicyUserScopeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_policy_user_scope(
         self,
@@ -18247,16 +16563,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.StartInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.StartInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.StartInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def start_instance_with_options_async(
         self,
@@ -18300,16 +16610,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.StartInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.StartInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.StartInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def start_instance(
         self,
@@ -18373,16 +16677,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.TagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.TagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def tag_resources_with_options_async(
         self,
@@ -18420,16 +16718,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.TagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.TagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def tag_resources(
         self,
@@ -18495,16 +16787,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.UnlockUsersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.UnlockUsersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.UnlockUsersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def unlock_users_with_options_async(
         self,
@@ -18544,16 +16830,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.UnlockUsersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.UnlockUsersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.UnlockUsersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def unlock_users(
         self,
@@ -18627,16 +16907,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.UntagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.UntagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def untag_resources_with_options_async(
         self,
@@ -18676,16 +16950,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.UntagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.UntagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def untag_resources(
         self,
@@ -18763,16 +17031,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.VerifyInstanceADAuthServerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.VerifyInstanceADAuthServerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.VerifyInstanceADAuthServerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def verify_instance_adauth_server_with_options_async(
         self,
@@ -18824,16 +17086,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.VerifyInstanceADAuthServerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.VerifyInstanceADAuthServerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.VerifyInstanceADAuthServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def verify_instance_adauth_server(
         self,
@@ -18909,16 +17165,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.VerifyInstanceLDAPAuthServerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.VerifyInstanceLDAPAuthServerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.VerifyInstanceLDAPAuthServerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def verify_instance_ldapauth_server_with_options_async(
         self,
@@ -18968,16 +17218,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.VerifyInstanceLDAPAuthServerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                yundun_bastionhost_20191209_models.VerifyInstanceLDAPAuthServerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.VerifyInstanceLDAPAuthServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def verify_instance_ldapauth_server(
         self,

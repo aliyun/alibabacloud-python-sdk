@@ -3759,8 +3759,10 @@ class CreateHostAccountRequest(TeaModel):
         pass_phrase: str = None,
         password: str = None,
         private_key: str = None,
+        privilege_type: str = None,
         protocol_name: str = None,
         region_id: str = None,
+        rotation_mode: str = None,
     ):
         # The name of the host account. The name can be up to 128 characters in length.
         # 
@@ -3790,6 +3792,7 @@ class CreateHostAccountRequest(TeaModel):
         # 
         # > This parameter is valid only if ProtocolName is set to SSH. You do not need to configure this parameter if ProtocolName is set to RDP. You can configure a password and a private key for the host account at the same time. If both a password and a private key are configured for the host account, Bastionhost preferentially uses the private key for logon.
         self.private_key = private_key
+        self.privilege_type = privilege_type
         # The protocol of the host to which you want to add a host account.
         # 
         # Valid values:
@@ -3803,6 +3806,7 @@ class CreateHostAccountRequest(TeaModel):
         # 
         # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
+        self.rotation_mode = rotation_mode
 
     def validate(self):
         pass
@@ -3827,10 +3831,14 @@ class CreateHostAccountRequest(TeaModel):
             result['Password'] = self.password
         if self.private_key is not None:
             result['PrivateKey'] = self.private_key
+        if self.privilege_type is not None:
+            result['PrivilegeType'] = self.privilege_type
         if self.protocol_name is not None:
             result['ProtocolName'] = self.protocol_name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.rotation_mode is not None:
+            result['RotationMode'] = self.rotation_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -3849,10 +3857,14 @@ class CreateHostAccountRequest(TeaModel):
             self.password = m.get('Password')
         if m.get('PrivateKey') is not None:
             self.private_key = m.get('PrivateKey')
+        if m.get('PrivilegeType') is not None:
+            self.privilege_type = m.get('PrivilegeType')
         if m.get('ProtocolName') is not None:
             self.protocol_name = m.get('ProtocolName')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('RotationMode') is not None:
+            self.rotation_mode = m.get('RotationMode')
         return self
 
 
@@ -10504,15 +10516,16 @@ class GenerateAssetOperationTokenRequest(TeaModel):
         # *   **SERVICENAME**\
         # *   **SID**\
         # 
-        # >  This parameter is available only for bastion hosts that run V3.2.44 or later.
+        # >  This parameter is available only for Bastionhost V3.2.44 and later.
         self.login_attribute = login_attribute
         # The O\\&M logon method. Valid values:
         # 
         # *   **WebToken**: O\\&M token-based logon.
-        # *   **Sso**: Local client-based logon.
+        # *   **Sso**: local client-based logon.
         # 
-        # >  This parameter is available only for bastion hosts that run V3.2.44 or later. If you do not specify this parameter, the default value WebToken is used.
+        # >  This parameter is available only for Bastionhost V3.2.44 and later. If you do not specify this parameter, the default value WebToken is used.
         self.operation_mode = operation_mode
+        # The logon remarks. This parameter is required if an administrator enables the feature of logon remarks on the Control Policies page.
         self.operation_note = operation_note
         # The region ID of the bastion host.
         # 
@@ -10523,7 +10536,7 @@ class GenerateAssetOperationTokenRequest(TeaModel):
         # *   **ssh**: Perform O\\&M operations on Linux assets by connecting to a bastion host from an SSH client.
         # *   **sftp**: Perform O\\&M operations on Linux assets by connecting to a bastion host from a Secure File Transfer Protocol (SFTP) client.
         # 
-        # >  This parameter is available only for bastion hosts that run V3.2.44 or later.
+        # >  This parameter is available only for Bastionhost V3.2.44 and later.
         self.sso_client = sso_client
 
     def validate(self):
@@ -11473,6 +11486,12 @@ class GetHostResponseBodyHost(TeaModel):
         # *   **Linux**\
         # *   **Windows**\
         self.ostype = ostype
+        # The preferred key exchange algorithm of the host. The value of this parameter is returned if OSType is set to Linux. Valid values:
+        # 
+        # *   **default**\
+        # *   **diffie-hellman-group1-sha1**\
+        # *   **diffie-hellman-group14-sha1**\
+        # *   **diffie-hellman-group-exchange-sha1**\
         self.pref_kex = pref_kex
         # The protocol information about the host.
         self.protocols = protocols
@@ -11708,7 +11727,9 @@ class GetHostAccountResponseBodyHostAccount(TeaModel):
         host_share_key_id: str = None,
         host_share_key_name: str = None,
         private_key_fingerprint: str = None,
+        privilege_type: str = None,
         protocol_name: str = None,
+        rotation_mode: str = None,
     ):
         # Indicates whether a password is configured for the host account. Valid values:
         # 
@@ -11727,11 +11748,13 @@ class GetHostAccountResponseBodyHostAccount(TeaModel):
         self.host_share_key_name = host_share_key_name
         # The fingerprint of the private key.
         self.private_key_fingerprint = private_key_fingerprint
+        self.privilege_type = privilege_type
         # The protocol that is used by the host. Valid values:
         # 
         # *   **SSH**\
         # *   **RDP**\
         self.protocol_name = protocol_name
+        self.rotation_mode = rotation_mode
 
     def validate(self):
         pass
@@ -11756,8 +11779,12 @@ class GetHostAccountResponseBodyHostAccount(TeaModel):
             result['HostShareKeyName'] = self.host_share_key_name
         if self.private_key_fingerprint is not None:
             result['PrivateKeyFingerprint'] = self.private_key_fingerprint
+        if self.privilege_type is not None:
+            result['PrivilegeType'] = self.privilege_type
         if self.protocol_name is not None:
             result['ProtocolName'] = self.protocol_name
+        if self.rotation_mode is not None:
+            result['RotationMode'] = self.rotation_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -11776,8 +11803,12 @@ class GetHostAccountResponseBodyHostAccount(TeaModel):
             self.host_share_key_name = m.get('HostShareKeyName')
         if m.get('PrivateKeyFingerprint') is not None:
             self.private_key_fingerprint = m.get('PrivateKeyFingerprint')
+        if m.get('PrivilegeType') is not None:
+            self.privilege_type = m.get('PrivilegeType')
         if m.get('ProtocolName') is not None:
             self.protocol_name = m.get('ProtocolName')
+        if m.get('RotationMode') is not None:
+            self.rotation_mode = m.get('RotationMode')
         return self
 
 
@@ -17331,6 +17362,7 @@ class ListHostAccountsRequest(TeaModel):
         self,
         host_account_name: str = None,
         host_id: str = None,
+        host_ids: str = None,
         instance_id: str = None,
         page_number: str = None,
         page_size: str = None,
@@ -17345,6 +17377,7 @@ class ListHostAccountsRequest(TeaModel):
         # 
         # This parameter is required.
         self.host_id = host_id
+        self.host_ids = host_ids
         # The ID of the bastion host in which you want to query accounts of the specified host.
         # 
         # >  You can call the DescribeInstances operation to query the ID of the bastion host.
@@ -17384,6 +17417,8 @@ class ListHostAccountsRequest(TeaModel):
             result['HostAccountName'] = self.host_account_name
         if self.host_id is not None:
             result['HostId'] = self.host_id
+        if self.host_ids is not None:
+            result['HostIds'] = self.host_ids
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.page_number is not None:
@@ -17402,6 +17437,8 @@ class ListHostAccountsRequest(TeaModel):
             self.host_account_name = m.get('HostAccountName')
         if m.get('HostId') is not None:
             self.host_id = m.get('HostId')
+        if m.get('HostIds') is not None:
+            self.host_ids = m.get('HostIds')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('PageNumber') is not None:
@@ -17425,7 +17462,9 @@ class ListHostAccountsResponseBodyHostAccounts(TeaModel):
         host_share_key_id: str = None,
         host_share_key_name: str = None,
         private_key_fingerprint: str = None,
+        privilege_type: str = None,
         protocol_name: str = None,
+        rotation_mode: str = None,
     ):
         # Indicates whether a password is configured for the host account.
         # 
@@ -17446,6 +17485,7 @@ class ListHostAccountsResponseBodyHostAccounts(TeaModel):
         self.host_share_key_name = host_share_key_name
         # The fingerprint of the private key for the host account.
         self.private_key_fingerprint = private_key_fingerprint
+        self.privilege_type = privilege_type
         # The protocol that is used by the host.
         # 
         # Valid values:
@@ -17453,6 +17493,7 @@ class ListHostAccountsResponseBodyHostAccounts(TeaModel):
         # *   SSH
         # *   RDP
         self.protocol_name = protocol_name
+        self.rotation_mode = rotation_mode
 
     def validate(self):
         pass
@@ -17477,8 +17518,12 @@ class ListHostAccountsResponseBodyHostAccounts(TeaModel):
             result['HostShareKeyName'] = self.host_share_key_name
         if self.private_key_fingerprint is not None:
             result['PrivateKeyFingerprint'] = self.private_key_fingerprint
+        if self.privilege_type is not None:
+            result['PrivilegeType'] = self.privilege_type
         if self.protocol_name is not None:
             result['ProtocolName'] = self.protocol_name
+        if self.rotation_mode is not None:
+            result['RotationMode'] = self.rotation_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -17497,8 +17542,12 @@ class ListHostAccountsResponseBodyHostAccounts(TeaModel):
             self.host_share_key_name = m.get('HostShareKeyName')
         if m.get('PrivateKeyFingerprint') is not None:
             self.private_key_fingerprint = m.get('PrivateKeyFingerprint')
+        if m.get('PrivilegeType') is not None:
+            self.privilege_type = m.get('PrivilegeType')
         if m.get('ProtocolName') is not None:
             self.protocol_name = m.get('ProtocolName')
+        if m.get('RotationMode') is not None:
+            self.rotation_mode = m.get('RotationMode')
         return self
 
 
@@ -24279,6 +24328,12 @@ class ModifyHostRequest(TeaModel):
         # *   **Linux**\
         # *   **Windows**\
         self.ostype = ostype
+        # The preferred key exchange algorithm of the host. If you set OSType to Linux, you can modify this parameter. Valid values:
+        # 
+        # *   **default**\
+        # *   **diffie-hellman-group1-sha1**\
+        # *   **diffie-hellman-group14-sha1**\
+        # *   **diffie-hellman-group-exchange-sha1**\
         self.pref_kex = pref_kex
         # The region ID of the bastion host on which you want to modify the information about the host.
         # 
@@ -24420,7 +24475,9 @@ class ModifyHostAccountRequest(TeaModel):
         pass_phrase: str = None,
         password: str = None,
         private_key: str = None,
+        privilege_type: str = None,
         region_id: str = None,
+        rotation_mode: str = None,
     ):
         # The ID of the host account whose information you want to modify.
         # 
@@ -24450,10 +24507,12 @@ class ModifyHostAccountRequest(TeaModel):
         # 
         # >  This parameter takes effect only if the protocol used by the host is SSH. You do not need to configure this parameter if the protocol used by the host is Remote Desktop Protocol (RDP). You can call the [GetHostAccount](https://help.aliyun.com/document_detail/204391.html) operation to query the protocol used by the host. You can configure a password and a private key for the host account at the same time. If both a password and a private key are configured for the host account, Bastionhost preferentially uses the private key for logon.
         self.private_key = private_key
+        self.privilege_type = privilege_type
         # The region ID of the bastion host in which you want to query the details of the host account.
         # 
         # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
+        self.rotation_mode = rotation_mode
 
     def validate(self):
         pass
@@ -24478,8 +24537,12 @@ class ModifyHostAccountRequest(TeaModel):
             result['Password'] = self.password
         if self.private_key is not None:
             result['PrivateKey'] = self.private_key
+        if self.privilege_type is not None:
+            result['PrivilegeType'] = self.privilege_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.rotation_mode is not None:
+            result['RotationMode'] = self.rotation_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -24498,8 +24561,12 @@ class ModifyHostAccountRequest(TeaModel):
             self.password = m.get('Password')
         if m.get('PrivateKey') is not None:
             self.private_key = m.get('PrivateKey')
+        if m.get('PrivilegeType') is not None:
+            self.privilege_type = m.get('PrivilegeType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('RotationMode') is not None:
+            self.rotation_mode = m.get('RotationMode')
         return self
 
 
