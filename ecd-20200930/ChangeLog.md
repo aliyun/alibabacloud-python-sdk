@@ -1,3 +1,34 @@
+2025-06-25 Version: 4.8.3
+- Update API CreateCenterPolicy: add request parameters ClientControlMenu.
+- Update API CreateCenterPolicy: add request parameters CpdDriveClipboard.
+- Update API CreateCenterPolicy: add request parameters FileTransferAddress.
+- Update API CreateCenterPolicy: add request parameters FileTransferSpeed.
+- Update API CreateCenterPolicy: add request parameters FileTransferSpeedLocation.
+- Update API CreateCenterPolicy: add request parameters ScreenDisplayMode.
+- Update API CreateCenterPolicy: add request parameters UseTime.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.ClientControlMenu.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.CpdDriveClipboard.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.FileTransferAddress.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.FileTransferSpeed.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.FileTransferSpeedLocation.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.ScreenDisplayMode.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.UseTime.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.ClientControlMenu.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.CpdDriveClipboard.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.FileTransferAddress.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.FileTransferSpeed.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.FileTransferSpeedLocation.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.ScreenDisplayMode.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.UseTime.
+- Update API ModifyCenterPolicy: add request parameters ClientControlMenu.
+- Update API ModifyCenterPolicy: add request parameters CpdDriveClipboard.
+- Update API ModifyCenterPolicy: add request parameters FileTransferAddress.
+- Update API ModifyCenterPolicy: add request parameters FileTransferSpeed.
+- Update API ModifyCenterPolicy: add request parameters FileTransferSpeedLocation.
+- Update API ModifyCenterPolicy: add request parameters ScreenDisplayMode.
+- Update API ModifyCenterPolicy: add request parameters UseTime.
+
+
 2025-06-10 Version: 4.8.2
 - Update API DescribeDesktopTypes: add request parameters ScopeSet.
 

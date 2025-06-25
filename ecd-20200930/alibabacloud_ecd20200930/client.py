@@ -4028,12 +4028,16 @@ class Client(OpenApiClient):
             query['BusinessType'] = request.business_type
         if not UtilClient.is_unset(request.camera_redirect):
             query['CameraRedirect'] = request.camera_redirect
+        if not UtilClient.is_unset(request.client_control_menu):
+            query['ClientControlMenu'] = request.client_control_menu
         if not UtilClient.is_unset(request.client_type):
             query['ClientType'] = request.client_type
         if not UtilClient.is_unset(request.clipboard):
             query['Clipboard'] = request.clipboard
         if not UtilClient.is_unset(request.color_enhancement):
             query['ColorEnhancement'] = request.color_enhancement
+        if not UtilClient.is_unset(request.cpd_drive_clipboard):
+            query['CpdDriveClipboard'] = request.cpd_drive_clipboard
         if not UtilClient.is_unset(request.cpu_down_grade_duration):
             query['CpuDownGradeDuration'] = request.cpu_down_grade_duration
         if not UtilClient.is_unset(request.cpu_processors):
@@ -4070,6 +4074,12 @@ class Client(OpenApiClient):
             query['EndUserGroupCoordinate'] = request.end_user_group_coordinate
         if not UtilClient.is_unset(request.file_migrate):
             query['FileMigrate'] = request.file_migrate
+        if not UtilClient.is_unset(request.file_transfer_address):
+            query['FileTransferAddress'] = request.file_transfer_address
+        if not UtilClient.is_unset(request.file_transfer_speed):
+            query['FileTransferSpeed'] = request.file_transfer_speed
+        if not UtilClient.is_unset(request.file_transfer_speed_location):
+            query['FileTransferSpeedLocation'] = request.file_transfer_speed_location
         if not UtilClient.is_unset(request.gpu_acceleration):
             query['GpuAcceleration'] = request.gpu_acceleration
         if not UtilClient.is_unset(request.html_5file_transfer):
@@ -4158,6 +4168,8 @@ class Client(OpenApiClient):
             query['Scope'] = request.scope
         if not UtilClient.is_unset(request.scope_value):
             query['ScopeValue'] = request.scope_value
+        if not UtilClient.is_unset(request.screen_display_mode):
+            query['ScreenDisplayMode'] = request.screen_display_mode
         if not UtilClient.is_unset(request.session_max_rate_kbps):
             query['SessionMaxRateKbps'] = request.session_max_rate_kbps
         if not UtilClient.is_unset(request.smooth_enhancement):
@@ -4174,6 +4186,8 @@ class Client(OpenApiClient):
             query['UsbRedirect'] = request.usb_redirect
         if not UtilClient.is_unset(request.usb_supply_redirect_rule):
             query['UsbSupplyRedirectRule'] = request.usb_supply_redirect_rule
+        if not UtilClient.is_unset(request.use_time):
+            query['UseTime'] = request.use_time
         if not UtilClient.is_unset(request.video_enc_avg_kbps):
             query['VideoEncAvgKbps'] = request.video_enc_avg_kbps
         if not UtilClient.is_unset(request.video_enc_max_qp):
@@ -4263,12 +4277,16 @@ class Client(OpenApiClient):
             query['BusinessType'] = request.business_type
         if not UtilClient.is_unset(request.camera_redirect):
             query['CameraRedirect'] = request.camera_redirect
+        if not UtilClient.is_unset(request.client_control_menu):
+            query['ClientControlMenu'] = request.client_control_menu
         if not UtilClient.is_unset(request.client_type):
             query['ClientType'] = request.client_type
         if not UtilClient.is_unset(request.clipboard):
             query['Clipboard'] = request.clipboard
         if not UtilClient.is_unset(request.color_enhancement):
             query['ColorEnhancement'] = request.color_enhancement
+        if not UtilClient.is_unset(request.cpd_drive_clipboard):
+            query['CpdDriveClipboard'] = request.cpd_drive_clipboard
         if not UtilClient.is_unset(request.cpu_down_grade_duration):
             query['CpuDownGradeDuration'] = request.cpu_down_grade_duration
         if not UtilClient.is_unset(request.cpu_processors):
@@ -4305,6 +4323,12 @@ class Client(OpenApiClient):
             query['EndUserGroupCoordinate'] = request.end_user_group_coordinate
         if not UtilClient.is_unset(request.file_migrate):
             query['FileMigrate'] = request.file_migrate
+        if not UtilClient.is_unset(request.file_transfer_address):
+            query['FileTransferAddress'] = request.file_transfer_address
+        if not UtilClient.is_unset(request.file_transfer_speed):
+            query['FileTransferSpeed'] = request.file_transfer_speed
+        if not UtilClient.is_unset(request.file_transfer_speed_location):
+            query['FileTransferSpeedLocation'] = request.file_transfer_speed_location
         if not UtilClient.is_unset(request.gpu_acceleration):
             query['GpuAcceleration'] = request.gpu_acceleration
         if not UtilClient.is_unset(request.html_5file_transfer):
@@ -4393,6 +4417,8 @@ class Client(OpenApiClient):
             query['Scope'] = request.scope
         if not UtilClient.is_unset(request.scope_value):
             query['ScopeValue'] = request.scope_value
+        if not UtilClient.is_unset(request.screen_display_mode):
+            query['ScreenDisplayMode'] = request.screen_display_mode
         if not UtilClient.is_unset(request.session_max_rate_kbps):
             query['SessionMaxRateKbps'] = request.session_max_rate_kbps
         if not UtilClient.is_unset(request.smooth_enhancement):
@@ -4409,6 +4435,8 @@ class Client(OpenApiClient):
             query['UsbRedirect'] = request.usb_redirect
         if not UtilClient.is_unset(request.usb_supply_redirect_rule):
             query['UsbSupplyRedirectRule'] = request.usb_supply_redirect_rule
+        if not UtilClient.is_unset(request.use_time):
+            query['UseTime'] = request.use_time
         if not UtilClient.is_unset(request.video_enc_avg_kbps):
             query['VideoEncAvgKbps'] = request.video_enc_avg_kbps
         if not UtilClient.is_unset(request.video_enc_max_qp):
@@ -20634,12 +20662,16 @@ class Client(OpenApiClient):
             query['BusinessType'] = request.business_type
         if not UtilClient.is_unset(request.camera_redirect):
             query['CameraRedirect'] = request.camera_redirect
+        if not UtilClient.is_unset(request.client_control_menu):
+            query['ClientControlMenu'] = request.client_control_menu
         if not UtilClient.is_unset(request.client_type):
             query['ClientType'] = request.client_type
         if not UtilClient.is_unset(request.clipboard):
             query['Clipboard'] = request.clipboard
         if not UtilClient.is_unset(request.color_enhancement):
             query['ColorEnhancement'] = request.color_enhancement
+        if not UtilClient.is_unset(request.cpd_drive_clipboard):
+            query['CpdDriveClipboard'] = request.cpd_drive_clipboard
         if not UtilClient.is_unset(request.cpu_down_grade_duration):
             query['CpuDownGradeDuration'] = request.cpu_down_grade_duration
         if not UtilClient.is_unset(request.cpu_processors):
@@ -20676,6 +20708,12 @@ class Client(OpenApiClient):
             query['EndUserGroupCoordinate'] = request.end_user_group_coordinate
         if not UtilClient.is_unset(request.file_migrate):
             query['FileMigrate'] = request.file_migrate
+        if not UtilClient.is_unset(request.file_transfer_address):
+            query['FileTransferAddress'] = request.file_transfer_address
+        if not UtilClient.is_unset(request.file_transfer_speed):
+            query['FileTransferSpeed'] = request.file_transfer_speed
+        if not UtilClient.is_unset(request.file_transfer_speed_location):
+            query['FileTransferSpeedLocation'] = request.file_transfer_speed_location
         if not UtilClient.is_unset(request.gpu_acceleration):
             query['GpuAcceleration'] = request.gpu_acceleration
         if not UtilClient.is_unset(request.html_5file_transfer):
@@ -20770,6 +20808,8 @@ class Client(OpenApiClient):
             query['Scope'] = request.scope
         if not UtilClient.is_unset(request.scope_value):
             query['ScopeValue'] = request.scope_value
+        if not UtilClient.is_unset(request.screen_display_mode):
+            query['ScreenDisplayMode'] = request.screen_display_mode
         if not UtilClient.is_unset(request.session_max_rate_kbps):
             query['SessionMaxRateKbps'] = request.session_max_rate_kbps
         if not UtilClient.is_unset(request.smooth_enhancement):
@@ -20786,6 +20826,8 @@ class Client(OpenApiClient):
             query['UsbRedirect'] = request.usb_redirect
         if not UtilClient.is_unset(request.usb_supply_redirect_rule):
             query['UsbSupplyRedirectRule'] = request.usb_supply_redirect_rule
+        if not UtilClient.is_unset(request.use_time):
+            query['UseTime'] = request.use_time
         if not UtilClient.is_unset(request.video_enc_avg_kbps):
             query['VideoEncAvgKbps'] = request.video_enc_avg_kbps
         if not UtilClient.is_unset(request.video_enc_max_qp):
@@ -20875,12 +20917,16 @@ class Client(OpenApiClient):
             query['BusinessType'] = request.business_type
         if not UtilClient.is_unset(request.camera_redirect):
             query['CameraRedirect'] = request.camera_redirect
+        if not UtilClient.is_unset(request.client_control_menu):
+            query['ClientControlMenu'] = request.client_control_menu
         if not UtilClient.is_unset(request.client_type):
             query['ClientType'] = request.client_type
         if not UtilClient.is_unset(request.clipboard):
             query['Clipboard'] = request.clipboard
         if not UtilClient.is_unset(request.color_enhancement):
             query['ColorEnhancement'] = request.color_enhancement
+        if not UtilClient.is_unset(request.cpd_drive_clipboard):
+            query['CpdDriveClipboard'] = request.cpd_drive_clipboard
         if not UtilClient.is_unset(request.cpu_down_grade_duration):
             query['CpuDownGradeDuration'] = request.cpu_down_grade_duration
         if not UtilClient.is_unset(request.cpu_processors):
@@ -20917,6 +20963,12 @@ class Client(OpenApiClient):
             query['EndUserGroupCoordinate'] = request.end_user_group_coordinate
         if not UtilClient.is_unset(request.file_migrate):
             query['FileMigrate'] = request.file_migrate
+        if not UtilClient.is_unset(request.file_transfer_address):
+            query['FileTransferAddress'] = request.file_transfer_address
+        if not UtilClient.is_unset(request.file_transfer_speed):
+            query['FileTransferSpeed'] = request.file_transfer_speed
+        if not UtilClient.is_unset(request.file_transfer_speed_location):
+            query['FileTransferSpeedLocation'] = request.file_transfer_speed_location
         if not UtilClient.is_unset(request.gpu_acceleration):
             query['GpuAcceleration'] = request.gpu_acceleration
         if not UtilClient.is_unset(request.html_5file_transfer):
@@ -21011,6 +21063,8 @@ class Client(OpenApiClient):
             query['Scope'] = request.scope
         if not UtilClient.is_unset(request.scope_value):
             query['ScopeValue'] = request.scope_value
+        if not UtilClient.is_unset(request.screen_display_mode):
+            query['ScreenDisplayMode'] = request.screen_display_mode
         if not UtilClient.is_unset(request.session_max_rate_kbps):
             query['SessionMaxRateKbps'] = request.session_max_rate_kbps
         if not UtilClient.is_unset(request.smooth_enhancement):
@@ -21027,6 +21081,8 @@ class Client(OpenApiClient):
             query['UsbRedirect'] = request.usb_redirect
         if not UtilClient.is_unset(request.usb_supply_redirect_rule):
             query['UsbSupplyRedirectRule'] = request.usb_supply_redirect_rule
+        if not UtilClient.is_unset(request.use_time):
+            query['UseTime'] = request.use_time
         if not UtilClient.is_unset(request.video_enc_avg_kbps):
             query['VideoEncAvgKbps'] = request.video_enc_avg_kbps
         if not UtilClient.is_unset(request.video_enc_max_qp):
@@ -24890,7 +24946,7 @@ class Client(OpenApiClient):
         """
         @summary Modifies the basic information of a custom cloud computer template, including the template name and template description.
         
-        @description You can use this operation to modify only the name and description of a custom cloud computer template. To change other parameters of the template, use the [ModifyTemplate](~~ModifyTemplate~~) operation.
+        @description You can use this operation to modify only the name and description of a custom cloud computer template. To change other parameters of the template, use the [ModifyTemplate](https://help.aliyun.com/document_detail/2925841.html) operation.
         
         @param request: ModifyTemplateBaseInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24931,7 +24987,7 @@ class Client(OpenApiClient):
         """
         @summary Modifies the basic information of a custom cloud computer template, including the template name and template description.
         
-        @description You can use this operation to modify only the name and description of a custom cloud computer template. To change other parameters of the template, use the [ModifyTemplate](~~ModifyTemplate~~) operation.
+        @description You can use this operation to modify only the name and description of a custom cloud computer template. To change other parameters of the template, use the [ModifyTemplate](https://help.aliyun.com/document_detail/2925841.html) operation.
         
         @param request: ModifyTemplateBaseInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24971,7 +25027,7 @@ class Client(OpenApiClient):
         """
         @summary Modifies the basic information of a custom cloud computer template, including the template name and template description.
         
-        @description You can use this operation to modify only the name and description of a custom cloud computer template. To change other parameters of the template, use the [ModifyTemplate](~~ModifyTemplate~~) operation.
+        @description You can use this operation to modify only the name and description of a custom cloud computer template. To change other parameters of the template, use the [ModifyTemplate](https://help.aliyun.com/document_detail/2925841.html) operation.
         
         @param request: ModifyTemplateBaseInfoRequest
         @return: ModifyTemplateBaseInfoResponse
@@ -24986,7 +25042,7 @@ class Client(OpenApiClient):
         """
         @summary Modifies the basic information of a custom cloud computer template, including the template name and template description.
         
-        @description You can use this operation to modify only the name and description of a custom cloud computer template. To change other parameters of the template, use the [ModifyTemplate](~~ModifyTemplate~~) operation.
+        @description You can use this operation to modify only the name and description of a custom cloud computer template. To change other parameters of the template, use the [ModifyTemplate](https://help.aliyun.com/document_detail/2925841.html) operation.
         
         @param request: ModifyTemplateBaseInfoRequest
         @return: ModifyTemplateBaseInfoResponse

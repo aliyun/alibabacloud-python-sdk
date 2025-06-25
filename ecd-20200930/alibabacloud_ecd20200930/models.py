@@ -6756,9 +6756,11 @@ class CreateCenterPolicyRequest(TeaModel):
         authorize_security_policy_rule: List[CreateCenterPolicyRequestAuthorizeSecurityPolicyRule] = None,
         business_type: int = None,
         camera_redirect: str = None,
+        client_control_menu: str = None,
         client_type: List[CreateCenterPolicyRequestClientType] = None,
         clipboard: str = None,
         color_enhancement: str = None,
+        cpd_drive_clipboard: str = None,
         cpu_down_grade_duration: int = None,
         cpu_processors: List[str] = None,
         cpu_protected_mode: str = None,
@@ -6777,6 +6779,9 @@ class CreateCenterPolicyRequest(TeaModel):
         end_user_apply_admin_coordinate: str = None,
         end_user_group_coordinate: str = None,
         file_migrate: str = None,
+        file_transfer_address: str = None,
+        file_transfer_speed: str = None,
+        file_transfer_speed_location: str = None,
         gpu_acceleration: str = None,
         html_5file_transfer: str = None,
         internet_communication_protocol: str = None,
@@ -6821,6 +6826,7 @@ class CreateCenterPolicyRequest(TeaModel):
         safe_menu: str = None,
         scope: str = None,
         scope_value: List[str] = None,
+        screen_display_mode: str = None,
         session_max_rate_kbps: int = None,
         smooth_enhancement: str = None,
         status_monitor: str = None,
@@ -6829,6 +6835,7 @@ class CreateCenterPolicyRequest(TeaModel):
         taskbar: str = None,
         usb_redirect: str = None,
         usb_supply_redirect_rule: List[CreateCenterPolicyRequestUsbSupplyRedirectRule] = None,
+        use_time: str = None,
         video_enc_avg_kbps: int = None,
         video_enc_max_qp: int = None,
         video_enc_min_qp: int = None,
@@ -6889,6 +6896,7 @@ class CreateCenterPolicyRequest(TeaModel):
         # *   deviceRedirect: enables device redirection.
         # *   off: disables device redirection.
         self.camera_redirect = camera_redirect
+        self.client_control_menu = client_control_menu
         # The types of Alibaba Cloud Workspace clients that end users can use to connect to cloud computers.
         self.client_type = client_type
         # The read/write permissions on the clipboard.
@@ -6907,6 +6915,7 @@ class CreateCenterPolicyRequest(TeaModel):
         # *   off: doesn\\"t enable color enhancement for design and 3D applications.
         # *   on: enables color enhancement for design and 3D applications.
         self.color_enhancement = color_enhancement
+        self.cpd_drive_clipboard = cpd_drive_clipboard
         # The CPU underclocking duration. Valid values: 30 to 120. Unit: seconds.
         self.cpu_down_grade_duration = cpu_down_grade_duration
         # The CPU processors.
@@ -6984,6 +6993,9 @@ class CreateCenterPolicyRequest(TeaModel):
         self.end_user_group_coordinate = end_user_group_coordinate
         # Specifies whether to enable file transfer.
         self.file_migrate = file_migrate
+        self.file_transfer_address = file_transfer_address
+        self.file_transfer_speed = file_transfer_speed
+        self.file_transfer_speed_location = file_transfer_speed_location
         # Specifies whether to enable image quality control. This feature is highly recommended for professional design scenarios where computer performance and user experience are critical.
         # 
         # Valid values:
@@ -7188,6 +7200,7 @@ class CreateCenterPolicyRequest(TeaModel):
         self.scope = scope
         # The effective scopes. This parameter is required when `Scope` is set to `IP`. If `Scope` is set to `IP`, this parameter doesn\\"t take effect.
         self.scope_value = scope_value
+        self.screen_display_mode = screen_display_mode
         # The bandwidth peak allowed for sessions. Unit: Kbit/s. Valid values: 2000 to 100000.
         self.session_max_rate_kbps = session_max_rate_kbps
         # Specifies whether to enable smoothness enhancement for daily office use.
@@ -7231,6 +7244,7 @@ class CreateCenterPolicyRequest(TeaModel):
         self.usb_redirect = usb_redirect
         # The USB redirection rules.
         self.usb_supply_redirect_rule = usb_supply_redirect_rule
+        self.use_time = use_time
         # The average bitrate for video encoding. Unit: Kbit/s. Valid values: 1000 to 50000.
         self.video_enc_avg_kbps = video_enc_avg_kbps
         # The maximum QP for video files. Higher QP values result in lower video quality. Valid values: 0 to 51.
@@ -7394,6 +7408,8 @@ class CreateCenterPolicyRequest(TeaModel):
             result['BusinessType'] = self.business_type
         if self.camera_redirect is not None:
             result['CameraRedirect'] = self.camera_redirect
+        if self.client_control_menu is not None:
+            result['ClientControlMenu'] = self.client_control_menu
         result['ClientType'] = []
         if self.client_type is not None:
             for k in self.client_type:
@@ -7402,6 +7418,8 @@ class CreateCenterPolicyRequest(TeaModel):
             result['Clipboard'] = self.clipboard
         if self.color_enhancement is not None:
             result['ColorEnhancement'] = self.color_enhancement
+        if self.cpd_drive_clipboard is not None:
+            result['CpdDriveClipboard'] = self.cpd_drive_clipboard
         if self.cpu_down_grade_duration is not None:
             result['CpuDownGradeDuration'] = self.cpu_down_grade_duration
         if self.cpu_processors is not None:
@@ -7444,6 +7462,12 @@ class CreateCenterPolicyRequest(TeaModel):
             result['EndUserGroupCoordinate'] = self.end_user_group_coordinate
         if self.file_migrate is not None:
             result['FileMigrate'] = self.file_migrate
+        if self.file_transfer_address is not None:
+            result['FileTransferAddress'] = self.file_transfer_address
+        if self.file_transfer_speed is not None:
+            result['FileTransferSpeed'] = self.file_transfer_speed
+        if self.file_transfer_speed_location is not None:
+            result['FileTransferSpeedLocation'] = self.file_transfer_speed_location
         if self.gpu_acceleration is not None:
             result['GpuAcceleration'] = self.gpu_acceleration
         if self.html_5file_transfer is not None:
@@ -7534,6 +7558,8 @@ class CreateCenterPolicyRequest(TeaModel):
             result['Scope'] = self.scope
         if self.scope_value is not None:
             result['ScopeValue'] = self.scope_value
+        if self.screen_display_mode is not None:
+            result['ScreenDisplayMode'] = self.screen_display_mode
         if self.session_max_rate_kbps is not None:
             result['SessionMaxRateKbps'] = self.session_max_rate_kbps
         if self.smooth_enhancement is not None:
@@ -7552,6 +7578,8 @@ class CreateCenterPolicyRequest(TeaModel):
         if self.usb_supply_redirect_rule is not None:
             for k in self.usb_supply_redirect_rule:
                 result['UsbSupplyRedirectRule'].append(k.to_map() if k else None)
+        if self.use_time is not None:
+            result['UseTime'] = self.use_time
         if self.video_enc_avg_kbps is not None:
             result['VideoEncAvgKbps'] = self.video_enc_avg_kbps
         if self.video_enc_max_qp is not None:
@@ -7618,6 +7646,8 @@ class CreateCenterPolicyRequest(TeaModel):
             self.business_type = m.get('BusinessType')
         if m.get('CameraRedirect') is not None:
             self.camera_redirect = m.get('CameraRedirect')
+        if m.get('ClientControlMenu') is not None:
+            self.client_control_menu = m.get('ClientControlMenu')
         self.client_type = []
         if m.get('ClientType') is not None:
             for k in m.get('ClientType'):
@@ -7627,6 +7657,8 @@ class CreateCenterPolicyRequest(TeaModel):
             self.clipboard = m.get('Clipboard')
         if m.get('ColorEnhancement') is not None:
             self.color_enhancement = m.get('ColorEnhancement')
+        if m.get('CpdDriveClipboard') is not None:
+            self.cpd_drive_clipboard = m.get('CpdDriveClipboard')
         if m.get('CpuDownGradeDuration') is not None:
             self.cpu_down_grade_duration = m.get('CpuDownGradeDuration')
         if m.get('CpuProcessors') is not None:
@@ -7672,6 +7704,12 @@ class CreateCenterPolicyRequest(TeaModel):
             self.end_user_group_coordinate = m.get('EndUserGroupCoordinate')
         if m.get('FileMigrate') is not None:
             self.file_migrate = m.get('FileMigrate')
+        if m.get('FileTransferAddress') is not None:
+            self.file_transfer_address = m.get('FileTransferAddress')
+        if m.get('FileTransferSpeed') is not None:
+            self.file_transfer_speed = m.get('FileTransferSpeed')
+        if m.get('FileTransferSpeedLocation') is not None:
+            self.file_transfer_speed_location = m.get('FileTransferSpeedLocation')
         if m.get('GpuAcceleration') is not None:
             self.gpu_acceleration = m.get('GpuAcceleration')
         if m.get('Html5FileTransfer') is not None:
@@ -7763,6 +7801,8 @@ class CreateCenterPolicyRequest(TeaModel):
             self.scope = m.get('Scope')
         if m.get('ScopeValue') is not None:
             self.scope_value = m.get('ScopeValue')
+        if m.get('ScreenDisplayMode') is not None:
+            self.screen_display_mode = m.get('ScreenDisplayMode')
         if m.get('SessionMaxRateKbps') is not None:
             self.session_max_rate_kbps = m.get('SessionMaxRateKbps')
         if m.get('SmoothEnhancement') is not None:
@@ -7782,6 +7822,8 @@ class CreateCenterPolicyRequest(TeaModel):
             for k in m.get('UsbSupplyRedirectRule'):
                 temp_model = CreateCenterPolicyRequestUsbSupplyRedirectRule()
                 self.usb_supply_redirect_rule.append(temp_model.from_map(k))
+        if m.get('UseTime') is not None:
+            self.use_time = m.get('UseTime')
         if m.get('VideoEncAvgKbps') is not None:
             self.video_enc_avg_kbps = m.get('VideoEncAvgKbps')
         if m.get('VideoEncMaxQP') is not None:
@@ -19392,9 +19434,11 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
         authorize_access_policy_rules: List[DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeAccessPolicyRules] = None,
         authorize_security_policy_rules: List[DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules] = None,
         camera_redirect: str = None,
+        client_control_menu: str = None,
         client_types: List[DescribeCenterPolicyListResponseBodyDescribePolicyGroupsClientTypes] = None,
         clipboard: str = None,
         color_enhancement: str = None,
+        cpd_drive_clipboard: str = None,
         cpu_down_grade_duration: int = None,
         cpu_processors: List[str] = None,
         cpu_protected_mode: str = None,
@@ -19413,6 +19457,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
         domain_resolve_rule_type: str = None,
         end_user_apply_admin_coordinate: str = None,
         end_user_group_coordinate: str = None,
+        file_transfer_address: str = None,
+        file_transfer_speed: str = None,
+        file_transfer_speed_location: str = None,
         gpu_acceleration: str = None,
         html_5access: str = None,
         html_5file_transfer: str = None,
@@ -19460,6 +19507,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
         safe_menu: str = None,
         scope: str = None,
         scope_value: List[str] = None,
+        screen_display_mode: str = None,
         smooth_enhancement: str = None,
         status_monitor: str = None,
         streaming_mode: str = None,
@@ -19467,6 +19515,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
         taskbar: str = None,
         usb_redirect: str = None,
         usb_supply_redirect_rule: List[DescribeCenterPolicyListResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule] = None,
+        use_time: str = None,
         video_enc_avg_kbps: int = None,
         video_enc_max_qp: int = None,
         video_enc_min_qp: int = None,
@@ -19500,12 +19549,14 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
         self.authorize_security_policy_rules = authorize_security_policy_rules
         # Indicates whether on-premises webcam redirection is enabled.
         self.camera_redirect = camera_redirect
+        self.client_control_menu = client_control_menu
         # The logon method control rules.
         self.client_types = client_types
         # The read/write permissions on the clipboard.
         self.clipboard = clipboard
         # Indicates whether color enhancement is enabled for design and 3D applications.
         self.color_enhancement = color_enhancement
+        self.cpd_drive_clipboard = cpd_drive_clipboard
         # The CPU underclocking duration. Valid values: 30 to 120. Unit: seconds.
         self.cpu_down_grade_duration = cpu_down_grade_duration
         # The CPU processors.
@@ -19546,6 +19597,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
         self.end_user_apply_admin_coordinate = end_user_apply_admin_coordinate
         # Indicates whether end users in the same office network can share cloud computers.
         self.end_user_group_coordinate = end_user_group_coordinate
+        self.file_transfer_address = file_transfer_address
+        self.file_transfer_speed = file_transfer_speed
+        self.file_transfer_speed_location = file_transfer_speed_location
         # Indicates whether image quality control is enabled. For optimal computer performance and user experience in professional design scenarios, we recommend enabling this feature.
         self.gpu_acceleration = gpu_acceleration
         # The web client access policy.
@@ -19650,6 +19704,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
         self.scope = scope
         # The effective scopes specified by CIDR blocks.
         self.scope_value = scope_value
+        self.screen_display_mode = screen_display_mode
         # Indicates whether smoothness enhancement is enabled for daily office use.
         self.smooth_enhancement = smooth_enhancement
         # Indicates whether the metric status entry is displayed in the DesktopAssistant menu.
@@ -19666,6 +19721,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
         self.usb_redirect = usb_redirect
         # The USB redirection rules.
         self.usb_supply_redirect_rule = usb_supply_redirect_rule
+        self.use_time = use_time
         # The average bitrate for video encoding. Unit: Kbit/s. Valid values: 1000 to 50000.
         self.video_enc_avg_kbps = video_enc_avg_kbps
         # The maximum QP for video files. Higher QP values result in lower video quality. Valid values: 0 to 51.
@@ -19761,6 +19817,8 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
                 result['AuthorizeSecurityPolicyRules'].append(k.to_map() if k else None)
         if self.camera_redirect is not None:
             result['CameraRedirect'] = self.camera_redirect
+        if self.client_control_menu is not None:
+            result['ClientControlMenu'] = self.client_control_menu
         result['ClientTypes'] = []
         if self.client_types is not None:
             for k in self.client_types:
@@ -19769,6 +19827,8 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
             result['Clipboard'] = self.clipboard
         if self.color_enhancement is not None:
             result['ColorEnhancement'] = self.color_enhancement
+        if self.cpd_drive_clipboard is not None:
+            result['CpdDriveClipboard'] = self.cpd_drive_clipboard
         if self.cpu_down_grade_duration is not None:
             result['CpuDownGradeDuration'] = self.cpu_down_grade_duration
         if self.cpu_processors is not None:
@@ -19811,6 +19871,12 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
             result['EndUserApplyAdminCoordinate'] = self.end_user_apply_admin_coordinate
         if self.end_user_group_coordinate is not None:
             result['EndUserGroupCoordinate'] = self.end_user_group_coordinate
+        if self.file_transfer_address is not None:
+            result['FileTransferAddress'] = self.file_transfer_address
+        if self.file_transfer_speed is not None:
+            result['FileTransferSpeed'] = self.file_transfer_speed
+        if self.file_transfer_speed_location is not None:
+            result['FileTransferSpeedLocation'] = self.file_transfer_speed_location
         if self.gpu_acceleration is not None:
             result['GpuAcceleration'] = self.gpu_acceleration
         if self.html_5access is not None:
@@ -19907,6 +19973,8 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
             result['Scope'] = self.scope
         if self.scope_value is not None:
             result['ScopeValue'] = self.scope_value
+        if self.screen_display_mode is not None:
+            result['ScreenDisplayMode'] = self.screen_display_mode
         if self.smooth_enhancement is not None:
             result['SmoothEnhancement'] = self.smooth_enhancement
         if self.status_monitor is not None:
@@ -19923,6 +19991,8 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
         if self.usb_supply_redirect_rule is not None:
             for k in self.usb_supply_redirect_rule:
                 result['UsbSupplyRedirectRule'].append(k.to_map() if k else None)
+        if self.use_time is not None:
+            result['UseTime'] = self.use_time
         if self.video_enc_avg_kbps is not None:
             result['VideoEncAvgKbps'] = self.video_enc_avg_kbps
         if self.video_enc_max_qp is not None:
@@ -19983,6 +20053,8 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
                 self.authorize_security_policy_rules.append(temp_model.from_map(k))
         if m.get('CameraRedirect') is not None:
             self.camera_redirect = m.get('CameraRedirect')
+        if m.get('ClientControlMenu') is not None:
+            self.client_control_menu = m.get('ClientControlMenu')
         self.client_types = []
         if m.get('ClientTypes') is not None:
             for k in m.get('ClientTypes'):
@@ -19992,6 +20064,8 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
             self.clipboard = m.get('Clipboard')
         if m.get('ColorEnhancement') is not None:
             self.color_enhancement = m.get('ColorEnhancement')
+        if m.get('CpdDriveClipboard') is not None:
+            self.cpd_drive_clipboard = m.get('CpdDriveClipboard')
         if m.get('CpuDownGradeDuration') is not None:
             self.cpu_down_grade_duration = m.get('CpuDownGradeDuration')
         if m.get('CpuProcessors') is not None:
@@ -20037,6 +20111,12 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
             self.end_user_apply_admin_coordinate = m.get('EndUserApplyAdminCoordinate')
         if m.get('EndUserGroupCoordinate') is not None:
             self.end_user_group_coordinate = m.get('EndUserGroupCoordinate')
+        if m.get('FileTransferAddress') is not None:
+            self.file_transfer_address = m.get('FileTransferAddress')
+        if m.get('FileTransferSpeed') is not None:
+            self.file_transfer_speed = m.get('FileTransferSpeed')
+        if m.get('FileTransferSpeedLocation') is not None:
+            self.file_transfer_speed_location = m.get('FileTransferSpeedLocation')
         if m.get('GpuAcceleration') is not None:
             self.gpu_acceleration = m.get('GpuAcceleration')
         if m.get('Html5Access') is not None:
@@ -20134,6 +20214,8 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
             self.scope = m.get('Scope')
         if m.get('ScopeValue') is not None:
             self.scope_value = m.get('ScopeValue')
+        if m.get('ScreenDisplayMode') is not None:
+            self.screen_display_mode = m.get('ScreenDisplayMode')
         if m.get('SmoothEnhancement') is not None:
             self.smooth_enhancement = m.get('SmoothEnhancement')
         if m.get('StatusMonitor') is not None:
@@ -20151,6 +20233,8 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(TeaModel):
             for k in m.get('UsbSupplyRedirectRule'):
                 temp_model = DescribeCenterPolicyListResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule()
                 self.usb_supply_redirect_rule.append(temp_model.from_map(k))
+        if m.get('UseTime') is not None:
+            self.use_time = m.get('UseTime')
         if m.get('VideoEncAvgKbps') is not None:
             self.video_enc_avg_kbps = m.get('VideoEncAvgKbps')
         if m.get('VideoEncMaxQP') is not None:
@@ -34222,9 +34306,11 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         authorize_access_policy_rules: List[DescribePolicyGroupsResponseBodyDescribePolicyGroupsAuthorizeAccessPolicyRules] = None,
         authorize_security_policy_rules: List[DescribePolicyGroupsResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules] = None,
         camera_redirect: str = None,
+        client_control_menu: str = None,
         client_types: List[DescribePolicyGroupsResponseBodyDescribePolicyGroupsClientTypes] = None,
         clipboard: str = None,
         color_enhancement: str = None,
+        cpd_drive_clipboard: str = None,
         cpu_down_grade_duration: int = None,
         cpu_processors: List[str] = None,
         cpu_protected_mode: str = None,
@@ -34245,6 +34331,9 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         end_user_group_coordinate: str = None,
         file_migrate: str = None,
         file_transfer: str = None,
+        file_transfer_address: str = None,
+        file_transfer_speed: str = None,
+        file_transfer_speed_location: str = None,
         gpu_acceleration: str = None,
         html_5access: str = None,
         html_5file_transfer: str = None,
@@ -34294,12 +34383,14 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         safe_menu: str = None,
         scope: str = None,
         scope_value: List[str] = None,
+        screen_display_mode: str = None,
         smooth_enhancement: str = None,
         status_monitor: str = None,
         streaming_mode: str = None,
         target_fps: int = None,
         usb_redirect: str = None,
         usb_supply_redirect_rule: List[DescribePolicyGroupsResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule] = None,
+        use_time: str = None,
         video_enc_avg_kbps: int = None,
         video_enc_max_qp: int = None,
         video_enc_min_qp: int = None,
@@ -34345,6 +34436,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         # *   off
         # *   on (default)
         self.camera_redirect = camera_redirect
+        self.client_control_menu = client_control_menu
         # The logon method control rules to limit the type of the Alibaba Cloud Workspace client used by end users to connect to cloud computers.
         self.client_types = client_types
         # The permissions on the clipboard.
@@ -34363,6 +34455,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         # *   off
         # *   on
         self.color_enhancement = color_enhancement
+        self.cpd_drive_clipboard = cpd_drive_clipboard
         # The CPU underclocking duration. Valid values: 30 to 120. Unit: seconds.
         self.cpu_down_grade_duration = cpu_down_grade_duration
         # The process whitelist that is not restricted by the CPU usage limit.
@@ -34433,6 +34526,9 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         self.file_migrate = file_migrate
         # Transfers files.
         self.file_transfer = file_transfer
+        self.file_transfer_address = file_transfer_address
+        self.file_transfer_speed = file_transfer_speed
+        self.file_transfer_speed_location = file_transfer_speed_location
         # Indicates whether the Image Quality Control feature is enabled. If you have high requirements on the performance and user experience in scenarios such as professional design, we recommend that you enable this feature.
         # 
         # Valid values:
@@ -34659,6 +34755,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         self.scope = scope
         # This parameter is required when the `Scope` parameter is set to `IP`.````
         self.scope_value = scope_value
+        self.screen_display_mode = screen_display_mode
         # Indicates whether the Smooth Enhancement switch is turned on.
         # 
         # Valid values:
@@ -34689,6 +34786,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         self.usb_redirect = usb_redirect
         # The USB redirection rule.
         self.usb_supply_redirect_rule = usb_supply_redirect_rule
+        self.use_time = use_time
         # The average bitrate for video encoding. Valid values: 1000 to 50000.
         self.video_enc_avg_kbps = video_enc_avg_kbps
         # The maximum quantizer parameter (QP) of video files. A larger QP value indicates worse video quality. Valid values: 0 to 51.
@@ -34855,6 +34953,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
                 result['AuthorizeSecurityPolicyRules'].append(k.to_map() if k else None)
         if self.camera_redirect is not None:
             result['CameraRedirect'] = self.camera_redirect
+        if self.client_control_menu is not None:
+            result['ClientControlMenu'] = self.client_control_menu
         result['ClientTypes'] = []
         if self.client_types is not None:
             for k in self.client_types:
@@ -34863,6 +34963,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['Clipboard'] = self.clipboard
         if self.color_enhancement is not None:
             result['ColorEnhancement'] = self.color_enhancement
+        if self.cpd_drive_clipboard is not None:
+            result['CpdDriveClipboard'] = self.cpd_drive_clipboard
         if self.cpu_down_grade_duration is not None:
             result['CpuDownGradeDuration'] = self.cpu_down_grade_duration
         if self.cpu_processors is not None:
@@ -34909,6 +35011,12 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['FileMigrate'] = self.file_migrate
         if self.file_transfer is not None:
             result['FileTransfer'] = self.file_transfer
+        if self.file_transfer_address is not None:
+            result['FileTransferAddress'] = self.file_transfer_address
+        if self.file_transfer_speed is not None:
+            result['FileTransferSpeed'] = self.file_transfer_speed
+        if self.file_transfer_speed_location is not None:
+            result['FileTransferSpeedLocation'] = self.file_transfer_speed_location
         if self.gpu_acceleration is not None:
             result['GpuAcceleration'] = self.gpu_acceleration
         if self.html_5access is not None:
@@ -35009,6 +35117,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['Scope'] = self.scope
         if self.scope_value is not None:
             result['ScopeValue'] = self.scope_value
+        if self.screen_display_mode is not None:
+            result['ScreenDisplayMode'] = self.screen_display_mode
         if self.smooth_enhancement is not None:
             result['SmoothEnhancement'] = self.smooth_enhancement
         if self.status_monitor is not None:
@@ -35023,6 +35133,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         if self.usb_supply_redirect_rule is not None:
             for k in self.usb_supply_redirect_rule:
                 result['UsbSupplyRedirectRule'].append(k.to_map() if k else None)
+        if self.use_time is not None:
+            result['UseTime'] = self.use_time
         if self.video_enc_avg_kbps is not None:
             result['VideoEncAvgKbps'] = self.video_enc_avg_kbps
         if self.video_enc_max_qp is not None:
@@ -35087,6 +35199,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
                 self.authorize_security_policy_rules.append(temp_model.from_map(k))
         if m.get('CameraRedirect') is not None:
             self.camera_redirect = m.get('CameraRedirect')
+        if m.get('ClientControlMenu') is not None:
+            self.client_control_menu = m.get('ClientControlMenu')
         self.client_types = []
         if m.get('ClientTypes') is not None:
             for k in m.get('ClientTypes'):
@@ -35096,6 +35210,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.clipboard = m.get('Clipboard')
         if m.get('ColorEnhancement') is not None:
             self.color_enhancement = m.get('ColorEnhancement')
+        if m.get('CpdDriveClipboard') is not None:
+            self.cpd_drive_clipboard = m.get('CpdDriveClipboard')
         if m.get('CpuDownGradeDuration') is not None:
             self.cpu_down_grade_duration = m.get('CpuDownGradeDuration')
         if m.get('CpuProcessors') is not None:
@@ -35145,6 +35261,12 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.file_migrate = m.get('FileMigrate')
         if m.get('FileTransfer') is not None:
             self.file_transfer = m.get('FileTransfer')
+        if m.get('FileTransferAddress') is not None:
+            self.file_transfer_address = m.get('FileTransferAddress')
+        if m.get('FileTransferSpeed') is not None:
+            self.file_transfer_speed = m.get('FileTransferSpeed')
+        if m.get('FileTransferSpeedLocation') is not None:
+            self.file_transfer_speed_location = m.get('FileTransferSpeedLocation')
         if m.get('GpuAcceleration') is not None:
             self.gpu_acceleration = m.get('GpuAcceleration')
         if m.get('Html5Access') is not None:
@@ -35246,6 +35368,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.scope = m.get('Scope')
         if m.get('ScopeValue') is not None:
             self.scope_value = m.get('ScopeValue')
+        if m.get('ScreenDisplayMode') is not None:
+            self.screen_display_mode = m.get('ScreenDisplayMode')
         if m.get('SmoothEnhancement') is not None:
             self.smooth_enhancement = m.get('SmoothEnhancement')
         if m.get('StatusMonitor') is not None:
@@ -35261,6 +35385,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             for k in m.get('UsbSupplyRedirectRule'):
                 temp_model = DescribePolicyGroupsResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule()
                 self.usb_supply_redirect_rule.append(temp_model.from_map(k))
+        if m.get('UseTime') is not None:
+            self.use_time = m.get('UseTime')
         if m.get('VideoEncAvgKbps') is not None:
             self.video_enc_avg_kbps = m.get('VideoEncAvgKbps')
         if m.get('VideoEncMaxQP') is not None:
@@ -49407,9 +49533,11 @@ class ModifyCenterPolicyRequest(TeaModel):
         authorize_security_policy_rule: List[ModifyCenterPolicyRequestAuthorizeSecurityPolicyRule] = None,
         business_type: int = None,
         camera_redirect: str = None,
+        client_control_menu: str = None,
         client_type: List[ModifyCenterPolicyRequestClientType] = None,
         clipboard: str = None,
         color_enhancement: str = None,
+        cpd_drive_clipboard: str = None,
         cpu_down_grade_duration: int = None,
         cpu_processors: List[str] = None,
         cpu_protected_mode: str = None,
@@ -49428,6 +49556,9 @@ class ModifyCenterPolicyRequest(TeaModel):
         end_user_apply_admin_coordinate: str = None,
         end_user_group_coordinate: str = None,
         file_migrate: str = None,
+        file_transfer_address: str = None,
+        file_transfer_speed: str = None,
+        file_transfer_speed_location: str = None,
         gpu_acceleration: str = None,
         html_5file_transfer: str = None,
         internet_communication_protocol: str = None,
@@ -49475,6 +49606,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         safe_menu: str = None,
         scope: str = None,
         scope_value: List[str] = None,
+        screen_display_mode: str = None,
         session_max_rate_kbps: int = None,
         smooth_enhancement: str = None,
         status_monitor: str = None,
@@ -49483,6 +49615,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         taskbar: str = None,
         usb_redirect: str = None,
         usb_supply_redirect_rule: List[ModifyCenterPolicyRequestUsbSupplyRedirectRule] = None,
+        use_time: str = None,
         video_enc_avg_kbps: int = None,
         video_enc_max_qp: int = None,
         video_enc_min_qp: int = None,
@@ -49543,6 +49676,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         # *   deviceRedirect: enables device redirection.
         # *   off: disables device redirection.
         self.camera_redirect = camera_redirect
+        self.client_control_menu = client_control_menu
         # The types of Alibaba Cloud Workspace clients that end users can use to connect to cloud computers.
         self.client_type = client_type
         # The read/write permissions on the clipboard.
@@ -49561,6 +49695,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         # *   off: doesn\\"t enable color enhancement for design and 3D applications.
         # *   on: enables color enhancement for design and 3D applications.
         self.color_enhancement = color_enhancement
+        self.cpd_drive_clipboard = cpd_drive_clipboard
         # The CPU underclocking duration. Valid values: 30 to 120. Unit: seconds.
         self.cpu_down_grade_duration = cpu_down_grade_duration
         # The CPU processors.
@@ -49648,6 +49783,9 @@ class ModifyCenterPolicyRequest(TeaModel):
         # *   off: enables file transfer.
         # *   on: disables file transfer.
         self.file_migrate = file_migrate
+        self.file_transfer_address = file_transfer_address
+        self.file_transfer_speed = file_transfer_speed
+        self.file_transfer_speed_location = file_transfer_speed_location
         # Specifies whether to enable Image Quality Control. This feature is highly recommended for professional design scenarios where performance and user experience are critical.
         # 
         # Valid values:
@@ -49863,6 +50001,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         self.scope = scope
         # The effective scopes. This parameter is required when `Scope` is set to `IP`. If `Scope` is set to `IP`, this parameter doesn\\"t take effect.
         self.scope_value = scope_value
+        self.screen_display_mode = screen_display_mode
         # The bandwidth peak allowed for sessions. Unit: Kbit/s. Valid values: 2000 to 100000.
         self.session_max_rate_kbps = session_max_rate_kbps
         # Specifies whether to enable smoothness enhancement for daily office use.
@@ -49906,6 +50045,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         self.usb_redirect = usb_redirect
         # The USB redirection rules.
         self.usb_supply_redirect_rule = usb_supply_redirect_rule
+        self.use_time = use_time
         # The average bitrate for video encoding. Unit: Kbit/s. Valid values: 1000 to 50000.
         self.video_enc_avg_kbps = video_enc_avg_kbps
         # The maximum QP for video files. Higher QP values result in lower video quality. Valid values: 0 to 51.
@@ -50082,6 +50222,8 @@ class ModifyCenterPolicyRequest(TeaModel):
             result['BusinessType'] = self.business_type
         if self.camera_redirect is not None:
             result['CameraRedirect'] = self.camera_redirect
+        if self.client_control_menu is not None:
+            result['ClientControlMenu'] = self.client_control_menu
         result['ClientType'] = []
         if self.client_type is not None:
             for k in self.client_type:
@@ -50090,6 +50232,8 @@ class ModifyCenterPolicyRequest(TeaModel):
             result['Clipboard'] = self.clipboard
         if self.color_enhancement is not None:
             result['ColorEnhancement'] = self.color_enhancement
+        if self.cpd_drive_clipboard is not None:
+            result['CpdDriveClipboard'] = self.cpd_drive_clipboard
         if self.cpu_down_grade_duration is not None:
             result['CpuDownGradeDuration'] = self.cpu_down_grade_duration
         if self.cpu_processors is not None:
@@ -50132,6 +50276,12 @@ class ModifyCenterPolicyRequest(TeaModel):
             result['EndUserGroupCoordinate'] = self.end_user_group_coordinate
         if self.file_migrate is not None:
             result['FileMigrate'] = self.file_migrate
+        if self.file_transfer_address is not None:
+            result['FileTransferAddress'] = self.file_transfer_address
+        if self.file_transfer_speed is not None:
+            result['FileTransferSpeed'] = self.file_transfer_speed
+        if self.file_transfer_speed_location is not None:
+            result['FileTransferSpeedLocation'] = self.file_transfer_speed_location
         if self.gpu_acceleration is not None:
             result['GpuAcceleration'] = self.gpu_acceleration
         if self.html_5file_transfer is not None:
@@ -50232,6 +50382,8 @@ class ModifyCenterPolicyRequest(TeaModel):
             result['Scope'] = self.scope
         if self.scope_value is not None:
             result['ScopeValue'] = self.scope_value
+        if self.screen_display_mode is not None:
+            result['ScreenDisplayMode'] = self.screen_display_mode
         if self.session_max_rate_kbps is not None:
             result['SessionMaxRateKbps'] = self.session_max_rate_kbps
         if self.smooth_enhancement is not None:
@@ -50250,6 +50402,8 @@ class ModifyCenterPolicyRequest(TeaModel):
         if self.usb_supply_redirect_rule is not None:
             for k in self.usb_supply_redirect_rule:
                 result['UsbSupplyRedirectRule'].append(k.to_map() if k else None)
+        if self.use_time is not None:
+            result['UseTime'] = self.use_time
         if self.video_enc_avg_kbps is not None:
             result['VideoEncAvgKbps'] = self.video_enc_avg_kbps
         if self.video_enc_max_qp is not None:
@@ -50316,6 +50470,8 @@ class ModifyCenterPolicyRequest(TeaModel):
             self.business_type = m.get('BusinessType')
         if m.get('CameraRedirect') is not None:
             self.camera_redirect = m.get('CameraRedirect')
+        if m.get('ClientControlMenu') is not None:
+            self.client_control_menu = m.get('ClientControlMenu')
         self.client_type = []
         if m.get('ClientType') is not None:
             for k in m.get('ClientType'):
@@ -50325,6 +50481,8 @@ class ModifyCenterPolicyRequest(TeaModel):
             self.clipboard = m.get('Clipboard')
         if m.get('ColorEnhancement') is not None:
             self.color_enhancement = m.get('ColorEnhancement')
+        if m.get('CpdDriveClipboard') is not None:
+            self.cpd_drive_clipboard = m.get('CpdDriveClipboard')
         if m.get('CpuDownGradeDuration') is not None:
             self.cpu_down_grade_duration = m.get('CpuDownGradeDuration')
         if m.get('CpuProcessors') is not None:
@@ -50370,6 +50528,12 @@ class ModifyCenterPolicyRequest(TeaModel):
             self.end_user_group_coordinate = m.get('EndUserGroupCoordinate')
         if m.get('FileMigrate') is not None:
             self.file_migrate = m.get('FileMigrate')
+        if m.get('FileTransferAddress') is not None:
+            self.file_transfer_address = m.get('FileTransferAddress')
+        if m.get('FileTransferSpeed') is not None:
+            self.file_transfer_speed = m.get('FileTransferSpeed')
+        if m.get('FileTransferSpeedLocation') is not None:
+            self.file_transfer_speed_location = m.get('FileTransferSpeedLocation')
         if m.get('GpuAcceleration') is not None:
             self.gpu_acceleration = m.get('GpuAcceleration')
         if m.get('Html5FileTransfer') is not None:
@@ -50473,6 +50637,8 @@ class ModifyCenterPolicyRequest(TeaModel):
             self.scope = m.get('Scope')
         if m.get('ScopeValue') is not None:
             self.scope_value = m.get('ScopeValue')
+        if m.get('ScreenDisplayMode') is not None:
+            self.screen_display_mode = m.get('ScreenDisplayMode')
         if m.get('SessionMaxRateKbps') is not None:
             self.session_max_rate_kbps = m.get('SessionMaxRateKbps')
         if m.get('SmoothEnhancement') is not None:
@@ -50492,6 +50658,8 @@ class ModifyCenterPolicyRequest(TeaModel):
             for k in m.get('UsbSupplyRedirectRule'):
                 temp_model = ModifyCenterPolicyRequestUsbSupplyRedirectRule()
                 self.usb_supply_redirect_rule.append(temp_model.from_map(k))
+        if m.get('UseTime') is not None:
+            self.use_time = m.get('UseTime')
         if m.get('VideoEncAvgKbps') is not None:
             self.video_enc_avg_kbps = m.get('VideoEncAvgKbps')
         if m.get('VideoEncMaxQP') is not None:
