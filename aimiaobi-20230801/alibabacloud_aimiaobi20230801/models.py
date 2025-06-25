@@ -30542,6 +30542,7 @@ class RunCommentGenerationRequest(TeaModel):
         extra_info: str = None,
         length: str = None,
         length_range: Dict[str, Any] = None,
+        model_id: str = None,
         num_comments: str = None,
         sentiment: Dict[str, Any] = None,
         session_id: str = None,
@@ -30555,6 +30556,7 @@ class RunCommentGenerationRequest(TeaModel):
         self.length = length
         # This parameter is required.
         self.length_range = length_range
+        self.model_id = model_id
         # This parameter is required.
         self.num_comments = num_comments
         # This parameter is required.
@@ -30585,6 +30587,8 @@ class RunCommentGenerationRequest(TeaModel):
             result['Length'] = self.length
         if self.length_range is not None:
             result['LengthRange'] = self.length_range
+        if self.model_id is not None:
+            result['ModelId'] = self.model_id
         if self.num_comments is not None:
             result['NumComments'] = self.num_comments
         if self.sentiment is not None:
@@ -30611,6 +30615,8 @@ class RunCommentGenerationRequest(TeaModel):
             self.length = m.get('Length')
         if m.get('LengthRange') is not None:
             self.length_range = m.get('LengthRange')
+        if m.get('ModelId') is not None:
+            self.model_id = m.get('ModelId')
         if m.get('NumComments') is not None:
             self.num_comments = m.get('NumComments')
         if m.get('Sentiment') is not None:
@@ -30635,6 +30641,7 @@ class RunCommentGenerationShrinkRequest(TeaModel):
         extra_info: str = None,
         length: str = None,
         length_range_shrink: str = None,
+        model_id: str = None,
         num_comments: str = None,
         sentiment_shrink: str = None,
         session_id: str = None,
@@ -30648,6 +30655,7 @@ class RunCommentGenerationShrinkRequest(TeaModel):
         self.length = length
         # This parameter is required.
         self.length_range_shrink = length_range_shrink
+        self.model_id = model_id
         # This parameter is required.
         self.num_comments = num_comments
         # This parameter is required.
@@ -30678,6 +30686,8 @@ class RunCommentGenerationShrinkRequest(TeaModel):
             result['Length'] = self.length
         if self.length_range_shrink is not None:
             result['LengthRange'] = self.length_range_shrink
+        if self.model_id is not None:
+            result['ModelId'] = self.model_id
         if self.num_comments is not None:
             result['NumComments'] = self.num_comments
         if self.sentiment_shrink is not None:
@@ -30704,6 +30714,8 @@ class RunCommentGenerationShrinkRequest(TeaModel):
             self.length = m.get('Length')
         if m.get('LengthRange') is not None:
             self.length_range_shrink = m.get('LengthRange')
+        if m.get('ModelId') is not None:
+            self.model_id = m.get('ModelId')
         if m.get('NumComments') is not None:
             self.num_comments = m.get('NumComments')
         if m.get('Sentiment') is not None:
@@ -32156,6 +32168,7 @@ class RunDocBrainmapRequest(TeaModel):
         self,
         clean_cache: bool = None,
         doc_id: str = None,
+        model_name: str = None,
         node_number: int = None,
         prompt: str = None,
         session_id: str = None,
@@ -32166,6 +32179,7 @@ class RunDocBrainmapRequest(TeaModel):
         self.clean_cache = clean_cache
         # This parameter is required.
         self.doc_id = doc_id
+        self.model_name = model_name
         self.node_number = node_number
         self.prompt = prompt
         # This parameter is required.
@@ -32188,6 +32202,8 @@ class RunDocBrainmapRequest(TeaModel):
             result['CleanCache'] = self.clean_cache
         if self.doc_id is not None:
             result['DocId'] = self.doc_id
+        if self.model_name is not None:
+            result['ModelName'] = self.model_name
         if self.node_number is not None:
             result['NodeNumber'] = self.node_number
         if self.prompt is not None:
@@ -32208,6 +32224,8 @@ class RunDocBrainmapRequest(TeaModel):
             self.clean_cache = m.get('CleanCache')
         if m.get('DocId') is not None:
             self.doc_id = m.get('DocId')
+        if m.get('ModelName') is not None:
+            self.model_name = m.get('ModelName')
         if m.get('NodeNumber') is not None:
             self.node_number = m.get('NodeNumber')
         if m.get('Prompt') is not None:
@@ -32482,6 +32500,7 @@ class RunDocIntroductionRequest(TeaModel):
         doc_id: str = None,
         introduction_prompt: str = None,
         key_point_prompt: str = None,
+        model_name: str = None,
         session_id: str = None,
         summary_prompt: str = None,
         workspace_id: str = None,
@@ -32492,6 +32511,7 @@ class RunDocIntroductionRequest(TeaModel):
         self.doc_id = doc_id
         self.introduction_prompt = introduction_prompt
         self.key_point_prompt = key_point_prompt
+        self.model_name = model_name
         # This parameter is required.
         self.session_id = session_id
         self.summary_prompt = summary_prompt
@@ -32516,6 +32536,8 @@ class RunDocIntroductionRequest(TeaModel):
             result['IntroductionPrompt'] = self.introduction_prompt
         if self.key_point_prompt is not None:
             result['KeyPointPrompt'] = self.key_point_prompt
+        if self.model_name is not None:
+            result['ModelName'] = self.model_name
         if self.session_id is not None:
             result['SessionId'] = self.session_id
         if self.summary_prompt is not None:
@@ -32536,6 +32558,8 @@ class RunDocIntroductionRequest(TeaModel):
             self.introduction_prompt = m.get('IntroductionPrompt')
         if m.get('KeyPointPrompt') is not None:
             self.key_point_prompt = m.get('KeyPointPrompt')
+        if m.get('ModelName') is not None:
+            self.model_name = m.get('ModelName')
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
         if m.get('SummaryPrompt') is not None:
@@ -32974,6 +32998,7 @@ class RunDocQaRequest(TeaModel):
         category_ids: List[str] = None,
         conversation_contexts: List[RunDocQaRequestConversationContexts] = None,
         doc_ids: List[str] = None,
+        model_name: str = None,
         query: str = None,
         reference_content: str = None,
         search_source: str = None,
@@ -32983,6 +33008,7 @@ class RunDocQaRequest(TeaModel):
         self.category_ids = category_ids
         self.conversation_contexts = conversation_contexts
         self.doc_ids = doc_ids
+        self.model_name = model_name
         # This parameter is required.
         self.query = query
         self.reference_content = reference_content
@@ -33013,6 +33039,8 @@ class RunDocQaRequest(TeaModel):
                 result['ConversationContexts'].append(k.to_map() if k else None)
         if self.doc_ids is not None:
             result['DocIds'] = self.doc_ids
+        if self.model_name is not None:
+            result['ModelName'] = self.model_name
         if self.query is not None:
             result['Query'] = self.query
         if self.reference_content is not None:
@@ -33036,6 +33064,8 @@ class RunDocQaRequest(TeaModel):
                 self.conversation_contexts.append(temp_model.from_map(k))
         if m.get('DocIds') is not None:
             self.doc_ids = m.get('DocIds')
+        if m.get('ModelName') is not None:
+            self.model_name = m.get('ModelName')
         if m.get('Query') is not None:
             self.query = m.get('Query')
         if m.get('ReferenceContent') is not None:
@@ -33055,6 +33085,7 @@ class RunDocQaShrinkRequest(TeaModel):
         category_ids_shrink: str = None,
         conversation_contexts_shrink: str = None,
         doc_ids_shrink: str = None,
+        model_name: str = None,
         query: str = None,
         reference_content: str = None,
         search_source: str = None,
@@ -33064,6 +33095,7 @@ class RunDocQaShrinkRequest(TeaModel):
         self.category_ids_shrink = category_ids_shrink
         self.conversation_contexts_shrink = conversation_contexts_shrink
         self.doc_ids_shrink = doc_ids_shrink
+        self.model_name = model_name
         # This parameter is required.
         self.query = query
         self.reference_content = reference_content
@@ -33089,6 +33121,8 @@ class RunDocQaShrinkRequest(TeaModel):
             result['ConversationContexts'] = self.conversation_contexts_shrink
         if self.doc_ids_shrink is not None:
             result['DocIds'] = self.doc_ids_shrink
+        if self.model_name is not None:
+            result['ModelName'] = self.model_name
         if self.query is not None:
             result['Query'] = self.query
         if self.reference_content is not None:
@@ -33109,6 +33143,8 @@ class RunDocQaShrinkRequest(TeaModel):
             self.conversation_contexts_shrink = m.get('ConversationContexts')
         if m.get('DocIds') is not None:
             self.doc_ids_shrink = m.get('DocIds')
+        if m.get('ModelName') is not None:
+            self.model_name = m.get('ModelName')
         if m.get('Query') is not None:
             self.query = m.get('Query')
         if m.get('ReferenceContent') is not None:
@@ -33598,12 +33634,14 @@ class RunDocSmartCardRequest(TeaModel):
     def __init__(
         self,
         doc_id: str = None,
+        model_name: str = None,
         prompt: str = None,
         session_id: str = None,
         workspace_id: str = None,
     ):
         # This parameter is required.
         self.doc_id = doc_id
+        self.model_name = model_name
         self.prompt = prompt
         # This parameter is required.
         self.session_id = session_id
@@ -33621,6 +33659,8 @@ class RunDocSmartCardRequest(TeaModel):
         result = dict()
         if self.doc_id is not None:
             result['DocId'] = self.doc_id
+        if self.model_name is not None:
+            result['ModelName'] = self.model_name
         if self.prompt is not None:
             result['Prompt'] = self.prompt
         if self.session_id is not None:
@@ -33633,6 +33673,8 @@ class RunDocSmartCardRequest(TeaModel):
         m = m or dict()
         if m.get('DocId') is not None:
             self.doc_id = m.get('DocId')
+        if m.get('ModelName') is not None:
+            self.model_name = m.get('ModelName')
         if m.get('Prompt') is not None:
             self.prompt = m.get('Prompt')
         if m.get('SessionId') is not None:
@@ -34223,6 +34265,7 @@ class RunDocTranslationRequest(TeaModel):
         self,
         clean_cache: bool = None,
         doc_id: str = None,
+        model_name: str = None,
         recommend_content: str = None,
         session_id: str = None,
         trans_type: str = None,
@@ -34230,6 +34273,7 @@ class RunDocTranslationRequest(TeaModel):
     ):
         self.clean_cache = clean_cache
         self.doc_id = doc_id
+        self.model_name = model_name
         self.recommend_content = recommend_content
         # This parameter is required.
         self.session_id = session_id
@@ -34250,6 +34294,8 @@ class RunDocTranslationRequest(TeaModel):
             result['CleanCache'] = self.clean_cache
         if self.doc_id is not None:
             result['DocId'] = self.doc_id
+        if self.model_name is not None:
+            result['ModelName'] = self.model_name
         if self.recommend_content is not None:
             result['RecommendContent'] = self.recommend_content
         if self.session_id is not None:
@@ -34266,6 +34312,8 @@ class RunDocTranslationRequest(TeaModel):
             self.clean_cache = m.get('CleanCache')
         if m.get('DocId') is not None:
             self.doc_id = m.get('DocId')
+        if m.get('ModelName') is not None:
+            self.model_name = m.get('ModelName')
         if m.get('RecommendContent') is not None:
             self.recommend_content = m.get('RecommendContent')
         if m.get('SessionId') is not None:
@@ -34532,6 +34580,7 @@ class RunDocTranslationResponse(TeaModel):
 class RunDocWashingRequest(TeaModel):
     def __init__(
         self,
+        model_id: str = None,
         prompt: str = None,
         reference_content: str = None,
         session_id: str = None,
@@ -34541,6 +34590,7 @@ class RunDocWashingRequest(TeaModel):
         writing_type_name: str = None,
         writing_type_ref_doc: str = None,
     ):
+        self.model_id = model_id
         self.prompt = prompt
         # This parameter is required.
         self.reference_content = reference_content
@@ -34561,6 +34611,8 @@ class RunDocWashingRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.model_id is not None:
+            result['ModelId'] = self.model_id
         if self.prompt is not None:
             result['Prompt'] = self.prompt
         if self.reference_content is not None:
@@ -34581,6 +34633,8 @@ class RunDocWashingRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ModelId') is not None:
+            self.model_id = m.get('ModelId')
         if m.get('Prompt') is not None:
             self.prompt = m.get('Prompt')
         if m.get('ReferenceContent') is not None:
@@ -35150,11 +35204,13 @@ class RunGenerateQuestionsRequest(TeaModel):
     def __init__(
         self,
         doc_id: str = None,
+        model_name: str = None,
         reference_content: str = None,
         session_id: str = None,
         workspace_id: str = None,
     ):
         self.doc_id = doc_id
+        self.model_name = model_name
         self.reference_content = reference_content
         self.session_id = session_id
         # This parameter is required.
@@ -35171,6 +35227,8 @@ class RunGenerateQuestionsRequest(TeaModel):
         result = dict()
         if self.doc_id is not None:
             result['DocId'] = self.doc_id
+        if self.model_name is not None:
+            result['ModelName'] = self.model_name
         if self.reference_content is not None:
             result['ReferenceContent'] = self.reference_content
         if self.session_id is not None:
@@ -35183,6 +35241,8 @@ class RunGenerateQuestionsRequest(TeaModel):
         m = m or dict()
         if m.get('DocId') is not None:
             self.doc_id = m.get('DocId')
+        if m.get('ModelName') is not None:
+            self.model_name = m.get('ModelName')
         if m.get('ReferenceContent') is not None:
             self.reference_content = m.get('ReferenceContent')
         if m.get('SessionId') is not None:
@@ -35449,12 +35509,14 @@ class RunHotwordRequest(TeaModel):
     def __init__(
         self,
         doc_id: str = None,
+        model_name: str = None,
         prompt: str = None,
         reference_content: str = None,
         session_id: str = None,
         workspace_id: str = None,
     ):
         self.doc_id = doc_id
+        self.model_name = model_name
         self.prompt = prompt
         self.reference_content = reference_content
         self.session_id = session_id
@@ -35472,6 +35534,8 @@ class RunHotwordRequest(TeaModel):
         result = dict()
         if self.doc_id is not None:
             result['DocId'] = self.doc_id
+        if self.model_name is not None:
+            result['ModelName'] = self.model_name
         if self.prompt is not None:
             result['Prompt'] = self.prompt
         if self.reference_content is not None:
@@ -35486,6 +35550,8 @@ class RunHotwordRequest(TeaModel):
         m = m or dict()
         if m.get('DocId') is not None:
             self.doc_id = m.get('DocId')
+        if m.get('ModelName') is not None:
+            self.model_name = m.get('ModelName')
         if m.get('Prompt') is not None:
             self.prompt = m.get('Prompt')
         if m.get('ReferenceContent') is not None:
@@ -36113,6 +36179,7 @@ class RunMultiDocIntroductionRequest(TeaModel):
         self,
         doc_ids: List[str] = None,
         key_point_prompt: str = None,
+        model_name: str = None,
         session_id: str = None,
         summary_prompt: str = None,
         workspace_id: str = None,
@@ -36120,6 +36187,7 @@ class RunMultiDocIntroductionRequest(TeaModel):
         # This parameter is required.
         self.doc_ids = doc_ids
         self.key_point_prompt = key_point_prompt
+        self.model_name = model_name
         # This parameter is required.
         self.session_id = session_id
         self.summary_prompt = summary_prompt
@@ -36139,6 +36207,8 @@ class RunMultiDocIntroductionRequest(TeaModel):
             result['DocIds'] = self.doc_ids
         if self.key_point_prompt is not None:
             result['KeyPointPrompt'] = self.key_point_prompt
+        if self.model_name is not None:
+            result['ModelName'] = self.model_name
         if self.session_id is not None:
             result['SessionId'] = self.session_id
         if self.summary_prompt is not None:
@@ -36153,6 +36223,8 @@ class RunMultiDocIntroductionRequest(TeaModel):
             self.doc_ids = m.get('DocIds')
         if m.get('KeyPointPrompt') is not None:
             self.key_point_prompt = m.get('KeyPointPrompt')
+        if m.get('ModelName') is not None:
+            self.model_name = m.get('ModelName')
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
         if m.get('SummaryPrompt') is not None:
@@ -36167,6 +36239,7 @@ class RunMultiDocIntroductionShrinkRequest(TeaModel):
         self,
         doc_ids_shrink: str = None,
         key_point_prompt: str = None,
+        model_name: str = None,
         session_id: str = None,
         summary_prompt: str = None,
         workspace_id: str = None,
@@ -36174,6 +36247,7 @@ class RunMultiDocIntroductionShrinkRequest(TeaModel):
         # This parameter is required.
         self.doc_ids_shrink = doc_ids_shrink
         self.key_point_prompt = key_point_prompt
+        self.model_name = model_name
         # This parameter is required.
         self.session_id = session_id
         self.summary_prompt = summary_prompt
@@ -36193,6 +36267,8 @@ class RunMultiDocIntroductionShrinkRequest(TeaModel):
             result['DocIds'] = self.doc_ids_shrink
         if self.key_point_prompt is not None:
             result['KeyPointPrompt'] = self.key_point_prompt
+        if self.model_name is not None:
+            result['ModelName'] = self.model_name
         if self.session_id is not None:
             result['SessionId'] = self.session_id
         if self.summary_prompt is not None:
@@ -36207,6 +36283,8 @@ class RunMultiDocIntroductionShrinkRequest(TeaModel):
             self.doc_ids_shrink = m.get('DocIds')
         if m.get('KeyPointPrompt') is not None:
             self.key_point_prompt = m.get('KeyPointPrompt')
+        if m.get('ModelName') is not None:
+            self.model_name = m.get('ModelName')
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
         if m.get('SummaryPrompt') is not None:

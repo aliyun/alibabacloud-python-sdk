@@ -1,3 +1,16 @@
+2025-06-25 Version: 1.30.2
+- Update API RunCommentGeneration: add request parameters ModelId.
+- Update API RunDocBrainmap: add request parameters ModelName.
+- Update API RunDocIntroduction: add request parameters ModelName.
+- Update API RunDocQa: add request parameters ModelName.
+- Update API RunDocSmartCard: add request parameters ModelName.
+- Update API RunDocTranslation: add request parameters ModelName.
+- Update API RunDocWashing: add request parameters ModelId.
+- Update API RunGenerateQuestions: add request parameters ModelName.
+- Update API RunHotword: add request parameters ModelName.
+- Update API RunMultiDocIntroduction: add request parameters ModelName.
+
+
 2025-06-23 Version: 1.30.1
 - Update API RunSearchGeneration: add request parameters ChatConfig.ExcludeGenerateOptions.
 

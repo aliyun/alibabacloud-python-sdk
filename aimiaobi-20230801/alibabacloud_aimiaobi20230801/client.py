@@ -11791,6 +11791,8 @@ class Client(OpenApiClient):
             body['Length'] = request.length
         if not UtilClient.is_unset(request.length_range_shrink):
             body['LengthRange'] = request.length_range_shrink
+        if not UtilClient.is_unset(request.model_id):
+            body['ModelId'] = request.model_id
         if not UtilClient.is_unset(request.num_comments):
             body['NumComments'] = request.num_comments
         if not UtilClient.is_unset(request.sentiment_shrink):
@@ -11854,6 +11856,8 @@ class Client(OpenApiClient):
             body['Length'] = request.length
         if not UtilClient.is_unset(request.length_range_shrink):
             body['LengthRange'] = request.length_range_shrink
+        if not UtilClient.is_unset(request.model_id):
+            body['ModelId'] = request.model_id
         if not UtilClient.is_unset(request.num_comments):
             body['NumComments'] = request.num_comments
         if not UtilClient.is_unset(request.sentiment_shrink):
@@ -12283,6 +12287,8 @@ class Client(OpenApiClient):
             body['CleanCache'] = request.clean_cache
         if not UtilClient.is_unset(request.doc_id):
             body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.model_name):
+            body['ModelName'] = request.model_name
         if not UtilClient.is_unset(request.node_number):
             body['NodeNumber'] = request.node_number
         if not UtilClient.is_unset(request.prompt):
@@ -12332,6 +12338,8 @@ class Client(OpenApiClient):
             body['CleanCache'] = request.clean_cache
         if not UtilClient.is_unset(request.doc_id):
             body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.model_name):
+            body['ModelName'] = request.model_name
         if not UtilClient.is_unset(request.node_number):
             body['NodeNumber'] = request.node_number
         if not UtilClient.is_unset(request.prompt):
@@ -12411,6 +12419,8 @@ class Client(OpenApiClient):
             body['IntroductionPrompt'] = request.introduction_prompt
         if not UtilClient.is_unset(request.key_point_prompt):
             body['KeyPointPrompt'] = request.key_point_prompt
+        if not UtilClient.is_unset(request.model_name):
+            body['ModelName'] = request.model_name
         if not UtilClient.is_unset(request.session_id):
             body['SessionId'] = request.session_id
         if not UtilClient.is_unset(request.summary_prompt):
@@ -12460,6 +12470,8 @@ class Client(OpenApiClient):
             body['IntroductionPrompt'] = request.introduction_prompt
         if not UtilClient.is_unset(request.key_point_prompt):
             body['KeyPointPrompt'] = request.key_point_prompt
+        if not UtilClient.is_unset(request.model_name):
+            body['ModelName'] = request.model_name
         if not UtilClient.is_unset(request.session_id):
             body['SessionId'] = request.session_id
         if not UtilClient.is_unset(request.summary_prompt):
@@ -12541,6 +12553,8 @@ class Client(OpenApiClient):
             body['ConversationContexts'] = request.conversation_contexts_shrink
         if not UtilClient.is_unset(request.doc_ids_shrink):
             body['DocIds'] = request.doc_ids_shrink
+        if not UtilClient.is_unset(request.model_name):
+            body['ModelName'] = request.model_name
         if not UtilClient.is_unset(request.query):
             body['Query'] = request.query
         if not UtilClient.is_unset(request.reference_content):
@@ -12598,6 +12612,8 @@ class Client(OpenApiClient):
             body['ConversationContexts'] = request.conversation_contexts_shrink
         if not UtilClient.is_unset(request.doc_ids_shrink):
             body['DocIds'] = request.doc_ids_shrink
+        if not UtilClient.is_unset(request.model_name):
+            body['ModelName'] = request.model_name
         if not UtilClient.is_unset(request.query):
             body['Query'] = request.query
         if not UtilClient.is_unset(request.reference_content):
@@ -12669,6 +12685,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.doc_id):
             body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.model_name):
+            body['ModelName'] = request.model_name
         if not UtilClient.is_unset(request.prompt):
             body['Prompt'] = request.prompt
         if not UtilClient.is_unset(request.session_id):
@@ -12710,6 +12728,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.doc_id):
             body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.model_name):
+            body['ModelName'] = request.model_name
         if not UtilClient.is_unset(request.prompt):
             body['Prompt'] = request.prompt
         if not UtilClient.is_unset(request.session_id):
@@ -12899,6 +12919,8 @@ class Client(OpenApiClient):
             body['CleanCache'] = request.clean_cache
         if not UtilClient.is_unset(request.doc_id):
             body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.model_name):
+            body['ModelName'] = request.model_name
         if not UtilClient.is_unset(request.recommend_content):
             body['RecommendContent'] = request.recommend_content
         if not UtilClient.is_unset(request.session_id):
@@ -12944,6 +12966,8 @@ class Client(OpenApiClient):
             body['CleanCache'] = request.clean_cache
         if not UtilClient.is_unset(request.doc_id):
             body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.model_name):
+            body['ModelName'] = request.model_name
         if not UtilClient.is_unset(request.recommend_content):
             body['RecommendContent'] = request.recommend_content
         if not UtilClient.is_unset(request.session_id):
@@ -13011,6 +13035,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.model_id):
+            body['ModelId'] = request.model_id
         if not UtilClient.is_unset(request.prompt):
             body['Prompt'] = request.prompt
         if not UtilClient.is_unset(request.reference_content):
@@ -13060,6 +13086,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.model_id):
+            body['ModelId'] = request.model_id
         if not UtilClient.is_unset(request.prompt):
             body['Prompt'] = request.prompt
         if not UtilClient.is_unset(request.reference_content):
@@ -13237,6 +13265,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.doc_id):
             body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.model_name):
+            body['ModelName'] = request.model_name
         if not UtilClient.is_unset(request.reference_content):
             body['ReferenceContent'] = request.reference_content
         if not UtilClient.is_unset(request.session_id):
@@ -13278,6 +13308,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.doc_id):
             body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.model_name):
+            body['ModelName'] = request.model_name
         if not UtilClient.is_unset(request.reference_content):
             body['ReferenceContent'] = request.reference_content
         if not UtilClient.is_unset(request.session_id):
@@ -13345,6 +13377,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.doc_id):
             body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.model_name):
+            body['ModelName'] = request.model_name
         if not UtilClient.is_unset(request.prompt):
             body['Prompt'] = request.prompt
         if not UtilClient.is_unset(request.reference_content):
@@ -13388,6 +13422,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.doc_id):
             body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.model_name):
+            body['ModelName'] = request.model_name
         if not UtilClient.is_unset(request.prompt):
             body['Prompt'] = request.prompt
         if not UtilClient.is_unset(request.reference_content):
@@ -13575,6 +13611,8 @@ class Client(OpenApiClient):
             body['DocIds'] = request.doc_ids_shrink
         if not UtilClient.is_unset(request.key_point_prompt):
             body['KeyPointPrompt'] = request.key_point_prompt
+        if not UtilClient.is_unset(request.model_name):
+            body['ModelName'] = request.model_name
         if not UtilClient.is_unset(request.session_id):
             body['SessionId'] = request.session_id
         if not UtilClient.is_unset(request.summary_prompt):
@@ -13622,6 +13660,8 @@ class Client(OpenApiClient):
             body['DocIds'] = request.doc_ids_shrink
         if not UtilClient.is_unset(request.key_point_prompt):
             body['KeyPointPrompt'] = request.key_point_prompt
+        if not UtilClient.is_unset(request.model_name):
+            body['ModelName'] = request.model_name
         if not UtilClient.is_unset(request.session_id):
             body['SessionId'] = request.session_id
         if not UtilClient.is_unset(request.summary_prompt):
