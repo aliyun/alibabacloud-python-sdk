@@ -42,118 +42,6 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def access_page_set_acl_with_options(
-        self,
-        request: appstream_center_20210901_models.AccessPageSetAclRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> appstream_center_20210901_models.AccessPageSetAclResponse:
-        """
-        @summary 更新访问管理
-        
-        @param request: AccessPageSetAclRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AccessPageSetAclResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.access_mode):
-            query['AccessMode'] = request.access_mode
-        if not UtilClient.is_unset(request.access_page_id):
-            query['AccessPageId'] = request.access_page_id
-        if not UtilClient.is_unset(request.access_page_name):
-            query['AccessPageName'] = request.access_page_name
-        if not UtilClient.is_unset(request.effect_time):
-            query['EffectTime'] = request.effect_time
-        if not UtilClient.is_unset(request.unit):
-            query['Unit'] = request.unit
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AccessPageSetAcl',
-            version='2021-09-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.AccessPageSetAclResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def access_page_set_acl_with_options_async(
-        self,
-        request: appstream_center_20210901_models.AccessPageSetAclRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> appstream_center_20210901_models.AccessPageSetAclResponse:
-        """
-        @summary 更新访问管理
-        
-        @param request: AccessPageSetAclRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AccessPageSetAclResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.access_mode):
-            query['AccessMode'] = request.access_mode
-        if not UtilClient.is_unset(request.access_page_id):
-            query['AccessPageId'] = request.access_page_id
-        if not UtilClient.is_unset(request.access_page_name):
-            query['AccessPageName'] = request.access_page_name
-        if not UtilClient.is_unset(request.effect_time):
-            query['EffectTime'] = request.effect_time
-        if not UtilClient.is_unset(request.unit):
-            query['Unit'] = request.unit
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AccessPageSetAcl',
-            version='2021-09-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.AccessPageSetAclResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def access_page_set_acl(
-        self,
-        request: appstream_center_20210901_models.AccessPageSetAclRequest,
-    ) -> appstream_center_20210901_models.AccessPageSetAclResponse:
-        """
-        @summary 更新访问管理
-        
-        @param request: AccessPageSetAclRequest
-        @return: AccessPageSetAclResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.access_page_set_acl_with_options(request, runtime)
-
-    async def access_page_set_acl_async(
-        self,
-        request: appstream_center_20210901_models.AccessPageSetAclRequest,
-    ) -> appstream_center_20210901_models.AccessPageSetAclResponse:
-        """
-        @summary 更新访问管理
-        
-        @param request: AccessPageSetAclRequest
-        @return: AccessPageSetAclResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.access_page_set_acl_with_options_async(request, runtime)
-
     def approve_ota_task_with_options(
         self,
         request: appstream_center_20210901_models.ApproveOtaTaskRequest,
@@ -266,130 +154,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.approve_ota_task_with_options_async(request, runtime)
 
-    def ask_session_package_price_with_options(
-        self,
-        request: appstream_center_20210901_models.AskSessionPackagePriceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> appstream_center_20210901_models.AskSessionPackagePriceResponse:
-        """
-        @summary 会话包收费查询
-        
-        @param request: AskSessionPackagePriceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AskSessionPackagePriceResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.charge_type):
-            query['ChargeType'] = request.charge_type
-        if not UtilClient.is_unset(request.max_sessions):
-            query['MaxSessions'] = request.max_sessions
-        if not UtilClient.is_unset(request.period):
-            query['Period'] = request.period
-        if not UtilClient.is_unset(request.period_unit):
-            query['PeriodUnit'] = request.period_unit
-        if not UtilClient.is_unset(request.region):
-            query['Region'] = request.region
-        if not UtilClient.is_unset(request.session_package_type):
-            query['SessionPackageType'] = request.session_package_type
-        if not UtilClient.is_unset(request.session_spec):
-            query['SessionSpec'] = request.session_spec
-        if not UtilClient.is_unset(request.session_type):
-            query['SessionType'] = request.session_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AskSessionPackagePrice',
-            version='2021-09-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.AskSessionPackagePriceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def ask_session_package_price_with_options_async(
-        self,
-        request: appstream_center_20210901_models.AskSessionPackagePriceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> appstream_center_20210901_models.AskSessionPackagePriceResponse:
-        """
-        @summary 会话包收费查询
-        
-        @param request: AskSessionPackagePriceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AskSessionPackagePriceResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.charge_type):
-            query['ChargeType'] = request.charge_type
-        if not UtilClient.is_unset(request.max_sessions):
-            query['MaxSessions'] = request.max_sessions
-        if not UtilClient.is_unset(request.period):
-            query['Period'] = request.period
-        if not UtilClient.is_unset(request.period_unit):
-            query['PeriodUnit'] = request.period_unit
-        if not UtilClient.is_unset(request.region):
-            query['Region'] = request.region
-        if not UtilClient.is_unset(request.session_package_type):
-            query['SessionPackageType'] = request.session_package_type
-        if not UtilClient.is_unset(request.session_spec):
-            query['SessionSpec'] = request.session_spec
-        if not UtilClient.is_unset(request.session_type):
-            query['SessionType'] = request.session_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AskSessionPackagePrice',
-            version='2021-09-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.AskSessionPackagePriceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def ask_session_package_price(
-        self,
-        request: appstream_center_20210901_models.AskSessionPackagePriceRequest,
-    ) -> appstream_center_20210901_models.AskSessionPackagePriceResponse:
-        """
-        @summary 会话包收费查询
-        
-        @param request: AskSessionPackagePriceRequest
-        @return: AskSessionPackagePriceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.ask_session_package_price_with_options(request, runtime)
-
-    async def ask_session_package_price_async(
-        self,
-        request: appstream_center_20210901_models.AskSessionPackagePriceRequest,
-    ) -> appstream_center_20210901_models.AskSessionPackagePriceResponse:
-        """
-        @summary 会话包收费查询
-        
-        @param request: AskSessionPackagePriceRequest
-        @return: AskSessionPackagePriceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.ask_session_package_price_with_options_async(request, runtime)
-
     def authorize_instance_group_with_options(
         self,
         tmp_req: appstream_center_20210901_models.AuthorizeInstanceGroupRequest,
@@ -413,10 +177,16 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.app_instance_persistent_id):
             body['AppInstancePersistentId'] = request.app_instance_persistent_id
         body_flat = {}
+        if not UtilClient.is_unset(request.authorize_user_group_ids):
+            body_flat['AuthorizeUserGroupIds'] = request.authorize_user_group_ids
         if not UtilClient.is_unset(request.authorize_user_ids):
             body_flat['AuthorizeUserIds'] = request.authorize_user_ids
+        if not UtilClient.is_unset(request.avatar_id):
+            body['AvatarId'] = request.avatar_id
         if not UtilClient.is_unset(request.product_type):
             body['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.un_authorize_user_group_ids):
+            body_flat['UnAuthorizeUserGroupIds'] = request.un_authorize_user_group_ids
         if not UtilClient.is_unset(request.un_authorize_user_ids):
             body_flat['UnAuthorizeUserIds'] = request.un_authorize_user_ids
         if not UtilClient.is_unset(request.user_meta_shrink):
@@ -465,10 +235,16 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.app_instance_persistent_id):
             body['AppInstancePersistentId'] = request.app_instance_persistent_id
         body_flat = {}
+        if not UtilClient.is_unset(request.authorize_user_group_ids):
+            body_flat['AuthorizeUserGroupIds'] = request.authorize_user_group_ids
         if not UtilClient.is_unset(request.authorize_user_ids):
             body_flat['AuthorizeUserIds'] = request.authorize_user_ids
+        if not UtilClient.is_unset(request.avatar_id):
+            body['AvatarId'] = request.avatar_id
         if not UtilClient.is_unset(request.product_type):
             body['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.un_authorize_user_group_ids):
+            body_flat['UnAuthorizeUserGroupIds'] = request.un_authorize_user_group_ids
         if not UtilClient.is_unset(request.un_authorize_user_ids):
             body_flat['UnAuthorizeUserIds'] = request.un_authorize_user_ids
         if not UtilClient.is_unset(request.user_meta_shrink):
@@ -519,258 +295,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.authorize_instance_group_with_options_async(request, runtime)
-
-    def buy_session_package_with_options(
-        self,
-        request: appstream_center_20210901_models.BuySessionPackageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> appstream_center_20210901_models.BuySessionPackageResponse:
-        """
-        @summary 配置会话包
-        
-        @param request: BuySessionPackageRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BuySessionPackageResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.auto_pay):
-            query['AutoPay'] = request.auto_pay
-        if not UtilClient.is_unset(request.charge_type):
-            query['ChargeType'] = request.charge_type
-        if not UtilClient.is_unset(request.max_sessions):
-            query['MaxSessions'] = request.max_sessions
-        if not UtilClient.is_unset(request.period):
-            query['Period'] = request.period
-        if not UtilClient.is_unset(request.period_unit):
-            query['PeriodUnit'] = request.period_unit
-        if not UtilClient.is_unset(request.project_id):
-            query['ProjectId'] = request.project_id
-        if not UtilClient.is_unset(request.region):
-            query['Region'] = request.region
-        if not UtilClient.is_unset(request.session_package_name):
-            query['SessionPackageName'] = request.session_package_name
-        if not UtilClient.is_unset(request.session_package_type):
-            query['SessionPackageType'] = request.session_package_type
-        if not UtilClient.is_unset(request.session_spec):
-            query['SessionSpec'] = request.session_spec
-        if not UtilClient.is_unset(request.session_type):
-            query['SessionType'] = request.session_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='BuySessionPackage',
-            version='2021-09-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.BuySessionPackageResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def buy_session_package_with_options_async(
-        self,
-        request: appstream_center_20210901_models.BuySessionPackageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> appstream_center_20210901_models.BuySessionPackageResponse:
-        """
-        @summary 配置会话包
-        
-        @param request: BuySessionPackageRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BuySessionPackageResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.auto_pay):
-            query['AutoPay'] = request.auto_pay
-        if not UtilClient.is_unset(request.charge_type):
-            query['ChargeType'] = request.charge_type
-        if not UtilClient.is_unset(request.max_sessions):
-            query['MaxSessions'] = request.max_sessions
-        if not UtilClient.is_unset(request.period):
-            query['Period'] = request.period
-        if not UtilClient.is_unset(request.period_unit):
-            query['PeriodUnit'] = request.period_unit
-        if not UtilClient.is_unset(request.project_id):
-            query['ProjectId'] = request.project_id
-        if not UtilClient.is_unset(request.region):
-            query['Region'] = request.region
-        if not UtilClient.is_unset(request.session_package_name):
-            query['SessionPackageName'] = request.session_package_name
-        if not UtilClient.is_unset(request.session_package_type):
-            query['SessionPackageType'] = request.session_package_type
-        if not UtilClient.is_unset(request.session_spec):
-            query['SessionSpec'] = request.session_spec
-        if not UtilClient.is_unset(request.session_type):
-            query['SessionType'] = request.session_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='BuySessionPackage',
-            version='2021-09-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.BuySessionPackageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def buy_session_package(
-        self,
-        request: appstream_center_20210901_models.BuySessionPackageRequest,
-    ) -> appstream_center_20210901_models.BuySessionPackageResponse:
-        """
-        @summary 配置会话包
-        
-        @param request: BuySessionPackageRequest
-        @return: BuySessionPackageResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.buy_session_package_with_options(request, runtime)
-
-    async def buy_session_package_async(
-        self,
-        request: appstream_center_20210901_models.BuySessionPackageRequest,
-    ) -> appstream_center_20210901_models.BuySessionPackageResponse:
-        """
-        @summary 配置会话包
-        
-        @param request: BuySessionPackageRequest
-        @return: BuySessionPackageResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.buy_session_package_with_options_async(request, runtime)
-
-    def create_access_page_with_options(
-        self,
-        request: appstream_center_20210901_models.CreateAccessPageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> appstream_center_20210901_models.CreateAccessPageResponse:
-        """
-        @summary 创建访问页面
-        
-        @param request: CreateAccessPageRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateAccessPageResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.access_page_name):
-            query['AccessPageName'] = request.access_page_name
-        if not UtilClient.is_unset(request.cloud_env_id):
-            query['CloudEnvId'] = request.cloud_env_id
-        if not UtilClient.is_unset(request.effect_time):
-            query['EffectTime'] = request.effect_time
-        if not UtilClient.is_unset(request.project_id):
-            query['ProjectId'] = request.project_id
-        if not UtilClient.is_unset(request.project_name):
-            query['ProjectName'] = request.project_name
-        if not UtilClient.is_unset(request.unit):
-            query['Unit'] = request.unit
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateAccessPage',
-            version='2021-09-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.CreateAccessPageResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_access_page_with_options_async(
-        self,
-        request: appstream_center_20210901_models.CreateAccessPageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> appstream_center_20210901_models.CreateAccessPageResponse:
-        """
-        @summary 创建访问页面
-        
-        @param request: CreateAccessPageRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateAccessPageResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.access_page_name):
-            query['AccessPageName'] = request.access_page_name
-        if not UtilClient.is_unset(request.cloud_env_id):
-            query['CloudEnvId'] = request.cloud_env_id
-        if not UtilClient.is_unset(request.effect_time):
-            query['EffectTime'] = request.effect_time
-        if not UtilClient.is_unset(request.project_id):
-            query['ProjectId'] = request.project_id
-        if not UtilClient.is_unset(request.project_name):
-            query['ProjectName'] = request.project_name
-        if not UtilClient.is_unset(request.unit):
-            query['Unit'] = request.unit
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateAccessPage',
-            version='2021-09-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.CreateAccessPageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_access_page(
-        self,
-        request: appstream_center_20210901_models.CreateAccessPageRequest,
-    ) -> appstream_center_20210901_models.CreateAccessPageResponse:
-        """
-        @summary 创建访问页面
-        
-        @param request: CreateAccessPageRequest
-        @return: CreateAccessPageResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.create_access_page_with_options(request, runtime)
-
-    async def create_access_page_async(
-        self,
-        request: appstream_center_20210901_models.CreateAccessPageRequest,
-    ) -> appstream_center_20210901_models.CreateAccessPageResponse:
-        """
-        @summary 创建访问页面
-        
-        @param request: CreateAccessPageRequest
-        @return: CreateAccessPageResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.create_access_page_with_options_async(request, runtime)
 
     def create_app_instance_group_with_options(
         self,
@@ -1116,102 +640,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_image_from_app_instance_group_with_options_async(request, runtime)
 
-    def delete_access_page_with_options(
-        self,
-        request: appstream_center_20210901_models.DeleteAccessPageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> appstream_center_20210901_models.DeleteAccessPageResponse:
-        """
-        @summary 删除访问页面
-        
-        @param request: DeleteAccessPageRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteAccessPageResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.access_page_id):
-            query['AccessPageId'] = request.access_page_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteAccessPage',
-            version='2021-09-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.DeleteAccessPageResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_access_page_with_options_async(
-        self,
-        request: appstream_center_20210901_models.DeleteAccessPageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> appstream_center_20210901_models.DeleteAccessPageResponse:
-        """
-        @summary 删除访问页面
-        
-        @param request: DeleteAccessPageRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteAccessPageResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.access_page_id):
-            query['AccessPageId'] = request.access_page_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteAccessPage',
-            version='2021-09-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.DeleteAccessPageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_access_page(
-        self,
-        request: appstream_center_20210901_models.DeleteAccessPageRequest,
-    ) -> appstream_center_20210901_models.DeleteAccessPageResponse:
-        """
-        @summary 删除访问页面
-        
-        @param request: DeleteAccessPageRequest
-        @return: DeleteAccessPageResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.delete_access_page_with_options(request, runtime)
-
-    async def delete_access_page_async(
-        self,
-        request: appstream_center_20210901_models.DeleteAccessPageRequest,
-    ) -> appstream_center_20210901_models.DeleteAccessPageResponse:
-        """
-        @summary 删除访问页面
-        
-        @param request: DeleteAccessPageRequest
-        @return: DeleteAccessPageResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_access_page_with_options_async(request, runtime)
-
     def delete_app_instance_group_with_options(
         self,
         request: appstream_center_20210901_models.DeleteAppInstanceGroupRequest,
@@ -1432,110 +860,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_app_instances_with_options_async(request, runtime)
 
-    def get_access_page_session_with_options(
-        self,
-        request: appstream_center_20210901_models.GetAccessPageSessionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> appstream_center_20210901_models.GetAccessPageSessionResponse:
-        """
-        @summary 访客进入访问页面的匿名api
-        
-        @param request: GetAccessPageSessionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAccessPageSessionResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.access_page_id):
-            query['AccessPageId'] = request.access_page_id
-        if not UtilClient.is_unset(request.access_page_token):
-            query['AccessPageToken'] = request.access_page_token
-        if not UtilClient.is_unset(request.external_user_id):
-            query['ExternalUserId'] = request.external_user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetAccessPageSession',
-            version='2021-09-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='Anonymous',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.GetAccessPageSessionResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_access_page_session_with_options_async(
-        self,
-        request: appstream_center_20210901_models.GetAccessPageSessionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> appstream_center_20210901_models.GetAccessPageSessionResponse:
-        """
-        @summary 访客进入访问页面的匿名api
-        
-        @param request: GetAccessPageSessionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAccessPageSessionResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.access_page_id):
-            query['AccessPageId'] = request.access_page_id
-        if not UtilClient.is_unset(request.access_page_token):
-            query['AccessPageToken'] = request.access_page_token
-        if not UtilClient.is_unset(request.external_user_id):
-            query['ExternalUserId'] = request.external_user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetAccessPageSession',
-            version='2021-09-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='Anonymous',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.GetAccessPageSessionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_access_page_session(
-        self,
-        request: appstream_center_20210901_models.GetAccessPageSessionRequest,
-    ) -> appstream_center_20210901_models.GetAccessPageSessionResponse:
-        """
-        @summary 访客进入访问页面的匿名api
-        
-        @param request: GetAccessPageSessionRequest
-        @return: GetAccessPageSessionResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.get_access_page_session_with_options(request, runtime)
-
-    async def get_access_page_session_async(
-        self,
-        request: appstream_center_20210901_models.GetAccessPageSessionRequest,
-    ) -> appstream_center_20210901_models.GetAccessPageSessionResponse:
-        """
-        @summary 访客进入访问页面的匿名api
-        
-        @param request: GetAccessPageSessionRequest
-        @return: GetAccessPageSessionResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.get_access_page_session_with_options_async(request, runtime)
-
     def get_app_instance_group_with_options(
         self,
         request: appstream_center_20210901_models.GetAppInstanceGroupRequest,
@@ -1664,6 +988,8 @@ class Client(OpenApiClient):
             body['AppInstanceId'] = request.app_instance_id
         if not UtilClient.is_unset(request.app_instance_persistent_id):
             body['AppInstancePersistentId'] = request.app_instance_persistent_id
+        if not UtilClient.is_unset(request.app_policy_id):
+            body['AppPolicyId'] = request.app_policy_id
         if not UtilClient.is_unset(request.app_start_param):
             body['AppStartParam'] = request.app_start_param
         if not UtilClient.is_unset(request.app_version):
@@ -1723,6 +1049,8 @@ class Client(OpenApiClient):
             body['AppInstanceId'] = request.app_instance_id
         if not UtilClient.is_unset(request.app_instance_persistent_id):
             body['AppInstancePersistentId'] = request.app_instance_persistent_id
+        if not UtilClient.is_unset(request.app_policy_id):
+            body['AppPolicyId'] = request.app_policy_id
         if not UtilClient.is_unset(request.app_start_param):
             body['AppStartParam'] = request.app_start_param
         if not UtilClient.is_unset(request.app_version):
@@ -2216,122 +1544,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_resource_renew_price_with_options_async(request, runtime)
 
-    def list_access_pages_with_options(
-        self,
-        request: appstream_center_20210901_models.ListAccessPagesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> appstream_center_20210901_models.ListAccessPagesResponse:
-        """
-        @summary 访问页面分页查询
-        
-        @param request: ListAccessPagesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAccessPagesResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.access_page_id):
-            query['AccessPageId'] = request.access_page_id
-        if not UtilClient.is_unset(request.access_page_name):
-            query['AccessPageName'] = request.access_page_name
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.project_id):
-            query['ProjectId'] = request.project_id
-        if not UtilClient.is_unset(request.sort_type):
-            query['SortType'] = request.sort_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListAccessPages',
-            version='2021-09-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ListAccessPagesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_access_pages_with_options_async(
-        self,
-        request: appstream_center_20210901_models.ListAccessPagesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> appstream_center_20210901_models.ListAccessPagesResponse:
-        """
-        @summary 访问页面分页查询
-        
-        @param request: ListAccessPagesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAccessPagesResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.access_page_id):
-            query['AccessPageId'] = request.access_page_id
-        if not UtilClient.is_unset(request.access_page_name):
-            query['AccessPageName'] = request.access_page_name
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.project_id):
-            query['ProjectId'] = request.project_id
-        if not UtilClient.is_unset(request.sort_type):
-            query['SortType'] = request.sort_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListAccessPages',
-            version='2021-09-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ListAccessPagesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_access_pages(
-        self,
-        request: appstream_center_20210901_models.ListAccessPagesRequest,
-    ) -> appstream_center_20210901_models.ListAccessPagesResponse:
-        """
-        @summary 访问页面分页查询
-        
-        @param request: ListAccessPagesRequest
-        @return: ListAccessPagesResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.list_access_pages_with_options(request, runtime)
-
-    async def list_access_pages_async(
-        self,
-        request: appstream_center_20210901_models.ListAccessPagesRequest,
-    ) -> appstream_center_20210901_models.ListAccessPagesResponse:
-        """
-        @summary 访问页面分页查询
-        
-        @param request: ListAccessPagesRequest
-        @return: ListAccessPagesResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.list_access_pages_with_options_async(request, runtime)
-
     def list_app_instance_group_with_options(
         self,
         request: appstream_center_20210901_models.ListAppInstanceGroupRequest,
@@ -2603,6 +1815,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_app_instances_with_options_async(request, runtime)
+
+    def list_authorized_user_groups_with_options(
+        self,
+        request: appstream_center_20210901_models.ListAuthorizedUserGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.ListAuthorizedUserGroupsResponse:
+        """
+        @summary 通过交付组查询展示授权的用户组列表
+        
+        @param request: ListAuthorizedUserGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAuthorizedUserGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not UtilClient.is_unset(request.group_id):
+            body['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.group_name):
+            body['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListAuthorizedUserGroups',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.ListAuthorizedUserGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_authorized_user_groups_with_options_async(
+        self,
+        request: appstream_center_20210901_models.ListAuthorizedUserGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.ListAuthorizedUserGroupsResponse:
+        """
+        @summary 通过交付组查询展示授权的用户组列表
+        
+        @param request: ListAuthorizedUserGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAuthorizedUserGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not UtilClient.is_unset(request.group_id):
+            body['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.group_name):
+            body['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListAuthorizedUserGroups',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.ListAuthorizedUserGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_authorized_user_groups(
+        self,
+        request: appstream_center_20210901_models.ListAuthorizedUserGroupsRequest,
+    ) -> appstream_center_20210901_models.ListAuthorizedUserGroupsResponse:
+        """
+        @summary 通过交付组查询展示授权的用户组列表
+        
+        @param request: ListAuthorizedUserGroupsRequest
+        @return: ListAuthorizedUserGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_authorized_user_groups_with_options(request, runtime)
+
+    async def list_authorized_user_groups_async(
+        self,
+        request: appstream_center_20210901_models.ListAuthorizedUserGroupsRequest,
+    ) -> appstream_center_20210901_models.ListAuthorizedUserGroupsResponse:
+        """
+        @summary 通过交付组查询展示授权的用户组列表
+        
+        @param request: ListAuthorizedUserGroupsRequest
+        @return: ListAuthorizedUserGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_authorized_user_groups_with_options_async(request, runtime)
 
     def list_bind_info_with_options(
         self,
@@ -3307,126 +2635,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_regions_with_options_async(request, runtime)
-
-    def list_session_packages_with_options(
-        self,
-        request: appstream_center_20210901_models.ListSessionPackagesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> appstream_center_20210901_models.ListSessionPackagesResponse:
-        """
-        @summary 项目的会话包列表
-        
-        @param request: ListSessionPackagesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListSessionPackagesResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.project_id):
-            query['ProjectId'] = request.project_id
-        if not UtilClient.is_unset(request.session_package_id):
-            query['SessionPackageId'] = request.session_package_id
-        if not UtilClient.is_unset(request.session_package_name):
-            query['SessionPackageName'] = request.session_package_name
-        if not UtilClient.is_unset(request.sort_type):
-            query['SortType'] = request.sort_type
-        if not UtilClient.is_unset(request.state_list):
-            query['StateList'] = request.state_list
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListSessionPackages',
-            version='2021-09-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ListSessionPackagesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_session_packages_with_options_async(
-        self,
-        request: appstream_center_20210901_models.ListSessionPackagesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> appstream_center_20210901_models.ListSessionPackagesResponse:
-        """
-        @summary 项目的会话包列表
-        
-        @param request: ListSessionPackagesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListSessionPackagesResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.project_id):
-            query['ProjectId'] = request.project_id
-        if not UtilClient.is_unset(request.session_package_id):
-            query['SessionPackageId'] = request.session_package_id
-        if not UtilClient.is_unset(request.session_package_name):
-            query['SessionPackageName'] = request.session_package_name
-        if not UtilClient.is_unset(request.sort_type):
-            query['SortType'] = request.sort_type
-        if not UtilClient.is_unset(request.state_list):
-            query['StateList'] = request.state_list
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListSessionPackages',
-            version='2021-09-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ListSessionPackagesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_session_packages(
-        self,
-        request: appstream_center_20210901_models.ListSessionPackagesRequest,
-    ) -> appstream_center_20210901_models.ListSessionPackagesResponse:
-        """
-        @summary 项目的会话包列表
-        
-        @param request: ListSessionPackagesRequest
-        @return: ListSessionPackagesResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.list_session_packages_with_options(request, runtime)
-
-    async def list_session_packages_async(
-        self,
-        request: appstream_center_20210901_models.ListSessionPackagesRequest,
-    ) -> appstream_center_20210901_models.ListSessionPackagesResponse:
-        """
-        @summary 项目的会话包列表
-        
-        @param request: ListSessionPackagesRequest
-        @return: ListSessionPackagesResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.list_session_packages_with_options_async(request, runtime)
 
     def list_tag_cloud_resources_with_options(
         self,

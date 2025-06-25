@@ -1,3 +1,24 @@
+2025-06-25 Version: 4.0.0
+- Support API ListAuthorizedUserGroups.
+- Delete API AccessPageSetAcl.
+- Delete API AskSessionPackagePrice.
+- Delete API BuySessionPackage.
+- Delete API CreateAccessPage.
+- Delete API DeleteAccessPage.
+- Delete API GetAccessPageSession.
+- Delete API ListAccessPages.
+- Delete API ListSessionPackages.
+- Update API AuthorizeInstanceGroup: add request parameters AuthorizeUserGroupIds.
+- Update API AuthorizeInstanceGroup: add request parameters AvatarId.
+- Update API AuthorizeInstanceGroup: add request parameters UnAuthorizeUserGroupIds.
+- Update API GetAppInstanceGroup: add response parameters Body.AppInstanceGroupModels.AccessType.
+- Update API GetAppInstanceGroup: add response parameters Body.AppInstanceGroupModels.AuthMode.
+- Update API GetConnectionTicket: add request parameters AppPolicyId.
+- Update API GetConnectionTicket: add response parameters Body.AvatarId.
+- Update API ListAppInstanceGroup: add response parameters Body.AppInstanceGroupModels.$.AccessType.
+- Update API ListAppInstanceGroup: add response parameters Body.AppInstanceGroupModels.$.AuthMode.
+
+
 2025-04-27 Version: 3.2.4
 - Update API GetAppInstanceGroup: add response parameters Body.AppInstanceGroupModels.Tags.
 
