@@ -1,3 +1,6 @@
+2025-06-25 Version: 1.2.1
+- Generated python 2025-04-29 for WebsiteBuild.
+
 2025-06-24 Version: 1.2.0
 - Support API CreateLogoTask.
 - Support API GetCreateLogoTask.
