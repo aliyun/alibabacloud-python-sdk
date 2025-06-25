@@ -1,3 +1,7 @@
+2025-06-25 Version: 7.0.2
+- Update API CreateApplication: add request parameters ProcessVariables.
+
+
 2025-06-12 Version: 7.0.1
 - Update API ListApplication: add request parameters ShowHide.
 

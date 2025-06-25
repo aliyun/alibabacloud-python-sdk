@@ -435,6 +435,7 @@ class CreateApplicationRequest(TeaModel):
         configuration: Dict[str, str] = None,
         instances: List[CreateApplicationRequestInstances] = None,
         name: str = None,
+        process_variables: Dict[str, Any] = None,
         resource_group_id: str = None,
         template_id: str = None,
         variables: Dict[str, Any] = None,
@@ -454,6 +455,7 @@ class CreateApplicationRequest(TeaModel):
         # 
         # This parameter is required.
         self.name = name
+        self.process_variables = process_variables
         # The ID of the resource group to which the application you want to create belongs.
         self.resource_group_id = resource_group_id
         # The ID of the template.
@@ -487,6 +489,8 @@ class CreateApplicationRequest(TeaModel):
                 result['Instances'].append(k.to_map() if k else None)
         if self.name is not None:
             result['Name'] = self.name
+        if self.process_variables is not None:
+            result['ProcessVariables'] = self.process_variables
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.template_id is not None:
@@ -510,6 +514,8 @@ class CreateApplicationRequest(TeaModel):
                 self.instances.append(temp_model.from_map(k))
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('ProcessVariables') is not None:
+            self.process_variables = m.get('ProcessVariables')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('TemplateId') is not None:
@@ -527,6 +533,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         configuration_shrink: str = None,
         instances_shrink: str = None,
         name: str = None,
+        process_variables_shrink: str = None,
         resource_group_id: str = None,
         template_id: str = None,
         variables_shrink: str = None,
@@ -546,6 +553,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.name = name
+        self.process_variables_shrink = process_variables_shrink
         # The ID of the resource group to which the application you want to create belongs.
         self.resource_group_id = resource_group_id
         # The ID of the template.
@@ -574,6 +582,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             result['Instances'] = self.instances_shrink
         if self.name is not None:
             result['Name'] = self.name
+        if self.process_variables_shrink is not None:
+            result['ProcessVariables'] = self.process_variables_shrink
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.template_id is not None:
@@ -594,6 +604,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             self.instances_shrink = m.get('Instances')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('ProcessVariables') is not None:
+            self.process_variables_shrink = m.get('ProcessVariables')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('TemplateId') is not None:

@@ -376,6 +376,8 @@ class Client(OpenApiClient):
             request.configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.configuration, 'Configuration', 'json')
         if not UtilClient.is_unset(tmp_req.instances):
             request.instances_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instances, 'Instances', 'json')
+        if not UtilClient.is_unset(tmp_req.process_variables):
+            request.process_variables_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.process_variables, 'ProcessVariables', 'json')
         if not UtilClient.is_unset(tmp_req.variables):
             request.variables_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.variables, 'Variables', 'json')
         body = {}
@@ -389,6 +391,8 @@ class Client(OpenApiClient):
             body['Instances'] = request.instances_shrink
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
+        if not UtilClient.is_unset(request.process_variables_shrink):
+            body['ProcessVariables'] = request.process_variables_shrink
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.template_id):
@@ -433,6 +437,8 @@ class Client(OpenApiClient):
             request.configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.configuration, 'Configuration', 'json')
         if not UtilClient.is_unset(tmp_req.instances):
             request.instances_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instances, 'Instances', 'json')
+        if not UtilClient.is_unset(tmp_req.process_variables):
+            request.process_variables_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.process_variables, 'ProcessVariables', 'json')
         if not UtilClient.is_unset(tmp_req.variables):
             request.variables_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.variables, 'Variables', 'json')
         body = {}
@@ -446,6 +452,8 @@ class Client(OpenApiClient):
             body['Instances'] = request.instances_shrink
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
+        if not UtilClient.is_unset(request.process_variables_shrink):
+            body['ProcessVariables'] = request.process_variables_shrink
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.template_id):
