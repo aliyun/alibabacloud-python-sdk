@@ -1,3 +1,8 @@
+2025-06-25 Version: 3.1.1
+- Update API DescribeDBClusterAttribute: add response parameters Body.Items.$.AINodeNumber.
+- Update API DescribeDBClusterAttribute: add response parameters Body.Items.$.AINodeSpec.
+
+
 2025-05-26 Version: 3.1.0
 - Support API DescribeAdbMySqlIndexes.
 - Support API DescribeAdbMySqlTableMeta.

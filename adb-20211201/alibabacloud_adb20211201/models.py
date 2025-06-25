@@ -6761,6 +6761,7 @@ class CreateDBResourceGroupRequest(TeaModel):
         # *   If GroupType is set to Interactive, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 16ACU.
         # *   If GroupType is set to Job, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 8ACU.
         self.max_compute_resource = max_compute_resource
+        # A reserved parameter.
         self.max_gpu_quantity = max_gpu_quantity
         # A reserved parameter.
         self.min_cluster_count = min_cluster_count
@@ -6769,6 +6770,7 @@ class CreateDBResourceGroupRequest(TeaModel):
         # *   When GroupType is set to Interactive, set this parameter to 16ACU.
         # *   When GroupType is set to Job, set this parameter to 0ACU.
         self.min_compute_resource = min_compute_resource
+        # A reserved parameter.
         self.min_gpu_quantity = min_gpu_quantity
         self.ray_config = ray_config
         # The region ID of the cluster.
@@ -6777,7 +6779,9 @@ class CreateDBResourceGroupRequest(TeaModel):
         self.region_id = region_id
         # The job resubmission rules.
         self.rules = rules
+        # A reserved parameter.
         self.spec_name = spec_name
+        # A reserved parameter.
         self.target_resource_group_name = target_resource_group_name
 
     def validate(self):
@@ -6951,6 +6955,7 @@ class CreateDBResourceGroupShrinkRequest(TeaModel):
         # *   If GroupType is set to Interactive, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 16ACU.
         # *   If GroupType is set to Job, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 8ACU.
         self.max_compute_resource = max_compute_resource
+        # A reserved parameter.
         self.max_gpu_quantity = max_gpu_quantity
         # A reserved parameter.
         self.min_cluster_count = min_cluster_count
@@ -6959,6 +6964,7 @@ class CreateDBResourceGroupShrinkRequest(TeaModel):
         # *   When GroupType is set to Interactive, set this parameter to 16ACU.
         # *   When GroupType is set to Job, set this parameter to 0ACU.
         self.min_compute_resource = min_compute_resource
+        # A reserved parameter.
         self.min_gpu_quantity = min_gpu_quantity
         self.ray_config_shrink = ray_config_shrink
         # The region ID of the cluster.
@@ -6967,7 +6973,9 @@ class CreateDBResourceGroupShrinkRequest(TeaModel):
         self.region_id = region_id
         # The job resubmission rules.
         self.rules_shrink = rules_shrink
+        # A reserved parameter.
         self.spec_name = spec_name
+        # A reserved parameter.
         self.target_resource_group_name = target_resource_group_name
 
     def validate(self):
@@ -9659,11 +9667,11 @@ class DeleteSparkTemplateRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The directory ID of the template files that you want to delete.
+        # The directory ID or application ID of the template files that you want to delete.
         # 
         # > 
         # 
-        # *   You can call the [GetSparkTemplateFullTree](https://help.aliyun.com/document_detail/456205.html) operation to query the directory ID of template files.
+        # *   You can call the [GetSparkTemplateFullTree](https://help.aliyun.com/document_detail/612467.html) operation to query the directory ID or application ID.
         # 
         # *   When you specify a directory ID, the directory and all template files that are included in the directory are deleted.
         # 
@@ -11803,11 +11811,23 @@ class DescribeAdbMySqlIndexesRequest(TeaModel):
         schema: str = None,
         table_name: str = None,
     ):
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition clusters within a region.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The name of the database.
         self.schema = schema
+        # The name of the table.
+        # 
+        # >  If you leave this parameter empty, the information about all the current tables in the cluster is returned.
         self.table_name = table_name
 
     def validate(self):
@@ -11849,8 +11869,11 @@ class DescribeAdbMySqlIndexesResponseBodyIndexes(TeaModel):
         name: str = None,
         type: str = None,
     ):
+        # The name of the column.
         self.column = column
+        # The name of the index.
         self.name = name
+        # The index type.
         self.type = type
 
     def validate(self):
@@ -11892,12 +11915,29 @@ class DescribeAdbMySqlIndexesResponseBody(TeaModel):
         success: bool = None,
         table_name: str = None,
     ):
+        # The number of indexes.````
         self.index_count = index_count
+        # The queried indexes.
         self.indexes = indexes
+        # The returned message. Valid values:
+        # 
+        # *   If the request was successful, a success message is returned.****\
+        # *   If the request failed, an error message is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The name of the database.
+        # 
+        # **\
+        # 
+        # ****\\
         self.schema = schema
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The name of the table.
         self.table_name = table_name
 
     def validate(self):
@@ -12138,12 +12178,26 @@ class DescribeAdbMySqlTableMetaRequest(TeaModel):
         schema: str = None,
         table_name: str = None,
     ):
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The name of the database.
+        # 
         # This parameter is required.
         self.schema = schema
+        # The name of the table.
+        # 
+        # >  If you leave this parameter empty, the information about all the current tables in the cluster is returned.
+        # 
         # This parameter is required.
         self.table_name = table_name
 
@@ -12198,20 +12252,42 @@ class DescribeAdbMySqlTableMetaResponseBodyTableMeta(TeaModel):
         table_type: str = None,
         update_time: str = None,
     ):
+        # The time when the table was created.
         self.create_time = create_time
+        # The distribution key column.
         self.distribute_column = distribute_column
+        # The distribution type.
         self.distribute_type = distribute_type
+        # Indicates whether full-column indexes are used.
         self.is_all_index = is_all_index
+        # Indicates whether dictionary encoding is used.
         self.is_dict_encode = is_dict_encode
+        # Indicates whether full-text indexes are used.
         self.is_full_text_dict = is_full_text_dict
+        # Indicates whether pages are hidden.
+        # 
+        # *   **false**\
+        # *   **true**\
         self.is_hidden = is_hidden
+        # The partition key column.
         self.partition_column = partition_column
+        # The type of the partition.
         self.partition_type = partition_type
+        # The primary key column.
         self.primary_key_column = primary_key_column
+        # The table engine.
         self.table_engine = table_engine
+        # The name of the table.
+        # 
+        # **\
+        # 
+        # ****\
         self.table_name = table_name
+        # The database to which the table belongs.
         self.table_schema = table_schema
+        # The type of the table.
         self.table_type = table_type
+        # The time when the table was updated.
         self.update_time = update_time
 
     def validate(self):
@@ -12298,9 +12374,19 @@ class DescribeAdbMySqlTableMetaResponseBody(TeaModel):
         success: bool = None,
         table_meta: DescribeAdbMySqlTableMetaResponseBodyTableMeta = None,
     ):
+        # The returned message. Valid values:
+        # 
+        # *   If the request was successful, a success message is returned.****\
+        # *   If the request failed, an error message is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The queried table metadata.
         self.table_meta = table_meta
 
     def validate(self):
@@ -17846,9 +17932,9 @@ class DescribeClusterAccessWhiteListResponseBodyItemsIPArray(TeaModel):
         dbcluster_iparray_name: str = None,
         security_iplist: str = None,
     ):
-        # The attribute of the whitelist.
+        # The attribute of the IP address whitelist.
         # 
-        # > Whitelists with the **hidden** attribute are not displayed in the console. Those whitelists are used to access Data Transmission Service (DTS) and PolarDB.
+        # >  The IP address whitelists that have the **hidden** attribute are not displayed in the console. These IP address whitelists are used to access services such as Data Transmission Service (DTS) and PolarDB.
         self.dbcluster_iparray_attribute = dbcluster_iparray_attribute
         # The name of the IP address whitelist.
         # 
@@ -20005,6 +20091,8 @@ class DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfo(TeaModel):
 class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
     def __init__(
         self,
+        ainode_number: int = None,
+        ainode_spec: str = None,
         clickhouse_engine_cache_size: int = None,
         clickhouse_engine_enabled: bool = None,
         commodity_code: str = None,
@@ -20052,6 +20140,8 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        self.ainode_number = ainode_number
+        self.ainode_spec = ainode_spec
         # The cache size of the ClickHouse wide table engine. Unit: GB. If a value of -1 is returned, the ClickHouse wide table engine is disabled. If a value other than -1 is returned, this parameter indicates the disk cache size.
         self.clickhouse_engine_cache_size = clickhouse_engine_cache_size
         # Indicates whether the ClickHouse wide table engine is enabled. Valid values:
@@ -20201,6 +20291,10 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
             return _map
 
         result = dict()
+        if self.ainode_number is not None:
+            result['AINodeNumber'] = self.ainode_number
+        if self.ainode_spec is not None:
+            result['AINodeSpec'] = self.ainode_spec
         if self.clickhouse_engine_cache_size is not None:
             result['ClickhouseEngineCacheSize'] = self.clickhouse_engine_cache_size
         if self.clickhouse_engine_enabled is not None:
@@ -20297,6 +20391,10 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AINodeNumber') is not None:
+            self.ainode_number = m.get('AINodeNumber')
+        if m.get('AINodeSpec') is not None:
+            self.ainode_spec = m.get('AINodeSpec')
         if m.get('ClickhouseEngineCacheSize') is not None:
             self.clickhouse_engine_cache_size = m.get('ClickhouseEngineCacheSize')
         if m.get('ClickhouseEngineEnabled') is not None:
@@ -21648,32 +21746,23 @@ class DescribeDBClustersRequest(TeaModel):
         # 
         # If you do not specify this parameter, the information about all clusters that reside in the region is returned.
         self.dbcluster_ids = dbcluster_ids
-        # The state of the cluster. Valid values:
+        # The status of the cluster. Valid values:
         # 
         # *   **Preparing**\
-        # 
-        # <!---->
-        # 
         # *   **Creating**\
         # *   **Running**\
         # *   **Deleting**\
-        # 
-        # <!---->
-        # 
         # *   **Restoring**\
-        # 
-        # <!---->
-        # 
         # *   **ClassChanging**\
         # *   **NetAddressCreating**\
         # *   **NetAddressDeleting**\
         # *   **NetAddressModifying**\
         self.dbcluster_status = dbcluster_status
-        # The database engine version of the cluster. Valid values:
+        # The version number corresponding to the edition of the cluster. Valid values:
         # 
-        # *   3.0: Data Warehouse Edition.
-        # *   5.0 (default): Data Lakehouse Edition, Enterprise Edition, and Basic Edition.
-        # *   All: Data Warehouse Edition, Data Lakehouse Edition, Enterprise Edition, and Basic Edition.
+        # *   **3.0**: Data Warehouse Edition.
+        # *   **5.0** (default): includes Data Lakehouse Edition, Enterprise Edition, and Basic Edition.
+        # *   **All**: all editions, including Data Warehouse Edition, Data Lakehouse Edition, Enterprise Edition, and Basic Edition.
         self.dbcluster_version = dbcluster_version
         # The page number. Pages start from page 1. Default value: **1**.
         self.page_number = page_number
@@ -21685,10 +21774,10 @@ class DescribeDBClustersRequest(TeaModel):
         self.page_size = page_size
         # The edition of the cluster. Valid values:
         # 
-        # *   EnterpriseVersion: Enterprise Edition.
-        # *   BasicVersion: Basic Edition.
+        # *   **EnterpriseVersion**: Enterprise Edition.
+        # *   **BasicVersion**: Basic Edition.
         # 
-        # If you leave this parameter empty, the information about clusters of all editions is returned.
+        # >  If you leave this parameter empty, the information about clusters of all editions is returned.
         self.product_version = product_version
         # The region ID of the cluster.
         # 
@@ -22064,24 +22153,15 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         self.dbcluster_description = dbcluster_description
         # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         self.dbcluster_id = dbcluster_id
-        # The network type of the cluster. **VPC** is returned.
+        # The network type of the cluster. Only **VPC** is supported.
         self.dbcluster_network_type = dbcluster_network_type
         # The status of the cluster. Valid values:
         # 
         # *   **Preparing**\
-        # 
-        # <!---->
-        # 
         # *   **Creating**\
         # *   **Running**\
         # *   **Deleting**\
-        # 
-        # <!---->
-        # 
         # *   **Restoring**\
-        # 
-        # <!---->
-        # 
         # *   **ClassChanging**\
         # *   **NetAddressCreating**\
         # *   **NetAddressDeleting**\
@@ -22095,7 +22175,7 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         self.dbnode_count = dbnode_count
         # The storage capacity of the cluster. Unit: GB.
         self.dbnode_storage = dbnode_storage
-        # The engine version of the AnalyticDB for MySQL Data Lakehouse Edition cluster. **5.0** is returned.
+        # The version number corresponding to the edition of the cluster. Only **5.0** is supported.
         self.dbversion = dbversion
         # The disk type of the cluster. Valid values:
         # 
@@ -22163,8 +22243,8 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         self.port = port
         # The service type of the cluster. Valid values:
         # 
-        # *   LegacyForm
-        # *   IntegrationForm
+        # *   **LegacyForm**\
+        # *   **IntegrationForm**\
         self.product_form = product_form
         # The edition of the cluster. Valid values:
         # 
@@ -22187,9 +22267,9 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         self.storage_resource = storage_resource
         # The tags that are added to the cluster.
         self.tags = tags
-        # The job progress.
+        # The information about the job.
         self.task_info = task_info
-        # The ID of the cluster that resides in the VPC.
+        # The VPC endpoint.
         self.vpccloud_instance_id = vpccloud_instance_id
         # The virtual private cloud (VPC) ID of the cluster.
         self.vpcid = vpcid
@@ -23269,9 +23349,9 @@ class DescribeDiagnosisRecordsRequest(TeaModel):
         # 
         # >  You can call the [DescribeDiagnosisDimensions](https://help.aliyun.com/document_detail/308210.html) operation to query the resource groups, database names, usernames, and source IP addresses of the SQL statements that meet a query condition.
         self.client_ip = client_ip
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -23535,6 +23615,9 @@ class DescribeDiagnosisRecordsResponseBodyQuerys(TeaModel):
         self.peak_memory = peak_memory
         # The query ID.
         self.process_id = process_id
+        # The query properties.
+        # 
+        # >  For information about common properties, see [Config and hint configuration parameters](https://help.aliyun.com/document_detail/408955.html).
         self.query_properties = query_properties
         # The amount of time that is consumed for queuing. Unit: milliseconds.
         self.queue_time = queue_time
@@ -27829,11 +27912,19 @@ class DescribeLLMSimilarQuestionsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The question proposed by a user.
+        # 
         # This parameter is required.
         self.query = query
+        # The region ID
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -27893,12 +27984,19 @@ class DescribeLLMSimilarQuestionsResponseBodyItems(TeaModel):
         title: str = None,
         url: str = None,
     ):
+        # The answer to the similar question.
         self.answer = answer
+        # The ID of the similar question.
         self.id = id
+        # The similarity of the similar question.
         self.score = score
+        # The source of the similar question.
         self.source = source
+        # The summary of the similar question.
         self.summary = summary
+        # The content of the similar question.
         self.title = title
+        # The URL of the answer to the similar question.
         self.url = url
 
     def validate(self):
@@ -27952,8 +28050,11 @@ class DescribeLLMSimilarQuestionsResponseBody(TeaModel):
         request_id: str = None,
         session_id: str = None,
     ):
+        # The queried similar questions.
         self.items = items
+        # The request ID.
         self.request_id = request_id
+        # The session ID.
         self.session_id = session_id
 
     def validate(self):
@@ -29965,7 +30066,7 @@ class DescribeResourceGroupSpecRequest(TeaModel):
         region_id: str = None,
         resource_group_type: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        # The Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -30610,8 +30711,16 @@ class DescribeSQLWebSocketDomainRequest(TeaModel):
         dbcluster_id: str = None,
         region_id: str = None,
     ):
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The region ID
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -30648,10 +30757,21 @@ class DescribeSQLWebSocketDomainResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
         self.code = code
+        # The domain name.
         self.domain = domain
+        # The returned message. Valid values:
+        # 
+        # *   If the request was successful, a success message is returned.****\
+        # *   If the request failed, an error message is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -30938,7 +31058,10 @@ class DescribeSparkAppDiagnosisInfoRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The execution language of the Spark application.
+        # The language in which you want to display the results. Valid values:
+        # 
+        # *   en: English.
+        # *   zh (default): Chinese.
         # 
         # This parameter is required.
         self.language = language
@@ -33744,13 +33867,43 @@ class DescribeTableStatisticsRequest(TeaModel):
         region_id: str = None,
         schema_name: str = None,
     ):
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The keyword that is used to query information by table name.
         self.keyword = keyword
+        # The order by which to sort query results. Specify the parameter value in the JSON format.
+        # 
+        # Example:
+        # 
+        #     [
+        # 
+        #         {
+        # 
+        #             "Field":"Name",
+        # 
+        #             "Type":"Asc"
+        # 
+        #         }
+        # 
+        #     ]
+        # 
+        # Field specifies the field by which to sort the query results. Set the value to Name. Type specifies the sorting order. Valid values: Desc and Asc.
+        # 
+        # Field and Type are case-insensitive.
         self.order = order
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The region ID
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the most recent region list.
         self.region_id = region_id
+        # The name of the database.
         self.schema_name = schema_name
 
     def validate(self):
@@ -33813,17 +33966,38 @@ class DescribeTableStatisticsResponseBodyItemsTableStatisticRecords(TeaModel):
         table_name: str = None,
         total_size: int = None,
     ):
+        # The size of cold data. Unit: bytes.
+        # 
+        # >  This parameter is supported only for AnalyticDB for MySQL clusters of V3.1.3.4 or later.
         self.cold_data_size = cold_data_size
+        # The data size of the table. Unit: bytes.
         self.data_size = data_size
+        # The size of hot data. Unit: bytes.
         self.hot_data_size = hot_data_size
+        # The data size of indexes. Unit: bytes.
         self.index_size = index_size
+        # The data size of other data. Unit: bytes.
         self.other_size = other_size
+        # The number of partitions.
         self.partition_count = partition_count
+        # The data size of the primary key index. Unit: bytes.
         self.primary_key_index_size = primary_key_index_size
+        # The number of rows in the table.
         self.row_count = row_count
+        # The name of the database.
         self.schema_name = schema_name
+        # The percentage of the table size. Unit: %.
+        # 
+        # >  Formula: Table storage percentage = Total data size of a table/Total data size of the cluster × 100%.
         self.space_ratio = space_ratio
+        # The name of the table.
         self.table_name = table_name
+        # The total data size of the table. Unit: bytes.
+        # 
+        # >  The following formulas can be used to calculate the total data size:
+        # 
+        # *   Formula 1: Total data size = Hot data size + Cold data size.
+        # *   Formula 2: Total data size = Data size of table records + Data size of regular indexes + Data size of primary key indexes + Data size of other data.
         self.total_size = total_size
 
     def validate(self):
@@ -33936,12 +34110,19 @@ class DescribeTableStatisticsResponseBody(TeaModel):
         schema_names: str = None,
         total_count: str = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The queried table statistics.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The names of databases.
         self.schema_names = schema_names
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -37030,7 +37211,7 @@ class GetDatabaseObjectsResponseBodyData(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The queried database.
+        # The queried databases.
         self.database_summary_models = database_summary_models
         # The page number. Pages start from page 1. Default value: **1**.
         self.page_number = page_number
@@ -37094,7 +37275,7 @@ class GetDatabaseObjectsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The queried databases.
+        # The returned data.
         self.data = data
         # The page number. Pages start from page 1. Default value: **1**.
         self.page_number = page_number
@@ -40352,7 +40533,7 @@ class GetTableColumnsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The queried data.
+        # The returned data.
         self.data = data
         # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
@@ -41436,7 +41617,7 @@ class KillProcessRequest(TeaModel):
         self.dbcluster_id = dbcluster_id
         # The query ID.
         # 
-        # >  You can call the [DescribeProcessList](https://help.aliyun.com/document_detail/143382.html) operation to query the IDs of queries that are being executed.
+        # >  You can call the [DescribeProcessList](https://help.aliyun.com/document_detail/612277.html) operation to query the IDs of queries that are being executed.
         self.process_id = process_id
         # The region ID.
         # 
@@ -47361,7 +47542,7 @@ class ModifyClusterAccessWhiteListRequest(TeaModel):
     ):
         # The attribute of the IP address whitelist. By default, this parameter is empty.
         # 
-        # > Whitelists with the hidden attribute are not displayed in the console. Those whitelists are used to access Data Transmission Service (DTS) and PolarDB.
+        # >  IP address whitelists with the hidden attribute are not displayed in the console. Those whitelists are used to access Data Transmission Service (DTS) and PolarDB.
         self.dbcluster_iparray_attribute = dbcluster_iparray_attribute
         # The name of the IP address whitelist. If you do not specify this parameter, the Default whitelist is modified.
         # 
@@ -51362,7 +51543,7 @@ class SubmitResultExportJobRequest(TeaModel):
         self.dbcluster_id = dbcluster_id
         # The engine that is used to run the result set export job. Set the value to XIHE.
         self.engine = engine
-        # The export type.
+        # The type of the result set export job.
         self.export_type = export_type
         # The region ID.
         # 
@@ -51559,7 +51740,7 @@ class SubmitSparkAppRequest(TeaModel):
         # *   **STREAMING**\
         # *   **BATCH** (default)
         self.app_type = app_type
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        # The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
         # 
         # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
         # 
