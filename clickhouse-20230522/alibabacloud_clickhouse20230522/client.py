@@ -135,16 +135,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.CreateAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.CreateAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.CreateAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_account_with_options_async(
         self,
@@ -194,16 +188,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.CreateAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.CreateAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.CreateAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_account(
         self,
@@ -230,6 +218,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_account_with_options_async(request, runtime)
+
+    def create_backup_policy_with_options(
+        self,
+        request: clickhouse_20230522_models.CreateBackupPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20230522_models.CreateBackupPolicyResponse:
+        """
+        @summary Creates a backup policy for a specified ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+        
+        @param request: CreateBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBackupPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_retention_period):
+            query['BackupRetentionPeriod'] = request.backup_retention_period
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.preferred_backup_period):
+            query['PreferredBackupPeriod'] = request.preferred_backup_period
+        if not UtilClient.is_unset(request.preferred_backup_time):
+            query['PreferredBackupTime'] = request.preferred_backup_time
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateBackupPolicy',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.CreateBackupPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_backup_policy_with_options_async(
+        self,
+        request: clickhouse_20230522_models.CreateBackupPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20230522_models.CreateBackupPolicyResponse:
+        """
+        @summary Creates a backup policy for a specified ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+        
+        @param request: CreateBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBackupPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_retention_period):
+            query['BackupRetentionPeriod'] = request.backup_retention_period
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.preferred_backup_period):
+            query['PreferredBackupPeriod'] = request.preferred_backup_period
+        if not UtilClient.is_unset(request.preferred_backup_time):
+            query['PreferredBackupTime'] = request.preferred_backup_time
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateBackupPolicy',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.CreateBackupPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_backup_policy(
+        self,
+        request: clickhouse_20230522_models.CreateBackupPolicyRequest,
+    ) -> clickhouse_20230522_models.CreateBackupPolicyResponse:
+        """
+        @summary Creates a backup policy for a specified ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+        
+        @param request: CreateBackupPolicyRequest
+        @return: CreateBackupPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_backup_policy_with_options(request, runtime)
+
+    async def create_backup_policy_async(
+        self,
+        request: clickhouse_20230522_models.CreateBackupPolicyRequest,
+    ) -> clickhouse_20230522_models.CreateBackupPolicyResponse:
+        """
+        @summary Creates a backup policy for a specified ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+        
+        @param request: CreateBackupPolicyRequest
+        @return: CreateBackupPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_backup_policy_with_options_async(request, runtime)
 
     def create_dbwith_options(
         self,
@@ -267,16 +367,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.CreateDBResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.CreateDBResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.CreateDBResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_dbwith_options_async(
         self,
@@ -314,16 +408,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.CreateDBResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.CreateDBResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.CreateDBResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_db(
         self,
@@ -413,16 +501,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.CreateDBInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.CreateDBInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.CreateDBInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_dbinstance_with_options_async(
         self,
@@ -486,16 +568,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.CreateDBInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.CreateDBInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.CreateDBInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_dbinstance(
         self,
@@ -559,16 +635,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.CreateEndpointResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.CreateEndpointResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.CreateEndpointResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_endpoint_with_options_async(
         self,
@@ -606,16 +676,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.CreateEndpointResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.CreateEndpointResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.CreateEndpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_endpoint(
         self,
@@ -679,16 +743,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DeleteAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DeleteAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DeleteAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_account_with_options_async(
         self,
@@ -726,16 +784,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DeleteAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DeleteAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DeleteAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_account(
         self,
@@ -762,6 +814,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_account_with_options_async(request, runtime)
+
+    def delete_backup_policy_with_options(
+        self,
+        request: clickhouse_20230522_models.DeleteBackupPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20230522_models.DeleteBackupPolicyResponse:
+        """
+        @summary 修改备份策略
+        
+        @param request: DeleteBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBackupPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBackupPolicy',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DeleteBackupPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_backup_policy_with_options_async(
+        self,
+        request: clickhouse_20230522_models.DeleteBackupPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20230522_models.DeleteBackupPolicyResponse:
+        """
+        @summary 修改备份策略
+        
+        @param request: DeleteBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBackupPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBackupPolicy',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DeleteBackupPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_backup_policy(
+        self,
+        request: clickhouse_20230522_models.DeleteBackupPolicyRequest,
+    ) -> clickhouse_20230522_models.DeleteBackupPolicyResponse:
+        """
+        @summary 修改备份策略
+        
+        @param request: DeleteBackupPolicyRequest
+        @return: DeleteBackupPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_backup_policy_with_options(request, runtime)
+
+    async def delete_backup_policy_async(
+        self,
+        request: clickhouse_20230522_models.DeleteBackupPolicyRequest,
+    ) -> clickhouse_20230522_models.DeleteBackupPolicyResponse:
+        """
+        @summary 修改备份策略
+        
+        @param request: DeleteBackupPolicyRequest
+        @return: DeleteBackupPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_backup_policy_with_options_async(request, runtime)
 
     def delete_dbwith_options(
         self,
@@ -797,16 +949,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DeleteDBResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DeleteDBResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DeleteDBResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_dbwith_options_async(
         self,
@@ -842,16 +988,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DeleteDBResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DeleteDBResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DeleteDBResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_db(
         self,
@@ -911,16 +1051,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DeleteDBInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DeleteDBInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DeleteDBInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_dbinstance_with_options_async(
         self,
@@ -954,16 +1088,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DeleteDBInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DeleteDBInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DeleteDBInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_dbinstance(
         self,
@@ -1027,16 +1155,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DeleteEndpointResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DeleteEndpointResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DeleteEndpointResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_endpoint_with_options_async(
         self,
@@ -1074,16 +1196,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DeleteEndpointResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DeleteEndpointResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DeleteEndpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_endpoint(
         self,
@@ -1145,16 +1261,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeAccountAuthorityResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeAccountAuthorityResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DescribeAccountAuthorityResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_account_authority_with_options_async(
         self,
@@ -1190,16 +1300,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeAccountAuthorityResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeAccountAuthorityResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DescribeAccountAuthorityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_account_authority(
         self,
@@ -1265,16 +1369,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeAccountsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeAccountsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DescribeAccountsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_accounts_with_options_async(
         self,
@@ -1314,16 +1412,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeAccountsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeAccountsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DescribeAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_accounts(
         self,
@@ -1350,6 +1442,226 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_accounts_with_options_async(request, runtime)
+
+    def describe_backup_policy_with_options(
+        self,
+        request: clickhouse_20230522_models.DescribeBackupPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20230522_models.DescribeBackupPolicyResponse:
+        """
+        @summary 创建备份策略
+        
+        @param request: DescribeBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackupPolicy',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DescribeBackupPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_backup_policy_with_options_async(
+        self,
+        request: clickhouse_20230522_models.DescribeBackupPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20230522_models.DescribeBackupPolicyResponse:
+        """
+        @summary 创建备份策略
+        
+        @param request: DescribeBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackupPolicy',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DescribeBackupPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_backup_policy(
+        self,
+        request: clickhouse_20230522_models.DescribeBackupPolicyRequest,
+    ) -> clickhouse_20230522_models.DescribeBackupPolicyResponse:
+        """
+        @summary 创建备份策略
+        
+        @param request: DescribeBackupPolicyRequest
+        @return: DescribeBackupPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_backup_policy_with_options(request, runtime)
+
+    async def describe_backup_policy_async(
+        self,
+        request: clickhouse_20230522_models.DescribeBackupPolicyRequest,
+    ) -> clickhouse_20230522_models.DescribeBackupPolicyResponse:
+        """
+        @summary 创建备份策略
+        
+        @param request: DescribeBackupPolicyRequest
+        @return: DescribeBackupPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_backup_policy_with_options_async(request, runtime)
+
+    def describe_backups_with_options(
+        self,
+        request: clickhouse_20230522_models.DescribeBackupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20230522_models.DescribeBackupsResponse:
+        """
+        @summary 查询备份集
+        
+        @param request: DescribeBackupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackups',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DescribeBackupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_backups_with_options_async(
+        self,
+        request: clickhouse_20230522_models.DescribeBackupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20230522_models.DescribeBackupsResponse:
+        """
+        @summary 查询备份集
+        
+        @param request: DescribeBackupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackups',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DescribeBackupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_backups(
+        self,
+        request: clickhouse_20230522_models.DescribeBackupsRequest,
+    ) -> clickhouse_20230522_models.DescribeBackupsResponse:
+        """
+        @summary 查询备份集
+        
+        @param request: DescribeBackupsRequest
+        @return: DescribeBackupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_backups_with_options(request, runtime)
+
+    async def describe_backups_async(
+        self,
+        request: clickhouse_20230522_models.DescribeBackupsRequest,
+    ) -> clickhouse_20230522_models.DescribeBackupsResponse:
+        """
+        @summary 查询备份集
+        
+        @param request: DescribeBackupsRequest
+        @return: DescribeBackupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_backups_with_options_async(request, runtime)
 
     def describe_dbinstance_attribute_with_options(
         self,
@@ -1383,16 +1695,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeDBInstanceAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeDBInstanceAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DescribeDBInstanceAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_dbinstance_attribute_with_options_async(
         self,
@@ -1426,16 +1732,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeDBInstanceAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeDBInstanceAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DescribeDBInstanceAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_dbinstance_attribute(
         self,
@@ -1462,6 +1762,190 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_attribute_with_options_async(request, runtime)
+
+    def describe_dbinstance_config_with_options(
+        self,
+        request: clickhouse_20230522_models.DescribeDBInstanceConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20230522_models.DescribeDBInstanceConfigResponse:
+        """
+        @summary 查询实例参数配置
+        
+        @param request: DescribeDBInstanceConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceConfig',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DescribeDBInstanceConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbinstance_config_with_options_async(
+        self,
+        request: clickhouse_20230522_models.DescribeDBInstanceConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20230522_models.DescribeDBInstanceConfigResponse:
+        """
+        @summary 查询实例参数配置
+        
+        @param request: DescribeDBInstanceConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceConfig',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DescribeDBInstanceConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbinstance_config(
+        self,
+        request: clickhouse_20230522_models.DescribeDBInstanceConfigRequest,
+    ) -> clickhouse_20230522_models.DescribeDBInstanceConfigResponse:
+        """
+        @summary 查询实例参数配置
+        
+        @param request: DescribeDBInstanceConfigRequest
+        @return: DescribeDBInstanceConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbinstance_config_with_options(request, runtime)
+
+    async def describe_dbinstance_config_async(
+        self,
+        request: clickhouse_20230522_models.DescribeDBInstanceConfigRequest,
+    ) -> clickhouse_20230522_models.DescribeDBInstanceConfigResponse:
+        """
+        @summary 查询实例参数配置
+        
+        @param request: DescribeDBInstanceConfigRequest
+        @return: DescribeDBInstanceConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbinstance_config_with_options_async(request, runtime)
+
+    def describe_dbinstance_config_change_log_with_options(
+        self,
+        request: clickhouse_20230522_models.DescribeDBInstanceConfigChangeLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20230522_models.DescribeDBInstanceConfigChangeLogResponse:
+        """
+        @summary 查询实例参数配置记录
+        
+        @param request: DescribeDBInstanceConfigChangeLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceConfigChangeLogResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceConfigChangeLog',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DescribeDBInstanceConfigChangeLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbinstance_config_change_log_with_options_async(
+        self,
+        request: clickhouse_20230522_models.DescribeDBInstanceConfigChangeLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20230522_models.DescribeDBInstanceConfigChangeLogResponse:
+        """
+        @summary 查询实例参数配置记录
+        
+        @param request: DescribeDBInstanceConfigChangeLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceConfigChangeLogResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceConfigChangeLog',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DescribeDBInstanceConfigChangeLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbinstance_config_change_log(
+        self,
+        request: clickhouse_20230522_models.DescribeDBInstanceConfigChangeLogRequest,
+    ) -> clickhouse_20230522_models.DescribeDBInstanceConfigChangeLogResponse:
+        """
+        @summary 查询实例参数配置记录
+        
+        @param request: DescribeDBInstanceConfigChangeLogRequest
+        @return: DescribeDBInstanceConfigChangeLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbinstance_config_change_log_with_options(request, runtime)
+
+    async def describe_dbinstance_config_change_log_async(
+        self,
+        request: clickhouse_20230522_models.DescribeDBInstanceConfigChangeLogRequest,
+    ) -> clickhouse_20230522_models.DescribeDBInstanceConfigChangeLogResponse:
+        """
+        @summary 查询实例参数配置记录
+        
+        @param request: DescribeDBInstanceConfigChangeLogRequest
+        @return: DescribeDBInstanceConfigChangeLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbinstance_config_change_log_with_options_async(request, runtime)
 
     def describe_dbinstance_data_sources_with_options(
         self,
@@ -1499,16 +1983,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeDBInstanceDataSourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeDBInstanceDataSourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DescribeDBInstanceDataSourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_dbinstance_data_sources_with_options_async(
         self,
@@ -1546,16 +2024,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeDBInstanceDataSourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeDBInstanceDataSourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DescribeDBInstanceDataSourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_dbinstance_data_sources(
         self,
@@ -1625,16 +2097,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeDBInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeDBInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DescribeDBInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_dbinstances_with_options_async(
         self,
@@ -1678,16 +2144,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeDBInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeDBInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DescribeDBInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_dbinstances(
         self,
@@ -1747,16 +2207,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeEndpointsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeEndpointsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DescribeEndpointsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_endpoints_with_options_async(
         self,
@@ -1790,16 +2244,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeEndpointsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeEndpointsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DescribeEndpointsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_endpoints(
         self,
@@ -1873,16 +2321,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeProcessListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeProcessListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DescribeProcessListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_process_list_with_options_async(
         self,
@@ -1930,16 +2372,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeProcessListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeProcessListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DescribeProcessListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_process_list(
         self,
@@ -1999,16 +2435,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeSecurityIPListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeSecurityIPListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DescribeSecurityIPListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_security_iplist_with_options_async(
         self,
@@ -2042,16 +2472,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeSecurityIPListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeSecurityIPListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DescribeSecurityIPListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_security_iplist(
         self,
@@ -2121,16 +2545,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeSlowLogRecordsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeSlowLogRecordsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DescribeSlowLogRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_slow_log_records_with_options_async(
         self,
@@ -2174,16 +2592,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeSlowLogRecordsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeSlowLogRecordsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DescribeSlowLogRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_slow_log_records(
         self,
@@ -2251,16 +2663,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeSlowLogTrendResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeSlowLogTrendResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DescribeSlowLogTrendResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_slow_log_trend_with_options_async(
         self,
@@ -2302,16 +2708,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeSlowLogTrendResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.DescribeSlowLogTrendResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.DescribeSlowLogTrendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_slow_log_trend(
         self,
@@ -2373,16 +2773,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.KillProcessResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.KillProcessResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.KillProcessResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def kill_process_with_options_async(
         self,
@@ -2418,16 +2812,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.KillProcessResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.KillProcessResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.KillProcessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def kill_process(
         self,
@@ -2495,16 +2883,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.ModifyAccountAuthorityResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.ModifyAccountAuthorityResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.ModifyAccountAuthorityResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_account_authority_with_options_async(
         self,
@@ -2546,16 +2928,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.ModifyAccountAuthorityResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.ModifyAccountAuthorityResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.ModifyAccountAuthorityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_account_authority(
         self,
@@ -2619,16 +2995,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.ModifyAccountDescriptionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.ModifyAccountDescriptionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.ModifyAccountDescriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_account_description_with_options_async(
         self,
@@ -2666,16 +3036,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.ModifyAccountDescriptionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.ModifyAccountDescriptionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.ModifyAccountDescriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_account_description(
         self,
@@ -2702,6 +3066,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_account_description_with_options_async(request, runtime)
+
+    def modify_backup_policy_with_options(
+        self,
+        request: clickhouse_20230522_models.ModifyBackupPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20230522_models.ModifyBackupPolicyResponse:
+        """
+        @summary 修改备份策略
+        
+        @param request: ModifyBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackupPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_retention_period):
+            query['BackupRetentionPeriod'] = request.backup_retention_period
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.preferred_backup_period):
+            query['PreferredBackupPeriod'] = request.preferred_backup_period
+        if not UtilClient.is_unset(request.preferred_backup_time):
+            query['PreferredBackupTime'] = request.preferred_backup_time
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyBackupPolicy',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.ModifyBackupPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_backup_policy_with_options_async(
+        self,
+        request: clickhouse_20230522_models.ModifyBackupPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20230522_models.ModifyBackupPolicyResponse:
+        """
+        @summary 修改备份策略
+        
+        @param request: ModifyBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackupPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_retention_period):
+            query['BackupRetentionPeriod'] = request.backup_retention_period
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.preferred_backup_period):
+            query['PreferredBackupPeriod'] = request.preferred_backup_period
+        if not UtilClient.is_unset(request.preferred_backup_time):
+            query['PreferredBackupTime'] = request.preferred_backup_time
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyBackupPolicy',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.ModifyBackupPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_backup_policy(
+        self,
+        request: clickhouse_20230522_models.ModifyBackupPolicyRequest,
+    ) -> clickhouse_20230522_models.ModifyBackupPolicyResponse:
+        """
+        @summary 修改备份策略
+        
+        @param request: ModifyBackupPolicyRequest
+        @return: ModifyBackupPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_backup_policy_with_options(request, runtime)
+
+    async def modify_backup_policy_async(
+        self,
+        request: clickhouse_20230522_models.ModifyBackupPolicyRequest,
+    ) -> clickhouse_20230522_models.ModifyBackupPolicyResponse:
+        """
+        @summary 修改备份策略
+        
+        @param request: ModifyBackupPolicyRequest
+        @return: ModifyBackupPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_backup_policy_with_options_async(request, runtime)
 
     def modify_dbinstance_attribute_with_options(
         self,
@@ -2741,16 +3217,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.ModifyDBInstanceAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.ModifyDBInstanceAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.ModifyDBInstanceAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_dbinstance_attribute_with_options_async(
         self,
@@ -2790,16 +3260,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.ModifyDBInstanceAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.ModifyDBInstanceAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.ModifyDBInstanceAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_dbinstance_attribute(
         self,
@@ -2863,16 +3327,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.ModifyDBInstanceClassResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.ModifyDBInstanceClassResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.ModifyDBInstanceClassResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_dbinstance_class_with_options_async(
         self,
@@ -2910,16 +3368,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.ModifyDBInstanceClassResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.ModifyDBInstanceClassResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.ModifyDBInstanceClassResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_dbinstance_class(
         self,
@@ -2946,6 +3398,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_class_with_options_async(request, runtime)
+
+    def modify_dbinstance_config_with_options(
+        self,
+        request: clickhouse_20230522_models.ModifyDBInstanceConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20230522_models.ModifyDBInstanceConfigResponse:
+        """
+        @summary 修改实例参数配置
+        
+        @param request: ModifyDBInstanceConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceConfig',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.ModifyDBInstanceConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dbinstance_config_with_options_async(
+        self,
+        request: clickhouse_20230522_models.ModifyDBInstanceConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20230522_models.ModifyDBInstanceConfigResponse:
+        """
+        @summary 修改实例参数配置
+        
+        @param request: ModifyDBInstanceConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceConfig',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.ModifyDBInstanceConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dbinstance_config(
+        self,
+        request: clickhouse_20230522_models.ModifyDBInstanceConfigRequest,
+    ) -> clickhouse_20230522_models.ModifyDBInstanceConfigResponse:
+        """
+        @summary 修改实例参数配置
+        
+        @param request: ModifyDBInstanceConfigRequest
+        @return: ModifyDBInstanceConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dbinstance_config_with_options(request, runtime)
+
+    async def modify_dbinstance_config_async(
+        self,
+        request: clickhouse_20230522_models.ModifyDBInstanceConfigRequest,
+    ) -> clickhouse_20230522_models.ModifyDBInstanceConfigResponse:
+        """
+        @summary 修改实例参数配置
+        
+        @param request: ModifyDBInstanceConfigRequest
+        @return: ModifyDBInstanceConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dbinstance_config_with_options_async(request, runtime)
 
     def modify_dbinstance_connection_string_with_options(
         self,
@@ -2987,16 +3543,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.ModifyDBInstanceConnectionStringResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.ModifyDBInstanceConnectionStringResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.ModifyDBInstanceConnectionStringResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_dbinstance_connection_string_with_options_async(
         self,
@@ -3038,16 +3588,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.ModifyDBInstanceConnectionStringResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.ModifyDBInstanceConnectionStringResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.ModifyDBInstanceConnectionStringResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_dbinstance_connection_string(
         self,
@@ -3113,16 +3657,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.ModifySecurityIPListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.ModifySecurityIPListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.ModifySecurityIPListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_security_iplist_with_options_async(
         self,
@@ -3162,16 +3700,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.ModifySecurityIPListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.ModifySecurityIPListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.ModifySecurityIPListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_security_iplist(
         self,
@@ -3237,16 +3769,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.ResetAccountPasswordResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.ResetAccountPasswordResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.ResetAccountPasswordResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def reset_account_password_with_options_async(
         self,
@@ -3286,16 +3812,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.ResetAccountPasswordResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.ResetAccountPasswordResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.ResetAccountPasswordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def reset_account_password(
         self,
@@ -3355,16 +3875,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.RestartDBInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.RestartDBInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.RestartDBInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def restart_dbinstance_with_options_async(
         self,
@@ -3398,16 +3912,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.RestartDBInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.RestartDBInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.RestartDBInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def restart_dbinstance(
         self,
@@ -3467,16 +3975,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.StartDBInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.StartDBInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.StartDBInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def start_dbinstance_with_options_async(
         self,
@@ -3510,16 +4012,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.StartDBInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.StartDBInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.StartDBInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def start_dbinstance(
         self,
@@ -3579,16 +4075,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.StopDBInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.StopDBInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.StopDBInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def stop_dbinstance_with_options_async(
         self,
@@ -3622,16 +4112,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.StopDBInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.StopDBInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.StopDBInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def stop_dbinstance(
         self,
@@ -3697,16 +4181,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.UpgradeMinorVersionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.UpgradeMinorVersionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.UpgradeMinorVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def upgrade_minor_version_with_options_async(
         self,
@@ -3746,16 +4224,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                clickhouse_20230522_models.UpgradeMinorVersionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                clickhouse_20230522_models.UpgradeMinorVersionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.UpgradeMinorVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def upgrade_minor_version(
         self,

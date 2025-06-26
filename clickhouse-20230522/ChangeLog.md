@@ -1,3 +1,14 @@
+2025-06-26 Version: 1.1.0
+- Support API CreateBackupPolicy.
+- Support API DeleteBackupPolicy.
+- Support API DescribeBackupPolicy.
+- Support API DescribeBackups.
+- Support API DescribeDBInstanceConfig.
+- Support API DescribeDBInstanceConfigChangeLog.
+- Support API ModifyBackupPolicy.
+- Support API ModifyDBInstanceConfig.
+
+
 2025-04-09 Version: 1.0.6
 - Update API CreateDBInstance: add request parameters ResourceGroupId.
 
