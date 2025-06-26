@@ -1,3 +1,10 @@
+2025-06-26 Version: 1.30.3
+- Update API GetCustomSourceTopicAnalysisTask: add response parameters Body.Data.rt.
+- Update API GetCustomSourceTopicAnalysisTask: add response parameters Body.Data.usages.
+- Update API SubmitCustomSourceTopicAnalysis: add request parameters AnalysisTypes.
+- Update API SubmitCustomSourceTopicAnalysis: add request parameters News.$.Source.
+
+
 2025-06-25 Version: 1.30.2
 - Update API RunCommentGeneration: add request parameters ModelId.
 - Update API RunDocBrainmap: add request parameters ModelName.

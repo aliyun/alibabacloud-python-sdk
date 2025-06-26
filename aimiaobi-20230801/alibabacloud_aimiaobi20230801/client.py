@@ -16248,9 +16248,13 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.SubmitCustomSourceTopicAnalysisShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.analysis_types):
+            request.analysis_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.analysis_types, 'AnalysisTypes', 'json')
         if not UtilClient.is_unset(tmp_req.news):
             request.news_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.news, 'News', 'json')
         body = {}
+        if not UtilClient.is_unset(request.analysis_types_shrink):
+            body['AnalysisTypes'] = request.analysis_types_shrink
         if not UtilClient.is_unset(request.file_type):
             body['FileType'] = request.file_type
         if not UtilClient.is_unset(request.file_url):
@@ -16295,9 +16299,13 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.SubmitCustomSourceTopicAnalysisShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.analysis_types):
+            request.analysis_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.analysis_types, 'AnalysisTypes', 'json')
         if not UtilClient.is_unset(tmp_req.news):
             request.news_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.news, 'News', 'json')
         body = {}
+        if not UtilClient.is_unset(request.analysis_types_shrink):
+            body['AnalysisTypes'] = request.analysis_types_shrink
         if not UtilClient.is_unset(request.file_type):
             body['FileType'] = request.file_type
         if not UtilClient.is_unset(request.file_url):

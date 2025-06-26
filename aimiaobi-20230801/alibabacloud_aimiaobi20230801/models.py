@@ -8799,6 +8799,8 @@ class GetCustomSourceTopicAnalysisTaskResponseBodyData(TeaModel):
         max_clustered_topic_news_size: int = None,
         parsed_news_size: int = None,
         status: str = None,
+        rt: int = None,
+        usages: Dict[str, int] = None,
     ):
         self.cluster_count = cluster_count
         self.cluster_results = cluster_results
@@ -8806,6 +8808,8 @@ class GetCustomSourceTopicAnalysisTaskResponseBodyData(TeaModel):
         self.max_clustered_topic_news_size = max_clustered_topic_news_size
         self.parsed_news_size = parsed_news_size
         self.status = status
+        self.rt = rt
+        self.usages = usages
 
     def validate(self):
         if self.cluster_results:
@@ -8833,6 +8837,10 @@ class GetCustomSourceTopicAnalysisTaskResponseBodyData(TeaModel):
             result['ParsedNewsSize'] = self.parsed_news_size
         if self.status is not None:
             result['Status'] = self.status
+        if self.rt is not None:
+            result['rt'] = self.rt
+        if self.usages is not None:
+            result['usages'] = self.usages
         return result
 
     def from_map(self, m: dict = None):
@@ -8852,6 +8860,10 @@ class GetCustomSourceTopicAnalysisTaskResponseBodyData(TeaModel):
             self.parsed_news_size = m.get('ParsedNewsSize')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('rt') is not None:
+            self.rt = m.get('rt')
+        if m.get('usages') is not None:
+            self.usages = m.get('usages')
         return self
 
 
@@ -48573,12 +48585,14 @@ class SubmitCustomSourceTopicAnalysisRequestNews(TeaModel):
         comments: List[SubmitCustomSourceTopicAnalysisRequestNewsComments] = None,
         content: str = None,
         pub_time: str = None,
+        source: str = None,
         title: str = None,
         url: str = None,
     ):
         self.comments = comments
         self.content = content
         self.pub_time = pub_time
+        self.source = source
         self.title = title
         self.url = url
 
@@ -48602,6 +48616,8 @@ class SubmitCustomSourceTopicAnalysisRequestNews(TeaModel):
             result['Content'] = self.content
         if self.pub_time is not None:
             result['PubTime'] = self.pub_time
+        if self.source is not None:
+            result['Source'] = self.source
         if self.title is not None:
             result['Title'] = self.title
         if self.url is not None:
@@ -48619,6 +48635,8 @@ class SubmitCustomSourceTopicAnalysisRequestNews(TeaModel):
             self.content = m.get('Content')
         if m.get('PubTime') is not None:
             self.pub_time = m.get('PubTime')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         if m.get('Url') is not None:
@@ -48629,12 +48647,14 @@ class SubmitCustomSourceTopicAnalysisRequestNews(TeaModel):
 class SubmitCustomSourceTopicAnalysisRequest(TeaModel):
     def __init__(
         self,
+        analysis_types: List[str] = None,
         file_type: str = None,
         file_url: str = None,
         max_topic_size: int = None,
         news: List[SubmitCustomSourceTopicAnalysisRequestNews] = None,
         workspace_id: str = None,
     ):
+        self.analysis_types = analysis_types
         self.file_type = file_type
         self.file_url = file_url
         self.max_topic_size = max_topic_size
@@ -48654,6 +48674,8 @@ class SubmitCustomSourceTopicAnalysisRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.analysis_types is not None:
+            result['AnalysisTypes'] = self.analysis_types
         if self.file_type is not None:
             result['FileType'] = self.file_type
         if self.file_url is not None:
@@ -48670,6 +48692,8 @@ class SubmitCustomSourceTopicAnalysisRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AnalysisTypes') is not None:
+            self.analysis_types = m.get('AnalysisTypes')
         if m.get('FileType') is not None:
             self.file_type = m.get('FileType')
         if m.get('FileUrl') is not None:
@@ -48689,12 +48713,14 @@ class SubmitCustomSourceTopicAnalysisRequest(TeaModel):
 class SubmitCustomSourceTopicAnalysisShrinkRequest(TeaModel):
     def __init__(
         self,
+        analysis_types_shrink: str = None,
         file_type: str = None,
         file_url: str = None,
         max_topic_size: int = None,
         news_shrink: str = None,
         workspace_id: str = None,
     ):
+        self.analysis_types_shrink = analysis_types_shrink
         self.file_type = file_type
         self.file_url = file_url
         self.max_topic_size = max_topic_size
@@ -48711,6 +48737,8 @@ class SubmitCustomSourceTopicAnalysisShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.analysis_types_shrink is not None:
+            result['AnalysisTypes'] = self.analysis_types_shrink
         if self.file_type is not None:
             result['FileType'] = self.file_type
         if self.file_url is not None:
@@ -48725,6 +48753,8 @@ class SubmitCustomSourceTopicAnalysisShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AnalysisTypes') is not None:
+            self.analysis_types_shrink = m.get('AnalysisTypes')
         if m.get('FileType') is not None:
             self.file_type = m.get('FileType')
         if m.get('FileUrl') is not None:
