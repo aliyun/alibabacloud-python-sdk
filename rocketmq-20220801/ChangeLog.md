@@ -5,6 +5,13 @@
 - Update API UpdateDisasterRecoveryPlan: add request parameters body.instances.$.consumerGroupId.
 
 
+2025-06-26 Version: 3.1.2
+- Update API CreateDisasterRecoveryPlan: add request parameters body.instances.$.consumerGroupId.
+- Update API GetDisasterRecoveryPlan: add response parameters Body.data.instances.$.consumerGroupId.
+- Update API ListDisasterRecoveryPlans: add response parameters Body.data.list.$.instances.$.consumerGroupId.
+- Update API UpdateDisasterRecoveryPlan: add request parameters body.instances.$.consumerGroupId.
+
+
 2025-05-28 Version: 3.1.1
 - Update API CreateConsumerGroup: add request parameters body.consumeRetryPolicy.fixedIntervalRetryTime.
 - Update API GetConsumerGroup: add response parameters Body.data.consumeRetryPolicy.fixedIntervalRetryTime.
