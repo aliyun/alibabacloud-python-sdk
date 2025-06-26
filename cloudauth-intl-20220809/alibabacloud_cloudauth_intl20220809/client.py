@@ -2165,6 +2165,8 @@ class Client(OpenApiClient):
             query['CallbackToken'] = request.callback_token
         if not UtilClient.is_unset(request.callback_url):
             query['CallbackUrl'] = request.callback_url
+        if not UtilClient.is_unset(request.chameleon_frame_enable):
+            query['ChameleonFrameEnable'] = request.chameleon_frame_enable
         if not UtilClient.is_unset(request.crop):
             query['Crop'] = request.crop
         if not UtilClient.is_unset(request.date_of_birth):
@@ -2278,6 +2280,8 @@ class Client(OpenApiClient):
             query['CallbackToken'] = request.callback_token
         if not UtilClient.is_unset(request.callback_url):
             query['CallbackUrl'] = request.callback_url
+        if not UtilClient.is_unset(request.chameleon_frame_enable):
+            query['ChameleonFrameEnable'] = request.chameleon_frame_enable
         if not UtilClient.is_unset(request.crop):
             query['Crop'] = request.crop
         if not UtilClient.is_unset(request.date_of_birth):

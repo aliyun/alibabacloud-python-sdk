@@ -3209,6 +3209,7 @@ class InitializeRequest(TeaModel):
         authorize: str = None,
         callback_token: str = None,
         callback_url: str = None,
+        chameleon_frame_enable: str = None,
         crop: str = None,
         date_of_birth: str = None,
         date_of_expiry: str = None,
@@ -3247,6 +3248,7 @@ class InitializeRequest(TeaModel):
         self.authorize = authorize
         self.callback_token = callback_token
         self.callback_url = callback_url
+        self.chameleon_frame_enable = chameleon_frame_enable
         self.crop = crop
         self.date_of_birth = date_of_birth
         self.date_of_expiry = date_of_expiry
@@ -3299,6 +3301,8 @@ class InitializeRequest(TeaModel):
             result['CallbackToken'] = self.callback_token
         if self.callback_url is not None:
             result['CallbackUrl'] = self.callback_url
+        if self.chameleon_frame_enable is not None:
+            result['ChameleonFrameEnable'] = self.chameleon_frame_enable
         if self.crop is not None:
             result['Crop'] = self.crop
         if self.date_of_birth is not None:
@@ -3377,6 +3381,8 @@ class InitializeRequest(TeaModel):
             self.callback_token = m.get('CallbackToken')
         if m.get('CallbackUrl') is not None:
             self.callback_url = m.get('CallbackUrl')
+        if m.get('ChameleonFrameEnable') is not None:
+            self.chameleon_frame_enable = m.get('ChameleonFrameEnable')
         if m.get('Crop') is not None:
             self.crop = m.get('Crop')
         if m.get('DateOfBirth') is not None:
@@ -3453,6 +3459,7 @@ class InitializeShrinkRequest(TeaModel):
         authorize: str = None,
         callback_token: str = None,
         callback_url: str = None,
+        chameleon_frame_enable: str = None,
         crop: str = None,
         date_of_birth: str = None,
         date_of_expiry: str = None,
@@ -3491,6 +3498,7 @@ class InitializeShrinkRequest(TeaModel):
         self.authorize = authorize
         self.callback_token = callback_token
         self.callback_url = callback_url
+        self.chameleon_frame_enable = chameleon_frame_enable
         self.crop = crop
         self.date_of_birth = date_of_birth
         self.date_of_expiry = date_of_expiry
@@ -3543,6 +3551,8 @@ class InitializeShrinkRequest(TeaModel):
             result['CallbackToken'] = self.callback_token
         if self.callback_url is not None:
             result['CallbackUrl'] = self.callback_url
+        if self.chameleon_frame_enable is not None:
+            result['ChameleonFrameEnable'] = self.chameleon_frame_enable
         if self.crop is not None:
             result['Crop'] = self.crop
         if self.date_of_birth is not None:
@@ -3621,6 +3631,8 @@ class InitializeShrinkRequest(TeaModel):
             self.callback_token = m.get('CallbackToken')
         if m.get('CallbackUrl') is not None:
             self.callback_url = m.get('CallbackUrl')
+        if m.get('ChameleonFrameEnable') is not None:
+            self.chameleon_frame_enable = m.get('ChameleonFrameEnable')
         if m.get('Crop') is not None:
             self.crop = m.get('Crop')
         if m.get('DateOfBirth') is not None:

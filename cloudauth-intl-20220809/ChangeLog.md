@@ -1,3 +1,7 @@
+2025-06-26 Version: 3.7.2
+- Update API Initialize: add request parameters ChameleonFrameEnable.
+
+
 2025-06-16 Version: 3.7.1
 - Update API DocOcrMax: add request parameters IdSpoof.
 - Update API Initialize: add request parameters Pages.
