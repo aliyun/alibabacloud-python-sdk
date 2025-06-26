@@ -1,3 +1,11 @@
+2025-06-26 Version: 2.15.0
+- Support API GetAICoachTaskSessionResourceUsage.
+- Update API GetAICoachScript: add response parameters Body.customReplyRules.
+- Update API GetAICoachScript: add response parameters Body.weights.customReplyRuleEnabled.
+- Update API ListAICoachScriptPage: add response parameters Body.list.$.customReplyRules.
+- Update API ListAICoachScriptPage: add response parameters Body.list.$.weights.customReplyRuleEnabled.
+
+
 2025-05-21 Version: 2.14.2
 - Update API GetAICoachScript: add response parameters Body.scoreConfig.levelEnabled.
 - Update API GetAICoachScript: add response parameters Body.scoreConfig.levels.

@@ -3423,6 +3423,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_aicoach_task_session_report_with_options_async(request, headers, runtime)
 
+    def get_aicoach_task_session_resource_usage_with_options(
+        self,
+        request: intelligent_creation_20240313_models.GetAICoachTaskSessionResourceUsageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.GetAICoachTaskSessionResourceUsageResponse:
+        """
+        @summary 获取对练会话资源使用情况
+        
+        @param request: GetAICoachTaskSessionResourceUsageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAICoachTaskSessionResourceUsageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.session_id):
+            query['sessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAICoachTaskSessionResourceUsage',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/aicoach/getSessionResourceUsage',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.GetAICoachTaskSessionResourceUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_aicoach_task_session_resource_usage_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.GetAICoachTaskSessionResourceUsageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.GetAICoachTaskSessionResourceUsageResponse:
+        """
+        @summary 获取对练会话资源使用情况
+        
+        @param request: GetAICoachTaskSessionResourceUsageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAICoachTaskSessionResourceUsageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.session_id):
+            query['sessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAICoachTaskSessionResourceUsage',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/aicoach/getSessionResourceUsage',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.GetAICoachTaskSessionResourceUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_aicoach_task_session_resource_usage(
+        self,
+        request: intelligent_creation_20240313_models.GetAICoachTaskSessionResourceUsageRequest,
+    ) -> intelligent_creation_20240313_models.GetAICoachTaskSessionResourceUsageResponse:
+        """
+        @summary 获取对练会话资源使用情况
+        
+        @param request: GetAICoachTaskSessionResourceUsageRequest
+        @return: GetAICoachTaskSessionResourceUsageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_aicoach_task_session_resource_usage_with_options(request, headers, runtime)
+
+    async def get_aicoach_task_session_resource_usage_async(
+        self,
+        request: intelligent_creation_20240313_models.GetAICoachTaskSessionResourceUsageRequest,
+    ) -> intelligent_creation_20240313_models.GetAICoachTaskSessionResourceUsageResponse:
+        """
+        @summary 获取对练会话资源使用情况
+        
+        @param request: GetAICoachTaskSessionResourceUsageRequest
+        @return: GetAICoachTaskSessionResourceUsageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_aicoach_task_session_resource_usage_with_options_async(request, headers, runtime)
+
     def get_illustration_with_options(
         self,
         text_id: str,

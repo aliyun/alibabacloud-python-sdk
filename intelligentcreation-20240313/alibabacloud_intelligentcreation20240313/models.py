@@ -5921,6 +5921,222 @@ class GetAICoachScriptResponseBodyCompleteStrategy(TeaModel):
         return self
 
 
+class GetAICoachScriptResponseBodyCustomReplyRulesActionParameters(TeaModel):
+    def __init__(
+        self,
+        assess_point_id: str = None,
+        custom_content: str = None,
+    ):
+        self.assess_point_id = assess_point_id
+        self.custom_content = custom_content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assess_point_id is not None:
+            result['assessPointId'] = self.assess_point_id
+        if self.custom_content is not None:
+            result['customContent'] = self.custom_content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('assessPointId') is not None:
+            self.assess_point_id = m.get('assessPointId')
+        if m.get('customContent') is not None:
+            self.custom_content = m.get('customContent')
+        return self
+
+
+class GetAICoachScriptResponseBodyCustomReplyRulesAction(TeaModel):
+    def __init__(
+        self,
+        parameters: GetAICoachScriptResponseBodyCustomReplyRulesActionParameters = None,
+        type: str = None,
+    ):
+        self.parameters = parameters
+        self.type = type
+
+    def validate(self):
+        if self.parameters:
+            self.parameters.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.parameters is not None:
+            result['parameters'] = self.parameters.to_map()
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('parameters') is not None:
+            temp_model = GetAICoachScriptResponseBodyCustomReplyRulesActionParameters()
+            self.parameters = temp_model.from_map(m['parameters'])
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class GetAICoachScriptResponseBodyCustomReplyRulesMainConditionParameters(TeaModel):
+    def __init__(
+        self,
+        assess_point_id: str = None,
+    ):
+        self.assess_point_id = assess_point_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assess_point_id is not None:
+            result['assessPointId'] = self.assess_point_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('assessPointId') is not None:
+            self.assess_point_id = m.get('assessPointId')
+        return self
+
+
+class GetAICoachScriptResponseBodyCustomReplyRulesMainCondition(TeaModel):
+    def __init__(
+        self,
+        parameters: GetAICoachScriptResponseBodyCustomReplyRulesMainConditionParameters = None,
+        type: str = None,
+    ):
+        self.parameters = parameters
+        self.type = type
+
+    def validate(self):
+        if self.parameters:
+            self.parameters.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.parameters is not None:
+            result['parameters'] = self.parameters.to_map()
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('parameters') is not None:
+            temp_model = GetAICoachScriptResponseBodyCustomReplyRulesMainConditionParameters()
+            self.parameters = temp_model.from_map(m['parameters'])
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class GetAICoachScriptResponseBodyCustomReplyRulesSubCondition(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+    ):
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class GetAICoachScriptResponseBodyCustomReplyRules(TeaModel):
+    def __init__(
+        self,
+        action: GetAICoachScriptResponseBodyCustomReplyRulesAction = None,
+        logic: str = None,
+        main_condition: GetAICoachScriptResponseBodyCustomReplyRulesMainCondition = None,
+        priority: int = None,
+        sub_condition: GetAICoachScriptResponseBodyCustomReplyRulesSubCondition = None,
+    ):
+        self.action = action
+        self.logic = logic
+        self.main_condition = main_condition
+        self.priority = priority
+        self.sub_condition = sub_condition
+
+    def validate(self):
+        if self.action:
+            self.action.validate()
+        if self.main_condition:
+            self.main_condition.validate()
+        if self.sub_condition:
+            self.sub_condition.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['action'] = self.action.to_map()
+        if self.logic is not None:
+            result['logic'] = self.logic
+        if self.main_condition is not None:
+            result['mainCondition'] = self.main_condition.to_map()
+        if self.priority is not None:
+            result['priority'] = self.priority
+        if self.sub_condition is not None:
+            result['subCondition'] = self.sub_condition.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('action') is not None:
+            temp_model = GetAICoachScriptResponseBodyCustomReplyRulesAction()
+            self.action = temp_model.from_map(m['action'])
+        if m.get('logic') is not None:
+            self.logic = m.get('logic')
+        if m.get('mainCondition') is not None:
+            temp_model = GetAICoachScriptResponseBodyCustomReplyRulesMainCondition()
+            self.main_condition = temp_model.from_map(m['mainCondition'])
+        if m.get('priority') is not None:
+            self.priority = m.get('priority')
+        if m.get('subCondition') is not None:
+            temp_model = GetAICoachScriptResponseBodyCustomReplyRulesSubCondition()
+            self.sub_condition = temp_model.from_map(m['subCondition'])
+        return self
+
+
 class GetAICoachScriptResponseBodyExpressivenessList(TeaModel):
     def __init__(
         self,
@@ -6479,6 +6695,7 @@ class GetAICoachScriptResponseBodyWeights(TeaModel):
         ability_evaluation_enabled: bool = None,
         assessment_point: int = None,
         assessment_point_enabled: bool = None,
+        custom_reply_rule_enabled: bool = None,
         expressiveness: int = None,
         expressiveness_enabled: bool = None,
         point_deduction_rule: int = None,
@@ -6491,6 +6708,7 @@ class GetAICoachScriptResponseBodyWeights(TeaModel):
         self.ability_evaluation_enabled = ability_evaluation_enabled
         self.assessment_point = assessment_point
         self.assessment_point_enabled = assessment_point_enabled
+        self.custom_reply_rule_enabled = custom_reply_rule_enabled
         self.expressiveness = expressiveness
         self.expressiveness_enabled = expressiveness_enabled
         self.point_deduction_rule = point_deduction_rule
@@ -6516,6 +6734,8 @@ class GetAICoachScriptResponseBodyWeights(TeaModel):
             result['assessmentPoint'] = self.assessment_point
         if self.assessment_point_enabled is not None:
             result['assessmentPointEnabled'] = self.assessment_point_enabled
+        if self.custom_reply_rule_enabled is not None:
+            result['customReplyRuleEnabled'] = self.custom_reply_rule_enabled
         if self.expressiveness is not None:
             result['expressiveness'] = self.expressiveness
         if self.expressiveness_enabled is not None:
@@ -6542,6 +6762,8 @@ class GetAICoachScriptResponseBodyWeights(TeaModel):
             self.assessment_point = m.get('assessmentPoint')
         if m.get('assessmentPointEnabled') is not None:
             self.assessment_point_enabled = m.get('assessmentPointEnabled')
+        if m.get('customReplyRuleEnabled') is not None:
+            self.custom_reply_rule_enabled = m.get('customReplyRuleEnabled')
         if m.get('expressiveness') is not None:
             self.expressiveness = m.get('expressiveness')
         if m.get('expressivenessEnabled') is not None:
@@ -6568,6 +6790,7 @@ class GetAICoachScriptResponseBody(TeaModel):
         closing_remarks: str = None,
         complete_strategy: GetAICoachScriptResponseBodyCompleteStrategy = None,
         cover_url: str = None,
+        custom_reply_rules: List[GetAICoachScriptResponseBodyCustomReplyRules] = None,
         dialogue_input_text_limit: int = None,
         dialogue_text_flag: bool = None,
         dialogue_tip_flag: bool = None,
@@ -6606,6 +6829,7 @@ class GetAICoachScriptResponseBody(TeaModel):
         self.closing_remarks = closing_remarks
         self.complete_strategy = complete_strategy
         self.cover_url = cover_url
+        self.custom_reply_rules = custom_reply_rules
         self.dialogue_input_text_limit = dialogue_input_text_limit
         self.dialogue_text_flag = dialogue_text_flag
         self.dialogue_tip_flag = dialogue_tip_flag
@@ -6643,6 +6867,10 @@ class GetAICoachScriptResponseBody(TeaModel):
             self.check_cheat_config.validate()
         if self.complete_strategy:
             self.complete_strategy.validate()
+        if self.custom_reply_rules:
+            for k in self.custom_reply_rules:
+                if k:
+                    k.validate()
         if self.expressiveness_list:
             for k in self.expressiveness_list:
                 if k:
@@ -6682,6 +6910,10 @@ class GetAICoachScriptResponseBody(TeaModel):
             result['completeStrategy'] = self.complete_strategy.to_map()
         if self.cover_url is not None:
             result['coverUrl'] = self.cover_url
+        result['customReplyRules'] = []
+        if self.custom_reply_rules is not None:
+            for k in self.custom_reply_rules:
+                result['customReplyRules'].append(k.to_map() if k else None)
         if self.dialogue_input_text_limit is not None:
             result['dialogueInputTextLimit'] = self.dialogue_input_text_limit
         if self.dialogue_text_flag is not None:
@@ -6770,6 +7002,11 @@ class GetAICoachScriptResponseBody(TeaModel):
             self.complete_strategy = temp_model.from_map(m['completeStrategy'])
         if m.get('coverUrl') is not None:
             self.cover_url = m.get('coverUrl')
+        self.custom_reply_rules = []
+        if m.get('customReplyRules') is not None:
+            for k in m.get('customReplyRules'):
+                temp_model = GetAICoachScriptResponseBodyCustomReplyRules()
+                self.custom_reply_rules.append(temp_model.from_map(k))
         if m.get('dialogueInputTextLimit') is not None:
             self.dialogue_input_text_limit = m.get('dialogueInputTextLimit')
         if m.get('dialogueTextFlag') is not None:
@@ -7279,6 +7516,138 @@ class GetAICoachTaskSessionReportResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAICoachTaskSessionReportResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAICoachTaskSessionResourceUsageRequest(TeaModel):
+    def __init__(
+        self,
+        session_id: str = None,
+    ):
+        self.session_id = session_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        return self
+
+
+class GetAICoachTaskSessionResourceUsageResponseBody(TeaModel):
+    def __init__(
+        self,
+        audio_usage: int = None,
+        deduction_status: int = None,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        token_usage: int = None,
+    ):
+        self.audio_usage = audio_usage
+        self.deduction_status = deduction_status
+        self.error_code = error_code
+        self.error_message = error_message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.token_usage = token_usage
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_usage is not None:
+            result['audioUsage'] = self.audio_usage
+        if self.deduction_status is not None:
+            result['deductionStatus'] = self.deduction_status
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.token_usage is not None:
+            result['tokenUsage'] = self.token_usage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('audioUsage') is not None:
+            self.audio_usage = m.get('audioUsage')
+        if m.get('deductionStatus') is not None:
+            self.deduction_status = m.get('deductionStatus')
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('tokenUsage') is not None:
+            self.token_usage = m.get('tokenUsage')
+        return self
+
+
+class GetAICoachTaskSessionResourceUsageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAICoachTaskSessionResourceUsageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAICoachTaskSessionResourceUsageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8123,6 +8492,228 @@ class ListAICoachScriptPageResponseBodyListCompleteStrategy(TeaModel):
         return self
 
 
+class ListAICoachScriptPageResponseBodyListCustomReplyRulesActionParameters(TeaModel):
+    def __init__(
+        self,
+        assess_point: str = None,
+        custom_content: str = None,
+    ):
+        self.assess_point = assess_point
+        self.custom_content = custom_content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assess_point is not None:
+            result['assessPoint'] = self.assess_point
+        if self.custom_content is not None:
+            result['customContent'] = self.custom_content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('assessPoint') is not None:
+            self.assess_point = m.get('assessPoint')
+        if m.get('customContent') is not None:
+            self.custom_content = m.get('customContent')
+        return self
+
+
+class ListAICoachScriptPageResponseBodyListCustomReplyRulesAction(TeaModel):
+    def __init__(
+        self,
+        parameters: ListAICoachScriptPageResponseBodyListCustomReplyRulesActionParameters = None,
+        type: str = None,
+    ):
+        self.parameters = parameters
+        self.type = type
+
+    def validate(self):
+        if self.parameters:
+            self.parameters.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.parameters is not None:
+            result['parameters'] = self.parameters.to_map()
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('parameters') is not None:
+            temp_model = ListAICoachScriptPageResponseBodyListCustomReplyRulesActionParameters()
+            self.parameters = temp_model.from_map(m['parameters'])
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ListAICoachScriptPageResponseBodyListCustomReplyRulesMainConditionParameters(TeaModel):
+    def __init__(
+        self,
+        assess_point: str = None,
+    ):
+        self.assess_point = assess_point
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assess_point is not None:
+            result['assessPoint'] = self.assess_point
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('assessPoint') is not None:
+            self.assess_point = m.get('assessPoint')
+        return self
+
+
+class ListAICoachScriptPageResponseBodyListCustomReplyRulesMainCondition(TeaModel):
+    def __init__(
+        self,
+        parameters: ListAICoachScriptPageResponseBodyListCustomReplyRulesMainConditionParameters = None,
+        type: str = None,
+    ):
+        self.parameters = parameters
+        self.type = type
+
+    def validate(self):
+        if self.parameters:
+            self.parameters.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.parameters is not None:
+            result['parameters'] = self.parameters.to_map()
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('parameters') is not None:
+            temp_model = ListAICoachScriptPageResponseBodyListCustomReplyRulesMainConditionParameters()
+            self.parameters = temp_model.from_map(m['parameters'])
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ListAICoachScriptPageResponseBodyListCustomReplyRulesSubCondition(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+    ):
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ListAICoachScriptPageResponseBodyListCustomReplyRules(TeaModel):
+    def __init__(
+        self,
+        action: ListAICoachScriptPageResponseBodyListCustomReplyRulesAction = None,
+        logic: str = None,
+        main_condition: ListAICoachScriptPageResponseBodyListCustomReplyRulesMainCondition = None,
+        priority: int = None,
+        sort_no: int = None,
+        sub_condition: ListAICoachScriptPageResponseBodyListCustomReplyRulesSubCondition = None,
+    ):
+        self.action = action
+        self.logic = logic
+        self.main_condition = main_condition
+        self.priority = priority
+        self.sort_no = sort_no
+        self.sub_condition = sub_condition
+
+    def validate(self):
+        if self.action:
+            self.action.validate()
+        if self.main_condition:
+            self.main_condition.validate()
+        if self.sub_condition:
+            self.sub_condition.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['action'] = self.action.to_map()
+        if self.logic is not None:
+            result['logic'] = self.logic
+        if self.main_condition is not None:
+            result['mainCondition'] = self.main_condition.to_map()
+        if self.priority is not None:
+            result['priority'] = self.priority
+        if self.sort_no is not None:
+            result['sortNo'] = self.sort_no
+        if self.sub_condition is not None:
+            result['subCondition'] = self.sub_condition.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('action') is not None:
+            temp_model = ListAICoachScriptPageResponseBodyListCustomReplyRulesAction()
+            self.action = temp_model.from_map(m['action'])
+        if m.get('logic') is not None:
+            self.logic = m.get('logic')
+        if m.get('mainCondition') is not None:
+            temp_model = ListAICoachScriptPageResponseBodyListCustomReplyRulesMainCondition()
+            self.main_condition = temp_model.from_map(m['mainCondition'])
+        if m.get('priority') is not None:
+            self.priority = m.get('priority')
+        if m.get('sortNo') is not None:
+            self.sort_no = m.get('sortNo')
+        if m.get('subCondition') is not None:
+            temp_model = ListAICoachScriptPageResponseBodyListCustomReplyRulesSubCondition()
+            self.sub_condition = temp_model.from_map(m['subCondition'])
+        return self
+
+
 class ListAICoachScriptPageResponseBodyListSampleDialogueList(TeaModel):
     def __init__(
         self,
@@ -8253,6 +8844,7 @@ class ListAICoachScriptPageResponseBodyListWeights(TeaModel):
         self,
         assessment_point: int = None,
         assessment_point_enabled: bool = None,
+        custom_reply_rule_enabled: bool = None,
         expressiveness: int = None,
         expressiveness_enabled: bool = None,
         point_deduction_rule: int = None,
@@ -8263,6 +8855,7 @@ class ListAICoachScriptPageResponseBodyListWeights(TeaModel):
     ):
         self.assessment_point = assessment_point
         self.assessment_point_enabled = assessment_point_enabled
+        self.custom_reply_rule_enabled = custom_reply_rule_enabled
         self.expressiveness = expressiveness
         self.expressiveness_enabled = expressiveness_enabled
         self.point_deduction_rule = point_deduction_rule
@@ -8284,6 +8877,8 @@ class ListAICoachScriptPageResponseBodyListWeights(TeaModel):
             result['assessmentPoint'] = self.assessment_point
         if self.assessment_point_enabled is not None:
             result['assessmentPointEnabled'] = self.assessment_point_enabled
+        if self.custom_reply_rule_enabled is not None:
+            result['customReplyRuleEnabled'] = self.custom_reply_rule_enabled
         if self.expressiveness is not None:
             result['expressiveness'] = self.expressiveness
         if self.expressiveness_enabled is not None:
@@ -8306,6 +8901,8 @@ class ListAICoachScriptPageResponseBodyListWeights(TeaModel):
             self.assessment_point = m.get('assessmentPoint')
         if m.get('assessmentPointEnabled') is not None:
             self.assessment_point_enabled = m.get('assessmentPointEnabled')
+        if m.get('customReplyRuleEnabled') is not None:
+            self.custom_reply_rule_enabled = m.get('customReplyRuleEnabled')
         if m.get('expressiveness') is not None:
             self.expressiveness = m.get('expressiveness')
         if m.get('expressivenessEnabled') is not None:
@@ -8331,6 +8928,7 @@ class ListAICoachScriptPageResponseBodyList(TeaModel):
         closing_remarks: str = None,
         complete_strategy: ListAICoachScriptPageResponseBodyListCompleteStrategy = None,
         cover_url: str = None,
+        custom_reply_rules: List[ListAICoachScriptPageResponseBodyListCustomReplyRules] = None,
         dialogue_text_flag: bool = None,
         dialogue_tip_flag: bool = None,
         evaluate_report_flag: bool = None,
@@ -8360,6 +8958,7 @@ class ListAICoachScriptPageResponseBodyList(TeaModel):
         self.closing_remarks = closing_remarks
         self.complete_strategy = complete_strategy
         self.cover_url = cover_url
+        self.custom_reply_rules = custom_reply_rules
         self.dialogue_text_flag = dialogue_text_flag
         self.dialogue_tip_flag = dialogue_tip_flag
         self.evaluate_report_flag = evaluate_report_flag
@@ -8387,6 +8986,10 @@ class ListAICoachScriptPageResponseBodyList(TeaModel):
     def validate(self):
         if self.complete_strategy:
             self.complete_strategy.validate()
+        if self.custom_reply_rules:
+            for k in self.custom_reply_rules:
+                if k:
+                    k.validate()
         if self.sample_dialogue_list:
             for k in self.sample_dialogue_list:
                 if k:
@@ -8412,6 +9015,10 @@ class ListAICoachScriptPageResponseBodyList(TeaModel):
             result['completeStrategy'] = self.complete_strategy.to_map()
         if self.cover_url is not None:
             result['coverUrl'] = self.cover_url
+        result['customReplyRules'] = []
+        if self.custom_reply_rules is not None:
+            for k in self.custom_reply_rules:
+                result['customReplyRules'].append(k.to_map() if k else None)
         if self.dialogue_text_flag is not None:
             result['dialogueTextFlag'] = self.dialogue_text_flag
         if self.dialogue_tip_flag is not None:
@@ -8475,6 +9082,11 @@ class ListAICoachScriptPageResponseBodyList(TeaModel):
             self.complete_strategy = temp_model.from_map(m['completeStrategy'])
         if m.get('coverUrl') is not None:
             self.cover_url = m.get('coverUrl')
+        self.custom_reply_rules = []
+        if m.get('customReplyRules') is not None:
+            for k in m.get('customReplyRules'):
+                temp_model = ListAICoachScriptPageResponseBodyListCustomReplyRules()
+                self.custom_reply_rules.append(temp_model.from_map(k))
         if m.get('dialogueTextFlag') is not None:
             self.dialogue_text_flag = m.get('dialogueTextFlag')
         if m.get('dialogueTipFlag') is not None:
