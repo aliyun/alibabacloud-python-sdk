@@ -470,8 +470,11 @@ class CreateConsumerGroupRequestConsumeRetryPolicy(TeaModel):
     ):
         # The dead-letter topic.
         # 
-        # If a consumer still fails to consume a message after the message is retried for a specified number of times, the message is delivered to a dead-letter topic for subsequent business recovery or troubleshooting. For more information, see [Consumption retry and dead-letter messages](https://help.aliyun.com/document_detail/440356.html).
+        # If a message still fails to be consumed after the maximum number of retries specified in the consumption retry policy is reached, the message is delivered to the dead-letter topic for subsequent business recovery or backtracking. For more information, see [Consumption retry and dead-letter messages](https://help.aliyun.com/document_detail/440356.html).
         self.dead_letter_target_topic = dead_letter_target_topic
+        # Fixed retry interval, unit: seconds.This option is effective when retryPolicy is FixedRetryPolicy.Value range：
+        #   - Concurrently:10-600
+        #   - Orderly:1-60
         self.fixed_interval_retry_time = fixed_interval_retry_time
         # The maximum number of retries.
         self.max_retry_times = max_retry_times
@@ -479,8 +482,8 @@ class CreateConsumerGroupRequestConsumeRetryPolicy(TeaModel):
         # 
         # Valid values:
         # 
-        # *   FixedRetryPolicy: Failed messages are retried at a fixed interval.
-        # *   DefaultRetryPolicy: Failed messages are retried at incremental intervals as the number of retries increases.
+        # *   FixedRetryPolicy: fixed-interval retry. This value is valid only if you set deliveryOrderType to Orderly.
+        # *   DefaultRetryPolicy: exponential backoff retry. This value is valid only if you set deliveryOrderType to Concurrently.
         # 
         # This parameter is required.
         self.retry_policy = retry_policy
@@ -525,17 +528,22 @@ class CreateConsumerGroupRequest(TeaModel):
         max_receive_tps: int = None,
         remark: str = None,
     ):
-        # consume retry policy
+        # The consumption retry policy of the consumer group. For more information, see [Consumption retry](https://help.aliyun.com/document_detail/440356.html).
         # 
         # This parameter is required.
         self.consume_retry_policy = consume_retry_policy
-        # The dynamic error message.
+        # The message delivery method of the consumer group.
+        # 
+        # Valid values:
+        # 
+        # *   Concurrently: concurrent delivery
+        # *   Orderly: ordered delivery
         # 
         # This parameter is required.
         self.delivery_order_type = delivery_order_type
-        # Maximum received message tps
+        # The maximum number of messages that can be processed by consumers per second.
         self.max_receive_tps = max_receive_tps
-        # The HTTP status code.
+        # The description of the consumer group.
         self.remark = remark
 
     def validate(self):
@@ -729,6 +737,7 @@ class CreateDisasterRecoveryPlanRequestInstances(TeaModel):
     def __init__(
         self,
         auth_type: str = None,
+        consumer_group_id: str = None,
         endpoint_url: str = None,
         instance_id: str = None,
         instance_role: str = None,
@@ -746,6 +755,7 @@ class CreateDisasterRecoveryPlanRequestInstances(TeaModel):
         #   - NO_AUTH: No authentication required
         #   - ACL_AUTH: ACL authentication
         self.auth_type = auth_type
+        self.consumer_group_id = consumer_group_id
         # Endpoint URL, not required for instanceType of ALIYUN_ROCKETMQ, but required for EXTERNAL_ROCKETMQ
         self.endpoint_url = endpoint_url
         # Instance ID, not required for instanceType of EXTERNAL_ROCKETMQ, but required for ALIYUN_ROCKETMQ
@@ -790,6 +800,8 @@ class CreateDisasterRecoveryPlanRequestInstances(TeaModel):
         result = dict()
         if self.auth_type is not None:
             result['authType'] = self.auth_type
+        if self.consumer_group_id is not None:
+            result['consumerGroupId'] = self.consumer_group_id
         if self.endpoint_url is not None:
             result['endpointUrl'] = self.endpoint_url
         if self.instance_id is not None:
@@ -820,6 +832,8 @@ class CreateDisasterRecoveryPlanRequestInstances(TeaModel):
         m = m or dict()
         if m.get('authType') is not None:
             self.auth_type = m.get('authType')
+        if m.get('consumerGroupId') is not None:
+            self.consumer_group_id = m.get('consumerGroupId')
         if m.get('endpointUrl') is not None:
             self.endpoint_url = m.get('endpointUrl')
         if m.get('instanceId') is not None:
@@ -5147,6 +5161,7 @@ class GetDisasterRecoveryPlanResponseBodyDataInstances(TeaModel):
     def __init__(
         self,
         auth_type: str = None,
+        consumer_group_id: str = None,
         endpoint_url: str = None,
         instance_id: str = None,
         instance_role: str = None,
@@ -5164,6 +5179,7 @@ class GetDisasterRecoveryPlanResponseBodyDataInstances(TeaModel):
         #   - NO_AUTH: No authentication required
         #   - ACL_AUTH: ACL authentication
         self.auth_type = auth_type
+        self.consumer_group_id = consumer_group_id
         # Endpoint URL, not required for instanceType of ALIYUN_ROCKETMQ, but required for EXTERNAL_ROCKETMQ
         self.endpoint_url = endpoint_url
         # The instance ID.
@@ -5207,6 +5223,8 @@ class GetDisasterRecoveryPlanResponseBodyDataInstances(TeaModel):
         result = dict()
         if self.auth_type is not None:
             result['authType'] = self.auth_type
+        if self.consumer_group_id is not None:
+            result['consumerGroupId'] = self.consumer_group_id
         if self.endpoint_url is not None:
             result['endpointUrl'] = self.endpoint_url
         if self.instance_id is not None:
@@ -5237,6 +5255,8 @@ class GetDisasterRecoveryPlanResponseBodyDataInstances(TeaModel):
         m = m or dict()
         if m.get('authType') is not None:
             self.auth_type = m.get('authType')
+        if m.get('consumerGroupId') is not None:
+            self.consumer_group_id = m.get('consumerGroupId')
         if m.get('endpointUrl') is not None:
             self.endpoint_url = m.get('endpointUrl')
         if m.get('instanceId') is not None:
@@ -10474,6 +10494,7 @@ class ListDisasterRecoveryPlansResponseBodyDataListInstances(TeaModel):
     def __init__(
         self,
         auth_type: str = None,
+        consumer_group_id: str = None,
         endpoint_url: str = None,
         instance_id: str = None,
         instance_role: str = None,
@@ -10489,6 +10510,7 @@ class ListDisasterRecoveryPlansResponseBodyDataListInstances(TeaModel):
     ):
         # Authentication method
         self.auth_type = auth_type
+        self.consumer_group_id = consumer_group_id
         # Endpoint URL
         self.endpoint_url = endpoint_url
         # Instance ID
@@ -10528,6 +10550,8 @@ class ListDisasterRecoveryPlansResponseBodyDataListInstances(TeaModel):
         result = dict()
         if self.auth_type is not None:
             result['authType'] = self.auth_type
+        if self.consumer_group_id is not None:
+            result['consumerGroupId'] = self.consumer_group_id
         if self.endpoint_url is not None:
             result['endpointUrl'] = self.endpoint_url
         if self.instance_id is not None:
@@ -10558,6 +10582,8 @@ class ListDisasterRecoveryPlansResponseBodyDataListInstances(TeaModel):
         m = m or dict()
         if m.get('authType') is not None:
             self.auth_type = m.get('authType')
+        if m.get('consumerGroupId') is not None:
+            self.consumer_group_id = m.get('consumerGroupId')
         if m.get('endpointUrl') is not None:
             self.endpoint_url = m.get('endpointUrl')
         if m.get('instanceId') is not None:
@@ -15821,6 +15847,7 @@ class UpdateDisasterRecoveryPlanRequestInstances(TeaModel):
     def __init__(
         self,
         auth_type: str = None,
+        consumer_group_id: str = None,
         endpoint_url: str = None,
         instance_id: str = None,
         instance_role: str = None,
@@ -15839,6 +15866,7 @@ class UpdateDisasterRecoveryPlanRequestInstances(TeaModel):
         # *   NO_AUTH: no authentication
         # *   ACL_AUTH: access control list (ACL)-based authentication
         self.auth_type = auth_type
+        self.consumer_group_id = consumer_group_id
         # The instance endpoint. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ.
         self.endpoint_url = endpoint_url
         # The instance ID.
@@ -15885,6 +15913,8 @@ class UpdateDisasterRecoveryPlanRequestInstances(TeaModel):
         result = dict()
         if self.auth_type is not None:
             result['authType'] = self.auth_type
+        if self.consumer_group_id is not None:
+            result['consumerGroupId'] = self.consumer_group_id
         if self.endpoint_url is not None:
             result['endpointUrl'] = self.endpoint_url
         if self.instance_id is not None:
@@ -15915,6 +15945,8 @@ class UpdateDisasterRecoveryPlanRequestInstances(TeaModel):
         m = m or dict()
         if m.get('authType') is not None:
             self.auth_type = m.get('authType')
+        if m.get('consumerGroupId') is not None:
+            self.consumer_group_id = m.get('consumerGroupId')
         if m.get('endpointUrl') is not None:
             self.endpoint_url = m.get('endpointUrl')
         if m.get('instanceId') is not None:
