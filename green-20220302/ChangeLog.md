@@ -1,3 +1,8 @@
+2025-06-26 Version: 2.20.6
+- Update API VideoModerationResult: add response parameters Body.Data.FrameResult.Frames.$.Results.$.PublicFigure.$.FigureName.
+- Update API VideoModerationResult: add response parameters Body.Data.FrameResult.Frames.$.Results.$.PublicFigure.$.Location.
+
+
 2025-06-12 Version: 2.20.5
 - Update API DescribeImageModerationResult: add response parameters Body.Data.ManualTaskId.
 - Update API ImageBatchModeration: add response parameters Body.Data.ManualTaskId.

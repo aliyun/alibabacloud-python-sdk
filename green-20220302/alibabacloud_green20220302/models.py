@@ -6594,13 +6594,18 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoData(TeaM
         return self
 
 
-class VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure(TeaModel):
+class VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigureLocation(TeaModel):
     def __init__(
         self,
-        figure_id: str = None,
+        h: int = None,
+        w: int = None,
+        x: int = None,
+        y: int = None,
     ):
-        # The information about the code of the identified figure.
-        self.figure_id = figure_id
+        self.h = h
+        self.w = w
+        self.x = x
+        self.y = y
 
     def validate(self):
         pass
@@ -6611,14 +6616,74 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure(
             return _map
 
         result = dict()
+        if self.h is not None:
+            result['H'] = self.h
+        if self.w is not None:
+            result['W'] = self.w
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('H') is not None:
+            self.h = m.get('H')
+        if m.get('W') is not None:
+            self.w = m.get('W')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure(TeaModel):
+    def __init__(
+        self,
+        figure_id: str = None,
+        figure_name: str = None,
+        location: List[VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigureLocation] = None,
+    ):
+        # The information about the code of the identified figure.
+        self.figure_id = figure_id
+        self.figure_name = figure_name
+        self.location = location
+
+    def validate(self):
+        if self.location:
+            for k in self.location:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.figure_id is not None:
             result['FigureId'] = self.figure_id
+        if self.figure_name is not None:
+            result['FigureName'] = self.figure_name
+        result['Location'] = []
+        if self.location is not None:
+            for k in self.location:
+                result['Location'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('FigureId') is not None:
             self.figure_id = m.get('FigureId')
+        if m.get('FigureName') is not None:
+            self.figure_name = m.get('FigureName')
+        self.location = []
+        if m.get('Location') is not None:
+            for k in m.get('Location'):
+                temp_model = VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigureLocation()
+                self.location.append(temp_model.from_map(k))
         return self
 
 
