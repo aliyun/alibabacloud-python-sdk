@@ -1,3 +1,10 @@
+2025-06-26 Version: 4.0.0
+- Update API GetChatList: update request parameters body.currentPage' type has changed.
+- Update API GetChatList: update request parameters body.currentPage' format has changed.
+- Update API GetChatList: update request parameters body.pageSize' type has changed.
+- Update API GetChatList: update request parameters body.pageSize' format has changed.
+
+
 2025-05-20 Version: 3.3.0
 - Support API Chat.
 - Support API CreateChatSession.

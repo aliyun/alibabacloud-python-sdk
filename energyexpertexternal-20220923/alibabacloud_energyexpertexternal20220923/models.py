@@ -3362,8 +3362,8 @@ class GetChatFolderListResponse(TeaModel):
 class GetChatListRequest(TeaModel):
     def __init__(
         self,
-        current_page: str = None,
-        page_size: str = None,
+        current_page: int = None,
+        page_size: int = None,
         session_id: str = None,
     ):
         # Pagination parameter, page number, starting from 1.
@@ -11111,7 +11111,7 @@ class SendDocumentAskQuestionRequest(TeaModel):
         prompt: str = None,
         session_id: str = None,
     ):
-        # Folder ID, used to specify the range of documents for the query. If it is empty, it indicates that all documents under the tenant will be queried.
+        # Folder ID, used to specify the range of documents for the query. If it is empty, it indicates that all documents under the default folder will be queried.
         self.folder_id = folder_id
         # The question queried by the user
         # 

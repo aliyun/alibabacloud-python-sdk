@@ -2450,7 +2450,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetDocumentAnalyzeResultResponse:
         """
-        @summary Get document parsing/extraction result
+        @summary [Important] The api is no longer maintained, please use GetDocExtractionResult, GetVLExtractionResult to get the extraction results.
         
         @param request: GetDocumentAnalyzeResultRequest
         @param headers: map
@@ -2488,7 +2488,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetDocumentAnalyzeResultResponse:
         """
-        @summary Get document parsing/extraction result
+        @summary [Important] The api is no longer maintained, please use GetDocExtractionResult, GetVLExtractionResult to get the extraction results.
         
         @param request: GetDocumentAnalyzeResultRequest
         @param headers: map
@@ -2524,7 +2524,7 @@ class Client(OpenApiClient):
         request: energy_expert_external_20220923_models.GetDocumentAnalyzeResultRequest,
     ) -> energy_expert_external_20220923_models.GetDocumentAnalyzeResultResponse:
         """
-        @summary Get document parsing/extraction result
+        @summary [Important] The api is no longer maintained, please use GetDocExtractionResult, GetVLExtractionResult to get the extraction results.
         
         @param request: GetDocumentAnalyzeResultRequest
         @return: GetDocumentAnalyzeResultResponse
@@ -2538,7 +2538,7 @@ class Client(OpenApiClient):
         request: energy_expert_external_20220923_models.GetDocumentAnalyzeResultRequest,
     ) -> energy_expert_external_20220923_models.GetDocumentAnalyzeResultResponse:
         """
-        @summary Get document parsing/extraction result
+        @summary [Important] The api is no longer maintained, please use GetDocExtractionResult, GetVLExtractionResult to get the extraction results.
         
         @param request: GetDocumentAnalyzeResultRequest
         @return: GetDocumentAnalyzeResultResponse
@@ -5140,7 +5140,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.SendDocumentAskQuestionResponse:
         """
-        @summary Online Document Q\\&A
+        @summary [Important] This api is no longer maintained, please use the Chat api.
         
         @param request: SendDocumentAskQuestionRequest
         @param headers: map
@@ -5182,7 +5182,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.SendDocumentAskQuestionResponse:
         """
-        @summary Online Document Q\\&A
+        @summary [Important] This api is no longer maintained, please use the Chat api.
         
         @param request: SendDocumentAskQuestionRequest
         @param headers: map
@@ -5222,7 +5222,7 @@ class Client(OpenApiClient):
         request: energy_expert_external_20220923_models.SendDocumentAskQuestionRequest,
     ) -> energy_expert_external_20220923_models.SendDocumentAskQuestionResponse:
         """
-        @summary Online Document Q\\&A
+        @summary [Important] This api is no longer maintained, please use the Chat api.
         
         @param request: SendDocumentAskQuestionRequest
         @return: SendDocumentAskQuestionResponse
@@ -5236,7 +5236,7 @@ class Client(OpenApiClient):
         request: energy_expert_external_20220923_models.SendDocumentAskQuestionRequest,
     ) -> energy_expert_external_20220923_models.SendDocumentAskQuestionResponse:
         """
-        @summary Online Document Q\\&A
+        @summary [Important] This api is no longer maintained, please use the Chat api.
         
         @param request: SendDocumentAskQuestionRequest
         @return: SendDocumentAskQuestionResponse
@@ -5968,7 +5968,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobResponse:
         """
-        @summary Get document extraction result
+        @summary [Important] The api is no longer maintained, please use the following api:
+        Document parsing using SubmitDocParsingTask.
+        Document extraction using SubmitVLExtractionTask, SubmitDocExtractionTask.
         
         @param request: SubmitDocumentAnalyzeJobRequest
         @param headers: map
@@ -6014,7 +6016,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobResponse:
         """
-        @summary Get document extraction result
+        @summary [Important] The api is no longer maintained, please use the following api:
+        Document parsing using SubmitDocParsingTask.
+        Document extraction using SubmitVLExtractionTask, SubmitDocExtractionTask.
         
         @param request: SubmitDocumentAnalyzeJobRequest
         @param headers: map
@@ -6058,7 +6062,9 @@ class Client(OpenApiClient):
         request: energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobRequest,
     ) -> energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobResponse:
         """
-        @summary Get document extraction result
+        @summary [Important] The api is no longer maintained, please use the following api:
+        Document parsing using SubmitDocParsingTask.
+        Document extraction using SubmitVLExtractionTask, SubmitDocExtractionTask.
         
         @param request: SubmitDocumentAnalyzeJobRequest
         @return: SubmitDocumentAnalyzeJobResponse
@@ -6072,7 +6078,9 @@ class Client(OpenApiClient):
         request: energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobRequest,
     ) -> energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobResponse:
         """
-        @summary Get document extraction result
+        @summary [Important] The api is no longer maintained, please use the following api:
+        Document parsing using SubmitDocParsingTask.
+        Document extraction using SubmitVLExtractionTask, SubmitDocExtractionTask.
         
         @param request: SubmitDocumentAnalyzeJobRequest
         @return: SubmitDocumentAnalyzeJobResponse
