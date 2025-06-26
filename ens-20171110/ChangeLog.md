@@ -1,3 +1,6 @@
+2025-06-26 Version: 9.0.12
+- Generated python 2017-11-10 for Ens.
+
 2025-06-19 Version: 9.0.11
 - Update API CreateLoadBalancer: add request parameters BillingCycle.
 - Update API CreateLoadBalancer: add request parameters LoadBalancerType.
