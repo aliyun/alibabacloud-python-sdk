@@ -1,3 +1,14 @@
+2025-06-26 Version: 1.11.0
+- Support API ListKyuubiServices.
+- Support API ListKyuubiToken.
+- Update API GetSessionCluster: add response parameters Body.sessionCluster.connectionToken.
+- Update API ListJobRuns: add request parameters isWorkflow.
+- Update API ListKyuubiSparkApplications: add request parameters minDuration.
+- Update API ListKyuubiSparkApplications: add request parameters orderBy.
+- Update API ListKyuubiSparkApplications: add request parameters resourceQueueId.
+- Update API ListKyuubiSparkApplications: add request parameters sort.
+
+
 2025-05-30 Version: 1.10.3
 - Generated python 2023-08-08 for emr-serverless-spark.
 

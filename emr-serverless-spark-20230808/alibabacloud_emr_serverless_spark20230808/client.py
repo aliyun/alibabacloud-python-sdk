@@ -1884,6 +1884,8 @@ class Client(OpenApiClient):
             query['creator'] = request.creator
         if not UtilClient.is_unset(request.end_time_shrink):
             query['endTime'] = request.end_time_shrink
+        if not UtilClient.is_unset(request.is_workflow):
+            query['isWorkflow'] = request.is_workflow
         if not UtilClient.is_unset(request.job_run_deployment_id):
             query['jobRunDeploymentId'] = request.job_run_deployment_id
         if not UtilClient.is_unset(request.job_run_id):
@@ -1957,6 +1959,8 @@ class Client(OpenApiClient):
             query['creator'] = request.creator
         if not UtilClient.is_unset(request.end_time_shrink):
             query['endTime'] = request.end_time_shrink
+        if not UtilClient.is_unset(request.is_workflow):
+            query['isWorkflow'] = request.is_workflow
         if not UtilClient.is_unset(request.job_run_deployment_id):
             query['jobRunDeploymentId'] = request.job_run_deployment_id
         if not UtilClient.is_unset(request.job_run_id):
@@ -2029,6 +2033,96 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_job_runs_with_options_async(workspace_id, request, headers, runtime)
 
+    def list_kyuubi_services_with_options(
+        self,
+        workspace_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.ListKyuubiServicesResponse:
+        """
+        @summary ListKyuubiServices
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListKyuubiServicesResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListKyuubiServices',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/kyuubi/{OpenApiUtilClient.get_encode_param(workspace_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.ListKyuubiServicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_kyuubi_services_with_options_async(
+        self,
+        workspace_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.ListKyuubiServicesResponse:
+        """
+        @summary ListKyuubiServices
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListKyuubiServicesResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListKyuubiServices',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/kyuubi/{OpenApiUtilClient.get_encode_param(workspace_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.ListKyuubiServicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_kyuubi_services(
+        self,
+        workspace_id: str,
+    ) -> emr_serverless_spark_20230808_models.ListKyuubiServicesResponse:
+        """
+        @summary ListKyuubiServices
+        
+        @return: ListKyuubiServicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_kyuubi_services_with_options(workspace_id, headers, runtime)
+
+    async def list_kyuubi_services_async(
+        self,
+        workspace_id: str,
+    ) -> emr_serverless_spark_20230808_models.ListKyuubiServicesResponse:
+        """
+        @summary ListKyuubiServices
+        
+        @return: ListKyuubiServicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_kyuubi_services_with_options_async(workspace_id, headers, runtime)
+
     def list_kyuubi_spark_applications_with_options(
         self,
         workspace_id: str,
@@ -2048,6 +2142,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = emr_serverless_spark_20230808_models.ListKyuubiSparkApplicationsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.order_by):
+            request.order_by_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.order_by, 'orderBy', 'json')
         if not UtilClient.is_unset(tmp_req.start_time):
             request.start_time_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.start_time, 'startTime', 'json')
         query = {}
@@ -2057,8 +2153,16 @@ class Client(OpenApiClient):
             query['applicationName'] = request.application_name
         if not UtilClient.is_unset(request.max_results):
             query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.min_duration):
+            query['minDuration'] = request.min_duration
         if not UtilClient.is_unset(request.next_token):
             query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order_by_shrink):
+            query['orderBy'] = request.order_by_shrink
+        if not UtilClient.is_unset(request.resource_queue_id):
+            query['resourceQueueId'] = request.resource_queue_id
+        if not UtilClient.is_unset(request.sort):
+            query['sort'] = request.sort
         if not UtilClient.is_unset(request.start_time_shrink):
             query['startTime'] = request.start_time_shrink
         req = open_api_models.OpenApiRequest(
@@ -2100,6 +2204,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = emr_serverless_spark_20230808_models.ListKyuubiSparkApplicationsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.order_by):
+            request.order_by_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.order_by, 'orderBy', 'json')
         if not UtilClient.is_unset(tmp_req.start_time):
             request.start_time_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.start_time, 'startTime', 'json')
         query = {}
@@ -2109,8 +2215,16 @@ class Client(OpenApiClient):
             query['applicationName'] = request.application_name
         if not UtilClient.is_unset(request.max_results):
             query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.min_duration):
+            query['minDuration'] = request.min_duration
         if not UtilClient.is_unset(request.next_token):
             query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order_by_shrink):
+            query['orderBy'] = request.order_by_shrink
+        if not UtilClient.is_unset(request.resource_queue_id):
+            query['resourceQueueId'] = request.resource_queue_id
+        if not UtilClient.is_unset(request.sort):
+            query['sort'] = request.sort
         if not UtilClient.is_unset(request.start_time_shrink):
             query['startTime'] = request.start_time_shrink
         req = open_api_models.OpenApiRequest(
@@ -2164,6 +2278,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_kyuubi_spark_applications_with_options_async(workspace_id, kyuubi_service_id, request, headers, runtime)
+
+    def list_kyuubi_token_with_options(
+        self,
+        workspace_id: str,
+        kyuubi_service_id: str,
+        request: emr_serverless_spark_20230808_models.ListKyuubiTokenRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.ListKyuubiTokenResponse:
+        """
+        @summary 列出compute的token
+        
+        @param request: ListKyuubiTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListKyuubiTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListKyuubiToken',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/kyuubiService/{OpenApiUtilClient.get_encode_param(kyuubi_service_id)}/token',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.ListKyuubiTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_kyuubi_token_with_options_async(
+        self,
+        workspace_id: str,
+        kyuubi_service_id: str,
+        request: emr_serverless_spark_20230808_models.ListKyuubiTokenRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.ListKyuubiTokenResponse:
+        """
+        @summary 列出compute的token
+        
+        @param request: ListKyuubiTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListKyuubiTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListKyuubiToken',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/kyuubiService/{OpenApiUtilClient.get_encode_param(kyuubi_service_id)}/token',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.ListKyuubiTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_kyuubi_token(
+        self,
+        workspace_id: str,
+        kyuubi_service_id: str,
+        request: emr_serverless_spark_20230808_models.ListKyuubiTokenRequest,
+    ) -> emr_serverless_spark_20230808_models.ListKyuubiTokenResponse:
+        """
+        @summary 列出compute的token
+        
+        @param request: ListKyuubiTokenRequest
+        @return: ListKyuubiTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_kyuubi_token_with_options(workspace_id, kyuubi_service_id, request, headers, runtime)
+
+    async def list_kyuubi_token_async(
+        self,
+        workspace_id: str,
+        kyuubi_service_id: str,
+        request: emr_serverless_spark_20230808_models.ListKyuubiTokenRequest,
+    ) -> emr_serverless_spark_20230808_models.ListKyuubiTokenResponse:
+        """
+        @summary 列出compute的token
+        
+        @param request: ListKyuubiTokenRequest
+        @return: ListKyuubiTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_kyuubi_token_with_options_async(workspace_id, kyuubi_service_id, request, headers, runtime)
 
     def list_log_contents_with_options(
         self,
