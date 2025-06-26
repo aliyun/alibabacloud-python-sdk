@@ -11387,6 +11387,7 @@ class RunAgentRequest(TeaModel):
         thread_id: str = None,
         use_draft: bool = None,
         user_content: str = None,
+        user_inputs: Dict[str, Any] = None,
         version_id: str = None,
     ):
         # This parameter is required.
@@ -11397,6 +11398,7 @@ class RunAgentRequest(TeaModel):
         self.use_draft = use_draft
         # This parameter is required.
         self.user_content = user_content
+        self.user_inputs = user_inputs
         self.version_id = version_id
 
     def validate(self):
@@ -11420,6 +11422,8 @@ class RunAgentRequest(TeaModel):
             result['useDraft'] = self.use_draft
         if self.user_content is not None:
             result['userContent'] = self.user_content
+        if self.user_inputs is not None:
+            result['userInputs'] = self.user_inputs
         if self.version_id is not None:
             result['versionId'] = self.version_id
         return result
@@ -11438,6 +11442,8 @@ class RunAgentRequest(TeaModel):
             self.use_draft = m.get('useDraft')
         if m.get('userContent') is not None:
             self.user_content = m.get('userContent')
+        if m.get('userInputs') is not None:
+            self.user_inputs = m.get('userInputs')
         if m.get('versionId') is not None:
             self.version_id = m.get('versionId')
         return self

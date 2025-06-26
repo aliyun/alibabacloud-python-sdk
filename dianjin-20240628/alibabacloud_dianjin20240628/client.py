@@ -4446,6 +4446,8 @@ class Client(OpenApiClient):
             body['useDraft'] = request.use_draft
         if not UtilClient.is_unset(request.user_content):
             body['userContent'] = request.user_content
+        if not UtilClient.is_unset(request.user_inputs):
+            body['userInputs'] = request.user_inputs
         if not UtilClient.is_unset(request.version_id):
             body['versionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
@@ -4497,6 +4499,8 @@ class Client(OpenApiClient):
             body['useDraft'] = request.use_draft
         if not UtilClient.is_unset(request.user_content):
             body['userContent'] = request.user_content
+        if not UtilClient.is_unset(request.user_inputs):
+            body['userInputs'] = request.user_inputs
         if not UtilClient.is_unset(request.version_id):
             body['versionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
