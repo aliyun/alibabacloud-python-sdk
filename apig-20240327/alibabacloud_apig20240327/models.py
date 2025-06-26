@@ -4,6 +4,171 @@ from Tea.model import TeaModel
 from typing import List, Dict
 
 
+class AgentServiceConfigDashScopeConfigAppCredentials(TeaModel):
+    def __init__(
+        self,
+        api_key: str = None,
+        app_id: str = None,
+    ):
+        self.api_key = api_key
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_key is not None:
+            result['apiKey'] = self.api_key
+        if self.app_id is not None:
+            result['appId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('apiKey') is not None:
+            self.api_key = m.get('apiKey')
+        if m.get('appId') is not None:
+            self.app_id = m.get('appId')
+        return self
+
+
+class AgentServiceConfigDashScopeConfig(TeaModel):
+    def __init__(
+        self,
+        app_credentials: List[AgentServiceConfigDashScopeConfigAppCredentials] = None,
+    ):
+        self.app_credentials = app_credentials
+
+    def validate(self):
+        if self.app_credentials:
+            for k in self.app_credentials:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['appCredentials'] = []
+        if self.app_credentials is not None:
+            for k in self.app_credentials:
+                result['appCredentials'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.app_credentials = []
+        if m.get('appCredentials') is not None:
+            for k in m.get('appCredentials'):
+                temp_model = AgentServiceConfigDashScopeConfigAppCredentials()
+                self.app_credentials.append(temp_model.from_map(k))
+        return self
+
+
+class AgentServiceConfigDifyConfig(TeaModel):
+    def __init__(
+        self,
+        api_key: str = None,
+        bot_type: str = None,
+    ):
+        self.api_key = api_key
+        self.bot_type = bot_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_key is not None:
+            result['apiKey'] = self.api_key
+        if self.bot_type is not None:
+            result['botType'] = self.bot_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('apiKey') is not None:
+            self.api_key = m.get('apiKey')
+        if m.get('botType') is not None:
+            self.bot_type = m.get('botType')
+        return self
+
+
+class AgentServiceConfig(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        dash_scope_config: AgentServiceConfigDashScopeConfig = None,
+        dify_config: AgentServiceConfigDifyConfig = None,
+        enable_health_check: bool = None,
+        protocols: List[str] = None,
+        provider: str = None,
+    ):
+        # This parameter is required.
+        self.address = address
+        self.dash_scope_config = dash_scope_config
+        self.dify_config = dify_config
+        self.enable_health_check = enable_health_check
+        self.protocols = protocols
+        # This parameter is required.
+        self.provider = provider
+
+    def validate(self):
+        if self.dash_scope_config:
+            self.dash_scope_config.validate()
+        if self.dify_config:
+            self.dify_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['address'] = self.address
+        if self.dash_scope_config is not None:
+            result['dashScopeConfig'] = self.dash_scope_config.to_map()
+        if self.dify_config is not None:
+            result['difyConfig'] = self.dify_config.to_map()
+        if self.enable_health_check is not None:
+            result['enableHealthCheck'] = self.enable_health_check
+        if self.protocols is not None:
+            result['protocols'] = self.protocols
+        if self.provider is not None:
+            result['provider'] = self.provider
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('address') is not None:
+            self.address = m.get('address')
+        if m.get('dashScopeConfig') is not None:
+            temp_model = AgentServiceConfigDashScopeConfig()
+            self.dash_scope_config = temp_model.from_map(m['dashScopeConfig'])
+        if m.get('difyConfig') is not None:
+            temp_model = AgentServiceConfigDifyConfig()
+            self.dify_config = temp_model.from_map(m['difyConfig'])
+        if m.get('enableHealthCheck') is not None:
+            self.enable_health_check = m.get('enableHealthCheck')
+        if m.get('protocols') is not None:
+            self.protocols = m.get('protocols')
+        if m.get('provider') is not None:
+            self.provider = m.get('provider')
+        return self
+
+
 class AiServiceConfig(TeaModel):
     def __init__(
         self,
@@ -5080,6 +5245,7 @@ class Service(TeaModel):
     def __init__(
         self,
         addresses: List[str] = None,
+        agent_service_config: AgentServiceConfig = None,
         ai_service_config: AiServiceConfig = None,
         create_timestamp: int = None,
         gateway_id: str = None,
@@ -5098,6 +5264,7 @@ class Service(TeaModel):
         update_timestamp: int = None,
     ):
         self.addresses = addresses
+        self.agent_service_config = agent_service_config
         self.ai_service_config = ai_service_config
         self.create_timestamp = create_timestamp
         self.gateway_id = gateway_id
@@ -5116,6 +5283,8 @@ class Service(TeaModel):
         self.update_timestamp = update_timestamp
 
     def validate(self):
+        if self.agent_service_config:
+            self.agent_service_config.validate()
         if self.ai_service_config:
             self.ai_service_config.validate()
         if self.health_check:
@@ -5133,6 +5302,8 @@ class Service(TeaModel):
         result = dict()
         if self.addresses is not None:
             result['addresses'] = self.addresses
+        if self.agent_service_config is not None:
+            result['agentServiceConfig'] = self.agent_service_config.to_map()
         if self.ai_service_config is not None:
             result['aiServiceConfig'] = self.ai_service_config.to_map()
         if self.create_timestamp is not None:
@@ -5173,6 +5344,9 @@ class Service(TeaModel):
         m = m or dict()
         if m.get('addresses') is not None:
             self.addresses = m.get('addresses')
+        if m.get('agentServiceConfig') is not None:
+            temp_model = AgentServiceConfig()
+            self.agent_service_config = temp_model.from_map(m['agentServiceConfig'])
         if m.get('aiServiceConfig') is not None:
             temp_model = AiServiceConfig()
             self.ai_service_config = temp_model.from_map(m['aiServiceConfig'])
@@ -6227,6 +6401,7 @@ class CreateHttpApiRequestIngressConfig(TeaModel):
 class CreateHttpApiRequest(TeaModel):
     def __init__(
         self,
+        agent_protocols: List[str] = None,
         ai_protocols: List[str] = None,
         auth_config: AuthConfig = None,
         base_path: str = None,
@@ -6240,6 +6415,7 @@ class CreateHttpApiRequest(TeaModel):
         type: str = None,
         version_config: HttpApiVersionConfig = None,
     ):
+        self.agent_protocols = agent_protocols
         # The AI API protocols. Valid value:
         # 
         # *   OpenAI/v1
@@ -6292,6 +6468,8 @@ class CreateHttpApiRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_protocols is not None:
+            result['agentProtocols'] = self.agent_protocols
         if self.ai_protocols is not None:
             result['aiProtocols'] = self.ai_protocols
         if self.auth_config is not None:
@@ -6322,6 +6500,8 @@ class CreateHttpApiRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('agentProtocols') is not None:
+            self.agent_protocols = m.get('agentProtocols')
         if m.get('aiProtocols') is not None:
             self.ai_protocols = m.get('aiProtocols')
         if m.get('authConfig') is not None:
@@ -7570,6 +7750,7 @@ class CreateServiceRequestServiceConfigs(TeaModel):
     def __init__(
         self,
         addresses: List[str] = None,
+        agent_service_config: AgentServiceConfig = None,
         ai_service_config: AiServiceConfig = None,
         dns_servers: List[str] = None,
         group_name: str = None,
@@ -7579,6 +7760,7 @@ class CreateServiceRequestServiceConfigs(TeaModel):
     ):
         # The list of domain names or fixed addresses.
         self.addresses = addresses
+        self.agent_service_config = agent_service_config
         # The AI service configurations.
         self.ai_service_config = ai_service_config
         # The list of DNS service addresses.
@@ -7596,6 +7778,8 @@ class CreateServiceRequestServiceConfigs(TeaModel):
         self.qualifier = qualifier
 
     def validate(self):
+        if self.agent_service_config:
+            self.agent_service_config.validate()
         if self.ai_service_config:
             self.ai_service_config.validate()
 
@@ -7607,6 +7791,8 @@ class CreateServiceRequestServiceConfigs(TeaModel):
         result = dict()
         if self.addresses is not None:
             result['addresses'] = self.addresses
+        if self.agent_service_config is not None:
+            result['agentServiceConfig'] = self.agent_service_config.to_map()
         if self.ai_service_config is not None:
             result['aiServiceConfig'] = self.ai_service_config.to_map()
         if self.dns_servers is not None:
@@ -7625,6 +7811,9 @@ class CreateServiceRequestServiceConfigs(TeaModel):
         m = m or dict()
         if m.get('addresses') is not None:
             self.addresses = m.get('addresses')
+        if m.get('agentServiceConfig') is not None:
+            temp_model = AgentServiceConfig()
+            self.agent_service_config = temp_model.from_map(m['agentServiceConfig'])
         if m.get('aiServiceConfig') is not None:
             temp_model = AiServiceConfig()
             self.ai_service_config = temp_model.from_map(m['aiServiceConfig'])
@@ -8686,6 +8875,86 @@ class DeletePolicyAttachmentResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeletePolicyAttachmentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeleteServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteServiceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10164,9 +10433,9 @@ class GetGatewayResponseBodyDataEnvironments(TeaModel):
     ):
         # The environment alias.
         self.alias = alias
-        # Environment ID.
+        # The environment ID.
         self.environment_id = environment_id
-        # The environment name。
+        # The environment name.
         self.name = name
 
     def validate(self):
@@ -10203,11 +10472,12 @@ class GetGatewayResponseBodyDataLoadBalancersPorts(TeaModel):
         port: int = None,
         protocol: str = None,
     ):
-        # Port number.
+        # The port number.
         self.port = port
-        # Protocol:
-        # - TCP
-        # - UDP
+        # The protocol. Valid values:
+        # 
+        # *   TCP
+        # *   UDP
         self.protocol = protocol
 
     def validate(self):
@@ -10247,32 +10517,37 @@ class GetGatewayResponseBodyDataLoadBalancers(TeaModel):
         status: str = None,
         type: str = None,
     ):
-        # The address of the load balancer.
+        # The load balancer IP address.
         self.address = address
-        # The IP version of the protocol:
-        # - ipv4: IPv4 type.
-        # - ipv6: IPv6 type.
+        # The IP version of the address. Valid values:
+        # 
+        # *   ipv4
+        # *   ipv6
         self.address_ip_version = address_ip_version
-        # Load balancer address type:
-        # - Internet: Public.
-        # - Intranet: Private.
+        # The load balancer address type. Valid values:
+        # 
+        # *   Internet
+        # *   Intranet
         self.address_type = address_type
-        # Whether it is the default entry address for the gateway.
+        # Indicates whether the address is the default ingress address of the instance.
         self.gateway_default = gateway_default
-        # Load balancer ID.
+        # The load balancer ID.
         self.load_balancer_id = load_balancer_id
-        # The provision mode of the load balancer for the gateway:
-        # - Managed: Managed by the Cloud Native API Gateway.
+        # The mode in which the load balancer is provided. Valid values:
+        # 
+        # *   Managed: Cloud-native API Gateway manages and provides the load balancer.
         self.mode = mode
-        # List of listening ports.
+        # The list of listened ports.
         self.ports = ports
-        # The status of the load balancer:
-        # - Ready: Available.
-        # - NotCreate: Not associated with an instance.
+        # The load balancer status. Valid values:
+        # 
+        # *   Ready: The load balancer is available.
+        # *   NotCreate: The load balancer is not associated with the instance.
         self.status = status
-        # The type of load balancer:
-        # - NLB: Network Load Balancer.
-        # - CLB: Classic Load Balancer.
+        # The load balancer type. Valid values:
+        # 
+        # *   NLB: Network Load Balancer
+        # *   CLB: Classic Load Balancer
         self.type = type
 
     def validate(self):
@@ -10341,9 +10616,9 @@ class GetGatewayResponseBodyDataSecurityGroup(TeaModel):
         name: str = None,
         security_group_id: str = None,
     ):
-        # Security group name.
+        # The security group name.
         self.name = name
-        # Security group ID.
+        # The security group ID.
         self.security_group_id = security_group_id
 
     def validate(self):
@@ -10376,9 +10651,9 @@ class GetGatewayResponseBodyDataTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the resource.
+        # The tag key.
         self.key = key
-        # The tag value of the resource.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -10411,9 +10686,9 @@ class GetGatewayResponseBodyDataVSwitch(TeaModel):
         name: str = None,
         v_switch_id: str = None,
     ):
-        # Virtual switch name.
+        # The vSwitch name.
         self.name = name
-        # Virtual switch ID.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -10446,9 +10721,9 @@ class GetGatewayResponseBodyDataVpc(TeaModel):
         name: str = None,
         vpc_id: str = None,
     ):
-        # VPC gateway name.
+        # The VPC name.
         self.name = name
-        # VPC network ID.
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -10481,9 +10756,9 @@ class GetGatewayResponseBodyDataZonesVSwitch(TeaModel):
         name: str = None,
         v_switch_id: str = None,
     ):
-        # Virtual switch name.
+        # The vSwitch name.
         self.name = name
-        # Virtual switch ID.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -10517,11 +10792,11 @@ class GetGatewayResponseBodyDataZones(TeaModel):
         v_switch: GetGatewayResponseBodyDataZonesVSwitch = None,
         zone_id: str = None,
     ):
-        # Availability zone name.
+        # The zone name.
         self.name = name
-        # Virtual switch.
+        # The vSwitch information.
         self.v_switch = v_switch
-        # Availability zone ID.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -10579,59 +10854,66 @@ class GetGatewayResponseBodyData(TeaModel):
         vpc: GetGatewayResponseBodyDataVpc = None,
         zones: List[GetGatewayResponseBodyDataZones] = None,
     ):
-        # Charge type
-        # - POSTPAY: Postpaid (pay-as-you-go)
-        # - PREPAY: Prepaid (subscription)
+        # The billing method. Valid values:
+        # 
+        # *   POSTPAY: pay-as-you-go
+        # *   PREPAY: subscription
         self.charge_type = charge_type
-        # Source of gateway creation:
-        # - Console: Console.
+        # The creation source of the instance. Valid values:
+        # 
+        # *   Console
         self.create_from = create_from
-        # Creation timestamp. Unit: milliseconds.
+        # The creation timestamp. Unit: milliseconds.
         self.create_timestamp = create_timestamp
-        # List of environments associated with the gateway.
+        # The list of environments associated with the instance.
         self.environments = environments
-        # Expiration timestamp for subscription. Unit: milliseconds.
+        # The time when the instance expires. This value is a UNIX timestamp. Unit: milliseconds.
         self.expire_timestamp = expire_timestamp
-        # Gateway ID.
+        # The instance ID.
         self.gateway_id = gateway_id
+        # the gateway type, which is categorized into the following two types:
+        # - API: indicates an API gateway
+        # - AI: Indicates an AI gateway
         self.gateway_type = gateway_type
-        # List of entry addresses for the gateway.
+        # The ingress addresses of the instance.
         self.load_balancers = load_balancers
-        # Gateway name.
+        # The instance name.
         self.name = name
-        # Number of gateway instance nodes.
+        # The node quantity of the instance.
         self.replicas = replicas
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The security group of the gateway.
+        # The security group of the instance.
         self.security_group = security_group
-        # Gateway specification:
-        # - apigw.small.x1: Small specification.
+        # The instance specification. Valid values:
+        # 
+        # *   apigw.small.x1
         self.spec = spec
-        # Gateway status:
-        # - Running: Running.
-        # - Creating: Creating.
-        # - CreateFailed: Creation failed.
-        # - Upgrading: Upgrading.
-        # - UpgradeFailed: Upgrade failed.
-        # - Restarting: Restarting.
-        # - RestartFailed: Restart failed.
-        # - Deleting: Deleting.
-        # - DeleteFailed: Deletion failed.
+        # The instance state. Valid values:
+        # 
+        # *   Running: The instance is running.
+        # *   Creating: The instance is being created.
+        # *   CreateFailed: The instance failed to be created.
+        # *   Upgrading: The instance is being upgraded.
+        # *   UpgradeFailed: The instance failed to be upgraded.
+        # *   Restarting: The instance is being restarted.
+        # *   RestartFailed: The instance failed to be restarted.
+        # *   Deleting: The instance is being released.
+        # *   DeleteFailed: The instance failed to be released.
         self.status = status
         # The resource tags.
         self.tags = tags
-        # Target version of the gateway. When it is inconsistent with the current version, an upgrade can be performed.
+        # The destination version of the instance. If the value is inconsistent with the version value, you can upgrade the instance.
         self.target_version = target_version
-        # Update timestamp. Unit: milliseconds.
+        # The last update timestamp. Unit: milliseconds.
         self.update_timestamp = update_timestamp
-        # The virtual switch associated with the gateway.
+        # The vSwitch associated with the instance.
         self.v_switch = v_switch
-        # Gateway version.
+        # The instance version.
         self.version = version
-        # The VPC (Virtual Private Cloud) associated with the gateway.
+        # The VPC associated with the instance.
         self.vpc = vpc
-        # List of availability zones associated with the gateway.
+        # The list of zones associated with the instance.
         self.zones = zones
 
     def validate(self):
@@ -10786,13 +11068,13 @@ class GetGatewayResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response status code.
+        # The status code.
         self.code = code
-        # Response data.
+        # The returned data.
         self.data = data
-        # Response message.
+        # The response message returned.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17189,6 +17471,7 @@ class UpdateHttpApiRequestIngressConfig(TeaModel):
 class UpdateHttpApiRequest(TeaModel):
     def __init__(
         self,
+        agent_protocols: List[str] = None,
         ai_protocols: List[str] = None,
         auth_config: AuthConfig = None,
         base_path: str = None,
@@ -17200,6 +17483,7 @@ class UpdateHttpApiRequest(TeaModel):
         protocols: List[str] = None,
         version_config: HttpApiVersionConfig = None,
     ):
+        self.agent_protocols = agent_protocols
         # The AI protocols.
         self.ai_protocols = ai_protocols
         # The authentication configuration.
@@ -17240,6 +17524,8 @@ class UpdateHttpApiRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_protocols is not None:
+            result['agentProtocols'] = self.agent_protocols
         if self.ai_protocols is not None:
             result['aiProtocols'] = self.ai_protocols
         if self.auth_config is not None:
@@ -17266,6 +17552,8 @@ class UpdateHttpApiRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('agentProtocols') is not None:
+            self.agent_protocols = m.get('agentProtocols')
         if m.get('aiProtocols') is not None:
             self.ai_protocols = m.get('aiProtocols')
         if m.get('authConfig') is not None:

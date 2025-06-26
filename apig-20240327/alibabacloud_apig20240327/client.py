@@ -589,6 +589,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.agent_protocols):
+            body['agentProtocols'] = request.agent_protocols
         if not UtilClient.is_unset(request.ai_protocols):
             body['aiProtocols'] = request.ai_protocols
         if not UtilClient.is_unset(request.auth_config):
@@ -649,6 +651,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.agent_protocols):
+            body['agentProtocols'] = request.agent_protocols
         if not UtilClient.is_unset(request.ai_protocols):
             body['aiProtocols'] = request.ai_protocols
         if not UtilClient.is_unset(request.auth_config):
@@ -2395,6 +2399,96 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_policy_attachment_with_options_async(policy_attachment_id, headers, runtime)
 
+    def delete_service_with_options(
+        self,
+        service_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.DeleteServiceResponse:
+        """
+        @summary 删除服务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteServiceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteService',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/services/{OpenApiUtilClient.get_encode_param(service_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.DeleteServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_service_with_options_async(
+        self,
+        service_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.DeleteServiceResponse:
+        """
+        @summary 删除服务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteServiceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteService',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/services/{OpenApiUtilClient.get_encode_param(service_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.DeleteServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_service(
+        self,
+        service_id: str,
+    ) -> apig20240327_models.DeleteServiceResponse:
+        """
+        @summary 删除服务
+        
+        @return: DeleteServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_service_with_options(service_id, headers, runtime)
+
+    async def delete_service_async(
+        self,
+        service_id: str,
+    ) -> apig20240327_models.DeleteServiceResponse:
+        """
+        @summary 删除服务
+        
+        @return: DeleteServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_service_with_options_async(service_id, headers, runtime)
+
     def deploy_http_api_with_options(
         self,
         http_api_id: str,
@@ -2984,7 +3078,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetGatewayResponse:
         """
-        @summary Get a gateway.
+        @summary Queries the basic information about an instance, such as the virtual private cloud (VPC) and vSwitch to which the instance belongs and its ingress.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3016,7 +3110,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetGatewayResponse:
         """
-        @summary Get a gateway.
+        @summary Queries the basic information about an instance, such as the virtual private cloud (VPC) and vSwitch to which the instance belongs and its ingress.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3046,7 +3140,7 @@ class Client(OpenApiClient):
         gateway_id: str,
     ) -> apig20240327_models.GetGatewayResponse:
         """
-        @summary Get a gateway.
+        @summary Queries the basic information about an instance, such as the virtual private cloud (VPC) and vSwitch to which the instance belongs and its ingress.
         
         @return: GetGatewayResponse
         """
@@ -3059,7 +3153,7 @@ class Client(OpenApiClient):
         gateway_id: str,
     ) -> apig20240327_models.GetGatewayResponse:
         """
-        @summary Get a gateway.
+        @summary Queries the basic information about an instance, such as the virtual private cloud (VPC) and vSwitch to which the instance belongs and its ingress.
         
         @return: GetGatewayResponse
         """
@@ -6390,6 +6484,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.agent_protocols):
+            body['agentProtocols'] = request.agent_protocols
         if not UtilClient.is_unset(request.ai_protocols):
             body['aiProtocols'] = request.ai_protocols
         if not UtilClient.is_unset(request.auth_config):
@@ -6447,6 +6543,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.agent_protocols):
+            body['agentProtocols'] = request.agent_protocols
         if not UtilClient.is_unset(request.ai_protocols):
             body['aiProtocols'] = request.ai_protocols
         if not UtilClient.is_unset(request.auth_config):

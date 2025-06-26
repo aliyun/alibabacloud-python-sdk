@@ -1,3 +1,10 @@
+2025-06-26 Version: 4.2.0
+- Support API DeleteService.
+- Update API CreateHttpApi: add request parameters body.agentProtocols.
+- Update API CreateService: add request parameters body.serviceConfigs.$.agentServiceConfig.
+- Update API UpdateHttpApi: add request parameters body.agentProtocols.
+
+
 2025-06-11 Version: 4.1.0
 - Support API ListPluginAttachments.
 - Update API GetGateway: add response parameters Body.data.gatewayType.
