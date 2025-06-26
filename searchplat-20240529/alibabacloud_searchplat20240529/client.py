@@ -26,6 +26,126 @@ class Client(OpenApiClient):
         self._spi = gateway_client
         self._endpoint_rule = ''
 
+    def create_audio_asr_task_with_options(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.CreateAudioAsrTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchplat_20240529_models.CreateAudioAsrTaskResponse:
+        """
+        @summary 创建语音转录异步任务
+        
+        @param request: CreateAudioAsrTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAudioAsrTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.input):
+            body['input'] = request.input
+        if not UtilClient.is_unset(request.output):
+            body['output'] = request.output
+        if not UtilClient.is_unset(request.parameters):
+            body['parameters'] = request.parameters
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAudioAsrTask',
+            version='2024-05-29',
+            protocol='HTTPS',
+            pathname=f'/v3/openapi/workspaces/{workspace_name}/audio-asr/{service_id}/async',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchplat_20240529_models.CreateAudioAsrTaskResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_audio_asr_task_with_options_async(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.CreateAudioAsrTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchplat_20240529_models.CreateAudioAsrTaskResponse:
+        """
+        @summary 创建语音转录异步任务
+        
+        @param request: CreateAudioAsrTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAudioAsrTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.input):
+            body['input'] = request.input
+        if not UtilClient.is_unset(request.output):
+            body['output'] = request.output
+        if not UtilClient.is_unset(request.parameters):
+            body['parameters'] = request.parameters
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAudioAsrTask',
+            version='2024-05-29',
+            protocol='HTTPS',
+            pathname=f'/v3/openapi/workspaces/{workspace_name}/audio-asr/{service_id}/async',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchplat_20240529_models.CreateAudioAsrTaskResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_audio_asr_task(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.CreateAudioAsrTaskRequest,
+    ) -> searchplat_20240529_models.CreateAudioAsrTaskResponse:
+        """
+        @summary 创建语音转录异步任务
+        
+        @param request: CreateAudioAsrTaskRequest
+        @return: CreateAudioAsrTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_audio_asr_task_with_options(workspace_name, service_id, request, headers, runtime)
+
+    async def create_audio_asr_task_async(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.CreateAudioAsrTaskRequest,
+    ) -> searchplat_20240529_models.CreateAudioAsrTaskResponse:
+        """
+        @summary 创建语音转录异步任务
+        
+        @param request: CreateAudioAsrTaskRequest
+        @return: CreateAudioAsrTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_audio_asr_task_with_options_async(workspace_name, service_id, request, headers, runtime)
+
     def create_document_analyze_task_with_options(
         self,
         workspace_name: str,
@@ -257,6 +377,238 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_image_analyze_task_with_options_async(workspace_name, service_id, request, headers, runtime)
+
+    def create_video_snapshot_task_with_options(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.CreateVideoSnapshotTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchplat_20240529_models.CreateVideoSnapshotTaskResponse:
+        """
+        @summary 创建语音转录异步任务
+        
+        @param request: CreateVideoSnapshotTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVideoSnapshotTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.input):
+            body['input'] = request.input
+        if not UtilClient.is_unset(request.output):
+            body['output'] = request.output
+        if not UtilClient.is_unset(request.parameters):
+            body['parameters'] = request.parameters
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateVideoSnapshotTask',
+            version='2024-05-29',
+            protocol='HTTPS',
+            pathname=f'/v3/openapi/workspaces/{workspace_name}/video-snapshot/{service_id}/async',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchplat_20240529_models.CreateVideoSnapshotTaskResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_video_snapshot_task_with_options_async(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.CreateVideoSnapshotTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchplat_20240529_models.CreateVideoSnapshotTaskResponse:
+        """
+        @summary 创建语音转录异步任务
+        
+        @param request: CreateVideoSnapshotTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVideoSnapshotTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.input):
+            body['input'] = request.input
+        if not UtilClient.is_unset(request.output):
+            body['output'] = request.output
+        if not UtilClient.is_unset(request.parameters):
+            body['parameters'] = request.parameters
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateVideoSnapshotTask',
+            version='2024-05-29',
+            protocol='HTTPS',
+            pathname=f'/v3/openapi/workspaces/{workspace_name}/video-snapshot/{service_id}/async',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchplat_20240529_models.CreateVideoSnapshotTaskResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_video_snapshot_task(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.CreateVideoSnapshotTaskRequest,
+    ) -> searchplat_20240529_models.CreateVideoSnapshotTaskResponse:
+        """
+        @summary 创建语音转录异步任务
+        
+        @param request: CreateVideoSnapshotTaskRequest
+        @return: CreateVideoSnapshotTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_video_snapshot_task_with_options(workspace_name, service_id, request, headers, runtime)
+
+    async def create_video_snapshot_task_async(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.CreateVideoSnapshotTaskRequest,
+    ) -> searchplat_20240529_models.CreateVideoSnapshotTaskResponse:
+        """
+        @summary 创建语音转录异步任务
+        
+        @param request: CreateVideoSnapshotTaskRequest
+        @return: CreateVideoSnapshotTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_video_snapshot_task_with_options_async(workspace_name, service_id, request, headers, runtime)
+
+    def get_audio_asr_task_status_with_options(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetAudioAsrTaskStatusRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchplat_20240529_models.GetAudioAsrTaskStatusResponse:
+        """
+        @summary 获取视频截帧异步提取任务状态
+        
+        @param request: GetAudioAsrTaskStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAudioAsrTaskStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['task_id'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAudioAsrTaskStatus',
+            version='2024-05-29',
+            protocol='HTTPS',
+            pathname=f'/v3/openapi/workspaces/{workspace_name}/audio-asr/{service_id}/async/task-status',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchplat_20240529_models.GetAudioAsrTaskStatusResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_audio_asr_task_status_with_options_async(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetAudioAsrTaskStatusRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchplat_20240529_models.GetAudioAsrTaskStatusResponse:
+        """
+        @summary 获取视频截帧异步提取任务状态
+        
+        @param request: GetAudioAsrTaskStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAudioAsrTaskStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['task_id'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAudioAsrTaskStatus',
+            version='2024-05-29',
+            protocol='HTTPS',
+            pathname=f'/v3/openapi/workspaces/{workspace_name}/audio-asr/{service_id}/async/task-status',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchplat_20240529_models.GetAudioAsrTaskStatusResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_audio_asr_task_status(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetAudioAsrTaskStatusRequest,
+    ) -> searchplat_20240529_models.GetAudioAsrTaskStatusResponse:
+        """
+        @summary 获取视频截帧异步提取任务状态
+        
+        @param request: GetAudioAsrTaskStatusRequest
+        @return: GetAudioAsrTaskStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_audio_asr_task_status_with_options(workspace_name, service_id, request, headers, runtime)
+
+    async def get_audio_asr_task_status_async(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetAudioAsrTaskStatusRequest,
+    ) -> searchplat_20240529_models.GetAudioAsrTaskStatusResponse:
+        """
+        @summary 获取视频截帧异步提取任务状态
+        
+        @param request: GetAudioAsrTaskStatusRequest
+        @return: GetAudioAsrTaskStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_audio_asr_task_status_with_options_async(workspace_name, service_id, request, headers, runtime)
 
     def get_document_analyze_task_status_with_options(
         self,
@@ -1538,6 +1890,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_text_sparse_embedding_with_options_async(workspace_name, service_id, request, headers, runtime)
 
+    def get_video_snapshot_task_status_with_options(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetVideoSnapshotTaskStatusRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchplat_20240529_models.GetVideoSnapshotTaskStatusResponse:
+        """
+        @summary 获取视频截帧异步提取任务状态
+        
+        @param request: GetVideoSnapshotTaskStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVideoSnapshotTaskStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['task_id'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVideoSnapshotTaskStatus',
+            version='2024-05-29',
+            protocol='HTTPS',
+            pathname=f'/v3/openapi/workspaces/{workspace_name}/video-snapshot/{service_id}/async/task-status',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchplat_20240529_models.GetVideoSnapshotTaskStatusResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_video_snapshot_task_status_with_options_async(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetVideoSnapshotTaskStatusRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchplat_20240529_models.GetVideoSnapshotTaskStatusResponse:
+        """
+        @summary 获取视频截帧异步提取任务状态
+        
+        @param request: GetVideoSnapshotTaskStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVideoSnapshotTaskStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['task_id'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVideoSnapshotTaskStatus',
+            version='2024-05-29',
+            protocol='HTTPS',
+            pathname=f'/v3/openapi/workspaces/{workspace_name}/video-snapshot/{service_id}/async/task-status',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchplat_20240529_models.GetVideoSnapshotTaskStatusResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_video_snapshot_task_status(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetVideoSnapshotTaskStatusRequest,
+    ) -> searchplat_20240529_models.GetVideoSnapshotTaskStatusResponse:
+        """
+        @summary 获取视频截帧异步提取任务状态
+        
+        @param request: GetVideoSnapshotTaskStatusRequest
+        @return: GetVideoSnapshotTaskStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_video_snapshot_task_status_with_options(workspace_name, service_id, request, headers, runtime)
+
+    async def get_video_snapshot_task_status_async(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetVideoSnapshotTaskStatusRequest,
+    ) -> searchplat_20240529_models.GetVideoSnapshotTaskStatusResponse:
+        """
+        @summary 获取视频截帧异步提取任务状态
+        
+        @param request: GetVideoSnapshotTaskStatusRequest
+        @return: GetVideoSnapshotTaskStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_video_snapshot_task_status_with_options_async(workspace_name, service_id, request, headers, runtime)
+
     def get_web_search_with_options(
         self,
         workspace_name: str,
@@ -1556,8 +2020,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.content_type):
+            body['content_type'] = request.content_type
+        if not UtilClient.is_unset(request.history):
+            body['history'] = request.history
         if not UtilClient.is_unset(request.query):
             body['query'] = request.query
+        if not UtilClient.is_unset(request.query_rewrite):
+            body['query_rewrite'] = request.query_rewrite
         if not UtilClient.is_unset(request.top_k):
             body['top_k'] = request.top_k
         if not UtilClient.is_unset(request.way):
@@ -1600,8 +2070,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.content_type):
+            body['content_type'] = request.content_type
+        if not UtilClient.is_unset(request.history):
+            body['history'] = request.history
         if not UtilClient.is_unset(request.query):
             body['query'] = request.query
+        if not UtilClient.is_unset(request.query_rewrite):
+            body['query_rewrite'] = request.query_rewrite
         if not UtilClient.is_unset(request.top_k):
             body['top_k'] = request.top_k
         if not UtilClient.is_unset(request.way):

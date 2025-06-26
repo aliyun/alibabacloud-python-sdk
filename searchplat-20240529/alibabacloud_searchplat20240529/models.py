@@ -1,7 +1,232 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List, Any
+from typing import Dict, Any, List
+
+
+class CreateAudioAsrTaskRequestInput(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        file_name: str = None,
+        oss: str = None,
+    ):
+        self.content = content
+        self.file_name = file_name
+        self.oss = oss
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.file_name is not None:
+            result['file_name'] = self.file_name
+        if self.oss is not None:
+            result['oss'] = self.oss
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('file_name') is not None:
+            self.file_name = m.get('file_name')
+        if m.get('oss') is not None:
+            self.oss = m.get('oss')
+        return self
+
+
+class CreateAudioAsrTaskRequestOutput(TeaModel):
+    def __init__(
+        self,
+        oss: str = None,
+        type: str = None,
+    ):
+        self.oss = oss
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.oss is not None:
+            result['oss'] = self.oss
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('oss') is not None:
+            self.oss = m.get('oss')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class CreateAudioAsrTaskRequest(TeaModel):
+    def __init__(
+        self,
+        input: CreateAudioAsrTaskRequestInput = None,
+        output: CreateAudioAsrTaskRequestOutput = None,
+        parameters: Dict[str, Any] = None,
+    ):
+        self.input = input
+        self.output = output
+        self.parameters = parameters
+
+    def validate(self):
+        if self.input:
+            self.input.validate()
+        if self.output:
+            self.output.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input is not None:
+            result['input'] = self.input.to_map()
+        if self.output is not None:
+            result['output'] = self.output.to_map()
+        if self.parameters is not None:
+            result['parameters'] = self.parameters
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('input') is not None:
+            temp_model = CreateAudioAsrTaskRequestInput()
+            self.input = temp_model.from_map(m['input'])
+        if m.get('output') is not None:
+            temp_model = CreateAudioAsrTaskRequestOutput()
+            self.output = temp_model.from_map(m['output'])
+        if m.get('parameters') is not None:
+            self.parameters = m.get('parameters')
+        return self
+
+
+class CreateAudioAsrTaskResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['task_id'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
+        return self
+
+
+class CreateAudioAsrTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        latency: int = None,
+        request_id: str = None,
+        result: CreateAudioAsrTaskResponseBodyResult = None,
+    ):
+        self.latency = latency
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.latency is not None:
+            result['latency'] = self.latency
+        if self.request_id is not None:
+            result['request_id'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('latency') is not None:
+            self.latency = m.get('latency')
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
+        if m.get('result') is not None:
+            temp_model = CreateAudioAsrTaskResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        return self
+
+
+class CreateAudioAsrTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAudioAsrTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAudioAsrTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
 
 
 class CreateDocumentAnalyzeTaskRequestDocument(TeaModel):
@@ -438,6 +663,469 @@ class CreateImageAnalyzeTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateImageAnalyzeTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateVideoSnapshotTaskRequestInput(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        file_name: str = None,
+        oss: str = None,
+    ):
+        self.content = content
+        self.file_name = file_name
+        self.oss = oss
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.file_name is not None:
+            result['file_name'] = self.file_name
+        if self.oss is not None:
+            result['oss'] = self.oss
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('file_name') is not None:
+            self.file_name = m.get('file_name')
+        if m.get('oss') is not None:
+            self.oss = m.get('oss')
+        return self
+
+
+class CreateVideoSnapshotTaskRequestOutput(TeaModel):
+    def __init__(
+        self,
+        oss: str = None,
+        type: str = None,
+    ):
+        self.oss = oss
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.oss is not None:
+            result['oss'] = self.oss
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('oss') is not None:
+            self.oss = m.get('oss')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class CreateVideoSnapshotTaskRequest(TeaModel):
+    def __init__(
+        self,
+        input: CreateVideoSnapshotTaskRequestInput = None,
+        output: CreateVideoSnapshotTaskRequestOutput = None,
+        parameters: Dict[str, Any] = None,
+    ):
+        self.input = input
+        self.output = output
+        self.parameters = parameters
+
+    def validate(self):
+        if self.input:
+            self.input.validate()
+        if self.output:
+            self.output.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input is not None:
+            result['input'] = self.input.to_map()
+        if self.output is not None:
+            result['output'] = self.output.to_map()
+        if self.parameters is not None:
+            result['parameters'] = self.parameters
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('input') is not None:
+            temp_model = CreateVideoSnapshotTaskRequestInput()
+            self.input = temp_model.from_map(m['input'])
+        if m.get('output') is not None:
+            temp_model = CreateVideoSnapshotTaskRequestOutput()
+            self.output = temp_model.from_map(m['output'])
+        if m.get('parameters') is not None:
+            self.parameters = m.get('parameters')
+        return self
+
+
+class CreateVideoSnapshotTaskResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['task_id'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
+        return self
+
+
+class CreateVideoSnapshotTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        latency: int = None,
+        request_id: str = None,
+        result: CreateVideoSnapshotTaskResponseBodyResult = None,
+    ):
+        self.latency = latency
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.latency is not None:
+            result['latency'] = self.latency
+        if self.request_id is not None:
+            result['request_id'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('latency') is not None:
+            self.latency = m.get('latency')
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
+        if m.get('result') is not None:
+            temp_model = CreateVideoSnapshotTaskResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        return self
+
+
+class CreateVideoSnapshotTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateVideoSnapshotTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateVideoSnapshotTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAudioAsrTaskStatusRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['task_id'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
+        return self
+
+
+class GetAudioAsrTaskStatusResponseBodyResultData(TeaModel):
+    def __init__(
+        self,
+        end: float = None,
+        start: float = None,
+        text: str = None,
+    ):
+        self.end = end
+        self.start = start
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end is not None:
+            result['end'] = self.end
+        if self.start is not None:
+            result['start'] = self.start
+        if self.text is not None:
+            result['text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('end') is not None:
+            self.end = m.get('end')
+        if m.get('start') is not None:
+            self.start = m.get('start')
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        return self
+
+
+class GetAudioAsrTaskStatusResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        data: List[GetAudioAsrTaskStatusResponseBodyResultData] = None,
+        error: str = None,
+        status: str = None,
+        task_id: str = None,
+    ):
+        self.data = data
+        self.error = error
+        self.status = status
+        self.task_id = task_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.error is not None:
+            result['error'] = self.error
+        if self.status is not None:
+            result['status'] = self.status
+        if self.task_id is not None:
+            result['task_id'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = GetAudioAsrTaskStatusResponseBodyResultData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('error') is not None:
+            self.error = m.get('error')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
+        return self
+
+
+class GetAudioAsrTaskStatusResponseBodyUsage(TeaModel):
+    def __init__(
+        self,
+        duration: float = None,
+    ):
+        self.duration = duration
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration is not None:
+            result['duration'] = self.duration
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('duration') is not None:
+            self.duration = m.get('duration')
+        return self
+
+
+class GetAudioAsrTaskStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        latency: int = None,
+        request_id: str = None,
+        result: GetAudioAsrTaskStatusResponseBodyResult = None,
+        usage: GetAudioAsrTaskStatusResponseBodyUsage = None,
+    ):
+        self.latency = latency
+        self.request_id = request_id
+        self.result = result
+        self.usage = usage
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.latency is not None:
+            result['latency'] = self.latency
+        if self.request_id is not None:
+            result['request_id'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.usage is not None:
+            result['usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('latency') is not None:
+            self.latency = m.get('latency')
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
+        if m.get('result') is not None:
+            temp_model = GetAudioAsrTaskStatusResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('usage') is not None:
+            temp_model = GetAudioAsrTaskStatusResponseBodyUsage()
+            self.usage = temp_model.from_map(m['usage'])
+        return self
+
+
+class GetAudioAsrTaskStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAudioAsrTaskStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAudioAsrTaskStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3175,17 +3863,13 @@ class GetTextSparseEmbeddingResponse(TeaModel):
         return self
 
 
-class GetWebSearchRequest(TeaModel):
+class GetVideoSnapshotTaskStatusRequest(TeaModel):
     def __init__(
         self,
-        query: str = None,
-        top_k: int = None,
-        way: str = None,
+        task_id: str = None,
     ):
         # This parameter is required.
-        self.query = query
-        self.top_k = top_k
-        self.way = way
+        self.task_id = task_id
 
     def validate(self):
         pass
@@ -3196,8 +3880,300 @@ class GetWebSearchRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.task_id is not None:
+            result['task_id'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
+        return self
+
+
+class GetVideoSnapshotTaskStatusResponseBodyResultData(TeaModel):
+    def __init__(
+        self,
+        frame_index: int = None,
+        frame_time: float = None,
+        path: str = None,
+    ):
+        self.frame_index = frame_index
+        self.frame_time = frame_time
+        self.path = path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.frame_index is not None:
+            result['frame_index'] = self.frame_index
+        if self.frame_time is not None:
+            result['frame_time'] = self.frame_time
+        if self.path is not None:
+            result['path'] = self.path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('frame_index') is not None:
+            self.frame_index = m.get('frame_index')
+        if m.get('frame_time') is not None:
+            self.frame_time = m.get('frame_time')
+        if m.get('path') is not None:
+            self.path = m.get('path')
+        return self
+
+
+class GetVideoSnapshotTaskStatusResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        data: List[GetVideoSnapshotTaskStatusResponseBodyResultData] = None,
+        error: str = None,
+        status: str = None,
+        task_id: str = None,
+    ):
+        self.data = data
+        self.error = error
+        self.status = status
+        self.task_id = task_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.error is not None:
+            result['error'] = self.error
+        if self.status is not None:
+            result['status'] = self.status
+        if self.task_id is not None:
+            result['task_id'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = GetVideoSnapshotTaskStatusResponseBodyResultData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('error') is not None:
+            self.error = m.get('error')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
+        return self
+
+
+class GetVideoSnapshotTaskStatusResponseBodyUsage(TeaModel):
+    def __init__(
+        self,
+        image_count: int = None,
+    ):
+        self.image_count = image_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_count is not None:
+            result['image_count'] = self.image_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('image_count') is not None:
+            self.image_count = m.get('image_count')
+        return self
+
+
+class GetVideoSnapshotTaskStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        latency: int = None,
+        request_id: str = None,
+        result: GetVideoSnapshotTaskStatusResponseBodyResult = None,
+        usage: GetVideoSnapshotTaskStatusResponseBodyUsage = None,
+    ):
+        self.latency = latency
+        self.request_id = request_id
+        self.result = result
+        self.usage = usage
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.latency is not None:
+            result['latency'] = self.latency
+        if self.request_id is not None:
+            result['request_id'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.usage is not None:
+            result['usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('latency') is not None:
+            self.latency = m.get('latency')
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
+        if m.get('result') is not None:
+            temp_model = GetVideoSnapshotTaskStatusResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('usage') is not None:
+            temp_model = GetVideoSnapshotTaskStatusResponseBodyUsage()
+            self.usage = temp_model.from_map(m['usage'])
+        return self
+
+
+class GetVideoSnapshotTaskStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetVideoSnapshotTaskStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetVideoSnapshotTaskStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetWebSearchRequestHistory(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        role: str = None,
+    ):
+        self.content = content
+        self.role = role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.role is not None:
+            result['role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        return self
+
+
+class GetWebSearchRequest(TeaModel):
+    def __init__(
+        self,
+        content_type: str = None,
+        history: List[GetWebSearchRequestHistory] = None,
+        query: str = None,
+        query_rewrite: bool = None,
+        top_k: int = None,
+        way: str = None,
+    ):
+        self.content_type = content_type
+        self.history = history
+        # This parameter is required.
+        self.query = query
+        self.query_rewrite = query_rewrite
+        self.top_k = top_k
+        self.way = way
+
+    def validate(self):
+        if self.history:
+            for k in self.history:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content_type is not None:
+            result['content_type'] = self.content_type
+        result['history'] = []
+        if self.history is not None:
+            for k in self.history:
+                result['history'].append(k.to_map() if k else None)
         if self.query is not None:
             result['query'] = self.query
+        if self.query_rewrite is not None:
+            result['query_rewrite'] = self.query_rewrite
         if self.top_k is not None:
             result['top_k'] = self.top_k
         if self.way is not None:
@@ -3206,8 +4182,17 @@ class GetWebSearchRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('content_type') is not None:
+            self.content_type = m.get('content_type')
+        self.history = []
+        if m.get('history') is not None:
+            for k in m.get('history'):
+                temp_model = GetWebSearchRequestHistory()
+                self.history.append(temp_model.from_map(k))
         if m.get('query') is not None:
             self.query = m.get('query')
+        if m.get('query_rewrite') is not None:
+            self.query_rewrite = m.get('query_rewrite')
         if m.get('top_k') is not None:
             self.top_k = m.get('top_k')
         if m.get('way') is not None:

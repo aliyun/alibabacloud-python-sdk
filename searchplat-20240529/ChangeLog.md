@@ -1,3 +1,13 @@
+2025-06-26 Version: 2.2.0
+- Support API CreateAudioAsrTask.
+- Support API CreateVideoSnapshotTask.
+- Support API GetAudioAsrTaskStatus.
+- Support API GetVideoSnapshotTaskStatus.
+- Update API GetWebSearch: add request parameters body.content_type.
+- Update API GetWebSearch: add request parameters body.history.
+- Update API GetWebSearch: add request parameters body.query_rewrite.
+
+
 2025-05-20 Version: 2.1.0
 - Support API GetMultiModalEmbedding.
 
