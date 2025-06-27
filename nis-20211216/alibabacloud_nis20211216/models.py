@@ -3666,6 +3666,7 @@ class GetNisNetworkMetricsRequest(TeaModel):
         region_no: str = None,
         resource_type: str = None,
         scan_by: str = None,
+        step_minutes: int = None,
         use_cross_account: bool = None,
     ):
         self.account_ids = account_ids
@@ -3680,6 +3681,7 @@ class GetNisNetworkMetricsRequest(TeaModel):
         # This parameter is required.
         self.resource_type = resource_type
         self.scan_by = scan_by
+        self.step_minutes = step_minutes
         self.use_cross_account = use_cross_account
 
     def validate(self):
@@ -3712,6 +3714,8 @@ class GetNisNetworkMetricsRequest(TeaModel):
             result['ResourceType'] = self.resource_type
         if self.scan_by is not None:
             result['ScanBy'] = self.scan_by
+        if self.step_minutes is not None:
+            result['StepMinutes'] = self.step_minutes
         if self.use_cross_account is not None:
             result['UseCrossAccount'] = self.use_cross_account
         return result
@@ -3737,6 +3741,8 @@ class GetNisNetworkMetricsRequest(TeaModel):
             self.resource_type = m.get('ResourceType')
         if m.get('ScanBy') is not None:
             self.scan_by = m.get('ScanBy')
+        if m.get('StepMinutes') is not None:
+            self.step_minutes = m.get('StepMinutes')
         if m.get('UseCrossAccount') is not None:
             self.use_cross_account = m.get('UseCrossAccount')
         return self
@@ -3753,6 +3759,7 @@ class GetNisNetworkMetricsShrinkRequest(TeaModel):
         region_no: str = None,
         resource_type: str = None,
         scan_by: str = None,
+        step_minutes: int = None,
         use_cross_account: bool = None,
     ):
         self.account_ids = account_ids
@@ -3767,6 +3774,7 @@ class GetNisNetworkMetricsShrinkRequest(TeaModel):
         # This parameter is required.
         self.resource_type = resource_type
         self.scan_by = scan_by
+        self.step_minutes = step_minutes
         self.use_cross_account = use_cross_account
 
     def validate(self):
@@ -3794,6 +3802,8 @@ class GetNisNetworkMetricsShrinkRequest(TeaModel):
             result['ResourceType'] = self.resource_type
         if self.scan_by is not None:
             result['ScanBy'] = self.scan_by
+        if self.step_minutes is not None:
+            result['StepMinutes'] = self.step_minutes
         if self.use_cross_account is not None:
             result['UseCrossAccount'] = self.use_cross_account
         return result
@@ -3816,6 +3826,8 @@ class GetNisNetworkMetricsShrinkRequest(TeaModel):
             self.resource_type = m.get('ResourceType')
         if m.get('ScanBy') is not None:
             self.scan_by = m.get('ScanBy')
+        if m.get('StepMinutes') is not None:
+            self.step_minutes = m.get('StepMinutes')
         if m.get('UseCrossAccount') is not None:
             self.use_cross_account = m.get('UseCrossAccount')
         return self

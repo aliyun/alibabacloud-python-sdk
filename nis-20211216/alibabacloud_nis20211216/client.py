@@ -1847,6 +1847,8 @@ class Client(OpenApiClient):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.scan_by):
             query['ScanBy'] = request.scan_by
+        if not UtilClient.is_unset(request.step_minutes):
+            query['StepMinutes'] = request.step_minutes
         if not UtilClient.is_unset(request.use_cross_account):
             query['UseCrossAccount'] = request.use_cross_account
         req = open_api_models.OpenApiRequest(
@@ -1902,6 +1904,8 @@ class Client(OpenApiClient):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.scan_by):
             query['ScanBy'] = request.scan_by
+        if not UtilClient.is_unset(request.step_minutes):
+            query['StepMinutes'] = request.step_minutes
         if not UtilClient.is_unset(request.use_cross_account):
             query['UseCrossAccount'] = request.use_cross_account
         req = open_api_models.OpenApiRequest(

@@ -1,3 +1,7 @@
+2025-06-27 Version: 2.2.2
+- Update API GetNisNetworkMetrics: add request parameters StepMinutes.
+
+
 2025-04-18 Version: 2.2.1
 - Update API DescribeNisInspectionReportCheckItems: add response parameters Body.CheckItemList.$.RecommendationList.$.ReasonCode.
 - Update API DescribeNisInspectionReportCheckItems: add response parameters Body.CheckItemList.$.RecommendationList.$.SuggestionCode.
