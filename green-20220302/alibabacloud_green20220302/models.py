@@ -4978,6 +4978,278 @@ class ManualModerationResultResponse(TeaModel):
         return self
 
 
+class MultiModalGuardRequest(TeaModel):
+    def __init__(
+        self,
+        service: str = None,
+        service_parameters: str = None,
+    ):
+        self.service = service
+        self.service_parameters = service_parameters
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.service is not None:
+            result['Service'] = self.service
+        if self.service_parameters is not None:
+            result['ServiceParameters'] = self.service_parameters
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Service') is not None:
+            self.service = m.get('Service')
+        if m.get('ServiceParameters') is not None:
+            self.service_parameters = m.get('ServiceParameters')
+        return self
+
+
+class MultiModalGuardResponseBodyDataDetailResult(TeaModel):
+    def __init__(
+        self,
+        confidence: float = None,
+        description: str = None,
+        ext: Any = None,
+        label: str = None,
+        level: str = None,
+    ):
+        self.confidence = confidence
+        self.description = description
+        self.ext = ext
+        self.label = label
+        self.level = level
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.ext is not None:
+            result['Ext'] = self.ext
+        if self.label is not None:
+            result['Label'] = self.label
+        if self.level is not None:
+            result['Level'] = self.level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Ext') is not None:
+            self.ext = m.get('Ext')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        return self
+
+
+class MultiModalGuardResponseBodyDataDetail(TeaModel):
+    def __init__(
+        self,
+        level: str = None,
+        result: List[MultiModalGuardResponseBodyDataDetailResult] = None,
+        suggestion: str = None,
+        type: str = None,
+    ):
+        self.level = level
+        self.result = result
+        self.suggestion = suggestion
+        self.type = type
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.level is not None:
+            result['Level'] = self.level
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        if self.suggestion is not None:
+            result['Suggestion'] = self.suggestion
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = MultiModalGuardResponseBodyDataDetailResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('Suggestion') is not None:
+            self.suggestion = m.get('Suggestion')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class MultiModalGuardResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        data_id: str = None,
+        detail: List[MultiModalGuardResponseBodyDataDetail] = None,
+        suggestion: str = None,
+    ):
+        self.data_id = data_id
+        self.detail = detail
+        self.suggestion = suggestion
+
+    def validate(self):
+        if self.detail:
+            for k in self.detail:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        result['Detail'] = []
+        if self.detail is not None:
+            for k in self.detail:
+                result['Detail'].append(k.to_map() if k else None)
+        if self.suggestion is not None:
+            result['Suggestion'] = self.suggestion
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        self.detail = []
+        if m.get('Detail') is not None:
+            for k in m.get('Detail'):
+                temp_model = MultiModalGuardResponseBodyDataDetail()
+                self.detail.append(temp_model.from_map(k))
+        if m.get('Suggestion') is not None:
+            self.suggestion = m.get('Suggestion')
+        return self
+
+
+class MultiModalGuardResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: MultiModalGuardResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = MultiModalGuardResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class MultiModalGuardResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: MultiModalGuardResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = MultiModalGuardResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class TextModerationRequest(TeaModel):
     def __init__(
         self,

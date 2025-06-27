@@ -1275,6 +1275,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.manual_moderation_result_with_options_async(request, runtime)
 
+    def multi_modal_guard_with_options(
+        self,
+        request: green_20220302_models.MultiModalGuardRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220302_models.MultiModalGuardResponse:
+        """
+        @summary 同步检测接口
+        
+        @param request: MultiModalGuardRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MultiModalGuardResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service):
+            body['Service'] = request.service
+        if not UtilClient.is_unset(request.service_parameters):
+            body['ServiceParameters'] = request.service_parameters
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='MultiModalGuard',
+            version='2022-03-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220302_models.MultiModalGuardResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def multi_modal_guard_with_options_async(
+        self,
+        request: green_20220302_models.MultiModalGuardRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220302_models.MultiModalGuardResponse:
+        """
+        @summary 同步检测接口
+        
+        @param request: MultiModalGuardRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MultiModalGuardResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service):
+            body['Service'] = request.service
+        if not UtilClient.is_unset(request.service_parameters):
+            body['ServiceParameters'] = request.service_parameters
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='MultiModalGuard',
+            version='2022-03-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220302_models.MultiModalGuardResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def multi_modal_guard(
+        self,
+        request: green_20220302_models.MultiModalGuardRequest,
+    ) -> green_20220302_models.MultiModalGuardResponse:
+        """
+        @summary 同步检测接口
+        
+        @param request: MultiModalGuardRequest
+        @return: MultiModalGuardResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.multi_modal_guard_with_options(request, runtime)
+
+    async def multi_modal_guard_async(
+        self,
+        request: green_20220302_models.MultiModalGuardRequest,
+    ) -> green_20220302_models.MultiModalGuardResponse:
+        """
+        @summary 同步检测接口
+        
+        @param request: MultiModalGuardRequest
+        @return: MultiModalGuardResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.multi_modal_guard_with_options_async(request, runtime)
+
     def text_moderation_with_options(
         self,
         request: green_20220302_models.TextModerationRequest,

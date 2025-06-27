@@ -1,3 +1,7 @@
+2025-06-27 Version: 2.21.0
+- Support API MultiModalGuard.
+
+
 2025-06-26 Version: 2.20.6
 - Update API VideoModerationResult: add response parameters Body.Data.FrameResult.Frames.$.Results.$.PublicFigure.$.FigureName.
 - Update API VideoModerationResult: add response parameters Body.Data.FrameResult.Frames.$.Results.$.PublicFigure.$.Location.
