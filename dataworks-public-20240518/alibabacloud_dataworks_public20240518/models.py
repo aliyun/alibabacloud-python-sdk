@@ -3057,8 +3057,12 @@ class AddEntityIntoMetaCollectionRequest(TeaModel):
         meta_collection_id: str = None,
         remark: str = None,
     ):
+        # The entity ID. Currently, entities can only be tables. You can call the ListTables operation to query the ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The collection ID. You can call the ListMetaCollections operation to query the ID.
+        # 
         # This parameter is required.
         self.meta_collection_id = meta_collection_id
         self.remark = remark
@@ -10132,6 +10136,7 @@ class CreateLineageRelationshipRequest(TeaModel):
     ):
         self.dst_entity = dst_entity
         self.src_entity = src_entity
+        # The task information.
         self.task = task
 
     def validate(self):
@@ -10179,6 +10184,7 @@ class CreateLineageRelationshipShrinkRequest(TeaModel):
     ):
         self.dst_entity_shrink = dst_entity_shrink
         self.src_entity_shrink = src_entity_shrink
+        # The task information.
         self.task_shrink = task_shrink
 
     def validate(self):
@@ -10216,6 +10222,7 @@ class CreateLineageRelationshipResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The lineage ID.
         self.id = id
         self.request_id = request_id
         self.success = success
@@ -10300,6 +10307,7 @@ class CreateMetaCollectionRequest(TeaModel):
         self.description = description
         # This parameter is required.
         self.name = name
+        # The ID of the collection of an ancestor node.
         self.parent_id = parent_id
         # This parameter is required.
         self.type = type
@@ -10342,6 +10350,7 @@ class CreateMetaCollectionResponseBody(TeaModel):
         id: str = None,
         request_id: str = None,
     ):
+        # The ID of the created collection.
         self.id = id
         # Id of the request
         self.request_id = request_id
@@ -12858,6 +12867,7 @@ class CreateWorkflowInstancesRequestDefaultRunProperties(TeaModel):
         order: str = None,
         parallelism: int = None,
         priority: int = None,
+        priority_weight_strategy: str = None,
         root_task_ids: List[int] = None,
         run_policy: CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy = None,
         runtime_resource: str = None,
@@ -12889,6 +12899,7 @@ class CreateWorkflowInstancesRequestDefaultRunProperties(TeaModel):
         # The number of tasks that can be run in parallel. If you specify a value that ranges from 2 to 10, the value indicates the number of tasks that can be run in parallel. If you set the value to 1, the tasks are run one by one. If you set the Type parameter to SupplementData, this parameter is required.
         self.parallelism = parallelism
         self.priority = priority
+        self.priority_weight_strategy = priority_weight_strategy
         # The root task IDs.
         # 
         # *   If you set the Type parameter to SupplementData and the Mode parameter to a value other than Chain, the RootTaskIds parameter is required.
@@ -12935,6 +12946,8 @@ class CreateWorkflowInstancesRequestDefaultRunProperties(TeaModel):
             result['Parallelism'] = self.parallelism
         if self.priority is not None:
             result['Priority'] = self.priority
+        if self.priority_weight_strategy is not None:
+            result['PriorityWeightStrategy'] = self.priority_weight_strategy
         if self.root_task_ids is not None:
             result['RootTaskIds'] = self.root_task_ids
         if self.run_policy is not None:
@@ -12967,6 +12980,8 @@ class CreateWorkflowInstancesRequestDefaultRunProperties(TeaModel):
             self.parallelism = m.get('Parallelism')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
+        if m.get('PriorityWeightStrategy') is not None:
+            self.priority_weight_strategy = m.get('PriorityWeightStrategy')
         if m.get('RootTaskIds') is not None:
             self.root_task_ids = m.get('RootTaskIds')
         if m.get('RunPolicy') is not None:
@@ -15069,6 +15084,8 @@ class DeleteLineageRelationshipRequest(TeaModel):
         self,
         id: str = None,
     ):
+        # The lineage ID. For more information, see the response returned by the ListLineageRelationships operation.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -15171,6 +15188,8 @@ class DeleteMetaCollectionRequest(TeaModel):
         self,
         id: str = None,
     ):
+        # The collection ID.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -18751,6 +18770,17 @@ class GetCatalogRequest(TeaModel):
         self,
         id: str = None,
     ):
+        # Data catalog entity ID. Currently, only DLF and StarRocks types are supported. You can refer to the response of the ListCatalogs operation and [the description of metadata entity concepts.](https://help.aliyun.com/document_detail/2880092.html)
+        # 
+        # *   For the DLF type, the format is `dlf-catalog::catalog_id`.
+        # *   For the StarRocks type, the format is `starrocks-catalog:(instance_id|encoded_jdbc_url):catalog_name`.
+        # 
+        # >  Parameter descriptions:\\
+        # `catalog_id`: The DLF catalog ID.\\
+        # `instance_id`: The instance ID, required for the data source registered in instance mode.\\
+        # `encoded_jdbc_url`: The JDBC connection string that has been URL encoded, required for the data source registered via a connection string.\\
+        # `catalog_name`: The name of the StarRocks catalog.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -19046,6 +19076,36 @@ class GetColumnRequest(TeaModel):
         self,
         id: str = None,
     ):
+        # The ID. You can refer to the response of the ListColumns operation and the [description of concepts related to metadata entities.](https://help.aliyun.com/document_detail/2880092.html)
+        # 
+        # The format: `${EntityType}:${Instance ID or escaped URL}:${Catalog name}:${Database name}`. Use empty strings as placeholders for levels that do not exist.
+        # 
+        # >  For the MaxCompute and DLF types, the instance ID level must be left empty. For the MaxCompute type, the instance ID level is represented by an empty string. The database name is the name of the MaxCompute project with schema enabled.
+        # 
+        # >  The catalog identifier of the StarRocks is the catalog name, and the catalog identifier of the DLF type is the catalog ID. Other types do not support catalog levels and can use empty strings as placeholders.
+        # 
+        # Examples of common ID formats
+        # 
+        # `maxcompute-column:::project_name:[schema_name]:table_name:column_name`
+        # 
+        # `dlf-column::catalog_id:database_name::table_name:column_name`
+        # 
+        # `hms-column:instance_id::database_name::table_name:column_name`
+        # 
+        # `holo-column:instance_id::database_name:schema_name:table_name:column_name`
+        # 
+        # `mysql-column:(instance_id|encoded_jdbc_url)::database_name::table_name:column_name`
+        # 
+        # > \\
+        # `instance_id`: the ID of the instance, which is required when the data source is registered in instance mode.\\
+        # `encoded_jdbc_url`: the URL-encoded JDBC connection string, which is required when the data source is registered via a connection string.\\
+        # `catalog_id`: The DLF catalog ID.\\
+        # `project_name`: The MaxCompute project name.\\
+        # `database_name`: The database name.\\
+        # `schema_name`: The schema name. For the MaxCompute type, this is required only if the project has enabled schema; otherwise, use an empty string as a placeholder.\\
+        # `table_name`: The table name.\\
+        # `column_name`: The field name.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -23386,6 +23446,26 @@ class GetDatabaseRequest(TeaModel):
         self,
         id: str = None,
     ):
+        # Database entity ID. You can refer to the response of the ListDatabases operation and [the description of metadata entity concepts.](https://help.aliyun.com/document_detail/2880092.html)
+        # 
+        # The format is `${EntityType}:${Instance ID or encoded URL}:${Catalog identifier}:${Database name}`. Use empty strings as placeholders for non-existent levels.
+        # 
+        # >  For StarRocks, the catalog identifier is the catalog name. For DLF, the catalog identifier is the catalog ID. For other types, catalog hierarchy is not supported, and an empty string can be used as a placeholder.
+        # 
+        # Examples of common ID formats
+        # 
+        # `dlf-database::catalog_id:database_name`
+        # 
+        # `holo-database:instance_id::database_name`
+        # 
+        # `mysql-database:(instance_id|encoded_jdbc_url)::database_name`
+        # 
+        # >  Parameter descriptions\\
+        # `catalog_id`: The DLF catalog ID.\\
+        # `instance_id`: The instance ID, required for a data source registered in instance mode.\\
+        # `encoded_jdbc_url`: The JDBC connection string that has been URL encoded. This parameter is required for the data source registered via a connection string.\\
+        # `database_name`: The database name.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -26375,6 +26455,8 @@ class GetLineageRelationshipRequest(TeaModel):
         self,
         id: str = None,
     ):
+        # The lineage ID. For more information, see the response returned by the ListLineageRelationships operation.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -26479,6 +26561,8 @@ class GetMetaCollectionRequest(TeaModel):
         self,
         id: str = None,
     ):
+        # The collection ID.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -26519,9 +26603,11 @@ class GetMetaCollectionResponseBodyMetaCollection(TeaModel):
         self.create_time = create_time
         self.create_user = create_user
         self.description = description
+        # The collection ID.
         self.id = id
         self.modify_time = modify_time
         self.name = name
+        # The ID of the collection of the ancestor node. This parameter can be left empty.
         self.parent_id = parent_id
         self.type = type
 
@@ -26583,6 +26669,7 @@ class GetMetaCollectionResponseBody(TeaModel):
         meta_collection: GetMetaCollectionResponseBodyMetaCollection = None,
         request_id: str = None,
     ):
+        # The information about the collection.
         self.meta_collection = meta_collection
         # Id of the request
         self.request_id = request_id
@@ -27054,6 +27141,8 @@ class GetPartitionRequest(TeaModel):
     ):
         # This parameter is required.
         self.name = name
+        # The table ID. For more details, refer to the response of the ListTables operation and [description of concepts related to metadata entities.](https://help.aliyun.com/document_detail/2880092.html)
+        # 
         # This parameter is required.
         self.table_id = table_id
 
@@ -28160,6 +28249,8 @@ class GetRerunWorkflowInstancesResultRequest(TeaModel):
         self,
         operation_id: str = None,
     ):
+        # The operation ID used to asynchronously query the result of the workflow instance rerun. This value is obtained from the RerunWorkflowInstances operation.
+        # 
         # This parameter is required.
         self.operation_id = operation_id
 
@@ -28189,7 +28280,9 @@ class GetRerunWorkflowInstancesResultResponseBodyResult(TeaModel):
         failure_message: str = None,
         status: str = None,
     ):
+        # The failure message. Returned if the rerun fails.
         self.failure_message = failure_message
+        # The status. NotRun Success Failure
         self.status = status
 
     def validate(self):
@@ -28222,7 +28315,9 @@ class GetRerunWorkflowInstancesResultResponseBody(TeaModel):
         request_id: str = None,
         result: GetRerunWorkflowInstancesResultResponseBodyResult = None,
     ):
+        # The request ID, used for log tracing and troubleshooting.
         self.request_id = request_id
+        # The result of the workflow instance rerun.
         self.result = result
 
     def validate(self):
@@ -28995,11 +29090,23 @@ class GetSchemaRequest(TeaModel):
         self,
         id: str = None,
     ):
-        # The schema ID. You can call the ListSchemas operation to query schema IDs. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+        # The schema ID. You can call the ListSchemas operation to query the ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
         # 
-        # Configure this parameter in the `${Entity type}:${Instance ID or escaped URL}:${Catalog identifier}:${Database name}:${Schema name}` format. If a level does not exist, leave the level empty.
+        # The common format of this parameter is `${Entity type}:${Instance ID or escaped URL}:${Catalog identifier}:${Database name}:${Schema name}`. If a level does not exist, specify an empty string as a placeholder.
         # 
-        # >  If you want to query the information about a MaxCompute schema, specify an empty string at the Instance ID level as a placeholder and a MaxCompute project name at the Database name level. Make sure that the schema feature is enabled for the MaxCompute project.
+        # >  For MaxCompute tables, specify an empty string at the Instance ID level and a MaxCompute project name at the Database name level. Make sure that the three-layer model is enabled for the MaxCompute project.
+        # 
+        # You can configure this parameter in one of the following formats based on your data source type:
+        # 
+        # `maxcompute-schema:::project_name:schema_name` (Three-layer model is enabled for the MaxCompute project.)
+        # 
+        # `holo-schema:instance_id::database_name:schema_name`
+        # 
+        # > \\
+        # `instance_id`: the ID of a Hologres instance\\
+        # `database_name`: the name of a database\\
+        # `project_name`: the name of a MaxCompute project\\
+        # `schema_name`: the name of a schema
         # 
         # This parameter is required.
         self.id = id
@@ -29112,6 +29219,37 @@ class GetTableRequest(TeaModel):
         id: str = None,
         include_business_metadata: bool = None,
     ):
+        # The table ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+        # 
+        # The common format of this parameter is `${Entity type}:${Instance ID or escaped URL}:${Catalog identifier}:${Database name}:${Schema name}:${Table name}`. If a level does not exist, specify an empty string as a placeholder.
+        # 
+        # >  For MaxCompute and DLF data sources, specify an empty string at the Instance ID level.
+        # 
+        # >  For StarRocks data sources, specify a catalog name at the Catalog identifier level. For DLF data sources, specify a catalog ID at the Catalog identifier level. Other types of data sources do not support the Catalog identifier level. You can specify an empty string as a placeholder.
+        # 
+        # >  For MaxCompute data sources, specify a MaxCompute project name at the Database name level. If the three-layer model is enabled for your MaxCompute project, you must specify a schema name at the Schema name level. Otherwise, you can specify an empty string as a placeholder.
+        # 
+        # You can configure this parameter in one of the following formats based on your data source type:
+        # 
+        # `maxcompute-table:::project_name:[schema_name]:table_name`
+        # 
+        # `dlf-table::catalog_id:database_name::table_name`
+        # 
+        # `hms-table:instance_id::database_name::table_name`
+        # 
+        # `holo-table:instance_id::database_name:schema_name:table_name`
+        # 
+        # `mysql-table:(instance_id|encoded_jdbc_url)::database_name::table_name`
+        # 
+        # > \\
+        # `instance_id`: the ID of an instance. If the related data source is added to DataWorks in Alibaba Cloud instance mode, you must configure this parameter.\\
+        # `encoded_jdbc_url`: the JDBC connection string that is URL-encoded. If the related data source is added to DataWorks in connection string mode, you must configure this parameter.\\
+        # `catalog_id`: the ID of a DLF catalog.\\
+        # `project_name`: the name of a MaxCompute project.\\
+        # `database_name`: the name of a database.\\
+        # `schema_name`: the name of a schema. For a MaxCompute table, if the three-layer model is enabled for the MaxCompute project to which the table belongs, you must configure this parameter. Otherwise, you can specify an empty string for schema_name as a placeholder.\\
+        # `table_name`: the name of a table.
+        # 
         # This parameter is required.
         self.id = id
         self.include_business_metadata = include_business_metadata
@@ -31214,7 +31352,7 @@ class GetTaskInstanceResponseBody(TeaModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The details of the instance.
+        # The details of the task instance.
         self.task_instance = task_instance
 
     def validate(self):
@@ -34231,6 +34369,17 @@ class ListCatalogsRequest(TeaModel):
         self.order = order
         self.page_number = page_number
         self.page_size = page_size
+        # The parent entity ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+        # 
+        # Only DLF and StarRocks data sources support this parameter.
+        # 
+        # *   For DLF data sources, you can call this API operation to query all catalogs. In this case, you must set the `ParentMetaEntityId` parameter to `dlf`.
+        # *   For StarRocks data sources, you can call this API operation to query the catalogs in a specific instance. In this case, you can configure the `ParentMetaEntityId` parameter in the `starrocks:(instance_id|encoded_jdbc_url)` format.
+        # 
+        # > \\
+        # `instance_id`: the ID of an instance. If the related data source is added to DataWorks in Alibaba Cloud instance mode, you must configure this parameter.\\
+        # `encoded_jdbc_url`: the JDBC connection string that is URL-encoded. If the related data source is added to DataWorks in connection string mode, you must configure this parameter.
+        # 
         # This parameter is required.
         self.parent_meta_entity_id = parent_meta_entity_id
         self.sort_by = sort_by
@@ -34301,6 +34450,17 @@ class ListCatalogsShrinkRequest(TeaModel):
         self.order = order
         self.page_number = page_number
         self.page_size = page_size
+        # The parent entity ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+        # 
+        # Only DLF and StarRocks data sources support this parameter.
+        # 
+        # *   For DLF data sources, you can call this API operation to query all catalogs. In this case, you must set the `ParentMetaEntityId` parameter to `dlf`.
+        # *   For StarRocks data sources, you can call this API operation to query the catalogs in a specific instance. In this case, you can configure the `ParentMetaEntityId` parameter in the `starrocks:(instance_id|encoded_jdbc_url)` format.
+        # 
+        # > \\
+        # `instance_id`: the ID of an instance. If the related data source is added to DataWorks in Alibaba Cloud instance mode, you must configure this parameter.\\
+        # `encoded_jdbc_url`: the JDBC connection string that is URL-encoded. If the related data source is added to DataWorks in connection string mode, you must configure this parameter.
+        # 
         # This parameter is required.
         self.parent_meta_entity_id = parent_meta_entity_id
         self.sort_by = sort_by
@@ -34790,6 +34950,8 @@ class ListColumnsRequest(TeaModel):
         self.page_number = page_number
         self.page_size = page_size
         self.sort_by = sort_by
+        # The ID of the table to which the columns belong. You can call the ListTables operation to query the ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+        # 
         # This parameter is required.
         self.table_id = table_id
 
@@ -41664,6 +41826,26 @@ class ListDatabasesRequest(TeaModel):
         self.order = order
         self.page_number = page_number
         self.page_size = page_size
+        # The parent entity ID. For more information, see [description of concepts related to metadata entities.](https://help.aliyun.com/document_detail/2880092.html)
+        # 
+        # The type of the parent entity can be found in the response of the ListCrawlerTypes operation.
+        # 
+        # *   If the parent entity is a catalog, the format of `ParentMetaEntityId` follows the response of the ListCatalogs API.
+        # *   If the parent entity is a metadata crawler, the format of `ParentMetaEntityId` is `${CrawlerType}:${Instance ID or encoded URL}.`
+        # 
+        # ParentMetaEntityId format examples
+        # 
+        # `dlf-catalog::catalog_id`
+        # 
+        # `holo:instance_id`
+        # 
+        # `mysql:(instance_id|encoded_jdbc_url)`
+        # 
+        # > \\
+        # `catalog_id`: The DLF catalog ID.\\
+        # `instance_id`: The instance ID, required for the data source registered in instance mode.\\
+        # `encoded_jdbc_url`: The JDBC connection string that has been URL encoded, required for the data source registered via a connection string.
+        # 
         # This parameter is required.
         self.parent_meta_entity_id = parent_meta_entity_id
         self.sort_by = sort_by
@@ -44647,6 +44829,8 @@ class ListEntitiesInMetaCollectionRequest(TeaModel):
         self.entity_description = entity_description
         self.entity_name = entity_name
         self.entity_type = entity_type
+        # The collection ID.
+        # 
         # This parameter is required.
         self.id = id
         self.order = order
@@ -44716,9 +44900,11 @@ class ListEntitiesInMetaCollectionResponseBodyPagingInfoEntities(TeaModel):
         self.comment = comment
         self.create_time = create_time
         self.description = description
+        # The entity ID. Entities can only be tables. This parameter is left empty if the entity is deleted.
         self.id = id
         self.modify_time = modify_time
         self.name = name
+        # The type of the entity.
         self.type = type
 
     def validate(self):
@@ -44773,6 +44959,7 @@ class ListEntitiesInMetaCollectionResponseBodyPagingInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The entities in the collection.
         self.entities = entities
         self.page_number = page_number
         self.page_size = page_size
@@ -44824,6 +45011,7 @@ class ListEntitiesInMetaCollectionResponseBody(TeaModel):
         paging_info: ListEntitiesInMetaCollectionResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.paging_info = paging_info
         # Id of the request
         self.request_id = request_id
@@ -46424,6 +46612,8 @@ class ListLineageRelationshipsRequest(TeaModel):
         src_entity_id: str = None,
         src_entity_name: str = None,
     ):
+        # The destination entity ID. For more information, see the table ID or field ID in the response returned by the ListTables or ListColumns operation. You can also specify a custom entity ID.
+        # 
         # This parameter is required.
         self.dst_entity_id = dst_entity_id
         self.dst_entity_name = dst_entity_name
@@ -46431,6 +46621,8 @@ class ListLineageRelationshipsRequest(TeaModel):
         self.page_number = page_number
         self.page_size = page_size
         self.sort_by = sort_by
+        # The source entity ID. For more information, see the table ID or field ID in the response returned by the ListTables or ListColumns operation. You can also specify a custom entity ID.
+        # 
         # This parameter is required.
         self.src_entity_id = src_entity_id
         self.src_entity_name = src_entity_name
@@ -46631,6 +46823,7 @@ class ListLineagesRequest(TeaModel):
         src_entity_id: str = None,
         src_entity_name: str = None,
     ):
+        # The destination entity ID. For more information, see the table ID or field ID in the response returned by the ListTables or ListColumns operation. You can also specify a custom entity ID.
         self.dst_entity_id = dst_entity_id
         self.dst_entity_name = dst_entity_name
         self.need_attach_relationship = need_attach_relationship
@@ -46638,6 +46831,7 @@ class ListLineagesRequest(TeaModel):
         self.page_number = page_number
         self.page_size = page_size
         self.sort_by = sort_by
+        # The source entity ID. For more information, see the table ID or field ID in the response returned by the ListTables or ListColumns operation. You can also specify a custom entity ID.
         self.src_entity_id = src_entity_id
         self.src_entity_name = src_entity_name
 
@@ -46902,8 +47096,15 @@ class ListMetaCollectionsRequest(TeaModel):
         self.order = order
         self.page_number = page_number
         self.page_size = page_size
+        # The ID of the collection of an ancestor node.
         self.parent_id = parent_id
         self.sort_by = sort_by
+        # The type of the collection. Valid values:
+        # 
+        # *   Category
+        # *   Album
+        # *   AlbumCategory
+        # 
         # This parameter is required.
         self.type = type
 
@@ -46977,12 +47178,16 @@ class ListMetaCollectionsResponseBodyDataMetaCollections(TeaModel):
         type: str = None,
     ):
         self.administrators = administrators
+        # The time when the collection was created. The value is a UNIX timestamp. Unit: milliseconds.
         self.create_time = create_time
         self.create_user = create_user
         self.description = description
+        # The ID of the collection.
         self.id = id
+        # The time when the collection was modified. The value is a UNIX timestamp. Unit: milliseconds.
         self.modify_time = modify_time
         self.name = name
+        # The ID of the collection of the ancestor node. This parameter can be left empty.
         self.parent_id = parent_id
         self.type = type
 
@@ -47046,6 +47251,7 @@ class ListMetaCollectionsResponseBodyData(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The collections.
         self.meta_collections = meta_collections
         self.page_number = page_number
         self.page_size = page_size
@@ -47097,6 +47303,7 @@ class ListMetaCollectionsResponseBody(TeaModel):
         data: ListMetaCollectionsResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -49775,6 +49982,8 @@ class ListPartitionsRequest(TeaModel):
         self.page_number = page_number
         self.page_size = page_size
         self.sort_by = sort_by
+        # The ID of the table to which the partitions belong. You can call the ListTables operation to query the ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+        # 
         # This parameter is required.
         self.table_id = table_id
 
@@ -53191,14 +53400,35 @@ class ListSchemasRequest(TeaModel):
         sort_by: str = None,
         types: List[str] = None,
     ):
+        # The comment. Fuzzy match is supported.
         self.comment = comment
+        # The name. Fuzzy match is supported.
         self.name = name
+        # The order in which schemas are sorted. Default value: Asc. Valid values:
+        # 
+        # *   Asc: ascending order
+        # *   Desc: descending order
         self.order = order
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
+        # The parent entity ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html). For the Hologres metadata crawler type, you can call the ListDatabases operation to query the settings of the `ParentMetaEntityId` parameter.
+        # 
+        # Configure the `ParentMetaEntityId` parameter in the `${EntityType}:${Instance ID or escaped URL}:${Catalog identifier}:${Database name}` format. If a level does not exist, leave the level empty.
+        # 
+        # >  If you want to query the information about a MaxCompute schema, specify an empty string at the Instance ID level as a placeholder and a MaxCompute project name at the Database name level. Make sure that the schema feature is enabled for the MaxCompute project.
+        # 
         # This parameter is required.
         self.parent_meta_entity_id = parent_meta_entity_id
+        # The field used for sorting. Default value: CreateTime. Valid values:
+        # 
+        # *   CreateTime
+        # *   ModifyTime
+        # *   Name
+        # *   Type
         self.sort_by = sort_by
+        # The types. Exact match is supported. If this parameter is left empty, all types are queried.
         self.types = types
 
     def validate(self):
@@ -53261,14 +53491,35 @@ class ListSchemasShrinkRequest(TeaModel):
         sort_by: str = None,
         types_shrink: str = None,
     ):
+        # The comment. Fuzzy match is supported.
         self.comment = comment
+        # The name. Fuzzy match is supported.
         self.name = name
+        # The order in which schemas are sorted. Default value: Asc. Valid values:
+        # 
+        # *   Asc: ascending order
+        # *   Desc: descending order
         self.order = order
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
+        # The parent entity ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html). For the Hologres metadata crawler type, you can call the ListDatabases operation to query the settings of the `ParentMetaEntityId` parameter.
+        # 
+        # Configure the `ParentMetaEntityId` parameter in the `${EntityType}:${Instance ID or escaped URL}:${Catalog identifier}:${Database name}` format. If a level does not exist, leave the level empty.
+        # 
+        # >  If you want to query the information about a MaxCompute schema, specify an empty string at the Instance ID level as a placeholder and a MaxCompute project name at the Database name level. Make sure that the schema feature is enabled for the MaxCompute project.
+        # 
         # This parameter is required.
         self.parent_meta_entity_id = parent_meta_entity_id
+        # The field used for sorting. Default value: CreateTime. Valid values:
+        # 
+        # *   CreateTime
+        # *   ModifyTime
+        # *   Name
+        # *   Type
         self.sort_by = sort_by
+        # The types. Exact match is supported. If this parameter is left empty, all types are queried.
         self.types_shrink = types_shrink
 
     def validate(self):
@@ -53328,7 +53579,9 @@ class ListSchemasResponseBodyPagingInfo(TeaModel):
         total_count: int = None,
     ):
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The schemas.
         self.schemas = schemas
         self.total_count = total_count
 
@@ -53379,8 +53632,11 @@ class ListSchemasResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The pagination information.
         self.paging_info = paging_info
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -53471,6 +53727,39 @@ class ListTablesRequest(TeaModel):
         self.order = order
         self.page_number = page_number
         self.page_size = page_size
+        # The parent metadata entity ID. You can refer to the responses of the ListDatabases or ListSchemas operation and [Description of concepts related to metadata entities.](https://help.aliyun.com/document_detail/2880092.html)
+        # 
+        # *   The parent metadata entity is a database: The format of `ParentMetaEntityId` is `${EntityType}:${Instance ID or encoded URL}:${Catalog Identifier}:${Database Name}`. Use an empty string (\\`""\\`) as a placeholder for any non-existent level.
+        # *   The parent metadata entity is a database schema:. The format of `ParentMetaEntityId` is `${EntityType}:${Instance ID or encoded URL}:${Catalog Identifier}:${Database Name}:${Schema Name}`. Use an empty string (\\`""\\`) as a placeholder for any non-existent level.
+        # 
+        # >  The schema level in `ParentMetaEntityId` is supported only for database types that support schemas, such as MaxCompute (with schema enabled), Hologres, PostgreSQL, SQL Server, HybridDB for PostgreSQL, and Oracle.``
+        # 
+        # >  For MaxCompute and DLF types, use empty strings as the instance ID. For MaxCompute, the database name is the same as the project name.
+        # 
+        # >  For the StarRocks type, the catalog identifier is the catalog name. For the DLF type, it refers to the catalog ID. Other types do not support a catalog-level hierarchy and the catalog identifier must be replaced with an empty string as a placeholder.
+        # 
+        # Examples of common ParentMetaEntityId formats
+        # 
+        # `maxcompute-project:::project_name`
+        # 
+        # `maxcompute-schema:::project_name:schema_name` (for MaxCompute projects with schema enabled)
+        # 
+        # `dlf-database::catalog_id:database_name`
+        # 
+        # `hms-database:instance_id::database_name`
+        # 
+        # `holo-schema:instance_id::database_name:schema_name`
+        # 
+        # `mysql-database:(instance_id|encoded_jdbc_url)::database_name`
+        # 
+        # > \\
+        # `instance_id`: The instance ID, required when the data source is registered in instance mode.\\
+        # `encoded_jdbc_url`: The JDBC connection string that has been URL encoded, required for the data source registered via a connection string.\\
+        # `catalog_id`: The DLF catalog ID.\\
+        # `project_name`: The MaxCompute project name.\\
+        # `database_name`: The database name.\\
+        # `schema_name`: The schema name.
+        # 
         # This parameter is required.
         self.parent_meta_entity_id = parent_meta_entity_id
         self.sort_by = sort_by
@@ -53541,6 +53830,39 @@ class ListTablesShrinkRequest(TeaModel):
         self.order = order
         self.page_number = page_number
         self.page_size = page_size
+        # The parent metadata entity ID. You can refer to the responses of the ListDatabases or ListSchemas operation and [Description of concepts related to metadata entities.](https://help.aliyun.com/document_detail/2880092.html)
+        # 
+        # *   The parent metadata entity is a database: The format of `ParentMetaEntityId` is `${EntityType}:${Instance ID or encoded URL}:${Catalog Identifier}:${Database Name}`. Use an empty string (\\`""\\`) as a placeholder for any non-existent level.
+        # *   The parent metadata entity is a database schema:. The format of `ParentMetaEntityId` is `${EntityType}:${Instance ID or encoded URL}:${Catalog Identifier}:${Database Name}:${Schema Name}`. Use an empty string (\\`""\\`) as a placeholder for any non-existent level.
+        # 
+        # >  The schema level in `ParentMetaEntityId` is supported only for database types that support schemas, such as MaxCompute (with schema enabled), Hologres, PostgreSQL, SQL Server, HybridDB for PostgreSQL, and Oracle.``
+        # 
+        # >  For MaxCompute and DLF types, use empty strings as the instance ID. For MaxCompute, the database name is the same as the project name.
+        # 
+        # >  For the StarRocks type, the catalog identifier is the catalog name. For the DLF type, it refers to the catalog ID. Other types do not support a catalog-level hierarchy and the catalog identifier must be replaced with an empty string as a placeholder.
+        # 
+        # Examples of common ParentMetaEntityId formats
+        # 
+        # `maxcompute-project:::project_name`
+        # 
+        # `maxcompute-schema:::project_name:schema_name` (for MaxCompute projects with schema enabled)
+        # 
+        # `dlf-database::catalog_id:database_name`
+        # 
+        # `hms-database:instance_id::database_name`
+        # 
+        # `holo-schema:instance_id::database_name:schema_name`
+        # 
+        # `mysql-database:(instance_id|encoded_jdbc_url)::database_name`
+        # 
+        # > \\
+        # `instance_id`: The instance ID, required when the data source is registered in instance mode.\\
+        # `encoded_jdbc_url`: The JDBC connection string that has been URL encoded, required for the data source registered via a connection string.\\
+        # `catalog_id`: The DLF catalog ID.\\
+        # `project_name`: The MaxCompute project name.\\
+        # `database_name`: The database name.\\
+        # `schema_name`: The schema name.
+        # 
         # This parameter is required.
         self.parent_meta_entity_id = parent_meta_entity_id
         self.sort_by = sort_by
@@ -54787,7 +55109,7 @@ class ListTaskInstancesResponseBodyPagingInfo(TeaModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The instances.
+        # The list of task instances.
         self.task_instances = task_instances
         # The total number of entries returned.
         self.total_count = total_count
@@ -54838,7 +55160,7 @@ class ListTaskInstancesResponseBody(TeaModel):
         paging_info: ListTaskInstancesResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
-        # The pagination information.
+        # The pagination details.
         self.paging_info = paging_info
         # The request ID.
         self.request_id = request_id
@@ -59816,7 +60138,9 @@ class RemoveEntityFromMetaCollectionRequest(TeaModel):
         id: str = None,
         meta_collection_id: str = None,
     ):
+        # The entity ID. Currently, entities can only be tables. You can call the ListTables operation to query the ID.
         self.id = id
+        # The collection ID. You can call the ListMetaCollections operation to query the ID.
         self.meta_collection_id = meta_collection_id
 
     def validate(self):
@@ -60749,10 +61073,15 @@ class RerunWorkflowInstancesRequestFilter(TeaModel):
         task_name: str = None,
         task_types: List[str] = None,
     ):
+        # Specifies whether to rerun the matched instances and all downstream instances.
         self.rerun_downstream_enabled = rerun_downstream_enabled
+        # The internal task IDs used for matching manual workflow instances.
         self.task_ids = task_ids
+        # The statuses of internal tasks used for matching manual workflow instances.
         self.task_instance_statuses = task_instance_statuses
+        # The internal task name used for matching the manual workflow instance.
         self.task_name = task_name
+        # Match internal tasks within the manual workflow by type.
         self.task_types = task_types
 
     def validate(self):
@@ -60806,18 +61135,41 @@ class RerunWorkflowInstancesRequest(TeaModel):
         type: str = None,
         workflow_id: int = None,
     ):
+        # The business date used for matching manual workflow instances.
         self.bizdate = bizdate
+        # The end trigger time of the manual workflow instance used for matching. This parameter must be used together with the StartTriggerTime.
         self.end_trigger_time = end_trigger_time
+        # The environment of the workspace. Valid values:
+        # 
+        # Prod Dev
         self.env_type = env_type
+        # The match conditions for internal instances of manual workflow instances.
         self.filter = filter
+        # The instance IDs used for matching manual workflow instances.
         self.ids = ids
+        # The manual workflow name, used for fuzzy matching.
         self.name = name
+        # The project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The start trigger time (creation time) of the manual workflow instance used for matching. This parameter must be used together with EndTriggerTime.
         self.start_trigger_time = start_trigger_time
+        # The status used for matching manual workflow instances.
+        # 
+        # Valid values:
+        # 
+        # *   Success
+        # *   Failure
         self.status = status
+        # The type of the workflow instance. Valid values:
+        # 
+        # ManualWorkflow.
+        # 
         # This parameter is required.
         self.type = type
+        # The workflow ID.
+        # 
         # This parameter is required.
         self.workflow_id = workflow_id
 
@@ -60898,18 +61250,41 @@ class RerunWorkflowInstancesShrinkRequest(TeaModel):
         type: str = None,
         workflow_id: int = None,
     ):
+        # The business date used for matching manual workflow instances.
         self.bizdate = bizdate
+        # The end trigger time of the manual workflow instance used for matching. This parameter must be used together with the StartTriggerTime.
         self.end_trigger_time = end_trigger_time
+        # The environment of the workspace. Valid values:
+        # 
+        # Prod Dev
         self.env_type = env_type
+        # The match conditions for internal instances of manual workflow instances.
         self.filter_shrink = filter_shrink
+        # The instance IDs used for matching manual workflow instances.
         self.ids_shrink = ids_shrink
+        # The manual workflow name, used for fuzzy matching.
         self.name = name
+        # The project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The start trigger time (creation time) of the manual workflow instance used for matching. This parameter must be used together with EndTriggerTime.
         self.start_trigger_time = start_trigger_time
+        # The status used for matching manual workflow instances.
+        # 
+        # Valid values:
+        # 
+        # *   Success
+        # *   Failure
         self.status = status
+        # The type of the workflow instance. Valid values:
+        # 
+        # ManualWorkflow.
+        # 
         # This parameter is required.
         self.type = type
+        # The workflow ID.
+        # 
         # This parameter is required.
         self.workflow_id = workflow_id
 
@@ -60979,7 +61354,9 @@ class RerunWorkflowInstancesResponseBody(TeaModel):
         operation_id: str = None,
         request_id: str = None,
     ):
+        # The operation ID. You can use this value to query the creation result via the GetRerunWorkflowInstancesResult operation.
         self.operation_id = operation_id
+        # The request ID. Used for troubleshooting and log tracking.
         self.request_id = request_id
 
     def validate(self):
@@ -64530,6 +64907,8 @@ class UpdateColumnBusinessMetadataRequest(TeaModel):
         id: str = None,
     ):
         self.description = description
+        # The column ID. You can call the ListColumns operation to query the ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+        # 
         # This parameter is required.
         self.id = id
 
@@ -69141,8 +69520,11 @@ class UpdateMetaCollectionRequest(TeaModel):
         id: str = None,
         name: str = None,
     ):
+        # The collection administrator IDs. This parameter is available only for data albums. The administrator must be an account within the same tenant.
         self.administrators = administrators
         self.description = description
+        # The collection ID.
+        # 
         # This parameter is required.
         self.id = id
         self.name = name
@@ -69187,8 +69569,11 @@ class UpdateMetaCollectionShrinkRequest(TeaModel):
         id: str = None,
         name: str = None,
     ):
+        # The collection administrator IDs. This parameter is available only for data albums. The administrator must be an account within the same tenant.
         self.administrators_shrink = administrators_shrink
         self.description = description
+        # The collection ID.
+        # 
         # This parameter is required.
         self.id = id
         self.name = name
@@ -70013,6 +70398,8 @@ class UpdateTableBusinessMetadataRequest(TeaModel):
         id: str = None,
         readme: str = None,
     ):
+        # The data table ID. You can call the ListTables operation to query the ID.
+        # 
         # This parameter is required.
         self.id = id
         self.readme = readme

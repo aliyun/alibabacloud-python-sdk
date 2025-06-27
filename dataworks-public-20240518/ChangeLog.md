@@ -1,3 +1,7 @@
+2025-06-27 Version: 7.2.1
+- Update API CreateWorkflowInstances: add request parameters DefaultRunProperties.PriorityWeightStrategy.
+
+
 2025-06-19 Version: 7.2.0
 - Support API GetRerunWorkflowInstancesResult.
 - Support API RerunWorkflowInstances.

@@ -2583,7 +2583,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateLineageRelationshipResponse:
         """
-        @summary 注册血缘关系
+        @summary Creates a lineage between a source entity and a destination entity. Either the source or destination entity must be a custom entity.
         
         @param tmp_req: CreateLineageRelationshipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2630,7 +2630,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateLineageRelationshipResponse:
         """
-        @summary 注册血缘关系
+        @summary Creates a lineage between a source entity and a destination entity. Either the source or destination entity must be a custom entity.
         
         @param tmp_req: CreateLineageRelationshipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2676,7 +2676,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateLineageRelationshipRequest,
     ) -> dataworks_public_20240518_models.CreateLineageRelationshipResponse:
         """
-        @summary 注册血缘关系
+        @summary Creates a lineage between a source entity and a destination entity. Either the source or destination entity must be a custom entity.
         
         @param request: CreateLineageRelationshipRequest
         @return: CreateLineageRelationshipResponse
@@ -2689,7 +2689,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateLineageRelationshipRequest,
     ) -> dataworks_public_20240518_models.CreateLineageRelationshipResponse:
         """
-        @summary 注册血缘关系
+        @summary Creates a lineage between a source entity and a destination entity. Either the source or destination entity must be a custom entity.
         
         @param request: CreateLineageRelationshipRequest
         @return: CreateLineageRelationshipResponse
@@ -2703,7 +2703,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateMetaCollectionResponse:
         """
-        @summary 创建集合
+        @summary Creates a collection in Data Map. Collections include categories, subcategories, data albums, and categories that are created in the data albums.
         
         @param request: CreateMetaCollectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2744,7 +2744,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateMetaCollectionResponse:
         """
-        @summary 创建集合
+        @summary Creates a collection in Data Map. Collections include categories, subcategories, data albums, and categories that are created in the data albums.
         
         @param request: CreateMetaCollectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2784,7 +2784,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateMetaCollectionRequest,
     ) -> dataworks_public_20240518_models.CreateMetaCollectionResponse:
         """
-        @summary 创建集合
+        @summary Creates a collection in Data Map. Collections include categories, subcategories, data albums, and categories that are created in the data albums.
         
         @param request: CreateMetaCollectionRequest
         @return: CreateMetaCollectionResponse
@@ -2797,7 +2797,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateMetaCollectionRequest,
     ) -> dataworks_public_20240518_models.CreateMetaCollectionResponse:
         """
-        @summary 创建集合
+        @summary Creates a collection in Data Map. Collections include categories, subcategories, data albums, and categories that are created in the data albums.
         
         @param request: CreateMetaCollectionRequest
         @return: CreateMetaCollectionResponse
@@ -10159,7 +10159,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetMetaCollectionResponse:
         """
-        @summary 请求collection详情
+        @summary Queries the information about a collection in Data Map. Collections include categories and data albums.
         
         @param request: GetMetaCollectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10192,7 +10192,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetMetaCollectionResponse:
         """
-        @summary 请求collection详情
+        @summary Queries the information about a collection in Data Map. Collections include categories and data albums.
         
         @param request: GetMetaCollectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10224,7 +10224,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetMetaCollectionRequest,
     ) -> dataworks_public_20240518_models.GetMetaCollectionResponse:
         """
-        @summary 请求collection详情
+        @summary Queries the information about a collection in Data Map. Collections include categories and data albums.
         
         @param request: GetMetaCollectionRequest
         @return: GetMetaCollectionResponse
@@ -10237,7 +10237,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetMetaCollectionRequest,
     ) -> dataworks_public_20240518_models.GetMetaCollectionResponse:
         """
-        @summary 请求collection详情
+        @summary Queries the information about a collection in Data Map. Collections include categories and data albums.
         
         @param request: GetMetaCollectionRequest
         @return: GetMetaCollectionResponse
@@ -10943,7 +10943,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetRerunWorkflowInstancesResultResponse:
         """
-        @summary 查询异步重跑工作流实例的结果
+        @summary Query the result of asynchronous workflow instance reruns.
         
         @param request: GetRerunWorkflowInstancesResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10978,7 +10978,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetRerunWorkflowInstancesResultResponse:
         """
-        @summary 查询异步重跑工作流实例的结果
+        @summary Query the result of asynchronous workflow instance reruns.
         
         @param request: GetRerunWorkflowInstancesResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11012,7 +11012,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetRerunWorkflowInstancesResultRequest,
     ) -> dataworks_public_20240518_models.GetRerunWorkflowInstancesResultResponse:
         """
-        @summary 查询异步重跑工作流实例的结果
+        @summary Query the result of asynchronous workflow instance reruns.
         
         @param request: GetRerunWorkflowInstancesResultRequest
         @return: GetRerunWorkflowInstancesResultResponse
@@ -11025,7 +11025,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetRerunWorkflowInstancesResultRequest,
     ) -> dataworks_public_20240518_models.GetRerunWorkflowInstancesResultResponse:
         """
-        @summary 查询异步重跑工作流实例的结果
+        @summary Query the result of asynchronous workflow instance reruns.
         
         @param request: GetRerunWorkflowInstancesResultRequest
         @return: GetRerunWorkflowInstancesResultResponse
@@ -15189,7 +15189,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListEntitiesInMetaCollectionResponse:
         """
-        @summary 查询集合中的实体列表
+        @summary Queries a list of entities in a collection in Data Map. Collections include categories and data albums. Entities can only be tables.
         
         @param request: ListEntitiesInMetaCollectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15222,7 +15222,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListEntitiesInMetaCollectionResponse:
         """
-        @summary 查询集合中的实体列表
+        @summary Queries a list of entities in a collection in Data Map. Collections include categories and data albums. Entities can only be tables.
         
         @param request: ListEntitiesInMetaCollectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15254,7 +15254,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListEntitiesInMetaCollectionRequest,
     ) -> dataworks_public_20240518_models.ListEntitiesInMetaCollectionResponse:
         """
-        @summary 查询集合中的实体列表
+        @summary Queries a list of entities in a collection in Data Map. Collections include categories and data albums. Entities can only be tables.
         
         @param request: ListEntitiesInMetaCollectionRequest
         @return: ListEntitiesInMetaCollectionResponse
@@ -15267,7 +15267,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListEntitiesInMetaCollectionRequest,
     ) -> dataworks_public_20240518_models.ListEntitiesInMetaCollectionResponse:
         """
-        @summary 查询集合中的实体列表
+        @summary Queries a list of entities in a collection in Data Map. Collections include categories and data albums. Entities can only be tables.
         
         @param request: ListEntitiesInMetaCollectionRequest
         @return: ListEntitiesInMetaCollectionResponse
@@ -15821,7 +15821,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListLineagesResponse:
         """
-        @summary 查询实体血缘
+        @summary Queries a list of ancestor and descendant entities of an entity in Data Map. You can specify whether to return the lineage between the entities.
         
         @param request: ListLineagesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15854,7 +15854,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListLineagesResponse:
         """
-        @summary 查询实体血缘
+        @summary Queries a list of ancestor and descendant entities of an entity in Data Map. You can specify whether to return the lineage between the entities.
         
         @param request: ListLineagesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15886,7 +15886,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListLineagesRequest,
     ) -> dataworks_public_20240518_models.ListLineagesResponse:
         """
-        @summary 查询实体血缘
+        @summary Queries a list of ancestor and descendant entities of an entity in Data Map. You can specify whether to return the lineage between the entities.
         
         @param request: ListLineagesRequest
         @return: ListLineagesResponse
@@ -15899,7 +15899,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListLineagesRequest,
     ) -> dataworks_public_20240518_models.ListLineagesResponse:
         """
-        @summary 查询实体血缘
+        @summary Queries a list of ancestor and descendant entities of an entity in Data Map. You can specify whether to return the lineage between the entities.
         
         @param request: ListLineagesRequest
         @return: ListLineagesResponse
@@ -15913,7 +15913,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListMetaCollectionsResponse:
         """
-        @summary 查询Collection列表
+        @summary Queries a list of collections in Data Map. Collections include categories and data albums.
         
         @param request: ListMetaCollectionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15946,7 +15946,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListMetaCollectionsResponse:
         """
-        @summary 查询Collection列表
+        @summary Queries a list of collections in Data Map. Collections include categories and data albums.
         
         @param request: ListMetaCollectionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15978,7 +15978,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListMetaCollectionsRequest,
     ) -> dataworks_public_20240518_models.ListMetaCollectionsResponse:
         """
-        @summary 查询Collection列表
+        @summary Queries a list of collections in Data Map. Collections include categories and data albums.
         
         @param request: ListMetaCollectionsRequest
         @return: ListMetaCollectionsResponse
@@ -15991,7 +15991,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListMetaCollectionsRequest,
     ) -> dataworks_public_20240518_models.ListMetaCollectionsResponse:
         """
-        @summary 查询Collection列表
+        @summary Queries a list of collections in Data Map. Collections include categories and data albums.
         
         @param request: ListMetaCollectionsRequest
         @return: ListMetaCollectionsResponse
@@ -17281,7 +17281,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListSchemasResponse:
         """
-        @summary 查询模式列表
+        @summary Queries a list of schemas in a database or a MaxCompute project in Data Map. Only schemas of the MaxCompute and Hologres metadata crawler types are supported.
         
         @param tmp_req: ListSchemasRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17318,7 +17318,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListSchemasResponse:
         """
-        @summary 查询模式列表
+        @summary Queries a list of schemas in a database or a MaxCompute project in Data Map. Only schemas of the MaxCompute and Hologres metadata crawler types are supported.
         
         @param tmp_req: ListSchemasRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17354,7 +17354,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListSchemasRequest,
     ) -> dataworks_public_20240518_models.ListSchemasResponse:
         """
-        @summary 查询模式列表
+        @summary Queries a list of schemas in a database or a MaxCompute project in Data Map. Only schemas of the MaxCompute and Hologres metadata crawler types are supported.
         
         @param request: ListSchemasRequest
         @return: ListSchemasResponse
@@ -17367,7 +17367,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListSchemasRequest,
     ) -> dataworks_public_20240518_models.ListSchemasResponse:
         """
-        @summary 查询模式列表
+        @summary Queries a list of schemas in a database or a MaxCompute project in Data Map. Only schemas of the MaxCompute and Hologres metadata crawler types are supported.
         
         @param request: ListSchemasRequest
         @return: ListSchemasResponse
@@ -19781,7 +19781,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.RerunWorkflowInstancesResponse:
         """
-        @summary 重跑工作流实例
+        @summary Reruns workflow instances.
         
         @param tmp_req: RerunWorkflowInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19842,7 +19842,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.RerunWorkflowInstancesResponse:
         """
-        @summary 重跑工作流实例
+        @summary Reruns workflow instances.
         
         @param tmp_req: RerunWorkflowInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19902,7 +19902,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.RerunWorkflowInstancesRequest,
     ) -> dataworks_public_20240518_models.RerunWorkflowInstancesResponse:
         """
-        @summary 重跑工作流实例
+        @summary Reruns workflow instances.
         
         @param request: RerunWorkflowInstancesRequest
         @return: RerunWorkflowInstancesResponse
@@ -19915,7 +19915,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.RerunWorkflowInstancesRequest,
     ) -> dataworks_public_20240518_models.RerunWorkflowInstancesResponse:
         """
-        @summary 重跑工作流实例
+        @summary Reruns workflow instances.
         
         @param request: RerunWorkflowInstancesRequest
         @return: RerunWorkflowInstancesResponse
@@ -23361,7 +23361,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateMetaCollectionResponse:
         """
-        @summary 更新集合
+        @summary Updates the information about a collection in Data Map, including the collection name, description, and administrator. Collections include categories and data albums. If you want to update the information about a data album, the account that you use must be attached the AliyunDataWorksFullAccess policy, or you are the data album creator or administrator.
         
         @param tmp_req: UpdateMetaCollectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23406,7 +23406,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateMetaCollectionResponse:
         """
-        @summary 更新集合
+        @summary Updates the information about a collection in Data Map, including the collection name, description, and administrator. Collections include categories and data albums. If you want to update the information about a data album, the account that you use must be attached the AliyunDataWorksFullAccess policy, or you are the data album creator or administrator.
         
         @param tmp_req: UpdateMetaCollectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23450,7 +23450,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateMetaCollectionRequest,
     ) -> dataworks_public_20240518_models.UpdateMetaCollectionResponse:
         """
-        @summary 更新集合
+        @summary Updates the information about a collection in Data Map, including the collection name, description, and administrator. Collections include categories and data albums. If you want to update the information about a data album, the account that you use must be attached the AliyunDataWorksFullAccess policy, or you are the data album creator or administrator.
         
         @param request: UpdateMetaCollectionRequest
         @return: UpdateMetaCollectionResponse
@@ -23463,7 +23463,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateMetaCollectionRequest,
     ) -> dataworks_public_20240518_models.UpdateMetaCollectionResponse:
         """
-        @summary 更新集合
+        @summary Updates the information about a collection in Data Map, including the collection name, description, and administrator. Collections include categories and data albums. If you want to update the information about a data album, the account that you use must be attached the AliyunDataWorksFullAccess policy, or you are the data album creator or administrator.
         
         @param request: UpdateMetaCollectionRequest
         @return: UpdateMetaCollectionResponse
@@ -24177,7 +24177,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateTableBusinessMetadataResponse:
         """
-        @summary 更新数据表业务元数据
+        @summary Updates the business metadata of a table in Data Map. Currently, only the usage notes of a table can be updated.
         
         @param request: UpdateTableBusinessMetadataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24214,7 +24214,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateTableBusinessMetadataResponse:
         """
-        @summary 更新数据表业务元数据
+        @summary Updates the business metadata of a table in Data Map. Currently, only the usage notes of a table can be updated.
         
         @param request: UpdateTableBusinessMetadataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24250,7 +24250,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateTableBusinessMetadataRequest,
     ) -> dataworks_public_20240518_models.UpdateTableBusinessMetadataResponse:
         """
-        @summary 更新数据表业务元数据
+        @summary Updates the business metadata of a table in Data Map. Currently, only the usage notes of a table can be updated.
         
         @param request: UpdateTableBusinessMetadataRequest
         @return: UpdateTableBusinessMetadataResponse
@@ -24263,7 +24263,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateTableBusinessMetadataRequest,
     ) -> dataworks_public_20240518_models.UpdateTableBusinessMetadataResponse:
         """
-        @summary 更新数据表业务元数据
+        @summary Updates the business metadata of a table in Data Map. Currently, only the usage notes of a table can be updated.
         
         @param request: UpdateTableBusinessMetadataRequest
         @return: UpdateTableBusinessMetadataResponse
