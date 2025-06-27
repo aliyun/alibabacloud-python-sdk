@@ -2742,17 +2742,17 @@ class DescribeCACertificateListRequest(TeaModel):
         show_size: int = None,
         valid_status: str = None,
     ):
-        # CaStatus.
+        # Ca status.
         # 
-        # - issue：inUse.
-        # - forbidden ：forbidden.
-        # - revoke：revoked.
+        # - issue: inUse.
+        # - forbidden: forbidden.
+        # - revoke: revoked.
         self.ca_status = ca_status
         # The type of the certificate. Valid values:
         # 
-        # - root：rootCA.
-        # - subRoot：subCA.
-        # - externalCa：import.
+        # - root: rootCA.
+        # - subRoot: subCA.
+        # - externalCa: import.
         self.cert_type = cert_type
         # The page number. Default value: **1**.
         self.current_page = current_page
@@ -2762,16 +2762,16 @@ class DescribeCACertificateListRequest(TeaModel):
         self.identifier = identifier
         # The CA Issuer Type.
         # 
-        # - local：Private certificate.
-        # - iTrusChina： Compliance CA.
-        # - external：External Import.
+        # - local: Private certificate.
+        # - iTrusChina: Compliance CA.
+        # - external: External Import.
         self.issuer_type = issuer_type
         # The number of CA certificates per page. Default value: **20**.
         self.show_size = show_size
         # valid time.
         # 
-        # - valid：means in the valid period.
-        # - notValid：means expired.
+        # - valid: means in the valid period.
+        # - notValid: means expired.
         self.valid_status = valid_status
 
     def validate(self):
@@ -2828,6 +2828,7 @@ class DescribeCACertificateListResponseBodyCertificateList(TeaModel):
         certificate_type: str = None,
         common_name: str = None,
         country_code: str = None,
+        gift: int = None,
         identifier: str = None,
         key_size: int = None,
         locality: str = None,
@@ -2842,6 +2843,7 @@ class DescribeCACertificateListResponseBodyCertificateList(TeaModel):
         state: str = None,
         status: str = None,
         subject_dn: str = None,
+        trial: int = None,
         x_509certificate: str = None,
         years: int = None,
     ):
@@ -2868,6 +2870,7 @@ class DescribeCACertificateListResponseBodyCertificateList(TeaModel):
         # 
         # For more information about country codes, see the **"Country codes"** section of the [Manage company profiles](https://help.aliyun.com/document_detail/198289.html) topic.
         self.country_code = country_code
+        self.gift = gift
         # The unique identifier of the CA certificate.
         self.identifier = identifier
         # The key length of the CA certificate.
@@ -2907,6 +2910,7 @@ class DescribeCACertificateListResponseBodyCertificateList(TeaModel):
         # *   **L**: the name of the city in which the organization is located.
         # *   **CN**: the common name or abbreviation of the organization.
         self.subject_dn = subject_dn
+        self.trial = trial
         # The content of the CA certificate.
         self.x_509certificate = x_509certificate
         # The validity period of the CA certificate. Unit: years.
@@ -2935,6 +2939,8 @@ class DescribeCACertificateListResponseBodyCertificateList(TeaModel):
             result['CommonName'] = self.common_name
         if self.country_code is not None:
             result['CountryCode'] = self.country_code
+        if self.gift is not None:
+            result['Gift'] = self.gift
         if self.identifier is not None:
             result['Identifier'] = self.identifier
         if self.key_size is not None:
@@ -2963,6 +2969,8 @@ class DescribeCACertificateListResponseBodyCertificateList(TeaModel):
             result['Status'] = self.status
         if self.subject_dn is not None:
             result['SubjectDN'] = self.subject_dn
+        if self.trial is not None:
+            result['Trial'] = self.trial
         if self.x_509certificate is not None:
             result['X509Certificate'] = self.x_509certificate
         if self.years is not None:
@@ -2985,6 +2993,8 @@ class DescribeCACertificateListResponseBodyCertificateList(TeaModel):
             self.common_name = m.get('CommonName')
         if m.get('CountryCode') is not None:
             self.country_code = m.get('CountryCode')
+        if m.get('Gift') is not None:
+            self.gift = m.get('Gift')
         if m.get('Identifier') is not None:
             self.identifier = m.get('Identifier')
         if m.get('KeySize') is not None:
@@ -3013,6 +3023,8 @@ class DescribeCACertificateListResponseBodyCertificateList(TeaModel):
             self.status = m.get('Status')
         if m.get('SubjectDN') is not None:
             self.subject_dn = m.get('SubjectDN')
+        if m.get('Trial') is not None:
+            self.trial = m.get('Trial')
         if m.get('X509Certificate') is not None:
             self.x_509certificate = m.get('X509Certificate')
         if m.get('Years') is not None:

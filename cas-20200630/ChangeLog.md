@@ -1,3 +1,8 @@
+2025-06-27 Version: 1.1.2
+- Update API DescribeCACertificateList: add response parameters Body.CertificateList.$.Gift.
+- Update API DescribeCACertificateList: add response parameters Body.CertificateList.$.Trial.
+
+
 2025-06-19 Version: 1.1.1
 - Update API DescribeCACertificateList: add response parameters Body.CertificateList.$.Alias.
 
