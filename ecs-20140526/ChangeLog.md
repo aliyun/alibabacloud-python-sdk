@@ -1,3 +1,7 @@
+2025-06-27 Version: 7.0.12
+- Update API CreateAutoProvisioningGroup: add request parameters LaunchConfiguration.SchedulerOptions.
+
+
 2025-06-27 Version: 7.0.11
 - Update API CreateLaunchTemplate: add request parameters ImageOptions.
 - Update API CreateLaunchTemplateVersion: add request parameters ImageOptions.
