@@ -1,3 +1,13 @@
+2025-06-27 Version: 1.4.0
+- Support API LlmStreamChat.
+- Update API GetScanResult: add response parameters Body.Data.Items.$.GuardFileUrls.
+- Update API GetScanResult: add response parameters Body.Data.Items.$.GuardImageUrls.
+- Update API GetScanResult: add response parameters Body.Data.Items.$.MaliciousFileLevel.
+- Update API GetScanResult: add response parameters Body.Data.Items.$.MaliciousUrlLevel.
+- Update API GetServiceConf: add response parameters Body.ServiceType.
+- Update API UpdateServiceConfig: add request parameters ServiceConfig.
+
+
 2025-06-13 Version: 1.3.3
 - Update API GetScanResult: add response parameters Body.Data.Items.$.ApiLabels.
 - Update API GetScanResult: add response parameters Body.Data.Items.$.ApiRequestTime.

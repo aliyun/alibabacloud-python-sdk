@@ -6649,6 +6649,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_service_configs_with_options_async(request, runtime)
 
+    def llm_stream_chat_with_options(
+        self,
+        request: green_20220926_models.LlmStreamChatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.LlmStreamChatResponse:
+        """
+        @summary 使用SSE接口流式调用大模型
+        
+        @param request: LlmStreamChatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LlmStreamChatResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.messages):
+            body['Messages'] = request.messages
+        if not UtilClient.is_unset(request.temperature):
+            body['Temperature'] = request.temperature
+        if not UtilClient.is_unset(request.top_p):
+            body['TopP'] = request.top_p
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='LlmStreamChat',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.LlmStreamChatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def llm_stream_chat_with_options_async(
+        self,
+        request: green_20220926_models.LlmStreamChatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.LlmStreamChatResponse:
+        """
+        @summary 使用SSE接口流式调用大模型
+        
+        @param request: LlmStreamChatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LlmStreamChatResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.messages):
+            body['Messages'] = request.messages
+        if not UtilClient.is_unset(request.temperature):
+            body['Temperature'] = request.temperature
+        if not UtilClient.is_unset(request.top_p):
+            body['TopP'] = request.top_p
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='LlmStreamChat',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.LlmStreamChatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def llm_stream_chat(
+        self,
+        request: green_20220926_models.LlmStreamChatRequest,
+    ) -> green_20220926_models.LlmStreamChatResponse:
+        """
+        @summary 使用SSE接口流式调用大模型
+        
+        @param request: LlmStreamChatRequest
+        @return: LlmStreamChatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.llm_stream_chat_with_options(request, runtime)
+
+    async def llm_stream_chat_async(
+        self,
+        request: green_20220926_models.LlmStreamChatRequest,
+    ) -> green_20220926_models.LlmStreamChatResponse:
+        """
+        @summary 使用SSE接口流式调用大模型
+        
+        @param request: LlmStreamChatRequest
+        @return: LlmStreamChatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.llm_stream_chat_with_options_async(request, runtime)
+
     def modify_answer_lib_with_options(
         self,
         request: green_20220926_models.ModifyAnswerLibRequest,
@@ -8050,6 +8154,8 @@ class Client(OpenApiClient):
             body['SceneConfig'] = request.scene_config
         if not UtilClient.is_unset(request.service_code):
             body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.service_config):
+            body['ServiceConfig'] = request.service_config
         if not UtilClient.is_unset(request.video_config):
             body['VideoConfig'] = request.video_config
         req = open_api_models.OpenApiRequest(
@@ -8105,6 +8211,8 @@ class Client(OpenApiClient):
             body['SceneConfig'] = request.scene_config
         if not UtilClient.is_unset(request.service_code):
             body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.service_config):
+            body['ServiceConfig'] = request.service_config
         if not UtilClient.is_unset(request.video_config):
             body['VideoConfig'] = request.video_config
         req = open_api_models.OpenApiRequest(

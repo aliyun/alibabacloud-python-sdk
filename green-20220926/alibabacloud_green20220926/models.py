@@ -7491,10 +7491,14 @@ class GetScanResultResponseBodyDataItems(TeaModel):
         extra: Dict[str, Any] = None,
         frame_count: int = None,
         gmt_create: str = None,
+        guard_file_urls: List[str] = None,
+        guard_image_urls: List[str] = None,
         image_labels: List[Dict[str, Any]] = None,
         image_service: str = None,
         image_url: str = None,
         labels: str = None,
+        malicious_file_level: str = None,
+        malicious_url_level: str = None,
         manual_only: bool = None,
         no_labels: List[str] = None,
         offset: int = None,
@@ -7541,11 +7545,15 @@ class GetScanResultResponseBodyDataItems(TeaModel):
         self.extra = extra
         self.frame_count = frame_count
         self.gmt_create = gmt_create
+        self.guard_file_urls = guard_file_urls
+        self.guard_image_urls = guard_image_urls
         self.image_labels = image_labels
         self.image_service = image_service
         # url
         self.image_url = image_url
         self.labels = labels
+        self.malicious_file_level = malicious_file_level
+        self.malicious_url_level = malicious_url_level
         self.manual_only = manual_only
         self.no_labels = no_labels
         self.offset = offset
@@ -7616,6 +7624,10 @@ class GetScanResultResponseBodyDataItems(TeaModel):
             result['FrameCount'] = self.frame_count
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
+        if self.guard_file_urls is not None:
+            result['GuardFileUrls'] = self.guard_file_urls
+        if self.guard_image_urls is not None:
+            result['GuardImageUrls'] = self.guard_image_urls
         if self.image_labels is not None:
             result['ImageLabels'] = self.image_labels
         if self.image_service is not None:
@@ -7624,6 +7636,10 @@ class GetScanResultResponseBodyDataItems(TeaModel):
             result['ImageUrl'] = self.image_url
         if self.labels is not None:
             result['Labels'] = self.labels
+        if self.malicious_file_level is not None:
+            result['MaliciousFileLevel'] = self.malicious_file_level
+        if self.malicious_url_level is not None:
+            result['MaliciousUrlLevel'] = self.malicious_url_level
         if self.manual_only is not None:
             result['ManualOnly'] = self.manual_only
         if self.no_labels is not None:
@@ -7718,6 +7734,10 @@ class GetScanResultResponseBodyDataItems(TeaModel):
             self.frame_count = m.get('FrameCount')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
+        if m.get('GuardFileUrls') is not None:
+            self.guard_file_urls = m.get('GuardFileUrls')
+        if m.get('GuardImageUrls') is not None:
+            self.guard_image_urls = m.get('GuardImageUrls')
         if m.get('ImageLabels') is not None:
             self.image_labels = m.get('ImageLabels')
         if m.get('ImageService') is not None:
@@ -7726,6 +7746,10 @@ class GetScanResultResponseBodyDataItems(TeaModel):
             self.image_url = m.get('ImageUrl')
         if m.get('Labels') is not None:
             self.labels = m.get('Labels')
+        if m.get('MaliciousFileLevel') is not None:
+            self.malicious_file_level = m.get('MaliciousFileLevel')
+        if m.get('MaliciousUrlLevel') is not None:
+            self.malicious_url_level = m.get('MaliciousUrlLevel')
         if m.get('ManualOnly') is not None:
             self.manual_only = m.get('ManualOnly')
         if m.get('NoLabels') is not None:
@@ -8010,6 +8034,7 @@ class GetServiceConfResponseBody(TeaModel):
         request_id: str = None,
         resource_type: str = None,
         service_code: str = None,
+        service_type: str = None,
         success: bool = None,
         uid: str = None,
     ):
@@ -8022,6 +8047,7 @@ class GetServiceConfResponseBody(TeaModel):
         self.request_id = request_id
         self.resource_type = resource_type
         self.service_code = service_code
+        self.service_type = service_type
         self.success = success
         # UID。
         self.uid = uid
@@ -8053,6 +8079,8 @@ class GetServiceConfResponseBody(TeaModel):
             result['ResourceType'] = self.resource_type
         if self.service_code is not None:
             result['ServiceCode'] = self.service_code
+        if self.service_type is not None:
+            result['ServiceType'] = self.service_type
         if self.success is not None:
             result['Success'] = self.success
         if self.uid is not None:
@@ -8079,6 +8107,8 @@ class GetServiceConfResponseBody(TeaModel):
             self.resource_type = m.get('ResourceType')
         if m.get('ServiceCode') is not None:
             self.service_code = m.get('ServiceCode')
+        if m.get('ServiceType') is not None:
+            self.service_type = m.get('ServiceType')
         if m.get('Success') is not None:
             self.success = m.get('Success')
         if m.get('Uid') is not None:
@@ -12025,6 +12055,297 @@ class ListServiceConfigsResponse(TeaModel):
         return self
 
 
+class LlmStreamChatRequest(TeaModel):
+    def __init__(
+        self,
+        messages: Any = None,
+        temperature: float = None,
+        top_p: float = None,
+    ):
+        self.messages = messages
+        self.temperature = temperature
+        self.top_p = top_p
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.messages is not None:
+            result['Messages'] = self.messages
+        if self.temperature is not None:
+            result['Temperature'] = self.temperature
+        if self.top_p is not None:
+            result['TopP'] = self.top_p
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Messages') is not None:
+            self.messages = m.get('Messages')
+        if m.get('Temperature') is not None:
+            self.temperature = m.get('Temperature')
+        if m.get('TopP') is not None:
+            self.top_p = m.get('TopP')
+        return self
+
+
+class LlmStreamChatResponseBodyChoicesDelta(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        role: str = None,
+    ):
+        self.content = content
+        self.role = role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.role is not None:
+            result['Role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        return self
+
+
+class LlmStreamChatResponseBodyChoices(TeaModel):
+    def __init__(
+        self,
+        delta: LlmStreamChatResponseBodyChoicesDelta = None,
+        finish_reason: str = None,
+        index: int = None,
+        logprobs: str = None,
+    ):
+        self.delta = delta
+        self.finish_reason = finish_reason
+        self.index = index
+        self.logprobs = logprobs
+
+    def validate(self):
+        if self.delta:
+            self.delta.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delta is not None:
+            result['Delta'] = self.delta.to_map()
+        if self.finish_reason is not None:
+            result['FinishReason'] = self.finish_reason
+        if self.index is not None:
+            result['Index'] = self.index
+        if self.logprobs is not None:
+            result['Logprobs'] = self.logprobs
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Delta') is not None:
+            temp_model = LlmStreamChatResponseBodyChoicesDelta()
+            self.delta = temp_model.from_map(m['Delta'])
+        if m.get('FinishReason') is not None:
+            self.finish_reason = m.get('FinishReason')
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        if m.get('Logprobs') is not None:
+            self.logprobs = m.get('Logprobs')
+        return self
+
+
+class LlmStreamChatResponseBodyError(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        param: str = None,
+        type: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.param = param
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.param is not None:
+            result['Param'] = self.param
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Param') is not None:
+            self.param = m.get('Param')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class LlmStreamChatResponseBody(TeaModel):
+    def __init__(
+        self,
+        choices: List[LlmStreamChatResponseBodyChoices] = None,
+        created: int = None,
+        error: LlmStreamChatResponseBodyError = None,
+        id: str = None,
+        model: str = None,
+        object: str = None,
+        request_id: str = None,
+        system_fingerprint: str = None,
+        usage: str = None,
+    ):
+        self.choices = choices
+        self.created = created
+        self.error = error
+        self.id = id
+        self.model = model
+        self.object = object
+        self.request_id = request_id
+        self.system_fingerprint = system_fingerprint
+        self.usage = usage
+
+    def validate(self):
+        if self.choices:
+            for k in self.choices:
+                if k:
+                    k.validate()
+        if self.error:
+            self.error.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Choices'] = []
+        if self.choices is not None:
+            for k in self.choices:
+                result['Choices'].append(k.to_map() if k else None)
+        if self.created is not None:
+            result['Created'] = self.created
+        if self.error is not None:
+            result['Error'] = self.error.to_map()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.object is not None:
+            result['Object'] = self.object
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.system_fingerprint is not None:
+            result['SystemFingerprint'] = self.system_fingerprint
+        if self.usage is not None:
+            result['Usage'] = self.usage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.choices = []
+        if m.get('Choices') is not None:
+            for k in m.get('Choices'):
+                temp_model = LlmStreamChatResponseBodyChoices()
+                self.choices.append(temp_model.from_map(k))
+        if m.get('Created') is not None:
+            self.created = m.get('Created')
+        if m.get('Error') is not None:
+            temp_model = LlmStreamChatResponseBodyError()
+            self.error = temp_model.from_map(m['Error'])
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('Object') is not None:
+            self.object = m.get('Object')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SystemFingerprint') is not None:
+            self.system_fingerprint = m.get('SystemFingerprint')
+        if m.get('Usage') is not None:
+            self.usage = m.get('Usage')
+        return self
+
+
+class LlmStreamChatResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: LlmStreamChatResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = LlmStreamChatResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyAnswerLibRequest(TeaModel):
     def __init__(
         self,
@@ -13927,6 +14248,7 @@ class UpdateServiceConfigRequest(TeaModel):
         scene: str = None,
         scene_config: str = None,
         service_code: str = None,
+        service_config: str = None,
         video_config: str = None,
     ):
         self.file_config = file_config
@@ -13938,6 +14260,7 @@ class UpdateServiceConfigRequest(TeaModel):
         self.scene = scene
         self.scene_config = scene_config
         self.service_code = service_code
+        self.service_config = service_config
         self.video_config = video_config
 
     def validate(self):
@@ -13967,6 +14290,8 @@ class UpdateServiceConfigRequest(TeaModel):
             result['SceneConfig'] = self.scene_config
         if self.service_code is not None:
             result['ServiceCode'] = self.service_code
+        if self.service_config is not None:
+            result['ServiceConfig'] = self.service_config
         if self.video_config is not None:
             result['VideoConfig'] = self.video_config
         return result
@@ -13991,6 +14316,8 @@ class UpdateServiceConfigRequest(TeaModel):
             self.scene_config = m.get('SceneConfig')
         if m.get('ServiceCode') is not None:
             self.service_code = m.get('ServiceCode')
+        if m.get('ServiceConfig') is not None:
+            self.service_config = m.get('ServiceConfig')
         if m.get('VideoConfig') is not None:
             self.video_config = m.get('VideoConfig')
         return self
