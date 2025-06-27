@@ -2061,6 +2061,8 @@ class CreateDefenseTemplateRequest(TeaModel):
         template_origin: str = None,
         template_status: int = None,
         template_type: str = None,
+        unbind_resource_groups: List[str] = None,
+        unbind_resources: List[str] = None,
     ):
         # The scenario in which you want to use the protection rule template. For more information, see the description of the **DefenseScene** parameter in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
         # 
@@ -2103,6 +2105,8 @@ class CreateDefenseTemplateRequest(TeaModel):
         # 
         # This parameter is required.
         self.template_type = template_type
+        self.unbind_resource_groups = unbind_resource_groups
+        self.unbind_resources = unbind_resources
 
     def validate(self):
         pass
@@ -2131,6 +2135,10 @@ class CreateDefenseTemplateRequest(TeaModel):
             result['TemplateStatus'] = self.template_status
         if self.template_type is not None:
             result['TemplateType'] = self.template_type
+        if self.unbind_resource_groups is not None:
+            result['UnbindResourceGroups'] = self.unbind_resource_groups
+        if self.unbind_resources is not None:
+            result['UnbindResources'] = self.unbind_resources
         return result
 
     def from_map(self, m: dict = None):
@@ -2153,6 +2161,10 @@ class CreateDefenseTemplateRequest(TeaModel):
             self.template_status = m.get('TemplateStatus')
         if m.get('TemplateType') is not None:
             self.template_type = m.get('TemplateType')
+        if m.get('UnbindResourceGroups') is not None:
+            self.unbind_resource_groups = m.get('UnbindResourceGroups')
+        if m.get('UnbindResources') is not None:
+            self.unbind_resources = m.get('UnbindResources')
         return self
 
 
@@ -13537,6 +13549,168 @@ class DescribeDefenseResourceNamesResponse(TeaModel):
         return self
 
 
+class DescribeDefenseResourceOwnerUidRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+        resource_names: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        # This parameter is required.
+        self.resource_names = resource_names
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        if self.resource_names is not None:
+            result['ResourceNames'] = self.resource_names
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        if m.get('ResourceNames') is not None:
+            self.resource_names = m.get('ResourceNames')
+        return self
+
+
+class DescribeDefenseResourceOwnerUidResponseBodyOwnerInfos(TeaModel):
+    def __init__(
+        self,
+        owner_user_id: str = None,
+        resource_name: str = None,
+    ):
+        self.owner_user_id = owner_user_id
+        self.resource_name = resource_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_user_id is not None:
+            result['OwnerUserId'] = self.owner_user_id
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerUserId') is not None:
+            self.owner_user_id = m.get('OwnerUserId')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
+        return self
+
+
+class DescribeDefenseResourceOwnerUidResponseBody(TeaModel):
+    def __init__(
+        self,
+        owner_infos: List[DescribeDefenseResourceOwnerUidResponseBodyOwnerInfos] = None,
+        request_id: str = None,
+    ):
+        self.owner_infos = owner_infos
+        self.request_id = request_id
+
+    def validate(self):
+        if self.owner_infos:
+            for k in self.owner_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['OwnerInfos'] = []
+        if self.owner_infos is not None:
+            for k in self.owner_infos:
+                result['OwnerInfos'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.owner_infos = []
+        if m.get('OwnerInfos') is not None:
+            for k in m.get('OwnerInfos'):
+                temp_model = DescribeDefenseResourceOwnerUidResponseBodyOwnerInfos()
+                self.owner_infos.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeDefenseResourceOwnerUidResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDefenseResourceOwnerUidResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDefenseResourceOwnerUidResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDefenseResourceTemplatesRequest(TeaModel):
     def __init__(
         self,
@@ -14477,6 +14651,7 @@ class DescribeDefenseRuleResponse(TeaModel):
 class DescribeDefenseRulesRequest(TeaModel):
     def __init__(
         self,
+        defense_type: str = None,
         instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -14485,6 +14660,7 @@ class DescribeDefenseRulesRequest(TeaModel):
         resource_manager_resource_group_id: str = None,
         rule_type: str = None,
     ):
+        self.defense_type = defense_type
         # The ID of the Web Application Firewall (WAF) instance.
         # 
         # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
@@ -14521,6 +14697,8 @@ class DescribeDefenseRulesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.defense_type is not None:
+            result['DefenseType'] = self.defense_type
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.page_number is not None:
@@ -14539,6 +14717,8 @@ class DescribeDefenseRulesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DefenseType') is not None:
+            self.defense_type = m.get('DefenseType')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('PageNumber') is not None:
@@ -15794,7 +15974,7 @@ class DescribeDomainDetailResponseBodyCertDetail(TeaModel):
 class DescribeDomainDetailResponseBodyListen(TeaModel):
     def __init__(
         self,
-        cert_id: int = None,
+        cert_id: str = None,
         cipher_suite: int = None,
         custom_ciphers: List[str] = None,
         enable_tlsv_3: bool = None,
@@ -30552,7 +30732,10 @@ class DescribeTemplateResourcesRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
         region_id: str = None,
+        resource: str = None,
         resource_manager_resource_group_id: str = None,
         resource_type: str = None,
         template_id: int = None,
@@ -30563,11 +30746,14 @@ class DescribeTemplateResourcesRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.max_results = max_results
+        self.next_token = next_token
         # The region where the WAF instance resides. Valid values:
         # 
         # *   **cn-hangzhou:** the Chinese mainland.
         # *   **ap-southeast-1:** outside the Chinese mainland.
         self.region_id = region_id
+        self.resource = resource
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The type of the protected resource. Valid values:
@@ -30593,8 +30779,14 @@ class DescribeTemplateResourcesRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource is not None:
+            result['Resource'] = self.resource
         if self.resource_manager_resource_group_id is not None:
             result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
         if self.resource_type is not None:
@@ -30607,8 +30799,14 @@ class DescribeTemplateResourcesRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('Resource') is not None:
+            self.resource = m.get('Resource')
         if m.get('ResourceManagerResourceGroupId') is not None:
             self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
         if m.get('ResourceType') is not None:
@@ -30621,13 +30819,19 @@ class DescribeTemplateResourcesRequest(TeaModel):
 class DescribeTemplateResourcesResponseBody(TeaModel):
     def __init__(
         self,
+        max_results: int = None,
+        next_token: str = None,
         request_id: str = None,
         resources: List[str] = None,
+        total_count: int = None,
     ):
+        self.max_results = max_results
+        self.next_token = next_token
         # The ID of the request.
         self.request_id = request_id
         # An array of protected objects or protected object groups that are associated to the protection rule template.
         self.resources = resources
+        self.total_count = total_count
 
     def validate(self):
         pass
@@ -30638,18 +30842,30 @@ class DescribeTemplateResourcesResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.resources is not None:
             result['Resources'] = self.resources
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Resources') is not None:
             self.resources = m.get('Resources')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 

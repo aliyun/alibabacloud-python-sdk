@@ -1,3 +1,16 @@
+2025-06-27 Version: 5.6.0
+- Support API DescribeDefenseResourceOwnerUid.
+- Update API CreateDefenseTemplate: add request parameters UnbindResourceGroups.
+- Update API CreateDefenseTemplate: add request parameters UnbindResources.
+- Update API DescribeDefenseRules: add request parameters DefenseType.
+- Update API DescribeTemplateResources: add request parameters MaxResults.
+- Update API DescribeTemplateResources: add request parameters NextToken.
+- Update API DescribeTemplateResources: add request parameters Resource.
+- Update API DescribeTemplateResources: add response parameters Body.MaxResults.
+- Update API DescribeTemplateResources: add response parameters Body.NextToken.
+- Update API DescribeTemplateResources: add response parameters Body.TotalCount.
+
+
 2025-06-25 Version: 5.5.0
 - Support API CreateCerts.
 - Support API DescribeDomainUsedPorts.

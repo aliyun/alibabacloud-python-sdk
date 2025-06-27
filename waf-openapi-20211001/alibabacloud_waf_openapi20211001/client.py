@@ -1203,6 +1203,10 @@ class Client(OpenApiClient):
             query['TemplateStatus'] = request.template_status
         if not UtilClient.is_unset(request.template_type):
             query['TemplateType'] = request.template_type
+        if not UtilClient.is_unset(request.unbind_resource_groups):
+            query['UnbindResourceGroups'] = request.unbind_resource_groups
+        if not UtilClient.is_unset(request.unbind_resources):
+            query['UnbindResources'] = request.unbind_resources
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1254,6 +1258,10 @@ class Client(OpenApiClient):
             query['TemplateStatus'] = request.template_status
         if not UtilClient.is_unset(request.template_type):
             query['TemplateType'] = request.template_type
+        if not UtilClient.is_unset(request.unbind_resource_groups):
+            query['UnbindResourceGroups'] = request.unbind_resource_groups
+        if not UtilClient.is_unset(request.unbind_resources):
+            query['UnbindResources'] = request.unbind_resources
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7163,6 +7171,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_defense_resource_names_with_options_async(request, runtime)
 
+    def describe_defense_resource_owner_uid_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeDefenseResourceOwnerUidRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeDefenseResourceOwnerUidResponse:
+        """
+        @summary 查询防护对象和所属资源的关系
+        
+        @param request: DescribeDefenseResourceOwnerUidRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDefenseResourceOwnerUidResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.resource_names):
+            query['ResourceNames'] = request.resource_names
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDefenseResourceOwnerUid',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseResourceOwnerUidResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_defense_resource_owner_uid_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeDefenseResourceOwnerUidRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeDefenseResourceOwnerUidResponse:
+        """
+        @summary 查询防护对象和所属资源的关系
+        
+        @param request: DescribeDefenseResourceOwnerUidRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDefenseResourceOwnerUidResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.resource_names):
+            query['ResourceNames'] = request.resource_names
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDefenseResourceOwnerUid',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseResourceOwnerUidResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_defense_resource_owner_uid(
+        self,
+        request: waf_openapi_20211001_models.DescribeDefenseResourceOwnerUidRequest,
+    ) -> waf_openapi_20211001_models.DescribeDefenseResourceOwnerUidResponse:
+        """
+        @summary 查询防护对象和所属资源的关系
+        
+        @param request: DescribeDefenseResourceOwnerUidRequest
+        @return: DescribeDefenseResourceOwnerUidResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_defense_resource_owner_uid_with_options(request, runtime)
+
+    async def describe_defense_resource_owner_uid_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeDefenseResourceOwnerUidRequest,
+    ) -> waf_openapi_20211001_models.DescribeDefenseResourceOwnerUidResponse:
+        """
+        @summary 查询防护对象和所属资源的关系
+        
+        @param request: DescribeDefenseResourceOwnerUidRequest
+        @return: DescribeDefenseResourceOwnerUidResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_defense_resource_owner_uid_with_options_async(request, runtime)
+
     def describe_defense_resource_templates_with_options(
         self,
         request: waf_openapi_20211001_models.DescribeDefenseResourceTemplatesRequest,
@@ -7545,6 +7661,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.defense_type):
+            query['DefenseType'] = request.defense_type
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.page_number):
@@ -7592,6 +7710,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.defense_type):
+            query['DefenseType'] = request.defense_type
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.page_number):
@@ -14599,8 +14719,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
         if not UtilClient.is_unset(request.resource_type):
@@ -14642,8 +14768,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
         if not UtilClient.is_unset(request.resource_type):
