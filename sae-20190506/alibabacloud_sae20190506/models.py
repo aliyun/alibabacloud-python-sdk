@@ -24842,6 +24842,39 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetr
         return self
 
 
+class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricPrometheusMetrics(TeaModel):
+    def __init__(
+        self,
+        prometheus_query: str = None,
+        target_metric_value: str = None,
+    ):
+        self.prometheus_query = prometheus_query
+        self.target_metric_value = target_metric_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.prometheus_query is not None:
+            result['PrometheusQuery'] = self.prometheus_query
+        if self.target_metric_value is not None:
+            result['TargetMetricValue'] = self.target_metric_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PrometheusQuery') is not None:
+            self.prometheus_query = m.get('PrometheusQuery')
+        if m.get('TargetMetricValue') is not None:
+            self.target_metric_value = m.get('TargetMetricValue')
+        return self
+
+
 class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleDownRules(TeaModel):
     def __init__(
         self,
@@ -24940,20 +24973,28 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetr
     def __init__(
         self,
         max_replicas: int = None,
+        metric_source: str = None,
         metrics: List[DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetrics] = None,
         metrics_status: DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatus = None,
         min_replicas: int = None,
+        prometheus_metrics: List[DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricPrometheusMetrics] = None,
+        prometheus_token: str = None,
+        prometheus_url: str = None,
         scale_down_rules: DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleDownRules = None,
         scale_up_rules: DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleUpRules = None,
     ):
         # The maximum number of instances.
         self.max_replicas = max_replicas
+        self.metric_source = metric_source
         # The list of metrics that are used to trigger the auto scaling policy.
         self.metrics = metrics
         # The execution status of the metric-based auto scaling policy.
         self.metrics_status = metrics_status
         # The minimum number of instances.
         self.min_replicas = min_replicas
+        self.prometheus_metrics = prometheus_metrics
+        self.prometheus_token = prometheus_token
+        self.prometheus_url = prometheus_url
         # Rules that determine the application scale-in.
         self.scale_down_rules = scale_down_rules
         # Rules that determine the application scale-out.
@@ -24966,6 +25007,10 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetr
                     k.validate()
         if self.metrics_status:
             self.metrics_status.validate()
+        if self.prometheus_metrics:
+            for k in self.prometheus_metrics:
+                if k:
+                    k.validate()
         if self.scale_down_rules:
             self.scale_down_rules.validate()
         if self.scale_up_rules:
@@ -24979,6 +25024,8 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetr
         result = dict()
         if self.max_replicas is not None:
             result['MaxReplicas'] = self.max_replicas
+        if self.metric_source is not None:
+            result['MetricSource'] = self.metric_source
         result['Metrics'] = []
         if self.metrics is not None:
             for k in self.metrics:
@@ -24987,6 +25034,14 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetr
             result['MetricsStatus'] = self.metrics_status.to_map()
         if self.min_replicas is not None:
             result['MinReplicas'] = self.min_replicas
+        result['PrometheusMetrics'] = []
+        if self.prometheus_metrics is not None:
+            for k in self.prometheus_metrics:
+                result['PrometheusMetrics'].append(k.to_map() if k else None)
+        if self.prometheus_token is not None:
+            result['PrometheusToken'] = self.prometheus_token
+        if self.prometheus_url is not None:
+            result['PrometheusUrl'] = self.prometheus_url
         if self.scale_down_rules is not None:
             result['ScaleDownRules'] = self.scale_down_rules.to_map()
         if self.scale_up_rules is not None:
@@ -24997,6 +25052,8 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetr
         m = m or dict()
         if m.get('MaxReplicas') is not None:
             self.max_replicas = m.get('MaxReplicas')
+        if m.get('MetricSource') is not None:
+            self.metric_source = m.get('MetricSource')
         self.metrics = []
         if m.get('Metrics') is not None:
             for k in m.get('Metrics'):
@@ -25007,6 +25064,15 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetr
             self.metrics_status = temp_model.from_map(m['MetricsStatus'])
         if m.get('MinReplicas') is not None:
             self.min_replicas = m.get('MinReplicas')
+        self.prometheus_metrics = []
+        if m.get('PrometheusMetrics') is not None:
+            for k in m.get('PrometheusMetrics'):
+                temp_model = DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricPrometheusMetrics()
+                self.prometheus_metrics.append(temp_model.from_map(k))
+        if m.get('PrometheusToken') is not None:
+            self.prometheus_token = m.get('PrometheusToken')
+        if m.get('PrometheusUrl') is not None:
+            self.prometheus_url = m.get('PrometheusUrl')
         if m.get('ScaleDownRules') is not None:
             temp_model = DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleDownRules()
             self.scale_down_rules = temp_model.from_map(m['ScaleDownRules'])

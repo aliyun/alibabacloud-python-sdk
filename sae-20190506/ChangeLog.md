@@ -1,3 +1,10 @@
+2025-06-27 Version: 2.5.3
+- Update API DescribeApplicationScalingRules: add response parameters Body.Data.ApplicationScalingRules.$.Metric.MetricSource.
+- Update API DescribeApplicationScalingRules: add response parameters Body.Data.ApplicationScalingRules.$.Metric.PrometheusMetrics.
+- Update API DescribeApplicationScalingRules: add response parameters Body.Data.ApplicationScalingRules.$.Metric.PrometheusToken.
+- Update API DescribeApplicationScalingRules: add response parameters Body.Data.ApplicationScalingRules.$.Metric.PrometheusUrl.
+
+
 2025-06-24 Version: 2.5.2
 - Update API ListApplications: add response parameters Body.Data.Applications.$.IsStateful.
 - Update API ListApplications: add response parameters Body.Data.Applications.$.VpcId.
