@@ -8411,6 +8411,8 @@ class Client(OpenApiClient):
             query['HttpTokens'] = request.http_tokens
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.image_options):
+            query['ImageOptions'] = request.image_options
         if not UtilClient.is_unset(request.image_owner_alias):
             query['ImageOwnerAlias'] = request.image_owner_alias
         if not UtilClient.is_unset(request.instance_charge_type):
@@ -8559,6 +8561,8 @@ class Client(OpenApiClient):
             query['HttpTokens'] = request.http_tokens
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.image_options):
+            query['ImageOptions'] = request.image_options
         if not UtilClient.is_unset(request.image_owner_alias):
             query['ImageOwnerAlias'] = request.image_owner_alias
         if not UtilClient.is_unset(request.instance_charge_type):
@@ -8743,6 +8747,8 @@ class Client(OpenApiClient):
             query['HttpTokens'] = request.http_tokens
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.image_options):
+            query['ImageOptions'] = request.image_options
         if not UtilClient.is_unset(request.image_owner_alias):
             query['ImageOwnerAlias'] = request.image_owner_alias
         if not UtilClient.is_unset(request.instance_charge_type):
@@ -8885,6 +8891,8 @@ class Client(OpenApiClient):
             query['HttpTokens'] = request.http_tokens
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.image_options):
+            query['ImageOptions'] = request.image_options
         if not UtilClient.is_unset(request.image_owner_alias):
             query['ImageOwnerAlias'] = request.image_owner_alias
         if not UtilClient.is_unset(request.instance_charge_type):

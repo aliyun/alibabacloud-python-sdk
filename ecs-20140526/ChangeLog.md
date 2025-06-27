@@ -1,3 +1,9 @@
+2025-06-27 Version: 7.0.11
+- Update API CreateLaunchTemplate: add request parameters ImageOptions.
+- Update API CreateLaunchTemplateVersion: add request parameters ImageOptions.
+- Update API DescribeLaunchTemplateVersions: add response parameters Body.LaunchTemplateVersionSets.$.LaunchTemplateData.ImageOptions.
+
+
 2025-06-13 Version: 7.0.10
 - Update API DescribeDiskDefaultKMSKeyId: add request parameters OwnerId.
 - Update API DescribeDiskEncryptionByDefaultStatus: add request parameters OwnerId.
