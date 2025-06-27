@@ -5905,6 +5905,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsCacheDomainsResponse:
         """
+        @summary 查询代理域名
+        
         @param request: DescribeDnsCacheDomainsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeDnsCacheDomainsResponse
@@ -5944,6 +5946,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsCacheDomainsResponse:
         """
+        @summary 查询代理域名
+        
         @param request: DescribeDnsCacheDomainsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeDnsCacheDomainsResponse
@@ -5982,6 +5986,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsCacheDomainsRequest,
     ) -> alidns_20150109_models.DescribeDnsCacheDomainsResponse:
         """
+        @summary 查询代理域名
+        
         @param request: DescribeDnsCacheDomainsRequest
         @return: DescribeDnsCacheDomainsResponse
         """
@@ -5993,6 +5999,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsCacheDomainsRequest,
     ) -> alidns_20150109_models.DescribeDnsCacheDomainsResponse:
         """
+        @summary 查询代理域名
+        
         @param request: DescribeDnsCacheDomainsRequest
         @return: DescribeDnsCacheDomainsResponse
         """
@@ -7881,6 +7889,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDohDomainStatisticsResponse:
         """
+        @summary 查询DOH域名请求量数据
+        
         @param request: DescribeDohDomainStatisticsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeDohDomainStatisticsResponse
@@ -7920,6 +7930,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDohDomainStatisticsResponse:
         """
+        @summary 查询DOH域名请求量数据
+        
         @param request: DescribeDohDomainStatisticsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeDohDomainStatisticsResponse
@@ -7958,6 +7970,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDohDomainStatisticsRequest,
     ) -> alidns_20150109_models.DescribeDohDomainStatisticsResponse:
         """
+        @summary 查询DOH域名请求量数据
+        
         @param request: DescribeDohDomainStatisticsRequest
         @return: DescribeDohDomainStatisticsResponse
         """
@@ -7969,6 +7983,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDohDomainStatisticsRequest,
     ) -> alidns_20150109_models.DescribeDohDomainStatisticsResponse:
         """
+        @summary 查询DOH域名请求量数据
+        
         @param request: DescribeDohDomainStatisticsRequest
         @return: DescribeDohDomainStatisticsResponse
         """
@@ -11505,6 +11521,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeInternetDnsLogsResponse:
         """
+        @summary 查询解析日志
+        
         @param request: DescribeInternetDnsLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeInternetDnsLogsResponse
@@ -11527,6 +11545,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.query_condition):
             query['QueryCondition'] = request.query_condition
+        if not UtilClient.is_unset(request.recursion_protocol_type):
+            query['RecursionProtocolType'] = request.recursion_protocol_type
         if not UtilClient.is_unset(request.start_timestamp):
             query['StartTimestamp'] = request.start_timestamp
         req = open_api_models.OpenApiRequest(
@@ -11554,6 +11574,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeInternetDnsLogsResponse:
         """
+        @summary 查询解析日志
+        
         @param request: DescribeInternetDnsLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeInternetDnsLogsResponse
@@ -11576,6 +11598,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.query_condition):
             query['QueryCondition'] = request.query_condition
+        if not UtilClient.is_unset(request.recursion_protocol_type):
+            query['RecursionProtocolType'] = request.recursion_protocol_type
         if not UtilClient.is_unset(request.start_timestamp):
             query['StartTimestamp'] = request.start_timestamp
         req = open_api_models.OpenApiRequest(
@@ -11602,6 +11626,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeInternetDnsLogsRequest,
     ) -> alidns_20150109_models.DescribeInternetDnsLogsResponse:
         """
+        @summary 查询解析日志
+        
         @param request: DescribeInternetDnsLogsRequest
         @return: DescribeInternetDnsLogsResponse
         """
@@ -11613,6 +11639,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeInternetDnsLogsRequest,
     ) -> alidns_20150109_models.DescribeInternetDnsLogsResponse:
         """
+        @summary 查询解析日志
+        
         @param request: DescribeInternetDnsLogsRequest
         @return: DescribeInternetDnsLogsResponse
         """
@@ -12393,6 +12421,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.start_date):
             query['StartDate'] = request.start_date
         req = open_api_models.OpenApiRequest(
@@ -12440,6 +12470,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.start_date):
             query['StartDate'] = request.start_date
         req = open_api_models.OpenApiRequest(
@@ -13217,7 +13249,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribePdnsUserInfoResponse:
         """
-        @summary 获取公共DNS用户信息
+        @summary Queries the information about users in Alibaba Cloud Public DNS.
         
         @param request: DescribePdnsUserInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13252,7 +13284,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribePdnsUserInfoResponse:
         """
-        @summary 获取公共DNS用户信息
+        @summary Queries the information about users in Alibaba Cloud Public DNS.
         
         @param request: DescribePdnsUserInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13286,7 +13318,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribePdnsUserInfoRequest,
     ) -> alidns_20150109_models.DescribePdnsUserInfoResponse:
         """
-        @summary 获取公共DNS用户信息
+        @summary Queries the information about users in Alibaba Cloud Public DNS.
         
         @param request: DescribePdnsUserInfoRequest
         @return: DescribePdnsUserInfoResponse
@@ -13299,7 +13331,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribePdnsUserInfoRequest,
     ) -> alidns_20150109_models.DescribePdnsUserInfoResponse:
         """
-        @summary 获取公共DNS用户信息
+        @summary Queries the information about users in Alibaba Cloud Public DNS.
         
         @param request: DescribePdnsUserInfoRequest
         @return: DescribePdnsUserInfoResponse
@@ -13953,6 +13985,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeSupportLinesResponse:
         """
+        @summary 查询支持的所有线路
+        
         @param request: DescribeSupportLinesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSupportLinesResponse
@@ -13990,6 +14024,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeSupportLinesResponse:
         """
+        @summary 查询支持的所有线路
+        
         @param request: DescribeSupportLinesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSupportLinesResponse
@@ -14026,6 +14062,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeSupportLinesRequest,
     ) -> alidns_20150109_models.DescribeSupportLinesResponse:
         """
+        @summary 查询支持的所有线路
+        
         @param request: DescribeSupportLinesRequest
         @return: DescribeSupportLinesResponse
         """
@@ -14037,6 +14075,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeSupportLinesRequest,
     ) -> alidns_20150109_models.DescribeSupportLinesResponse:
         """
+        @summary 查询支持的所有线路
+        
         @param request: DescribeSupportLinesRequest
         @return: DescribeSupportLinesResponse
         """

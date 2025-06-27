@@ -1,3 +1,9 @@
+2025-06-27 Version: 3.5.9
+- Update API DescribeDomains: add response parameters Body.Domains.$.SlaveDnsStatus.
+- Update API DescribeInternetDnsLogs: add request parameters RecursionProtocolType.
+- Update API DescribePdnsOperateLogs: add request parameters ResourceType.
+
+
 2025-04-23 Version: 3.5.8
 - Update API DescribeCustomLines: add response parameters Body.CustomLines.$.IpSegmentList.
 

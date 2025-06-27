@@ -22490,6 +22490,7 @@ class DescribeDomainsResponseBodyDomainsDomain(TeaModel):
         registrant_email: str = None,
         remark: str = None,
         resource_group_id: str = None,
+        slave_dns_status: str = None,
         starmark: bool = None,
         tags: DescribeDomainsResponseBodyDomainsDomainTags = None,
         version_code: str = None,
@@ -22532,6 +22533,7 @@ class DescribeDomainsResponseBodyDomainsDomain(TeaModel):
         self.remark = remark
         # The ID of the resource group to which the domain name belongs.
         self.resource_group_id = resource_group_id
+        self.slave_dns_status = slave_dns_status
         # Indicates whether the domain name was added to favorites.
         self.starmark = starmark
         # The tags added to the resource.
@@ -22587,6 +22589,8 @@ class DescribeDomainsResponseBodyDomainsDomain(TeaModel):
             result['Remark'] = self.remark
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.slave_dns_status is not None:
+            result['SlaveDnsStatus'] = self.slave_dns_status
         if self.starmark is not None:
             result['Starmark'] = self.starmark
         if self.tags is not None:
@@ -22634,6 +22638,8 @@ class DescribeDomainsResponseBodyDomainsDomain(TeaModel):
             self.remark = m.get('Remark')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SlaveDnsStatus') is not None:
+            self.slave_dns_status = m.get('SlaveDnsStatus')
         if m.get('Starmark') is not None:
             self.starmark = m.get('Starmark')
         if m.get('Tags') is not None:
@@ -27378,6 +27384,7 @@ class DescribeInternetDnsLogsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         query_condition: str = None,
+        recursion_protocol_type: str = None,
         start_timestamp: int = None,
     ):
         # The account ID displayed on the Recursive Resolution (Public DNS) page after you activate Alibaba Cloud Public DNS.
@@ -27408,6 +27415,7 @@ class DescribeInternetDnsLogsRequest(TeaModel):
         # - status: Status 
         # - serverIp: Resolution server IP
         self.query_condition = query_condition
+        self.recursion_protocol_type = recursion_protocol_type
         # The start time of the query (timestamp, unit: milliseconds).
         self.start_timestamp = start_timestamp
 
@@ -27436,6 +27444,8 @@ class DescribeInternetDnsLogsRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.query_condition is not None:
             result['QueryCondition'] = self.query_condition
+        if self.recursion_protocol_type is not None:
+            result['RecursionProtocolType'] = self.recursion_protocol_type
         if self.start_timestamp is not None:
             result['StartTimestamp'] = self.start_timestamp
         return result
@@ -27458,6 +27468,8 @@ class DescribeInternetDnsLogsRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('QueryCondition') is not None:
             self.query_condition = m.get('QueryCondition')
+        if m.get('RecursionProtocolType') is not None:
+            self.recursion_protocol_type = m.get('RecursionProtocolType')
         if m.get('StartTimestamp') is not None:
             self.start_timestamp = m.get('StartTimestamp')
         return self
@@ -29196,6 +29208,7 @@ class DescribePdnsOperateLogsRequest(TeaModel):
         lang: str = None,
         page_number: int = None,
         page_size: int = None,
+        resource_type: str = None,
         start_date: str = None,
     ):
         self.action_type = action_type
@@ -29204,6 +29217,7 @@ class DescribePdnsOperateLogsRequest(TeaModel):
         self.lang = lang
         self.page_number = page_number
         self.page_size = page_size
+        self.resource_type = resource_type
         self.start_date = start_date
 
     def validate(self):
@@ -29227,6 +29241,8 @@ class DescribePdnsOperateLogsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         if self.start_date is not None:
             result['StartDate'] = self.start_date
         return result
@@ -29245,6 +29261,8 @@ class DescribePdnsOperateLogsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         if m.get('StartDate') is not None:
             self.start_date = m.get('StartDate')
         return self
@@ -30961,6 +30979,10 @@ class DescribePdnsUserInfoRequest(TeaModel):
         self,
         lang: str = None,
     ):
+        # The language of the content within the request and response. Default value: **zh**. Valid value:
+        # 
+        # *   **zh**: Chinese.
+        # *   **en**: English.
         self.lang = lang
 
     def validate(self):
@@ -30995,13 +31017,21 @@ class DescribePdnsUserInfoResponseBodyUserInfo(TeaModel):
         statistic_switch_status: str = None,
         stopped_service: str = None,
     ):
+        # The enabled access security types.
         self.available_access_security_type = available_access_security_type
+        # The enabled public recursive DNS service.
         self.available_service = available_service
+        # The configuration ID of the users in public recursive DNS.
         self.pdns_id = pdns_id
+        # The SecretKey configured for a UDP-based CIDR block.
         self.secret_key = secret_key
+        # The type of the public recursive DNS service.
         self.service_type = service_type
+        # The status of the public recursive DNS service.
         self.state = state
+        # The status of the traffic analysis switch for the user in public recursive DNS service.
         self.statistic_switch_status = statistic_switch_status
+        # The disabled public recursive DNS service.
         self.stopped_service = stopped_service
 
     def validate(self):
@@ -31058,7 +31088,9 @@ class DescribePdnsUserInfoResponseBody(TeaModel):
         request_id: str = None,
         user_info: DescribePdnsUserInfoResponseBodyUserInfo = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the user.
         self.user_info = user_info
 
     def validate(self):
