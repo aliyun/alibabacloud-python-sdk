@@ -3741,6 +3741,102 @@ class DeleteAppsResponse(TeaModel):
         return self
 
 
+class DeleteBackupFileRequest(TeaModel):
+    def __init__(
+        self,
+        backup_file_id_list: List[str] = None,
+    ):
+        # This parameter is required.
+        self.backup_file_id_list = backup_file_id_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backup_file_id_list is not None:
+            result['BackupFileIdList'] = self.backup_file_id_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackupFileIdList') is not None:
+            self.backup_file_id_list = m.get('BackupFileIdList')
+        return self
+
+
+class DeleteBackupFileResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteBackupFileResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteBackupFileResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteBackupFileResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteCloudPhoneNodesRequest(TeaModel):
     def __init__(
         self,
@@ -5037,6 +5133,39 @@ class DescribeAndroidInstancesResponseBodyInstanceModelDisplayConfig(TeaModel):
         return self
 
 
+class DescribeAndroidInstancesResponseBodyInstanceModelPhoneDataInfo(TeaModel):
+    def __init__(
+        self,
+        phone_data_id: str = None,
+        phone_data_volume: int = None,
+    ):
+        self.phone_data_id = phone_data_id
+        self.phone_data_volume = phone_data_volume
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.phone_data_id is not None:
+            result['PhoneDataId'] = self.phone_data_id
+        if self.phone_data_volume is not None:
+            result['PhoneDataVolume'] = self.phone_data_volume
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PhoneDataId') is not None:
+            self.phone_data_id = m.get('PhoneDataId')
+        if m.get('PhoneDataVolume') is not None:
+            self.phone_data_volume = m.get('PhoneDataVolume')
+        return self
+
+
 class DescribeAndroidInstancesResponseBodyInstanceModelTags(TeaModel):
     def __init__(
         self,
@@ -5102,6 +5231,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         network_interface_ipv_6address: str = None,
         office_site_id: str = None,
         persistent_app_instance_id: str = None,
+        phone_data_info: DescribeAndroidInstancesResponseBodyInstanceModelPhoneDataInfo = None,
         policy_group_id: str = None,
         public_ip_address: str = None,
         public_ipv_6address: str = None,
@@ -5165,6 +5295,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         self.office_site_id = office_site_id
         # The ID of the persistent session.
         self.persistent_app_instance_id = persistent_app_instance_id
+        self.phone_data_info = phone_data_info
         # The ID of the policy.
         self.policy_group_id = policy_group_id
         # The public IP address.
@@ -5199,6 +5330,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
                     k.validate()
         if self.display_config:
             self.display_config.validate()
+        if self.phone_data_info:
+            self.phone_data_info.validate()
         if self.tags:
             for k in self.tags:
                 if k:
@@ -5266,6 +5399,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             result['OfficeSiteId'] = self.office_site_id
         if self.persistent_app_instance_id is not None:
             result['PersistentAppInstanceId'] = self.persistent_app_instance_id
+        if self.phone_data_info is not None:
+            result['PhoneDataInfo'] = self.phone_data_info.to_map()
         if self.policy_group_id is not None:
             result['PolicyGroupId'] = self.policy_group_id
         if self.public_ip_address is not None:
@@ -5353,6 +5488,9 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             self.office_site_id = m.get('OfficeSiteId')
         if m.get('PersistentAppInstanceId') is not None:
             self.persistent_app_instance_id = m.get('PersistentAppInstanceId')
+        if m.get('PhoneDataInfo') is not None:
+            temp_model = DescribeAndroidInstancesResponseBodyInstanceModelPhoneDataInfo()
+            self.phone_data_info = temp_model.from_map(m['PhoneDataInfo'])
         if m.get('PolicyGroupId') is not None:
             self.policy_group_id = m.get('PolicyGroupId')
         if m.get('PublicIpAddress') is not None:
@@ -6323,6 +6461,39 @@ class DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos(TeaModel):
         return self
 
 
+class DescribeCloudPhoneNodesResponseBodyNodeModelPhoneDataInfo(TeaModel):
+    def __init__(
+        self,
+        phone_data_id: str = None,
+        phone_data_volume: int = None,
+    ):
+        self.phone_data_id = phone_data_id
+        self.phone_data_volume = phone_data_volume
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.phone_data_id is not None:
+            result['PhoneDataId'] = self.phone_data_id
+        if self.phone_data_volume is not None:
+            result['PhoneDataVolume'] = self.phone_data_volume
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PhoneDataId') is not None:
+            self.phone_data_id = m.get('PhoneDataId')
+        if m.get('PhoneDataVolume') is not None:
+            self.phone_data_volume = m.get('PhoneDataVolume')
+        return self
+
+
 class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
     def __init__(
         self,
@@ -6338,6 +6509,7 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
         node_id: str = None,
         node_name: str = None,
         phone_count: int = None,
+        phone_data_info: DescribeCloudPhoneNodesResponseBodyNodeModelPhoneDataInfo = None,
         region_id: str = None,
         resolution_height: int = None,
         resolution_width: int = None,
@@ -6368,6 +6540,7 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
         self.node_name = node_name
         # The number of cloud phone instances per matrix.
         self.phone_count = phone_count
+        self.phone_data_info = phone_data_info
         # The region ID.
         self.region_id = region_id
         # The height of the resolution. Unit: pixel.
@@ -6388,6 +6561,8 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
             for k in self.network_infos:
                 if k:
                     k.validate()
+        if self.phone_data_info:
+            self.phone_data_info.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6421,6 +6596,8 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
             result['NodeName'] = self.node_name
         if self.phone_count is not None:
             result['PhoneCount'] = self.phone_count
+        if self.phone_data_info is not None:
+            result['PhoneDataInfo'] = self.phone_data_info.to_map()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resolution_height is not None:
@@ -6466,6 +6643,9 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
             self.node_name = m.get('NodeName')
         if m.get('PhoneCount') is not None:
             self.phone_count = m.get('PhoneCount')
+        if m.get('PhoneDataInfo') is not None:
+            temp_model = DescribeCloudPhoneNodesResponseBodyNodeModelPhoneDataInfo()
+            self.phone_data_info = temp_model.from_map(m['PhoneDataInfo'])
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResolutionHeight') is not None:

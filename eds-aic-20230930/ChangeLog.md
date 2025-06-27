@@ -1,3 +1,9 @@
+2025-06-27 Version: 4.8.0
+- Support API DeleteBackupFile.
+- Update API DescribeAndroidInstances: add response parameters Body.InstanceModel.$.PhoneDataInfo.
+- Update API DescribeCloudPhoneNodes: add response parameters Body.NodeModel.$.PhoneDataInfo.
+
+
 2025-05-31 Version: 4.7.2
 - Update API BatchGetAcpConnectionTicket: add response parameters Body.InstanceConnectionModels.$.AppInstanceId.
 - Update API BatchGetAcpConnectionTicket: add response parameters Body.InstanceConnectionModels.$.ErrorCode.

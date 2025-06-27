@@ -1966,6 +1966,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_apps_with_options_async(request, runtime)
 
+    def delete_backup_file_with_options(
+        self,
+        request: eds_aic_20230930_models.DeleteBackupFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.DeleteBackupFileResponse:
+        """
+        @summary 删除备份文件
+        
+        @param request: DeleteBackupFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBackupFileResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_file_id_list):
+            query['BackupFileIdList'] = request.backup_file_id_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBackupFile',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.DeleteBackupFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_backup_file_with_options_async(
+        self,
+        request: eds_aic_20230930_models.DeleteBackupFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.DeleteBackupFileResponse:
+        """
+        @summary 删除备份文件
+        
+        @param request: DeleteBackupFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBackupFileResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_file_id_list):
+            query['BackupFileIdList'] = request.backup_file_id_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBackupFile',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.DeleteBackupFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_backup_file(
+        self,
+        request: eds_aic_20230930_models.DeleteBackupFileRequest,
+    ) -> eds_aic_20230930_models.DeleteBackupFileResponse:
+        """
+        @summary 删除备份文件
+        
+        @param request: DeleteBackupFileRequest
+        @return: DeleteBackupFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_backup_file_with_options(request, runtime)
+
+    async def delete_backup_file_async(
+        self,
+        request: eds_aic_20230930_models.DeleteBackupFileRequest,
+    ) -> eds_aic_20230930_models.DeleteBackupFileResponse:
+        """
+        @summary 删除备份文件
+        
+        @param request: DeleteBackupFileRequest
+        @return: DeleteBackupFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_backup_file_with_options_async(request, runtime)
+
     def delete_cloud_phone_nodes_with_options(
         self,
         request: eds_aic_20230930_models.DeleteCloudPhoneNodesRequest,
