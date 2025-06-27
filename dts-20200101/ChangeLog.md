@@ -3,6 +3,11 @@
 - Update API ModifySubscription: add request parameters Reserved.
 
 
+2025-06-27 Version: 5.8.3
+- Update API ModifySubscription: add request parameters ModifyType.
+- Update API ModifySubscription: add request parameters Reserved.
+
+
 2025-05-22 Version: 5.8.2
 - Update API DescribeDtsJobs: add response parameters Body.DtsJobList.$.StructureDataCheckStatus.
 - Update API DescribeDtsJobs: add response parameters Body.DtsJobList.$.FullDataCheckStatus.CanSwitch.
