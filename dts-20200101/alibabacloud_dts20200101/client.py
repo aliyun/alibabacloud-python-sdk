@@ -11930,8 +11930,12 @@ class Client(OpenApiClient):
             query['DtsInstanceId'] = request.dts_instance_id
         if not UtilClient.is_unset(request.dts_job_id):
             query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.modify_type):
+            query['ModifyType'] = request.modify_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reserved):
+            query['Reserved'] = request.reserved
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.subscription_data_type_ddl):
@@ -11979,8 +11983,12 @@ class Client(OpenApiClient):
             query['DtsInstanceId'] = request.dts_instance_id
         if not UtilClient.is_unset(request.dts_job_id):
             query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.modify_type):
+            query['ModifyType'] = request.modify_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reserved):
+            query['Reserved'] = request.reserved
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.subscription_data_type_ddl):
