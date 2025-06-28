@@ -1,3 +1,7 @@
+2025-06-28 Version: 3.1.2
+- Update API DescribeSQLPatterns: add request parameters UserName.
+
+
 2025-06-25 Version: 3.1.1
 - Update API DescribeDBClusterAttribute: add response parameters Body.Items.$.AINodeNumber.
 - Update API DescribeDBClusterAttribute: add response parameters Body.Items.$.AINodeSpec.

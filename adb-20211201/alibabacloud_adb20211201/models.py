@@ -30252,6 +30252,7 @@ class DescribeSQLPatternsRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
         start_time: str = None,
+        user_name: str = None,
     ):
         # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         # 
@@ -30311,6 +30312,7 @@ class DescribeSQLPatternsRequest(TeaModel):
         # > *   Only data within the last 14 days can be queried.
         # > * The maximum time range that can be specified is 24 hours.
         self.start_time = start_time
+        self.user_name = user_name
 
     def validate(self):
         pass
@@ -30339,6 +30341,8 @@ class DescribeSQLPatternsRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
         return result
 
     def from_map(self, m: dict = None):
@@ -30361,6 +30365,8 @@ class DescribeSQLPatternsRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
         return self
 
 
