@@ -2043,6 +2043,7 @@ class CreateCloudPhoneNodeRequest(TeaModel):
         resolution_width: int = None,
         server_share_data_volume: int = None,
         server_type: str = None,
+        stream_mode: int = None,
         tag: List[CreateCloudPhoneNodeRequestTag] = None,
         v_switch_id: str = None,
     ):
@@ -2110,6 +2111,7 @@ class CreateCloudPhoneNodeRequest(TeaModel):
         # 
         # This parameter is required.
         self.server_type = server_type
+        self.stream_mode = stream_mode
         # The resource tags.
         self.tag = tag
         # The vSwitch ID.
@@ -2163,6 +2165,8 @@ class CreateCloudPhoneNodeRequest(TeaModel):
             result['ServerShareDataVolume'] = self.server_share_data_volume
         if self.server_type is not None:
             result['ServerType'] = self.server_type
+        if self.stream_mode is not None:
+            result['StreamMode'] = self.stream_mode
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -2208,6 +2212,8 @@ class CreateCloudPhoneNodeRequest(TeaModel):
             self.server_share_data_volume = m.get('ServerShareDataVolume')
         if m.get('ServerType') is not None:
             self.server_type = m.get('ServerType')
+        if m.get('StreamMode') is not None:
+            self.stream_mode = m.get('StreamMode')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -2273,6 +2279,7 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
         resolution_width: int = None,
         server_share_data_volume: int = None,
         server_type: str = None,
+        stream_mode: int = None,
         tag: List[CreateCloudPhoneNodeShrinkRequestTag] = None,
         v_switch_id: str = None,
     ):
@@ -2340,6 +2347,7 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.server_type = server_type
+        self.stream_mode = stream_mode
         # The resource tags.
         self.tag = tag
         # The vSwitch ID.
@@ -2391,6 +2399,8 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
             result['ServerShareDataVolume'] = self.server_share_data_volume
         if self.server_type is not None:
             result['ServerType'] = self.server_type
+        if self.stream_mode is not None:
+            result['StreamMode'] = self.stream_mode
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -2435,6 +2445,8 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
             self.server_share_data_volume = m.get('ServerShareDataVolume')
         if m.get('ServerType') is not None:
             self.server_type = m.get('ServerType')
+        if m.get('StreamMode') is not None:
+            self.stream_mode = m.get('StreamMode')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -5240,6 +5252,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         region_id: str = None,
         rendering_type: str = None,
         session_status: str = None,
+        stream_mode: int = None,
         tags: List[DescribeAndroidInstancesResponseBodyInstanceModelTags] = None,
         v_switch_id: str = None,
         zone_id: str = None,
@@ -5316,6 +5329,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         # *   disConnect: The session is disconnected.
         # *   connect: The session is connected.
         self.session_status = session_status
+        self.stream_mode = stream_mode
         # The tags.
         self.tags = tags
         self.v_switch_id = v_switch_id
@@ -5417,6 +5431,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             result['RenderingType'] = self.rendering_type
         if self.session_status is not None:
             result['SessionStatus'] = self.session_status
+        if self.stream_mode is not None:
+            result['StreamMode'] = self.stream_mode
         result['Tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -5507,6 +5523,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             self.rendering_type = m.get('RenderingType')
         if m.get('SessionStatus') is not None:
             self.session_status = m.get('SessionStatus')
+        if m.get('StreamMode') is not None:
+            self.stream_mode = m.get('StreamMode')
         self.tags = []
         if m.get('Tags') is not None:
             for k in m.get('Tags'):
@@ -8683,9 +8701,10 @@ class DetachKeyPairResponse(TeaModel):
 class DisconnectAndroidInstanceRequest(TeaModel):
     def __init__(
         self,
+        end_user_id: str = None,
         instance_ids: List[str] = None,
     ):
-        # This parameter is required.
+        self.end_user_id = end_user_id
         self.instance_ids = instance_ids
 
     def validate(self):
@@ -8697,12 +8716,16 @@ class DisconnectAndroidInstanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.end_user_id is not None:
+            result['EndUserId'] = self.end_user_id
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EndUserId') is not None:
+            self.end_user_id = m.get('EndUserId')
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
         return self
@@ -10692,11 +10715,13 @@ class ModifyCloudPhoneNodeRequest(TeaModel):
         self,
         new_node_name: str = None,
         node_id: str = None,
+        stream_mode: int = None,
     ):
         # The name that you want to assign to the cloud phone matrix.
         self.new_node_name = new_node_name
         # The ID of the cloud phone matrix.
         self.node_id = node_id
+        self.stream_mode = stream_mode
 
     def validate(self):
         pass
@@ -10711,6 +10736,8 @@ class ModifyCloudPhoneNodeRequest(TeaModel):
             result['NewNodeName'] = self.new_node_name
         if self.node_id is not None:
             result['NodeId'] = self.node_id
+        if self.stream_mode is not None:
+            result['StreamMode'] = self.stream_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -10719,6 +10746,8 @@ class ModifyCloudPhoneNodeRequest(TeaModel):
             self.new_node_name = m.get('NewNodeName')
         if m.get('NodeId') is not None:
             self.node_id = m.get('NodeId')
+        if m.get('StreamMode') is not None:
+            self.stream_mode = m.get('StreamMode')
         return self
 
 

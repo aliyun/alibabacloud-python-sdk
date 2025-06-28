@@ -1156,6 +1156,8 @@ class Client(OpenApiClient):
             query['ServerShareDataVolume'] = request.server_share_data_volume
         if not UtilClient.is_unset(request.server_type):
             query['ServerType'] = request.server_type
+        if not UtilClient.is_unset(request.stream_mode):
+            query['StreamMode'] = request.stream_mode
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.v_switch_id):
@@ -1233,6 +1235,8 @@ class Client(OpenApiClient):
             query['ServerShareDataVolume'] = request.server_share_data_volume
         if not UtilClient.is_unset(request.server_type):
             query['ServerType'] = request.server_type
+        if not UtilClient.is_unset(request.stream_mode):
+            query['StreamMode'] = request.stream_mode
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.v_switch_id):
@@ -4132,6 +4136,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
         if not UtilClient.is_unset(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         req = open_api_models.OpenApiRequest(
@@ -4167,6 +4173,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
         if not UtilClient.is_unset(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         req = open_api_models.OpenApiRequest(
@@ -5531,7 +5539,13 @@ class Client(OpenApiClient):
         @return: ModifyCloudPhoneNodeResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.new_node_name):
+            query['NewNodeName'] = request.new_node_name
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.stream_mode):
+            query['StreamMode'] = request.stream_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5540,7 +5554,7 @@ class Client(OpenApiClient):
             version='2023-09-30',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -5564,7 +5578,13 @@ class Client(OpenApiClient):
         @return: ModifyCloudPhoneNodeResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.new_node_name):
+            query['NewNodeName'] = request.new_node_name
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.stream_mode):
+            query['StreamMode'] = request.stream_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5573,7 +5593,7 @@ class Client(OpenApiClient):
             version='2023-09-30',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',

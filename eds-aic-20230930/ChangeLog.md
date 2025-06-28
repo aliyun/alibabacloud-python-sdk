@@ -1,3 +1,10 @@
+2025-06-28 Version: 4.8.1
+- Update API CreateCloudPhoneNode: add request parameters StreamMode.
+- Update API DescribeAndroidInstances: add response parameters Body.InstanceModel.$.StreamMode.
+- Update API DisconnectAndroidInstance: add request parameters EndUserId.
+- Update API ModifyCloudPhoneNode: add request parameters StreamMode.
+
+
 2025-06-27 Version: 4.8.0
 - Support API DeleteBackupFile.
 - Update API DescribeAndroidInstances: add response parameters Body.InstanceModel.$.PhoneDataInfo.
