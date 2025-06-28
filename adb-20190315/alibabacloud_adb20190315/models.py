@@ -1941,7 +1941,12 @@ class CreateDBResourceGroupRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         self.client_token = client_token
+        # The working mode of the resource group. Valid values:
+        # 
+        # *   **Disable** (default)
+        # *   **AutoScale**\
         self.cluster_mode = cluster_mode
+        # The resource specifications of a single compute cluster. Unit: ACU.
         self.cluster_size_resource = cluster_size_resource
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
@@ -1949,7 +1954,12 @@ class CreateDBResourceGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The engine of the resource group. Valid values:
+        # 
+        # *   **AnalyticDB** (default)
+        # *   **SparkWarehouse**\
         self.engine = engine
+        # The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group. If you want to configure parameters for a specific Spark job, you can specify values for the parameters in the code editor when you submit the job.
         self.engine_params = engine_params
         # The name of the resource group.
         # 
@@ -1963,10 +1973,21 @@ class CreateDBResourceGroupRequest(TeaModel):
         # 
         # *   **interactive** (default)
         # *   **batch**\
+        # *   **job**\
         self.group_type = group_type
+        # The maximum number of compute clusters that are allowed in the resource group. Maximum value: 10.
         self.max_cluster_count = max_cluster_count
+        # The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster. Unit: ACU.
+        # 
+        # *   When GroupType is set to interactive, set this parameter to a value in increments of 16ACU.
+        # *   When GroupType is set to job, set this parameter to a value in increments of 8ACU.
         self.max_compute_resource = max_compute_resource
+        # The minimum number of compute clusters that are required in the resource group. Minimum value: 1.
         self.min_cluster_count = min_cluster_count
+        # The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
+        # 
+        # *   When GroupType is set to interactive, set this parameter to 16ACU.
+        # *   When GroupType is set to job, set this parameter to 0ACU.
         self.min_compute_resource = min_compute_resource
         # The number of nodes. Default value: 0.
         # 
@@ -2084,7 +2105,12 @@ class CreateDBResourceGroupShrinkRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         self.client_token = client_token
+        # The working mode of the resource group. Valid values:
+        # 
+        # *   **Disable** (default)
+        # *   **AutoScale**\
         self.cluster_mode = cluster_mode
+        # The resource specifications of a single compute cluster. Unit: ACU.
         self.cluster_size_resource = cluster_size_resource
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
@@ -2092,7 +2118,12 @@ class CreateDBResourceGroupShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The engine of the resource group. Valid values:
+        # 
+        # *   **AnalyticDB** (default)
+        # *   **SparkWarehouse**\
         self.engine = engine
+        # The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group. If you want to configure parameters for a specific Spark job, you can specify values for the parameters in the code editor when you submit the job.
         self.engine_params_shrink = engine_params_shrink
         # The name of the resource group.
         # 
@@ -2106,10 +2137,21 @@ class CreateDBResourceGroupShrinkRequest(TeaModel):
         # 
         # *   **interactive** (default)
         # *   **batch**\
+        # *   **job**\
         self.group_type = group_type
+        # The maximum number of compute clusters that are allowed in the resource group. Maximum value: 10.
         self.max_cluster_count = max_cluster_count
+        # The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster. Unit: ACU.
+        # 
+        # *   When GroupType is set to interactive, set this parameter to a value in increments of 16ACU.
+        # *   When GroupType is set to job, set this parameter to a value in increments of 8ACU.
         self.max_compute_resource = max_compute_resource
+        # The minimum number of compute clusters that are required in the resource group. Minimum value: 1.
         self.min_cluster_count = min_cluster_count
+        # The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
+        # 
+        # *   When GroupType is set to interactive, set this parameter to 16ACU.
+        # *   When GroupType is set to job, set this parameter to 0ACU.
         self.min_compute_resource = min_compute_resource
         # The number of nodes. Default value: 0.
         # 
@@ -14030,35 +14072,69 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(TeaModel):
         status: str = None,
         update_time: str = None,
     ):
+        # The working mode of the resource group. Valid values:
+        # 
+        # *   **Disable** (default)
+        # *   **AutoScale**\
         self.cluster_mode = cluster_mode
+        # The resource specifications of a single compute cluster. Unit: ACU.
         self.cluster_size_resource = cluster_size_resource
+        # The endpoint of the resource group.
+        # 
+        # >  This parameter is returned only when the value of Engine is SparkWarehouse.
         self.connection_string = connection_string
         # The time when the resource group was created.
         self.create_time = create_time
+        # The minimum amount of elastic computing resources. Unit: ACU.
         self.elastic_min_compute_resource = elastic_min_compute_resource
+        # The engine of the resource group. Valid values:
+        # 
+        # *   **AnalyticDB** (default)
+        # *   **SparkWarehouse**\
         self.engine = engine
+        # The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group. If you want to configure parameters for a specific Spark job, you can specify values for the parameters in the code editor when you submit the job.
         self.engine_params = engine_params
         # The name of the resource group.
         self.group_name = group_name
         # The query execution mode. Valid values:
         # 
-        # *   **interactive**\
-        # *   **batch** (default)
-        # 
-        # > For more information, see [Query execution modes](https://help.aliyun.com/document_detail/189502.html).
+        # *   **interactive** (default)
+        # *   **batch**\
+        # *   **job**\
         self.group_type = group_type
         # The database accounts that are associated with the resource group.
         self.group_user_list = group_user_list
         # The database accounts that are associated with the resource group. Multiple database accounts are separated by commas (,).
         self.group_users = group_users
+        # The maximum number of compute clusters that are allowed in the resource group. Maximum value: 10.
         self.max_cluster_count = max_cluster_count
+        # The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster. Unit: ACU.
+        # 
+        # *   If the value of GroupType is **interactive**, the amount of reserved computing resources that are not allocated in the cluster is returned in increments of 16ACU.
+        # *   If the value of GroupType is **job**, the amount of reserved computing resources that are not allocated in the cluster is returned in increments of 8ACU.
         self.max_compute_resource = max_compute_resource
+        # The minimum number of compute clusters that are required in the resource group. Minimum value: 1.
         self.min_cluster_count = min_cluster_count
+        # The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
+        # 
+        # *   If the value of GroupType is **interactive**, 16ACU is returned.
+        # *   If the value of GroupType is **job**, 0ACU is returned.
         self.min_compute_resource = min_compute_resource
         # The number of nodes. Each node provides 16 cores and 64 GB memory.
         self.node_num = node_num
+        # The port number of the resource group.
+        # 
+        # >  This parameter is returned only when the value of Engine is SparkWarehouse.
         self.port = port
+        # The number of compute clusters running in the resource group.
         self.running_cluster_count = running_cluster_count
+        # The status of the resource group. Valid values:
+        # 
+        # *   **Pending**\
+        # *   **Running**\
+        # *   **Scaling**\
+        # *   **Deleting**\
+        # *   **Deleted**\
         self.status = status
         # The time when the resource group was updated.
         self.update_time = update_time
@@ -14168,7 +14244,7 @@ class DescribeDBResourceGroupResponseBody(TeaModel):
     ):
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The queried resource groups.
+        # The queried resource group.
         self.groups_info = groups_info
         # The request ID.
         self.request_id = request_id
@@ -23764,6 +23840,7 @@ class DescribeSQLPatternsRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
         start_time: str = None,
+        user_name: str = None,
     ):
         # The cluster ID.
         # 
@@ -23837,6 +23914,7 @@ class DescribeSQLPatternsRequest(TeaModel):
         # 
         # This parameter is required.
         self.start_time = start_time
+        self.user_name = user_name
 
     def validate(self):
         pass
@@ -23865,6 +23943,8 @@ class DescribeSQLPatternsRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
         return result
 
     def from_map(self, m: dict = None):
@@ -23887,6 +23967,8 @@ class DescribeSQLPatternsRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
         return self
 
 
@@ -34214,7 +34296,12 @@ class ModifyDBResourceGroupRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The working mode of the resource group. Valid values:
+        # 
+        # *   **Disable** (default)
+        # *   **AutoScale**\
         self.cluster_mode = cluster_mode
+        # The resource specifications of a single compute cluster. Unit: ACU.
         self.cluster_size_resource = cluster_size_resource
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
@@ -34222,6 +34309,7 @@ class ModifyDBResourceGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group. If you want to configure parameters for a specific Spark job, you can specify values for the parameters in the code editor when you submit the job.
         self.engine_params = engine_params
         # The name of the resource group.
         # 
@@ -34229,14 +34317,25 @@ class ModifyDBResourceGroupRequest(TeaModel):
         self.group_name = group_name
         # The query execution mode. Valid values:
         # 
-        # *   **interactive**\
+        # *   **interactive** (default)
         # *   **batch**\
+        # *   **job**\
         # 
         # >  For more information, see [Query execution modes](https://help.aliyun.com/document_detail/189502.html).
         self.group_type = group_type
+        # The maximum number of compute clusters that are allowed in the resource group. Maximum value: 10.
         self.max_cluster_count = max_cluster_count
+        # The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster. Unit: ACU.
+        # 
+        # *   When GroupType is set to interactive, set this parameter to a value in increments of 16ACU.
+        # *   When GroupType is set to job, set this parameter to a value in increments of 8ACU.
         self.max_compute_resource = max_compute_resource
+        # The minimum number of compute clusters that are required in the resource group. Minimum value: 1.
         self.min_cluster_count = min_cluster_count
+        # The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
+        # 
+        # *   When GroupType is set to interactive, set this parameter to 16ACU.
+        # *   When GroupType is set to job, set this parameter to 0ACU.
         self.min_compute_resource = min_compute_resource
         # The number of nodes. Default value: 0.
         # 
@@ -34357,7 +34456,12 @@ class ModifyDBResourceGroupShrinkRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The working mode of the resource group. Valid values:
+        # 
+        # *   **Disable** (default)
+        # *   **AutoScale**\
         self.cluster_mode = cluster_mode
+        # The resource specifications of a single compute cluster. Unit: ACU.
         self.cluster_size_resource = cluster_size_resource
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
@@ -34365,6 +34469,7 @@ class ModifyDBResourceGroupShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group. If you want to configure parameters for a specific Spark job, you can specify values for the parameters in the code editor when you submit the job.
         self.engine_params_shrink = engine_params_shrink
         # The name of the resource group.
         # 
@@ -34372,14 +34477,25 @@ class ModifyDBResourceGroupShrinkRequest(TeaModel):
         self.group_name = group_name
         # The query execution mode. Valid values:
         # 
-        # *   **interactive**\
+        # *   **interactive** (default)
         # *   **batch**\
+        # *   **job**\
         # 
         # >  For more information, see [Query execution modes](https://help.aliyun.com/document_detail/189502.html).
         self.group_type = group_type
+        # The maximum number of compute clusters that are allowed in the resource group. Maximum value: 10.
         self.max_cluster_count = max_cluster_count
+        # The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster. Unit: ACU.
+        # 
+        # *   When GroupType is set to interactive, set this parameter to a value in increments of 16ACU.
+        # *   When GroupType is set to job, set this parameter to a value in increments of 8ACU.
         self.max_compute_resource = max_compute_resource
+        # The minimum number of compute clusters that are required in the resource group. Minimum value: 1.
         self.min_cluster_count = min_cluster_count
+        # The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
+        # 
+        # *   When GroupType is set to interactive, set this parameter to 16ACU.
+        # *   When GroupType is set to job, set this parameter to 0ACU.
         self.min_compute_resource = min_compute_resource
         # The number of nodes. Default value: 0.
         # 

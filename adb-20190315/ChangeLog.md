@@ -1,3 +1,7 @@
+2025-06-28 Version: 5.0.5
+- Update API DescribeSQLPatterns: add request parameters UserName.
+
+
 2025-06-11 Version: 5.0.4
 - Update API CreateDBResourceGroup: add request parameters ClusterMode.
 - Update API CreateDBResourceGroup: add request parameters ClusterSizeResource.

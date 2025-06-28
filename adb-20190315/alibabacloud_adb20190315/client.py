@@ -1433,10 +1433,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.CreateDBResourceGroupResponse:
         """
-        @summary Creates a resource group for an AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        @summary Creates a resource group for an AnalyticDB for MySQL cluster.
         
-        @description ## Precautions
-        This operation is applicable only for elastic clusters of 32 cores or more.
+        @description This operation is suitable for the following editions:
+        **Enterprise Edition**.
+        **Basic Edition**.
+        **Data Lakehouse Edition**.
+        **Data Warehouse Edition in elastic mode**: 32 cores and 128 GB or more.
         
         @param tmp_req: CreateDBResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1507,10 +1510,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.CreateDBResourceGroupResponse:
         """
-        @summary Creates a resource group for an AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        @summary Creates a resource group for an AnalyticDB for MySQL cluster.
         
-        @description ## Precautions
-        This operation is applicable only for elastic clusters of 32 cores or more.
+        @description This operation is suitable for the following editions:
+        **Enterprise Edition**.
+        **Basic Edition**.
+        **Data Lakehouse Edition**.
+        **Data Warehouse Edition in elastic mode**: 32 cores and 128 GB or more.
         
         @param tmp_req: CreateDBResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1580,10 +1586,13 @@ class Client(OpenApiClient):
         request: adb_20190315_models.CreateDBResourceGroupRequest,
     ) -> adb_20190315_models.CreateDBResourceGroupResponse:
         """
-        @summary Creates a resource group for an AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        @summary Creates a resource group for an AnalyticDB for MySQL cluster.
         
-        @description ## Precautions
-        This operation is applicable only for elastic clusters of 32 cores or more.
+        @description This operation is suitable for the following editions:
+        **Enterprise Edition**.
+        **Basic Edition**.
+        **Data Lakehouse Edition**.
+        **Data Warehouse Edition in elastic mode**: 32 cores and 128 GB or more.
         
         @param request: CreateDBResourceGroupRequest
         @return: CreateDBResourceGroupResponse
@@ -1596,10 +1605,13 @@ class Client(OpenApiClient):
         request: adb_20190315_models.CreateDBResourceGroupRequest,
     ) -> adb_20190315_models.CreateDBResourceGroupResponse:
         """
-        @summary Creates a resource group for an AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        @summary Creates a resource group for an AnalyticDB for MySQL cluster.
         
-        @description ## Precautions
-        This operation is applicable only for elastic clusters of 32 cores or more.
+        @description This operation is suitable for the following editions:
+        **Enterprise Edition**.
+        **Basic Edition**.
+        **Data Lakehouse Edition**.
+        **Data Warehouse Edition in elastic mode**: 32 cores and 128 GB or more.
         
         @param request: CreateDBResourceGroupRequest
         @return: CreateDBResourceGroupResponse
@@ -6645,10 +6657,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeDBResourceGroupResponse:
         """
-        @summary Queries the information about a resource group for an AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        @summary Queries the information about a resource group for an AnalyticDB for MySQL cluster.
         
-        @description ###
-        You can call this operation only for AnalyticDB for MySQL clusters in elastic mode for Cluster Edition that have 32 cores or more.
+        @description This operation is suitable for the following editions:
+        **Enterprise Edition**.
+        **Basic Edition**.
+        **Data Lakehouse Edition**.
+        **Data Warehouse Edition in elastic mode**: 32 cores and 128 GB or more.
         
         @param request: DescribeDBResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6693,10 +6708,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DescribeDBResourceGroupResponse:
         """
-        @summary Queries the information about a resource group for an AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        @summary Queries the information about a resource group for an AnalyticDB for MySQL cluster.
         
-        @description ###
-        You can call this operation only for AnalyticDB for MySQL clusters in elastic mode for Cluster Edition that have 32 cores or more.
+        @description This operation is suitable for the following editions:
+        **Enterprise Edition**.
+        **Basic Edition**.
+        **Data Lakehouse Edition**.
+        **Data Warehouse Edition in elastic mode**: 32 cores and 128 GB or more.
         
         @param request: DescribeDBResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6740,10 +6758,13 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeDBResourceGroupRequest,
     ) -> adb_20190315_models.DescribeDBResourceGroupResponse:
         """
-        @summary Queries the information about a resource group for an AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        @summary Queries the information about a resource group for an AnalyticDB for MySQL cluster.
         
-        @description ###
-        You can call this operation only for AnalyticDB for MySQL clusters in elastic mode for Cluster Edition that have 32 cores or more.
+        @description This operation is suitable for the following editions:
+        **Enterprise Edition**.
+        **Basic Edition**.
+        **Data Lakehouse Edition**.
+        **Data Warehouse Edition in elastic mode**: 32 cores and 128 GB or more.
         
         @param request: DescribeDBResourceGroupRequest
         @return: DescribeDBResourceGroupResponse
@@ -6756,10 +6777,13 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DescribeDBResourceGroupRequest,
     ) -> adb_20190315_models.DescribeDBResourceGroupResponse:
         """
-        @summary Queries the information about a resource group for an AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        @summary Queries the information about a resource group for an AnalyticDB for MySQL cluster.
         
-        @description ###
-        You can call this operation only for AnalyticDB for MySQL clusters in elastic mode for Cluster Edition that have 32 cores or more.
+        @description This operation is suitable for the following editions:
+        **Enterprise Edition**.
+        **Basic Edition**.
+        **Data Lakehouse Edition**.
+        **Data Warehouse Edition in elastic mode**: 32 cores and 128 GB or more.
         
         @param request: DescribeDBResourceGroupRequest
         @return: DescribeDBResourceGroupResponse
@@ -10699,6 +10723,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10750,6 +10776,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -16111,9 +16139,11 @@ class Client(OpenApiClient):
         """
         @summary Modifies the number of nodes or the query execution mode for a resource group of an AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         
-        @description ## Precautions
-        This operation is applicable only for elastic clusters of 32 cores or more.
-        The number of nodes cannot be changed for the default resource group USER_DEFAULT.
+        @description This operation is suitable for the following editions:
+        **Enterprise Edition**.
+        **Basic Edition**.
+        **Data Lakehouse Edition**.
+        **Data Warehouse Edition in elastic mode**: 32 cores and 128 GB or more. The number of nodes cannot be modified for the default resource group USER_DEFAULT.
         
         @param tmp_req: ModifyDBResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16188,9 +16218,11 @@ class Client(OpenApiClient):
         """
         @summary Modifies the number of nodes or the query execution mode for a resource group of an AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         
-        @description ## Precautions
-        This operation is applicable only for elastic clusters of 32 cores or more.
-        The number of nodes cannot be changed for the default resource group USER_DEFAULT.
+        @description This operation is suitable for the following editions:
+        **Enterprise Edition**.
+        **Basic Edition**.
+        **Data Lakehouse Edition**.
+        **Data Warehouse Edition in elastic mode**: 32 cores and 128 GB or more. The number of nodes cannot be modified for the default resource group USER_DEFAULT.
         
         @param tmp_req: ModifyDBResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16264,9 +16296,11 @@ class Client(OpenApiClient):
         """
         @summary Modifies the number of nodes or the query execution mode for a resource group of an AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         
-        @description ## Precautions
-        This operation is applicable only for elastic clusters of 32 cores or more.
-        The number of nodes cannot be changed for the default resource group USER_DEFAULT.
+        @description This operation is suitable for the following editions:
+        **Enterprise Edition**.
+        **Basic Edition**.
+        **Data Lakehouse Edition**.
+        **Data Warehouse Edition in elastic mode**: 32 cores and 128 GB or more. The number of nodes cannot be modified for the default resource group USER_DEFAULT.
         
         @param request: ModifyDBResourceGroupRequest
         @return: ModifyDBResourceGroupResponse
@@ -16281,9 +16315,11 @@ class Client(OpenApiClient):
         """
         @summary Modifies the number of nodes or the query execution mode for a resource group of an AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         
-        @description ## Precautions
-        This operation is applicable only for elastic clusters of 32 cores or more.
-        The number of nodes cannot be changed for the default resource group USER_DEFAULT.
+        @description This operation is suitable for the following editions:
+        **Enterprise Edition**.
+        **Basic Edition**.
+        **Data Lakehouse Edition**.
+        **Data Warehouse Edition in elastic mode**: 32 cores and 128 GB or more. The number of nodes cannot be modified for the default resource group USER_DEFAULT.
         
         @param request: ModifyDBResourceGroupRequest
         @return: ModifyDBResourceGroupResponse
