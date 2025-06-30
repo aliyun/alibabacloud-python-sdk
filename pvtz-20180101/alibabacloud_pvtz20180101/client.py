@@ -286,6 +286,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.edge_dns_clusters):
+            query['EdgeDnsClusters'] = request.edge_dns_clusters
         if not UtilClient.is_unset(request.endpoint_id):
             query['EndpointId'] = request.endpoint_id
         if not UtilClient.is_unset(request.forward_ip):
@@ -296,6 +298,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
+        if not UtilClient.is_unset(request.vpcs):
+            query['Vpcs'] = request.vpcs
         if not UtilClient.is_unset(request.zone_name):
             query['ZoneName'] = request.zone_name
         req = open_api_models.OpenApiRequest(
@@ -334,6 +338,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.edge_dns_clusters):
+            query['EdgeDnsClusters'] = request.edge_dns_clusters
         if not UtilClient.is_unset(request.endpoint_id):
             query['EndpointId'] = request.endpoint_id
         if not UtilClient.is_unset(request.forward_ip):
@@ -344,6 +350,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
+        if not UtilClient.is_unset(request.vpcs):
+            query['Vpcs'] = request.vpcs
         if not UtilClient.is_unset(request.zone_name):
             query['ZoneName'] = request.zone_name
         req = open_api_models.OpenApiRequest(

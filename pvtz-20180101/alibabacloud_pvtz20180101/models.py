@@ -370,6 +370,33 @@ class AddResolverEndpointResponse(TeaModel):
         return self
 
 
+class AddResolverRuleRequestEdgeDnsClusters(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+    ):
+        self.cluster_id = cluster_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        return self
+
+
 class AddResolverRuleRequestForwardIp(TeaModel):
     def __init__(
         self,
@@ -411,19 +438,65 @@ class AddResolverRuleRequestForwardIp(TeaModel):
         return self
 
 
+class AddResolverRuleRequestVpcs(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        vpc_id: str = None,
+        vpc_type: str = None,
+        vpc_user_id: int = None,
+    ):
+        self.region_id = region_id
+        self.vpc_id = vpc_id
+        self.vpc_type = vpc_type
+        self.vpc_user_id = vpc_user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.vpc_type is not None:
+            result['VpcType'] = self.vpc_type
+        if self.vpc_user_id is not None:
+            result['VpcUserId'] = self.vpc_user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('VpcType') is not None:
+            self.vpc_type = m.get('VpcType')
+        if m.get('VpcUserId') is not None:
+            self.vpc_user_id = m.get('VpcUserId')
+        return self
+
+
 class AddResolverRuleRequest(TeaModel):
     def __init__(
         self,
+        edge_dns_clusters: List[AddResolverRuleRequestEdgeDnsClusters] = None,
         endpoint_id: str = None,
         forward_ip: List[AddResolverRuleRequestForwardIp] = None,
         lang: str = None,
         name: str = None,
         type: str = None,
+        vpcs: List[AddResolverRuleRequestVpcs] = None,
         zone_name: str = None,
     ):
+        self.edge_dns_clusters = edge_dns_clusters
         # The outbound endpoint ID. The outbound endpoint is used to forward the DNS requests to the specified destination IP addresses.
-        # 
-        # This parameter is required.
         self.endpoint_id = endpoint_id
         # The IP addresses and ports of the external DNS servers. Enter the IP addresses and ports of the destination servers to which the DNS requests are forwarded. You can enter up to **six** IP addresses and ports. Both private and public IP addresses are supported.
         # 
@@ -446,6 +519,7 @@ class AddResolverRuleRequest(TeaModel):
         # 
         # >  You cannot change the value of Type after you create the forwarding rule.
         self.type = type
+        self.vpcs = vpcs
         # The zone for which you want to forward DNS requests.
         # 
         # >  You cannot change the value of ZoneName after you create the forwarding rule.
@@ -454,8 +528,16 @@ class AddResolverRuleRequest(TeaModel):
         self.zone_name = zone_name
 
     def validate(self):
+        if self.edge_dns_clusters:
+            for k in self.edge_dns_clusters:
+                if k:
+                    k.validate()
         if self.forward_ip:
             for k in self.forward_ip:
+                if k:
+                    k.validate()
+        if self.vpcs:
+            for k in self.vpcs:
                 if k:
                     k.validate()
 
@@ -465,6 +547,10 @@ class AddResolverRuleRequest(TeaModel):
             return _map
 
         result = dict()
+        result['EdgeDnsClusters'] = []
+        if self.edge_dns_clusters is not None:
+            for k in self.edge_dns_clusters:
+                result['EdgeDnsClusters'].append(k.to_map() if k else None)
         if self.endpoint_id is not None:
             result['EndpointId'] = self.endpoint_id
         result['ForwardIp'] = []
@@ -477,12 +563,21 @@ class AddResolverRuleRequest(TeaModel):
             result['Name'] = self.name
         if self.type is not None:
             result['Type'] = self.type
+        result['Vpcs'] = []
+        if self.vpcs is not None:
+            for k in self.vpcs:
+                result['Vpcs'].append(k.to_map() if k else None)
         if self.zone_name is not None:
             result['ZoneName'] = self.zone_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.edge_dns_clusters = []
+        if m.get('EdgeDnsClusters') is not None:
+            for k in m.get('EdgeDnsClusters'):
+                temp_model = AddResolverRuleRequestEdgeDnsClusters()
+                self.edge_dns_clusters.append(temp_model.from_map(k))
         if m.get('EndpointId') is not None:
             self.endpoint_id = m.get('EndpointId')
         self.forward_ip = []
@@ -496,6 +591,11 @@ class AddResolverRuleRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        self.vpcs = []
+        if m.get('Vpcs') is not None:
+            for k in m.get('Vpcs'):
+                temp_model = AddResolverRuleRequestVpcs()
+                self.vpcs.append(temp_model.from_map(k))
         if m.get('ZoneName') is not None:
             self.zone_name = m.get('ZoneName')
         return self
@@ -2576,6 +2676,7 @@ class DescribeChangeLogsResponseBodyChangeLogsChangeLog(TeaModel):
         self.creator_sub_type = creator_sub_type
         # The operator type. No value or **USER** is returned for this parameter.
         self.creator_type = creator_type
+        # The operator ID.
         self.creator_user_id = creator_user_id
         # The unique ID of the zone, user-defined line, forwarding rule, outbound endpoint, or inbound endpoint.
         self.entity_id = entity_id
@@ -4645,6 +4746,45 @@ class DescribeResolverRuleRequest(TeaModel):
         return self
 
 
+class DescribeResolverRuleResponseBodyBindEdgeDnsClusters(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        cluster_name: str = None,
+        cluster_user_id: int = None,
+    ):
+        self.cluster_id = cluster_id
+        self.cluster_name = cluster_name
+        self.cluster_user_id = cluster_user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.cluster_user_id is not None:
+            result['ClusterUserId'] = self.cluster_user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('ClusterUserId') is not None:
+            self.cluster_user_id = m.get('ClusterUserId')
+        return self
+
+
 class DescribeResolverRuleResponseBodyBindVpcs(TeaModel):
     def __init__(
         self,
@@ -4749,6 +4889,7 @@ class DescribeResolverRuleResponseBodyForwardIps(TeaModel):
 class DescribeResolverRuleResponseBody(TeaModel):
     def __init__(
         self,
+        bind_edge_dns_clusters: List[DescribeResolverRuleResponseBodyBindEdgeDnsClusters] = None,
         bind_vpcs: List[DescribeResolverRuleResponseBodyBindVpcs] = None,
         create_time: str = None,
         create_timestamp: int = None,
@@ -4763,6 +4904,7 @@ class DescribeResolverRuleResponseBody(TeaModel):
         update_timestamp: int = None,
         zone_name: str = None,
     ):
+        self.bind_edge_dns_clusters = bind_edge_dns_clusters
         # The virtual private clouds (VPCs) that are associated with the forwarding rule.
         self.bind_vpcs = bind_vpcs
         # The time when the forwarding rule was created.
@@ -4793,6 +4935,10 @@ class DescribeResolverRuleResponseBody(TeaModel):
         self.zone_name = zone_name
 
     def validate(self):
+        if self.bind_edge_dns_clusters:
+            for k in self.bind_edge_dns_clusters:
+                if k:
+                    k.validate()
         if self.bind_vpcs:
             for k in self.bind_vpcs:
                 if k:
@@ -4808,6 +4954,10 @@ class DescribeResolverRuleResponseBody(TeaModel):
             return _map
 
         result = dict()
+        result['BindEdgeDnsClusters'] = []
+        if self.bind_edge_dns_clusters is not None:
+            for k in self.bind_edge_dns_clusters:
+                result['BindEdgeDnsClusters'].append(k.to_map() if k else None)
         result['BindVpcs'] = []
         if self.bind_vpcs is not None:
             for k in self.bind_vpcs:
@@ -4842,6 +4992,11 @@ class DescribeResolverRuleResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.bind_edge_dns_clusters = []
+        if m.get('BindEdgeDnsClusters') is not None:
+            for k in m.get('BindEdgeDnsClusters'):
+                temp_model = DescribeResolverRuleResponseBodyBindEdgeDnsClusters()
+                self.bind_edge_dns_clusters.append(temp_model.from_map(k))
         self.bind_vpcs = []
         if m.get('BindVpcs') is not None:
             for k in m.get('BindVpcs'):
@@ -4991,6 +5146,45 @@ class DescribeResolverRulesRequest(TeaModel):
         return self
 
 
+class DescribeResolverRulesResponseBodyRulesBindEdgeDnsClusters(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        cluster_name: str = None,
+        cluster_user_id: int = None,
+    ):
+        self.cluster_id = cluster_id
+        self.cluster_name = cluster_name
+        self.cluster_user_id = cluster_user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.cluster_user_id is not None:
+            result['ClusterUserId'] = self.cluster_user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('ClusterUserId') is not None:
+            self.cluster_user_id = m.get('ClusterUserId')
+        return self
+
+
 class DescribeResolverRulesResponseBodyRulesBindVpcs(TeaModel):
     def __init__(
         self,
@@ -5095,6 +5289,7 @@ class DescribeResolverRulesResponseBodyRulesForwardIps(TeaModel):
 class DescribeResolverRulesResponseBodyRules(TeaModel):
     def __init__(
         self,
+        bind_edge_dns_clusters: List[DescribeResolverRulesResponseBodyRulesBindEdgeDnsClusters] = None,
         bind_vpcs: List[DescribeResolverRulesResponseBodyRulesBindVpcs] = None,
         create_time: str = None,
         create_timestamp: int = None,
@@ -5108,6 +5303,7 @@ class DescribeResolverRulesResponseBodyRules(TeaModel):
         update_timestamp: int = None,
         zone_name: str = None,
     ):
+        self.bind_edge_dns_clusters = bind_edge_dns_clusters
         # The VPCs associated with the forwarding rule.
         self.bind_vpcs = bind_vpcs
         # The time when the forwarding was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
@@ -5136,6 +5332,10 @@ class DescribeResolverRulesResponseBodyRules(TeaModel):
         self.zone_name = zone_name
 
     def validate(self):
+        if self.bind_edge_dns_clusters:
+            for k in self.bind_edge_dns_clusters:
+                if k:
+                    k.validate()
         if self.bind_vpcs:
             for k in self.bind_vpcs:
                 if k:
@@ -5151,6 +5351,10 @@ class DescribeResolverRulesResponseBodyRules(TeaModel):
             return _map
 
         result = dict()
+        result['BindEdgeDnsClusters'] = []
+        if self.bind_edge_dns_clusters is not None:
+            for k in self.bind_edge_dns_clusters:
+                result['BindEdgeDnsClusters'].append(k.to_map() if k else None)
         result['BindVpcs'] = []
         if self.bind_vpcs is not None:
             for k in self.bind_vpcs:
@@ -5183,6 +5387,11 @@ class DescribeResolverRulesResponseBodyRules(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.bind_edge_dns_clusters = []
+        if m.get('BindEdgeDnsClusters') is not None:
+            for k in m.get('BindEdgeDnsClusters'):
+                temp_model = DescribeResolverRulesResponseBodyRulesBindEdgeDnsClusters()
+                self.bind_edge_dns_clusters.append(temp_model.from_map(k))
         self.bind_vpcs = []
         if m.get('BindVpcs') is not None:
             for k in m.get('BindVpcs'):
@@ -6503,6 +6712,80 @@ class DescribeZoneInfoRequest(TeaModel):
         return self
 
 
+class DescribeZoneInfoResponseBodyBindEdgeDnsClustersEdgeDnsCluster(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        cluster_name: str = None,
+        cluster_user_id: int = None,
+    ):
+        self.cluster_id = cluster_id
+        self.cluster_name = cluster_name
+        self.cluster_user_id = cluster_user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.cluster_user_id is not None:
+            result['ClusterUserId'] = self.cluster_user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('ClusterUserId') is not None:
+            self.cluster_user_id = m.get('ClusterUserId')
+        return self
+
+
+class DescribeZoneInfoResponseBodyBindEdgeDnsClusters(TeaModel):
+    def __init__(
+        self,
+        edge_dns_cluster: List[DescribeZoneInfoResponseBodyBindEdgeDnsClustersEdgeDnsCluster] = None,
+    ):
+        self.edge_dns_cluster = edge_dns_cluster
+
+    def validate(self):
+        if self.edge_dns_cluster:
+            for k in self.edge_dns_cluster:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['EdgeDnsCluster'] = []
+        if self.edge_dns_cluster is not None:
+            for k in self.edge_dns_cluster:
+                result['EdgeDnsCluster'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.edge_dns_cluster = []
+        if m.get('EdgeDnsCluster') is not None:
+            for k in m.get('EdgeDnsCluster'):
+                temp_model = DescribeZoneInfoResponseBodyBindEdgeDnsClustersEdgeDnsCluster()
+                self.edge_dns_cluster.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeZoneInfoResponseBodyBindVpcsVpc(TeaModel):
     def __init__(
         self,
@@ -6607,6 +6890,7 @@ class DescribeZoneInfoResponseBodyBindVpcs(TeaModel):
 class DescribeZoneInfoResponseBody(TeaModel):
     def __init__(
         self,
+        bind_edge_dns_clusters: DescribeZoneInfoResponseBodyBindEdgeDnsClusters = None,
         bind_vpcs: DescribeZoneInfoResponseBodyBindVpcs = None,
         create_time: str = None,
         create_timestamp: int = None,
@@ -6628,6 +6912,7 @@ class DescribeZoneInfoResponseBody(TeaModel):
         zone_tag: str = None,
         zone_type: str = None,
     ):
+        self.bind_edge_dns_clusters = bind_edge_dns_clusters
         # The VPCs associated with the zone.
         self.bind_vpcs = bind_vpcs
         # The time when the zone was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
@@ -6688,6 +6973,8 @@ class DescribeZoneInfoResponseBody(TeaModel):
         self.zone_type = zone_type
 
     def validate(self):
+        if self.bind_edge_dns_clusters:
+            self.bind_edge_dns_clusters.validate()
         if self.bind_vpcs:
             self.bind_vpcs.validate()
 
@@ -6697,6 +6984,8 @@ class DescribeZoneInfoResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.bind_edge_dns_clusters is not None:
+            result['BindEdgeDnsClusters'] = self.bind_edge_dns_clusters.to_map()
         if self.bind_vpcs is not None:
             result['BindVpcs'] = self.bind_vpcs.to_map()
         if self.create_time is not None:
@@ -6741,6 +7030,9 @@ class DescribeZoneInfoResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BindEdgeDnsClusters') is not None:
+            temp_model = DescribeZoneInfoResponseBodyBindEdgeDnsClusters()
+            self.bind_edge_dns_clusters = temp_model.from_map(m['BindEdgeDnsClusters'])
         if m.get('BindVpcs') is not None:
             temp_model = DescribeZoneInfoResponseBodyBindVpcs()
             self.bind_vpcs = temp_model.from_map(m['BindVpcs'])
@@ -8045,6 +8337,7 @@ class DescribeZonesResponseBodyZonesZone(TeaModel):
         remark: str = None,
         resource_group_id: str = None,
         resource_tags: DescribeZonesResponseBodyZonesZoneResourceTags = None,
+        slave_dns_status: str = None,
         update_time: str = None,
         update_timestamp: int = None,
         zone_id: str = None,
@@ -8093,6 +8386,7 @@ class DescribeZonesResponseBodyZonesZone(TeaModel):
         self.resource_group_id = resource_group_id
         # The tags added to the zone.
         self.resource_tags = resource_tags
+        self.slave_dns_status = slave_dns_status
         # The time when the zone was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.update_time = update_time
         # The time when the DNS record was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since 00:00:00 UTC on January 1, 1970.
@@ -8146,6 +8440,8 @@ class DescribeZonesResponseBodyZonesZone(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.resource_tags is not None:
             result['ResourceTags'] = self.resource_tags.to_map()
+        if self.slave_dns_status is not None:
+            result['SlaveDnsStatus'] = self.slave_dns_status
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
         if self.update_timestamp is not None:
@@ -8187,6 +8483,8 @@ class DescribeZonesResponseBodyZonesZone(TeaModel):
         if m.get('ResourceTags') is not None:
             temp_model = DescribeZonesResponseBodyZonesZoneResourceTags()
             self.resource_tags = temp_model.from_map(m['ResourceTags'])
+        if m.get('SlaveDnsStatus') is not None:
+            self.slave_dns_status = m.get('SlaveDnsStatus')
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
         if m.get('UpdateTimestamp') is not None:

@@ -1,3 +1,12 @@
+2025-06-30 Version: 1.3.1
+- Update API AddResolverRule: add request parameters EdgeDnsClusters.
+- Update API AddResolverRule: add request parameters Vpcs.
+- Update API DescribeResolverRule: add response parameters Body.BindEdgeDnsClusters.
+- Update API DescribeResolverRules: add response parameters Body.Rules.$.BindEdgeDnsClusters.
+- Update API DescribeZoneInfo: add response parameters Body.BindEdgeDnsClusters.
+- Update API DescribeZones: add response parameters Body.Zones.$.SlaveDnsStatus.
+
+
 2024-11-25 Version: 1.3.0
 - Support API DescribeUserServiceStatus.
 - Update API BindResolverRuleVpc: update param Vpc.
