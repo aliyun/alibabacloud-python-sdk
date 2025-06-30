@@ -1226,6 +1226,39 @@ class ComponentSpec(TeaModel):
         return self
 
 
+class EniCacheConfig(TeaModel):
+    def __init__(
+        self,
+        cache_pool_size: int = None,
+        enabled: bool = None,
+    ):
+        self.cache_pool_size = cache_pool_size
+        self.enabled = enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cache_pool_size is not None:
+            result['CachePoolSize'] = self.cache_pool_size
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CachePoolSize') is not None:
+            self.cache_pool_size = m.get('CachePoolSize')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        return self
+
+
 class FeaturesQuota(TeaModel):
     def __init__(
         self,
@@ -1642,6 +1675,7 @@ class Label(TeaModel):
 class MachineGroup(TeaModel):
     def __init__(
         self,
+        cpu: int = None,
         creator_id: str = None,
         default_driver: str = None,
         disk_capacity: int = None,
@@ -1652,7 +1686,11 @@ class MachineGroup(TeaModel):
         gmt_expired_time: str = None,
         gmt_modified_time: str = None,
         gmt_started_time: str = None,
+        gpu: int = None,
+        gpu_memory: int = None,
+        gpu_type: str = None,
         machine_group_id: str = None,
+        memory: int = None,
         order_instance_id: str = None,
         payment_duration: str = None,
         payment_duration_unit: str = None,
@@ -1660,9 +1698,11 @@ class MachineGroup(TeaModel):
         reason_code: str = None,
         reason_message: str = None,
         resource_group_id: str = None,
+        resource_type: str = None,
         status: str = None,
         supported_drivers: List[str] = None,
     ):
+        self.cpu = cpu
         self.creator_id = creator_id
         self.default_driver = default_driver
         self.disk_capacity = disk_capacity
@@ -1673,7 +1713,11 @@ class MachineGroup(TeaModel):
         self.gmt_expired_time = gmt_expired_time
         self.gmt_modified_time = gmt_modified_time
         self.gmt_started_time = gmt_started_time
+        self.gpu = gpu
+        self.gpu_memory = gpu_memory
+        self.gpu_type = gpu_type
         self.machine_group_id = machine_group_id
+        self.memory = memory
         self.order_instance_id = order_instance_id
         self.payment_duration = payment_duration
         self.payment_duration_unit = payment_duration_unit
@@ -1681,6 +1725,7 @@ class MachineGroup(TeaModel):
         self.reason_code = reason_code
         self.reason_message = reason_message
         self.resource_group_id = resource_group_id
+        self.resource_type = resource_type
         self.status = status
         self.supported_drivers = supported_drivers
 
@@ -1693,6 +1738,8 @@ class MachineGroup(TeaModel):
             return _map
 
         result = dict()
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
         if self.creator_id is not None:
             result['CreatorID'] = self.creator_id
         if self.default_driver is not None:
@@ -1713,8 +1760,16 @@ class MachineGroup(TeaModel):
             result['GmtModifiedTime'] = self.gmt_modified_time
         if self.gmt_started_time is not None:
             result['GmtStartedTime'] = self.gmt_started_time
+        if self.gpu is not None:
+            result['Gpu'] = self.gpu
+        if self.gpu_memory is not None:
+            result['GpuMemory'] = self.gpu_memory
+        if self.gpu_type is not None:
+            result['GpuType'] = self.gpu_type
         if self.machine_group_id is not None:
             result['MachineGroupID'] = self.machine_group_id
+        if self.memory is not None:
+            result['Memory'] = self.memory
         if self.order_instance_id is not None:
             result['OrderInstanceId'] = self.order_instance_id
         if self.payment_duration is not None:
@@ -1729,6 +1784,8 @@ class MachineGroup(TeaModel):
             result['ReasonMessage'] = self.reason_message
         if self.resource_group_id is not None:
             result['ResourceGroupID'] = self.resource_group_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         if self.status is not None:
             result['Status'] = self.status
         if self.supported_drivers is not None:
@@ -1737,6 +1794,8 @@ class MachineGroup(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
         if m.get('CreatorID') is not None:
             self.creator_id = m.get('CreatorID')
         if m.get('DefaultDriver') is not None:
@@ -1757,8 +1816,16 @@ class MachineGroup(TeaModel):
             self.gmt_modified_time = m.get('GmtModifiedTime')
         if m.get('GmtStartedTime') is not None:
             self.gmt_started_time = m.get('GmtStartedTime')
+        if m.get('Gpu') is not None:
+            self.gpu = m.get('Gpu')
+        if m.get('GpuMemory') is not None:
+            self.gpu_memory = m.get('GpuMemory')
+        if m.get('GpuType') is not None:
+            self.gpu_type = m.get('GpuType')
         if m.get('MachineGroupID') is not None:
             self.machine_group_id = m.get('MachineGroupID')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
         if m.get('OrderInstanceId') is not None:
             self.order_instance_id = m.get('OrderInstanceId')
         if m.get('PaymentDuration') is not None:
@@ -1773,6 +1840,8 @@ class MachineGroup(TeaModel):
             self.reason_message = m.get('ReasonMessage')
         if m.get('ResourceGroupID') is not None:
             self.resource_group_id = m.get('ResourceGroupID')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('SupportedDrivers') is not None:
@@ -3139,6 +3208,33 @@ class WorkspaceSpecs(TeaModel):
         return self
 
 
+class SandboxCacheConfig(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+    ):
+        self.enabled = enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        return self
+
+
 class SelfQuotaPreemptionConfig(TeaModel):
     def __init__(
         self,
@@ -3220,8 +3316,10 @@ class QuotaConfig(TeaModel):
         enable_gpushare: bool = None,
         enable_preempt_subquota_workloads: bool = None,
         enable_sub_quota_preemption: bool = None,
+        eni_cache_config: EniCacheConfig = None,
         oversold_usage_info: OversoldUsageConfig = None,
         resource_specs: List[WorkspaceSpecs] = None,
+        sandbox_cache_config: SandboxCacheConfig = None,
         self_quota_preemption_config: SelfQuotaPreemptionConfig = None,
         sub_quota_preemption_config: SubQuotaPreemptionConfig = None,
         support_gpudrivers: List[str] = None,
@@ -3234,8 +3332,10 @@ class QuotaConfig(TeaModel):
         self.enable_gpushare = enable_gpushare
         self.enable_preempt_subquota_workloads = enable_preempt_subquota_workloads
         self.enable_sub_quota_preemption = enable_sub_quota_preemption
+        self.eni_cache_config = eni_cache_config
         self.oversold_usage_info = oversold_usage_info
         self.resource_specs = resource_specs
+        self.sandbox_cache_config = sandbox_cache_config
         self.self_quota_preemption_config = self_quota_preemption_config
         self.sub_quota_preemption_config = sub_quota_preemption_config
         self.support_gpudrivers = support_gpudrivers
@@ -3245,12 +3345,16 @@ class QuotaConfig(TeaModel):
     def validate(self):
         if self.acs:
             self.acs.validate()
+        if self.eni_cache_config:
+            self.eni_cache_config.validate()
         if self.oversold_usage_info:
             self.oversold_usage_info.validate()
         if self.resource_specs:
             for k in self.resource_specs:
                 if k:
                     k.validate()
+        if self.sandbox_cache_config:
+            self.sandbox_cache_config.validate()
         if self.self_quota_preemption_config:
             self.self_quota_preemption_config.validate()
         if self.sub_quota_preemption_config:
@@ -3276,12 +3380,16 @@ class QuotaConfig(TeaModel):
             result['EnablePreemptSubquotaWorkloads'] = self.enable_preempt_subquota_workloads
         if self.enable_sub_quota_preemption is not None:
             result['EnableSubQuotaPreemption'] = self.enable_sub_quota_preemption
+        if self.eni_cache_config is not None:
+            result['EniCacheConfig'] = self.eni_cache_config.to_map()
         if self.oversold_usage_info is not None:
             result['OversoldUsageInfo'] = self.oversold_usage_info.to_map()
         result['ResourceSpecs'] = []
         if self.resource_specs is not None:
             for k in self.resource_specs:
                 result['ResourceSpecs'].append(k.to_map() if k else None)
+        if self.sandbox_cache_config is not None:
+            result['SandboxCacheConfig'] = self.sandbox_cache_config.to_map()
         if self.self_quota_preemption_config is not None:
             result['SelfQuotaPreemptionConfig'] = self.self_quota_preemption_config.to_map()
         if self.sub_quota_preemption_config is not None:
@@ -3309,6 +3417,9 @@ class QuotaConfig(TeaModel):
             self.enable_preempt_subquota_workloads = m.get('EnablePreemptSubquotaWorkloads')
         if m.get('EnableSubQuotaPreemption') is not None:
             self.enable_sub_quota_preemption = m.get('EnableSubQuotaPreemption')
+        if m.get('EniCacheConfig') is not None:
+            temp_model = EniCacheConfig()
+            self.eni_cache_config = temp_model.from_map(m['EniCacheConfig'])
         if m.get('OversoldUsageInfo') is not None:
             temp_model = OversoldUsageConfig()
             self.oversold_usage_info = temp_model.from_map(m['OversoldUsageInfo'])
@@ -3317,6 +3428,9 @@ class QuotaConfig(TeaModel):
             for k in m.get('ResourceSpecs'):
                 temp_model = WorkspaceSpecs()
                 self.resource_specs.append(temp_model.from_map(k))
+        if m.get('SandboxCacheConfig') is not None:
+            temp_model = SandboxCacheConfig()
+            self.sandbox_cache_config = temp_model.from_map(m['SandboxCacheConfig'])
         if m.get('SelfQuotaPreemptionConfig') is not None:
             temp_model = SelfQuotaPreemptionConfig()
             self.self_quota_preemption_config = temp_model.from_map(m['SelfQuotaPreemptionConfig'])
@@ -4532,6 +4646,107 @@ class ResourceGroupMetric(TeaModel):
                 self.metrics.append(temp_model.from_map(k))
         if m.get('ResourceGroupID') is not None:
             self.resource_group_id = m.get('ResourceGroupID')
+        return self
+
+
+class ResourceInfo(TeaModel):
+    def __init__(self):
+        pass
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        return self
+
+
+class ResourceInfos(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        ecs_spec: str = None,
+        gpu_card_type: str = None,
+        machine_model: str = None,
+        max_quota: int = None,
+        network_pod_id: str = None,
+        region_id: str = None,
+        used_quota: int = None,
+        user_id: str = None,
+        user_name: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.ecs_spec = ecs_spec
+        self.gpu_card_type = gpu_card_type
+        self.machine_model = machine_model
+        self.max_quota = max_quota
+        self.network_pod_id = network_pod_id
+        self.region_id = region_id
+        self.used_quota = used_quota
+        self.user_id = user_id
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.ecs_spec is not None:
+            result['EcsSpec'] = self.ecs_spec
+        if self.gpu_card_type is not None:
+            result['GpuCardType'] = self.gpu_card_type
+        if self.machine_model is not None:
+            result['MachineModel'] = self.machine_model
+        if self.max_quota is not None:
+            result['MaxQuota'] = self.max_quota
+        if self.network_pod_id is not None:
+            result['NetworkPodId'] = self.network_pod_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.used_quota is not None:
+            result['UsedQuota'] = self.used_quota
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('EcsSpec') is not None:
+            self.ecs_spec = m.get('EcsSpec')
+        if m.get('GpuCardType') is not None:
+            self.gpu_card_type = m.get('GpuCardType')
+        if m.get('MachineModel') is not None:
+            self.machine_model = m.get('MachineModel')
+        if m.get('MaxQuota') is not None:
+            self.max_quota = m.get('MaxQuota')
+        if m.get('NetworkPodId') is not None:
+            self.network_pod_id = m.get('NetworkPodId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('UsedQuota') is not None:
+            self.used_quota = m.get('UsedQuota')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
         return self
 
 
@@ -12082,6 +12297,7 @@ class ListResourceGroupsRequest(TeaModel):
         order: str = None,
         page_number: int = None,
         page_size: int = None,
+        resource_group_ids: str = None,
         resource_type: str = None,
         show_all: bool = None,
         sort_by: str = None,
@@ -12092,6 +12308,7 @@ class ListResourceGroupsRequest(TeaModel):
         self.order = order
         self.page_number = page_number
         self.page_size = page_size
+        self.resource_group_ids = resource_group_ids
         self.resource_type = resource_type
         self.show_all = show_all
         self.sort_by = sort_by
@@ -12116,6 +12333,8 @@ class ListResourceGroupsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.resource_group_ids is not None:
+            result['ResourceGroupIDs'] = self.resource_group_ids
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
         if self.show_all is not None:
@@ -12138,6 +12357,8 @@ class ListResourceGroupsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ResourceGroupIDs') is not None:
+            self.resource_group_ids = m.get('ResourceGroupIDs')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
         if m.get('ShowAll') is not None:
