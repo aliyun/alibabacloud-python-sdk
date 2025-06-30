@@ -1,3 +1,6 @@
+2025-06-30 Version: 7.2.2
+- Generated python 2024-05-18 for dataworks-public.
+
 2025-06-27 Version: 7.2.1
 - Update API CreateWorkflowInstances: add request parameters DefaultRunProperties.PriorityWeightStrategy.
 

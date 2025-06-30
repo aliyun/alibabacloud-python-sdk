@@ -1103,16 +1103,44 @@ class Client(OpenApiClient):
             request.table_mappings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.table_mappings, 'TableMappings', 'json')
         if not UtilClient.is_unset(tmp_req.transformation_rules):
             request.transformation_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.transformation_rules, 'TransformationRules', 'json')
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.destination_data_source_settings_shrink):
+            body['DestinationDataSourceSettings'] = request.destination_data_source_settings_shrink
+        if not UtilClient.is_unset(request.destination_data_source_type):
+            body['DestinationDataSourceType'] = request.destination_data_source_type
+        if not UtilClient.is_unset(request.job_name):
+            body['JobName'] = request.job_name
+        if not UtilClient.is_unset(request.job_settings_shrink):
+            body['JobSettings'] = request.job_settings_shrink
+        if not UtilClient.is_unset(request.job_type):
+            body['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.migration_type):
+            body['MigrationType'] = request.migration_type
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_settings_shrink):
+            body['ResourceSettings'] = request.resource_settings_shrink
+        if not UtilClient.is_unset(request.source_data_source_settings_shrink):
+            body['SourceDataSourceSettings'] = request.source_data_source_settings_shrink
+        if not UtilClient.is_unset(request.source_data_source_type):
+            body['SourceDataSourceType'] = request.source_data_source_type
+        if not UtilClient.is_unset(request.table_mappings_shrink):
+            body['TableMappings'] = request.table_mappings_shrink
+        if not UtilClient.is_unset(request.transformation_rules_shrink):
+            body['TransformationRules'] = request.transformation_rules_shrink
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateDIJob',
             version='2024-05-18',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -1153,16 +1181,44 @@ class Client(OpenApiClient):
             request.table_mappings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.table_mappings, 'TableMappings', 'json')
         if not UtilClient.is_unset(tmp_req.transformation_rules):
             request.transformation_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.transformation_rules, 'TransformationRules', 'json')
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.destination_data_source_settings_shrink):
+            body['DestinationDataSourceSettings'] = request.destination_data_source_settings_shrink
+        if not UtilClient.is_unset(request.destination_data_source_type):
+            body['DestinationDataSourceType'] = request.destination_data_source_type
+        if not UtilClient.is_unset(request.job_name):
+            body['JobName'] = request.job_name
+        if not UtilClient.is_unset(request.job_settings_shrink):
+            body['JobSettings'] = request.job_settings_shrink
+        if not UtilClient.is_unset(request.job_type):
+            body['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.migration_type):
+            body['MigrationType'] = request.migration_type
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_settings_shrink):
+            body['ResourceSettings'] = request.resource_settings_shrink
+        if not UtilClient.is_unset(request.source_data_source_settings_shrink):
+            body['SourceDataSourceSettings'] = request.source_data_source_settings_shrink
+        if not UtilClient.is_unset(request.source_data_source_type):
+            body['SourceDataSourceType'] = request.source_data_source_type
+        if not UtilClient.is_unset(request.table_mappings_shrink):
+            body['TableMappings'] = request.table_mappings_shrink
+        if not UtilClient.is_unset(request.transformation_rules_shrink):
+            body['TransformationRules'] = request.transformation_rules_shrink
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateDIJob',
             version='2024-05-18',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -22024,16 +22080,34 @@ class Client(OpenApiClient):
             request.table_mappings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.table_mappings, 'TableMappings', 'json')
         if not UtilClient.is_unset(tmp_req.transformation_rules):
             request.transformation_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.transformation_rules, 'TransformationRules', 'json')
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        body = {}
+        if not UtilClient.is_unset(request.dijob_id):
+            body['DIJobId'] = request.dijob_id
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.job_settings_shrink):
+            body['JobSettings'] = request.job_settings_shrink
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_settings_shrink):
+            body['ResourceSettings'] = request.resource_settings_shrink
+        if not UtilClient.is_unset(request.table_mappings_shrink):
+            body['TableMappings'] = request.table_mappings_shrink
+        if not UtilClient.is_unset(request.transformation_rules_shrink):
+            body['TransformationRules'] = request.transformation_rules_shrink
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateDIJob',
             version='2024-05-18',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -22069,16 +22143,34 @@ class Client(OpenApiClient):
             request.table_mappings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.table_mappings, 'TableMappings', 'json')
         if not UtilClient.is_unset(tmp_req.transformation_rules):
             request.transformation_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.transformation_rules, 'TransformationRules', 'json')
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        body = {}
+        if not UtilClient.is_unset(request.dijob_id):
+            body['DIJobId'] = request.dijob_id
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.job_settings_shrink):
+            body['JobSettings'] = request.job_settings_shrink
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_settings_shrink):
+            body['ResourceSettings'] = request.resource_settings_shrink
+        if not UtilClient.is_unset(request.table_mappings_shrink):
+            body['TableMappings'] = request.table_mappings_shrink
+        if not UtilClient.is_unset(request.transformation_rules_shrink):
+            body['TransformationRules'] = request.transformation_rules_shrink
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateDIJob',
             version='2024-05-18',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',

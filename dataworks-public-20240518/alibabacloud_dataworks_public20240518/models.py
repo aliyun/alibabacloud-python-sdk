@@ -5479,7 +5479,6 @@ class CreateDIJobRequestDestinationDataSourceSettings(TeaModel):
         self,
         data_source_name: str = None,
     ):
-        # The name of the data source.
         self.data_source_name = data_source_name
 
     def validate(self):
@@ -5508,9 +5507,7 @@ class CreateDIJobRequestJobSettingsColumnDataTypeSettings(TeaModel):
         destination_data_type: str = None,
         source_data_type: str = None,
     ):
-        # The data type of the destination field. Valid values: bigint, boolean, string, text, datetime, timestamp, decimal, and binary. Different types of data sources support different data types.
         self.destination_data_type = destination_data_type
-        # The data type of the source field. Valid values: Valid values: bigint, boolean, string, text, datetime, timestamp, decimal, and binary. Different types of data sources support different data types.
         self.source_data_type = source_data_type
 
     def validate(self):
@@ -5543,12 +5540,7 @@ class CreateDIJobRequestJobSettingsCycleScheduleSettings(TeaModel):
         cycle_migration_type: str = None,
         schedule_parameters: str = None,
     ):
-        # The synchronization type that requires periodic scheduling. Valid values:
-        # 
-        # *   Full: full synchronization
-        # *   OfflineIncremental: batch incremental synchronization
         self.cycle_migration_type = cycle_migration_type
-        # The scheduling parameters.
         self.schedule_parameters = schedule_parameters
 
     def validate(self):
@@ -5581,21 +5573,7 @@ class CreateDIJobRequestJobSettingsDdlHandlingSettings(TeaModel):
         action: str = None,
         type: str = None,
     ):
-        # The processing policy. Valid values:
-        # 
-        # *   Ignore: ignores a DDL message.
-        # *   Critical: reports an error for a DDL message.
-        # *   Normal: normally processes a DDL message.
         self.action = action
-        # The type of the DDL operation. Valid values:
-        # 
-        # *   RenameColumn
-        # *   ModifyColumn
-        # *   CreateTable
-        # *   TruncateTable
-        # *   DropTable
-        # *   DropColumn
-        # *   AddColumn
         self.type = type
 
     def validate(self):
@@ -5628,18 +5606,7 @@ class CreateDIJobRequestJobSettingsRuntimeSettings(TeaModel):
         name: str = None,
         value: str = None,
     ):
-        # The name of the configuration item. Valid values:
-        # 
-        # *   src.offline.datasource.max.connection: specifies the maximum number of connections that are allowed for reading data from the source of a batch synchronization task.
-        # *   dst.offline.truncate: specifies whether to clear the destination table before data writing.
-        # *   runtime.offline.speed.limit.enable: specifies whether throttling is enabled for a batch synchronization task.
-        # *   runtime.offline.concurrent: specifies the maximum number of parallel threads that are allowed for a batch synchronization task.
-        # *   runtime.enable.auto.create.schema: specifies whether schemas are automatically created in the destination of a synchronization task.
-        # *   runtime.realtime.concurrent: specifies the maximum number of parallel threads that are allowed for a real-time synchronization task.
-        # *   runtime.realtime.failover.minute.dataxcdc: specifies the maximum waiting duration before a synchronization task retries the next restart if the previous restart fails after failover occurs. Unit: minutes.
-        # *   runtime.realtime.failover.times.dataxcdc: specifies the maximum number of failures that are allowed for restarting a synchronization task after failovers occur.
         self.name = name
-        # The value of the configuration item.
         self.value = value
 
     def validate(self):
@@ -5675,33 +5642,10 @@ class CreateDIJobRequestJobSettings(TeaModel):
         ddl_handling_settings: List[CreateDIJobRequestJobSettingsDdlHandlingSettings] = None,
         runtime_settings: List[CreateDIJobRequestJobSettingsRuntimeSettings] = None,
     ):
-        # The channel control settings for the synchronization task. You can configure special channel control settings for the following synchronization links: data synchronization between Hologres data sources and data synchronization from Hologres to Kafka.
-        # 
-        # 1.  Holo2Kafka
-        # 
-        # *   Example: {"destinationChannelSettings":{"kafkaClientProperties":[{"key":"linger.ms","value":"100"}],"keyColumns":["col3"],"writeMode":"canal"}}
-        # *   kafkaClientProperties: the parameters related to a Kafka producer, which are used when you write data to a Kafka data source.
-        # *   keyColumns: the names of Kafka columns to which you want to write data.
-        # *   writeMode: the writing format of the Kafka data source. Valid values: json and canal.
-        # 
-        # 2.  Holo2Holo
-        # 
-        # *   Example: {"destinationChannelSettings":{"conflictMode":"replace","dynamicColumnAction":"replay","writeMode":"replay"}}
-        # *   conflictMode: the policy used to handle a conflict that occurs during data writing to Hologres. Valid values: replace and ignore.
-        # *   writeMode: the mode in which you want to write data to Hologres. Valid values: replay and insert.
-        # *   dynamicColumnAction: the mode in which you want to write data to dynamic columns in a Hologres table. Valid values: replay, insert, and ignore.
         self.channel_settings = channel_settings
-        # The data type mappings between source fields and destination fields.
-        # 
-        # >  "ColumnDataTypeSettings":[ { "SourceDataType":"Bigint", "DestinationDataType":"Text" } ]
         self.column_data_type_settings = column_data_type_settings
-        # The settings for periodic scheduling.
         self.cycle_schedule_settings = cycle_schedule_settings
-        # The processing settings for DDL messages.
-        # 
-        # >  "DDLHandlingSettings":[ { "Type":"Insert", "Action":"Normal" } ]
         self.ddl_handling_settings = ddl_handling_settings
-        # The runtime settings.
         self.runtime_settings = runtime_settings
 
     def validate(self):
@@ -5775,9 +5719,7 @@ class CreateDIJobRequestResourceSettingsOfflineResourceSettings(TeaModel):
         requested_cu: float = None,
         resource_group_identifier: str = None,
     ):
-        # The number of compute units (CUs) in the resource group for Data Integration that are used for batch synchronization.
         self.requested_cu = requested_cu
-        # The name of the resource group for Data Integration that are used for batch synchronization.
         self.resource_group_identifier = resource_group_identifier
 
     def validate(self):
@@ -5810,9 +5752,7 @@ class CreateDIJobRequestResourceSettingsRealtimeResourceSettings(TeaModel):
         requested_cu: float = None,
         resource_group_identifier: str = None,
     ):
-        # The number of CUs in the resource group for Data Integration that are used for real-time synchronization.
         self.requested_cu = requested_cu
-        # The name of the resource group for Data Integration that are used for real-time synchronization.
         self.resource_group_identifier = resource_group_identifier
 
     def validate(self):
@@ -5845,9 +5785,7 @@ class CreateDIJobRequestResourceSettingsScheduleResourceSettings(TeaModel):
         requested_cu: float = None,
         resource_group_identifier: str = None,
     ):
-        # The number of CUs in the resource group for scheduling that are used for batch synchronization.
         self.requested_cu = requested_cu
-        # The name of the resource group for scheduling that is used for batch synchronization.
         self.resource_group_identifier = resource_group_identifier
 
     def validate(self):
@@ -5881,11 +5819,8 @@ class CreateDIJobRequestResourceSettings(TeaModel):
         realtime_resource_settings: CreateDIJobRequestResourceSettingsRealtimeResourceSettings = None,
         schedule_resource_settings: CreateDIJobRequestResourceSettingsScheduleResourceSettings = None,
     ):
-        # The resource settings for batch synchronization.
         self.offline_resource_settings = offline_resource_settings
-        # The resource settings for real-time synchronization.
         self.realtime_resource_settings = realtime_resource_settings
-        # The resource settings for scheduling.
         self.schedule_resource_settings = schedule_resource_settings
 
     def validate(self):
@@ -5930,9 +5865,7 @@ class CreateDIJobRequestSourceDataSourceSettingsDataSourceProperties(TeaModel):
         encoding: str = None,
         timezone: str = None,
     ):
-        # The encoding format of the database.
         self.encoding = encoding
-        # The time zone.
         self.timezone = timezone
 
     def validate(self):
@@ -5965,9 +5898,7 @@ class CreateDIJobRequestSourceDataSourceSettings(TeaModel):
         data_source_name: str = None,
         data_source_properties: CreateDIJobRequestSourceDataSourceSettingsDataSourceProperties = None,
     ):
-        # The name of the data source.
         self.data_source_name = data_source_name
-        # The properties of the data source.
         self.data_source_properties = data_source_properties
 
     def validate(self):
@@ -6004,17 +5935,9 @@ class CreateDIJobRequestTableMappingsSourceObjectSelectionRules(TeaModel):
         expression_type: str = None,
         object_type: str = None,
     ):
-        # The operation that is performed to select objects. Valid values: Include and Exclude.
         self.action = action
-        # The expression.
         self.expression = expression
-        # The expression type. Valid values: Exact and Regex.
         self.expression_type = expression_type
-        # The object type. Valid values:
-        # 
-        # *   Table
-        # *   Schema
-        # *   Database
         self.object_type = object_type
 
     def validate(self):
@@ -6056,24 +5979,8 @@ class CreateDIJobRequestTableMappingsTransformationRules(TeaModel):
         rule_name: str = None,
         rule_target_type: str = None,
     ):
-        # The action type. Valid values:
-        # 
-        # *   DefinePrimaryKey
-        # *   Rename
-        # *   AddColumn
-        # *   HandleDml
-        # *   DefineIncrementalCondition
-        # *   DefineCycleScheduleSettings
-        # *   DefineRuntimeSettings
-        # *   DefinePartitionKey
         self.rule_action_type = rule_action_type
-        # The name of the rule. If the values of the RuleActionType parameter and the RuleTargetType parameter are the same for multiple transformation rules, you must make sure that the transformation rule names are unique.
         self.rule_name = rule_name
-        # The type of the object on which you want to perform the action. Valid values:
-        # 
-        # *   Table
-        # *   Schema
-        # *   Database
         self.rule_target_type = rule_target_type
 
     def validate(self):
@@ -6110,9 +6017,7 @@ class CreateDIJobRequestTableMappings(TeaModel):
         source_object_selection_rules: List[CreateDIJobRequestTableMappingsSourceObjectSelectionRules] = None,
         transformation_rules: List[CreateDIJobRequestTableMappingsTransformationRules] = None,
     ):
-        # The list of rules used to select synchronization objects in the source.
         self.source_object_selection_rules = source_object_selection_rules
-        # The list of transformation rules that you want to apply to the synchronization objects selected from the source. Each entry in the list defines a transformation rule.
         self.transformation_rules = transformation_rules
 
     def validate(self):
@@ -6164,68 +6069,9 @@ class CreateDIJobRequestTransformationRules(TeaModel):
         rule_name: str = None,
         rule_target_type: str = None,
     ):
-        # The action type. Valid values:
-        # 
-        # *   DefinePrimaryKey
-        # *   Rename
-        # *   AddColumn
-        # *   HandleDml
-        # *   DefineIncrementalCondition
-        # *   DefineCycleScheduleSettings
-        # *   DefinePartitionKey
         self.rule_action_type = rule_action_type
-        # The expression of the rule. The expression must be a JSON string.
-        # 
-        # 1.  Example of a renaming rule
-        # 
-        # *   Example: {"expression":"${srcDatasourceName}_${srcDatabaseName}_0922" }
-        # *   expression: the expression of the renaming rule. You can use the following variables in an expression: ${srcDatasourceName}, ${srcDatabaseName}, and ${srcTableName}. ${srcDatasourceName} specifies the name of the source. ${srcDatabaseName} specifies the name of a source database. ${srcTableName} specifies the name of a source table.
-        # 
-        # 2.  Example of a column addition rule
-        # 
-        # *   Example: {"columns":[{"columnName":"my_add_column","columnValueType":"Constant","columnValue":"123"}]}
-        # *   If you do not configure such a rule, no fields are added to the destination and no values are assigned by default.
-        # *   columnName: the name of the field that is added.
-        # *   columnValueType: the value type of the field. Valid values: Constant and Variable.
-        # *   columnValue: the value of the field. If the columnValueType parameter is set to Constant, set the columnValue parameter to a constant of the STRING data type. If the columnValueType parameter is set to Variable, set the columnValue parameter to a built-in variable. The following built-in variables are supported: EXECUTE_TIME (LONG data type), DB_NAME_SRC (STRING data type), DATASOURCE_NAME_SRC (STRING data type), TABLE_NAME_SRC (STRING data type), DB_NAME_DEST (STRING data type), DATASOURCE_NAME_DEST (STRING data type), TABLE_NAME_DEST (STRING data type), and DB_NAME_SRC_TRANSED (STRING data type). EXECUTE_TIME specifies the execution time. DB_NAME_SRC specifies the name of a source database. DATASOURCE_NAME_SRC specifies the name of the source. TABLE_NAME_SRC specifies the name of a source table. DB_NAME_DEST specifies the name of a destination database. DATASOURCE_NAME_DEST specifies the name of the destination. TABLE_NAME_DEST specifies the name of a destination table. DB_NAME_SRC_TRANSED specifies the database name obtained after a transformation.
-        # 
-        # 3.  Example of a rule used to specify primary key fields for a destination table
-        # 
-        # *   Example: {"columns":["ukcolumn1","ukcolumn2"]}
-        # *   If you do not configure such a rule, the primary key fields in the mapped source table are used for the destination table by default.
-        # *   If the destination table is an existing table, Data Integration does not modify the schema of the destination table. If the specified primary key fields do not exist in the destination table, an error is reported when the synchronization task starts to run.
-        # *   If the destination table is automatically created by the system, Data Integration automatically creates the schema of the destination table. The schema contains the primary key fields that you specify. If the specified primary key fields do not exist in the destination table, an error is reported when the synchronization task starts to run.
-        # 
-        # 4.  Example of a rule used to process DML messages
-        # 
-        # *   Example: {"dmlPolicies":[{"dmlType":"Delete","dmlAction":"Filter","filterCondition":"id > 1"}]}
-        # *   If you do not configure such a rule, the default processing policy for messages generated for insert, update, and delete operations is Normal.
-        # *   dmlType: the DML operation. Valid values: Insert, Update, and Delete.
-        # *   dmlAction: the processing policy for DML messages. Valid values: Normal, Ignore, Filter, and LogicalDelete. Filter indicates conditional processing. You can set the dmlAction parameter to Filter only when the dmlType parameter is set to Update or Delete.
-        # *   filterCondition: the condition used to filter DML messages. This parameter is required only when the dmlAction parameter is set to Filter.
-        # 
-        # 5.  Example of a rule used to perform incremental synchronization
-        # 
-        # *   Example: {"where":"id > 0"}
-        # *   You can configure such a rule to perform incremental synchronization.
-        # 
-        # 6.  Example of a rule used to configure scheduling parameters for an auto triggered task
-        # 
-        # *   Example: {"cronExpress":" \\* \\* \\* \\* \\* \\*", "cycleType":"1"}
-        # *   You can configure such a rule to configure scheduling parameters for an auto triggered task.
-        # 
-        # 7.  Example of a rule used to specify a partition key
-        # 
-        # *   Example: {"columns":["id"]}
-        # *   You can configure such a rule to specify a partition key.
         self.rule_expression = rule_expression
-        # The name of the rule. If the values of the RuleActionType parameter and the RuleTargetType parameter are the same for multiple transformation rules, you must make sure that the transformation rule names are unique.
         self.rule_name = rule_name
-        # The type of the object on which you want to perform the action. Valid values:
-        # 
-        # *   Table
-        # *   Schema
-        # *   Database
         self.rule_target_type = rule_target_type
 
     def validate(self):
@@ -6278,63 +6124,26 @@ class CreateDIJobRequest(TeaModel):
         table_mappings: List[CreateDIJobRequestTableMappings] = None,
         transformation_rules: List[CreateDIJobRequestTransformationRules] = None,
     ):
-        # The description of the synchronization task.
         self.description = description
-        # The settings of the destination. Only a single destination is supported.
-        # 
         # This parameter is required.
         self.destination_data_source_settings = destination_data_source_settings
-        # The destination type. Valid values: Hologres, OSS-HDFS, OSS, MaxCompute, LogHub, StarRocks, DataHub, AnalyticDB for MySQL, Kafka, and Hive.
-        # 
         # This parameter is required.
         self.destination_data_source_type = destination_data_source_type
-        # This parameter is deprecated and is replaced by the Name parameter.
         self.job_name = job_name
-        # The settings for the dimension of the synchronization task. The settings include processing policies for DDL messages, policies for data type mappings between source fields and destination fields, and runtime parameters of the synchronization task.
         self.job_settings = job_settings
-        # The type of the task. This parameter is optional. Valid values:
-        # 
-        # *   DatabaseRealtimeMigration: A real-time synchronization task used to synchronize only full data, only incremental data, or full and incremental data in multiple tables of multiple databases at the source.
-        # *   DatabaseOfflineMigration: A batch synchronization task used to synchronize only full data, only incremental data, or full and incremental data in multiple tables of multiple databases at the source.
-        # *   SingleTableRealtimeMigration: A real-time synchronization task used to synchronize only data in single table at the source.
         self.job_type = job_type
-        # The synchronization type. Valid values:
-        # 
-        # *   FullAndRealtimeIncremental: full synchronization and real-time incremental synchronization of data in an entire database
-        # *   RealtimeIncremental: real-time incremental synchronization of data in a single table
-        # *   Full: full batch synchronization of data in an entire database
-        # *   OfflineIncremental: batch incremental synchronization of data in an entire database
-        # *   FullAndOfflineIncremental: full synchronization and batch incremental synchronization of data in an entire database
-        # 
         # This parameter is required.
         self.migration_type = migration_type
-        # The name of the synchronization task.
         self.name = name
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
-        # 
-        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
         self.project_id = project_id
-        # The resource settings.
-        # 
         # This parameter is required.
         self.resource_settings = resource_settings
-        # The settings of the source. Only a single source is supported.
-        # 
         # This parameter is required.
         self.source_data_source_settings = source_data_source_settings
-        # The source type. Valid values: PolarDB, MySQL, Kafka, LogHub, Hologres, Oracle, OceanBase, MongoDB, Redshift, Hive, SQL Server, Doris, and ClickHouse.
-        # 
         # This parameter is required.
         self.source_data_source_type = source_data_source_type
-        # The list of mappings between rules used to select synchronization objects in the source and transformation rules applied to the selected synchronization objects. Each entry in the list displays a mapping between a rule used to select synchronization objects and a transformation rule applied to the selected synchronization objects.
-        # 
-        # >  [ { "SourceObjectSelectionRules":[ { "ObjectType":"Database", "Action":"Include", "ExpressionType":"Exact", "Expression":"biz_db" }, { "ObjectType":"Schema", "Action":"Include", "ExpressionType":"Exact", "Expression":"s1" }, { "ObjectType":"Table", "Action":"Include", "ExpressionType":"Exact", "Expression":"table1" } ], "TransformationRuleNames":[ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema" } ] } ]
-        # 
         # This parameter is required.
         self.table_mappings = table_mappings
-        # The list of transformation rules for objects involved in the synchronization task.
-        # 
-        # >  [ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema", "RuleExpression":"{"expression":"${srcDatasoureName}_${srcDatabaseName}"}" } ]
         self.transformation_rules = transformation_rules
 
     def validate(self):
@@ -6468,63 +6277,26 @@ class CreateDIJobShrinkRequest(TeaModel):
         table_mappings_shrink: str = None,
         transformation_rules_shrink: str = None,
     ):
-        # The description of the synchronization task.
         self.description = description
-        # The settings of the destination. Only a single destination is supported.
-        # 
         # This parameter is required.
         self.destination_data_source_settings_shrink = destination_data_source_settings_shrink
-        # The destination type. Valid values: Hologres, OSS-HDFS, OSS, MaxCompute, LogHub, StarRocks, DataHub, AnalyticDB for MySQL, Kafka, and Hive.
-        # 
         # This parameter is required.
         self.destination_data_source_type = destination_data_source_type
-        # This parameter is deprecated and is replaced by the Name parameter.
         self.job_name = job_name
-        # The settings for the dimension of the synchronization task. The settings include processing policies for DDL messages, policies for data type mappings between source fields and destination fields, and runtime parameters of the synchronization task.
         self.job_settings_shrink = job_settings_shrink
-        # The type of the task. This parameter is optional. Valid values:
-        # 
-        # *   DatabaseRealtimeMigration: A real-time synchronization task used to synchronize only full data, only incremental data, or full and incremental data in multiple tables of multiple databases at the source.
-        # *   DatabaseOfflineMigration: A batch synchronization task used to synchronize only full data, only incremental data, or full and incremental data in multiple tables of multiple databases at the source.
-        # *   SingleTableRealtimeMigration: A real-time synchronization task used to synchronize only data in single table at the source.
         self.job_type = job_type
-        # The synchronization type. Valid values:
-        # 
-        # *   FullAndRealtimeIncremental: full synchronization and real-time incremental synchronization of data in an entire database
-        # *   RealtimeIncremental: real-time incremental synchronization of data in a single table
-        # *   Full: full batch synchronization of data in an entire database
-        # *   OfflineIncremental: batch incremental synchronization of data in an entire database
-        # *   FullAndOfflineIncremental: full synchronization and batch incremental synchronization of data in an entire database
-        # 
         # This parameter is required.
         self.migration_type = migration_type
-        # The name of the synchronization task.
         self.name = name
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
-        # 
-        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
         self.project_id = project_id
-        # The resource settings.
-        # 
         # This parameter is required.
         self.resource_settings_shrink = resource_settings_shrink
-        # The settings of the source. Only a single source is supported.
-        # 
         # This parameter is required.
         self.source_data_source_settings_shrink = source_data_source_settings_shrink
-        # The source type. Valid values: PolarDB, MySQL, Kafka, LogHub, Hologres, Oracle, OceanBase, MongoDB, Redshift, Hive, SQL Server, Doris, and ClickHouse.
-        # 
         # This parameter is required.
         self.source_data_source_type = source_data_source_type
-        # The list of mappings between rules used to select synchronization objects in the source and transformation rules applied to the selected synchronization objects. Each entry in the list displays a mapping between a rule used to select synchronization objects and a transformation rule applied to the selected synchronization objects.
-        # 
-        # >  [ { "SourceObjectSelectionRules":[ { "ObjectType":"Database", "Action":"Include", "ExpressionType":"Exact", "Expression":"biz_db" }, { "ObjectType":"Schema", "Action":"Include", "ExpressionType":"Exact", "Expression":"s1" }, { "ObjectType":"Table", "Action":"Include", "ExpressionType":"Exact", "Expression":"table1" } ], "TransformationRuleNames":[ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema" } ] } ]
-        # 
         # This parameter is required.
         self.table_mappings_shrink = table_mappings_shrink
-        # The list of transformation rules for objects involved in the synchronization task.
-        # 
-        # >  [ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema", "RuleExpression":"{"expression":"${srcDatasoureName}_${srcDatabaseName}"}" } ]
         self.transformation_rules_shrink = transformation_rules_shrink
 
     def validate(self):
@@ -65496,9 +65268,7 @@ class UpdateDIJobRequestJobSettingsColumnDataTypeSettings(TeaModel):
         destination_data_type: str = None,
         source_data_type: str = None,
     ):
-        # The data type of the destination field. Valid values: bigint, boolean, string, text, datetime, timestamp, decimal, and binary. Different types of data sources support different data types.
         self.destination_data_type = destination_data_type
-        # The data type of the source field. Valid values: Valid values: bigint, boolean, string, text, datetime, timestamp, decimal, and binary. Different types of data sources support different data types.
         self.source_data_type = source_data_type
 
     def validate(self):
@@ -65530,7 +65300,6 @@ class UpdateDIJobRequestJobSettingsCycleScheduleSettings(TeaModel):
         self,
         schedule_parameters: str = None,
     ):
-        # The scheduling parameters.
         self.schedule_parameters = schedule_parameters
 
     def validate(self):
@@ -65559,21 +65328,7 @@ class UpdateDIJobRequestJobSettingsDdlHandlingSettings(TeaModel):
         action: str = None,
         type: str = None,
     ):
-        # The processing policy. Valid values:
-        # 
-        # *   Ignore: ignores a DDL message.
-        # *   Critical: reports an error for a DDL message.
-        # *   Normal: normally processes a DDL message.
         self.action = action
-        # The type of the DDL operation. Valid values:
-        # 
-        # *   RenameColumn
-        # *   ModifyColumn
-        # *   CreateTable
-        # *   TruncateTable
-        # *   DropTable
-        # *   DropColumn
-        # *   AddColumn
         self.type = type
 
     def validate(self):
@@ -65606,18 +65361,7 @@ class UpdateDIJobRequestJobSettingsRuntimeSettings(TeaModel):
         name: str = None,
         value: str = None,
     ):
-        # The name of the configuration item. Valid values:
-        # 
-        # *   src.offline.datasource.max.connection: specifies the maximum number of connections that are allowed for reading data from the source of a batch synchronization task.
-        # *   dst.offline.truncate: specifies whether to clear the destination table before data writing.
-        # *   runtime.offline.speed.limit.enable: specifies whether throttling is enabled for a batch synchronization task.
-        # *   runtime.offline.concurrent: specifies the maximum number of parallel threads that are allowed for a batch synchronization task.
-        # *   runtime.enable.auto.create.schema: specifies whether schemas are automatically created in the destination of a synchronization task.
-        # *   runtime.realtime.concurrent: specifies the maximum number of parallel threads that are allowed for a real-time synchronization task.
-        # *   runtime.realtime.failover.minute.dataxcdc: specifies the maximum waiting duration before a synchronization task retries the next restart if the previous restart fails after failover occurs. Unit: minutes.
-        # *   runtime.realtime.failover.times.dataxcdc: specifies the maximum number of failures that are allowed for restarting a synchronization task after failovers occur.
         self.name = name
-        # The value of the configuration item.
         self.value = value
 
     def validate(self):
@@ -65653,33 +65397,10 @@ class UpdateDIJobRequestJobSettings(TeaModel):
         ddl_handling_settings: List[UpdateDIJobRequestJobSettingsDdlHandlingSettings] = None,
         runtime_settings: List[UpdateDIJobRequestJobSettingsRuntimeSettings] = None,
     ):
-        # The channel control settings for the synchronization task. You can configure special channel control settings for the following synchronization links: data synchronization between Hologres data sources and data synchronization from Hologres to Kafka.
-        # 
-        # 1.  Holo2Kafka
-        # 
-        # *   Example: {"destinationChannelSettings":{"kafkaClientProperties":[{"key":"linger.ms","value":"100"}],"keyColumns":["col3"],"writeMode":"canal"}}
-        # *   kafkaClientProperties: the parameters related to a Kafka producer, which are used when you read data from a Kafka data source.
-        # *   keyColumns: the names of Kafka columns to which you want to write data.
-        # *   writeMode: the writing format. Valid values: json and canal.
-        # 
-        # 2.  Holo2Holo
-        # 
-        # *   Example: {"destinationChannelSettings":{"conflictMode":"replace","dynamicColumnAction":"replay","writeMode":"replay"}}
-        # *   conflictMode: the policy used to handle a conflict that occurs during data writing to Hologres. Valid values: replace and ignore.
-        # *   writeMode: the mode in which you want to write data to Hologres. Valid values: replay and insert.
-        # *   dynamicColumnAction: the mode in which you want to write data to dynamic columns in a Hologres table. Valid values: replay, insert, and ignore.
         self.channel_settings = channel_settings
-        # The data type mappings between source fields and destination fields.
-        # 
-        # >  "ColumnDataTypeSettings":[ { "SourceDataType":"Bigint", "DestinationDataType":"Text" } ]
         self.column_data_type_settings = column_data_type_settings
-        # The settings for periodic scheduling.
         self.cycle_schedule_settings = cycle_schedule_settings
-        # The processing settings for DDL messages.
-        # 
-        # >  "DDLHandlingSettings":[ { "Type":"Insert", "Action":"Normal" } ]
         self.ddl_handling_settings = ddl_handling_settings
-        # The runtime settings.
         self.runtime_settings = runtime_settings
 
     def validate(self):
@@ -65753,9 +65474,7 @@ class UpdateDIJobRequestResourceSettingsOfflineResourceSettings(TeaModel):
         requested_cu: float = None,
         resource_group_identifier: str = None,
     ):
-        # The number of compute units (CUs) in the resource group for Data Integration that are used for batch synchronization.
         self.requested_cu = requested_cu
-        # The name of the resource group for Data Integration used for batch synchronization.
         self.resource_group_identifier = resource_group_identifier
 
     def validate(self):
@@ -65788,9 +65507,7 @@ class UpdateDIJobRequestResourceSettingsRealtimeResourceSettings(TeaModel):
         requested_cu: float = None,
         resource_group_identifier: str = None,
     ):
-        # The number of CUs in the resource group for Data Integration that are used for real-time synchronization.
         self.requested_cu = requested_cu
-        # The name of the resource group for Data Integration used for real-time synchronization.
         self.resource_group_identifier = resource_group_identifier
 
     def validate(self):
@@ -65823,9 +65540,7 @@ class UpdateDIJobRequestResourceSettingsScheduleResourceSettings(TeaModel):
         requested_cu: float = None,
         resource_group_identifier: str = None,
     ):
-        # The number of CUs in the resource group for scheduling that are used for batch synchronization.
         self.requested_cu = requested_cu
-        # The name of the resource group for scheduling used for batch synchronization.
         self.resource_group_identifier = resource_group_identifier
 
     def validate(self):
@@ -65859,11 +65574,8 @@ class UpdateDIJobRequestResourceSettings(TeaModel):
         realtime_resource_settings: UpdateDIJobRequestResourceSettingsRealtimeResourceSettings = None,
         schedule_resource_settings: UpdateDIJobRequestResourceSettingsScheduleResourceSettings = None,
     ):
-        # The resource used for batch synchronization.
         self.offline_resource_settings = offline_resource_settings
-        # The resource used for real-time synchronization.
         self.realtime_resource_settings = realtime_resource_settings
-        # The resource used for scheduling.
         self.schedule_resource_settings = schedule_resource_settings
 
     def validate(self):
@@ -65910,17 +65622,9 @@ class UpdateDIJobRequestTableMappingsSourceObjectSelectionRules(TeaModel):
         expression_type: str = None,
         object_type: str = None,
     ):
-        # The operation that is performed to select objects. Valid values: Include and Exclude.
         self.action = action
-        # The expression.
         self.expression = expression
-        # The expression type. Valid values: Exact and Regex.
         self.expression_type = expression_type
-        # The object type. Valid values:
-        # 
-        # *   Table
-        # *   Schema
-        # *   Database
         self.object_type = object_type
 
     def validate(self):
@@ -65962,20 +65666,8 @@ class UpdateDIJobRequestTableMappingsTransformationRules(TeaModel):
         rule_name: str = None,
         rule_target_type: str = None,
     ):
-        # The action type. Valid values:
-        # 
-        # *   DefinePrimaryKey
-        # *   Rename
-        # *   AddColumn
-        # *   HandleDml
         self.rule_action_type = rule_action_type
-        # The name of the rule. If the values of the RuleActionType parameter and the RuleTargetType parameter are the same for multiple transformation rules, you must make sure that the transformation rule names are unique.
         self.rule_name = rule_name
-        # The type of the object on which you want to perform the action. Valid values:
-        # 
-        # *   Table
-        # *   Schema
-        # *   Database
         self.rule_target_type = rule_target_type
 
     def validate(self):
@@ -66012,9 +65704,7 @@ class UpdateDIJobRequestTableMappings(TeaModel):
         source_object_selection_rules: List[UpdateDIJobRequestTableMappingsSourceObjectSelectionRules] = None,
         transformation_rules: List[UpdateDIJobRequestTableMappingsTransformationRules] = None,
     ):
-        # The list of rules that you want to use to select synchronization objects in the source.
         self.source_object_selection_rules = source_object_selection_rules
-        # The transformation rules that you want to apply to the synchronization objects selected from the source.
         self.transformation_rules = transformation_rules
 
     def validate(self):
@@ -66066,68 +65756,9 @@ class UpdateDIJobRequestTransformationRules(TeaModel):
         rule_name: str = None,
         rule_target_type: str = None,
     ):
-        # The action type. Valid values:
-        # 
-        # *   DefinePrimaryKey
-        # *   Rename
-        # *   AddColumn
-        # *   HandleDml
-        # *   DefineIncrementalCondition
-        # *   DefineCycleScheduleSettings
-        # *   DefinePartitionKey
         self.rule_action_type = rule_action_type
-        # The expression of the rule. The expression must be a JSON string.
-        # 
-        # 1.  Example of a renaming rule
-        # 
-        # *   Example: {"expression":"${srcDatasourceName}_${srcDatabaseName}_0922" }
-        # *   expression: the expression of the renaming rule. You can use the following variables in an expression: ${srcDatasourceName}, ${srcDatabaseName}, and ${srcTableName}. ${srcDatasourceName} specifies the name of the source. ${srcDatabaseName} specifies the name of a source database. ${srcTableName} specifies the name of a source table.
-        # 
-        # 2.  Example of a column addition rule
-        # 
-        # *   Example: {"columns":[{"columnName":"my_add_column","columnValueType":"Constant","columnValue":"123"}]}
-        # *   If you do not configure such a rule, no fields are added to the destination and no values are assigned by default.
-        # *   columnName: the name of the field that is added.
-        # *   columnValueType: the value type of the field. Valid values: Constant and Variable.
-        # *   columnValue: the value of the field. If the columnValueType parameter is set to Constant, set the columnValue parameter to a constant of the STRING data type. If the columnValueType parameter is set to Variable, set the columnValue parameter to a built-in variable. The following built-in variables are supported: EXECUTE_TIME (LONG data type), DB_NAME_SRC (STRING data type), DATASOURCE_NAME_SRC (STRING data type), TABLE_NAME_SRC (STRING data type), DB_NAME_DEST (STRING data type), DATASOURCE_NAME_DEST (STRING data type), TABLE_NAME_DEST (STRING data type), and DB_NAME_SRC_TRANSED (STRING data type). EXECUTE_TIME specifies the execution time. DB_NAME_SRC specifies the name of a source database. DATASOURCE_NAME_SRC specifies the name of the source. TABLE_NAME_SRC specifies the name of a source table. DB_NAME_DEST specifies the name of a destination database. DATASOURCE_NAME_DEST specifies the name of the destination. TABLE_NAME_DEST specifies the name of a destination table. DB_NAME_SRC_TRANSED specifies the database name obtained after a transformation.
-        # 
-        # 3.  Example of a rule used to specify primary key fields for a destination table
-        # 
-        # *   Example: {"columns":["ukcolumn1","ukcolumn2"]}
-        # *   If you do not configure such a rule, the primary key fields in the mapped source table are used for the destination table by default.
-        # *   If the destination table is an existing table, Data Integration does not modify the schema of the destination table. If the specified primary key fields do not exist in the destination table, an error is reported when the synchronization task starts to run.
-        # *   If the destination table is automatically created by the system, Data Integration automatically creates the schema of the destination table. The schema contains the primary key fields that you specify. If the specified primary key fields do not exist in the destination table, an error is reported when the synchronization task starts to run.
-        # 
-        # 4.  Example of a rule used to process DML messages
-        # 
-        # *   Example: {"dmlPolicies":[{"dmlType":"Delete","dmlAction":"Filter","filterCondition":"id > 1"}]}
-        # *   If you do not configure such a rule, the default processing policy for messages generated for insert, update, and delete operations is Normal.
-        # *   dmlType: the DML operation. Valid values: Insert, Update, and Delete.
-        # *   dmlAction: the processing policy for DML messages. Valid values: Normal, Ignore, Filter, and LogicalDelete. Filter indicates conditional processing. You can set the dmlAction parameter to Filter only when the dmlType parameter is set to Update or Delete.
-        # *   filterCondition: the condition used to filter DML messages. This parameter is required only when the dmlAction parameter is set to Filter.
-        # 
-        # 5.  Example of a rule used to perform incremental synchronization
-        # 
-        # *   Example: {"where":"id > 0"}
-        # *   You can configure such a rule to perform incremental synchronization.
-        # 
-        # 6.  Example of a rule used to configure scheduling parameters for an auto triggered task
-        # 
-        # *   Example: {"cronExpress":" \\* \\* \\* \\* \\* \\*", "cycleType":"1"}
-        # *   You can configure such a rule to configure scheduling parameters for an auto triggered task.
-        # 
-        # 7.  Example of a rule used to specify a partition key
-        # 
-        # *   Example: {"columns":["id"]}
-        # *   You can configure such a rule to specify a partition key.
         self.rule_expression = rule_expression
-        # The name of the rule. If the values of the RuleActionType parameter and the RuleTargetType parameter are the same for multiple transformation rules, you must make sure that the transformation rule names are unique.
         self.rule_name = rule_name
-        # The type of the object on which you want to perform the action. Valid values:
-        # 
-        # *   Table
-        # *   Schema
-        # *   Database
         self.rule_target_type = rule_target_type
 
     def validate(self):
@@ -66174,27 +65805,14 @@ class UpdateDIJobRequest(TeaModel):
         table_mappings: List[UpdateDIJobRequestTableMappings] = None,
         transformation_rules: List[UpdateDIJobRequestTransformationRules] = None,
     ):
-        # This parameter is deprecated. Use the Id parameter instead.
         self.dijob_id = dijob_id
-        # The description of the synchronization task.
         self.description = description
         # The ID of the synchronization task.
         self.id = id
-        # The settings for the dimension of the synchronization task. The settings include processing policies for DDL messages, policies for data type mappings between source fields and destination fields, and runtime parameters of the synchronization task.
         self.job_settings = job_settings
-        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the workspace ID.
-        # 
-        # You must configure this parameter to specify the DataWorks workspace to which the operation is applied.
         self.project_id = project_id
-        # The resource settings.
         self.resource_settings = resource_settings
-        # The list of mappings between rules used to select synchronization objects in the source and transformation rules applied to the selected synchronization objects. Each entry in the list displays a mapping between a rule used to select synchronization objects and a transformation rule applied to the selected synchronization objects.
-        # 
-        # >  [ { "SourceObjectSelectionRules":[ { "ObjectType":"Database", "Action":"Include", "ExpressionType":"Exact", "Expression":"biz_db" }, { "ObjectType":"Schema", "Action":"Include", "ExpressionType":"Exact", "Expression":"s1" }, { "ObjectType":"Table", "Action":"Include", "ExpressionType":"Exact", "Expression":"table1" } ], "TransformationRuleNames":[ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema" } ] } ]
         self.table_mappings = table_mappings
-        # The list of transformation rules for objects involved in the synchronization task.
-        # 
-        # >  [ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema", "RuleExpression":"{"expression":"${srcDatasoureName}_${srcDatabaseName}"}" } ]
         self.transformation_rules = transformation_rules
 
     def validate(self):
@@ -66280,27 +65898,14 @@ class UpdateDIJobShrinkRequest(TeaModel):
         table_mappings_shrink: str = None,
         transformation_rules_shrink: str = None,
     ):
-        # This parameter is deprecated. Use the Id parameter instead.
         self.dijob_id = dijob_id
-        # The description of the synchronization task.
         self.description = description
         # The ID of the synchronization task.
         self.id = id
-        # The settings for the dimension of the synchronization task. The settings include processing policies for DDL messages, policies for data type mappings between source fields and destination fields, and runtime parameters of the synchronization task.
         self.job_settings_shrink = job_settings_shrink
-        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the workspace ID.
-        # 
-        # You must configure this parameter to specify the DataWorks workspace to which the operation is applied.
         self.project_id = project_id
-        # The resource settings.
         self.resource_settings_shrink = resource_settings_shrink
-        # The list of mappings between rules used to select synchronization objects in the source and transformation rules applied to the selected synchronization objects. Each entry in the list displays a mapping between a rule used to select synchronization objects and a transformation rule applied to the selected synchronization objects.
-        # 
-        # >  [ { "SourceObjectSelectionRules":[ { "ObjectType":"Database", "Action":"Include", "ExpressionType":"Exact", "Expression":"biz_db" }, { "ObjectType":"Schema", "Action":"Include", "ExpressionType":"Exact", "Expression":"s1" }, { "ObjectType":"Table", "Action":"Include", "ExpressionType":"Exact", "Expression":"table1" } ], "TransformationRuleNames":[ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema" } ] } ]
         self.table_mappings_shrink = table_mappings_shrink
-        # The list of transformation rules for objects involved in the synchronization task.
-        # 
-        # >  [ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema", "RuleExpression":"{"expression":"${srcDatasoureName}_${srcDatabaseName}"}" } ]
         self.transformation_rules_shrink = transformation_rules_shrink
 
     def validate(self):
