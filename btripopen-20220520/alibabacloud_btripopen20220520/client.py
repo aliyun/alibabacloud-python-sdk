@@ -3297,6 +3297,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.bill_batch):
             query['bill_batch'] = request.bill_batch
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -3352,6 +3354,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.bill_batch):
             query['bill_batch'] = request.bill_batch
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -4317,6 +4321,8 @@ class Client(OpenApiClient):
             query['bill_batch'] = request.bill_batch
         if not UtilClient.is_unset(request.cooperator_id):
             query['cooperator_id'] = request.cooperator_id
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -4374,6 +4380,8 @@ class Client(OpenApiClient):
             query['bill_batch'] = request.bill_batch
         if not UtilClient.is_unset(request.cooperator_id):
             query['cooperator_id'] = request.cooperator_id
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -4459,6 +4467,8 @@ class Client(OpenApiClient):
             query['bill_batch'] = request.bill_batch
         if not UtilClient.is_unset(request.cooperator_id):
             query['cooperator_id'] = request.cooperator_id
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -4516,6 +4526,8 @@ class Client(OpenApiClient):
             query['bill_batch'] = request.bill_batch
         if not UtilClient.is_unset(request.cooperator_id):
             query['cooperator_id'] = request.cooperator_id
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -7827,6 +7839,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.bill_batch):
             query['bill_batch'] = request.bill_batch
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -7882,6 +7896,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.bill_batch):
             query['bill_batch'] = request.bill_batch
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -12441,6 +12457,8 @@ class Client(OpenApiClient):
             query['bill_batch'] = request.bill_batch
         if not UtilClient.is_unset(request.cooperator_id):
             query['cooperator_id'] = request.cooperator_id
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -12498,6 +12516,8 @@ class Client(OpenApiClient):
             query['bill_batch'] = request.bill_batch
         if not UtilClient.is_unset(request.cooperator_id):
             query['cooperator_id'] = request.cooperator_id
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -13177,6 +13197,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.bill_batch):
             query['bill_batch'] = request.bill_batch
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -13232,6 +13254,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.bill_batch):
             query['bill_batch'] = request.bill_batch
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -16235,6 +16259,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.bill_batch):
             query['bill_batch'] = request.bill_batch
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -16290,6 +16316,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.bill_batch):
             query['bill_batch'] = request.bill_batch
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -16375,6 +16403,8 @@ class Client(OpenApiClient):
             query['bill_batch'] = request.bill_batch
         if not UtilClient.is_unset(request.category):
             query['category'] = request.category
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -16432,6 +16462,8 @@ class Client(OpenApiClient):
             query['bill_batch'] = request.bill_batch
         if not UtilClient.is_unset(request.category):
             query['category'] = request.category
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -17736,41 +17768,35 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.contact_info):
             request.contact_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.contact_info, 'contact_info', 'json')
-        if not UtilClient.is_unset(tmp_req.cost_center):
-            request.cost_center_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cost_center, 'cost_center', 'json')
         if not UtilClient.is_unset(tmp_req.extra_info):
             request.extra_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extra_info, 'extra_info', 'json')
         if not UtilClient.is_unset(tmp_req.passenger_list):
             request.passenger_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.passenger_list, 'passenger_list', 'json')
-        query = {}
+        body = {}
         if not UtilClient.is_unset(request.async_create_order_key):
-            query['async_create_order_key'] = request.async_create_order_key
+            body['async_create_order_key'] = request.async_create_order_key
         if not UtilClient.is_unset(request.async_create_order_mode):
-            query['async_create_order_mode'] = request.async_create_order_mode
+            body['async_create_order_mode'] = request.async_create_order_mode
+        if not UtilClient.is_unset(request.btrip_user_id):
+            body['btrip_user_id'] = request.btrip_user_id
+        if not UtilClient.is_unset(request.buyer_name):
+            body['buyer_name'] = request.buyer_name
         if not UtilClient.is_unset(request.contact_info_shrink):
-            query['contact_info'] = request.contact_info_shrink
-        if not UtilClient.is_unset(request.cost_center_shrink):
-            query['cost_center'] = request.cost_center_shrink
+            body['contact_info'] = request.contact_info_shrink
         if not UtilClient.is_unset(request.extra_info_shrink):
-            query['extra_info'] = request.extra_info_shrink
+            body['extra_info'] = request.extra_info_shrink
         if not UtilClient.is_unset(request.isv_name):
-            query['isv_name'] = request.isv_name
-        if not UtilClient.is_unset(request.language):
-            query['language'] = request.language
+            body['isv_name'] = request.isv_name
+        if not UtilClient.is_unset(request.order_price):
+            body['order_price'] = request.order_price
         if not UtilClient.is_unset(request.ota_item_id):
-            query['ota_item_id'] = request.ota_item_id
+            body['ota_item_id'] = request.ota_item_id
         if not UtilClient.is_unset(request.out_order_id):
-            query['out_order_id'] = request.out_order_id
+            body['out_order_id'] = request.out_order_id
         if not UtilClient.is_unset(request.passenger_list_shrink):
-            query['passenger_list'] = request.passenger_list_shrink
+            body['passenger_list'] = request.passenger_list_shrink
         if not UtilClient.is_unset(request.render_key):
-            query['render_key'] = request.render_key
-        if not UtilClient.is_unset(request.total_price_cent):
-            query['total_price_cent'] = request.total_price_cent
-        if not UtilClient.is_unset(request.user_id):
-            query['user_id'] = request.user_id
-        if not UtilClient.is_unset(request.user_name):
-            query['user_name'] = request.user_name
+            body['render_key'] = request.render_key
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -17778,17 +17804,17 @@ class Client(OpenApiClient):
             real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='IntlFlightCreateOrder',
             version='2022-05-20',
             protocol='HTTPS',
             pathname=f'/intl-flight/v1/order/action/create',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='ROA',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -17815,41 +17841,35 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.contact_info):
             request.contact_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.contact_info, 'contact_info', 'json')
-        if not UtilClient.is_unset(tmp_req.cost_center):
-            request.cost_center_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cost_center, 'cost_center', 'json')
         if not UtilClient.is_unset(tmp_req.extra_info):
             request.extra_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extra_info, 'extra_info', 'json')
         if not UtilClient.is_unset(tmp_req.passenger_list):
             request.passenger_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.passenger_list, 'passenger_list', 'json')
-        query = {}
+        body = {}
         if not UtilClient.is_unset(request.async_create_order_key):
-            query['async_create_order_key'] = request.async_create_order_key
+            body['async_create_order_key'] = request.async_create_order_key
         if not UtilClient.is_unset(request.async_create_order_mode):
-            query['async_create_order_mode'] = request.async_create_order_mode
+            body['async_create_order_mode'] = request.async_create_order_mode
+        if not UtilClient.is_unset(request.btrip_user_id):
+            body['btrip_user_id'] = request.btrip_user_id
+        if not UtilClient.is_unset(request.buyer_name):
+            body['buyer_name'] = request.buyer_name
         if not UtilClient.is_unset(request.contact_info_shrink):
-            query['contact_info'] = request.contact_info_shrink
-        if not UtilClient.is_unset(request.cost_center_shrink):
-            query['cost_center'] = request.cost_center_shrink
+            body['contact_info'] = request.contact_info_shrink
         if not UtilClient.is_unset(request.extra_info_shrink):
-            query['extra_info'] = request.extra_info_shrink
+            body['extra_info'] = request.extra_info_shrink
         if not UtilClient.is_unset(request.isv_name):
-            query['isv_name'] = request.isv_name
-        if not UtilClient.is_unset(request.language):
-            query['language'] = request.language
+            body['isv_name'] = request.isv_name
+        if not UtilClient.is_unset(request.order_price):
+            body['order_price'] = request.order_price
         if not UtilClient.is_unset(request.ota_item_id):
-            query['ota_item_id'] = request.ota_item_id
+            body['ota_item_id'] = request.ota_item_id
         if not UtilClient.is_unset(request.out_order_id):
-            query['out_order_id'] = request.out_order_id
+            body['out_order_id'] = request.out_order_id
         if not UtilClient.is_unset(request.passenger_list_shrink):
-            query['passenger_list'] = request.passenger_list_shrink
+            body['passenger_list'] = request.passenger_list_shrink
         if not UtilClient.is_unset(request.render_key):
-            query['render_key'] = request.render_key
-        if not UtilClient.is_unset(request.total_price_cent):
-            query['total_price_cent'] = request.total_price_cent
-        if not UtilClient.is_unset(request.user_id):
-            query['user_id'] = request.user_id
-        if not UtilClient.is_unset(request.user_name):
-            query['user_name'] = request.user_name
+            body['render_key'] = request.render_key
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -17857,17 +17877,17 @@ class Client(OpenApiClient):
             real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='IntlFlightCreateOrder',
             version='2022-05-20',
             protocol='HTTPS',
             pathname=f'/intl-flight/v1/order/action/create',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='ROA',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -17923,20 +17943,18 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.passenger_list):
             request.passenger_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.passenger_list, 'passenger_list', 'json')
         query = {}
+        if not UtilClient.is_unset(request.btrip_user_id):
+            query['btrip_user_id'] = request.btrip_user_id
+        if not UtilClient.is_unset(request.buyer_name):
+            query['buyer_name'] = request.buyer_name
         if not UtilClient.is_unset(request.isv_name):
             query['isv_name'] = request.isv_name
-        if not UtilClient.is_unset(request.language):
-            query['language'] = request.language
         if not UtilClient.is_unset(request.order_price):
             query['order_price'] = request.order_price
         if not UtilClient.is_unset(request.ota_item_id):
             query['ota_item_id'] = request.ota_item_id
         if not UtilClient.is_unset(request.passenger_list_shrink):
             query['passenger_list'] = request.passenger_list_shrink
-        if not UtilClient.is_unset(request.user_id):
-            query['user_id'] = request.user_id
-        if not UtilClient.is_unset(request.user_name):
-            query['user_name'] = request.user_name
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -17982,20 +18000,18 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.passenger_list):
             request.passenger_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.passenger_list, 'passenger_list', 'json')
         query = {}
+        if not UtilClient.is_unset(request.btrip_user_id):
+            query['btrip_user_id'] = request.btrip_user_id
+        if not UtilClient.is_unset(request.buyer_name):
+            query['buyer_name'] = request.buyer_name
         if not UtilClient.is_unset(request.isv_name):
             query['isv_name'] = request.isv_name
-        if not UtilClient.is_unset(request.language):
-            query['language'] = request.language
         if not UtilClient.is_unset(request.order_price):
             query['order_price'] = request.order_price
         if not UtilClient.is_unset(request.ota_item_id):
             query['ota_item_id'] = request.ota_item_id
         if not UtilClient.is_unset(request.passenger_list_shrink):
             query['passenger_list'] = request.passenger_list_shrink
-        if not UtilClient.is_unset(request.user_id):
-            query['user_id'] = request.user_id
-        if not UtilClient.is_unset(request.user_name):
-            query['user_name'] = request.user_name
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -18077,14 +18093,8 @@ class Client(OpenApiClient):
             query['buyer_name'] = request.buyer_name
         if not UtilClient.is_unset(request.cabin_type):
             query['cabin_type'] = request.cabin_type
-        if not UtilClient.is_unset(request.direct_only):
-            query['direct_only'] = request.direct_only
         if not UtilClient.is_unset(request.isv_name):
             query['isv_name'] = request.isv_name
-        if not UtilClient.is_unset(request.language):
-            query['language'] = request.language
-        if not UtilClient.is_unset(request.need_share_flight):
-            query['need_share_flight'] = request.need_share_flight
         if not UtilClient.is_unset(request.out_wheel_search):
             query['out_wheel_search'] = request.out_wheel_search
         if not UtilClient.is_unset(request.query_record_id):
@@ -18095,8 +18105,6 @@ class Client(OpenApiClient):
             query['search_mode'] = request.search_mode
         if not UtilClient.is_unset(request.search_passenger_list_shrink):
             query['search_passenger_list'] = request.search_passenger_list_shrink
-        if not UtilClient.is_unset(request.supplier_code):
-            query['supplier_code'] = request.supplier_code
         if not UtilClient.is_unset(request.token):
             query['token'] = request.token
         if not UtilClient.is_unset(request.trip_type):
@@ -18154,14 +18162,8 @@ class Client(OpenApiClient):
             query['buyer_name'] = request.buyer_name
         if not UtilClient.is_unset(request.cabin_type):
             query['cabin_type'] = request.cabin_type
-        if not UtilClient.is_unset(request.direct_only):
-            query['direct_only'] = request.direct_only
         if not UtilClient.is_unset(request.isv_name):
             query['isv_name'] = request.isv_name
-        if not UtilClient.is_unset(request.language):
-            query['language'] = request.language
-        if not UtilClient.is_unset(request.need_share_flight):
-            query['need_share_flight'] = request.need_share_flight
         if not UtilClient.is_unset(request.out_wheel_search):
             query['out_wheel_search'] = request.out_wheel_search
         if not UtilClient.is_unset(request.query_record_id):
@@ -18172,8 +18174,6 @@ class Client(OpenApiClient):
             query['search_mode'] = request.search_mode
         if not UtilClient.is_unset(request.search_passenger_list_shrink):
             query['search_passenger_list'] = request.search_passenger_list_shrink
-        if not UtilClient.is_unset(request.supplier_code):
-            query['supplier_code'] = request.supplier_code
         if not UtilClient.is_unset(request.token):
             query['token'] = request.token
         if not UtilClient.is_unset(request.trip_type):
@@ -18246,15 +18246,17 @@ class Client(OpenApiClient):
         @return: IntlFlightOrderCancelResponse
         """
         UtilClient.validate_model(request)
-        query = {}
+        body = {}
+        if not UtilClient.is_unset(request.btrip_user_id):
+            body['btrip_user_id'] = request.btrip_user_id
+        if not UtilClient.is_unset(request.buyer_name):
+            body['buyer_name'] = request.buyer_name
         if not UtilClient.is_unset(request.isv_name):
-            query['isv_name'] = request.isv_name
-        if not UtilClient.is_unset(request.memo):
-            query['memo'] = request.memo
+            body['isv_name'] = request.isv_name
         if not UtilClient.is_unset(request.order_id):
-            query['order_id'] = request.order_id
+            body['order_id'] = request.order_id
         if not UtilClient.is_unset(request.out_order_id):
-            query['out_order_id'] = request.out_order_id
+            body['out_order_id'] = request.out_order_id
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -18262,17 +18264,17 @@ class Client(OpenApiClient):
             real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='IntlFlightOrderCancel',
             version='2022-05-20',
             protocol='HTTPS',
             pathname=f'/intl-flight/v1/order/action/cancel',
-            method='DELETE',
+            method='PUT',
             auth_type='AK',
             style='ROA',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -18295,15 +18297,17 @@ class Client(OpenApiClient):
         @return: IntlFlightOrderCancelResponse
         """
         UtilClient.validate_model(request)
-        query = {}
+        body = {}
+        if not UtilClient.is_unset(request.btrip_user_id):
+            body['btrip_user_id'] = request.btrip_user_id
+        if not UtilClient.is_unset(request.buyer_name):
+            body['buyer_name'] = request.buyer_name
         if not UtilClient.is_unset(request.isv_name):
-            query['isv_name'] = request.isv_name
-        if not UtilClient.is_unset(request.memo):
-            query['memo'] = request.memo
+            body['isv_name'] = request.isv_name
         if not UtilClient.is_unset(request.order_id):
-            query['order_id'] = request.order_id
+            body['order_id'] = request.order_id
         if not UtilClient.is_unset(request.out_order_id):
-            query['out_order_id'] = request.out_order_id
+            body['out_order_id'] = request.out_order_id
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -18311,17 +18315,17 @@ class Client(OpenApiClient):
             real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='IntlFlightOrderCancel',
             version='2022-05-20',
             protocol='HTTPS',
             pathname=f'/intl-flight/v1/order/action/cancel',
-            method='DELETE',
+            method='PUT',
             auth_type='AK',
             style='ROA',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -18373,6 +18377,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.btrip_user_id):
+            query['btrip_user_id'] = request.btrip_user_id
+        if not UtilClient.is_unset(request.buyer_name):
+            query['buyer_name'] = request.buyer_name
         if not UtilClient.is_unset(request.isv_name):
             query['isv_name'] = request.isv_name
         if not UtilClient.is_unset(request.order_id):
@@ -18420,6 +18428,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.btrip_user_id):
+            query['btrip_user_id'] = request.btrip_user_id
+        if not UtilClient.is_unset(request.buyer_name):
+            query['buyer_name'] = request.buyer_name
         if not UtilClient.is_unset(request.isv_name):
             query['isv_name'] = request.isv_name
         if not UtilClient.is_unset(request.order_id):
@@ -18481,34 +18493,32 @@ class Client(OpenApiClient):
 
     def intl_flight_order_pay_with_options(
         self,
-        tmp_req: btrip_open_20220520_models.IntlFlightOrderPayRequest,
+        request: btrip_open_20220520_models.IntlFlightOrderPayRequest,
         headers: btrip_open_20220520_models.IntlFlightOrderPayHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IntlFlightOrderPayResponse:
         """
         @summary 国际机票订单支付
         
-        @param tmp_req: IntlFlightOrderPayRequest
+        @param request: IntlFlightOrderPayRequest
         @param headers: IntlFlightOrderPayHeaders
         @param runtime: runtime options for this request RuntimeOptions
         @return: IntlFlightOrderPayResponse
         """
-        UtilClient.validate_model(tmp_req)
-        request = btrip_open_20220520_models.IntlFlightOrderPayShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.ext_params):
-            request.ext_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ext_params, 'ext_params', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.ext_params_shrink):
-            query['ext_params'] = request.ext_params_shrink
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.btrip_user_id):
+            body['btrip_user_id'] = request.btrip_user_id
+        if not UtilClient.is_unset(request.buyer_name):
+            body['buyer_name'] = request.buyer_name
         if not UtilClient.is_unset(request.isv_name):
-            query['isv_name'] = request.isv_name
+            body['isv_name'] = request.isv_name
         if not UtilClient.is_unset(request.order_id):
-            query['order_id'] = request.order_id
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.order_price):
+            body['order_price'] = request.order_price
         if not UtilClient.is_unset(request.out_order_id):
-            query['out_order_id'] = request.out_order_id
-        if not UtilClient.is_unset(request.total_price):
-            query['total_price'] = request.total_price
+            body['out_order_id'] = request.out_order_id
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -18516,7 +18526,7 @@ class Client(OpenApiClient):
             real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='IntlFlightOrderPay',
@@ -18526,7 +18536,7 @@ class Client(OpenApiClient):
             method='PUT',
             auth_type='AK',
             style='ROA',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -18536,34 +18546,32 @@ class Client(OpenApiClient):
 
     async def intl_flight_order_pay_with_options_async(
         self,
-        tmp_req: btrip_open_20220520_models.IntlFlightOrderPayRequest,
+        request: btrip_open_20220520_models.IntlFlightOrderPayRequest,
         headers: btrip_open_20220520_models.IntlFlightOrderPayHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IntlFlightOrderPayResponse:
         """
         @summary 国际机票订单支付
         
-        @param tmp_req: IntlFlightOrderPayRequest
+        @param request: IntlFlightOrderPayRequest
         @param headers: IntlFlightOrderPayHeaders
         @param runtime: runtime options for this request RuntimeOptions
         @return: IntlFlightOrderPayResponse
         """
-        UtilClient.validate_model(tmp_req)
-        request = btrip_open_20220520_models.IntlFlightOrderPayShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.ext_params):
-            request.ext_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ext_params, 'ext_params', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.ext_params_shrink):
-            query['ext_params'] = request.ext_params_shrink
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.btrip_user_id):
+            body['btrip_user_id'] = request.btrip_user_id
+        if not UtilClient.is_unset(request.buyer_name):
+            body['buyer_name'] = request.buyer_name
         if not UtilClient.is_unset(request.isv_name):
-            query['isv_name'] = request.isv_name
+            body['isv_name'] = request.isv_name
         if not UtilClient.is_unset(request.order_id):
-            query['order_id'] = request.order_id
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.order_price):
+            body['order_price'] = request.order_price
         if not UtilClient.is_unset(request.out_order_id):
-            query['out_order_id'] = request.out_order_id
-        if not UtilClient.is_unset(request.total_price):
-            query['total_price'] = request.total_price
+            body['out_order_id'] = request.out_order_id
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -18571,7 +18579,7 @@ class Client(OpenApiClient):
             real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='IntlFlightOrderPay',
@@ -18581,7 +18589,7 @@ class Client(OpenApiClient):
             method='PUT',
             auth_type='AK',
             style='ROA',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -18633,6 +18641,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.btrip_user_id):
+            query['btrip_user_id'] = request.btrip_user_id
+        if not UtilClient.is_unset(request.buyer_name):
+            query['buyer_name'] = request.buyer_name
         if not UtilClient.is_unset(request.isv_name):
             query['isv_name'] = request.isv_name
         if not UtilClient.is_unset(request.order_id):
@@ -18680,6 +18692,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.btrip_user_id):
+            query['btrip_user_id'] = request.btrip_user_id
+        if not UtilClient.is_unset(request.buyer_name):
+            query['buyer_name'] = request.buyer_name
         if not UtilClient.is_unset(request.isv_name):
             query['isv_name'] = request.isv_name
         if not UtilClient.is_unset(request.order_id):
@@ -18901,20 +18917,12 @@ class Client(OpenApiClient):
             query['buyer_name'] = request.buyer_name
         if not UtilClient.is_unset(request.cabin_type):
             query['cabin_type'] = request.cabin_type
-        if not UtilClient.is_unset(request.direct_only):
-            query['direct_only'] = request.direct_only
         if not UtilClient.is_unset(request.isv_name):
             query['isv_name'] = request.isv_name
-        if not UtilClient.is_unset(request.language):
-            query['language'] = request.language
-        if not UtilClient.is_unset(request.need_share_flight):
-            query['need_share_flight'] = request.need_share_flight
         if not UtilClient.is_unset(request.search_journeys_shrink):
             query['search_journeys'] = request.search_journeys_shrink
         if not UtilClient.is_unset(request.search_passenger_list_shrink):
             query['search_passenger_list'] = request.search_passenger_list_shrink
-        if not UtilClient.is_unset(request.supplier_code):
-            query['supplier_code'] = request.supplier_code
         if not UtilClient.is_unset(request.trip_type):
             query['trip_type'] = request.trip_type
         real_headers = {}
@@ -18970,20 +18978,12 @@ class Client(OpenApiClient):
             query['buyer_name'] = request.buyer_name
         if not UtilClient.is_unset(request.cabin_type):
             query['cabin_type'] = request.cabin_type
-        if not UtilClient.is_unset(request.direct_only):
-            query['direct_only'] = request.direct_only
         if not UtilClient.is_unset(request.isv_name):
             query['isv_name'] = request.isv_name
-        if not UtilClient.is_unset(request.language):
-            query['language'] = request.language
-        if not UtilClient.is_unset(request.need_share_flight):
-            query['need_share_flight'] = request.need_share_flight
         if not UtilClient.is_unset(request.search_journeys_shrink):
             query['search_journeys'] = request.search_journeys_shrink
         if not UtilClient.is_unset(request.search_passenger_list_shrink):
             query['search_passenger_list'] = request.search_passenger_list_shrink
-        if not UtilClient.is_unset(request.supplier_code):
-            query['supplier_code'] = request.supplier_code
         if not UtilClient.is_unset(request.trip_type):
             query['trip_type'] = request.trip_type
         real_headers = {}
@@ -19038,6 +19038,136 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IntlFlightOtaSearchHeaders()
         return await self.intl_flight_ota_search_with_options_async(request, headers, runtime)
+
+    def intl_flight_re_shop_consult_with_options(
+        self,
+        request: btrip_open_20220520_models.IntlFlightReShopConsultRequest,
+        headers: btrip_open_20220520_models.IntlFlightReShopConsultHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.IntlFlightReShopConsultResponse:
+        """
+        @summary 国际机票改签咨询
+        
+        @param request: IntlFlightReShopConsultRequest
+        @param headers: IntlFlightReShopConsultHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightReShopConsultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.btrip_user_id):
+            query['btrip_user_id'] = request.btrip_user_id
+        if not UtilClient.is_unset(request.buyer_name):
+            query['buyer_name'] = request.buyer_name
+        if not UtilClient.is_unset(request.isv_name):
+            query['isv_name'] = request.isv_name
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            query['out_order_id'] = request.out_order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='IntlFlightReShopConsult',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/intl-flight/v1/flights/action/reshop/consult',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.IntlFlightReShopConsultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def intl_flight_re_shop_consult_with_options_async(
+        self,
+        request: btrip_open_20220520_models.IntlFlightReShopConsultRequest,
+        headers: btrip_open_20220520_models.IntlFlightReShopConsultHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.IntlFlightReShopConsultResponse:
+        """
+        @summary 国际机票改签咨询
+        
+        @param request: IntlFlightReShopConsultRequest
+        @param headers: IntlFlightReShopConsultHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightReShopConsultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.btrip_user_id):
+            query['btrip_user_id'] = request.btrip_user_id
+        if not UtilClient.is_unset(request.buyer_name):
+            query['buyer_name'] = request.buyer_name
+        if not UtilClient.is_unset(request.isv_name):
+            query['isv_name'] = request.isv_name
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            query['out_order_id'] = request.out_order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='IntlFlightReShopConsult',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/intl-flight/v1/flights/action/reshop/consult',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.IntlFlightReShopConsultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def intl_flight_re_shop_consult(
+        self,
+        request: btrip_open_20220520_models.IntlFlightReShopConsultRequest,
+    ) -> btrip_open_20220520_models.IntlFlightReShopConsultResponse:
+        """
+        @summary 国际机票改签咨询
+        
+        @param request: IntlFlightReShopConsultRequest
+        @return: IntlFlightReShopConsultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.IntlFlightReShopConsultHeaders()
+        return self.intl_flight_re_shop_consult_with_options(request, headers, runtime)
+
+    async def intl_flight_re_shop_consult_async(
+        self,
+        request: btrip_open_20220520_models.IntlFlightReShopConsultRequest,
+    ) -> btrip_open_20220520_models.IntlFlightReShopConsultResponse:
+        """
+        @summary 国际机票改签咨询
+        
+        @param request: IntlFlightReShopConsultRequest
+        @return: IntlFlightReShopConsultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.IntlFlightReShopConsultHeaders()
+        return await self.intl_flight_re_shop_consult_with_options_async(request, headers, runtime)
 
     def intl_flight_segment_available_cert_with_options(
         self,
@@ -20783,6 +20913,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.bill_batch):
             query['bill_batch'] = request.bill_batch
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -20838,6 +20970,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.bill_batch):
             query['bill_batch'] = request.bill_batch
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -21370,6 +21504,140 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.MonthBillGetHeaders()
         return await self.month_bill_get_with_options_async(request, headers, runtime)
+
+    def month_bill_split_get_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.MonthBillSplitGetRequest,
+        headers: btrip_open_20220520_models.MonthBillSplitGetHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.MonthBillSplitGetResponse:
+        """
+        @summary 查询拆分版企业月账单
+        
+        @param tmp_req: MonthBillSplitGetRequest
+        @param headers: MonthBillSplitGetHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MonthBillSplitGetResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.MonthBillSplitGetShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.bill_split_key_list):
+            request.bill_split_key_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.bill_split_key_list, 'bill_split_key_list', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
+        if not UtilClient.is_unset(request.bill_month):
+            query['bill_month'] = request.bill_month
+        if not UtilClient.is_unset(request.bill_split_key_list_shrink):
+            query['bill_split_key_list'] = request.bill_split_key_list_shrink
+        if not UtilClient.is_unset(request.bill_split_mode):
+            query['bill_split_mode'] = request.bill_split_mode
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_so_corp_token):
+            real_headers['x-acs-btrip-so-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_so_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MonthBillSplitGet',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/open/v1/month-bill-split',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.MonthBillSplitGetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def month_bill_split_get_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.MonthBillSplitGetRequest,
+        headers: btrip_open_20220520_models.MonthBillSplitGetHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.MonthBillSplitGetResponse:
+        """
+        @summary 查询拆分版企业月账单
+        
+        @param tmp_req: MonthBillSplitGetRequest
+        @param headers: MonthBillSplitGetHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MonthBillSplitGetResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.MonthBillSplitGetShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.bill_split_key_list):
+            request.bill_split_key_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.bill_split_key_list, 'bill_split_key_list', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
+        if not UtilClient.is_unset(request.bill_month):
+            query['bill_month'] = request.bill_month
+        if not UtilClient.is_unset(request.bill_split_key_list_shrink):
+            query['bill_split_key_list'] = request.bill_split_key_list_shrink
+        if not UtilClient.is_unset(request.bill_split_mode):
+            query['bill_split_mode'] = request.bill_split_mode
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_so_corp_token):
+            real_headers['x-acs-btrip-so-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_so_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MonthBillSplitGet',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/open/v1/month-bill-split',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.MonthBillSplitGetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def month_bill_split_get(
+        self,
+        request: btrip_open_20220520_models.MonthBillSplitGetRequest,
+    ) -> btrip_open_20220520_models.MonthBillSplitGetResponse:
+        """
+        @summary 查询拆分版企业月账单
+        
+        @param request: MonthBillSplitGetRequest
+        @return: MonthBillSplitGetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.MonthBillSplitGetHeaders()
+        return self.month_bill_split_get_with_options(request, headers, runtime)
+
+    async def month_bill_split_get_async(
+        self,
+        request: btrip_open_20220520_models.MonthBillSplitGetRequest,
+    ) -> btrip_open_20220520_models.MonthBillSplitGetResponse:
+        """
+        @summary 查询拆分版企业月账单
+        
+        @param request: MonthBillSplitGetRequest
+        @return: MonthBillSplitGetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.MonthBillSplitGetHeaders()
+        return await self.month_bill_split_get_with_options_async(request, headers, runtime)
 
     def order_refund_detail_query_with_options(
         self,
@@ -23929,6 +24197,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.bill_batch):
             query['bill_batch'] = request.bill_batch
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -23984,6 +24254,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.bill_batch):
             query['bill_batch'] = request.bill_batch
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -27484,6 +27756,152 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.UserQueryHeaders()
         return await self.user_query_with_options_async(request, headers, runtime)
+
+    def vas_bill_settlement_query_with_options(
+        self,
+        request: btrip_open_20220520_models.VasBillSettlementQueryRequest,
+        headers: btrip_open_20220520_models.VasBillSettlementQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.VasBillSettlementQueryResponse:
+        """
+        @summary 查询增值服务记账数据
+        
+        @param request: VasBillSettlementQueryRequest
+        @param headers: VasBillSettlementQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VasBillSettlementQueryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
+        if not UtilClient.is_unset(request.cooperator_id):
+            query['cooperator_id'] = request.cooperator_id
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.page_no):
+            query['page_no'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['page_size'] = request.page_size
+        if not UtilClient.is_unset(request.period_end):
+            query['period_end'] = request.period_end
+        if not UtilClient.is_unset(request.period_start):
+            query['period_start'] = request.period_start
+        if not UtilClient.is_unset(request.scroll_id):
+            query['scroll_id'] = request.scroll_id
+        if not UtilClient.is_unset(request.scroll_mod):
+            query['scroll_mod'] = request.scroll_mod
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VasBillSettlementQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/vas/v1/bill-settlement',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.VasBillSettlementQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def vas_bill_settlement_query_with_options_async(
+        self,
+        request: btrip_open_20220520_models.VasBillSettlementQueryRequest,
+        headers: btrip_open_20220520_models.VasBillSettlementQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.VasBillSettlementQueryResponse:
+        """
+        @summary 查询增值服务记账数据
+        
+        @param request: VasBillSettlementQueryRequest
+        @param headers: VasBillSettlementQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VasBillSettlementQueryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
+        if not UtilClient.is_unset(request.cooperator_id):
+            query['cooperator_id'] = request.cooperator_id
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.page_no):
+            query['page_no'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['page_size'] = request.page_size
+        if not UtilClient.is_unset(request.period_end):
+            query['period_end'] = request.period_end
+        if not UtilClient.is_unset(request.period_start):
+            query['period_start'] = request.period_start
+        if not UtilClient.is_unset(request.scroll_id):
+            query['scroll_id'] = request.scroll_id
+        if not UtilClient.is_unset(request.scroll_mod):
+            query['scroll_mod'] = request.scroll_mod
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VasBillSettlementQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/vas/v1/bill-settlement',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.VasBillSettlementQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def vas_bill_settlement_query(
+        self,
+        request: btrip_open_20220520_models.VasBillSettlementQueryRequest,
+    ) -> btrip_open_20220520_models.VasBillSettlementQueryResponse:
+        """
+        @summary 查询增值服务记账数据
+        
+        @param request: VasBillSettlementQueryRequest
+        @return: VasBillSettlementQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.VasBillSettlementQueryHeaders()
+        return self.vas_bill_settlement_query_with_options(request, headers, runtime)
+
+    async def vas_bill_settlement_query_async(
+        self,
+        request: btrip_open_20220520_models.VasBillSettlementQueryRequest,
+    ) -> btrip_open_20220520_models.VasBillSettlementQueryResponse:
+        """
+        @summary 查询增值服务记账数据
+        
+        @param request: VasBillSettlementQueryRequest
+        @return: VasBillSettlementQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.VasBillSettlementQueryHeaders()
+        return await self.vas_bill_settlement_query_with_options_async(request, headers, runtime)
 
     def vat_invoice_scan_query_with_options(
         self,
