@@ -2,6 +2,10 @@
 - Update API ListResourceGroups: add request parameters ResourceGroupIDs.
 
 
+2025-06-30 Version: 2.1.6
+- Update API ListResourceGroups: add request parameters ResourceGroupIDs.
+
+
 2025-06-18 Version: 2.1.5
 - Update API ListNodes: add request parameters AvailabilityZone.
 - Update API ListNodes: add request parameters HyperZone.
