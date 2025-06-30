@@ -114,6 +114,8 @@ class Client(OpenApiClient):
             query['RoleArn'] = request.role_arn
         if not UtilClient.is_unset(request.role_session_name):
             query['RoleSessionName'] = request.role_session_name
+        if not UtilClient.is_unset(request.source_identity):
+            query['SourceIdentity'] = request.source_identity
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -128,16 +130,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sts_20150401_models.AssumeRoleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sts_20150401_models.AssumeRoleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sts_20150401_models.AssumeRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def assume_role_with_options_async(
         self,
@@ -174,6 +170,8 @@ class Client(OpenApiClient):
             query['RoleArn'] = request.role_arn
         if not UtilClient.is_unset(request.role_session_name):
             query['RoleSessionName'] = request.role_session_name
+        if not UtilClient.is_unset(request.source_identity):
+            query['SourceIdentity'] = request.source_identity
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -188,16 +186,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sts_20150401_models.AssumeRoleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sts_20150401_models.AssumeRoleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sts_20150401_models.AssumeRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def assume_role(
         self,
@@ -292,16 +284,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sts_20150401_models.AssumeRoleWithOIDCResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sts_20150401_models.AssumeRoleWithOIDCResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sts_20150401_models.AssumeRoleWithOIDCResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def assume_role_with_oidcwith_options_async(
         self,
@@ -348,16 +334,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sts_20150401_models.AssumeRoleWithOIDCResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sts_20150401_models.AssumeRoleWithOIDCResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sts_20150401_models.AssumeRoleWithOIDCResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def assume_role_with_oidc(
         self,
@@ -438,16 +418,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sts_20150401_models.AssumeRoleWithSAMLResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sts_20150401_models.AssumeRoleWithSAMLResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sts_20150401_models.AssumeRoleWithSAMLResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def assume_role_with_samlwith_options_async(
         self,
@@ -492,16 +466,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sts_20150401_models.AssumeRoleWithSAMLResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sts_20150401_models.AssumeRoleWithSAMLResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sts_20150401_models.AssumeRoleWithSAMLResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def assume_role_with_saml(
         self,
@@ -562,16 +530,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sts_20150401_models.GetCallerIdentityResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sts_20150401_models.GetCallerIdentityResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sts_20150401_models.GetCallerIdentityResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_caller_identity_with_options_async(
         self,
@@ -596,16 +558,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sts_20150401_models.GetCallerIdentityResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sts_20150401_models.GetCallerIdentityResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sts_20150401_models.GetCallerIdentityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_caller_identity(self) -> sts_20150401_models.GetCallerIdentityResponse:
         """

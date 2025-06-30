@@ -1,3 +1,10 @@
+2025-06-30 Version: 1.1.6
+- Update API AssumeRole: add request parameters SourceIdentity.
+- Update API AssumeRole: add response parameters Body.SourceIdentity.
+- Update API AssumeRoleWithOIDC: add response parameters Body.SourceIdentity.
+- Update API AssumeRoleWithSAML: add response parameters Body.SourceIdentity.
+
+
 2025-04-01 Version: 1.1.5
 - Generated python 2015-04-01 for Sts.
 

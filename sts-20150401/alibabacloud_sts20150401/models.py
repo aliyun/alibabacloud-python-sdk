@@ -12,6 +12,7 @@ class AssumeRoleRequest(TeaModel):
         policy: str = None,
         role_arn: str = None,
         role_session_name: str = None,
+        source_identity: str = None,
     ):
         # The validity period of the STS token. Unit: seconds.
         # 
@@ -55,6 +56,7 @@ class AssumeRoleRequest(TeaModel):
         # 
         # This parameter is required.
         self.role_session_name = role_session_name
+        self.source_identity = source_identity
 
     def validate(self):
         pass
@@ -75,6 +77,8 @@ class AssumeRoleRequest(TeaModel):
             result['RoleArn'] = self.role_arn
         if self.role_session_name is not None:
             result['RoleSessionName'] = self.role_session_name
+        if self.source_identity is not None:
+            result['SourceIdentity'] = self.source_identity
         return result
 
     def from_map(self, m: dict = None):
@@ -89,6 +93,8 @@ class AssumeRoleRequest(TeaModel):
             self.role_arn = m.get('RoleArn')
         if m.get('RoleSessionName') is not None:
             self.role_session_name = m.get('RoleSessionName')
+        if m.get('SourceIdentity') is not None:
+            self.source_identity = m.get('SourceIdentity')
         return self
 
 
@@ -184,6 +190,7 @@ class AssumeRoleResponseBody(TeaModel):
         assumed_role_user: AssumeRoleResponseBodyAssumedRoleUser = None,
         credentials: AssumeRoleResponseBodyCredentials = None,
         request_id: str = None,
+        source_identity: str = None,
     ):
         # The temporary identity that you use to assume the RAM role.
         self.assumed_role_user = assumed_role_user
@@ -191,6 +198,7 @@ class AssumeRoleResponseBody(TeaModel):
         self.credentials = credentials
         # The ID of the request.
         self.request_id = request_id
+        self.source_identity = source_identity
 
     def validate(self):
         if self.assumed_role_user:
@@ -210,6 +218,8 @@ class AssumeRoleResponseBody(TeaModel):
             result['Credentials'] = self.credentials.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.source_identity is not None:
+            result['SourceIdentity'] = self.source_identity
         return result
 
     def from_map(self, m: dict = None):
@@ -222,6 +232,8 @@ class AssumeRoleResponseBody(TeaModel):
             self.credentials = temp_model.from_map(m['Credentials'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('SourceIdentity') is not None:
+            self.source_identity = m.get('SourceIdentity')
         return self
 
 
@@ -520,6 +532,7 @@ class AssumeRoleWithOIDCResponseBody(TeaModel):
         credentials: AssumeRoleWithOIDCResponseBodyCredentials = None,
         oidctoken_info: AssumeRoleWithOIDCResponseBodyOIDCTokenInfo = None,
         request_id: str = None,
+        source_identity: str = None,
     ):
         # The temporary identity that you use to assume the RAM role.
         self.assumed_role_user = assumed_role_user
@@ -529,6 +542,7 @@ class AssumeRoleWithOIDCResponseBody(TeaModel):
         self.oidctoken_info = oidctoken_info
         # The ID of the request.
         self.request_id = request_id
+        self.source_identity = source_identity
 
     def validate(self):
         if self.assumed_role_user:
@@ -552,6 +566,8 @@ class AssumeRoleWithOIDCResponseBody(TeaModel):
             result['OIDCTokenInfo'] = self.oidctoken_info.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.source_identity is not None:
+            result['SourceIdentity'] = self.source_identity
         return result
 
     def from_map(self, m: dict = None):
@@ -567,6 +583,8 @@ class AssumeRoleWithOIDCResponseBody(TeaModel):
             self.oidctoken_info = temp_model.from_map(m['OIDCTokenInfo'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('SourceIdentity') is not None:
+            self.source_identity = m.get('SourceIdentity')
         return self
 
 
@@ -838,6 +856,7 @@ class AssumeRoleWithSAMLResponseBody(TeaModel):
         credentials: AssumeRoleWithSAMLResponseBodyCredentials = None,
         request_id: str = None,
         samlassertion_info: AssumeRoleWithSAMLResponseBodySAMLAssertionInfo = None,
+        source_identity: str = None,
     ):
         # The temporary identity that you use to assume the RAM role.
         self.assumed_role_user = assumed_role_user
@@ -847,6 +866,7 @@ class AssumeRoleWithSAMLResponseBody(TeaModel):
         self.request_id = request_id
         # The information in the SAML assertion.
         self.samlassertion_info = samlassertion_info
+        self.source_identity = source_identity
 
     def validate(self):
         if self.assumed_role_user:
@@ -870,6 +890,8 @@ class AssumeRoleWithSAMLResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.samlassertion_info is not None:
             result['SAMLAssertionInfo'] = self.samlassertion_info.to_map()
+        if self.source_identity is not None:
+            result['SourceIdentity'] = self.source_identity
         return result
 
     def from_map(self, m: dict = None):
@@ -885,6 +907,8 @@ class AssumeRoleWithSAMLResponseBody(TeaModel):
         if m.get('SAMLAssertionInfo') is not None:
             temp_model = AssumeRoleWithSAMLResponseBodySAMLAssertionInfo()
             self.samlassertion_info = temp_model.from_map(m['SAMLAssertionInfo'])
+        if m.get('SourceIdentity') is not None:
+            self.source_identity = m.get('SourceIdentity')
         return self
 
 
