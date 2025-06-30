@@ -1,3 +1,11 @@
+2025-06-30 Version: 1.10.1
+- Update API InstallAgentForCluster: add request parameters body.config_id.
+- Update API ListAgentInstallRecords: add request parameters region.
+- Update API ListClusterAgentInstallRecords: add request parameters agent_config_id.
+- Update API ListClusterAgentInstallRecords: add response parameters Body.data.$.agent_config_id.
+- Update API ListClusterAgentInstallRecords: add response parameters Body.data.$.agent_config_name.
+
+
 2025-05-12 Version: 1.10.0
 - Support API CheckInstanceSupport.
 - Update API ListAbnormalyEvents: add response parameters Body.total.

@@ -3011,6 +3011,8 @@ class Client(OpenApiClient):
             body['agent_version'] = request.agent_version
         if not UtilClient.is_unset(request.cluster_id):
             body['cluster_id'] = request.cluster_id
+        if not UtilClient.is_unset(request.config_id):
+            body['config_id'] = request.config_id
         if not UtilClient.is_unset(request.grayscale_config):
             body['grayscale_config'] = request.grayscale_config
         req = open_api_models.OpenApiRequest(
@@ -3055,6 +3057,8 @@ class Client(OpenApiClient):
             body['agent_version'] = request.agent_version
         if not UtilClient.is_unset(request.cluster_id):
             body['cluster_id'] = request.cluster_id
+        if not UtilClient.is_unset(request.config_id):
+            body['config_id'] = request.config_id
         if not UtilClient.is_unset(request.grayscale_config):
             body['grayscale_config'] = request.grayscale_config
         req = open_api_models.OpenApiRequest(
@@ -3487,6 +3491,8 @@ class Client(OpenApiClient):
             query['plugin_id'] = request.plugin_id
         if not UtilClient.is_unset(request.plugin_version):
             query['plugin_version'] = request.plugin_version
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
         if not UtilClient.is_unset(request.status):
             query['status'] = request.status
         req = open_api_models.OpenApiRequest(
@@ -3535,6 +3541,8 @@ class Client(OpenApiClient):
             query['plugin_id'] = request.plugin_id
         if not UtilClient.is_unset(request.plugin_version):
             query['plugin_version'] = request.plugin_version
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
         if not UtilClient.is_unset(request.status):
             query['status'] = request.status
         req = open_api_models.OpenApiRequest(
@@ -3717,6 +3725,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.agent_config_id):
+            query['agent_config_id'] = request.agent_config_id
         if not UtilClient.is_unset(request.cluster_id):
             query['cluster_id'] = request.cluster_id
         if not UtilClient.is_unset(request.current):
@@ -3763,6 +3773,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.agent_config_id):
+            query['agent_config_id'] = request.agent_config_id
         if not UtilClient.is_unset(request.cluster_id):
             query['cluster_id'] = request.cluster_id
         if not UtilClient.is_unset(request.current):

@@ -4851,11 +4851,13 @@ class InstallAgentForClusterRequest(TeaModel):
         agent_id: str = None,
         agent_version: str = None,
         cluster_id: str = None,
+        config_id: str = None,
         grayscale_config: str = None,
     ):
         self.agent_id = agent_id
         self.agent_version = agent_version
         self.cluster_id = cluster_id
+        self.config_id = config_id
         self.grayscale_config = grayscale_config
 
     def validate(self):
@@ -4873,6 +4875,8 @@ class InstallAgentForClusterRequest(TeaModel):
             result['agent_version'] = self.agent_version
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
+        if self.config_id is not None:
+            result['config_id'] = self.config_id
         if self.grayscale_config is not None:
             result['grayscale_config'] = self.grayscale_config
         return result
@@ -4885,6 +4889,8 @@ class InstallAgentForClusterRequest(TeaModel):
             self.agent_version = m.get('agent_version')
         if m.get('cluster_id') is not None:
             self.cluster_id = m.get('cluster_id')
+        if m.get('config_id') is not None:
+            self.config_id = m.get('config_id')
         if m.get('grayscale_config') is not None:
             self.grayscale_config = m.get('grayscale_config')
         return self
@@ -5634,6 +5640,7 @@ class ListAgentInstallRecordsRequest(TeaModel):
         page_size: int = None,
         plugin_id: str = None,
         plugin_version: str = None,
+        region: str = None,
         status: str = None,
     ):
         self.current = current
@@ -5641,6 +5648,7 @@ class ListAgentInstallRecordsRequest(TeaModel):
         self.page_size = page_size
         self.plugin_id = plugin_id
         self.plugin_version = plugin_version
+        self.region = region
         self.status = status
 
     def validate(self):
@@ -5662,6 +5670,8 @@ class ListAgentInstallRecordsRequest(TeaModel):
             result['plugin_id'] = self.plugin_id
         if self.plugin_version is not None:
             result['plugin_version'] = self.plugin_version
+        if self.region is not None:
+            result['region'] = self.region
         if self.status is not None:
             result['status'] = self.status
         return result
@@ -5678,6 +5688,8 @@ class ListAgentInstallRecordsRequest(TeaModel):
             self.plugin_id = m.get('plugin_id')
         if m.get('plugin_version') is not None:
             self.plugin_version = m.get('plugin_version')
+        if m.get('region') is not None:
+            self.region = m.get('region')
         if m.get('status') is not None:
             self.status = m.get('status')
         return self
@@ -6122,12 +6134,14 @@ class ListAgentsResponse(TeaModel):
 class ListClusterAgentInstallRecordsRequest(TeaModel):
     def __init__(
         self,
+        agent_config_id: str = None,
         cluster_id: str = None,
         current: int = None,
         page_size: int = None,
         plugin_id: str = None,
         plugin_version: str = None,
     ):
+        self.agent_config_id = agent_config_id
         self.cluster_id = cluster_id
         self.current = current
         self.page_size = page_size
@@ -6143,6 +6157,8 @@ class ListClusterAgentInstallRecordsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_config_id is not None:
+            result['agent_config_id'] = self.agent_config_id
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
         if self.current is not None:
@@ -6157,6 +6173,8 @@ class ListClusterAgentInstallRecordsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('agent_config_id') is not None:
+            self.agent_config_id = m.get('agent_config_id')
         if m.get('cluster_id') is not None:
             self.cluster_id = m.get('cluster_id')
         if m.get('current') is not None:
@@ -6173,6 +6191,8 @@ class ListClusterAgentInstallRecordsRequest(TeaModel):
 class ListClusterAgentInstallRecordsResponseBodyData(TeaModel):
     def __init__(
         self,
+        agent_config_id: str = None,
+        agent_config_name: str = None,
         cluster_id: str = None,
         created_at: str = None,
         grayscale_config: str = None,
@@ -6180,6 +6200,8 @@ class ListClusterAgentInstallRecordsResponseBodyData(TeaModel):
         plugin_version: str = None,
         updated_at: str = None,
     ):
+        self.agent_config_id = agent_config_id
+        self.agent_config_name = agent_config_name
         self.cluster_id = cluster_id
         self.created_at = created_at
         self.grayscale_config = grayscale_config
@@ -6196,6 +6218,10 @@ class ListClusterAgentInstallRecordsResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_config_id is not None:
+            result['agent_config_id'] = self.agent_config_id
+        if self.agent_config_name is not None:
+            result['agent_config_name'] = self.agent_config_name
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
         if self.created_at is not None:
@@ -6212,6 +6238,10 @@ class ListClusterAgentInstallRecordsResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('agent_config_id') is not None:
+            self.agent_config_id = m.get('agent_config_id')
+        if m.get('agent_config_name') is not None:
+            self.agent_config_name = m.get('agent_config_name')
         if m.get('cluster_id') is not None:
             self.cluster_id = m.get('cluster_id')
         if m.get('created_at') is not None:
