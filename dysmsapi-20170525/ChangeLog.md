@@ -1,3 +1,7 @@
+2025-06-30 Version: 4.1.2
+- Update API GetSmsSign: add response parameters Body.SignIspRegisterDetailList.
+
+
 2025-05-27 Version: 4.1.1
 - Update API QueryMobilesCardSupport: add request parameters EncryptType.
 

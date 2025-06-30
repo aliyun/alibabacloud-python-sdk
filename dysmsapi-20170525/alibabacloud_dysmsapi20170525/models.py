@@ -5137,6 +5137,92 @@ class GetSmsSignResponseBodyAuditInfo(TeaModel):
         return self
 
 
+class GetSmsSignResponseBodySignIspRegisterDetailListRegisterStatusReasons(TeaModel):
+    def __init__(
+        self,
+        reason_code: str = None,
+        reason_desc_list: List[str] = None,
+    ):
+        self.reason_code = reason_code
+        self.reason_desc_list = reason_desc_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.reason_code is not None:
+            result['ReasonCode'] = self.reason_code
+        if self.reason_desc_list is not None:
+            result['ReasonDescList'] = self.reason_desc_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReasonCode') is not None:
+            self.reason_code = m.get('ReasonCode')
+        if m.get('ReasonDescList') is not None:
+            self.reason_desc_list = m.get('ReasonDescList')
+        return self
+
+
+class GetSmsSignResponseBodySignIspRegisterDetailList(TeaModel):
+    def __init__(
+        self,
+        operator_code: str = None,
+        operator_complete_time: str = None,
+        register_status: int = None,
+        register_status_reasons: List[GetSmsSignResponseBodySignIspRegisterDetailListRegisterStatusReasons] = None,
+    ):
+        self.operator_code = operator_code
+        self.operator_complete_time = operator_complete_time
+        self.register_status = register_status
+        self.register_status_reasons = register_status_reasons
+
+    def validate(self):
+        if self.register_status_reasons:
+            for k in self.register_status_reasons:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operator_code is not None:
+            result['OperatorCode'] = self.operator_code
+        if self.operator_complete_time is not None:
+            result['OperatorCompleteTime'] = self.operator_complete_time
+        if self.register_status is not None:
+            result['RegisterStatus'] = self.register_status
+        result['RegisterStatusReasons'] = []
+        if self.register_status_reasons is not None:
+            for k in self.register_status_reasons:
+                result['RegisterStatusReasons'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OperatorCode') is not None:
+            self.operator_code = m.get('OperatorCode')
+        if m.get('OperatorCompleteTime') is not None:
+            self.operator_complete_time = m.get('OperatorCompleteTime')
+        if m.get('RegisterStatus') is not None:
+            self.register_status = m.get('RegisterStatus')
+        self.register_status_reasons = []
+        if m.get('RegisterStatusReasons') is not None:
+            for k in m.get('RegisterStatusReasons'):
+                temp_model = GetSmsSignResponseBodySignIspRegisterDetailListRegisterStatusReasons()
+                self.register_status_reasons.append(temp_model.from_map(k))
+        return self
+
+
 class GetSmsSignResponseBody(TeaModel):
     def __init__(
         self,
@@ -5154,6 +5240,7 @@ class GetSmsSignResponseBody(TeaModel):
         remark: str = None,
         request_id: str = None,
         sign_code: str = None,
+        sign_isp_register_detail_list: List[GetSmsSignResponseBodySignIspRegisterDetailList] = None,
         sign_name: str = None,
         sign_status: int = None,
         sign_tag: str = None,
@@ -5190,6 +5277,7 @@ class GetSmsSignResponseBody(TeaModel):
         self.request_id = request_id
         # SMS signature code.
         self.sign_code = sign_code
+        self.sign_isp_register_detail_list = sign_isp_register_detail_list
         # SMS signature name.
         self.sign_name = sign_name
         # Signature review status. Values:
@@ -5218,6 +5306,10 @@ class GetSmsSignResponseBody(TeaModel):
     def validate(self):
         if self.audit_info:
             self.audit_info.validate()
+        if self.sign_isp_register_detail_list:
+            for k in self.sign_isp_register_detail_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5253,6 +5345,10 @@ class GetSmsSignResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.sign_code is not None:
             result['SignCode'] = self.sign_code
+        result['SignIspRegisterDetailList'] = []
+        if self.sign_isp_register_detail_list is not None:
+            for k in self.sign_isp_register_detail_list:
+                result['SignIspRegisterDetailList'].append(k.to_map() if k else None)
         if self.sign_name is not None:
             result['SignName'] = self.sign_name
         if self.sign_status is not None:
@@ -5296,6 +5392,11 @@ class GetSmsSignResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('SignCode') is not None:
             self.sign_code = m.get('SignCode')
+        self.sign_isp_register_detail_list = []
+        if m.get('SignIspRegisterDetailList') is not None:
+            for k in m.get('SignIspRegisterDetailList'):
+                temp_model = GetSmsSignResponseBodySignIspRegisterDetailList()
+                self.sign_isp_register_detail_list.append(temp_model.from_map(k))
         if m.get('SignName') is not None:
             self.sign_name = m.get('SignName')
         if m.get('SignStatus') is not None:
