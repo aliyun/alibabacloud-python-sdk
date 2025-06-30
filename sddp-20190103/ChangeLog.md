@@ -1,3 +1,7 @@
+2025-06-30 Version: 1.4.4
+- Update API DescribeDataLimitSet: add request parameters RegionType.
+
+
 2025-02-14 Version: 1.4.3
 - Update API CreateRule: add param ModelRuleIds.
 - Update API CreateRule: add param TemplateRuleIds.
