@@ -1,3 +1,11 @@
+2025-06-30 Version: 4.8.4
+- Update API AddUserToDesktopGroup: add request parameters SimpleUserGroupId.
+- Update API CreateDesktopGroup: add request parameters SimpleUserGroupId.
+- Update API DescribeDesktopGroups: add request parameters DesktopType.
+- Update API DescribeDesktopGroups: add response parameters Body.DesktopGroups.$.SimpleUserGroupId.
+- Update API RemoveUserFromDesktopGroup: add request parameters SimpleUserGroupId.
+
+
 2025-06-25 Version: 4.8.3
 - Update API CreateCenterPolicy: add request parameters ClientControlMenu.
 - Update API CreateCenterPolicy: add request parameters CpdDriveClipboard.

@@ -1132,6 +1132,7 @@ class AddUserToDesktopGroupRequest(TeaModel):
         desktop_group_ids: List[str] = None,
         end_user_ids: List[str] = None,
         region_id: str = None,
+        simple_user_group_id: str = None,
         user_group_name: str = None,
         user_ou_path: str = None,
     ):
@@ -1147,6 +1148,7 @@ class AddUserToDesktopGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.simple_user_group_id = simple_user_group_id
         self.user_group_name = user_group_name
         self.user_ou_path = user_ou_path
 
@@ -1169,6 +1171,8 @@ class AddUserToDesktopGroupRequest(TeaModel):
             result['EndUserIds'] = self.end_user_ids
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.simple_user_group_id is not None:
+            result['SimpleUserGroupId'] = self.simple_user_group_id
         if self.user_group_name is not None:
             result['UserGroupName'] = self.user_group_name
         if self.user_ou_path is not None:
@@ -1187,6 +1191,8 @@ class AddUserToDesktopGroupRequest(TeaModel):
             self.end_user_ids = m.get('EndUserIds')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('SimpleUserGroupId') is not None:
+            self.simple_user_group_id = m.get('SimpleUserGroupId')
         if m.get('UserGroupName') is not None:
             self.user_group_name = m.get('UserGroupName')
         if m.get('UserOuPath') is not None:
@@ -9012,6 +9018,7 @@ class CreateDesktopGroupRequest(TeaModel):
         reset_type: int = None,
         scale_strategy_id: str = None,
         session_type: str = None,
+        simple_user_group_id: str = None,
         snapshot_policy_id: str = None,
         stop_duration: int = None,
         system_disk_category: str = None,
@@ -9257,6 +9264,7 @@ class CreateDesktopGroupRequest(TeaModel):
         # *   SingleSession
         # *   MultipleSession
         self.session_type = session_type
+        self.simple_user_group_id = simple_user_group_id
         # The ID of the automatic snapshot policy.
         self.snapshot_policy_id = snapshot_policy_id
         # The maximum period of inactivity allowed before a cloud computer is automatically stopped. If the idle duration reaches the specified limit, the system stops the cloud computer. When an end user reconnects to the stopped cloud computer, it automatically restarts. Unit: milliseconds.
@@ -9400,6 +9408,8 @@ class CreateDesktopGroupRequest(TeaModel):
             result['ScaleStrategyId'] = self.scale_strategy_id
         if self.session_type is not None:
             result['SessionType'] = self.session_type
+        if self.simple_user_group_id is not None:
+            result['SimpleUserGroupId'] = self.simple_user_group_id
         if self.snapshot_policy_id is not None:
             result['SnapshotPolicyId'] = self.snapshot_policy_id
         if self.stop_duration is not None:
@@ -9524,6 +9534,8 @@ class CreateDesktopGroupRequest(TeaModel):
             self.scale_strategy_id = m.get('ScaleStrategyId')
         if m.get('SessionType') is not None:
             self.session_type = m.get('SessionType')
+        if m.get('SimpleUserGroupId') is not None:
+            self.simple_user_group_id = m.get('SimpleUserGroupId')
         if m.get('SnapshotPolicyId') is not None:
             self.snapshot_policy_id = m.get('SnapshotPolicyId')
         if m.get('StopDuration') is not None:
@@ -22547,6 +22559,7 @@ class DescribeDesktopGroupsRequest(TeaModel):
         desktop_group_id: str = None,
         desktop_group_ids: List[str] = None,
         desktop_group_name: str = None,
+        desktop_type: str = None,
         end_user_ids: List[str] = None,
         excluded_end_user_ids: List[str] = None,
         image_id: List[str] = None,
@@ -22571,6 +22584,7 @@ class DescribeDesktopGroupsRequest(TeaModel):
         self.desktop_group_ids = desktop_group_ids
         # The name of the cloud computer share that you want to query. Fuzzy search is supported.
         self.desktop_group_name = desktop_group_name
+        self.desktop_type = desktop_type
         # The IDs of the users who can access the cloud computer share.
         self.end_user_ids = end_user_ids
         # The authorized users that you want to exclude.
@@ -22675,6 +22689,8 @@ class DescribeDesktopGroupsRequest(TeaModel):
             result['DesktopGroupIds'] = self.desktop_group_ids
         if self.desktop_group_name is not None:
             result['DesktopGroupName'] = self.desktop_group_name
+        if self.desktop_type is not None:
+            result['DesktopType'] = self.desktop_type
         if self.end_user_ids is not None:
             result['EndUserIds'] = self.end_user_ids
         if self.excluded_end_user_ids is not None:
@@ -22719,6 +22735,8 @@ class DescribeDesktopGroupsRequest(TeaModel):
             self.desktop_group_ids = m.get('DesktopGroupIds')
         if m.get('DesktopGroupName') is not None:
             self.desktop_group_name = m.get('DesktopGroupName')
+        if m.get('DesktopType') is not None:
+            self.desktop_type = m.get('DesktopType')
         if m.get('EndUserIds') is not None:
             self.end_user_ids = m.get('EndUserIds')
         if m.get('ExcludedEndUserIds') is not None:
@@ -22936,6 +22954,7 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         protocol_type: str = None,
         ratio_threshold: float = None,
         reset_type: int = None,
+        simple_user_group_id: str = None,
         status: int = None,
         stop_duration: int = None,
         subnet_id: str = None,
@@ -23108,6 +23127,7 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         # *   2: resets only the data disk.
         # *   3: resets the system disk and data disk.
         self.reset_type = reset_type
+        self.simple_user_group_id = simple_user_group_id
         # The status of the cloud computer share.
         # 
         # Valid values:
@@ -23244,6 +23264,8 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
             result['RatioThreshold'] = self.ratio_threshold
         if self.reset_type is not None:
             result['ResetType'] = self.reset_type
+        if self.simple_user_group_id is not None:
+            result['SimpleUserGroupId'] = self.simple_user_group_id
         if self.status is not None:
             result['Status'] = self.status
         if self.stop_duration is not None:
@@ -23359,6 +23381,8 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
             self.ratio_threshold = m.get('RatioThreshold')
         if m.get('ResetType') is not None:
             self.reset_type = m.get('ResetType')
+        if m.get('SimpleUserGroupId') is not None:
+            self.simple_user_group_id = m.get('SimpleUserGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('StopDuration') is not None:
@@ -58975,6 +58999,7 @@ class RemoveUserFromDesktopGroupRequest(TeaModel):
         desktop_group_ids: List[str] = None,
         end_user_ids: List[str] = None,
         region_id: str = None,
+        simple_user_group_id: str = None,
         user_group_name: str = None,
         user_ou_path: str = None,
     ):
@@ -58988,6 +59013,7 @@ class RemoveUserFromDesktopGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.simple_user_group_id = simple_user_group_id
         self.user_group_name = user_group_name
         self.user_ou_path = user_ou_path
 
@@ -59008,6 +59034,8 @@ class RemoveUserFromDesktopGroupRequest(TeaModel):
             result['EndUserIds'] = self.end_user_ids
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.simple_user_group_id is not None:
+            result['SimpleUserGroupId'] = self.simple_user_group_id
         if self.user_group_name is not None:
             result['UserGroupName'] = self.user_group_name
         if self.user_ou_path is not None:
@@ -59024,6 +59052,8 @@ class RemoveUserFromDesktopGroupRequest(TeaModel):
             self.end_user_ids = m.get('EndUserIds')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('SimpleUserGroupId') is not None:
+            self.simple_user_group_id = m.get('SimpleUserGroupId')
         if m.get('UserGroupName') is not None:
             self.user_group_name = m.get('UserGroupName')
         if m.get('UserOuPath') is not None:

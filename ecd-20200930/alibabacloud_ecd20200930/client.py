@@ -530,6 +530,8 @@ class Client(OpenApiClient):
             query['EndUserIds'] = request.end_user_ids
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.simple_user_group_id):
+            query['SimpleUserGroupId'] = request.simple_user_group_id
         if not UtilClient.is_unset(request.user_group_name):
             query['UserGroupName'] = request.user_group_name
         if not UtilClient.is_unset(request.user_ou_path):
@@ -577,6 +579,8 @@ class Client(OpenApiClient):
             query['EndUserIds'] = request.end_user_ids
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.simple_user_group_id):
+            query['SimpleUserGroupId'] = request.simple_user_group_id
         if not UtilClient.is_unset(request.user_group_name):
             query['UserGroupName'] = request.user_group_name
         if not UtilClient.is_unset(request.user_ou_path):
@@ -5033,6 +5037,8 @@ class Client(OpenApiClient):
             query['ScaleStrategyId'] = request.scale_strategy_id
         if not UtilClient.is_unset(request.session_type):
             query['SessionType'] = request.session_type
+        if not UtilClient.is_unset(request.simple_user_group_id):
+            query['SimpleUserGroupId'] = request.simple_user_group_id
         if not UtilClient.is_unset(request.snapshot_policy_id):
             query['SnapshotPolicyId'] = request.snapshot_policy_id
         if not UtilClient.is_unset(request.stop_duration):
@@ -5187,6 +5193,8 @@ class Client(OpenApiClient):
             query['ScaleStrategyId'] = request.scale_strategy_id
         if not UtilClient.is_unset(request.session_type):
             query['SessionType'] = request.session_type
+        if not UtilClient.is_unset(request.simple_user_group_id):
+            query['SimpleUserGroupId'] = request.simple_user_group_id
         if not UtilClient.is_unset(request.snapshot_policy_id):
             query['SnapshotPolicyId'] = request.snapshot_policy_id
         if not UtilClient.is_unset(request.stop_duration):
@@ -10898,6 +10906,8 @@ class Client(OpenApiClient):
             query['DesktopGroupIds'] = request.desktop_group_ids
         if not UtilClient.is_unset(request.desktop_group_name):
             query['DesktopGroupName'] = request.desktop_group_name
+        if not UtilClient.is_unset(request.desktop_type):
+            query['DesktopType'] = request.desktop_type
         if not UtilClient.is_unset(request.end_user_ids):
             query['EndUserIds'] = request.end_user_ids
         if not UtilClient.is_unset(request.excluded_end_user_ids):
@@ -10969,6 +10979,8 @@ class Client(OpenApiClient):
             query['DesktopGroupIds'] = request.desktop_group_ids
         if not UtilClient.is_unset(request.desktop_group_name):
             query['DesktopGroupName'] = request.desktop_group_name
+        if not UtilClient.is_unset(request.desktop_type):
+            query['DesktopType'] = request.desktop_type
         if not UtilClient.is_unset(request.end_user_ids):
             query['EndUserIds'] = request.end_user_ids
         if not UtilClient.is_unset(request.excluded_end_user_ids):
@@ -12418,6 +12430,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeFlowMetricResponse:
         """
+        @summary 查询EIP监控
+        
         @param request: DescribeFlowMetricRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeFlowMetricResponse
@@ -12463,6 +12477,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeFlowMetricResponse:
         """
+        @summary 查询EIP监控
+        
         @param request: DescribeFlowMetricRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeFlowMetricResponse
@@ -12507,6 +12523,8 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeFlowMetricRequest,
     ) -> ecd_20200930_models.DescribeFlowMetricResponse:
         """
+        @summary 查询EIP监控
+        
         @param request: DescribeFlowMetricRequest
         @return: DescribeFlowMetricResponse
         """
@@ -12518,6 +12536,8 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeFlowMetricRequest,
     ) -> ecd_20200930_models.DescribeFlowMetricResponse:
         """
+        @summary 查询EIP监控
+        
         @param request: DescribeFlowMetricRequest
         @return: DescribeFlowMetricResponse
         """
@@ -25908,6 +25928,8 @@ class Client(OpenApiClient):
             query['EndUserIds'] = request.end_user_ids
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.simple_user_group_id):
+            query['SimpleUserGroupId'] = request.simple_user_group_id
         if not UtilClient.is_unset(request.user_group_name):
             query['UserGroupName'] = request.user_group_name
         if not UtilClient.is_unset(request.user_ou_path):
@@ -25953,6 +25975,8 @@ class Client(OpenApiClient):
             query['EndUserIds'] = request.end_user_ids
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.simple_user_group_id):
+            query['SimpleUserGroupId'] = request.simple_user_group_id
         if not UtilClient.is_unset(request.user_group_name):
             query['UserGroupName'] = request.user_group_name
         if not UtilClient.is_unset(request.user_ou_path):
