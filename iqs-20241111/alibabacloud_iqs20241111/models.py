@@ -1249,12 +1249,14 @@ class UnifiedSearchInput(TeaModel):
         category: str = None,
         contents: RequestContents = None,
         engine_type: str = None,
+        location: str = None,
         query: str = None,
         time_range: str = None,
     ):
         self.category = category
         self.contents = contents
         self.engine_type = engine_type
+        self.location = location
         self.query = query
         self.time_range = time_range
 
@@ -1274,6 +1276,8 @@ class UnifiedSearchInput(TeaModel):
             result['contents'] = self.contents.to_map()
         if self.engine_type is not None:
             result['engineType'] = self.engine_type
+        if self.location is not None:
+            result['location'] = self.location
         if self.query is not None:
             result['query'] = self.query
         if self.time_range is not None:
@@ -1289,6 +1293,8 @@ class UnifiedSearchInput(TeaModel):
             self.contents = temp_model.from_map(m['contents'])
         if m.get('engineType') is not None:
             self.engine_type = m.get('engineType')
+        if m.get('location') is not None:
+            self.location = m.get('location')
         if m.get('query') is not None:
             self.query = m.get('query')
         if m.get('timeRange') is not None:
