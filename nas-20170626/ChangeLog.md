@@ -1,3 +1,25 @@
+2025-07-01 Version: 3.0.0
+- Delete API AddTags.
+- Delete API RemoveTags.
+- Update API CreateDataFlowTask: add request parameters Includes.
+- Update API CreateFileSystem: add request parameters Tag.
+- Update API CreateLifecyclePolicy: delete request parameters FsetIds.
+- Update API CreateLifecyclePolicy: delete request parameters LifecycleRuleType.
+- Update API DescribeDataFlowTasks: add response parameters Body.TaskInfo.$.Includes.
+- Update API DescribeFileSystems: add response parameters Body.FileSystems.$.VscTarget.
+- Update API DescribeFileSystems: delete response parameters Body.FileSystems.$.SecondaryBandwidth.
+- Update API DescribeFileSystems: delete response parameters Body.FileSystems.$.SecondaryCapacity.
+- Update API DescribeLifecyclePolicies: delete request parameters FileSystemType.
+- Update API DescribeLifecyclePolicies: delete request parameters FsetId.
+- Update API DescribeLifecyclePolicies: delete response parameters Body.LifecyclePolicies.$.EnableLifecycle.
+- Update API DescribeLifecyclePolicies: delete response parameters Body.LifecyclePolicies.$.FsetIds.
+- Update API DescribeLifecyclePolicies: delete response parameters Body.LifecyclePolicies.$.LifecycleRuleType.
+- Update API DescribeLifecyclePolicies: delete response parameters Body.LifecyclePolicies.$.Status.
+- Update API DescribeMountTargets: add response parameters Body.MountTargets.$.Tags.
+- Update API ModifyLifecyclePolicy: delete request parameters EnableLifecycle.
+- Update API ModifyLifecyclePolicy: delete request parameters FsetIds.
+
+
 2025-03-19 Version: 2.5.3
 - Update API CreateFile: update param OwnerAccessInheritable.
 - Update API CreateLifecyclePolicy: add param FsetIds.

@@ -16,9 +16,9 @@ class AddClientToBlackListRequest(TeaModel):
         # 
         # This parameter is required.
         self.client_ip = client_ip
-        # This parameter ensures the idempotency of each request. A ClientToken is generated for each client. Make sure that each ClientToken is unique between different requests. The parameter can be a maximum of 64 characters in length and contain ASCII characters.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         # 
-        # For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/doc-detail/25693.htm).
+        # For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         # 
         # This parameter is required.
         self.client_token = client_token
@@ -68,7 +68,7 @@ class AddClientToBlackListResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -128,157 +128,6 @@ class AddClientToBlackListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AddClientToBlackListResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class AddTagsRequestTag(TeaModel):
-    def __init__(
-        self,
-        key: str = None,
-        value: str = None,
-    ):
-        # The key of each tag. A tag consists of a tag key and a tag value. You can add a maximum of 10 tags at a time. The tag key cannot be empty. The tag value can be left empty.
-        self.key = key
-        # The value of each tag. A tag consists of a tag key and a tag value. You can add a maximum of 10 tags at a time. The tag key cannot be empty. The tag value can be left empty.
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.key is not None:
-            result['Key'] = self.key
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Key') is not None:
-            self.key = m.get('Key')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        return self
-
-
-class AddTagsRequest(TeaModel):
-    def __init__(
-        self,
-        file_system_id: str = None,
-        tag: List[AddTagsRequestTag] = None,
-    ):
-        # The ID of the file system.
-        # 
-        # This parameter is required.
-        self.file_system_id = file_system_id
-        # The details about the tags.
-        # 
-        # This parameter is required.
-        self.tag = tag
-
-    def validate(self):
-        if self.tag:
-            for k in self.tag:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.file_system_id is not None:
-            result['FileSystemId'] = self.file_system_id
-        result['Tag'] = []
-        if self.tag is not None:
-            for k in self.tag:
-                result['Tag'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('FileSystemId') is not None:
-            self.file_system_id = m.get('FileSystemId')
-        self.tag = []
-        if m.get('Tag') is not None:
-            for k in m.get('Tag'):
-                temp_model = AddTagsRequestTag()
-                self.tag.append(temp_model.from_map(k))
-        return self
-
-
-class AddTagsResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        # The request ID.
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class AddTagsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: AddTagsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = AddTagsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3049,6 +2898,7 @@ class CreateDataFlowTaskRequest(TeaModel):
         dst_directory: str = None,
         entry_list: str = None,
         file_system_id: str = None,
+        includes: str = None,
         src_task_id: str = None,
         task_action: str = None,
     ):
@@ -3143,6 +2993,7 @@ class CreateDataFlowTaskRequest(TeaModel):
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
+        self.includes = includes
         # If you specify SrcTaskId, the configurations of the TaskAction, DataType, and EntryList parameters are copied from the desired dataflow task. You do not need to specify them.
         self.src_task_id = src_task_id
         # The type of the data flow task.
@@ -3186,6 +3037,8 @@ class CreateDataFlowTaskRequest(TeaModel):
             result['EntryList'] = self.entry_list
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
+        if self.includes is not None:
+            result['Includes'] = self.includes
         if self.src_task_id is not None:
             result['SrcTaskId'] = self.src_task_id
         if self.task_action is not None:
@@ -3214,6 +3067,8 @@ class CreateDataFlowTaskRequest(TeaModel):
             self.entry_list = m.get('EntryList')
         if m.get('FileSystemId') is not None:
             self.file_system_id = m.get('FileSystemId')
+        if m.get('Includes') is not None:
+            self.includes = m.get('Includes')
         if m.get('SrcTaskId') is not None:
             self.src_task_id = m.get('SrcTaskId')
         if m.get('TaskAction') is not None:
@@ -3590,6 +3445,54 @@ class CreateFileResponse(TeaModel):
         return self
 
 
+class CreateFileSystemRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key.
+        # 
+        # Limits:
+        # 
+        # *   The tag key cannot be null or an empty string.
+        # *   The tag key can be up to 128 characters in length.
+        # *   The tag key cannot start with `aliyun` or `acs:`.
+        # *   The tag key cannot contain `http://` or `https://`.
+        self.key = key
+        # The tag value.
+        # 
+        # Limits:
+        # 
+        # *   The tag value cannot be null or an empty string.
+        # *   The tag value can be up to 128 characters in length.
+        # *   The tag value cannot contain `http://` or `https://`.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateFileSystemRequest(TeaModel):
     def __init__(
         self,
@@ -3607,6 +3510,7 @@ class CreateFileSystemRequest(TeaModel):
         resource_group_id: str = None,
         snapshot_id: str = None,
         storage_type: str = None,
+        tag: List[CreateFileSystemRequestTag] = None,
         v_switch_id: str = None,
         vpc_id: str = None,
         zone_id: str = None,
@@ -3669,8 +3573,8 @@ class CreateFileSystemRequest(TeaModel):
         # *   1: A NAS-managed key is used to encrypt the data in the file system. This value is valid only if the FileSystemType parameter is set to standard or extreme.
         # *   2: A KMS-managed key is used to encrypt the data in the file system. This value is valid only if the FileSystemType parameter is set to standard or extreme.
         # 
-        # >  *   Extreme NAS file system: All regions support KMS-managed keys.
-        # > *   General-purpose NAS file system: KMS-managed keys are supported in the following regions: China (Chengdu), China (Qingdao), China (Hohhot), China (Ulanqab), China (Heyuan), China (Hangzhou), China (Shanghai), China (Beijing), China (Zhangjiakou), China (Shenzhen), China (Guangzhou), China (Hong Kong), Japan (Tokyo), Philippines (Manila), Thailand (Bangkok), Malaysia (Kuala Lumpur), US (Silicon Valley), Indonesia (Jakarta), UK (London), Singapore, US (Virginia), Germany (Frankfurt),  and China East 1 Finance.
+        # >  *   Extreme NAS file systems: All regions except China East 1 Finance support KMS-managed keys.
+        # > *   General-purpose NAS file systems: All regions support KMS-managed keys.
         self.encrypt_type = encrypt_type
         # The type of the file system.
         # 
@@ -3682,7 +3586,7 @@ class CreateFileSystemRequest(TeaModel):
         # 
         # > CPFS file systems are available only on the China site (aliyun.com).
         self.file_system_type = file_system_type
-        # The ID of the KMS-managed key.
+        # The ID of the KMS key.
         # 
         # This parameter is required only if the EncryptType parameter is set to 2.
         self.kms_key_id = kms_key_id
@@ -3699,9 +3603,9 @@ class CreateFileSystemRequest(TeaModel):
         self.resource_group_id = resource_group_id
         # The snapshot ID.
         # 
-        # This parameter is available only for Extreme NAS file systems.
+        # This parameter is available only for advanced Extreme NAS file systems.
         # 
-        # > You can create a file system from a snapshot. In this case, the version of the file system is the same as that of the source file system. For example, the source file system of the snapshot uses version 1. To create a file system of version 2, you can create File System A from the snapshot and create File System B of version 2. You can then copy the data and migrate your business from File System A to File System B.
+        # >  You can create a file system from a snapshot. In this case, the version of the file system is the same as that of the source file system. For example, the source file system of the snapshot uses version 1. To create a file system of version 2, you can create File System A from the snapshot and create File System B of version 2. You can then copy the data and migrate your business from File System A to File System B.
         self.snapshot_id = snapshot_id
         # The storage class.
         # 
@@ -3710,7 +3614,11 @@ class CreateFileSystemRequest(TeaModel):
         # 
         # This parameter is required.
         self.storage_type = storage_type
-        # The ID of the vSwitch.
+        # An array of tags.
+        # 
+        # You can specify up to 20 tags. If you specify multiple tags, each tag key must be unique.
+        self.tag = tag
+        # The vSwitch ID.
         # 
         # This parameter is reserved and does not take effect. You do not need to configure this parameter.
         self.v_switch_id = v_switch_id
@@ -3731,7 +3639,10 @@ class CreateFileSystemRequest(TeaModel):
         self.zone_id = zone_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3767,6 +3678,10 @@ class CreateFileSystemRequest(TeaModel):
             result['SnapshotId'] = self.snapshot_id
         if self.storage_type is not None:
             result['StorageType'] = self.storage_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.vpc_id is not None:
@@ -3805,6 +3720,11 @@ class CreateFileSystemRequest(TeaModel):
             self.snapshot_id = m.get('SnapshotId')
         if m.get('StorageType') is not None:
             self.storage_type = m.get('StorageType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateFileSystemRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VpcId') is not None:
@@ -4248,10 +4168,8 @@ class CreateLifecyclePolicyRequest(TeaModel):
     def __init__(
         self,
         file_system_id: str = None,
-        fset_ids: List[str] = None,
         lifecycle_policy_name: str = None,
         lifecycle_rule_name: str = None,
-        lifecycle_rule_type: str = None,
         path: str = None,
         paths: List[str] = None,
         storage_type: str = None,
@@ -4260,7 +4178,6 @@ class CreateLifecyclePolicyRequest(TeaModel):
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        self.fset_ids = fset_ids
         # The name of the lifecycle policy. The name must be 3 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
         # 
         # This parameter is required.
@@ -4274,7 +4191,6 @@ class CreateLifecyclePolicyRequest(TeaModel):
         # *   DEFAULT_ATIME_60: Files that are not accessed in the last 60 days are dumped to the IA storage medium.
         # *   DEFAULT_ATIME_90: Files that are not accessed in the last 90 days are dumped to the IA storage medium.
         self.lifecycle_rule_name = lifecycle_rule_name
-        self.lifecycle_rule_type = lifecycle_rule_type
         # The absolute path of the directory that is associated with the lifecycle policy.
         # 
         # If you specify this parameter, you can associate the lifecycle policy with only one directory. The path must start with a forward slash (/) and must be a path that exists in the mount target.
@@ -4303,14 +4219,10 @@ class CreateLifecyclePolicyRequest(TeaModel):
         result = dict()
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
-        if self.fset_ids is not None:
-            result['FsetIds'] = self.fset_ids
         if self.lifecycle_policy_name is not None:
             result['LifecyclePolicyName'] = self.lifecycle_policy_name
         if self.lifecycle_rule_name is not None:
             result['LifecycleRuleName'] = self.lifecycle_rule_name
-        if self.lifecycle_rule_type is not None:
-            result['LifecycleRuleType'] = self.lifecycle_rule_type
         if self.path is not None:
             result['Path'] = self.path
         if self.paths is not None:
@@ -4323,14 +4235,10 @@ class CreateLifecyclePolicyRequest(TeaModel):
         m = m or dict()
         if m.get('FileSystemId') is not None:
             self.file_system_id = m.get('FileSystemId')
-        if m.get('FsetIds') is not None:
-            self.fset_ids = m.get('FsetIds')
         if m.get('LifecyclePolicyName') is not None:
             self.lifecycle_policy_name = m.get('LifecyclePolicyName')
         if m.get('LifecycleRuleName') is not None:
             self.lifecycle_rule_name = m.get('LifecycleRuleName')
-        if m.get('LifecycleRuleType') is not None:
-            self.lifecycle_rule_type = m.get('LifecycleRuleType')
         if m.get('Path') is not None:
             self.path = m.get('Path')
         if m.get('Paths') is not None:
@@ -9288,16 +9196,16 @@ class DescribeBlackListClientsResponseBody(TeaModel):
         clients: str = None,
         request_id: str = None,
     ):
-        # The IDs of clients and the status of each client. This parameter contains a JSON object, for example, {"client1": "EVICTING","client2":"EVICTED"}.
+        # The IDs of clients and the status of each client. The parameter value is a JSON string, for example, `{"client1": "EVICTING","client2":"EVICTED"}`.
         # 
         # Available client statuses include:
         # 
-        # *   EVICTING indicates that a client is being removed
-        # *   EVICTED indicates that a client is removed
-        # *   ACCEPTING indicates that the write access to the file system is being granted to a client
-        # *   ACCEPTABLE indicates that the write access to the file system is granted to a client
+        # *   EVICTING: The client is being evicted.
+        # *   EVICTED: The client is evicted.
+        # *   ACCEPTING: The write access to the file system is being granted to the client.
+        # *   ACCEPTABLE: The write access to the file system is granted to the client.
         self.clients = clients
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10133,6 +10041,7 @@ class DescribeDataFlowTasksResponseBodyTaskInfoTask(TeaModel):
         file_system_path: str = None,
         filesystem_id: str = None,
         fs_path: str = None,
+        includes: str = None,
         originator: str = None,
         progress: int = None,
         progress_stats: DescribeDataFlowTasksResponseBodyTaskInfoTaskProgressStats = None,
@@ -10187,6 +10096,7 @@ class DescribeDataFlowTasksResponseBodyTaskInfoTask(TeaModel):
         self.filesystem_id = filesystem_id
         # The path of the smart directory.
         self.fs_path = fs_path
+        self.includes = includes
         # The initiator of the data flow task. Valid values:
         # 
         # *   User: The task is initiated by a user.
@@ -10286,6 +10196,8 @@ class DescribeDataFlowTasksResponseBodyTaskInfoTask(TeaModel):
             result['FilesystemId'] = self.filesystem_id
         if self.fs_path is not None:
             result['FsPath'] = self.fs_path
+        if self.includes is not None:
+            result['Includes'] = self.includes
         if self.originator is not None:
             result['Originator'] = self.originator
         if self.progress is not None:
@@ -10332,6 +10244,8 @@ class DescribeDataFlowTasksResponseBodyTaskInfoTask(TeaModel):
             self.filesystem_id = m.get('FilesystemId')
         if m.get('FsPath') is not None:
             self.fs_path = m.get('FsPath')
+        if m.get('Includes') is not None:
+            self.includes = m.get('Includes')
         if m.get('Originator') is not None:
             self.originator = m.get('Originator')
         if m.get('Progress') is not None:
@@ -12578,14 +12492,13 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         quorum_vsw_id: str = None,
         region_id: str = None,
         resource_group_id: str = None,
-        secondary_bandwidth: int = None,
-        secondary_capacity: int = None,
         status: str = None,
         storage_type: str = None,
         supported_features: DescribeFileSystemsResponseBodyFileSystemsFileSystemSupportedFeatures = None,
         tags: DescribeFileSystemsResponseBodyFileSystemsFileSystemTags = None,
         version: str = None,
         vpc_id: str = None,
+        vsc_target: str = None,
         vsw_ids: DescribeFileSystemsResponseBodyFileSystemsFileSystemVswIds = None,
         zone_id: str = None,
     ):
@@ -12674,8 +12587,6 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         # 
         # You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups?) to view resource group IDs.
         self.resource_group_id = resource_group_id
-        self.secondary_bandwidth = secondary_bandwidth
-        self.secondary_capacity = secondary_capacity
         # The status of the file system. Valid values:
         # - Pending: The file system is being created or modified.
         # - Running: The file system is available. Before you create a mount target for the file system, make sure that the file system is in the Running state.
@@ -12702,6 +12613,7 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         self.version = version
         # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
+        self.vsc_target = vsc_target
         # A collection of vSwitch IDs.
         self.vsw_ids = vsw_ids
         # The ID of the zone where the file system resides.
@@ -12775,10 +12687,6 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
-        if self.secondary_bandwidth is not None:
-            result['SecondaryBandwidth'] = self.secondary_bandwidth
-        if self.secondary_capacity is not None:
-            result['SecondaryCapacity'] = self.secondary_capacity
         if self.status is not None:
             result['Status'] = self.status
         if self.storage_type is not None:
@@ -12791,6 +12699,8 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
             result['Version'] = self.version
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
+        if self.vsc_target is not None:
+            result['VscTarget'] = self.vsc_target
         if self.vsw_ids is not None:
             result['VswIds'] = self.vsw_ids.to_map()
         if self.zone_id is not None:
@@ -12849,10 +12759,6 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
-        if m.get('SecondaryBandwidth') is not None:
-            self.secondary_bandwidth = m.get('SecondaryBandwidth')
-        if m.get('SecondaryCapacity') is not None:
-            self.secondary_capacity = m.get('SecondaryCapacity')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('StorageType') is not None:
@@ -12867,6 +12773,8 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
             self.version = m.get('Version')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
+        if m.get('VscTarget') is not None:
+            self.vsc_target = m.get('VscTarget')
         if m.get('VswIds') is not None:
             temp_model = DescribeFileSystemsResponseBodyFileSystemsFileSystemVswIds()
             self.vsw_ids = temp_model.from_map(m['VswIds'])
@@ -13448,8 +13356,6 @@ class DescribeLifecyclePoliciesRequest(TeaModel):
     def __init__(
         self,
         file_system_id: str = None,
-        file_system_type: str = None,
-        fset_id: str = None,
         lifecycle_policy_name: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -13457,8 +13363,6 @@ class DescribeLifecyclePoliciesRequest(TeaModel):
     ):
         # The ID of the file system.
         self.file_system_id = file_system_id
-        self.file_system_type = file_system_type
-        self.fset_id = fset_id
         # The name of the lifecycle policy. The name must meet the following conventions:
         # 
         # The name must be 3 to 64 characters in length and must start with a letter. It can contain letters, digits, underscores (_), and hyphens (-).
@@ -13492,10 +13396,6 @@ class DescribeLifecyclePoliciesRequest(TeaModel):
         result = dict()
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
-        if self.file_system_type is not None:
-            result['FileSystemType'] = self.file_system_type
-        if self.fset_id is not None:
-            result['FsetId'] = self.fset_id
         if self.lifecycle_policy_name is not None:
             result['LifecyclePolicyName'] = self.lifecycle_policy_name
         if self.page_number is not None:
@@ -13510,10 +13410,6 @@ class DescribeLifecyclePoliciesRequest(TeaModel):
         m = m or dict()
         if m.get('FileSystemId') is not None:
             self.file_system_id = m.get('FileSystemId')
-        if m.get('FileSystemType') is not None:
-            self.file_system_type = m.get('FileSystemType')
-        if m.get('FsetId') is not None:
-            self.fset_id = m.get('FsetId')
         if m.get('LifecyclePolicyName') is not None:
             self.lifecycle_policy_name = m.get('LifecyclePolicyName')
         if m.get('PageNumber') is not None:
@@ -13529,25 +13425,19 @@ class DescribeLifecyclePoliciesResponseBodyLifecyclePolicies(TeaModel):
     def __init__(
         self,
         create_time: str = None,
-        enable_lifecycle: bool = None,
         file_system_id: str = None,
-        fset_ids: List[str] = None,
         lifecycle_policy_name: str = None,
         lifecycle_rule_name: str = None,
-        lifecycle_rule_type: str = None,
         path: str = None,
         paths: List[str] = None,
-        status: str = None,
         storage_type: str = None,
     ):
         # The time when the lifecycle policy was created.
         # 
         # The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format.
         self.create_time = create_time
-        self.enable_lifecycle = enable_lifecycle
         # The ID of the file system.
         self.file_system_id = file_system_id
-        self.fset_ids = fset_ids
         # The name of the lifecycle policy.
         self.lifecycle_policy_name = lifecycle_policy_name
         # The management rule that is associated with the lifecycle policy.
@@ -13559,12 +13449,10 @@ class DescribeLifecyclePoliciesResponseBodyLifecyclePolicies(TeaModel):
         # *   DEFAULT_ATIME_60: Files that are not accessed in the last 60 days are dumped to the IA storage medium.
         # *   DEFAULT_ATIME_90: Files that are not accessed in the last 90 days are dumped to the IA storage medium.
         self.lifecycle_rule_name = lifecycle_rule_name
-        self.lifecycle_rule_type = lifecycle_rule_type
         # The absolute path of a directory with which the lifecycle policy is associated.
         self.path = path
         # The absolute paths to multiple directories associated with the lifecycle policy.
         self.paths = paths
-        self.status = status
         # The storage type of the data that is dumped to the IA storage medium.
         # 
         # Default value: InfrequentAccess (IA).
@@ -13581,24 +13469,16 @@ class DescribeLifecyclePoliciesResponseBodyLifecyclePolicies(TeaModel):
         result = dict()
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
-        if self.enable_lifecycle is not None:
-            result['EnableLifecycle'] = self.enable_lifecycle
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
-        if self.fset_ids is not None:
-            result['FsetIds'] = self.fset_ids
         if self.lifecycle_policy_name is not None:
             result['LifecyclePolicyName'] = self.lifecycle_policy_name
         if self.lifecycle_rule_name is not None:
             result['LifecycleRuleName'] = self.lifecycle_rule_name
-        if self.lifecycle_rule_type is not None:
-            result['LifecycleRuleType'] = self.lifecycle_rule_type
         if self.path is not None:
             result['Path'] = self.path
         if self.paths is not None:
             result['Paths'] = self.paths
-        if self.status is not None:
-            result['Status'] = self.status
         if self.storage_type is not None:
             result['StorageType'] = self.storage_type
         return result
@@ -13607,24 +13487,16 @@ class DescribeLifecyclePoliciesResponseBodyLifecyclePolicies(TeaModel):
         m = m or dict()
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
-        if m.get('EnableLifecycle') is not None:
-            self.enable_lifecycle = m.get('EnableLifecycle')
         if m.get('FileSystemId') is not None:
             self.file_system_id = m.get('FileSystemId')
-        if m.get('FsetIds') is not None:
-            self.fset_ids = m.get('FsetIds')
         if m.get('LifecyclePolicyName') is not None:
             self.lifecycle_policy_name = m.get('LifecyclePolicyName')
         if m.get('LifecycleRuleName') is not None:
             self.lifecycle_rule_name = m.get('LifecycleRuleName')
-        if m.get('LifecycleRuleType') is not None:
-            self.lifecycle_rule_type = m.get('LifecycleRuleType')
         if m.get('Path') is not None:
             self.path = m.get('Path')
         if m.get('Paths') is not None:
             self.paths = m.get('Paths')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
         if m.get('StorageType') is not None:
             self.storage_type = m.get('StorageType')
         return self
@@ -14168,6 +14040,86 @@ class DescribeMountTargetsResponseBodyMountTargetsMountTargetClientMasterNodes(T
         return self
 
 
+class DescribeMountTargetsResponseBodyMountTargetsMountTargetTagsTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key. Limits:
+        # 
+        # *   The tag key cannot be null or an empty string.
+        # *   The tag key can be up to 128 characters in length.
+        # *   The key value cannot start with aliyun or acs:.
+        # *   The key value cannot contain http:// or https://.
+        self.key = key
+        # The tag value.
+        # 
+        # Limits:
+        # 
+        # *   The tag value can be up to 128 characters in length.
+        # *   The tag value cannot contain http:// or https://.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeMountTargetsResponseBodyMountTargetsMountTargetTags(TeaModel):
+    def __init__(
+        self,
+        tag: List[DescribeMountTargetsResponseBodyMountTargetsMountTargetTagsTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeMountTargetsResponseBodyMountTargetsMountTargetTagsTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeMountTargetsResponseBodyMountTargetsMountTarget(TeaModel):
     def __init__(
         self,
@@ -14178,6 +14130,7 @@ class DescribeMountTargetsResponseBodyMountTargetsMountTarget(TeaModel):
         mount_target_domain: str = None,
         network_type: str = None,
         status: str = None,
+        tags: DescribeMountTargetsResponseBodyMountTargetsMountTargetTags = None,
         vpc_id: str = None,
         vsw_id: str = None,
     ):
@@ -14209,6 +14162,8 @@ class DescribeMountTargetsResponseBodyMountTargetsMountTarget(TeaModel):
         # 
         # > You can mount a file system only when the mount target of the file system is in the Active state.
         self.status = status
+        # An array of tags. The array may contain up to 20 tags. If the array contains multiple tags, each tag key is unique.
+        self.tags = tags
         # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
         # The ID of the vSwitch.
@@ -14217,6 +14172,8 @@ class DescribeMountTargetsResponseBodyMountTargetsMountTarget(TeaModel):
     def validate(self):
         if self.client_master_nodes:
             self.client_master_nodes.validate()
+        if self.tags:
+            self.tags.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -14238,6 +14195,8 @@ class DescribeMountTargetsResponseBodyMountTargetsMountTarget(TeaModel):
             result['NetworkType'] = self.network_type
         if self.status is not None:
             result['Status'] = self.status
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         if self.vsw_id is not None:
@@ -14261,6 +14220,9 @@ class DescribeMountTargetsResponseBodyMountTargetsMountTarget(TeaModel):
             self.network_type = m.get('NetworkType')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            temp_model = DescribeMountTargetsResponseBodyMountTargetsMountTargetTags()
+            self.tags = temp_model.from_map(m['Tags'])
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         if m.get('VswId') is not None:
@@ -14312,7 +14274,7 @@ class DescribeMountTargetsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about mount targets.
+        # The queried mount targets.
         self.mount_targets = mount_targets
         # The page number.
         self.page_number = page_number
@@ -17548,7 +17510,7 @@ class GetDirectoryOrFilePropertiesResponseBodyEntry(TeaModel):
         # 
         # This parameter is returned only if the value of the Type parameter is File.
         self.atime = atime
-        # The time when the raw data was modified.
+        # The time when the metadata was modified.
         # 
         # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         # 
@@ -17594,14 +17556,14 @@ class GetDirectoryOrFilePropertiesResponseBodyEntry(TeaModel):
         # 
         # This parameter is returned only if the value of the Type parameter is File.
         self.size = size
-        # The storage type of the file.
+        # The storage class of the file.
         # 
         # This parameter is returned only if the value of the Type parameter is File.
         # 
         # Valid values:
         # 
         # *   standard: General-purpose NAS file system
-        # *   InfrequentAccess: IA storage medium
+        # *   InfrequentAccess: the IA storage class.
         self.storage_type = storage_type
         # The type of the query result.
         # 
@@ -17677,7 +17639,7 @@ class GetDirectoryOrFilePropertiesResponseBody(TeaModel):
         entry: GetDirectoryOrFilePropertiesResponseBodyEntry = None,
         request_id: str = None,
     ):
-        # The details about the files or directories.
+        # The details about the file or directory.
         self.entry = entry
         # The request ID.
         self.request_id = request_id
@@ -20942,20 +20904,16 @@ class ModifyLDAPConfigResponse(TeaModel):
 class ModifyLifecyclePolicyRequest(TeaModel):
     def __init__(
         self,
-        enable_lifecycle: bool = None,
         file_system_id: str = None,
-        fset_ids: List[str] = None,
         lifecycle_policy_name: str = None,
         lifecycle_rule_name: str = None,
         path: str = None,
         storage_type: str = None,
     ):
-        self.enable_lifecycle = enable_lifecycle
         # The ID of the file system.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        self.fset_ids = fset_ids
         # The name of the lifecycle policy.
         # 
         # The name must be 3 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
@@ -20989,12 +20947,8 @@ class ModifyLifecyclePolicyRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.enable_lifecycle is not None:
-            result['EnableLifecycle'] = self.enable_lifecycle
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
-        if self.fset_ids is not None:
-            result['FsetIds'] = self.fset_ids
         if self.lifecycle_policy_name is not None:
             result['LifecyclePolicyName'] = self.lifecycle_policy_name
         if self.lifecycle_rule_name is not None:
@@ -21007,12 +20961,8 @@ class ModifyLifecyclePolicyRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('EnableLifecycle') is not None:
-            self.enable_lifecycle = m.get('EnableLifecycle')
         if m.get('FileSystemId') is not None:
             self.file_system_id = m.get('FileSystemId')
-        if m.get('FsetIds') is not None:
-            self.fset_ids = m.get('FsetIds')
         if m.get('LifecyclePolicyName') is not None:
             self.lifecycle_policy_name = m.get('LifecyclePolicyName')
         if m.get('LifecycleRuleName') is not None:
@@ -21803,13 +21753,21 @@ class RemoveClientFromBlackListRequest(TeaModel):
         file_system_id: str = None,
         region_id: str = None,
     ):
+        # The IP address of a client to remove from the blacklist.
+        # 
         # This parameter is required.
         self.client_ip = client_ip
+        # This parameter ensures the idempotency of each request. A ClientToken is generated for each client. Make sure that each ClientToken is unique between different requests. The parameter can be a maximum of 64 characters in length and contain only ASCII characters.
+        # 
+        # For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/doc-detail/25693.htm).
+        # 
         # This parameter is required.
         self.client_token = client_token
+        # The ID of the file system.
+        # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The ID of the request.
+        # The ID of the region where the file system resides.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -21851,6 +21809,7 @@ class RemoveClientFromBlackListResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -21910,157 +21869,6 @@ class RemoveClientFromBlackListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RemoveClientFromBlackListResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class RemoveTagsRequestTag(TeaModel):
-    def __init__(
-        self,
-        key: str = None,
-        value: str = None,
-    ):
-        # The key of each tag. Each tag that you want to remove consists of a tag key and a tag value. You can specify 1 to 10 tags at a time. The tag key cannot be empty. The tag value can be left empty.
-        self.key = key
-        # The value of each tag. Each tag that you want to remove consists of a tag key and a tag value. You can specify a maximum of five tags at a time. The tag key cannot be empty. The tag value can be left empty.
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.key is not None:
-            result['Key'] = self.key
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Key') is not None:
-            self.key = m.get('Key')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        return self
-
-
-class RemoveTagsRequest(TeaModel):
-    def __init__(
-        self,
-        file_system_id: str = None,
-        tag: List[RemoveTagsRequestTag] = None,
-    ):
-        # The ID of the file system.
-        # 
-        # This parameter is required.
-        self.file_system_id = file_system_id
-        # The details about the tags.
-        # 
-        # This parameter is required.
-        self.tag = tag
-
-    def validate(self):
-        if self.tag:
-            for k in self.tag:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.file_system_id is not None:
-            result['FileSystemId'] = self.file_system_id
-        result['Tag'] = []
-        if self.tag is not None:
-            for k in self.tag:
-                result['Tag'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('FileSystemId') is not None:
-            self.file_system_id = m.get('FileSystemId')
-        self.tag = []
-        if m.get('Tag') is not None:
-            for k in m.get('Tag'):
-                temp_model = RemoveTagsRequestTag()
-                self.tag.append(temp_model.from_map(k))
-        return self
-
-
-class RemoveTagsResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        # The request ID.
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class RemoveTagsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: RemoveTagsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = RemoveTagsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -22480,7 +22288,7 @@ class SetFilesetQuotaRequest(TeaModel):
         # 
         # Valid values:
         # 
-        # *   true: performs only a dry run. The system checks the required parameters, request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned.
+        # *   true: performs only a dry run. The system checks the required parameters, request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the HTTP status code 200 is returned.
         # *   false (default): performs a dry run and sends the request. If the request passes the dry run, the quota is deleted.
         self.dry_run = dry_run
         # The limit of the file quantity of the quota. Valid values:
@@ -22496,12 +22304,11 @@ class SetFilesetQuotaRequest(TeaModel):
         # 
         # This parameter is required.
         self.fset_id = fset_id
-        # The limit of the total capacity of the quota. Unit: bytes.
+        # The total capacity of the quota. Unit: bytes.
         # 
         # Valid values:
         # 
         # *   Minimum value: 10737418240 (10 GiB).
-        # *   Maximum value: 1073741824000 (1024000 GiB).
         # *   Step size: 1073741824 (1 GiB).
         self.size_limit = size_limit
 
