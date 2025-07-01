@@ -32318,6 +32318,7 @@ class GetWorkflowInstanceResponseBodyWorkflowInstance(TeaModel):
         status: str = None,
         type: str = None,
         workflow_id: int = None,
+        workflow_parameters: str = None,
     ):
         # The data timestamp.
         self.biz_date = biz_date
@@ -32365,6 +32366,7 @@ class GetWorkflowInstanceResponseBodyWorkflowInstance(TeaModel):
         self.type = type
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
+        self.workflow_parameters = workflow_parameters
 
     def validate(self):
         pass
@@ -32403,6 +32405,8 @@ class GetWorkflowInstanceResponseBodyWorkflowInstance(TeaModel):
             result['Type'] = self.type
         if self.workflow_id is not None:
             result['WorkflowId'] = self.workflow_id
+        if self.workflow_parameters is not None:
+            result['WorkflowParameters'] = self.workflow_parameters
         return result
 
     def from_map(self, m: dict = None):
@@ -32435,6 +32439,8 @@ class GetWorkflowInstanceResponseBodyWorkflowInstance(TeaModel):
             self.type = m.get('Type')
         if m.get('WorkflowId') is not None:
             self.workflow_id = m.get('WorkflowId')
+        if m.get('WorkflowParameters') is not None:
+            self.workflow_parameters = m.get('WorkflowParameters')
         return self
 
 
@@ -58624,6 +58630,7 @@ class ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances(TeaModel):
         status: str = None,
         type: str = None,
         workflow_id: int = None,
+        workflow_parameters: str = None,
     ):
         self.biz_date = biz_date
         # The creation time.
@@ -58663,6 +58670,7 @@ class ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances(TeaModel):
         self.type = type
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
+        self.workflow_parameters = workflow_parameters
 
     def validate(self):
         pass
@@ -58701,6 +58709,8 @@ class ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances(TeaModel):
             result['Type'] = self.type
         if self.workflow_id is not None:
             result['WorkflowId'] = self.workflow_id
+        if self.workflow_parameters is not None:
+            result['WorkflowParameters'] = self.workflow_parameters
         return result
 
     def from_map(self, m: dict = None):
@@ -58733,6 +58743,8 @@ class ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances(TeaModel):
             self.type = m.get('Type')
         if m.get('WorkflowId') is not None:
             self.workflow_id = m.get('WorkflowId')
+        if m.get('WorkflowParameters') is not None:
+            self.workflow_parameters = m.get('WorkflowParameters')
         return self
 
 
