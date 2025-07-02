@@ -17582,10 +17582,12 @@ class CreateReportResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        result: str = None,
         success: bool = None,
     ):
         # requestId
         self.request_id = request_id
+        self.result = result
         self.success = success
 
     def validate(self):
@@ -17599,6 +17601,8 @@ class CreateReportResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result
         if self.success is not None:
             result['success'] = self.success
         return result
@@ -17607,6 +17611,8 @@ class CreateReportResponseBody(TeaModel):
         m = m or dict()
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            self.result = m.get('result')
         if m.get('success') is not None:
             self.success = m.get('success')
         return self
@@ -58250,7 +58256,6 @@ class InsertContentWithOptionsRequest(TeaModel):
         content: Dict[str, Any] = None,
         document_id: str = None,
         index: int = None,
-        operator_id: str = None,
         path: List[int] = None,
         tenant_context: InsertContentWithOptionsRequestTenantContext = None,
     ):
@@ -58259,8 +58264,6 @@ class InsertContentWithOptionsRequest(TeaModel):
         # This parameter is required.
         self.document_id = document_id
         self.index = index
-        # This parameter is required.
-        self.operator_id = operator_id
         self.path = path
         self.tenant_context = tenant_context
 
@@ -58280,8 +58283,6 @@ class InsertContentWithOptionsRequest(TeaModel):
             result['DocumentId'] = self.document_id
         if self.index is not None:
             result['Index'] = self.index
-        if self.operator_id is not None:
-            result['OperatorId'] = self.operator_id
         if self.path is not None:
             result['Path'] = self.path
         if self.tenant_context is not None:
@@ -58296,8 +58297,6 @@ class InsertContentWithOptionsRequest(TeaModel):
             self.document_id = m.get('DocumentId')
         if m.get('Index') is not None:
             self.index = m.get('Index')
-        if m.get('OperatorId') is not None:
-            self.operator_id = m.get('OperatorId')
         if m.get('Path') is not None:
             self.path = m.get('Path')
         if m.get('TenantContext') is not None:
@@ -58312,7 +58311,6 @@ class InsertContentWithOptionsShrinkRequest(TeaModel):
         content_shrink: str = None,
         document_id: str = None,
         index: int = None,
-        operator_id: str = None,
         path_shrink: str = None,
         tenant_context_shrink: str = None,
     ):
@@ -58321,8 +58319,6 @@ class InsertContentWithOptionsShrinkRequest(TeaModel):
         # This parameter is required.
         self.document_id = document_id
         self.index = index
-        # This parameter is required.
-        self.operator_id = operator_id
         self.path_shrink = path_shrink
         self.tenant_context_shrink = tenant_context_shrink
 
@@ -58341,8 +58337,6 @@ class InsertContentWithOptionsShrinkRequest(TeaModel):
             result['DocumentId'] = self.document_id
         if self.index is not None:
             result['Index'] = self.index
-        if self.operator_id is not None:
-            result['OperatorId'] = self.operator_id
         if self.path_shrink is not None:
             result['Path'] = self.path_shrink
         if self.tenant_context_shrink is not None:
@@ -58357,8 +58351,6 @@ class InsertContentWithOptionsShrinkRequest(TeaModel):
             self.document_id = m.get('DocumentId')
         if m.get('Index') is not None:
             self.index = m.get('Index')
-        if m.get('OperatorId') is not None:
-            self.operator_id = m.get('OperatorId')
         if m.get('Path') is not None:
             self.path_shrink = m.get('Path')
         if m.get('TenantContext') is not None:
@@ -58448,6 +58440,371 @@ class InsertContentWithOptionsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = InsertContentWithOptionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class InsertDropDownListHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class InsertDropDownListHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: InsertDropDownListHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = InsertDropDownListHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class InsertDropDownListShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class InsertDropDownListRequestOptions(TeaModel):
+    def __init__(
+        self,
+        color: str = None,
+        value: str = None,
+    ):
+        # This parameter is required.
+        self.color = color
+        # This parameter is required.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.color is not None:
+            result['Color'] = self.color
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Color') is not None:
+            self.color = m.get('Color')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class InsertDropDownListRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class InsertDropDownListRequest(TeaModel):
+    def __init__(
+        self,
+        options: List[InsertDropDownListRequestOptions] = None,
+        range_address: str = None,
+        sheet_id: str = None,
+        tenant_context: InsertDropDownListRequestTenantContext = None,
+        workbook_id: str = None,
+    ):
+        # This parameter is required.
+        self.options = options
+        # This parameter is required.
+        self.range_address = range_address
+        # This parameter is required.
+        self.sheet_id = sheet_id
+        self.tenant_context = tenant_context
+        # This parameter is required.
+        self.workbook_id = workbook_id
+
+    def validate(self):
+        if self.options:
+            for k in self.options:
+                if k:
+                    k.validate()
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Options'] = []
+        if self.options is not None:
+            for k in self.options:
+                result['Options'].append(k.to_map() if k else None)
+        if self.range_address is not None:
+            result['RangeAddress'] = self.range_address
+        if self.sheet_id is not None:
+            result['SheetId'] = self.sheet_id
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        if self.workbook_id is not None:
+            result['WorkbookId'] = self.workbook_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.options = []
+        if m.get('Options') is not None:
+            for k in m.get('Options'):
+                temp_model = InsertDropDownListRequestOptions()
+                self.options.append(temp_model.from_map(k))
+        if m.get('RangeAddress') is not None:
+            self.range_address = m.get('RangeAddress')
+        if m.get('SheetId') is not None:
+            self.sheet_id = m.get('SheetId')
+        if m.get('TenantContext') is not None:
+            temp_model = InsertDropDownListRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        if m.get('WorkbookId') is not None:
+            self.workbook_id = m.get('WorkbookId')
+        return self
+
+
+class InsertDropDownListShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        options_shrink: str = None,
+        range_address: str = None,
+        sheet_id: str = None,
+        tenant_context_shrink: str = None,
+        workbook_id: str = None,
+    ):
+        # This parameter is required.
+        self.options_shrink = options_shrink
+        # This parameter is required.
+        self.range_address = range_address
+        # This parameter is required.
+        self.sheet_id = sheet_id
+        self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
+        self.workbook_id = workbook_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.options_shrink is not None:
+            result['Options'] = self.options_shrink
+        if self.range_address is not None:
+            result['RangeAddress'] = self.range_address
+        if self.sheet_id is not None:
+            result['SheetId'] = self.sheet_id
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        if self.workbook_id is not None:
+            result['WorkbookId'] = self.workbook_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Options') is not None:
+            self.options_shrink = m.get('Options')
+        if m.get('RangeAddress') is not None:
+            self.range_address = m.get('RangeAddress')
+        if m.get('SheetId') is not None:
+            self.sheet_id = m.get('SheetId')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        if m.get('WorkbookId') is not None:
+            self.workbook_id = m.get('WorkbookId')
+        return self
+
+
+class InsertDropDownListResponseBody(TeaModel):
+    def __init__(
+        self,
+        a_1notation: str = None,
+        request_id: str = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.a_1notation = a_1notation
+        self.request_id = request_id
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.a_1notation is not None:
+            result['a1Notation'] = self.a_1notation
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('a1Notation') is not None:
+            self.a_1notation = m.get('a1Notation')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class InsertDropDownListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: InsertDropDownListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = InsertDropDownListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -86166,10 +86523,12 @@ class SaveContentResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        result: str = None,
         success: bool = None,
     ):
         # requestId
         self.request_id = request_id
+        self.result = result
         self.success = success
 
     def validate(self):
@@ -86183,6 +86542,8 @@ class SaveContentResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result
         if self.success is not None:
             result['success'] = self.success
         return result
@@ -86191,6 +86552,8 @@ class SaveContentResponseBody(TeaModel):
         m = m or dict()
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            self.result = m.get('result')
         if m.get('success') is not None:
             self.success = m.get('success')
         return self

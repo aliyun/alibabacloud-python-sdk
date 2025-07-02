@@ -20785,8 +20785,6 @@ class Client(OpenApiClient):
             body['DocumentId'] = request.document_id
         if not UtilClient.is_unset(request.index):
             body['Index'] = request.index
-        if not UtilClient.is_unset(request.operator_id):
-            body['OperatorId'] = request.operator_id
         if not UtilClient.is_unset(request.path_shrink):
             body['Path'] = request.path_shrink
         if not UtilClient.is_unset(request.tenant_context_shrink):
@@ -20850,8 +20848,6 @@ class Client(OpenApiClient):
             body['DocumentId'] = request.document_id
         if not UtilClient.is_unset(request.index):
             body['Index'] = request.index
-        if not UtilClient.is_unset(request.operator_id):
-            body['OperatorId'] = request.operator_id
         if not UtilClient.is_unset(request.path_shrink):
             body['Path'] = request.path_shrink
         if not UtilClient.is_unset(request.tenant_context_shrink):
@@ -20908,6 +20904,156 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.InsertContentWithOptionsHeaders()
         return await self.insert_content_with_options_with_options_async(request, headers, runtime)
+
+    def insert_drop_down_list_with_options(
+        self,
+        tmp_req: aliding_20230426_models.InsertDropDownListRequest,
+        tmp_header: aliding_20230426_models.InsertDropDownListHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.InsertDropDownListResponse:
+        """
+        @summary 插入下拉列表
+        
+        @param tmp_req: InsertDropDownListRequest
+        @param tmp_header: InsertDropDownListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsertDropDownListResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.InsertDropDownListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.InsertDropDownListShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.options):
+            request.options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.options, 'Options', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.options_shrink):
+            body['Options'] = request.options_shrink
+        if not UtilClient.is_unset(request.range_address):
+            body['RangeAddress'] = request.range_address
+        if not UtilClient.is_unset(request.sheet_id):
+            body['SheetId'] = request.sheet_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.workbook_id):
+            body['WorkbookId'] = request.workbook_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InsertDropDownList',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/insertDropDownList',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.InsertDropDownListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def insert_drop_down_list_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.InsertDropDownListRequest,
+        tmp_header: aliding_20230426_models.InsertDropDownListHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.InsertDropDownListResponse:
+        """
+        @summary 插入下拉列表
+        
+        @param tmp_req: InsertDropDownListRequest
+        @param tmp_header: InsertDropDownListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsertDropDownListResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.InsertDropDownListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.InsertDropDownListShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.options):
+            request.options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.options, 'Options', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.options_shrink):
+            body['Options'] = request.options_shrink
+        if not UtilClient.is_unset(request.range_address):
+            body['RangeAddress'] = request.range_address
+        if not UtilClient.is_unset(request.sheet_id):
+            body['SheetId'] = request.sheet_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.workbook_id):
+            body['WorkbookId'] = request.workbook_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InsertDropDownList',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/insertDropDownList',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.InsertDropDownListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def insert_drop_down_list(
+        self,
+        request: aliding_20230426_models.InsertDropDownListRequest,
+    ) -> aliding_20230426_models.InsertDropDownListResponse:
+        """
+        @summary 插入下拉列表
+        
+        @param request: InsertDropDownListRequest
+        @return: InsertDropDownListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.InsertDropDownListHeaders()
+        return self.insert_drop_down_list_with_options(request, headers, runtime)
+
+    async def insert_drop_down_list_async(
+        self,
+        request: aliding_20230426_models.InsertDropDownListRequest,
+    ) -> aliding_20230426_models.InsertDropDownListResponse:
+        """
+        @summary 插入下拉列表
+        
+        @param request: InsertDropDownListRequest
+        @return: InsertDropDownListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.InsertDropDownListHeaders()
+        return await self.insert_drop_down_list_with_options_async(request, headers, runtime)
 
     def insert_multi_dim_table_record_with_options(
         self,

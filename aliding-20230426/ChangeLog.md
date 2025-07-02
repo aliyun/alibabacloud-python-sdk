@@ -1,3 +1,9 @@
+2025-07-02 Version: 2.41.0
+- Support API InsertDropDownList.
+- Update API CreateReport: add response parameters Body.result.
+- Update API SaveContent: add response parameters Body.result.
+
+
 2025-06-19 Version: 2.40.1
 - Update API CreateRun: add request parameters body.allowStructViewContent.
 - Update API CreateRun: add response parameters Body.messages.$.contentStruct.
