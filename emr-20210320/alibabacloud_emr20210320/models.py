@@ -617,6 +617,77 @@ class AckNodePool(TeaModel):
         return self
 
 
+class DoubleMetric(TeaModel):
+    def __init__(
+        self,
+        unit: str = None,
+        value: float = None,
+    ):
+        self.unit = unit
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.unit is not None:
+            result['Unit'] = self.unit
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Unit') is not None:
+            self.unit = m.get('Unit')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class AdviseSummary(TeaModel):
+    def __init__(
+        self,
+        memory_utilization_rate: DoubleMetric = None,
+        vcore_utilization_rate: DoubleMetric = None,
+    ):
+        self.memory_utilization_rate = memory_utilization_rate
+        self.vcore_utilization_rate = vcore_utilization_rate
+
+    def validate(self):
+        if self.memory_utilization_rate:
+            self.memory_utilization_rate.validate()
+        if self.vcore_utilization_rate:
+            self.vcore_utilization_rate.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.memory_utilization_rate is not None:
+            result['MemoryUtilizationRate'] = self.memory_utilization_rate.to_map()
+        if self.vcore_utilization_rate is not None:
+            result['VcoreUtilizationRate'] = self.vcore_utilization_rate.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MemoryUtilizationRate') is not None:
+            temp_model = DoubleMetric()
+            self.memory_utilization_rate = temp_model.from_map(m['MemoryUtilizationRate'])
+        if m.get('VcoreUtilizationRate') is not None:
+            temp_model = DoubleMetric()
+            self.vcore_utilization_rate = temp_model.from_map(m['VcoreUtilizationRate'])
+        return self
+
+
 class ApiTemplate(TeaModel):
     def __init__(
         self,
@@ -3096,6 +3167,271 @@ class ConvertNodeGroupParam(TeaModel):
         return self
 
 
+class DataDisk(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        count: int = None,
+        performance_level: str = None,
+        size: int = None,
+    ):
+        # 磁盘类型。
+        # 
+        # This parameter is required.
+        self.category = category
+        # 每个节点磁盘数量。
+        self.count = count
+        # 创建ESSD云盘作为数据盘使用时，设置云盘的性能等级。取值范围：
+        # - PL0：单盘最高随机读写IOPS 1万。
+        # - PL1（默认）：单盘最高随机读写IOPS 5万。
+        # - PL2：单盘最高随机读写IOPS 10万。
+        # - PL3：单盘最高随机读写IOPS 100万。
+        # 
+        # 默认值：PL1。
+        self.performance_level = performance_level
+        # 单位GB。
+        # 
+        # This parameter is required.
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.performance_level is not None:
+            result['PerformanceLevel'] = self.performance_level
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('PerformanceLevel') is not None:
+            self.performance_level = m.get('PerformanceLevel')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class SystemDisk(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        count: int = None,
+        performance_level: str = None,
+        size: int = None,
+    ):
+        # 磁盘类型。
+        # 
+        # This parameter is required.
+        self.category = category
+        # 每个节点系统盘数量，默认值为1。
+        self.count = count
+        # 创建ESSD云盘作为系统盘使用时，设置云盘的性能等级。取值范围：
+        # - PL0：单盘最高随机读写IOPS 1万。
+        # - PL1（默认）：单盘最高随机读写IOPS 5万。
+        # - PL2：单盘最高随机读写IOPS 10万。
+        # - PL3：单盘最高随机读写IOPS 100万。
+        # 
+        # 默认值：PL1。
+        self.performance_level = performance_level
+        # 单位GB。
+        # 
+        # This parameter is required.
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.performance_level is not None:
+            result['PerformanceLevel'] = self.performance_level
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('PerformanceLevel') is not None:
+            self.performance_level = m.get('PerformanceLevel')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class CostInstanceType(TeaModel):
+    def __init__(
+        self,
+        cpu: int = None,
+        data_disks: List[DataDisk] = None,
+        instance_type: str = None,
+        memory: int = None,
+        system_disk: SystemDisk = None,
+    ):
+        # CPU核数。
+        self.cpu = cpu
+        # 数据盘列表。
+        self.data_disks = data_disks
+        # 实例类型列表。
+        self.instance_type = instance_type
+        # 内存大小。
+        self.memory = memory
+        # 系统盘信息。
+        self.system_disk = system_disk
+
+    def validate(self):
+        if self.data_disks:
+            for k in self.data_disks:
+                if k:
+                    k.validate()
+        if self.system_disk:
+            self.system_disk.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        result['DataDisks'] = []
+        if self.data_disks is not None:
+            for k in self.data_disks:
+                result['DataDisks'].append(k.to_map() if k else None)
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.system_disk is not None:
+            result['SystemDisk'] = self.system_disk.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        self.data_disks = []
+        if m.get('DataDisks') is not None:
+            for k in m.get('DataDisks'):
+                temp_model = DataDisk()
+                self.data_disks.append(temp_model.from_map(k))
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('SystemDisk') is not None:
+            temp_model = SystemDisk()
+            self.system_disk = temp_model.from_map(m['SystemDisk'])
+        return self
+
+
+class CostNodeGroupConfig(TeaModel):
+    def __init__(
+        self,
+        instance_types: List[CostInstanceType] = None,
+        maximal_node_count: int = None,
+        minimal_node_count: int = None,
+        node_count: int = None,
+        node_group_name: str = None,
+        node_group_type: str = None,
+        payment_type: str = None,
+    ):
+        # 实例类型列表。
+        self.instance_types = instance_types
+        # 最大节点数限制。
+        self.maximal_node_count = maximal_node_count
+        # 最小节点数限制。
+        self.minimal_node_count = minimal_node_count
+        # 节点数。
+        self.node_count = node_count
+        self.node_group_name = node_group_name
+        # 节点组类型。取值范围：
+        # - MASTER：管理类型节点组。
+        # - CORE：存储类型节点组。
+        # - TASK：计算类型节点组。
+        self.node_group_type = node_group_type
+        # 付费类型。
+        self.payment_type = payment_type
+
+    def validate(self):
+        if self.instance_types:
+            for k in self.instance_types:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InstanceTypes'] = []
+        if self.instance_types is not None:
+            for k in self.instance_types:
+                result['InstanceTypes'].append(k.to_map() if k else None)
+        if self.maximal_node_count is not None:
+            result['MaximalNodeCount'] = self.maximal_node_count
+        if self.minimal_node_count is not None:
+            result['MinimalNodeCount'] = self.minimal_node_count
+        if self.node_count is not None:
+            result['NodeCount'] = self.node_count
+        if self.node_group_name is not None:
+            result['NodeGroupName'] = self.node_group_name
+        if self.node_group_type is not None:
+            result['NodeGroupType'] = self.node_group_type
+        if self.payment_type is not None:
+            result['PaymentType'] = self.payment_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instance_types = []
+        if m.get('InstanceTypes') is not None:
+            for k in m.get('InstanceTypes'):
+                temp_model = CostInstanceType()
+                self.instance_types.append(temp_model.from_map(k))
+        if m.get('MaximalNodeCount') is not None:
+            self.maximal_node_count = m.get('MaximalNodeCount')
+        if m.get('MinimalNodeCount') is not None:
+            self.minimal_node_count = m.get('MinimalNodeCount')
+        if m.get('NodeCount') is not None:
+            self.node_count = m.get('NodeCount')
+        if m.get('NodeGroupName') is not None:
+            self.node_group_name = m.get('NodeGroupName')
+        if m.get('NodeGroupType') is not None:
+            self.node_group_type = m.get('NodeGroupType')
+        if m.get('PaymentType') is not None:
+            self.payment_type = m.get('PaymentType')
+        return self
+
+
 class CostOptimizedConfig(TeaModel):
     def __init__(
         self,
@@ -3377,65 +3713,6 @@ class CreateNodeGroupParam(TeaModel):
             self.with_public_ip = m.get('WithPublicIp')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
-        return self
-
-
-class DataDisk(TeaModel):
-    def __init__(
-        self,
-        category: str = None,
-        count: int = None,
-        performance_level: str = None,
-        size: int = None,
-    ):
-        # 磁盘类型。
-        # 
-        # This parameter is required.
-        self.category = category
-        # 每个节点磁盘数量。
-        self.count = count
-        # 创建ESSD云盘作为数据盘使用时，设置云盘的性能等级。取值范围：
-        # - PL0：单盘最高随机读写IOPS 1万。
-        # - PL1（默认）：单盘最高随机读写IOPS 5万。
-        # - PL2：单盘最高随机读写IOPS 10万。
-        # - PL3：单盘最高随机读写IOPS 100万。
-        # 
-        # 默认值：PL1。
-        self.performance_level = performance_level
-        # 单位GB。
-        # 
-        # This parameter is required.
-        self.size = size
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.category is not None:
-            result['Category'] = self.category
-        if self.count is not None:
-            result['Count'] = self.count
-        if self.performance_level is not None:
-            result['PerformanceLevel'] = self.performance_level
-        if self.size is not None:
-            result['Size'] = self.size
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Category') is not None:
-            self.category = m.get('Category')
-        if m.get('Count') is not None:
-            self.count = m.get('Count')
-        if m.get('PerformanceLevel') is not None:
-            self.performance_level = m.get('PerformanceLevel')
-        if m.get('Size') is not None:
-            self.size = m.get('Size')
         return self
 
 
@@ -4151,6 +4428,39 @@ class InstanceType(TeaModel):
         return self
 
 
+class IntegerMetric(TeaModel):
+    def __init__(
+        self,
+        unit: str = None,
+        value: int = None,
+    ):
+        self.unit = unit
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.unit is not None:
+            result['Unit'] = self.unit
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Unit') is not None:
+            self.unit = m.get('Unit')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class KeyValue(TeaModel):
     def __init__(
         self,
@@ -4641,65 +4951,6 @@ class NodeGroupStateChangeReason(TeaModel):
             self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
-        return self
-
-
-class SystemDisk(TeaModel):
-    def __init__(
-        self,
-        category: str = None,
-        count: int = None,
-        performance_level: str = None,
-        size: int = None,
-    ):
-        # 磁盘类型。
-        # 
-        # This parameter is required.
-        self.category = category
-        # 每个节点系统盘数量，默认值为1。
-        self.count = count
-        # 创建ESSD云盘作为系统盘使用时，设置云盘的性能等级。取值范围：
-        # - PL0：单盘最高随机读写IOPS 1万。
-        # - PL1（默认）：单盘最高随机读写IOPS 5万。
-        # - PL2：单盘最高随机读写IOPS 10万。
-        # - PL3：单盘最高随机读写IOPS 100万。
-        # 
-        # 默认值：PL1。
-        self.performance_level = performance_level
-        # 单位GB。
-        # 
-        # This parameter is required.
-        self.size = size
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.category is not None:
-            result['Category'] = self.category
-        if self.count is not None:
-            result['Count'] = self.count
-        if self.performance_level is not None:
-            result['PerformanceLevel'] = self.performance_level
-        if self.size is not None:
-            result['Size'] = self.size
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Category') is not None:
-            self.category = m.get('Category')
-        if m.get('Count') is not None:
-            self.count = m.get('Count')
-        if m.get('PerformanceLevel') is not None:
-            self.performance_level = m.get('PerformanceLevel')
-        if m.get('Size') is not None:
-            self.size = m.get('Size')
         return self
 
 
@@ -6180,6 +6431,62 @@ class ResizeDiskNodeGroupParam(TeaModel):
         return self
 
 
+class ResourceSummary(TeaModel):
+    def __init__(
+        self,
+        inefficient_task_rate: DoubleMetric = None,
+        memory_utilization_rate: DoubleMetric = None,
+        original_total_vcore: IntegerMetric = None,
+        vcore_utilization_rate: DoubleMetric = None,
+    ):
+        self.inefficient_task_rate = inefficient_task_rate
+        self.memory_utilization_rate = memory_utilization_rate
+        self.original_total_vcore = original_total_vcore
+        self.vcore_utilization_rate = vcore_utilization_rate
+
+    def validate(self):
+        if self.inefficient_task_rate:
+            self.inefficient_task_rate.validate()
+        if self.memory_utilization_rate:
+            self.memory_utilization_rate.validate()
+        if self.original_total_vcore:
+            self.original_total_vcore.validate()
+        if self.vcore_utilization_rate:
+            self.vcore_utilization_rate.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.inefficient_task_rate is not None:
+            result['InefficientTaskRate'] = self.inefficient_task_rate.to_map()
+        if self.memory_utilization_rate is not None:
+            result['MemoryUtilizationRate'] = self.memory_utilization_rate.to_map()
+        if self.original_total_vcore is not None:
+            result['OriginalTotalVcore'] = self.original_total_vcore.to_map()
+        if self.vcore_utilization_rate is not None:
+            result['VcoreUtilizationRate'] = self.vcore_utilization_rate.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InefficientTaskRate') is not None:
+            temp_model = DoubleMetric()
+            self.inefficient_task_rate = temp_model.from_map(m['InefficientTaskRate'])
+        if m.get('MemoryUtilizationRate') is not None:
+            temp_model = DoubleMetric()
+            self.memory_utilization_rate = temp_model.from_map(m['MemoryUtilizationRate'])
+        if m.get('OriginalTotalVcore') is not None:
+            temp_model = IntegerMetric()
+            self.original_total_vcore = temp_model.from_map(m['OriginalTotalVcore'])
+        if m.get('VcoreUtilizationRate') is not None:
+            temp_model = DoubleMetric()
+            self.vcore_utilization_rate = temp_model.from_map(m['VcoreUtilizationRate'])
+        return self
+
+
 class ScalingActivity(TeaModel):
     def __init__(
         self,
@@ -6791,6 +7098,86 @@ class ScalingGroupConfig(TeaModel):
             self.sys_disk_size = m.get('SysDiskSize')
         if m.get('TriggerMode') is not None:
             self.trigger_mode = m.get('TriggerMode')
+        return self
+
+
+class ScalingPolicy(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        constraints: ManagedScalingConstraints = None,
+        disabled: bool = None,
+        node_group_id: str = None,
+        node_group_name: str = None,
+        scaling_policy_id: str = None,
+        scaling_policy_type: str = None,
+        scaling_rules: List[ScalingRule] = None,
+    ):
+        self.cluster_id = cluster_id
+        self.constraints = constraints
+        self.disabled = disabled
+        self.node_group_id = node_group_id
+        self.node_group_name = node_group_name
+        self.scaling_policy_id = scaling_policy_id
+        self.scaling_policy_type = scaling_policy_type
+        self.scaling_rules = scaling_rules
+
+    def validate(self):
+        if self.constraints:
+            self.constraints.validate()
+        if self.scaling_rules:
+            for k in self.scaling_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.constraints is not None:
+            result['Constraints'] = self.constraints.to_map()
+        if self.disabled is not None:
+            result['Disabled'] = self.disabled
+        if self.node_group_id is not None:
+            result['NodeGroupId'] = self.node_group_id
+        if self.node_group_name is not None:
+            result['NodeGroupName'] = self.node_group_name
+        if self.scaling_policy_id is not None:
+            result['ScalingPolicyId'] = self.scaling_policy_id
+        if self.scaling_policy_type is not None:
+            result['ScalingPolicyType'] = self.scaling_policy_type
+        result['ScalingRules'] = []
+        if self.scaling_rules is not None:
+            for k in self.scaling_rules:
+                result['ScalingRules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('Constraints') is not None:
+            temp_model = ManagedScalingConstraints()
+            self.constraints = temp_model.from_map(m['Constraints'])
+        if m.get('Disabled') is not None:
+            self.disabled = m.get('Disabled')
+        if m.get('NodeGroupId') is not None:
+            self.node_group_id = m.get('NodeGroupId')
+        if m.get('NodeGroupName') is not None:
+            self.node_group_name = m.get('NodeGroupName')
+        if m.get('ScalingPolicyId') is not None:
+            self.scaling_policy_id = m.get('ScalingPolicyId')
+        if m.get('ScalingPolicyType') is not None:
+            self.scaling_policy_type = m.get('ScalingPolicyType')
+        self.scaling_rules = []
+        if m.get('ScalingRules') is not None:
+            for k in m.get('ScalingRules'):
+                temp_model = ScalingRule()
+                self.scaling_rules.append(temp_model.from_map(k))
         return self
 
 
@@ -7792,13 +8179,13 @@ class CreateClusterRequest(TeaModel):
         subscription_config: SubscriptionConfig = None,
         tags: List[Tag] = None,
     ):
-        # The application configurations. Number of elements in the array: 1 to 1000.
+        # The service configurations. Number of elements in the array: 1 to 1,000.
         self.application_configs = application_configs
         # The services. Number of elements in the array: 1 to 100.
         # 
         # This parameter is required.
         self.applications = applications
-        # The bootstrap actions. Number of elements in the array: 1 to 10.
+        # The array of bootstrap scripts. Number of elements in the array: 1 to 10.
         self.bootstrap_scripts = bootstrap_scripts
         # The idempotent client token. If you call the same ClientToken multiple times, the returned results are the same. Only one cluster can be created with the same ClientToken.
         self.client_token = client_token
@@ -7833,11 +8220,11 @@ class CreateClusterRequest(TeaModel):
         self.deploy_mode = deploy_mode
         # The cluster description.
         self.description = description
-        # The attributes of all ECS instances.
+        # The node attributes. The basic attributes of all ECS nodes in the cluster.
         # 
         # This parameter is required.
         self.node_attributes = node_attributes
-        # The node groups. Number of elements in the array: 1 to 100.
+        # The array of configurations of the node groups. Number of elements in the array: 1 to 100.
         # 
         # This parameter is required.
         self.node_groups = node_groups
@@ -7865,7 +8252,7 @@ class CreateClusterRequest(TeaModel):
         self.security_mode = security_mode
         # The subscription configurations. This parameter takes effect only if you set the PaymentType parameter to Subscription.
         self.subscription_config = subscription_config
-        # The tags. Number of elements in the array: 0 to 20.
+        # The tag. Number of elements in the array: 0 to 20.
         self.tags = tags
 
     def validate(self):
@@ -8239,11 +8626,11 @@ class CreateScriptRequest(TeaModel):
         # 
         # This parameter is required.
         self.script_type = script_type
-        # The common scripts or bootstrap actions.
+        # The list of scripts.
         # 
         # This parameter is required.
         self.scripts = scripts
-        # The timeout period for manually running a common script. You cannot specify the timeout period for a bootstrap action.
+        # The timeout period for a manual execution script. You cannot specify a timeout period for a bootstrap action.
         self.timeout_secs = timeout_secs
 
     def validate(self):
@@ -8554,7 +8941,7 @@ class DecreaseNodesRequest(TeaModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The number of nodes to scale in. The number of nodes to be scaled in. The value should be less than the number of surviving nodes in the current node group.
+        # The number of nodes to scale out. The number of nodes to be scaled out. The value should be less than the number of surviving nodes in the current node group.
         self.decrease_node_count = decrease_node_count
         # The ID of the node group.
         # 
@@ -9069,12 +9456,15 @@ class DeleteUsersRequest(TeaModel):
         region_id: str = None,
         user_names: List[str] = None,
     ):
-        # 集群ID。
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The usernames. Number of elements in the array: 0 to 10.
         self.user_names = user_names
 
     def validate(self):
@@ -9112,12 +9502,15 @@ class DeleteUsersShrinkRequest(TeaModel):
         region_id: str = None,
         user_names_shrink: str = None,
     ):
-        # 集群ID。
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The usernames. Number of elements in the array: 0 to 10.
         self.user_names_shrink = user_names_shrink
 
     def validate(self):
@@ -9154,7 +9547,9 @@ class DeleteUsersResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the request was successful. Valid values: true and false.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9803,6 +10198,7 @@ class GetAutoScalingActivityResponseBodyScalingActivity(TeaModel):
         self.node_group_name = node_group_name
         # The operation ID.
         self.operation_id = operation_id
+        # The policy type.
         self.policy_type = policy_type
         # The description of the scaling rule.
         self.rule_detail = rule_detail
@@ -10215,7 +10611,7 @@ class GetAutoScalingPolicyResponseBody(TeaModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the auto scaling policy.
+        # The auto scaling policy.
         self.scaling_policy = scaling_policy
 
     def validate(self):
@@ -10665,9 +11061,9 @@ class GetClusterCloneMetaResponseBodyClusterCloneMeta(TeaModel):
     ):
         # The modified configuration items.
         self.application_configs = application_configs
-        # The services.
+        # The cluster applications.
         self.applications = applications
-        # The bootstrap actions. Number of elements in the array: 1 to 10.
+        # An array of bootstrap scripts. The number of elements in the array: 1 to 10.
         self.bootstrap_scripts = bootstrap_scripts
         # The cluster ID.
         self.cluster_id = cluster_id
@@ -10714,7 +11110,7 @@ class GetClusterCloneMetaResponseBodyClusterCloneMeta(TeaModel):
         self.exist_clone_config = exist_clone_config
         # The node attributes.
         self.node_attributes = node_attributes
-        # The node groups. Number of elements in the array: 1 to 100.
+        # The node groups. The number of elements in the array: 1 to 100.
         self.node_groups = node_groups
         # The billing method of the cluster. Valid values:
         # 
@@ -10736,7 +11132,7 @@ class GetClusterCloneMetaResponseBodyClusterCloneMeta(TeaModel):
         self.security_mode = security_mode
         # The subscription configurations.
         self.subscription_config = subscription_config
-        # The tags.
+        # The list of cluster tags.
         self.tags = tags
 
     def validate(self):
@@ -10904,7 +11300,7 @@ class GetClusterCloneMetaResponseBody(TeaModel):
         cluster_clone_meta: GetClusterCloneMetaResponseBodyClusterCloneMeta = None,
         request_id: str = None,
     ):
-        # The metadata of the cluster that you want to clone.
+        # Cluster clone metadata.
         self.cluster_clone_meta = cluster_clone_meta
         # The request ID.
         self.request_id = request_id
@@ -21104,380 +21500,6 @@ class GetDoctorHDFSDirectoryResponse(TeaModel):
         return self
 
 
-class GetDoctorHDFSUGIRequest(TeaModel):
-    def __init__(
-        self,
-        cluster_id: str = None,
-        date_time: str = None,
-        name: str = None,
-        region_id: str = None,
-        type: str = None,
-    ):
-        # The cluster ID.
-        # 
-        # This parameter is required.
-        self.cluster_id = cluster_id
-        # Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
-        # 
-        # This parameter is required.
-        self.date_time = date_time
-        # Set this parameter based on the value of Type.
-        # 
-        # This parameter is required.
-        self.name = name
-        # The region ID.
-        # 
-        # This parameter is required.
-        self.region_id = region_id
-        # The filter condition. Valid values:
-        # 
-        # *   user
-        # *   group
-        # 
-        # This parameter is required.
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cluster_id is not None:
-            result['ClusterId'] = self.cluster_id
-        if self.date_time is not None:
-            result['DateTime'] = self.date_time
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.type is not None:
-            result['Type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClusterId') is not None:
-            self.cluster_id = m.get('ClusterId')
-        if m.get('DateTime') is not None:
-            self.date_time = m.get('DateTime')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        return self
-
-
-class GetDoctorHDFSUGIResponseBodyDataMetricsTotalDataSize(TeaModel):
-    def __init__(
-        self,
-        description: str = None,
-        name: str = None,
-        unit: str = None,
-        value: int = None,
-    ):
-        # The description of the metric.
-        self.description = description
-        # The name of the metric.
-        self.name = name
-        # The unit.
-        self.unit = unit
-        # The value of the metric.
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.unit is not None:
-            result['Unit'] = self.unit
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Unit') is not None:
-            self.unit = m.get('Unit')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        return self
-
-
-class GetDoctorHDFSUGIResponseBodyDataMetricsTotalDirCount(TeaModel):
-    def __init__(
-        self,
-        description: str = None,
-        name: str = None,
-        unit: str = None,
-        value: int = None,
-    ):
-        # The description of the metric.
-        self.description = description
-        # The name of the metric.
-        self.name = name
-        # The unit of the metric.
-        self.unit = unit
-        # The value of the metric.
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.unit is not None:
-            result['Unit'] = self.unit
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Unit') is not None:
-            self.unit = m.get('Unit')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        return self
-
-
-class GetDoctorHDFSUGIResponseBodyDataMetricsTotalFileCount(TeaModel):
-    def __init__(
-        self,
-        description: str = None,
-        name: str = None,
-        unit: str = None,
-        value: int = None,
-    ):
-        # The description of the metric.
-        self.description = description
-        # The name of the metric.
-        self.name = name
-        # The unit of the metric.
-        self.unit = unit
-        # The value of the metric.
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.unit is not None:
-            result['Unit'] = self.unit
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Unit') is not None:
-            self.unit = m.get('Unit')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        return self
-
-
-class GetDoctorHDFSUGIResponseBodyDataMetrics(TeaModel):
-    def __init__(
-        self,
-        total_data_size: GetDoctorHDFSUGIResponseBodyDataMetricsTotalDataSize = None,
-        total_dir_count: GetDoctorHDFSUGIResponseBodyDataMetricsTotalDirCount = None,
-        total_file_count: GetDoctorHDFSUGIResponseBodyDataMetricsTotalFileCount = None,
-    ):
-        # The total data size.
-        self.total_data_size = total_data_size
-        # The total number of directories.
-        self.total_dir_count = total_dir_count
-        # The total number of files.
-        self.total_file_count = total_file_count
-
-    def validate(self):
-        if self.total_data_size:
-            self.total_data_size.validate()
-        if self.total_dir_count:
-            self.total_dir_count.validate()
-        if self.total_file_count:
-            self.total_file_count.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.total_data_size is not None:
-            result['TotalDataSize'] = self.total_data_size.to_map()
-        if self.total_dir_count is not None:
-            result['TotalDirCount'] = self.total_dir_count.to_map()
-        if self.total_file_count is not None:
-            result['TotalFileCount'] = self.total_file_count.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('TotalDataSize') is not None:
-            temp_model = GetDoctorHDFSUGIResponseBodyDataMetricsTotalDataSize()
-            self.total_data_size = temp_model.from_map(m['TotalDataSize'])
-        if m.get('TotalDirCount') is not None:
-            temp_model = GetDoctorHDFSUGIResponseBodyDataMetricsTotalDirCount()
-            self.total_dir_count = temp_model.from_map(m['TotalDirCount'])
-        if m.get('TotalFileCount') is not None:
-            temp_model = GetDoctorHDFSUGIResponseBodyDataMetricsTotalFileCount()
-            self.total_file_count = temp_model.from_map(m['TotalFileCount'])
-        return self
-
-
-class GetDoctorHDFSUGIResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        metrics: GetDoctorHDFSUGIResponseBodyDataMetrics = None,
-    ):
-        # The metric information.
-        self.metrics = metrics
-
-    def validate(self):
-        if self.metrics:
-            self.metrics.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.metrics is not None:
-            result['Metrics'] = self.metrics.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Metrics') is not None:
-            temp_model = GetDoctorHDFSUGIResponseBodyDataMetrics()
-            self.metrics = temp_model.from_map(m['Metrics'])
-        return self
-
-
-class GetDoctorHDFSUGIResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: GetDoctorHDFSUGIResponseBodyData = None,
-        request_id: str = None,
-    ):
-        # The results of HDFS analysis.
-        self.data = data
-        # The request ID.
-        self.request_id = request_id
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            temp_model = GetDoctorHDFSUGIResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class GetDoctorHDFSUGIResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GetDoctorHDFSUGIResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GetDoctorHDFSUGIResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class GetDoctorHiveClusterRequest(TeaModel):
     def __init__(
         self,
@@ -30674,7 +30696,7 @@ class GetDoctorReportComponentSummaryResponseBodyData(TeaModel):
         self.score = score
         # Optimization suggestions.
         self.suggestion = suggestion
-        # Report summary.
+        # The summary of the report.
         self.summary = summary
 
     def validate(self):
@@ -30711,7 +30733,7 @@ class GetDoctorReportComponentSummaryResponseBody(TeaModel):
         data: GetDoctorReportComponentSummaryResponseBodyData = None,
         request_id: str = None,
     ):
-        # Report content.
+        # The content of the report.
         self.data = data
         # Request ID.
         self.request_id = request_id
@@ -31052,9 +31074,10 @@ class IncreaseNodesRequest(TeaModel):
         node_group_id: str = None,
         payment_duration: int = None,
         payment_duration_unit: str = None,
+        promotions: List[Promotion] = None,
         region_id: str = None,
     ):
-        # The application configurations. You can specify a maximum of 1,000 items.
+        # The application configurations. Number of elements in the array: 1 to 1,000.
         self.application_configs = application_configs
         # Indicates whether to automatically pay for the orders involved in the scale-out operation. This parameter takes effect only when the PaymentType parameter is set to Subscription. Valid values:
         # 
@@ -31072,7 +31095,7 @@ class IncreaseNodesRequest(TeaModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The number of nodes. The number of incremental nodes for this scale-out. Valid values: 1 to 500.
+        # The number of nodes to add.Valid values: 1 to 500.
         # 
         # This parameter is required.
         self.increase_node_count = increase_node_count
@@ -31091,6 +31114,7 @@ class IncreaseNodesRequest(TeaModel):
         # 
         # *   Month
         self.payment_duration_unit = payment_duration_unit
+        self.promotions = promotions
         # The ID of the region in which you want to create the instance.
         # 
         # This parameter is required.
@@ -31099,6 +31123,10 @@ class IncreaseNodesRequest(TeaModel):
     def validate(self):
         if self.application_configs:
             for k in self.application_configs:
+                if k:
+                    k.validate()
+        if self.promotions:
+            for k in self.promotions:
                 if k:
                     k.validate()
 
@@ -31128,6 +31156,10 @@ class IncreaseNodesRequest(TeaModel):
             result['PaymentDuration'] = self.payment_duration
         if self.payment_duration_unit is not None:
             result['PaymentDurationUnit'] = self.payment_duration_unit
+        result['Promotions'] = []
+        if self.promotions is not None:
+            for k in self.promotions:
+                result['Promotions'].append(k.to_map() if k else None)
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -31155,6 +31187,11 @@ class IncreaseNodesRequest(TeaModel):
             self.payment_duration = m.get('PaymentDuration')
         if m.get('PaymentDurationUnit') is not None:
             self.payment_duration_unit = m.get('PaymentDurationUnit')
+        self.promotions = []
+        if m.get('Promotions') is not None:
+            for k in m.get('Promotions'):
+                temp_model = Promotion()
+                self.promotions.append(temp_model.from_map(k))
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -31454,7 +31491,7 @@ class ListApiTemplatesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The API operation templates.
+        # The array of API templates.
         self.api_templates = api_templates
         # 本次请求所返回的最大记录条数。
         self.max_results = max_results
@@ -31572,7 +31609,7 @@ class ListApplicationConfigsRequest(TeaModel):
         self.cluster_id = cluster_id
         # The name of the configuration file.
         self.config_file_name = config_file_name
-        # The name of the configuration item.
+        # The key of the configuration item.
         self.config_item_key = config_item_key
         # The value of the configuration item.
         self.config_item_value = config_item_value
@@ -32429,13 +32466,13 @@ class ListClustersRequest(TeaModel):
         resource_group_id: str = None,
         tags: List[Tag] = None,
     ):
-        # The IDs of the clusters. You can specify a maximum of 100 items.
+        # The cluster IDs. Number of elements in the array: 1 to 100.
         self.cluster_ids = cluster_ids
         # The name of the cluster.
         self.cluster_name = cluster_name
-        # The states of clusters. You can specify a maximum of 100 items.
+        # The states of the clusters. Number of elements in the array: 1 to 100.
         self.cluster_states = cluster_states
-        # The types of the clusters. You can specify a maximum of 100 items.
+        # The list of cluster types. Number of elements in the array: 1 to 100.
         self.cluster_types = cluster_types
         # The number of entries to return on each page. Valid values: 1 to 100.
         self.max_results = max_results
@@ -32445,39 +32482,11 @@ class ListClustersRequest(TeaModel):
         self.payment_types = payment_types
         # The region ID.
         # 
-        # Valid values:
-        # 
-        # *   cn-qingdao
-        # *   cn-beijing
-        # *   cn-zhangjiakou
-        # *   cn-huhehaote
-        # *   cn-hangzhou
-        # *   cn-shanghai
-        # *   cn-shenzhen
-        # *   cn-chengdu
-        # *   cn-hongkong
-        # *   cn-wulanchabu
-        # *   cn-heyuan-acdr-1
-        # *   cn-qingdao-acdr-ut-1
-        # *   ap-northeast-1
-        # *   ap-southeast-1
-        # *   ap-southeast-2
-        # *   ap-southeast-3
-        # *   ap-southeast-5
-        # *   ap-south-1
-        # *   us-east-1
-        # *   us-west-1
-        # *   me-east-1
-        # *   me-central-1
-        # *   eu-central-1
-        # *   eu-west-1
-        # *   cn-north-2-gov-1
-        # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The tags. Number of elements in the array: 1 to 20.
+        # The tag list. Number of elements in the array: 1 to 20.
         self.tags = tags
 
     def validate(self):
@@ -32661,6 +32670,7 @@ class ListComponentInstancesRequest(TeaModel):
         node_ids: List[str] = None,
         node_names: List[str] = None,
         region_id: str = None,
+        zone_id: str = None,
     ):
         # 应用名称列表。
         self.application_names = application_names
@@ -32683,6 +32693,7 @@ class ListComponentInstancesRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.zone_id = zone_id
 
     def validate(self):
         pass
@@ -32711,6 +32722,8 @@ class ListComponentInstancesRequest(TeaModel):
             result['NodeNames'] = self.node_names
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
         return result
 
     def from_map(self, m: dict = None):
@@ -32733,6 +32746,8 @@ class ListComponentInstancesRequest(TeaModel):
             self.node_names = m.get('NodeNames')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
         return self
 
 
@@ -32748,6 +32763,7 @@ class ListComponentInstancesResponseBodyComponentInstances(TeaModel):
         desired_state: str = None,
         node_id: str = None,
         node_name: str = None,
+        zone_id: str = None,
     ):
         # 应用名称。
         self.application_name = application_name
@@ -32797,6 +32813,7 @@ class ListComponentInstancesResponseBodyComponentInstances(TeaModel):
         self.node_id = node_id
         # 节点名称。
         self.node_name = node_name
+        self.zone_id = zone_id
 
     def validate(self):
         pass
@@ -32825,6 +32842,8 @@ class ListComponentInstancesResponseBodyComponentInstances(TeaModel):
             result['NodeId'] = self.node_id
         if self.node_name is not None:
             result['NodeName'] = self.node_name
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
         return result
 
     def from_map(self, m: dict = None):
@@ -32847,6 +32866,8 @@ class ListComponentInstancesResponseBodyComponentInstances(TeaModel):
             self.node_id = m.get('NodeId')
         if m.get('NodeName') is not None:
             self.node_name = m.get('NodeName')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
         return self
 
 
@@ -37115,7 +37136,7 @@ class ListDoctorHBaseTablesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The response parameters.
+        # The data returned.
         self.data = data
         # The maximum number of entries returned.
         self.max_results = max_results
@@ -42154,7 +42175,7 @@ class ListDoctorHiveDatabasesResponseBodyDataMetrics(TeaModel):
         self.tiny_file_day_growth_count = tiny_file_day_growth_count
         # The proportion of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_ratio = tiny_file_ratio
-        # The daily incremental of the total data volume.
+        # The daily increment of the total data volume.
         self.total_data_day_growth_size = total_data_day_growth_size
         # The total amount of data.
         self.total_data_size = total_data_size
@@ -47202,6 +47223,7 @@ class ListNodeGroupsRequest(TeaModel):
         node_group_states: List[str] = None,
         node_group_types: List[str] = None,
         region_id: str = None,
+        zone_id: str = None,
     ):
         # The cluster ID.
         # 
@@ -47223,6 +47245,7 @@ class ListNodeGroupsRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.zone_id = zone_id
 
     def validate(self):
         pass
@@ -47249,6 +47272,8 @@ class ListNodeGroupsRequest(TeaModel):
             result['NodeGroupTypes'] = self.node_group_types
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
         return result
 
     def from_map(self, m: dict = None):
@@ -47269,6 +47294,8 @@ class ListNodeGroupsRequest(TeaModel):
             self.node_group_types = m.get('NodeGroupTypes')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
         return self
 
 
@@ -47416,7 +47443,7 @@ class ListNodesRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The list of tags to be bound.
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -47500,7 +47527,7 @@ class ListNodesResponseBody(TeaModel):
         self.max_results = max_results
         # The position at which the next read starts. If null is returned, the data has been read.
         self.next_token = next_token
-        # Details about nodes.
+        # The node list.
         self.nodes = nodes
         # The ID of the request.
         self.request_id = request_id
@@ -47820,7 +47847,7 @@ class ListScriptsRequest(TeaModel):
         # 
         # This parameter is required.
         self.script_type = script_type
-        # The status of the script. Only common scripts are supported.
+        # The script status list.
         self.statuses = statuses
 
     def validate(self):
@@ -48126,7 +48153,7 @@ class ListTagResourcesRequest(TeaModel):
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The array of tags. The number of array elements N. Valid values: 1 to 20.
+        # An array of tags. The number of elements in the array. Valid values: 1 to 20.
         self.tags = tags
 
     def validate(self):
@@ -48341,20 +48368,21 @@ class ListUsersRequest(TeaModel):
         user_name: str = None,
         user_names: List[str] = None,
     ):
-        # 集群ID。
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # 一次获取的最大记录数。取值范围：1~100。
+        # The maximum number of entries to return.
         self.max_results = max_results
-        # 标记当前开始读取的位置，置空表示从头开始。
+        # The pagination token that is used in the request to retrieve a new page of results.
         self.next_token = next_token
-        # 区域ID。
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # 用户名，支持模糊搜索。
+        # The username. Fuzzy match is supported.
         self.user_name = user_name
+        # The usernames. Number of elements in the array: 0 to 20.
         self.user_names = user_names
 
     def validate(self):
@@ -48407,19 +48435,17 @@ class ListUsersResponseBodyUsers(TeaModel):
         user_id: str = None,
         user_name: str = None,
     ):
-        # 创建时间。
+        # The creation time.
         self.create_time = create_time
-        # 备注。
+        # The remarks.
         self.description = description
-        # Keytab内容Base64编码。
+        # The Base64-encoded content of the keytab file.
         self.keytab_hex = keytab_hex
-        # LDAP链接。
-        # ldap://emr-header-1.cluster-50018****:10389
+        # The Lightweight Directory Access Protocol (LDAP) link.
         self.ldap_url = ldap_url
-        # 用户ID。
+        # The user ID.
         self.user_id = user_id
-        # 用户名称。
-        # test
+        # The username.
         self.user_name = user_name
 
     def validate(self):
@@ -48472,16 +48498,20 @@ class ListUsersResponseBody(TeaModel):
         total_count: int = None,
         users: List[ListUsersResponseBodyUsers] = None,
     ):
+        # Indicates whether the user is an admin user. Valid values:
+        # 
+        # *   true
+        # *   false
         self.is_admin = is_admin
-        # 本次请求所返回的最大记录条数。
+        # The maximum number of entries returned.
         self.max_results = max_results
-        # 返回读取到的数据位置，空代表数据已经读取完毕。
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
-        # 本次请求条件下的数据总量。
+        # The total number of entries returned.
         self.total_count = total_count
-        # 用户列表。
+        # The users.
         self.users = users
 
     def validate(self):
@@ -48582,21 +48612,21 @@ class PutAutoScalingPolicyRequest(TeaModel):
         region_id: str = None,
         scaling_rules: List[ScalingRule] = None,
     ):
-        # 集群ID。
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The maximum and minimum numbers of nodes in a node group.
+        # The constraints on the maximum and minimum numbers of nodes in a node group.
         self.constraints = constraints
-        # 节点组ID。节点组 Id-针对 ACK 集群，此字段为空。
+        # The ID of the node group.
         # 
         # This parameter is required.
         self.node_group_id = node_group_id
-        # 区域ID。
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The auto scaling rules. Number of elements in the array: 0 to 100.
+        # The description list of auto scaling rules. Number of elements in the array: 0 to 100.
         self.scaling_rules = scaling_rules
 
     def validate(self):
@@ -48651,7 +48681,7 @@ class PutAutoScalingPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -48711,6 +48741,123 @@ class PutAutoScalingPolicyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PutAutoScalingPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PutManagedScalingPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        constraints: ManagedScalingConstraints = None,
+        region_id: str = None,
+    ):
+        # The cluster ID.
+        # 
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        # The constrains on the maximum and minimum numbers of nodes in a node group.
+        self.constraints = constraints
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        if self.constraints:
+            self.constraints.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.constraints is not None:
+            result['Constraints'] = self.constraints.to_map()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('Constraints') is not None:
+            temp_model = ManagedScalingConstraints()
+            self.constraints = temp_model.from_map(m['Constraints'])
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class PutManagedScalingPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class PutManagedScalingPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PutManagedScalingPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PutManagedScalingPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -49207,6 +49354,7 @@ class RunClusterRequest(TeaModel):
         node_attributes: NodeAttributes = None,
         node_groups: List[NodeGroupConfig] = None,
         payment_type: str = None,
+        promotions: List[Promotion] = None,
         region_id: str = None,
         release_version: str = None,
         resource_group_id: str = None,
@@ -49216,11 +49364,11 @@ class RunClusterRequest(TeaModel):
     ):
         # The application configurations. Number of elements in the array: 1 to 1000.
         self.application_configs = application_configs
-        # The services. Number of elements in the array: 1 to 100.
+        # The list of services. Number of elements in the array: 1 to 100.
         # 
         # This parameter is required.
         self.applications = applications
-        # The bootstrap actions. Number of elements in the array: 1 to 10.
+        # The array of bootstrap scripts. Number of elements in the array: 1 to 10.
         self.bootstrap_scripts = bootstrap_scripts
         # The client token that is used to ensure the idempotence of the request. The same ClientToken value for multiple calls to the RunCluster operation results in identical responses. Only one cluster can be created by using the same ClientToken value.
         self.client_token = client_token
@@ -49255,9 +49403,9 @@ class RunClusterRequest(TeaModel):
         self.deploy_mode = deploy_mode
         # The cluster description.
         self.description = description
-        # The attributes of all ECS instances.
+        # The node attributes. The basic attributes of all ECS nodes in the cluster.
         self.node_attributes = node_attributes
-        # The node groups. Number of elements in the array: 1 to 100.
+        # The array of configurations of the node groups. Number of elements in the array: 1 to 100.
         # 
         # This parameter is required.
         self.node_groups = node_groups
@@ -49268,6 +49416,7 @@ class RunClusterRequest(TeaModel):
         # 
         # Default value: PayAsYouGo.
         self.payment_type = payment_type
+        self.promotions = promotions
         # The region ID.
         # 
         # This parameter is required.
@@ -49283,9 +49432,9 @@ class RunClusterRequest(TeaModel):
         # *   NORMAL: regular mode. Kerberos authentication is disabled. This is the default value.
         # *   KERBEROS: Kerberos mode. Kerberos authentication is enabled.
         self.security_mode = security_mode
-        # The subscription configurations. This parameter takes effect only if you set the PaymentType parameter to Subscription.
+        # The subscription configurations. This parameter is required when the PaymentType parameter is set to Subscription.
         self.subscription_config = subscription_config
-        # The tags. Number of elements in the array: 0 to 20.
+        # The tag. Number of elements in the array: 0 to 20.
         self.tags = tags
 
     def validate(self):
@@ -49305,6 +49454,10 @@ class RunClusterRequest(TeaModel):
             self.node_attributes.validate()
         if self.node_groups:
             for k in self.node_groups:
+                if k:
+                    k.validate()
+        if self.promotions:
+            for k in self.promotions:
                 if k:
                     k.validate()
         if self.subscription_config:
@@ -49352,6 +49505,10 @@ class RunClusterRequest(TeaModel):
                 result['NodeGroups'].append(k.to_map() if k else None)
         if self.payment_type is not None:
             result['PaymentType'] = self.payment_type
+        result['Promotions'] = []
+        if self.promotions is not None:
+            for k in self.promotions:
+                result['Promotions'].append(k.to_map() if k else None)
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.release_version is not None:
@@ -49407,6 +49564,11 @@ class RunClusterRequest(TeaModel):
                 self.node_groups.append(temp_model.from_map(k))
         if m.get('PaymentType') is not None:
             self.payment_type = m.get('PaymentType')
+        self.promotions = []
+        if m.get('Promotions') is not None:
+            for k in m.get('Promotions'):
+                temp_model = Promotion()
+                self.promotions.append(temp_model.from_map(k))
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ReleaseVersion') is not None:
@@ -49441,6 +49603,7 @@ class RunClusterShrinkRequest(TeaModel):
         node_attributes_shrink: str = None,
         node_groups_shrink: str = None,
         payment_type: str = None,
+        promotions_shrink: str = None,
         region_id: str = None,
         release_version: str = None,
         resource_group_id: str = None,
@@ -49450,11 +49613,11 @@ class RunClusterShrinkRequest(TeaModel):
     ):
         # The application configurations. Number of elements in the array: 1 to 1000.
         self.application_configs_shrink = application_configs_shrink
-        # The services. Number of elements in the array: 1 to 100.
+        # The list of services. Number of elements in the array: 1 to 100.
         # 
         # This parameter is required.
         self.applications_shrink = applications_shrink
-        # The bootstrap actions. Number of elements in the array: 1 to 10.
+        # The array of bootstrap scripts. Number of elements in the array: 1 to 10.
         self.bootstrap_scripts_shrink = bootstrap_scripts_shrink
         # The client token that is used to ensure the idempotence of the request. The same ClientToken value for multiple calls to the RunCluster operation results in identical responses. Only one cluster can be created by using the same ClientToken value.
         self.client_token = client_token
@@ -49489,9 +49652,9 @@ class RunClusterShrinkRequest(TeaModel):
         self.deploy_mode = deploy_mode
         # The cluster description.
         self.description = description
-        # The attributes of all ECS instances.
+        # The node attributes. The basic attributes of all ECS nodes in the cluster.
         self.node_attributes_shrink = node_attributes_shrink
-        # The node groups. Number of elements in the array: 1 to 100.
+        # The array of configurations of the node groups. Number of elements in the array: 1 to 100.
         # 
         # This parameter is required.
         self.node_groups_shrink = node_groups_shrink
@@ -49502,6 +49665,7 @@ class RunClusterShrinkRequest(TeaModel):
         # 
         # Default value: PayAsYouGo.
         self.payment_type = payment_type
+        self.promotions_shrink = promotions_shrink
         # The region ID.
         # 
         # This parameter is required.
@@ -49517,9 +49681,9 @@ class RunClusterShrinkRequest(TeaModel):
         # *   NORMAL: regular mode. Kerberos authentication is disabled. This is the default value.
         # *   KERBEROS: Kerberos mode. Kerberos authentication is enabled.
         self.security_mode = security_mode
-        # The subscription configurations. This parameter takes effect only if you set the PaymentType parameter to Subscription.
+        # The subscription configurations. This parameter is required when the PaymentType parameter is set to Subscription.
         self.subscription_config_shrink = subscription_config_shrink
-        # The tags. Number of elements in the array: 0 to 20.
+        # The tag. Number of elements in the array: 0 to 20.
         self.tags_shrink = tags_shrink
 
     def validate(self):
@@ -49555,6 +49719,8 @@ class RunClusterShrinkRequest(TeaModel):
             result['NodeGroups'] = self.node_groups_shrink
         if self.payment_type is not None:
             result['PaymentType'] = self.payment_type
+        if self.promotions_shrink is not None:
+            result['Promotions'] = self.promotions_shrink
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.release_version is not None:
@@ -49595,6 +49761,8 @@ class RunClusterShrinkRequest(TeaModel):
             self.node_groups_shrink = m.get('NodeGroups')
         if m.get('PaymentType') is not None:
             self.payment_type = m.get('PaymentType')
+        if m.get('Promotions') is not None:
+            self.promotions_shrink = m.get('Promotions')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ReleaseVersion') is not None:
@@ -49983,17 +50151,17 @@ class UpdateApiTemplateRequest(TeaModel):
         # 
         # This parameter is required.
         self.content = content
-        # 区域ID。
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # 资源组ID。
+        # Resource group ID.
         self.resource_group_id = resource_group_id
-        # 集群模板id。
+        # Template ID (it is recommended to use the parameter TemplateId).
         # 
         # This parameter is required.
         self.template_id = template_id
-        # 集群模板名字。
+        # The name of the template.
         # 
         # This parameter is required.
         self.template_name = template_name
@@ -50044,8 +50212,9 @@ class UpdateApiTemplateResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 请求ID。
+        # Request ID.
         self.request_id = request_id
+        # Template ID (to be deprecated).
         self.success = success
 
     def validate(self):
@@ -50651,20 +50820,21 @@ class UpdateUserAttributeRequest(TeaModel):
         user_id: str = None,
         user_name: str = None,
     ):
-        # 集群ID。
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # 用户备注。
+        # The remarks of the user.
         self.description = description
-        # 用户密码。
+        # The user password.
         self.password = password
-        # 区域ID。
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # 用户ID。
+        # The user ID.
         self.user_id = user_id
+        # The username.
         self.user_name = user_name
 
     def validate(self):
@@ -50713,8 +50883,9 @@ class UpdateUserAttributeResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the request was successful. Valid values: true and false.
         self.data = data
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
