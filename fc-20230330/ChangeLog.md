@@ -1,3 +1,7 @@
+2025-07-02 Version: 4.2.7
+- Update API ListFunctions: add request parameters resourceGroupId.
+
+
 2025-04-24 Version: 4.2.6
 - Generated python 2023-03-30 for FC.
 

@@ -3917,6 +3917,8 @@ class Client(OpenApiClient):
             query['nextToken'] = request.next_token
         if not UtilClient.is_unset(request.prefix):
             query['prefix'] = request.prefix
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.runtime):
             query['runtime'] = request.runtime
         if not UtilClient.is_unset(request.tags_shrink):
@@ -3977,6 +3979,8 @@ class Client(OpenApiClient):
             query['nextToken'] = request.next_token
         if not UtilClient.is_unset(request.prefix):
             query['prefix'] = request.prefix
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.runtime):
             query['runtime'] = request.runtime
         if not UtilClient.is_unset(request.tags_shrink):

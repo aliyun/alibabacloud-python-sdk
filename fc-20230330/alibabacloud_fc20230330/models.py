@@ -535,6 +535,84 @@ class CertConfig(TeaModel):
         return self
 
 
+class ChangeResourceGroupInput(TeaModel):
+    def __init__(
+        self,
+        new_resource_group_id: str = None,
+        resource_id: str = None,
+        resource_type: str = None,
+    ):
+        self.new_resource_group_id = new_resource_group_id
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.new_resource_group_id is not None:
+            result['newResourceGroupId'] = self.new_resource_group_id
+        if self.resource_id is not None:
+            result['resourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('newResourceGroupId') is not None:
+            self.new_resource_group_id = m.get('newResourceGroupId')
+        if m.get('resourceId') is not None:
+            self.resource_id = m.get('resourceId')
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
+        return self
+
+
+class ChangeResourceGroupOutput(TeaModel):
+    def __init__(
+        self,
+        new_resource_group_id: str = None,
+        old_resource_group_id: str = None,
+        resource_id: str = None,
+    ):
+        self.new_resource_group_id = new_resource_group_id
+        self.old_resource_group_id = old_resource_group_id
+        self.resource_id = resource_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.new_resource_group_id is not None:
+            result['newResourceGroupId'] = self.new_resource_group_id
+        if self.old_resource_group_id is not None:
+            result['oldResourceGroupId'] = self.old_resource_group_id
+        if self.resource_id is not None:
+            result['resourceId'] = self.resource_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('newResourceGroupId') is not None:
+            self.new_resource_group_id = m.get('newResourceGroupId')
+        if m.get('oldResourceGroupId') is not None:
+            self.old_resource_group_id = m.get('oldResourceGroupId')
+        if m.get('resourceId') is not None:
+            self.resource_id = m.get('resourceId')
+        return self
+
+
 class ConcurrencyConfig(TeaModel):
     def __init__(
         self,
@@ -1959,6 +2037,7 @@ class CreateFunctionInput(TeaModel):
         memory_size: int = None,
         nas_config: NASConfig = None,
         oss_mount_config: OSSMountConfig = None,
+        resource_group_id: str = None,
         role: str = None,
         runtime: str = None,
         session_affinity: str = None,
@@ -1990,6 +2069,7 @@ class CreateFunctionInput(TeaModel):
         self.memory_size = memory_size
         self.nas_config = nas_config
         self.oss_mount_config = oss_mount_config
+        self.resource_group_id = resource_group_id
         self.role = role
         # This parameter is required.
         self.runtime = runtime
@@ -2075,6 +2155,8 @@ class CreateFunctionInput(TeaModel):
             result['nasConfig'] = self.nas_config.to_map()
         if self.oss_mount_config is not None:
             result['ossMountConfig'] = self.oss_mount_config.to_map()
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
         if self.role is not None:
             result['role'] = self.role
         if self.runtime is not None:
@@ -2146,6 +2228,8 @@ class CreateFunctionInput(TeaModel):
         if m.get('ossMountConfig') is not None:
             temp_model = OSSMountConfig()
             self.oss_mount_config = temp_model.from_map(m['ossMountConfig'])
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
         if m.get('role') is not None:
             self.role = m.get('role')
         if m.get('runtime') is not None:
@@ -3458,6 +3542,7 @@ class Function(TeaModel):
         memory_size: int = None,
         nas_config: NASConfig = None,
         oss_mount_config: OSSMountConfig = None,
+        resource_group_id: str = None,
         role: str = None,
         runtime: str = None,
         session_affinity: str = None,
@@ -3499,6 +3584,7 @@ class Function(TeaModel):
         self.memory_size = memory_size
         self.nas_config = nas_config
         self.oss_mount_config = oss_mount_config
+        self.resource_group_id = resource_group_id
         self.role = role
         self.runtime = runtime
         self.session_affinity = session_affinity
@@ -3610,6 +3696,8 @@ class Function(TeaModel):
             result['nasConfig'] = self.nas_config.to_map()
         if self.oss_mount_config is not None:
             result['ossMountConfig'] = self.oss_mount_config.to_map()
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
         if self.role is not None:
             result['role'] = self.role
         if self.runtime is not None:
@@ -3708,6 +3796,8 @@ class Function(TeaModel):
         if m.get('ossMountConfig') is not None:
             temp_model = OSSMountConfig()
             self.oss_mount_config = temp_model.from_map(m['ossMountConfig'])
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
         if m.get('role') is not None:
             self.role = m.get('role')
         if m.get('runtime') is not None:
@@ -8471,6 +8561,7 @@ class ListFunctionsRequest(TeaModel):
         limit: int = None,
         next_token: str = None,
         prefix: str = None,
+        resource_group_id: str = None,
         runtime: str = None,
         tags: List[Tag] = None,
     ):
@@ -8492,6 +8583,7 @@ class ListFunctionsRequest(TeaModel):
         self.next_token = next_token
         # The prefix of the function name.
         self.prefix = prefix
+        self.resource_group_id = resource_group_id
         # The runtime of the functions to retrieve.
         self.runtime = runtime
         # The tag of the functions to retrieve.
@@ -8523,6 +8615,8 @@ class ListFunctionsRequest(TeaModel):
             result['nextToken'] = self.next_token
         if self.prefix is not None:
             result['prefix'] = self.prefix
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
         if self.runtime is not None:
             result['runtime'] = self.runtime
         result['tags'] = []
@@ -8547,6 +8641,8 @@ class ListFunctionsRequest(TeaModel):
             self.next_token = m.get('nextToken')
         if m.get('prefix') is not None:
             self.prefix = m.get('prefix')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
         if m.get('runtime') is not None:
             self.runtime = m.get('runtime')
         self.tags = []
@@ -8567,6 +8663,7 @@ class ListFunctionsShrinkRequest(TeaModel):
         limit: int = None,
         next_token: str = None,
         prefix: str = None,
+        resource_group_id: str = None,
         runtime: str = None,
         tags_shrink: str = None,
     ):
@@ -8588,6 +8685,7 @@ class ListFunctionsShrinkRequest(TeaModel):
         self.next_token = next_token
         # The prefix of the function name.
         self.prefix = prefix
+        self.resource_group_id = resource_group_id
         # The runtime of the functions to retrieve.
         self.runtime = runtime
         # The tag of the functions to retrieve.
@@ -8616,6 +8714,8 @@ class ListFunctionsShrinkRequest(TeaModel):
             result['nextToken'] = self.next_token
         if self.prefix is not None:
             result['prefix'] = self.prefix
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
         if self.runtime is not None:
             result['runtime'] = self.runtime
         if self.tags_shrink is not None:
@@ -8638,6 +8738,8 @@ class ListFunctionsShrinkRequest(TeaModel):
             self.next_token = m.get('nextToken')
         if m.get('prefix') is not None:
             self.prefix = m.get('prefix')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
         if m.get('runtime') is not None:
             self.runtime = m.get('runtime')
         if m.get('tags') is not None:
