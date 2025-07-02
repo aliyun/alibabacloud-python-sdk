@@ -3,6 +3,11 @@
 - Update API ListPermissions: add request parameters view.
 
 
+2025-07-02 Version: 1.1.3
+- Update API ListPermissions: add request parameters function.
+- Update API ListPermissions: add request parameters view.
+
+
 2025-06-19 Version: 1.1.2
 - Update API CreateCatalog: add request parameters body.type.
 
