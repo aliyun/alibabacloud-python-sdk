@@ -702,10 +702,16 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.alias):
             body['Alias'] = request.alias
+        if not UtilClient.is_unset(request.client_type):
+            body['ClientType'] = request.client_type
+        if not UtilClient.is_unset(request.main_biz_type):
+            body['MainBizType'] = request.main_biz_type
         if not UtilClient.is_unset(request.serial_number):
             body['SerialNumber'] = request.serial_number
         if not UtilClient.is_unset(request.terminal_group_id):
             body['TerminalGroupId'] = request.terminal_group_id
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -741,10 +747,16 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.alias):
             body['Alias'] = request.alias
+        if not UtilClient.is_unset(request.client_type):
+            body['ClientType'] = request.client_type
+        if not UtilClient.is_unset(request.main_biz_type):
+            body['MainBizType'] = request.main_biz_type
         if not UtilClient.is_unset(request.serial_number):
             body['SerialNumber'] = request.serial_number
         if not UtilClient.is_unset(request.terminal_group_id):
             body['TerminalGroupId'] = request.terminal_group_id
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -807,6 +819,8 @@ class Client(OpenApiClient):
         body_flat = {}
         if not UtilClient.is_unset(request.add_terminal_params):
             body_flat['AddTerminalParams'] = request.add_terminal_params
+        if not UtilClient.is_unset(request.main_biz_type):
+            body['MainBizType'] = request.main_biz_type
         body = TeaCore.merge(body,
             OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
@@ -845,6 +859,8 @@ class Client(OpenApiClient):
         body_flat = {}
         if not UtilClient.is_unset(request.add_terminal_params):
             body_flat['AddTerminalParams'] = request.add_terminal_params
+        if not UtilClient.is_unset(request.main_biz_type):
+            body['MainBizType'] = request.main_biz_type
         body = TeaCore.merge(body,
             OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
@@ -1320,6 +1336,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.end_user_id):
             body['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.main_biz_type):
+            body['MainBizType'] = request.main_biz_type
         if not UtilClient.is_unset(request.serial_number):
             body['SerialNumber'] = request.serial_number
         if not UtilClient.is_unset(request.uuid):
@@ -1359,6 +1377,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.end_user_id):
             body['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.main_biz_type):
+            body['MainBizType'] = request.main_biz_type
         if not UtilClient.is_unset(request.serial_number):
             body['SerialNumber'] = request.serial_number
         if not UtilClient.is_unset(request.uuid):
@@ -1430,12 +1450,20 @@ class Client(OpenApiClient):
             body['ChipId'] = request.chip_id
         if not UtilClient.is_unset(request.client_id):
             body['ClientId'] = request.client_id
+        if not UtilClient.is_unset(request.client_version):
+            body['ClientVersion'] = request.client_version
         if not UtilClient.is_unset(request.custom_id):
             body['CustomId'] = request.custom_id
         if not UtilClient.is_unset(request.ether_mac):
             body['EtherMac'] = request.ether_mac
+        if not UtilClient.is_unset(request.login_region_id):
+            body['LoginRegionId'] = request.login_region_id
+        if not UtilClient.is_unset(request.login_token):
+            body['LoginToken'] = request.login_token
         if not UtilClient.is_unset(request.serial_no):
             body['SerialNo'] = request.serial_no
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
         if not UtilClient.is_unset(request.uuid):
             body['Uuid'] = request.uuid
         if not UtilClient.is_unset(request.wlan):
@@ -1483,12 +1511,20 @@ class Client(OpenApiClient):
             body['ChipId'] = request.chip_id
         if not UtilClient.is_unset(request.client_id):
             body['ClientId'] = request.client_id
+        if not UtilClient.is_unset(request.client_version):
+            body['ClientVersion'] = request.client_version
         if not UtilClient.is_unset(request.custom_id):
             body['CustomId'] = request.custom_id
         if not UtilClient.is_unset(request.ether_mac):
             body['EtherMac'] = request.ether_mac
+        if not UtilClient.is_unset(request.login_region_id):
+            body['LoginRegionId'] = request.login_region_id
+        if not UtilClient.is_unset(request.login_token):
+            body['LoginToken'] = request.login_token
         if not UtilClient.is_unset(request.serial_no):
             body['SerialNo'] = request.serial_no
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
         if not UtilClient.is_unset(request.uuid):
             body['Uuid'] = request.uuid
         if not UtilClient.is_unset(request.wlan):
@@ -1582,6 +1618,8 @@ class Client(OpenApiClient):
             query['TaskType'] = request.task_type
         if not UtilClient.is_unset(request.tenant_id):
             query['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.tenant_id_list):
+            query['TenantIdList'] = request.tenant_id_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1643,6 +1681,8 @@ class Client(OpenApiClient):
             query['TaskType'] = request.task_type
         if not UtilClient.is_unset(request.tenant_id):
             query['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.tenant_id_list):
+            query['TenantIdList'] = request.tenant_id_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1724,6 +1764,8 @@ class Client(OpenApiClient):
             query['OtaType'] = request.ota_type
         if not UtilClient.is_unset(request.project):
             query['Project'] = request.project
+        if not UtilClient.is_unset(request.relation_version_uids):
+            query['RelationVersionUids'] = request.relation_version_uids
         if not UtilClient.is_unset(request.release_note):
             query['ReleaseNote'] = request.release_note
         if not UtilClient.is_unset(request.release_note_en):
@@ -1795,6 +1837,8 @@ class Client(OpenApiClient):
             query['OtaType'] = request.ota_type
         if not UtilClient.is_unset(request.project):
             query['Project'] = request.project
+        if not UtilClient.is_unset(request.relation_version_uids):
+            query['RelationVersionUids'] = request.relation_version_uids
         if not UtilClient.is_unset(request.release_note):
             query['ReleaseNote'] = request.release_note
         if not UtilClient.is_unset(request.release_note_en):
@@ -2186,6 +2230,10 @@ class Client(OpenApiClient):
             query['ClientType'] = request.client_type
         if not UtilClient.is_unset(request.creator):
             query['Creator'] = request.creator
+        if not UtilClient.is_unset(request.null_channel):
+            query['NullChannel'] = request.null_channel
+        if not UtilClient.is_unset(request.ota_type):
+            query['OtaType'] = request.ota_type
         if not UtilClient.is_unset(request.project):
             query['Project'] = request.project
         if not UtilClient.is_unset(request.status):
@@ -2233,6 +2281,10 @@ class Client(OpenApiClient):
             query['ClientType'] = request.client_type
         if not UtilClient.is_unset(request.creator):
             query['Creator'] = request.creator
+        if not UtilClient.is_unset(request.null_channel):
+            query['NullChannel'] = request.null_channel
+        if not UtilClient.is_unset(request.ota_type):
+            query['OtaType'] = request.ota_type
         if not UtilClient.is_unset(request.project):
             query['Project'] = request.project
         if not UtilClient.is_unset(request.status):
@@ -4304,6 +4356,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_version_download_url_with_options_async(request, runtime)
 
+    def list_bound_devices_with_options(
+        self,
+        request: wyota_20210420_models.ListBoundDevicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> wyota_20210420_models.ListBoundDevicesResponse:
+        """
+        @summary 获取用户已绑定的可信设备列表
+        
+        @param request: ListBoundDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBoundDevicesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ad_domain):
+            body['AdDomain'] = request.ad_domain
+        if not UtilClient.is_unset(request.alias):
+            body['Alias'] = request.alias
+        if not UtilClient.is_unset(request.client_type):
+            body['ClientType'] = request.client_type
+        if not UtilClient.is_unset(request.directory_id):
+            body['DirectoryId'] = request.directory_id
+        if not UtilClient.is_unset(request.end_user_id):
+            body['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.in_manage):
+            body['InManage'] = request.in_manage
+        if not UtilClient.is_unset(request.last_login_user):
+            body['LastLoginUser'] = request.last_login_user
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.serial_no):
+            body['SerialNo'] = request.serial_no
+        if not UtilClient.is_unset(request.user_type):
+            body['UserType'] = request.user_type
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListBoundDevices',
+            version='2021-04-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            wyota_20210420_models.ListBoundDevicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_bound_devices_with_options_async(
+        self,
+        request: wyota_20210420_models.ListBoundDevicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> wyota_20210420_models.ListBoundDevicesResponse:
+        """
+        @summary 获取用户已绑定的可信设备列表
+        
+        @param request: ListBoundDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBoundDevicesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ad_domain):
+            body['AdDomain'] = request.ad_domain
+        if not UtilClient.is_unset(request.alias):
+            body['Alias'] = request.alias
+        if not UtilClient.is_unset(request.client_type):
+            body['ClientType'] = request.client_type
+        if not UtilClient.is_unset(request.directory_id):
+            body['DirectoryId'] = request.directory_id
+        if not UtilClient.is_unset(request.end_user_id):
+            body['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.in_manage):
+            body['InManage'] = request.in_manage
+        if not UtilClient.is_unset(request.last_login_user):
+            body['LastLoginUser'] = request.last_login_user
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.serial_no):
+            body['SerialNo'] = request.serial_no
+        if not UtilClient.is_unset(request.user_type):
+            body['UserType'] = request.user_type
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListBoundDevices',
+            version='2021-04-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            wyota_20210420_models.ListBoundDevicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_bound_devices(
+        self,
+        request: wyota_20210420_models.ListBoundDevicesRequest,
+    ) -> wyota_20210420_models.ListBoundDevicesResponse:
+        """
+        @summary 获取用户已绑定的可信设备列表
+        
+        @param request: ListBoundDevicesRequest
+        @return: ListBoundDevicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_bound_devices_with_options(request, runtime)
+
+    async def list_bound_devices_async(
+        self,
+        request: wyota_20210420_models.ListBoundDevicesRequest,
+    ) -> wyota_20210420_models.ListBoundDevicesResponse:
+        """
+        @summary 获取用户已绑定的可信设备列表
+        
+        @param request: ListBoundDevicesRequest
+        @return: ListBoundDevicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_bound_devices_with_options_async(request, runtime)
+
     def list_device_ota_task_by_tenant_with_options(
         self,
         request: wyota_20210420_models.ListDeviceOtaTaskByTenantRequest,
@@ -4540,6 +4732,8 @@ class Client(OpenApiClient):
             query['DeviceOS'] = request.device_os
         if not UtilClient.is_unset(request.device_platform):
             query['DevicePlatform'] = request.device_platform
+        if not UtilClient.is_unset(request.last_login_user):
+            query['LastLoginUser'] = request.last_login_user
         if not UtilClient.is_unset(request.location_info):
             query['LocationInfo'] = request.location_info
         if not UtilClient.is_unset(request.user_type):
@@ -4611,6 +4805,8 @@ class Client(OpenApiClient):
             query['DeviceOS'] = request.device_os
         if not UtilClient.is_unset(request.device_platform):
             query['DevicePlatform'] = request.device_platform
+        if not UtilClient.is_unset(request.last_login_user):
+            query['LastLoginUser'] = request.last_login_user
         if not UtilClient.is_unset(request.location_info):
             query['LocationInfo'] = request.location_info
         if not UtilClient.is_unset(request.user_type):
@@ -5230,6 +5426,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.in_manage):
             body['InManage'] = request.in_manage
+        if not UtilClient.is_unset(request.main_biz_type):
+            body['MainBizType'] = request.main_biz_type
         if not UtilClient.is_unset(request.max_results):
             body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -5284,6 +5482,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.in_manage):
             body['InManage'] = request.in_manage
+        if not UtilClient.is_unset(request.main_biz_type):
+            body['MainBizType'] = request.main_biz_type
         if not UtilClient.is_unset(request.max_results):
             body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -5455,6 +5655,146 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_trust_devices_with_options_async(request, runtime)
+
+    def list_unbind_devices_with_options(
+        self,
+        request: wyota_20210420_models.ListUnbindDevicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> wyota_20210420_models.ListUnbindDevicesResponse:
+        """
+        @summary 获取用户未绑定的可信设备列表
+        
+        @param request: ListUnbindDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUnbindDevicesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ad_domain):
+            body['AdDomain'] = request.ad_domain
+        if not UtilClient.is_unset(request.alias):
+            body['Alias'] = request.alias
+        if not UtilClient.is_unset(request.client_type):
+            body['ClientType'] = request.client_type
+        if not UtilClient.is_unset(request.directory_id):
+            body['DirectoryId'] = request.directory_id
+        if not UtilClient.is_unset(request.end_user_id):
+            body['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.in_manage):
+            body['InManage'] = request.in_manage
+        if not UtilClient.is_unset(request.last_login_user):
+            body['LastLoginUser'] = request.last_login_user
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.serial_no):
+            body['SerialNo'] = request.serial_no
+        if not UtilClient.is_unset(request.user_type):
+            body['UserType'] = request.user_type
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListUnbindDevices',
+            version='2021-04-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            wyota_20210420_models.ListUnbindDevicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_unbind_devices_with_options_async(
+        self,
+        request: wyota_20210420_models.ListUnbindDevicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> wyota_20210420_models.ListUnbindDevicesResponse:
+        """
+        @summary 获取用户未绑定的可信设备列表
+        
+        @param request: ListUnbindDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUnbindDevicesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ad_domain):
+            body['AdDomain'] = request.ad_domain
+        if not UtilClient.is_unset(request.alias):
+            body['Alias'] = request.alias
+        if not UtilClient.is_unset(request.client_type):
+            body['ClientType'] = request.client_type
+        if not UtilClient.is_unset(request.directory_id):
+            body['DirectoryId'] = request.directory_id
+        if not UtilClient.is_unset(request.end_user_id):
+            body['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.in_manage):
+            body['InManage'] = request.in_manage
+        if not UtilClient.is_unset(request.last_login_user):
+            body['LastLoginUser'] = request.last_login_user
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.serial_no):
+            body['SerialNo'] = request.serial_no
+        if not UtilClient.is_unset(request.user_type):
+            body['UserType'] = request.user_type
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListUnbindDevices',
+            version='2021-04-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            wyota_20210420_models.ListUnbindDevicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_unbind_devices(
+        self,
+        request: wyota_20210420_models.ListUnbindDevicesRequest,
+    ) -> wyota_20210420_models.ListUnbindDevicesResponse:
+        """
+        @summary 获取用户未绑定的可信设备列表
+        
+        @param request: ListUnbindDevicesRequest
+        @return: ListUnbindDevicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_unbind_devices_with_options(request, runtime)
+
+    async def list_unbind_devices_async(
+        self,
+        request: wyota_20210420_models.ListUnbindDevicesRequest,
+    ) -> wyota_20210420_models.ListUnbindDevicesResponse:
+        """
+        @summary 获取用户未绑定的可信设备列表
+        
+        @param request: ListUnbindDevicesRequest
+        @return: ListUnbindDevicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_unbind_devices_with_options_async(request, runtime)
 
     def list_user_fb_ac_issues_with_options(
         self,
@@ -6504,6 +6844,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.client_app_version):
+            body['ClientAppVersion'] = request.client_app_version
         if not UtilClient.is_unset(request.client_id):
             body['ClientId'] = request.client_id
         if not UtilClient.is_unset(request.client_model):
@@ -6591,6 +6933,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.client_app_version):
+            body['ClientAppVersion'] = request.client_app_version
         if not UtilClient.is_unset(request.client_id):
             body['ClientId'] = request.client_id
         if not UtilClient.is_unset(request.client_model):
@@ -7236,6 +7580,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.main_biz_type):
+            body['MainBizType'] = request.main_biz_type
         if not UtilClient.is_unset(request.serial_number):
             body['SerialNumber'] = request.serial_number
         if not UtilClient.is_unset(request.uuid):
@@ -7273,6 +7619,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.main_biz_type):
+            body['MainBizType'] = request.main_biz_type
         if not UtilClient.is_unset(request.serial_number):
             body['SerialNumber'] = request.serial_number
         if not UtilClient.is_unset(request.uuid):
@@ -7656,8 +8004,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.allow_manual_lock_screen):
+            body['AllowManualLockScreen'] = request.allow_manual_lock_screen
         if not UtilClient.is_unset(request.background_mode_title):
             body['BackgroundModeTitle'] = request.background_mode_title
+        if not UtilClient.is_unset(request.custom_screen_cast_res):
+            body['CustomScreenCastRes'] = request.custom_screen_cast_res
         if not UtilClient.is_unset(request.display_layout):
             body['DisplayLayout'] = request.display_layout
         if not UtilClient.is_unset(request.display_resolution):
@@ -7672,20 +8024,46 @@ class Client(OpenApiClient):
             body['EnableBackgroundMode'] = request.enable_background_mode
         if not UtilClient.is_unset(request.enable_bluetooth):
             body['EnableBluetooth'] = request.enable_bluetooth
+        if not UtilClient.is_unset(request.enable_control_panel):
+            body['EnableControlPanel'] = request.enable_control_panel
+        if not UtilClient.is_unset(request.enable_immersive_mode):
+            body['EnableImmersiveMode'] = request.enable_immersive_mode
+        if not UtilClient.is_unset(request.enable_lock_screen_hot_key):
+            body['EnableLockScreenHotKey'] = request.enable_lock_screen_hot_key
         if not UtilClient.is_unset(request.enable_modify_password):
             body['EnableModifyPassword'] = request.enable_modify_password
+        if not UtilClient.is_unset(request.enable_scan_login):
+            body['EnableScanLogin'] = request.enable_scan_login
         if not UtilClient.is_unset(request.enable_scheduled_reboot):
             body['EnableScheduledReboot'] = request.enable_scheduled_reboot
         if not UtilClient.is_unset(request.enable_scheduled_shutdown):
             body['EnableScheduledShutdown'] = request.enable_scheduled_shutdown
+        if not UtilClient.is_unset(request.enable_sms_login):
+            body['EnableSmsLogin'] = request.enable_sms_login
         if not UtilClient.is_unset(request.enable_switch_personal):
             body['EnableSwitchPersonal'] = request.enable_switch_personal
         if not UtilClient.is_unset(request.enable_wlan):
             body['EnableWlan'] = request.enable_wlan
+        if not UtilClient.is_unset(request.follow_cloud_reboot):
+            body['FollowCloudReboot'] = request.follow_cloud_reboot
+        if not UtilClient.is_unset(request.follow_cloud_shutdown):
+            body['FollowCloudShutdown'] = request.follow_cloud_shutdown
+        if not UtilClient.is_unset(request.follow_terminal_reboot):
+            body['FollowTerminalReboot'] = request.follow_terminal_reboot
+        if not UtilClient.is_unset(request.follow_terminal_shutdown):
+            body['FollowTerminalShutdown'] = request.follow_terminal_shutdown
+        if not UtilClient.is_unset(request.force_set_pin_code):
+            body['ForceSetPinCode'] = request.force_set_pin_code
         if not UtilClient.is_unset(request.idle_timeout):
             body['IdleTimeout'] = request.idle_timeout
         if not UtilClient.is_unset(request.idle_timeout_action):
             body['IdleTimeoutAction'] = request.idle_timeout_action
+        if not UtilClient.is_unset(request.lock_screen_password_required):
+            body['LockScreenPasswordRequired'] = request.lock_screen_password_required
+        if not UtilClient.is_unset(request.lock_screen_timeout):
+            body['LockScreenTimeout'] = request.lock_screen_timeout
+        if not UtilClient.is_unset(request.main_biz_type):
+            body['MainBizType'] = request.main_biz_type
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.power_button_define):
@@ -7696,14 +8074,23 @@ class Client(OpenApiClient):
             body['PowerButtonDefineForNs'] = request.power_button_define_for_ns
         if not UtilClient.is_unset(request.power_on_behavior):
             body['PowerOnBehavior'] = request.power_on_behavior
+        if not UtilClient.is_unset(request.running_mode):
+            body['RunningMode'] = request.running_mode
         if not UtilClient.is_unset(request.scheduled_reboot):
             body['ScheduledReboot'] = request.scheduled_reboot
         if not UtilClient.is_unset(request.scheduled_shutdown):
             body['ScheduledShutdown'] = request.scheduled_shutdown
+        body_flat = {}
+        if not UtilClient.is_unset(request.screen_cast_res_paths):
+            body_flat['ScreenCastResPaths'] = request.screen_cast_res_paths
         if not UtilClient.is_unset(request.setting_lock):
             body['SettingLock'] = request.setting_lock
         if not UtilClient.is_unset(request.terminal_policy_id):
             body['TerminalPolicyId'] = request.terminal_policy_id
+        if not UtilClient.is_unset(request.unlock_method):
+            body['UnlockMethod'] = request.unlock_method
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -7737,8 +8124,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.allow_manual_lock_screen):
+            body['AllowManualLockScreen'] = request.allow_manual_lock_screen
         if not UtilClient.is_unset(request.background_mode_title):
             body['BackgroundModeTitle'] = request.background_mode_title
+        if not UtilClient.is_unset(request.custom_screen_cast_res):
+            body['CustomScreenCastRes'] = request.custom_screen_cast_res
         if not UtilClient.is_unset(request.display_layout):
             body['DisplayLayout'] = request.display_layout
         if not UtilClient.is_unset(request.display_resolution):
@@ -7753,20 +8144,46 @@ class Client(OpenApiClient):
             body['EnableBackgroundMode'] = request.enable_background_mode
         if not UtilClient.is_unset(request.enable_bluetooth):
             body['EnableBluetooth'] = request.enable_bluetooth
+        if not UtilClient.is_unset(request.enable_control_panel):
+            body['EnableControlPanel'] = request.enable_control_panel
+        if not UtilClient.is_unset(request.enable_immersive_mode):
+            body['EnableImmersiveMode'] = request.enable_immersive_mode
+        if not UtilClient.is_unset(request.enable_lock_screen_hot_key):
+            body['EnableLockScreenHotKey'] = request.enable_lock_screen_hot_key
         if not UtilClient.is_unset(request.enable_modify_password):
             body['EnableModifyPassword'] = request.enable_modify_password
+        if not UtilClient.is_unset(request.enable_scan_login):
+            body['EnableScanLogin'] = request.enable_scan_login
         if not UtilClient.is_unset(request.enable_scheduled_reboot):
             body['EnableScheduledReboot'] = request.enable_scheduled_reboot
         if not UtilClient.is_unset(request.enable_scheduled_shutdown):
             body['EnableScheduledShutdown'] = request.enable_scheduled_shutdown
+        if not UtilClient.is_unset(request.enable_sms_login):
+            body['EnableSmsLogin'] = request.enable_sms_login
         if not UtilClient.is_unset(request.enable_switch_personal):
             body['EnableSwitchPersonal'] = request.enable_switch_personal
         if not UtilClient.is_unset(request.enable_wlan):
             body['EnableWlan'] = request.enable_wlan
+        if not UtilClient.is_unset(request.follow_cloud_reboot):
+            body['FollowCloudReboot'] = request.follow_cloud_reboot
+        if not UtilClient.is_unset(request.follow_cloud_shutdown):
+            body['FollowCloudShutdown'] = request.follow_cloud_shutdown
+        if not UtilClient.is_unset(request.follow_terminal_reboot):
+            body['FollowTerminalReboot'] = request.follow_terminal_reboot
+        if not UtilClient.is_unset(request.follow_terminal_shutdown):
+            body['FollowTerminalShutdown'] = request.follow_terminal_shutdown
+        if not UtilClient.is_unset(request.force_set_pin_code):
+            body['ForceSetPinCode'] = request.force_set_pin_code
         if not UtilClient.is_unset(request.idle_timeout):
             body['IdleTimeout'] = request.idle_timeout
         if not UtilClient.is_unset(request.idle_timeout_action):
             body['IdleTimeoutAction'] = request.idle_timeout_action
+        if not UtilClient.is_unset(request.lock_screen_password_required):
+            body['LockScreenPasswordRequired'] = request.lock_screen_password_required
+        if not UtilClient.is_unset(request.lock_screen_timeout):
+            body['LockScreenTimeout'] = request.lock_screen_timeout
+        if not UtilClient.is_unset(request.main_biz_type):
+            body['MainBizType'] = request.main_biz_type
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.power_button_define):
@@ -7777,14 +8194,23 @@ class Client(OpenApiClient):
             body['PowerButtonDefineForNs'] = request.power_button_define_for_ns
         if not UtilClient.is_unset(request.power_on_behavior):
             body['PowerOnBehavior'] = request.power_on_behavior
+        if not UtilClient.is_unset(request.running_mode):
+            body['RunningMode'] = request.running_mode
         if not UtilClient.is_unset(request.scheduled_reboot):
             body['ScheduledReboot'] = request.scheduled_reboot
         if not UtilClient.is_unset(request.scheduled_shutdown):
             body['ScheduledShutdown'] = request.scheduled_shutdown
+        body_flat = {}
+        if not UtilClient.is_unset(request.screen_cast_res_paths):
+            body_flat['ScreenCastResPaths'] = request.screen_cast_res_paths
         if not UtilClient.is_unset(request.setting_lock):
             body['SettingLock'] = request.setting_lock
         if not UtilClient.is_unset(request.terminal_policy_id):
             body['TerminalPolicyId'] = request.terminal_policy_id
+        if not UtilClient.is_unset(request.unlock_method):
+            body['UnlockMethod'] = request.unlock_method
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )

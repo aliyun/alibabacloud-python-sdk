@@ -753,12 +753,18 @@ class AddTerminalRequest(TeaModel):
     def __init__(
         self,
         alias: str = None,
+        client_type: str = None,
+        main_biz_type: str = None,
         serial_number: str = None,
         terminal_group_id: str = None,
+        uuid: str = None,
     ):
         self.alias = alias
+        self.client_type = client_type
+        self.main_biz_type = main_biz_type
         self.serial_number = serial_number
         self.terminal_group_id = terminal_group_id
+        self.uuid = uuid
 
     def validate(self):
         pass
@@ -771,20 +777,32 @@ class AddTerminalRequest(TeaModel):
         result = dict()
         if self.alias is not None:
             result['Alias'] = self.alias
+        if self.client_type is not None:
+            result['ClientType'] = self.client_type
+        if self.main_biz_type is not None:
+            result['MainBizType'] = self.main_biz_type
         if self.serial_number is not None:
             result['SerialNumber'] = self.serial_number
         if self.terminal_group_id is not None:
             result['TerminalGroupId'] = self.terminal_group_id
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Alias') is not None:
             self.alias = m.get('Alias')
+        if m.get('ClientType') is not None:
+            self.client_type = m.get('ClientType')
+        if m.get('MainBizType') is not None:
+            self.main_biz_type = m.get('MainBizType')
         if m.get('SerialNumber') is not None:
             self.serial_number = m.get('SerialNumber')
         if m.get('TerminalGroupId') is not None:
             self.terminal_group_id = m.get('TerminalGroupId')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
         return self
 
 
@@ -935,8 +953,10 @@ class AddTerminalsRequest(TeaModel):
     def __init__(
         self,
         add_terminal_params: List[AddTerminalsRequestAddTerminalParams] = None,
+        main_biz_type: str = None,
     ):
         self.add_terminal_params = add_terminal_params
+        self.main_biz_type = main_biz_type
 
     def validate(self):
         if self.add_terminal_params:
@@ -954,6 +974,8 @@ class AddTerminalsRequest(TeaModel):
         if self.add_terminal_params is not None:
             for k in self.add_terminal_params:
                 result['AddTerminalParams'].append(k.to_map() if k else None)
+        if self.main_biz_type is not None:
+            result['MainBizType'] = self.main_biz_type
         return result
 
     def from_map(self, m: dict = None):
@@ -963,6 +985,8 @@ class AddTerminalsRequest(TeaModel):
             for k in m.get('AddTerminalParams'):
                 temp_model = AddTerminalsRequestAddTerminalParams()
                 self.add_terminal_params.append(temp_model.from_map(k))
+        if m.get('MainBizType') is not None:
+            self.main_biz_type = m.get('MainBizType')
         return self
 
 
@@ -1594,10 +1618,12 @@ class BindPasswordFreeLoginUserRequest(TeaModel):
     def __init__(
         self,
         end_user_id: str = None,
+        main_biz_type: str = None,
         serial_number: str = None,
         uuid: str = None,
     ):
         self.end_user_id = end_user_id
+        self.main_biz_type = main_biz_type
         self.serial_number = serial_number
         self.uuid = uuid
 
@@ -1612,6 +1638,8 @@ class BindPasswordFreeLoginUserRequest(TeaModel):
         result = dict()
         if self.end_user_id is not None:
             result['EndUserId'] = self.end_user_id
+        if self.main_biz_type is not None:
+            result['MainBizType'] = self.main_biz_type
         if self.serial_number is not None:
             result['SerialNumber'] = self.serial_number
         if self.uuid is not None:
@@ -1622,6 +1650,8 @@ class BindPasswordFreeLoginUserRequest(TeaModel):
         m = m or dict()
         if m.get('EndUserId') is not None:
             self.end_user_id = m.get('EndUserId')
+        if m.get('MainBizType') is not None:
+            self.main_biz_type = m.get('MainBizType')
         if m.get('SerialNumber') is not None:
             self.serial_number = m.get('SerialNumber')
         if m.get('Uuid') is not None:
@@ -1728,9 +1758,13 @@ class CheckUuidValidRequest(TeaModel):
         build_id: str = None,
         chip_id: str = None,
         client_id: str = None,
+        client_version: str = None,
         custom_id: str = None,
         ether_mac: str = None,
+        login_region_id: str = None,
+        login_token: str = None,
         serial_no: str = None,
+        session_id: str = None,
         uuid: str = None,
         wlan: str = None,
         wos_app_version: str = None,
@@ -1740,11 +1774,15 @@ class CheckUuidValidRequest(TeaModel):
         # This parameter is required.
         self.chip_id = chip_id
         self.client_id = client_id
+        self.client_version = client_version
         # This parameter is required.
         self.custom_id = custom_id
         self.ether_mac = ether_mac
+        self.login_region_id = login_region_id
+        self.login_token = login_token
         # This parameter is required.
         self.serial_no = serial_no
+        self.session_id = session_id
         # This parameter is required.
         self.uuid = uuid
         self.wlan = wlan
@@ -1767,12 +1805,20 @@ class CheckUuidValidRequest(TeaModel):
             result['ChipId'] = self.chip_id
         if self.client_id is not None:
             result['ClientId'] = self.client_id
+        if self.client_version is not None:
+            result['ClientVersion'] = self.client_version
         if self.custom_id is not None:
             result['CustomId'] = self.custom_id
         if self.ether_mac is not None:
             result['EtherMac'] = self.ether_mac
+        if self.login_region_id is not None:
+            result['LoginRegionId'] = self.login_region_id
+        if self.login_token is not None:
+            result['LoginToken'] = self.login_token
         if self.serial_no is not None:
             result['SerialNo'] = self.serial_no
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
         if self.uuid is not None:
             result['Uuid'] = self.uuid
         if self.wlan is not None:
@@ -1791,12 +1837,20 @@ class CheckUuidValidRequest(TeaModel):
             self.chip_id = m.get('ChipId')
         if m.get('ClientId') is not None:
             self.client_id = m.get('ClientId')
+        if m.get('ClientVersion') is not None:
+            self.client_version = m.get('ClientVersion')
         if m.get('CustomId') is not None:
             self.custom_id = m.get('CustomId')
         if m.get('EtherMac') is not None:
             self.ether_mac = m.get('EtherMac')
+        if m.get('LoginRegionId') is not None:
+            self.login_region_id = m.get('LoginRegionId')
+        if m.get('LoginToken') is not None:
+            self.login_token = m.get('LoginToken')
         if m.get('SerialNo') is not None:
             self.serial_no = m.get('SerialNo')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
         if m.get('Uuid') is not None:
             self.uuid = m.get('Uuid')
         if m.get('Wlan') is not None:
@@ -1938,6 +1992,7 @@ class CreateAppOtaTaskRequest(TeaModel):
         status: int = None,
         task_type: int = None,
         tenant_id: str = None,
+        tenant_id_list: List[str] = None,
     ):
         self.app_version_uid = app_version_uid
         self.channel = channel
@@ -1953,6 +2008,7 @@ class CreateAppOtaTaskRequest(TeaModel):
         self.status = status
         self.task_type = task_type
         self.tenant_id = tenant_id
+        self.tenant_id_list = tenant_id_list
 
     def validate(self):
         pass
@@ -1991,6 +2047,8 @@ class CreateAppOtaTaskRequest(TeaModel):
             result['TaskType'] = self.task_type
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
+        if self.tenant_id_list is not None:
+            result['TenantIdList'] = self.tenant_id_list
         return result
 
     def from_map(self, m: dict = None):
@@ -2023,6 +2081,8 @@ class CreateAppOtaTaskRequest(TeaModel):
             self.task_type = m.get('TaskType')
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
+        if m.get('TenantIdList') is not None:
+            self.tenant_id_list = m.get('TenantIdList')
         return self
 
 
@@ -2155,6 +2215,7 @@ class CreateAppOtaVersionRequest(TeaModel):
         os_type: str = None,
         ota_type: int = None,
         project: str = None,
+        relation_version_uids: List[str] = None,
         release_note: str = None,
         release_note_en: str = None,
         release_note_jp: str = None,
@@ -2175,6 +2236,7 @@ class CreateAppOtaVersionRequest(TeaModel):
         self.os_type = os_type
         self.ota_type = ota_type
         self.project = project
+        self.relation_version_uids = relation_version_uids
         self.release_note = release_note
         self.release_note_en = release_note_en
         self.release_note_jp = release_note_jp
@@ -2215,6 +2277,8 @@ class CreateAppOtaVersionRequest(TeaModel):
             result['OtaType'] = self.ota_type
         if self.project is not None:
             result['Project'] = self.project
+        if self.relation_version_uids is not None:
+            result['RelationVersionUids'] = self.relation_version_uids
         if self.release_note is not None:
             result['ReleaseNote'] = self.release_note
         if self.release_note_en is not None:
@@ -2257,6 +2321,8 @@ class CreateAppOtaVersionRequest(TeaModel):
             self.ota_type = m.get('OtaType')
         if m.get('Project') is not None:
             self.project = m.get('Project')
+        if m.get('RelationVersionUids') is not None:
+            self.relation_version_uids = m.get('RelationVersionUids')
         if m.get('ReleaseNote') is not None:
             self.release_note = m.get('ReleaseNote')
         if m.get('ReleaseNoteEn') is not None:
@@ -2745,6 +2811,8 @@ class DescribeAppOtaVersionRequest(TeaModel):
         channel: str = None,
         client_type: int = None,
         creator: str = None,
+        null_channel: bool = None,
+        ota_type: int = None,
         project: str = None,
         status: int = None,
         version_uid: str = None,
@@ -2753,6 +2821,8 @@ class DescribeAppOtaVersionRequest(TeaModel):
         self.channel = channel
         self.client_type = client_type
         self.creator = creator
+        self.null_channel = null_channel
+        self.ota_type = ota_type
         self.project = project
         self.status = status
         self.version_uid = version_uid
@@ -2774,6 +2844,10 @@ class DescribeAppOtaVersionRequest(TeaModel):
             result['ClientType'] = self.client_type
         if self.creator is not None:
             result['Creator'] = self.creator
+        if self.null_channel is not None:
+            result['NullChannel'] = self.null_channel
+        if self.ota_type is not None:
+            result['OtaType'] = self.ota_type
         if self.project is not None:
             result['Project'] = self.project
         if self.status is not None:
@@ -2792,6 +2866,10 @@ class DescribeAppOtaVersionRequest(TeaModel):
             self.client_type = m.get('ClientType')
         if m.get('Creator') is not None:
             self.creator = m.get('Creator')
+        if m.get('NullChannel') is not None:
+            self.null_channel = m.get('NullChannel')
+        if m.get('OtaType') is not None:
+            self.ota_type = m.get('OtaType')
         if m.get('Project') is not None:
             self.project = m.get('Project')
         if m.get('Status') is not None:
@@ -5407,6 +5485,7 @@ class GetDeviceOtaInfoResponseBodyDataVersion(TeaModel):
         version: str = None,
         version_code: str = None,
         version_type: str = None,
+        wy_force_upgrade: bool = None,
     ):
         self.android_horizontal_multi_cn_image_download_url = android_horizontal_multi_cn_image_download_url
         self.android_horizontal_multi_en_image_download_url = android_horizontal_multi_en_image_download_url
@@ -5430,6 +5509,7 @@ class GetDeviceOtaInfoResponseBodyDataVersion(TeaModel):
         self.version = version
         self.version_code = version_code
         self.version_type = version_type
+        self.wy_force_upgrade = wy_force_upgrade
 
     def validate(self):
         pass
@@ -5484,6 +5564,8 @@ class GetDeviceOtaInfoResponseBodyDataVersion(TeaModel):
             result['VersionCode'] = self.version_code
         if self.version_type is not None:
             result['VersionType'] = self.version_type
+        if self.wy_force_upgrade is not None:
+            result['WyForceUpgrade'] = self.wy_force_upgrade
         return result
 
     def from_map(self, m: dict = None):
@@ -5532,6 +5614,8 @@ class GetDeviceOtaInfoResponseBodyDataVersion(TeaModel):
             self.version_code = m.get('VersionCode')
         if m.get('VersionType') is not None:
             self.version_type = m.get('VersionType')
+        if m.get('WyForceUpgrade') is not None:
+            self.wy_force_upgrade = m.get('WyForceUpgrade')
         return self
 
 
@@ -6942,6 +7026,393 @@ class GetVersionDownloadUrlResponse(TeaModel):
         return self
 
 
+class ListBoundDevicesRequest(TeaModel):
+    def __init__(
+        self,
+        ad_domain: str = None,
+        alias: str = None,
+        client_type: int = None,
+        directory_id: str = None,
+        end_user_id: str = None,
+        in_manage: bool = None,
+        last_login_user: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        serial_no: str = None,
+        user_type: str = None,
+        uuid: str = None,
+    ):
+        self.ad_domain = ad_domain
+        self.alias = alias
+        self.client_type = client_type
+        self.directory_id = directory_id
+        self.end_user_id = end_user_id
+        self.in_manage = in_manage
+        self.last_login_user = last_login_user
+        self.page_number = page_number
+        self.page_size = page_size
+        self.serial_no = serial_no
+        self.user_type = user_type
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ad_domain is not None:
+            result['AdDomain'] = self.ad_domain
+        if self.alias is not None:
+            result['Alias'] = self.alias
+        if self.client_type is not None:
+            result['ClientType'] = self.client_type
+        if self.directory_id is not None:
+            result['DirectoryId'] = self.directory_id
+        if self.end_user_id is not None:
+            result['EndUserId'] = self.end_user_id
+        if self.in_manage is not None:
+            result['InManage'] = self.in_manage
+        if self.last_login_user is not None:
+            result['LastLoginUser'] = self.last_login_user
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.serial_no is not None:
+            result['SerialNo'] = self.serial_no
+        if self.user_type is not None:
+            result['UserType'] = self.user_type
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdDomain') is not None:
+            self.ad_domain = m.get('AdDomain')
+        if m.get('Alias') is not None:
+            self.alias = m.get('Alias')
+        if m.get('ClientType') is not None:
+            self.client_type = m.get('ClientType')
+        if m.get('DirectoryId') is not None:
+            self.directory_id = m.get('DirectoryId')
+        if m.get('EndUserId') is not None:
+            self.end_user_id = m.get('EndUserId')
+        if m.get('InManage') is not None:
+            self.in_manage = m.get('InManage')
+        if m.get('LastLoginUser') is not None:
+            self.last_login_user = m.get('LastLoginUser')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SerialNo') is not None:
+            self.serial_no = m.get('SerialNo')
+        if m.get('UserType') is not None:
+            self.user_type = m.get('UserType')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
+class ListBoundDevicesResponseBodyDataDevices(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        bound_time: str = None,
+        build_id: str = None,
+        client_type: str = None,
+        connection_status: str = None,
+        device_mqtt_connection_status: int = None,
+        device_os: str = None,
+        device_platform: str = None,
+        in_manage: bool = None,
+        last_login_time: str = None,
+        last_login_user: str = None,
+        login_user: str = None,
+        model: str = None,
+        password_free_login_user: str = None,
+        password_free_login_user_nick_name: str = None,
+        private_ip: str = None,
+        product_name: str = None,
+        public_ip: str = None,
+        serial_no: str = None,
+        uuid: str = None,
+    ):
+        self.alias = alias
+        self.bound_time = bound_time
+        self.build_id = build_id
+        self.client_type = client_type
+        self.connection_status = connection_status
+        self.device_mqtt_connection_status = device_mqtt_connection_status
+        self.device_os = device_os
+        self.device_platform = device_platform
+        self.in_manage = in_manage
+        self.last_login_time = last_login_time
+        self.last_login_user = last_login_user
+        self.login_user = login_user
+        self.model = model
+        self.password_free_login_user = password_free_login_user
+        self.password_free_login_user_nick_name = password_free_login_user_nick_name
+        self.private_ip = private_ip
+        self.product_name = product_name
+        self.public_ip = public_ip
+        self.serial_no = serial_no
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['Alias'] = self.alias
+        if self.bound_time is not None:
+            result['BoundTime'] = self.bound_time
+        if self.build_id is not None:
+            result['BuildId'] = self.build_id
+        if self.client_type is not None:
+            result['ClientType'] = self.client_type
+        if self.connection_status is not None:
+            result['ConnectionStatus'] = self.connection_status
+        if self.device_mqtt_connection_status is not None:
+            result['DeviceMqttConnectionStatus'] = self.device_mqtt_connection_status
+        if self.device_os is not None:
+            result['DeviceOs'] = self.device_os
+        if self.device_platform is not None:
+            result['DevicePlatform'] = self.device_platform
+        if self.in_manage is not None:
+            result['InManage'] = self.in_manage
+        if self.last_login_time is not None:
+            result['LastLoginTime'] = self.last_login_time
+        if self.last_login_user is not None:
+            result['LastLoginUser'] = self.last_login_user
+        if self.login_user is not None:
+            result['LoginUser'] = self.login_user
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.password_free_login_user is not None:
+            result['PasswordFreeLoginUser'] = self.password_free_login_user
+        if self.password_free_login_user_nick_name is not None:
+            result['PasswordFreeLoginUserNickName'] = self.password_free_login_user_nick_name
+        if self.private_ip is not None:
+            result['PrivateIp'] = self.private_ip
+        if self.product_name is not None:
+            result['ProductName'] = self.product_name
+        if self.public_ip is not None:
+            result['PublicIp'] = self.public_ip
+        if self.serial_no is not None:
+            result['SerialNo'] = self.serial_no
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alias') is not None:
+            self.alias = m.get('Alias')
+        if m.get('BoundTime') is not None:
+            self.bound_time = m.get('BoundTime')
+        if m.get('BuildId') is not None:
+            self.build_id = m.get('BuildId')
+        if m.get('ClientType') is not None:
+            self.client_type = m.get('ClientType')
+        if m.get('ConnectionStatus') is not None:
+            self.connection_status = m.get('ConnectionStatus')
+        if m.get('DeviceMqttConnectionStatus') is not None:
+            self.device_mqtt_connection_status = m.get('DeviceMqttConnectionStatus')
+        if m.get('DeviceOs') is not None:
+            self.device_os = m.get('DeviceOs')
+        if m.get('DevicePlatform') is not None:
+            self.device_platform = m.get('DevicePlatform')
+        if m.get('InManage') is not None:
+            self.in_manage = m.get('InManage')
+        if m.get('LastLoginTime') is not None:
+            self.last_login_time = m.get('LastLoginTime')
+        if m.get('LastLoginUser') is not None:
+            self.last_login_user = m.get('LastLoginUser')
+        if m.get('LoginUser') is not None:
+            self.login_user = m.get('LoginUser')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('PasswordFreeLoginUser') is not None:
+            self.password_free_login_user = m.get('PasswordFreeLoginUser')
+        if m.get('PasswordFreeLoginUserNickName') is not None:
+            self.password_free_login_user_nick_name = m.get('PasswordFreeLoginUserNickName')
+        if m.get('PrivateIp') is not None:
+            self.private_ip = m.get('PrivateIp')
+        if m.get('ProductName') is not None:
+            self.product_name = m.get('ProductName')
+        if m.get('PublicIp') is not None:
+            self.public_ip = m.get('PublicIp')
+        if m.get('SerialNo') is not None:
+            self.serial_no = m.get('SerialNo')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
+class ListBoundDevicesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        devices: List[ListBoundDevicesResponseBodyDataDevices] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.devices = devices
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.devices:
+            for k in self.devices:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Devices'] = []
+        if self.devices is not None:
+            for k in self.devices:
+                result['Devices'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.devices = []
+        if m.get('Devices') is not None:
+            for k in m.get('Devices'):
+                temp_model = ListBoundDevicesResponseBodyDataDevices()
+                self.devices.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListBoundDevicesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListBoundDevicesResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListBoundDevicesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListBoundDevicesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListBoundDevicesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListBoundDevicesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListDeviceOtaTaskByTenantRequest(TeaModel):
     def __init__(
         self,
@@ -7436,6 +7907,7 @@ class ListDevicesRequest(TeaModel):
         end_user_id: str = None,
         label_content: str = None,
         label_id: str = None,
+        last_login_user: str = None,
         location_info: str = None,
         model: str = None,
         page_number: int = None,
@@ -7455,6 +7927,7 @@ class ListDevicesRequest(TeaModel):
         self.end_user_id = end_user_id
         self.label_content = label_content
         self.label_id = label_id
+        self.last_login_user = last_login_user
         self.location_info = location_info
         self.model = model
         self.page_number = page_number
@@ -7494,6 +7967,8 @@ class ListDevicesRequest(TeaModel):
             result['LabelContent'] = self.label_content
         if self.label_id is not None:
             result['LabelId'] = self.label_id
+        if self.last_login_user is not None:
+            result['LastLoginUser'] = self.last_login_user
         if self.location_info is not None:
             result['LocationInfo'] = self.location_info
         if self.model is not None:
@@ -7534,6 +8009,8 @@ class ListDevicesRequest(TeaModel):
             self.label_content = m.get('LabelContent')
         if m.get('LabelId') is not None:
             self.label_id = m.get('LabelId')
+        if m.get('LastLoginUser') is not None:
+            self.last_login_user = m.get('LastLoginUser')
         if m.get('LocationInfo') is not None:
             self.location_info = m.get('LocationInfo')
         if m.get('Model') is not None:
@@ -9366,6 +9843,7 @@ class ListTerminalsRequest(TeaModel):
     def __init__(
         self,
         in_manage: bool = None,
+        main_biz_type: str = None,
         max_results: int = None,
         next_token: str = None,
         password_free_login_user: str = None,
@@ -9376,6 +9854,7 @@ class ListTerminalsRequest(TeaModel):
         with_bind_user: bool = None,
     ):
         self.in_manage = in_manage
+        self.main_biz_type = main_biz_type
         self.max_results = max_results
         self.next_token = next_token
         self.password_free_login_user = password_free_login_user
@@ -9396,6 +9875,8 @@ class ListTerminalsRequest(TeaModel):
         result = dict()
         if self.in_manage is not None:
             result['InManage'] = self.in_manage
+        if self.main_biz_type is not None:
+            result['MainBizType'] = self.main_biz_type
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -9418,6 +9899,8 @@ class ListTerminalsRequest(TeaModel):
         m = m or dict()
         if m.get('InManage') is not None:
             self.in_manage = m.get('InManage')
+        if m.get('MainBizType') is not None:
+            self.main_biz_type = m.get('MainBizType')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -9864,6 +10347,393 @@ class ListTrustDevicesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListTrustDevicesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListUnbindDevicesRequest(TeaModel):
+    def __init__(
+        self,
+        ad_domain: str = None,
+        alias: str = None,
+        client_type: int = None,
+        directory_id: str = None,
+        end_user_id: str = None,
+        in_manage: bool = None,
+        last_login_user: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        serial_no: str = None,
+        user_type: str = None,
+        uuid: str = None,
+    ):
+        self.ad_domain = ad_domain
+        self.alias = alias
+        self.client_type = client_type
+        self.directory_id = directory_id
+        self.end_user_id = end_user_id
+        self.in_manage = in_manage
+        self.last_login_user = last_login_user
+        self.page_number = page_number
+        self.page_size = page_size
+        self.serial_no = serial_no
+        self.user_type = user_type
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ad_domain is not None:
+            result['AdDomain'] = self.ad_domain
+        if self.alias is not None:
+            result['Alias'] = self.alias
+        if self.client_type is not None:
+            result['ClientType'] = self.client_type
+        if self.directory_id is not None:
+            result['DirectoryId'] = self.directory_id
+        if self.end_user_id is not None:
+            result['EndUserId'] = self.end_user_id
+        if self.in_manage is not None:
+            result['InManage'] = self.in_manage
+        if self.last_login_user is not None:
+            result['LastLoginUser'] = self.last_login_user
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.serial_no is not None:
+            result['SerialNo'] = self.serial_no
+        if self.user_type is not None:
+            result['UserType'] = self.user_type
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdDomain') is not None:
+            self.ad_domain = m.get('AdDomain')
+        if m.get('Alias') is not None:
+            self.alias = m.get('Alias')
+        if m.get('ClientType') is not None:
+            self.client_type = m.get('ClientType')
+        if m.get('DirectoryId') is not None:
+            self.directory_id = m.get('DirectoryId')
+        if m.get('EndUserId') is not None:
+            self.end_user_id = m.get('EndUserId')
+        if m.get('InManage') is not None:
+            self.in_manage = m.get('InManage')
+        if m.get('LastLoginUser') is not None:
+            self.last_login_user = m.get('LastLoginUser')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SerialNo') is not None:
+            self.serial_no = m.get('SerialNo')
+        if m.get('UserType') is not None:
+            self.user_type = m.get('UserType')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
+class ListUnbindDevicesResponseBodyDataDevices(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        bound_time: str = None,
+        build_id: str = None,
+        client_type: str = None,
+        connection_status: str = None,
+        device_mqtt_connection_status: int = None,
+        device_os: str = None,
+        device_platform: str = None,
+        in_manage: bool = None,
+        last_login_time: str = None,
+        last_login_user: str = None,
+        login_user: str = None,
+        model: str = None,
+        password_free_login_user: str = None,
+        password_free_login_user_nick_name: str = None,
+        private_ip: str = None,
+        product_name: str = None,
+        public_ip: str = None,
+        serial_no: str = None,
+        uuid: str = None,
+    ):
+        self.alias = alias
+        self.bound_time = bound_time
+        self.build_id = build_id
+        self.client_type = client_type
+        self.connection_status = connection_status
+        self.device_mqtt_connection_status = device_mqtt_connection_status
+        self.device_os = device_os
+        self.device_platform = device_platform
+        self.in_manage = in_manage
+        self.last_login_time = last_login_time
+        self.last_login_user = last_login_user
+        self.login_user = login_user
+        self.model = model
+        self.password_free_login_user = password_free_login_user
+        self.password_free_login_user_nick_name = password_free_login_user_nick_name
+        self.private_ip = private_ip
+        self.product_name = product_name
+        self.public_ip = public_ip
+        self.serial_no = serial_no
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['Alias'] = self.alias
+        if self.bound_time is not None:
+            result['BoundTime'] = self.bound_time
+        if self.build_id is not None:
+            result['BuildId'] = self.build_id
+        if self.client_type is not None:
+            result['ClientType'] = self.client_type
+        if self.connection_status is not None:
+            result['ConnectionStatus'] = self.connection_status
+        if self.device_mqtt_connection_status is not None:
+            result['DeviceMqttConnectionStatus'] = self.device_mqtt_connection_status
+        if self.device_os is not None:
+            result['DeviceOs'] = self.device_os
+        if self.device_platform is not None:
+            result['DevicePlatform'] = self.device_platform
+        if self.in_manage is not None:
+            result['InManage'] = self.in_manage
+        if self.last_login_time is not None:
+            result['LastLoginTime'] = self.last_login_time
+        if self.last_login_user is not None:
+            result['LastLoginUser'] = self.last_login_user
+        if self.login_user is not None:
+            result['LoginUser'] = self.login_user
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.password_free_login_user is not None:
+            result['PasswordFreeLoginUser'] = self.password_free_login_user
+        if self.password_free_login_user_nick_name is not None:
+            result['PasswordFreeLoginUserNickName'] = self.password_free_login_user_nick_name
+        if self.private_ip is not None:
+            result['PrivateIp'] = self.private_ip
+        if self.product_name is not None:
+            result['ProductName'] = self.product_name
+        if self.public_ip is not None:
+            result['PublicIp'] = self.public_ip
+        if self.serial_no is not None:
+            result['SerialNo'] = self.serial_no
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alias') is not None:
+            self.alias = m.get('Alias')
+        if m.get('BoundTime') is not None:
+            self.bound_time = m.get('BoundTime')
+        if m.get('BuildId') is not None:
+            self.build_id = m.get('BuildId')
+        if m.get('ClientType') is not None:
+            self.client_type = m.get('ClientType')
+        if m.get('ConnectionStatus') is not None:
+            self.connection_status = m.get('ConnectionStatus')
+        if m.get('DeviceMqttConnectionStatus') is not None:
+            self.device_mqtt_connection_status = m.get('DeviceMqttConnectionStatus')
+        if m.get('DeviceOs') is not None:
+            self.device_os = m.get('DeviceOs')
+        if m.get('DevicePlatform') is not None:
+            self.device_platform = m.get('DevicePlatform')
+        if m.get('InManage') is not None:
+            self.in_manage = m.get('InManage')
+        if m.get('LastLoginTime') is not None:
+            self.last_login_time = m.get('LastLoginTime')
+        if m.get('LastLoginUser') is not None:
+            self.last_login_user = m.get('LastLoginUser')
+        if m.get('LoginUser') is not None:
+            self.login_user = m.get('LoginUser')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('PasswordFreeLoginUser') is not None:
+            self.password_free_login_user = m.get('PasswordFreeLoginUser')
+        if m.get('PasswordFreeLoginUserNickName') is not None:
+            self.password_free_login_user_nick_name = m.get('PasswordFreeLoginUserNickName')
+        if m.get('PrivateIp') is not None:
+            self.private_ip = m.get('PrivateIp')
+        if m.get('ProductName') is not None:
+            self.product_name = m.get('ProductName')
+        if m.get('PublicIp') is not None:
+            self.public_ip = m.get('PublicIp')
+        if m.get('SerialNo') is not None:
+            self.serial_no = m.get('SerialNo')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
+class ListUnbindDevicesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        devices: List[ListUnbindDevicesResponseBodyDataDevices] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.devices = devices
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.devices:
+            for k in self.devices:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Devices'] = []
+        if self.devices is not None:
+            for k in self.devices:
+                result['Devices'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.devices = []
+        if m.get('Devices') is not None:
+            for k in m.get('Devices'):
+                temp_model = ListUnbindDevicesResponseBodyDataDevices()
+                self.devices.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListUnbindDevicesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListUnbindDevicesResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListUnbindDevicesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListUnbindDevicesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListUnbindDevicesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListUnbindDevicesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11030,8 +11900,10 @@ class RegisterDeviceRequest(TeaModel):
 class RegisterDeviceResponseBodyData(TeaModel):
     def __init__(
         self,
+        new_upgrade: bool = None,
         uuid: str = None,
     ):
+        self.new_upgrade = new_upgrade
         self.uuid = uuid
 
     def validate(self):
@@ -11043,12 +11915,16 @@ class RegisterDeviceResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.new_upgrade is not None:
+            result['NewUpgrade'] = self.new_upgrade
         if self.uuid is not None:
             result['Uuid'] = self.uuid
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NewUpgrade') is not None:
+            self.new_upgrade = m.get('NewUpgrade')
         if m.get('Uuid') is not None:
             self.uuid = m.get('Uuid')
         return self
@@ -11816,6 +12692,7 @@ class ReportUserFbIssueRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        client_app_version: str = None,
         client_id: str = None,
         client_model: str = None,
         client_os_name: str = None,
@@ -11842,6 +12719,7 @@ class ReportUserFbIssueRequest(TeaModel):
         wy_id: str = None,
     ):
         self.app_id = app_id
+        self.client_app_version = client_app_version
         self.client_id = client_id
         self.client_model = client_model
         self.client_os_name = client_os_name
@@ -11881,6 +12759,8 @@ class ReportUserFbIssueRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.client_app_version is not None:
+            result['ClientAppVersion'] = self.client_app_version
         if self.client_id is not None:
             result['ClientId'] = self.client_id
         if self.client_model is not None:
@@ -11937,6 +12817,8 @@ class ReportUserFbIssueRequest(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('ClientAppVersion') is not None:
+            self.client_app_version = m.get('ClientAppVersion')
         if m.get('ClientId') is not None:
             self.client_id = m.get('ClientId')
         if m.get('ClientModel') is not None:
@@ -11995,6 +12877,7 @@ class ReportUserFbIssueShrinkRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        client_app_version: str = None,
         client_id: str = None,
         client_model: str = None,
         client_os_name: str = None,
@@ -12021,6 +12904,7 @@ class ReportUserFbIssueShrinkRequest(TeaModel):
         wy_id: str = None,
     ):
         self.app_id = app_id
+        self.client_app_version = client_app_version
         self.client_id = client_id
         self.client_model = client_model
         self.client_os_name = client_os_name
@@ -12057,6 +12941,8 @@ class ReportUserFbIssueShrinkRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.client_app_version is not None:
+            result['ClientAppVersion'] = self.client_app_version
         if self.client_id is not None:
             result['ClientId'] = self.client_id
         if self.client_model is not None:
@@ -12111,6 +12997,8 @@ class ReportUserFbIssueShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('ClientAppVersion') is not None:
+            self.client_app_version = m.get('ClientAppVersion')
         if m.get('ClientId') is not None:
             self.client_id = m.get('ClientId')
         if m.get('ClientModel') is not None:
@@ -12328,20 +13216,20 @@ class SendOpsMessageToTerminalsRequest(TeaModel):
         return self
 
 
-class SendOpsMessageToTerminalsResponseBody(TeaModel):
+class SendOpsMessageToTerminalsResponseBodyData(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        http_status_code: int = None,
-        message: str = None,
-        request_id: str = None,
+        fail_reason: str = None,
+        result: str = None,
+        serial_number: str = None,
         success: bool = None,
+        uuid: str = None,
     ):
-        self.code = code
-        self.http_status_code = http_status_code
-        self.message = message
-        self.request_id = request_id
+        self.fail_reason = fail_reason
+        self.result = result
+        self.serial_number = serial_number
         self.success = success
+        self.uuid = uuid
 
     def validate(self):
         pass
@@ -12352,8 +13240,68 @@ class SendOpsMessageToTerminalsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.fail_reason is not None:
+            result['FailReason'] = self.fail_reason
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailReason') is not None:
+            self.fail_reason = m.get('FailReason')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
+class SendOpsMessageToTerminalsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[SendOpsMessageToTerminalsResponseBodyData] = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.code is not None:
             result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
         if self.http_status_code is not None:
             result['HttpStatusCode'] = self.http_status_code
         if self.message is not None:
@@ -12368,6 +13316,11 @@ class SendOpsMessageToTerminalsResponseBody(TeaModel):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = SendOpsMessageToTerminalsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
         if m.get('HttpStatusCode') is not None:
             self.http_status_code = m.get('HttpStatusCode')
         if m.get('Message') is not None:
@@ -12928,9 +13881,11 @@ class UnbindDeviceSeatsResponse(TeaModel):
 class UnbindPasswordFreeLoginUserRequest(TeaModel):
     def __init__(
         self,
+        main_biz_type: str = None,
         serial_number: str = None,
         uuid: str = None,
     ):
+        self.main_biz_type = main_biz_type
         self.serial_number = serial_number
         self.uuid = uuid
 
@@ -12943,6 +13898,8 @@ class UnbindPasswordFreeLoginUserRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.main_biz_type is not None:
+            result['MainBizType'] = self.main_biz_type
         if self.serial_number is not None:
             result['SerialNumber'] = self.serial_number
         if self.uuid is not None:
@@ -12951,6 +13908,8 @@ class UnbindPasswordFreeLoginUserRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('MainBizType') is not None:
+            self.main_biz_type = m.get('MainBizType')
         if m.get('SerialNumber') is not None:
             self.serial_number = m.get('SerialNumber')
         if m.get('Uuid') is not None:
@@ -13518,7 +14477,9 @@ class UpdateLabelResponse(TeaModel):
 class UpdateTerminalPolicyRequest(TeaModel):
     def __init__(
         self,
+        allow_manual_lock_screen: int = None,
         background_mode_title: str = None,
+        custom_screen_cast_res: bool = None,
         display_layout: str = None,
         display_resolution: str = None,
         display_scale_ratio: str = None,
@@ -13526,24 +14487,42 @@ class UpdateTerminalPolicyRequest(TeaModel):
         enable_auto_login: int = None,
         enable_background_mode: int = None,
         enable_bluetooth: int = None,
+        enable_control_panel: int = None,
+        enable_immersive_mode: int = None,
+        enable_lock_screen_hot_key: int = None,
         enable_modify_password: int = None,
+        enable_scan_login: int = None,
         enable_scheduled_reboot: int = None,
         enable_scheduled_shutdown: int = None,
+        enable_sms_login: int = None,
         enable_switch_personal: int = None,
         enable_wlan: int = None,
+        follow_cloud_reboot: int = None,
+        follow_cloud_shutdown: int = None,
+        follow_terminal_reboot: int = None,
+        follow_terminal_shutdown: int = None,
+        force_set_pin_code: int = None,
         idle_timeout: int = None,
         idle_timeout_action: int = None,
+        lock_screen_password_required: int = None,
+        lock_screen_timeout: int = None,
+        main_biz_type: str = None,
         name: str = None,
         power_button_define: int = None,
         power_button_define_for_as: int = None,
         power_button_define_for_ns: int = None,
         power_on_behavior: int = None,
+        running_mode: str = None,
         scheduled_reboot: str = None,
         scheduled_shutdown: str = None,
+        screen_cast_res_paths: List[str] = None,
         setting_lock: int = None,
         terminal_policy_id: str = None,
+        unlock_method: int = None,
     ):
+        self.allow_manual_lock_screen = allow_manual_lock_screen
         self.background_mode_title = background_mode_title
+        self.custom_screen_cast_res = custom_screen_cast_res
         self.display_layout = display_layout
         self.display_resolution = display_resolution
         self.display_scale_ratio = display_scale_ratio
@@ -13551,22 +14530,38 @@ class UpdateTerminalPolicyRequest(TeaModel):
         self.enable_auto_login = enable_auto_login
         self.enable_background_mode = enable_background_mode
         self.enable_bluetooth = enable_bluetooth
+        self.enable_control_panel = enable_control_panel
+        self.enable_immersive_mode = enable_immersive_mode
+        self.enable_lock_screen_hot_key = enable_lock_screen_hot_key
         self.enable_modify_password = enable_modify_password
+        self.enable_scan_login = enable_scan_login
         self.enable_scheduled_reboot = enable_scheduled_reboot
         self.enable_scheduled_shutdown = enable_scheduled_shutdown
+        self.enable_sms_login = enable_sms_login
         self.enable_switch_personal = enable_switch_personal
         self.enable_wlan = enable_wlan
+        self.follow_cloud_reboot = follow_cloud_reboot
+        self.follow_cloud_shutdown = follow_cloud_shutdown
+        self.follow_terminal_reboot = follow_terminal_reboot
+        self.follow_terminal_shutdown = follow_terminal_shutdown
+        self.force_set_pin_code = force_set_pin_code
         self.idle_timeout = idle_timeout
         self.idle_timeout_action = idle_timeout_action
+        self.lock_screen_password_required = lock_screen_password_required
+        self.lock_screen_timeout = lock_screen_timeout
+        self.main_biz_type = main_biz_type
         self.name = name
         self.power_button_define = power_button_define
         self.power_button_define_for_as = power_button_define_for_as
         self.power_button_define_for_ns = power_button_define_for_ns
         self.power_on_behavior = power_on_behavior
+        self.running_mode = running_mode
         self.scheduled_reboot = scheduled_reboot
         self.scheduled_shutdown = scheduled_shutdown
+        self.screen_cast_res_paths = screen_cast_res_paths
         self.setting_lock = setting_lock
         self.terminal_policy_id = terminal_policy_id
+        self.unlock_method = unlock_method
 
     def validate(self):
         pass
@@ -13577,8 +14572,12 @@ class UpdateTerminalPolicyRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.allow_manual_lock_screen is not None:
+            result['AllowManualLockScreen'] = self.allow_manual_lock_screen
         if self.background_mode_title is not None:
             result['BackgroundModeTitle'] = self.background_mode_title
+        if self.custom_screen_cast_res is not None:
+            result['CustomScreenCastRes'] = self.custom_screen_cast_res
         if self.display_layout is not None:
             result['DisplayLayout'] = self.display_layout
         if self.display_resolution is not None:
@@ -13593,20 +14592,46 @@ class UpdateTerminalPolicyRequest(TeaModel):
             result['EnableBackgroundMode'] = self.enable_background_mode
         if self.enable_bluetooth is not None:
             result['EnableBluetooth'] = self.enable_bluetooth
+        if self.enable_control_panel is not None:
+            result['EnableControlPanel'] = self.enable_control_panel
+        if self.enable_immersive_mode is not None:
+            result['EnableImmersiveMode'] = self.enable_immersive_mode
+        if self.enable_lock_screen_hot_key is not None:
+            result['EnableLockScreenHotKey'] = self.enable_lock_screen_hot_key
         if self.enable_modify_password is not None:
             result['EnableModifyPassword'] = self.enable_modify_password
+        if self.enable_scan_login is not None:
+            result['EnableScanLogin'] = self.enable_scan_login
         if self.enable_scheduled_reboot is not None:
             result['EnableScheduledReboot'] = self.enable_scheduled_reboot
         if self.enable_scheduled_shutdown is not None:
             result['EnableScheduledShutdown'] = self.enable_scheduled_shutdown
+        if self.enable_sms_login is not None:
+            result['EnableSmsLogin'] = self.enable_sms_login
         if self.enable_switch_personal is not None:
             result['EnableSwitchPersonal'] = self.enable_switch_personal
         if self.enable_wlan is not None:
             result['EnableWlan'] = self.enable_wlan
+        if self.follow_cloud_reboot is not None:
+            result['FollowCloudReboot'] = self.follow_cloud_reboot
+        if self.follow_cloud_shutdown is not None:
+            result['FollowCloudShutdown'] = self.follow_cloud_shutdown
+        if self.follow_terminal_reboot is not None:
+            result['FollowTerminalReboot'] = self.follow_terminal_reboot
+        if self.follow_terminal_shutdown is not None:
+            result['FollowTerminalShutdown'] = self.follow_terminal_shutdown
+        if self.force_set_pin_code is not None:
+            result['ForceSetPinCode'] = self.force_set_pin_code
         if self.idle_timeout is not None:
             result['IdleTimeout'] = self.idle_timeout
         if self.idle_timeout_action is not None:
             result['IdleTimeoutAction'] = self.idle_timeout_action
+        if self.lock_screen_password_required is not None:
+            result['LockScreenPasswordRequired'] = self.lock_screen_password_required
+        if self.lock_screen_timeout is not None:
+            result['LockScreenTimeout'] = self.lock_screen_timeout
+        if self.main_biz_type is not None:
+            result['MainBizType'] = self.main_biz_type
         if self.name is not None:
             result['Name'] = self.name
         if self.power_button_define is not None:
@@ -13617,20 +14642,30 @@ class UpdateTerminalPolicyRequest(TeaModel):
             result['PowerButtonDefineForNs'] = self.power_button_define_for_ns
         if self.power_on_behavior is not None:
             result['PowerOnBehavior'] = self.power_on_behavior
+        if self.running_mode is not None:
+            result['RunningMode'] = self.running_mode
         if self.scheduled_reboot is not None:
             result['ScheduledReboot'] = self.scheduled_reboot
         if self.scheduled_shutdown is not None:
             result['ScheduledShutdown'] = self.scheduled_shutdown
+        if self.screen_cast_res_paths is not None:
+            result['ScreenCastResPaths'] = self.screen_cast_res_paths
         if self.setting_lock is not None:
             result['SettingLock'] = self.setting_lock
         if self.terminal_policy_id is not None:
             result['TerminalPolicyId'] = self.terminal_policy_id
+        if self.unlock_method is not None:
+            result['UnlockMethod'] = self.unlock_method
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllowManualLockScreen') is not None:
+            self.allow_manual_lock_screen = m.get('AllowManualLockScreen')
         if m.get('BackgroundModeTitle') is not None:
             self.background_mode_title = m.get('BackgroundModeTitle')
+        if m.get('CustomScreenCastRes') is not None:
+            self.custom_screen_cast_res = m.get('CustomScreenCastRes')
         if m.get('DisplayLayout') is not None:
             self.display_layout = m.get('DisplayLayout')
         if m.get('DisplayResolution') is not None:
@@ -13645,20 +14680,46 @@ class UpdateTerminalPolicyRequest(TeaModel):
             self.enable_background_mode = m.get('EnableBackgroundMode')
         if m.get('EnableBluetooth') is not None:
             self.enable_bluetooth = m.get('EnableBluetooth')
+        if m.get('EnableControlPanel') is not None:
+            self.enable_control_panel = m.get('EnableControlPanel')
+        if m.get('EnableImmersiveMode') is not None:
+            self.enable_immersive_mode = m.get('EnableImmersiveMode')
+        if m.get('EnableLockScreenHotKey') is not None:
+            self.enable_lock_screen_hot_key = m.get('EnableLockScreenHotKey')
         if m.get('EnableModifyPassword') is not None:
             self.enable_modify_password = m.get('EnableModifyPassword')
+        if m.get('EnableScanLogin') is not None:
+            self.enable_scan_login = m.get('EnableScanLogin')
         if m.get('EnableScheduledReboot') is not None:
             self.enable_scheduled_reboot = m.get('EnableScheduledReboot')
         if m.get('EnableScheduledShutdown') is not None:
             self.enable_scheduled_shutdown = m.get('EnableScheduledShutdown')
+        if m.get('EnableSmsLogin') is not None:
+            self.enable_sms_login = m.get('EnableSmsLogin')
         if m.get('EnableSwitchPersonal') is not None:
             self.enable_switch_personal = m.get('EnableSwitchPersonal')
         if m.get('EnableWlan') is not None:
             self.enable_wlan = m.get('EnableWlan')
+        if m.get('FollowCloudReboot') is not None:
+            self.follow_cloud_reboot = m.get('FollowCloudReboot')
+        if m.get('FollowCloudShutdown') is not None:
+            self.follow_cloud_shutdown = m.get('FollowCloudShutdown')
+        if m.get('FollowTerminalReboot') is not None:
+            self.follow_terminal_reboot = m.get('FollowTerminalReboot')
+        if m.get('FollowTerminalShutdown') is not None:
+            self.follow_terminal_shutdown = m.get('FollowTerminalShutdown')
+        if m.get('ForceSetPinCode') is not None:
+            self.force_set_pin_code = m.get('ForceSetPinCode')
         if m.get('IdleTimeout') is not None:
             self.idle_timeout = m.get('IdleTimeout')
         if m.get('IdleTimeoutAction') is not None:
             self.idle_timeout_action = m.get('IdleTimeoutAction')
+        if m.get('LockScreenPasswordRequired') is not None:
+            self.lock_screen_password_required = m.get('LockScreenPasswordRequired')
+        if m.get('LockScreenTimeout') is not None:
+            self.lock_screen_timeout = m.get('LockScreenTimeout')
+        if m.get('MainBizType') is not None:
+            self.main_biz_type = m.get('MainBizType')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('PowerButtonDefine') is not None:
@@ -13669,14 +14730,20 @@ class UpdateTerminalPolicyRequest(TeaModel):
             self.power_button_define_for_ns = m.get('PowerButtonDefineForNs')
         if m.get('PowerOnBehavior') is not None:
             self.power_on_behavior = m.get('PowerOnBehavior')
+        if m.get('RunningMode') is not None:
+            self.running_mode = m.get('RunningMode')
         if m.get('ScheduledReboot') is not None:
             self.scheduled_reboot = m.get('ScheduledReboot')
         if m.get('ScheduledShutdown') is not None:
             self.scheduled_shutdown = m.get('ScheduledShutdown')
+        if m.get('ScreenCastResPaths') is not None:
+            self.screen_cast_res_paths = m.get('ScreenCastResPaths')
         if m.get('SettingLock') is not None:
             self.setting_lock = m.get('SettingLock')
         if m.get('TerminalPolicyId') is not None:
             self.terminal_policy_id = m.get('TerminalPolicyId')
+        if m.get('UnlockMethod') is not None:
+            self.unlock_method = m.get('UnlockMethod')
         return self
 
 
