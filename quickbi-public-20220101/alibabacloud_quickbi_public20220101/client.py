@@ -6009,6 +6009,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.access_source_flag):
+            query['AccessSourceFlag'] = request.access_source_flag
         if not UtilClient.is_unset(request.end_date):
             query['EndDate'] = request.end_date
         if not UtilClient.is_unset(request.log_type):
@@ -6021,6 +6023,8 @@ class Client(OpenApiClient):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.start_date):
             query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.user_access_device):
+            query['UserAccessDevice'] = request.user_access_device
         if not UtilClient.is_unset(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -6056,6 +6060,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.access_source_flag):
+            query['AccessSourceFlag'] = request.access_source_flag
         if not UtilClient.is_unset(request.end_date):
             query['EndDate'] = request.end_date
         if not UtilClient.is_unset(request.log_type):
@@ -6068,6 +6074,8 @@ class Client(OpenApiClient):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.start_date):
             query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.user_access_device):
+            query['UserAccessDevice'] = request.user_access_device
         if not UtilClient.is_unset(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -7142,8 +7150,8 @@ class Client(OpenApiClient):
     ) -> quickbi_public_20220101_models.QueryDatasetInfoResponse:
         """
         @summary Indicates whether the table is a custom SQL table. Valid values:
-        true: custom SQL table
-        false: non-custom SQL table
+        \\   true: custom SQL table
+        \\   false: non-custom SQL table
         
         @param request: QueryDatasetInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7179,8 +7187,8 @@ class Client(OpenApiClient):
     ) -> quickbi_public_20220101_models.QueryDatasetInfoResponse:
         """
         @summary Indicates whether the table is a custom SQL table. Valid values:
-        true: custom SQL table
-        false: non-custom SQL table
+        \\   true: custom SQL table
+        \\   false: non-custom SQL table
         
         @param request: QueryDatasetInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7215,8 +7223,8 @@ class Client(OpenApiClient):
     ) -> quickbi_public_20220101_models.QueryDatasetInfoResponse:
         """
         @summary Indicates whether the table is a custom SQL table. Valid values:
-        true: custom SQL table
-        false: non-custom SQL table
+        \\   true: custom SQL table
+        \\   false: non-custom SQL table
         
         @param request: QueryDatasetInfoRequest
         @return: QueryDatasetInfoResponse
@@ -7230,8 +7238,8 @@ class Client(OpenApiClient):
     ) -> quickbi_public_20220101_models.QueryDatasetInfoResponse:
         """
         @summary Indicates whether the table is a custom SQL table. Valid values:
-        true: custom SQL table
-        false: non-custom SQL table
+        \\   true: custom SQL table
+        \\   false: non-custom SQL table
         
         @param request: QueryDatasetInfoRequest
         @return: QueryDatasetInfoResponse
@@ -10609,7 +10617,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.SmartqAuthorizeResponse:
         """
-        @summary Batch Management of Smart Q\\&A Authorizations
+        @summary Batch Management of Smart Q\\\\\\&A Authorizations
         
         @description Used for batch management of smart Q&A authorizations. Repeatedly adding an authorization will be treated as a new addition; repeatedly deleting an authorization will be skipped by default and will not be recorded in the audit log.
         
@@ -10656,7 +10664,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.SmartqAuthorizeResponse:
         """
-        @summary Batch Management of Smart Q\\&A Authorizations
+        @summary Batch Management of Smart Q\\\\\\&A Authorizations
         
         @description Used for batch management of smart Q&A authorizations. Repeatedly adding an authorization will be treated as a new addition; repeatedly deleting an authorization will be skipped by default and will not be recorded in the audit log.
         
@@ -10702,7 +10710,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.SmartqAuthorizeRequest,
     ) -> quickbi_public_20220101_models.SmartqAuthorizeResponse:
         """
-        @summary Batch Management of Smart Q\\&A Authorizations
+        @summary Batch Management of Smart Q\\\\\\&A Authorizations
         
         @description Used for batch management of smart Q&A authorizations. Repeatedly adding an authorization will be treated as a new addition; repeatedly deleting an authorization will be skipped by default and will not be recorded in the audit log.
         
@@ -10717,7 +10725,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.SmartqAuthorizeRequest,
     ) -> quickbi_public_20220101_models.SmartqAuthorizeResponse:
         """
-        @summary Batch Management of Smart Q\\&A Authorizations
+        @summary Batch Management of Smart Q\\\\\\&A Authorizations
         
         @description Used for batch management of smart Q&A authorizations. Repeatedly adding an authorization will be treated as a new addition; repeatedly deleting an authorization will be skipped by default and will not be recorded in the audit log.
         

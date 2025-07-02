@@ -1,3 +1,8 @@
+2025-07-02 Version: 1.10.1
+- Update API QueryAuditLog: add request parameters AccessSourceFlag.
+- Update API QueryAuditLog: add request parameters UserAccessDevice.
+
+
 2025-05-28 Version: 1.10.0
 - Support API DataInterpretation.
 - Update API QueryDatasetInfo: add response parameters Body.Result.DimensionList.$.ExpressionV2.

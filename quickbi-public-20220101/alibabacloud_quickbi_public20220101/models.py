@@ -2837,7 +2837,7 @@ class CreateTicket4CopilotRequest(TeaModel):
         # 
         # - 1: Alibaba Cloud Primary Account
         # 
-        # - 3: QuickBI Self-built Account
+        # - 3: Quick BI Self-built Account
         # 
         # - 4: DingTalk
         # 
@@ -10296,14 +10296,17 @@ class QueryApprovalInfoResponse(TeaModel):
 class QueryAuditLogRequest(TeaModel):
     def __init__(
         self,
+        access_source_flag: str = None,
         end_date: str = None,
         log_type: str = None,
         operator_id: str = None,
         operator_types: str = None,
         resource_type: str = None,
         start_date: str = None,
+        user_access_device: str = None,
         workspace_id: str = None,
     ):
+        self.access_source_flag = access_source_flag
         # End date of the query, format ("yyyyMMdd").
         # 
         # This parameter is required.
@@ -10327,6 +10330,7 @@ class QueryAuditLogRequest(TeaModel):
         # 
         # This parameter is required.
         self.start_date = start_date
+        self.user_access_device = user_access_device
         # Workspace ID, the ID of the workspace to which the logs to be queried belong.
         self.workspace_id = workspace_id
 
@@ -10339,6 +10343,8 @@ class QueryAuditLogRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.access_source_flag is not None:
+            result['AccessSourceFlag'] = self.access_source_flag
         if self.end_date is not None:
             result['EndDate'] = self.end_date
         if self.log_type is not None:
@@ -10351,12 +10357,16 @@ class QueryAuditLogRequest(TeaModel):
             result['ResourceType'] = self.resource_type
         if self.start_date is not None:
             result['StartDate'] = self.start_date
+        if self.user_access_device is not None:
+            result['UserAccessDevice'] = self.user_access_device
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessSourceFlag') is not None:
+            self.access_source_flag = m.get('AccessSourceFlag')
         if m.get('EndDate') is not None:
             self.end_date = m.get('EndDate')
         if m.get('LogType') is not None:
@@ -10369,6 +10379,8 @@ class QueryAuditLogRequest(TeaModel):
             self.resource_type = m.get('ResourceType')
         if m.get('StartDate') is not None:
             self.start_date = m.get('StartDate')
+        if m.get('UserAccessDevice') is not None:
+            self.user_access_device = m.get('UserAccessDevice')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -13584,9 +13596,11 @@ class QueryDatasetInfoResponseBodyResultDimensionList(TeaModel):
         # *   number: a number
         # *   datetime: time
         self.expression = expression
+        # Expression for the flattened calculation dimensions.
         self.expression_v2 = expression_v2
         # Expression for a calculated dimension; valid only for calculated dimensions.
         self.fact_column = fact_column
+        # The description of the field.
         self.field_description = field_description
         # The type of the dimension. Valid values:
         # 
@@ -13733,12 +13747,14 @@ class QueryDatasetInfoResponseBodyResultMeasureList(TeaModel):
         # *   number: a number
         # *   datetime: time
         self.expression = expression
+        # Expression for flattened computation metrics.
         self.expression_v2 = expression_v2
         # The type of the measure. Valid values:
         # 
         # *   standard_measure: General Metrics
         # *   calculate_measure: Calculating Measures
         self.fact_column = fact_column
+        # The description of the field.
         self.field_description = field_description
         # An expression that calculates a measure; valid only for calculated measures.
         self.measure_type = measure_type
@@ -13834,7 +13850,7 @@ class QueryDatasetInfoResponseBodyResult(TeaModel):
         self.dataset_id = dataset_id
         # The user ID of the dataset owner in the Quick BI.
         self.dataset_name = dataset_name
-        # If it is a custom SQL table, this is the specific SQL.
+        # A list of all dimensions in the dataset.
         self.dimension_list = dimension_list
         # The unique ID of the metric.
         self.directory = directory
@@ -13851,8 +13867,12 @@ class QueryDatasetInfoResponseBodyResult(TeaModel):
         self.gmt_create = gmt_create
         # The information about the dataset.
         self.gmt_modify = gmt_modify
-        # The unique ID of the table to which the table belongs, which corresponds to the UniqueId of the CubeTypeList.
+        # A list of all measures for the dataset.
         self.measure_list = measure_list
+        # Whether to enable extraction acceleration. Valid values:
+        # 
+        # *   true
+        # *   false
         self.open_offline_acceleration = open_offline_acceleration
         # Test Space
         self.owner_id = owner_id
@@ -13997,7 +14017,7 @@ class QueryDatasetInfoResponseBody(TeaModel):
         # *   true: The call is successful.
         # *   false: The call fails.
         self.request_id = request_id
-        # The ID of the request.
+        # The dataset information.
         self.result = result
         # The unique ID of the dataset.
         self.success = success
@@ -21863,6 +21883,7 @@ class SmartqAuthorizeRequest(TeaModel):
         operation_type: int = None,
         user_ids: str = None,
     ):
+        # Array of dataset IDs, separated by English commas. <notice>This parameter will be converted to the corresponding question resource ID for authorization. Therefore, if the input cubeId does not correspond to any question resource, an error indicating that the question resource does not exist will be reported. Please ensure the correctness of the cubeId.</notice>
         self.cube_ids = cube_ids
         # Expiration time, with a default of seven days.
         # Format: 2099-12-31
