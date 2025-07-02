@@ -1306,6 +1306,221 @@ class GetEnterpriseVocAnalysisTaskResponse(TeaModel):
         return self
 
 
+class GetEssayCorrectionTaskRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class GetEssayCorrectionTaskResponseBodyDataResults(TeaModel):
+    def __init__(
+        self,
+        custom_id: str = None,
+        result: str = None,
+        score: int = None,
+    ):
+        # xxx
+        self.custom_id = custom_id
+        self.result = result
+        self.score = score
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_id is not None:
+            result['customId'] = self.custom_id
+        if self.result is not None:
+            result['result'] = self.result
+        if self.score is not None:
+            result['score'] = self.score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('customId') is not None:
+            self.custom_id = m.get('customId')
+        if m.get('result') is not None:
+            self.result = m.get('result')
+        if m.get('score') is not None:
+            self.score = m.get('score')
+        return self
+
+
+class GetEssayCorrectionTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        results: List[GetEssayCorrectionTaskResponseBodyDataResults] = None,
+        status: str = None,
+    ):
+        self.error_message = error_message
+        self.results = results
+        self.status = status
+
+    def validate(self):
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        result['results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['results'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        self.results = []
+        if m.get('results') is not None:
+            for k in m.get('results'):
+                temp_model = GetEssayCorrectionTaskResponseBodyDataResults()
+                self.results.append(temp_model.from_map(k))
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class GetEssayCorrectionTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetEssayCorrectionTaskResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = GetEssayCorrectionTaskResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetEssayCorrectionTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetEssayCorrectionTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetEssayCorrectionTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetTagMiningAnalysisTaskRequest(TeaModel):
     def __init__(
         self,
@@ -4446,6 +4661,322 @@ class RunEnterpriseVocAnalysisResponse(TeaModel):
         return self
 
 
+class RunEssayCorrectionRequest(TeaModel):
+    def __init__(
+        self,
+        answer: str = None,
+        grade: str = None,
+        model_id: str = None,
+        other_review_points: str = None,
+        question: str = None,
+        subject: str = None,
+        total_score: int = None,
+    ):
+        self.answer = answer
+        self.grade = grade
+        self.model_id = model_id
+        self.other_review_points = other_review_points
+        self.question = question
+        self.subject = subject
+        self.total_score = total_score
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.answer is not None:
+            result['answer'] = self.answer
+        if self.grade is not None:
+            result['grade'] = self.grade
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+        if self.other_review_points is not None:
+            result['otherReviewPoints'] = self.other_review_points
+        if self.question is not None:
+            result['question'] = self.question
+        if self.subject is not None:
+            result['subject'] = self.subject
+        if self.total_score is not None:
+            result['totalScore'] = self.total_score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('answer') is not None:
+            self.answer = m.get('answer')
+        if m.get('grade') is not None:
+            self.grade = m.get('grade')
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+        if m.get('otherReviewPoints') is not None:
+            self.other_review_points = m.get('otherReviewPoints')
+        if m.get('question') is not None:
+            self.question = m.get('question')
+        if m.get('subject') is not None:
+            self.subject = m.get('subject')
+        if m.get('totalScore') is not None:
+            self.total_score = m.get('totalScore')
+        return self
+
+
+class RunEssayCorrectionResponseBodyHeader(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        event: str = None,
+        session_id: str = None,
+        task_id: str = None,
+        trace_id: str = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.event = event
+        self.session_id = session_id
+        self.task_id = task_id
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.event is not None:
+            result['event'] = self.event
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('event') is not None:
+            self.event = m.get('event')
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class RunEssayCorrectionResponseBodyPayloadOutput(TeaModel):
+    def __init__(
+        self,
+        score: int = None,
+        text: str = None,
+    ):
+        self.score = score
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.score is not None:
+            result['score'] = self.score
+        if self.text is not None:
+            result['text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('score') is not None:
+            self.score = m.get('score')
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        return self
+
+
+class RunEssayCorrectionResponseBodyPayloadUsage(TeaModel):
+    def __init__(
+        self,
+        input_tokens: int = None,
+        output_tokens: int = None,
+        total_tokens: int = None,
+    ):
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
+        self.total_tokens = total_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_tokens is not None:
+            result['inputTokens'] = self.input_tokens
+        if self.output_tokens is not None:
+            result['outputTokens'] = self.output_tokens
+        if self.total_tokens is not None:
+            result['totalTokens'] = self.total_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('inputTokens') is not None:
+            self.input_tokens = m.get('inputTokens')
+        if m.get('outputTokens') is not None:
+            self.output_tokens = m.get('outputTokens')
+        if m.get('totalTokens') is not None:
+            self.total_tokens = m.get('totalTokens')
+        return self
+
+
+class RunEssayCorrectionResponseBodyPayload(TeaModel):
+    def __init__(
+        self,
+        output: RunEssayCorrectionResponseBodyPayloadOutput = None,
+        usage: RunEssayCorrectionResponseBodyPayloadUsage = None,
+    ):
+        self.output = output
+        self.usage = usage
+
+    def validate(self):
+        if self.output:
+            self.output.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output is not None:
+            result['output'] = self.output.to_map()
+        if self.usage is not None:
+            result['usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('output') is not None:
+            temp_model = RunEssayCorrectionResponseBodyPayloadOutput()
+            self.output = temp_model.from_map(m['output'])
+        if m.get('usage') is not None:
+            temp_model = RunEssayCorrectionResponseBodyPayloadUsage()
+            self.usage = temp_model.from_map(m['usage'])
+        return self
+
+
+class RunEssayCorrectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        header: RunEssayCorrectionResponseBodyHeader = None,
+        payload: RunEssayCorrectionResponseBodyPayload = None,
+        request_id: str = None,
+    ):
+        self.header = header
+        self.payload = payload
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.header:
+            self.header.validate()
+        if self.payload:
+            self.payload.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.header is not None:
+            result['header'] = self.header.to_map()
+        if self.payload is not None:
+            result['payload'] = self.payload.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('header') is not None:
+            temp_model = RunEssayCorrectionResponseBodyHeader()
+            self.header = temp_model.from_map(m['header'])
+        if m.get('payload') is not None:
+            temp_model = RunEssayCorrectionResponseBodyPayload()
+            self.payload = temp_model.from_map(m['payload'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class RunEssayCorrectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RunEssayCorrectionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RunEssayCorrectionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RunHotTopicChatRequestMessages(TeaModel):
     def __init__(
         self,
@@ -6819,6 +7350,292 @@ class RunNetworkContentAuditResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RunNetworkContentAuditResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RunOcrParseRequest(TeaModel):
+    def __init__(
+        self,
+        file_key: str = None,
+        model_id: str = None,
+        url: str = None,
+    ):
+        self.file_key = file_key
+        self.model_id = model_id
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_key is not None:
+            result['fileKey'] = self.file_key
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileKey') is not None:
+            self.file_key = m.get('fileKey')
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class RunOcrParseResponseBodyHeader(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        event: str = None,
+        session_id: str = None,
+        task_id: str = None,
+        trace_id: str = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.event = event
+        self.session_id = session_id
+        self.task_id = task_id
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.event is not None:
+            result['event'] = self.event
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('event') is not None:
+            self.event = m.get('event')
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class RunOcrParseResponseBodyPayloadOutput(TeaModel):
+    def __init__(
+        self,
+        text: str = None,
+    ):
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.text is not None:
+            result['text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        return self
+
+
+class RunOcrParseResponseBodyPayloadUsage(TeaModel):
+    def __init__(
+        self,
+        input_tokens: int = None,
+        output_tokens: int = None,
+        total_tokens: int = None,
+    ):
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
+        self.total_tokens = total_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_tokens is not None:
+            result['inputTokens'] = self.input_tokens
+        if self.output_tokens is not None:
+            result['outputTokens'] = self.output_tokens
+        if self.total_tokens is not None:
+            result['totalTokens'] = self.total_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('inputTokens') is not None:
+            self.input_tokens = m.get('inputTokens')
+        if m.get('outputTokens') is not None:
+            self.output_tokens = m.get('outputTokens')
+        if m.get('totalTokens') is not None:
+            self.total_tokens = m.get('totalTokens')
+        return self
+
+
+class RunOcrParseResponseBodyPayload(TeaModel):
+    def __init__(
+        self,
+        output: RunOcrParseResponseBodyPayloadOutput = None,
+        usage: RunOcrParseResponseBodyPayloadUsage = None,
+    ):
+        self.output = output
+        self.usage = usage
+
+    def validate(self):
+        if self.output:
+            self.output.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output is not None:
+            result['output'] = self.output.to_map()
+        if self.usage is not None:
+            result['usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('output') is not None:
+            temp_model = RunOcrParseResponseBodyPayloadOutput()
+            self.output = temp_model.from_map(m['output'])
+        if m.get('usage') is not None:
+            temp_model = RunOcrParseResponseBodyPayloadUsage()
+            self.usage = temp_model.from_map(m['usage'])
+        return self
+
+
+class RunOcrParseResponseBody(TeaModel):
+    def __init__(
+        self,
+        header: RunOcrParseResponseBodyHeader = None,
+        payload: RunOcrParseResponseBodyPayload = None,
+        request_id: str = None,
+    ):
+        self.header = header
+        self.payload = payload
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.header:
+            self.header.validate()
+        if self.payload:
+            self.payload.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.header is not None:
+            result['header'] = self.header.to_map()
+        if self.payload is not None:
+            result['payload'] = self.payload.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('header') is not None:
+            temp_model = RunOcrParseResponseBodyHeader()
+            self.header = temp_model.from_map(m['header'])
+        if m.get('payload') is not None:
+            temp_model = RunOcrParseResponseBodyPayload()
+            self.payload = temp_model.from_map(m['payload'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class RunOcrParseResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RunOcrParseResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RunOcrParseResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10970,6 +11787,324 @@ class SubmitEnterpriseVocAnalysisTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SubmitEnterpriseVocAnalysisTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitEssayCorrectionTaskRequestTasks(TeaModel):
+    def __init__(
+        self,
+        answer: str = None,
+        grade: str = None,
+        other_review_points: str = None,
+        question: str = None,
+        subject: str = None,
+        total_score: int = None,
+    ):
+        self.answer = answer
+        self.grade = grade
+        self.other_review_points = other_review_points
+        self.question = question
+        self.subject = subject
+        self.total_score = total_score
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.answer is not None:
+            result['answer'] = self.answer
+        if self.grade is not None:
+            result['grade'] = self.grade
+        if self.other_review_points is not None:
+            result['otherReviewPoints'] = self.other_review_points
+        if self.question is not None:
+            result['question'] = self.question
+        if self.subject is not None:
+            result['subject'] = self.subject
+        if self.total_score is not None:
+            result['totalScore'] = self.total_score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('answer') is not None:
+            self.answer = m.get('answer')
+        if m.get('grade') is not None:
+            self.grade = m.get('grade')
+        if m.get('otherReviewPoints') is not None:
+            self.other_review_points = m.get('otherReviewPoints')
+        if m.get('question') is not None:
+            self.question = m.get('question')
+        if m.get('subject') is not None:
+            self.subject = m.get('subject')
+        if m.get('totalScore') is not None:
+            self.total_score = m.get('totalScore')
+        return self
+
+
+class SubmitEssayCorrectionTaskRequest(TeaModel):
+    def __init__(
+        self,
+        grade: str = None,
+        model_id: str = None,
+        other_review_points: str = None,
+        question: str = None,
+        subject: str = None,
+        tasks: List[SubmitEssayCorrectionTaskRequestTasks] = None,
+        total_score: int = None,
+    ):
+        self.grade = grade
+        self.model_id = model_id
+        self.other_review_points = other_review_points
+        self.question = question
+        self.subject = subject
+        self.tasks = tasks
+        self.total_score = total_score
+
+    def validate(self):
+        if self.tasks:
+            for k in self.tasks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.grade is not None:
+            result['grade'] = self.grade
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+        if self.other_review_points is not None:
+            result['otherReviewPoints'] = self.other_review_points
+        if self.question is not None:
+            result['question'] = self.question
+        if self.subject is not None:
+            result['subject'] = self.subject
+        result['tasks'] = []
+        if self.tasks is not None:
+            for k in self.tasks:
+                result['tasks'].append(k.to_map() if k else None)
+        if self.total_score is not None:
+            result['totalScore'] = self.total_score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('grade') is not None:
+            self.grade = m.get('grade')
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+        if m.get('otherReviewPoints') is not None:
+            self.other_review_points = m.get('otherReviewPoints')
+        if m.get('question') is not None:
+            self.question = m.get('question')
+        if m.get('subject') is not None:
+            self.subject = m.get('subject')
+        self.tasks = []
+        if m.get('tasks') is not None:
+            for k in m.get('tasks'):
+                temp_model = SubmitEssayCorrectionTaskRequestTasks()
+                self.tasks.append(temp_model.from_map(k))
+        if m.get('totalScore') is not None:
+            self.total_score = m.get('totalScore')
+        return self
+
+
+class SubmitEssayCorrectionTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        grade: str = None,
+        model_id: str = None,
+        other_review_points: str = None,
+        question: str = None,
+        subject: str = None,
+        tasks_shrink: str = None,
+        total_score: int = None,
+    ):
+        self.grade = grade
+        self.model_id = model_id
+        self.other_review_points = other_review_points
+        self.question = question
+        self.subject = subject
+        self.tasks_shrink = tasks_shrink
+        self.total_score = total_score
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.grade is not None:
+            result['grade'] = self.grade
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+        if self.other_review_points is not None:
+            result['otherReviewPoints'] = self.other_review_points
+        if self.question is not None:
+            result['question'] = self.question
+        if self.subject is not None:
+            result['subject'] = self.subject
+        if self.tasks_shrink is not None:
+            result['tasks'] = self.tasks_shrink
+        if self.total_score is not None:
+            result['totalScore'] = self.total_score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('grade') is not None:
+            self.grade = m.get('grade')
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+        if m.get('otherReviewPoints') is not None:
+            self.other_review_points = m.get('otherReviewPoints')
+        if m.get('question') is not None:
+            self.question = m.get('question')
+        if m.get('subject') is not None:
+            self.subject = m.get('subject')
+        if m.get('tasks') is not None:
+            self.tasks_shrink = m.get('tasks')
+        if m.get('totalScore') is not None:
+            self.total_score = m.get('totalScore')
+        return self
+
+
+class SubmitEssayCorrectionTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class SubmitEssayCorrectionTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: SubmitEssayCorrectionTaskResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = SubmitEssayCorrectionTaskResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class SubmitEssayCorrectionTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitEssayCorrectionTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitEssayCorrectionTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

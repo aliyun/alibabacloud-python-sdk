@@ -1,3 +1,10 @@
+2025-07-02 Version: 2.10.0
+- Support API GetEssayCorrectionTask.
+- Support API RunEssayCorrection.
+- Support API RunOcrParse.
+- Support API SubmitEssayCorrectionTask.
+
+
 2025-05-30 Version: 2.9.3
 - Update API RunMarketingInformationWriting: add response parameters Body.payload.output.reasonContent.
 

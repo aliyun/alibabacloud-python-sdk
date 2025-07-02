@@ -621,6 +621,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_enterprise_voc_analysis_task_with_options_async(workspace_id, request, headers, runtime)
 
+    def get_essay_correction_task_with_options(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.GetEssayCorrectionTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.GetEssayCorrectionTaskResponse:
+        """
+        @summary 获取作业批改结果
+        
+        @param request: GetEssayCorrectionTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEssayCorrectionTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEssayCorrectionTask',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/getEssayCorrectionTask',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.GetEssayCorrectionTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_essay_correction_task_with_options_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.GetEssayCorrectionTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.GetEssayCorrectionTaskResponse:
+        """
+        @summary 获取作业批改结果
+        
+        @param request: GetEssayCorrectionTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEssayCorrectionTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEssayCorrectionTask',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/getEssayCorrectionTask',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.GetEssayCorrectionTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_essay_correction_task(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.GetEssayCorrectionTaskRequest,
+    ) -> quan_miao_light_app_20240801_models.GetEssayCorrectionTaskResponse:
+        """
+        @summary 获取作业批改结果
+        
+        @param request: GetEssayCorrectionTaskRequest
+        @return: GetEssayCorrectionTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_essay_correction_task_with_options(workspace_id, request, headers, runtime)
+
+    async def get_essay_correction_task_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.GetEssayCorrectionTaskRequest,
+    ) -> quan_miao_light_app_20240801_models.GetEssayCorrectionTaskResponse:
+        """
+        @summary 获取作业批改结果
+        
+        @param request: GetEssayCorrectionTaskRequest
+        @return: GetEssayCorrectionTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_essay_correction_task_with_options_async(workspace_id, request, headers, runtime)
+
     def get_tag_mining_analysis_task_with_options(
         self,
         workspace_id: str,
@@ -1431,6 +1539,138 @@ class Client(OpenApiClient):
         headers = {}
         return await self.run_enterprise_voc_analysis_with_options_async(workspace_id, request, headers, runtime)
 
+    def run_essay_correction_with_options(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.RunEssayCorrectionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.RunEssayCorrectionResponse:
+        """
+        @summary 作业批改
+        
+        @param request: RunEssayCorrectionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunEssayCorrectionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.answer):
+            body['answer'] = request.answer
+        if not UtilClient.is_unset(request.grade):
+            body['grade'] = request.grade
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.other_review_points):
+            body['otherReviewPoints'] = request.other_review_points
+        if not UtilClient.is_unset(request.question):
+            body['question'] = request.question
+        if not UtilClient.is_unset(request.subject):
+            body['subject'] = request.subject
+        if not UtilClient.is_unset(request.total_score):
+            body['totalScore'] = request.total_score
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunEssayCorrection',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/runEssayCorrection',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunEssayCorrectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_essay_correction_with_options_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.RunEssayCorrectionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.RunEssayCorrectionResponse:
+        """
+        @summary 作业批改
+        
+        @param request: RunEssayCorrectionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunEssayCorrectionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.answer):
+            body['answer'] = request.answer
+        if not UtilClient.is_unset(request.grade):
+            body['grade'] = request.grade
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.other_review_points):
+            body['otherReviewPoints'] = request.other_review_points
+        if not UtilClient.is_unset(request.question):
+            body['question'] = request.question
+        if not UtilClient.is_unset(request.subject):
+            body['subject'] = request.subject
+        if not UtilClient.is_unset(request.total_score):
+            body['totalScore'] = request.total_score
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunEssayCorrection',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/runEssayCorrection',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunEssayCorrectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_essay_correction(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.RunEssayCorrectionRequest,
+    ) -> quan_miao_light_app_20240801_models.RunEssayCorrectionResponse:
+        """
+        @summary 作业批改
+        
+        @param request: RunEssayCorrectionRequest
+        @return: RunEssayCorrectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.run_essay_correction_with_options(workspace_id, request, headers, runtime)
+
+    async def run_essay_correction_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.RunEssayCorrectionRequest,
+    ) -> quan_miao_light_app_20240801_models.RunEssayCorrectionResponse:
+        """
+        @summary 作业批改
+        
+        @param request: RunEssayCorrectionRequest
+        @return: RunEssayCorrectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.run_essay_correction_with_options_async(workspace_id, request, headers, runtime)
+
     def run_hot_topic_chat_with_options(
         self,
         workspace_id: str,
@@ -2138,6 +2378,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.run_network_content_audit_with_options_async(workspace_id, request, headers, runtime)
+
+    def run_ocr_parse_with_options(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.RunOcrParseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.RunOcrParseResponse:
+        """
+        @summary 作业批改
+        
+        @param request: RunOcrParseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunOcrParseResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_key):
+            body['fileKey'] = request.file_key
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.url):
+            body['url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunOcrParse',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/runOcrParse',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunOcrParseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_ocr_parse_with_options_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.RunOcrParseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.RunOcrParseResponse:
+        """
+        @summary 作业批改
+        
+        @param request: RunOcrParseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunOcrParseResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_key):
+            body['fileKey'] = request.file_key
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.url):
+            body['url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunOcrParse',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/runOcrParse',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunOcrParseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_ocr_parse(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.RunOcrParseRequest,
+    ) -> quan_miao_light_app_20240801_models.RunOcrParseResponse:
+        """
+        @summary 作业批改
+        
+        @param request: RunOcrParseRequest
+        @return: RunOcrParseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.run_ocr_parse_with_options(workspace_id, request, headers, runtime)
+
+    async def run_ocr_parse_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.RunOcrParseRequest,
+    ) -> quan_miao_light_app_20240801_models.RunOcrParseResponse:
+        """
+        @summary 作业批改
+        
+        @param request: RunOcrParseRequest
+        @return: RunOcrParseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.run_ocr_parse_with_options_async(workspace_id, request, headers, runtime)
 
     def run_script_chat_with_options(
         self,
@@ -3266,6 +3622,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.submit_enterprise_voc_analysis_task_with_options_async(workspace_id, request, headers, runtime)
+
+    def submit_essay_correction_task_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: quan_miao_light_app_20240801_models.SubmitEssayCorrectionTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.SubmitEssayCorrectionTaskResponse:
+        """
+        @summary 提交批改任务
+        
+        @param tmp_req: SubmitEssayCorrectionTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitEssayCorrectionTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = quan_miao_light_app_20240801_models.SubmitEssayCorrectionTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tasks):
+            request.tasks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tasks, 'tasks', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.grade):
+            body['grade'] = request.grade
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.other_review_points):
+            body['otherReviewPoints'] = request.other_review_points
+        if not UtilClient.is_unset(request.question):
+            body['question'] = request.question
+        if not UtilClient.is_unset(request.subject):
+            body['subject'] = request.subject
+        if not UtilClient.is_unset(request.tasks_shrink):
+            body['tasks'] = request.tasks_shrink
+        if not UtilClient.is_unset(request.total_score):
+            body['totalScore'] = request.total_score
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitEssayCorrectionTask',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/submitEssayCorrectionTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.SubmitEssayCorrectionTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_essay_correction_task_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: quan_miao_light_app_20240801_models.SubmitEssayCorrectionTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.SubmitEssayCorrectionTaskResponse:
+        """
+        @summary 提交批改任务
+        
+        @param tmp_req: SubmitEssayCorrectionTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitEssayCorrectionTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = quan_miao_light_app_20240801_models.SubmitEssayCorrectionTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tasks):
+            request.tasks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tasks, 'tasks', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.grade):
+            body['grade'] = request.grade
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.other_review_points):
+            body['otherReviewPoints'] = request.other_review_points
+        if not UtilClient.is_unset(request.question):
+            body['question'] = request.question
+        if not UtilClient.is_unset(request.subject):
+            body['subject'] = request.subject
+        if not UtilClient.is_unset(request.tasks_shrink):
+            body['tasks'] = request.tasks_shrink
+        if not UtilClient.is_unset(request.total_score):
+            body['totalScore'] = request.total_score
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitEssayCorrectionTask',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/submitEssayCorrectionTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.SubmitEssayCorrectionTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_essay_correction_task(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.SubmitEssayCorrectionTaskRequest,
+    ) -> quan_miao_light_app_20240801_models.SubmitEssayCorrectionTaskResponse:
+        """
+        @summary 提交批改任务
+        
+        @param request: SubmitEssayCorrectionTaskRequest
+        @return: SubmitEssayCorrectionTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.submit_essay_correction_task_with_options(workspace_id, request, headers, runtime)
+
+    async def submit_essay_correction_task_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.SubmitEssayCorrectionTaskRequest,
+    ) -> quan_miao_light_app_20240801_models.SubmitEssayCorrectionTaskResponse:
+        """
+        @summary 提交批改任务
+        
+        @param request: SubmitEssayCorrectionTaskRequest
+        @return: SubmitEssayCorrectionTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.submit_essay_correction_task_with_options_async(workspace_id, request, headers, runtime)
 
     def submit_tag_mining_analysis_task_with_options(
         self,
