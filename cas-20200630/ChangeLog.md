@@ -1,3 +1,6 @@
+2025-07-02 Version: 1.1.3
+- Generated python 2020-06-30 for cas.
+
 2025-06-27 Version: 1.1.2
 - Update API DescribeCACertificateList: add response parameters Body.CertificateList.$.Gift.
 - Update API DescribeCACertificateList: add response parameters Body.CertificateList.$.Trial.
