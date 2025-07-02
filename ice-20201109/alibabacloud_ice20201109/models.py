@@ -10,11 +10,13 @@ class AIAgentConfigAsrConfig(TeaModel):
         asr_hot_words: List[str] = None,
         asr_language_id: str = None,
         asr_max_silence: int = None,
+        custom_params: str = None,
         vad_level: int = None,
     ):
         self.asr_hot_words = asr_hot_words
         self.asr_language_id = asr_language_id
         self.asr_max_silence = asr_max_silence
+        self.custom_params = custom_params
         self.vad_level = vad_level
 
     def validate(self):
@@ -32,6 +34,8 @@ class AIAgentConfigAsrConfig(TeaModel):
             result['AsrLanguageId'] = self.asr_language_id
         if self.asr_max_silence is not None:
             result['AsrMaxSilence'] = self.asr_max_silence
+        if self.custom_params is not None:
+            result['CustomParams'] = self.custom_params
         if self.vad_level is not None:
             result['VadLevel'] = self.vad_level
         return result
@@ -44,6 +48,8 @@ class AIAgentConfigAsrConfig(TeaModel):
             self.asr_language_id = m.get('AsrLanguageId')
         if m.get('AsrMaxSilence') is not None:
             self.asr_max_silence = m.get('AsrMaxSilence')
+        if m.get('CustomParams') is not None:
+            self.custom_params = m.get('CustomParams')
         if m.get('VadLevel') is not None:
             self.vad_level = m.get('VadLevel')
         return self
@@ -195,14 +201,16 @@ class AIAgentConfigLlmConfig(TeaModel):
         return self
 
 
-class AIAgentConfigTtsConfig(TeaModel):
+class AIAgentConfigTtsConfigPronunciationRules(TeaModel):
     def __init__(
         self,
-        voice_id: str = None,
-        voice_id_list: List[str] = None,
+        pronunciation: str = None,
+        type: str = None,
+        word: str = None,
     ):
-        self.voice_id = voice_id
-        self.voice_id_list = voice_id_list
+        self.pronunciation = pronunciation
+        self.type = type
+        self.word = word
 
     def validate(self):
         pass
@@ -213,6 +221,52 @@ class AIAgentConfigTtsConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.pronunciation is not None:
+            result['Pronunciation'] = self.pronunciation
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.word is not None:
+            result['Word'] = self.word
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Pronunciation') is not None:
+            self.pronunciation = m.get('Pronunciation')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Word') is not None:
+            self.word = m.get('Word')
+        return self
+
+
+class AIAgentConfigTtsConfig(TeaModel):
+    def __init__(
+        self,
+        pronunciation_rules: List[AIAgentConfigTtsConfigPronunciationRules] = None,
+        voice_id: str = None,
+        voice_id_list: List[str] = None,
+    ):
+        self.pronunciation_rules = pronunciation_rules
+        self.voice_id = voice_id
+        self.voice_id_list = voice_id_list
+
+    def validate(self):
+        if self.pronunciation_rules:
+            for k in self.pronunciation_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PronunciationRules'] = []
+        if self.pronunciation_rules is not None:
+            for k in self.pronunciation_rules:
+                result['PronunciationRules'].append(k.to_map() if k else None)
         if self.voice_id is not None:
             result['VoiceId'] = self.voice_id
         if self.voice_id_list is not None:
@@ -221,6 +275,11 @@ class AIAgentConfigTtsConfig(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.pronunciation_rules = []
+        if m.get('PronunciationRules') is not None:
+            for k in m.get('PronunciationRules'):
+                temp_model = AIAgentConfigTtsConfigPronunciationRules()
+                self.pronunciation_rules.append(temp_model.from_map(k))
         if m.get('VoiceId') is not None:
             self.voice_id = m.get('VoiceId')
         if m.get('VoiceIdList') is not None:
@@ -231,8 +290,12 @@ class AIAgentConfigTtsConfig(TeaModel):
 class AIAgentConfigTurnDetectionConfig(TeaModel):
     def __init__(
         self,
+        mode: str = None,
+        semantic_wait_duration: int = None,
         turn_end_words: List[str] = None,
     ):
+        self.mode = mode
+        self.semantic_wait_duration = semantic_wait_duration
         self.turn_end_words = turn_end_words
 
     def validate(self):
@@ -244,14 +307,234 @@ class AIAgentConfigTurnDetectionConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.semantic_wait_duration is not None:
+            result['SemanticWaitDuration'] = self.semantic_wait_duration
         if self.turn_end_words is not None:
             result['TurnEndWords'] = self.turn_end_words
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('SemanticWaitDuration') is not None:
+            self.semantic_wait_duration = m.get('SemanticWaitDuration')
         if m.get('TurnEndWords') is not None:
             self.turn_end_words = m.get('TurnEndWords')
+        return self
+
+
+class AIAgentConfigVcrConfigEquipment(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+    ):
+        self.enabled = enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        return self
+
+
+class AIAgentConfigVcrConfigHeadMotion(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+    ):
+        self.enabled = enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        return self
+
+
+class AIAgentConfigVcrConfigInvalidFrameMotion(TeaModel):
+    def __init__(
+        self,
+        callback_delay: int = None,
+        enabled: bool = None,
+    ):
+        self.callback_delay = callback_delay
+        self.enabled = enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.callback_delay is not None:
+            result['CallbackDelay'] = self.callback_delay
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallbackDelay') is not None:
+            self.callback_delay = m.get('CallbackDelay')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        return self
+
+
+class AIAgentConfigVcrConfigPeopleCount(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+    ):
+        self.enabled = enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        return self
+
+
+class AIAgentConfigVcrConfigStillFrameMotion(TeaModel):
+    def __init__(
+        self,
+        callback_delay: int = None,
+        enabled: bool = None,
+    ):
+        self.callback_delay = callback_delay
+        self.enabled = enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.callback_delay is not None:
+            result['CallbackDelay'] = self.callback_delay
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallbackDelay') is not None:
+            self.callback_delay = m.get('CallbackDelay')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        return self
+
+
+class AIAgentConfigVcrConfig(TeaModel):
+    def __init__(
+        self,
+        equipment: AIAgentConfigVcrConfigEquipment = None,
+        head_motion: AIAgentConfigVcrConfigHeadMotion = None,
+        invalid_frame_motion: AIAgentConfigVcrConfigInvalidFrameMotion = None,
+        people_count: AIAgentConfigVcrConfigPeopleCount = None,
+        still_frame_motion: AIAgentConfigVcrConfigStillFrameMotion = None,
+    ):
+        self.equipment = equipment
+        self.head_motion = head_motion
+        self.invalid_frame_motion = invalid_frame_motion
+        self.people_count = people_count
+        self.still_frame_motion = still_frame_motion
+
+    def validate(self):
+        if self.equipment:
+            self.equipment.validate()
+        if self.head_motion:
+            self.head_motion.validate()
+        if self.invalid_frame_motion:
+            self.invalid_frame_motion.validate()
+        if self.people_count:
+            self.people_count.validate()
+        if self.still_frame_motion:
+            self.still_frame_motion.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.equipment is not None:
+            result['Equipment'] = self.equipment.to_map()
+        if self.head_motion is not None:
+            result['HeadMotion'] = self.head_motion.to_map()
+        if self.invalid_frame_motion is not None:
+            result['InvalidFrameMotion'] = self.invalid_frame_motion.to_map()
+        if self.people_count is not None:
+            result['PeopleCount'] = self.people_count.to_map()
+        if self.still_frame_motion is not None:
+            result['StillFrameMotion'] = self.still_frame_motion.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Equipment') is not None:
+            temp_model = AIAgentConfigVcrConfigEquipment()
+            self.equipment = temp_model.from_map(m['Equipment'])
+        if m.get('HeadMotion') is not None:
+            temp_model = AIAgentConfigVcrConfigHeadMotion()
+            self.head_motion = temp_model.from_map(m['HeadMotion'])
+        if m.get('InvalidFrameMotion') is not None:
+            temp_model = AIAgentConfigVcrConfigInvalidFrameMotion()
+            self.invalid_frame_motion = temp_model.from_map(m['InvalidFrameMotion'])
+        if m.get('PeopleCount') is not None:
+            temp_model = AIAgentConfigVcrConfigPeopleCount()
+            self.people_count = temp_model.from_map(m['PeopleCount'])
+        if m.get('StillFrameMotion') is not None:
+            temp_model = AIAgentConfigVcrConfigStillFrameMotion()
+            self.still_frame_motion = temp_model.from_map(m['StillFrameMotion'])
         return self
 
 
@@ -307,6 +590,7 @@ class AIAgentConfig(TeaModel):
         turn_detection_config: AIAgentConfigTurnDetectionConfig = None,
         user_offline_timeout: int = None,
         user_online_timeout: int = None,
+        vcr_config: AIAgentConfigVcrConfig = None,
         voiceprint_config: AIAgentConfigVoiceprintConfig = None,
         volume: int = None,
         wake_up_query: str = None,
@@ -328,6 +612,7 @@ class AIAgentConfig(TeaModel):
         self.turn_detection_config = turn_detection_config
         self.user_offline_timeout = user_offline_timeout
         self.user_online_timeout = user_online_timeout
+        self.vcr_config = vcr_config
         self.voiceprint_config = voiceprint_config
         self.volume = volume
         self.wake_up_query = wake_up_query
@@ -346,6 +631,8 @@ class AIAgentConfig(TeaModel):
             self.tts_config.validate()
         if self.turn_detection_config:
             self.turn_detection_config.validate()
+        if self.vcr_config:
+            self.vcr_config.validate()
         if self.voiceprint_config:
             self.voiceprint_config.validate()
 
@@ -387,6 +674,8 @@ class AIAgentConfig(TeaModel):
             result['UserOfflineTimeout'] = self.user_offline_timeout
         if self.user_online_timeout is not None:
             result['UserOnlineTimeout'] = self.user_online_timeout
+        if self.vcr_config is not None:
+            result['VcrConfig'] = self.vcr_config.to_map()
         if self.voiceprint_config is not None:
             result['VoiceprintConfig'] = self.voiceprint_config.to_map()
         if self.volume is not None:
@@ -437,6 +726,9 @@ class AIAgentConfig(TeaModel):
             self.user_offline_timeout = m.get('UserOfflineTimeout')
         if m.get('UserOnlineTimeout') is not None:
             self.user_online_timeout = m.get('UserOnlineTimeout')
+        if m.get('VcrConfig') is not None:
+            temp_model = AIAgentConfigVcrConfig()
+            self.vcr_config = temp_model.from_map(m['VcrConfig'])
         if m.get('VoiceprintConfig') is not None:
             temp_model = AIAgentConfigVoiceprintConfig()
             self.voiceprint_config = temp_model.from_map(m['VoiceprintConfig'])
@@ -455,11 +747,13 @@ class AIAgentOutboundCallConfigAsrConfig(TeaModel):
         asr_hot_words: List[str] = None,
         asr_language_id: str = None,
         asr_max_silence: int = None,
+        custom_params: str = None,
         vad_level: int = None,
     ):
         self.asr_hot_words = asr_hot_words
         self.asr_language_id = asr_language_id
         self.asr_max_silence = asr_max_silence
+        self.custom_params = custom_params
         self.vad_level = vad_level
 
     def validate(self):
@@ -477,6 +771,8 @@ class AIAgentOutboundCallConfigAsrConfig(TeaModel):
             result['AsrLanguageId'] = self.asr_language_id
         if self.asr_max_silence is not None:
             result['AsrMaxSilence'] = self.asr_max_silence
+        if self.custom_params is not None:
+            result['CustomParams'] = self.custom_params
         if self.vad_level is not None:
             result['VadLevel'] = self.vad_level
         return result
@@ -489,6 +785,8 @@ class AIAgentOutboundCallConfigAsrConfig(TeaModel):
             self.asr_language_id = m.get('AsrLanguageId')
         if m.get('AsrMaxSilence') is not None:
             self.asr_max_silence = m.get('AsrMaxSilence')
+        if m.get('CustomParams') is not None:
+            self.custom_params = m.get('CustomParams')
         if m.get('VadLevel') is not None:
             self.vad_level = m.get('VadLevel')
         return self
@@ -613,14 +911,16 @@ class AIAgentOutboundCallConfigLlmConfig(TeaModel):
         return self
 
 
-class AIAgentOutboundCallConfigTtsConfig(TeaModel):
+class AIAgentOutboundCallConfigTtsConfigPronunciationRules(TeaModel):
     def __init__(
         self,
-        voice_id: str = None,
-        voice_id_list: List[str] = None,
+        pronunciation: str = None,
+        type: str = None,
+        word: str = None,
     ):
-        self.voice_id = voice_id
-        self.voice_id_list = voice_id_list
+        self.pronunciation = pronunciation
+        self.type = type
+        self.word = word
 
     def validate(self):
         pass
@@ -631,6 +931,52 @@ class AIAgentOutboundCallConfigTtsConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.pronunciation is not None:
+            result['Pronunciation'] = self.pronunciation
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.word is not None:
+            result['Word'] = self.word
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Pronunciation') is not None:
+            self.pronunciation = m.get('Pronunciation')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Word') is not None:
+            self.word = m.get('Word')
+        return self
+
+
+class AIAgentOutboundCallConfigTtsConfig(TeaModel):
+    def __init__(
+        self,
+        pronunciation_rules: List[AIAgentOutboundCallConfigTtsConfigPronunciationRules] = None,
+        voice_id: str = None,
+        voice_id_list: List[str] = None,
+    ):
+        self.pronunciation_rules = pronunciation_rules
+        self.voice_id = voice_id
+        self.voice_id_list = voice_id_list
+
+    def validate(self):
+        if self.pronunciation_rules:
+            for k in self.pronunciation_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PronunciationRules'] = []
+        if self.pronunciation_rules is not None:
+            for k in self.pronunciation_rules:
+                result['PronunciationRules'].append(k.to_map() if k else None)
         if self.voice_id is not None:
             result['VoiceId'] = self.voice_id
         if self.voice_id_list is not None:
@@ -639,6 +985,11 @@ class AIAgentOutboundCallConfigTtsConfig(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.pronunciation_rules = []
+        if m.get('PronunciationRules') is not None:
+            for k in m.get('PronunciationRules'):
+                temp_model = AIAgentOutboundCallConfigTtsConfigPronunciationRules()
+                self.pronunciation_rules.append(temp_model.from_map(k))
         if m.get('VoiceId') is not None:
             self.voice_id = m.get('VoiceId')
         if m.get('VoiceIdList') is not None:
@@ -649,8 +1000,12 @@ class AIAgentOutboundCallConfigTtsConfig(TeaModel):
 class AIAgentOutboundCallConfigTurnDetectionConfig(TeaModel):
     def __init__(
         self,
+        mode: str = None,
+        semantic_wait_duration: int = None,
         turn_end_words: List[str] = None,
     ):
+        self.mode = mode
+        self.semantic_wait_duration = semantic_wait_duration
         self.turn_end_words = turn_end_words
 
     def validate(self):
@@ -662,12 +1017,20 @@ class AIAgentOutboundCallConfigTurnDetectionConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.semantic_wait_duration is not None:
+            result['SemanticWaitDuration'] = self.semantic_wait_duration
         if self.turn_end_words is not None:
             result['TurnEndWords'] = self.turn_end_words
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('SemanticWaitDuration') is not None:
+            self.semantic_wait_duration = m.get('SemanticWaitDuration')
         if m.get('TurnEndWords') is not None:
             self.turn_end_words = m.get('TurnEndWords')
         return self
@@ -679,6 +1042,7 @@ class AIAgentOutboundCallConfig(TeaModel):
         asr_config: AIAgentOutboundCallConfigAsrConfig = None,
         enable_intelligent_segment: bool = None,
         greeting: str = None,
+        greeting_delay: int = None,
         interrupt_config: AIAgentOutboundCallConfigInterruptConfig = None,
         llm_config: AIAgentOutboundCallConfigLlmConfig = None,
         tts_config: AIAgentOutboundCallConfigTtsConfig = None,
@@ -687,6 +1051,7 @@ class AIAgentOutboundCallConfig(TeaModel):
         self.asr_config = asr_config
         self.enable_intelligent_segment = enable_intelligent_segment
         self.greeting = greeting
+        self.greeting_delay = greeting_delay
         self.interrupt_config = interrupt_config
         self.llm_config = llm_config
         self.tts_config = tts_config
@@ -716,6 +1081,8 @@ class AIAgentOutboundCallConfig(TeaModel):
             result['EnableIntelligentSegment'] = self.enable_intelligent_segment
         if self.greeting is not None:
             result['Greeting'] = self.greeting
+        if self.greeting_delay is not None:
+            result['GreetingDelay'] = self.greeting_delay
         if self.interrupt_config is not None:
             result['InterruptConfig'] = self.interrupt_config.to_map()
         if self.llm_config is not None:
@@ -735,6 +1102,8 @@ class AIAgentOutboundCallConfig(TeaModel):
             self.enable_intelligent_segment = m.get('EnableIntelligentSegment')
         if m.get('Greeting') is not None:
             self.greeting = m.get('Greeting')
+        if m.get('GreetingDelay') is not None:
+            self.greeting_delay = m.get('GreetingDelay')
         if m.get('InterruptConfig') is not None:
             temp_model = AIAgentOutboundCallConfigInterruptConfig()
             self.interrupt_config = temp_model.from_map(m['InterruptConfig'])
@@ -7882,6 +8251,7 @@ class BatchGetMediaInfosRequest(TeaModel):
     def __init__(
         self,
         addition_type: str = None,
+        auth_timeout: int = None,
         media_ids: str = None,
     ):
         # The additional information that you want to query about the media assets. By default, only BasicInfo is returned. The following additional information can be queried:
@@ -7890,6 +8260,7 @@ class BatchGetMediaInfosRequest(TeaModel):
         # 
         # \\- DynamicMetaData
         self.addition_type = addition_type
+        self.auth_timeout = auth_timeout
         # The IDs of the media assets that you want to query. Separate the IDs with commas (,).
         self.media_ids = media_ids
 
@@ -7904,6 +8275,8 @@ class BatchGetMediaInfosRequest(TeaModel):
         result = dict()
         if self.addition_type is not None:
             result['AdditionType'] = self.addition_type
+        if self.auth_timeout is not None:
+            result['AuthTimeout'] = self.auth_timeout
         if self.media_ids is not None:
             result['MediaIds'] = self.media_ids
         return result
@@ -7912,6 +8285,8 @@ class BatchGetMediaInfosRequest(TeaModel):
         m = m or dict()
         if m.get('AdditionType') is not None:
             self.addition_type = m.get('AdditionType')
+        if m.get('AuthTimeout') is not None:
+            self.auth_timeout = m.get('AuthTimeout')
         if m.get('MediaIds') is not None:
             self.media_ids = m.get('MediaIds')
         return self
@@ -12834,7 +13209,12 @@ class CreateMediaLiveChannelRequestVideoSettings(TeaModel):
         video_codec_type: str = None,
         width: int = None,
     ):
-        # The height of the output. Valid values: 0 to 2000. If you set it to 0 or leave it empty, the height automatically adapts to the specified width to maintain the original aspect ratio.
+        # The height of the output. If you set it to 0 or leave it empty, the height automatically adapts to the specified width to maintain the original aspect ratio.
+        # 
+        # Valid values:
+        # 
+        # *   For regular transcoding, the larger dimension cannot exceed 3840 px, and the smaller one cannot exceed 2160 px.
+        # *   For Narrowband HD™ transcoding, the larger dimension cannot exceed 1920 px, and the smaller one cannot exceed 1080 px.
         self.height = height
         # The name of the video settings. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
         # 
@@ -12844,8 +13224,19 @@ class CreateMediaLiveChannelRequestVideoSettings(TeaModel):
         self.video_codec = video_codec
         # The video encoding settings.
         self.video_codec_setting = video_codec_setting
+        # The video transcoding method. Valid values:
+        # 
+        # *   NORMAL: regular transcoding
+        # *   NBHD: Narrowband HD™ transcoding
+        # 
+        # If not specified, regular transcoding is used by default.
         self.video_codec_type = video_codec_type
-        # The width of the output. Valid values: 0 to 2000. If you set it to 0 or leave it empty, the width automatically adapts to the specified height to maintain the original aspect ratio.
+        # The width of the output. If you set it to 0 or leave it empty, the width automatically adapts to the specified height to maintain the original aspect ratio.
+        # 
+        # Valid values:
+        # 
+        # *   For regular transcoding, the larger dimension cannot exceed 3840 px, and the smaller one cannot exceed 2160 px.
+        # *   For Narrowband HD™ transcoding, the larger dimension cannot exceed 1920 px, and the smaller one cannot exceed 1080 px.
         self.width = width
 
     def validate(self):
@@ -13133,9 +13524,11 @@ class CreateMediaLiveInputRequestInputSettings(TeaModel):
         source_url: str = None,
         stream_name: str = None,
     ):
+        # The ID of the flow from MediaConnect. This parameter is required when Type is set to MEDIA_CONNECT.
         self.flow_id = flow_id
+        # The output name of the MediaConnect flow. This parameter is required when Type is set to MEDIA_CONNECT.
         self.flow_output_name = flow_output_name
-        # The source URL where the stream is pulled from. This parameter is required for PULL inputs.
+        # The source URL from which the stream is pulled. This parameter is required for PULL inputs.
         self.source_url = source_url
         # The name of the pushed stream. This parameter is required for PUSH inputs. It can be up to 255 characters in length.
         self.stream_name = stream_name
@@ -13190,7 +13583,7 @@ class CreateMediaLiveInputRequest(TeaModel):
         self.name = name
         # The IDs of the security groups to be associated with the input. This parameter is required for PUSH inputs.
         self.security_group_ids = security_group_ids
-        # The input type. Valid values: RTMP_PUSH, RTMP_PULL, SRT_PUSH, and SRT_PULL.
+        # The input type. Valid values: RTMP_PUSH, RTMP_PULL, SRT_PUSH, SRT_PULL, and MEDIA_CONNECT.
         # 
         # This parameter is required.
         self.type = type
@@ -13253,7 +13646,7 @@ class CreateMediaLiveInputShrinkRequest(TeaModel):
         self.name = name
         # The IDs of the security groups to be associated with the input. This parameter is required for PUSH inputs.
         self.security_group_ids_shrink = security_group_ids_shrink
-        # The input type. Valid values: RTMP_PUSH, RTMP_PULL, SRT_PUSH, and SRT_PULL.
+        # The input type. Valid values: RTMP_PUSH, RTMP_PULL, SRT_PUSH, SRT_PULL, and MEDIA_CONNECT.
         # 
         # This parameter is required.
         self.type = type
@@ -31907,11 +32300,13 @@ class GetMediaConvertJobResponse(TeaModel):
 class GetMediaInfoRequest(TeaModel):
     def __init__(
         self,
+        auth_timeout: int = None,
         input_url: str = None,
         media_id: str = None,
         output_type: str = None,
         return_detailed_info: str = None,
     ):
+        self.auth_timeout = auth_timeout
         # The input URL of the media asset in another service. The URL must be registered in the IMS content library and bound to the ID of the media asset in IMS.
         # 
         # *   For a media asset from Object Storage Service (OSS), the URL may have one of the following formats:
@@ -31942,6 +32337,8 @@ class GetMediaInfoRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auth_timeout is not None:
+            result['AuthTimeout'] = self.auth_timeout
         if self.input_url is not None:
             result['InputURL'] = self.input_url
         if self.media_id is not None:
@@ -31954,6 +32351,8 @@ class GetMediaInfoRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthTimeout') is not None:
+            self.auth_timeout = m.get('AuthTimeout')
         if m.get('InputURL') is not None:
             self.input_url = m.get('InputURL')
         if m.get('MediaId') is not None:
@@ -34944,7 +35343,9 @@ class GetMediaLiveInputResponseBodyInputInputInfos(TeaModel):
     ):
         # The endpoint that the stream is pushed to. This parameter is returned for PUSH inputs.
         self.dest_host = dest_host
+        # The ID of the flow from MediaConnect.
         self.flow_id = flow_id
+        # The output name of the MediaConnect flow.
         self.flow_output_name = flow_output_name
         # The URL for input monitoring.
         self.monitor_url = monitor_url
@@ -36267,9 +36668,11 @@ class GetPipelineResponse(TeaModel):
 class GetPlayInfoRequest(TeaModel):
     def __init__(
         self,
+        auth_timeout: int = None,
         input_url: str = None,
         media_id: str = None,
     ):
+        self.auth_timeout = auth_timeout
         # The input URL that you specified for the media asset when you registered the media asset. For more information, see [RegisterMediaInfo](https://help.aliyun.com/document_detail/441152.html).
         # 
         # >  You must specify at least one of the MediaId and InputURL parameters.
@@ -36288,6 +36691,8 @@ class GetPlayInfoRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auth_timeout is not None:
+            result['AuthTimeout'] = self.auth_timeout
         if self.input_url is not None:
             result['InputURL'] = self.input_url
         if self.media_id is not None:
@@ -36296,6 +36701,8 @@ class GetPlayInfoRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthTimeout') is not None:
+            self.auth_timeout = m.get('AuthTimeout')
         if m.get('InputURL') is not None:
             self.input_url = m.get('InputURL')
         if m.get('MediaId') is not None:
@@ -36875,8 +37282,10 @@ class GetProjectExportJobRequest(TeaModel):
 class GetProjectExportJobResponseBodyProjectExportJobExportResult(TeaModel):
     def __init__(
         self,
+        project_url: str = None,
         timeline: str = None,
     ):
+        self.project_url = project_url
         self.timeline = timeline
 
     def validate(self):
@@ -36888,12 +37297,16 @@ class GetProjectExportJobResponseBodyProjectExportJobExportResult(TeaModel):
             return _map
 
         result = dict()
+        if self.project_url is not None:
+            result['ProjectUrl'] = self.project_url
         if self.timeline is not None:
             result['Timeline'] = self.timeline
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ProjectUrl') is not None:
+            self.project_url = m.get('ProjectUrl')
         if m.get('Timeline') is not None:
             self.timeline = m.get('Timeline')
         return self
@@ -45787,11 +46200,15 @@ class ListAIAgentInstanceResponse(TeaModel):
 class ListAIAgentPhoneNumberRequest(TeaModel):
     def __init__(
         self,
+        number: str = None,
         page_number: int = None,
         page_size: int = None,
+        status: int = None,
     ):
+        self.number = number
         self.page_number = page_number
         self.page_size = page_size
+        self.status = status
 
     def validate(self):
         pass
@@ -45802,18 +46219,26 @@ class ListAIAgentPhoneNumberRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.number is not None:
+            result['Number'] = self.number
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Number') is not None:
+            self.number = m.get('Number')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -53766,6 +54191,7 @@ class ListLiveTranscodeTemplatesResponse(TeaModel):
 class ListMediaBasicInfosRequest(TeaModel):
     def __init__(
         self,
+        auth_timeout: int = None,
         business_type: str = None,
         end_time: str = None,
         include_file_basic_info: bool = None,
@@ -53778,6 +54204,7 @@ class ListMediaBasicInfosRequest(TeaModel):
         start_time: str = None,
         status: str = None,
     ):
+        self.auth_timeout = auth_timeout
         # The business type of the media asset. Valid values:
         # 
         # \\- subtitles
@@ -53858,6 +54285,8 @@ class ListMediaBasicInfosRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auth_timeout is not None:
+            result['AuthTimeout'] = self.auth_timeout
         if self.business_type is not None:
             result['BusinessType'] = self.business_type
         if self.end_time is not None:
@@ -53884,6 +54313,8 @@ class ListMediaBasicInfosRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthTimeout') is not None:
+            self.auth_timeout = m.get('AuthTimeout')
         if m.get('BusinessType') is not None:
             self.business_type = m.get('BusinessType')
         if m.get('EndTime') is not None:
@@ -56789,7 +57220,9 @@ class ListMediaLiveInputsResponseBodyInputsInputInfos(TeaModel):
     ):
         # The endpoint that the stream is pushed to. This parameter is returned for PUSH inputs.
         self.dest_host = dest_host
+        # The ID of the flow from MediaConnect.
         self.flow_id = flow_id
+        # The output name of the MediaConnect flow.
         self.flow_output_name = flow_output_name
         # The URL for input monitoring.
         self.monitor_url = monitor_url
@@ -75575,6 +76008,7 @@ class StartAIAgentOutboundCallRequest(TeaModel):
         called_number: str = None,
         caller_number: str = None,
         config: AIAgentOutboundCallConfig = None,
+        ims_aiagent_free_ob_call: str = None,
         session_id: str = None,
         user_data: str = None,
     ):
@@ -75585,6 +76019,7 @@ class StartAIAgentOutboundCallRequest(TeaModel):
         # This parameter is required.
         self.caller_number = caller_number
         self.config = config
+        self.ims_aiagent_free_ob_call = ims_aiagent_free_ob_call
         self.session_id = session_id
         self.user_data = user_data
 
@@ -75606,6 +76041,8 @@ class StartAIAgentOutboundCallRequest(TeaModel):
             result['CallerNumber'] = self.caller_number
         if self.config is not None:
             result['Config'] = self.config.to_map()
+        if self.ims_aiagent_free_ob_call is not None:
+            result['ImsAIAgentFreeObCall'] = self.ims_aiagent_free_ob_call
         if self.session_id is not None:
             result['SessionId'] = self.session_id
         if self.user_data is not None:
@@ -75623,6 +76060,8 @@ class StartAIAgentOutboundCallRequest(TeaModel):
         if m.get('Config') is not None:
             temp_model = AIAgentOutboundCallConfig()
             self.config = temp_model.from_map(m['Config'])
+        if m.get('ImsAIAgentFreeObCall') is not None:
+            self.ims_aiagent_free_ob_call = m.get('ImsAIAgentFreeObCall')
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
         if m.get('UserData') is not None:
@@ -75637,6 +76076,7 @@ class StartAIAgentOutboundCallShrinkRequest(TeaModel):
         called_number: str = None,
         caller_number: str = None,
         config_shrink: str = None,
+        ims_aiagent_free_ob_call: str = None,
         session_id: str = None,
         user_data: str = None,
     ):
@@ -75647,6 +76087,7 @@ class StartAIAgentOutboundCallShrinkRequest(TeaModel):
         # This parameter is required.
         self.caller_number = caller_number
         self.config_shrink = config_shrink
+        self.ims_aiagent_free_ob_call = ims_aiagent_free_ob_call
         self.session_id = session_id
         self.user_data = user_data
 
@@ -75667,6 +76108,8 @@ class StartAIAgentOutboundCallShrinkRequest(TeaModel):
             result['CallerNumber'] = self.caller_number
         if self.config_shrink is not None:
             result['Config'] = self.config_shrink
+        if self.ims_aiagent_free_ob_call is not None:
+            result['ImsAIAgentFreeObCall'] = self.ims_aiagent_free_ob_call
         if self.session_id is not None:
             result['SessionId'] = self.session_id
         if self.user_data is not None:
@@ -75683,6 +76126,8 @@ class StartAIAgentOutboundCallShrinkRequest(TeaModel):
             self.caller_number = m.get('CallerNumber')
         if m.get('Config') is not None:
             self.config_shrink = m.get('Config')
+        if m.get('ImsAIAgentFreeObCall') is not None:
+            self.ims_aiagent_free_ob_call = m.get('ImsAIAgentFreeObCall')
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
         if m.get('UserData') is not None:
@@ -79667,9 +80112,13 @@ class SubmitHighlightExtractionJobRequest(TeaModel):
         output_config: str = None,
         user_data: str = None,
     ):
+        # The client token used to ensure the idempotency of the request.
         self.client_token = client_token
+        # The input configuration.
         self.input_config = input_config
+        # The output configuration.
         self.output_config = output_config
+        # The user-defined data, including the business and callback configurations. For more information, see [UserData](~~357745#section-urj-v3f-0s1~~).
         self.user_data = user_data
 
     def validate(self):
@@ -79710,8 +80159,9 @@ class SubmitHighlightExtractionJobResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the highlight extraction task.
         self.job_id = job_id
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -83811,9 +84261,13 @@ class SubmitScreenMediaHighlightsJobRequest(TeaModel):
         output_config: str = None,
         user_data: str = None,
     ):
+        # The editing configuration. For detailed parameters, see [EditingConfig](~~2863940#9b05519d46e0x~~).
         self.editing_config = editing_config
+        # The input configuration. For detailed parameters, see [InputConfig](~~2863940#dda38bf6ec2pk~~).
         self.input_config = input_config
+        # The output configuration. For detailed parameters, see [OutputConfig](~~2863940#4111a373d0xbz~~).
         self.output_config = output_config
+        # The user-defined data, including the business and callback configurations. For more information, see [UserData](https://help.aliyun.com/document_detail/357745.html).
         self.user_data = user_data
 
     def validate(self):
@@ -83854,7 +84308,9 @@ class SubmitScreenMediaHighlightsJobResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the task.
         self.job_id = job_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -98176,7 +98632,12 @@ class UpdateMediaLiveChannelRequestVideoSettings(TeaModel):
         video_codec_type: str = None,
         width: int = None,
     ):
-        # The height of the output. Valid values: 0 to 2000. If you set it to 0 or leave it empty, the height automatically adapts to the specified width to maintain the original aspect ratio.
+        # The height of the output. If you set it to 0 or leave it empty, the height automatically adapts to the specified width to maintain the original aspect ratio.
+        # 
+        # Valid values:
+        # 
+        # *   For regular transcoding, the larger dimension cannot exceed 3840 px, and the smaller one cannot exceed 2160 px.
+        # *   For Narrowband HD™ transcoding, the larger dimension cannot exceed 1920 px, and the smaller one cannot exceed 1080 px.
         self.height = height
         # The name of the video settings. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
         # 
@@ -98186,8 +98647,19 @@ class UpdateMediaLiveChannelRequestVideoSettings(TeaModel):
         self.video_codec = video_codec
         # The video encoding settings.
         self.video_codec_setting = video_codec_setting
+        # The video transcoding method. Valid values:
+        # 
+        # *   NORMAL: regular transcoding
+        # *   NBHD: Narrowband HD™ transcoding
+        # 
+        # If not specified, regular transcoding is used by default.
         self.video_codec_type = video_codec_type
-        # The width of the output. Valid values: 0 to 2000. If you set it to 0 or leave it empty, the width automatically adapts to the specified height to maintain the original aspect ratio.
+        # The width of the output. If you set it to 0 or leave it empty, the width automatically adapts to the specified height to maintain the original aspect ratio.
+        # 
+        # Valid values:
+        # 
+        # *   For regular transcoding, the larger dimension cannot exceed 3840 px, and the smaller one cannot exceed 2160 px.
+        # *   For Narrowband HD™ transcoding, the larger dimension cannot exceed 1920 px, and the smaller one cannot exceed 1080 px.
         self.width = width
 
     def validate(self):
@@ -98486,9 +98958,11 @@ class UpdateMediaLiveInputRequestInputSettings(TeaModel):
         source_url: str = None,
         stream_name: str = None,
     ):
+        # The ID of the flow from MediaConnect. This parameter is required when Type is set to MEDIA_CONNECT.
         self.flow_id = flow_id
+        # The output name of the MediaConnect flow. This parameter is required when Type is set to MEDIA_CONNECT.
         self.flow_output_name = flow_output_name
-        # The source URL where the stream is pulled from. This parameter is required for PULL inputs.
+        # The source URL from which the stream is pulled. This parameter is required for PULL inputs.
         self.source_url = source_url
         # The name of the pushed stream. This parameter is required for PUSH inputs. It can be up to 255 characters in length.
         self.stream_name = stream_name

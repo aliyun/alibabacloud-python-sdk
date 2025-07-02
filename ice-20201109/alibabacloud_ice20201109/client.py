@@ -1368,6 +1368,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.addition_type):
             query['AdditionType'] = request.addition_type
+        if not UtilClient.is_unset(request.auth_timeout):
+            query['AuthTimeout'] = request.auth_timeout
         if not UtilClient.is_unset(request.media_ids):
             query['MediaIds'] = request.media_ids
         req = open_api_models.OpenApiRequest(
@@ -1405,6 +1407,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.addition_type):
             query['AdditionType'] = request.addition_type
+        if not UtilClient.is_unset(request.auth_timeout):
+            query['AuthTimeout'] = request.auth_timeout
         if not UtilClient.is_unset(request.media_ids):
             query['MediaIds'] = request.media_ids
         req = open_api_models.OpenApiRequest(
@@ -14988,6 +14992,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auth_timeout):
+            query['AuthTimeout'] = request.auth_timeout
         if not UtilClient.is_unset(request.input_url):
             query['InputURL'] = request.input_url
         if not UtilClient.is_unset(request.media_id):
@@ -15031,6 +15037,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auth_timeout):
+            query['AuthTimeout'] = request.auth_timeout
         if not UtilClient.is_unset(request.input_url):
             query['InputURL'] = request.input_url
         if not UtilClient.is_unset(request.media_id):
@@ -15908,6 +15916,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auth_timeout):
+            query['AuthTimeout'] = request.auth_timeout
         if not UtilClient.is_unset(request.input_url):
             query['InputURL'] = request.input_url
         if not UtilClient.is_unset(request.media_id):
@@ -15947,6 +15957,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auth_timeout):
+            query['AuthTimeout'] = request.auth_timeout
         if not UtilClient.is_unset(request.input_url):
             query['InputURL'] = request.input_url
         if not UtilClient.is_unset(request.media_id):
@@ -18406,10 +18418,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.number):
+            query['Number'] = request.number
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -18443,10 +18459,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.number):
+            query['Number'] = request.number
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -21552,6 +21572,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auth_timeout):
+            query['AuthTimeout'] = request.auth_timeout
         if not UtilClient.is_unset(request.business_type):
             query['BusinessType'] = request.business_type
         if not UtilClient.is_unset(request.end_time):
@@ -21609,6 +21631,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auth_timeout):
+            query['AuthTimeout'] = request.auth_timeout
         if not UtilClient.is_unset(request.business_type):
             query['BusinessType'] = request.business_type
         if not UtilClient.is_unset(request.end_time):
@@ -29322,6 +29346,8 @@ class Client(OpenApiClient):
             query['CallerNumber'] = request.caller_number
         if not UtilClient.is_unset(request.config_shrink):
             query['Config'] = request.config_shrink
+        if not UtilClient.is_unset(request.ims_aiagent_free_ob_call):
+            query['ImsAIAgentFreeObCall'] = request.ims_aiagent_free_ob_call
         if not UtilClient.is_unset(request.session_id):
             query['SessionId'] = request.session_id
         if not UtilClient.is_unset(request.user_data):
@@ -29371,6 +29397,8 @@ class Client(OpenApiClient):
             query['CallerNumber'] = request.caller_number
         if not UtilClient.is_unset(request.config_shrink):
             query['Config'] = request.config_shrink
+        if not UtilClient.is_unset(request.ims_aiagent_free_ob_call):
+            query['ImsAIAgentFreeObCall'] = request.ims_aiagent_free_ob_call
         if not UtilClient.is_unset(request.session_id):
             query['SessionId'] = request.session_id
         if not UtilClient.is_unset(request.user_data):
@@ -31846,7 +31874,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitHighlightExtractionJobResponse:
         """
-        @summary 提交高光提取任务
+        @summary Submits a highlight extraction task.
         
         @param request: SubmitHighlightExtractionJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31889,7 +31917,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitHighlightExtractionJobResponse:
         """
-        @summary 提交高光提取任务
+        @summary Submits a highlight extraction task.
         
         @param request: SubmitHighlightExtractionJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31931,7 +31959,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitHighlightExtractionJobRequest,
     ) -> ice20201109_models.SubmitHighlightExtractionJobResponse:
         """
-        @summary 提交高光提取任务
+        @summary Submits a highlight extraction task.
         
         @param request: SubmitHighlightExtractionJobRequest
         @return: SubmitHighlightExtractionJobResponse
@@ -31944,7 +31972,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitHighlightExtractionJobRequest,
     ) -> ice20201109_models.SubmitHighlightExtractionJobResponse:
         """
-        @summary 提交高光提取任务
+        @summary Submits a highlight extraction task.
         
         @param request: SubmitHighlightExtractionJobRequest
         @return: SubmitHighlightExtractionJobResponse
@@ -33578,7 +33606,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitScreenMediaHighlightsJobResponse:
         """
-        @summary 提交高燃混剪任务
+        @summary Submits a task to automatically recognize the highlight segments in the video input and compile them into a dramatic and engaging clip.
         
         @param request: SubmitScreenMediaHighlightsJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -33621,7 +33649,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitScreenMediaHighlightsJobResponse:
         """
-        @summary 提交高燃混剪任务
+        @summary Submits a task to automatically recognize the highlight segments in the video input and compile them into a dramatic and engaging clip.
         
         @param request: SubmitScreenMediaHighlightsJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -33663,7 +33691,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitScreenMediaHighlightsJobRequest,
     ) -> ice20201109_models.SubmitScreenMediaHighlightsJobResponse:
         """
-        @summary 提交高燃混剪任务
+        @summary Submits a task to automatically recognize the highlight segments in the video input and compile them into a dramatic and engaging clip.
         
         @param request: SubmitScreenMediaHighlightsJobRequest
         @return: SubmitScreenMediaHighlightsJobResponse
@@ -33676,7 +33704,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitScreenMediaHighlightsJobRequest,
     ) -> ice20201109_models.SubmitScreenMediaHighlightsJobResponse:
         """
-        @summary 提交高燃混剪任务
+        @summary Submits a task to automatically recognize the highlight segments in the video input and compile them into a dramatic and engaging clip.
         
         @param request: SubmitScreenMediaHighlightsJobRequest
         @return: SubmitScreenMediaHighlightsJobResponse

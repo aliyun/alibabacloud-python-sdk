@@ -1,3 +1,14 @@
+2025-07-02 Version: 6.4.2
+- Update API BatchGetMediaInfos: add request parameters AuthTimeout.
+- Update API GetMediaInfo: add request parameters AuthTimeout.
+- Update API GetPlayInfo: add request parameters AuthTimeout.
+- Update API GetProjectExportJob: add response parameters Body.ProjectExportJob.ExportResult.ProjectUrl.
+- Update API ListAIAgentPhoneNumber: add request parameters Number.
+- Update API ListAIAgentPhoneNumber: add request parameters Status.
+- Update API ListMediaBasicInfos: add request parameters AuthTimeout.
+- Update API StartAIAgentOutboundCall: add request parameters ImsAIAgentFreeObCall.
+
+
 2025-06-19 Version: 6.4.0
 - Support API ListMediaConvertJobs.
 - Update API StartWorkflow: add request parameters SkipInputVerification.
