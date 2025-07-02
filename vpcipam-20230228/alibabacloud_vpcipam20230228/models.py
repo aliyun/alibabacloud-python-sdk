@@ -13,12 +13,29 @@ class AddIpamPoolCidrRequest(TeaModel):
         ipam_pool_id: str = None,
         region_id: str = None,
     ):
+        # The CIDR block that you want to provision.
+        # 
+        # >  Only IPv4 CIDR blocks are supported.
+        # 
         # This parameter is required.
         self.cidr = cidr
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The ID of the IPAM pool.
+        # 
         # This parameter is required.
         self.ipam_pool_id = ipam_pool_id
+        # The ID of the region where the IPAM instance is hosted.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -63,6 +80,7 @@ class AddIpamPoolCidrResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -139,14 +157,27 @@ class AssociateIpamResourceDiscoveryRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform the dry run. Valid values:
+        # 
+        # *   **true**: Performs a dry run without associating the resource discovery and IPAM instance. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # *   **false** (default): performs a dry run and sends the request. After the request passes the check, an HTTP 2xx status code is returned and the resource discovery and IPAM instances are associated.
         self.dry_run = dry_run
+        # The ID of the IPAM.
+        # 
         # This parameter is required.
         self.ipam_id = ipam_id
+        # The ID of resource discovery instance.
+        # 
         # This parameter is required.
         self.ipam_resource_discovery_id = ipam_resource_discovery_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The request region.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
@@ -209,6 +240,7 @@ class AssociateIpamResourceDiscoveryResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -284,16 +316,32 @@ class ChangeResourceGroupRequest(TeaModel):
         resource_owner_id: int = None,
         resource_type: str = None,
     ):
+        # The ID of the new resource group.
+        # 
         # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the IPAM resource.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Resource type, with values:
+        # 
+        # - Ipam:IPAM instance
+        # 
+        # - IpamScope:IPAM scope
+        # 
+        # - IpamPool:IPAM address pool
+        # 
+        # - IpamResourceDiscovery:IPAM resource discovery
+        # 
         # This parameter is required.
         self.resource_type = resource_type
 
@@ -350,6 +398,7 @@ class ChangeResourceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -419,7 +468,13 @@ class CreateIpamRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the resource. You can specify at most 20 tag keys. It cannot be an empty string.
+        # 
+        # The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value of the resource. You can specify up to 20 tag values. You can specify empty strings as tag values.
+        # 
+        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -462,19 +517,38 @@ class CreateIpamRequest(TeaModel):
         resource_owner_id: int = None,
         tag: List[CreateIpamRequestTag] = None,
     ):
+        # The client token used to ensure the idempotence of the request. Use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The description of the IPAM.
+        # 
+        # It must be 1 to 256 characters in length. Start with a letter but cannot start with `http://` or `https://`. If you do not specify a description, the description is empty by default.
         self.ipam_description = ipam_description
+        # The name of the IPAM.
+        # 
+        # It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.ipam_name = ipam_name
+        # The effective regions of the IPAM.
+        # 
         # This parameter is required.
         self.operating_region_list = operating_region_list
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource group ID of the IPAM.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tag list.
         self.tag = tag
 
     def validate(self):
@@ -560,12 +634,19 @@ class CreateIpamResponseBody(TeaModel):
         request_id: str = None,
         resource_discovery_association_count: int = None,
     ):
+        # The ID of the default resource discovery association.
         self.default_resource_discovery_association_id = default_resource_discovery_association_id
+        # The ID of the default resource discovery instance.
         self.default_resource_discovery_id = default_resource_discovery_id
+        # The ID of the IPAM.
         self.ipam_id = ipam_id
+        # The default private scope created by the system after the IPAM is created.
         self.private_default_scope_id = private_default_scope_id
+        # The default public scope created by the system after the IPAM is created.
         self.public_default_scope_id = public_default_scope_id
+        # The request ID.
         self.request_id = request_id
+        # The number of discovered resources.
         self.resource_discovery_association_count = resource_discovery_association_count
 
     def validate(self):
@@ -659,7 +740,13 @@ class CreateIpamPoolRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The tag key must start with a letter but cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value. You can specify up to 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It cannot start with a `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -709,26 +796,60 @@ class CreateIpamPoolRequest(TeaModel):
         source_ipam_pool_id: str = None,
         tag: List[CreateIpamPoolRequestTag] = None,
     ):
+        # The default network mask assigned to the IPAM pool.
+        # 
+        # An IPv4 mask must be **0 to 32** bits in length.
         self.allocation_default_cidr_mask = allocation_default_cidr_mask
+        # The maximum network mask assigned to the IPAM pool.
+        # 
+        # An IPv4 mask must be **0 to 32** bits in length.
         self.allocation_max_cidr_mask = allocation_max_cidr_mask
+        # The minimum network mask assigned to the IPAM pool.
+        # 
+        # An IPv4 mask must be **0 to 32** bits in length.
         self.allocation_min_cidr_mask = allocation_min_cidr_mask
+        # Whether the pool has the auto-import feature enabled.
         self.auto_import = auto_import
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The IP version. Only **IPv4** is supported.
         self.ip_version = ip_version
+        # The description of the IPAM pool.
+        # 
+        # It must be 2 to 256 characters in length. It must start with a letter, but cannot start with a `http://` or `https://`. This parameter is empty by default.
         self.ipam_pool_description = ipam_pool_description
+        # The name of the IPAM pool.
+        # 
+        # It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.ipam_pool_name = ipam_pool_name
+        # The ID of the IPAM scope.
+        # 
         # This parameter is required.
         self.ipam_scope_id = ipam_scope_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The effective region of the IPAM pool.
         self.pool_region_id = pool_region_id
+        # The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the source IPAM pool.
+        # 
+        # >  If you do not specify this parameter, the pool is a parent pool.
         self.source_ipam_pool_id = source_ipam_pool_id
+        # The tag list.
         self.tag = tag
 
     def validate(self):
@@ -837,7 +958,9 @@ class CreateIpamPoolResponseBody(TeaModel):
         ipam_pool_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the IPAM pool.
         self.ipam_pool_id = ipam_pool_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -917,14 +1040,35 @@ class CreateIpamPoolAllocationRequest(TeaModel):
         ipam_pool_id: str = None,
         region_id: str = None,
     ):
+        # Enter a CIDR block to reserve a custom CIDR block.
+        # 
+        # **Usage notes** Specify at least one of **Cidr** and **CidrMask** .
         self.cidr = cidr
+        # Enter a mask to reserve a custom CIDR block.
+        # 
+        # **Usage notes** Specify at least one of **Cidr** and **CidrMask** .
         self.cidr_mask = cidr_mask
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # **Usage notes** If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The description of the allocation.
         self.ipam_pool_allocation_description = ipam_pool_allocation_description
+        # The name of the allocation.
         self.ipam_pool_allocation_name = ipam_pool_allocation_name
+        # The ID of the IPAM pool.
+        # 
         # This parameter is required.
         self.ipam_pool_id = ipam_pool_id
+        # The region ID of the custom CIDR block that you want to reserve.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -984,9 +1128,13 @@ class CreateIpamPoolAllocationResponseBody(TeaModel):
         request_id: str = None,
         source_cidr: str = None,
     ):
+        # The custom reserved CIDR block.
         self.cidr = cidr
+        # The ID of the custom reserved CIDR block.
         self.ipam_pool_allocation_id = ipam_pool_allocation_id
+        # The request ID.
         self.request_id = request_id
+        # The source CIDR block.
         self.source_cidr = source_cidr
 
     def validate(self):
@@ -1068,7 +1216,13 @@ class CreateIpamResourceDiscoveryRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag keys. You can specify at most 20 tag keys. It cannot be an empty string.
+        # 
+        # The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value of the resource. You can specify up to 20 tag values. You can specify empty strings as tag values.
+        # 
+        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -1111,19 +1265,36 @@ class CreateIpamResourceDiscoveryRequest(TeaModel):
         resource_owner_id: int = None,
         tag: List[CreateIpamResourceDiscoveryRequestTag] = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform a dry run, without sending the actual request. Valid value:
+        # 
+        # *   **true**: Performs the dry run without creating a custom resource discovery instance. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # *   **false** (default): Performs a dry run and the actual request. If the request passes the dry run, an HTTP 2xx status code is returned and a custom resource discovery instance is created.
         self.dry_run = dry_run
+        # The description of resource discovery.
         self.ipam_resource_discovery_description = ipam_resource_discovery_description
+        # The name of the resource discovery.
         self.ipam_resource_discovery_name = ipam_resource_discovery_name
+        # The list of effective regions.
+        # 
         # This parameter is required.
         self.operating_region_list = operating_region_list
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The request region.
+        # 
+        # >  The request region is the managed region of the resource discovery instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tag information.
         self.tag = tag
 
     def validate(self):
@@ -1204,7 +1375,9 @@ class CreateIpamResourceDiscoveryResponseBody(TeaModel):
         ipam_resource_discovery_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the instance for resource discovery.
         self.ipam_resource_discovery_id = ipam_resource_discovery_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1278,7 +1451,13 @@ class CreateIpamScopeRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the resource. You can specify at most 20 tag keys. It cannot be an empty string.
+        # 
+        # The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value of the resource. You can specify up to 20 tag values. You can specify empty strings as tag values.
+        # 
+        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -1322,20 +1501,43 @@ class CreateIpamScopeRequest(TeaModel):
         resource_owner_id: int = None,
         tag: List[CreateIpamScopeRequestTag] = None,
     ):
+        # The client token used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized RAM users, and missing parameter values. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false**: performs a dry run and the actual request. After the request passes the dry run, a 2xx HTTP status code is returned and the IPAM scope is created.
         self.dry_run = dry_run
+        # The ID of the IPAM.
+        # 
         # This parameter is required.
         self.ipam_id = ipam_id
+        # The description of the IPAM scope.
+        # 
+        # It must be 1 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`. This parameter is empty by default.
         self.ipam_scope_description = ipam_scope_description
+        # The name of the IPAM scope.
+        # 
+        # It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.ipam_scope_name = ipam_scope_name
+        # The type of IPAM scope: **private**\
+        # 
+        # 
+        # **Usage notes** You can create only private IPAM scopes.
         self.ipam_scope_type = ipam_scope_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource group ID of the IPAM scope.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tag list.
         self.tag = tag
 
     def validate(self):
@@ -1420,7 +1622,9 @@ class CreateIpamScopeResponseBody(TeaModel):
         ipam_scope_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the IPAM scope.
         self.ipam_scope_id = ipam_scope_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1500,12 +1704,25 @@ class DeleteIpamRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # **\
+        # 
+        # **Usage notes** If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The ID of the IPAM.
+        # 
         # This parameter is required.
         self.ipam_id = ipam_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
@@ -1564,6 +1781,7 @@ class DeleteIpamResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1639,12 +1857,25 @@ class DeleteIpamPoolRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # **\
+        # 
+        # **Usage notes** If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, DryRunOperation is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The ID of the IPAM pool.
+        # 
         # This parameter is required.
         self.ipam_pool_id = ipam_pool_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
@@ -1703,6 +1934,7 @@ class DeleteIpamPoolResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1774,10 +2006,23 @@ class DeleteIpamPoolAllocationRequest(TeaModel):
         ipam_pool_allocation_id: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # **Usage notes** If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # *   **false** (default): sends the API request. If the request passes the check, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The ID of the custom reserved CIDR block to be deleted.
+        # 
         # This parameter is required.
         self.ipam_pool_allocation_id = ipam_pool_allocation_id
+        # The region ID of the custom reserved CIDR block.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -1818,6 +2063,7 @@ class DeleteIpamPoolAllocationResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1890,12 +2136,29 @@ class DeleteIpamPoolCidrRequest(TeaModel):
         ipam_pool_id: str = None,
         region_id: str = None,
     ):
+        # The provisioned CIDR block to be deleted.
+        # 
+        # >  Only IPv4 CIDR blocks are supported.
+        # 
         # This parameter is required.
         self.cidr = cidr
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The ID of the IPAM pool.
+        # 
         # This parameter is required.
         self.ipam_pool_id = ipam_pool_id
+        # The ID of the region where the IPAM instance is hosted.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -1940,6 +2203,7 @@ class DeleteIpamPoolCidrResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2015,12 +2279,23 @@ class DeleteIpamResourceDiscoveryRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform the dry run. Valid values:
+        # 
+        # *   **true**: Performs a dry run without deleting the resource discovery instance. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # *   **false** (default): Performs a dry run and the actual request. If the request passes the check, an HTTP 2xx status code is returned and the resource discovery instance is deleted.
         self.dry_run = dry_run
+        # The ID of resource discovery instance.
+        # 
         # This parameter is required.
         self.ipam_resource_discovery_id = ipam_resource_discovery_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The request region.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
@@ -2079,6 +2354,7 @@ class DeleteIpamResourceDiscoveryResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2154,12 +2430,23 @@ class DeleteIpamScopeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The ID of the IPAM scope.
+        # 
         # This parameter is required.
         self.ipam_scope_id = ipam_scope_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
@@ -2218,6 +2505,7 @@ class DeleteIpamScopeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2294,14 +2582,27 @@ class DissociateIpamResourceDiscoveryRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: Performs a dry run without disassociating the resource discovery and IPAM instance. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # *   **false** (default): Performs a dry run and sends the request. After the request passes the check, an HTTP 2xx status code is returned and the resource discovery and IPAM instances are disassociated.
         self.dry_run = dry_run
+        # The ID of the IPAM.
+        # 
         # This parameter is required.
         self.ipam_id = ipam_id
+        # The ID of the resource discovery instance.
+        # 
         # This parameter is required.
         self.ipam_resource_discovery_id = ipam_resource_discovery_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The request region.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
@@ -2364,6 +2665,7 @@ class DissociateIpamResourceDiscoveryResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2433,8 +2735,14 @@ class GetIpamPoolAllocationRequest(TeaModel):
         ipam_pool_allocation_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the instance to which CIDR blocks are allocated from the IPAM pool.
+        # 
         # This parameter is required.
         self.ipam_pool_allocation_id = ipam_pool_allocation_id
+        # The region of the IPAM pool.
+        # 
+        # >  If the IPAM pool to which CIDR allocation belongs has the region attribute, this parameter is the region of the IPAM pool. If not, this parameter is the IPAM managed region.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -2480,19 +2788,46 @@ class GetIpamPoolAllocationResponseBody(TeaModel):
         source_cidr: str = None,
         status: str = None,
     ):
+        # The allocated CIDR block.
         self.cidr = cidr
+        # The time when the instance was created.
         self.creation_time = creation_time
+        # The description of the CIDR allocation of the IPAM pool.
+        # 
+        # The description must be 1 to 256 characters in length and start with a letter, but cannot start with a `http://` or `https://`. This parameter is empty by default.
         self.ipam_pool_allocation_description = ipam_pool_allocation_description
+        # The ID of the instance to which CIDR blocks are allocated from the IPAM pool.
         self.ipam_pool_allocation_id = ipam_pool_allocation_id
+        # The name of the CIDR allocation of the IPAM pool.
+        # 
+        # It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.ipam_pool_allocation_name = ipam_pool_allocation_name
+        # The ID of the IPAM pool.
         self.ipam_pool_id = ipam_pool_id
+        # The region of the IPAM pool.
+        # 
+        # >  If the IPAM pool to which the CIDR block allocation belongs has the region attribute, this parameter is the region of the IPAM pool. If not, this parameter is the IPAM managed region.
         self.region_id = region_id
+        # The request ID.
         self.request_id = request_id
+        # The ID of the resource to which the CIDR block is allocated.
         self.resource_id = resource_id
+        # The ID of the Alibaba Cloud account to which the resource belongs.
         self.resource_owner_id = resource_owner_id
+        # The effective region ID of the resource.
         self.resource_region_id = resource_region_id
+        # The type of the resource to which the CIDR block is allocated. Valid values:
+        # 
+        # *   **VPC**\
+        # *   **IpamPool**\
+        # *   **Custom**\
         self.resource_type = resource_type
+        # The source CIDR block.
         self.source_cidr = source_cidr
+        # The instance state. Valid values:
+        # 
+        # *   **Created**\
+        # *   **Deleted**\
         self.status = status
 
     def validate(self):
@@ -2617,11 +2952,26 @@ class GetIpamPoolNextAvailableCidrRequest(TeaModel):
         ipam_pool_id: str = None,
         region_id: str = None,
     ):
+        # CIDR to be allocated.
+        # 
+        # >  You must enter at least one of the CidrBlock and CidrMask fields.
         self.cidr_block = cidr_block
+        # The length of the CIDR mask to be allocated.
+        # 
+        # >  You must enter at least one of the CidrBlock and CidrMask fields.
         self.cidr_mask = cidr_mask
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # The ID of the IPAM pool.
+        # 
         # This parameter is required.
         self.ipam_pool_id = ipam_pool_id
+        # The region of the IPAM pool.
+        # 
+        # >  If the IPAM pool has the region attribute, this parameter is set to the effective region of the IPAM pool. If not, this is set to the managed region.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -2667,7 +3017,9 @@ class GetIpamPoolNextAvailableCidrResponseBody(TeaModel):
         cidr_block: str = None,
         request_id: str = None,
     ):
+        # Available CIDR.
         self.cidr_block = cidr_block
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2745,9 +3097,16 @@ class GetVpcIpamServiceStatusRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the IPAM instance is hosted.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
@@ -2799,7 +3158,12 @@ class GetVpcIpamServiceStatusResponseBody(TeaModel):
         enabled: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether IPAM is activated.
+        # 
+        # *   **true**\
+        # *   **false**\
         self.enabled = enabled
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2877,14 +3241,31 @@ class ListIpamDiscoveredResourceRequest(TeaModel):
         resource_region_id: str = None,
         resource_type: str = None,
     ):
+        # The ID of the resource discovery instance.
+        # 
         # This parameter is required.
         self.ipam_resource_discovery_id = ipam_resource_discovery_id
+        # The maximum number of entries on each page. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   You do not need to specify this parameter for the first request.
+        # *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
         self.next_token = next_token
+        # The ID of the managed region of the IPAM pool.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The region where resource discovery is performed.
+        # 
         # This parameter is required.
         self.resource_region_id = resource_region_id
+        # The resource type. Valid values:
+        # 
+        # *   **VPC**\
+        # *   **VSwitch**\
         self.resource_type = resource_type
 
     def validate(self):
@@ -2927,12 +3308,52 @@ class ListIpamDiscoveredResourceRequest(TeaModel):
         return self
 
 
+class ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResourcesIpCountDetail(TeaModel):
+    def __init__(
+        self,
+        free_ip_count: str = None,
+        total_ip_count: str = None,
+        used_ip_count: str = None,
+    ):
+        self.free_ip_count = free_ip_count
+        self.total_ip_count = total_ip_count
+        self.used_ip_count = used_ip_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.free_ip_count is not None:
+            result['FreeIpCount'] = self.free_ip_count
+        if self.total_ip_count is not None:
+            result['TotalIpCount'] = self.total_ip_count
+        if self.used_ip_count is not None:
+            result['UsedIpCount'] = self.used_ip_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FreeIpCount') is not None:
+            self.free_ip_count = m.get('FreeIpCount')
+        if m.get('TotalIpCount') is not None:
+            self.total_ip_count = m.get('TotalIpCount')
+        if m.get('UsedIpCount') is not None:
+            self.used_ip_count = m.get('UsedIpCount')
+        return self
+
+
 class ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources(TeaModel):
     def __init__(
         self,
         ali_uid: int = None,
         cidr: str = None,
         discovery_time: str = None,
+        ip_count_detail: ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResourcesIpCountDetail = None,
         ip_usage: str = None,
         ipam_resource_discovery_id: str = None,
         resource_id: str = None,
@@ -2942,20 +3363,38 @@ class ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources(TeaModel):
         source_cidr: str = None,
         vpc_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
+        # The CIDR block of the resource.
         self.cidr = cidr
+        # The time when the resource was discovered.
+        # 
+        # >  If the resource has not been modified since it was created, the discovery time remains unchanged.
         self.discovery_time = discovery_time
+        self.ip_count_detail = ip_count_detail
+        # The IP usage in decimal form.
         self.ip_usage = ip_usage
+        # The ID of resource discovery instance.
         self.ipam_resource_discovery_id = ipam_resource_discovery_id
+        # The ID of the resource.
         self.resource_id = resource_id
+        # The ID of the Alibaba Cloud account to which the resource belongs.
         self.resource_owner_id = resource_owner_id
+        # The ID of the region to which the resource belongs.
         self.resource_region_id = resource_region_id
+        # The resource type. Valid values:
+        # 
+        # *   **VPC**\
+        # *   **VSwitch**\
         self.resource_type = resource_type
+        # The source CIDR block.
         self.source_cidr = source_cidr
+        # The ID of the VPC to which the resource belongs.
         self.vpc_id = vpc_id
 
     def validate(self):
-        pass
+        if self.ip_count_detail:
+            self.ip_count_detail.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2969,6 +3408,8 @@ class ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources(TeaModel):
             result['Cidr'] = self.cidr
         if self.discovery_time is not None:
             result['DiscoveryTime'] = self.discovery_time
+        if self.ip_count_detail is not None:
+            result['IpCountDetail'] = self.ip_count_detail.to_map()
         if self.ip_usage is not None:
             result['IpUsage'] = self.ip_usage
         if self.ipam_resource_discovery_id is not None:
@@ -2995,6 +3436,9 @@ class ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources(TeaModel):
             self.cidr = m.get('Cidr')
         if m.get('DiscoveryTime') is not None:
             self.discovery_time = m.get('DiscoveryTime')
+        if m.get('IpCountDetail') is not None:
+            temp_model = ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResourcesIpCountDetail()
+            self.ip_count_detail = temp_model.from_map(m['IpCountDetail'])
         if m.get('IpUsage') is not None:
             self.ip_usage = m.get('IpUsage')
         if m.get('IpamResourceDiscoveryId') is not None:
@@ -3024,11 +3468,20 @@ class ListIpamDiscoveredResourceResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The maximum number of entries on each page.
         self.count = count
+        # The list of resources.
         self.ipam_discovered_resources = ipam_discovered_resources
+        # The maximum number of entries on each page. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, there is no next page.
+        # *   If a value of **NextToken** is returned, it indicates the token that is used for the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -3131,13 +3584,31 @@ class ListIpamPoolAllocationsRequest(TeaModel):
         next_token: str = None,
         region_id: str = None,
     ):
+        # Specifies whether to query allocations by specifying allocated CIDR blocks.
+        # 
+        # **\
+        # 
+        # **Usage notes** Only IPv4 CIDR blocks are supported.
         self.cidr = cidr
+        # The IDs of the instances to which CIDR blocks are allocated from the IPAM pool.
         self.ipam_pool_allocation_ids = ipam_pool_allocation_ids
+        # The name of  allocations.
         self.ipam_pool_allocation_name = ipam_pool_allocation_name
+        # The ID of the IPAM pool.
+        # 
         # This parameter is required.
         self.ipam_pool_id = ipam_pool_id
+        # The number of entries per page. Valid values: **1** to **100**. Default value: **10**.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
+        # The ID of the region where you want to perform the operation.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -3202,18 +3673,38 @@ class ListIpamPoolAllocationsResponseBodyIpamPoolAllocations(TeaModel):
         source_cidr: str = None,
         status: str = None,
     ):
+        # The allocated CIDR block.
         self.cidr = cidr
+        # The time when the instance was created.
         self.creation_time = creation_time
+        # The description of the allocation.
         self.ipam_pool_allocation_description = ipam_pool_allocation_description
+        # The ID of the instance to which CIDR blocks are allocated from the IPAM pool.
         self.ipam_pool_allocation_id = ipam_pool_allocation_id
+        # The name of the allocation.
         self.ipam_pool_allocation_name = ipam_pool_allocation_name
+        # The ID of the IPAM pool.
         self.ipam_pool_id = ipam_pool_id
+        # The region ID of the resource.
         self.region_id = region_id
+        # The ID of the resource to which the CIDR block is allocated.
         self.resource_id = resource_id
+        # The ID of the Alibaba Cloud account to which the resource belongs.
         self.resource_owner_id = resource_owner_id
+        # The effective region ID of the resource.
         self.resource_region_id = resource_region_id
+        # The type of the resource to which the CIDR block is allocated. Valid values:
+        # 
+        # *   **VPC**\
+        # *   **IpamPool**\
+        # *   **Custom**\
         self.resource_type = resource_type
+        # The source CIDR block.
         self.source_cidr = source_cidr
+        # The status of the instance. Valid values:
+        # 
+        # *   **Created**\
+        # *   **Deleted**\
         self.status = status
 
     def validate(self):
@@ -3294,11 +3785,20 @@ class ListIpamPoolAllocationsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The number of entries returned.
         self.count = count
+        # The IDs of the instances to which CIDR blocks are allocated from the IPAM pool.
         self.ipam_pool_allocations = ipam_pool_allocations
+        # The number of entries per page.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -3399,11 +3899,25 @@ class ListIpamPoolCidrsRequest(TeaModel):
         next_token: str = None,
         region_id: str = None,
     ):
+        # The provisioned CIDR block that you want to query.
+        # 
+        # >  Only IPv4 CIDR blocks are supported.
         self.cidr = cidr
+        # The ID of the IPAM pool.
+        # 
         # This parameter is required.
         self.ipam_pool_id = ipam_pool_id
+        # The number of entries per page. Valid values: **1** to **100**. Default value: **10**.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
+        # The ID of the region where the IPAM instance is hosted.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -3450,8 +3964,14 @@ class ListIpamPoolCidrsResponseBodyIpamPoolCidrs(TeaModel):
         ipam_pool_id: str = None,
         status: str = None,
     ):
+        # The provisioned CIDR block.
         self.cidr = cidr
+        # The ID of the IPAM pool.
         self.ipam_pool_id = ipam_pool_id
+        # The status of the CIDR block provisioned to the IPAM pool. Valid values:
+        # 
+        # *   **Created**\
+        # *   **Deleted**\
         self.status = status
 
     def validate(self):
@@ -3492,11 +4012,20 @@ class ListIpamPoolCidrsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The number of entries returned.
         self.count = count
+        # The IDs of IPAM pools.
         self.ipam_pool_cidrs = ipam_pool_cidrs
+        # The number of entries per page.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -3594,7 +4123,13 @@ class ListIpamPoolsRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. You can specify at most 20 tag keys. It cannot be an empty string.
+        # 
+        # The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The tag key must start with a letter but cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value. You can specify at most 20 tag values. It can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length. It must start with a letter and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -3640,21 +4175,38 @@ class ListIpamPoolsRequest(TeaModel):
         source_ipam_pool_id: str = None,
         tags: List[ListIpamPoolsRequestTags] = None,
     ):
+        # The IDs of IPAM pools. Valid values of N: 1 to 100. A maximum of 100 IPAM pools can be queried at a time.
         self.ipam_pool_ids = ipam_pool_ids
+        # The name of the IPAM pool. You can enter at most 20 names.
+        # 
+        # It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.ipam_pool_name = ipam_pool_name
+        # The ID of the IPAM scope.
         self.ipam_scope_id = ipam_scope_id
+        # Whether it is a shared pool.
         self.is_shared = is_shared
+        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If NextToken is empty, no next page exists.
+        # *   You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The effective region of the IPAM pool.
         self.pool_region_id = pool_region_id
+        # The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group to which the IPAM pool belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the source IPAM pool.
         self.source_ipam_pool_id = source_ipam_pool_id
+        # The tag information.
         self.tags = tags
 
     def validate(self):
@@ -3747,7 +4299,9 @@ class ListIpamPoolsResponseBodyIpamPoolsTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -3801,28 +4355,69 @@ class ListIpamPoolsResponseBodyIpamPools(TeaModel):
         status: str = None,
         tags: List[ListIpamPoolsResponseBodyIpamPoolsTags] = None,
     ):
+        # The default network mask assigned to the IPAM pool.
+        # 
+        # An IPv4 mask must be **0 to 32** bits in length.
         self.allocation_default_cidr_mask = allocation_default_cidr_mask
+        # The maximum network mask assigned to the IPAM pool.
+        # 
+        # An IPv4 mask must be **0 to 32** bits in length.
         self.allocation_max_cidr_mask = allocation_max_cidr_mask
+        # The minimum network mask assigned to the IPAM pool.
+        # 
+        # An IPv4 mask must be **0 to 32** bits in length.
         self.allocation_min_cidr_mask = allocation_min_cidr_mask
+        # Whether the pool has the auto-import feature enabled.
         self.auto_import = auto_import
+        # The time when the IPAM pool was created.
         self.create_time = create_time
+        # Indicates whether the pool is a subpool. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.has_sub_pool = has_sub_pool
+        # The IP version. Only **IPv4** may be returned.
         self.ip_version = ip_version
+        # The ID of the IPAM.
         self.ipam_id = ipam_id
+        # The description of the IPAM pool.
         self.ipam_pool_description = ipam_pool_description
+        # The ID of the IPAM pool.
         self.ipam_pool_id = ipam_pool_id
+        # The name of the IPAM pool.
         self.ipam_pool_name = ipam_pool_name
+        # The ID of the region where the IPAM to which the IPAM pool belongs is hosted.
         self.ipam_region_id = ipam_region_id
+        # The ID of the IPAM scope.
         self.ipam_scope_id = ipam_scope_id
+        # The type of the IPAM scope. Valid values:
+        # 
+        # *   **public**\
+        # *   **private**\
         self.ipam_scope_type = ipam_scope_type
+        # Whether it is a shared pool.
         self.is_shared = is_shared
+        # The Alibaba Cloud account of the owner for the IPAM pool.
         self.owner_id = owner_id
+        # The depth of the IPAM pool. Valid values: **0 to 10**.
         self.pool_depth = pool_depth
+        # The effective region of the IPAM pool. The ID of the effective region for the IPAM pool.
         self.pool_region_id = pool_region_id
+        # The ID of the region where the operation is called.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The ID of the source IPAM pool.
         self.source_ipam_pool_id = source_ipam_pool_id
+        # The status of the IPAM pool. Valid values:
+        # 
+        # *   **Creating**\
+        # *   **Created**: indicates that the creation is complete.
+        # *   **Modifying**\
+        # *   **Deleting**\
+        # *   **Deleted**\
         self.status = status
+        # The tag list.
         self.tags = tags
 
     def validate(self):
@@ -3951,11 +4546,20 @@ class ListIpamPoolsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The number of entries returned.
         self.count = count
+        # The IPAM pools.
         self.ipam_pools = ipam_pools
+        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -4060,15 +4664,36 @@ class ListIpamResourceCidrsRequest(TeaModel):
         resource_type: str = None,
         vpc_id: str = None,
     ):
+        # The ID of the IPAM pool.
+        # 
+        # >  You must specify at least one of **IpamScopeId** and **IpamPoolId**.
         self.ipam_pool_id = ipam_pool_id
+        # The ID of the IPAM scope.
+        # 
+        # >  You must specify at least one of **IpamScopeId** and **IpamPoolId**.
         self.ipam_scope_id = ipam_scope_id
+        # The number of entries per page. Valid values: **1** to **100**. Default value: **10**.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   You do not need to specify this parameter for the first request.
+        # *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
         self.next_token = next_token
+        # The ID of the region where the IPAM instance is hosted.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource ID.
         self.resource_id = resource_id
         self.resource_owner_id = resource_owner_id
+        # The type of resource. Valid values:
+        # 
+        # *   **VPC**\
+        # *   **VSwitch**\
         self.resource_type = resource_type
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -4123,6 +4748,45 @@ class ListIpamResourceCidrsRequest(TeaModel):
         return self
 
 
+class ListIpamResourceCidrsResponseBodyIpamResourceCidrsIpCountDetail(TeaModel):
+    def __init__(
+        self,
+        free_ip_count: str = None,
+        total_ip_count: str = None,
+        used_ip_count: str = None,
+    ):
+        self.free_ip_count = free_ip_count
+        self.total_ip_count = total_ip_count
+        self.used_ip_count = used_ip_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.free_ip_count is not None:
+            result['FreeIpCount'] = self.free_ip_count
+        if self.total_ip_count is not None:
+            result['TotalIpCount'] = self.total_ip_count
+        if self.used_ip_count is not None:
+            result['UsedIpCount'] = self.used_ip_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FreeIpCount') is not None:
+            self.free_ip_count = m.get('FreeIpCount')
+        if m.get('TotalIpCount') is not None:
+            self.total_ip_count = m.get('TotalIpCount')
+        if m.get('UsedIpCount') is not None:
+            self.used_ip_count = m.get('UsedIpCount')
+        return self
+
+
 class ListIpamResourceCidrsResponseBodyIpamResourceCidrsOverlapDetail(TeaModel):
     def __init__(
         self,
@@ -4130,8 +4794,11 @@ class ListIpamResourceCidrsResponseBodyIpamResourceCidrsOverlapDetail(TeaModel):
         overlap_resource_id: str = None,
         overlap_resource_region: str = None,
     ):
+        # The CIDR that overlaps with the current resource.
         self.overlap_resource_cidr = overlap_resource_cidr
+        # Instance ID that overlaps with the current resource.
         self.overlap_resource_id = overlap_resource_id
+        # The region of instance that overlaps with the current resource.
         self.overlap_resource_region = overlap_resource_region
 
     def validate(self):
@@ -4168,6 +4835,7 @@ class ListIpamResourceCidrsResponseBodyIpamResourceCidrs(TeaModel):
         ali_uid: int = None,
         cidr: str = None,
         compliance_status: str = None,
+        ip_count_detail: ListIpamResourceCidrsResponseBodyIpamResourceCidrsIpCountDetail = None,
         ip_usage: str = None,
         ipam_allocation_id: str = None,
         ipam_id: str = None,
@@ -4184,26 +4852,66 @@ class ListIpamResourceCidrsResponseBodyIpamResourceCidrs(TeaModel):
         status: str = None,
         vpc_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
+        # The CIDR block of the resource.
         self.cidr = cidr
+        # The compliance status of the resource.
+        # 
+        # *   **Compliant**\
+        # *   **Noncompliant**\
+        # *   **Ignored** Ignored resources are not monitored.
+        # *   **Unmanaged**: The resource does not have a CIDR block allocated from the IPAM pool. IPAM does not monitor whether the CIDR block of the resource meets the allocation rules of the IP address pool.
         self.compliance_status = compliance_status
+        self.ip_count_detail = ip_count_detail
+        # The IP usage that is displayed in decimal form.
         self.ip_usage = ip_usage
+        # The ID of the instance to which CIDR blocks are allocated from the IPAM pool.
         self.ipam_allocation_id = ipam_allocation_id
+        # The ID of the IPAM.
         self.ipam_id = ipam_id
+        # The ID of the IPAM pool.
         self.ipam_pool_id = ipam_pool_id
+        # The ID of the IPAM scope.
         self.ipam_scope_id = ipam_scope_id
+        # The management status of the resource.
+        # 
+        # *   **Managed**: The resource has a CIDR block allocated from an IPAM pool. IPAM is monitoring whether the allocated CIDR block overlaps with other CIDR blocks and whether the allocated CIDR block meets the allocation rules.
+        # *   **Unmanaged**: The resource does not have a CIDR block allocated from the IPAM pool. IPAM is monitoring whether the resource has CIDR blocks that meet the allocation rules. Monitor whether CIDR blocks overlap with each other.
+        # *   **Ignored**: The resource is not monitored. Ignored resources are not monitored. If you ignore a resource, CIDR blocks allocated to the resource are returned to the IPAM pool and will not be automatically allocated to the resource (if automatic allocation rules are specified).
         self.management_status = management_status
+        # List of resources that overlap with the current resource.
         self.overlap_detail = overlap_detail
+        # The overlapping status of the resource.
+        # 
+        # *   **Nonoverlapping**\
+        # *   **Overlapping**\
+        # *   **Ignored** Ignored resources are not monitored.
         self.overlap_status = overlap_status
+        # The resource ID.
         self.resource_id = resource_id
+        # The ID of the Alibaba Cloud account to which the resource belongs.
         self.resource_owner_id = resource_owner_id
+        # The effective region ID of the resource.
         self.resource_region_id = resource_region_id
+        # The type of resource. Valid values:
+        # 
+        # *   **VPC**\
+        # *   **VSwitch**\
         self.resource_type = resource_type
+        # The source CIDR block.
         self.source_cidr = source_cidr
+        # The status of the resource in the IPAM pool. Valid values:
+        # 
+        # *   **Created**\
+        # *   **Deleted**\
         self.status = status
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
+        if self.ip_count_detail:
+            self.ip_count_detail.validate()
         if self.overlap_detail:
             for k in self.overlap_detail:
                 if k:
@@ -4221,6 +4929,8 @@ class ListIpamResourceCidrsResponseBodyIpamResourceCidrs(TeaModel):
             result['Cidr'] = self.cidr
         if self.compliance_status is not None:
             result['ComplianceStatus'] = self.compliance_status
+        if self.ip_count_detail is not None:
+            result['IpCountDetail'] = self.ip_count_detail.to_map()
         if self.ip_usage is not None:
             result['IpUsage'] = self.ip_usage
         if self.ipam_allocation_id is not None:
@@ -4263,6 +4973,9 @@ class ListIpamResourceCidrsResponseBodyIpamResourceCidrs(TeaModel):
             self.cidr = m.get('Cidr')
         if m.get('ComplianceStatus') is not None:
             self.compliance_status = m.get('ComplianceStatus')
+        if m.get('IpCountDetail') is not None:
+            temp_model = ListIpamResourceCidrsResponseBodyIpamResourceCidrsIpCountDetail()
+            self.ip_count_detail = temp_model.from_map(m['IpCountDetail'])
         if m.get('IpUsage') is not None:
             self.ip_usage = m.get('IpUsage')
         if m.get('IpamAllocationId') is not None:
@@ -4309,11 +5022,20 @@ class ListIpamResourceCidrsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The number of entries returned.
         self.count = count
+        # The list of resources in the IPAM pool.
         self.ipam_resource_cidrs = ipam_resource_cidrs
+        # The number of entries per page.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -4411,7 +5133,13 @@ class ListIpamResourceDiscoveriesRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag. You can specify at most 20 tag keys. It cannot be an empty string.
+        # 
+        # The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The tag key must start with a letter but cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
         self.key = key
+        # The value of the tag. You can specify at most 20 tag values. The tag value cannot be an empty string.
+        # 
+        # A tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -4455,19 +5183,38 @@ class ListIpamResourceDiscoveriesRequest(TeaModel):
         tags: List[ListIpamResourceDiscoveriesRequestTags] = None,
         type: str = None,
     ):
+        # The IDs of resource discovery instances. Valid values of N: 1 to 100. A maximum of 100 resource discoveries can be queried at a time.
         self.ipam_resource_discovery_ids = ipam_resource_discovery_ids
+        # The name of the resource discovery.
+        # 
+        # The name must be 1 to 128 characters in length and cannot start with http:// or https://.
         self.ipam_resource_discovery_name = ipam_resource_discovery_name
+        # Whether it is a shared resource discovery.
         self.is_shared = is_shared
+        # The maximum number of entries on each page. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, there is no next page.
+        # *   If a value of **NextToken** is returned, it indicates the token that is used for the next query.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where you want to query resource discovery. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group that resource discovery belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tag.
         self.tags = tags
+        # The type of resource discovery.
+        # 
+        # > Supported types:
+        # > - system: default resource discovery created by the system.
+        # > - custom: custom resource discovery created by users.
         self.type = type
 
     def validate(self):
@@ -4552,7 +5299,9 @@ class ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveriesTags(TeaMode
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -4595,17 +5344,39 @@ class ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries(TeaModel):
         tags: List[ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveriesTags] = None,
         type: str = None,
     ):
+        # The time when the resource was discovered.
         self.create_time = create_time
+        # The description of the resource discovery.
         self.ipam_resource_discovery_description = ipam_resource_discovery_description
+        # The ID of resource discovery instance.
         self.ipam_resource_discovery_id = ipam_resource_discovery_id
+        # The name of the resource discovery.
         self.ipam_resource_discovery_name = ipam_resource_discovery_name
+        # The status of the resource discovery instance. Valid values:
+        # 
+        # *   **Creating**\
+        # *   **Created**\
+        # *   **Modifying**\
+        # *   **Deleting**\
+        # *   **Deleted**\
         self.ipam_resource_discovery_status = ipam_resource_discovery_status
+        # The list of resource discovery regions.
         self.operating_region_list = operating_region_list
+        # The Alibaba Cloud account that owns the resource discovery.
         self.owner_id = owner_id
+        # The region ID of the queried resource discovery instance.
         self.region_id = region_id
+        # The ID of the resource group that resource discovery belongs.
         self.resource_group_id = resource_group_id
+        # The sharing status of the resource.
+        # 
+        # *   If the value is empty, the resource is as an average instance.
+        # *   If the value is Shared, the resource discovery comes from a shared source.
+        # *   If the value is Sharing, the resource discovery is being shared.
         self.share_type = share_type
+        # The tag list.
         self.tags = tags
+        # The type of resource discovery.
         self.type = type
 
     def validate(self):
@@ -4690,11 +5461,20 @@ class ListIpamResourceDiscoveriesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The maximum number of entries on each page.
         self.count = count
+        # The list of resource discovery instances.
         self.ipam_resource_discoveries = ipam_resource_discoveries
+        # The maximum number of entries on each page. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, there is no next page.
+        # *   If a value of **NextToken** is returned, it indicates the token that is used for the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -4799,12 +5579,21 @@ class ListIpamResourceDiscoveryAssociationsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the IPAM.
         self.ipam_id = ipam_id
+        # The ID of resource discovery instance.
         self.ipam_resource_discovery_id = ipam_resource_discovery_id
+        # The maximum number of entries on each page. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If this is your first or only query, this parameter is left empty.
+        # *   If a next query is to be sent, the returned value is the value of NextToken that was returned last time this operation was called.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The request region.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
@@ -4872,11 +5661,29 @@ class ListIpamResourceDiscoveryAssociationsResponseBodyIpamResourceDiscoveryAsso
         ipam_resource_discovery_type: str = None,
         status: str = None,
     ):
+        # The ID of the IPAM.
         self.ipam_id = ipam_id
+        # The ID of resource discovery instance.
         self.ipam_resource_discovery_id = ipam_resource_discovery_id
+        # The ID of the Alibaba Cloud account to which the resource discovery belongs.
         self.ipam_resource_discovery_owner_id = ipam_resource_discovery_owner_id
+        # The status of the resource discovery instance. Valid values:
+        # 
+        # *   **Creating**\
+        # *   **Created**\
+        # *   **Modifying**\
+        # *   **Deleting**\
+        # *   **Deleted**\
         self.ipam_resource_discovery_status = ipam_resource_discovery_status
+        # The type of resource discovery. Valid values:
+        # 
+        # *   **system**: default resource discovery created by the system.
+        # *   **custom**: custom resource discovery created by users.
         self.ipam_resource_discovery_type = ipam_resource_discovery_type
+        # The status of the associations. Valid values:
+        # 
+        # *   **Created**\
+        # *   **Deleted**\
         self.status = status
 
     def validate(self):
@@ -4929,11 +5736,20 @@ class ListIpamResourceDiscoveryAssociationsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The number of entries on each page.
         self.count = count
+        # The list of associations.
         self.ipam_resource_discovery_associations = ipam_resource_discovery_associations
+        # The maximum number of entries on each page. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, there is no next page.
+        # *   If a value of **NextToken** is returned, it indicates the token that is used for the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -5031,7 +5847,13 @@ class ListIpamScopesRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The tag key must start with a letter but cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value. You can specify up to 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It cannot start with a `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -5075,19 +5897,37 @@ class ListIpamScopesRequest(TeaModel):
         resource_owner_id: int = None,
         tags: List[ListIpamScopesRequestTags] = None,
     ):
+        # The ID of the IPAM.
         self.ipam_id = ipam_id
+        # The IDs of IPAM scopes.
         self.ipam_scope_ids = ipam_scope_ids
+        # The name of the IPAM scope.
+        # 
+        # It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.ipam_scope_name = ipam_scope_name
+        # The type of the IPAM scope. Valid values:
+        # 
+        # *   **public**\
+        # *   **private**\
         self.ipam_scope_type = ipam_scope_type
+        # The number of entries per page. Valid values: **1** to **100**. Default value: **10**.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   You do not need to specify this parameter for the first request.
+        # *   You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource group ID of the IPAM scope.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tag list.
         self.tags = tags
 
     def validate(self):
@@ -5172,7 +6012,9 @@ class ListIpamScopesResponseBodyIpamScopesTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -5216,18 +6058,42 @@ class ListIpamScopesResponseBodyIpamScopes(TeaModel):
         status: str = None,
         tags: List[ListIpamScopesResponseBodyIpamScopesTags] = None,
     ):
+        # The time when the IPAM scope was created.
         self.create_time = create_time
+        # The ID of the IPAM.
         self.ipam_id = ipam_id
+        # The description of the IPAM scope.
         self.ipam_scope_description = ipam_scope_description
+        # The ID of the IPAM scope.
         self.ipam_scope_id = ipam_scope_id
+        # The name of the IPAM scope.
         self.ipam_scope_name = ipam_scope_name
+        # The type of the IPAM scope. Valid values:
+        # 
+        # *   **public**\
+        # *   **private**\
         self.ipam_scope_type = ipam_scope_type
+        # Indicates whether the scope is the default scope. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.is_default = is_default
+        # The Alibaba Cloud account that owns the IPAM scope.
         self.owner_id = owner_id
+        # The number of pools in the IPAM scope.
         self.pool_count = pool_count
+        # The region ID of the IPAM.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The status of the IPAM scope. Valid values:
+        # 
+        # *   **Creating**\
+        # *   **Created**\
+        # *   **Deleting**\
+        # *   **Deleted**\
         self.status = status
+        # The tag list.
         self.tags = tags
 
     def validate(self):
@@ -5316,11 +6182,20 @@ class ListIpamScopesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The number of entries returned.
         self.count = count
+        # The IPAM scopes.
         self.ipam_scopes = ipam_scopes
+        # The number of entries per page.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -5481,7 +6356,7 @@ class ListIpamsRequest(TeaModel):
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the IPAM pool is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -5617,7 +6492,9 @@ class ListIpamsResponseBodyIpams(TeaModel):
     ):
         # The time when the IPAM was created.
         self.create_time = create_time
+        # Default resource discovery association ID.
         self.default_resource_discovery_association_id = default_resource_discovery_association_id
+        # Default resource discovery instance ID.
         self.default_resource_discovery_id = default_resource_discovery_id
         # The description of the IPAM.
         self.ipam_description = ipam_description
@@ -5642,6 +6519,7 @@ class ListIpamsResponseBodyIpams(TeaModel):
         self.public_default_scope_id = public_default_scope_id
         # The region ID of the IPAM.
         self.region_id = region_id
+        # Number of resource discovery associations.
         self.resource_discovery_association_count = resource_discovery_association_count
         # The resource group ID of the IPAM.
         self.resource_group_id = resource_group_id
@@ -5748,6 +6626,7 @@ class ListIpamsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The number of entries returned.
         self.count = count
         # The IPAMs.
         self.ipams = ipams
@@ -5858,7 +6737,17 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It cannot start with a `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # 
+        # >  You must specify **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value**.
         self.key = key
+        # The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It cannot start with a `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # 
+        # >  You must specify **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value**.
         self.value = value
 
     def validate(self):
@@ -5899,17 +6788,32 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
+        # The number of entries per page. Valid values: **1** to **50**. Default value: **10**.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   You do not need to specify this parameter for the first request.
+        # *   If a value is returned for NextToken, you must specify the token that is obtained from the previous query as the value of **NextToken**.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the resource.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource IDs.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The resource type. Valid values:
+        # 
+        # *   **IPAM**\
+        # *   **IPAMSCOPE**\
+        # *   **IPAMPOOL**\
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The tag list.
         self.tag = tag
 
     def validate(self):
@@ -5984,9 +6888,17 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The resource ID.
         self.resource_id = resource_id
+        # The resource type. Valid values:
+        # 
+        # *   **IPAM**\
+        # *   **IPAMSCOPE**\
+        # *   **IPAMPOOL**\
         self.resource_type = resource_type
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -6028,8 +6940,14 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: List[ListTagResourcesResponseBodyTagResources] = None,
     ):
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The resources to which the tags are added.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -6119,9 +7037,16 @@ class OpenVpcIpamServiceRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # Client token, used to ensure the idempotence of requests.
+        # 
+        # Generate a unique value for this parameter from your client to ensure it is unique across different requests. ClientToken supports only ASCII characters.
+        # 
+        # > If not specified, the system automatically uses the RequestId of the API request as the ClientToken identifier. The RequestId may differ for each API request.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the IPAM instance is hosted.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
@@ -6174,8 +7099,11 @@ class OpenVpcIpamServiceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Status code.
         self.code = code
+        # Information returned upon successful IPAM activation.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6253,7 +7181,13 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It cannot start with a `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It cannot start with a `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -6294,14 +7228,26 @@ class TagResourcesRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the resource.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The IDs of the resources.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The resource type. Valid values:
+        # 
+        # *   **IPAM**\
+        # *   **IPAMSCOPE**\
+        # *   **IPAMPOOL**\
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The tags to add to the resources.
+        # 
         # This parameter is required.
         self.tag = tag
 
@@ -6366,6 +7312,7 @@ class TagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6442,17 +7389,32 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
+        # Specifies whether to remove all tags from the specified resource. Valid values:
+        # 
+        # *   **true**\
+        # *   **false** (default)
         self.all = all
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the resource.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource IDs.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The resource type. Valid values:
+        # 
+        # *   **IPAM**\
+        # *   **IPAMSCOPE**\
+        # *   **IPAMPOOL**\
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The keys of the tags that you want to remove from the resource.
         self.tag_key = tag_key
 
     def validate(self):
@@ -6512,6 +7474,7 @@ class UntagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6591,17 +7554,36 @@ class UpdateIpamRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The effective region that you want to add.
         self.add_operating_region = add_operating_region
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The description of the IPAM.
+        # 
+        # It must be 2 to 256 characters in length and must start with a letter. It cannot start with `http://` or `https://`. The default value is empty.
         self.ipam_description = ipam_description
+        # The ID of the IPAM.
+        # 
         # This parameter is required.
         self.ipam_id = ipam_id
+        # The name of the IPAM.
+        # 
+        # It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.ipam_name = ipam_name
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The effective region that you want to remove.
         self.remove_operating_region = remove_operating_region
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -6675,6 +7657,7 @@ class UpdateIpamResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6757,19 +7740,50 @@ class UpdateIpamPoolRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The new default network mask for the IPAM pool.
+        # 
+        # The mask must be **0 to 32** bits in length.
         self.allocation_default_cidr_mask = allocation_default_cidr_mask
+        # The new maximum network mask for the IPAM pool.
+        # 
+        # The mask must be **0 to 32** bits in length.
         self.allocation_max_cidr_mask = allocation_max_cidr_mask
+        # The new minimum network mask for the IPAM pool.
+        # 
+        # The mask must be **0 to 32** bits in length.
         self.allocation_min_cidr_mask = allocation_min_cidr_mask
+        # Whether the pool has the auto-import feature enabled.
         self.auto_import = auto_import
+        # Specifies whether to delete the default network mask for the IPAM pool. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.clear_allocation_default_cidr_mask = clear_allocation_default_cidr_mask
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The new description of the IPAM pool.
+        # 
+        # It must be 2 to 268 characters in length. It must start with a letter but cannot start with a `http://` or `https://`. This parameter is empty by default.
         self.ipam_pool_description = ipam_pool_description
+        # The ID of the IPAM pool.
+        # 
         # This parameter is required.
         self.ipam_pool_id = ipam_pool_id
+        # The new name of the IPAM pool.
+        # 
+        # It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.ipam_pool_name = ipam_pool_name
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
@@ -6856,6 +7870,7 @@ class UpdateIpamPoolResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6929,12 +7944,29 @@ class UpdateIpamPoolAllocationRequest(TeaModel):
         ipam_pool_allocation_name: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # Specifies whether to precheck this request. Valid values:
+        # 
+        # *   **true**: performs a dry run without modifying the CIDR blocks of IPAM pools. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # *   **false** (default): performs a dry run and the actual request. If the request passes the check, an HTTP 2xx status code is returned and the CIDR allocation information of the IPAM address pool is modified.
         self.dry_run = dry_run
+        # The description of the CIDR allocation of the IPAM pool.
+        # 
+        # The description must be 1 to 256 characters in length and start with a letter, but cannot start with a `http://` or `https://`. This parameter is empty by default.
         self.ipam_pool_allocation_description = ipam_pool_allocation_description
+        # The ID of the instance to which CIDR blocks are allocated from the IPAM pool.
+        # 
         # This parameter is required.
         self.ipam_pool_allocation_id = ipam_pool_allocation_id
+        # The name of the CIDR allocation of the IPAM pool.
+        # 
+        # It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.ipam_pool_allocation_name = ipam_pool_allocation_name
+        # The ID of the region where you want to perform the operation. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -6983,6 +8015,7 @@ class UpdateIpamPoolAllocationResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7062,17 +8095,32 @@ class UpdateIpamResourceDiscoveryRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The list of effective regions to add.
         self.add_operating_region = add_operating_region
+        # The client token used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform the dry run. Valid values:
+        # 
+        # *   **true**: Performs a dry run without modifying the resource discovery instance. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # *   **false** (default): Performs a dry run and the actual request. If the request passes the check, an HTTP 2xx status code is returned and the resource discovery instance is modified.
         self.dry_run = dry_run
+        # The description of resource discovery.
         self.ipam_resource_discovery_description = ipam_resource_discovery_description
+        # The ID of resource discovery instance.
+        # 
         # This parameter is required.
         self.ipam_resource_discovery_id = ipam_resource_discovery_id
+        # The name of the resource discovery.
         self.ipam_resource_discovery_name = ipam_resource_discovery_name
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The request region.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The list of effective regions to remove.
         self.remove_operating_region = remove_operating_region
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -7146,6 +8194,7 @@ class UpdateIpamResourceDiscoveryResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7223,14 +8272,31 @@ class UpdateIpamScopeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, DryRunOperation is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The new description of the IPAM scope.
+        # 
+        # It must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`. This parameter is empty by default.
         self.ipam_scope_description = ipam_scope_description
+        # The ID of the IPAM scope.
+        # 
         # This parameter is required.
         self.ipam_scope_id = ipam_scope_id
+        # The new name of the IPAM scope.
+        # 
+        # It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.ipam_scope_name = ipam_scope_name
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
@@ -7297,6 +8363,7 @@ class UpdateIpamScopeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -47,6 +47,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.AddIpamPoolCidrResponse:
         """
+        @summary Provisions a CIDR block to an IP Address Manager (IPAM) pool.
+        
+        @description    Before you provision a CIDR block, make sure that an IPAM pool is created. You can call the **CreateIpamPool** operation to create an IPAM pool.
+        If no CIDR block is provisioned to a parent pool, you cannot provision CIDR blocks to its subpools.
+        If a CIDR block is provisioned to a parent pool, you can provision CIDR blocks to its subpools and the CIDR blocks must be subsets of the CIDR block provisioned to the parent pool.
+        If a CIDR block is provisioned to a parent pool and allocations are created, CIDR blocks provisioned to its subpools cannot overlap with existing allocated CIDR blocks.
+        You can provision CIDR blocks to a pool only in the region where the IPAM is hosted.
+        CIDR blocks provisioned to an IPAM pool cannot overlap with the CIDR blocks provisioned to other pools in the same scope.
+        You can provision at most 50 CIDR blocks to each pool.
+        
         @param request: AddIpamPoolCidrRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddIpamPoolCidrResponse
@@ -77,16 +87,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.AddIpamPoolCidrResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.AddIpamPoolCidrResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.AddIpamPoolCidrResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def add_ipam_pool_cidr_with_options_async(
         self,
@@ -94,6 +98,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.AddIpamPoolCidrResponse:
         """
+        @summary Provisions a CIDR block to an IP Address Manager (IPAM) pool.
+        
+        @description    Before you provision a CIDR block, make sure that an IPAM pool is created. You can call the **CreateIpamPool** operation to create an IPAM pool.
+        If no CIDR block is provisioned to a parent pool, you cannot provision CIDR blocks to its subpools.
+        If a CIDR block is provisioned to a parent pool, you can provision CIDR blocks to its subpools and the CIDR blocks must be subsets of the CIDR block provisioned to the parent pool.
+        If a CIDR block is provisioned to a parent pool and allocations are created, CIDR blocks provisioned to its subpools cannot overlap with existing allocated CIDR blocks.
+        You can provision CIDR blocks to a pool only in the region where the IPAM is hosted.
+        CIDR blocks provisioned to an IPAM pool cannot overlap with the CIDR blocks provisioned to other pools in the same scope.
+        You can provision at most 50 CIDR blocks to each pool.
+        
         @param request: AddIpamPoolCidrRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddIpamPoolCidrResponse
@@ -124,22 +138,26 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.AddIpamPoolCidrResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.AddIpamPoolCidrResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.AddIpamPoolCidrResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def add_ipam_pool_cidr(
         self,
         request: vpc_ipam_20230228_models.AddIpamPoolCidrRequest,
     ) -> vpc_ipam_20230228_models.AddIpamPoolCidrResponse:
         """
+        @summary Provisions a CIDR block to an IP Address Manager (IPAM) pool.
+        
+        @description    Before you provision a CIDR block, make sure that an IPAM pool is created. You can call the **CreateIpamPool** operation to create an IPAM pool.
+        If no CIDR block is provisioned to a parent pool, you cannot provision CIDR blocks to its subpools.
+        If a CIDR block is provisioned to a parent pool, you can provision CIDR blocks to its subpools and the CIDR blocks must be subsets of the CIDR block provisioned to the parent pool.
+        If a CIDR block is provisioned to a parent pool and allocations are created, CIDR blocks provisioned to its subpools cannot overlap with existing allocated CIDR blocks.
+        You can provision CIDR blocks to a pool only in the region where the IPAM is hosted.
+        CIDR blocks provisioned to an IPAM pool cannot overlap with the CIDR blocks provisioned to other pools in the same scope.
+        You can provision at most 50 CIDR blocks to each pool.
+        
         @param request: AddIpamPoolCidrRequest
         @return: AddIpamPoolCidrResponse
         """
@@ -151,6 +169,16 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.AddIpamPoolCidrRequest,
     ) -> vpc_ipam_20230228_models.AddIpamPoolCidrResponse:
         """
+        @summary Provisions a CIDR block to an IP Address Manager (IPAM) pool.
+        
+        @description    Before you provision a CIDR block, make sure that an IPAM pool is created. You can call the **CreateIpamPool** operation to create an IPAM pool.
+        If no CIDR block is provisioned to a parent pool, you cannot provision CIDR blocks to its subpools.
+        If a CIDR block is provisioned to a parent pool, you can provision CIDR blocks to its subpools and the CIDR blocks must be subsets of the CIDR block provisioned to the parent pool.
+        If a CIDR block is provisioned to a parent pool and allocations are created, CIDR blocks provisioned to its subpools cannot overlap with existing allocated CIDR blocks.
+        You can provision CIDR blocks to a pool only in the region where the IPAM is hosted.
+        CIDR blocks provisioned to an IPAM pool cannot overlap with the CIDR blocks provisioned to other pools in the same scope.
+        You can provision at most 50 CIDR blocks to each pool.
+        
         @param request: AddIpamPoolCidrRequest
         @return: AddIpamPoolCidrResponse
         """
@@ -163,7 +191,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.AssociateIpamResourceDiscoveryResponse:
         """
-        @summary 关联资源发现和IPAM实例。
+        @summary Associates resource discovery with an IPAM instance.
+        
+        @description    The specified resource discovery instance can only be associated with one IPAM instance and associations cannot be duplicated.
         
         @param request: AssociateIpamResourceDiscoveryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -203,16 +233,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.AssociateIpamResourceDiscoveryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.AssociateIpamResourceDiscoveryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.AssociateIpamResourceDiscoveryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def associate_ipam_resource_discovery_with_options_async(
         self,
@@ -220,7 +244,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.AssociateIpamResourceDiscoveryResponse:
         """
-        @summary 关联资源发现和IPAM实例。
+        @summary Associates resource discovery with an IPAM instance.
+        
+        @description    The specified resource discovery instance can only be associated with one IPAM instance and associations cannot be duplicated.
         
         @param request: AssociateIpamResourceDiscoveryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -260,23 +286,19 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.AssociateIpamResourceDiscoveryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.AssociateIpamResourceDiscoveryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.AssociateIpamResourceDiscoveryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def associate_ipam_resource_discovery(
         self,
         request: vpc_ipam_20230228_models.AssociateIpamResourceDiscoveryRequest,
     ) -> vpc_ipam_20230228_models.AssociateIpamResourceDiscoveryResponse:
         """
-        @summary 关联资源发现和IPAM实例。
+        @summary Associates resource discovery with an IPAM instance.
+        
+        @description    The specified resource discovery instance can only be associated with one IPAM instance and associations cannot be duplicated.
         
         @param request: AssociateIpamResourceDiscoveryRequest
         @return: AssociateIpamResourceDiscoveryResponse
@@ -289,7 +311,9 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.AssociateIpamResourceDiscoveryRequest,
     ) -> vpc_ipam_20230228_models.AssociateIpamResourceDiscoveryResponse:
         """
-        @summary 关联资源发现和IPAM实例。
+        @summary Associates resource discovery with an IPAM instance.
+        
+        @description    The specified resource discovery instance can only be associated with one IPAM instance and associations cannot be duplicated.
         
         @param request: AssociateIpamResourceDiscoveryRequest
         @return: AssociateIpamResourceDiscoveryResponse
@@ -303,6 +327,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.ChangeResourceGroupResponse:
         """
+        @summary Changes the resource group of an IPAM resource.
+        
         @param request: ChangeResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ChangeResourceGroupResponse
@@ -339,16 +365,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ChangeResourceGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ChangeResourceGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.ChangeResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def change_resource_group_with_options_async(
         self,
@@ -356,6 +376,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.ChangeResourceGroupResponse:
         """
+        @summary Changes the resource group of an IPAM resource.
+        
         @param request: ChangeResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ChangeResourceGroupResponse
@@ -392,22 +414,18 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ChangeResourceGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ChangeResourceGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.ChangeResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def change_resource_group(
         self,
         request: vpc_ipam_20230228_models.ChangeResourceGroupRequest,
     ) -> vpc_ipam_20230228_models.ChangeResourceGroupResponse:
         """
+        @summary Changes the resource group of an IPAM resource.
+        
         @param request: ChangeResourceGroupRequest
         @return: ChangeResourceGroupResponse
         """
@@ -419,6 +437,8 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.ChangeResourceGroupRequest,
     ) -> vpc_ipam_20230228_models.ChangeResourceGroupResponse:
         """
+        @summary Changes the resource group of an IPAM resource.
+        
         @param request: ChangeResourceGroupRequest
         @return: ChangeResourceGroupResponse
         """
@@ -431,7 +451,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.CreateIpamResponse:
         """
-        @summary 创建IPAM实例。
+        @summary Creates an IP Address Manager (IPAM).
+        
+        @description - You can create only one IPAM with each Alibaba Cloud account in each region.
+        - Only IPv4 IP addresses can be allocated.
+        - When you create an IPAM instance:
+        - If there is no custom resource discovery in the region, the system creates a default resource discovery associated with the IPAM instance.
+        - If there is a custom resource discovery in the region, the system converts it to a default resource discovery and associates it with the IPAM instance.
         
         @param request: CreateIpamRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -477,16 +503,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.CreateIpamResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.CreateIpamResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.CreateIpamResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_ipam_with_options_async(
         self,
@@ -494,7 +514,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.CreateIpamResponse:
         """
-        @summary 创建IPAM实例。
+        @summary Creates an IP Address Manager (IPAM).
+        
+        @description - You can create only one IPAM with each Alibaba Cloud account in each region.
+        - Only IPv4 IP addresses can be allocated.
+        - When you create an IPAM instance:
+        - If there is no custom resource discovery in the region, the system creates a default resource discovery associated with the IPAM instance.
+        - If there is a custom resource discovery in the region, the system converts it to a default resource discovery and associates it with the IPAM instance.
         
         @param request: CreateIpamRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -540,23 +566,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.CreateIpamResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.CreateIpamResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.CreateIpamResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_ipam(
         self,
         request: vpc_ipam_20230228_models.CreateIpamRequest,
     ) -> vpc_ipam_20230228_models.CreateIpamResponse:
         """
-        @summary 创建IPAM实例。
+        @summary Creates an IP Address Manager (IPAM).
+        
+        @description - You can create only one IPAM with each Alibaba Cloud account in each region.
+        - Only IPv4 IP addresses can be allocated.
+        - When you create an IPAM instance:
+        - If there is no custom resource discovery in the region, the system creates a default resource discovery associated with the IPAM instance.
+        - If there is a custom resource discovery in the region, the system converts it to a default resource discovery and associates it with the IPAM instance.
         
         @param request: CreateIpamRequest
         @return: CreateIpamResponse
@@ -569,7 +595,13 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.CreateIpamRequest,
     ) -> vpc_ipam_20230228_models.CreateIpamResponse:
         """
-        @summary 创建IPAM实例。
+        @summary Creates an IP Address Manager (IPAM).
+        
+        @description - You can create only one IPAM with each Alibaba Cloud account in each region.
+        - Only IPv4 IP addresses can be allocated.
+        - When you create an IPAM instance:
+        - If there is no custom resource discovery in the region, the system creates a default resource discovery associated with the IPAM instance.
+        - If there is a custom resource discovery in the region, the system converts it to a default resource discovery and associates it with the IPAM instance.
         
         @param request: CreateIpamRequest
         @return: CreateIpamResponse
@@ -583,6 +615,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.CreateIpamPoolResponse:
         """
+        @summary Creates an IP Address Manager (IPAM) pool.
+        
         @param request: CreateIpamPoolRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateIpamPoolResponse
@@ -641,16 +675,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.CreateIpamPoolResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.CreateIpamPoolResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.CreateIpamPoolResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_ipam_pool_with_options_async(
         self,
@@ -658,6 +686,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.CreateIpamPoolResponse:
         """
+        @summary Creates an IP Address Manager (IPAM) pool.
+        
         @param request: CreateIpamPoolRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateIpamPoolResponse
@@ -716,22 +746,18 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.CreateIpamPoolResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.CreateIpamPoolResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.CreateIpamPoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_ipam_pool(
         self,
         request: vpc_ipam_20230228_models.CreateIpamPoolRequest,
     ) -> vpc_ipam_20230228_models.CreateIpamPoolResponse:
         """
+        @summary Creates an IP Address Manager (IPAM) pool.
+        
         @param request: CreateIpamPoolRequest
         @return: CreateIpamPoolResponse
         """
@@ -743,6 +769,8 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.CreateIpamPoolRequest,
     ) -> vpc_ipam_20230228_models.CreateIpamPoolResponse:
         """
+        @summary Creates an IP Address Manager (IPAM) pool.
+        
         @param request: CreateIpamPoolRequest
         @return: CreateIpamPoolResponse
         """
@@ -755,6 +783,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.CreateIpamPoolAllocationResponse:
         """
+        @summary Reserves a custom CIDR block from an IP Address Manager (IPAM) pool.
+        
+        @description    Before you reserve a custom CIDR block, make sure that an IPAM pool is created and CIDR blocks are added to the pool. You can call **CreateIpamPool** to create an IPAM pool and call **AddIpamPoolCidr** to add CIDR blocks to the pool.
+        When you specify Cidr or CidrMask to reserve a custom CIDR block, the mask must fall within the range specified by the IPAM pool.
+        If the IPAM pool has the region attribute, you must reserve a custom CIDR block in the region to which the IPAM pool belongs.
+        The custom CIDR block that you want to reserve cannot overlap with existing CIDR blocks created from the IPAM pool.
+        
         @param request: CreateIpamPoolAllocationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateIpamPoolAllocationResponse
@@ -791,16 +826,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.CreateIpamPoolAllocationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.CreateIpamPoolAllocationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.CreateIpamPoolAllocationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_ipam_pool_allocation_with_options_async(
         self,
@@ -808,6 +837,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.CreateIpamPoolAllocationResponse:
         """
+        @summary Reserves a custom CIDR block from an IP Address Manager (IPAM) pool.
+        
+        @description    Before you reserve a custom CIDR block, make sure that an IPAM pool is created and CIDR blocks are added to the pool. You can call **CreateIpamPool** to create an IPAM pool and call **AddIpamPoolCidr** to add CIDR blocks to the pool.
+        When you specify Cidr or CidrMask to reserve a custom CIDR block, the mask must fall within the range specified by the IPAM pool.
+        If the IPAM pool has the region attribute, you must reserve a custom CIDR block in the region to which the IPAM pool belongs.
+        The custom CIDR block that you want to reserve cannot overlap with existing CIDR blocks created from the IPAM pool.
+        
         @param request: CreateIpamPoolAllocationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateIpamPoolAllocationResponse
@@ -844,22 +880,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.CreateIpamPoolAllocationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.CreateIpamPoolAllocationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.CreateIpamPoolAllocationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_ipam_pool_allocation(
         self,
         request: vpc_ipam_20230228_models.CreateIpamPoolAllocationRequest,
     ) -> vpc_ipam_20230228_models.CreateIpamPoolAllocationResponse:
         """
+        @summary Reserves a custom CIDR block from an IP Address Manager (IPAM) pool.
+        
+        @description    Before you reserve a custom CIDR block, make sure that an IPAM pool is created and CIDR blocks are added to the pool. You can call **CreateIpamPool** to create an IPAM pool and call **AddIpamPoolCidr** to add CIDR blocks to the pool.
+        When you specify Cidr or CidrMask to reserve a custom CIDR block, the mask must fall within the range specified by the IPAM pool.
+        If the IPAM pool has the region attribute, you must reserve a custom CIDR block in the region to which the IPAM pool belongs.
+        The custom CIDR block that you want to reserve cannot overlap with existing CIDR blocks created from the IPAM pool.
+        
         @param request: CreateIpamPoolAllocationRequest
         @return: CreateIpamPoolAllocationResponse
         """
@@ -871,6 +908,13 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.CreateIpamPoolAllocationRequest,
     ) -> vpc_ipam_20230228_models.CreateIpamPoolAllocationResponse:
         """
+        @summary Reserves a custom CIDR block from an IP Address Manager (IPAM) pool.
+        
+        @description    Before you reserve a custom CIDR block, make sure that an IPAM pool is created and CIDR blocks are added to the pool. You can call **CreateIpamPool** to create an IPAM pool and call **AddIpamPoolCidr** to add CIDR blocks to the pool.
+        When you specify Cidr or CidrMask to reserve a custom CIDR block, the mask must fall within the range specified by the IPAM pool.
+        If the IPAM pool has the region attribute, you must reserve a custom CIDR block in the region to which the IPAM pool belongs.
+        The custom CIDR block that you want to reserve cannot overlap with existing CIDR blocks created from the IPAM pool.
+        
         @param request: CreateIpamPoolAllocationRequest
         @return: CreateIpamPoolAllocationResponse
         """
@@ -883,7 +927,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.CreateIpamResourceDiscoveryResponse:
         """
-        @summary 创建自定义类型资源发现。
+        @summary Creates a custom resource discovery instance.
+        
+        @description    Each Alibaba Cloud account can create only one resource discovery instance in each region.
+        You can create only custom resource discovery instances.
         
         @param request: CreateIpamResourceDiscoveryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -929,16 +976,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.CreateIpamResourceDiscoveryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.CreateIpamResourceDiscoveryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.CreateIpamResourceDiscoveryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_ipam_resource_discovery_with_options_async(
         self,
@@ -946,7 +987,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.CreateIpamResourceDiscoveryResponse:
         """
-        @summary 创建自定义类型资源发现。
+        @summary Creates a custom resource discovery instance.
+        
+        @description    Each Alibaba Cloud account can create only one resource discovery instance in each region.
+        You can create only custom resource discovery instances.
         
         @param request: CreateIpamResourceDiscoveryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -992,23 +1036,20 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.CreateIpamResourceDiscoveryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.CreateIpamResourceDiscoveryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.CreateIpamResourceDiscoveryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_ipam_resource_discovery(
         self,
         request: vpc_ipam_20230228_models.CreateIpamResourceDiscoveryRequest,
     ) -> vpc_ipam_20230228_models.CreateIpamResourceDiscoveryResponse:
         """
-        @summary 创建自定义类型资源发现。
+        @summary Creates a custom resource discovery instance.
+        
+        @description    Each Alibaba Cloud account can create only one resource discovery instance in each region.
+        You can create only custom resource discovery instances.
         
         @param request: CreateIpamResourceDiscoveryRequest
         @return: CreateIpamResourceDiscoveryResponse
@@ -1021,7 +1062,10 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.CreateIpamResourceDiscoveryRequest,
     ) -> vpc_ipam_20230228_models.CreateIpamResourceDiscoveryResponse:
         """
-        @summary 创建自定义类型资源发现。
+        @summary Creates a custom resource discovery instance.
+        
+        @description    Each Alibaba Cloud account can create only one resource discovery instance in each region.
+        You can create only custom resource discovery instances.
         
         @param request: CreateIpamResourceDiscoveryRequest
         @return: CreateIpamResourceDiscoveryResponse
@@ -1035,6 +1079,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.CreateIpamScopeResponse:
         """
+        @summary Creates a public scope and private scope to respectively manage public and private IP addresses.
+        
         @param request: CreateIpamScopeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateIpamScopeResponse
@@ -1081,16 +1127,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.CreateIpamScopeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.CreateIpamScopeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.CreateIpamScopeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_ipam_scope_with_options_async(
         self,
@@ -1098,6 +1138,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.CreateIpamScopeResponse:
         """
+        @summary Creates a public scope and private scope to respectively manage public and private IP addresses.
+        
         @param request: CreateIpamScopeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateIpamScopeResponse
@@ -1144,22 +1186,18 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.CreateIpamScopeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.CreateIpamScopeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.CreateIpamScopeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_ipam_scope(
         self,
         request: vpc_ipam_20230228_models.CreateIpamScopeRequest,
     ) -> vpc_ipam_20230228_models.CreateIpamScopeResponse:
         """
+        @summary Creates a public scope and private scope to respectively manage public and private IP addresses.
+        
         @param request: CreateIpamScopeRequest
         @return: CreateIpamScopeResponse
         """
@@ -1171,6 +1209,8 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.CreateIpamScopeRequest,
     ) -> vpc_ipam_20230228_models.CreateIpamScopeResponse:
         """
+        @summary Creates a public scope and private scope to respectively manage public and private IP addresses.
+        
         @param request: CreateIpamScopeRequest
         @return: CreateIpamScopeResponse
         """
@@ -1183,6 +1223,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.DeleteIpamResponse:
         """
+        @summary Deletes an IP Address Manager (IPAM).
+        
+        @description ## [](#)Prerequisites
+        Before you delete an IPAM, make sure that all IPAM pools of the IPAM are deleted. You can call **DeleteIpamPool** to delete IPAM pools.
+        Before you delete an IPAM, make sure that all IPAM scopes of the IPAM are deleted. You can call **DeleteIpamScope** to delete IPAM scopes.
+        
         @param request: DeleteIpamRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteIpamResponse
@@ -1219,16 +1265,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.DeleteIpamResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.DeleteIpamResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.DeleteIpamResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_ipam_with_options_async(
         self,
@@ -1236,6 +1276,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.DeleteIpamResponse:
         """
+        @summary Deletes an IP Address Manager (IPAM).
+        
+        @description ## [](#)Prerequisites
+        Before you delete an IPAM, make sure that all IPAM pools of the IPAM are deleted. You can call **DeleteIpamPool** to delete IPAM pools.
+        Before you delete an IPAM, make sure that all IPAM scopes of the IPAM are deleted. You can call **DeleteIpamScope** to delete IPAM scopes.
+        
         @param request: DeleteIpamRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteIpamResponse
@@ -1272,22 +1318,22 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.DeleteIpamResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.DeleteIpamResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.DeleteIpamResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_ipam(
         self,
         request: vpc_ipam_20230228_models.DeleteIpamRequest,
     ) -> vpc_ipam_20230228_models.DeleteIpamResponse:
         """
+        @summary Deletes an IP Address Manager (IPAM).
+        
+        @description ## [](#)Prerequisites
+        Before you delete an IPAM, make sure that all IPAM pools of the IPAM are deleted. You can call **DeleteIpamPool** to delete IPAM pools.
+        Before you delete an IPAM, make sure that all IPAM scopes of the IPAM are deleted. You can call **DeleteIpamScope** to delete IPAM scopes.
+        
         @param request: DeleteIpamRequest
         @return: DeleteIpamResponse
         """
@@ -1299,6 +1345,12 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.DeleteIpamRequest,
     ) -> vpc_ipam_20230228_models.DeleteIpamResponse:
         """
+        @summary Deletes an IP Address Manager (IPAM).
+        
+        @description ## [](#)Prerequisites
+        Before you delete an IPAM, make sure that all IPAM pools of the IPAM are deleted. You can call **DeleteIpamPool** to delete IPAM pools.
+        Before you delete an IPAM, make sure that all IPAM scopes of the IPAM are deleted. You can call **DeleteIpamScope** to delete IPAM scopes.
+        
         @param request: DeleteIpamRequest
         @return: DeleteIpamResponse
         """
@@ -1311,6 +1363,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.DeleteIpamPoolResponse:
         """
+        @summary Deletes an IP Address Manager (IPAM) scope.
+        
+        @description ### [](#)Usage notes
+        Before you delete a parent pool, make sure that all subpools of the parent pool are deleted.
+        If an effective region is specified for a parent pool and IP addresses are allocated from the parent pool, you cannot delete the parent pool.
+        If an effective region is specified for a subpool and IP addresses are allocated from the subpool, you cannot delete the subpool.
+        
         @param request: DeleteIpamPoolRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteIpamPoolResponse
@@ -1347,16 +1406,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.DeleteIpamPoolResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.DeleteIpamPoolResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.DeleteIpamPoolResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_ipam_pool_with_options_async(
         self,
@@ -1364,6 +1417,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.DeleteIpamPoolResponse:
         """
+        @summary Deletes an IP Address Manager (IPAM) scope.
+        
+        @description ### [](#)Usage notes
+        Before you delete a parent pool, make sure that all subpools of the parent pool are deleted.
+        If an effective region is specified for a parent pool and IP addresses are allocated from the parent pool, you cannot delete the parent pool.
+        If an effective region is specified for a subpool and IP addresses are allocated from the subpool, you cannot delete the subpool.
+        
         @param request: DeleteIpamPoolRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteIpamPoolResponse
@@ -1400,22 +1460,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.DeleteIpamPoolResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.DeleteIpamPoolResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.DeleteIpamPoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_ipam_pool(
         self,
         request: vpc_ipam_20230228_models.DeleteIpamPoolRequest,
     ) -> vpc_ipam_20230228_models.DeleteIpamPoolResponse:
         """
+        @summary Deletes an IP Address Manager (IPAM) scope.
+        
+        @description ### [](#)Usage notes
+        Before you delete a parent pool, make sure that all subpools of the parent pool are deleted.
+        If an effective region is specified for a parent pool and IP addresses are allocated from the parent pool, you cannot delete the parent pool.
+        If an effective region is specified for a subpool and IP addresses are allocated from the subpool, you cannot delete the subpool.
+        
         @param request: DeleteIpamPoolRequest
         @return: DeleteIpamPoolResponse
         """
@@ -1427,6 +1488,13 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.DeleteIpamPoolRequest,
     ) -> vpc_ipam_20230228_models.DeleteIpamPoolResponse:
         """
+        @summary Deletes an IP Address Manager (IPAM) scope.
+        
+        @description ### [](#)Usage notes
+        Before you delete a parent pool, make sure that all subpools of the parent pool are deleted.
+        If an effective region is specified for a parent pool and IP addresses are allocated from the parent pool, you cannot delete the parent pool.
+        If an effective region is specified for a subpool and IP addresses are allocated from the subpool, you cannot delete the subpool.
+        
         @param request: DeleteIpamPoolRequest
         @return: DeleteIpamPoolResponse
         """
@@ -1439,6 +1507,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.DeleteIpamPoolAllocationResponse:
         """
+        @summary Deletes a custom reserved CIDR block from an IP Address Manager (IPAM) pool.
+        
         @param request: DeleteIpamPoolAllocationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteIpamPoolAllocationResponse
@@ -1467,16 +1537,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.DeleteIpamPoolAllocationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.DeleteIpamPoolAllocationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.DeleteIpamPoolAllocationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_ipam_pool_allocation_with_options_async(
         self,
@@ -1484,6 +1548,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.DeleteIpamPoolAllocationResponse:
         """
+        @summary Deletes a custom reserved CIDR block from an IP Address Manager (IPAM) pool.
+        
         @param request: DeleteIpamPoolAllocationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteIpamPoolAllocationResponse
@@ -1512,22 +1578,18 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.DeleteIpamPoolAllocationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.DeleteIpamPoolAllocationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.DeleteIpamPoolAllocationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_ipam_pool_allocation(
         self,
         request: vpc_ipam_20230228_models.DeleteIpamPoolAllocationRequest,
     ) -> vpc_ipam_20230228_models.DeleteIpamPoolAllocationResponse:
         """
+        @summary Deletes a custom reserved CIDR block from an IP Address Manager (IPAM) pool.
+        
         @param request: DeleteIpamPoolAllocationRequest
         @return: DeleteIpamPoolAllocationResponse
         """
@@ -1539,6 +1601,8 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.DeleteIpamPoolAllocationRequest,
     ) -> vpc_ipam_20230228_models.DeleteIpamPoolAllocationResponse:
         """
+        @summary Deletes a custom reserved CIDR block from an IP Address Manager (IPAM) pool.
+        
         @param request: DeleteIpamPoolAllocationRequest
         @return: DeleteIpamPoolAllocationResponse
         """
@@ -1551,6 +1615,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.DeleteIpamPoolCidrResponse:
         """
+        @summary Deletes a CIDR block provisioned to an IP Address Manager (IPAM) pool.
+        
+        @description    If CIDR blocks are provisioned to a parent pool and its subpools, you must first delete the CIDR blocks provisioned to the subpools before you delete the ones provisioned to the parent pool.
+        If CIDR blocks are provisioned only to the parent pool, directly delete them.
+        If CIDR blocks are allocated from provisioned ones, you must first delete the allocated CIDR blocks before you delete the provisioned ones.
+        You can delete CIDR blocks provisioned to an IPAM pool only in the region where the IPAM is hosted.
+        
         @param request: DeleteIpamPoolCidrRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteIpamPoolCidrResponse
@@ -1581,16 +1652,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.DeleteIpamPoolCidrResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.DeleteIpamPoolCidrResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.DeleteIpamPoolCidrResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_ipam_pool_cidr_with_options_async(
         self,
@@ -1598,6 +1663,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.DeleteIpamPoolCidrResponse:
         """
+        @summary Deletes a CIDR block provisioned to an IP Address Manager (IPAM) pool.
+        
+        @description    If CIDR blocks are provisioned to a parent pool and its subpools, you must first delete the CIDR blocks provisioned to the subpools before you delete the ones provisioned to the parent pool.
+        If CIDR blocks are provisioned only to the parent pool, directly delete them.
+        If CIDR blocks are allocated from provisioned ones, you must first delete the allocated CIDR blocks before you delete the provisioned ones.
+        You can delete CIDR blocks provisioned to an IPAM pool only in the region where the IPAM is hosted.
+        
         @param request: DeleteIpamPoolCidrRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteIpamPoolCidrResponse
@@ -1628,22 +1700,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.DeleteIpamPoolCidrResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.DeleteIpamPoolCidrResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.DeleteIpamPoolCidrResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_ipam_pool_cidr(
         self,
         request: vpc_ipam_20230228_models.DeleteIpamPoolCidrRequest,
     ) -> vpc_ipam_20230228_models.DeleteIpamPoolCidrResponse:
         """
+        @summary Deletes a CIDR block provisioned to an IP Address Manager (IPAM) pool.
+        
+        @description    If CIDR blocks are provisioned to a parent pool and its subpools, you must first delete the CIDR blocks provisioned to the subpools before you delete the ones provisioned to the parent pool.
+        If CIDR blocks are provisioned only to the parent pool, directly delete them.
+        If CIDR blocks are allocated from provisioned ones, you must first delete the allocated CIDR blocks before you delete the provisioned ones.
+        You can delete CIDR blocks provisioned to an IPAM pool only in the region where the IPAM is hosted.
+        
         @param request: DeleteIpamPoolCidrRequest
         @return: DeleteIpamPoolCidrResponse
         """
@@ -1655,6 +1728,13 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.DeleteIpamPoolCidrRequest,
     ) -> vpc_ipam_20230228_models.DeleteIpamPoolCidrResponse:
         """
+        @summary Deletes a CIDR block provisioned to an IP Address Manager (IPAM) pool.
+        
+        @description    If CIDR blocks are provisioned to a parent pool and its subpools, you must first delete the CIDR blocks provisioned to the subpools before you delete the ones provisioned to the parent pool.
+        If CIDR blocks are provisioned only to the parent pool, directly delete them.
+        If CIDR blocks are allocated from provisioned ones, you must first delete the allocated CIDR blocks before you delete the provisioned ones.
+        You can delete CIDR blocks provisioned to an IPAM pool only in the region where the IPAM is hosted.
+        
         @param request: DeleteIpamPoolCidrRequest
         @return: DeleteIpamPoolCidrResponse
         """
@@ -1667,7 +1747,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.DeleteIpamResourceDiscoveryResponse:
         """
-        @summary 删除自定义类型的资源发现。
+        @summary Deletes a custom resource discovery instance.
+        
+        @description    If a resource discovery instance is shared, it cannot be deleted.
         
         @param request: DeleteIpamResourceDiscoveryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1705,16 +1787,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.DeleteIpamResourceDiscoveryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.DeleteIpamResourceDiscoveryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.DeleteIpamResourceDiscoveryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_ipam_resource_discovery_with_options_async(
         self,
@@ -1722,7 +1798,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.DeleteIpamResourceDiscoveryResponse:
         """
-        @summary 删除自定义类型的资源发现。
+        @summary Deletes a custom resource discovery instance.
+        
+        @description    If a resource discovery instance is shared, it cannot be deleted.
         
         @param request: DeleteIpamResourceDiscoveryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1760,23 +1838,19 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.DeleteIpamResourceDiscoveryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.DeleteIpamResourceDiscoveryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.DeleteIpamResourceDiscoveryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_ipam_resource_discovery(
         self,
         request: vpc_ipam_20230228_models.DeleteIpamResourceDiscoveryRequest,
     ) -> vpc_ipam_20230228_models.DeleteIpamResourceDiscoveryResponse:
         """
-        @summary 删除自定义类型的资源发现。
+        @summary Deletes a custom resource discovery instance.
+        
+        @description    If a resource discovery instance is shared, it cannot be deleted.
         
         @param request: DeleteIpamResourceDiscoveryRequest
         @return: DeleteIpamResourceDiscoveryResponse
@@ -1789,7 +1863,9 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.DeleteIpamResourceDiscoveryRequest,
     ) -> vpc_ipam_20230228_models.DeleteIpamResourceDiscoveryResponse:
         """
-        @summary 删除自定义类型的资源发现。
+        @summary Deletes a custom resource discovery instance.
+        
+        @description    If a resource discovery instance is shared, it cannot be deleted.
         
         @param request: DeleteIpamResourceDiscoveryRequest
         @return: DeleteIpamResourceDiscoveryResponse
@@ -1803,6 +1879,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.DeleteIpamScopeResponse:
         """
+        @summary Deletes an IP Address Manager (IPAM) scope.
+        
+        @description ### [](#)Usage notes
+        You cannot delete the private scope and public scope created by the system.
+        Before you delete an IPAM scope, make sure that all pools within the scope are deleted. You can call **DeleteIpamPool** to delete IPAM pools.
+        
         @param request: DeleteIpamScopeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteIpamScopeResponse
@@ -1839,16 +1921,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.DeleteIpamScopeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.DeleteIpamScopeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.DeleteIpamScopeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_ipam_scope_with_options_async(
         self,
@@ -1856,6 +1932,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.DeleteIpamScopeResponse:
         """
+        @summary Deletes an IP Address Manager (IPAM) scope.
+        
+        @description ### [](#)Usage notes
+        You cannot delete the private scope and public scope created by the system.
+        Before you delete an IPAM scope, make sure that all pools within the scope are deleted. You can call **DeleteIpamPool** to delete IPAM pools.
+        
         @param request: DeleteIpamScopeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteIpamScopeResponse
@@ -1892,22 +1974,22 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.DeleteIpamScopeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.DeleteIpamScopeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.DeleteIpamScopeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_ipam_scope(
         self,
         request: vpc_ipam_20230228_models.DeleteIpamScopeRequest,
     ) -> vpc_ipam_20230228_models.DeleteIpamScopeResponse:
         """
+        @summary Deletes an IP Address Manager (IPAM) scope.
+        
+        @description ### [](#)Usage notes
+        You cannot delete the private scope and public scope created by the system.
+        Before you delete an IPAM scope, make sure that all pools within the scope are deleted. You can call **DeleteIpamPool** to delete IPAM pools.
+        
         @param request: DeleteIpamScopeRequest
         @return: DeleteIpamScopeResponse
         """
@@ -1919,6 +2001,12 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.DeleteIpamScopeRequest,
     ) -> vpc_ipam_20230228_models.DeleteIpamScopeResponse:
         """
+        @summary Deletes an IP Address Manager (IPAM) scope.
+        
+        @description ### [](#)Usage notes
+        You cannot delete the private scope and public scope created by the system.
+        Before you delete an IPAM scope, make sure that all pools within the scope are deleted. You can call **DeleteIpamPool** to delete IPAM pools.
+        
         @param request: DeleteIpamScopeRequest
         @return: DeleteIpamScopeResponse
         """
@@ -1931,7 +2019,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.DissociateIpamResourceDiscoveryResponse:
         """
-        @summary 解关联资源发现和IPAM实例。
+        @summary Disassociates resource discovery and IPAM instances.
         
         @param request: DissociateIpamResourceDiscoveryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1971,16 +2059,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.DissociateIpamResourceDiscoveryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.DissociateIpamResourceDiscoveryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.DissociateIpamResourceDiscoveryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def dissociate_ipam_resource_discovery_with_options_async(
         self,
@@ -1988,7 +2070,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.DissociateIpamResourceDiscoveryResponse:
         """
-        @summary 解关联资源发现和IPAM实例。
+        @summary Disassociates resource discovery and IPAM instances.
         
         @param request: DissociateIpamResourceDiscoveryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2028,23 +2110,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.DissociateIpamResourceDiscoveryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.DissociateIpamResourceDiscoveryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.DissociateIpamResourceDiscoveryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def dissociate_ipam_resource_discovery(
         self,
         request: vpc_ipam_20230228_models.DissociateIpamResourceDiscoveryRequest,
     ) -> vpc_ipam_20230228_models.DissociateIpamResourceDiscoveryResponse:
         """
-        @summary 解关联资源发现和IPAM实例。
+        @summary Disassociates resource discovery and IPAM instances.
         
         @param request: DissociateIpamResourceDiscoveryRequest
         @return: DissociateIpamResourceDiscoveryResponse
@@ -2057,7 +2133,7 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.DissociateIpamResourceDiscoveryRequest,
     ) -> vpc_ipam_20230228_models.DissociateIpamResourceDiscoveryResponse:
         """
-        @summary 解关联资源发现和IPAM实例。
+        @summary Disassociates resource discovery and IPAM instances.
         
         @param request: DissociateIpamResourceDiscoveryRequest
         @return: DissociateIpamResourceDiscoveryResponse
@@ -2071,7 +2147,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.GetIpamPoolAllocationResponse:
         """
-        @summary 查询指定IPAM地址池CIDR分配的信息
+        @summary Queries CIDR block allocations of an IP Address Manager (IPAM) pool.
         
         @param request: GetIpamPoolAllocationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2093,16 +2169,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.GetIpamPoolAllocationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.GetIpamPoolAllocationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.GetIpamPoolAllocationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_ipam_pool_allocation_with_options_async(
         self,
@@ -2110,7 +2180,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.GetIpamPoolAllocationResponse:
         """
-        @summary 查询指定IPAM地址池CIDR分配的信息
+        @summary Queries CIDR block allocations of an IP Address Manager (IPAM) pool.
         
         @param request: GetIpamPoolAllocationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2132,23 +2202,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.GetIpamPoolAllocationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.GetIpamPoolAllocationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.GetIpamPoolAllocationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_ipam_pool_allocation(
         self,
         request: vpc_ipam_20230228_models.GetIpamPoolAllocationRequest,
     ) -> vpc_ipam_20230228_models.GetIpamPoolAllocationResponse:
         """
-        @summary 查询指定IPAM地址池CIDR分配的信息
+        @summary Queries CIDR block allocations of an IP Address Manager (IPAM) pool.
         
         @param request: GetIpamPoolAllocationRequest
         @return: GetIpamPoolAllocationResponse
@@ -2161,7 +2225,7 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.GetIpamPoolAllocationRequest,
     ) -> vpc_ipam_20230228_models.GetIpamPoolAllocationResponse:
         """
-        @summary 查询指定IPAM地址池CIDR分配的信息
+        @summary Queries CIDR block allocations of an IP Address Manager (IPAM) pool.
         
         @param request: GetIpamPoolAllocationRequest
         @return: GetIpamPoolAllocationResponse
@@ -2175,7 +2239,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.GetIpamPoolNextAvailableCidrResponse:
         """
-        @summary 获取地址池可用CIDR。
+        @summary Gets the available CIDR blocks of the IPAM pool.
         
         @param request: GetIpamPoolNextAvailableCidrRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2197,16 +2261,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.GetIpamPoolNextAvailableCidrResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.GetIpamPoolNextAvailableCidrResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.GetIpamPoolNextAvailableCidrResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_ipam_pool_next_available_cidr_with_options_async(
         self,
@@ -2214,7 +2272,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.GetIpamPoolNextAvailableCidrResponse:
         """
-        @summary 获取地址池可用CIDR。
+        @summary Gets the available CIDR blocks of the IPAM pool.
         
         @param request: GetIpamPoolNextAvailableCidrRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2236,23 +2294,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.GetIpamPoolNextAvailableCidrResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.GetIpamPoolNextAvailableCidrResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.GetIpamPoolNextAvailableCidrResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_ipam_pool_next_available_cidr(
         self,
         request: vpc_ipam_20230228_models.GetIpamPoolNextAvailableCidrRequest,
     ) -> vpc_ipam_20230228_models.GetIpamPoolNextAvailableCidrResponse:
         """
-        @summary 获取地址池可用CIDR。
+        @summary Gets the available CIDR blocks of the IPAM pool.
         
         @param request: GetIpamPoolNextAvailableCidrRequest
         @return: GetIpamPoolNextAvailableCidrResponse
@@ -2265,7 +2317,7 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.GetIpamPoolNextAvailableCidrRequest,
     ) -> vpc_ipam_20230228_models.GetIpamPoolNextAvailableCidrResponse:
         """
-        @summary 获取地址池可用CIDR。
+        @summary Gets the available CIDR blocks of the IPAM pool.
         
         @param request: GetIpamPoolNextAvailableCidrRequest
         @return: GetIpamPoolNextAvailableCidrResponse
@@ -2279,7 +2331,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.GetVpcIpamServiceStatusResponse:
         """
-        @summary 查询IPAM功能的开通状态。
+        @summary Queries whether IP Address Manager (IPAM) is activated.
         
         @param request: GetVpcIpamServiceStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2313,16 +2365,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.GetVpcIpamServiceStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.GetVpcIpamServiceStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.GetVpcIpamServiceStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_vpc_ipam_service_status_with_options_async(
         self,
@@ -2330,7 +2376,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.GetVpcIpamServiceStatusResponse:
         """
-        @summary 查询IPAM功能的开通状态。
+        @summary Queries whether IP Address Manager (IPAM) is activated.
         
         @param request: GetVpcIpamServiceStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2364,23 +2410,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.GetVpcIpamServiceStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.GetVpcIpamServiceStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.GetVpcIpamServiceStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_vpc_ipam_service_status(
         self,
         request: vpc_ipam_20230228_models.GetVpcIpamServiceStatusRequest,
     ) -> vpc_ipam_20230228_models.GetVpcIpamServiceStatusResponse:
         """
-        @summary 查询IPAM功能的开通状态。
+        @summary Queries whether IP Address Manager (IPAM) is activated.
         
         @param request: GetVpcIpamServiceStatusRequest
         @return: GetVpcIpamServiceStatusResponse
@@ -2393,7 +2433,7 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.GetVpcIpamServiceStatusRequest,
     ) -> vpc_ipam_20230228_models.GetVpcIpamServiceStatusResponse:
         """
-        @summary 查询IPAM功能的开通状态。
+        @summary Queries whether IP Address Manager (IPAM) is activated.
         
         @param request: GetVpcIpamServiceStatusRequest
         @return: GetVpcIpamServiceStatusResponse
@@ -2407,6 +2447,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.ListIpamDiscoveredResourceResponse:
         """
+        @summary Queries discovered resources.
+        
         @param request: ListIpamDiscoveredResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListIpamDiscoveredResourceResponse
@@ -2439,16 +2481,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamDiscoveredResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamDiscoveredResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.ListIpamDiscoveredResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_ipam_discovered_resource_with_options_async(
         self,
@@ -2456,6 +2492,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.ListIpamDiscoveredResourceResponse:
         """
+        @summary Queries discovered resources.
+        
         @param request: ListIpamDiscoveredResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListIpamDiscoveredResourceResponse
@@ -2488,22 +2526,18 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamDiscoveredResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamDiscoveredResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.ListIpamDiscoveredResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_ipam_discovered_resource(
         self,
         request: vpc_ipam_20230228_models.ListIpamDiscoveredResourceRequest,
     ) -> vpc_ipam_20230228_models.ListIpamDiscoveredResourceResponse:
         """
+        @summary Queries discovered resources.
+        
         @param request: ListIpamDiscoveredResourceRequest
         @return: ListIpamDiscoveredResourceResponse
         """
@@ -2515,6 +2549,8 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.ListIpamDiscoveredResourceRequest,
     ) -> vpc_ipam_20230228_models.ListIpamDiscoveredResourceResponse:
         """
+        @summary Queries discovered resources.
+        
         @param request: ListIpamDiscoveredResourceRequest
         @return: ListIpamDiscoveredResourceResponse
         """
@@ -2527,6 +2563,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.ListIpamPoolAllocationsResponse:
         """
+        @summary Queries CIDR block allocations of an IP Address Manager (IPAM) pool.
+        
         @param request: ListIpamPoolAllocationsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListIpamPoolAllocationsResponse
@@ -2561,16 +2599,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamPoolAllocationsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamPoolAllocationsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.ListIpamPoolAllocationsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_ipam_pool_allocations_with_options_async(
         self,
@@ -2578,6 +2610,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.ListIpamPoolAllocationsResponse:
         """
+        @summary Queries CIDR block allocations of an IP Address Manager (IPAM) pool.
+        
         @param request: ListIpamPoolAllocationsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListIpamPoolAllocationsResponse
@@ -2612,22 +2646,18 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamPoolAllocationsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamPoolAllocationsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.ListIpamPoolAllocationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_ipam_pool_allocations(
         self,
         request: vpc_ipam_20230228_models.ListIpamPoolAllocationsRequest,
     ) -> vpc_ipam_20230228_models.ListIpamPoolAllocationsResponse:
         """
+        @summary Queries CIDR block allocations of an IP Address Manager (IPAM) pool.
+        
         @param request: ListIpamPoolAllocationsRequest
         @return: ListIpamPoolAllocationsResponse
         """
@@ -2639,6 +2669,8 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.ListIpamPoolAllocationsRequest,
     ) -> vpc_ipam_20230228_models.ListIpamPoolAllocationsResponse:
         """
+        @summary Queries CIDR block allocations of an IP Address Manager (IPAM) pool.
+        
         @param request: ListIpamPoolAllocationsRequest
         @return: ListIpamPoolAllocationsResponse
         """
@@ -2651,6 +2683,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.ListIpamPoolCidrsResponse:
         """
+        @summary Queries CIDR blocks provisioned to an IP Address Manager (IPAM) pool.
+        
         @param request: ListIpamPoolCidrsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListIpamPoolCidrsResponse
@@ -2681,16 +2715,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamPoolCidrsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamPoolCidrsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.ListIpamPoolCidrsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_ipam_pool_cidrs_with_options_async(
         self,
@@ -2698,6 +2726,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.ListIpamPoolCidrsResponse:
         """
+        @summary Queries CIDR blocks provisioned to an IP Address Manager (IPAM) pool.
+        
         @param request: ListIpamPoolCidrsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListIpamPoolCidrsResponse
@@ -2728,22 +2758,18 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamPoolCidrsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamPoolCidrsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.ListIpamPoolCidrsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_ipam_pool_cidrs(
         self,
         request: vpc_ipam_20230228_models.ListIpamPoolCidrsRequest,
     ) -> vpc_ipam_20230228_models.ListIpamPoolCidrsResponse:
         """
+        @summary Queries CIDR blocks provisioned to an IP Address Manager (IPAM) pool.
+        
         @param request: ListIpamPoolCidrsRequest
         @return: ListIpamPoolCidrsResponse
         """
@@ -2755,6 +2781,8 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.ListIpamPoolCidrsRequest,
     ) -> vpc_ipam_20230228_models.ListIpamPoolCidrsResponse:
         """
+        @summary Queries CIDR blocks provisioned to an IP Address Manager (IPAM) pool.
+        
         @param request: ListIpamPoolCidrsRequest
         @return: ListIpamPoolCidrsResponse
         """
@@ -2767,6 +2795,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.ListIpamPoolsResponse:
         """
+        @summary Queries IP Address Manager (IPAM) pools.
+        
         @param request: ListIpamPoolsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListIpamPoolsResponse
@@ -2817,16 +2847,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamPoolsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamPoolsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.ListIpamPoolsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_ipam_pools_with_options_async(
         self,
@@ -2834,6 +2858,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.ListIpamPoolsResponse:
         """
+        @summary Queries IP Address Manager (IPAM) pools.
+        
         @param request: ListIpamPoolsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListIpamPoolsResponse
@@ -2884,22 +2910,18 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamPoolsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamPoolsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.ListIpamPoolsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_ipam_pools(
         self,
         request: vpc_ipam_20230228_models.ListIpamPoolsRequest,
     ) -> vpc_ipam_20230228_models.ListIpamPoolsResponse:
         """
+        @summary Queries IP Address Manager (IPAM) pools.
+        
         @param request: ListIpamPoolsRequest
         @return: ListIpamPoolsResponse
         """
@@ -2911,6 +2933,8 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.ListIpamPoolsRequest,
     ) -> vpc_ipam_20230228_models.ListIpamPoolsResponse:
         """
+        @summary Queries IP Address Manager (IPAM) pools.
+        
         @param request: ListIpamPoolsRequest
         @return: ListIpamPoolsResponse
         """
@@ -2923,6 +2947,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.ListIpamResourceCidrsResponse:
         """
+        @summary Queries resources in an IP Address Manager (IPAM) pool.
+        
         @param request: ListIpamResourceCidrsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListIpamResourceCidrsResponse
@@ -2961,16 +2987,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamResourceCidrsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamResourceCidrsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.ListIpamResourceCidrsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_ipam_resource_cidrs_with_options_async(
         self,
@@ -2978,6 +2998,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.ListIpamResourceCidrsResponse:
         """
+        @summary Queries resources in an IP Address Manager (IPAM) pool.
+        
         @param request: ListIpamResourceCidrsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListIpamResourceCidrsResponse
@@ -3016,22 +3038,18 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamResourceCidrsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamResourceCidrsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.ListIpamResourceCidrsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_ipam_resource_cidrs(
         self,
         request: vpc_ipam_20230228_models.ListIpamResourceCidrsRequest,
     ) -> vpc_ipam_20230228_models.ListIpamResourceCidrsResponse:
         """
+        @summary Queries resources in an IP Address Manager (IPAM) pool.
+        
         @param request: ListIpamResourceCidrsRequest
         @return: ListIpamResourceCidrsResponse
         """
@@ -3043,6 +3061,8 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.ListIpamResourceCidrsRequest,
     ) -> vpc_ipam_20230228_models.ListIpamResourceCidrsResponse:
         """
+        @summary Queries resources in an IP Address Manager (IPAM) pool.
+        
         @param request: ListIpamResourceCidrsRequest
         @return: ListIpamResourceCidrsResponse
         """
@@ -3055,7 +3075,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.ListIpamResourceDiscoveriesResponse:
         """
-        @summary 查询ipam资源发现实例
+        @summary Queries IPAM resource discovery instances.
         
         @param request: ListIpamResourceDiscoveriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3103,16 +3123,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamResourceDiscoveriesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamResourceDiscoveriesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.ListIpamResourceDiscoveriesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_ipam_resource_discoveries_with_options_async(
         self,
@@ -3120,7 +3134,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.ListIpamResourceDiscoveriesResponse:
         """
-        @summary 查询ipam资源发现实例
+        @summary Queries IPAM resource discovery instances.
         
         @param request: ListIpamResourceDiscoveriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3168,23 +3182,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamResourceDiscoveriesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamResourceDiscoveriesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.ListIpamResourceDiscoveriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_ipam_resource_discoveries(
         self,
         request: vpc_ipam_20230228_models.ListIpamResourceDiscoveriesRequest,
     ) -> vpc_ipam_20230228_models.ListIpamResourceDiscoveriesResponse:
         """
-        @summary 查询ipam资源发现实例
+        @summary Queries IPAM resource discovery instances.
         
         @param request: ListIpamResourceDiscoveriesRequest
         @return: ListIpamResourceDiscoveriesResponse
@@ -3197,7 +3205,7 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.ListIpamResourceDiscoveriesRequest,
     ) -> vpc_ipam_20230228_models.ListIpamResourceDiscoveriesResponse:
         """
-        @summary 查询ipam资源发现实例
+        @summary Queries IPAM resource discovery instances.
         
         @param request: ListIpamResourceDiscoveriesRequest
         @return: ListIpamResourceDiscoveriesResponse
@@ -3211,7 +3219,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.ListIpamResourceDiscoveryAssociationsResponse:
         """
-        @summary 查看资源发现和IPAM的关联关系。
+        @summary Queries the association between resource discovery and IPAM.
         
         @param request: ListIpamResourceDiscoveryAssociationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3251,16 +3259,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamResourceDiscoveryAssociationsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamResourceDiscoveryAssociationsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.ListIpamResourceDiscoveryAssociationsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_ipam_resource_discovery_associations_with_options_async(
         self,
@@ -3268,7 +3270,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.ListIpamResourceDiscoveryAssociationsResponse:
         """
-        @summary 查看资源发现和IPAM的关联关系。
+        @summary Queries the association between resource discovery and IPAM.
         
         @param request: ListIpamResourceDiscoveryAssociationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3308,23 +3310,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamResourceDiscoveryAssociationsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamResourceDiscoveryAssociationsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.ListIpamResourceDiscoveryAssociationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_ipam_resource_discovery_associations(
         self,
         request: vpc_ipam_20230228_models.ListIpamResourceDiscoveryAssociationsRequest,
     ) -> vpc_ipam_20230228_models.ListIpamResourceDiscoveryAssociationsResponse:
         """
-        @summary 查看资源发现和IPAM的关联关系。
+        @summary Queries the association between resource discovery and IPAM.
         
         @param request: ListIpamResourceDiscoveryAssociationsRequest
         @return: ListIpamResourceDiscoveryAssociationsResponse
@@ -3337,7 +3333,7 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.ListIpamResourceDiscoveryAssociationsRequest,
     ) -> vpc_ipam_20230228_models.ListIpamResourceDiscoveryAssociationsResponse:
         """
-        @summary 查看资源发现和IPAM的关联关系。
+        @summary Queries the association between resource discovery and IPAM.
         
         @param request: ListIpamResourceDiscoveryAssociationsRequest
         @return: ListIpamResourceDiscoveryAssociationsResponse
@@ -3351,6 +3347,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.ListIpamScopesResponse:
         """
+        @summary Queries IP Address Manager (IPAM) scopes.
+        
         @param request: ListIpamScopesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListIpamScopesResponse
@@ -3397,16 +3395,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamScopesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamScopesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.ListIpamScopesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_ipam_scopes_with_options_async(
         self,
@@ -3414,6 +3406,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.ListIpamScopesResponse:
         """
+        @summary Queries IP Address Manager (IPAM) scopes.
+        
         @param request: ListIpamScopesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListIpamScopesResponse
@@ -3460,22 +3454,18 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamScopesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamScopesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.ListIpamScopesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_ipam_scopes(
         self,
         request: vpc_ipam_20230228_models.ListIpamScopesRequest,
     ) -> vpc_ipam_20230228_models.ListIpamScopesResponse:
         """
+        @summary Queries IP Address Manager (IPAM) scopes.
+        
         @param request: ListIpamScopesRequest
         @return: ListIpamScopesResponse
         """
@@ -3487,6 +3477,8 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.ListIpamScopesRequest,
     ) -> vpc_ipam_20230228_models.ListIpamScopesResponse:
         """
+        @summary Queries IP Address Manager (IPAM) scopes.
+        
         @param request: ListIpamScopesRequest
         @return: ListIpamScopesResponse
         """
@@ -3543,16 +3535,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.ListIpamsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_ipams_with_options_async(
         self,
@@ -3604,16 +3590,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListIpamsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.ListIpamsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_ipams(
         self,
@@ -3647,7 +3627,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.ListTagResourcesResponse:
         """
-        @summary 查询资源标签列表
+        @summary Queries a list of resource tags.
+        
+        @description ### [](#)Usage notes
+        You must specify **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object that you want to query.
+        **Tag.N** is a resource tag that consists of a key-value pair. If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
+        If you specify **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
+        If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3689,16 +3675,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListTagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListTagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_tag_resources_with_options_async(
         self,
@@ -3706,7 +3686,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.ListTagResourcesResponse:
         """
-        @summary 查询资源标签列表
+        @summary Queries a list of resource tags.
+        
+        @description ### [](#)Usage notes
+        You must specify **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object that you want to query.
+        **Tag.N** is a resource tag that consists of a key-value pair. If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
+        If you specify **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
+        If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3748,23 +3734,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListTagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.ListTagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_tag_resources(
         self,
         request: vpc_ipam_20230228_models.ListTagResourcesRequest,
     ) -> vpc_ipam_20230228_models.ListTagResourcesResponse:
         """
-        @summary 查询资源标签列表
+        @summary Queries a list of resource tags.
+        
+        @description ### [](#)Usage notes
+        You must specify **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object that you want to query.
+        **Tag.N** is a resource tag that consists of a key-value pair. If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
+        If you specify **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
+        If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -3777,7 +3763,13 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.ListTagResourcesRequest,
     ) -> vpc_ipam_20230228_models.ListTagResourcesResponse:
         """
-        @summary 查询资源标签列表
+        @summary Queries a list of resource tags.
+        
+        @description ### [](#)Usage notes
+        You must specify **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object that you want to query.
+        **Tag.N** is a resource tag that consists of a key-value pair. If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
+        If you specify **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
+        If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -3791,7 +3783,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.OpenVpcIpamServiceResponse:
         """
-        @summary 开通IPAM功能。
+        @summary Activates IP Address Manager (IPAM).
         
         @param request: OpenVpcIpamServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3825,16 +3817,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.OpenVpcIpamServiceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.OpenVpcIpamServiceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.OpenVpcIpamServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def open_vpc_ipam_service_with_options_async(
         self,
@@ -3842,7 +3828,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.OpenVpcIpamServiceResponse:
         """
-        @summary 开通IPAM功能。
+        @summary Activates IP Address Manager (IPAM).
         
         @param request: OpenVpcIpamServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3876,23 +3862,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.OpenVpcIpamServiceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.OpenVpcIpamServiceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.OpenVpcIpamServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def open_vpc_ipam_service(
         self,
         request: vpc_ipam_20230228_models.OpenVpcIpamServiceRequest,
     ) -> vpc_ipam_20230228_models.OpenVpcIpamServiceResponse:
         """
-        @summary 开通IPAM功能。
+        @summary Activates IP Address Manager (IPAM).
         
         @param request: OpenVpcIpamServiceRequest
         @return: OpenVpcIpamServiceResponse
@@ -3905,7 +3885,7 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.OpenVpcIpamServiceRequest,
     ) -> vpc_ipam_20230228_models.OpenVpcIpamServiceResponse:
         """
-        @summary 开通IPAM功能。
+        @summary Activates IP Address Manager (IPAM).
         
         @param request: OpenVpcIpamServiceRequest
         @return: OpenVpcIpamServiceResponse
@@ -3919,7 +3899,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.TagResourcesResponse:
         """
-        @summary 为资源实例绑定资源标签
+        @summary Adds a tag to a resource.
+        
+        @description ### [](#)Usage notes
+        Tags are used to classify instances. Each tag consists of a key-value pair. Before you use tags, take note of the following items:
+        Each tag key that is added to an instance must be unique.
+        You cannot create tags without adding them to instances. All tags must be added to instances.
+        You can add at most 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3957,16 +3943,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.TagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.TagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def tag_resources_with_options_async(
         self,
@@ -3974,7 +3954,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.TagResourcesResponse:
         """
-        @summary 为资源实例绑定资源标签
+        @summary Adds a tag to a resource.
+        
+        @description ### [](#)Usage notes
+        Tags are used to classify instances. Each tag consists of a key-value pair. Before you use tags, take note of the following items:
+        Each tag key that is added to an instance must be unique.
+        You cannot create tags without adding them to instances. All tags must be added to instances.
+        You can add at most 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4012,23 +3998,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.TagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.TagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def tag_resources(
         self,
         request: vpc_ipam_20230228_models.TagResourcesRequest,
     ) -> vpc_ipam_20230228_models.TagResourcesResponse:
         """
-        @summary 为资源实例绑定资源标签
+        @summary Adds a tag to a resource.
+        
+        @description ### [](#)Usage notes
+        Tags are used to classify instances. Each tag consists of a key-value pair. Before you use tags, take note of the following items:
+        Each tag key that is added to an instance must be unique.
+        You cannot create tags without adding them to instances. All tags must be added to instances.
+        You can add at most 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -4041,7 +4027,13 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.TagResourcesRequest,
     ) -> vpc_ipam_20230228_models.TagResourcesResponse:
         """
-        @summary 为资源实例绑定资源标签
+        @summary Adds a tag to a resource.
+        
+        @description ### [](#)Usage notes
+        Tags are used to classify instances. Each tag consists of a key-value pair. Before you use tags, take note of the following items:
+        Each tag key that is added to an instance must be unique.
+        You cannot create tags without adding them to instances. All tags must be added to instances.
+        You can add at most 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -4055,7 +4047,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.UntagResourcesResponse:
         """
-        @summary 为资源解绑资源标签
+        @summary Removes a tag from a resource.
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4095,16 +4087,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.UntagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.UntagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def untag_resources_with_options_async(
         self,
@@ -4112,7 +4098,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.UntagResourcesResponse:
         """
-        @summary 为资源解绑资源标签
+        @summary Removes a tag from a resource.
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4152,23 +4138,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.UntagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.UntagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def untag_resources(
         self,
         request: vpc_ipam_20230228_models.UntagResourcesRequest,
     ) -> vpc_ipam_20230228_models.UntagResourcesResponse:
         """
-        @summary 为资源解绑资源标签
+        @summary Removes a tag from a resource.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -4181,7 +4161,7 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.UntagResourcesRequest,
     ) -> vpc_ipam_20230228_models.UntagResourcesResponse:
         """
-        @summary 为资源解绑资源标签
+        @summary Removes a tag from a resource.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -4195,7 +4175,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.UpdateIpamResponse:
         """
-        @summary 更新ipam
+        @summary Updates an IP Address Manager (IPAM).
         
         @param request: UpdateIpamRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4241,16 +4221,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.UpdateIpamResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.UpdateIpamResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.UpdateIpamResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_ipam_with_options_async(
         self,
@@ -4258,7 +4232,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.UpdateIpamResponse:
         """
-        @summary 更新ipam
+        @summary Updates an IP Address Manager (IPAM).
         
         @param request: UpdateIpamRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4304,23 +4278,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.UpdateIpamResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.UpdateIpamResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.UpdateIpamResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_ipam(
         self,
         request: vpc_ipam_20230228_models.UpdateIpamRequest,
     ) -> vpc_ipam_20230228_models.UpdateIpamResponse:
         """
-        @summary 更新ipam
+        @summary Updates an IP Address Manager (IPAM).
         
         @param request: UpdateIpamRequest
         @return: UpdateIpamResponse
@@ -4333,7 +4301,7 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.UpdateIpamRequest,
     ) -> vpc_ipam_20230228_models.UpdateIpamResponse:
         """
-        @summary 更新ipam
+        @summary Updates an IP Address Manager (IPAM).
         
         @param request: UpdateIpamRequest
         @return: UpdateIpamResponse
@@ -4347,6 +4315,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.UpdateIpamPoolResponse:
         """
+        @summary Modifies the basic information about an IP Address Manager (IPAM) pool.
+        
         @param request: UpdateIpamPoolRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateIpamPoolResponse
@@ -4397,16 +4367,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.UpdateIpamPoolResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.UpdateIpamPoolResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.UpdateIpamPoolResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_ipam_pool_with_options_async(
         self,
@@ -4414,6 +4378,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.UpdateIpamPoolResponse:
         """
+        @summary Modifies the basic information about an IP Address Manager (IPAM) pool.
+        
         @param request: UpdateIpamPoolRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateIpamPoolResponse
@@ -4464,22 +4430,18 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.UpdateIpamPoolResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.UpdateIpamPoolResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.UpdateIpamPoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_ipam_pool(
         self,
         request: vpc_ipam_20230228_models.UpdateIpamPoolRequest,
     ) -> vpc_ipam_20230228_models.UpdateIpamPoolResponse:
         """
+        @summary Modifies the basic information about an IP Address Manager (IPAM) pool.
+        
         @param request: UpdateIpamPoolRequest
         @return: UpdateIpamPoolResponse
         """
@@ -4491,6 +4453,8 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.UpdateIpamPoolRequest,
     ) -> vpc_ipam_20230228_models.UpdateIpamPoolResponse:
         """
+        @summary Modifies the basic information about an IP Address Manager (IPAM) pool.
+        
         @param request: UpdateIpamPoolRequest
         @return: UpdateIpamPoolResponse
         """
@@ -4503,7 +4467,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.UpdateIpamPoolAllocationResponse:
         """
-        @summary 更新IPAM地址池分配信息
+        @summary Modifies CIDR block allocations of an IP Address Manager (IPAM) pool.
         
         @param request: UpdateIpamPoolAllocationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4537,16 +4501,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.UpdateIpamPoolAllocationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.UpdateIpamPoolAllocationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.UpdateIpamPoolAllocationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_ipam_pool_allocation_with_options_async(
         self,
@@ -4554,7 +4512,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.UpdateIpamPoolAllocationResponse:
         """
-        @summary 更新IPAM地址池分配信息
+        @summary Modifies CIDR block allocations of an IP Address Manager (IPAM) pool.
         
         @param request: UpdateIpamPoolAllocationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4588,23 +4546,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.UpdateIpamPoolAllocationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.UpdateIpamPoolAllocationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.UpdateIpamPoolAllocationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_ipam_pool_allocation(
         self,
         request: vpc_ipam_20230228_models.UpdateIpamPoolAllocationRequest,
     ) -> vpc_ipam_20230228_models.UpdateIpamPoolAllocationResponse:
         """
-        @summary 更新IPAM地址池分配信息
+        @summary Modifies CIDR block allocations of an IP Address Manager (IPAM) pool.
         
         @param request: UpdateIpamPoolAllocationRequest
         @return: UpdateIpamPoolAllocationResponse
@@ -4617,7 +4569,7 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.UpdateIpamPoolAllocationRequest,
     ) -> vpc_ipam_20230228_models.UpdateIpamPoolAllocationResponse:
         """
-        @summary 更新IPAM地址池分配信息
+        @summary Modifies CIDR block allocations of an IP Address Manager (IPAM) pool.
         
         @param request: UpdateIpamPoolAllocationRequest
         @return: UpdateIpamPoolAllocationResponse
@@ -4631,7 +4583,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.UpdateIpamResourceDiscoveryResponse:
         """
-        @summary 更新自定义类型资源发现。
+        @summary Modifies a resource discovery instance.
+        
+        @description    You can add or remove effective regions only for custom resource discovery instances.
+        When removing effective regions from a resource discovery instance, the managed region cannot be included.
         
         @param request: UpdateIpamResourceDiscoveryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4677,16 +4632,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.UpdateIpamResourceDiscoveryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.UpdateIpamResourceDiscoveryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.UpdateIpamResourceDiscoveryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_ipam_resource_discovery_with_options_async(
         self,
@@ -4694,7 +4643,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.UpdateIpamResourceDiscoveryResponse:
         """
-        @summary 更新自定义类型资源发现。
+        @summary Modifies a resource discovery instance.
+        
+        @description    You can add or remove effective regions only for custom resource discovery instances.
+        When removing effective regions from a resource discovery instance, the managed region cannot be included.
         
         @param request: UpdateIpamResourceDiscoveryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4740,23 +4692,20 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.UpdateIpamResourceDiscoveryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.UpdateIpamResourceDiscoveryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.UpdateIpamResourceDiscoveryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_ipam_resource_discovery(
         self,
         request: vpc_ipam_20230228_models.UpdateIpamResourceDiscoveryRequest,
     ) -> vpc_ipam_20230228_models.UpdateIpamResourceDiscoveryResponse:
         """
-        @summary 更新自定义类型资源发现。
+        @summary Modifies a resource discovery instance.
+        
+        @description    You can add or remove effective regions only for custom resource discovery instances.
+        When removing effective regions from a resource discovery instance, the managed region cannot be included.
         
         @param request: UpdateIpamResourceDiscoveryRequest
         @return: UpdateIpamResourceDiscoveryResponse
@@ -4769,7 +4718,10 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.UpdateIpamResourceDiscoveryRequest,
     ) -> vpc_ipam_20230228_models.UpdateIpamResourceDiscoveryResponse:
         """
-        @summary 更新自定义类型资源发现。
+        @summary Modifies a resource discovery instance.
+        
+        @description    You can add or remove effective regions only for custom resource discovery instances.
+        When removing effective regions from a resource discovery instance, the managed region cannot be included.
         
         @param request: UpdateIpamResourceDiscoveryRequest
         @return: UpdateIpamResourceDiscoveryResponse
@@ -4783,6 +4735,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.UpdateIpamScopeResponse:
         """
+        @summary Modifies the basic information about an IP Address Manager (IPAM) scope.
+        
         @param request: UpdateIpamScopeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateIpamScopeResponse
@@ -4823,16 +4777,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.UpdateIpamScopeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.UpdateIpamScopeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.UpdateIpamScopeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_ipam_scope_with_options_async(
         self,
@@ -4840,6 +4788,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.UpdateIpamScopeResponse:
         """
+        @summary Modifies the basic information about an IP Address Manager (IPAM) scope.
+        
         @param request: UpdateIpamScopeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateIpamScopeResponse
@@ -4880,22 +4830,18 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.UpdateIpamScopeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                vpc_ipam_20230228_models.UpdateIpamScopeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.UpdateIpamScopeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_ipam_scope(
         self,
         request: vpc_ipam_20230228_models.UpdateIpamScopeRequest,
     ) -> vpc_ipam_20230228_models.UpdateIpamScopeResponse:
         """
+        @summary Modifies the basic information about an IP Address Manager (IPAM) scope.
+        
         @param request: UpdateIpamScopeRequest
         @return: UpdateIpamScopeResponse
         """
@@ -4907,6 +4853,8 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.UpdateIpamScopeRequest,
     ) -> vpc_ipam_20230228_models.UpdateIpamScopeResponse:
         """
+        @summary Modifies the basic information about an IP Address Manager (IPAM) scope.
+        
         @param request: UpdateIpamScopeRequest
         @return: UpdateIpamScopeResponse
         """
