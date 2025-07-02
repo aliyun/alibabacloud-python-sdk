@@ -1907,6 +1907,8 @@ class Client(OpenApiClient):
             query['Frequency'] = request.frequency
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.instance_billing_cycle):
+            query['InstanceBillingCycle'] = request.instance_billing_cycle
         if not UtilClient.is_unset(request.instance_type):
             query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.key_pair_name):
@@ -1976,6 +1978,8 @@ class Client(OpenApiClient):
             query['Frequency'] = request.frequency
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.instance_billing_cycle):
+            query['InstanceBillingCycle'] = request.instance_billing_cycle
         if not UtilClient.is_unset(request.instance_type):
             query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.key_pair_name):

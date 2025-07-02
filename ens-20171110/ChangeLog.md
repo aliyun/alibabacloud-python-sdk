@@ -1,3 +1,7 @@
+2025-07-02 Version: 9.0.13
+- Update API CreateARMServerInstances: add request parameters InstanceBillingCycle.
+
+
 2025-06-26 Version: 9.0.12
 - Generated python 2017-11-10 for Ens.
 

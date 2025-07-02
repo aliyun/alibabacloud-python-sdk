@@ -3528,6 +3528,7 @@ class CreateARMServerInstancesRequest(TeaModel):
         environment_var: str = None,
         frequency: int = None,
         image_id: str = None,
+        instance_billing_cycle: str = None,
         instance_type: str = None,
         key_pair_name: str = None,
         name_space: str = None,
@@ -3566,6 +3567,7 @@ class CreateARMServerInstancesRequest(TeaModel):
         # 
         # This parameter is required.
         self.image_id = image_id
+        self.instance_billing_cycle = instance_billing_cycle
         # The specification of the Android in Container (AIC) instance. Examples:
         # 
         # *   aic.cf52r.c1.np
@@ -3607,16 +3609,12 @@ class CreateARMServerInstancesRequest(TeaModel):
         # *   If you leave PeriodUnit empty, the instance is purchased on a monthly basis. Valid values: Day and Month.
         # *   If you set PeriodUnit to Day, you can set Period only to 3.
         # *   If you set PeriodUnit to Month, you can set Period to a value within the range of [1,9], or set the value to 12.
-        # 
-        # This parameter is required.
         self.period = period
         # The unit of the subscription duration.
         # 
         # *   If you leave PeriodUnit empty, the instance is purchased on a monthly basis. Valid values: Day and Month.
         # *   If you set PeriodUnit to Day, you can set Period only to 3.
         # *   If you set PeriodUnit to Month, you can set Period to a value within the range of [1,9], or set the value to 12.
-        # 
-        # This parameter is required.
         self.period_unit = period_unit
         # The resolution. Examples:
         # 
@@ -3673,6 +3671,8 @@ class CreateARMServerInstancesRequest(TeaModel):
             result['Frequency'] = self.frequency
         if self.image_id is not None:
             result['ImageId'] = self.image_id
+        if self.instance_billing_cycle is not None:
+            result['InstanceBillingCycle'] = self.instance_billing_cycle
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
         if self.key_pair_name is not None:
@@ -3715,6 +3715,8 @@ class CreateARMServerInstancesRequest(TeaModel):
             self.frequency = m.get('Frequency')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
+        if m.get('InstanceBillingCycle') is not None:
+            self.instance_billing_cycle = m.get('InstanceBillingCycle')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
         if m.get('KeyPairName') is not None:
@@ -5995,7 +5997,7 @@ class CreateImageRequest(TeaModel):
         self.snapshot_id = snapshot_id
         # The region of the destination OSS bucket where the image is to be stored.
         self.target_ossregion_id = target_ossregion_id
-        # 创建镜像是否包含数据盘。
+        # Specifies whether to include data disk snapshots in the custom image.
         self.with_data_disks = with_data_disks
 
     def validate(self):
@@ -20959,11 +20961,9 @@ class DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTagsTag(TeaModel)
         tag_value: str = None,
         value: str = None,
     ):
-        # 标签键
         self.key = key
         self.tag_key = tag_key
         self.tag_value = tag_value
-        # 标签值。
         self.value = value
 
     def validate(self):
@@ -21053,58 +21053,20 @@ class DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress(TeaModel):
         status: str = None,
         tags: DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTags = None,
     ):
-        # The ID of the EIP.
         self.allocation_id = allocation_id
-        # The time when the EIP was created.
         self.allocation_time = allocation_time
-        # The peak bandwidth of the EIP. Default value: 5. Valid values: **5** to **10000**. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The billing method of the EIP. Valid values:
-        # 
-        # *   **PrePaid**: subscription.
-        # *   **PostPaid**: pay-as-you-go
         self.charge_type = charge_type
-        # The description of the EIP.
         self.description = description
-        # The ID of the ENS node.
         self.ens_region_id = ens_region_id
-        # The ID of the instance that is associated with the EIP.
         self.instance_id = instance_id
-        # The type of the instance that is associated with the EIP. Valid values:
-        # 
-        # *   **EnsInstance**: ENS instance in a VPC
-        # *   **SlbInstance**: SLB instance
         self.instance_type = instance_type
-        # The metering method of the EIP.
-        # 
-        # *   **95BandwidthByMonth**: Pay by monthly 95th percentile bandwidth
-        # *   **PayByBandwidth**: Pay by bandwidth
         self.internet_charge_type = internet_charge_type
-        # The EIP.
         self.ip_address = ip_address
-        # The running status of the EIP. This parameter is returned if the EIP is a secondary EIP. Valid values:
-        # 
-        # *   **Stopped**\
-        # *   **Running**\
-        # *   **Starting**\
-        # *   **Stopping**\
         self.ip_status = ip_status
-        # The Internet service provider (ISP). Valid values:
-        # 
-        # *   **cmcc**: China Mobile
-        # *   **unicom**: China Unicom
-        # *   **telecom**: China Telecom
         self.isp = isp
-        # The name of the EIP.
         self.name = name
-        # Indicates whether the EIP is a secondary EIP.
         self.standby = standby
-        # The status of the EIP. Valid values:
-        # 
-        # *   **Associating**\
-        # *   **Unassociating**\
-        # *   **InUse**\
-        # *   **Available**\
         self.status = status
         self.tags = tags
 
@@ -38547,11 +38509,11 @@ class DescribeNetworksResponseBodyNetworksNetworkTagsTag(TeaModel):
         tag_value: str = None,
         value: str = None,
     ):
-        # 标签键。
+        # The key of the tag.
         self.key = key
         self.tag_key = tag_key
         self.tag_value = tag_value
-        # 标签值。
+        # The bandwidth.
         self.value = value
 
     def validate(self):
@@ -47580,11 +47542,11 @@ class DescribeVSwitchesResponseBodyVSwitchesVSwitchTagsTag(TeaModel):
         tag_value: str = None,
         value: str = None,
     ):
-        # 标签键。
+        # The tag key.
         self.key = key
         self.tag_key = tag_key
         self.tag_value = tag_value
-        # 标签值。
+        # The request error rate.
         self.value = value
 
     def validate(self):
