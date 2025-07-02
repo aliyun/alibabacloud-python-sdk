@@ -14047,6 +14047,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListFlashSmsTemplatesResponse:
         """
+        @summary 获取闪信模板列表
+        
         @param request: ListFlashSmsTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListFlashSmsTemplatesResponse
@@ -14084,6 +14086,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListFlashSmsTemplatesResponse:
         """
+        @summary 获取闪信模板列表
+        
         @param request: ListFlashSmsTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListFlashSmsTemplatesResponse
@@ -14120,6 +14124,8 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListFlashSmsTemplatesRequest,
     ) -> ccc20200701_models.ListFlashSmsTemplatesResponse:
         """
+        @summary 获取闪信模板列表
+        
         @param request: ListFlashSmsTemplatesRequest
         @return: ListFlashSmsTemplatesResponse
         """
@@ -14131,6 +14137,8 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListFlashSmsTemplatesRequest,
     ) -> ccc20200701_models.ListFlashSmsTemplatesResponse:
         """
+        @summary 获取闪信模板列表
+        
         @param request: ListFlashSmsTemplatesRequest
         @return: ListFlashSmsTemplatesResponse
         """

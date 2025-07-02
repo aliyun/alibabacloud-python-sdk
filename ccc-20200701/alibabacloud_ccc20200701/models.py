@@ -33132,9 +33132,11 @@ class ListFlashSmsTemplatesRequest(TeaModel):
 class ListFlashSmsTemplatesResponseBodyData(TeaModel):
     def __init__(
         self,
+        template_details: str = None,
         template_id: str = None,
         template_name: str = None,
     ):
+        self.template_details = template_details
         self.template_id = template_id
         self.template_name = template_name
 
@@ -33147,6 +33149,8 @@ class ListFlashSmsTemplatesResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.template_details is not None:
+            result['TemplateDetails'] = self.template_details
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
         if self.template_name is not None:
@@ -33155,6 +33159,8 @@ class ListFlashSmsTemplatesResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('TemplateDetails') is not None:
+            self.template_details = m.get('TemplateDetails')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
         if m.get('TemplateName') is not None:

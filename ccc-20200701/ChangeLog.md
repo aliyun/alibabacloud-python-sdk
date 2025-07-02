@@ -1,3 +1,7 @@
+2025-07-02 Version: 2.29.7
+- Update API ListFlashSmsTemplates: add response parameters Body.Data.$.TemplateDetails.
+
+
 2025-06-18 Version: 2.29.6
 - Update API DeleteContactFlow: add request parameters Force.
 - Update API ListContactFlows: add request parameters SearchPattern.
