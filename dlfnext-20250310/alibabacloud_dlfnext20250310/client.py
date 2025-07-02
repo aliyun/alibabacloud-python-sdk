@@ -2100,6 +2100,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.database):
             query['database'] = request.database
+        if not UtilClient.is_unset(request.function):
+            query['function'] = request.function
         if not UtilClient.is_unset(request.max_results):
             query['maxResults'] = request.max_results
         if not UtilClient.is_unset(request.page_token):
@@ -2110,6 +2112,8 @@ class Client(OpenApiClient):
             query['resourceType'] = request.resource_type
         if not UtilClient.is_unset(request.table):
             query['table'] = request.table
+        if not UtilClient.is_unset(request.view):
+            query['view'] = request.view
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2149,6 +2153,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.database):
             query['database'] = request.database
+        if not UtilClient.is_unset(request.function):
+            query['function'] = request.function
         if not UtilClient.is_unset(request.max_results):
             query['maxResults'] = request.max_results
         if not UtilClient.is_unset(request.page_token):
@@ -2159,6 +2165,8 @@ class Client(OpenApiClient):
             query['resourceType'] = request.resource_type
         if not UtilClient.is_unset(request.table):
             query['table'] = request.table
+        if not UtilClient.is_unset(request.view):
+            query['view'] = request.view
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
