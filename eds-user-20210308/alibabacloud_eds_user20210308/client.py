@@ -446,6 +446,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.check_used_property_value_with_options_async(request, runtime)
 
+    def create_group_with_options(
+        self,
+        request: eds_user_20210308_models.CreateGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_user_20210308_models.CreateGroupResponse:
+        """
+        @summary 创建角色.
+        
+        @param request: CreateGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.parent_group_id):
+            query['ParentGroupId'] = request.parent_group_id
+        if not UtilClient.is_unset(request.solution_id):
+            query['SolutionId'] = request.solution_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateGroup',
+            version='2021-03-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_user_20210308_models.CreateGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_group_with_options_async(
+        self,
+        request: eds_user_20210308_models.CreateGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_user_20210308_models.CreateGroupResponse:
+        """
+        @summary 创建角色.
+        
+        @param request: CreateGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.parent_group_id):
+            query['ParentGroupId'] = request.parent_group_id
+        if not UtilClient.is_unset(request.solution_id):
+            query['SolutionId'] = request.solution_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateGroup',
+            version='2021-03-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_user_20210308_models.CreateGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_group(
+        self,
+        request: eds_user_20210308_models.CreateGroupRequest,
+    ) -> eds_user_20210308_models.CreateGroupResponse:
+        """
+        @summary 创建角色.
+        
+        @param request: CreateGroupRequest
+        @return: CreateGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_group_with_options(request, runtime)
+
+    async def create_group_async(
+        self,
+        request: eds_user_20210308_models.CreateGroupRequest,
+    ) -> eds_user_20210308_models.CreateGroupResponse:
+        """
+        @summary 创建角色.
+        
+        @param request: CreateGroupRequest
+        @return: CreateGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_group_with_options_async(request, runtime)
+
     def create_org_with_options(
         self,
         request: eds_user_20210308_models.CreateOrgRequest,
@@ -1085,6 +1193,218 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_user_property_value_with_options_async(request, runtime)
+
+    def describe_group_user_with_options(
+        self,
+        request: eds_user_20210308_models.DescribeGroupUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_user_20210308_models.DescribeGroupUserResponse:
+        """
+        @summary 全量同步初始化
+        
+        @param request: DescribeGroupUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGroupUserResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.solution_id):
+            query['SolutionId'] = request.solution_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGroupUser',
+            version='2021-03-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_user_20210308_models.DescribeGroupUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_group_user_with_options_async(
+        self,
+        request: eds_user_20210308_models.DescribeGroupUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_user_20210308_models.DescribeGroupUserResponse:
+        """
+        @summary 全量同步初始化
+        
+        @param request: DescribeGroupUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGroupUserResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.solution_id):
+            query['SolutionId'] = request.solution_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGroupUser',
+            version='2021-03-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_user_20210308_models.DescribeGroupUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_group_user(
+        self,
+        request: eds_user_20210308_models.DescribeGroupUserRequest,
+    ) -> eds_user_20210308_models.DescribeGroupUserResponse:
+        """
+        @summary 全量同步初始化
+        
+        @param request: DescribeGroupUserRequest
+        @return: DescribeGroupUserResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_group_user_with_options(request, runtime)
+
+    async def describe_group_user_async(
+        self,
+        request: eds_user_20210308_models.DescribeGroupUserRequest,
+    ) -> eds_user_20210308_models.DescribeGroupUserResponse:
+        """
+        @summary 全量同步初始化
+        
+        @param request: DescribeGroupUserRequest
+        @return: DescribeGroupUserResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_group_user_with_options_async(request, runtime)
+
+    def describe_groups_with_options(
+        self,
+        request: eds_user_20210308_models.DescribeGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_user_20210308_models.DescribeGroupsResponse:
+        """
+        @summary 全量同步初始化.
+        
+        @param request: DescribeGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.solution_id):
+            query['SolutionId'] = request.solution_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGroups',
+            version='2021-03-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_user_20210308_models.DescribeGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_groups_with_options_async(
+        self,
+        request: eds_user_20210308_models.DescribeGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_user_20210308_models.DescribeGroupsResponse:
+        """
+        @summary 全量同步初始化.
+        
+        @param request: DescribeGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.solution_id):
+            query['SolutionId'] = request.solution_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGroups',
+            version='2021-03-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_user_20210308_models.DescribeGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_groups(
+        self,
+        request: eds_user_20210308_models.DescribeGroupsRequest,
+    ) -> eds_user_20210308_models.DescribeGroupsResponse:
+        """
+        @summary 全量同步初始化.
+        
+        @param request: DescribeGroupsRequest
+        @return: DescribeGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_groups_with_options(request, runtime)
+
+    async def describe_groups_async(
+        self,
+        request: eds_user_20210308_models.DescribeGroupsRequest,
+    ) -> eds_user_20210308_models.DescribeGroupsResponse:
+        """
+        @summary 全量同步初始化.
+        
+        @param request: DescribeGroupsRequest
+        @return: DescribeGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_groups_with_options_async(request, runtime)
 
     def describe_mfa_devices_with_options(
         self,
@@ -2410,6 +2730,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.lock_users_with_options_async(request, runtime)
 
+    def modify_group_with_options(
+        self,
+        request: eds_user_20210308_models.ModifyGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_user_20210308_models.ModifyGroupResponse:
+        """
+        @summary 修改角色.
+        
+        @param request: ModifyGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.new_group_name):
+            query['NewGroupName'] = request.new_group_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyGroup',
+            version='2021-03-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_user_20210308_models.ModifyGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_group_with_options_async(
+        self,
+        request: eds_user_20210308_models.ModifyGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_user_20210308_models.ModifyGroupResponse:
+        """
+        @summary 修改角色.
+        
+        @param request: ModifyGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.new_group_name):
+            query['NewGroupName'] = request.new_group_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyGroup',
+            version='2021-03-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_user_20210308_models.ModifyGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_group(
+        self,
+        request: eds_user_20210308_models.ModifyGroupRequest,
+    ) -> eds_user_20210308_models.ModifyGroupResponse:
+        """
+        @summary 修改角色.
+        
+        @param request: ModifyGroupRequest
+        @return: ModifyGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_group_with_options(request, runtime)
+
+    async def modify_group_async(
+        self,
+        request: eds_user_20210308_models.ModifyGroupRequest,
+    ) -> eds_user_20210308_models.ModifyGroupResponse:
+        """
+        @summary 修改角色.
+        
+        @param request: ModifyGroupRequest
+        @return: ModifyGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_group_with_options_async(request, runtime)
+
     def modify_org_with_options(
         self,
         request: eds_user_20210308_models.ModifyOrgRequest,
@@ -2714,6 +3134,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.move_org_with_options_async(request, runtime)
 
+    def move_user_org_with_options(
+        self,
+        request: eds_user_20210308_models.MoveUserOrgRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_user_20210308_models.MoveUserOrgResponse:
+        """
+        @summary 移动用户组织
+        
+        @param request: MoveUserOrgRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveUserOrgResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_user_ids):
+            body['EndUserIds'] = request.end_user_ids
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='MoveUserOrg',
+            version='2021-03-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_user_20210308_models.MoveUserOrgResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def move_user_org_with_options_async(
+        self,
+        request: eds_user_20210308_models.MoveUserOrgRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_user_20210308_models.MoveUserOrgResponse:
+        """
+        @summary 移动用户组织
+        
+        @param request: MoveUserOrgRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveUserOrgResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_user_ids):
+            body['EndUserIds'] = request.end_user_ids
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='MoveUserOrg',
+            version='2021-03-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_user_20210308_models.MoveUserOrgResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def move_user_org(
+        self,
+        request: eds_user_20210308_models.MoveUserOrgRequest,
+    ) -> eds_user_20210308_models.MoveUserOrgResponse:
+        """
+        @summary 移动用户组织
+        
+        @param request: MoveUserOrgRequest
+        @return: MoveUserOrgResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.move_user_org_with_options(request, runtime)
+
+    async def move_user_org_async(
+        self,
+        request: eds_user_20210308_models.MoveUserOrgRequest,
+    ) -> eds_user_20210308_models.MoveUserOrgResponse:
+        """
+        @summary 移动用户组织
+        
+        @param request: MoveUserOrgRequest
+        @return: MoveUserOrgResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.move_user_org_with_options_async(request, runtime)
+
     def query_sync_status_by_ali_uid_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -2787,6 +3307,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.query_sync_status_by_ali_uid_with_options_async(runtime)
+
+    def remove_group_with_options(
+        self,
+        request: eds_user_20210308_models.RemoveGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_user_20210308_models.RemoveGroupResponse:
+        """
+        @summary 删除角色.
+        
+        @param request: RemoveGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveGroup',
+            version='2021-03-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_user_20210308_models.RemoveGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_group_with_options_async(
+        self,
+        request: eds_user_20210308_models.RemoveGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_user_20210308_models.RemoveGroupResponse:
+        """
+        @summary 删除角色.
+        
+        @param request: RemoveGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveGroup',
+            version='2021-03-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_user_20210308_models.RemoveGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_group(
+        self,
+        request: eds_user_20210308_models.RemoveGroupRequest,
+    ) -> eds_user_20210308_models.RemoveGroupResponse:
+        """
+        @summary 删除角色.
+        
+        @param request: RemoveGroupRequest
+        @return: RemoveGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.remove_group_with_options(request, runtime)
+
+    async def remove_group_async(
+        self,
+        request: eds_user_20210308_models.RemoveGroupRequest,
+    ) -> eds_user_20210308_models.RemoveGroupResponse:
+        """
+        @summary 删除角色.
+        
+        @param request: RemoveGroupRequest
+        @return: RemoveGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.remove_group_with_options_async(request, runtime)
 
     def remove_mfa_device_with_options(
         self,
@@ -3773,3 +4389,203 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_property_with_options_async(request, runtime)
+
+    def user_batch_join_group_with_options(
+        self,
+        request: eds_user_20210308_models.UserBatchJoinGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_user_20210308_models.UserBatchJoinGroupResponse:
+        """
+        @summary 用户批量分配角色
+        
+        @param request: UserBatchJoinGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UserBatchJoinGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_user_ids):
+            body['EndUserIds'] = request.end_user_ids
+        if not UtilClient.is_unset(request.group_id):
+            body['GroupId'] = request.group_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UserBatchJoinGroup',
+            version='2021-03-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_user_20210308_models.UserBatchJoinGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def user_batch_join_group_with_options_async(
+        self,
+        request: eds_user_20210308_models.UserBatchJoinGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_user_20210308_models.UserBatchJoinGroupResponse:
+        """
+        @summary 用户批量分配角色
+        
+        @param request: UserBatchJoinGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UserBatchJoinGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_user_ids):
+            body['EndUserIds'] = request.end_user_ids
+        if not UtilClient.is_unset(request.group_id):
+            body['GroupId'] = request.group_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UserBatchJoinGroup',
+            version='2021-03-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_user_20210308_models.UserBatchJoinGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def user_batch_join_group(
+        self,
+        request: eds_user_20210308_models.UserBatchJoinGroupRequest,
+    ) -> eds_user_20210308_models.UserBatchJoinGroupResponse:
+        """
+        @summary 用户批量分配角色
+        
+        @param request: UserBatchJoinGroupRequest
+        @return: UserBatchJoinGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.user_batch_join_group_with_options(request, runtime)
+
+    async def user_batch_join_group_async(
+        self,
+        request: eds_user_20210308_models.UserBatchJoinGroupRequest,
+    ) -> eds_user_20210308_models.UserBatchJoinGroupResponse:
+        """
+        @summary 用户批量分配角色
+        
+        @param request: UserBatchJoinGroupRequest
+        @return: UserBatchJoinGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.user_batch_join_group_with_options_async(request, runtime)
+
+    def user_batch_quit_group_with_options(
+        self,
+        request: eds_user_20210308_models.UserBatchQuitGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_user_20210308_models.UserBatchQuitGroupResponse:
+        """
+        @summary 用户批量移出角色
+        
+        @param request: UserBatchQuitGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UserBatchQuitGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_user_ids):
+            body['EndUserIds'] = request.end_user_ids
+        if not UtilClient.is_unset(request.group_id):
+            body['GroupId'] = request.group_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UserBatchQuitGroup',
+            version='2021-03-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_user_20210308_models.UserBatchQuitGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def user_batch_quit_group_with_options_async(
+        self,
+        request: eds_user_20210308_models.UserBatchQuitGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_user_20210308_models.UserBatchQuitGroupResponse:
+        """
+        @summary 用户批量移出角色
+        
+        @param request: UserBatchQuitGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UserBatchQuitGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_user_ids):
+            body['EndUserIds'] = request.end_user_ids
+        if not UtilClient.is_unset(request.group_id):
+            body['GroupId'] = request.group_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UserBatchQuitGroup',
+            version='2021-03-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_user_20210308_models.UserBatchQuitGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def user_batch_quit_group(
+        self,
+        request: eds_user_20210308_models.UserBatchQuitGroupRequest,
+    ) -> eds_user_20210308_models.UserBatchQuitGroupResponse:
+        """
+        @summary 用户批量移出角色
+        
+        @param request: UserBatchQuitGroupRequest
+        @return: UserBatchQuitGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.user_batch_quit_group_with_options(request, runtime)
+
+    async def user_batch_quit_group_async(
+        self,
+        request: eds_user_20210308_models.UserBatchQuitGroupRequest,
+    ) -> eds_user_20210308_models.UserBatchQuitGroupResponse:
+        """
+        @summary 用户批量移出角色
+        
+        @param request: UserBatchQuitGroupRequest
+        @return: UserBatchQuitGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.user_batch_quit_group_with_options_async(request, runtime)

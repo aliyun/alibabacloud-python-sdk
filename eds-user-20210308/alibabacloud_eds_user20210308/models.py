@@ -773,6 +773,125 @@ class CheckUsedPropertyValueResponse(TeaModel):
         return self
 
 
+class CreateGroupRequest(TeaModel):
+    def __init__(
+        self,
+        biz_type: str = None,
+        group_name: str = None,
+        parent_group_id: str = None,
+        solution_id: str = None,
+    ):
+        self.biz_type = biz_type
+        self.group_name = group_name
+        self.parent_group_id = parent_group_id
+        self.solution_id = solution_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.parent_group_id is not None:
+            result['ParentGroupId'] = self.parent_group_id
+        if self.solution_id is not None:
+            result['SolutionId'] = self.solution_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('ParentGroupId') is not None:
+            self.parent_group_id = m.get('ParentGroupId')
+        if m.get('SolutionId') is not None:
+            self.solution_id = m.get('SolutionId')
+        return self
+
+
+class CreateGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        group_id: str = None,
+        request_id: str = None,
+    ):
+        self.group_id = group_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateOrgRequest(TeaModel):
     def __init__(
         self,
@@ -1909,6 +2028,416 @@ class DeleteUserPropertyValueResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteUserPropertyValueResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeGroupUserRequest(TeaModel):
+    def __init__(
+        self,
+        biz_type: str = None,
+        group_id: str = None,
+        solution_id: str = None,
+    ):
+        self.biz_type = biz_type
+        self.group_id = group_id
+        self.solution_id = solution_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.solution_id is not None:
+            result['SolutionId'] = self.solution_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('SolutionId') is not None:
+            self.solution_id = m.get('SolutionId')
+        return self
+
+
+class DescribeGroupUserResponseBodyGroups(TeaModel):
+    def __init__(
+        self,
+        group_id: str = None,
+        group_name: str = None,
+        user_count: str = None,
+    ):
+        self.group_id = group_id
+        self.group_name = group_name
+        self.user_count = user_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.user_count is not None:
+            result['UserCount'] = self.user_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('UserCount') is not None:
+            self.user_count = m.get('UserCount')
+        return self
+
+
+class DescribeGroupUserResponseBodyUsers(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        avatar: str = None,
+        email: str = None,
+        end_user_id: str = None,
+        gmt_created: str = None,
+        gmt_join_group: str = None,
+        job_number: str = None,
+        nick_name: str = None,
+        phone: str = None,
+    ):
+        self.address = address
+        self.avatar = avatar
+        self.email = email
+        self.end_user_id = end_user_id
+        self.gmt_created = gmt_created
+        self.gmt_join_group = gmt_join_group
+        self.job_number = job_number
+        self.nick_name = nick_name
+        self.phone = phone
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.avatar is not None:
+            result['Avatar'] = self.avatar
+        if self.email is not None:
+            result['Email'] = self.email
+        if self.end_user_id is not None:
+            result['EndUserId'] = self.end_user_id
+        if self.gmt_created is not None:
+            result['GmtCreated'] = self.gmt_created
+        if self.gmt_join_group is not None:
+            result['GmtJoinGroup'] = self.gmt_join_group
+        if self.job_number is not None:
+            result['JobNumber'] = self.job_number
+        if self.nick_name is not None:
+            result['NickName'] = self.nick_name
+        if self.phone is not None:
+            result['Phone'] = self.phone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('Avatar') is not None:
+            self.avatar = m.get('Avatar')
+        if m.get('Email') is not None:
+            self.email = m.get('Email')
+        if m.get('EndUserId') is not None:
+            self.end_user_id = m.get('EndUserId')
+        if m.get('GmtCreated') is not None:
+            self.gmt_created = m.get('GmtCreated')
+        if m.get('GmtJoinGroup') is not None:
+            self.gmt_join_group = m.get('GmtJoinGroup')
+        if m.get('JobNumber') is not None:
+            self.job_number = m.get('JobNumber')
+        if m.get('NickName') is not None:
+            self.nick_name = m.get('NickName')
+        if m.get('Phone') is not None:
+            self.phone = m.get('Phone')
+        return self
+
+
+class DescribeGroupUserResponseBody(TeaModel):
+    def __init__(
+        self,
+        groups: List[DescribeGroupUserResponseBodyGroups] = None,
+        request_id: str = None,
+        users: List[DescribeGroupUserResponseBodyUsers] = None,
+    ):
+        self.groups = groups
+        self.request_id = request_id
+        self.users = users
+
+    def validate(self):
+        if self.groups:
+            for k in self.groups:
+                if k:
+                    k.validate()
+        if self.users:
+            for k in self.users:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Groups'] = []
+        if self.groups is not None:
+            for k in self.groups:
+                result['Groups'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Users'] = []
+        if self.users is not None:
+            for k in self.users:
+                result['Users'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.groups = []
+        if m.get('Groups') is not None:
+            for k in m.get('Groups'):
+                temp_model = DescribeGroupUserResponseBodyGroups()
+                self.groups.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.users = []
+        if m.get('Users') is not None:
+            for k in m.get('Users'):
+                temp_model = DescribeGroupUserResponseBodyUsers()
+                self.users.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeGroupUserResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeGroupUserResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeGroupUserResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeGroupsRequest(TeaModel):
+    def __init__(
+        self,
+        biz_type: str = None,
+        group_id: str = None,
+        group_name: str = None,
+        solution_id: str = None,
+    ):
+        self.biz_type = biz_type
+        self.group_id = group_id
+        self.group_name = group_name
+        self.solution_id = solution_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.solution_id is not None:
+            result['SolutionId'] = self.solution_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('SolutionId') is not None:
+            self.solution_id = m.get('SolutionId')
+        return self
+
+
+class DescribeGroupsResponseBodyGroups(TeaModel):
+    def __init__(
+        self,
+        group_id: str = None,
+        group_name: str = None,
+    ):
+        self.group_id = group_id
+        self.group_name = group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        return self
+
+
+class DescribeGroupsResponseBody(TeaModel):
+    def __init__(
+        self,
+        groups: List[DescribeGroupsResponseBodyGroups] = None,
+        request_id: str = None,
+    ):
+        self.groups = groups
+        self.request_id = request_id
+
+    def validate(self):
+        if self.groups:
+            for k in self.groups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Groups'] = []
+        if self.groups is not None:
+            for k in self.groups:
+                result['Groups'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.groups = []
+        if m.get('Groups') is not None:
+            for k in m.get('Groups'):
+                temp_model = DescribeGroupsResponseBodyGroups()
+                self.groups.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeGroupsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeGroupsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeGroupsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5536,6 +6065,109 @@ class LockUsersResponse(TeaModel):
         return self
 
 
+class ModifyGroupRequest(TeaModel):
+    def __init__(
+        self,
+        group_id: str = None,
+        new_group_name: str = None,
+    ):
+        # This parameter is required.
+        self.group_id = group_id
+        # This parameter is required.
+        self.new_group_name = new_group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.new_group_name is not None:
+            result['NewGroupName'] = self.new_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('NewGroupName') is not None:
+            self.new_group_name = m.get('NewGroupName')
+        return self
+
+
+class ModifyGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyOrgRequest(TeaModel):
     def __init__(
         self,
@@ -5857,6 +6489,109 @@ class MoveOrgResponse(TeaModel):
         return self
 
 
+class MoveUserOrgRequest(TeaModel):
+    def __init__(
+        self,
+        end_user_ids: List[str] = None,
+        org_id: str = None,
+    ):
+        # This parameter is required.
+        self.end_user_ids = end_user_ids
+        # This parameter is required.
+        self.org_id = org_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_user_ids is not None:
+            result['EndUserIds'] = self.end_user_ids
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndUserIds') is not None:
+            self.end_user_ids = m.get('EndUserIds')
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        return self
+
+
+class MoveUserOrgResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class MoveUserOrgResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: MoveUserOrgResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = MoveUserOrgResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QuerySyncStatusByAliUidResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -6028,6 +6763,101 @@ class QuerySyncStatusByAliUidResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QuerySyncStatusByAliUidResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RemoveGroupRequest(TeaModel):
+    def __init__(
+        self,
+        group_id: str = None,
+    ):
+        self.group_id = group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        return self
+
+
+class RemoveGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RemoveGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RemoveGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RemoveGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7595,6 +8425,209 @@ class UpdatePropertyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdatePropertyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UserBatchJoinGroupRequest(TeaModel):
+    def __init__(
+        self,
+        end_user_ids: List[str] = None,
+        group_id: str = None,
+    ):
+        self.end_user_ids = end_user_ids
+        # This parameter is required.
+        self.group_id = group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_user_ids is not None:
+            result['EndUserIds'] = self.end_user_ids
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndUserIds') is not None:
+            self.end_user_ids = m.get('EndUserIds')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        return self
+
+
+class UserBatchJoinGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UserBatchJoinGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UserBatchJoinGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UserBatchJoinGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UserBatchQuitGroupRequest(TeaModel):
+    def __init__(
+        self,
+        end_user_ids: List[str] = None,
+        group_id: str = None,
+    ):
+        self.end_user_ids = end_user_ids
+        self.group_id = group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_user_ids is not None:
+            result['EndUserIds'] = self.end_user_ids
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndUserIds') is not None:
+            self.end_user_ids = m.get('EndUserIds')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        return self
+
+
+class UserBatchQuitGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UserBatchQuitGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UserBatchQuitGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UserBatchQuitGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

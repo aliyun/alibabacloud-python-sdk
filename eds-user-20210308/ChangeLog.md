@@ -1,3 +1,14 @@
+2025-07-02 Version: 1.6.0
+- Support API CreateGroup.
+- Support API DescribeGroupUser.
+- Support API DescribeGroups.
+- Support API ModifyGroup.
+- Support API MoveUserOrg.
+- Support API RemoveGroup.
+- Support API UserBatchJoinGroup.
+- Support API UserBatchQuitGroup.
+
+
 2025-06-07 Version: 1.5.2
 - Update API DescribeUsers: add request parameters Status.
 - Update API DescribeUsers: add response parameters Body.Users.$.Orgs.$.OrgNamePath.
