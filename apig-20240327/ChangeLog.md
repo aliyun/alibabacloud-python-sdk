@@ -1,3 +1,7 @@
+2025-07-03 Version: 4.2.1
+- Update API ListZones: add response parameters Body.data.items.$.supportQat.
+
+
 2025-06-26 Version: 4.2.0
 - Support API DeleteService.
 - Update API CreateHttpApi: add request parameters body.agentProtocols.

@@ -16480,8 +16480,10 @@ class ListSslCertsResponse(TeaModel):
 class ListZonesResponseBodyDataItems(TeaModel):
     def __init__(
         self,
+        support_qat: str = None,
         zone_id: str = None,
     ):
+        self.support_qat = support_qat
         # 可用区ID。
         self.zone_id = zone_id
 
@@ -16494,12 +16496,16 @@ class ListZonesResponseBodyDataItems(TeaModel):
             return _map
 
         result = dict()
+        if self.support_qat is not None:
+            result['supportQat'] = self.support_qat
         if self.zone_id is not None:
             result['zoneId'] = self.zone_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('supportQat') is not None:
+            self.support_qat = m.get('supportQat')
         if m.get('zoneId') is not None:
             self.zone_id = m.get('zoneId')
         return self
