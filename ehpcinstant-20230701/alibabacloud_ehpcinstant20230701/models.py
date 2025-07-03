@@ -2327,12 +2327,13 @@ class GetAppVersionsResponse(TeaModel):
 class GetImageRequest(TeaModel):
     def __init__(
         self,
+        additional_region_ids: List[str] = None,
         image_category: str = None,
         image_id: str = None,
         image_type: str = None,
     ):
+        self.additional_region_ids = additional_region_ids
         self.image_category = image_category
-        # This parameter is required.
         self.image_id = image_id
         self.image_type = image_type
 
@@ -2345,6 +2346,8 @@ class GetImageRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.additional_region_ids is not None:
+            result['AdditionalRegionIds'] = self.additional_region_ids
         if self.image_category is not None:
             result['ImageCategory'] = self.image_category
         if self.image_id is not None:
@@ -2355,12 +2358,98 @@ class GetImageRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdditionalRegionIds') is not None:
+            self.additional_region_ids = m.get('AdditionalRegionIds')
         if m.get('ImageCategory') is not None:
             self.image_category = m.get('ImageCategory')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
         if m.get('ImageType') is not None:
             self.image_type = m.get('ImageType')
+        return self
+
+
+class GetImageShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        additional_region_ids_shrink: str = None,
+        image_category: str = None,
+        image_id: str = None,
+        image_type: str = None,
+    ):
+        self.additional_region_ids_shrink = additional_region_ids_shrink
+        self.image_category = image_category
+        self.image_id = image_id
+        self.image_type = image_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.additional_region_ids_shrink is not None:
+            result['AdditionalRegionIds'] = self.additional_region_ids_shrink
+        if self.image_category is not None:
+            result['ImageCategory'] = self.image_category
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.image_type is not None:
+            result['ImageType'] = self.image_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdditionalRegionIds') is not None:
+            self.additional_region_ids_shrink = m.get('AdditionalRegionIds')
+        if m.get('ImageCategory') is not None:
+            self.image_category = m.get('ImageCategory')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('ImageType') is not None:
+            self.image_type = m.get('ImageType')
+        return self
+
+
+class GetImageResponseBodyImageAdditionalRegionsInfo(TeaModel):
+    def __init__(
+        self,
+        image_id: str = None,
+        region_id: str = None,
+        status: str = None,
+    ):
+        self.image_id = image_id
+        self.region_id = region_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -2561,6 +2650,7 @@ class GetImageResponseBodyImageVMImageSpec(TeaModel):
 class GetImageResponseBodyImage(TeaModel):
     def __init__(
         self,
+        additional_regions_info: List[GetImageResponseBodyImageAdditionalRegionsInfo] = None,
         app_id: str = None,
         container_image_spec: GetImageResponseBodyImageContainerImageSpec = None,
         create_time: str = None,
@@ -2573,6 +2663,7 @@ class GetImageResponseBodyImage(TeaModel):
         vmimage_spec: GetImageResponseBodyImageVMImageSpec = None,
         version: str = None,
     ):
+        self.additional_regions_info = additional_regions_info
         self.app_id = app_id
         self.container_image_spec = container_image_spec
         self.create_time = create_time
@@ -2587,6 +2678,10 @@ class GetImageResponseBodyImage(TeaModel):
         self.version = version
 
     def validate(self):
+        if self.additional_regions_info:
+            for k in self.additional_regions_info:
+                if k:
+                    k.validate()
         if self.container_image_spec:
             self.container_image_spec.validate()
         if self.document_info:
@@ -2600,6 +2695,10 @@ class GetImageResponseBodyImage(TeaModel):
             return _map
 
         result = dict()
+        result['AdditionalRegionsInfo'] = []
+        if self.additional_regions_info is not None:
+            for k in self.additional_regions_info:
+                result['AdditionalRegionsInfo'].append(k.to_map() if k else None)
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.container_image_spec is not None:
@@ -2626,6 +2725,11 @@ class GetImageResponseBodyImage(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.additional_regions_info = []
+        if m.get('AdditionalRegionsInfo') is not None:
+            for k in m.get('AdditionalRegionsInfo'):
+                temp_model = GetImageResponseBodyImageAdditionalRegionsInfo()
+                self.additional_regions_info.append(temp_model.from_map(k))
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('ContainerImageSpec') is not None:

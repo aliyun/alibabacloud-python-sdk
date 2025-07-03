@@ -1,3 +1,8 @@
+2025-07-03 Version: 2.0.4
+- Update API GetImage: add request parameters AdditionalRegionIds.
+- Update API GetImage: add response parameters Body.Image.AdditionalRegionsInfo.
+
+
 2025-06-12 Version: 2.0.3
 - Update API CreateJob: add request parameters DeploymentPolicy.Pool.
 - Update API CreateJob: add request parameters DeploymentPolicy.Priority.

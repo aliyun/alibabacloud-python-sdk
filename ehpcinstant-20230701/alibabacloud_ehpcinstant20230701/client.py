@@ -963,18 +963,24 @@ class Client(OpenApiClient):
 
     def get_image_with_options(
         self,
-        request: ehpc_instant_20230701_models.GetImageRequest,
+        tmp_req: ehpc_instant_20230701_models.GetImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.GetImageResponse:
         """
         @summary 查询托管侧镜像详情。
         
-        @param request: GetImageRequest
+        @param tmp_req: GetImageRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetImageResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ehpc_instant_20230701_models.GetImageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.additional_region_ids):
+            request.additional_region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.additional_region_ids, 'AdditionalRegionIds', 'json')
         query = {}
+        if not UtilClient.is_unset(request.additional_region_ids_shrink):
+            query['AdditionalRegionIds'] = request.additional_region_ids_shrink
         if not UtilClient.is_unset(request.image_category):
             query['ImageCategory'] = request.image_category
         if not UtilClient.is_unset(request.image_id):
@@ -1002,18 +1008,24 @@ class Client(OpenApiClient):
 
     async def get_image_with_options_async(
         self,
-        request: ehpc_instant_20230701_models.GetImageRequest,
+        tmp_req: ehpc_instant_20230701_models.GetImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.GetImageResponse:
         """
         @summary 查询托管侧镜像详情。
         
-        @param request: GetImageRequest
+        @param tmp_req: GetImageRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetImageResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ehpc_instant_20230701_models.GetImageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.additional_region_ids):
+            request.additional_region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.additional_region_ids, 'AdditionalRegionIds', 'json')
         query = {}
+        if not UtilClient.is_unset(request.additional_region_ids_shrink):
+            query['AdditionalRegionIds'] = request.additional_region_ids_shrink
         if not UtilClient.is_unset(request.image_category):
             query['ImageCategory'] = request.image_category
         if not UtilClient.is_unset(request.image_id):
