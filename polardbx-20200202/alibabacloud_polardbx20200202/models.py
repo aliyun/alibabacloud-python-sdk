@@ -5327,6 +5327,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(TeaModel):
         series: str = None,
         spec_category: str = None,
         status: str = None,
+        storage_type: str = None,
         storage_used: int = None,
         tag_set: List[DescribeDBInstanceAttributeResponseBodyDBInstanceTagSet] = None,
         tertiary_zone: str = None,
@@ -5388,6 +5389,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(TeaModel):
         self.series = series
         self.spec_category = spec_category
         self.status = status
+        self.storage_type = storage_type
         self.storage_used = storage_used
         self.tag_set = tag_set
         # 第三可用区。
@@ -5529,6 +5531,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(TeaModel):
             result['SpecCategory'] = self.spec_category
         if self.status is not None:
             result['Status'] = self.status
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
         if self.storage_used is not None:
             result['StorageUsed'] = self.storage_used
         result['TagSet'] = []
@@ -5654,6 +5658,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(TeaModel):
             self.spec_category = m.get('SpecCategory')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
         if m.get('StorageUsed') is not None:
             self.storage_used = m.get('StorageUsed')
         self.tag_set = []
@@ -7758,6 +7764,7 @@ class DescribeDBInstancesResponseBodyDBInstances(TeaModel):
         secondary_zone: str = None,
         series: str = None,
         status: str = None,
+        storage_type: str = None,
         storage_used: int = None,
         support_binlog_x: bool = None,
         tag_set: List[DescribeDBInstancesResponseBodyDBInstancesTagSet] = None,
@@ -7808,6 +7815,7 @@ class DescribeDBInstancesResponseBodyDBInstances(TeaModel):
         self.secondary_zone = secondary_zone
         self.series = series
         self.status = status
+        self.storage_type = storage_type
         self.storage_used = storage_used
         self.support_binlog_x = support_binlog_x
         self.tag_set = tag_set
@@ -7915,6 +7923,8 @@ class DescribeDBInstancesResponseBodyDBInstances(TeaModel):
             result['Series'] = self.series
         if self.status is not None:
             result['Status'] = self.status
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
         if self.storage_used is not None:
             result['StorageUsed'] = self.storage_used
         if self.support_binlog_x is not None:
@@ -8014,6 +8024,8 @@ class DescribeDBInstancesResponseBodyDBInstances(TeaModel):
             self.series = m.get('Series')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
         if m.get('StorageUsed') is not None:
             self.storage_used = m.get('StorageUsed')
         if m.get('SupportBinlogX') is not None:

@@ -1,3 +1,8 @@
+2025-07-03 Version: 3.0.2
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstance.StorageType.
+- Update API DescribeDBInstances: add response parameters Body.DBInstances.$.StorageType.
+
+
 2025-04-01 Version: 3.0.1
 - Generated python 2020-02-02 for polardbx.
 
