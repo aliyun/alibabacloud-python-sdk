@@ -15298,6 +15298,7 @@ class DescribeInstanceResponseBodyInstance(TeaModel):
         instance_id: str = None,
         instance_name: str = None,
         instance_role: str = None,
+        iops: int = None,
         is_latest_ob_version: bool = None,
         is_trust_ecs: bool = None,
         isolation_optimization: bool = None,
@@ -15390,6 +15391,7 @@ class DescribeInstanceResponseBodyInstance(TeaModel):
         self.instance_name = instance_name
         # The role of the instance.
         self.instance_role = instance_role
+        self.iops = iops
         # Indicates whether the OBServer version is the latest.
         self.is_latest_ob_version = is_latest_ob_version
         # Indicates whether trusted ECS instances are used.
@@ -15530,6 +15532,8 @@ class DescribeInstanceResponseBodyInstance(TeaModel):
             result['InstanceName'] = self.instance_name
         if self.instance_role is not None:
             result['InstanceRole'] = self.instance_role
+        if self.iops is not None:
+            result['Iops'] = self.iops
         if self.is_latest_ob_version is not None:
             result['IsLatestObVersion'] = self.is_latest_ob_version
         if self.is_trust_ecs is not None:
@@ -15629,6 +15633,8 @@ class DescribeInstanceResponseBodyInstance(TeaModel):
             self.instance_name = m.get('InstanceName')
         if m.get('InstanceRole') is not None:
             self.instance_role = m.get('InstanceRole')
+        if m.get('Iops') is not None:
+            self.iops = m.get('Iops')
         if m.get('IsLatestObVersion') is not None:
             self.is_latest_ob_version = m.get('IsLatestObVersion')
         if m.get('IsTrustEcs') is not None:
@@ -18727,6 +18733,7 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         instance_name: str = None,
         instance_role: str = None,
         instance_type: str = None,
+        iops: int = None,
         maintain_time: str = None,
         mem: int = None,
         migratable: bool = None,
@@ -18799,6 +18806,7 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         # - mtenant: indicates a tenant instance in MySQL mode.
         # - mtenant_serverless: indicates a serverless instance in MySQL mode.
         self.instance_type = instance_type
+        self.iops = iops
         # The time period in UTC for the daily routine maintenance of the cluster.
         self.maintain_time = maintain_time
         # The memory size of the instance, in GB.
@@ -18928,6 +18936,8 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             result['InstanceRole'] = self.instance_role
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+        if self.iops is not None:
+            result['Iops'] = self.iops
         if self.maintain_time is not None:
             result['MaintainTime'] = self.maintain_time
         if self.mem is not None:
@@ -19003,6 +19013,8 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             self.instance_role = m.get('InstanceRole')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        if m.get('Iops') is not None:
+            self.iops = m.get('Iops')
         if m.get('MaintainTime') is not None:
             self.maintain_time = m.get('MaintainTime')
         if m.get('Mem') is not None:
@@ -19137,6 +19149,7 @@ class DescribeMetricsDataRequest(TeaModel):
         instance_id: str = None,
         labels: str = None,
         limit: str = None,
+        metric_scope: str = None,
         metrics: str = None,
         replica_type: str = None,
         sort_metric_key: str = None,
@@ -19152,6 +19165,7 @@ class DescribeMetricsDataRequest(TeaModel):
         # This parameter is required.
         self.labels = labels
         self.limit = limit
+        self.metric_scope = metric_scope
         # This parameter is required.
         self.metrics = metrics
         self.replica_type = replica_type
@@ -19179,6 +19193,8 @@ class DescribeMetricsDataRequest(TeaModel):
             result['Labels'] = self.labels
         if self.limit is not None:
             result['Limit'] = self.limit
+        if self.metric_scope is not None:
+            result['MetricScope'] = self.metric_scope
         if self.metrics is not None:
             result['Metrics'] = self.metrics
         if self.replica_type is not None:
@@ -19203,6 +19219,8 @@ class DescribeMetricsDataRequest(TeaModel):
             self.labels = m.get('Labels')
         if m.get('Limit') is not None:
             self.limit = m.get('Limit')
+        if m.get('MetricScope') is not None:
+            self.metric_scope = m.get('MetricScope')
         if m.get('Metrics') is not None:
             self.metrics = m.get('Metrics')
         if m.get('ReplicaType') is not None:
@@ -36189,6 +36207,7 @@ class DescribeSqlAuditStatRequest(TeaModel):
         self,
         end_time: str = None,
         instance_id: str = None,
+        operator_type: str = None,
         page_number: int = None,
         page_size: int = None,
         start_time: str = None,
@@ -36196,6 +36215,7 @@ class DescribeSqlAuditStatRequest(TeaModel):
     ):
         self.end_time = end_time
         self.instance_id = instance_id
+        self.operator_type = operator_type
         self.page_number = page_number
         self.page_size = page_size
         self.start_time = start_time
@@ -36214,6 +36234,8 @@ class DescribeSqlAuditStatRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.operator_type is not None:
+            result['OperatorType'] = self.operator_type
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -36230,6 +36252,8 @@ class DescribeSqlAuditStatRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('OperatorType') is not None:
+            self.operator_type = m.get('OperatorType')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -36370,10 +36394,12 @@ class DescribeSqlAuditStatResponseBody(TeaModel):
         self,
         data: List[DescribeSqlAuditStatResponseBodyData] = None,
         request_id: str = None,
+        total_count: int = None,
     ):
         self.data = data
         # Id of the request
         self.request_id = request_id
+        self.total_count = total_count
 
     def validate(self):
         if self.data:
@@ -36393,6 +36419,8 @@ class DescribeSqlAuditStatResponseBody(TeaModel):
                 result['Data'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
@@ -36404,6 +36432,8 @@ class DescribeSqlAuditStatResponseBody(TeaModel):
                 self.data.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -37636,6 +37666,7 @@ class DescribeTenantResponseBodyTenant(TeaModel):
         enable_read_only_replica: bool = None,
         enable_read_write_split: bool = None,
         instance_type: str = None,
+        iops: int = None,
         lower_case_table_names: int = None,
         master_intranet_address_zone: str = None,
         max_parallel_query_degree: int = None,
@@ -37703,6 +37734,7 @@ class DescribeTenantResponseBodyTenant(TeaModel):
         self.enable_read_write_split = enable_read_write_split
         # The type of the instance.
         self.instance_type = instance_type
+        self.iops = iops
         # Indicates whether the table name is case-sensitive. Valid values: 
         # * **1**: The table name is case-insensitive. 
         # * **0**: The table name is case-sensitive.
@@ -37849,6 +37881,8 @@ class DescribeTenantResponseBodyTenant(TeaModel):
             result['EnableReadWriteSplit'] = self.enable_read_write_split
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+        if self.iops is not None:
+            result['Iops'] = self.iops
         if self.lower_case_table_names is not None:
             result['LowerCaseTableNames'] = self.lower_case_table_names
         if self.master_intranet_address_zone is not None:
@@ -37935,6 +37969,8 @@ class DescribeTenantResponseBodyTenant(TeaModel):
             self.enable_read_write_split = m.get('EnableReadWriteSplit')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        if m.get('Iops') is not None:
+            self.iops = m.get('Iops')
         if m.get('LowerCaseTableNames') is not None:
             self.lower_case_table_names = m.get('LowerCaseTableNames')
         if m.get('MasterIntranetAddressZone') is not None:
@@ -39902,6 +39938,7 @@ class DescribeTenantsResponseBodyTenants(TeaModel):
         deploy_type: str = None,
         description: str = None,
         enable_read_only_replica: bool = None,
+        iops: int = None,
         mem: int = None,
         parameter_template: str = None,
         primary_zone: str = None,
@@ -39939,6 +39976,7 @@ class DescribeTenantsResponseBodyTenants(TeaModel):
         self.description = description
         # Indicates whether read-only replicas are supported.
         self.enable_read_only_replica = enable_read_only_replica
+        self.iops = iops
         # The total memory size of the tenant, in GB.
         self.mem = mem
         # The parameter template.
@@ -40001,6 +40039,8 @@ class DescribeTenantsResponseBodyTenants(TeaModel):
             result['Description'] = self.description
         if self.enable_read_only_replica is not None:
             result['EnableReadOnlyReplica'] = self.enable_read_only_replica
+        if self.iops is not None:
+            result['Iops'] = self.iops
         if self.mem is not None:
             result['Mem'] = self.mem
         if self.parameter_template is not None:
@@ -40045,6 +40085,8 @@ class DescribeTenantsResponseBodyTenants(TeaModel):
             self.description = m.get('Description')
         if m.get('EnableReadOnlyReplica') is not None:
             self.enable_read_only_replica = m.get('EnableReadOnlyReplica')
+        if m.get('Iops') is not None:
+            self.iops = m.get('Iops')
         if m.get('Mem') is not None:
             self.mem = m.get('Mem')
         if m.get('ParameterTemplate') is not None:
@@ -49571,6 +49613,7 @@ class ModifyTenantResourceRequest(TeaModel):
         self,
         cpu: int = None,
         instance_id: str = None,
+        iops: str = None,
         log_disk: int = None,
         memory: int = None,
         read_only_zone_list: str = None,
@@ -49584,6 +49627,7 @@ class ModifyTenantResourceRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.iops = iops
         # The size of the log disk allocated to the tenant, in GB.
         self.log_disk = log_disk
         # The memory size of the tenant, in GB.
@@ -49610,6 +49654,8 @@ class ModifyTenantResourceRequest(TeaModel):
             result['Cpu'] = self.cpu
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.iops is not None:
+            result['Iops'] = self.iops
         if self.log_disk is not None:
             result['LogDisk'] = self.log_disk
         if self.memory is not None:
@@ -49626,6 +49672,8 @@ class ModifyTenantResourceRequest(TeaModel):
             self.cpu = m.get('Cpu')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Iops') is not None:
+            self.iops = m.get('Iops')
         if m.get('LogDisk') is not None:
             self.log_disk = m.get('LogDisk')
         if m.get('Memory') is not None:

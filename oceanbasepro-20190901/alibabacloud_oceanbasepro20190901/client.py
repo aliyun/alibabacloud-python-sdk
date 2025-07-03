@@ -5886,6 +5886,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         body = {}
+        if not UtilClient.is_unset(request.metric_scope):
+            body['MetricScope'] = request.metric_scope
         if not UtilClient.is_unset(request.replica_type):
             body['ReplicaType'] = request.replica_type
         req = open_api_models.OpenApiRequest(
@@ -5941,6 +5943,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         body = {}
+        if not UtilClient.is_unset(request.metric_scope):
+            body['MetricScope'] = request.metric_scope
         if not UtilClient.is_unset(request.replica_type):
             body['ReplicaType'] = request.replica_type
         req = open_api_models.OpenApiRequest(
@@ -9455,6 +9459,8 @@ class Client(OpenApiClient):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.operator_type):
+            body['OperatorType'] = request.operator_type
         if not UtilClient.is_unset(request.page_number):
             body['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -9500,6 +9506,8 @@ class Client(OpenApiClient):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.operator_type):
+            body['OperatorType'] = request.operator_type
         if not UtilClient.is_unset(request.page_number):
             body['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -13699,6 +13707,8 @@ class Client(OpenApiClient):
             body['Cpu'] = request.cpu
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iops):
+            body['Iops'] = request.iops
         if not UtilClient.is_unset(request.log_disk):
             body['LogDisk'] = request.log_disk
         if not UtilClient.is_unset(request.memory):
@@ -13744,6 +13754,8 @@ class Client(OpenApiClient):
             body['Cpu'] = request.cpu
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iops):
+            body['Iops'] = request.iops
         if not UtilClient.is_unset(request.log_disk):
             body['LogDisk'] = request.log_disk
         if not UtilClient.is_unset(request.memory):

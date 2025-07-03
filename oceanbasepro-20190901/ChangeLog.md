@@ -1,3 +1,14 @@
+2025-07-03 Version: 10.0.1
+- Update API DescribeInstance: add response parameters Body.Instance.Iops.
+- Update API DescribeInstances: add response parameters Body.Instances.$.Iops.
+- Update API DescribeMetricsData: add request parameters MetricScope.
+- Update API DescribeSqlAuditStat: add request parameters OperatorType.
+- Update API DescribeSqlAuditStat: add response parameters Body.TotalCount.
+- Update API DescribeTenant: add response parameters Body.Tenant.Iops.
+- Update API DescribeTenants: add response parameters Body.Tenants.$.Iops.
+- Update API ModifyTenantResource: add request parameters Iops.
+
+
 2025-06-11 Version: 10.0.0
 - Support API CreateOasOutlineTask.
 - Support API DescribeInstanceAvailableZones.
