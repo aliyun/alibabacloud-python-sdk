@@ -1,3 +1,17 @@
+2025-07-03 Version: 5.2.0
+- Support API CreateAppAgentTemplate.
+- Support API DeleteAppAgentTemplate.
+- Support API DescribeAppAgentFunctionStatus.
+- Support API DescribeAppAgentTemplates.
+- Support API GetAgent.
+- Support API ModifyAppAgentFunctionStatus.
+- Support API ModifyAppAgentTemplate.
+- Support API NotifyAgent.
+- Support API StartAgent.
+- Support API StopAgent.
+- Support API UpdateAgent.
+
+
 2025-06-03 Version: 5.1.0
 - Support API CreateCloudNotePhrases.
 - Support API DeleteCloudNotePhrases.

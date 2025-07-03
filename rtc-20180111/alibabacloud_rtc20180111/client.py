@@ -201,6 +201,150 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_record_template_with_options_async(request, runtime)
 
+    def create_app_agent_template_with_options(
+        self,
+        tmp_req: rtc_20180111_models.CreateAppAgentTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.CreateAppAgentTemplateResponse:
+        """
+        @summary 创建应用智能体模版
+        
+        @param tmp_req: CreateAppAgentTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppAgentTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.CreateAppAgentTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.asr_config):
+            request.asr_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.asr_config, 'AsrConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.llm_config):
+            request.llm_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.llm_config, 'LlmConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.tts_config):
+            request.tts_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tts_config, 'TtsConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.asr_config_shrink):
+            query['AsrConfig'] = request.asr_config_shrink
+        if not UtilClient.is_unset(request.chat_mode):
+            query['ChatMode'] = request.chat_mode
+        if not UtilClient.is_unset(request.greeting):
+            query['Greeting'] = request.greeting
+        if not UtilClient.is_unset(request.interrupt_mode):
+            query['InterruptMode'] = request.interrupt_mode
+        if not UtilClient.is_unset(request.llm_config_shrink):
+            query['LlmConfig'] = request.llm_config_shrink
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.tts_config_shrink):
+            query['TtsConfig'] = request.tts_config_shrink
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAppAgentTemplate',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.CreateAppAgentTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_app_agent_template_with_options_async(
+        self,
+        tmp_req: rtc_20180111_models.CreateAppAgentTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.CreateAppAgentTemplateResponse:
+        """
+        @summary 创建应用智能体模版
+        
+        @param tmp_req: CreateAppAgentTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppAgentTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.CreateAppAgentTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.asr_config):
+            request.asr_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.asr_config, 'AsrConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.llm_config):
+            request.llm_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.llm_config, 'LlmConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.tts_config):
+            request.tts_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tts_config, 'TtsConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.asr_config_shrink):
+            query['AsrConfig'] = request.asr_config_shrink
+        if not UtilClient.is_unset(request.chat_mode):
+            query['ChatMode'] = request.chat_mode
+        if not UtilClient.is_unset(request.greeting):
+            query['Greeting'] = request.greeting
+        if not UtilClient.is_unset(request.interrupt_mode):
+            query['InterruptMode'] = request.interrupt_mode
+        if not UtilClient.is_unset(request.llm_config_shrink):
+            query['LlmConfig'] = request.llm_config_shrink
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.tts_config_shrink):
+            query['TtsConfig'] = request.tts_config_shrink
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAppAgentTemplate',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.CreateAppAgentTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_app_agent_template(
+        self,
+        request: rtc_20180111_models.CreateAppAgentTemplateRequest,
+    ) -> rtc_20180111_models.CreateAppAgentTemplateResponse:
+        """
+        @summary 创建应用智能体模版
+        
+        @param request: CreateAppAgentTemplateRequest
+        @return: CreateAppAgentTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_app_agent_template_with_options(request, runtime)
+
+    async def create_app_agent_template_async(
+        self,
+        request: rtc_20180111_models.CreateAppAgentTemplateRequest,
+    ) -> rtc_20180111_models.CreateAppAgentTemplateResponse:
+        """
+        @summary 创建应用智能体模版
+        
+        @param request: CreateAppAgentTemplateRequest
+        @return: CreateAppAgentTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_app_agent_template_with_options_async(request, runtime)
+
     def create_app_layout_with_options(
         self,
         tmp_req: rtc_20180111_models.CreateAppLayoutRequest,
@@ -980,6 +1124,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_mpulayout_with_options_async(request, runtime)
+
+    def delete_app_agent_template_with_options(
+        self,
+        request: rtc_20180111_models.DeleteAppAgentTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DeleteAppAgentTemplateResponse:
+        """
+        @summary 删除应用智能体模版
+        
+        @param request: DeleteAppAgentTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAppAgentTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAppAgentTemplate',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DeleteAppAgentTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_app_agent_template_with_options_async(
+        self,
+        request: rtc_20180111_models.DeleteAppAgentTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DeleteAppAgentTemplateResponse:
+        """
+        @summary 删除应用智能体模版
+        
+        @param request: DeleteAppAgentTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAppAgentTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAppAgentTemplate',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DeleteAppAgentTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_app_agent_template(
+        self,
+        request: rtc_20180111_models.DeleteAppAgentTemplateRequest,
+    ) -> rtc_20180111_models.DeleteAppAgentTemplateResponse:
+        """
+        @summary 删除应用智能体模版
+        
+        @param request: DeleteAppAgentTemplateRequest
+        @return: DeleteAppAgentTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_app_agent_template_with_options(request, runtime)
+
+    async def delete_app_agent_template_async(
+        self,
+        request: rtc_20180111_models.DeleteAppAgentTemplateRequest,
+    ) -> rtc_20180111_models.DeleteAppAgentTemplateResponse:
+        """
+        @summary 删除应用智能体模版
+        
+        @param request: DeleteAppAgentTemplateRequest
+        @return: DeleteAppAgentTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_app_agent_template_with_options_async(request, runtime)
 
     def delete_app_layout_with_options(
         self,
@@ -1974,6 +2218,214 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_all_callback_with_options_async(runtime)
+
+    def describe_app_agent_function_status_with_options(
+        self,
+        request: rtc_20180111_models.DescribeAppAgentFunctionStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeAppAgentFunctionStatusResponse:
+        """
+        @summary 查询应用智能体开关
+        
+        @param request: DescribeAppAgentFunctionStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppAgentFunctionStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAppAgentFunctionStatus',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeAppAgentFunctionStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_app_agent_function_status_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeAppAgentFunctionStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeAppAgentFunctionStatusResponse:
+        """
+        @summary 查询应用智能体开关
+        
+        @param request: DescribeAppAgentFunctionStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppAgentFunctionStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAppAgentFunctionStatus',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeAppAgentFunctionStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_app_agent_function_status(
+        self,
+        request: rtc_20180111_models.DescribeAppAgentFunctionStatusRequest,
+    ) -> rtc_20180111_models.DescribeAppAgentFunctionStatusResponse:
+        """
+        @summary 查询应用智能体开关
+        
+        @param request: DescribeAppAgentFunctionStatusRequest
+        @return: DescribeAppAgentFunctionStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_app_agent_function_status_with_options(request, runtime)
+
+    async def describe_app_agent_function_status_async(
+        self,
+        request: rtc_20180111_models.DescribeAppAgentFunctionStatusRequest,
+    ) -> rtc_20180111_models.DescribeAppAgentFunctionStatusResponse:
+        """
+        @summary 查询应用智能体开关
+        
+        @param request: DescribeAppAgentFunctionStatusRequest
+        @return: DescribeAppAgentFunctionStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_app_agent_function_status_with_options_async(request, runtime)
+
+    def describe_app_agent_templates_with_options(
+        self,
+        request: rtc_20180111_models.DescribeAppAgentTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeAppAgentTemplatesResponse:
+        """
+        @summary 应用智能体模版列表
+        
+        @param request: DescribeAppAgentTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppAgentTemplatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAppAgentTemplates',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeAppAgentTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_app_agent_templates_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeAppAgentTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeAppAgentTemplatesResponse:
+        """
+        @summary 应用智能体模版列表
+        
+        @param request: DescribeAppAgentTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppAgentTemplatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAppAgentTemplates',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeAppAgentTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_app_agent_templates(
+        self,
+        request: rtc_20180111_models.DescribeAppAgentTemplatesRequest,
+    ) -> rtc_20180111_models.DescribeAppAgentTemplatesResponse:
+        """
+        @summary 应用智能体模版列表
+        
+        @param request: DescribeAppAgentTemplatesRequest
+        @return: DescribeAppAgentTemplatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_app_agent_templates_with_options(request, runtime)
+
+    async def describe_app_agent_templates_async(
+        self,
+        request: rtc_20180111_models.DescribeAppAgentTemplatesRequest,
+    ) -> rtc_20180111_models.DescribeAppAgentTemplatesResponse:
+        """
+        @summary 应用智能体模版列表
+        
+        @param request: DescribeAppAgentTemplatesRequest
+        @return: DescribeAppAgentTemplatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_app_agent_templates_with_options_async(request, runtime)
 
     def describe_app_call_status_with_options(
         self,
@@ -8031,6 +8483,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.enable_auto_live_stream_rule_with_options_async(request, runtime)
 
+    def get_agent_with_options(
+        self,
+        request: rtc_20180111_models.GetAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.GetAgentResponse:
+        """
+        @summary GetAgent。
+        
+        @param request: GetAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAgentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAgent',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.GetAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agent_with_options_async(
+        self,
+        request: rtc_20180111_models.GetAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.GetAgentResponse:
+        """
+        @summary GetAgent。
+        
+        @param request: GetAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAgentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAgent',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.GetAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agent(
+        self,
+        request: rtc_20180111_models.GetAgentRequest,
+    ) -> rtc_20180111_models.GetAgentResponse:
+        """
+        @summary GetAgent。
+        
+        @param request: GetAgentRequest
+        @return: GetAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_agent_with_options(request, runtime)
+
+    async def get_agent_async(
+        self,
+        request: rtc_20180111_models.GetAgentRequest,
+    ) -> rtc_20180111_models.GetAgentResponse:
+        """
+        @summary GetAgent。
+        
+        @param request: GetAgentRequest
+        @return: GetAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_agent_with_options_async(request, runtime)
+
     def get_mputask_status_with_options(
         self,
         request: rtc_20180111_models.GetMPUTaskStatusRequest,
@@ -8230,6 +8786,250 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_app_with_options_async(request, runtime)
+
+    def modify_app_agent_function_status_with_options(
+        self,
+        request: rtc_20180111_models.ModifyAppAgentFunctionStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.ModifyAppAgentFunctionStatusResponse:
+        """
+        @summary 修改应用智能体开关
+        
+        @param request: ModifyAppAgentFunctionStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAppAgentFunctionStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAppAgentFunctionStatus',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.ModifyAppAgentFunctionStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_app_agent_function_status_with_options_async(
+        self,
+        request: rtc_20180111_models.ModifyAppAgentFunctionStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.ModifyAppAgentFunctionStatusResponse:
+        """
+        @summary 修改应用智能体开关
+        
+        @param request: ModifyAppAgentFunctionStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAppAgentFunctionStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAppAgentFunctionStatus',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.ModifyAppAgentFunctionStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_app_agent_function_status(
+        self,
+        request: rtc_20180111_models.ModifyAppAgentFunctionStatusRequest,
+    ) -> rtc_20180111_models.ModifyAppAgentFunctionStatusResponse:
+        """
+        @summary 修改应用智能体开关
+        
+        @param request: ModifyAppAgentFunctionStatusRequest
+        @return: ModifyAppAgentFunctionStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_app_agent_function_status_with_options(request, runtime)
+
+    async def modify_app_agent_function_status_async(
+        self,
+        request: rtc_20180111_models.ModifyAppAgentFunctionStatusRequest,
+    ) -> rtc_20180111_models.ModifyAppAgentFunctionStatusResponse:
+        """
+        @summary 修改应用智能体开关
+        
+        @param request: ModifyAppAgentFunctionStatusRequest
+        @return: ModifyAppAgentFunctionStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_app_agent_function_status_with_options_async(request, runtime)
+
+    def modify_app_agent_template_with_options(
+        self,
+        tmp_req: rtc_20180111_models.ModifyAppAgentTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.ModifyAppAgentTemplateResponse:
+        """
+        @summary 更新应用智能体模版
+        
+        @param tmp_req: ModifyAppAgentTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAppAgentTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.ModifyAppAgentTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.asr_config):
+            request.asr_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.asr_config, 'AsrConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.llm_config):
+            request.llm_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.llm_config, 'LlmConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.tts_config):
+            request.tts_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tts_config, 'TtsConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.asr_config_shrink):
+            query['AsrConfig'] = request.asr_config_shrink
+        if not UtilClient.is_unset(request.chat_mode):
+            query['ChatMode'] = request.chat_mode
+        if not UtilClient.is_unset(request.greeting):
+            query['Greeting'] = request.greeting
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.interrupt_mode):
+            query['InterruptMode'] = request.interrupt_mode
+        if not UtilClient.is_unset(request.llm_config_shrink):
+            query['LlmConfig'] = request.llm_config_shrink
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.tts_config_shrink):
+            query['TtsConfig'] = request.tts_config_shrink
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAppAgentTemplate',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.ModifyAppAgentTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_app_agent_template_with_options_async(
+        self,
+        tmp_req: rtc_20180111_models.ModifyAppAgentTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.ModifyAppAgentTemplateResponse:
+        """
+        @summary 更新应用智能体模版
+        
+        @param tmp_req: ModifyAppAgentTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAppAgentTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.ModifyAppAgentTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.asr_config):
+            request.asr_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.asr_config, 'AsrConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.llm_config):
+            request.llm_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.llm_config, 'LlmConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.tts_config):
+            request.tts_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tts_config, 'TtsConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.asr_config_shrink):
+            query['AsrConfig'] = request.asr_config_shrink
+        if not UtilClient.is_unset(request.chat_mode):
+            query['ChatMode'] = request.chat_mode
+        if not UtilClient.is_unset(request.greeting):
+            query['Greeting'] = request.greeting
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.interrupt_mode):
+            query['InterruptMode'] = request.interrupt_mode
+        if not UtilClient.is_unset(request.llm_config_shrink):
+            query['LlmConfig'] = request.llm_config_shrink
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.tts_config_shrink):
+            query['TtsConfig'] = request.tts_config_shrink
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAppAgentTemplate',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.ModifyAppAgentTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_app_agent_template(
+        self,
+        request: rtc_20180111_models.ModifyAppAgentTemplateRequest,
+    ) -> rtc_20180111_models.ModifyAppAgentTemplateResponse:
+        """
+        @summary 更新应用智能体模版
+        
+        @param request: ModifyAppAgentTemplateRequest
+        @return: ModifyAppAgentTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_app_agent_template_with_options(request, runtime)
+
+    async def modify_app_agent_template_async(
+        self,
+        request: rtc_20180111_models.ModifyAppAgentTemplateRequest,
+    ) -> rtc_20180111_models.ModifyAppAgentTemplateResponse:
+        """
+        @summary 更新应用智能体模版
+        
+        @param request: ModifyAppAgentTemplateRequest
+        @return: ModifyAppAgentTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_app_agent_template_with_options_async(request, runtime)
 
     def modify_app_callback_status_with_options(
         self,
@@ -9187,6 +9987,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_mpulayout_with_options_async(request, runtime)
 
+    def notify_agent_with_options(
+        self,
+        request: rtc_20180111_models.NotifyAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.NotifyAgentResponse:
+        """
+        @summary NotifyAgent
+        
+        @param request: NotifyAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: NotifyAgentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.custom_attribute):
+            query['CustomAttribute'] = request.custom_attribute
+        if not UtilClient.is_unset(request.interruptable):
+            query['Interruptable'] = request.interruptable
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='NotifyAgent',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.NotifyAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def notify_agent_with_options_async(
+        self,
+        request: rtc_20180111_models.NotifyAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.NotifyAgentResponse:
+        """
+        @summary NotifyAgent
+        
+        @param request: NotifyAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: NotifyAgentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.custom_attribute):
+            query['CustomAttribute'] = request.custom_attribute
+        if not UtilClient.is_unset(request.interruptable):
+            query['Interruptable'] = request.interruptable
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='NotifyAgent',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.NotifyAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def notify_agent(
+        self,
+        request: rtc_20180111_models.NotifyAgentRequest,
+    ) -> rtc_20180111_models.NotifyAgentResponse:
+        """
+        @summary NotifyAgent
+        
+        @param request: NotifyAgentRequest
+        @return: NotifyAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.notify_agent_with_options(request, runtime)
+
+    async def notify_agent_async(
+        self,
+        request: rtc_20180111_models.NotifyAgentRequest,
+    ) -> rtc_20180111_models.NotifyAgentResponse:
+        """
+        @summary NotifyAgent
+        
+        @param request: NotifyAgentRequest
+        @return: NotifyAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.notify_agent_with_options_async(request, runtime)
+
     def remove_terminals_with_options(
         self,
         request: rtc_20180111_models.RemoveTerminalsRequest,
@@ -9390,6 +10310,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.remove_users_with_options_async(request, runtime)
+
+    def start_agent_with_options(
+        self,
+        tmp_req: rtc_20180111_models.StartAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.StartAgentResponse:
+        """
+        @summary 启动AI Agent
+        
+        @param tmp_req: StartAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartAgentResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.StartAgentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.rtc_config):
+            request.rtc_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rtc_config, 'RtcConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.voice_chat_config):
+            request.voice_chat_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.voice_chat_config, 'VoiceChatConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.rtc_config_shrink):
+            query['RtcConfig'] = request.rtc_config_shrink
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.voice_chat_config_shrink):
+            query['VoiceChatConfig'] = request.voice_chat_config_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartAgent',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.StartAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_agent_with_options_async(
+        self,
+        tmp_req: rtc_20180111_models.StartAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.StartAgentResponse:
+        """
+        @summary 启动AI Agent
+        
+        @param tmp_req: StartAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartAgentResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.StartAgentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.rtc_config):
+            request.rtc_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rtc_config, 'RtcConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.voice_chat_config):
+            request.voice_chat_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.voice_chat_config, 'VoiceChatConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.rtc_config_shrink):
+            query['RtcConfig'] = request.rtc_config_shrink
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.voice_chat_config_shrink):
+            query['VoiceChatConfig'] = request.voice_chat_config_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartAgent',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.StartAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_agent(
+        self,
+        request: rtc_20180111_models.StartAgentRequest,
+    ) -> rtc_20180111_models.StartAgentResponse:
+        """
+        @summary 启动AI Agent
+        
+        @param request: StartAgentRequest
+        @return: StartAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.start_agent_with_options(request, runtime)
+
+    async def start_agent_async(
+        self,
+        request: rtc_20180111_models.StartAgentRequest,
+    ) -> rtc_20180111_models.StartAgentResponse:
+        """
+        @summary 启动AI Agent
+        
+        @param request: StartAgentRequest
+        @return: StartAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.start_agent_with_options_async(request, runtime)
 
     def start_category_callback_with_options(
         self,
@@ -10405,6 +11453,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.start_streaming_out_with_options_async(request, runtime)
 
+    def stop_agent_with_options(
+        self,
+        request: rtc_20180111_models.StopAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.StopAgentResponse:
+        """
+        @summary 停止AI Agent
+        
+        @param request: StopAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopAgentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopAgent',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.StopAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_agent_with_options_async(
+        self,
+        request: rtc_20180111_models.StopAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.StopAgentResponse:
+        """
+        @summary 停止AI Agent
+        
+        @param request: StopAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopAgentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopAgent',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.StopAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_agent(
+        self,
+        request: rtc_20180111_models.StopAgentRequest,
+    ) -> rtc_20180111_models.StopAgentResponse:
+        """
+        @summary 停止AI Agent
+        
+        @param request: StopAgentRequest
+        @return: StopAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.stop_agent_with_options(request, runtime)
+
+    async def stop_agent_async(
+        self,
+        request: rtc_20180111_models.StopAgentRequest,
+    ) -> rtc_20180111_models.StopAgentResponse:
+        """
+        @summary 停止AI Agent
+        
+        @param request: StopAgentRequest
+        @return: StopAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_agent_with_options_async(request, runtime)
+
     def stop_category_callback_with_options(
         self,
         tmp_req: rtc_20180111_models.StopCategoryCallbackRequest,
@@ -11120,6 +12272,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.stop_streaming_out_with_options_async(request, runtime)
+
+    def update_agent_with_options(
+        self,
+        tmp_req: rtc_20180111_models.UpdateAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.UpdateAgentResponse:
+        """
+        @summary 更新AI Agent
+        
+        @param tmp_req: UpdateAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAgentResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.UpdateAgentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.voice_chat_config):
+            request.voice_chat_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.voice_chat_config, 'VoiceChatConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.voice_chat_config_shrink):
+            query['VoiceChatConfig'] = request.voice_chat_config_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAgent',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.UpdateAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_agent_with_options_async(
+        self,
+        tmp_req: rtc_20180111_models.UpdateAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.UpdateAgentResponse:
+        """
+        @summary 更新AI Agent
+        
+        @param tmp_req: UpdateAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAgentResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.UpdateAgentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.voice_chat_config):
+            request.voice_chat_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.voice_chat_config, 'VoiceChatConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.voice_chat_config_shrink):
+            query['VoiceChatConfig'] = request.voice_chat_config_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAgent',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.UpdateAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_agent(
+        self,
+        request: rtc_20180111_models.UpdateAgentRequest,
+    ) -> rtc_20180111_models.UpdateAgentResponse:
+        """
+        @summary 更新AI Agent
+        
+        @param request: UpdateAgentRequest
+        @return: UpdateAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_agent_with_options(request, runtime)
+
+    async def update_agent_async(
+        self,
+        request: rtc_20180111_models.UpdateAgentRequest,
+    ) -> rtc_20180111_models.UpdateAgentResponse:
+        """
+        @summary 更新AI Agent
+        
+        @param request: UpdateAgentRequest
+        @return: UpdateAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_agent_with_options_async(request, runtime)
 
     def update_auto_live_stream_rule_with_options(
         self,

@@ -437,6 +437,482 @@ class AddRecordTemplateResponse(TeaModel):
         return self
 
 
+class CreateAppAgentTemplateRequestAsrConfigWordWeights(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        weight: int = None,
+        word: str = None,
+    ):
+        self.lang = lang
+        # This parameter is required.
+        self.weight = weight
+        # This parameter is required.
+        self.word = word
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        if self.word is not None:
+            result['Word'] = self.word
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        if m.get('Word') is not None:
+            self.word = m.get('Word')
+        return self
+
+
+class CreateAppAgentTemplateRequestAsrConfig(TeaModel):
+    def __init__(
+        self,
+        max_sentence_silence: int = None,
+        name: str = None,
+        word_weights: List[CreateAppAgentTemplateRequestAsrConfigWordWeights] = None,
+    ):
+        self.max_sentence_silence = max_sentence_silence
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.word_weights = word_weights
+
+    def validate(self):
+        if self.word_weights:
+            for k in self.word_weights:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_sentence_silence is not None:
+            result['MaxSentenceSilence'] = self.max_sentence_silence
+        if self.name is not None:
+            result['Name'] = self.name
+        result['WordWeights'] = []
+        if self.word_weights is not None:
+            for k in self.word_weights:
+                result['WordWeights'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxSentenceSilence') is not None:
+            self.max_sentence_silence = m.get('MaxSentenceSilence')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.word_weights = []
+        if m.get('WordWeights') is not None:
+            for k in m.get('WordWeights'):
+                temp_model = CreateAppAgentTemplateRequestAsrConfigWordWeights()
+                self.word_weights.append(temp_model.from_map(k))
+        return self
+
+
+class CreateAppAgentTemplateRequestLlmConfig(TeaModel):
+    def __init__(
+        self,
+        api_key: str = None,
+        history_depth: int = None,
+        max_token: int = None,
+        name: str = None,
+        prompt: str = None,
+        temperature: float = None,
+        top_p: float = None,
+        url: str = None,
+        vendor: str = None,
+    ):
+        # This parameter is required.
+        self.api_key = api_key
+        self.history_depth = history_depth
+        self.max_token = max_token
+        # This parameter is required.
+        self.name = name
+        self.prompt = prompt
+        self.temperature = temperature
+        self.top_p = top_p
+        self.url = url
+        # This parameter is required.
+        self.vendor = vendor
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_key is not None:
+            result['ApiKey'] = self.api_key
+        if self.history_depth is not None:
+            result['HistoryDepth'] = self.history_depth
+        if self.max_token is not None:
+            result['MaxToken'] = self.max_token
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+        if self.temperature is not None:
+            result['Temperature'] = self.temperature
+        if self.top_p is not None:
+            result['TopP'] = self.top_p
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.vendor is not None:
+            result['Vendor'] = self.vendor
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiKey') is not None:
+            self.api_key = m.get('ApiKey')
+        if m.get('HistoryDepth') is not None:
+            self.history_depth = m.get('HistoryDepth')
+        if m.get('MaxToken') is not None:
+            self.max_token = m.get('MaxToken')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+        if m.get('Temperature') is not None:
+            self.temperature = m.get('Temperature')
+        if m.get('TopP') is not None:
+            self.top_p = m.get('TopP')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Vendor') is not None:
+            self.vendor = m.get('Vendor')
+        return self
+
+
+class CreateAppAgentTemplateRequestTtsConfig(TeaModel):
+    def __init__(
+        self,
+        api_key: str = None,
+        filter_brackets: List[int] = None,
+        name: str = None,
+        pitch: float = None,
+        rate: float = None,
+        vendor: str = None,
+        voice: str = None,
+        volume: int = None,
+    ):
+        # This parameter is required.
+        self.api_key = api_key
+        self.filter_brackets = filter_brackets
+        # This parameter is required.
+        self.name = name
+        self.pitch = pitch
+        self.rate = rate
+        self.vendor = vendor
+        self.voice = voice
+        self.volume = volume
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_key is not None:
+            result['ApiKey'] = self.api_key
+        if self.filter_brackets is not None:
+            result['FilterBrackets'] = self.filter_brackets
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.pitch is not None:
+            result['Pitch'] = self.pitch
+        if self.rate is not None:
+            result['Rate'] = self.rate
+        if self.vendor is not None:
+            result['Vendor'] = self.vendor
+        if self.voice is not None:
+            result['Voice'] = self.voice
+        if self.volume is not None:
+            result['Volume'] = self.volume
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiKey') is not None:
+            self.api_key = m.get('ApiKey')
+        if m.get('FilterBrackets') is not None:
+            self.filter_brackets = m.get('FilterBrackets')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Pitch') is not None:
+            self.pitch = m.get('Pitch')
+        if m.get('Rate') is not None:
+            self.rate = m.get('Rate')
+        if m.get('Vendor') is not None:
+            self.vendor = m.get('Vendor')
+        if m.get('Voice') is not None:
+            self.voice = m.get('Voice')
+        if m.get('Volume') is not None:
+            self.volume = m.get('Volume')
+        return self
+
+
+class CreateAppAgentTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        asr_config: CreateAppAgentTemplateRequestAsrConfig = None,
+        chat_mode: int = None,
+        greeting: str = None,
+        interrupt_mode: int = None,
+        llm_config: CreateAppAgentTemplateRequestLlmConfig = None,
+        name: str = None,
+        tts_config: CreateAppAgentTemplateRequestTtsConfig = None,
+        type: int = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.asr_config = asr_config
+        self.chat_mode = chat_mode
+        self.greeting = greeting
+        self.interrupt_mode = interrupt_mode
+        self.llm_config = llm_config
+        # This parameter is required.
+        self.name = name
+        self.tts_config = tts_config
+        self.type = type
+
+    def validate(self):
+        if self.asr_config:
+            self.asr_config.validate()
+        if self.llm_config:
+            self.llm_config.validate()
+        if self.tts_config:
+            self.tts_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.asr_config is not None:
+            result['AsrConfig'] = self.asr_config.to_map()
+        if self.chat_mode is not None:
+            result['ChatMode'] = self.chat_mode
+        if self.greeting is not None:
+            result['Greeting'] = self.greeting
+        if self.interrupt_mode is not None:
+            result['InterruptMode'] = self.interrupt_mode
+        if self.llm_config is not None:
+            result['LlmConfig'] = self.llm_config.to_map()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.tts_config is not None:
+            result['TtsConfig'] = self.tts_config.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AsrConfig') is not None:
+            temp_model = CreateAppAgentTemplateRequestAsrConfig()
+            self.asr_config = temp_model.from_map(m['AsrConfig'])
+        if m.get('ChatMode') is not None:
+            self.chat_mode = m.get('ChatMode')
+        if m.get('Greeting') is not None:
+            self.greeting = m.get('Greeting')
+        if m.get('InterruptMode') is not None:
+            self.interrupt_mode = m.get('InterruptMode')
+        if m.get('LlmConfig') is not None:
+            temp_model = CreateAppAgentTemplateRequestLlmConfig()
+            self.llm_config = temp_model.from_map(m['LlmConfig'])
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('TtsConfig') is not None:
+            temp_model = CreateAppAgentTemplateRequestTtsConfig()
+            self.tts_config = temp_model.from_map(m['TtsConfig'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreateAppAgentTemplateShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        asr_config_shrink: str = None,
+        chat_mode: int = None,
+        greeting: str = None,
+        interrupt_mode: int = None,
+        llm_config_shrink: str = None,
+        name: str = None,
+        tts_config_shrink: str = None,
+        type: int = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.asr_config_shrink = asr_config_shrink
+        self.chat_mode = chat_mode
+        self.greeting = greeting
+        self.interrupt_mode = interrupt_mode
+        self.llm_config_shrink = llm_config_shrink
+        # This parameter is required.
+        self.name = name
+        self.tts_config_shrink = tts_config_shrink
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.asr_config_shrink is not None:
+            result['AsrConfig'] = self.asr_config_shrink
+        if self.chat_mode is not None:
+            result['ChatMode'] = self.chat_mode
+        if self.greeting is not None:
+            result['Greeting'] = self.greeting
+        if self.interrupt_mode is not None:
+            result['InterruptMode'] = self.interrupt_mode
+        if self.llm_config_shrink is not None:
+            result['LlmConfig'] = self.llm_config_shrink
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.tts_config_shrink is not None:
+            result['TtsConfig'] = self.tts_config_shrink
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AsrConfig') is not None:
+            self.asr_config_shrink = m.get('AsrConfig')
+        if m.get('ChatMode') is not None:
+            self.chat_mode = m.get('ChatMode')
+        if m.get('Greeting') is not None:
+            self.greeting = m.get('Greeting')
+        if m.get('InterruptMode') is not None:
+            self.interrupt_mode = m.get('InterruptMode')
+        if m.get('LlmConfig') is not None:
+            self.llm_config_shrink = m.get('LlmConfig')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('TtsConfig') is not None:
+            self.tts_config_shrink = m.get('TtsConfig')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreateAppAgentTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        request_id: str = None,
+    ):
+        self.id = id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateAppAgentTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAppAgentTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAppAgentTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateAppLayoutRequestLayoutPanes(TeaModel):
     def __init__(
         self,
@@ -1836,6 +2312,116 @@ class CreateMPULayoutResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateMPULayoutResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteAppAgentTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        id: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class DeleteAppAgentTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        request_id: str = None,
+    ):
+        self.id = id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteAppAgentTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAppAgentTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAppAgentTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3255,6 +3841,593 @@ class DescribeAllCallbackResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeAllCallbackResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAppAgentFunctionStatusRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class DescribeAppAgentFunctionStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class DescribeAppAgentFunctionStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAppAgentFunctionStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAppAgentFunctionStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAppAgentTemplatesRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        id: str = None,
+        name: str = None,
+        page_num: int = None,
+        page_size: int = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.id = id
+        self.name = name
+        self.page_num = page_num
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigWordWeights(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        weight: int = None,
+        word: str = None,
+    ):
+        self.lang = lang
+        self.weight = weight
+        self.word = word
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        if self.word is not None:
+            result['Word'] = self.word
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        if m.get('Word') is not None:
+            self.word = m.get('Word')
+        return self
+
+
+class DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig(TeaModel):
+    def __init__(
+        self,
+        max_sentence_silence: int = None,
+        name: str = None,
+        vocabulary_id: str = None,
+        word_weights: List[DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigWordWeights] = None,
+    ):
+        self.max_sentence_silence = max_sentence_silence
+        self.name = name
+        self.vocabulary_id = vocabulary_id
+        self.word_weights = word_weights
+
+    def validate(self):
+        if self.word_weights:
+            for k in self.word_weights:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_sentence_silence is not None:
+            result['MaxSentenceSilence'] = self.max_sentence_silence
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.vocabulary_id is not None:
+            result['VocabularyId'] = self.vocabulary_id
+        result['WordWeights'] = []
+        if self.word_weights is not None:
+            for k in self.word_weights:
+                result['WordWeights'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxSentenceSilence') is not None:
+            self.max_sentence_silence = m.get('MaxSentenceSilence')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('VocabularyId') is not None:
+            self.vocabulary_id = m.get('VocabularyId')
+        self.word_weights = []
+        if m.get('WordWeights') is not None:
+            for k in m.get('WordWeights'):
+                temp_model = DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigWordWeights()
+                self.word_weights.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig(TeaModel):
+    def __init__(
+        self,
+        api_key: str = None,
+        history_depth: int = None,
+        max_token: int = None,
+        model: str = None,
+        name: str = None,
+        prompt: str = None,
+        temperature: float = None,
+        top_p: float = None,
+        url: str = None,
+        vendor: str = None,
+    ):
+        self.api_key = api_key
+        self.history_depth = history_depth
+        self.max_token = max_token
+        self.model = model
+        self.name = name
+        self.prompt = prompt
+        self.temperature = temperature
+        self.top_p = top_p
+        self.url = url
+        self.vendor = vendor
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_key is not None:
+            result['ApiKey'] = self.api_key
+        if self.history_depth is not None:
+            result['HistoryDepth'] = self.history_depth
+        if self.max_token is not None:
+            result['MaxToken'] = self.max_token
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+        if self.temperature is not None:
+            result['Temperature'] = self.temperature
+        if self.top_p is not None:
+            result['TopP'] = self.top_p
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.vendor is not None:
+            result['Vendor'] = self.vendor
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiKey') is not None:
+            self.api_key = m.get('ApiKey')
+        if m.get('HistoryDepth') is not None:
+            self.history_depth = m.get('HistoryDepth')
+        if m.get('MaxToken') is not None:
+            self.max_token = m.get('MaxToken')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+        if m.get('Temperature') is not None:
+            self.temperature = m.get('Temperature')
+        if m.get('TopP') is not None:
+            self.top_p = m.get('TopP')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Vendor') is not None:
+            self.vendor = m.get('Vendor')
+        return self
+
+
+class DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig(TeaModel):
+    def __init__(
+        self,
+        api_key: str = None,
+        filter_brackets: List[int] = None,
+        model: str = None,
+        name: str = None,
+        pitch: float = None,
+        rate: float = None,
+        vendor: str = None,
+        voice: str = None,
+        volume: int = None,
+    ):
+        self.api_key = api_key
+        self.filter_brackets = filter_brackets
+        self.model = model
+        self.name = name
+        self.pitch = pitch
+        self.rate = rate
+        self.vendor = vendor
+        self.voice = voice
+        self.volume = volume
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_key is not None:
+            result['ApiKey'] = self.api_key
+        if self.filter_brackets is not None:
+            result['FilterBrackets'] = self.filter_brackets
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.pitch is not None:
+            result['Pitch'] = self.pitch
+        if self.rate is not None:
+            result['Rate'] = self.rate
+        if self.vendor is not None:
+            result['Vendor'] = self.vendor
+        if self.voice is not None:
+            result['Voice'] = self.voice
+        if self.volume is not None:
+            result['Volume'] = self.volume
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiKey') is not None:
+            self.api_key = m.get('ApiKey')
+        if m.get('FilterBrackets') is not None:
+            self.filter_brackets = m.get('FilterBrackets')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Pitch') is not None:
+            self.pitch = m.get('Pitch')
+        if m.get('Rate') is not None:
+            self.rate = m.get('Rate')
+        if m.get('Vendor') is not None:
+            self.vendor = m.get('Vendor')
+        if m.get('Voice') is not None:
+            self.voice = m.get('Voice')
+        if m.get('Volume') is not None:
+            self.volume = m.get('Volume')
+        return self
+
+
+class DescribeAppAgentTemplatesResponseBodyTemplates(TeaModel):
+    def __init__(
+        self,
+        asr_config: DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig = None,
+        chat_mode: int = None,
+        create_time: str = None,
+        greeting: str = None,
+        id: str = None,
+        interrupt_mode: int = None,
+        llm_config: DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig = None,
+        name: str = None,
+        tts_config: DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig = None,
+        type: int = None,
+    ):
+        self.asr_config = asr_config
+        self.chat_mode = chat_mode
+        self.create_time = create_time
+        self.greeting = greeting
+        self.id = id
+        self.interrupt_mode = interrupt_mode
+        self.llm_config = llm_config
+        self.name = name
+        self.tts_config = tts_config
+        self.type = type
+
+    def validate(self):
+        if self.asr_config:
+            self.asr_config.validate()
+        if self.llm_config:
+            self.llm_config.validate()
+        if self.tts_config:
+            self.tts_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asr_config is not None:
+            result['AsrConfig'] = self.asr_config.to_map()
+        if self.chat_mode is not None:
+            result['ChatMode'] = self.chat_mode
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.greeting is not None:
+            result['Greeting'] = self.greeting
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.interrupt_mode is not None:
+            result['InterruptMode'] = self.interrupt_mode
+        if self.llm_config is not None:
+            result['LlmConfig'] = self.llm_config.to_map()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.tts_config is not None:
+            result['TtsConfig'] = self.tts_config.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AsrConfig') is not None:
+            temp_model = DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig()
+            self.asr_config = temp_model.from_map(m['AsrConfig'])
+        if m.get('ChatMode') is not None:
+            self.chat_mode = m.get('ChatMode')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Greeting') is not None:
+            self.greeting = m.get('Greeting')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('InterruptMode') is not None:
+            self.interrupt_mode = m.get('InterruptMode')
+        if m.get('LlmConfig') is not None:
+            temp_model = DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig()
+            self.llm_config = temp_model.from_map(m['LlmConfig'])
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('TtsConfig') is not None:
+            temp_model = DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig()
+            self.tts_config = temp_model.from_map(m['TtsConfig'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeAppAgentTemplatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        templates: List[DescribeAppAgentTemplatesResponseBodyTemplates] = None,
+        total_num: int = None,
+        total_page: int = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.templates = templates
+        self.total_num = total_num
+        self.total_page = total_page
+
+    def validate(self):
+        if self.templates:
+            for k in self.templates:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Templates'] = []
+        if self.templates is not None:
+            for k in self.templates:
+                result['Templates'].append(k.to_map() if k else None)
+        if self.total_num is not None:
+            result['TotalNum'] = self.total_num
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.templates = []
+        if m.get('Templates') is not None:
+            for k in m.get('Templates'):
+                temp_model = DescribeAppAgentTemplatesResponseBodyTemplates()
+                self.templates.append(temp_model.from_map(k))
+        if m.get('TotalNum') is not None:
+            self.total_num = m.get('TotalNum')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        return self
+
+
+class DescribeAppAgentTemplatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAppAgentTemplatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAppAgentTemplatesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -16879,6 +18052,138 @@ class EnableAutoLiveStreamRuleResponse(TeaModel):
         return self
 
 
+class GetAgentRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        channel_id: str = None,
+        task_id: str = None,
+    ):
+        self.app_id = app_id
+        self.channel_id = channel_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class GetAgentResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        start_time: str = None,
+        status: str = None,
+        stop_time: str = None,
+    ):
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.start_time = start_time
+        self.status = status
+        self.stop_time = stop_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.stop_time is not None:
+            result['StopTime'] = self.stop_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StopTime') is not None:
+            self.stop_time = m.get('StopTime')
+        return self
+
+
+class GetAgentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAgentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAgentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetMPUTaskStatusRequest(TeaModel):
     def __init__(
         self,
@@ -17099,6 +18404,598 @@ class ModifyAppResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyAppResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyAppAgentFunctionStatusRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class ModifyAppAgentFunctionStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyAppAgentFunctionStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyAppAgentFunctionStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyAppAgentFunctionStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyAppAgentTemplateRequestAsrConfigWordWeights(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        weight: int = None,
+        word: str = None,
+    ):
+        self.lang = lang
+        # This parameter is required.
+        self.weight = weight
+        # This parameter is required.
+        self.word = word
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        if self.word is not None:
+            result['Word'] = self.word
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        if m.get('Word') is not None:
+            self.word = m.get('Word')
+        return self
+
+
+class ModifyAppAgentTemplateRequestAsrConfig(TeaModel):
+    def __init__(
+        self,
+        max_sentence_silence: int = None,
+        name: str = None,
+        vocabulary_id: str = None,
+        word_weights: List[ModifyAppAgentTemplateRequestAsrConfigWordWeights] = None,
+    ):
+        self.max_sentence_silence = max_sentence_silence
+        # This parameter is required.
+        self.name = name
+        self.vocabulary_id = vocabulary_id
+        self.word_weights = word_weights
+
+    def validate(self):
+        if self.word_weights:
+            for k in self.word_weights:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_sentence_silence is not None:
+            result['MaxSentenceSilence'] = self.max_sentence_silence
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.vocabulary_id is not None:
+            result['VocabularyId'] = self.vocabulary_id
+        result['WordWeights'] = []
+        if self.word_weights is not None:
+            for k in self.word_weights:
+                result['WordWeights'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxSentenceSilence') is not None:
+            self.max_sentence_silence = m.get('MaxSentenceSilence')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('VocabularyId') is not None:
+            self.vocabulary_id = m.get('VocabularyId')
+        self.word_weights = []
+        if m.get('WordWeights') is not None:
+            for k in m.get('WordWeights'):
+                temp_model = ModifyAppAgentTemplateRequestAsrConfigWordWeights()
+                self.word_weights.append(temp_model.from_map(k))
+        return self
+
+
+class ModifyAppAgentTemplateRequestLlmConfig(TeaModel):
+    def __init__(
+        self,
+        api_key: str = None,
+        history_depth: int = None,
+        max_token: int = None,
+        name: str = None,
+        prompt: str = None,
+        temperature: float = None,
+        top_p: float = None,
+        url: str = None,
+        vendor: str = None,
+    ):
+        # This parameter is required.
+        self.api_key = api_key
+        self.history_depth = history_depth
+        self.max_token = max_token
+        # This parameter is required.
+        self.name = name
+        self.prompt = prompt
+        self.temperature = temperature
+        self.top_p = top_p
+        self.url = url
+        self.vendor = vendor
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_key is not None:
+            result['ApiKey'] = self.api_key
+        if self.history_depth is not None:
+            result['HistoryDepth'] = self.history_depth
+        if self.max_token is not None:
+            result['MaxToken'] = self.max_token
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+        if self.temperature is not None:
+            result['Temperature'] = self.temperature
+        if self.top_p is not None:
+            result['TopP'] = self.top_p
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.vendor is not None:
+            result['Vendor'] = self.vendor
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiKey') is not None:
+            self.api_key = m.get('ApiKey')
+        if m.get('HistoryDepth') is not None:
+            self.history_depth = m.get('HistoryDepth')
+        if m.get('MaxToken') is not None:
+            self.max_token = m.get('MaxToken')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+        if m.get('Temperature') is not None:
+            self.temperature = m.get('Temperature')
+        if m.get('TopP') is not None:
+            self.top_p = m.get('TopP')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Vendor') is not None:
+            self.vendor = m.get('Vendor')
+        return self
+
+
+class ModifyAppAgentTemplateRequestTtsConfig(TeaModel):
+    def __init__(
+        self,
+        api_key: str = None,
+        filter_brackets: List[int] = None,
+        name: str = None,
+        pitch: float = None,
+        rate: float = None,
+        vendor: str = None,
+        voice: str = None,
+        volume: int = None,
+    ):
+        # This parameter is required.
+        self.api_key = api_key
+        self.filter_brackets = filter_brackets
+        # This parameter is required.
+        self.name = name
+        self.pitch = pitch
+        self.rate = rate
+        # This parameter is required.
+        self.vendor = vendor
+        self.voice = voice
+        self.volume = volume
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_key is not None:
+            result['ApiKey'] = self.api_key
+        if self.filter_brackets is not None:
+            result['FilterBrackets'] = self.filter_brackets
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.pitch is not None:
+            result['Pitch'] = self.pitch
+        if self.rate is not None:
+            result['Rate'] = self.rate
+        if self.vendor is not None:
+            result['Vendor'] = self.vendor
+        if self.voice is not None:
+            result['Voice'] = self.voice
+        if self.volume is not None:
+            result['Volume'] = self.volume
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiKey') is not None:
+            self.api_key = m.get('ApiKey')
+        if m.get('FilterBrackets') is not None:
+            self.filter_brackets = m.get('FilterBrackets')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Pitch') is not None:
+            self.pitch = m.get('Pitch')
+        if m.get('Rate') is not None:
+            self.rate = m.get('Rate')
+        if m.get('Vendor') is not None:
+            self.vendor = m.get('Vendor')
+        if m.get('Voice') is not None:
+            self.voice = m.get('Voice')
+        if m.get('Volume') is not None:
+            self.volume = m.get('Volume')
+        return self
+
+
+class ModifyAppAgentTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        asr_config: ModifyAppAgentTemplateRequestAsrConfig = None,
+        chat_mode: int = None,
+        greeting: str = None,
+        id: str = None,
+        interrupt_mode: int = None,
+        llm_config: ModifyAppAgentTemplateRequestLlmConfig = None,
+        name: str = None,
+        tts_config: ModifyAppAgentTemplateRequestTtsConfig = None,
+        type: int = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.asr_config = asr_config
+        self.chat_mode = chat_mode
+        self.greeting = greeting
+        # This parameter is required.
+        self.id = id
+        self.interrupt_mode = interrupt_mode
+        self.llm_config = llm_config
+        # This parameter is required.
+        self.name = name
+        self.tts_config = tts_config
+        self.type = type
+
+    def validate(self):
+        if self.asr_config:
+            self.asr_config.validate()
+        if self.llm_config:
+            self.llm_config.validate()
+        if self.tts_config:
+            self.tts_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.asr_config is not None:
+            result['AsrConfig'] = self.asr_config.to_map()
+        if self.chat_mode is not None:
+            result['ChatMode'] = self.chat_mode
+        if self.greeting is not None:
+            result['Greeting'] = self.greeting
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.interrupt_mode is not None:
+            result['InterruptMode'] = self.interrupt_mode
+        if self.llm_config is not None:
+            result['LlmConfig'] = self.llm_config.to_map()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.tts_config is not None:
+            result['TtsConfig'] = self.tts_config.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AsrConfig') is not None:
+            temp_model = ModifyAppAgentTemplateRequestAsrConfig()
+            self.asr_config = temp_model.from_map(m['AsrConfig'])
+        if m.get('ChatMode') is not None:
+            self.chat_mode = m.get('ChatMode')
+        if m.get('Greeting') is not None:
+            self.greeting = m.get('Greeting')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('InterruptMode') is not None:
+            self.interrupt_mode = m.get('InterruptMode')
+        if m.get('LlmConfig') is not None:
+            temp_model = ModifyAppAgentTemplateRequestLlmConfig()
+            self.llm_config = temp_model.from_map(m['LlmConfig'])
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('TtsConfig') is not None:
+            temp_model = ModifyAppAgentTemplateRequestTtsConfig()
+            self.tts_config = temp_model.from_map(m['TtsConfig'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ModifyAppAgentTemplateShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        asr_config_shrink: str = None,
+        chat_mode: int = None,
+        greeting: str = None,
+        id: str = None,
+        interrupt_mode: int = None,
+        llm_config_shrink: str = None,
+        name: str = None,
+        tts_config_shrink: str = None,
+        type: int = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.asr_config_shrink = asr_config_shrink
+        self.chat_mode = chat_mode
+        self.greeting = greeting
+        # This parameter is required.
+        self.id = id
+        self.interrupt_mode = interrupt_mode
+        self.llm_config_shrink = llm_config_shrink
+        # This parameter is required.
+        self.name = name
+        self.tts_config_shrink = tts_config_shrink
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.asr_config_shrink is not None:
+            result['AsrConfig'] = self.asr_config_shrink
+        if self.chat_mode is not None:
+            result['ChatMode'] = self.chat_mode
+        if self.greeting is not None:
+            result['Greeting'] = self.greeting
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.interrupt_mode is not None:
+            result['InterruptMode'] = self.interrupt_mode
+        if self.llm_config_shrink is not None:
+            result['LlmConfig'] = self.llm_config_shrink
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.tts_config_shrink is not None:
+            result['TtsConfig'] = self.tts_config_shrink
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AsrConfig') is not None:
+            self.asr_config_shrink = m.get('AsrConfig')
+        if m.get('ChatMode') is not None:
+            self.chat_mode = m.get('ChatMode')
+        if m.get('Greeting') is not None:
+            self.greeting = m.get('Greeting')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('InterruptMode') is not None:
+            self.interrupt_mode = m.get('InterruptMode')
+        if m.get('LlmConfig') is not None:
+            self.llm_config_shrink = m.get('LlmConfig')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('TtsConfig') is not None:
+            self.tts_config_shrink = m.get('TtsConfig')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ModifyAppAgentTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        request_id: str = None,
+    ):
+        self.id = id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyAppAgentTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyAppAgentTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyAppAgentTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -18754,6 +20651,138 @@ class ModifyMPULayoutResponse(TeaModel):
         return self
 
 
+class NotifyAgentRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        channel_id: str = None,
+        custom_attribute: str = None,
+        interruptable: bool = None,
+        message: str = None,
+        priority: int = None,
+        task_id: str = None,
+    ):
+        self.app_id = app_id
+        self.channel_id = channel_id
+        self.custom_attribute = custom_attribute
+        self.interruptable = interruptable
+        self.message = message
+        self.priority = priority
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.custom_attribute is not None:
+            result['CustomAttribute'] = self.custom_attribute
+        if self.interruptable is not None:
+            result['Interruptable'] = self.interruptable
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('CustomAttribute') is not None:
+            self.custom_attribute = m.get('CustomAttribute')
+        if m.get('Interruptable') is not None:
+            self.interruptable = m.get('Interruptable')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class NotifyAgentResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class NotifyAgentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: NotifyAgentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = NotifyAgentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RemoveTerminalsRequest(TeaModel):
     def __init__(
         self,
@@ -19147,6 +21176,498 @@ class RemoveUsersResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RemoveUsersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StartAgentRequestRtcConfig(TeaModel):
+    def __init__(
+        self,
+        target_user_ids: List[str] = None,
+        user_id: str = None,
+    ):
+        self.target_user_ids = target_user_ids
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.target_user_ids is not None:
+            result['TargetUserIds'] = self.target_user_ids
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TargetUserIds') is not None:
+            self.target_user_ids = m.get('TargetUserIds')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class StartAgentRequestVoiceChatConfigASRConfig(TeaModel):
+    def __init__(
+        self,
+        language_hints: List[str] = None,
+        max_sentence_silence: int = None,
+        semantic_punctuation_enabled: bool = None,
+        source_language: str = None,
+        vocabulary_id: str = None,
+    ):
+        self.language_hints = language_hints
+        self.max_sentence_silence = max_sentence_silence
+        self.semantic_punctuation_enabled = semantic_punctuation_enabled
+        self.source_language = source_language
+        self.vocabulary_id = vocabulary_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.language_hints is not None:
+            result['LanguageHints'] = self.language_hints
+        if self.max_sentence_silence is not None:
+            result['MaxSentenceSilence'] = self.max_sentence_silence
+        if self.semantic_punctuation_enabled is not None:
+            result['SemanticPunctuationEnabled'] = self.semantic_punctuation_enabled
+        if self.source_language is not None:
+            result['SourceLanguage'] = self.source_language
+        if self.vocabulary_id is not None:
+            result['VocabularyId'] = self.vocabulary_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LanguageHints') is not None:
+            self.language_hints = m.get('LanguageHints')
+        if m.get('MaxSentenceSilence') is not None:
+            self.max_sentence_silence = m.get('MaxSentenceSilence')
+        if m.get('SemanticPunctuationEnabled') is not None:
+            self.semantic_punctuation_enabled = m.get('SemanticPunctuationEnabled')
+        if m.get('SourceLanguage') is not None:
+            self.source_language = m.get('SourceLanguage')
+        if m.get('VocabularyId') is not None:
+            self.vocabulary_id = m.get('VocabularyId')
+        return self
+
+
+class StartAgentRequestVoiceChatConfigLLMConfig(TeaModel):
+    def __init__(
+        self,
+        api_key: str = None,
+        history_depth: int = None,
+        max_token: int = None,
+        model: str = None,
+        prompt: str = None,
+        temperature: float = None,
+        top_p: float = None,
+        url: str = None,
+        vendor: str = None,
+    ):
+        self.api_key = api_key
+        self.history_depth = history_depth
+        self.max_token = max_token
+        self.model = model
+        self.prompt = prompt
+        self.temperature = temperature
+        self.top_p = top_p
+        self.url = url
+        self.vendor = vendor
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_key is not None:
+            result['ApiKey'] = self.api_key
+        if self.history_depth is not None:
+            result['HistoryDepth'] = self.history_depth
+        if self.max_token is not None:
+            result['MaxToken'] = self.max_token
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+        if self.temperature is not None:
+            result['Temperature'] = self.temperature
+        if self.top_p is not None:
+            result['TopP'] = self.top_p
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.vendor is not None:
+            result['Vendor'] = self.vendor
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiKey') is not None:
+            self.api_key = m.get('ApiKey')
+        if m.get('HistoryDepth') is not None:
+            self.history_depth = m.get('HistoryDepth')
+        if m.get('MaxToken') is not None:
+            self.max_token = m.get('MaxToken')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+        if m.get('Temperature') is not None:
+            self.temperature = m.get('Temperature')
+        if m.get('TopP') is not None:
+            self.top_p = m.get('TopP')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Vendor') is not None:
+            self.vendor = m.get('Vendor')
+        return self
+
+
+class StartAgentRequestVoiceChatConfigTTSConfig(TeaModel):
+    def __init__(
+        self,
+        api_key: str = None,
+        filter_brackets: List[int] = None,
+        model: str = None,
+        pitch: float = None,
+        rate: float = None,
+        vendor: str = None,
+        voice: str = None,
+        volume: int = None,
+    ):
+        self.api_key = api_key
+        self.filter_brackets = filter_brackets
+        self.model = model
+        self.pitch = pitch
+        self.rate = rate
+        self.vendor = vendor
+        self.voice = voice
+        self.volume = volume
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_key is not None:
+            result['ApiKey'] = self.api_key
+        if self.filter_brackets is not None:
+            result['FilterBrackets'] = self.filter_brackets
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.pitch is not None:
+            result['Pitch'] = self.pitch
+        if self.rate is not None:
+            result['Rate'] = self.rate
+        if self.vendor is not None:
+            result['Vendor'] = self.vendor
+        if self.voice is not None:
+            result['Voice'] = self.voice
+        if self.volume is not None:
+            result['Volume'] = self.volume
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiKey') is not None:
+            self.api_key = m.get('ApiKey')
+        if m.get('FilterBrackets') is not None:
+            self.filter_brackets = m.get('FilterBrackets')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('Pitch') is not None:
+            self.pitch = m.get('Pitch')
+        if m.get('Rate') is not None:
+            self.rate = m.get('Rate')
+        if m.get('Vendor') is not None:
+            self.vendor = m.get('Vendor')
+        if m.get('Voice') is not None:
+            self.voice = m.get('Voice')
+        if m.get('Volume') is not None:
+            self.volume = m.get('Volume')
+        return self
+
+
+class StartAgentRequestVoiceChatConfig(TeaModel):
+    def __init__(
+        self,
+        asrconfig: StartAgentRequestVoiceChatConfigASRConfig = None,
+        chat_mode: int = None,
+        greeting: str = None,
+        interrupt_mode: int = None,
+        llmconfig: StartAgentRequestVoiceChatConfigLLMConfig = None,
+        ttsconfig: StartAgentRequestVoiceChatConfigTTSConfig = None,
+    ):
+        self.asrconfig = asrconfig
+        self.chat_mode = chat_mode
+        self.greeting = greeting
+        self.interrupt_mode = interrupt_mode
+        self.llmconfig = llmconfig
+        self.ttsconfig = ttsconfig
+
+    def validate(self):
+        if self.asrconfig:
+            self.asrconfig.validate()
+        if self.llmconfig:
+            self.llmconfig.validate()
+        if self.ttsconfig:
+            self.ttsconfig.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asrconfig is not None:
+            result['ASRConfig'] = self.asrconfig.to_map()
+        if self.chat_mode is not None:
+            result['ChatMode'] = self.chat_mode
+        if self.greeting is not None:
+            result['Greeting'] = self.greeting
+        if self.interrupt_mode is not None:
+            result['InterruptMode'] = self.interrupt_mode
+        if self.llmconfig is not None:
+            result['LLMConfig'] = self.llmconfig.to_map()
+        if self.ttsconfig is not None:
+            result['TTSConfig'] = self.ttsconfig.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ASRConfig') is not None:
+            temp_model = StartAgentRequestVoiceChatConfigASRConfig()
+            self.asrconfig = temp_model.from_map(m['ASRConfig'])
+        if m.get('ChatMode') is not None:
+            self.chat_mode = m.get('ChatMode')
+        if m.get('Greeting') is not None:
+            self.greeting = m.get('Greeting')
+        if m.get('InterruptMode') is not None:
+            self.interrupt_mode = m.get('InterruptMode')
+        if m.get('LLMConfig') is not None:
+            temp_model = StartAgentRequestVoiceChatConfigLLMConfig()
+            self.llmconfig = temp_model.from_map(m['LLMConfig'])
+        if m.get('TTSConfig') is not None:
+            temp_model = StartAgentRequestVoiceChatConfigTTSConfig()
+            self.ttsconfig = temp_model.from_map(m['TTSConfig'])
+        return self
+
+
+class StartAgentRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        channel_id: str = None,
+        rtc_config: StartAgentRequestRtcConfig = None,
+        task_id: str = None,
+        template_id: str = None,
+        voice_chat_config: StartAgentRequestVoiceChatConfig = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.channel_id = channel_id
+        # This parameter is required.
+        self.rtc_config = rtc_config
+        # This parameter is required.
+        self.task_id = task_id
+        # This parameter is required.
+        self.template_id = template_id
+        self.voice_chat_config = voice_chat_config
+
+    def validate(self):
+        if self.rtc_config:
+            self.rtc_config.validate()
+        if self.voice_chat_config:
+            self.voice_chat_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.rtc_config is not None:
+            result['RtcConfig'] = self.rtc_config.to_map()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.voice_chat_config is not None:
+            result['VoiceChatConfig'] = self.voice_chat_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('RtcConfig') is not None:
+            temp_model = StartAgentRequestRtcConfig()
+            self.rtc_config = temp_model.from_map(m['RtcConfig'])
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('VoiceChatConfig') is not None:
+            temp_model = StartAgentRequestVoiceChatConfig()
+            self.voice_chat_config = temp_model.from_map(m['VoiceChatConfig'])
+        return self
+
+
+class StartAgentShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        channel_id: str = None,
+        rtc_config_shrink: str = None,
+        task_id: str = None,
+        template_id: str = None,
+        voice_chat_config_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.channel_id = channel_id
+        # This parameter is required.
+        self.rtc_config_shrink = rtc_config_shrink
+        # This parameter is required.
+        self.task_id = task_id
+        # This parameter is required.
+        self.template_id = template_id
+        self.voice_chat_config_shrink = voice_chat_config_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.rtc_config_shrink is not None:
+            result['RtcConfig'] = self.rtc_config_shrink
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.voice_chat_config_shrink is not None:
+            result['VoiceChatConfig'] = self.voice_chat_config_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('RtcConfig') is not None:
+            self.rtc_config_shrink = m.get('RtcConfig')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('VoiceChatConfig') is not None:
+            self.voice_chat_config_shrink = m.get('VoiceChatConfig')
+        return self
+
+
+class StartAgentResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StartAgentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartAgentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartAgentResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -26782,6 +29303,117 @@ class StartStreamingOutResponse(TeaModel):
         return self
 
 
+class StopAgentRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        channel_id: str = None,
+        task_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.channel_id = channel_id
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class StopAgentResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StopAgentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopAgentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopAgentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StopCategoryCallbackRequestCallback(TeaModel):
     def __init__(
         self,
@@ -27622,6 +30254,206 @@ class StopStreamingOutResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StopStreamingOutResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateAgentRequestVoiceChatConfig(TeaModel):
+    def __init__(
+        self,
+        chat_mode: int = None,
+        interrupt_mode: int = None,
+    ):
+        self.chat_mode = chat_mode
+        self.interrupt_mode = interrupt_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.chat_mode is not None:
+            result['ChatMode'] = self.chat_mode
+        if self.interrupt_mode is not None:
+            result['InterruptMode'] = self.interrupt_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChatMode') is not None:
+            self.chat_mode = m.get('ChatMode')
+        if m.get('InterruptMode') is not None:
+            self.interrupt_mode = m.get('InterruptMode')
+        return self
+
+
+class UpdateAgentRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        channel_id: str = None,
+        task_id: str = None,
+        voice_chat_config: UpdateAgentRequestVoiceChatConfig = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.channel_id = channel_id
+        # This parameter is required.
+        self.task_id = task_id
+        self.voice_chat_config = voice_chat_config
+
+    def validate(self):
+        if self.voice_chat_config:
+            self.voice_chat_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.voice_chat_config is not None:
+            result['VoiceChatConfig'] = self.voice_chat_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('VoiceChatConfig') is not None:
+            temp_model = UpdateAgentRequestVoiceChatConfig()
+            self.voice_chat_config = temp_model.from_map(m['VoiceChatConfig'])
+        return self
+
+
+class UpdateAgentShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        channel_id: str = None,
+        task_id: str = None,
+        voice_chat_config_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.channel_id = channel_id
+        # This parameter is required.
+        self.task_id = task_id
+        self.voice_chat_config_shrink = voice_chat_config_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.voice_chat_config_shrink is not None:
+            result['VoiceChatConfig'] = self.voice_chat_config_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('VoiceChatConfig') is not None:
+            self.voice_chat_config_shrink = m.get('VoiceChatConfig')
+        return self
+
+
+class UpdateAgentResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateAgentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateAgentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateAgentResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
