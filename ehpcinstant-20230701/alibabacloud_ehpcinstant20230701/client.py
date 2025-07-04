@@ -435,6 +435,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.executor_ids_shrink):
             query['ExecutorIds'] = request.executor_ids_shrink
+        if not UtilClient.is_unset(request.job_scheduler):
+            query['JobScheduler'] = request.job_scheduler
         if not UtilClient.is_unset(request.job_spec_shrink):
             query['JobSpec'] = request.job_spec_shrink
         req = open_api_models.OpenApiRequest(
@@ -478,6 +480,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.executor_ids_shrink):
             query['ExecutorIds'] = request.executor_ids_shrink
+        if not UtilClient.is_unset(request.job_scheduler):
+            query['JobScheduler'] = request.job_scheduler
         if not UtilClient.is_unset(request.job_spec_shrink):
             query['JobSpec'] = request.job_spec_shrink
         req = open_api_models.OpenApiRequest(

@@ -1528,9 +1528,11 @@ class DeleteJobsRequest(TeaModel):
     def __init__(
         self,
         executor_ids: List[str] = None,
+        job_scheduler: str = None,
         job_spec: List[DeleteJobsRequestJobSpec] = None,
     ):
         self.executor_ids = executor_ids
+        self.job_scheduler = job_scheduler
         self.job_spec = job_spec
 
     def validate(self):
@@ -1547,6 +1549,8 @@ class DeleteJobsRequest(TeaModel):
         result = dict()
         if self.executor_ids is not None:
             result['ExecutorIds'] = self.executor_ids
+        if self.job_scheduler is not None:
+            result['JobScheduler'] = self.job_scheduler
         result['JobSpec'] = []
         if self.job_spec is not None:
             for k in self.job_spec:
@@ -1557,6 +1561,8 @@ class DeleteJobsRequest(TeaModel):
         m = m or dict()
         if m.get('ExecutorIds') is not None:
             self.executor_ids = m.get('ExecutorIds')
+        if m.get('JobScheduler') is not None:
+            self.job_scheduler = m.get('JobScheduler')
         self.job_spec = []
         if m.get('JobSpec') is not None:
             for k in m.get('JobSpec'):
@@ -1569,9 +1575,11 @@ class DeleteJobsShrinkRequest(TeaModel):
     def __init__(
         self,
         executor_ids_shrink: str = None,
+        job_scheduler: str = None,
         job_spec_shrink: str = None,
     ):
         self.executor_ids_shrink = executor_ids_shrink
+        self.job_scheduler = job_scheduler
         self.job_spec_shrink = job_spec_shrink
 
     def validate(self):
@@ -1585,6 +1593,8 @@ class DeleteJobsShrinkRequest(TeaModel):
         result = dict()
         if self.executor_ids_shrink is not None:
             result['ExecutorIds'] = self.executor_ids_shrink
+        if self.job_scheduler is not None:
+            result['JobScheduler'] = self.job_scheduler
         if self.job_spec_shrink is not None:
             result['JobSpec'] = self.job_spec_shrink
         return result
@@ -1593,6 +1603,8 @@ class DeleteJobsShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('ExecutorIds') is not None:
             self.executor_ids_shrink = m.get('ExecutorIds')
+        if m.get('JobScheduler') is not None:
+            self.job_scheduler = m.get('JobScheduler')
         if m.get('JobSpec') is not None:
             self.job_spec_shrink = m.get('JobSpec')
         return self

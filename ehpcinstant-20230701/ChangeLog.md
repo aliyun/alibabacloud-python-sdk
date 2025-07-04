@@ -1,3 +1,7 @@
+2025-07-04 Version: 2.0.5
+- Update API DeleteJobs: add request parameters JobScheduler.
+
+
 2025-07-03 Version: 2.0.4
 - Update API GetImage: add request parameters AdditionalRegionIds.
 - Update API GetImage: add response parameters Body.Image.AdditionalRegionsInfo.
