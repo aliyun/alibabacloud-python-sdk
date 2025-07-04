@@ -33246,6 +33246,7 @@ class PushObjectCacheRequest(TeaModel):
     def __init__(
         self,
         area: str = None,
+        consistency_hash: bool = None,
         l_2preload: bool = None,
         object_path: str = None,
         owner_id: int = None,
@@ -33264,6 +33265,7 @@ class PushObjectCacheRequest(TeaModel):
         # *   If the acceleration region is set to **Global**, content in all regions is prefetched.
         # *   If the acceleration region is set to **Global (Excluding the Chinese Mainland)**, content in regions outside the Chinese mainland is prefetched.
         self.area = area
+        self.consistency_hash = consistency_hash
         # Specifies whether to prefetch content to L2 points of presence (POPs). Valid values:
         # 
         # *   **true**: prefetches content to L2 POPs.
@@ -33296,6 +33298,8 @@ class PushObjectCacheRequest(TeaModel):
         result = dict()
         if self.area is not None:
             result['Area'] = self.area
+        if self.consistency_hash is not None:
+            result['ConsistencyHash'] = self.consistency_hash
         if self.l_2preload is not None:
             result['L2Preload'] = self.l_2preload
         if self.object_path is not None:
@@ -33314,6 +33318,8 @@ class PushObjectCacheRequest(TeaModel):
         m = m or dict()
         if m.get('Area') is not None:
             self.area = m.get('Area')
+        if m.get('ConsistencyHash') is not None:
+            self.consistency_hash = m.get('ConsistencyHash')
         if m.get('L2Preload') is not None:
             self.l_2preload = m.get('L2Preload')
         if m.get('ObjectPath') is not None:
@@ -34016,7 +34022,6 @@ class SetCdnDomainSSLCertificateRequest(TeaModel):
         cert_region: str = None,
         cert_type: str = None,
         domain_name: str = None,
-        env: str = None,
         owner_id: int = None,
         sslpri: str = None,
         sslprotocol: str = None,
@@ -34038,8 +34043,6 @@ class SetCdnDomainSSLCertificateRequest(TeaModel):
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # Specifies whether the certificate is issued in canary releases. If you set this parameter to **staging**, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
-        self.env = env
         self.owner_id = owner_id
         # The private key. Specify the private key only if you want to enable the SSL certificate.
         self.sslpri = sslpri
@@ -34073,8 +34076,6 @@ class SetCdnDomainSSLCertificateRequest(TeaModel):
             result['CertType'] = self.cert_type
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
-        if self.env is not None:
-            result['Env'] = self.env
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.sslpri is not None:
@@ -34099,8 +34100,6 @@ class SetCdnDomainSSLCertificateRequest(TeaModel):
             self.cert_type = m.get('CertType')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
-        if m.get('Env') is not None:
-            self.env = m.get('Env')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('SSLPri') is not None:

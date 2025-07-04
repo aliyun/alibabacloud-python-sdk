@@ -18842,6 +18842,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.area):
             query['Area'] = request.area
+        if not UtilClient.is_unset(request.consistency_hash):
+            query['ConsistencyHash'] = request.consistency_hash
         if not UtilClient.is_unset(request.l_2preload):
             query['L2Preload'] = request.l_2preload
         if not UtilClient.is_unset(request.object_path):
@@ -18901,6 +18903,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.area):
             query['Area'] = request.area
+        if not UtilClient.is_unset(request.consistency_hash):
+            query['ConsistencyHash'] = request.consistency_hash
         if not UtilClient.is_unset(request.l_2preload):
             query['L2Preload'] = request.l_2preload
         if not UtilClient.is_unset(request.object_path):
@@ -19617,8 +19621,6 @@ class Client(OpenApiClient):
             query['CertType'] = request.cert_type
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.env):
-            query['Env'] = request.env
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.sslpri):
@@ -19675,8 +19677,6 @@ class Client(OpenApiClient):
             query['CertType'] = request.cert_type
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.env):
-            query['Env'] = request.env
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.sslpri):

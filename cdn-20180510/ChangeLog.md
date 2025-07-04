@@ -1,3 +1,6 @@
+2025-07-04 Version: 7.0.0
+- Generated python 2018-05-10 for Cdn.
+
 2025-06-17 Version: 6.0.0
 - Support API DeleteCustomDomainSampleRate.
 - Update API DescribeCdnService: add response parameters Body.ChangingDynamicBillingType.
