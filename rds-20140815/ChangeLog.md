@@ -1,3 +1,50 @@
+2025-07-04 Version: 12.0.0
+- Support API CreateDiagnosticReport.
+- Support API DescribeComputeBurstConfig.
+- Support API DescribeDiagnosticReportList.
+- Support API DescribeRCCloudAssistantStatus.
+- Support API DescribeRCInvocationResults.
+- Support API DescribeRCVCluster.
+- Support API DescribeVSwitchList.
+- Support API InstallRCCloudAssistant.
+- Support API ModifyBackupSetExpireTime.
+- Support API ModifyComputeBurstConfig.
+- Support API RedeployRCInstance.
+- Support API RunRCCommand.
+- Update API AcceptRCInquiredSystemEvent: delete response parameters Body.OrderId.
+- Update API CreateBackup: add request parameters BackupRetentionPeriod.
+- Update API CreateDBInstance: add request parameters ExternalReplication.
+- Update API CreateRCSnapshot: add request parameters ResourceGroupId.
+- Update API CreateRCSnapshot: add request parameters Tag.
+- Update API DescribeBackups: add response parameters Body.Items.$.ExpectExpireTime.
+- Update API DescribeDBInstances: add request parameters QueryAutoRenewal.
+- Update API DescribeDBInstances: add response parameters Body.Items.$.AutoRenewal.
+- Update API DescribeDBInstancesAsCsv: add response parameters Body.Items.$.DBInstanceStorageType.
+- Update API DescribeRCInstanceAttribute: add request parameters MaxDisksResults.
+- Update API DescribeRCInstanceAttribute: add response parameters Body.DeletionProtection.
+- Update API DescribeRCInstanceAttribute: add response parameters Body.Gpu.
+- Update API DescribeRCInstanceAttribute: add response parameters Body.GpuTypes.
+- Update API DescribeRCInstanceAttribute: add response parameters Body.NodeType.
+- Update API DescribeRCInstanceAttribute: add response parameters Body.UserData.
+- Update API DescribeRCInstances: add response parameters Body.RCInstances.$.NodeType.
+- Update API DescribeRCSnapshots: add request parameters Tag.
+- Update API DescribeRCSnapshots: add response parameters Body.Snapshots.$.ResourceGroupId.
+- Update API DescribeRCSnapshots: add response parameters Body.Snapshots.$.Tag.
+- Update API ImportUserBackupFile: add request parameters BuildReplication.
+- Update API ImportUserBackupFile: add request parameters MasterInfo.
+- Update API ImportUserBackupFile: add request parameters Mode.
+- Update API ImportUserBackupFile: add request parameters SourceInfo.
+- Update API ModifyRCInstanceAttribute: add request parameters DeletionProtection.
+- Update API ModifyRCInstanceAttribute: add request parameters InstanceIds.
+- Update API ModifyRCInstanceAttribute: add request parameters SecurityGroupIds.
+- Update API RunRCInstances: add request parameters DeletionProtection.
+- Update API SwitchOverMajorVersionUpgrade: add request parameters ClientToken.
+- Update API SwitchOverMajorVersionUpgrade: add request parameters OwnerAccount.
+- Update API SwitchOverMajorVersionUpgrade: add request parameters ResourceGroupId.
+- Update API SwitchOverMajorVersionUpgrade: add request parameters ResourceOwnerAccount.
+- Update API SwitchOverMajorVersionUpgrade: add request parameters ResourceOwnerId.
+
+
 2025-05-19 Version: 11.3.2
 - Update API CreateRCDisk: add request parameters ResourceGroupId.
 - Update API CreateRCDisk: add request parameters Tag.
