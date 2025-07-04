@@ -174,6 +174,9 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.v_switches):
             request.v_switches_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.v_switches, 'VSwitches', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         body = {}
         if not UtilClient.is_unset(request.cluster_name):
             body['ClusterName'] = request.cluster_name
@@ -186,6 +189,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.vpc_id):
             body['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -221,6 +225,9 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.v_switches):
             request.v_switches_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.v_switches, 'VSwitches', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         body = {}
         if not UtilClient.is_unset(request.cluster_name):
             body['ClusterName'] = request.cluster_name
@@ -233,6 +240,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.vpc_id):
             body['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1281,6 +1289,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_job_execution_progress_with_options_async(request, runtime)
 
+    def get_job_execution_thread_dump_with_options(
+        self,
+        request: scheduler_x320240624_models.GetJobExecutionThreadDumpRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> scheduler_x320240624_models.GetJobExecutionThreadDumpResponse:
+        """
+        @summary 查询任务的线程堆栈
+        
+        @param request: GetJobExecutionThreadDumpRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobExecutionThreadDumpResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetJobExecutionThreadDump',
+            version='2024-06-24',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            scheduler_x320240624_models.GetJobExecutionThreadDumpResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_job_execution_thread_dump_with_options_async(
+        self,
+        request: scheduler_x320240624_models.GetJobExecutionThreadDumpRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> scheduler_x320240624_models.GetJobExecutionThreadDumpResponse:
+        """
+        @summary 查询任务的线程堆栈
+        
+        @param request: GetJobExecutionThreadDumpRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobExecutionThreadDumpResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetJobExecutionThreadDump',
+            version='2024-06-24',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            scheduler_x320240624_models.GetJobExecutionThreadDumpResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_job_execution_thread_dump(
+        self,
+        request: scheduler_x320240624_models.GetJobExecutionThreadDumpRequest,
+    ) -> scheduler_x320240624_models.GetJobExecutionThreadDumpResponse:
+        """
+        @summary 查询任务的线程堆栈
+        
+        @param request: GetJobExecutionThreadDumpRequest
+        @return: GetJobExecutionThreadDumpResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_job_execution_thread_dump_with_options(request, runtime)
+
+    async def get_job_execution_thread_dump_async(
+        self,
+        request: scheduler_x320240624_models.GetJobExecutionThreadDumpRequest,
+    ) -> scheduler_x320240624_models.GetJobExecutionThreadDumpResponse:
+        """
+        @summary 查询任务的线程堆栈
+        
+        @param request: GetJobExecutionThreadDumpRequest
+        @return: GetJobExecutionThreadDumpResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_job_execution_thread_dump_with_options_async(request, runtime)
+
     def get_log_with_options(
         self,
         request: scheduler_x320240624_models.GetLogRequest,
@@ -1372,6 +1472,98 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_log_with_options_async(request, runtime)
+
+    def get_log_event_with_options(
+        self,
+        request: scheduler_x320240624_models.GetLogEventRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> scheduler_x320240624_models.GetLogEventResponse:
+        """
+        @summary 查询事件
+        
+        @param request: GetLogEventRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLogEventResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLogEvent',
+            version='2024-06-24',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            scheduler_x320240624_models.GetLogEventResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_log_event_with_options_async(
+        self,
+        request: scheduler_x320240624_models.GetLogEventRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> scheduler_x320240624_models.GetLogEventResponse:
+        """
+        @summary 查询事件
+        
+        @param request: GetLogEventRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLogEventResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLogEvent',
+            version='2024-06-24',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            scheduler_x320240624_models.GetLogEventResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_log_event(
+        self,
+        request: scheduler_x320240624_models.GetLogEventRequest,
+    ) -> scheduler_x320240624_models.GetLogEventResponse:
+        """
+        @summary 查询事件
+        
+        @param request: GetLogEventRequest
+        @return: GetLogEventResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_log_event_with_options(request, runtime)
+
+    async def get_log_event_async(
+        self,
+        request: scheduler_x320240624_models.GetLogEventRequest,
+    ) -> scheduler_x320240624_models.GetLogEventResponse:
+        """
+        @summary 查询事件
+        
+        @param request: GetLogEventRequest
+        @return: GetLogEventResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_log_event_with_options_async(request, runtime)
 
     def import_calendar_with_options(
         self,
@@ -1779,6 +1971,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> scheduler_x320240624_models.ListAppsResponse:
         """
+        @summary 获取应用列表
+        
         @param request: ListAppsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListAppsResponse
@@ -1810,6 +2004,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> scheduler_x320240624_models.ListAppsResponse:
         """
+        @summary 获取应用列表
+        
         @param request: ListAppsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListAppsResponse
@@ -1840,6 +2036,8 @@ class Client(OpenApiClient):
         request: scheduler_x320240624_models.ListAppsRequest,
     ) -> scheduler_x320240624_models.ListAppsResponse:
         """
+        @summary 获取应用列表
+        
         @param request: ListAppsRequest
         @return: ListAppsResponse
         """
@@ -1851,6 +2049,8 @@ class Client(OpenApiClient):
         request: scheduler_x320240624_models.ListAppsRequest,
     ) -> scheduler_x320240624_models.ListAppsResponse:
         """
+        @summary 获取应用列表
+        
         @param request: ListAppsRequest
         @return: ListAppsResponse
         """

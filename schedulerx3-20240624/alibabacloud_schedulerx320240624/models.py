@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List
+from typing import Dict, List, Any
 
 
 class CreateAppRequest(TeaModel):
@@ -191,6 +191,39 @@ class CreateAppResponse(TeaModel):
         return self
 
 
+class CreateClusterRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateClusterRequestVSwitches(TeaModel):
     def __init__(
         self,
@@ -232,6 +265,7 @@ class CreateClusterRequest(TeaModel):
         cluster_name: str = None,
         cluster_spec: str = None,
         engine_type: str = None,
+        tag: List[CreateClusterRequestTag] = None,
         v_switches: List[CreateClusterRequestVSwitches] = None,
         vpc_id: str = None,
     ):
@@ -241,6 +275,7 @@ class CreateClusterRequest(TeaModel):
         self.cluster_spec = cluster_spec
         # This parameter is required.
         self.engine_type = engine_type
+        self.tag = tag
         # This parameter is required.
         self.v_switches = v_switches
         # VPC id
@@ -249,6 +284,10 @@ class CreateClusterRequest(TeaModel):
         self.vpc_id = vpc_id
 
     def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
         if self.v_switches:
             for k in self.v_switches:
                 if k:
@@ -266,6 +305,10 @@ class CreateClusterRequest(TeaModel):
             result['ClusterSpec'] = self.cluster_spec
         if self.engine_type is not None:
             result['EngineType'] = self.engine_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         result['VSwitches'] = []
         if self.v_switches is not None:
             for k in self.v_switches:
@@ -282,6 +325,11 @@ class CreateClusterRequest(TeaModel):
             self.cluster_spec = m.get('ClusterSpec')
         if m.get('EngineType') is not None:
             self.engine_type = m.get('EngineType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateClusterRequestTag()
+                self.tag.append(temp_model.from_map(k))
         self.v_switches = []
         if m.get('VSwitches') is not None:
             for k in m.get('VSwitches'):
@@ -292,12 +340,46 @@ class CreateClusterRequest(TeaModel):
         return self
 
 
+class CreateClusterShrinkRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateClusterShrinkRequest(TeaModel):
     def __init__(
         self,
         cluster_name: str = None,
         cluster_spec: str = None,
         engine_type: str = None,
+        tag: List[CreateClusterShrinkRequestTag] = None,
         v_switches_shrink: str = None,
         vpc_id: str = None,
     ):
@@ -307,6 +389,7 @@ class CreateClusterShrinkRequest(TeaModel):
         self.cluster_spec = cluster_spec
         # This parameter is required.
         self.engine_type = engine_type
+        self.tag = tag
         # This parameter is required.
         self.v_switches_shrink = v_switches_shrink
         # VPC id
@@ -315,7 +398,10 @@ class CreateClusterShrinkRequest(TeaModel):
         self.vpc_id = vpc_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -329,6 +415,10 @@ class CreateClusterShrinkRequest(TeaModel):
             result['ClusterSpec'] = self.cluster_spec
         if self.engine_type is not None:
             result['EngineType'] = self.engine_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.v_switches_shrink is not None:
             result['VSwitches'] = self.v_switches_shrink
         if self.vpc_id is not None:
@@ -343,6 +433,11 @@ class CreateClusterShrinkRequest(TeaModel):
             self.cluster_spec = m.get('ClusterSpec')
         if m.get('EngineType') is not None:
             self.engine_type = m.get('EngineType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateClusterShrinkRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('VSwitches') is not None:
             self.v_switches_shrink = m.get('VSwitches')
         if m.get('VpcId') is not None:
@@ -1667,6 +1762,7 @@ class GetClusterResponseBodyData(TeaModel):
         product_type: int = None,
         spm: int = None,
         status: int = None,
+        tags: Dict[str, Any] = None,
         v_switches: List[GetClusterResponseBodyDataVSwitches] = None,
         version_lifecycle: str = None,
         vpc_id: str = None,
@@ -1689,6 +1785,7 @@ class GetClusterResponseBodyData(TeaModel):
         self.product_type = product_type
         self.spm = spm
         self.status = status
+        self.tags = tags
         self.v_switches = v_switches
         self.version_lifecycle = version_lifecycle
         # VPC ID
@@ -1740,6 +1837,8 @@ class GetClusterResponseBodyData(TeaModel):
             result['Spm'] = self.spm
         if self.status is not None:
             result['Status'] = self.status
+        if self.tags is not None:
+            result['Tags'] = self.tags
         result['VSwitches'] = []
         if self.v_switches is not None:
             for k in self.v_switches:
@@ -1788,6 +1887,8 @@ class GetClusterResponseBodyData(TeaModel):
             self.spm = m.get('Spm')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
         self.v_switches = []
         if m.get('VSwitches') is not None:
             for k in m.get('VSwitches'):
@@ -2872,6 +2973,173 @@ class GetJobExecutionProgressResponse(TeaModel):
         return self
 
 
+class GetJobExecutionThreadDumpRequest(TeaModel):
+    def __init__(
+        self,
+        app_name: str = None,
+        cluster_id: str = None,
+        executor_addr: str = None,
+        job_execution_id: str = None,
+    ):
+        self.app_name = app_name
+        self.cluster_id = cluster_id
+        self.executor_addr = executor_addr
+        self.job_execution_id = job_execution_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.executor_addr is not None:
+            result['ExecutorAddr'] = self.executor_addr
+        if self.job_execution_id is not None:
+            result['JobExecutionId'] = self.job_execution_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ExecutorAddr') is not None:
+            self.executor_addr = m.get('ExecutorAddr')
+        if m.get('JobExecutionId') is not None:
+            self.job_execution_id = m.get('JobExecutionId')
+        return self
+
+
+class GetJobExecutionThreadDumpResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        dump: str = None,
+    ):
+        self.dump = dump
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dump is not None:
+            result['Dump'] = self.dump
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Dump') is not None:
+            self.dump = m.get('Dump')
+        return self
+
+
+class GetJobExecutionThreadDumpResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetJobExecutionThreadDumpResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        # -\
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetJobExecutionThreadDumpResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetJobExecutionThreadDumpResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetJobExecutionThreadDumpResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetJobExecutionThreadDumpResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetLogRequest(TeaModel):
     def __init__(
         self,
@@ -3050,6 +3318,306 @@ class GetLogResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetLogResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetLogEventRequest(TeaModel):
+    def __init__(
+        self,
+        app_name: str = None,
+        cluster_id: str = None,
+        end_time: int = None,
+        event: str = None,
+        job_execution_id: int = None,
+        job_name: str = None,
+        keyword: str = None,
+        page_num: int = None,
+        page_size: int = None,
+        reverse: bool = None,
+        start_time: int = None,
+    ):
+        self.app_name = app_name
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        self.end_time = end_time
+        self.event = event
+        self.job_execution_id = job_execution_id
+        self.job_name = job_name
+        self.keyword = keyword
+        self.page_num = page_num
+        self.page_size = page_size
+        self.reverse = reverse
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.event is not None:
+            result['Event'] = self.event
+        if self.job_execution_id is not None:
+            result['JobExecutionId'] = self.job_execution_id
+        if self.job_name is not None:
+            result['JobName'] = self.job_name
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.reverse is not None:
+            result['Reverse'] = self.reverse
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Event') is not None:
+            self.event = m.get('Event')
+        if m.get('JobExecutionId') is not None:
+            self.job_execution_id = m.get('JobExecutionId')
+        if m.get('JobName') is not None:
+            self.job_name = m.get('JobName')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Reverse') is not None:
+            self.reverse = m.get('Reverse')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class GetLogEventResponseBodyDataRecords(TeaModel):
+    def __init__(
+        self,
+        app_name: str = None,
+        content: str = None,
+        event: str = None,
+        job_execution_id: str = None,
+        job_name: str = None,
+        time: str = None,
+        worker_addr: str = None,
+    ):
+        self.app_name = app_name
+        self.content = content
+        self.event = event
+        self.job_execution_id = job_execution_id
+        self.job_name = job_name
+        self.time = time
+        self.worker_addr = worker_addr
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.event is not None:
+            result['Event'] = self.event
+        if self.job_execution_id is not None:
+            result['JobExecutionId'] = self.job_execution_id
+        if self.job_name is not None:
+            result['JobName'] = self.job_name
+        if self.time is not None:
+            result['Time'] = self.time
+        if self.worker_addr is not None:
+            result['WorkerAddr'] = self.worker_addr
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Event') is not None:
+            self.event = m.get('Event')
+        if m.get('JobExecutionId') is not None:
+            self.job_execution_id = m.get('JobExecutionId')
+        if m.get('JobName') is not None:
+            self.job_name = m.get('JobName')
+        if m.get('Time') is not None:
+            self.time = m.get('Time')
+        if m.get('WorkerAddr') is not None:
+            self.worker_addr = m.get('WorkerAddr')
+        return self
+
+
+class GetLogEventResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        records: List[GetLogEventResponseBodyDataRecords] = None,
+        total: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        # -\
+        self.records = records
+        self.total = total
+
+    def validate(self):
+        if self.records:
+            for k in self.records:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['Records'] = []
+        if self.records is not None:
+            for k in self.records:
+                result['Records'].append(k.to_map() if k else None)
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.records = []
+        if m.get('Records') is not None:
+            for k in m.get('Records'):
+                temp_model = GetLogEventResponseBodyDataRecords()
+                self.records.append(temp_model.from_map(k))
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetLogEventResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetLogEventResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        # -\
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetLogEventResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetLogEventResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetLogEventResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetLogEventResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4229,6 +4797,39 @@ class ListCalendarNamesResponse(TeaModel):
         return self
 
 
+class ListClustersRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListClustersRequest(TeaModel):
     def __init__(
         self,
@@ -4236,14 +4837,19 @@ class ListClustersRequest(TeaModel):
         cluster_name: str = None,
         page_num: int = None,
         page_size: int = None,
+        tag: List[ListClustersRequestTag] = None,
     ):
         self.cluster_id = cluster_id
         self.cluster_name = cluster_name
         self.page_num = page_num
         self.page_size = page_size
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4259,6 +4865,10 @@ class ListClustersRequest(TeaModel):
             result['PageNum'] = self.page_num
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -4271,6 +4881,11 @@ class ListClustersRequest(TeaModel):
             self.page_num = m.get('PageNum')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListClustersRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -4323,6 +4938,7 @@ class ListClustersResponseBodyDataRecords(TeaModel):
         product_type: int = None,
         sp_instance_id: str = None,
         status: int = None,
+        tags: Dict[str, Any] = None,
         v_switches: List[ListClustersResponseBodyDataRecordsVSwitches] = None,
         version_lifecycle: str = None,
         vpc_id: str = None,
@@ -4340,6 +4956,7 @@ class ListClustersResponseBodyDataRecords(TeaModel):
         self.product_type = product_type
         self.sp_instance_id = sp_instance_id
         self.status = status
+        self.tags = tags
         self.v_switches = v_switches
         self.version_lifecycle = version_lifecycle
         # VPC ID
@@ -4383,6 +5000,8 @@ class ListClustersResponseBodyDataRecords(TeaModel):
             result['SpInstanceId'] = self.sp_instance_id
         if self.status is not None:
             result['Status'] = self.status
+        if self.tags is not None:
+            result['Tags'] = self.tags
         result['VSwitches'] = []
         if self.v_switches is not None:
             for k in self.v_switches:
@@ -4421,6 +5040,8 @@ class ListClustersResponseBodyDataRecords(TeaModel):
             self.sp_instance_id = m.get('SpInstanceId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
         self.v_switches = []
         if m.get('VSwitches') is not None:
             for k in m.get('VSwitches'):

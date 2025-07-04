@@ -1,3 +1,12 @@
+2025-07-04 Version: 1.2.0
+- Support API GetJobExecutionThreadDump.
+- Support API GetLogEvent.
+- Update API CreateCluster: add request parameters Tag.
+- Update API GetCluster: add response parameters Body.Data.Tags.
+- Update API ListClusters: add request parameters Tag.
+- Update API ListClusters: add response parameters Body.Data.Records.$.Tags.
+
+
 2025-06-04 Version: 1.1.0
 - Support API GetJobExecution.
 - Update API CreateJob: add request parameters Script.
