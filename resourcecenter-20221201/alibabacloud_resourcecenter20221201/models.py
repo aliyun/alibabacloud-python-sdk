@@ -108,6 +108,10 @@ class CreateDeliveryChannelRequestDeliveryChannelFilter(TeaModel):
         self,
         resource_types: List[str] = None,
     ):
+        # An array of effective resource types for the delivery channel.
+        # 
+        # *   Example: ["ACS::VPC::VPC", "ACS::ECS::Instance"].
+        # *   If you want to deliver items of all resource types supported by Resource Center, set this parameter to ["ALL"].
         self.resource_types = resource_types
 
     def validate(self):
@@ -135,6 +139,10 @@ class CreateDeliveryChannelRequestResourceChangeDeliverySlsProperties(TeaModel):
         self,
         oversized_data_oss_target_arn: str = None,
     ):
+        # The ARN of the destination to which large files are delivered.
+        # 
+        # *   If the size of a resource configuration change event exceeds 1 MB, the event is delivered as an OSS object.
+        # *   You need to set this parameter to the ARN of a bucket whose name is prefixed with resourcecenter-.
         self.oversized_data_oss_target_arn = oversized_data_oss_target_arn
 
     def validate(self):
@@ -164,8 +172,18 @@ class CreateDeliveryChannelRequestResourceChangeDelivery(TeaModel):
         target_arn: str = None,
         target_type: str = None,
     ):
+        # The Simple Log Service configurations.
         self.sls_properties = sls_properties
+        # The ARN of the delivery destination.
+        # 
+        # *   If you set `TargetType` to `OSS`, you must set `TargetArn` to the ARN of a bucket whose name is prefixed with resourcecenter-.
+        # *   If you set `TargetType` to `SLS`, you must set `TargetArn` to the ARN of a Logstore whose name is prefixed with resourcecenter-.
         self.target_arn = target_arn
+        # The type of the delivery destination.
+        # 
+        # Valid values:
+        # 
+        # *   `SLS`
         self.target_type = target_type
 
     def validate(self):
@@ -203,6 +221,11 @@ class CreateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties(TeaModel
         self,
         oversized_data_oss_target_arn: str = None,
     ):
+        # The ARN of the destination to which large files are delivered.
+        # 
+        # *   If the size of a resource configuration change event exceeds 1 MB, the event is delivered as an OSS object.
+        # *   You need to set this parameter to the ARN of a bucket whose name is prefixed with resourcecenter-.
+        # *   This parameter takes effect only if you use custom delivery for scheduled resource snapshots. You do not need to configure this parameter if you use standard delivery for scheduled resource snapshots.
         self.oversized_data_oss_target_arn = oversized_data_oss_target_arn
 
     def validate(self):
@@ -234,10 +257,23 @@ class CreateDeliveryChannelRequestResourceSnapshotDelivery(TeaModel):
         target_arn: str = None,
         target_type: str = None,
     ):
+        # The custom expression.
         self.custom_expression = custom_expression
+        # The delivery time.
         self.delivery_time = delivery_time
+        # The Simple Log Service configurations.
         self.sls_properties = sls_properties
+        # The Alibaba Cloud Resource Name (ARN) of the delivery destination.
+        # 
+        # *   If you set `TargetType` to `OSS`, you must set `TargetArn` to the ARN of a bucket whose name is prefixed with resourcecenter-.
+        # *   If you set `TargetType` to `SLS`, you must set `TargetArn` to the ARN of a Logstore whose name is prefixed with resourcecenter-.
         self.target_arn = target_arn
+        # The type of the delivery destination.
+        # 
+        # Valid values:
+        # 
+        # *   `OSS` for standard delivery
+        # *   `OSS` or `SLS` for custom delivery
         self.target_type = target_type
 
     def validate(self):
@@ -287,12 +323,19 @@ class CreateDeliveryChannelRequest(TeaModel):
         resource_change_delivery: CreateDeliveryChannelRequestResourceChangeDelivery = None,
         resource_snapshot_delivery: CreateDeliveryChannelRequestResourceSnapshotDelivery = None,
     ):
+        # The description of the delivery channel.
         self.delivery_channel_description = delivery_channel_description
+        # The effective scope of the delivery channel.
+        # 
         # This parameter is required.
         self.delivery_channel_filter = delivery_channel_filter
+        # The name of the delivery channel.
+        # 
         # This parameter is required.
         self.delivery_channel_name = delivery_channel_name
+        # The configurations for delivery of resource configuration change events.
         self.resource_change_delivery = resource_change_delivery
+        # The configurations for delivery of scheduled resource snapshots.
         self.resource_snapshot_delivery = resource_snapshot_delivery
 
     def validate(self):
@@ -345,7 +388,9 @@ class CreateDeliveryChannelResponseBody(TeaModel):
         delivery_channel_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the delivery channel.
         self.delivery_channel_id = delivery_channel_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -527,8 +572,11 @@ class CreateMultiAccountDeliveryChannelRequestDeliveryChannelFilter(TeaModel):
         account_scopes: List[str] = None,
         resource_types: List[str] = None,
     ):
+        # An array of effective account scopes for the delivery channel.
+        # 
         # This parameter is required.
         self.account_scopes = account_scopes
+        # The effective resource types of the delivery channel.
         self.resource_types = resource_types
 
     def validate(self):
@@ -560,6 +608,9 @@ class CreateMultiAccountDeliveryChannelRequestResourceChangeDeliverySlsPropertie
         self,
         oversized_data_oss_target_arn: str = None,
     ):
+        # The ARN of the destination to which large files are delivered.
+        # 
+        # If the size of a resource configuration change event exceeds 1 MB, the event is delivered as an OSS object. You need to set this parameter to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
         self.oversized_data_oss_target_arn = oversized_data_oss_target_arn
 
     def validate(self):
@@ -589,8 +640,16 @@ class CreateMultiAccountDeliveryChannelRequestResourceChangeDelivery(TeaModel):
         target_arn: str = None,
         target_type: str = None,
     ):
+        # The Simple Log Service configurations.
         self.sls_properties = sls_properties
+        # The ARN of the delivery destination. Valid values:
+        # 
+        # *   If you set `TargetType` to `OSS`, you must set `TargetArn` to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+        # *   If you set `TargetType` to `SLS`, you must set `TargetArn` to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
         self.target_arn = target_arn
+        # The type of the delivery destination.
+        # 
+        # Set the value to `SLS`.
         self.target_type = target_type
 
     def validate(self):
@@ -628,6 +687,11 @@ class CreateMultiAccountDeliveryChannelRequestResourceSnapshotDeliverySlsPropert
         self,
         oversized_data_oss_target_arn: str = None,
     ):
+        # The ARN of the destination to which large files are delivered.
+        # 
+        # If the size of a resource configuration change event exceeds 1 MB, the event is delivered as an OSS object. You need to set this parameter to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+        # 
+        # >  This parameter takes effect only if you use custom delivery for scheduled resource snapshots. You do not need to configure this parameter if you use standard delivery for scheduled resource snapshots.
         self.oversized_data_oss_target_arn = oversized_data_oss_target_arn
 
     def validate(self):
@@ -659,10 +723,21 @@ class CreateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery(TeaModel)
         target_arn: str = None,
         target_type: str = None,
     ):
+        # The custom expression.
         self.custom_expression = custom_expression
+        # The delivery time.
         self.delivery_time = delivery_time
+        # The Simple Log Service configurations.
         self.sls_properties = sls_properties
+        # The Alibaba Cloud Resource Name (ARN) of the delivery destination. Valid values:
+        # 
+        # *   If you set `TargetType` to `OSS`, you must set `TargetArn` to the ARN of a bucket whose name is prefixed with `resourcecenter-`. Example: `acs:oss:cn-hangzhou:191142248777****:resourcecenter-oss`.
+        # *   If you set `TargetType` to `SLS`, you must set `TargetArn` to the ARN of a Logstore whose name is prefixed with `resourcecenter-`. Example: `acs:log:cn-hangzhou: 191142248777****:project/delivery/logstore/resourcecenter-sls`.
         self.target_arn = target_arn
+        # The type of the delivery destination. Valid values:
+        # 
+        # *   `OSS` for standard delivery
+        # *   `OSS` or `SLS` for custom delivery
         self.target_type = target_type
 
     def validate(self):
@@ -712,12 +787,19 @@ class CreateMultiAccountDeliveryChannelRequest(TeaModel):
         resource_change_delivery: CreateMultiAccountDeliveryChannelRequestResourceChangeDelivery = None,
         resource_snapshot_delivery: CreateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery = None,
     ):
+        # The description of the delivery channel.
         self.delivery_channel_description = delivery_channel_description
+        # The effective scope of the delivery channel.
+        # 
         # This parameter is required.
         self.delivery_channel_filter = delivery_channel_filter
+        # The name of the delivery channel.
+        # 
         # This parameter is required.
         self.delivery_channel_name = delivery_channel_name
+        # The configurations for delivery of resource configuration change events.
         self.resource_change_delivery = resource_change_delivery
+        # The configurations for delivery of scheduled resource snapshots.
         self.resource_snapshot_delivery = resource_snapshot_delivery
 
     def validate(self):
@@ -770,7 +852,9 @@ class CreateMultiAccountDeliveryChannelResponseBody(TeaModel):
         delivery_channel_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the delivery channel.
         self.delivery_channel_id = delivery_channel_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -971,6 +1055,8 @@ class DeleteDeliveryChannelRequest(TeaModel):
         self,
         delivery_channel_id: str = None,
     ):
+        # The ID of the delivery channel.
+        # 
         # This parameter is required.
         self.delivery_channel_id = delivery_channel_id
 
@@ -999,6 +1085,7 @@ class DeleteDeliveryChannelResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1166,6 +1253,8 @@ class DeleteMultiAccountDeliveryChannelRequest(TeaModel):
         self,
         delivery_channel_id: str = None,
     ):
+        # The ID of the delivery channel.
+        # 
         # This parameter is required.
         self.delivery_channel_id = delivery_channel_id
 
@@ -1194,6 +1283,7 @@ class DeleteMultiAccountDeliveryChannelResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2139,6 +2229,7 @@ class GetDeliveryChannelRequest(TeaModel):
         self,
         delivery_channel_id: str = None,
     ):
+        # The ID of the delivery channel.
         self.delivery_channel_id = delivery_channel_id
 
     def validate(self):
@@ -2166,6 +2257,7 @@ class GetDeliveryChannelResponseBodyDeliveryChannelFilter(TeaModel):
         self,
         resource_types: List[str] = None,
     ):
+        # The effective resource types of the delivery channel.
         self.resource_types = resource_types
 
     def validate(self):
@@ -2193,6 +2285,7 @@ class GetDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties(TeaModel
         self,
         oversized_data_oss_target_arn: str = None,
     ):
+        # The Alibaba Cloud Resource Name (ARN) of the destination to which large files are delivered.
         self.oversized_data_oss_target_arn = oversized_data_oss_target_arn
 
     def validate(self):
@@ -2222,8 +2315,11 @@ class GetDeliveryChannelResponseBodyResourceChangeDelivery(TeaModel):
         target_arn: str = None,
         target_type: str = None,
     ):
+        # The Simple Log Service configurations.
         self.sls_properties = sls_properties
+        # The ARN of the delivery destination.
         self.target_arn = target_arn
+        # The type of the destination.
         self.target_type = target_type
 
     def validate(self):
@@ -2261,6 +2357,7 @@ class GetDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties(TeaMod
         self,
         oversized_data_oss_target_arn: str = None,
     ):
+        # The ARN of the destination to which large files are delivered.
         self.oversized_data_oss_target_arn = oversized_data_oss_target_arn
 
     def validate(self):
@@ -2292,10 +2389,15 @@ class GetDeliveryChannelResponseBodyResourceSnapshotDelivery(TeaModel):
         target_arn: str = None,
         target_type: str = None,
     ):
+        # The custom expression.
         self.custom_expression = custom_expression
+        # The delivery time.
         self.delivery_time = delivery_time
+        # The Simple Log Service configurations.
         self.sls_properties = sls_properties
+        # The ARN of the delivery destination.
         self.target_arn = target_arn
+        # The type of the destination.
         self.target_type = target_type
 
     def validate(self):
@@ -2347,12 +2449,19 @@ class GetDeliveryChannelResponseBody(TeaModel):
         resource_change_delivery: GetDeliveryChannelResponseBodyResourceChangeDelivery = None,
         resource_snapshot_delivery: GetDeliveryChannelResponseBodyResourceSnapshotDelivery = None,
     ):
+        # The description of the delivery channel.
         self.delivery_channel_description = delivery_channel_description
+        # The effective scope of the delivery channel.
         self.delivery_channel_filter = delivery_channel_filter
+        # The ID of the delivery channel.
         self.delivery_channel_id = delivery_channel_id
+        # The name of the delivery channel.
         self.delivery_channel_name = delivery_channel_name
+        # The request ID.
         self.request_id = request_id
+        # The configurations for delivery of resource configuration change events.
         self.resource_change_delivery = resource_change_delivery
+        # The configurations for delivery of scheduled resource snapshots.
         self.resource_snapshot_delivery = resource_snapshot_delivery
 
     def validate(self):
@@ -2453,6 +2562,8 @@ class GetDeliveryChannelStatisticsRequest(TeaModel):
         self,
         delivery_channel_id: str = None,
     ):
+        # The ID of the delivery channel.
+        # 
         # This parameter is required.
         self.delivery_channel_id = delivery_channel_id
 
@@ -2484,9 +2595,13 @@ class GetDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics(TeaModel
         latest_change_delivery_time: str = None,
         latest_snapshot_delivery_time: str = None,
     ):
+        # The ID of the delivery channel.
         self.delivery_channel_id = delivery_channel_id
+        # The name of the delivery channel.
         self.delivery_channel_name = delivery_channel_name
+        # The last delivery time of resource configuration change events.
         self.latest_change_delivery_time = latest_change_delivery_time
+        # The last delivery time of scheduled resource snapshots.
         self.latest_snapshot_delivery_time = latest_snapshot_delivery_time
 
     def validate(self):
@@ -2527,7 +2642,9 @@ class GetDeliveryChannelStatisticsResponseBody(TeaModel):
         delivery_channel_statistics: GetDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics = None,
         request_id: str = None,
     ):
+        # The statistics on the delivery channel.
         self.delivery_channel_statistics = delivery_channel_statistics
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2761,6 +2878,7 @@ class GetMultiAccountDeliveryChannelRequest(TeaModel):
         self,
         delivery_channel_id: str = None,
     ):
+        # The ID of the delivery channel.
         self.delivery_channel_id = delivery_channel_id
 
     def validate(self):
@@ -2789,7 +2907,9 @@ class GetMultiAccountDeliveryChannelResponseBodyDeliveryChannelFilter(TeaModel):
         account_scopes: List[str] = None,
         resource_types: List[str] = None,
     ):
+        # The effective account scopes of the delivery channel.
         self.account_scopes = account_scopes
+        # The effective resource types of the delivery channel.
         self.resource_types = resource_types
 
     def validate(self):
@@ -2821,6 +2941,7 @@ class GetMultiAccountDeliveryChannelResponseBodyResourceChangeDeliverySlsPropert
         self,
         oversized_data_oss_target_arn: str = None,
     ):
+        # The Alibaba Cloud Resource Name (ARN) of the destination to which large files are delivered.
         self.oversized_data_oss_target_arn = oversized_data_oss_target_arn
 
     def validate(self):
@@ -2850,8 +2971,11 @@ class GetMultiAccountDeliveryChannelResponseBodyResourceChangeDelivery(TeaModel)
         target_arn: str = None,
         target_type: str = None,
     ):
+        # The Simple Log Service configurations.
         self.sls_properties = sls_properties
+        # The ARN of the delivery destination.
         self.target_arn = target_arn
+        # The type of the destination.
         self.target_type = target_type
 
     def validate(self):
@@ -2889,6 +3013,7 @@ class GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDeliverySlsPrope
         self,
         oversized_data_oss_target_arn: str = None,
     ):
+        # The ARN of the destination to which large files are delivered.
         self.oversized_data_oss_target_arn = oversized_data_oss_target_arn
 
     def validate(self):
@@ -2920,10 +3045,15 @@ class GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery(TeaMode
         target_arn: str = None,
         target_type: str = None,
     ):
+        # The custom expression.
         self.custom_expression = custom_expression
+        # The delivery time.
         self.delivery_time = delivery_time
+        # The Simple Log Service configurations.
         self.sls_properties = sls_properties
+        # The ARN of the delivery destination.
         self.target_arn = target_arn
+        # The type of the destination.
         self.target_type = target_type
 
     def validate(self):
@@ -2975,12 +3105,19 @@ class GetMultiAccountDeliveryChannelResponseBody(TeaModel):
         resource_change_delivery: GetMultiAccountDeliveryChannelResponseBodyResourceChangeDelivery = None,
         resource_snapshot_delivery: GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery = None,
     ):
+        # The description of the delivery channel.
         self.delivery_channel_description = delivery_channel_description
+        # The effective scope of the delivery channel.
         self.delivery_channel_filter = delivery_channel_filter
+        # The ID of the delivery channel.
         self.delivery_channel_id = delivery_channel_id
+        # The name of the delivery channel.
         self.delivery_channel_name = delivery_channel_name
+        # The request ID.
         self.request_id = request_id
+        # The configurations for delivery of resource configuration change events.
         self.resource_change_delivery = resource_change_delivery
+        # The configurations for delivery of scheduled resource snapshots.
         self.resource_snapshot_delivery = resource_snapshot_delivery
 
     def validate(self):
@@ -3081,6 +3218,8 @@ class GetMultiAccountDeliveryChannelStatisticsRequest(TeaModel):
         self,
         delivery_channel_id: str = None,
     ):
+        # The ID of the delivery channel.
+        # 
         # This parameter is required.
         self.delivery_channel_id = delivery_channel_id
 
@@ -3112,9 +3251,13 @@ class GetMultiAccountDeliveryChannelStatisticsResponseBodyDeliveryChannelStatist
         latest_change_delivery_time: str = None,
         latest_snapshot_delivery_time: str = None,
     ):
+        # The ID of the delivery channel.
         self.delivery_channel_id = delivery_channel_id
+        # The name of the delivery channel.
         self.delivery_channel_name = delivery_channel_name
+        # The last delivery time of resource configuration change events.
         self.latest_change_delivery_time = latest_change_delivery_time
+        # The last delivery time of scheduled resource snapshots.
         self.latest_snapshot_delivery_time = latest_snapshot_delivery_time
 
     def validate(self):
@@ -3155,7 +3298,9 @@ class GetMultiAccountDeliveryChannelStatisticsResponseBody(TeaModel):
         delivery_channel_statistics: GetMultiAccountDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics = None,
         request_id: str = None,
     ):
+        # The statistics on the delivery channel.
         self.delivery_channel_statistics = delivery_channel_statistics
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3626,6 +3771,267 @@ class GetMultiAccountResourceConfigurationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetMultiAccountResourceConfigurationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetMultiAccountResourceCountsRequestFilter(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        match_type: str = None,
+        value: List[str] = None,
+    ):
+        self.key = key
+        self.match_type = match_type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.match_type is not None:
+            result['MatchType'] = self.match_type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('MatchType') is not None:
+            self.match_type = m.get('MatchType')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetMultiAccountResourceCountsRequest(TeaModel):
+    def __init__(
+        self,
+        filter: List[GetMultiAccountResourceCountsRequestFilter] = None,
+        group_by_key: str = None,
+        scope: str = None,
+    ):
+        self.filter = filter
+        self.group_by_key = group_by_key
+        self.scope = scope
+
+    def validate(self):
+        if self.filter:
+            for k in self.filter:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Filter'] = []
+        if self.filter is not None:
+            for k in self.filter:
+                result['Filter'].append(k.to_map() if k else None)
+        if self.group_by_key is not None:
+            result['GroupByKey'] = self.group_by_key
+        if self.scope is not None:
+            result['Scope'] = self.scope
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.filter = []
+        if m.get('Filter') is not None:
+            for k in m.get('Filter'):
+                temp_model = GetMultiAccountResourceCountsRequestFilter()
+                self.filter.append(temp_model.from_map(k))
+        if m.get('GroupByKey') is not None:
+            self.group_by_key = m.get('GroupByKey')
+        if m.get('Scope') is not None:
+            self.scope = m.get('Scope')
+        return self
+
+
+class GetMultiAccountResourceCountsResponseBodyFilters(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        values: List[str] = None,
+    ):
+        self.key = key
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class GetMultiAccountResourceCountsResponseBodyResourceCounts(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        group_name: str = None,
+    ):
+        self.count = count
+        self.group_name = group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        return self
+
+
+class GetMultiAccountResourceCountsResponseBody(TeaModel):
+    def __init__(
+        self,
+        filters: List[GetMultiAccountResourceCountsResponseBodyFilters] = None,
+        group_by_key: str = None,
+        request_id: str = None,
+        resource_counts: List[GetMultiAccountResourceCountsResponseBodyResourceCounts] = None,
+        scope: str = None,
+    ):
+        self.filters = filters
+        self.group_by_key = group_by_key
+        self.request_id = request_id
+        self.resource_counts = resource_counts
+        self.scope = scope
+
+    def validate(self):
+        if self.filters:
+            for k in self.filters:
+                if k:
+                    k.validate()
+        if self.resource_counts:
+            for k in self.resource_counts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Filters'] = []
+        if self.filters is not None:
+            for k in self.filters:
+                result['Filters'].append(k.to_map() if k else None)
+        if self.group_by_key is not None:
+            result['GroupByKey'] = self.group_by_key
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ResourceCounts'] = []
+        if self.resource_counts is not None:
+            for k in self.resource_counts:
+                result['ResourceCounts'].append(k.to_map() if k else None)
+        if self.scope is not None:
+            result['Scope'] = self.scope
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.filters = []
+        if m.get('Filters') is not None:
+            for k in m.get('Filters'):
+                temp_model = GetMultiAccountResourceCountsResponseBodyFilters()
+                self.filters.append(temp_model.from_map(k))
+        if m.get('GroupByKey') is not None:
+            self.group_by_key = m.get('GroupByKey')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.resource_counts = []
+        if m.get('ResourceCounts') is not None:
+            for k in m.get('ResourceCounts'):
+                temp_model = GetMultiAccountResourceCountsResponseBodyResourceCounts()
+                self.resource_counts.append(temp_model.from_map(k))
+        if m.get('Scope') is not None:
+            self.scope = m.get('Scope')
+        return self
+
+
+class GetMultiAccountResourceCountsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetMultiAccountResourceCountsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetMultiAccountResourceCountsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4477,7 +4883,15 @@ class ListDeliveryChannelsRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The maximum number of entries per page.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results.
+        # 
+        # If the total number of entries returned for the current request exceeds the value of the MaxResults parameter, the entries are truncated. In this case, you can use the token to initiate another request and obtain the remaining entries.
         self.next_token = next_token
 
     def validate(self):
@@ -4512,9 +4926,13 @@ class ListDeliveryChannelsResponseBodyDeliveryChannels(TeaModel):
         delivery_channel_id: str = None,
         delivery_channel_name: str = None,
     ):
+        # The time when the delivery channel was created.
         self.create_time = create_time
+        # The description of the delivery channel.
         self.delivery_channel_description = delivery_channel_description
+        # The ID of the delivery channel.
         self.delivery_channel_id = delivery_channel_id
+        # The name of the delivery channel.
         self.delivery_channel_name = delivery_channel_name
 
     def validate(self):
@@ -4557,10 +4975,15 @@ class ListDeliveryChannelsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The delivery channels.
         self.delivery_channels = delivery_channels
+        # The maximum number of entries per page.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results.
+        # 
         # This parameter is required.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4957,7 +5380,15 @@ class ListMultiAccountDeliveryChannelsRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The maximum number of entries per page.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results.
+        # 
+        # If the total number of entries returned for the current request exceeds the value of the MaxResults parameter, the entries are truncated. In this case, you can use the token to initiate another request and obtain the remaining entries.
         self.next_token = next_token
 
     def validate(self):
@@ -4992,9 +5423,13 @@ class ListMultiAccountDeliveryChannelsResponseBodyDeliveryChannels(TeaModel):
         delivery_channel_id: str = None,
         delivery_channel_name: str = None,
     ):
+        # The time when the delivery channel was created.
         self.create_time = create_time
+        # The description of the delivery channel.
         self.delivery_channel_description = delivery_channel_description
+        # The ID of the delivery channel.
         self.delivery_channel_id = delivery_channel_id
+        # The name of the delivery channel.
         self.delivery_channel_name = delivery_channel_name
 
     def validate(self):
@@ -5037,10 +5472,15 @@ class ListMultiAccountDeliveryChannelsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The delivery channels.
         self.delivery_channels = delivery_channels
+        # The maximum number of entries per page.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results.
+        # 
         # This parameter is required.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8034,6 +8474,7 @@ class UpdateDeliveryChannelRequestDeliveryChannelFilter(TeaModel):
         self,
         resource_types: List[str] = None,
     ):
+        # The effective resource types of the delivery channel.
         self.resource_types = resource_types
 
     def validate(self):
@@ -8061,6 +8502,9 @@ class UpdateDeliveryChannelRequestResourceChangeDeliverySlsProperties(TeaModel):
         self,
         oversized_data_oss_target_arn: str = None,
     ):
+        # The ARN of the destination to which large files are delivered.
+        # 
+        # If the size of a resource configuration change event exceeds 1 MB, the event is delivered as an OSS object. You need to set this parameter to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
         self.oversized_data_oss_target_arn = oversized_data_oss_target_arn
 
     def validate(self):
@@ -8091,9 +8535,21 @@ class UpdateDeliveryChannelRequestResourceChangeDelivery(TeaModel):
         target_arn: str = None,
         target_type: str = None,
     ):
+        # Specifies whether to enable delivery of resource configuration change events. Valid values:
+        # 
+        # *   true
+        # *   false
         self.enabled = enabled
+        # The Simple Log Service configurations.
         self.sls_properties = sls_properties
+        # The ARN of the delivery destination. Valid values:
+        # 
+        # *   If you set `TargetType` to `OSS`, you must set `TargetArn` to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+        # *   If you set `TargetType` to `SLS`, you must set `TargetArn` to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
         self.target_arn = target_arn
+        # The type of the delivery destination.
+        # 
+        # Set the value to `SLS`.
         self.target_type = target_type
 
     def validate(self):
@@ -8135,6 +8591,11 @@ class UpdateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties(TeaModel
         self,
         oversized_data_oss_target_arn: str = None,
     ):
+        # The ARN of the destination to which large files are delivered.
+        # 
+        # If the size of a resource configuration change event exceeds 1 MB, the event is delivered as an OSS object. You need to set this parameter to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+        # 
+        # >  This parameter takes effect only if you use custom delivery for scheduled resource snapshots. You do not need to configure this parameter if you use standard delivery for scheduled resource snapshots.
         self.oversized_data_oss_target_arn = oversized_data_oss_target_arn
 
     def validate(self):
@@ -8167,11 +8628,26 @@ class UpdateDeliveryChannelRequestResourceSnapshotDelivery(TeaModel):
         target_arn: str = None,
         target_type: str = None,
     ):
+        # The custom expression.
         self.custom_expression = custom_expression
+        # The delivery time.
         self.delivery_time = delivery_time
+        # Specifies whether to enable delivery of scheduled resource snapshots. Valid values:
+        # 
+        # *   true
+        # *   false
         self.enabled = enabled
+        # The Simple Log Service configurations.
         self.sls_properties = sls_properties
+        # The Alibaba Cloud Resource Name (ARN) of the delivery destination. Valid values:
+        # 
+        # *   If you set `TargetType` to `OSS`, you must set `TargetArn` to the ARN of a bucket whose name is prefixed with `resourcecenter-`. Example: `acs:oss:cn-hangzhou:191142248777****:resourcecenter-oss`.
+        # *   If you set `TargetType` to `SLS`, you must set `TargetArn` to the ARN of a Logstore whose name is prefixed with `resourcecenter-`. Example: `acs:log:cn-hangzhou: 191142248777****:project/delivery/logstore/resourcecenter-sls`.
         self.target_arn = target_arn
+        # The type of the delivery destination. Valid values:
+        # 
+        # *   `OSS` for standard delivery
+        # *   `OSS` or `SLS` for custom delivery
         self.target_type = target_type
 
     def validate(self):
@@ -8226,12 +8702,19 @@ class UpdateDeliveryChannelRequest(TeaModel):
         resource_change_delivery: UpdateDeliveryChannelRequestResourceChangeDelivery = None,
         resource_snapshot_delivery: UpdateDeliveryChannelRequestResourceSnapshotDelivery = None,
     ):
+        # The description of the delivery channel.
         self.delivery_channel_description = delivery_channel_description
+        # The effective scope of the delivery channel.
         self.delivery_channel_filter = delivery_channel_filter
+        # The ID of the delivery channel.
+        # 
         # This parameter is required.
         self.delivery_channel_id = delivery_channel_id
+        # The name of the delivery channel.
         self.delivery_channel_name = delivery_channel_name
+        # The configurations for delivery of resource configuration change events.
         self.resource_change_delivery = resource_change_delivery
+        # The configurations for delivery of scheduled resource snapshots.
         self.resource_snapshot_delivery = resource_snapshot_delivery
 
     def validate(self):
@@ -8287,6 +8770,7 @@ class UpdateDeliveryChannelResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8464,7 +8948,9 @@ class UpdateMultiAccountDeliveryChannelRequestDeliveryChannelFilter(TeaModel):
         account_scopes: List[str] = None,
         resource_types: List[str] = None,
     ):
+        # An array of effective account scopes for the delivery channel.
         self.account_scopes = account_scopes
+        # The effective resource types of the delivery channel.
         self.resource_types = resource_types
 
     def validate(self):
@@ -8496,6 +8982,9 @@ class UpdateMultiAccountDeliveryChannelRequestResourceChangeDeliverySlsPropertie
         self,
         oversized_data_oss_target_arn: str = None,
     ):
+        # The ARN of the destination to which large files are delivered.
+        # 
+        # If the size of a resource configuration change event exceeds 1 MB, the event is delivered as an OSS object. You need to set this parameter to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
         self.oversized_data_oss_target_arn = oversized_data_oss_target_arn
 
     def validate(self):
@@ -8526,9 +9015,21 @@ class UpdateMultiAccountDeliveryChannelRequestResourceChangeDelivery(TeaModel):
         target_arn: str = None,
         target_type: str = None,
     ):
+        # Specifies whether to enable delivery of resource configuration change events. Valid values:
+        # 
+        # *   true
+        # *   false
         self.enabled = enabled
+        # The Simple Log Service configurations.
         self.sls_properties = sls_properties
+        # The ARN of the delivery destination. Valid values:
+        # 
+        # *   If you set `TargetType` to `OSS`, you must set `TargetArn` to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+        # *   If you set `TargetType` to `SLS`, you must set `TargetArn` to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
         self.target_arn = target_arn
+        # The type of the delivery destination.
+        # 
+        # Set the value to `SLS`.
         self.target_type = target_type
 
     def validate(self):
@@ -8570,6 +9071,11 @@ class UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDeliverySlsPropert
         self,
         oversized_data_oss_target_arn: str = None,
     ):
+        # The ARN of the destination to which large files are delivered.
+        # 
+        # If the size of a resource configuration change event exceeds 1 MB, the event is delivered as an OSS object. You need to set this parameter to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+        # 
+        # >  This parameter takes effect only if you use custom delivery for scheduled resource snapshots. You do not need to configure this parameter if you use standard delivery for scheduled resource snapshots.
         self.oversized_data_oss_target_arn = oversized_data_oss_target_arn
 
     def validate(self):
@@ -8602,11 +9108,26 @@ class UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery(TeaModel)
         target_arn: str = None,
         target_type: str = None,
     ):
+        # The custom expression.
         self.custom_expression = custom_expression
+        # The delivery time.
         self.delivery_time = delivery_time
+        # Specifies whether to enable delivery of scheduled resource snapshots. Valid values:
+        # 
+        # *   true
+        # *   false
         self.enabled = enabled
+        # The Simple Log Service configurations.
         self.sls_properties = sls_properties
+        # The Alibaba Cloud Resource Name (ARN) of the delivery destination. Valid values:
+        # 
+        # *   If you set `TargetType` to `OSS`, you must set `TargetArn` to the ARN of a bucket whose name is prefixed with `resourcecenter-`. Example: `acs:oss:cn-hangzhou:191142248777****:resourcecenter-oss`.
+        # *   If you set `TargetType` to `SLS`, you must set `TargetArn` to the ARN of a Logstore whose name is prefixed with `resourcecenter-`. Example: `acs:log:cn-hangzhou: 191142248777****:project/delivery/logstore/resourcecenter-sls`.
         self.target_arn = target_arn
+        # The type of the delivery destination. Valid values:
+        # 
+        # *   `OSS` for standard delivery
+        # *   `OSS` or `SLS` for custom delivery
         self.target_type = target_type
 
     def validate(self):
@@ -8661,12 +9182,19 @@ class UpdateMultiAccountDeliveryChannelRequest(TeaModel):
         resource_change_delivery: UpdateMultiAccountDeliveryChannelRequestResourceChangeDelivery = None,
         resource_snapshot_delivery: UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery = None,
     ):
+        # The description of the delivery channel.
         self.delivery_channel_description = delivery_channel_description
+        # The effective scope of the delivery channel.
         self.delivery_channel_filter = delivery_channel_filter
+        # The ID of the delivery channel.
+        # 
         # This parameter is required.
         self.delivery_channel_id = delivery_channel_id
+        # The name of the delivery channel.
         self.delivery_channel_name = delivery_channel_name
+        # The configurations for delivery of resource configuration change events.
         self.resource_change_delivery = resource_change_delivery
+        # The configurations for delivery of scheduled resource snapshots.
         self.resource_snapshot_delivery = resource_snapshot_delivery
 
     def validate(self):
@@ -8722,6 +9250,7 @@ class UpdateMultiAccountDeliveryChannelResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

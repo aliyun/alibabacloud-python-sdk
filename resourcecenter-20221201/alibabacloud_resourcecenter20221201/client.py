@@ -143,7 +143,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_center_20221201_models.CreateDeliveryChannelResponse:
         """
-        @summary 创建投递渠道
+        @summary Creates a single-account delivery channel.
+        
+        @description Resource delivery supports the delivery of resource configuration change events and scheduled resource snapshots.
+        Scheduled resource snapshots support the following delivery scenarios:
+        Standard delivery: Leave the ResourceSnapshotDelivery.CustomExpression parameter empty.
+        Custom delivery: Set the ResourceSnapshotDelivery.CustomExpression parameter to an appropriate value.
         
         @param request: CreateDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -186,7 +191,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_center_20221201_models.CreateDeliveryChannelResponse:
         """
-        @summary 创建投递渠道
+        @summary Creates a single-account delivery channel.
+        
+        @description Resource delivery supports the delivery of resource configuration change events and scheduled resource snapshots.
+        Scheduled resource snapshots support the following delivery scenarios:
+        Standard delivery: Leave the ResourceSnapshotDelivery.CustomExpression parameter empty.
+        Custom delivery: Set the ResourceSnapshotDelivery.CustomExpression parameter to an appropriate value.
         
         @param request: CreateDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -228,7 +238,12 @@ class Client(OpenApiClient):
         request: resource_center_20221201_models.CreateDeliveryChannelRequest,
     ) -> resource_center_20221201_models.CreateDeliveryChannelResponse:
         """
-        @summary 创建投递渠道
+        @summary Creates a single-account delivery channel.
+        
+        @description Resource delivery supports the delivery of resource configuration change events and scheduled resource snapshots.
+        Scheduled resource snapshots support the following delivery scenarios:
+        Standard delivery: Leave the ResourceSnapshotDelivery.CustomExpression parameter empty.
+        Custom delivery: Set the ResourceSnapshotDelivery.CustomExpression parameter to an appropriate value.
         
         @param request: CreateDeliveryChannelRequest
         @return: CreateDeliveryChannelResponse
@@ -241,7 +256,12 @@ class Client(OpenApiClient):
         request: resource_center_20221201_models.CreateDeliveryChannelRequest,
     ) -> resource_center_20221201_models.CreateDeliveryChannelResponse:
         """
-        @summary 创建投递渠道
+        @summary Creates a single-account delivery channel.
+        
+        @description Resource delivery supports the delivery of resource configuration change events and scheduled resource snapshots.
+        Scheduled resource snapshots support the following delivery scenarios:
+        Standard delivery: Leave the ResourceSnapshotDelivery.CustomExpression parameter empty.
+        Custom delivery: Set the ResourceSnapshotDelivery.CustomExpression parameter to an appropriate value.
         
         @param request: CreateDeliveryChannelRequest
         @return: CreateDeliveryChannelResponse
@@ -355,7 +375,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_center_20221201_models.CreateMultiAccountDeliveryChannelResponse:
         """
-        @summary 创建多账号投递渠道
+        @summary Creates a multi-account delivery channel.
+        
+        @description In Resource Center, you can create multi-account delivery channels by using the management account of your resource directory or the delegated administrator account of Resource Center to deliver resource configuration change events and scheduled resource snapshots within the members in your resource directory to Object Storage Service (OSS) or Simple Log Service. Then, other Alibaba Cloud services consume standardized resource information from OSS or Simple Log Service.
+        Scheduled resource snapshots support the following delivery scenarios:
+        Standard delivery: Leave the `ResourceSnapshotDelivery.CustomExpression` parameter empty.
+        Custom delivery: Set the `ResourceSnapshotDelivery.CustomExpression` parameter to an appropriate value.
         
         @param request: CreateMultiAccountDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -398,7 +423,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_center_20221201_models.CreateMultiAccountDeliveryChannelResponse:
         """
-        @summary 创建多账号投递渠道
+        @summary Creates a multi-account delivery channel.
+        
+        @description In Resource Center, you can create multi-account delivery channels by using the management account of your resource directory or the delegated administrator account of Resource Center to deliver resource configuration change events and scheduled resource snapshots within the members in your resource directory to Object Storage Service (OSS) or Simple Log Service. Then, other Alibaba Cloud services consume standardized resource information from OSS or Simple Log Service.
+        Scheduled resource snapshots support the following delivery scenarios:
+        Standard delivery: Leave the `ResourceSnapshotDelivery.CustomExpression` parameter empty.
+        Custom delivery: Set the `ResourceSnapshotDelivery.CustomExpression` parameter to an appropriate value.
         
         @param request: CreateMultiAccountDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -440,7 +470,12 @@ class Client(OpenApiClient):
         request: resource_center_20221201_models.CreateMultiAccountDeliveryChannelRequest,
     ) -> resource_center_20221201_models.CreateMultiAccountDeliveryChannelResponse:
         """
-        @summary 创建多账号投递渠道
+        @summary Creates a multi-account delivery channel.
+        
+        @description In Resource Center, you can create multi-account delivery channels by using the management account of your resource directory or the delegated administrator account of Resource Center to deliver resource configuration change events and scheduled resource snapshots within the members in your resource directory to Object Storage Service (OSS) or Simple Log Service. Then, other Alibaba Cloud services consume standardized resource information from OSS or Simple Log Service.
+        Scheduled resource snapshots support the following delivery scenarios:
+        Standard delivery: Leave the `ResourceSnapshotDelivery.CustomExpression` parameter empty.
+        Custom delivery: Set the `ResourceSnapshotDelivery.CustomExpression` parameter to an appropriate value.
         
         @param request: CreateMultiAccountDeliveryChannelRequest
         @return: CreateMultiAccountDeliveryChannelResponse
@@ -453,7 +488,12 @@ class Client(OpenApiClient):
         request: resource_center_20221201_models.CreateMultiAccountDeliveryChannelRequest,
     ) -> resource_center_20221201_models.CreateMultiAccountDeliveryChannelResponse:
         """
-        @summary 创建多账号投递渠道
+        @summary Creates a multi-account delivery channel.
+        
+        @description In Resource Center, you can create multi-account delivery channels by using the management account of your resource directory or the delegated administrator account of Resource Center to deliver resource configuration change events and scheduled resource snapshots within the members in your resource directory to Object Storage Service (OSS) or Simple Log Service. Then, other Alibaba Cloud services consume standardized resource information from OSS or Simple Log Service.
+        Scheduled resource snapshots support the following delivery scenarios:
+        Standard delivery: Leave the `ResourceSnapshotDelivery.CustomExpression` parameter empty.
+        Custom delivery: Set the `ResourceSnapshotDelivery.CustomExpression` parameter to an appropriate value.
         
         @param request: CreateMultiAccountDeliveryChannelRequest
         @return: CreateMultiAccountDeliveryChannelResponse
@@ -571,7 +611,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_center_20221201_models.DeleteDeliveryChannelResponse:
         """
-        @summary 删除投递渠道
+        @summary Deletes a single-account delivery channel.
         
         @param request: DeleteDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -606,7 +646,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_center_20221201_models.DeleteDeliveryChannelResponse:
         """
-        @summary 删除投递渠道
+        @summary Deletes a single-account delivery channel.
         
         @param request: DeleteDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -640,7 +680,7 @@ class Client(OpenApiClient):
         request: resource_center_20221201_models.DeleteDeliveryChannelRequest,
     ) -> resource_center_20221201_models.DeleteDeliveryChannelResponse:
         """
-        @summary 删除投递渠道
+        @summary Deletes a single-account delivery channel.
         
         @param request: DeleteDeliveryChannelRequest
         @return: DeleteDeliveryChannelResponse
@@ -653,7 +693,7 @@ class Client(OpenApiClient):
         request: resource_center_20221201_models.DeleteDeliveryChannelRequest,
     ) -> resource_center_20221201_models.DeleteDeliveryChannelResponse:
         """
-        @summary 删除投递渠道
+        @summary Deletes a single-account delivery channel.
         
         @param request: DeleteDeliveryChannelRequest
         @return: DeleteDeliveryChannelResponse
@@ -763,7 +803,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_center_20221201_models.DeleteMultiAccountDeliveryChannelResponse:
         """
-        @summary 删除多账号投递渠道
+        @summary Deletes a multi-account delivery channel.
         
         @param request: DeleteMultiAccountDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -798,7 +838,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_center_20221201_models.DeleteMultiAccountDeliveryChannelResponse:
         """
-        @summary 删除多账号投递渠道
+        @summary Deletes a multi-account delivery channel.
         
         @param request: DeleteMultiAccountDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -832,7 +872,7 @@ class Client(OpenApiClient):
         request: resource_center_20221201_models.DeleteMultiAccountDeliveryChannelRequest,
     ) -> resource_center_20221201_models.DeleteMultiAccountDeliveryChannelResponse:
         """
-        @summary 删除多账号投递渠道
+        @summary Deletes a multi-account delivery channel.
         
         @param request: DeleteMultiAccountDeliveryChannelRequest
         @return: DeleteMultiAccountDeliveryChannelResponse
@@ -845,7 +885,7 @@ class Client(OpenApiClient):
         request: resource_center_20221201_models.DeleteMultiAccountDeliveryChannelRequest,
     ) -> resource_center_20221201_models.DeleteMultiAccountDeliveryChannelResponse:
         """
-        @summary 删除多账号投递渠道
+        @summary Deletes a multi-account delivery channel.
         
         @param request: DeleteMultiAccountDeliveryChannelRequest
         @return: DeleteMultiAccountDeliveryChannelResponse
@@ -1549,7 +1589,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_center_20221201_models.GetDeliveryChannelResponse:
         """
-        @summary 查询投递渠道
+        @summary Queries the information about a single-account delivery channel.
         
         @param request: GetDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1584,7 +1624,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_center_20221201_models.GetDeliveryChannelResponse:
         """
-        @summary 查询投递渠道
+        @summary Queries the information about a single-account delivery channel.
         
         @param request: GetDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1618,7 +1658,7 @@ class Client(OpenApiClient):
         request: resource_center_20221201_models.GetDeliveryChannelRequest,
     ) -> resource_center_20221201_models.GetDeliveryChannelResponse:
         """
-        @summary 查询投递渠道
+        @summary Queries the information about a single-account delivery channel.
         
         @param request: GetDeliveryChannelRequest
         @return: GetDeliveryChannelResponse
@@ -1631,7 +1671,7 @@ class Client(OpenApiClient):
         request: resource_center_20221201_models.GetDeliveryChannelRequest,
     ) -> resource_center_20221201_models.GetDeliveryChannelResponse:
         """
-        @summary 查询投递渠道
+        @summary Queries the information about a single-account delivery channel.
         
         @param request: GetDeliveryChannelRequest
         @return: GetDeliveryChannelResponse
@@ -1645,7 +1685,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_center_20221201_models.GetDeliveryChannelStatisticsResponse:
         """
-        @summary 查询投递渠道统计信息
+        @summary Queries the statistics on a single-account delivery channel.
         
         @param request: GetDeliveryChannelStatisticsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1680,7 +1720,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_center_20221201_models.GetDeliveryChannelStatisticsResponse:
         """
-        @summary 查询投递渠道统计信息
+        @summary Queries the statistics on a single-account delivery channel.
         
         @param request: GetDeliveryChannelStatisticsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1714,7 +1754,7 @@ class Client(OpenApiClient):
         request: resource_center_20221201_models.GetDeliveryChannelStatisticsRequest,
     ) -> resource_center_20221201_models.GetDeliveryChannelStatisticsResponse:
         """
-        @summary 查询投递渠道统计信息
+        @summary Queries the statistics on a single-account delivery channel.
         
         @param request: GetDeliveryChannelStatisticsRequest
         @return: GetDeliveryChannelStatisticsResponse
@@ -1727,7 +1767,7 @@ class Client(OpenApiClient):
         request: resource_center_20221201_models.GetDeliveryChannelStatisticsRequest,
     ) -> resource_center_20221201_models.GetDeliveryChannelStatisticsResponse:
         """
-        @summary 查询投递渠道统计信息
+        @summary Queries the statistics on a single-account delivery channel.
         
         @param request: GetDeliveryChannelStatisticsRequest
         @return: GetDeliveryChannelStatisticsResponse
@@ -1837,7 +1877,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_center_20221201_models.GetMultiAccountDeliveryChannelResponse:
         """
-        @summary 查询多账号投递渠道
+        @summary Queries the information about a multi-account delivery channel.
         
         @param request: GetMultiAccountDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1872,7 +1912,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_center_20221201_models.GetMultiAccountDeliveryChannelResponse:
         """
-        @summary 查询多账号投递渠道
+        @summary Queries the information about a multi-account delivery channel.
         
         @param request: GetMultiAccountDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1906,7 +1946,7 @@ class Client(OpenApiClient):
         request: resource_center_20221201_models.GetMultiAccountDeliveryChannelRequest,
     ) -> resource_center_20221201_models.GetMultiAccountDeliveryChannelResponse:
         """
-        @summary 查询多账号投递渠道
+        @summary Queries the information about a multi-account delivery channel.
         
         @param request: GetMultiAccountDeliveryChannelRequest
         @return: GetMultiAccountDeliveryChannelResponse
@@ -1919,7 +1959,7 @@ class Client(OpenApiClient):
         request: resource_center_20221201_models.GetMultiAccountDeliveryChannelRequest,
     ) -> resource_center_20221201_models.GetMultiAccountDeliveryChannelResponse:
         """
-        @summary 查询多账号投递渠道
+        @summary Queries the information about a multi-account delivery channel.
         
         @param request: GetMultiAccountDeliveryChannelRequest
         @return: GetMultiAccountDeliveryChannelResponse
@@ -1933,7 +1973,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_center_20221201_models.GetMultiAccountDeliveryChannelStatisticsResponse:
         """
-        @summary 查询多账号投递渠道统计信息
+        @summary Queries the statistics on a multi-account delivery channel.
         
         @param request: GetMultiAccountDeliveryChannelStatisticsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1968,7 +2008,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_center_20221201_models.GetMultiAccountDeliveryChannelStatisticsResponse:
         """
-        @summary 查询多账号投递渠道统计信息
+        @summary Queries the statistics on a multi-account delivery channel.
         
         @param request: GetMultiAccountDeliveryChannelStatisticsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2002,7 +2042,7 @@ class Client(OpenApiClient):
         request: resource_center_20221201_models.GetMultiAccountDeliveryChannelStatisticsRequest,
     ) -> resource_center_20221201_models.GetMultiAccountDeliveryChannelStatisticsResponse:
         """
-        @summary 查询多账号投递渠道统计信息
+        @summary Queries the statistics on a multi-account delivery channel.
         
         @param request: GetMultiAccountDeliveryChannelStatisticsRequest
         @return: GetMultiAccountDeliveryChannelStatisticsResponse
@@ -2015,7 +2055,7 @@ class Client(OpenApiClient):
         request: resource_center_20221201_models.GetMultiAccountDeliveryChannelStatisticsRequest,
     ) -> resource_center_20221201_models.GetMultiAccountDeliveryChannelStatisticsResponse:
         """
-        @summary 查询多账号投递渠道统计信息
+        @summary Queries the statistics on a multi-account delivery channel.
         
         @param request: GetMultiAccountDeliveryChannelStatisticsRequest
         @return: GetMultiAccountDeliveryChannelStatisticsResponse
@@ -2204,6 +2244,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_multi_account_resource_configuration_with_options_async(request, runtime)
+
+    def get_multi_account_resource_counts_with_options(
+        self,
+        request: resource_center_20221201_models.GetMultiAccountResourceCountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_center_20221201_models.GetMultiAccountResourceCountsResponse:
+        """
+        @summary 获取多账号资源数量
+        
+        @param request: GetMultiAccountResourceCountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMultiAccountResourceCountsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.group_by_key):
+            query['GroupByKey'] = request.group_by_key
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMultiAccountResourceCounts',
+            version='2022-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_center_20221201_models.GetMultiAccountResourceCountsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_multi_account_resource_counts_with_options_async(
+        self,
+        request: resource_center_20221201_models.GetMultiAccountResourceCountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_center_20221201_models.GetMultiAccountResourceCountsResponse:
+        """
+        @summary 获取多账号资源数量
+        
+        @param request: GetMultiAccountResourceCountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMultiAccountResourceCountsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.group_by_key):
+            query['GroupByKey'] = request.group_by_key
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMultiAccountResourceCounts',
+            version='2022-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_center_20221201_models.GetMultiAccountResourceCountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_multi_account_resource_counts(
+        self,
+        request: resource_center_20221201_models.GetMultiAccountResourceCountsRequest,
+    ) -> resource_center_20221201_models.GetMultiAccountResourceCountsResponse:
+        """
+        @summary 获取多账号资源数量
+        
+        @param request: GetMultiAccountResourceCountsRequest
+        @return: GetMultiAccountResourceCountsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_multi_account_resource_counts_with_options(request, runtime)
+
+    async def get_multi_account_resource_counts_async(
+        self,
+        request: resource_center_20221201_models.GetMultiAccountResourceCountsRequest,
+    ) -> resource_center_20221201_models.GetMultiAccountResourceCountsResponse:
+        """
+        @summary 获取多账号资源数量
+        
+        @param request: GetMultiAccountResourceCountsRequest
+        @return: GetMultiAccountResourceCountsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_multi_account_resource_counts_with_options_async(request, runtime)
 
     def get_resource_center_service_status_with_options(
         self,
@@ -2585,7 +2729,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_center_20221201_models.ListDeliveryChannelsResponse:
         """
-        @summary 列出投递渠道
+        @summary Queries a list of single-account delivery channels.
         
         @param request: ListDeliveryChannelsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2622,7 +2766,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_center_20221201_models.ListDeliveryChannelsResponse:
         """
-        @summary 列出投递渠道
+        @summary Queries a list of single-account delivery channels.
         
         @param request: ListDeliveryChannelsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2658,7 +2802,7 @@ class Client(OpenApiClient):
         request: resource_center_20221201_models.ListDeliveryChannelsRequest,
     ) -> resource_center_20221201_models.ListDeliveryChannelsResponse:
         """
-        @summary 列出投递渠道
+        @summary Queries a list of single-account delivery channels.
         
         @param request: ListDeliveryChannelsRequest
         @return: ListDeliveryChannelsResponse
@@ -2671,7 +2815,7 @@ class Client(OpenApiClient):
         request: resource_center_20221201_models.ListDeliveryChannelsRequest,
     ) -> resource_center_20221201_models.ListDeliveryChannelsResponse:
         """
-        @summary 列出投递渠道
+        @summary Queries a list of single-account delivery channels.
         
         @param request: ListDeliveryChannelsRequest
         @return: ListDeliveryChannelsResponse
@@ -2859,7 +3003,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_center_20221201_models.ListMultiAccountDeliveryChannelsResponse:
         """
-        @summary 列出多账号投递渠道
+        @summary Queries a list of multi-account delivery channels.
         
         @param request: ListMultiAccountDeliveryChannelsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2896,7 +3040,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_center_20221201_models.ListMultiAccountDeliveryChannelsResponse:
         """
-        @summary 列出多账号投递渠道
+        @summary Queries a list of multi-account delivery channels.
         
         @param request: ListMultiAccountDeliveryChannelsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2932,7 +3076,7 @@ class Client(OpenApiClient):
         request: resource_center_20221201_models.ListMultiAccountDeliveryChannelsRequest,
     ) -> resource_center_20221201_models.ListMultiAccountDeliveryChannelsResponse:
         """
-        @summary 列出多账号投递渠道
+        @summary Queries a list of multi-account delivery channels.
         
         @param request: ListMultiAccountDeliveryChannelsRequest
         @return: ListMultiAccountDeliveryChannelsResponse
@@ -2945,7 +3089,7 @@ class Client(OpenApiClient):
         request: resource_center_20221201_models.ListMultiAccountDeliveryChannelsRequest,
     ) -> resource_center_20221201_models.ListMultiAccountDeliveryChannelsResponse:
         """
-        @summary 列出多账号投递渠道
+        @summary Queries a list of multi-account delivery channels.
         
         @param request: ListMultiAccountDeliveryChannelsRequest
         @return: ListMultiAccountDeliveryChannelsResponse
@@ -4271,7 +4415,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_center_20221201_models.UpdateDeliveryChannelResponse:
         """
-        @summary 更新投递渠道
+        @summary Updates a single-account delivery channel.
+        
+        @description Resource delivery supports the delivery of resource configuration change events and scheduled resource snapshots.
+        Scheduled resource snapshots support the following delivery scenarios:
+        Standard delivery: Leave the `ResourceSnapshotDelivery.CustomExpression` parameter empty.
+        Custom delivery: Set the `ResourceSnapshotDelivery.CustomExpression` parameter to an appropriate value.
         
         @param request: UpdateDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4316,7 +4465,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_center_20221201_models.UpdateDeliveryChannelResponse:
         """
-        @summary 更新投递渠道
+        @summary Updates a single-account delivery channel.
+        
+        @description Resource delivery supports the delivery of resource configuration change events and scheduled resource snapshots.
+        Scheduled resource snapshots support the following delivery scenarios:
+        Standard delivery: Leave the `ResourceSnapshotDelivery.CustomExpression` parameter empty.
+        Custom delivery: Set the `ResourceSnapshotDelivery.CustomExpression` parameter to an appropriate value.
         
         @param request: UpdateDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4360,7 +4514,12 @@ class Client(OpenApiClient):
         request: resource_center_20221201_models.UpdateDeliveryChannelRequest,
     ) -> resource_center_20221201_models.UpdateDeliveryChannelResponse:
         """
-        @summary 更新投递渠道
+        @summary Updates a single-account delivery channel.
+        
+        @description Resource delivery supports the delivery of resource configuration change events and scheduled resource snapshots.
+        Scheduled resource snapshots support the following delivery scenarios:
+        Standard delivery: Leave the `ResourceSnapshotDelivery.CustomExpression` parameter empty.
+        Custom delivery: Set the `ResourceSnapshotDelivery.CustomExpression` parameter to an appropriate value.
         
         @param request: UpdateDeliveryChannelRequest
         @return: UpdateDeliveryChannelResponse
@@ -4373,7 +4532,12 @@ class Client(OpenApiClient):
         request: resource_center_20221201_models.UpdateDeliveryChannelRequest,
     ) -> resource_center_20221201_models.UpdateDeliveryChannelResponse:
         """
-        @summary 更新投递渠道
+        @summary Updates a single-account delivery channel.
+        
+        @description Resource delivery supports the delivery of resource configuration change events and scheduled resource snapshots.
+        Scheduled resource snapshots support the following delivery scenarios:
+        Standard delivery: Leave the `ResourceSnapshotDelivery.CustomExpression` parameter empty.
+        Custom delivery: Set the `ResourceSnapshotDelivery.CustomExpression` parameter to an appropriate value.
         
         @param request: UpdateDeliveryChannelRequest
         @return: UpdateDeliveryChannelResponse
@@ -4487,7 +4651,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_center_20221201_models.UpdateMultiAccountDeliveryChannelResponse:
         """
-        @summary 更新多账号投递渠道
+        @summary Updates a multi-account delivery channel.
+        
+        @description Resource delivery supports the delivery of resource configuration change events and scheduled resource snapshots.
+        Scheduled resource snapshots support the following delivery scenarios:
+        Standard delivery: Leave the `ResourceSnapshotDelivery.CustomExpression` parameter empty.
+        Custom delivery: Set the `ResourceSnapshotDelivery.CustomExpression` parameter to an appropriate value.
         
         @param request: UpdateMultiAccountDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4532,7 +4701,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_center_20221201_models.UpdateMultiAccountDeliveryChannelResponse:
         """
-        @summary 更新多账号投递渠道
+        @summary Updates a multi-account delivery channel.
+        
+        @description Resource delivery supports the delivery of resource configuration change events and scheduled resource snapshots.
+        Scheduled resource snapshots support the following delivery scenarios:
+        Standard delivery: Leave the `ResourceSnapshotDelivery.CustomExpression` parameter empty.
+        Custom delivery: Set the `ResourceSnapshotDelivery.CustomExpression` parameter to an appropriate value.
         
         @param request: UpdateMultiAccountDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4576,7 +4750,12 @@ class Client(OpenApiClient):
         request: resource_center_20221201_models.UpdateMultiAccountDeliveryChannelRequest,
     ) -> resource_center_20221201_models.UpdateMultiAccountDeliveryChannelResponse:
         """
-        @summary 更新多账号投递渠道
+        @summary Updates a multi-account delivery channel.
+        
+        @description Resource delivery supports the delivery of resource configuration change events and scheduled resource snapshots.
+        Scheduled resource snapshots support the following delivery scenarios:
+        Standard delivery: Leave the `ResourceSnapshotDelivery.CustomExpression` parameter empty.
+        Custom delivery: Set the `ResourceSnapshotDelivery.CustomExpression` parameter to an appropriate value.
         
         @param request: UpdateMultiAccountDeliveryChannelRequest
         @return: UpdateMultiAccountDeliveryChannelResponse
@@ -4589,7 +4768,12 @@ class Client(OpenApiClient):
         request: resource_center_20221201_models.UpdateMultiAccountDeliveryChannelRequest,
     ) -> resource_center_20221201_models.UpdateMultiAccountDeliveryChannelResponse:
         """
-        @summary 更新多账号投递渠道
+        @summary Updates a multi-account delivery channel.
+        
+        @description Resource delivery supports the delivery of resource configuration change events and scheduled resource snapshots.
+        Scheduled resource snapshots support the following delivery scenarios:
+        Standard delivery: Leave the `ResourceSnapshotDelivery.CustomExpression` parameter empty.
+        Custom delivery: Set the `ResourceSnapshotDelivery.CustomExpression` parameter to an appropriate value.
         
         @param request: UpdateMultiAccountDeliveryChannelRequest
         @return: UpdateMultiAccountDeliveryChannelResponse

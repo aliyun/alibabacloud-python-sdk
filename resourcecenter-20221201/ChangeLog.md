@@ -1,3 +1,7 @@
+2025-07-04 Version: 1.5.0
+- Support API GetMultiAccountResourceCounts.
+
+
 2025-06-20 Version: 1.4.0
 - Support API CreateDeliveryChannel.
 - Support API CreateMultiAccountDeliveryChannel.
