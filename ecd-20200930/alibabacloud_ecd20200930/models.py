@@ -14535,12 +14535,18 @@ class CreateTemplateRequestSiteConfigList(TeaModel):
 class CreateTemplateRequest(TeaModel):
     def __init__(
         self,
+        auto_pay: bool = None,
+        auto_renew: bool = None,
         biz_type: str = None,
+        charge_type: str = None,
         data_disk_list: List[CreateTemplateRequestDataDiskList] = None,
         default_language: str = None,
         description: str = None,
         image_id: str = None,
+        period: int = None,
+        period_unit: str = None,
         policy_group_id: str = None,
+        post_paid_after_used_up: bool = None,
         product_type: str = None,
         region_config_list: List[CreateTemplateRequestRegionConfigList] = None,
         resource_group_id: str = None,
@@ -14550,13 +14556,20 @@ class CreateTemplateRequest(TeaModel):
         system_disk_size: int = None,
         template_name: str = None,
         timer_group_id: str = None,
+        user_duration: int = None,
     ):
+        self.auto_pay = auto_pay
+        self.auto_renew = auto_renew
         self.biz_type = biz_type
+        self.charge_type = charge_type
         self.data_disk_list = data_disk_list
         self.default_language = default_language
         self.description = description
         self.image_id = image_id
+        self.period = period
+        self.period_unit = period_unit
         self.policy_group_id = policy_group_id
+        self.post_paid_after_used_up = post_paid_after_used_up
         self.product_type = product_type
         self.region_config_list = region_config_list
         self.resource_group_id = resource_group_id
@@ -14567,6 +14580,7 @@ class CreateTemplateRequest(TeaModel):
         # This parameter is required.
         self.template_name = template_name
         self.timer_group_id = timer_group_id
+        self.user_duration = user_duration
 
     def validate(self):
         if self.data_disk_list:
@@ -14592,8 +14606,14 @@ class CreateTemplateRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
         if self.biz_type is not None:
             result['BizType'] = self.biz_type
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
         result['DataDiskList'] = []
         if self.data_disk_list is not None:
             for k in self.data_disk_list:
@@ -14604,8 +14624,14 @@ class CreateTemplateRequest(TeaModel):
             result['Description'] = self.description
         if self.image_id is not None:
             result['ImageId'] = self.image_id
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_unit is not None:
+            result['PeriodUnit'] = self.period_unit
         if self.policy_group_id is not None:
             result['PolicyGroupId'] = self.policy_group_id
+        if self.post_paid_after_used_up is not None:
+            result['PostPaidAfterUsedUp'] = self.post_paid_after_used_up
         if self.product_type is not None:
             result['ProductType'] = self.product_type
         result['RegionConfigList'] = []
@@ -14630,12 +14656,20 @@ class CreateTemplateRequest(TeaModel):
             result['TemplateName'] = self.template_name
         if self.timer_group_id is not None:
             result['TimerGroupId'] = self.timer_group_id
+        if self.user_duration is not None:
+            result['UserDuration'] = self.user_duration
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
         if m.get('BizType') is not None:
             self.biz_type = m.get('BizType')
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
         self.data_disk_list = []
         if m.get('DataDiskList') is not None:
             for k in m.get('DataDiskList'):
@@ -14647,8 +14681,14 @@ class CreateTemplateRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodUnit') is not None:
+            self.period_unit = m.get('PeriodUnit')
         if m.get('PolicyGroupId') is not None:
             self.policy_group_id = m.get('PolicyGroupId')
+        if m.get('PostPaidAfterUsedUp') is not None:
+            self.post_paid_after_used_up = m.get('PostPaidAfterUsedUp')
         if m.get('ProductType') is not None:
             self.product_type = m.get('ProductType')
         self.region_config_list = []
@@ -14676,6 +14716,8 @@ class CreateTemplateRequest(TeaModel):
             self.template_name = m.get('TemplateName')
         if m.get('TimerGroupId') is not None:
             self.timer_group_id = m.get('TimerGroupId')
+        if m.get('UserDuration') is not None:
+            self.user_duration = m.get('UserDuration')
         return self
 
 
@@ -38848,6 +38890,9 @@ class DescribeTemplatesResponseBodyDataSiteConfigList(TeaModel):
 class DescribeTemplatesResponseBodyData(TeaModel):
     def __init__(
         self,
+        auto_pay: bool = None,
+        auto_renew: bool = None,
+        charge_type: str = None,
         data_disk_list: List[DescribeTemplatesResponseBodyDataDataDiskList] = None,
         default_language: str = None,
         description: str = None,
@@ -38855,7 +38900,10 @@ class DescribeTemplatesResponseBodyData(TeaModel):
         gmt_modified: str = None,
         image_id: str = None,
         image_type: str = None,
+        period: int = None,
+        period_unit: str = None,
         policy_group_id: str = None,
+        post_paid_after_used_up: bool = None,
         product_type: str = None,
         region_config_list: List[DescribeTemplatesResponseBodyDataRegionConfigList] = None,
         request_id: str = None,
@@ -38868,7 +38916,11 @@ class DescribeTemplatesResponseBodyData(TeaModel):
         template_name: str = None,
         template_type: str = None,
         timer_group_id: str = None,
+        user_duration: str = None,
     ):
+        self.auto_pay = auto_pay
+        self.auto_renew = auto_renew
+        self.charge_type = charge_type
         self.data_disk_list = data_disk_list
         self.default_language = default_language
         self.description = description
@@ -38876,7 +38928,10 @@ class DescribeTemplatesResponseBodyData(TeaModel):
         self.gmt_modified = gmt_modified
         self.image_id = image_id
         self.image_type = image_type
+        self.period = period
+        self.period_unit = period_unit
         self.policy_group_id = policy_group_id
+        self.post_paid_after_used_up = post_paid_after_used_up
         self.product_type = product_type
         self.region_config_list = region_config_list
         self.request_id = request_id
@@ -38889,6 +38944,7 @@ class DescribeTemplatesResponseBodyData(TeaModel):
         self.template_name = template_name
         self.template_type = template_type
         self.timer_group_id = timer_group_id
+        self.user_duration = user_duration
 
     def validate(self):
         if self.data_disk_list:
@@ -38914,6 +38970,12 @@ class DescribeTemplatesResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
         result['DataDiskList'] = []
         if self.data_disk_list is not None:
             for k in self.data_disk_list:
@@ -38930,8 +38992,14 @@ class DescribeTemplatesResponseBodyData(TeaModel):
             result['ImageId'] = self.image_id
         if self.image_type is not None:
             result['ImageType'] = self.image_type
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_unit is not None:
+            result['PeriodUnit'] = self.period_unit
         if self.policy_group_id is not None:
             result['PolicyGroupId'] = self.policy_group_id
+        if self.post_paid_after_used_up is not None:
+            result['PostPaidAfterUsedUp'] = self.post_paid_after_used_up
         if self.product_type is not None:
             result['ProductType'] = self.product_type
         result['RegionConfigList'] = []
@@ -38962,10 +39030,18 @@ class DescribeTemplatesResponseBodyData(TeaModel):
             result['TemplateType'] = self.template_type
         if self.timer_group_id is not None:
             result['TimerGroupId'] = self.timer_group_id
+        if self.user_duration is not None:
+            result['UserDuration'] = self.user_duration
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
         self.data_disk_list = []
         if m.get('DataDiskList') is not None:
             for k in m.get('DataDiskList'):
@@ -38983,8 +39059,14 @@ class DescribeTemplatesResponseBodyData(TeaModel):
             self.image_id = m.get('ImageId')
         if m.get('ImageType') is not None:
             self.image_type = m.get('ImageType')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodUnit') is not None:
+            self.period_unit = m.get('PeriodUnit')
         if m.get('PolicyGroupId') is not None:
             self.policy_group_id = m.get('PolicyGroupId')
+        if m.get('PostPaidAfterUsedUp') is not None:
+            self.post_paid_after_used_up = m.get('PostPaidAfterUsedUp')
         if m.get('ProductType') is not None:
             self.product_type = m.get('ProductType')
         self.region_config_list = []
@@ -39018,6 +39100,8 @@ class DescribeTemplatesResponseBodyData(TeaModel):
             self.template_type = m.get('TemplateType')
         if m.get('TimerGroupId') is not None:
             self.timer_group_id = m.get('TimerGroupId')
+        if m.get('UserDuration') is not None:
+            self.user_duration = m.get('UserDuration')
         return self
 
 
@@ -56923,10 +57007,16 @@ class ModifyTemplateRequestSiteConfigList(TeaModel):
 class ModifyTemplateRequest(TeaModel):
     def __init__(
         self,
+        auto_pay: bool = None,
+        auto_renew: bool = None,
+        charge_type: str = None,
         default_language: str = None,
         description: str = None,
         image_id: str = None,
+        period: int = None,
+        period_unit: str = None,
         policy_group_id: str = None,
+        post_paid_after_used_up: bool = None,
         region_config_list: List[ModifyTemplateRequestRegionConfigList] = None,
         resource_group_id: str = None,
         resource_tag_list: List[ModifyTemplateRequestResourceTagList] = None,
@@ -56936,11 +57026,18 @@ class ModifyTemplateRequest(TeaModel):
         template_id: str = None,
         template_name: str = None,
         timer_group_id: str = None,
+        user_duration: int = None,
     ):
+        self.auto_pay = auto_pay
+        self.auto_renew = auto_renew
+        self.charge_type = charge_type
         self.default_language = default_language
         self.description = description
         self.image_id = image_id
+        self.period = period
+        self.period_unit = period_unit
         self.policy_group_id = policy_group_id
+        self.post_paid_after_used_up = post_paid_after_used_up
         self.region_config_list = region_config_list
         self.resource_group_id = resource_group_id
         self.resource_tag_list = resource_tag_list
@@ -56951,6 +57048,7 @@ class ModifyTemplateRequest(TeaModel):
         self.template_id = template_id
         self.template_name = template_name
         self.timer_group_id = timer_group_id
+        self.user_duration = user_duration
 
     def validate(self):
         if self.region_config_list:
@@ -56972,14 +57070,26 @@ class ModifyTemplateRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
         if self.default_language is not None:
             result['DefaultLanguage'] = self.default_language
         if self.description is not None:
             result['Description'] = self.description
         if self.image_id is not None:
             result['ImageId'] = self.image_id
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_unit is not None:
+            result['PeriodUnit'] = self.period_unit
         if self.policy_group_id is not None:
             result['PolicyGroupId'] = self.policy_group_id
+        if self.post_paid_after_used_up is not None:
+            result['PostPaidAfterUsedUp'] = self.post_paid_after_used_up
         result['RegionConfigList'] = []
         if self.region_config_list is not None:
             for k in self.region_config_list:
@@ -57004,18 +57114,32 @@ class ModifyTemplateRequest(TeaModel):
             result['TemplateName'] = self.template_name
         if self.timer_group_id is not None:
             result['TimerGroupId'] = self.timer_group_id
+        if self.user_duration is not None:
+            result['UserDuration'] = self.user_duration
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
         if m.get('DefaultLanguage') is not None:
             self.default_language = m.get('DefaultLanguage')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodUnit') is not None:
+            self.period_unit = m.get('PeriodUnit')
         if m.get('PolicyGroupId') is not None:
             self.policy_group_id = m.get('PolicyGroupId')
+        if m.get('PostPaidAfterUsedUp') is not None:
+            self.post_paid_after_used_up = m.get('PostPaidAfterUsedUp')
         self.region_config_list = []
         if m.get('RegionConfigList') is not None:
             for k in m.get('RegionConfigList'):
@@ -57043,6 +57167,8 @@ class ModifyTemplateRequest(TeaModel):
             self.template_name = m.get('TemplateName')
         if m.get('TimerGroupId') is not None:
             self.timer_group_id = m.get('TimerGroupId')
+        if m.get('UserDuration') is not None:
+            self.user_duration = m.get('UserDuration')
         return self
 
 
@@ -60462,6 +60588,7 @@ class RunCommandRequest(TeaModel):
     def __init__(
         self,
         command_content: str = None,
+        command_role: str = None,
         content_encoding: str = None,
         desktop_id: List[str] = None,
         end_user_id: str = None,
@@ -60476,6 +60603,7 @@ class RunCommandRequest(TeaModel):
         # 
         # This parameter is required.
         self.command_content = command_content
+        self.command_role = command_role
         # The encoding mode of the command content. Valid values:
         # 
         # *   PlainText: The command content is not encoded.
@@ -60516,6 +60644,8 @@ class RunCommandRequest(TeaModel):
         result = dict()
         if self.command_content is not None:
             result['CommandContent'] = self.command_content
+        if self.command_role is not None:
+            result['CommandRole'] = self.command_role
         if self.content_encoding is not None:
             result['ContentEncoding'] = self.content_encoding
         if self.desktop_id is not None:
@@ -60534,6 +60664,8 @@ class RunCommandRequest(TeaModel):
         m = m or dict()
         if m.get('CommandContent') is not None:
             self.command_content = m.get('CommandContent')
+        if m.get('CommandRole') is not None:
+            self.command_role = m.get('CommandRole')
         if m.get('ContentEncoding') is not None:
             self.content_encoding = m.get('ContentEncoding')
         if m.get('DesktopId') is not None:

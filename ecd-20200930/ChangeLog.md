@@ -1,3 +1,28 @@
+2025-07-04 Version: 4.8.6
+- Update API CreateTemplate: add request parameters AutoPay.
+- Update API CreateTemplate: add request parameters AutoRenew.
+- Update API CreateTemplate: add request parameters ChargeType.
+- Update API CreateTemplate: add request parameters Period.
+- Update API CreateTemplate: add request parameters PeriodUnit.
+- Update API CreateTemplate: add request parameters PostPaidAfterUsedUp.
+- Update API CreateTemplate: add request parameters UserDuration.
+- Update API DescribeTemplates: add response parameters Body.Data.$.AutoPay.
+- Update API DescribeTemplates: add response parameters Body.Data.$.AutoRenew.
+- Update API DescribeTemplates: add response parameters Body.Data.$.ChargeType.
+- Update API DescribeTemplates: add response parameters Body.Data.$.Period.
+- Update API DescribeTemplates: add response parameters Body.Data.$.PeriodUnit.
+- Update API DescribeTemplates: add response parameters Body.Data.$.PostPaidAfterUsedUp.
+- Update API DescribeTemplates: add response parameters Body.Data.$.UserDuration.
+- Update API ModifyTemplate: add request parameters AutoPay.
+- Update API ModifyTemplate: add request parameters AutoRenew.
+- Update API ModifyTemplate: add request parameters ChargeType.
+- Update API ModifyTemplate: add request parameters Period.
+- Update API ModifyTemplate: add request parameters PeriodUnit.
+- Update API ModifyTemplate: add request parameters PostPaidAfterUsedUp.
+- Update API ModifyTemplate: add request parameters UserDuration.
+- Update API RunCommand: add request parameters CommandRole.
+
+
 2025-06-30 Version: 4.8.4
 - Update API AddUserToDesktopGroup: add request parameters SimpleUserGroupId.
 - Update API CreateDesktopGroup: add request parameters SimpleUserGroupId.

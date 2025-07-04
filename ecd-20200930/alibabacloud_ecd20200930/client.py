@@ -6968,8 +6968,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            body['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            body['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.biz_type):
             body['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.charge_type):
+            body['ChargeType'] = request.charge_type
         body_flat = {}
         if not UtilClient.is_unset(request.data_disk_list):
             body_flat['DataDiskList'] = request.data_disk_list
@@ -6979,8 +6985,14 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.image_id):
             body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.period):
+            body['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            body['PeriodUnit'] = request.period_unit
         if not UtilClient.is_unset(request.policy_group_id):
             body['PolicyGroupId'] = request.policy_group_id
+        if not UtilClient.is_unset(request.post_paid_after_used_up):
+            body['PostPaidAfterUsedUp'] = request.post_paid_after_used_up
         if not UtilClient.is_unset(request.product_type):
             body['ProductType'] = request.product_type
         if not UtilClient.is_unset(request.region_config_list):
@@ -6999,6 +7011,8 @@ class Client(OpenApiClient):
             body['TemplateName'] = request.template_name
         if not UtilClient.is_unset(request.timer_group_id):
             body['TimerGroupId'] = request.timer_group_id
+        if not UtilClient.is_unset(request.user_duration):
+            body['UserDuration'] = request.user_duration
         body = TeaCore.merge(body,
             OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
@@ -7034,8 +7048,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            body['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            body['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.biz_type):
             body['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.charge_type):
+            body['ChargeType'] = request.charge_type
         body_flat = {}
         if not UtilClient.is_unset(request.data_disk_list):
             body_flat['DataDiskList'] = request.data_disk_list
@@ -7045,8 +7065,14 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.image_id):
             body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.period):
+            body['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            body['PeriodUnit'] = request.period_unit
         if not UtilClient.is_unset(request.policy_group_id):
             body['PolicyGroupId'] = request.policy_group_id
+        if not UtilClient.is_unset(request.post_paid_after_used_up):
+            body['PostPaidAfterUsedUp'] = request.post_paid_after_used_up
         if not UtilClient.is_unset(request.product_type):
             body['ProductType'] = request.product_type
         if not UtilClient.is_unset(request.region_config_list):
@@ -7065,6 +7091,8 @@ class Client(OpenApiClient):
             body['TemplateName'] = request.template_name
         if not UtilClient.is_unset(request.timer_group_id):
             body['TimerGroupId'] = request.timer_group_id
+        if not UtilClient.is_unset(request.user_duration):
+            body['UserDuration'] = request.user_duration
         body = TeaCore.merge(body,
             OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
@@ -24817,18 +24845,27 @@ class Client(OpenApiClient):
         @return: ModifyTemplateResponse
         """
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.site_config_list):
-            query['SiteConfigList'] = request.site_config_list
         body = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            body['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            body['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.charge_type):
+            body['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.default_language):
             body['DefaultLanguage'] = request.default_language
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.image_id):
             body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.period):
+            body['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            body['PeriodUnit'] = request.period_unit
         if not UtilClient.is_unset(request.policy_group_id):
             body['PolicyGroupId'] = request.policy_group_id
+        if not UtilClient.is_unset(request.post_paid_after_used_up):
+            body['PostPaidAfterUsedUp'] = request.post_paid_after_used_up
         body_flat = {}
         if not UtilClient.is_unset(request.region_config_list):
             body_flat['RegionConfigList'] = request.region_config_list
@@ -24836,6 +24873,8 @@ class Client(OpenApiClient):
             body['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_tag_list):
             body_flat['ResourceTagList'] = request.resource_tag_list
+        if not UtilClient.is_unset(request.site_config_list):
+            body_flat['SiteConfigList'] = request.site_config_list
         if not UtilClient.is_unset(request.system_disk_performance_level):
             body['SystemDiskPerformanceLevel'] = request.system_disk_performance_level
         if not UtilClient.is_unset(request.system_disk_size):
@@ -24846,10 +24885,11 @@ class Client(OpenApiClient):
             body['TemplateName'] = request.template_name
         if not UtilClient.is_unset(request.timer_group_id):
             body['TimerGroupId'] = request.timer_group_id
+        if not UtilClient.is_unset(request.user_duration):
+            body['UserDuration'] = request.user_duration
         body = TeaCore.merge(body,
             OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -24881,18 +24921,27 @@ class Client(OpenApiClient):
         @return: ModifyTemplateResponse
         """
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.site_config_list):
-            query['SiteConfigList'] = request.site_config_list
         body = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            body['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            body['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.charge_type):
+            body['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.default_language):
             body['DefaultLanguage'] = request.default_language
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.image_id):
             body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.period):
+            body['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            body['PeriodUnit'] = request.period_unit
         if not UtilClient.is_unset(request.policy_group_id):
             body['PolicyGroupId'] = request.policy_group_id
+        if not UtilClient.is_unset(request.post_paid_after_used_up):
+            body['PostPaidAfterUsedUp'] = request.post_paid_after_used_up
         body_flat = {}
         if not UtilClient.is_unset(request.region_config_list):
             body_flat['RegionConfigList'] = request.region_config_list
@@ -24900,6 +24949,8 @@ class Client(OpenApiClient):
             body['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_tag_list):
             body_flat['ResourceTagList'] = request.resource_tag_list
+        if not UtilClient.is_unset(request.site_config_list):
+            body_flat['SiteConfigList'] = request.site_config_list
         if not UtilClient.is_unset(request.system_disk_performance_level):
             body['SystemDiskPerformanceLevel'] = request.system_disk_performance_level
         if not UtilClient.is_unset(request.system_disk_size):
@@ -24910,10 +24961,11 @@ class Client(OpenApiClient):
             body['TemplateName'] = request.template_name
         if not UtilClient.is_unset(request.timer_group_id):
             body['TimerGroupId'] = request.timer_group_id
+        if not UtilClient.is_unset(request.user_duration):
+            body['UserDuration'] = request.user_duration
         body = TeaCore.merge(body,
             OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -27100,6 +27152,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.command_content):
             query['CommandContent'] = request.command_content
+        if not UtilClient.is_unset(request.command_role):
+            query['CommandRole'] = request.command_role
         if not UtilClient.is_unset(request.content_encoding):
             query['ContentEncoding'] = request.content_encoding
         if not UtilClient.is_unset(request.desktop_id):
@@ -27149,6 +27203,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.command_content):
             query['CommandContent'] = request.command_content
+        if not UtilClient.is_unset(request.command_role):
+            query['CommandRole'] = request.command_role
         if not UtilClient.is_unset(request.content_encoding):
             query['ContentEncoding'] = request.content_encoding
         if not UtilClient.is_unset(request.desktop_id):
