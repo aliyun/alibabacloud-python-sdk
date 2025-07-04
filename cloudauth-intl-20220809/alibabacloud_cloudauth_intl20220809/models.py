@@ -4,6 +4,237 @@ from Tea.model import TeaModel
 from typing import Dict, List, BinaryIO
 
 
+class AddressVerifyIntlRequest(TeaModel):
+    def __init__(
+        self,
+        address_type: str = None,
+        default_city: str = None,
+        default_country: str = None,
+        default_district: str = None,
+        default_province: str = None,
+        latitude: str = None,
+        longitude: str = None,
+        mobile: str = None,
+        product_code: str = None,
+        text: str = None,
+        verify_type: str = None,
+    ):
+        # This parameter is required.
+        self.address_type = address_type
+        self.default_city = default_city
+        # This parameter is required.
+        self.default_country = default_country
+        self.default_district = default_district
+        self.default_province = default_province
+        self.latitude = latitude
+        self.longitude = longitude
+        # This parameter is required.
+        self.mobile = mobile
+        # This parameter is required.
+        self.product_code = product_code
+        self.text = text
+        # This parameter is required.
+        self.verify_type = verify_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_type is not None:
+            result['AddressType'] = self.address_type
+        if self.default_city is not None:
+            result['DefaultCity'] = self.default_city
+        if self.default_country is not None:
+            result['DefaultCountry'] = self.default_country
+        if self.default_district is not None:
+            result['DefaultDistrict'] = self.default_district
+        if self.default_province is not None:
+            result['DefaultProvince'] = self.default_province
+        if self.latitude is not None:
+            result['Latitude'] = self.latitude
+        if self.longitude is not None:
+            result['Longitude'] = self.longitude
+        if self.mobile is not None:
+            result['Mobile'] = self.mobile
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.verify_type is not None:
+            result['VerifyType'] = self.verify_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressType') is not None:
+            self.address_type = m.get('AddressType')
+        if m.get('DefaultCity') is not None:
+            self.default_city = m.get('DefaultCity')
+        if m.get('DefaultCountry') is not None:
+            self.default_country = m.get('DefaultCountry')
+        if m.get('DefaultDistrict') is not None:
+            self.default_district = m.get('DefaultDistrict')
+        if m.get('DefaultProvince') is not None:
+            self.default_province = m.get('DefaultProvince')
+        if m.get('Latitude') is not None:
+            self.latitude = m.get('Latitude')
+        if m.get('Longitude') is not None:
+            self.longitude = m.get('Longitude')
+        if m.get('Mobile') is not None:
+            self.mobile = m.get('Mobile')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('VerifyType') is not None:
+            self.verify_type = m.get('VerifyType')
+        return self
+
+
+class AddressVerifyIntlResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        address_info: str = None,
+        isp_name: str = None,
+        passed: str = None,
+        sub_code: str = None,
+        transaction_id: str = None,
+    ):
+        self.address_info = address_info
+        self.isp_name = isp_name
+        self.passed = passed
+        self.sub_code = sub_code
+        self.transaction_id = transaction_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_info is not None:
+            result['AddressInfo'] = self.address_info
+        if self.isp_name is not None:
+            result['IspName'] = self.isp_name
+        if self.passed is not None:
+            result['Passed'] = self.passed
+        if self.sub_code is not None:
+            result['SubCode'] = self.sub_code
+        if self.transaction_id is not None:
+            result['TransactionId'] = self.transaction_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressInfo') is not None:
+            self.address_info = m.get('AddressInfo')
+        if m.get('IspName') is not None:
+            self.isp_name = m.get('IspName')
+        if m.get('Passed') is not None:
+            self.passed = m.get('Passed')
+        if m.get('SubCode') is not None:
+            self.sub_code = m.get('SubCode')
+        if m.get('TransactionId') is not None:
+            self.transaction_id = m.get('TransactionId')
+        return self
+
+
+class AddressVerifyIntlResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result_object: AddressVerifyIntlResponseBodyResultObject = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            temp_model = AddressVerifyIntlResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
+        return self
+
+
+class AddressVerifyIntlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddressVerifyIntlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddressVerifyIntlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class BankMetaVerifyIntlRequest(TeaModel):
     def __init__(
         self,

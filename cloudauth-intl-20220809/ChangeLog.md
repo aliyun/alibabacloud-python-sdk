@@ -1,3 +1,7 @@
+2025-07-04 Version: 3.8.0
+- Support API AddressVerifyIntl.
+
+
 2025-06-26 Version: 3.7.2
 - Update API Initialize: add request parameters ChameleonFrameEnable.
 

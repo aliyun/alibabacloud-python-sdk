@@ -47,6 +47,142 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def address_verify_intl_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.AddressVerifyIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.AddressVerifyIntlResponse:
+        """
+        @summary 地址核验
+        
+        @param request: AddressVerifyIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddressVerifyIntlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.default_city):
+            query['DefaultCity'] = request.default_city
+        if not UtilClient.is_unset(request.default_country):
+            query['DefaultCountry'] = request.default_country
+        if not UtilClient.is_unset(request.default_district):
+            query['DefaultDistrict'] = request.default_district
+        if not UtilClient.is_unset(request.default_province):
+            query['DefaultProvince'] = request.default_province
+        if not UtilClient.is_unset(request.latitude):
+            query['Latitude'] = request.latitude
+        if not UtilClient.is_unset(request.longitude):
+            query['Longitude'] = request.longitude
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.text):
+            query['Text'] = request.text
+        if not UtilClient.is_unset(request.verify_type):
+            query['VerifyType'] = request.verify_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddressVerifyIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.AddressVerifyIntlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def address_verify_intl_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.AddressVerifyIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.AddressVerifyIntlResponse:
+        """
+        @summary 地址核验
+        
+        @param request: AddressVerifyIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddressVerifyIntlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.default_city):
+            query['DefaultCity'] = request.default_city
+        if not UtilClient.is_unset(request.default_country):
+            query['DefaultCountry'] = request.default_country
+        if not UtilClient.is_unset(request.default_district):
+            query['DefaultDistrict'] = request.default_district
+        if not UtilClient.is_unset(request.default_province):
+            query['DefaultProvince'] = request.default_province
+        if not UtilClient.is_unset(request.latitude):
+            query['Latitude'] = request.latitude
+        if not UtilClient.is_unset(request.longitude):
+            query['Longitude'] = request.longitude
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.text):
+            query['Text'] = request.text
+        if not UtilClient.is_unset(request.verify_type):
+            query['VerifyType'] = request.verify_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddressVerifyIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.AddressVerifyIntlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def address_verify_intl(
+        self,
+        request: cloudauth_intl_20220809_models.AddressVerifyIntlRequest,
+    ) -> cloudauth_intl_20220809_models.AddressVerifyIntlResponse:
+        """
+        @summary 地址核验
+        
+        @param request: AddressVerifyIntlRequest
+        @return: AddressVerifyIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.address_verify_intl_with_options(request, runtime)
+
+    async def address_verify_intl_async(
+        self,
+        request: cloudauth_intl_20220809_models.AddressVerifyIntlRequest,
+    ) -> cloudauth_intl_20220809_models.AddressVerifyIntlResponse:
+        """
+        @summary 地址核验
+        
+        @param request: AddressVerifyIntlRequest
+        @return: AddressVerifyIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.address_verify_intl_with_options_async(request, runtime)
+
     def bank_meta_verify_intl_with_options(
         self,
         request: cloudauth_intl_20220809_models.BankMetaVerifyIntlRequest,
