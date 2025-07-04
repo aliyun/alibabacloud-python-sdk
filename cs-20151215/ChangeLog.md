@@ -1,3 +1,8 @@
+2025-07-04 Version: 4.9.5
+- Update API CreateCluster: add request parameters body.extra_sans.
+- Update API CreateCluster: add request parameters body.rrsa_config.
+
+
 2025-06-10 Version: 4.9.4
 - Update API CreateCluster: add request parameters body.auto_mode.
 - Update API CreateClusterNodePool: add request parameters body.auto_mode.

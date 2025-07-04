@@ -1446,6 +1446,8 @@ class Client(OpenApiClient):
             body['encryption_provider_key'] = request.encryption_provider_key
         if not UtilClient.is_unset(request.endpoint_public_access):
             body['endpoint_public_access'] = request.endpoint_public_access
+        if not UtilClient.is_unset(request.extra_sans):
+            body['extra_sans'] = request.extra_sans
         if not UtilClient.is_unset(request.format_disk):
             body['format_disk'] = request.format_disk
         if not UtilClient.is_unset(request.image_id):
@@ -1534,6 +1536,8 @@ class Client(OpenApiClient):
             body['region_id'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             body['resource_group_id'] = request.resource_group_id
+        if not UtilClient.is_unset(request.rrsa_config):
+            body['rrsa_config'] = request.rrsa_config
         if not UtilClient.is_unset(request.runtime):
             body['runtime'] = request.runtime
         if not UtilClient.is_unset(request.security_group_id):
@@ -1690,6 +1694,8 @@ class Client(OpenApiClient):
             body['encryption_provider_key'] = request.encryption_provider_key
         if not UtilClient.is_unset(request.endpoint_public_access):
             body['endpoint_public_access'] = request.endpoint_public_access
+        if not UtilClient.is_unset(request.extra_sans):
+            body['extra_sans'] = request.extra_sans
         if not UtilClient.is_unset(request.format_disk):
             body['format_disk'] = request.format_disk
         if not UtilClient.is_unset(request.image_id):
@@ -1778,6 +1784,8 @@ class Client(OpenApiClient):
             body['region_id'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             body['resource_group_id'] = request.resource_group_id
+        if not UtilClient.is_unset(request.rrsa_config):
+            body['rrsa_config'] = request.rrsa_config
         if not UtilClient.is_unset(request.runtime):
             body['runtime'] = request.runtime
         if not UtilClient.is_unset(request.security_group_id):

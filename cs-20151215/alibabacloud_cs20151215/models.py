@@ -3606,6 +3606,33 @@ class CreateClusterRequestOperationPolicy(TeaModel):
         return self
 
 
+class CreateClusterRequestRrsaConfig(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+    ):
+        self.enabled = enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        return self
+
+
 class CreateClusterRequestWorkerDataDisks(TeaModel):
     def __init__(
         self,
@@ -3692,6 +3719,7 @@ class CreateClusterRequest(TeaModel):
         enable_rrsa: bool = None,
         encryption_provider_key: str = None,
         endpoint_public_access: bool = None,
+        extra_sans: List[str] = None,
         format_disk: bool = None,
         image_id: str = None,
         image_type: str = None,
@@ -3736,6 +3764,7 @@ class CreateClusterRequest(TeaModel):
         rds_instances: List[str] = None,
         region_id: str = None,
         resource_group_id: str = None,
+        rrsa_config: CreateClusterRequestRrsaConfig = None,
         runtime: Runtime = None,
         security_group_id: str = None,
         security_hardening_os: bool = None,
@@ -3919,6 +3948,7 @@ class CreateClusterRequest(TeaModel):
         # 
         # Default value: `false`.
         self.endpoint_public_access = endpoint_public_access
+        self.extra_sans = extra_sans
         # [**Deprecated**] When you configure a node pool, you cannot add existing nodes to the cluster. If you want to add existing nodes, you must first create a node pool and then call the [AttachInstancesToNodePool](https://help.aliyun.com/document_detail/2667920.html) operation.
         # 
         # Specifies whether to mount a data disk to a node that is created based on an existing ECS instance. Valid values:
@@ -4195,6 +4225,7 @@ class CreateClusterRequest(TeaModel):
         self.region_id = region_id
         # The ID of the resource group to which the cluster belongs. You can use resource groups to isolate clusters.
         self.resource_group_id = resource_group_id
+        self.rrsa_config = rrsa_config
         # The container runtime. The default container runtime is Docker. containerd and Sandboxed-Container are also supported.
         # 
         # For more information about how to select a proper container runtime, see [Comparison among Docker, containerd, and Sandboxed-Container](https://help.aliyun.com/document_detail/160313.html).
@@ -4397,6 +4428,8 @@ class CreateClusterRequest(TeaModel):
                     k.validate()
         if self.operation_policy:
             self.operation_policy.validate()
+        if self.rrsa_config:
+            self.rrsa_config.validate()
         if self.runtime:
             self.runtime.validate()
         if self.tags:
@@ -4470,6 +4503,8 @@ class CreateClusterRequest(TeaModel):
             result['encryption_provider_key'] = self.encryption_provider_key
         if self.endpoint_public_access is not None:
             result['endpoint_public_access'] = self.endpoint_public_access
+        if self.extra_sans is not None:
+            result['extra_sans'] = self.extra_sans
         if self.format_disk is not None:
             result['format_disk'] = self.format_disk
         if self.image_id is not None:
@@ -4560,6 +4595,8 @@ class CreateClusterRequest(TeaModel):
             result['region_id'] = self.region_id
         if self.resource_group_id is not None:
             result['resource_group_id'] = self.resource_group_id
+        if self.rrsa_config is not None:
+            result['rrsa_config'] = self.rrsa_config.to_map()
         if self.runtime is not None:
             result['runtime'] = self.runtime.to_map()
         if self.security_group_id is not None:
@@ -4688,6 +4725,8 @@ class CreateClusterRequest(TeaModel):
             self.encryption_provider_key = m.get('encryption_provider_key')
         if m.get('endpoint_public_access') is not None:
             self.endpoint_public_access = m.get('endpoint_public_access')
+        if m.get('extra_sans') is not None:
+            self.extra_sans = m.get('extra_sans')
         if m.get('format_disk') is not None:
             self.format_disk = m.get('format_disk')
         if m.get('image_id') is not None:
@@ -4781,6 +4820,9 @@ class CreateClusterRequest(TeaModel):
             self.region_id = m.get('region_id')
         if m.get('resource_group_id') is not None:
             self.resource_group_id = m.get('resource_group_id')
+        if m.get('rrsa_config') is not None:
+            temp_model = CreateClusterRequestRrsaConfig()
+            self.rrsa_config = temp_model.from_map(m['rrsa_config'])
         if m.get('runtime') is not None:
             temp_model = Runtime()
             self.runtime = temp_model.from_map(m['runtime'])
