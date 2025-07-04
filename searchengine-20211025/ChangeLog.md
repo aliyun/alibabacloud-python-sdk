@@ -1,3 +1,8 @@
+2025-07-04 Version: 5.2.1
+- Update API CreateIndex: add request parameters body.dataSourceInfo.scene.
+- Update API CreateTable: add request parameters body.scene.
+
+
 2025-04-23 Version: 5.2.0
 - Support API ModifySearcherReplica.
 - Update API GetInstance: add response parameters Body.result.zoneCount.

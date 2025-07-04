@@ -2235,6 +2235,7 @@ class CreateIndexRequestDataSourceInfo(TeaModel):
         process_parallel_num: int = None,
         process_partition_count: int = None,
         saro_config: CreateIndexRequestDataSourceInfoSaroConfig = None,
+        scene: str = None,
         type: str = None,
     ):
         # Specifies whether to enable automatic full indexing.
@@ -2253,6 +2254,7 @@ class CreateIndexRequestDataSourceInfo(TeaModel):
         self.process_partition_count = process_partition_count
         # The configurations of the SARO data source.
         self.saro_config = saro_config
+        self.scene = scene
         # The type of the data source. Valid values:
         # 
         # *   odps
@@ -2289,6 +2291,8 @@ class CreateIndexRequestDataSourceInfo(TeaModel):
             result['processPartitionCount'] = self.process_partition_count
         if self.saro_config is not None:
             result['saroConfig'] = self.saro_config.to_map()
+        if self.scene is not None:
+            result['scene'] = self.scene
         if self.type is not None:
             result['type'] = self.type
         return result
@@ -2313,6 +2317,8 @@ class CreateIndexRequestDataSourceInfo(TeaModel):
         if m.get('saroConfig') is not None:
             temp_model = CreateIndexRequestDataSourceInfoSaroConfig()
             self.saro_config = temp_model.from_map(m['saroConfig'])
+        if m.get('scene') is not None:
+            self.scene = m.get('scene')
         if m.get('type') is not None:
             self.type = m.get('type')
         return self
@@ -3885,6 +3891,7 @@ class CreateTableRequest(TeaModel):
         partition_count: int = None,
         primary_key: str = None,
         raw_schema: str = None,
+        scene: str = None,
         vector_index: List[CreateTableRequestVectorIndex] = None,
         dry_run: bool = None,
     ):
@@ -3904,6 +3911,7 @@ class CreateTableRequest(TeaModel):
         self.primary_key = primary_key
         # The instance schema. If this parameter is specified, the parameters about the index are not required.
         self.raw_schema = raw_schema
+        self.scene = scene
         # The index schema.
         self.vector_index = vector_index
         # Specifies whether to perform only a dry run, without performing the actual request. The system only checks the validity of the data source. Valid values:
@@ -3948,6 +3956,8 @@ class CreateTableRequest(TeaModel):
             result['primaryKey'] = self.primary_key
         if self.raw_schema is not None:
             result['rawSchema'] = self.raw_schema
+        if self.scene is not None:
+            result['scene'] = self.scene
         result['vectorIndex'] = []
         if self.vector_index is not None:
             for k in self.vector_index:
@@ -3978,6 +3988,8 @@ class CreateTableRequest(TeaModel):
             self.primary_key = m.get('primaryKey')
         if m.get('rawSchema') is not None:
             self.raw_schema = m.get('rawSchema')
+        if m.get('scene') is not None:
+            self.scene = m.get('scene')
         self.vector_index = []
         if m.get('vectorIndex') is not None:
             for k in m.get('vectorIndex'):

@@ -1823,6 +1823,8 @@ class Client(OpenApiClient):
             body['primaryKey'] = request.primary_key
         if not UtilClient.is_unset(request.raw_schema):
             body['rawSchema'] = request.raw_schema
+        if not UtilClient.is_unset(request.scene):
+            body['scene'] = request.scene
         if not UtilClient.is_unset(request.vector_index):
             body['vectorIndex'] = request.vector_index
         req = open_api_models.OpenApiRequest(
@@ -1882,6 +1884,8 @@ class Client(OpenApiClient):
             body['primaryKey'] = request.primary_key
         if not UtilClient.is_unset(request.raw_schema):
             body['rawSchema'] = request.raw_schema
+        if not UtilClient.is_unset(request.scene):
+            body['scene'] = request.scene
         if not UtilClient.is_unset(request.vector_index):
             body['vectorIndex'] = request.vector_index
         req = open_api_models.OpenApiRequest(
