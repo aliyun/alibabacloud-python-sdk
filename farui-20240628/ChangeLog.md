@@ -1,3 +1,9 @@
+2025-07-04 Version: 1.2.2
+- Update API RunLegalAdviceConsultation: add request parameters extra.
+- Update API RunLegalAdviceConsultation: add response parameters Body.contents.
+- Update API RunLegalAdviceConsultation: add response parameters Body.extra.
+
+
 2025-05-06 Version: 1.2.1
 - Update API RunSearchCaseFullText: add request parameters referLevel.
 - Update API RunSearchCaseFullText: add response parameters Body.data.caseLevel.

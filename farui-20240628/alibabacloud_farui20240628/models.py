@@ -1268,6 +1268,39 @@ class RunLegalAdviceConsultationRequestAssistant(TeaModel):
         return self
 
 
+class RunLegalAdviceConsultationRequestExtra(TeaModel):
+    def __init__(
+        self,
+        deep_think: bool = None,
+        online_search: bool = None,
+    ):
+        self.deep_think = deep_think
+        self.online_search = online_search
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deep_think is not None:
+            result['deepThink'] = self.deep_think
+        if self.online_search is not None:
+            result['onlineSearch'] = self.online_search
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('deepThink') is not None:
+            self.deep_think = m.get('deepThink')
+        if m.get('onlineSearch') is not None:
+            self.online_search = m.get('onlineSearch')
+        return self
+
+
 class RunLegalAdviceConsultationRequestThreadMessages(TeaModel):
     def __init__(
         self,
@@ -1341,17 +1374,21 @@ class RunLegalAdviceConsultationRequest(TeaModel):
         self,
         app_id: str = None,
         assistant: RunLegalAdviceConsultationRequestAssistant = None,
+        extra: RunLegalAdviceConsultationRequestExtra = None,
         stream: bool = None,
         thread: RunLegalAdviceConsultationRequestThread = None,
     ):
         self.app_id = app_id
         self.assistant = assistant
+        self.extra = extra
         self.stream = stream
         self.thread = thread
 
     def validate(self):
         if self.assistant:
             self.assistant.validate()
+        if self.extra:
+            self.extra.validate()
         if self.thread:
             self.thread.validate()
 
@@ -1365,6 +1402,8 @@ class RunLegalAdviceConsultationRequest(TeaModel):
             result['appId'] = self.app_id
         if self.assistant is not None:
             result['assistant'] = self.assistant.to_map()
+        if self.extra is not None:
+            result['extra'] = self.extra.to_map()
         if self.stream is not None:
             result['stream'] = self.stream
         if self.thread is not None:
@@ -1378,6 +1417,9 @@ class RunLegalAdviceConsultationRequest(TeaModel):
         if m.get('assistant') is not None:
             temp_model = RunLegalAdviceConsultationRequestAssistant()
             self.assistant = temp_model.from_map(m['assistant'])
+        if m.get('extra') is not None:
+            temp_model = RunLegalAdviceConsultationRequestExtra()
+            self.extra = temp_model.from_map(m['extra'])
         if m.get('stream') is not None:
             self.stream = m.get('stream')
         if m.get('thread') is not None:
@@ -1391,11 +1433,13 @@ class RunLegalAdviceConsultationShrinkRequest(TeaModel):
         self,
         app_id: str = None,
         assistant_shrink: str = None,
+        extra_shrink: str = None,
         stream: bool = None,
         thread_shrink: str = None,
     ):
         self.app_id = app_id
         self.assistant_shrink = assistant_shrink
+        self.extra_shrink = extra_shrink
         self.stream = stream
         self.thread_shrink = thread_shrink
 
@@ -1412,6 +1456,8 @@ class RunLegalAdviceConsultationShrinkRequest(TeaModel):
             result['appId'] = self.app_id
         if self.assistant_shrink is not None:
             result['assistant'] = self.assistant_shrink
+        if self.extra_shrink is not None:
+            result['extra'] = self.extra_shrink
         if self.stream is not None:
             result['stream'] = self.stream
         if self.thread_shrink is not None:
@@ -1424,6 +1470,8 @@ class RunLegalAdviceConsultationShrinkRequest(TeaModel):
             self.app_id = m.get('appId')
         if m.get('assistant') is not None:
             self.assistant_shrink = m.get('assistant')
+        if m.get('extra') is not None:
+            self.extra_shrink = m.get('extra')
         if m.get('stream') is not None:
             self.stream = m.get('stream')
         if m.get('thread') is not None:
@@ -1481,6 +1529,8 @@ class RunLegalAdviceConsultationResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
         usage: RunLegalAdviceConsultationResponseBodyUsage = None,
+        contents: str = None,
+        extra: str = None,
         http_status_code: str = None,
     ):
         self.code = code
@@ -1491,6 +1541,8 @@ class RunLegalAdviceConsultationResponseBody(TeaModel):
         self.status = status
         self.success = success
         self.usage = usage
+        self.contents = contents
+        self.extra = extra
         self.http_status_code = http_status_code
 
     def validate(self):
@@ -1519,6 +1571,10 @@ class RunLegalAdviceConsultationResponseBody(TeaModel):
             result['Success'] = self.success
         if self.usage is not None:
             result['Usage'] = self.usage.to_map()
+        if self.contents is not None:
+            result['contents'] = self.contents
+        if self.extra is not None:
+            result['extra'] = self.extra
         if self.http_status_code is not None:
             result['httpStatusCode'] = self.http_status_code
         return result
@@ -1542,6 +1598,10 @@ class RunLegalAdviceConsultationResponseBody(TeaModel):
         if m.get('Usage') is not None:
             temp_model = RunLegalAdviceConsultationResponseBodyUsage()
             self.usage = temp_model.from_map(m['Usage'])
+        if m.get('contents') is not None:
+            self.contents = m.get('contents')
+        if m.get('extra') is not None:
+            self.extra = m.get('extra')
         if m.get('httpStatusCode') is not None:
             self.http_status_code = m.get('httpStatusCode')
         return self
