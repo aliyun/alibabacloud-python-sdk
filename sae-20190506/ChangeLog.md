@@ -1,3 +1,13 @@
+2025-07-04 Version: 2.5.4
+- Update API CreateApplication: add request parameters EnablePrometheus.
+- Update API CreateApplication: add request parameters IsStateful.
+- Update API DeployApplication: add request parameters EnablePrometheus.
+- Update API DescribeApplicationConfig: add response parameters Body.Data.EnablePrometheus.
+- Update API DescribeApplicationConfig: add response parameters Body.Data.IsStateful.
+- Update API GetApplication: add response parameters Body.Application.IsStateful.
+- Update API ListApplications: add request parameters IsStateful.
+
+
 2025-06-27 Version: 2.5.3
 - Update API DescribeApplicationScalingRules: add response parameters Body.Data.ApplicationScalingRules.$.Metric.MetricSource.
 - Update API DescribeApplicationScalingRules: add response parameters Body.Data.ApplicationScalingRules.$.Metric.PrometheusMetrics.

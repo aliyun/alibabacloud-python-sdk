@@ -11334,10 +11334,7 @@ class BatchStartApplicationsRequest(TeaModel):
         namespace_id: str = None,
         version: str = None,
     ):
-        # The returned message.
-        # 
-        # *   **success** is returned when the request succeeds.
-        # *   An error code is returned when the request fails.
+        # The IDs of the applications that you want to start. Separate multiple IDs with commas (,).
         self.app_ids = app_ids
         # The ID of the request.
         # 
@@ -11541,7 +11538,9 @@ class BatchStopApplicationsRequest(TeaModel):
         namespace_id: str = None,
         version: str = None,
     ):
-        # The ID of the request.
+        # The ID of the application that you want to stop.
+        # 
+        # > If you want to stop multiple applications at the same time, separate the IDs with commas (,).
         self.app_ids = app_ids
         # ebf491f0-c1a5-45e2-b2c4-710dbe2a\\*\\*\\*\\*,ebf491f0-c1a5-45e2-b2c4-71025e2a\\*\\*\\*\\*\
         # 
@@ -11975,11 +11974,19 @@ class BindSlbRequest(TeaModel):
         self.app_id = app_id
         # [{"port":80,"targetPort":8080,"protocol":"TCP"}]
         self.internet = internet
+        # The billing method of an Internet-facing SLB instance. The following billing methods are supported:
+        # 
+        # *   **PayBySpec**: Pay-by-specification.
+        # *   **PayByCLCU**: Pay-by-CLCU.
         self.internet_slb_charge_type = internet_slb_charge_type
         # lb-bp1tg0k6d9nqaw7l1\\*\\*\\*\\*\
         self.internet_slb_id = internet_slb_id
         # [{"port":80,"targetPort":8080,"protocol":"TCP"}]
         self.intranet = intranet
+        # The billing method of an Internal-facing SLB instance. The following billing methods are supported:
+        # 
+        # *   **PayBySpec**: Pay-by-specification.
+        # *   **PayByCLCU**: Pay-by-CLCU.
         self.intranet_slb_charge_type = intranet_slb_charge_type
         # lb-bp1tg0k6d9nqaw7l1\\*\\*\\*\\*\
         self.intranet_slb_id = intranet_slb_id
@@ -12395,12 +12402,14 @@ class CreateApplicationRequest(TeaModel):
         enable_cpu_burst: bool = None,
         enable_ebpf: str = None,
         enable_new_arms: bool = None,
+        enable_prometheus: bool = None,
         enable_sidecar_resource_isolated: bool = None,
         envs: str = None,
         gpu_config: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
         init_containers_config: List[InitContainerConfig] = None,
+        is_stateful: bool = None,
         jar_start_args: str = None,
         jar_start_options: str = None,
         jdk: str = None,
@@ -12457,15 +12466,22 @@ class CreateApplicationRequest(TeaModel):
         self.acr_instance_id = acr_instance_id
         # This is a test description.
         self.app_description = app_description
-        # test
+        # The name of the application. The name can contain digits, letters, and hyphens (-). The name must start with a letter and cannot end with a hyphen (-). It cannot exceed 36 characters in length.
         # 
         # This parameter is required.
         self.app_name = app_name
+        # Select micro_service, which is the application.
         self.app_source = app_source
         # true
         self.associate_eip = associate_eip
-        # true
+        # Specifies whether to automatically configure the network environment. Valid values:
+        # 
+        # *   **true**: SAE automatically configures the network environment when you create the application. If you set this parameter to true, the values of the **NamespaceId**, **VpcId**, **vSwitchId**, and **SecurityGroupId** parameters are ignored.
+        # *   **false**: SAE configures the network environment based on your settings when you create the application.
+        # 
+        # >  If you select **true**, other **NamespaceId** will be ignored.
         self.auto_config = auto_config
+        # The ID of the basic application.
         self.base_app_id = base_app_id
         # sleep
         self.command = command
@@ -12481,20 +12497,45 @@ class CreateApplicationRequest(TeaModel):
         # true
         self.deploy = deploy
         self.disk_size = disk_size
+        # . NET Framework version number:
+        # 
+        # *   .NET 3.1
+        # *   .NET 5.0
+        # *   .NET 6.0
+        # *   .NET 7.0
+        # *   .NET 8.0
         self.dotnet = dotnet
         # 3.5.3
         self.edas_container_version = edas_container_version
         self.enable_cpu_burst = enable_cpu_burst
         self.enable_ebpf = enable_ebpf
+        # Indicates whether to enable the new ARMS feature:
+        # 
+        # *   true: enables this parameter.
+        # *   false: disables this parameter.
         self.enable_new_arms = enable_new_arms
+        self.enable_prometheus = enable_prometheus
         self.enable_sidecar_resource_isolated = enable_sidecar_resource_isolated
-        # [{"name":"envtmp","value":"0"}]
+        # The environment variables. You can configure custom environment variables or reference a ConfigMap. Before you can reference a ConfigMap, you must create a ConfigMap. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Valid values:
+        # 
+        # *   Custom configuration
+        # 
+        #     *   **name**: the name of the environment variable.
+        #     *   **value**: the value of the environment variable. The priority of the custom configuration is higher than valueFrom.
+        # 
+        # *   Reference a ConfigMap (valueFrom)
+        # 
+        #     *   **name**: the name of the environment variable. You can reference one or all keys. To reference all keys, specify `sae-sys-configmap-all-<ConfigMap name>`. Example: `sae-sys-configmap-all-test1`.
+        #     *   **valueFrom**: the reference of the environment variable. Valid value: `configMapRef`.
+        #     *   **configMapId**: the ID of the ConfigMap.
+        #     *   **key**: the key. If you want to reference all key values, you do not need to configure this parameter.
         self.envs = envs
         self.gpu_config = gpu_config
         self.image_pull_secrets = image_pull_secrets
         # registry.cn-hangzhou.aliyuncs.com/sae_test/ali_sae_test:0.0.1
         self.image_url = image_url
         self.init_containers_config = init_containers_config
+        self.is_stateful = is_stateful
         # custom-args
         self.jar_start_args = jar_start_args
         # \\-Xms4G -Xmx4G
@@ -12507,6 +12548,7 @@ class CreateApplicationRequest(TeaModel):
         # 1024
         self.memory = memory
         self.micro_registration = micro_registration
+        # The Registry configurations.
         self.micro_registration_config = micro_registration_config
         self.microservice_engine_config = microservice_engine_config
         # [{mountPath: "/tmp", nasPath: "/"}]
@@ -12556,10 +12598,15 @@ class CreateApplicationRequest(TeaModel):
         # This parameter is required.
         self.replicas = replicas
         self.resource_type = resource_type
+        # The SAE version. Supported versions:
+        # 
+        # *   **v1**\
+        # *   **v2**\
         self.sae_version = sae_version
         self.secret_mount_desc = secret_mount_desc
         # sg-wz969ngg2e49q5i4\\*\\*\\*\\*\
         self.security_group_id = security_group_id
+        # The canary tag configured for the application.
         self.service_tags = service_tags
         self.sidecar_containers_config = sidecar_containers_config
         # [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]
@@ -12638,6 +12685,8 @@ class CreateApplicationRequest(TeaModel):
             result['EnableEbpf'] = self.enable_ebpf
         if self.enable_new_arms is not None:
             result['EnableNewArms'] = self.enable_new_arms
+        if self.enable_prometheus is not None:
+            result['EnablePrometheus'] = self.enable_prometheus
         if self.enable_sidecar_resource_isolated is not None:
             result['EnableSidecarResourceIsolated'] = self.enable_sidecar_resource_isolated
         if self.envs is not None:
@@ -12652,6 +12701,8 @@ class CreateApplicationRequest(TeaModel):
         if self.init_containers_config is not None:
             for k in self.init_containers_config:
                 result['InitContainersConfig'].append(k.to_map() if k else None)
+        if self.is_stateful is not None:
+            result['IsStateful'] = self.is_stateful
         if self.jar_start_args is not None:
             result['JarStartArgs'] = self.jar_start_args
         if self.jar_start_options is not None:
@@ -12798,6 +12849,8 @@ class CreateApplicationRequest(TeaModel):
             self.enable_ebpf = m.get('EnableEbpf')
         if m.get('EnableNewArms') is not None:
             self.enable_new_arms = m.get('EnableNewArms')
+        if m.get('EnablePrometheus') is not None:
+            self.enable_prometheus = m.get('EnablePrometheus')
         if m.get('EnableSidecarResourceIsolated') is not None:
             self.enable_sidecar_resource_isolated = m.get('EnableSidecarResourceIsolated')
         if m.get('Envs') is not None:
@@ -12813,6 +12866,8 @@ class CreateApplicationRequest(TeaModel):
             for k in m.get('InitContainersConfig'):
                 temp_model = InitContainerConfig()
                 self.init_containers_config.append(temp_model.from_map(k))
+        if m.get('IsStateful') is not None:
+            self.is_stateful = m.get('IsStateful')
         if m.get('JarStartArgs') is not None:
             self.jar_start_args = m.get('JarStartArgs')
         if m.get('JarStartOptions') is not None:
@@ -12941,12 +12996,14 @@ class CreateApplicationShrinkRequest(TeaModel):
         enable_cpu_burst: bool = None,
         enable_ebpf: str = None,
         enable_new_arms: bool = None,
+        enable_prometheus: bool = None,
         enable_sidecar_resource_isolated: bool = None,
         envs: str = None,
         gpu_config: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
         init_containers_config_shrink: str = None,
+        is_stateful: bool = None,
         jar_start_args: str = None,
         jar_start_options: str = None,
         jdk: str = None,
@@ -13003,15 +13060,22 @@ class CreateApplicationShrinkRequest(TeaModel):
         self.acr_instance_id = acr_instance_id
         # This is a test description.
         self.app_description = app_description
-        # test
+        # The name of the application. The name can contain digits, letters, and hyphens (-). The name must start with a letter and cannot end with a hyphen (-). It cannot exceed 36 characters in length.
         # 
         # This parameter is required.
         self.app_name = app_name
+        # Select micro_service, which is the application.
         self.app_source = app_source
         # true
         self.associate_eip = associate_eip
-        # true
+        # Specifies whether to automatically configure the network environment. Valid values:
+        # 
+        # *   **true**: SAE automatically configures the network environment when you create the application. If you set this parameter to true, the values of the **NamespaceId**, **VpcId**, **vSwitchId**, and **SecurityGroupId** parameters are ignored.
+        # *   **false**: SAE configures the network environment based on your settings when you create the application.
+        # 
+        # >  If you select **true**, other **NamespaceId** will be ignored.
         self.auto_config = auto_config
+        # The ID of the basic application.
         self.base_app_id = base_app_id
         # sleep
         self.command = command
@@ -13027,20 +13091,45 @@ class CreateApplicationShrinkRequest(TeaModel):
         # true
         self.deploy = deploy
         self.disk_size = disk_size
+        # . NET Framework version number:
+        # 
+        # *   .NET 3.1
+        # *   .NET 5.0
+        # *   .NET 6.0
+        # *   .NET 7.0
+        # *   .NET 8.0
         self.dotnet = dotnet
         # 3.5.3
         self.edas_container_version = edas_container_version
         self.enable_cpu_burst = enable_cpu_burst
         self.enable_ebpf = enable_ebpf
+        # Indicates whether to enable the new ARMS feature:
+        # 
+        # *   true: enables this parameter.
+        # *   false: disables this parameter.
         self.enable_new_arms = enable_new_arms
+        self.enable_prometheus = enable_prometheus
         self.enable_sidecar_resource_isolated = enable_sidecar_resource_isolated
-        # [{"name":"envtmp","value":"0"}]
+        # The environment variables. You can configure custom environment variables or reference a ConfigMap. Before you can reference a ConfigMap, you must create a ConfigMap. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Valid values:
+        # 
+        # *   Custom configuration
+        # 
+        #     *   **name**: the name of the environment variable.
+        #     *   **value**: the value of the environment variable. The priority of the custom configuration is higher than valueFrom.
+        # 
+        # *   Reference a ConfigMap (valueFrom)
+        # 
+        #     *   **name**: the name of the environment variable. You can reference one or all keys. To reference all keys, specify `sae-sys-configmap-all-<ConfigMap name>`. Example: `sae-sys-configmap-all-test1`.
+        #     *   **valueFrom**: the reference of the environment variable. Valid value: `configMapRef`.
+        #     *   **configMapId**: the ID of the ConfigMap.
+        #     *   **key**: the key. If you want to reference all key values, you do not need to configure this parameter.
         self.envs = envs
         self.gpu_config = gpu_config
         self.image_pull_secrets = image_pull_secrets
         # registry.cn-hangzhou.aliyuncs.com/sae_test/ali_sae_test:0.0.1
         self.image_url = image_url
         self.init_containers_config_shrink = init_containers_config_shrink
+        self.is_stateful = is_stateful
         # custom-args
         self.jar_start_args = jar_start_args
         # \\-Xms4G -Xmx4G
@@ -13053,6 +13142,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         # 1024
         self.memory = memory
         self.micro_registration = micro_registration
+        # The Registry configurations.
         self.micro_registration_config = micro_registration_config
         self.microservice_engine_config = microservice_engine_config
         # [{mountPath: "/tmp", nasPath: "/"}]
@@ -13102,10 +13192,15 @@ class CreateApplicationShrinkRequest(TeaModel):
         # This parameter is required.
         self.replicas = replicas
         self.resource_type = resource_type
+        # The SAE version. Supported versions:
+        # 
+        # *   **v1**\
+        # *   **v2**\
         self.sae_version = sae_version
         self.secret_mount_desc = secret_mount_desc
         # sg-wz969ngg2e49q5i4\\*\\*\\*\\*\
         self.security_group_id = security_group_id
+        # The canary tag configured for the application.
         self.service_tags = service_tags
         self.sidecar_containers_config_shrink = sidecar_containers_config_shrink
         # [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]
@@ -13177,6 +13272,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             result['EnableEbpf'] = self.enable_ebpf
         if self.enable_new_arms is not None:
             result['EnableNewArms'] = self.enable_new_arms
+        if self.enable_prometheus is not None:
+            result['EnablePrometheus'] = self.enable_prometheus
         if self.enable_sidecar_resource_isolated is not None:
             result['EnableSidecarResourceIsolated'] = self.enable_sidecar_resource_isolated
         if self.envs is not None:
@@ -13189,6 +13286,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             result['ImageUrl'] = self.image_url
         if self.init_containers_config_shrink is not None:
             result['InitContainersConfig'] = self.init_containers_config_shrink
+        if self.is_stateful is not None:
+            result['IsStateful'] = self.is_stateful
         if self.jar_start_args is not None:
             result['JarStartArgs'] = self.jar_start_args
         if self.jar_start_options is not None:
@@ -13333,6 +13432,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             self.enable_ebpf = m.get('EnableEbpf')
         if m.get('EnableNewArms') is not None:
             self.enable_new_arms = m.get('EnableNewArms')
+        if m.get('EnablePrometheus') is not None:
+            self.enable_prometheus = m.get('EnablePrometheus')
         if m.get('EnableSidecarResourceIsolated') is not None:
             self.enable_sidecar_resource_isolated = m.get('EnableSidecarResourceIsolated')
         if m.get('Envs') is not None:
@@ -13345,6 +13446,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             self.image_url = m.get('ImageUrl')
         if m.get('InitContainersConfig') is not None:
             self.init_containers_config_shrink = m.get('InitContainersConfig')
+        if m.get('IsStateful') is not None:
+            self.is_stateful = m.get('IsStateful')
         if m.get('JarStartArgs') is not None:
             self.jar_start_args = m.get('JarStartArgs')
         if m.get('JarStartOptions') is not None:
@@ -16560,6 +16663,12 @@ class CreateSecretRequestSecretData(TeaModel):
         self,
         secret_data: str = None,
     ):
+        # The information about the key-value pairs of the Secret. This parameter is required. The following formats are supported:
+        # 
+        # {"Data":"{"k1":"v1", "k2":"v2"}"}
+        # 
+        # k specifies a key and v specifies a value.
+        # 
         # This parameter is required.
         self.secret_data = secret_data
 
@@ -16591,8 +16700,12 @@ class CreateSecretRequest(TeaModel):
         secret_name: str = None,
         secret_type: str = None,
     ):
+        # The ID of the namespace where the Secret resides. If the namespace is the default namespace, you need to only enter the region ID, such as `cn-beijing`.
+        # 
         # This parameter is required.
         self.namespace_id = namespace_id
+        # The Secret data.
+        # 
         # This parameter is required.
         self.secret_data = secret_data
         # This parameter is required.
@@ -16642,8 +16755,12 @@ class CreateSecretShrinkRequest(TeaModel):
         secret_name: str = None,
         secret_type: str = None,
     ):
+        # The ID of the namespace where the Secret resides. If the namespace is the default namespace, you need to only enter the region ID, such as `cn-beijing`.
+        # 
         # This parameter is required.
         self.namespace_id = namespace_id
+        # The Secret data.
+        # 
         # This parameter is required.
         self.secret_data_shrink = secret_data_shrink
         # This parameter is required.
@@ -17214,10 +17331,28 @@ class DeleteApplicationScalingRuleResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: The request was successful.
+        # *   **3xx**: The request was redirected.
+        # *   **4xx**: The request failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The error code. Valid values:
+        # 
+        # *   If the request was successful, **ErrorCode** is not returned.
+        # *   If the request failed, **ErrorCode** is returned. For more information, see **Error codes** section of this topic.
         self.error_code = error_code
+        # The message returned. Valid values:
+        # 
+        # *   If the request was successful, **success** is returned.
+        # *   If the request failed, an error code is returned.
         self.message = message
         self.request_id = request_id
+        # Indicates whether the auto scaling policy was deleted. Valid values:
+        # 
+        # *   **true**: The policy was deleted.
+        # *   **false**: The policy failed to be deleted.
         self.success = success
         self.trace_id = trace_id
 
@@ -19051,6 +19186,7 @@ class DeployApplicationRequest(TeaModel):
         enable_cpu_burst: bool = None,
         enable_grey_tag_route: bool = None,
         enable_new_arms: bool = None,
+        enable_prometheus: bool = None,
         enable_sidecar_resource_isolated: bool = None,
         envs: str = None,
         gpu_config: str = None,
@@ -19153,18 +19289,40 @@ class DeployApplicationRequest(TeaModel):
         # 
         # *   **mountPath**: the mount path in the container.
         self.config_map_mount_desc = config_map_mount_desc
+        # The CPU specifications that are required for each instance. Unit: millicores. This parameter cannot be set to 0. Valid values:
+        # 
+        # *   **500**\
+        # *   **1000**\
+        # *   **2000**\
+        # *   **4000**\
+        # *   **8000**\
+        # *   **12000**\
+        # *   **16000**\
+        # *   **32000**\
         self.cpu = cpu
         # The custom mappings between hostnames and IP addresses in the container. Take note of the following rules:
         # 
         # *   **hostName**: the domain name or hostname.
         # *   **ip**: the IP address.
         self.custom_host_alias = custom_host_alias
+        # Custom image type. To it to empty string to use pre-built image.
+        # 
+        # - internet: Public network image
+        # 
+        # - intranet: Private network image
         self.custom_image_network_type = custom_image_network_type
         # This parameter takes effect only for applications that are in the Stopped state. If you call the **DeployApplication** operation to manage a running application, the application is immediately redeployed.
         # 
         # *   **true** (default): specifies that the system immediately deploys the application, enables new configurations, and pulls application instances.
         # *   **false**: specifies that the system only enables the new configurations.
         self.deploy = deploy
+        # The version of .NET
+        # 
+        # - .NET 3.1
+        # - .NET 5.0
+        # - .NET 6.0
+        # - .NET 7.0
+        # - .NET 8.0
         self.dotnet = dotnet
         # The version of the container, such as Ali-Tomcat, in which an application developed based on High-speed Service Framework (HSF) is deployed.
         self.edas_container_version = edas_container_version
@@ -19173,13 +19331,29 @@ class DeployApplicationRequest(TeaModel):
         # *   **true**: Access to AHAS is enabled.
         # *   **false**: Access to AHAS is disabled.
         self.enable_ahas = enable_ahas
+        # Enable CPU Burst.
+        # 
+        # true: enable
+        # 
+        # false: disable
         self.enable_cpu_burst = enable_cpu_burst
         # Indicates whether canary release rules are enabled. Canary release rules apply only to applications in Spring Cloud and Dubbo frameworks. Take note of the following rules:
         # 
         # *   **true**: The canary release rules are enabled.
         # *   **false**: The canary release rules are disabled.
         self.enable_grey_tag_route = enable_grey_tag_route
+        # Enable new ARMS features.
+        # 
+        # - true: enable
+        # 
+        # - false: disable
         self.enable_new_arms = enable_new_arms
+        self.enable_prometheus = enable_prometheus
+        # Enable Sidecar resource isolation.
+        # 
+        # true: enable
+        # 
+        # false: disable
         self.enable_sidecar_resource_isolated = enable_sidecar_resource_isolated
         # The environment variables. You can configure custom environment variables or reference a ConfigMap. If you want to reference a ConfigMap, you must first create a ConfigMap. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Take note of the following rules:
         # 
@@ -19194,12 +19368,20 @@ class DeployApplicationRequest(TeaModel):
         #     *   **valueFrom**: the reference of the environment variable. Set the value to `configMapRef`.
         #     *   **configMapId**: the ConfigMap ID.
         #     *   **key**: the key. If you want to reference all keys, do not configure this parameter.
+        # 
+        # *   Reference secret dictionary
+        # 
+        #     *   **name**: the name of the environment variable. You can reference one or all keys. If you want to reference all keys, specify `sae-sys-secret-all-<Secret dictionary name>`. Example: `sae-sys-secret-all-test1`.
+        #     *   **valueFrom**: the reference of the environment variable. Set the value to `secretRef`.
+        #     *   **secretId**: the secret dictionary ID.
+        #     *   **key**: the key. If you want to reference all keys, do not configure this parameter.
         self.envs = envs
         self.gpu_config = gpu_config
         # The ID of the corresponding Secret.
         self.image_pull_secrets = image_pull_secrets
         # The URL of the image. This parameter is returned only if the **PackageType** parameter is set to **Image**.
         self.image_url = image_url
+        # Initialize container configuration.
         self.init_containers_config = init_containers_config
         # The arguments in the JAR package. The arguments are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
         self.jar_start_args = jar_start_args
@@ -19242,6 +19424,18 @@ class DeployApplicationRequest(TeaModel):
         # *   **periodSeconds**: the interval at which health checks are performed. Default value: 30. Unit: seconds.
         # *   **timeoutSeconds**: the timeout period of the health check. Default value: 1. Unit: seconds. If you set this parameter to 0 or leave this parameter empty, the timeout period is automatically set to 1 second.
         self.liveness = liveness
+        # The memory size that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
+        # 
+        # *   This parameter is set to **1024** if the Cpu parameter is set to 500 or 1000.
+        # *   This parameter is set to **2048** if the Cpu parameter is set to 500, 1000, or 2000.
+        # *   This parameter is set to **4096** if the Cpu parameter is set to 1000, 2000, or 4000.
+        # *   This parameter is set to **8192** if the Cpu parameter is set to 2000, 4000, or 8,000.
+        # *   This parameter is set to **12288** if the Cpu parameter is set to 12000.
+        # *   This parameter is set to **16384** if the Cpu parameter is set to 4000, 8000, or 16000.
+        # *   This parameter is set to **24576** if the Cpu parameter is set to 12000.
+        # *   This parameter is set to **32768** if the Cpu parameter is set to 16000.
+        # *   This parameter is set to **65536** if the Cpu parameter is set to 8000, 16000, or 32000.
+        # *   This parameter is set to **131072** if the Cpu parameter is set to 32000.
         self.memory = memory
         # The Nacos registry. Valid values:
         # 
@@ -19249,7 +19443,37 @@ class DeployApplicationRequest(TeaModel):
         # *   **1**: self-managed Nacos registry
         # *   **2** : MSE Nacos registry
         self.micro_registration = micro_registration
+        # Select the edition of Nacos.
+        # 
+        # - 0: SAE built-in Nacos. Unable to get the configuration of SAE built-in Nacos.
+        # 
+        # - 1: Self-built Nacos from users.
+        # 
+        # - 2: MSE enterprise Nacos.
         self.micro_registration_config = micro_registration_config
+        # Configure Microservices Governance
+        # 
+        # Whether to enable microservices governance (enable):
+        # - true: Enable
+        # - false: Disable
+        # 
+        # Configure lossless online/offline deployment (mseLosslessRule):
+        # 
+        # delayTime: Delay duration (unit: seconds)
+        # 
+        # enable: Whether to enable lossless deployment
+        # 
+        # - true: Enable
+        # 
+        # - false: Disable
+        # 
+        # notice: Whether to enable notifications
+        # 
+        # - true: Enable
+        # 
+        # - false: Disable
+        # 
+        # warmupTime: Small-traffic warm-up duration (unit: seconds)
         self.microservice_engine_config = microservice_engine_config
         # The percentage of the minimum number of available instances. Take note of the following rules:
         # 
@@ -19279,6 +19503,13 @@ class DeployApplicationRequest(TeaModel):
         self.nas_configs = nas_configs
         # The ID of the File Storage NAS file system. After the application is created, you may want to call other operations to manage the application. If you do not want to change the NAS configurations in these subsequent operations, you can omit the **NasId** parameter in the requests. If you want to unmount the NAS file system, you must set the **NasId** values in the subsequent requests to an empty string ("").
         self.nas_id = nas_id
+        # SAE edition.
+        # 
+        # - lite: the lightweight edition.
+        # 
+        # - std: the standard edition.
+        # 
+        # - pro: the professional edition.
         self.new_sae_version = new_sae_version
         # The name of the RAM role used to authenticate the user identity.
         # 
@@ -19301,11 +19532,32 @@ class DeployApplicationRequest(TeaModel):
         #     *   **true**: The container path only has read permission on the OSS directory.
         #     *   **false**: The application has read and write permissions.
         self.oss_mount_descs = oss_mount_descs
+        # The package type.
+        # 
+        # When using Java, FatJar, War and Image are supported.
+        # When using Python, PythonZip and Image are supported.
+        # When using PHP, the followings are supported:
+        # - PhpZip
+        # - IMAGE_PHP_5_4
+        # - IMAGE_PHP_5_4_ALPINE
+        # - IMAGE_PHP_5_5
+        # - IMAGE_PHP_5_5_ALPINE
+        # - IMAGE_PHP_5_6
+        # - IMAGE_PHP_5_6_ALPINE
+        # - IMAGE_PHP_7_0
+        # - IMAGE_PHP_7_0_ALPINE
+        # - IMAGE_PHP_7_1
+        # - IMAGE_PHP_7_1_ALPINE
+        # - IMAGE_PHP_7_2
+        # - IMAGE_PHP_7_2_ALPINE
+        # - IMAGE_PHP_7_3
+        # - IMAGE_PHP_7_3_ALPINE
         self.package_type = package_type
         # The address of the deployment package. This parameter is required when the **PackageType** parameter is set to **FatJar**, **War**, or **PythonZip**.
         self.package_url = package_url
         # The version of the deployment package. This parameter is required when the **PackageType** parameter is set to **FatJar**, **War**, or **PythonZip**.
         self.package_version = package_version
+        # The dependent PHP version of PHP package. Image is not supported.
         self.php = php
         # The path on which the PHP configuration file for application monitoring is mounted. Make sure that the PHP server loads the configuration file. SAE automatically generates the corresponding configuration file. No manual operations are required.
         self.php_arms_config_location = php_arms_config_location
@@ -19332,9 +19584,20 @@ class DeployApplicationRequest(TeaModel):
         # 
         # > You can use only one method to perform the health check.
         self.readiness = readiness
+        # The number of instances.
         self.replicas = replicas
+        # Secret Mount Description
+        # Use the secret dictionaries created in the Namespace Secret Dictionary page to inject information into containers. Parameter descriptions are as follows:
+        # 
+        # - secretId: Secret instance ID. Obtain via the ListSecrets interface.
+        # 
+        # - key: Key-value pair. Note: Set the parameter sae-sys-secret-all to mount all keys.
+        # 
+        # - mountPath: Mount path.
         self.secret_mount_desc = secret_mount_desc
+        # Security group ID.
         self.security_group_id = security_group_id
+        # The gray-release tag of the application.
         self.service_tags = service_tags
         # The configuration of the container.
         self.sidecar_containers_config = sidecar_containers_config
@@ -19355,7 +19618,30 @@ class DeployApplicationRequest(TeaModel):
         # 
         # > A Log Service project that is automatically created by SAE when you create an application is deleted when the application is deleted. Therefore, when you create an application, you cannot select a Log Service project that is automatically created by SAE for log collection.
         self.sls_configs = sls_configs
+        # Check Failure: Indicates that the application failed to start. The system will report the exception and automatically restart it.
+        # 
+        # Note: 
+        # 
+        # Supports exec, httpGet, and tcpSocket methods. For specific examples, see Liveness Parameters.
+        # Only one method can be selected for health checks.
         self.startup_probe = startup_probe
+        # Configure K8s Service-based Service Registration/Discovery and Full-Chain Grayscale Capabilities
+        # 
+        # - enable: Whether to enable full-link grayscale based on K8s Service (set to "true" to enable; set to "false" to disable).
+        # 
+        # - namespaceId: Namespace ID
+        # 
+        # - portAndProtocol: Listener port and protocol. Format: {"Port:Protocol Type":"Container Port"}
+        # - portProtocols: Define service ports and protocols
+        # port: Port
+        # protocol: Protocol
+        # targetPort: Container port
+        # 
+        # - pvtzDiscoveryName: Service discovery name
+        # 
+        # - serviceId: Service ID
+        # 
+        # - serviceName: Service name
         self.swimlane_pvtz_discovery_svc = swimlane_pvtz_discovery_svc
         # The timeout period for a graceful shutdown. Default value: 30. Unit: seconds. Valid values: 1 to 300.
         self.termination_grace_period_seconds = termination_grace_period_seconds
@@ -19387,6 +19673,7 @@ class DeployApplicationRequest(TeaModel):
         # 
         # *   **grayUpdate**: the number of release batches in the phased release after a canary release. This parameter is returned only if the **type** parameter is set to **GrayBatchUpdate**.
         self.update_strategy = update_strategy
+        # The ID of the vSwitch, where the EIP of the application instances resides. The vSwitch must reside in the VPC above.
         self.v_switch_id = v_switch_id
         # The startup command of the WAR package. For information about how to configure the startup command, see [Configure startup commands](https://help.aliyun.com/document_detail/96677.html).
         self.war_start_options = war_start_options
@@ -19454,6 +19741,8 @@ class DeployApplicationRequest(TeaModel):
             result['EnableGreyTagRoute'] = self.enable_grey_tag_route
         if self.enable_new_arms is not None:
             result['EnableNewArms'] = self.enable_new_arms
+        if self.enable_prometheus is not None:
+            result['EnablePrometheus'] = self.enable_prometheus
         if self.enable_sidecar_resource_isolated is not None:
             result['EnableSidecarResourceIsolated'] = self.enable_sidecar_resource_isolated
         if self.envs is not None:
@@ -19610,6 +19899,8 @@ class DeployApplicationRequest(TeaModel):
             self.enable_grey_tag_route = m.get('EnableGreyTagRoute')
         if m.get('EnableNewArms') is not None:
             self.enable_new_arms = m.get('EnableNewArms')
+        if m.get('EnablePrometheus') is not None:
+            self.enable_prometheus = m.get('EnablePrometheus')
         if m.get('EnableSidecarResourceIsolated') is not None:
             self.enable_sidecar_resource_isolated = m.get('EnableSidecarResourceIsolated')
         if m.get('Envs') is not None:
@@ -19750,6 +20041,7 @@ class DeployApplicationShrinkRequest(TeaModel):
         enable_cpu_burst: bool = None,
         enable_grey_tag_route: bool = None,
         enable_new_arms: bool = None,
+        enable_prometheus: bool = None,
         enable_sidecar_resource_isolated: bool = None,
         envs: str = None,
         gpu_config: str = None,
@@ -19852,18 +20144,40 @@ class DeployApplicationShrinkRequest(TeaModel):
         # 
         # *   **mountPath**: the mount path in the container.
         self.config_map_mount_desc = config_map_mount_desc
+        # The CPU specifications that are required for each instance. Unit: millicores. This parameter cannot be set to 0. Valid values:
+        # 
+        # *   **500**\
+        # *   **1000**\
+        # *   **2000**\
+        # *   **4000**\
+        # *   **8000**\
+        # *   **12000**\
+        # *   **16000**\
+        # *   **32000**\
         self.cpu = cpu
         # The custom mappings between hostnames and IP addresses in the container. Take note of the following rules:
         # 
         # *   **hostName**: the domain name or hostname.
         # *   **ip**: the IP address.
         self.custom_host_alias = custom_host_alias
+        # Custom image type. To it to empty string to use pre-built image.
+        # 
+        # - internet: Public network image
+        # 
+        # - intranet: Private network image
         self.custom_image_network_type = custom_image_network_type
         # This parameter takes effect only for applications that are in the Stopped state. If you call the **DeployApplication** operation to manage a running application, the application is immediately redeployed.
         # 
         # *   **true** (default): specifies that the system immediately deploys the application, enables new configurations, and pulls application instances.
         # *   **false**: specifies that the system only enables the new configurations.
         self.deploy = deploy
+        # The version of .NET
+        # 
+        # - .NET 3.1
+        # - .NET 5.0
+        # - .NET 6.0
+        # - .NET 7.0
+        # - .NET 8.0
         self.dotnet = dotnet
         # The version of the container, such as Ali-Tomcat, in which an application developed based on High-speed Service Framework (HSF) is deployed.
         self.edas_container_version = edas_container_version
@@ -19872,13 +20186,29 @@ class DeployApplicationShrinkRequest(TeaModel):
         # *   **true**: Access to AHAS is enabled.
         # *   **false**: Access to AHAS is disabled.
         self.enable_ahas = enable_ahas
+        # Enable CPU Burst.
+        # 
+        # true: enable
+        # 
+        # false: disable
         self.enable_cpu_burst = enable_cpu_burst
         # Indicates whether canary release rules are enabled. Canary release rules apply only to applications in Spring Cloud and Dubbo frameworks. Take note of the following rules:
         # 
         # *   **true**: The canary release rules are enabled.
         # *   **false**: The canary release rules are disabled.
         self.enable_grey_tag_route = enable_grey_tag_route
+        # Enable new ARMS features.
+        # 
+        # - true: enable
+        # 
+        # - false: disable
         self.enable_new_arms = enable_new_arms
+        self.enable_prometheus = enable_prometheus
+        # Enable Sidecar resource isolation.
+        # 
+        # true: enable
+        # 
+        # false: disable
         self.enable_sidecar_resource_isolated = enable_sidecar_resource_isolated
         # The environment variables. You can configure custom environment variables or reference a ConfigMap. If you want to reference a ConfigMap, you must first create a ConfigMap. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Take note of the following rules:
         # 
@@ -19893,12 +20223,20 @@ class DeployApplicationShrinkRequest(TeaModel):
         #     *   **valueFrom**: the reference of the environment variable. Set the value to `configMapRef`.
         #     *   **configMapId**: the ConfigMap ID.
         #     *   **key**: the key. If you want to reference all keys, do not configure this parameter.
+        # 
+        # *   Reference secret dictionary
+        # 
+        #     *   **name**: the name of the environment variable. You can reference one or all keys. If you want to reference all keys, specify `sae-sys-secret-all-<Secret dictionary name>`. Example: `sae-sys-secret-all-test1`.
+        #     *   **valueFrom**: the reference of the environment variable. Set the value to `secretRef`.
+        #     *   **secretId**: the secret dictionary ID.
+        #     *   **key**: the key. If you want to reference all keys, do not configure this parameter.
         self.envs = envs
         self.gpu_config = gpu_config
         # The ID of the corresponding Secret.
         self.image_pull_secrets = image_pull_secrets
         # The URL of the image. This parameter is returned only if the **PackageType** parameter is set to **Image**.
         self.image_url = image_url
+        # Initialize container configuration.
         self.init_containers_config_shrink = init_containers_config_shrink
         # The arguments in the JAR package. The arguments are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
         self.jar_start_args = jar_start_args
@@ -19941,6 +20279,18 @@ class DeployApplicationShrinkRequest(TeaModel):
         # *   **periodSeconds**: the interval at which health checks are performed. Default value: 30. Unit: seconds.
         # *   **timeoutSeconds**: the timeout period of the health check. Default value: 1. Unit: seconds. If you set this parameter to 0 or leave this parameter empty, the timeout period is automatically set to 1 second.
         self.liveness = liveness
+        # The memory size that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
+        # 
+        # *   This parameter is set to **1024** if the Cpu parameter is set to 500 or 1000.
+        # *   This parameter is set to **2048** if the Cpu parameter is set to 500, 1000, or 2000.
+        # *   This parameter is set to **4096** if the Cpu parameter is set to 1000, 2000, or 4000.
+        # *   This parameter is set to **8192** if the Cpu parameter is set to 2000, 4000, or 8,000.
+        # *   This parameter is set to **12288** if the Cpu parameter is set to 12000.
+        # *   This parameter is set to **16384** if the Cpu parameter is set to 4000, 8000, or 16000.
+        # *   This parameter is set to **24576** if the Cpu parameter is set to 12000.
+        # *   This parameter is set to **32768** if the Cpu parameter is set to 16000.
+        # *   This parameter is set to **65536** if the Cpu parameter is set to 8000, 16000, or 32000.
+        # *   This parameter is set to **131072** if the Cpu parameter is set to 32000.
         self.memory = memory
         # The Nacos registry. Valid values:
         # 
@@ -19948,7 +20298,37 @@ class DeployApplicationShrinkRequest(TeaModel):
         # *   **1**: self-managed Nacos registry
         # *   **2** : MSE Nacos registry
         self.micro_registration = micro_registration
+        # Select the edition of Nacos.
+        # 
+        # - 0: SAE built-in Nacos. Unable to get the configuration of SAE built-in Nacos.
+        # 
+        # - 1: Self-built Nacos from users.
+        # 
+        # - 2: MSE enterprise Nacos.
         self.micro_registration_config = micro_registration_config
+        # Configure Microservices Governance
+        # 
+        # Whether to enable microservices governance (enable):
+        # - true: Enable
+        # - false: Disable
+        # 
+        # Configure lossless online/offline deployment (mseLosslessRule):
+        # 
+        # delayTime: Delay duration (unit: seconds)
+        # 
+        # enable: Whether to enable lossless deployment
+        # 
+        # - true: Enable
+        # 
+        # - false: Disable
+        # 
+        # notice: Whether to enable notifications
+        # 
+        # - true: Enable
+        # 
+        # - false: Disable
+        # 
+        # warmupTime: Small-traffic warm-up duration (unit: seconds)
         self.microservice_engine_config = microservice_engine_config
         # The percentage of the minimum number of available instances. Take note of the following rules:
         # 
@@ -19978,6 +20358,13 @@ class DeployApplicationShrinkRequest(TeaModel):
         self.nas_configs = nas_configs
         # The ID of the File Storage NAS file system. After the application is created, you may want to call other operations to manage the application. If you do not want to change the NAS configurations in these subsequent operations, you can omit the **NasId** parameter in the requests. If you want to unmount the NAS file system, you must set the **NasId** values in the subsequent requests to an empty string ("").
         self.nas_id = nas_id
+        # SAE edition.
+        # 
+        # - lite: the lightweight edition.
+        # 
+        # - std: the standard edition.
+        # 
+        # - pro: the professional edition.
         self.new_sae_version = new_sae_version
         # The name of the RAM role used to authenticate the user identity.
         # 
@@ -20000,11 +20387,32 @@ class DeployApplicationShrinkRequest(TeaModel):
         #     *   **true**: The container path only has read permission on the OSS directory.
         #     *   **false**: The application has read and write permissions.
         self.oss_mount_descs = oss_mount_descs
+        # The package type.
+        # 
+        # When using Java, FatJar, War and Image are supported.
+        # When using Python, PythonZip and Image are supported.
+        # When using PHP, the followings are supported:
+        # - PhpZip
+        # - IMAGE_PHP_5_4
+        # - IMAGE_PHP_5_4_ALPINE
+        # - IMAGE_PHP_5_5
+        # - IMAGE_PHP_5_5_ALPINE
+        # - IMAGE_PHP_5_6
+        # - IMAGE_PHP_5_6_ALPINE
+        # - IMAGE_PHP_7_0
+        # - IMAGE_PHP_7_0_ALPINE
+        # - IMAGE_PHP_7_1
+        # - IMAGE_PHP_7_1_ALPINE
+        # - IMAGE_PHP_7_2
+        # - IMAGE_PHP_7_2_ALPINE
+        # - IMAGE_PHP_7_3
+        # - IMAGE_PHP_7_3_ALPINE
         self.package_type = package_type
         # The address of the deployment package. This parameter is required when the **PackageType** parameter is set to **FatJar**, **War**, or **PythonZip**.
         self.package_url = package_url
         # The version of the deployment package. This parameter is required when the **PackageType** parameter is set to **FatJar**, **War**, or **PythonZip**.
         self.package_version = package_version
+        # The dependent PHP version of PHP package. Image is not supported.
         self.php = php
         # The path on which the PHP configuration file for application monitoring is mounted. Make sure that the PHP server loads the configuration file. SAE automatically generates the corresponding configuration file. No manual operations are required.
         self.php_arms_config_location = php_arms_config_location
@@ -20031,9 +20439,20 @@ class DeployApplicationShrinkRequest(TeaModel):
         # 
         # > You can use only one method to perform the health check.
         self.readiness = readiness
+        # The number of instances.
         self.replicas = replicas
+        # Secret Mount Description
+        # Use the secret dictionaries created in the Namespace Secret Dictionary page to inject information into containers. Parameter descriptions are as follows:
+        # 
+        # - secretId: Secret instance ID. Obtain via the ListSecrets interface.
+        # 
+        # - key: Key-value pair. Note: Set the parameter sae-sys-secret-all to mount all keys.
+        # 
+        # - mountPath: Mount path.
         self.secret_mount_desc = secret_mount_desc
+        # Security group ID.
         self.security_group_id = security_group_id
+        # The gray-release tag of the application.
         self.service_tags = service_tags
         # The configuration of the container.
         self.sidecar_containers_config_shrink = sidecar_containers_config_shrink
@@ -20054,7 +20473,30 @@ class DeployApplicationShrinkRequest(TeaModel):
         # 
         # > A Log Service project that is automatically created by SAE when you create an application is deleted when the application is deleted. Therefore, when you create an application, you cannot select a Log Service project that is automatically created by SAE for log collection.
         self.sls_configs = sls_configs
+        # Check Failure: Indicates that the application failed to start. The system will report the exception and automatically restart it.
+        # 
+        # Note: 
+        # 
+        # Supports exec, httpGet, and tcpSocket methods. For specific examples, see Liveness Parameters.
+        # Only one method can be selected for health checks.
         self.startup_probe = startup_probe
+        # Configure K8s Service-based Service Registration/Discovery and Full-Chain Grayscale Capabilities
+        # 
+        # - enable: Whether to enable full-link grayscale based on K8s Service (set to "true" to enable; set to "false" to disable).
+        # 
+        # - namespaceId: Namespace ID
+        # 
+        # - portAndProtocol: Listener port and protocol. Format: {"Port:Protocol Type":"Container Port"}
+        # - portProtocols: Define service ports and protocols
+        # port: Port
+        # protocol: Protocol
+        # targetPort: Container port
+        # 
+        # - pvtzDiscoveryName: Service discovery name
+        # 
+        # - serviceId: Service ID
+        # 
+        # - serviceName: Service name
         self.swimlane_pvtz_discovery_svc = swimlane_pvtz_discovery_svc
         # The timeout period for a graceful shutdown. Default value: 30. Unit: seconds. Valid values: 1 to 300.
         self.termination_grace_period_seconds = termination_grace_period_seconds
@@ -20086,6 +20528,7 @@ class DeployApplicationShrinkRequest(TeaModel):
         # 
         # *   **grayUpdate**: the number of release batches in the phased release after a canary release. This parameter is returned only if the **type** parameter is set to **GrayBatchUpdate**.
         self.update_strategy = update_strategy
+        # The ID of the vSwitch, where the EIP of the application instances resides. The vSwitch must reside in the VPC above.
         self.v_switch_id = v_switch_id
         # The startup command of the WAR package. For information about how to configure the startup command, see [Configure startup commands](https://help.aliyun.com/document_detail/96677.html).
         self.war_start_options = war_start_options
@@ -20146,6 +20589,8 @@ class DeployApplicationShrinkRequest(TeaModel):
             result['EnableGreyTagRoute'] = self.enable_grey_tag_route
         if self.enable_new_arms is not None:
             result['EnableNewArms'] = self.enable_new_arms
+        if self.enable_prometheus is not None:
+            result['EnablePrometheus'] = self.enable_prometheus
         if self.enable_sidecar_resource_isolated is not None:
             result['EnableSidecarResourceIsolated'] = self.enable_sidecar_resource_isolated
         if self.envs is not None:
@@ -20298,6 +20743,8 @@ class DeployApplicationShrinkRequest(TeaModel):
             self.enable_grey_tag_route = m.get('EnableGreyTagRoute')
         if m.get('EnableNewArms') is not None:
             self.enable_new_arms = m.get('EnableNewArms')
+        if m.get('EnablePrometheus') is not None:
+            self.enable_prometheus = m.get('EnablePrometheus')
         if m.get('EnableSidecarResourceIsolated') is not None:
             self.enable_sidecar_resource_isolated = m.get('EnableSidecarResourceIsolated')
         if m.get('Envs') is not None:
@@ -21605,12 +22052,14 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         enable_grey_tag_route: bool = None,
         enable_idle: bool = None,
         enable_new_arms: bool = None,
+        enable_prometheus: bool = None,
         envs: str = None,
         gpu_count: str = None,
         gpu_type: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
         init_containers_config: List[DescribeApplicationConfigResponseBodyDataInitContainersConfig] = None,
+        is_stateful: bool = None,
         jar_start_args: str = None,
         jar_start_options: str = None,
         jdk: str = None,
@@ -21747,6 +22196,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self.enable_grey_tag_route = enable_grey_tag_route
         self.enable_idle = enable_idle
         self.enable_new_arms = enable_new_arms
+        self.enable_prometheus = enable_prometheus
         # The environment variables. Variable description:
         # 
         # *   **name**: the name of the environment variable.
@@ -21758,6 +22208,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         # The URL of the image. This parameter is returned only if the **PackageType** parameter is set to **Image**.
         self.image_url = image_url
         self.init_containers_config = init_containers_config
+        self.is_stateful = is_stateful
         # The arguments in the JAR package. The arguments are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
         self.jar_start_args = jar_start_args
         # The option settings in the JAR package. The settings are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
@@ -22076,6 +22527,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['EnableIdle'] = self.enable_idle
         if self.enable_new_arms is not None:
             result['EnableNewArms'] = self.enable_new_arms
+        if self.enable_prometheus is not None:
+            result['EnablePrometheus'] = self.enable_prometheus
         if self.envs is not None:
             result['Envs'] = self.envs
         if self.gpu_count is not None:
@@ -22090,6 +22543,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         if self.init_containers_config is not None:
             for k in self.init_containers_config:
                 result['InitContainersConfig'].append(k.to_map() if k else None)
+        if self.is_stateful is not None:
+            result['IsStateful'] = self.is_stateful
         if self.jar_start_args is not None:
             result['JarStartArgs'] = self.jar_start_args
         if self.jar_start_options is not None:
@@ -22267,6 +22722,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.enable_idle = m.get('EnableIdle')
         if m.get('EnableNewArms') is not None:
             self.enable_new_arms = m.get('EnableNewArms')
+        if m.get('EnablePrometheus') is not None:
+            self.enable_prometheus = m.get('EnablePrometheus')
         if m.get('Envs') is not None:
             self.envs = m.get('Envs')
         if m.get('GpuCount') is not None:
@@ -22282,6 +22739,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             for k in m.get('InitContainersConfig'):
                 temp_model = DescribeApplicationConfigResponseBodyDataInitContainersConfig()
                 self.init_containers_config.append(temp_model.from_map(k))
+        if m.get('IsStateful') is not None:
+            self.is_stateful = m.get('IsStateful')
         if m.get('JarStartArgs') is not None:
             self.jar_start_args = m.get('JarStartArgs')
         if m.get('JarStartOptions') is not None:
@@ -22543,13 +23002,13 @@ class DescribeApplicationGroupsRequest(TeaModel):
         current_page: int = None,
         page_size: int = None,
     ):
-        # d700e680-aa4d-4ec1-afc2-6566b5ff\\*\\*\\*\\*\
+        # The ID of the application.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # 1
+        # The page number.
         self.current_page = current_page
-        # 10
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):
@@ -22597,23 +23056,23 @@ class DescribeApplicationGroupsResponseBodyData(TeaModel):
         running_instances: int = None,
         web_container: str = None,
     ):
-        # The version of the container, such as Ali-Tomcat, in which a High-speed Service Framework (HSF) application runs.
+        # The version of the container, such as Ali-Tomcat, in which an application that is developed based on High-speed Service Framework (HSF) is deployed.
         self.edas_container_version = edas_container_version
-        # The ID of the group.
+        # The ID of the instance group.
         self.group_id = group_id
-        # The name of the group.
+        # The name of the instance group.
         self.group_name = group_name
-        # The type of the group.
+        # The type of the instance group.
         self.group_type = group_type
-        # The address of the image. This parameter is required when the **PackageType** parameter is set to **Image**.
+        # The URL of the image. This parameter is returned only if the **PackageType** parameter is set to **Image**.
         self.image_url = image_url
-        # The version of the Java development kit (JDK) on which the deployment package of the application depends. This parameter is invalid when the **PackageType** parameter is set to **Image**.
+        # The version of the JDK on which the deployment package of the application depends. This parameter is not returned if the **PackageType** parameter is set to **Image**.
         self.jdk = jdk
-        # The type of the application deployment package. Valid values:
+        # The type of the deployment package. Valid values:
         # 
-        # *   When you use a Java package, set this value to **FatJar**, **War**, or **Image**.
+        # *   If you deploy a Java application, the value of this parameter can be **FatJar**, **War**, or **Image**.
         # 
-        # *   When you use a PHP package, the following values are valid:
+        # *   If you deploy a PHP application, the value of this parameter can be one of the following values:
         # 
         #     *   **PhpZip**\
         #     *   **IMAGE_PHP_5_4**\
@@ -22631,16 +23090,16 @@ class DescribeApplicationGroupsResponseBodyData(TeaModel):
         #     *   **IMAGE_PHP_7_3**\
         #     *   **IMAGE_PHP_7_3_ALPINE**\
         self.package_type = package_type
-        # The address of the deployment package. This parameter is required when the **PackageType** parameter is set to **FatJar**, **War**, or **PhpZip**.
+        # The URL of the deployment package. This parameter is returned only if the **PackageType** parameter is set to **FatJar**, **War**, or **PhpZip**.
         self.package_url = package_url
-        # The version of the deployment package. This parameter is required when the **PackageType** parameter is set to **FatJar**, **War**, or **PhpZip**. The parameter value will be automatically generated when you use an image to deploy the application and specify the **ImageUrl** parameter.
+        # The version of the deployment package. This parameter is returned only if the **PackageType** parameter is set to **FatJar**, **War**, or **PhpZip**. The value of this parameter is automatically generated only if the **ImageUrl** is returned.
         self.package_version = package_version
         self.package_version_id = package_version_id
         # The total number of instances.
         self.replicas = replicas
         # The number of running instances.
         self.running_instances = running_instances
-        # The version of the Apache Tomcat container on which the deployment package of the application depends. This parameter is invalid when the **PackageType** parameter is set to **Image**.
+        # The version of the Tomcat container on which the deployment package depends. This parameter is not returned if the **PackageType** parameter is set to **Image**.
         self.web_container = web_container
 
     def validate(self):
@@ -22724,28 +23183,28 @@ class DescribeApplicationGroupsResponseBody(TeaModel):
     ):
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
         # The information about the instance groups of the application.
         self.data = data
-        # The error code.
+        # The error code. Valid values:
         # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
+        # *   If the call is successful, the **ErrorCode** parameter is not returned.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
         # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the information about instance groups of an application was obtained. Valid values:
+        # Indicates whether the instance groups of an application were obtained. Valid values:
         # 
-        # *   **true**: indicates that the information was obtained.
-        # *   **false**: indicates that the information could not be obtained.
+        # *   **true**: The instance groups were obtained.
+        # *   **false**: The instance groups failed to be obtained.
         self.success = success
-        # The ID of the trace. It is used to query the details of a request.
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -23105,6 +23564,7 @@ class DescribeApplicationInstancesRequest(TeaModel):
         # 
         # This parameter is required.
         self.group_id = group_id
+        # The ID of the application instance.
         self.instance_id = instance_id
         # 10
         self.page_size = page_size
@@ -23163,8 +23623,11 @@ class DescribeApplicationInstancesResponseBodyDataInstancesSidecarContainersStat
         container_status: str = None,
         image_url: str = None,
     ):
+        # The ID of the sidecar container.
         self.container_id = container_id
+        # The status of the container.
         self.container_status = container_status
+        # The URL of the image.
         self.image_url = image_url
 
     def validate(self):
@@ -23260,11 +23723,14 @@ class DescribeApplicationInstancesResponseBodyDataInstances(TeaModel):
         self.instance_health_status = instance_health_status
         # The ID of the instance.
         self.instance_id = instance_id
+        # The status of the main container.
         self.main_container_status = main_container_status
         # The version of the package.
         self.package_version = package_version
+        # The status of the sidecar container.
         self.sidecar_containers_status = sidecar_containers_status
         self.timestamp = timestamp
+        # If the health check of an application instance fails, the detailed failure cause or error message is returned. If the health check of an application instance passes, no response is returned.
         self.unhealthy_message = unhealthy_message
         # The ID of the zone where the instance is deployed.
         self.v_switch_id = v_switch_id
@@ -23371,7 +23837,7 @@ class DescribeApplicationInstancesResponseBodyData(TeaModel):
     ):
         # The number of the returned page.
         self.current_page = current_page
-        # The list of application instances.
+        # The application instances.
         self.instances = instances
         # The number of entries returned on each page.
         self.page_size = page_size
@@ -23436,7 +23902,7 @@ class DescribeApplicationInstancesResponseBody(TeaModel):
         # *   **4xx**: indicates that the request was invalid.
         # *   **5xx**: indicates that a server error occurred.
         self.code = code
-        # The details of the application instances.
+        # The details of the application instance.
         self.data = data
         # The error code. 
         # 
@@ -31509,10 +31975,10 @@ class DescribeNamespaceListRequest(TeaModel):
         # *   **true**: The system returns custom namespaces.
         # *   **false**: The system does not return custom namespaces.
         self.contain_custom = contain_custom
-        # Specifies whether to exclude hybrid cloud namespaces from the result. Valid values:
+        # Indicates whether hybrid cloud namespaces are excluded. Valid values:
         # 
-        # - **true**: The system excludes hybrid cloud namespaces from the result.
-        # - **false**: The system does not exclude hybrid cloud namespaces from the result.
+        # *   **true**: Hybrid cloud namespaces are excluded.
+        # *   **false**: Hybrid cloud namespaces are included.
         self.hybrid_cloud_exclude = hybrid_cloud_exclude
 
     def validate(self):
@@ -31661,7 +32127,7 @@ class DescribeNamespaceListResponseBody(TeaModel):
         # *   **4xx**: The call failed.
         # *   **5xx**: A server error occurred.
         self.code = code
-        # The namespaces.
+        # The list of namespaces.
         self.data = data
         # The error code. Valid values:
         # 
@@ -34555,11 +35021,29 @@ class DisableApplicationScalingRuleResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: The request was successful.
+        # *   **3xx**: The request was redirected.
+        # *   **4xx**: The request failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The error codes. Valid values:
+        # 
+        # *   If the request was successful, **ErrorCode** is not returned.
+        # *   If the request failed, **ErrorCode** is returned. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message. Valid values:
+        # 
+        # *   If the request was successful, **success** is returned.
+        # *   If the request failed, an error code is returned.
         self.message = message
         # The ID of the trace. The ID is used to query the details of a request.
         self.request_id = request_id
+        # Indicates whether the auto scaling policy was disabled. Valid values:
+        # 
+        # *   **true**: The auto scaling policy was disabled.
+        # *   **false**: The auto scaling policy failed to be disabled.
         self.success = success
         self.trace_id = trace_id
 
@@ -35251,6 +35735,7 @@ class GetApplicationResponseBodyApplication(TeaModel):
         base_app_id: str = None,
         cpu: int = None,
         instances: int = None,
+        is_stateful: bool = None,
         mem: int = None,
         mse_enabled: bool = None,
         mse_namespace_id: str = None,
@@ -35281,6 +35766,7 @@ class GetApplicationResponseBodyApplication(TeaModel):
         self.cpu = cpu
         # The number of application instances.
         self.instances = instances
+        self.is_stateful = is_stateful
         # The memory size that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
         # 
         # *   This parameter is set to **1024** if the Cpu parameter is set to 500 or 1000.
@@ -35344,6 +35830,8 @@ class GetApplicationResponseBodyApplication(TeaModel):
             result['Cpu'] = self.cpu
         if self.instances is not None:
             result['Instances'] = self.instances
+        if self.is_stateful is not None:
+            result['IsStateful'] = self.is_stateful
         if self.mem is not None:
             result['Mem'] = self.mem
         if self.mse_enabled is not None:
@@ -35376,6 +35864,8 @@ class GetApplicationResponseBodyApplication(TeaModel):
             self.cpu = m.get('Cpu')
         if m.get('Instances') is not None:
             self.instances = m.get('Instances')
+        if m.get('IsStateful') is not None:
+            self.is_stateful = m.get('IsStateful')
         if m.get('Mem') is not None:
             self.mem = m.get('Mem')
         if m.get('MseEnabled') is not None:
@@ -39167,6 +39657,7 @@ class ListApplicationsRequest(TeaModel):
         current_page: int = None,
         field_type: str = None,
         field_value: str = None,
+        is_stateful: str = None,
         namespace_id: str = None,
         order_by: str = None,
         page_size: int = None,
@@ -39192,6 +39683,7 @@ class ListApplicationsRequest(TeaModel):
         self.field_type = field_type
         # The ID of the region.
         self.field_value = field_value
+        self.is_stateful = is_stateful
         # 1
         self.namespace_id = namespace_id
         # runnings
@@ -39225,6 +39717,8 @@ class ListApplicationsRequest(TeaModel):
             result['FieldType'] = self.field_type
         if self.field_value is not None:
             result['FieldValue'] = self.field_value
+        if self.is_stateful is not None:
+            result['IsStateful'] = self.is_stateful
         if self.namespace_id is not None:
             result['NamespaceId'] = self.namespace_id
         if self.order_by is not None:
@@ -39249,6 +39743,8 @@ class ListApplicationsRequest(TeaModel):
             self.field_type = m.get('FieldType')
         if m.get('FieldValue') is not None:
             self.field_value = m.get('FieldValue')
+        if m.get('IsStateful') is not None:
+            self.is_stateful = m.get('IsStateful')
         if m.get('NamespaceId') is not None:
             self.namespace_id = m.get('NamespaceId')
         if m.get('OrderBy') is not None:
@@ -45335,9 +45831,9 @@ class OpenSaeServiceResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the order.
+        # PushEvent
         self.order_id = order_id
-        # The ID of the request.
+        # enableWAF
         self.request_id = request_id
 
     def validate(self):
@@ -46219,21 +46715,25 @@ class RescaleApplicationVerticallyRequest(TeaModel):
         min_ready_instance_ratio: int = None,
         min_ready_instances: int = None,
     ):
-        # The application ID.
+        # The app ID.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The destination CPU specification. Unit: millicore.
+        # Target CPU specification. Unit: millicore.
         # 
         # This parameter is required.
         self.cpu = cpu
+        # The disk size. Unit: GB.
         self.disk_size = disk_size
-        # The destination memory size. Unit: MB.
+        # Target memory specification. Unit: MB.
         # 
         # This parameter is required.
         self.memory = memory
+        # Enable application scale rules automatically.
         self.auto_enable_application_scaling_rule = auto_enable_application_scaling_rule
+        # The ratio of minimum ready instances.
         self.min_ready_instance_ratio = min_ready_instance_ratio
+        # Minimum ready instances.
         self.min_ready_instances = min_ready_instances
 
     def validate(self):
@@ -46285,7 +46785,7 @@ class RescaleApplicationVerticallyResponseBodyData(TeaModel):
         self,
         change_order_id: str = None,
     ):
-        # The ID of the change order.
+        # The ticked ID of updates.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -46319,30 +46819,30 @@ class RescaleApplicationVerticallyResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Take note of the following rules:
+        # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
+        # *   **2xx**: The request was successful.
+        # *   **3xx**: The request was redirected.
+        # *   **4xx**: The request failed.
         # *   **5xx**: A server error occurred.
         self.code = code
-        # The response.
+        # Data returned.
         self.data = data
-        # The error code returned if the request failed. Take note of the following rules:
+        # The error code. Valid values:
         # 
-        # *   The **ErrorCode** parameter is not returned if the request succeeds.
-        # *   The **ErrorCode** parameter is returned if the request fails. For more information, see the **Error codes** section in this topic.
+        # *   If the call is successful, the **ErrorCode** parameter is not returned.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The message returned for the operation.
+        # Messages returned for additional information.
         self.message = message
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
-        # Indicates whether the instance specifications are changed. Take note of the following rules:
+        # Indicates whether the update of instance specifications was successful. Valid values:
         # 
-        # *   **true**\
-        # *   **false**\
+        # *   **true**: Updated.
+        # *   **false**: Failed to update.
         self.success = success
-        # The trace ID that is used to query the details of the request.
+        # Trace ID for request information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -46444,6 +46944,10 @@ class RestartApplicationRequest(TeaModel):
         # 
         # This parameter is required.
         self.app_id = app_id
+        # Specifies whether to automatically enable an auto scaling policy for the application. Valid values:
+        # 
+        # *   **true**: enabled.
+        # *   **false**: disabled
         self.auto_enable_application_scaling_rule = auto_enable_application_scaling_rule
         # The percentage of the minimum number of available instances. Take note of the following rules:
         # 
@@ -47634,7 +48138,10 @@ class SuspendJobRequest(TeaModel):
         # 
         # This parameter is required.
         self.app_id = app_id
-        # Specifies whether to suspend the job template.
+        # Start or suspend a job template.
+        # 
+        # *   true: Start a job template.
+        # *   false: Suspend a job template.
         # 
         # This parameter is required.
         self.suspend = suspend
@@ -47796,17 +48303,24 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tags: str = None,
     ):
-        # application
+        # The region ID.
         self.region_id = region_id
-        # The ID of the request.
+        # The IDs of resources. Separate multiple resource IDs with comma (,). This parameter is required if you do not specify the **Tags** parameter.
         # 
         # This parameter is required.
         self.resource_ids = resource_ids
-        # [{"key":"k1","value":"v1"}]
+        # The type of the resource. Set the value to `application`.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # ["d42921c4-5433-4abd-8075-0e536f8b\\*\\*\\*\\*"]
+        # The tag in the format of a key-value pair. This parameter is required if you do not specify the **ResourceIds** parameter. The following parameters are involved:
+        # 
+        # *   **key**: the tag key. It cannot exceed 128 characters in length.
+        # *   **value**: the tag value. It cannot exceed 128 characters in length.
+        # 
+        # Tag keys and tag values are case-sensitive. If you specify multiple tags, the system adds all the tags to the specified resources. Each tag key on a resource can have only one tag value. If you create a tag that has the same key as an existing tag, the value of the existing tag is overwritten.
+        # 
+        # Tag keys and tag values cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.tags = tags
 
     def validate(self):
@@ -47852,29 +48366,33 @@ class TagResourcesResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # Indicates whether tags were added to the specified resources successfully. Valid values:
-        # 
-        # *   **true**: indicates that tags were added to the specified resources successfully.
-        # *   **false**: indicates that tags could not be added to the specified resources.
-        self.code = code
-        # The error code.
-        # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
-        self.data = data
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
-        self.error_code = error_code
-        # The ID of the trace. It can be used to query the details of a request.
-        self.message = message
-        # The returned message.
-        self.request_id = request_id
-        self.success = success
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
+        self.code = code
         # Indicates that the operation was successful.
+        self.data = data
+        # The error code. Valid values:
+        # 
+        # *   If the call is successful, the **ErrorCode** parameter is not returned.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
+        self.error_code = error_code
+        # The returned message. Valid values:
+        # 
+        # *   success: If the call is successful, **success** is returned.
+        # *   An error code: If the call fails, an error code is returned.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether tags were added to the specified resources. Valid values:
+        # 
+        # *   **true**: The tags were added.
+        # *   **false**: The tags failed to be added.
+        self.success = success
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -48384,21 +48902,24 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_keys: str = None,
     ):
-        # false
+        # Specifies whether to remove all the specified tags. This parameter takes effect only if the TagKeys parameter is specified. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.delete_all = delete_all
-        # cn-beijing
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # ["d42921c4-5433-4abd-8075-0e536f8b\\*\\*\\*\\*"]
+        # The IDs of resources. Separate multiple resource IDs with comma (,).
         # 
         # This parameter is required.
         self.resource_ids = resource_ids
-        # application
+        # The type of the resource. Set the value to `application`.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # ["k1","k2"]
+        # The tag keys. Separate multiple tag keys with commas (,).
         self.tag_keys = tag_keys
 
     def validate(self):
@@ -48450,28 +48971,31 @@ class UntagResourcesResponseBody(TeaModel):
     ):
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
-        # The returned data.
+        # The returned result.
         self.data = data
-        # The error code.
+        # The error code. Valid values:
         # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
+        # *   If the call is successful, the **ErrorCode** parameter is not returned.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The returned message.
+        # The returned message. Valid values:
+        # 
+        # *   success: If the call is successful, **success** is returned.
+        # *   An error code: If the call fails, an error code is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the tags were removed. Valid values:
         # 
         # *   **true**: The tags were removed.
-        # *   **false**: The tags could not be removed.
+        # *   **false**: The tags failed to be removed.
         self.success = success
-        # The ID of the trace. It can be used to query details of a request.
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):

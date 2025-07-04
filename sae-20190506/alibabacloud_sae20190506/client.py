@@ -260,7 +260,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.BatchStartApplicationsResponse:
         """
-        @summary cn-shanghai
+        @summary Starts multiple applications at a time.
         
         @param request: BatchStartApplicationsRequest
         @param headers: map
@@ -302,7 +302,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.BatchStartApplicationsResponse:
         """
-        @summary cn-shanghai
+        @summary Starts multiple applications at a time.
         
         @param request: BatchStartApplicationsRequest
         @param headers: map
@@ -342,7 +342,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.BatchStartApplicationsRequest,
     ) -> sae_20190506_models.BatchStartApplicationsResponse:
         """
-        @summary cn-shanghai
+        @summary Starts multiple applications at a time.
         
         @param request: BatchStartApplicationsRequest
         @return: BatchStartApplicationsResponse
@@ -356,7 +356,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.BatchStartApplicationsRequest,
     ) -> sae_20190506_models.BatchStartApplicationsResponse:
         """
-        @summary cn-shanghai
+        @summary Starts multiple applications at a time.
         
         @param request: BatchStartApplicationsRequest
         @return: BatchStartApplicationsResponse
@@ -372,7 +372,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.BatchStopApplicationsResponse:
         """
-        @summary Stops multiple applications at a time.
+        @summary Stop applications in batches.
         
         @param request: BatchStopApplicationsRequest
         @param headers: map
@@ -414,7 +414,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.BatchStopApplicationsResponse:
         """
-        @summary Stops multiple applications at a time.
+        @summary Stop applications in batches.
         
         @param request: BatchStopApplicationsRequest
         @param headers: map
@@ -454,7 +454,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.BatchStopApplicationsRequest,
     ) -> sae_20190506_models.BatchStopApplicationsResponse:
         """
-        @summary Stops multiple applications at a time.
+        @summary Stop applications in batches.
         
         @param request: BatchStopApplicationsRequest
         @return: BatchStopApplicationsResponse
@@ -468,7 +468,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.BatchStopApplicationsRequest,
     ) -> sae_20190506_models.BatchStopApplicationsResponse:
         """
-        @summary Stops multiple applications at a time.
+        @summary Stop applications in batches.
         
         @param request: BatchStopApplicationsRequest
         @return: BatchStopApplicationsResponse
@@ -832,6 +832,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateApplicationResponse:
         """
+        @summary Creates an application.
+        
         @param tmp_req: CreateApplicationRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -879,6 +881,8 @@ class Client(OpenApiClient):
             query['EnableEbpf'] = request.enable_ebpf
         if not UtilClient.is_unset(request.enable_new_arms):
             query['EnableNewArms'] = request.enable_new_arms
+        if not UtilClient.is_unset(request.enable_prometheus):
+            query['EnablePrometheus'] = request.enable_prometheus
         if not UtilClient.is_unset(request.envs):
             query['Envs'] = request.envs
         if not UtilClient.is_unset(request.gpu_config):
@@ -887,6 +891,8 @@ class Client(OpenApiClient):
             query['ImagePullSecrets'] = request.image_pull_secrets
         if not UtilClient.is_unset(request.image_url):
             query['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.is_stateful):
+            query['IsStateful'] = request.is_stateful
         if not UtilClient.is_unset(request.jar_start_args):
             query['JarStartArgs'] = request.jar_start_args
         if not UtilClient.is_unset(request.jar_start_options):
@@ -1026,6 +1032,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateApplicationResponse:
         """
+        @summary Creates an application.
+        
         @param tmp_req: CreateApplicationRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1073,6 +1081,8 @@ class Client(OpenApiClient):
             query['EnableEbpf'] = request.enable_ebpf
         if not UtilClient.is_unset(request.enable_new_arms):
             query['EnableNewArms'] = request.enable_new_arms
+        if not UtilClient.is_unset(request.enable_prometheus):
+            query['EnablePrometheus'] = request.enable_prometheus
         if not UtilClient.is_unset(request.envs):
             query['Envs'] = request.envs
         if not UtilClient.is_unset(request.gpu_config):
@@ -1081,6 +1091,8 @@ class Client(OpenApiClient):
             query['ImagePullSecrets'] = request.image_pull_secrets
         if not UtilClient.is_unset(request.image_url):
             query['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.is_stateful):
+            query['IsStateful'] = request.is_stateful
         if not UtilClient.is_unset(request.jar_start_args):
             query['JarStartArgs'] = request.jar_start_args
         if not UtilClient.is_unset(request.jar_start_options):
@@ -1218,6 +1230,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.CreateApplicationRequest,
     ) -> sae_20190506_models.CreateApplicationResponse:
         """
+        @summary Creates an application.
+        
         @param request: CreateApplicationRequest
         @return: CreateApplicationResponse
         """
@@ -1230,6 +1244,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.CreateApplicationRequest,
     ) -> sae_20190506_models.CreateApplicationResponse:
         """
+        @summary Creates an application.
+        
         @param request: CreateApplicationRequest
         @return: CreateApplicationResponse
         """
@@ -2572,7 +2588,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateSecretResponse:
         """
-        @summary Null
+        @summary Creates a Secret in a namespace.
         
         @param tmp_req: CreateSecretRequest
         @param headers: map
@@ -2620,7 +2636,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateSecretResponse:
         """
-        @summary Null
+        @summary Creates a Secret in a namespace.
         
         @param tmp_req: CreateSecretRequest
         @param headers: map
@@ -2666,7 +2682,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.CreateSecretRequest,
     ) -> sae_20190506_models.CreateSecretResponse:
         """
-        @summary Null
+        @summary Creates a Secret in a namespace.
         
         @param request: CreateSecretRequest
         @return: CreateSecretResponse
@@ -2680,7 +2696,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.CreateSecretRequest,
     ) -> sae_20190506_models.CreateSecretResponse:
         """
-        @summary Null
+        @summary Creates a Secret in a namespace.
         
         @param request: CreateSecretRequest
         @return: CreateSecretResponse
@@ -4493,6 +4509,8 @@ class Client(OpenApiClient):
             query['EnableGreyTagRoute'] = request.enable_grey_tag_route
         if not UtilClient.is_unset(request.enable_new_arms):
             query['EnableNewArms'] = request.enable_new_arms
+        if not UtilClient.is_unset(request.enable_prometheus):
+            query['EnablePrometheus'] = request.enable_prometheus
         if not UtilClient.is_unset(request.envs):
             query['Envs'] = request.envs
         if not UtilClient.is_unset(request.gpu_config):
@@ -4685,6 +4703,8 @@ class Client(OpenApiClient):
             query['EnableGreyTagRoute'] = request.enable_grey_tag_route
         if not UtilClient.is_unset(request.enable_new_arms):
             query['EnableNewArms'] = request.enable_new_arms
+        if not UtilClient.is_unset(request.enable_prometheus):
+            query['EnablePrometheus'] = request.enable_prometheus
         if not UtilClient.is_unset(request.envs):
             query['Envs'] = request.envs
         if not UtilClient.is_unset(request.gpu_config):
@@ -5092,6 +5112,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeApplicationGroupsResponse:
         """
+        @summary Queries the instance groups of an application.
+        
         @param request: DescribeApplicationGroupsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5132,6 +5154,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeApplicationGroupsResponse:
         """
+        @summary Queries the instance groups of an application.
+        
         @param request: DescribeApplicationGroupsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5170,6 +5194,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeApplicationGroupsRequest,
     ) -> sae_20190506_models.DescribeApplicationGroupsResponse:
         """
+        @summary Queries the instance groups of an application.
+        
         @param request: DescribeApplicationGroupsRequest
         @return: DescribeApplicationGroupsResponse
         """
@@ -5182,6 +5208,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeApplicationGroupsRequest,
     ) -> sae_20190506_models.DescribeApplicationGroupsResponse:
         """
+        @summary Queries the instance groups of an application.
+        
         @param request: DescribeApplicationGroupsRequest
         @return: DescribeApplicationGroupsResponse
         """
@@ -5304,7 +5332,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeApplicationInstancesResponse:
         """
-        @summary Queries application instances.
+        @summary Queries a list of application instances.
         
         @param request: DescribeApplicationInstancesRequest
         @param headers: map
@@ -5354,7 +5382,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeApplicationInstancesResponse:
         """
-        @summary Queries application instances.
+        @summary Queries a list of application instances.
         
         @param request: DescribeApplicationInstancesRequest
         @param headers: map
@@ -5402,7 +5430,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeApplicationInstancesRequest,
     ) -> sae_20190506_models.DescribeApplicationInstancesResponse:
         """
-        @summary Queries application instances.
+        @summary Queries a list of application instances.
         
         @param request: DescribeApplicationInstancesRequest
         @return: DescribeApplicationInstancesResponse
@@ -5416,7 +5444,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeApplicationInstancesRequest,
     ) -> sae_20190506_models.DescribeApplicationInstancesResponse:
         """
-        @summary Queries application instances.
+        @summary Queries a list of application instances.
         
         @param request: DescribeApplicationInstancesRequest
         @return: DescribeApplicationInstancesResponse
@@ -7420,6 +7448,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeNamespaceResourcesResponse:
         """
+        @summary Query the information about resources in a namespace.
+        
         @param request: DescribeNamespaceResourcesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -7458,6 +7488,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeNamespaceResourcesResponse:
         """
+        @summary Query the information about resources in a namespace.
+        
         @param request: DescribeNamespaceResourcesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -7494,6 +7526,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeNamespaceResourcesRequest,
     ) -> sae_20190506_models.DescribeNamespaceResourcesResponse:
         """
+        @summary Query the information about resources in a namespace.
+        
         @param request: DescribeNamespaceResourcesRequest
         @return: DescribeNamespaceResourcesResponse
         """
@@ -7506,6 +7540,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeNamespaceResourcesRequest,
     ) -> sae_20190506_models.DescribeNamespaceResourcesResponse:
         """
+        @summary Query the information about resources in a namespace.
+        
         @param request: DescribeNamespaceResourcesRequest
         @return: DescribeNamespaceResourcesResponse
         """
@@ -10869,6 +10905,8 @@ class Client(OpenApiClient):
             query['FieldType'] = request.field_type
         if not UtilClient.is_unset(request.field_value):
             query['FieldValue'] = request.field_value
+        if not UtilClient.is_unset(request.is_stateful):
+            query['IsStateful'] = request.is_stateful
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.order_by):
@@ -10925,6 +10963,8 @@ class Client(OpenApiClient):
             query['FieldType'] = request.field_type
         if not UtilClient.is_unset(request.field_value):
             query['FieldValue'] = request.field_value
+        if not UtilClient.is_unset(request.is_stateful):
+            query['IsStateful'] = request.is_stateful
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.order_by):
@@ -13113,7 +13153,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.OpenSaeServiceResponse:
         """
-        @summary Activates the Serverless App Engine (SAE) service for free.
+        @summary Activates Serverless App Engine (SAE) for free.
         
         @description > Make sure that your account balance is greater than 0. Otherwise, the SAE service cannot be activated.
         
@@ -13146,7 +13186,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.OpenSaeServiceResponse:
         """
-        @summary Activates the Serverless App Engine (SAE) service for free.
+        @summary Activates Serverless App Engine (SAE) for free.
         
         @description > Make sure that your account balance is greater than 0. Otherwise, the SAE service cannot be activated.
         
@@ -13175,7 +13215,7 @@ class Client(OpenApiClient):
 
     def open_sae_service(self) -> sae_20190506_models.OpenSaeServiceResponse:
         """
-        @summary Activates the Serverless App Engine (SAE) service for free.
+        @summary Activates Serverless App Engine (SAE) for free.
         
         @description > Make sure that your account balance is greater than 0. Otherwise, the SAE service cannot be activated.
         
@@ -13187,7 +13227,7 @@ class Client(OpenApiClient):
 
     async def open_sae_service_async(self) -> sae_20190506_models.OpenSaeServiceResponse:
         """
-        @summary Activates the Serverless App Engine (SAE) service for free.
+        @summary Activates Serverless App Engine (SAE) for free.
         
         @description > Make sure that your account balance is greater than 0. Otherwise, the SAE service cannot be activated.
         
@@ -13426,7 +13466,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ReduceApplicationCapacityByInstanceIdsResponse:
         """
-        @summary Reduces capacity by instance IDs.
+        @summary Scales in an application based on instance IDs.
         
         @param request: ReduceApplicationCapacityByInstanceIdsRequest
         @param headers: map
@@ -13466,7 +13506,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ReduceApplicationCapacityByInstanceIdsResponse:
         """
-        @summary Reduces capacity by instance IDs.
+        @summary Scales in an application based on instance IDs.
         
         @param request: ReduceApplicationCapacityByInstanceIdsRequest
         @param headers: map
@@ -13504,7 +13544,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ReduceApplicationCapacityByInstanceIdsRequest,
     ) -> sae_20190506_models.ReduceApplicationCapacityByInstanceIdsResponse:
         """
-        @summary Reduces capacity by instance IDs.
+        @summary Scales in an application based on instance IDs.
         
         @param request: ReduceApplicationCapacityByInstanceIdsRequest
         @return: ReduceApplicationCapacityByInstanceIdsResponse
@@ -13518,7 +13558,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ReduceApplicationCapacityByInstanceIdsRequest,
     ) -> sae_20190506_models.ReduceApplicationCapacityByInstanceIdsResponse:
         """
-        @summary Reduces capacity by instance IDs.
+        @summary Scales in an application based on instance IDs.
         
         @param request: ReduceApplicationCapacityByInstanceIdsRequest
         @return: ReduceApplicationCapacityByInstanceIdsResponse
@@ -13534,7 +13574,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.RescaleApplicationResponse:
         """
-        @summary Scales an application.
+        @summary Rescale an application.
         
         @param request: RescaleApplicationRequest
         @param headers: map
@@ -13580,7 +13620,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.RescaleApplicationResponse:
         """
-        @summary Scales an application.
+        @summary Rescale an application.
         
         @param request: RescaleApplicationRequest
         @param headers: map
@@ -13624,7 +13664,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.RescaleApplicationRequest,
     ) -> sae_20190506_models.RescaleApplicationResponse:
         """
-        @summary Scales an application.
+        @summary Rescale an application.
         
         @param request: RescaleApplicationRequest
         @return: RescaleApplicationResponse
@@ -13638,7 +13678,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.RescaleApplicationRequest,
     ) -> sae_20190506_models.RescaleApplicationResponse:
         """
-        @summary Scales an application.
+        @summary Rescale an application.
         
         @param request: RescaleApplicationRequest
         @return: RescaleApplicationResponse
@@ -14354,7 +14394,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.StopApplicationResponse:
         """
-        @summary 0099b7be-5f5b-4512-a7fc-56049ef1\\\\*\\*\\*\
+        @summary Stops an application.
         
         @param request: StopApplicationRequest
         @param headers: map
@@ -14392,7 +14432,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.StopApplicationResponse:
         """
-        @summary 0099b7be-5f5b-4512-a7fc-56049ef1\\\\*\\*\\*\
+        @summary Stops an application.
         
         @param request: StopApplicationRequest
         @param headers: map
@@ -14428,7 +14468,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.StopApplicationRequest,
     ) -> sae_20190506_models.StopApplicationResponse:
         """
-        @summary 0099b7be-5f5b-4512-a7fc-56049ef1\\\\*\\*\\*\
+        @summary Stops an application.
         
         @param request: StopApplicationRequest
         @return: StopApplicationResponse
@@ -14442,7 +14482,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.StopApplicationRequest,
     ) -> sae_20190506_models.StopApplicationResponse:
         """
-        @summary 0099b7be-5f5b-4512-a7fc-56049ef1\\\\*\\*\\*\
+        @summary Stops an application.
         
         @param request: StopApplicationRequest
         @return: StopApplicationResponse
@@ -14574,7 +14614,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.SuspendJobResponse:
         """
-        @summary Suspends a job.
+        @summary Suspends one or more jobs.
         
         @param request: SuspendJobRequest
         @param headers: map
@@ -14614,7 +14654,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.SuspendJobResponse:
         """
-        @summary Suspends a job.
+        @summary Suspends one or more jobs.
         
         @param request: SuspendJobRequest
         @param headers: map
@@ -14652,7 +14692,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.SuspendJobRequest,
     ) -> sae_20190506_models.SuspendJobResponse:
         """
-        @summary Suspends a job.
+        @summary Suspends one or more jobs.
         
         @param request: SuspendJobRequest
         @return: SuspendJobResponse
@@ -14666,7 +14706,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.SuspendJobRequest,
     ) -> sae_20190506_models.SuspendJobResponse:
         """
-        @summary Suspends a job.
+        @summary Suspends one or more jobs.
         
         @param request: SuspendJobRequest
         @return: SuspendJobResponse
@@ -14682,7 +14722,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.TagResourcesResponse:
         """
-        @summary cn-beijing
+        @summary Adds tags to resources.
         
         @param request: TagResourcesRequest
         @param headers: map
@@ -14726,7 +14766,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.TagResourcesResponse:
         """
-        @summary cn-beijing
+        @summary Adds tags to resources.
         
         @param request: TagResourcesRequest
         @param headers: map
@@ -14768,7 +14808,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.TagResourcesRequest,
     ) -> sae_20190506_models.TagResourcesResponse:
         """
-        @summary cn-beijing
+        @summary Adds tags to resources.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -14782,7 +14822,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.TagResourcesRequest,
     ) -> sae_20190506_models.TagResourcesResponse:
         """
-        @summary cn-beijing
+        @summary Adds tags to resources.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -15026,6 +15066,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UntagResourcesResponse:
         """
+        @summary Removes tags from resources.
+        
         @param request: UntagResourcesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -15070,6 +15112,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UntagResourcesResponse:
         """
+        @summary Removes tags from resources.
+        
         @param request: UntagResourcesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -15112,6 +15156,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UntagResourcesRequest,
     ) -> sae_20190506_models.UntagResourcesResponse:
         """
+        @summary Removes tags from resources.
+        
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
         """
@@ -15124,6 +15170,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UntagResourcesRequest,
     ) -> sae_20190506_models.UntagResourcesResponse:
         """
+        @summary Removes tags from resources.
+        
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
         """
