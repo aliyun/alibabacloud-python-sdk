@@ -2039,6 +2039,7 @@ class CreateCloudPhoneNodeRequest(TeaModel):
         period: int = None,
         period_unit: str = None,
         phone_count: int = None,
+        phone_data_volume: int = None,
         resolution_height: int = None,
         resolution_width: int = None,
         server_share_data_volume: int = None,
@@ -2097,6 +2098,7 @@ class CreateCloudPhoneNodeRequest(TeaModel):
         self.period_unit = period_unit
         # The number of instances per cloud phone matrix.
         self.phone_count = phone_count
+        self.phone_data_volume = phone_data_volume
         # The resolution height. Unit: pixel.
         self.resolution_height = resolution_height
         # The resolution width. Unit: pixel.
@@ -2157,6 +2159,8 @@ class CreateCloudPhoneNodeRequest(TeaModel):
             result['PeriodUnit'] = self.period_unit
         if self.phone_count is not None:
             result['PhoneCount'] = self.phone_count
+        if self.phone_data_volume is not None:
+            result['PhoneDataVolume'] = self.phone_data_volume
         if self.resolution_height is not None:
             result['ResolutionHeight'] = self.resolution_height
         if self.resolution_width is not None:
@@ -2204,6 +2208,8 @@ class CreateCloudPhoneNodeRequest(TeaModel):
             self.period_unit = m.get('PeriodUnit')
         if m.get('PhoneCount') is not None:
             self.phone_count = m.get('PhoneCount')
+        if m.get('PhoneDataVolume') is not None:
+            self.phone_data_volume = m.get('PhoneDataVolume')
         if m.get('ResolutionHeight') is not None:
             self.resolution_height = m.get('ResolutionHeight')
         if m.get('ResolutionWidth') is not None:
@@ -2275,6 +2281,7 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
         period: int = None,
         period_unit: str = None,
         phone_count: int = None,
+        phone_data_volume: int = None,
         resolution_height: int = None,
         resolution_width: int = None,
         server_share_data_volume: int = None,
@@ -2333,6 +2340,7 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
         self.period_unit = period_unit
         # The number of instances per cloud phone matrix.
         self.phone_count = phone_count
+        self.phone_data_volume = phone_data_volume
         # The resolution height. Unit: pixel.
         self.resolution_height = resolution_height
         # The resolution width. Unit: pixel.
@@ -2391,6 +2399,8 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
             result['PeriodUnit'] = self.period_unit
         if self.phone_count is not None:
             result['PhoneCount'] = self.phone_count
+        if self.phone_data_volume is not None:
+            result['PhoneDataVolume'] = self.phone_data_volume
         if self.resolution_height is not None:
             result['ResolutionHeight'] = self.resolution_height
         if self.resolution_width is not None:
@@ -2437,6 +2447,8 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
             self.period_unit = m.get('PeriodUnit')
         if m.get('PhoneCount') is not None:
             self.phone_count = m.get('PhoneCount')
+        if m.get('PhoneDataVolume') is not None:
+            self.phone_data_volume = m.get('PhoneDataVolume')
         if m.get('ResolutionHeight') is not None:
             self.resolution_height = m.get('ResolutionHeight')
         if m.get('ResolutionWidth') is not None:

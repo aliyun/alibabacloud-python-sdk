@@ -1148,6 +1148,8 @@ class Client(OpenApiClient):
             query['PeriodUnit'] = request.period_unit
         if not UtilClient.is_unset(request.phone_count):
             query['PhoneCount'] = request.phone_count
+        if not UtilClient.is_unset(request.phone_data_volume):
+            query['PhoneDataVolume'] = request.phone_data_volume
         if not UtilClient.is_unset(request.resolution_height):
             query['ResolutionHeight'] = request.resolution_height
         if not UtilClient.is_unset(request.resolution_width):
@@ -1227,6 +1229,8 @@ class Client(OpenApiClient):
             query['PeriodUnit'] = request.period_unit
         if not UtilClient.is_unset(request.phone_count):
             query['PhoneCount'] = request.phone_count
+        if not UtilClient.is_unset(request.phone_data_volume):
+            query['PhoneDataVolume'] = request.phone_data_volume
         if not UtilClient.is_unset(request.resolution_height):
             query['ResolutionHeight'] = request.resolution_height
         if not UtilClient.is_unset(request.resolution_width):

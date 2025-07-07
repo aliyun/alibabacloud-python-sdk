@@ -1,3 +1,7 @@
+2025-07-07 Version: 4.8.2
+- Update API CreateCloudPhoneNode: add request parameters PhoneDataVolume.
+
+
 2025-06-28 Version: 4.8.1
 - Update API CreateCloudPhoneNode: add request parameters StreamMode.
 - Update API DescribeAndroidInstances: add response parameters Body.InstanceModel.$.StreamMode.
