@@ -6127,19 +6127,41 @@ class CreateDIJobRequest(TeaModel):
         self.description = description
         # This parameter is required.
         self.destination_data_source_settings = destination_data_source_settings
+        # The destination type. Valid values: Hologres, OSS-HDFS, OSS, MaxCompute, LogHub, StarRocks, DataHub, AnalyticDB for MySQL, Kafka, and Hive.
+        # 
         # This parameter is required.
         self.destination_data_source_type = destination_data_source_type
+        # This parameter is deprecated and is replaced by the Name parameter.
         self.job_name = job_name
         self.job_settings = job_settings
+        # The type of the task. This parameter is optional. Valid values:
+        # 
+        # *   DatabaseRealtimeMigration: A real-time synchronization task used to synchronize only full data, only incremental data, or full and incremental data in multiple tables of multiple databases at the source.
+        # *   DatabaseOfflineMigration: A batch synchronization task used to synchronize only full data, only incremental data, or full and incremental data in multiple tables of multiple databases at the source.
+        # *   SingleTableRealtimeMigration: A real-time synchronization task used to synchronize only data in single table at the source.
         self.job_type = job_type
+        # The synchronization type. Valid values:
+        # 
+        # *   FullAndRealtimeIncremental: full synchronization and real-time incremental synchronization of data in an entire database
+        # *   RealtimeIncremental: real-time incremental synchronization of data in a single table
+        # *   Full: full batch synchronization of data in an entire database
+        # *   OfflineIncremental: batch incremental synchronization of data in an entire database
+        # *   FullAndOfflineIncremental: full synchronization and batch incremental synchronization of data in an entire database
+        # 
         # This parameter is required.
         self.migration_type = migration_type
+        # The name of the synchronization task.
         self.name = name
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
+        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
         self.project_id = project_id
         # This parameter is required.
         self.resource_settings = resource_settings
         # This parameter is required.
         self.source_data_source_settings = source_data_source_settings
+        # The source type. Valid values: PolarDB, MySQL, Kafka, LogHub, Hologres, Oracle, OceanBase, MongoDB, Redshift, Hive, SQL Server, Doris, and ClickHouse.
+        # 
         # This parameter is required.
         self.source_data_source_type = source_data_source_type
         # This parameter is required.
@@ -6280,19 +6302,41 @@ class CreateDIJobShrinkRequest(TeaModel):
         self.description = description
         # This parameter is required.
         self.destination_data_source_settings_shrink = destination_data_source_settings_shrink
+        # The destination type. Valid values: Hologres, OSS-HDFS, OSS, MaxCompute, LogHub, StarRocks, DataHub, AnalyticDB for MySQL, Kafka, and Hive.
+        # 
         # This parameter is required.
         self.destination_data_source_type = destination_data_source_type
+        # This parameter is deprecated and is replaced by the Name parameter.
         self.job_name = job_name
         self.job_settings_shrink = job_settings_shrink
+        # The type of the task. This parameter is optional. Valid values:
+        # 
+        # *   DatabaseRealtimeMigration: A real-time synchronization task used to synchronize only full data, only incremental data, or full and incremental data in multiple tables of multiple databases at the source.
+        # *   DatabaseOfflineMigration: A batch synchronization task used to synchronize only full data, only incremental data, or full and incremental data in multiple tables of multiple databases at the source.
+        # *   SingleTableRealtimeMigration: A real-time synchronization task used to synchronize only data in single table at the source.
         self.job_type = job_type
+        # The synchronization type. Valid values:
+        # 
+        # *   FullAndRealtimeIncremental: full synchronization and real-time incremental synchronization of data in an entire database
+        # *   RealtimeIncremental: real-time incremental synchronization of data in a single table
+        # *   Full: full batch synchronization of data in an entire database
+        # *   OfflineIncremental: batch incremental synchronization of data in an entire database
+        # *   FullAndOfflineIncremental: full synchronization and batch incremental synchronization of data in an entire database
+        # 
         # This parameter is required.
         self.migration_type = migration_type
+        # The name of the synchronization task.
         self.name = name
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
+        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
         self.project_id = project_id
         # This parameter is required.
         self.resource_settings_shrink = resource_settings_shrink
         # This parameter is required.
         self.source_data_source_settings_shrink = source_data_source_settings_shrink
+        # The source type. Valid values: PolarDB, MySQL, Kafka, LogHub, Hologres, Oracle, OceanBase, MongoDB, Redshift, Hive, SQL Server, Doris, and ClickHouse.
+        # 
         # This parameter is required.
         self.source_data_source_type = source_data_source_type
         # This parameter is required.
@@ -65817,11 +65861,15 @@ class UpdateDIJobRequest(TeaModel):
         table_mappings: List[UpdateDIJobRequestTableMappings] = None,
         transformation_rules: List[UpdateDIJobRequestTransformationRules] = None,
     ):
+        # This parameter is deprecated. Use the Id parameter instead.
         self.dijob_id = dijob_id
         self.description = description
         # The ID of the synchronization task.
         self.id = id
         self.job_settings = job_settings
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the workspace ID.
+        # 
+        # You must configure this parameter to specify the DataWorks workspace to which the operation is applied.
         self.project_id = project_id
         self.resource_settings = resource_settings
         self.table_mappings = table_mappings
@@ -65910,11 +65958,15 @@ class UpdateDIJobShrinkRequest(TeaModel):
         table_mappings_shrink: str = None,
         transformation_rules_shrink: str = None,
     ):
+        # This parameter is deprecated. Use the Id parameter instead.
         self.dijob_id = dijob_id
         self.description = description
         # The ID of the synchronization task.
         self.id = id
         self.job_settings_shrink = job_settings_shrink
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the workspace ID.
+        # 
+        # You must configure this parameter to specify the DataWorks workspace to which the operation is applied.
         self.project_id = project_id
         self.resource_settings_shrink = resource_settings_shrink
         self.table_mappings_shrink = table_mappings_shrink
