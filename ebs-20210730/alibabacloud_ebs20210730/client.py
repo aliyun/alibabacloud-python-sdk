@@ -3385,17 +3385,21 @@ class Client(OpenApiClient):
 
     def describe_metric_data_with_options(
         self,
-        request: ebs_20210730_models.DescribeMetricDataRequest,
+        tmp_req: ebs_20210730_models.DescribeMetricDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.DescribeMetricDataResponse:
         """
-        @summary Queries the statistics about a metric of Elastic Block Storage (EBS) disks.
+        @summary Query single metric monitoring information
         
-        @param request: DescribeMetricDataRequest
+        @param tmp_req: DescribeMetricDataRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeMetricDataResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ebs_20210730_models.DescribeMetricDataShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.group_by_labels):
+            request.group_by_labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.group_by_labels, 'GroupByLabels', 'simple')
         query = {}
         if not UtilClient.is_unset(request.aggre_ops):
             query['AggreOps'] = request.aggre_ops
@@ -3405,6 +3409,8 @@ class Client(OpenApiClient):
             query['Dimensions'] = request.dimensions
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.group_by_labels_shrink):
+            query['GroupByLabels'] = request.group_by_labels_shrink
         if not UtilClient.is_unset(request.metric_name):
             query['MetricName'] = request.metric_name
         if not UtilClient.is_unset(request.period):
@@ -3434,17 +3440,21 @@ class Client(OpenApiClient):
 
     async def describe_metric_data_with_options_async(
         self,
-        request: ebs_20210730_models.DescribeMetricDataRequest,
+        tmp_req: ebs_20210730_models.DescribeMetricDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.DescribeMetricDataResponse:
         """
-        @summary Queries the statistics about a metric of Elastic Block Storage (EBS) disks.
+        @summary Query single metric monitoring information
         
-        @param request: DescribeMetricDataRequest
+        @param tmp_req: DescribeMetricDataRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeMetricDataResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ebs_20210730_models.DescribeMetricDataShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.group_by_labels):
+            request.group_by_labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.group_by_labels, 'GroupByLabels', 'simple')
         query = {}
         if not UtilClient.is_unset(request.aggre_ops):
             query['AggreOps'] = request.aggre_ops
@@ -3454,6 +3464,8 @@ class Client(OpenApiClient):
             query['Dimensions'] = request.dimensions
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.group_by_labels_shrink):
+            query['GroupByLabels'] = request.group_by_labels_shrink
         if not UtilClient.is_unset(request.metric_name):
             query['MetricName'] = request.metric_name
         if not UtilClient.is_unset(request.period):
@@ -3486,7 +3498,7 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.DescribeMetricDataRequest,
     ) -> ebs_20210730_models.DescribeMetricDataResponse:
         """
-        @summary Queries the statistics about a metric of Elastic Block Storage (EBS) disks.
+        @summary Query single metric monitoring information
         
         @param request: DescribeMetricDataRequest
         @return: DescribeMetricDataResponse
@@ -3499,7 +3511,7 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.DescribeMetricDataRequest,
     ) -> ebs_20210730_models.DescribeMetricDataResponse:
         """
-        @summary Queries the statistics about a metric of Elastic Block Storage (EBS) disks.
+        @summary Query single metric monitoring information
         
         @param request: DescribeMetricDataRequest
         @return: DescribeMetricDataResponse
@@ -4600,8 +4612,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         body = {}
-        if not UtilClient.is_unset(request.app_name):
-            body['AppName'] = request.app_name
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -4649,8 +4659,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         body = {}
-        if not UtilClient.is_unset(request.app_name):
-            body['AppName'] = request.app_name
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(

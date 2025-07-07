@@ -1,3 +1,8 @@
+2025-07-07 Version: 4.0.0
+- Update API DescribeMetricData: add request parameters GroupByLabels.
+- Update API ListReports: delete request parameters AppName.
+
+
 2025-05-15 Version: 3.1.2
 - Update API ListReports: add request parameters AppId.
 
