@@ -1756,6 +1756,499 @@ class CancelJobRunResponse(TeaModel):
         return self
 
 
+class CreateLivyComputeRequestAutoStartConfiguration(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+    ):
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        return self
+
+
+class CreateLivyComputeRequestAutoStopConfiguration(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        idle_timeout_minutes: int = None,
+    ):
+        self.enable = enable
+        self.idle_timeout_minutes = idle_timeout_minutes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.idle_timeout_minutes is not None:
+            result['idleTimeoutMinutes'] = self.idle_timeout_minutes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('idleTimeoutMinutes') is not None:
+            self.idle_timeout_minutes = m.get('idleTimeoutMinutes')
+        return self
+
+
+class CreateLivyComputeRequest(TeaModel):
+    def __init__(
+        self,
+        auth_type: str = None,
+        auto_start_configuration: CreateLivyComputeRequestAutoStartConfiguration = None,
+        auto_stop_configuration: CreateLivyComputeRequestAutoStopConfiguration = None,
+        cpu_limit: str = None,
+        display_release_version: str = None,
+        enable_public: bool = None,
+        environment_id: str = None,
+        fusion: bool = None,
+        livy_server_conf: str = None,
+        livy_version: str = None,
+        memory_limit: str = None,
+        name: str = None,
+        network_name: str = None,
+        queue_name: str = None,
+        release_version: str = None,
+        region_id: str = None,
+    ):
+        self.auth_type = auth_type
+        self.auto_start_configuration = auto_start_configuration
+        self.auto_stop_configuration = auto_stop_configuration
+        self.cpu_limit = cpu_limit
+        self.display_release_version = display_release_version
+        self.enable_public = enable_public
+        self.environment_id = environment_id
+        self.fusion = fusion
+        self.livy_server_conf = livy_server_conf
+        self.livy_version = livy_version
+        self.memory_limit = memory_limit
+        self.name = name
+        self.network_name = network_name
+        self.queue_name = queue_name
+        self.release_version = release_version
+        self.region_id = region_id
+
+    def validate(self):
+        if self.auto_start_configuration:
+            self.auto_start_configuration.validate()
+        if self.auto_stop_configuration:
+            self.auto_stop_configuration.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_type is not None:
+            result['authType'] = self.auth_type
+        if self.auto_start_configuration is not None:
+            result['autoStartConfiguration'] = self.auto_start_configuration.to_map()
+        if self.auto_stop_configuration is not None:
+            result['autoStopConfiguration'] = self.auto_stop_configuration.to_map()
+        if self.cpu_limit is not None:
+            result['cpuLimit'] = self.cpu_limit
+        if self.display_release_version is not None:
+            result['displayReleaseVersion'] = self.display_release_version
+        if self.enable_public is not None:
+            result['enablePublic'] = self.enable_public
+        if self.environment_id is not None:
+            result['environmentId'] = self.environment_id
+        if self.fusion is not None:
+            result['fusion'] = self.fusion
+        if self.livy_server_conf is not None:
+            result['livyServerConf'] = self.livy_server_conf
+        if self.livy_version is not None:
+            result['livyVersion'] = self.livy_version
+        if self.memory_limit is not None:
+            result['memoryLimit'] = self.memory_limit
+        if self.name is not None:
+            result['name'] = self.name
+        if self.network_name is not None:
+            result['networkName'] = self.network_name
+        if self.queue_name is not None:
+            result['queueName'] = self.queue_name
+        if self.release_version is not None:
+            result['releaseVersion'] = self.release_version
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('authType') is not None:
+            self.auth_type = m.get('authType')
+        if m.get('autoStartConfiguration') is not None:
+            temp_model = CreateLivyComputeRequestAutoStartConfiguration()
+            self.auto_start_configuration = temp_model.from_map(m['autoStartConfiguration'])
+        if m.get('autoStopConfiguration') is not None:
+            temp_model = CreateLivyComputeRequestAutoStopConfiguration()
+            self.auto_stop_configuration = temp_model.from_map(m['autoStopConfiguration'])
+        if m.get('cpuLimit') is not None:
+            self.cpu_limit = m.get('cpuLimit')
+        if m.get('displayReleaseVersion') is not None:
+            self.display_release_version = m.get('displayReleaseVersion')
+        if m.get('enablePublic') is not None:
+            self.enable_public = m.get('enablePublic')
+        if m.get('environmentId') is not None:
+            self.environment_id = m.get('environmentId')
+        if m.get('fusion') is not None:
+            self.fusion = m.get('fusion')
+        if m.get('livyServerConf') is not None:
+            self.livy_server_conf = m.get('livyServerConf')
+        if m.get('livyVersion') is not None:
+            self.livy_version = m.get('livyVersion')
+        if m.get('memoryLimit') is not None:
+            self.memory_limit = m.get('memoryLimit')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('networkName') is not None:
+            self.network_name = m.get('networkName')
+        if m.get('queueName') is not None:
+            self.queue_name = m.get('queueName')
+        if m.get('releaseVersion') is not None:
+            self.release_version = m.get('releaseVersion')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class CreateLivyComputeResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        livy_compute_id: str = None,
+    ):
+        self.livy_compute_id = livy_compute_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.livy_compute_id is not None:
+            result['livyComputeId'] = self.livy_compute_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('livyComputeId') is not None:
+            self.livy_compute_id = m.get('livyComputeId')
+        return self
+
+
+class CreateLivyComputeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateLivyComputeResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = CreateLivyComputeResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreateLivyComputeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateLivyComputeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateLivyComputeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateLivyComputeTokenRequestAutoExpireConfiguration(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        expire_days: int = None,
+    ):
+        self.enable = enable
+        self.expire_days = expire_days
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.expire_days is not None:
+            result['expireDays'] = self.expire_days
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('expireDays') is not None:
+            self.expire_days = m.get('expireDays')
+        return self
+
+
+class CreateLivyComputeTokenRequest(TeaModel):
+    def __init__(
+        self,
+        auto_expire_configuration: CreateLivyComputeTokenRequestAutoExpireConfiguration = None,
+        name: str = None,
+        token: str = None,
+        region_id: str = None,
+    ):
+        self.auto_expire_configuration = auto_expire_configuration
+        self.name = name
+        self.token = token
+        self.region_id = region_id
+
+    def validate(self):
+        if self.auto_expire_configuration:
+            self.auto_expire_configuration.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_expire_configuration is not None:
+            result['autoExpireConfiguration'] = self.auto_expire_configuration.to_map()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.token is not None:
+            result['token'] = self.token
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('autoExpireConfiguration') is not None:
+            temp_model = CreateLivyComputeTokenRequestAutoExpireConfiguration()
+            self.auto_expire_configuration = temp_model.from_map(m['autoExpireConfiguration'])
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('token') is not None:
+            self.token = m.get('token')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class CreateLivyComputeTokenResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        token_id: str = None,
+    ):
+        # Token ID。
+        self.token_id = token_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.token_id is not None:
+            result['tokenId'] = self.token_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tokenId') is not None:
+            self.token_id = m.get('tokenId')
+        return self
+
+
+class CreateLivyComputeTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateLivyComputeTokenResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = CreateLivyComputeTokenResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreateLivyComputeTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateLivyComputeTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateLivyComputeTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateProcessDefinitionWithScheduleRequestGlobalParams(TeaModel):
     def __init__(
         self,
@@ -2867,10 +3360,10 @@ class CreateSessionClusterRequest(TeaModel):
     ):
         # The Spark configurations.
         self.application_configs = application_configs
-        # The automatic startup configuration.
+        # Specifies whether to enable automatic startup.
         # 
-        # *\
-        # *\
+        # *   true
+        # *   false
         self.auto_start_configuration = auto_start_configuration
         # The automatic termination configuration.
         self.auto_stop_configuration = auto_stop_configuration
@@ -3511,6 +4004,220 @@ class CreateWorkspaceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateWorkspaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteLivyComputeRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class DeleteLivyComputeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeleteLivyComputeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteLivyComputeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteLivyComputeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteLivyComputeTokenRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class DeleteLivyComputeTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeleteLivyComputeTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteLivyComputeTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteLivyComputeTokenResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4312,6 +5019,529 @@ class GetJobRunResponse(TeaModel):
         return self
 
 
+class GetLivyComputeRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class GetLivyComputeResponseBodyDataAutoStopConfiguration(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        idle_timeout_minutes: int = None,
+    ):
+        self.enable = enable
+        self.idle_timeout_minutes = idle_timeout_minutes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.idle_timeout_minutes is not None:
+            result['idleTimeoutMinutes'] = self.idle_timeout_minutes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('idleTimeoutMinutes') is not None:
+            self.idle_timeout_minutes = m.get('idleTimeoutMinutes')
+        return self
+
+
+class GetLivyComputeResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        auth_type: str = None,
+        auto_stop_configuration: GetLivyComputeResponseBodyDataAutoStopConfiguration = None,
+        compute_id: str = None,
+        cpu_limit: str = None,
+        created_by: str = None,
+        display_release_version: str = None,
+        enable_public: bool = None,
+        endpoint: str = None,
+        endpoint_inner: str = None,
+        environment_id: str = None,
+        fusion: bool = None,
+        gmt_create: int = None,
+        livy_server_conf: str = None,
+        livy_version: str = None,
+        memory_limit: str = None,
+        name: str = None,
+        network_name: str = None,
+        queue_name: str = None,
+        ram_user_id: str = None,
+        release_version: str = None,
+        start_time: int = None,
+        status: str = None,
+    ):
+        self.auth_type = auth_type
+        self.auto_stop_configuration = auto_stop_configuration
+        self.compute_id = compute_id
+        self.cpu_limit = cpu_limit
+        self.created_by = created_by
+        self.display_release_version = display_release_version
+        self.enable_public = enable_public
+        self.endpoint = endpoint
+        self.endpoint_inner = endpoint_inner
+        self.environment_id = environment_id
+        self.fusion = fusion
+        self.gmt_create = gmt_create
+        self.livy_server_conf = livy_server_conf
+        self.livy_version = livy_version
+        self.memory_limit = memory_limit
+        self.name = name
+        self.network_name = network_name
+        self.queue_name = queue_name
+        self.ram_user_id = ram_user_id
+        self.release_version = release_version
+        self.start_time = start_time
+        self.status = status
+
+    def validate(self):
+        if self.auto_stop_configuration:
+            self.auto_stop_configuration.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_type is not None:
+            result['authType'] = self.auth_type
+        if self.auto_stop_configuration is not None:
+            result['autoStopConfiguration'] = self.auto_stop_configuration.to_map()
+        if self.compute_id is not None:
+            result['computeId'] = self.compute_id
+        if self.cpu_limit is not None:
+            result['cpuLimit'] = self.cpu_limit
+        if self.created_by is not None:
+            result['createdBy'] = self.created_by
+        if self.display_release_version is not None:
+            result['displayReleaseVersion'] = self.display_release_version
+        if self.enable_public is not None:
+            result['enablePublic'] = self.enable_public
+        if self.endpoint is not None:
+            result['endpoint'] = self.endpoint
+        if self.endpoint_inner is not None:
+            result['endpointInner'] = self.endpoint_inner
+        if self.environment_id is not None:
+            result['environmentId'] = self.environment_id
+        if self.fusion is not None:
+            result['fusion'] = self.fusion
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.livy_server_conf is not None:
+            result['livyServerConf'] = self.livy_server_conf
+        if self.livy_version is not None:
+            result['livyVersion'] = self.livy_version
+        if self.memory_limit is not None:
+            result['memoryLimit'] = self.memory_limit
+        if self.name is not None:
+            result['name'] = self.name
+        if self.network_name is not None:
+            result['networkName'] = self.network_name
+        if self.queue_name is not None:
+            result['queueName'] = self.queue_name
+        if self.ram_user_id is not None:
+            result['ramUserId'] = self.ram_user_id
+        if self.release_version is not None:
+            result['releaseVersion'] = self.release_version
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('authType') is not None:
+            self.auth_type = m.get('authType')
+        if m.get('autoStopConfiguration') is not None:
+            temp_model = GetLivyComputeResponseBodyDataAutoStopConfiguration()
+            self.auto_stop_configuration = temp_model.from_map(m['autoStopConfiguration'])
+        if m.get('computeId') is not None:
+            self.compute_id = m.get('computeId')
+        if m.get('cpuLimit') is not None:
+            self.cpu_limit = m.get('cpuLimit')
+        if m.get('createdBy') is not None:
+            self.created_by = m.get('createdBy')
+        if m.get('displayReleaseVersion') is not None:
+            self.display_release_version = m.get('displayReleaseVersion')
+        if m.get('enablePublic') is not None:
+            self.enable_public = m.get('enablePublic')
+        if m.get('endpoint') is not None:
+            self.endpoint = m.get('endpoint')
+        if m.get('endpointInner') is not None:
+            self.endpoint_inner = m.get('endpointInner')
+        if m.get('environmentId') is not None:
+            self.environment_id = m.get('environmentId')
+        if m.get('fusion') is not None:
+            self.fusion = m.get('fusion')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('livyServerConf') is not None:
+            self.livy_server_conf = m.get('livyServerConf')
+        if m.get('livyVersion') is not None:
+            self.livy_version = m.get('livyVersion')
+        if m.get('memoryLimit') is not None:
+            self.memory_limit = m.get('memoryLimit')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('networkName') is not None:
+            self.network_name = m.get('networkName')
+        if m.get('queueName') is not None:
+            self.queue_name = m.get('queueName')
+        if m.get('ramUserId') is not None:
+            self.ram_user_id = m.get('ramUserId')
+        if m.get('releaseVersion') is not None:
+            self.release_version = m.get('releaseVersion')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class GetLivyComputeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetLivyComputeResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = GetLivyComputeResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetLivyComputeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetLivyComputeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetLivyComputeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetLivyComputeTokenRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class GetLivyComputeTokenResponseBodyDataAutoExpireConfiguration(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        expire_days: int = None,
+    ):
+        self.enable = enable
+        self.expire_days = expire_days
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.expire_days is not None:
+            result['expireDays'] = self.expire_days
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('expireDays') is not None:
+            self.expire_days = m.get('expireDays')
+        return self
+
+
+class GetLivyComputeTokenResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        auto_expire_configuration: GetLivyComputeTokenResponseBodyDataAutoExpireConfiguration = None,
+        create_time: int = None,
+        created_by: str = None,
+        expire_time: int = None,
+        last_used_time: int = None,
+        name: str = None,
+        token: str = None,
+        token_id: str = None,
+    ):
+        self.auto_expire_configuration = auto_expire_configuration
+        self.create_time = create_time
+        self.created_by = created_by
+        self.expire_time = expire_time
+        self.last_used_time = last_used_time
+        self.name = name
+        self.token = token
+        # Token ID。
+        self.token_id = token_id
+
+    def validate(self):
+        if self.auto_expire_configuration:
+            self.auto_expire_configuration.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_expire_configuration is not None:
+            result['autoExpireConfiguration'] = self.auto_expire_configuration.to_map()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.created_by is not None:
+            result['createdBy'] = self.created_by
+        if self.expire_time is not None:
+            result['expireTime'] = self.expire_time
+        if self.last_used_time is not None:
+            result['lastUsedTime'] = self.last_used_time
+        if self.name is not None:
+            result['name'] = self.name
+        if self.token is not None:
+            result['token'] = self.token
+        if self.token_id is not None:
+            result['tokenId'] = self.token_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('autoExpireConfiguration') is not None:
+            temp_model = GetLivyComputeTokenResponseBodyDataAutoExpireConfiguration()
+            self.auto_expire_configuration = temp_model.from_map(m['autoExpireConfiguration'])
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('createdBy') is not None:
+            self.created_by = m.get('createdBy')
+        if m.get('expireTime') is not None:
+            self.expire_time = m.get('expireTime')
+        if m.get('lastUsedTime') is not None:
+            self.last_used_time = m.get('lastUsedTime')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('token') is not None:
+            self.token = m.get('token')
+        if m.get('tokenId') is not None:
+            self.token_id = m.get('tokenId')
+        return self
+
+
+class GetLivyComputeTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetLivyComputeTokenResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = GetLivyComputeTokenResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetLivyComputeTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetLivyComputeTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetLivyComputeTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetSessionClusterRequest(TeaModel):
     def __init__(
         self,
@@ -4715,7 +5945,7 @@ class GetSessionClusterResponseBody(TeaModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The session.
+        # The session object.
         self.session_cluster = session_cluster
 
     def validate(self):
@@ -5022,6 +6252,11 @@ class GetTemplateRequest(TeaModel):
         self.region_id = region_id
         self.template_biz_id = template_biz_id
         # The template type.
+        # 
+        # Valid values:
+        # 
+        # *   TASK
+        # *   SESSION
         self.template_type = template_type
 
     def validate(self):
@@ -5762,7 +6997,7 @@ class ListJobRunsResponseBodyJobRuns(TeaModel):
         self.state_change_reason = state_change_reason
         # The time when the job was submitted.
         self.submit_time = submit_time
-        # The tags.
+        # The tags of the job.
         self.tags = tags
         # The total number of CPU cores allocated to the job multiplied by the running duration (seconds).
         self.vcore_seconds = vcore_seconds
@@ -6808,6 +8043,451 @@ class ListKyuubiTokenResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListKyuubiTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListLivyComputeRequest(TeaModel):
+    def __init__(
+        self,
+        environment_id: str = None,
+        region_id: str = None,
+    ):
+        self.environment_id = environment_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.environment_id is not None:
+            result['environmentId'] = self.environment_id
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('environmentId') is not None:
+            self.environment_id = m.get('environmentId')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class ListLivyComputeResponseBodyDataLivyComputes(TeaModel):
+    def __init__(
+        self,
+        compute_id: str = None,
+        created_by: str = None,
+        endpoint: str = None,
+        endpoint_inner: str = None,
+        gmt_create: int = None,
+        name: str = None,
+        queue_name: str = None,
+        start_time: int = None,
+        status: str = None,
+    ):
+        self.compute_id = compute_id
+        self.created_by = created_by
+        self.endpoint = endpoint
+        self.endpoint_inner = endpoint_inner
+        self.gmt_create = gmt_create
+        self.name = name
+        self.queue_name = queue_name
+        self.start_time = start_time
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compute_id is not None:
+            result['computeId'] = self.compute_id
+        if self.created_by is not None:
+            result['createdBy'] = self.created_by
+        if self.endpoint is not None:
+            result['endpoint'] = self.endpoint
+        if self.endpoint_inner is not None:
+            result['endpointInner'] = self.endpoint_inner
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.name is not None:
+            result['name'] = self.name
+        if self.queue_name is not None:
+            result['queueName'] = self.queue_name
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('computeId') is not None:
+            self.compute_id = m.get('computeId')
+        if m.get('createdBy') is not None:
+            self.created_by = m.get('createdBy')
+        if m.get('endpoint') is not None:
+            self.endpoint = m.get('endpoint')
+        if m.get('endpointInner') is not None:
+            self.endpoint_inner = m.get('endpointInner')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('queueName') is not None:
+            self.queue_name = m.get('queueName')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class ListLivyComputeResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        livy_computes: List[ListLivyComputeResponseBodyDataLivyComputes] = None,
+    ):
+        self.livy_computes = livy_computes
+
+    def validate(self):
+        if self.livy_computes:
+            for k in self.livy_computes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['livyComputes'] = []
+        if self.livy_computes is not None:
+            for k in self.livy_computes:
+                result['livyComputes'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.livy_computes = []
+        if m.get('livyComputes') is not None:
+            for k in m.get('livyComputes'):
+                temp_model = ListLivyComputeResponseBodyDataLivyComputes()
+                self.livy_computes.append(temp_model.from_map(k))
+        return self
+
+
+class ListLivyComputeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListLivyComputeResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = ListLivyComputeResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListLivyComputeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListLivyComputeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListLivyComputeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListLivyComputeTokenRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class ListLivyComputeTokenResponseBodyDataTokens(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        createdby: str = None,
+        expire_time: int = None,
+        last_used_time: int = None,
+        name: str = None,
+        token: str = None,
+        token_id: str = None,
+    ):
+        self.create_time = create_time
+        self.createdby = createdby
+        self.expire_time = expire_time
+        self.last_used_time = last_used_time
+        self.name = name
+        self.token = token
+        # Token ID。
+        self.token_id = token_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.createdby is not None:
+            result['createdby'] = self.createdby
+        if self.expire_time is not None:
+            result['expireTime'] = self.expire_time
+        if self.last_used_time is not None:
+            result['lastUsedTime'] = self.last_used_time
+        if self.name is not None:
+            result['name'] = self.name
+        if self.token is not None:
+            result['token'] = self.token
+        if self.token_id is not None:
+            result['tokenId'] = self.token_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('createdby') is not None:
+            self.createdby = m.get('createdby')
+        if m.get('expireTime') is not None:
+            self.expire_time = m.get('expireTime')
+        if m.get('lastUsedTime') is not None:
+            self.last_used_time = m.get('lastUsedTime')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('token') is not None:
+            self.token = m.get('token')
+        if m.get('tokenId') is not None:
+            self.token_id = m.get('tokenId')
+        return self
+
+
+class ListLivyComputeTokenResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        tokens: List[ListLivyComputeTokenResponseBodyDataTokens] = None,
+    ):
+        self.tokens = tokens
+
+    def validate(self):
+        if self.tokens:
+            for k in self.tokens:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['tokens'] = []
+        if self.tokens is not None:
+            for k in self.tokens:
+                result['tokens'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tokens = []
+        if m.get('tokens') is not None:
+            for k in m.get('tokens'):
+                temp_model = ListLivyComputeTokenResponseBodyDataTokens()
+                self.tokens.append(temp_model.from_map(k))
+        return self
+
+
+class ListLivyComputeTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListLivyComputeTokenResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = ListLivyComputeTokenResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListLivyComputeTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListLivyComputeTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListLivyComputeTokenResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8762,6 +10442,166 @@ class ListWorkspacesResponse(TeaModel):
         return self
 
 
+class RefreshLivyComputeTokenRequestAutoExpireConfiguration(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        expire_days: int = None,
+    ):
+        self.enable = enable
+        self.expire_days = expire_days
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.expire_days is not None:
+            result['expireDays'] = self.expire_days
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('expireDays') is not None:
+            self.expire_days = m.get('expireDays')
+        return self
+
+
+class RefreshLivyComputeTokenRequest(TeaModel):
+    def __init__(
+        self,
+        auto_expire_configuration: RefreshLivyComputeTokenRequestAutoExpireConfiguration = None,
+        name: str = None,
+        token: str = None,
+        region_id: str = None,
+    ):
+        self.auto_expire_configuration = auto_expire_configuration
+        self.name = name
+        self.token = token
+        self.region_id = region_id
+
+    def validate(self):
+        if self.auto_expire_configuration:
+            self.auto_expire_configuration.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_expire_configuration is not None:
+            result['autoExpireConfiguration'] = self.auto_expire_configuration.to_map()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.token is not None:
+            result['token'] = self.token
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('autoExpireConfiguration') is not None:
+            temp_model = RefreshLivyComputeTokenRequestAutoExpireConfiguration()
+            self.auto_expire_configuration = temp_model.from_map(m['autoExpireConfiguration'])
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('token') is not None:
+            self.token = m.get('token')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class RefreshLivyComputeTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class RefreshLivyComputeTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RefreshLivyComputeTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RefreshLivyComputeTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StartJobRunRequestConfigurationOverridesConfigurations(TeaModel):
     def __init__(
         self,
@@ -9042,6 +10882,113 @@ class StartJobRunResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StartJobRunResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StartLivyComputeRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class StartLivyComputeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class StartLivyComputeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartLivyComputeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartLivyComputeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9373,6 +11320,113 @@ class StartSessionClusterResponse(TeaModel):
         return self
 
 
+class StopLivyComputeRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class StopLivyComputeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class StopLivyComputeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopLivyComputeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopLivyComputeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StopSessionClusterRequest(TeaModel):
     def __init__(
         self,
@@ -9584,6 +11638,268 @@ class TerminateSqlStatementResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TerminateSqlStatementResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateLivyComputeRequestAutoStartConfiguration(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+    ):
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        return self
+
+
+class UpdateLivyComputeRequestAutoStopConfiguration(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        idle_timeout_minutes: int = None,
+    ):
+        self.enable = enable
+        self.idle_timeout_minutes = idle_timeout_minutes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.idle_timeout_minutes is not None:
+            result['idleTimeoutMinutes'] = self.idle_timeout_minutes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('idleTimeoutMinutes') is not None:
+            self.idle_timeout_minutes = m.get('idleTimeoutMinutes')
+        return self
+
+
+class UpdateLivyComputeRequest(TeaModel):
+    def __init__(
+        self,
+        auth_type: str = None,
+        auto_start_configuration: UpdateLivyComputeRequestAutoStartConfiguration = None,
+        auto_stop_configuration: UpdateLivyComputeRequestAutoStopConfiguration = None,
+        cpu_limit: str = None,
+        display_release_version: str = None,
+        enable_public: bool = None,
+        environment_id: str = None,
+        fusion: bool = None,
+        livy_server_conf: str = None,
+        livy_version: str = None,
+        memory_limit: str = None,
+        name: str = None,
+        network_name: str = None,
+        queue_name: str = None,
+        release_version: str = None,
+        region_id: str = None,
+    ):
+        self.auth_type = auth_type
+        self.auto_start_configuration = auto_start_configuration
+        self.auto_stop_configuration = auto_stop_configuration
+        self.cpu_limit = cpu_limit
+        self.display_release_version = display_release_version
+        self.enable_public = enable_public
+        self.environment_id = environment_id
+        self.fusion = fusion
+        self.livy_server_conf = livy_server_conf
+        self.livy_version = livy_version
+        self.memory_limit = memory_limit
+        self.name = name
+        self.network_name = network_name
+        self.queue_name = queue_name
+        self.release_version = release_version
+        self.region_id = region_id
+
+    def validate(self):
+        if self.auto_start_configuration:
+            self.auto_start_configuration.validate()
+        if self.auto_stop_configuration:
+            self.auto_stop_configuration.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_type is not None:
+            result['authType'] = self.auth_type
+        if self.auto_start_configuration is not None:
+            result['autoStartConfiguration'] = self.auto_start_configuration.to_map()
+        if self.auto_stop_configuration is not None:
+            result['autoStopConfiguration'] = self.auto_stop_configuration.to_map()
+        if self.cpu_limit is not None:
+            result['cpuLimit'] = self.cpu_limit
+        if self.display_release_version is not None:
+            result['displayReleaseVersion'] = self.display_release_version
+        if self.enable_public is not None:
+            result['enablePublic'] = self.enable_public
+        if self.environment_id is not None:
+            result['environmentId'] = self.environment_id
+        if self.fusion is not None:
+            result['fusion'] = self.fusion
+        if self.livy_server_conf is not None:
+            result['livyServerConf'] = self.livy_server_conf
+        if self.livy_version is not None:
+            result['livyVersion'] = self.livy_version
+        if self.memory_limit is not None:
+            result['memoryLimit'] = self.memory_limit
+        if self.name is not None:
+            result['name'] = self.name
+        if self.network_name is not None:
+            result['networkName'] = self.network_name
+        if self.queue_name is not None:
+            result['queueName'] = self.queue_name
+        if self.release_version is not None:
+            result['releaseVersion'] = self.release_version
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('authType') is not None:
+            self.auth_type = m.get('authType')
+        if m.get('autoStartConfiguration') is not None:
+            temp_model = UpdateLivyComputeRequestAutoStartConfiguration()
+            self.auto_start_configuration = temp_model.from_map(m['autoStartConfiguration'])
+        if m.get('autoStopConfiguration') is not None:
+            temp_model = UpdateLivyComputeRequestAutoStopConfiguration()
+            self.auto_stop_configuration = temp_model.from_map(m['autoStopConfiguration'])
+        if m.get('cpuLimit') is not None:
+            self.cpu_limit = m.get('cpuLimit')
+        if m.get('displayReleaseVersion') is not None:
+            self.display_release_version = m.get('displayReleaseVersion')
+        if m.get('enablePublic') is not None:
+            self.enable_public = m.get('enablePublic')
+        if m.get('environmentId') is not None:
+            self.environment_id = m.get('environmentId')
+        if m.get('fusion') is not None:
+            self.fusion = m.get('fusion')
+        if m.get('livyServerConf') is not None:
+            self.livy_server_conf = m.get('livyServerConf')
+        if m.get('livyVersion') is not None:
+            self.livy_version = m.get('livyVersion')
+        if m.get('memoryLimit') is not None:
+            self.memory_limit = m.get('memoryLimit')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('networkName') is not None:
+            self.network_name = m.get('networkName')
+        if m.get('queueName') is not None:
+            self.queue_name = m.get('queueName')
+        if m.get('releaseVersion') is not None:
+            self.release_version = m.get('releaseVersion')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class UpdateLivyComputeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpdateLivyComputeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateLivyComputeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateLivyComputeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

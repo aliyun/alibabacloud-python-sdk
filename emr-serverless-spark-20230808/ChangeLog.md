@@ -1,3 +1,18 @@
+2025-07-07 Version: 1.12.0
+- Support API CreateLivyCompute.
+- Support API CreateLivyComputeToken.
+- Support API DeleteLivyCompute.
+- Support API DeleteLivyComputeToken.
+- Support API GetLivyCompute.
+- Support API GetLivyComputeToken.
+- Support API ListLivyCompute.
+- Support API ListLivyComputeToken.
+- Support API RefreshLivyComputeToken.
+- Support API StartLivyCompute.
+- Support API StopLivyCompute.
+- Support API UpdateLivyCompute.
+
+
 2025-06-26 Version: 1.11.0
 - Support API ListKyuubiServices.
 - Support API ListKyuubiToken.

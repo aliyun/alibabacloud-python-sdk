@@ -269,6 +269,306 @@ class Client(OpenApiClient):
         headers = {}
         return await self.cancel_job_run_with_options_async(workspace_id, job_run_id, request, headers, runtime)
 
+    def create_livy_compute_with_options(
+        self,
+        workspace_biz_id: str,
+        request: emr_serverless_spark_20230808_models.CreateLivyComputeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.CreateLivyComputeResponse:
+        """
+        @summary 创建Livy compute
+        
+        @param request: CreateLivyComputeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLivyComputeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.auth_type):
+            body['authType'] = request.auth_type
+        if not UtilClient.is_unset(request.auto_start_configuration):
+            body['autoStartConfiguration'] = request.auto_start_configuration
+        if not UtilClient.is_unset(request.auto_stop_configuration):
+            body['autoStopConfiguration'] = request.auto_stop_configuration
+        if not UtilClient.is_unset(request.cpu_limit):
+            body['cpuLimit'] = request.cpu_limit
+        if not UtilClient.is_unset(request.display_release_version):
+            body['displayReleaseVersion'] = request.display_release_version
+        if not UtilClient.is_unset(request.enable_public):
+            body['enablePublic'] = request.enable_public
+        if not UtilClient.is_unset(request.environment_id):
+            body['environmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.fusion):
+            body['fusion'] = request.fusion
+        if not UtilClient.is_unset(request.livy_server_conf):
+            body['livyServerConf'] = request.livy_server_conf
+        if not UtilClient.is_unset(request.livy_version):
+            body['livyVersion'] = request.livy_version
+        if not UtilClient.is_unset(request.memory_limit):
+            body['memoryLimit'] = request.memory_limit
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.network_name):
+            body['networkName'] = request.network_name
+        if not UtilClient.is_unset(request.queue_name):
+            body['queueName'] = request.queue_name
+        if not UtilClient.is_unset(request.release_version):
+            body['releaseVersion'] = request.release_version
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateLivyCompute',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_biz_id)}/livycompute',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.CreateLivyComputeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_livy_compute_with_options_async(
+        self,
+        workspace_biz_id: str,
+        request: emr_serverless_spark_20230808_models.CreateLivyComputeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.CreateLivyComputeResponse:
+        """
+        @summary 创建Livy compute
+        
+        @param request: CreateLivyComputeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLivyComputeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.auth_type):
+            body['authType'] = request.auth_type
+        if not UtilClient.is_unset(request.auto_start_configuration):
+            body['autoStartConfiguration'] = request.auto_start_configuration
+        if not UtilClient.is_unset(request.auto_stop_configuration):
+            body['autoStopConfiguration'] = request.auto_stop_configuration
+        if not UtilClient.is_unset(request.cpu_limit):
+            body['cpuLimit'] = request.cpu_limit
+        if not UtilClient.is_unset(request.display_release_version):
+            body['displayReleaseVersion'] = request.display_release_version
+        if not UtilClient.is_unset(request.enable_public):
+            body['enablePublic'] = request.enable_public
+        if not UtilClient.is_unset(request.environment_id):
+            body['environmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.fusion):
+            body['fusion'] = request.fusion
+        if not UtilClient.is_unset(request.livy_server_conf):
+            body['livyServerConf'] = request.livy_server_conf
+        if not UtilClient.is_unset(request.livy_version):
+            body['livyVersion'] = request.livy_version
+        if not UtilClient.is_unset(request.memory_limit):
+            body['memoryLimit'] = request.memory_limit
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.network_name):
+            body['networkName'] = request.network_name
+        if not UtilClient.is_unset(request.queue_name):
+            body['queueName'] = request.queue_name
+        if not UtilClient.is_unset(request.release_version):
+            body['releaseVersion'] = request.release_version
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateLivyCompute',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_biz_id)}/livycompute',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.CreateLivyComputeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_livy_compute(
+        self,
+        workspace_biz_id: str,
+        request: emr_serverless_spark_20230808_models.CreateLivyComputeRequest,
+    ) -> emr_serverless_spark_20230808_models.CreateLivyComputeResponse:
+        """
+        @summary 创建Livy compute
+        
+        @param request: CreateLivyComputeRequest
+        @return: CreateLivyComputeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_livy_compute_with_options(workspace_biz_id, request, headers, runtime)
+
+    async def create_livy_compute_async(
+        self,
+        workspace_biz_id: str,
+        request: emr_serverless_spark_20230808_models.CreateLivyComputeRequest,
+    ) -> emr_serverless_spark_20230808_models.CreateLivyComputeResponse:
+        """
+        @summary 创建Livy compute
+        
+        @param request: CreateLivyComputeRequest
+        @return: CreateLivyComputeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_livy_compute_with_options_async(workspace_biz_id, request, headers, runtime)
+
+    def create_livy_compute_token_with_options(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        request: emr_serverless_spark_20230808_models.CreateLivyComputeTokenRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.CreateLivyComputeTokenResponse:
+        """
+        @summary 创建Livy Compute的token
+        
+        @param request: CreateLivyComputeTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLivyComputeTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.auto_expire_configuration):
+            body['autoExpireConfiguration'] = request.auto_expire_configuration
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.token):
+            body['token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateLivyComputeToken',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_biz_id)}/livycompute/{OpenApiUtilClient.get_encode_param(livy_compute_id)}/token',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.CreateLivyComputeTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_livy_compute_token_with_options_async(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        request: emr_serverless_spark_20230808_models.CreateLivyComputeTokenRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.CreateLivyComputeTokenResponse:
+        """
+        @summary 创建Livy Compute的token
+        
+        @param request: CreateLivyComputeTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLivyComputeTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.auto_expire_configuration):
+            body['autoExpireConfiguration'] = request.auto_expire_configuration
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.token):
+            body['token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateLivyComputeToken',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_biz_id)}/livycompute/{OpenApiUtilClient.get_encode_param(livy_compute_id)}/token',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.CreateLivyComputeTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_livy_compute_token(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        request: emr_serverless_spark_20230808_models.CreateLivyComputeTokenRequest,
+    ) -> emr_serverless_spark_20230808_models.CreateLivyComputeTokenResponse:
+        """
+        @summary 创建Livy Compute的token
+        
+        @param request: CreateLivyComputeTokenRequest
+        @return: CreateLivyComputeTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_livy_compute_token_with_options(workspace_biz_id, livy_compute_id, request, headers, runtime)
+
+    async def create_livy_compute_token_async(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        request: emr_serverless_spark_20230808_models.CreateLivyComputeTokenRequest,
+    ) -> emr_serverless_spark_20230808_models.CreateLivyComputeTokenResponse:
+        """
+        @summary 创建Livy Compute的token
+        
+        @param request: CreateLivyComputeTokenRequest
+        @return: CreateLivyComputeTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_livy_compute_token_with_options_async(workspace_biz_id, livy_compute_id, request, headers, runtime)
+
     def create_process_definition_with_schedule_with_options(
         self,
         biz_id: str,
@@ -925,6 +1225,234 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_workspace_with_options_async(request, headers, runtime)
 
+    def delete_livy_compute_with_options(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        request: emr_serverless_spark_20230808_models.DeleteLivyComputeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.DeleteLivyComputeResponse:
+        """
+        @summary 删除livy compute
+        
+        @param request: DeleteLivyComputeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLivyComputeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteLivyCompute',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_biz_id)}/livycompute/{OpenApiUtilClient.get_encode_param(livy_compute_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.DeleteLivyComputeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_livy_compute_with_options_async(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        request: emr_serverless_spark_20230808_models.DeleteLivyComputeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.DeleteLivyComputeResponse:
+        """
+        @summary 删除livy compute
+        
+        @param request: DeleteLivyComputeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLivyComputeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteLivyCompute',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_biz_id)}/livycompute/{OpenApiUtilClient.get_encode_param(livy_compute_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.DeleteLivyComputeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_livy_compute(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        request: emr_serverless_spark_20230808_models.DeleteLivyComputeRequest,
+    ) -> emr_serverless_spark_20230808_models.DeleteLivyComputeResponse:
+        """
+        @summary 删除livy compute
+        
+        @param request: DeleteLivyComputeRequest
+        @return: DeleteLivyComputeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_livy_compute_with_options(workspace_biz_id, livy_compute_id, request, headers, runtime)
+
+    async def delete_livy_compute_async(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        request: emr_serverless_spark_20230808_models.DeleteLivyComputeRequest,
+    ) -> emr_serverless_spark_20230808_models.DeleteLivyComputeResponse:
+        """
+        @summary 删除livy compute
+        
+        @param request: DeleteLivyComputeRequest
+        @return: DeleteLivyComputeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_livy_compute_with_options_async(workspace_biz_id, livy_compute_id, request, headers, runtime)
+
+    def delete_livy_compute_token_with_options(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        token_id: str,
+        request: emr_serverless_spark_20230808_models.DeleteLivyComputeTokenRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.DeleteLivyComputeTokenResponse:
+        """
+        @summary 删除Livy Compute的token
+        
+        @param request: DeleteLivyComputeTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLivyComputeTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteLivyComputeToken',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_biz_id)}/livycompute/{OpenApiUtilClient.get_encode_param(livy_compute_id)}/token/{OpenApiUtilClient.get_encode_param(token_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.DeleteLivyComputeTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_livy_compute_token_with_options_async(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        token_id: str,
+        request: emr_serverless_spark_20230808_models.DeleteLivyComputeTokenRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.DeleteLivyComputeTokenResponse:
+        """
+        @summary 删除Livy Compute的token
+        
+        @param request: DeleteLivyComputeTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLivyComputeTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteLivyComputeToken',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_biz_id)}/livycompute/{OpenApiUtilClient.get_encode_param(livy_compute_id)}/token/{OpenApiUtilClient.get_encode_param(token_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.DeleteLivyComputeTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_livy_compute_token(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        token_id: str,
+        request: emr_serverless_spark_20230808_models.DeleteLivyComputeTokenRequest,
+    ) -> emr_serverless_spark_20230808_models.DeleteLivyComputeTokenResponse:
+        """
+        @summary 删除Livy Compute的token
+        
+        @param request: DeleteLivyComputeTokenRequest
+        @return: DeleteLivyComputeTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_livy_compute_token_with_options(workspace_biz_id, livy_compute_id, token_id, request, headers, runtime)
+
+    async def delete_livy_compute_token_async(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        token_id: str,
+        request: emr_serverless_spark_20230808_models.DeleteLivyComputeTokenRequest,
+    ) -> emr_serverless_spark_20230808_models.DeleteLivyComputeTokenResponse:
+        """
+        @summary 删除Livy Compute的token
+        
+        @param request: DeleteLivyComputeTokenRequest
+        @return: DeleteLivyComputeTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_livy_compute_token_with_options_async(workspace_biz_id, livy_compute_id, token_id, request, headers, runtime)
+
     def edit_workspace_queue_with_options(
         self,
         request: emr_serverless_spark_20230808_models.EditWorkspaceQueueRequest,
@@ -1396,6 +1924,234 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_job_run_with_options_async(workspace_id, job_run_id, request, headers, runtime)
+
+    def get_livy_compute_with_options(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        request: emr_serverless_spark_20230808_models.GetLivyComputeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.GetLivyComputeResponse:
+        """
+        @summary 获取livy compute
+        
+        @param request: GetLivyComputeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLivyComputeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLivyCompute',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_biz_id)}/livycompute/{OpenApiUtilClient.get_encode_param(livy_compute_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.GetLivyComputeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_livy_compute_with_options_async(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        request: emr_serverless_spark_20230808_models.GetLivyComputeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.GetLivyComputeResponse:
+        """
+        @summary 获取livy compute
+        
+        @param request: GetLivyComputeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLivyComputeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLivyCompute',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_biz_id)}/livycompute/{OpenApiUtilClient.get_encode_param(livy_compute_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.GetLivyComputeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_livy_compute(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        request: emr_serverless_spark_20230808_models.GetLivyComputeRequest,
+    ) -> emr_serverless_spark_20230808_models.GetLivyComputeResponse:
+        """
+        @summary 获取livy compute
+        
+        @param request: GetLivyComputeRequest
+        @return: GetLivyComputeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_livy_compute_with_options(workspace_biz_id, livy_compute_id, request, headers, runtime)
+
+    async def get_livy_compute_async(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        request: emr_serverless_spark_20230808_models.GetLivyComputeRequest,
+    ) -> emr_serverless_spark_20230808_models.GetLivyComputeResponse:
+        """
+        @summary 获取livy compute
+        
+        @param request: GetLivyComputeRequest
+        @return: GetLivyComputeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_livy_compute_with_options_async(workspace_biz_id, livy_compute_id, request, headers, runtime)
+
+    def get_livy_compute_token_with_options(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        token_id: str,
+        request: emr_serverless_spark_20230808_models.GetLivyComputeTokenRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.GetLivyComputeTokenResponse:
+        """
+        @summary 获取livy compute token
+        
+        @param request: GetLivyComputeTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLivyComputeTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLivyComputeToken',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_biz_id)}/livycompute/{OpenApiUtilClient.get_encode_param(livy_compute_id)}/token/{OpenApiUtilClient.get_encode_param(token_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.GetLivyComputeTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_livy_compute_token_with_options_async(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        token_id: str,
+        request: emr_serverless_spark_20230808_models.GetLivyComputeTokenRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.GetLivyComputeTokenResponse:
+        """
+        @summary 获取livy compute token
+        
+        @param request: GetLivyComputeTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLivyComputeTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLivyComputeToken',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_biz_id)}/livycompute/{OpenApiUtilClient.get_encode_param(livy_compute_id)}/token/{OpenApiUtilClient.get_encode_param(token_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.GetLivyComputeTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_livy_compute_token(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        token_id: str,
+        request: emr_serverless_spark_20230808_models.GetLivyComputeTokenRequest,
+    ) -> emr_serverless_spark_20230808_models.GetLivyComputeTokenResponse:
+        """
+        @summary 获取livy compute token
+        
+        @param request: GetLivyComputeTokenRequest
+        @return: GetLivyComputeTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_livy_compute_token_with_options(workspace_biz_id, livy_compute_id, token_id, request, headers, runtime)
+
+    async def get_livy_compute_token_async(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        token_id: str,
+        request: emr_serverless_spark_20230808_models.GetLivyComputeTokenRequest,
+    ) -> emr_serverless_spark_20230808_models.GetLivyComputeTokenResponse:
+        """
+        @summary 获取livy compute token
+        
+        @param request: GetLivyComputeTokenRequest
+        @return: GetLivyComputeTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_livy_compute_token_with_options_async(workspace_biz_id, livy_compute_id, token_id, request, headers, runtime)
 
     def get_session_cluster_with_options(
         self,
@@ -2391,6 +3147,230 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_kyuubi_token_with_options_async(workspace_id, kyuubi_service_id, request, headers, runtime)
 
+    def list_livy_compute_with_options(
+        self,
+        workspace_biz_id: str,
+        request: emr_serverless_spark_20230808_models.ListLivyComputeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.ListLivyComputeResponse:
+        """
+        @summary 列出livy compute
+        
+        @param request: ListLivyComputeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLivyComputeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.environment_id):
+            query['environmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLivyCompute',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_biz_id)}/livycompute',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.ListLivyComputeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_livy_compute_with_options_async(
+        self,
+        workspace_biz_id: str,
+        request: emr_serverless_spark_20230808_models.ListLivyComputeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.ListLivyComputeResponse:
+        """
+        @summary 列出livy compute
+        
+        @param request: ListLivyComputeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLivyComputeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.environment_id):
+            query['environmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLivyCompute',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_biz_id)}/livycompute',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.ListLivyComputeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_livy_compute(
+        self,
+        workspace_biz_id: str,
+        request: emr_serverless_spark_20230808_models.ListLivyComputeRequest,
+    ) -> emr_serverless_spark_20230808_models.ListLivyComputeResponse:
+        """
+        @summary 列出livy compute
+        
+        @param request: ListLivyComputeRequest
+        @return: ListLivyComputeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_livy_compute_with_options(workspace_biz_id, request, headers, runtime)
+
+    async def list_livy_compute_async(
+        self,
+        workspace_biz_id: str,
+        request: emr_serverless_spark_20230808_models.ListLivyComputeRequest,
+    ) -> emr_serverless_spark_20230808_models.ListLivyComputeResponse:
+        """
+        @summary 列出livy compute
+        
+        @param request: ListLivyComputeRequest
+        @return: ListLivyComputeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_livy_compute_with_options_async(workspace_biz_id, request, headers, runtime)
+
+    def list_livy_compute_token_with_options(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        request: emr_serverless_spark_20230808_models.ListLivyComputeTokenRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.ListLivyComputeTokenResponse:
+        """
+        @summary 列出livy compute token
+        
+        @param request: ListLivyComputeTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLivyComputeTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLivyComputeToken',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_biz_id)}/livycompute/{OpenApiUtilClient.get_encode_param(livy_compute_id)}/token',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.ListLivyComputeTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_livy_compute_token_with_options_async(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        request: emr_serverless_spark_20230808_models.ListLivyComputeTokenRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.ListLivyComputeTokenResponse:
+        """
+        @summary 列出livy compute token
+        
+        @param request: ListLivyComputeTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLivyComputeTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLivyComputeToken',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_biz_id)}/livycompute/{OpenApiUtilClient.get_encode_param(livy_compute_id)}/token',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.ListLivyComputeTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_livy_compute_token(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        request: emr_serverless_spark_20230808_models.ListLivyComputeTokenRequest,
+    ) -> emr_serverless_spark_20230808_models.ListLivyComputeTokenResponse:
+        """
+        @summary 列出livy compute token
+        
+        @param request: ListLivyComputeTokenRequest
+        @return: ListLivyComputeTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_livy_compute_token_with_options(workspace_biz_id, livy_compute_id, request, headers, runtime)
+
+    async def list_livy_compute_token_async(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        request: emr_serverless_spark_20230808_models.ListLivyComputeTokenRequest,
+    ) -> emr_serverless_spark_20230808_models.ListLivyComputeTokenResponse:
+        """
+        @summary 列出livy compute token
+        
+        @param request: ListLivyComputeTokenRequest
+        @return: ListLivyComputeTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_livy_compute_token_with_options_async(workspace_biz_id, livy_compute_id, request, headers, runtime)
+
     def list_log_contents_with_options(
         self,
         workspace_id: str,
@@ -3007,6 +3987,138 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_workspaces_with_options_async(request, headers, runtime)
 
+    def refresh_livy_compute_token_with_options(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        token_id: str,
+        request: emr_serverless_spark_20230808_models.RefreshLivyComputeTokenRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.RefreshLivyComputeTokenResponse:
+        """
+        @summary 更新Livy Compute的token
+        
+        @param request: RefreshLivyComputeTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefreshLivyComputeTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.auto_expire_configuration):
+            body['autoExpireConfiguration'] = request.auto_expire_configuration
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.token):
+            body['token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RefreshLivyComputeToken',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_biz_id)}/livycompute/{OpenApiUtilClient.get_encode_param(livy_compute_id)}/token/{OpenApiUtilClient.get_encode_param(token_id)}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.RefreshLivyComputeTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def refresh_livy_compute_token_with_options_async(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        token_id: str,
+        request: emr_serverless_spark_20230808_models.RefreshLivyComputeTokenRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.RefreshLivyComputeTokenResponse:
+        """
+        @summary 更新Livy Compute的token
+        
+        @param request: RefreshLivyComputeTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefreshLivyComputeTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.auto_expire_configuration):
+            body['autoExpireConfiguration'] = request.auto_expire_configuration
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.token):
+            body['token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RefreshLivyComputeToken',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_biz_id)}/livycompute/{OpenApiUtilClient.get_encode_param(livy_compute_id)}/token/{OpenApiUtilClient.get_encode_param(token_id)}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.RefreshLivyComputeTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def refresh_livy_compute_token(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        token_id: str,
+        request: emr_serverless_spark_20230808_models.RefreshLivyComputeTokenRequest,
+    ) -> emr_serverless_spark_20230808_models.RefreshLivyComputeTokenResponse:
+        """
+        @summary 更新Livy Compute的token
+        
+        @param request: RefreshLivyComputeTokenRequest
+        @return: RefreshLivyComputeTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.refresh_livy_compute_token_with_options(workspace_biz_id, livy_compute_id, token_id, request, headers, runtime)
+
+    async def refresh_livy_compute_token_async(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        token_id: str,
+        request: emr_serverless_spark_20230808_models.RefreshLivyComputeTokenRequest,
+    ) -> emr_serverless_spark_20230808_models.RefreshLivyComputeTokenResponse:
+        """
+        @summary 更新Livy Compute的token
+        
+        @param request: RefreshLivyComputeTokenRequest
+        @return: RefreshLivyComputeTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.refresh_livy_compute_token_with_options_async(workspace_biz_id, livy_compute_id, token_id, request, headers, runtime)
+
     def start_job_run_with_options(
         self,
         workspace_id: str,
@@ -3166,6 +4278,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.start_job_run_with_options_async(workspace_id, request, headers, runtime)
+
+    def start_livy_compute_with_options(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        request: emr_serverless_spark_20230808_models.StartLivyComputeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.StartLivyComputeResponse:
+        """
+        @summary 启动livy compute
+        
+        @param request: StartLivyComputeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartLivyComputeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartLivyCompute',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_biz_id)}/livycompute/{OpenApiUtilClient.get_encode_param(livy_compute_id)}/start',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.StartLivyComputeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_livy_compute_with_options_async(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        request: emr_serverless_spark_20230808_models.StartLivyComputeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.StartLivyComputeResponse:
+        """
+        @summary 启动livy compute
+        
+        @param request: StartLivyComputeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartLivyComputeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartLivyCompute',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_biz_id)}/livycompute/{OpenApiUtilClient.get_encode_param(livy_compute_id)}/start',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.StartLivyComputeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_livy_compute(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        request: emr_serverless_spark_20230808_models.StartLivyComputeRequest,
+    ) -> emr_serverless_spark_20230808_models.StartLivyComputeResponse:
+        """
+        @summary 启动livy compute
+        
+        @param request: StartLivyComputeRequest
+        @return: StartLivyComputeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.start_livy_compute_with_options(workspace_biz_id, livy_compute_id, request, headers, runtime)
+
+    async def start_livy_compute_async(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        request: emr_serverless_spark_20230808_models.StartLivyComputeRequest,
+    ) -> emr_serverless_spark_20230808_models.StartLivyComputeResponse:
+        """
+        @summary 启动livy compute
+        
+        @param request: StartLivyComputeRequest
+        @return: StartLivyComputeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.start_livy_compute_with_options_async(workspace_biz_id, livy_compute_id, request, headers, runtime)
 
     def start_process_instance_with_options(
         self,
@@ -3435,6 +4659,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.start_session_cluster_with_options_async(workspace_id, request, headers, runtime)
 
+    def stop_livy_compute_with_options(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        request: emr_serverless_spark_20230808_models.StopLivyComputeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.StopLivyComputeResponse:
+        """
+        @summary 停止livy compute
+        
+        @param request: StopLivyComputeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopLivyComputeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopLivyCompute',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_biz_id)}/livycompute/{OpenApiUtilClient.get_encode_param(livy_compute_id)}/stop',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.StopLivyComputeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_livy_compute_with_options_async(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        request: emr_serverless_spark_20230808_models.StopLivyComputeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.StopLivyComputeResponse:
+        """
+        @summary 停止livy compute
+        
+        @param request: StopLivyComputeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopLivyComputeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopLivyCompute',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_biz_id)}/livycompute/{OpenApiUtilClient.get_encode_param(livy_compute_id)}/stop',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.StopLivyComputeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_livy_compute(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        request: emr_serverless_spark_20230808_models.StopLivyComputeRequest,
+    ) -> emr_serverless_spark_20230808_models.StopLivyComputeResponse:
+        """
+        @summary 停止livy compute
+        
+        @param request: StopLivyComputeRequest
+        @return: StopLivyComputeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.stop_livy_compute_with_options(workspace_biz_id, livy_compute_id, request, headers, runtime)
+
+    async def stop_livy_compute_async(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        request: emr_serverless_spark_20230808_models.StopLivyComputeRequest,
+    ) -> emr_serverless_spark_20230808_models.StopLivyComputeResponse:
+        """
+        @summary 停止livy compute
+        
+        @param request: StopLivyComputeRequest
+        @return: StopLivyComputeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.stop_livy_compute_with_options_async(workspace_biz_id, livy_compute_id, request, headers, runtime)
+
     def stop_session_cluster_with_options(
         self,
         workspace_id: str,
@@ -3666,6 +5002,182 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.terminate_sql_statement_with_options_async(workspace_id, statement_id, request, headers, runtime)
+
+    def update_livy_compute_with_options(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        request: emr_serverless_spark_20230808_models.UpdateLivyComputeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.UpdateLivyComputeResponse:
+        """
+        @summary 更新livy compute
+        
+        @param request: UpdateLivyComputeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLivyComputeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.auth_type):
+            body['authType'] = request.auth_type
+        if not UtilClient.is_unset(request.auto_start_configuration):
+            body['autoStartConfiguration'] = request.auto_start_configuration
+        if not UtilClient.is_unset(request.auto_stop_configuration):
+            body['autoStopConfiguration'] = request.auto_stop_configuration
+        if not UtilClient.is_unset(request.cpu_limit):
+            body['cpuLimit'] = request.cpu_limit
+        if not UtilClient.is_unset(request.display_release_version):
+            body['displayReleaseVersion'] = request.display_release_version
+        if not UtilClient.is_unset(request.enable_public):
+            body['enablePublic'] = request.enable_public
+        if not UtilClient.is_unset(request.environment_id):
+            body['environmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.fusion):
+            body['fusion'] = request.fusion
+        if not UtilClient.is_unset(request.livy_server_conf):
+            body['livyServerConf'] = request.livy_server_conf
+        if not UtilClient.is_unset(request.livy_version):
+            body['livyVersion'] = request.livy_version
+        if not UtilClient.is_unset(request.memory_limit):
+            body['memoryLimit'] = request.memory_limit
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.network_name):
+            body['networkName'] = request.network_name
+        if not UtilClient.is_unset(request.queue_name):
+            body['queueName'] = request.queue_name
+        if not UtilClient.is_unset(request.release_version):
+            body['releaseVersion'] = request.release_version
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateLivyCompute',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_biz_id)}/livycompute/{OpenApiUtilClient.get_encode_param(livy_compute_id)}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.UpdateLivyComputeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_livy_compute_with_options_async(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        request: emr_serverless_spark_20230808_models.UpdateLivyComputeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.UpdateLivyComputeResponse:
+        """
+        @summary 更新livy compute
+        
+        @param request: UpdateLivyComputeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLivyComputeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.auth_type):
+            body['authType'] = request.auth_type
+        if not UtilClient.is_unset(request.auto_start_configuration):
+            body['autoStartConfiguration'] = request.auto_start_configuration
+        if not UtilClient.is_unset(request.auto_stop_configuration):
+            body['autoStopConfiguration'] = request.auto_stop_configuration
+        if not UtilClient.is_unset(request.cpu_limit):
+            body['cpuLimit'] = request.cpu_limit
+        if not UtilClient.is_unset(request.display_release_version):
+            body['displayReleaseVersion'] = request.display_release_version
+        if not UtilClient.is_unset(request.enable_public):
+            body['enablePublic'] = request.enable_public
+        if not UtilClient.is_unset(request.environment_id):
+            body['environmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.fusion):
+            body['fusion'] = request.fusion
+        if not UtilClient.is_unset(request.livy_server_conf):
+            body['livyServerConf'] = request.livy_server_conf
+        if not UtilClient.is_unset(request.livy_version):
+            body['livyVersion'] = request.livy_version
+        if not UtilClient.is_unset(request.memory_limit):
+            body['memoryLimit'] = request.memory_limit
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.network_name):
+            body['networkName'] = request.network_name
+        if not UtilClient.is_unset(request.queue_name):
+            body['queueName'] = request.queue_name
+        if not UtilClient.is_unset(request.release_version):
+            body['releaseVersion'] = request.release_version
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateLivyCompute',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_biz_id)}/livycompute/{OpenApiUtilClient.get_encode_param(livy_compute_id)}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.UpdateLivyComputeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_livy_compute(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        request: emr_serverless_spark_20230808_models.UpdateLivyComputeRequest,
+    ) -> emr_serverless_spark_20230808_models.UpdateLivyComputeResponse:
+        """
+        @summary 更新livy compute
+        
+        @param request: UpdateLivyComputeRequest
+        @return: UpdateLivyComputeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_livy_compute_with_options(workspace_biz_id, livy_compute_id, request, headers, runtime)
+
+    async def update_livy_compute_async(
+        self,
+        workspace_biz_id: str,
+        livy_compute_id: str,
+        request: emr_serverless_spark_20230808_models.UpdateLivyComputeRequest,
+    ) -> emr_serverless_spark_20230808_models.UpdateLivyComputeResponse:
+        """
+        @summary 更新livy compute
+        
+        @param request: UpdateLivyComputeRequest
+        @return: UpdateLivyComputeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_livy_compute_with_options_async(workspace_biz_id, livy_compute_id, request, headers, runtime)
 
     def update_process_definition_with_schedule_with_options(
         self,
