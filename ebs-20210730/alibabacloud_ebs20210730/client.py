@@ -965,6 +965,8 @@ class Client(OpenApiClient):
             query['DestinationRegionId'] = request.destination_region_id
         if not UtilClient.is_unset(request.destination_zone_id):
             query['DestinationZoneId'] = request.destination_zone_id
+        if not UtilClient.is_unset(request.enable_rtc):
+            query['EnableRtc'] = request.enable_rtc
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.rpo):
@@ -1028,6 +1030,8 @@ class Client(OpenApiClient):
             query['DestinationRegionId'] = request.destination_region_id
         if not UtilClient.is_unset(request.destination_zone_id):
             query['DestinationZoneId'] = request.destination_zone_id
+        if not UtilClient.is_unset(request.enable_rtc):
+            query['EnableRtc'] = request.enable_rtc
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.rpo):
@@ -1138,6 +1142,8 @@ class Client(OpenApiClient):
             query['DestinationZoneId'] = request.destination_zone_id
         if not UtilClient.is_unset(request.disk_id):
             query['DiskId'] = request.disk_id
+        if not UtilClient.is_unset(request.enable_rtc):
+            query['EnableRtc'] = request.enable_rtc
         if not UtilClient.is_unset(request.pair_name):
             query['PairName'] = request.pair_name
         if not UtilClient.is_unset(request.period):
@@ -1210,6 +1216,8 @@ class Client(OpenApiClient):
             query['DestinationZoneId'] = request.destination_zone_id
         if not UtilClient.is_unset(request.disk_id):
             query['DiskId'] = request.disk_id
+        if not UtilClient.is_unset(request.enable_rtc):
+            query['EnableRtc'] = request.enable_rtc
         if not UtilClient.is_unset(request.pair_name):
             query['PairName'] = request.pair_name
         if not UtilClient.is_unset(request.period):
@@ -4987,6 +4995,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_rtc):
+            query['EnableRtc'] = request.enable_rtc
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.rpo):
@@ -5038,6 +5048,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_rtc):
+            query['EnableRtc'] = request.enable_rtc
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.rpo):
@@ -5123,6 +5135,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_rtc):
+            query['EnableRtc'] = request.enable_rtc
         if not UtilClient.is_unset(request.pair_name):
             query['PairName'] = request.pair_name
         if not UtilClient.is_unset(request.rpo):
@@ -5174,6 +5188,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_rtc):
+            query['EnableRtc'] = request.enable_rtc
         if not UtilClient.is_unset(request.pair_name):
             query['PairName'] = request.pair_name
         if not UtilClient.is_unset(request.rpo):

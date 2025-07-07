@@ -1042,6 +1042,7 @@ class CreateDiskReplicaGroupRequest(TeaModel):
         description: str = None,
         destination_region_id: str = None,
         destination_zone_id: str = None,
+        enable_rtc: bool = None,
         group_name: str = None,
         rpo: int = None,
         region_id: str = None,
@@ -1065,6 +1066,7 @@ class CreateDiskReplicaGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.destination_zone_id = destination_zone_id
+        self.enable_rtc = enable_rtc
         # The name of the replication pair-consistent group. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.group_name = group_name
         # The RPO of the replication pair-consistent group. Unit: seconds. Valid value: 900.
@@ -1104,6 +1106,8 @@ class CreateDiskReplicaGroupRequest(TeaModel):
             result['DestinationRegionId'] = self.destination_region_id
         if self.destination_zone_id is not None:
             result['DestinationZoneId'] = self.destination_zone_id
+        if self.enable_rtc is not None:
+            result['EnableRtc'] = self.enable_rtc
         if self.group_name is not None:
             result['GroupName'] = self.group_name
         if self.rpo is not None:
@@ -1132,6 +1136,8 @@ class CreateDiskReplicaGroupRequest(TeaModel):
             self.destination_region_id = m.get('DestinationRegionId')
         if m.get('DestinationZoneId') is not None:
             self.destination_zone_id = m.get('DestinationZoneId')
+        if m.get('EnableRtc') is not None:
+            self.enable_rtc = m.get('EnableRtc')
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')
         if m.get('RPO') is not None:
@@ -1272,6 +1278,7 @@ class CreateDiskReplicaPairRequest(TeaModel):
         destination_region_id: str = None,
         destination_zone_id: str = None,
         disk_id: str = None,
+        enable_rtc: bool = None,
         pair_name: str = None,
         period: int = None,
         period_unit: str = None,
@@ -1319,6 +1326,7 @@ class CreateDiskReplicaPairRequest(TeaModel):
         # 
         # This parameter is required.
         self.disk_id = disk_id
+        self.enable_rtc = enable_rtc
         # The name of the replication pair. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         self.pair_name = pair_name
         # The subscription duration of the replication pair. This parameter is required when the `ChargeType` parameter is set to PREPAY. The unit of the subscription duration is specified by the `PeriodUnit` parameter.
@@ -1376,6 +1384,8 @@ class CreateDiskReplicaPairRequest(TeaModel):
             result['DestinationZoneId'] = self.destination_zone_id
         if self.disk_id is not None:
             result['DiskId'] = self.disk_id
+        if self.enable_rtc is not None:
+            result['EnableRtc'] = self.enable_rtc
         if self.pair_name is not None:
             result['PairName'] = self.pair_name
         if self.period is not None:
@@ -1414,6 +1424,8 @@ class CreateDiskReplicaPairRequest(TeaModel):
             self.destination_zone_id = m.get('DestinationZoneId')
         if m.get('DiskId') is not None:
             self.disk_id = m.get('DiskId')
+        if m.get('EnableRtc') is not None:
+            self.enable_rtc = m.get('EnableRtc')
         if m.get('PairName') is not None:
             self.pair_name = m.get('PairName')
         if m.get('Period') is not None:
@@ -4660,6 +4672,7 @@ class DescribeDiskReplicaGroupsResponseBodyReplicaGroups(TeaModel):
         description: str = None,
         destination_region_id: str = None,
         destination_zone_id: str = None,
+        enable_rtc: bool = None,
         group_name: str = None,
         last_recover_point: int = None,
         pair_ids: List[bytes] = None,
@@ -4685,6 +4698,7 @@ class DescribeDiskReplicaGroupsResponseBodyReplicaGroups(TeaModel):
         self.destination_region_id = destination_region_id
         # The ID of the zone in which the secondary site is deployed.
         self.destination_zone_id = destination_zone_id
+        self.enable_rtc = enable_rtc
         # The name of the replication pair-consistent group.
         self.group_name = group_name
         # The time when data was last replicated from the primary disks to the secondary disks in the replication pair-consistent group. The value of this parameter is a timestamp. Unit: seconds.
@@ -4760,6 +4774,8 @@ class DescribeDiskReplicaGroupsResponseBodyReplicaGroups(TeaModel):
             result['DestinationRegionId'] = self.destination_region_id
         if self.destination_zone_id is not None:
             result['DestinationZoneId'] = self.destination_zone_id
+        if self.enable_rtc is not None:
+            result['EnableRtc'] = self.enable_rtc
         if self.group_name is not None:
             result['GroupName'] = self.group_name
         if self.last_recover_point is not None:
@@ -4806,6 +4822,8 @@ class DescribeDiskReplicaGroupsResponseBodyReplicaGroups(TeaModel):
             self.destination_region_id = m.get('DestinationRegionId')
         if m.get('DestinationZoneId') is not None:
             self.destination_zone_id = m.get('DestinationZoneId')
+        if m.get('EnableRtc') is not None:
+            self.enable_rtc = m.get('EnableRtc')
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')
         if m.get('LastRecoverPoint') is not None:
@@ -5281,6 +5299,7 @@ class DescribeDiskReplicaPairsResponseBodyReplicaPairs(TeaModel):
         destination_disk_id: str = None,
         destination_region: str = None,
         destination_zone_id: str = None,
+        enable_rtc: bool = None,
         expired_time: int = None,
         last_recover_point: int = None,
         pair_name: str = None,
@@ -5318,6 +5337,7 @@ class DescribeDiskReplicaPairsResponseBodyReplicaPairs(TeaModel):
         self.destination_region = destination_region
         # The zone ID of the secondary disk.
         self.destination_zone_id = destination_zone_id
+        self.enable_rtc = enable_rtc
         # The time when the replication pair expires. The value of this parameter is a timestamp. Unit: seconds.
         self.expired_time = expired_time
         # The time when data was last replicated from the primary disk to the secondary disk in the replication pair. The value of this parameter is a timestamp. Unit: seconds. 86,400 seconds is equivalent to 24 hours.
@@ -5413,6 +5433,8 @@ class DescribeDiskReplicaPairsResponseBodyReplicaPairs(TeaModel):
             result['DestinationRegion'] = self.destination_region
         if self.destination_zone_id is not None:
             result['DestinationZoneId'] = self.destination_zone_id
+        if self.enable_rtc is not None:
+            result['EnableRtc'] = self.enable_rtc
         if self.expired_time is not None:
             result['ExpiredTime'] = self.expired_time
         if self.last_recover_point is not None:
@@ -5471,6 +5493,8 @@ class DescribeDiskReplicaPairsResponseBodyReplicaPairs(TeaModel):
             self.destination_region = m.get('DestinationRegion')
         if m.get('DestinationZoneId') is not None:
             self.destination_zone_id = m.get('DestinationZoneId')
+        if m.get('EnableRtc') is not None:
+            self.enable_rtc = m.get('EnableRtc')
         if m.get('ExpiredTime') is not None:
             self.expired_time = m.get('ExpiredTime')
         if m.get('LastRecoverPoint') is not None:
@@ -9940,6 +9964,7 @@ class ModifyDiskReplicaGroupRequest(TeaModel):
         bandwidth: int = None,
         client_token: str = None,
         description: str = None,
+        enable_rtc: bool = None,
         group_name: str = None,
         rpo: int = None,
         region_id: str = None,
@@ -9953,6 +9978,7 @@ class ModifyDiskReplicaGroupRequest(TeaModel):
         self.client_token = client_token
         # The description of the replication pair-consistent group. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
+        self.enable_rtc = enable_rtc
         # The name of the replication pair-consistent group. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.group_name = group_name
         # The RPO of the replication pair-consistent group. Unit: seconds. Valid value: 900.
@@ -9981,6 +10007,8 @@ class ModifyDiskReplicaGroupRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.description is not None:
             result['Description'] = self.description
+        if self.enable_rtc is not None:
+            result['EnableRtc'] = self.enable_rtc
         if self.group_name is not None:
             result['GroupName'] = self.group_name
         if self.rpo is not None:
@@ -9999,6 +10027,8 @@ class ModifyDiskReplicaGroupRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('EnableRtc') is not None:
+            self.enable_rtc = m.get('EnableRtc')
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')
         if m.get('RPO') is not None:
@@ -10085,6 +10115,7 @@ class ModifyDiskReplicaPairRequest(TeaModel):
         bandwidth: int = None,
         client_token: str = None,
         description: str = None,
+        enable_rtc: bool = None,
         pair_name: str = None,
         rpo: int = None,
         region_id: str = None,
@@ -10098,6 +10129,7 @@ class ModifyDiskReplicaPairRequest(TeaModel):
         self.client_token = client_token
         # The description of the replication pair.
         self.description = description
+        self.enable_rtc = enable_rtc
         # The name of the replication pair.
         self.pair_name = pair_name
         # The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds. Valid value: 900.
@@ -10126,6 +10158,8 @@ class ModifyDiskReplicaPairRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.description is not None:
             result['Description'] = self.description
+        if self.enable_rtc is not None:
+            result['EnableRtc'] = self.enable_rtc
         if self.pair_name is not None:
             result['PairName'] = self.pair_name
         if self.rpo is not None:
@@ -10144,6 +10178,8 @@ class ModifyDiskReplicaPairRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('EnableRtc') is not None:
+            self.enable_rtc = m.get('EnableRtc')
         if m.get('PairName') is not None:
             self.pair_name = m.get('PairName')
         if m.get('RPO') is not None:

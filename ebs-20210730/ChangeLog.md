@@ -1,3 +1,12 @@
+2025-07-07 Version: 4.0.1
+- Update API CreateDiskReplicaGroup: add request parameters EnableRtc.
+- Update API CreateDiskReplicaPair: add request parameters EnableRtc.
+- Update API DescribeDiskReplicaGroups: add response parameters Body.ReplicaGroups.$.EnableRtc.
+- Update API DescribeDiskReplicaPairs: add response parameters Body.ReplicaPairs.$.EnableRtc.
+- Update API ModifyDiskReplicaGroup: add request parameters EnableRtc.
+- Update API ModifyDiskReplicaPair: add request parameters EnableRtc.
+
+
 2025-07-07 Version: 4.0.0
 - Update API DescribeMetricData: add request parameters GroupByLabels.
 - Update API ListReports: delete request parameters AppName.
