@@ -5498,6 +5498,8 @@ class Client(OpenApiClient):
             query['PolicyGroupId'] = request.policy_group_id
         if not UtilClient.is_unset(request.promotion_id):
             query['PromotionId'] = request.promotion_id
+        if not UtilClient.is_unset(request.qos_rule_id):
+            query['QosRuleId'] = request.qos_rule_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.reseller_owner_uid):
@@ -5615,6 +5617,8 @@ class Client(OpenApiClient):
             query['PolicyGroupId'] = request.policy_group_id
         if not UtilClient.is_unset(request.promotion_id):
             query['PromotionId'] = request.promotion_id
+        if not UtilClient.is_unset(request.qos_rule_id):
+            query['QosRuleId'] = request.qos_rule_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.reseller_owner_uid):
@@ -11552,6 +11556,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.session_status):
             query['SessionStatus'] = request.session_status
         if not UtilClient.is_unset(request.start_time):
@@ -11613,6 +11619,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.session_status):
             query['SessionStatus'] = request.session_status
         if not UtilClient.is_unset(request.start_time):
@@ -14032,6 +14040,8 @@ class Client(OpenApiClient):
             query['SecurityProtection'] = request.security_protection
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -14079,6 +14089,8 @@ class Client(OpenApiClient):
             query['SecurityProtection'] = request.security_protection
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

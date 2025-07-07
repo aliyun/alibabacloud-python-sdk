@@ -1,3 +1,10 @@
+2025-07-07 Version: 4.8.7
+- Update API CreateDesktops: add request parameters QosRuleId.
+- Update API DescribeDesktopSessions: add request parameters ResourceGroupId.
+- Update API DescribeDesktopSessions: add response parameters Body.Sessions.$.ResourceGroups.
+- Update API DescribeOfficeSites: add request parameters VpcId.
+
+
 2025-07-04 Version: 4.8.6
 - Update API CreateTemplate: add request parameters AutoPay.
 - Update API CreateTemplate: add request parameters AutoRenew.

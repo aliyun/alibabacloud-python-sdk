@@ -10383,6 +10383,7 @@ class CreateDesktopsRequest(TeaModel):
         period_unit: str = None,
         policy_group_id: str = None,
         promotion_id: str = None,
+        qos_rule_id: str = None,
         region_id: str = None,
         reseller_owner_uid: int = None,
         resource_group_id: str = None,
@@ -10507,6 +10508,7 @@ class CreateDesktopsRequest(TeaModel):
         self.policy_group_id = policy_group_id
         # The ID of the sales promotion.
         self.promotion_id = promotion_id
+        self.qos_rule_id = qos_rule_id
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
         # 
         # This parameter is required.
@@ -10635,6 +10637,8 @@ class CreateDesktopsRequest(TeaModel):
             result['PolicyGroupId'] = self.policy_group_id
         if self.promotion_id is not None:
             result['PromotionId'] = self.promotion_id
+        if self.qos_rule_id is not None:
+            result['QosRuleId'] = self.qos_rule_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.reseller_owner_uid is not None:
@@ -10723,6 +10727,8 @@ class CreateDesktopsRequest(TeaModel):
             self.policy_group_id = m.get('PolicyGroupId')
         if m.get('PromotionId') is not None:
             self.promotion_id = m.get('PromotionId')
+        if m.get('QosRuleId') is not None:
+            self.qos_rule_id = m.get('QosRuleId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResellerOwnerUid') is not None:
@@ -11158,6 +11164,7 @@ class CreateDesktopsShrinkRequest(TeaModel):
         period_unit: str = None,
         policy_group_id: str = None,
         promotion_id: str = None,
+        qos_rule_id: str = None,
         region_id: str = None,
         reseller_owner_uid: int = None,
         resource_group_id: str = None,
@@ -11282,6 +11289,7 @@ class CreateDesktopsShrinkRequest(TeaModel):
         self.policy_group_id = policy_group_id
         # The ID of the sales promotion.
         self.promotion_id = promotion_id
+        self.qos_rule_id = qos_rule_id
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
         # 
         # This parameter is required.
@@ -11408,6 +11416,8 @@ class CreateDesktopsShrinkRequest(TeaModel):
             result['PolicyGroupId'] = self.policy_group_id
         if self.promotion_id is not None:
             result['PromotionId'] = self.promotion_id
+        if self.qos_rule_id is not None:
+            result['QosRuleId'] = self.qos_rule_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.reseller_owner_uid is not None:
@@ -11495,6 +11505,8 @@ class CreateDesktopsShrinkRequest(TeaModel):
             self.policy_group_id = m.get('PolicyGroupId')
         if m.get('PromotionId') is not None:
             self.promotion_id = m.get('PromotionId')
+        if m.get('QosRuleId') is not None:
+            self.qos_rule_id = m.get('QosRuleId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResellerOwnerUid') is not None:
@@ -24445,6 +24457,7 @@ class DescribeDesktopSessionsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         session_status: str = None,
         start_time: str = None,
         sub_pay_type: str = None,
@@ -24471,6 +24484,7 @@ class DescribeDesktopSessionsRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The state of the session.
         # 
         # Valid values:
@@ -24519,6 +24533,8 @@ class DescribeDesktopSessionsRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.session_status is not None:
             result['SessionStatus'] = self.session_status
         if self.start_time is not None:
@@ -24549,12 +24565,47 @@ class DescribeDesktopSessionsRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SessionStatus') is not None:
             self.session_status = m.get('SessionStatus')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('SubPayType') is not None:
             self.sub_pay_type = m.get('SubPayType')
+        return self
+
+
+class DescribeDesktopSessionsResponseBodySessionsResourceGroups(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         return self
 
 
@@ -24574,6 +24625,7 @@ class DescribeDesktopSessionsResponseBodySessions(TeaModel):
         os_session_status: str = None,
         os_type: str = None,
         protocol_type: str = None,
+        resource_groups: List[DescribeDesktopSessionsResponseBodySessionsResourceGroups] = None,
         session_end_time: str = None,
         session_idle_time: int = None,
         session_start_time: str = None,
@@ -24617,6 +24669,7 @@ class DescribeDesktopSessionsResponseBodySessions(TeaModel):
         # *   HDX
         # *   ASP
         self.protocol_type = protocol_type
+        self.resource_groups = resource_groups
         # The end time of the session.
         self.session_end_time = session_end_time
         # The idle duration of the session. Unit: seconds.
@@ -24643,7 +24696,10 @@ class DescribeDesktopSessionsResponseBodySessions(TeaModel):
         self.total_connection_time = total_connection_time
 
     def validate(self):
-        pass
+        if self.resource_groups:
+            for k in self.resource_groups:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -24677,6 +24733,10 @@ class DescribeDesktopSessionsResponseBodySessions(TeaModel):
             result['OsType'] = self.os_type
         if self.protocol_type is not None:
             result['ProtocolType'] = self.protocol_type
+        result['ResourceGroups'] = []
+        if self.resource_groups is not None:
+            for k in self.resource_groups:
+                result['ResourceGroups'].append(k.to_map() if k else None)
         if self.session_end_time is not None:
             result['SessionEndTime'] = self.session_end_time
         if self.session_idle_time is not None:
@@ -24719,6 +24779,11 @@ class DescribeDesktopSessionsResponseBodySessions(TeaModel):
             self.os_type = m.get('OsType')
         if m.get('ProtocolType') is not None:
             self.protocol_type = m.get('ProtocolType')
+        self.resource_groups = []
+        if m.get('ResourceGroups') is not None:
+            for k in m.get('ResourceGroups'):
+                temp_model = DescribeDesktopSessionsResponseBodySessionsResourceGroups()
+                self.resource_groups.append(temp_model.from_map(k))
         if m.get('SessionEndTime') is not None:
             self.session_end_time = m.get('SessionEndTime')
         if m.get('SessionIdleTime') is not None:
@@ -32841,6 +32906,7 @@ class DescribeOfficeSitesRequest(TeaModel):
         region_id: str = None,
         security_protection: str = None,
         status: str = None,
+        vpc_id: str = None,
     ):
         # The number of entries to return on each page.
         # 
@@ -32958,6 +33024,7 @@ class DescribeOfficeSitesRequest(TeaModel):
         # 
         #     <!-- -->
         self.status = status
+        self.vpc_id = vpc_id
 
     def validate(self):
         pass
@@ -32982,6 +33049,8 @@ class DescribeOfficeSitesRequest(TeaModel):
             result['SecurityProtection'] = self.security_protection
         if self.status is not None:
             result['Status'] = self.status
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
@@ -33000,6 +33069,8 @@ class DescribeOfficeSitesRequest(TeaModel):
             self.security_protection = m.get('SecurityProtection')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         return self
 
 
