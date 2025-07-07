@@ -1,3 +1,8 @@
+2025-07-07 Version: 6.4.3
+- Update API GetSmartHandleJob: add response parameters Body.ErrorCode.
+- Update API GetSmartHandleJob: add response parameters Body.ErrorMessage.
+
+
 2025-07-02 Version: 6.4.2
 - Update API BatchGetMediaInfos: add request parameters AuthTimeout.
 - Update API GetMediaInfo: add request parameters AuthTimeout.

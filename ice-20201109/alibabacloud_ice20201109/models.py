@@ -2064,15 +2064,21 @@ class AppInfoDTO(TeaModel):
         self,
         app_name: str = None,
         app_type: int = None,
+        creation_time: str = None,
         gmt_create: str = None,
+        gmt_modified: str = None,
         item_id: str = None,
+        modification_time: str = None,
         platforms: List[AppInfoDTOPlatforms] = None,
         user_id: int = None,
     ):
         self.app_name = app_name
         self.app_type = app_type
+        self.creation_time = creation_time
         self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
         self.item_id = item_id
+        self.modification_time = modification_time
         self.platforms = platforms
         self.user_id = user_id
 
@@ -2092,10 +2098,16 @@ class AppInfoDTO(TeaModel):
             result['AppName'] = self.app_name
         if self.app_type is not None:
             result['AppType'] = self.app_type
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
         if self.item_id is not None:
             result['ItemId'] = self.item_id
+        if self.modification_time is not None:
+            result['ModificationTime'] = self.modification_time
         result['Platforms'] = []
         if self.platforms is not None:
             for k in self.platforms:
@@ -2110,10 +2122,16 @@ class AppInfoDTO(TeaModel):
             self.app_name = m.get('AppName')
         if m.get('AppType') is not None:
             self.app_type = m.get('AppType')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
         if m.get('ItemId') is not None:
             self.item_id = m.get('ItemId')
+        if m.get('ModificationTime') is not None:
+            self.modification_time = m.get('ModificationTime')
         self.platforms = []
         if m.get('Platforms') is not None:
             for k in m.get('Platforms'):
@@ -38529,6 +38547,8 @@ class GetSmartHandleJobResponseBodySmartJobInfo(TeaModel):
 class GetSmartHandleJobResponseBody(TeaModel):
     def __init__(
         self,
+        error_code: str = None,
+        error_message: str = None,
         job_id: str = None,
         job_result: GetSmartHandleJobResponseBodyJobResult = None,
         output: str = None,
@@ -38537,6 +38557,8 @@ class GetSmartHandleJobResponseBody(TeaModel):
         state: str = None,
         user_data: str = None,
     ):
+        self.error_code = error_code
+        self.error_message = error_message
         # The job ID.
         self.job_id = job_id
         # The job results.
@@ -38571,6 +38593,10 @@ class GetSmartHandleJobResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
         if self.job_id is not None:
             result['JobId'] = self.job_id
         if self.job_result is not None:
@@ -38589,6 +38615,10 @@ class GetSmartHandleJobResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
         if m.get('JobResult') is not None:
