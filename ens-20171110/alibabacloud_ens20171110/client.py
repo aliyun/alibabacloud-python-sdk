@@ -27225,6 +27225,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.remove_sdgwith_options_async(request, runtime)
 
+    def remove_sdgs_with_options(
+        self,
+        tmp_req: ens_20171110_models.RemoveSDGsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.RemoveSDGsResponse:
+        """
+        @summary 可移除所有版本的sdg，恢复为本地盘挂载
+        
+        @param tmp_req: RemoveSDGsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveSDGsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.RemoveSDGsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        if not UtilClient.is_unset(tmp_req.sdg_ids):
+            request.sdg_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sdg_ids, 'SdgIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not UtilClient.is_unset(request.sdg_ids_shrink):
+            query['SdgIds'] = request.sdg_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveSDGs',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.RemoveSDGsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_sdgs_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.RemoveSDGsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.RemoveSDGsResponse:
+        """
+        @summary 可移除所有版本的sdg，恢复为本地盘挂载
+        
+        @param tmp_req: RemoveSDGsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveSDGsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.RemoveSDGsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        if not UtilClient.is_unset(tmp_req.sdg_ids):
+            request.sdg_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sdg_ids, 'SdgIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not UtilClient.is_unset(request.sdg_ids_shrink):
+            query['SdgIds'] = request.sdg_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveSDGs',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.RemoveSDGsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_sdgs(
+        self,
+        request: ens_20171110_models.RemoveSDGsRequest,
+    ) -> ens_20171110_models.RemoveSDGsResponse:
+        """
+        @summary 可移除所有版本的sdg，恢复为本地盘挂载
+        
+        @param request: RemoveSDGsRequest
+        @return: RemoveSDGsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.remove_sdgs_with_options(request, runtime)
+
+    async def remove_sdgs_async(
+        self,
+        request: ens_20171110_models.RemoveSDGsRequest,
+    ) -> ens_20171110_models.RemoveSDGsResponse:
+        """
+        @summary 可移除所有版本的sdg，恢复为本地盘挂载
+        
+        @param request: RemoveSDGsRequest
+        @return: RemoveSDGsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.remove_sdgs_with_options_async(request, runtime)
+
     def remove_vswitches_from_epn_instance_with_options(
         self,
         request: ens_20171110_models.RemoveVSwitchesFromEpnInstanceRequest,

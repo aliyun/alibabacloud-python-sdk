@@ -14806,6 +14806,7 @@ class DescribeAICImagesRequest(TeaModel):
 class DescribeAICImagesResponseBodyImages(TeaModel):
     def __init__(
         self,
+        android_version: str = None,
         creation_time: str = None,
         description: str = None,
         image_id: str = None,
@@ -14813,6 +14814,7 @@ class DescribeAICImagesResponseBodyImages(TeaModel):
         status: str = None,
         user: str = None,
     ):
+        self.android_version = android_version
         # The time when the image was created.
         self.creation_time = creation_time
         # The description of the image.
@@ -14835,6 +14837,8 @@ class DescribeAICImagesResponseBodyImages(TeaModel):
             return _map
 
         result = dict()
+        if self.android_version is not None:
+            result['AndroidVersion'] = self.android_version
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
         if self.description is not None:
@@ -14851,6 +14855,8 @@ class DescribeAICImagesResponseBodyImages(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AndroidVersion') is not None:
+            self.android_version = m.get('AndroidVersion')
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
         if m.get('Description') is not None:
@@ -58129,6 +58135,272 @@ class RemoveSDGResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RemoveSDGResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RemoveSDGsRequest(TeaModel):
+    def __init__(
+        self,
+        instance_ids: List[str] = None,
+        sdg_ids: List[str] = None,
+    ):
+        # This parameter is required.
+        self.instance_ids = instance_ids
+        self.sdg_ids = sdg_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.sdg_ids is not None:
+            result['SdgIds'] = self.sdg_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('SdgIds') is not None:
+            self.sdg_ids = m.get('SdgIds')
+        return self
+
+
+class RemoveSDGsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_ids_shrink: str = None,
+        sdg_ids_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.instance_ids_shrink = instance_ids_shrink
+        self.sdg_ids_shrink = sdg_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_ids_shrink is not None:
+            result['InstanceIds'] = self.instance_ids_shrink
+        if self.sdg_ids_shrink is not None:
+            result['SdgIds'] = self.sdg_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceIds') is not None:
+            self.instance_ids_shrink = m.get('InstanceIds')
+        if m.get('SdgIds') is not None:
+            self.sdg_ids_shrink = m.get('SdgIds')
+        return self
+
+
+class RemoveSDGsResponseBodyDataResultFailedItems(TeaModel):
+    def __init__(
+        self,
+        err_message: str = None,
+        instance_id: str = None,
+    ):
+        self.err_message = err_message
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class RemoveSDGsResponseBodyDataResult(TeaModel):
+    def __init__(
+        self,
+        failed_count: int = None,
+        failed_items: List[RemoveSDGsResponseBodyDataResultFailedItems] = None,
+        success_count: int = None,
+    ):
+        self.failed_count = failed_count
+        self.failed_items = failed_items
+        self.success_count = success_count
+
+    def validate(self):
+        if self.failed_items:
+            for k in self.failed_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed_count is not None:
+            result['FailedCount'] = self.failed_count
+        result['FailedItems'] = []
+        if self.failed_items is not None:
+            for k in self.failed_items:
+                result['FailedItems'].append(k.to_map() if k else None)
+        if self.success_count is not None:
+            result['SuccessCount'] = self.success_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailedCount') is not None:
+            self.failed_count = m.get('FailedCount')
+        self.failed_items = []
+        if m.get('FailedItems') is not None:
+            for k in m.get('FailedItems'):
+                temp_model = RemoveSDGsResponseBodyDataResultFailedItems()
+                self.failed_items.append(temp_model.from_map(k))
+        if m.get('SuccessCount') is not None:
+            self.success_count = m.get('SuccessCount')
+        return self
+
+
+class RemoveSDGsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        result: RemoveSDGsResponseBodyDataResult = None,
+        success: bool = None,
+    ):
+        self.message = message
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Result') is not None:
+            temp_model = RemoveSDGsResponseBodyDataResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class RemoveSDGsResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: RemoveSDGsResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = RemoveSDGsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RemoveSDGsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RemoveSDGsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RemoveSDGsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
