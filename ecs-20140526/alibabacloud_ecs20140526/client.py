@@ -19751,6 +19751,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_inventory):
+            query['QueryInventory'] = request.query_inventory
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -19827,6 +19829,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_inventory):
+            query['QueryInventory'] = request.query_inventory
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -30532,7 +30536,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeRouteTablesResponse:
         """
-        @deprecated OpenAPI DescribeRouteTables is deprecated
+        @deprecated OpenAPI DescribeRouteTables is deprecated, please use Vpc::2016-04-28::DescribeRouteTableList instead.
+        
+        @summary 查询路由表信息列表
         
         @param request: DescribeRouteTablesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -30590,7 +30596,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeRouteTablesResponse:
         """
-        @deprecated OpenAPI DescribeRouteTables is deprecated
+        @deprecated OpenAPI DescribeRouteTables is deprecated, please use Vpc::2016-04-28::DescribeRouteTableList instead.
+        
+        @summary 查询路由表信息列表
         
         @param request: DescribeRouteTablesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -30647,7 +30655,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeRouteTablesRequest,
     ) -> ecs_20140526_models.DescribeRouteTablesResponse:
         """
-        @deprecated OpenAPI DescribeRouteTables is deprecated
+        @deprecated OpenAPI DescribeRouteTables is deprecated, please use Vpc::2016-04-28::DescribeRouteTableList instead.
+        
+        @summary 查询路由表信息列表
         
         @param request: DescribeRouteTablesRequest
         @return: DescribeRouteTablesResponse
@@ -30661,7 +30671,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeRouteTablesRequest,
     ) -> ecs_20140526_models.DescribeRouteTablesResponse:
         """
-        @deprecated OpenAPI DescribeRouteTables is deprecated
+        @deprecated OpenAPI DescribeRouteTables is deprecated, please use Vpc::2016-04-28::DescribeRouteTableList instead.
+        
+        @summary 查询路由表信息列表
         
         @param request: DescribeRouteTablesRequest
         @return: DescribeRouteTablesResponse
@@ -34200,7 +34212,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeVRoutersResponse:
         """
-        @deprecated OpenAPI DescribeVRouters is deprecated
+        @deprecated OpenAPI DescribeVRouters is deprecated, please use Vpc::2016-04-28::DescribeVRouters instead.
+        
+        @summary 查询路由器列表
         
         @param request: DescribeVRoutersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -34250,7 +34264,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeVRoutersResponse:
         """
-        @deprecated OpenAPI DescribeVRouters is deprecated
+        @deprecated OpenAPI DescribeVRouters is deprecated, please use Vpc::2016-04-28::DescribeVRouters instead.
+        
+        @summary 查询路由器列表
         
         @param request: DescribeVRoutersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -34299,7 +34315,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeVRoutersRequest,
     ) -> ecs_20140526_models.DescribeVRoutersResponse:
         """
-        @deprecated OpenAPI DescribeVRouters is deprecated
+        @deprecated OpenAPI DescribeVRouters is deprecated, please use Vpc::2016-04-28::DescribeVRouters instead.
+        
+        @summary 查询路由器列表
         
         @param request: DescribeVRoutersRequest
         @return: DescribeVRoutersResponse
@@ -34313,7 +34331,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeVRoutersRequest,
     ) -> ecs_20140526_models.DescribeVRoutersResponse:
         """
-        @deprecated OpenAPI DescribeVRouters is deprecated
+        @deprecated OpenAPI DescribeVRouters is deprecated, please use Vpc::2016-04-28::DescribeVRouters instead.
+        
+        @summary 查询路由器列表
         
         @param request: DescribeVRoutersRequest
         @return: DescribeVRoutersResponse

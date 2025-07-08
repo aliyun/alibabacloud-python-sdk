@@ -1,3 +1,8 @@
+2025-07-08 Version: 7.0.13
+- Update API DescribeDedicatedHosts: add request parameters QueryInventory.
+- Update API DescribeDedicatedHosts: add response parameters Body.DedicatedHosts.$.Capacity.AvailableInstanceTypes.
+
+
 2025-06-27 Version: 7.0.12
 - Update API CreateAutoProvisioningGroup: add request parameters LaunchConfiguration.SchedulerOptions.
 
