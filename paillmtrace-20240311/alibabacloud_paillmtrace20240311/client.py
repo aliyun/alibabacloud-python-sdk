@@ -48,7 +48,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_llmtrace_20240311_models.CreateOnlineEvalTaskResponse:
         """
-        @summary 创建一个在线评估任务
+        @summary Creates a trace evaluation task. The system will sample some data from the user\\"s trace data based on the task\\"s configuration. Then, an LLM is used to evaluate the performance of these traces, and the evaluation results are recorded.
         
         @param tmp_req: CreateOnlineEvalTaskRequest
         @param headers: map
@@ -90,7 +90,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_llmtrace_20240311_models.CreateOnlineEvalTaskResponse:
         """
-        @summary 创建一个在线评估任务
+        @summary Creates a trace evaluation task. The system will sample some data from the user\\"s trace data based on the task\\"s configuration. Then, an LLM is used to evaluate the performance of these traces, and the evaluation results are recorded.
         
         @param tmp_req: CreateOnlineEvalTaskRequest
         @param headers: map
@@ -130,7 +130,7 @@ class Client(OpenApiClient):
         request: pai_llmtrace_20240311_models.CreateOnlineEvalTaskRequest,
     ) -> pai_llmtrace_20240311_models.CreateOnlineEvalTaskResponse:
         """
-        @summary 创建一个在线评估任务
+        @summary Creates a trace evaluation task. The system will sample some data from the user\\"s trace data based on the task\\"s configuration. Then, an LLM is used to evaluate the performance of these traces, and the evaluation results are recorded.
         
         @param request: CreateOnlineEvalTaskRequest
         @return: CreateOnlineEvalTaskResponse
@@ -144,7 +144,7 @@ class Client(OpenApiClient):
         request: pai_llmtrace_20240311_models.CreateOnlineEvalTaskRequest,
     ) -> pai_llmtrace_20240311_models.CreateOnlineEvalTaskResponse:
         """
-        @summary 创建一个在线评估任务
+        @summary Creates a trace evaluation task. The system will sample some data from the user\\"s trace data based on the task\\"s configuration. Then, an LLM is used to evaluate the performance of these traces, and the evaluation results are recorded.
         
         @param request: CreateOnlineEvalTaskRequest
         @return: CreateOnlineEvalTaskResponse
@@ -242,7 +242,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_llmtrace_20240311_models.DeleteOnlineEvalTaskResponse:
         """
-        @summary 删除一个在线评估任务
+        @summary Delete an online evaluation task
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -274,7 +274,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_llmtrace_20240311_models.DeleteOnlineEvalTaskResponse:
         """
-        @summary 删除一个在线评估任务
+        @summary Delete an online evaluation task
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -304,7 +304,7 @@ class Client(OpenApiClient):
         task_id: str,
     ) -> pai_llmtrace_20240311_models.DeleteOnlineEvalTaskResponse:
         """
-        @summary 删除一个在线评估任务
+        @summary Delete an online evaluation task
         
         @return: DeleteOnlineEvalTaskResponse
         """
@@ -317,7 +317,7 @@ class Client(OpenApiClient):
         task_id: str,
     ) -> pai_llmtrace_20240311_models.DeleteOnlineEvalTaskResponse:
         """
-        @summary 删除一个在线评估任务
+        @summary Delete an online evaluation task
         
         @return: DeleteOnlineEvalTaskResponse
         """
@@ -333,7 +333,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_llmtrace_20240311_models.EvaluateTraceResponse:
         """
-        @summary 基于traceId创建和执行评估任务
+        @summary Evaluates a specified piece of trace data.
         
         @param request: EvaluateTraceRequest
         @param headers: map
@@ -382,7 +382,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_llmtrace_20240311_models.EvaluateTraceResponse:
         """
-        @summary 基于traceId创建和执行评估任务
+        @summary Evaluates a specified piece of trace data.
         
         @param request: EvaluateTraceRequest
         @param headers: map
@@ -429,7 +429,7 @@ class Client(OpenApiClient):
         request: pai_llmtrace_20240311_models.EvaluateTraceRequest,
     ) -> pai_llmtrace_20240311_models.EvaluateTraceResponse:
         """
-        @summary 基于traceId创建和执行评估任务
+        @summary Evaluates a specified piece of trace data.
         
         @param request: EvaluateTraceRequest
         @return: EvaluateTraceResponse
@@ -444,7 +444,7 @@ class Client(OpenApiClient):
         request: pai_llmtrace_20240311_models.EvaluateTraceRequest,
     ) -> pai_llmtrace_20240311_models.EvaluateTraceResponse:
         """
-        @summary 基于traceId创建和执行评估任务
+        @summary Evaluates a specified piece of trace data.
         
         @param request: EvaluateTraceRequest
         @return: EvaluateTraceResponse
@@ -459,7 +459,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_llmtrace_20240311_models.GetEvaluationTemplatesResponse:
         """
-        @summary 获取用于评估的prompt templates内容
+        @summary Get the content of prompt templates used for evaluation
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -490,7 +490,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_llmtrace_20240311_models.GetEvaluationTemplatesResponse:
         """
-        @summary 获取用于评估的prompt templates内容
+        @summary Get the content of prompt templates used for evaluation
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -517,7 +517,7 @@ class Client(OpenApiClient):
 
     def get_evaluation_templates(self) -> pai_llmtrace_20240311_models.GetEvaluationTemplatesResponse:
         """
-        @summary 获取用于评估的prompt templates内容
+        @summary Get the content of prompt templates used for evaluation
         
         @return: GetEvaluationTemplatesResponse
         """
@@ -527,7 +527,7 @@ class Client(OpenApiClient):
 
     async def get_evaluation_templates_async(self) -> pai_llmtrace_20240311_models.GetEvaluationTemplatesResponse:
         """
-        @summary 获取用于评估的prompt templates内容
+        @summary Get the content of prompt templates used for evaluation
         
         @return: GetEvaluationTemplatesResponse
         """
@@ -542,7 +542,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_llmtrace_20240311_models.GetOnlineEvalTaskResponse:
         """
-        @summary 获取一个在线评估任务的详情
+        @summary Get the details of an online evaluation task
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -574,7 +574,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_llmtrace_20240311_models.GetOnlineEvalTaskResponse:
         """
-        @summary 获取一个在线评估任务的详情
+        @summary Get the details of an online evaluation task
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -604,7 +604,7 @@ class Client(OpenApiClient):
         task_id: str,
     ) -> pai_llmtrace_20240311_models.GetOnlineEvalTaskResponse:
         """
-        @summary 获取一个在线评估任务的详情
+        @summary Get the details of an online evaluation task
         
         @return: GetOnlineEvalTaskResponse
         """
@@ -617,7 +617,7 @@ class Client(OpenApiClient):
         task_id: str,
     ) -> pai_llmtrace_20240311_models.GetOnlineEvalTaskResponse:
         """
-        @summary 获取一个在线评估任务的详情
+        @summary Get the details of an online evaluation task
         
         @return: GetOnlineEvalTaskResponse
         """
@@ -789,6 +789,134 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_xtrace_token_with_options_async(headers, runtime)
 
+    def list_eval_results_with_options(
+        self,
+        tmp_req: pai_llmtrace_20240311_models.ListEvalResultsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_llmtrace_20240311_models.ListEvalResultsResponse:
+        """
+        @summary Obtains the list of results for trace evaluation. This API is used together with EvaluateTrace. EvaluateTrace starts the evaluation. ListEvalResults obtains the results.
+        
+        @param tmp_req: ListEvalResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEvalResultsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = pai_llmtrace_20240311_models.ListEvalResultsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.record_ids):
+            request.record_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.record_ids, 'RecordIds', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.evaluation_id):
+            query['EvaluationId'] = request.evaluation_id
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.record_ids_shrink):
+            query['RecordIds'] = request.record_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEvalResults',
+            version='2024-03-11',
+            protocol='HTTPS',
+            pathname=f'/api/v1/PAILLMTrace/eval/results',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_llmtrace_20240311_models.ListEvalResultsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_eval_results_with_options_async(
+        self,
+        tmp_req: pai_llmtrace_20240311_models.ListEvalResultsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_llmtrace_20240311_models.ListEvalResultsResponse:
+        """
+        @summary Obtains the list of results for trace evaluation. This API is used together with EvaluateTrace. EvaluateTrace starts the evaluation. ListEvalResults obtains the results.
+        
+        @param tmp_req: ListEvalResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEvalResultsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = pai_llmtrace_20240311_models.ListEvalResultsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.record_ids):
+            request.record_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.record_ids, 'RecordIds', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.evaluation_id):
+            query['EvaluationId'] = request.evaluation_id
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.record_ids_shrink):
+            query['RecordIds'] = request.record_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEvalResults',
+            version='2024-03-11',
+            protocol='HTTPS',
+            pathname=f'/api/v1/PAILLMTrace/eval/results',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_llmtrace_20240311_models.ListEvalResultsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_eval_results(
+        self,
+        request: pai_llmtrace_20240311_models.ListEvalResultsRequest,
+    ) -> pai_llmtrace_20240311_models.ListEvalResultsResponse:
+        """
+        @summary Obtains the list of results for trace evaluation. This API is used together with EvaluateTrace. EvaluateTrace starts the evaluation. ListEvalResults obtains the results.
+        
+        @param request: ListEvalResultsRequest
+        @return: ListEvalResultsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_eval_results_with_options(request, headers, runtime)
+
+    async def list_eval_results_async(
+        self,
+        request: pai_llmtrace_20240311_models.ListEvalResultsRequest,
+    ) -> pai_llmtrace_20240311_models.ListEvalResultsResponse:
+        """
+        @summary Obtains the list of results for trace evaluation. This API is used together with EvaluateTrace. EvaluateTrace starts the evaluation. ListEvalResults obtains the results.
+        
+        @param request: ListEvalResultsRequest
+        @return: ListEvalResultsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_eval_results_with_options_async(request, headers, runtime)
+
     def list_online_eval_task_results_with_options(
         self,
         tmp_req: pai_llmtrace_20240311_models.ListOnlineEvalTaskResultsRequest,
@@ -796,7 +924,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_llmtrace_20240311_models.ListOnlineEvalTaskResultsResponse:
         """
-        @summary 查看符合条件的在线评估任务的结果
+        @summary List the results of online evaluation tasks that meet the criteria
         
         @param tmp_req: ListOnlineEvalTaskResultsRequest
         @param headers: map
@@ -846,7 +974,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_llmtrace_20240311_models.ListOnlineEvalTaskResultsResponse:
         """
-        @summary 查看符合条件的在线评估任务的结果
+        @summary List the results of online evaluation tasks that meet the criteria
         
         @param tmp_req: ListOnlineEvalTaskResultsRequest
         @param headers: map
@@ -894,7 +1022,7 @@ class Client(OpenApiClient):
         request: pai_llmtrace_20240311_models.ListOnlineEvalTaskResultsRequest,
     ) -> pai_llmtrace_20240311_models.ListOnlineEvalTaskResultsResponse:
         """
-        @summary 查看符合条件的在线评估任务的结果
+        @summary List the results of online evaluation tasks that meet the criteria
         
         @param request: ListOnlineEvalTaskResultsRequest
         @return: ListOnlineEvalTaskResultsResponse
@@ -908,7 +1036,7 @@ class Client(OpenApiClient):
         request: pai_llmtrace_20240311_models.ListOnlineEvalTaskResultsRequest,
     ) -> pai_llmtrace_20240311_models.ListOnlineEvalTaskResultsResponse:
         """
-        @summary 查看符合条件的在线评估任务的结果
+        @summary List the results of online evaluation tasks that meet the criteria
         
         @param request: ListOnlineEvalTaskResultsRequest
         @return: ListOnlineEvalTaskResultsResponse
@@ -924,7 +1052,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_llmtrace_20240311_models.ListOnlineEvalTasksResponse:
         """
-        @summary 查看符合条件的在线评估任务
+        @summary View online evaluation tasks that meet the criteria
         
         @param request: ListOnlineEvalTasksRequest
         @param headers: map
@@ -970,7 +1098,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_llmtrace_20240311_models.ListOnlineEvalTasksResponse:
         """
-        @summary 查看符合条件的在线评估任务
+        @summary View online evaluation tasks that meet the criteria
         
         @param request: ListOnlineEvalTasksRequest
         @param headers: map
@@ -1014,7 +1142,7 @@ class Client(OpenApiClient):
         request: pai_llmtrace_20240311_models.ListOnlineEvalTasksRequest,
     ) -> pai_llmtrace_20240311_models.ListOnlineEvalTasksResponse:
         """
-        @summary 查看符合条件的在线评估任务
+        @summary View online evaluation tasks that meet the criteria
         
         @param request: ListOnlineEvalTasksRequest
         @return: ListOnlineEvalTasksResponse
@@ -1028,7 +1156,7 @@ class Client(OpenApiClient):
         request: pai_llmtrace_20240311_models.ListOnlineEvalTasksRequest,
     ) -> pai_llmtrace_20240311_models.ListOnlineEvalTasksResponse:
         """
-        @summary 查看符合条件的在线评估任务
+        @summary View online evaluation tasks that meet the criteria
         
         @param request: ListOnlineEvalTasksRequest
         @return: ListOnlineEvalTasksResponse
@@ -1044,7 +1172,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_llmtrace_20240311_models.ListTracesDatasResponse:
         """
-        @summary 从trace日志中list出符合条件的trace数据。
+        @summary Obtains a list of trace data based on specified criteria.
         
         @param tmp_req: ListTracesDatasRequest
         @param headers: map
@@ -1071,8 +1199,12 @@ class Client(OpenApiClient):
             query['HasStatusMessage'] = request.has_status_message
         if not UtilClient.is_unset(request.llm_app_name):
             query['LlmAppName'] = request.llm_app_name
+        if not UtilClient.is_unset(request.max_duration):
+            query['MaxDuration'] = request.max_duration
         if not UtilClient.is_unset(request.max_time):
             query['MaxTime'] = request.max_time
+        if not UtilClient.is_unset(request.min_duration):
+            query['MinDuration'] = request.min_duration
         if not UtilClient.is_unset(request.min_time):
             query['MinTime'] = request.min_time
         if not UtilClient.is_unset(request.opentelemetry_compatible):
@@ -1091,6 +1223,8 @@ class Client(OpenApiClient):
             query['SortOrder'] = request.sort_order
         if not UtilClient.is_unset(request.span_ids_shrink):
             query['SpanIds'] = request.span_ids_shrink
+        if not UtilClient.is_unset(request.span_name):
+            query['SpanName'] = request.span_name
         if not UtilClient.is_unset(request.trace_ids_shrink):
             query['TraceIds'] = request.trace_ids_shrink
         if not UtilClient.is_unset(request.trace_reduce_method):
@@ -1122,7 +1256,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_llmtrace_20240311_models.ListTracesDatasResponse:
         """
-        @summary 从trace日志中list出符合条件的trace数据。
+        @summary Obtains a list of trace data based on specified criteria.
         
         @param tmp_req: ListTracesDatasRequest
         @param headers: map
@@ -1149,8 +1283,12 @@ class Client(OpenApiClient):
             query['HasStatusMessage'] = request.has_status_message
         if not UtilClient.is_unset(request.llm_app_name):
             query['LlmAppName'] = request.llm_app_name
+        if not UtilClient.is_unset(request.max_duration):
+            query['MaxDuration'] = request.max_duration
         if not UtilClient.is_unset(request.max_time):
             query['MaxTime'] = request.max_time
+        if not UtilClient.is_unset(request.min_duration):
+            query['MinDuration'] = request.min_duration
         if not UtilClient.is_unset(request.min_time):
             query['MinTime'] = request.min_time
         if not UtilClient.is_unset(request.opentelemetry_compatible):
@@ -1169,6 +1307,8 @@ class Client(OpenApiClient):
             query['SortOrder'] = request.sort_order
         if not UtilClient.is_unset(request.span_ids_shrink):
             query['SpanIds'] = request.span_ids_shrink
+        if not UtilClient.is_unset(request.span_name):
+            query['SpanName'] = request.span_name
         if not UtilClient.is_unset(request.trace_ids_shrink):
             query['TraceIds'] = request.trace_ids_shrink
         if not UtilClient.is_unset(request.trace_reduce_method):
@@ -1198,7 +1338,7 @@ class Client(OpenApiClient):
         request: pai_llmtrace_20240311_models.ListTracesDatasRequest,
     ) -> pai_llmtrace_20240311_models.ListTracesDatasResponse:
         """
-        @summary 从trace日志中list出符合条件的trace数据。
+        @summary Obtains a list of trace data based on specified criteria.
         
         @param request: ListTracesDatasRequest
         @return: ListTracesDatasResponse
@@ -1212,7 +1352,7 @@ class Client(OpenApiClient):
         request: pai_llmtrace_20240311_models.ListTracesDatasRequest,
     ) -> pai_llmtrace_20240311_models.ListTracesDatasResponse:
         """
-        @summary 从trace日志中list出符合条件的trace数据。
+        @summary Obtains a list of trace data based on specified criteria.
         
         @param request: ListTracesDatasRequest
         @return: ListTracesDatasResponse
@@ -1228,7 +1368,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_llmtrace_20240311_models.StopOnlineEvalTaskResponse:
         """
-        @summary 停止一个在线评估任务的执行
+        @summary Stop the execution of an online evaluation task
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1260,7 +1400,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_llmtrace_20240311_models.StopOnlineEvalTaskResponse:
         """
-        @summary 停止一个在线评估任务的执行
+        @summary Stop the execution of an online evaluation task
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1290,7 +1430,7 @@ class Client(OpenApiClient):
         task_id: str,
     ) -> pai_llmtrace_20240311_models.StopOnlineEvalTaskResponse:
         """
-        @summary 停止一个在线评估任务的执行
+        @summary Stop the execution of an online evaluation task
         
         @return: StopOnlineEvalTaskResponse
         """
@@ -1303,7 +1443,7 @@ class Client(OpenApiClient):
         task_id: str,
     ) -> pai_llmtrace_20240311_models.StopOnlineEvalTaskResponse:
         """
-        @summary 停止一个在线评估任务的执行
+        @summary Stop the execution of an online evaluation task
         
         @return: StopOnlineEvalTaskResponse
         """
@@ -1319,7 +1459,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_llmtrace_20240311_models.UpdateOnlineEvalTaskResponse:
         """
-        @summary 更改一个在线评估任务的配置
+        @summary Changes the configuration of a trace evaluation task.
         
         @param request: UpdateOnlineEvalTaskRequest
         @param headers: map
@@ -1376,7 +1516,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_llmtrace_20240311_models.UpdateOnlineEvalTaskResponse:
         """
-        @summary 更改一个在线评估任务的配置
+        @summary Changes the configuration of a trace evaluation task.
         
         @param request: UpdateOnlineEvalTaskRequest
         @param headers: map
@@ -1431,7 +1571,7 @@ class Client(OpenApiClient):
         request: pai_llmtrace_20240311_models.UpdateOnlineEvalTaskRequest,
     ) -> pai_llmtrace_20240311_models.UpdateOnlineEvalTaskResponse:
         """
-        @summary 更改一个在线评估任务的配置
+        @summary Changes the configuration of a trace evaluation task.
         
         @param request: UpdateOnlineEvalTaskRequest
         @return: UpdateOnlineEvalTaskResponse
@@ -1446,7 +1586,7 @@ class Client(OpenApiClient):
         request: pai_llmtrace_20240311_models.UpdateOnlineEvalTaskRequest,
     ) -> pai_llmtrace_20240311_models.UpdateOnlineEvalTaskResponse:
         """
-        @summary 更改一个在线评估任务的配置
+        @summary Changes the configuration of a trace evaluation task.
         
         @param request: UpdateOnlineEvalTaskRequest
         @return: UpdateOnlineEvalTaskResponse
