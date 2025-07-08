@@ -7692,6 +7692,357 @@ class DescribeKeyPairsResponse(TeaModel):
         return self
 
 
+class DescribeMetricLastRequest(TeaModel):
+    def __init__(
+        self,
+        android_instance_ids: List[str] = None,
+        end_time: str = None,
+        length: str = None,
+        metric_names: List[str] = None,
+        next_token: str = None,
+        period: int = None,
+        start_time: str = None,
+    ):
+        self.android_instance_ids = android_instance_ids
+        self.end_time = end_time
+        self.length = length
+        # This parameter is required.
+        self.metric_names = metric_names
+        self.next_token = next_token
+        self.period = period
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.android_instance_ids is not None:
+            result['AndroidInstanceIds'] = self.android_instance_ids
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.length is not None:
+            result['Length'] = self.length
+        if self.metric_names is not None:
+            result['MetricNames'] = self.metric_names
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AndroidInstanceIds') is not None:
+            self.android_instance_ids = m.get('AndroidInstanceIds')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Length') is not None:
+            self.length = m.get('Length')
+        if m.get('MetricNames') is not None:
+            self.metric_names = m.get('MetricNames')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeMetricLastResponseBodyMetricTotalModelMetricModelListDataPoints(TeaModel):
+    def __init__(
+        self,
+        average: float = None,
+        maximum: float = None,
+        minimum: float = None,
+        timestamp: int = None,
+    ):
+        self.average = average
+        self.maximum = maximum
+        self.minimum = minimum
+        self.timestamp = timestamp
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.average is not None:
+            result['Average'] = self.average
+        if self.maximum is not None:
+            result['Maximum'] = self.maximum
+        if self.minimum is not None:
+            result['Minimum'] = self.minimum
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Average') is not None:
+            self.average = m.get('Average')
+        if m.get('Maximum') is not None:
+            self.maximum = m.get('Maximum')
+        if m.get('Minimum') is not None:
+            self.minimum = m.get('Minimum')
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        return self
+
+
+class DescribeMetricLastResponseBodyMetricTotalModelMetricModelListProcessLastInfos(TeaModel):
+    def __init__(
+        self,
+        cpu_usage: float = None,
+        memory_usage: float = None,
+        name: str = None,
+        process_ids: List[int] = None,
+        timestamp: int = None,
+    ):
+        self.cpu_usage = cpu_usage
+        self.memory_usage = memory_usage
+        self.name = name
+        self.process_ids = process_ids
+        self.timestamp = timestamp
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu_usage is not None:
+            result['CpuUsage'] = self.cpu_usage
+        if self.memory_usage is not None:
+            result['MemoryUsage'] = self.memory_usage
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.process_ids is not None:
+            result['ProcessIds'] = self.process_ids
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CpuUsage') is not None:
+            self.cpu_usage = m.get('CpuUsage')
+        if m.get('MemoryUsage') is not None:
+            self.memory_usage = m.get('MemoryUsage')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ProcessIds') is not None:
+            self.process_ids = m.get('ProcessIds')
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        return self
+
+
+class DescribeMetricLastResponseBodyMetricTotalModelMetricModelList(TeaModel):
+    def __init__(
+        self,
+        data_points: List[DescribeMetricLastResponseBodyMetricTotalModelMetricModelListDataPoints] = None,
+        metric_name: str = None,
+        process_last_infos: List[DescribeMetricLastResponseBodyMetricTotalModelMetricModelListProcessLastInfos] = None,
+    ):
+        self.data_points = data_points
+        self.metric_name = metric_name
+        self.process_last_infos = process_last_infos
+
+    def validate(self):
+        if self.data_points:
+            for k in self.data_points:
+                if k:
+                    k.validate()
+        if self.process_last_infos:
+            for k in self.process_last_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataPoints'] = []
+        if self.data_points is not None:
+            for k in self.data_points:
+                result['DataPoints'].append(k.to_map() if k else None)
+        if self.metric_name is not None:
+            result['MetricName'] = self.metric_name
+        result['ProcessLastInfos'] = []
+        if self.process_last_infos is not None:
+            for k in self.process_last_infos:
+                result['ProcessLastInfos'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data_points = []
+        if m.get('DataPoints') is not None:
+            for k in m.get('DataPoints'):
+                temp_model = DescribeMetricLastResponseBodyMetricTotalModelMetricModelListDataPoints()
+                self.data_points.append(temp_model.from_map(k))
+        if m.get('MetricName') is not None:
+            self.metric_name = m.get('MetricName')
+        self.process_last_infos = []
+        if m.get('ProcessLastInfos') is not None:
+            for k in m.get('ProcessLastInfos'):
+                temp_model = DescribeMetricLastResponseBodyMetricTotalModelMetricModelListProcessLastInfos()
+                self.process_last_infos.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeMetricLastResponseBodyMetricTotalModel(TeaModel):
+    def __init__(
+        self,
+        android_instance_id: str = None,
+        metric_model_list: List[DescribeMetricLastResponseBodyMetricTotalModelMetricModelList] = None,
+    ):
+        self.android_instance_id = android_instance_id
+        self.metric_model_list = metric_model_list
+
+    def validate(self):
+        if self.metric_model_list:
+            for k in self.metric_model_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.android_instance_id is not None:
+            result['AndroidInstanceId'] = self.android_instance_id
+        result['MetricModelList'] = []
+        if self.metric_model_list is not None:
+            for k in self.metric_model_list:
+                result['MetricModelList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AndroidInstanceId') is not None:
+            self.android_instance_id = m.get('AndroidInstanceId')
+        self.metric_model_list = []
+        if m.get('MetricModelList') is not None:
+            for k in m.get('MetricModelList'):
+                temp_model = DescribeMetricLastResponseBodyMetricTotalModelMetricModelList()
+                self.metric_model_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeMetricLastResponseBody(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        metric_total_model: List[DescribeMetricLastResponseBodyMetricTotalModel] = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.count = count
+        self.metric_total_model = metric_total_model
+        self.next_token = next_token
+        self.request_id = request_id
+
+    def validate(self):
+        if self.metric_total_model:
+            for k in self.metric_total_model:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        result['MetricTotalModel'] = []
+        if self.metric_total_model is not None:
+            for k in self.metric_total_model:
+                result['MetricTotalModel'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        self.metric_total_model = []
+        if m.get('MetricTotalModel') is not None:
+            for k in m.get('MetricTotalModel'):
+                temp_model = DescribeMetricLastResponseBodyMetricTotalModel()
+                self.metric_total_model.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeMetricLastResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeMetricLastResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeMetricLastResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeRegionsRequest(TeaModel):
     def __init__(
         self,

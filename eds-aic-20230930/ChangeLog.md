@@ -1,3 +1,7 @@
+2025-07-08 Version: 4.9.0
+- Support API DescribeMetricLast.
+
+
 2025-07-07 Version: 4.8.2
 - Update API CreateCloudPhoneNode: add request parameters PhoneDataVolume.
 

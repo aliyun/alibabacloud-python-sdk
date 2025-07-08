@@ -3622,6 +3622,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_key_pairs_with_options_async(request, runtime)
 
+    def describe_metric_last_with_options(
+        self,
+        request: eds_aic_20230930_models.DescribeMetricLastRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.DescribeMetricLastResponse:
+        """
+        @summary 查询指定监控项的最新监控数据
+        
+        @param request: DescribeMetricLastRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetricLastResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.android_instance_ids):
+            body['AndroidInstanceIds'] = request.android_instance_ids
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.length):
+            body['Length'] = request.length
+        if not UtilClient.is_unset(request.metric_names):
+            body['MetricNames'] = request.metric_names
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.period):
+            body['Period'] = request.period
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeMetricLast',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.DescribeMetricLastResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_metric_last_with_options_async(
+        self,
+        request: eds_aic_20230930_models.DescribeMetricLastRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.DescribeMetricLastResponse:
+        """
+        @summary 查询指定监控项的最新监控数据
+        
+        @param request: DescribeMetricLastRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetricLastResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.android_instance_ids):
+            body['AndroidInstanceIds'] = request.android_instance_ids
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.length):
+            body['Length'] = request.length
+        if not UtilClient.is_unset(request.metric_names):
+            body['MetricNames'] = request.metric_names
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.period):
+            body['Period'] = request.period
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeMetricLast',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.DescribeMetricLastResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_metric_last(
+        self,
+        request: eds_aic_20230930_models.DescribeMetricLastRequest,
+    ) -> eds_aic_20230930_models.DescribeMetricLastResponse:
+        """
+        @summary 查询指定监控项的最新监控数据
+        
+        @param request: DescribeMetricLastRequest
+        @return: DescribeMetricLastResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_metric_last_with_options(request, runtime)
+
+    async def describe_metric_last_async(
+        self,
+        request: eds_aic_20230930_models.DescribeMetricLastRequest,
+    ) -> eds_aic_20230930_models.DescribeMetricLastResponse:
+        """
+        @summary 查询指定监控项的最新监控数据
+        
+        @param request: DescribeMetricLastRequest
+        @return: DescribeMetricLastResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_metric_last_with_options_async(request, runtime)
+
     def describe_regions_with_options(
         self,
         request: eds_aic_20230930_models.DescribeRegionsRequest,
