@@ -5081,18 +5081,32 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.analysis_tool):
             body['analysisTool'] = request.analysis_tool
+        if not UtilClient.is_unset(request.analysis_params):
+            body['analysis_params'] = request.analysis_params
         if not UtilClient.is_unset(request.channel):
             body['channel'] = request.channel
         if not UtilClient.is_unset(request.comms):
             body['comms'] = request.comms
+        if not UtilClient.is_unset(request.created_by):
+            body['created_by'] = request.created_by
         if not UtilClient.is_unset(request.instance):
             body['instance'] = request.instance
+        if not UtilClient.is_unset(request.instance_type):
+            body['instance_type'] = request.instance_type
+        if not UtilClient.is_unset(request.iteration_func):
+            body['iteration_func'] = request.iteration_func
+        if not UtilClient.is_unset(request.iteration_mod):
+            body['iteration_mod'] = request.iteration_mod
+        if not UtilClient.is_unset(request.iteration_range):
+            body['iteration_range'] = request.iteration_range
         if not UtilClient.is_unset(request.pids):
             body['pids'] = request.pids
         if not UtilClient.is_unset(request.region):
             body['region'] = request.region
         if not UtilClient.is_unset(request.timeout):
             body['timeout'] = request.timeout
+        if not UtilClient.is_unset(request.uid):
+            body['uid'] = request.uid
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -5131,18 +5145,32 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.analysis_tool):
             body['analysisTool'] = request.analysis_tool
+        if not UtilClient.is_unset(request.analysis_params):
+            body['analysis_params'] = request.analysis_params
         if not UtilClient.is_unset(request.channel):
             body['channel'] = request.channel
         if not UtilClient.is_unset(request.comms):
             body['comms'] = request.comms
+        if not UtilClient.is_unset(request.created_by):
+            body['created_by'] = request.created_by
         if not UtilClient.is_unset(request.instance):
             body['instance'] = request.instance
+        if not UtilClient.is_unset(request.instance_type):
+            body['instance_type'] = request.instance_type
+        if not UtilClient.is_unset(request.iteration_func):
+            body['iteration_func'] = request.iteration_func
+        if not UtilClient.is_unset(request.iteration_mod):
+            body['iteration_mod'] = request.iteration_mod
+        if not UtilClient.is_unset(request.iteration_range):
+            body['iteration_range'] = request.iteration_range
         if not UtilClient.is_unset(request.pids):
             body['pids'] = request.pids
         if not UtilClient.is_unset(request.region):
             body['region'] = request.region
         if not UtilClient.is_unset(request.timeout):
             body['timeout'] = request.timeout
+        if not UtilClient.is_unset(request.uid):
+            body['uid'] = request.uid
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -5190,6 +5218,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.start_aianalysis_with_options_async(request, headers, runtime)
+
+    def start_aidiff_analysis_with_options(
+        self,
+        request: sys_om20231230_models.StartAIDiffAnalysisRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.StartAIDiffAnalysisResponse:
+        """
+        @summary 查看AI Infra差分分析结果
+        
+        @param request: StartAIDiffAnalysisRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartAIDiffAnalysisResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_1):
+            body['task1'] = request.task_1
+        if not UtilClient.is_unset(request.task_2):
+            body['task2'] = request.task_2
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StartAIDiffAnalysis',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/appObserv/aiAnalysis/diffAnalysis',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sys_om20231230_models.StartAIDiffAnalysisResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_aidiff_analysis_with_options_async(
+        self,
+        request: sys_om20231230_models.StartAIDiffAnalysisRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.StartAIDiffAnalysisResponse:
+        """
+        @summary 查看AI Infra差分分析结果
+        
+        @param request: StartAIDiffAnalysisRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartAIDiffAnalysisResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_1):
+            body['task1'] = request.task_1
+        if not UtilClient.is_unset(request.task_2):
+            body['task2'] = request.task_2
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StartAIDiffAnalysis',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/appObserv/aiAnalysis/diffAnalysis',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sys_om20231230_models.StartAIDiffAnalysisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_aidiff_analysis(
+        self,
+        request: sys_om20231230_models.StartAIDiffAnalysisRequest,
+    ) -> sys_om20231230_models.StartAIDiffAnalysisResponse:
+        """
+        @summary 查看AI Infra差分分析结果
+        
+        @param request: StartAIDiffAnalysisRequest
+        @return: StartAIDiffAnalysisResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.start_aidiff_analysis_with_options(request, headers, runtime)
+
+    async def start_aidiff_analysis_async(
+        self,
+        request: sys_om20231230_models.StartAIDiffAnalysisRequest,
+    ) -> sys_om20231230_models.StartAIDiffAnalysisResponse:
+        """
+        @summary 查看AI Infra差分分析结果
+        
+        @param request: StartAIDiffAnalysisRequest
+        @return: StartAIDiffAnalysisResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.start_aidiff_analysis_with_options_async(request, headers, runtime)
 
     def uninstall_agent_with_options(
         self,

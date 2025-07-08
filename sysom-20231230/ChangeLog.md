@@ -1,3 +1,14 @@
+2025-07-08 Version: 1.11.0
+- Support API StartAIDiffAnalysis.
+- Update API StartAIAnalysis: add request parameters body.analysis_params.
+- Update API StartAIAnalysis: add request parameters body.created_by.
+- Update API StartAIAnalysis: add request parameters body.instance_type.
+- Update API StartAIAnalysis: add request parameters body.iteration_func.
+- Update API StartAIAnalysis: add request parameters body.iteration_mod.
+- Update API StartAIAnalysis: add request parameters body.iteration_range.
+- Update API StartAIAnalysis: add request parameters body.uid.
+
+
 2025-06-30 Version: 1.10.1
 - Update API InstallAgentForCluster: add request parameters body.config_id.
 - Update API ListAgentInstallRecords: add request parameters region.

@@ -8727,20 +8727,34 @@ class StartAIAnalysisRequest(TeaModel):
     def __init__(
         self,
         analysis_tool: str = None,
+        analysis_params: List[str] = None,
         channel: str = None,
         comms: str = None,
+        created_by: str = None,
         instance: str = None,
+        instance_type: str = None,
+        iteration_func: str = None,
+        iteration_mod: str = None,
+        iteration_range: List[int] = None,
         pids: str = None,
         region: str = None,
         timeout: int = None,
+        uid: str = None,
     ):
         self.analysis_tool = analysis_tool
+        self.analysis_params = analysis_params
         self.channel = channel
         self.comms = comms
+        self.created_by = created_by
         self.instance = instance
+        self.instance_type = instance_type
+        self.iteration_func = iteration_func
+        self.iteration_mod = iteration_mod
+        self.iteration_range = iteration_range
         self.pids = pids
         self.region = region
         self.timeout = timeout
+        self.uid = uid
 
     def validate(self):
         pass
@@ -8753,36 +8767,64 @@ class StartAIAnalysisRequest(TeaModel):
         result = dict()
         if self.analysis_tool is not None:
             result['analysisTool'] = self.analysis_tool
+        if self.analysis_params is not None:
+            result['analysis_params'] = self.analysis_params
         if self.channel is not None:
             result['channel'] = self.channel
         if self.comms is not None:
             result['comms'] = self.comms
+        if self.created_by is not None:
+            result['created_by'] = self.created_by
         if self.instance is not None:
             result['instance'] = self.instance
+        if self.instance_type is not None:
+            result['instance_type'] = self.instance_type
+        if self.iteration_func is not None:
+            result['iteration_func'] = self.iteration_func
+        if self.iteration_mod is not None:
+            result['iteration_mod'] = self.iteration_mod
+        if self.iteration_range is not None:
+            result['iteration_range'] = self.iteration_range
         if self.pids is not None:
             result['pids'] = self.pids
         if self.region is not None:
             result['region'] = self.region
         if self.timeout is not None:
             result['timeout'] = self.timeout
+        if self.uid is not None:
+            result['uid'] = self.uid
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('analysisTool') is not None:
             self.analysis_tool = m.get('analysisTool')
+        if m.get('analysis_params') is not None:
+            self.analysis_params = m.get('analysis_params')
         if m.get('channel') is not None:
             self.channel = m.get('channel')
         if m.get('comms') is not None:
             self.comms = m.get('comms')
+        if m.get('created_by') is not None:
+            self.created_by = m.get('created_by')
         if m.get('instance') is not None:
             self.instance = m.get('instance')
+        if m.get('instance_type') is not None:
+            self.instance_type = m.get('instance_type')
+        if m.get('iteration_func') is not None:
+            self.iteration_func = m.get('iteration_func')
+        if m.get('iteration_mod') is not None:
+            self.iteration_mod = m.get('iteration_mod')
+        if m.get('iteration_range') is not None:
+            self.iteration_range = m.get('iteration_range')
         if m.get('pids') is not None:
             self.pids = m.get('pids')
         if m.get('region') is not None:
             self.region = m.get('region')
         if m.get('timeout') is not None:
             self.timeout = m.get('timeout')
+        if m.get('uid') is not None:
+            self.uid = m.get('uid')
         return self
 
 
@@ -8898,6 +8940,227 @@ class StartAIAnalysisResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StartAIAnalysisResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StartAIDiffAnalysisRequestTask1(TeaModel):
+    def __init__(
+        self,
+        analysis_id: str = None,
+        pids: List[str] = None,
+        step_end: float = None,
+        step_start: float = None,
+    ):
+        self.analysis_id = analysis_id
+        self.pids = pids
+        self.step_end = step_end
+        self.step_start = step_start
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.analysis_id is not None:
+            result['analysisId'] = self.analysis_id
+        if self.pids is not None:
+            result['pids'] = self.pids
+        if self.step_end is not None:
+            result['step_end'] = self.step_end
+        if self.step_start is not None:
+            result['step_start'] = self.step_start
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('analysisId') is not None:
+            self.analysis_id = m.get('analysisId')
+        if m.get('pids') is not None:
+            self.pids = m.get('pids')
+        if m.get('step_end') is not None:
+            self.step_end = m.get('step_end')
+        if m.get('step_start') is not None:
+            self.step_start = m.get('step_start')
+        return self
+
+
+class StartAIDiffAnalysisRequestTask2(TeaModel):
+    def __init__(
+        self,
+        analysis_id: str = None,
+        pids: List[str] = None,
+        step_end: float = None,
+        step_start: float = None,
+    ):
+        # This parameter is required.
+        self.analysis_id = analysis_id
+        # This parameter is required.
+        self.pids = pids
+        # This parameter is required.
+        self.step_end = step_end
+        # This parameter is required.
+        self.step_start = step_start
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.analysis_id is not None:
+            result['analysisId'] = self.analysis_id
+        if self.pids is not None:
+            result['pids'] = self.pids
+        if self.step_end is not None:
+            result['step_end'] = self.step_end
+        if self.step_start is not None:
+            result['step_start'] = self.step_start
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('analysisId') is not None:
+            self.analysis_id = m.get('analysisId')
+        if m.get('pids') is not None:
+            self.pids = m.get('pids')
+        if m.get('step_end') is not None:
+            self.step_end = m.get('step_end')
+        if m.get('step_start') is not None:
+            self.step_start = m.get('step_start')
+        return self
+
+
+class StartAIDiffAnalysisRequest(TeaModel):
+    def __init__(
+        self,
+        task_1: StartAIDiffAnalysisRequestTask1 = None,
+        task_2: StartAIDiffAnalysisRequestTask2 = None,
+    ):
+        # This parameter is required.
+        self.task_1 = task_1
+        # This parameter is required.
+        self.task_2 = task_2
+
+    def validate(self):
+        if self.task_1:
+            self.task_1.validate()
+        if self.task_2:
+            self.task_2.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_1 is not None:
+            result['task1'] = self.task_1.to_map()
+        if self.task_2 is not None:
+            result['task2'] = self.task_2.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('task1') is not None:
+            temp_model = StartAIDiffAnalysisRequestTask1()
+            self.task_1 = temp_model.from_map(m['task1'])
+        if m.get('task2') is not None:
+            temp_model = StartAIDiffAnalysisRequestTask2()
+            self.task_2 = temp_model.from_map(m['task2'])
+        return self
+
+
+class StartAIDiffAnalysisResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class StartAIDiffAnalysisResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartAIDiffAnalysisResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartAIDiffAnalysisResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
