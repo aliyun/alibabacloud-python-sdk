@@ -2435,17 +2435,21 @@ class Client(OpenApiClient):
 
     def list_template_with_options(
         self,
-        request: bpstudio_20210931_models.ListTemplateRequest,
+        tmp_req: bpstudio_20210931_models.ListTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ListTemplateResponse:
         """
         @summary Queries templates, including information such as the template name, architecture image URL, and URL of the serialized architecture image file.
         
-        @param request: ListTemplateRequest
+        @param tmp_req: ListTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListTemplateResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = bpstudio_20210931_models.ListTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         body = {}
         if not UtilClient.is_unset(request.keyword):
             body['Keyword'] = request.keyword
@@ -2457,6 +2461,8 @@ class Client(OpenApiClient):
             body['OrderType'] = request.order_type
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag_shrink):
+            body['Tag'] = request.tag_shrink
         if not UtilClient.is_unset(request.tag_list):
             body['TagList'] = request.tag_list
         if not UtilClient.is_unset(request.type):
@@ -2482,17 +2488,21 @@ class Client(OpenApiClient):
 
     async def list_template_with_options_async(
         self,
-        request: bpstudio_20210931_models.ListTemplateRequest,
+        tmp_req: bpstudio_20210931_models.ListTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ListTemplateResponse:
         """
         @summary Queries templates, including information such as the template name, architecture image URL, and URL of the serialized architecture image file.
         
-        @param request: ListTemplateRequest
+        @param tmp_req: ListTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListTemplateResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = bpstudio_20210931_models.ListTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         body = {}
         if not UtilClient.is_unset(request.keyword):
             body['Keyword'] = request.keyword
@@ -2504,6 +2514,8 @@ class Client(OpenApiClient):
             body['OrderType'] = request.order_type
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag_shrink):
+            body['Tag'] = request.tag_shrink
         if not UtilClient.is_unset(request.tag_list):
             body['TagList'] = request.tag_list
         if not UtilClient.is_unset(request.type):

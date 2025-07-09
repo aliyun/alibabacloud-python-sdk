@@ -1,3 +1,7 @@
+2025-07-09 Version: 7.0.3
+- Update API ListTemplate: add request parameters Tag.
+
+
 2025-06-25 Version: 7.0.2
 - Update API CreateApplication: add request parameters ProcessVariables.
 

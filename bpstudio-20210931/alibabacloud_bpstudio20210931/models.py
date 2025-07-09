@@ -4613,6 +4613,39 @@ class ListTagResourcesResponse(TeaModel):
         return self
 
 
+class ListTemplateRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListTemplateRequest(TeaModel):
     def __init__(
         self,
@@ -4621,6 +4654,7 @@ class ListTemplateRequest(TeaModel):
         next_token: int = None,
         order_type: int = None,
         resource_group_id: str = None,
+        tag: List[ListTemplateRequestTag] = None,
         tag_list: int = None,
         type: str = None,
     ):
@@ -4644,6 +4678,103 @@ class ListTemplateRequest(TeaModel):
         self.order_type = order_type
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        self.tag = tag
+        # The tag that you want to use to query templates.
+        self.tag_list = tag_list
+        # The type of the templates to be returned. Valid values: public and private
+        # 
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.order_type is not None:
+            result['OrderType'] = self.order_type
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        if self.tag_list is not None:
+            result['TagList'] = self.tag_list
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OrderType') is not None:
+            self.order_type = m.get('OrderType')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListTemplateRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        if m.get('TagList') is not None:
+            self.tag_list = m.get('TagList')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListTemplateShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        keyword: str = None,
+        max_results: int = None,
+        next_token: int = None,
+        order_type: int = None,
+        resource_group_id: str = None,
+        tag_shrink: str = None,
+        tag_list: int = None,
+        type: str = None,
+    ):
+        # The keyword that is used to search for templates.
+        self.keyword = keyword
+        # The number of entries to return on each page.
+        # 
+        # This parameter is required.
+        self.max_results = max_results
+        # The number of the page to return.
+        # 
+        # This parameter is required.
+        self.next_token = next_token
+        # The criterion by which the returned templates are sorted. Valid values:
+        # 
+        # *   1: The templates are sorted by the time when they are updated.
+        # *   2: The templates are sorted by the time when they are created.
+        # *   3: The templates are sorted by the system.
+        # *   4: The templates are sorted by the number of times that they are used.
+        # *   If you specify an integer other than 1, 2, 3, and 4 or do not specify any value, the templates are sorted by the system.
+        self.order_type = order_type
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
+        self.tag_shrink = tag_shrink
         # The tag that you want to use to query templates.
         self.tag_list = tag_list
         # The type of the templates to be returned. Valid values: public and private
@@ -4670,6 +4801,8 @@ class ListTemplateRequest(TeaModel):
             result['OrderType'] = self.order_type
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
         if self.tag_list is not None:
             result['TagList'] = self.tag_list
         if self.type is not None:
@@ -4688,6 +4821,8 @@ class ListTemplateRequest(TeaModel):
             self.order_type = m.get('OrderType')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
         if m.get('TagList') is not None:
             self.tag_list = m.get('TagList')
         if m.get('Type') is not None:
