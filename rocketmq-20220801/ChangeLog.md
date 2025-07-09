@@ -1,3 +1,6 @@
+2025-07-09 Version: 3.1.3
+- Generated python 2022-08-01 for RocketMQ.
+
 2025-06-26 Version: 3.1.2
 - Update API CreateDisasterRecoveryPlan: add request parameters body.instances.$.consumerGroupId.
 - Update API GetDisasterRecoveryPlan: add response parameters Body.data.instances.$.consumerGroupId.

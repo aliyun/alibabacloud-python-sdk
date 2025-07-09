@@ -1305,8 +1305,6 @@ class CreateInstanceRequestProductInfo(TeaModel):
         # ApsaraMQ for RocketMQ supports serverless scaling of message storage. You are charged storage fees based on your actual storage usage. You can change the retention period of messages to manage storage capacity. For more information, see [Storage fees](https://help.aliyun.com/document_detail/427238.html).
         self.message_retention_time = message_retention_time
         # The computing specification that specifies the messaging transactions per second (TPS) of the instance. For more information, see [Instance editions](https://help.aliyun.com/document_detail/444715.html).
-        # 
-        # This parameter is required.
         self.msg_process_spec = msg_process_spec
         # The ratio of the message sending TPS to the messaging TPS of the instance.
         # 
