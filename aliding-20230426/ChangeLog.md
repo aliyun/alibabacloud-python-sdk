@@ -1,3 +1,6 @@
+2025-07-09 Version: 2.41.1
+- Generated python 2023-04-26 for aliding.
+
 2025-07-02 Version: 2.41.0
 - Support API InsertDropDownList.
 - Update API CreateReport: add response parameters Body.result.
