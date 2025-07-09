@@ -1,3 +1,27 @@
+2025-07-09 Version: 6.0.0
+- Support API DeleteBackup.
+- Support API ModifyBackupExpireTime.
+- Delete API DescribeTasks.
+- Update API CreateBackup: add request parameters BackupRetentionPeriod.
+- Update API CreateGlobalDistributeCache: add response parameters Body.GlobalInstanceId.
+- Update API CreateGlobalDistributeCache: add response parameters Body.InstanceId.
+- Update API DescribeBackups: add response parameters Body.Backups.$.ExpectExpireTime.
+- Update API DescribeClusterBackupList: add response parameters Body.ClusterBackups.$.ExpectExpireTime.
+- Update API DescribeHistoryMonitorValues: add request parameters Type.
+- Update API DescribeTairKVCacheInferInstanceAttribute: add response parameters Body.Instances.$.ComputeUnitNum.
+- Update API DescribeTairKVCacheInferInstanceAttribute: add response parameters Body.Instances.$.Model.
+- Update API DescribeTairKVCacheInferInstanceAttribute: add response parameters Body.Instances.$.ModelServiceNum.
+- Update API DescribeTairKVCacheInferInstanceAttribute: delete response parameters Body.Instances.$.ReserveGpuNum.
+- Update API DescribeTairKVCacheInferInstanceAttribute: delete response parameters Body.Instances.$.SecurityGroupId.
+- Update API DescribeTairKVCacheInferInstances: add response parameters Body.Instances.$.ComputeUnitNum.
+- Update API DescribeTairKVCacheInferInstances: add response parameters Body.Instances.$.Model.
+- Update API DescribeTairKVCacheInferInstances: add response parameters Body.Instances.$.ModelServiceNum.
+- Update API DescribeTairKVCacheInferInstances: add response parameters Body.Instances.$.VNodeName.
+- Update API DescribeTairKVCacheInferInstances: delete response parameters Body.Instances.$.ModuleName.
+- Update API DescribeTairKVCacheInferInstances: delete response parameters Body.Instances.$.ReserveGpuNum.
+- Update API DescribeTairKVCacheInferInstances: delete response parameters Body.Instances.$.UsedGpuNum.
+
+
 2025-04-01 Version: 5.0.0
 - Support API DescribeTairKVCacheInferInstanceAttribute.
 - Support API DescribeTairKVCacheInferInstances.

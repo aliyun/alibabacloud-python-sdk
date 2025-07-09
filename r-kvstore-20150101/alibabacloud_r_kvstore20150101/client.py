@@ -33,8 +33,6 @@ class Client(OpenApiClient):
             'cn-guangzhou': 'r-kvstore.aliyuncs.com',
             'cn-hangzhou-finance': 'r-kvstore.aliyuncs.com',
             'cn-shanghai-finance-1': 'r-kvstore.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'r-kvstore.aliyuncs.com',
-            'cn-north-2-gov-1': 'r-kvstore.aliyuncs.com',
             'ap-northeast-2-pop': 'r-kvstore.aliyuncs.com',
             'cn-beijing-finance-1': 'r-kvstore.aliyuncs.com',
             'cn-beijing-finance-pop': 'r-kvstore.aliyuncs.com',
@@ -92,7 +90,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.AddShardingNodeResponse:
         """
-        @summary Adds one or more data shards to an ApsaraDB for Redis cluster instance.
+        @summary Adds one or more data shards to a Tair cluster instance.
         
         @description This operation is available only for cluster instances that use cloud disks.
         
@@ -142,16 +140,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.AddShardingNodeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.AddShardingNodeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.AddShardingNodeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def add_sharding_node_with_options_async(
         self,
@@ -159,7 +151,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.AddShardingNodeResponse:
         """
-        @summary Adds one or more data shards to an ApsaraDB for Redis cluster instance.
+        @summary Adds one or more data shards to a Tair cluster instance.
         
         @description This operation is available only for cluster instances that use cloud disks.
         
@@ -209,23 +201,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.AddShardingNodeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.AddShardingNodeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.AddShardingNodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def add_sharding_node(
         self,
         request: r_kvstore_20150101_models.AddShardingNodeRequest,
     ) -> r_kvstore_20150101_models.AddShardingNodeResponse:
         """
-        @summary Adds one or more data shards to an ApsaraDB for Redis cluster instance.
+        @summary Adds one or more data shards to a Tair cluster instance.
         
         @description This operation is available only for cluster instances that use cloud disks.
         
@@ -240,7 +226,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.AddShardingNodeRequest,
     ) -> r_kvstore_20150101_models.AddShardingNodeResponse:
         """
-        @summary Adds one or more data shards to an ApsaraDB for Redis cluster instance.
+        @summary Adds one or more data shards to a Tair cluster instance.
         
         @description This operation is available only for cluster instances that use cloud disks.
         
@@ -301,16 +287,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.AllocateDirectConnectionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.AllocateDirectConnectionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.AllocateDirectConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def allocate_direct_connection_with_options_async(
         self,
@@ -363,16 +343,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.AllocateDirectConnectionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.AllocateDirectConnectionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.AllocateDirectConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def allocate_direct_connection(
         self,
@@ -460,16 +434,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.AllocateInstancePublicConnectionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.AllocateInstancePublicConnectionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.AllocateInstancePublicConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def allocate_instance_public_connection_with_options_async(
         self,
@@ -517,16 +485,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.AllocateInstancePublicConnectionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.AllocateInstancePublicConnectionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.AllocateInstancePublicConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def allocate_instance_public_connection(
         self,
@@ -603,16 +565,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CancelActiveOperationTasksResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CancelActiveOperationTasksResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CancelActiveOperationTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def cancel_active_operation_tasks_with_options_async(
         self,
@@ -659,16 +615,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CancelActiveOperationTasksResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CancelActiveOperationTasksResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CancelActiveOperationTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def cancel_active_operation_tasks(
         self,
@@ -751,16 +701,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CheckCloudResourceAuthorizedResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CheckCloudResourceAuthorizedResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CheckCloudResourceAuthorizedResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def check_cloud_resource_authorized_with_options_async(
         self,
@@ -807,16 +751,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CheckCloudResourceAuthorizedResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CheckCloudResourceAuthorizedResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CheckCloudResourceAuthorizedResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def check_cloud_resource_authorized(
         self,
@@ -907,16 +845,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_account_with_options_async(
         self,
@@ -975,16 +907,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_account(
         self,
@@ -1038,6 +964,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.backup_retention_period):
+            query['BackupRetentionPeriod'] = request.backup_retention_period
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.owner_account):
@@ -1064,16 +992,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateBackupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateBackupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateBackupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_backup_with_options_async(
         self,
@@ -1091,6 +1013,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.backup_retention_period):
+            query['BackupRetentionPeriod'] = request.backup_retention_period
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.owner_account):
@@ -1117,16 +1041,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateBackupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateBackupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateBackupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_backup(
         self,
@@ -1200,16 +1118,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateCacheAnalysisTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateCacheAnalysisTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateCacheAnalysisTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_cache_analysis_task_with_options_async(
         self,
@@ -1253,16 +1165,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateCacheAnalysisTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateCacheAnalysisTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateCacheAnalysisTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_cache_analysis_task(
         self,
@@ -1343,16 +1249,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateGlobalDistributeCacheResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateGlobalDistributeCacheResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateGlobalDistributeCacheResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_global_distribute_cache_with_options_async(
         self,
@@ -1403,16 +1303,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateGlobalDistributeCacheResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateGlobalDistributeCacheResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateGlobalDistributeCacheResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_global_distribute_cache(
         self,
@@ -1496,16 +1390,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateGlobalSecurityIPGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateGlobalSecurityIPGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateGlobalSecurityIPGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_global_security_ipgroup_with_options_async(
         self,
@@ -1553,16 +1441,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateGlobalSecurityIPGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateGlobalSecurityIPGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateGlobalSecurityIPGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_global_security_ipgroup(
         self,
@@ -1718,16 +1600,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_instance_with_options_async(
         self,
@@ -1857,16 +1733,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_instance(
         self,
@@ -1963,16 +1833,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_instances_with_options_async(
         self,
@@ -2035,16 +1899,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_instances(
         self,
@@ -2134,16 +1992,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateParameterGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateParameterGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateParameterGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_parameter_group_with_options_async(
         self,
@@ -2197,16 +2049,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateParameterGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateParameterGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateParameterGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_parameter_group(
         self,
@@ -2316,16 +2162,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateTCInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateTCInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateTCInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_tcinstance_with_options_async(
         self,
@@ -2409,16 +2249,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateTCInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateTCInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateTCInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_tcinstance(
         self,
@@ -2572,16 +2406,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateTairInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateTairInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateTairInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_tair_instance_with_options_async(
         self,
@@ -2709,16 +2537,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateTairInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.CreateTairInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateTairInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_tair_instance(
         self,
@@ -2805,16 +2627,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DeleteAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DeleteAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DeleteAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_account_with_options_async(
         self,
@@ -2863,16 +2679,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DeleteAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DeleteAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DeleteAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_account(
         self,
@@ -2905,6 +2715,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_account_with_options_async(request, runtime)
+
+    def delete_backup_with_options(
+        self,
+        request: r_kvstore_20150101_models.DeleteBackupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DeleteBackupResponse:
+        """
+        @summary 删除指定备份集
+        
+        @param request: DeleteBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBackupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBackup',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DeleteBackupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_backup_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.DeleteBackupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DeleteBackupResponse:
+        """
+        @summary 删除指定备份集
+        
+        @param request: DeleteBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBackupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBackup',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DeleteBackupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_backup(
+        self,
+        request: r_kvstore_20150101_models.DeleteBackupRequest,
+    ) -> r_kvstore_20150101_models.DeleteBackupResponse:
+        """
+        @summary 删除指定备份集
+        
+        @param request: DeleteBackupRequest
+        @return: DeleteBackupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_backup_with_options(request, runtime)
+
+    async def delete_backup_async(
+        self,
+        request: r_kvstore_20150101_models.DeleteBackupRequest,
+    ) -> r_kvstore_20150101_models.DeleteBackupResponse:
+        """
+        @summary 删除指定备份集
+        
+        @param request: DeleteBackupRequest
+        @return: DeleteBackupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_backup_with_options_async(request, runtime)
 
     def delete_global_security_ipgroup_with_options(
         self,
@@ -2954,16 +2880,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_global_security_ipgroup_with_options_async(
         self,
@@ -3013,16 +2933,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_global_security_ipgroup(
         self,
@@ -3102,16 +3016,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DeleteInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DeleteInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DeleteInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_instance_with_options_async(
         self,
@@ -3161,16 +3069,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DeleteInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DeleteInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DeleteInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_instance(
         self,
@@ -3250,16 +3152,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DeleteParameterGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DeleteParameterGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DeleteParameterGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_parameter_group_with_options_async(
         self,
@@ -3301,16 +3197,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DeleteParameterGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DeleteParameterGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DeleteParameterGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_parameter_group(
         self,
@@ -3391,16 +3281,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DeleteShardingNodeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DeleteShardingNodeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DeleteShardingNodeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_sharding_node_with_options_async(
         self,
@@ -3455,16 +3339,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DeleteShardingNodeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DeleteShardingNodeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DeleteShardingNodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_sharding_node(
         self,
@@ -3546,16 +3424,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeAccountsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeAccountsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeAccountsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_accounts_with_options_async(
         self,
@@ -3601,16 +3473,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeAccountsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeAccountsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_accounts(
         self,
@@ -3692,16 +3558,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeActiveOperationTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeActiveOperationTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeActiveOperationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_active_operation_task_with_options_async(
         self,
@@ -3753,16 +3613,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeActiveOperationTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeActiveOperationTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeActiveOperationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_active_operation_task(
         self,
@@ -3854,16 +3708,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeActiveOperationTasksResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeActiveOperationTasksResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeActiveOperationTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_active_operation_tasks_with_options_async(
         self,
@@ -3925,16 +3773,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeActiveOperationTasksResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeActiveOperationTasksResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeActiveOperationTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_active_operation_tasks(
         self,
@@ -4006,16 +3848,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeAuditLogConfigResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeAuditLogConfigResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeAuditLogConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_audit_log_config_with_options_async(
         self,
@@ -4061,16 +3897,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeAuditLogConfigResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeAuditLogConfigResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeAuditLogConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_audit_log_config(
         self,
@@ -4162,16 +3992,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeAuditRecordsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeAuditRecordsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeAuditRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_audit_records_with_options_async(
         self,
@@ -4233,16 +4057,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeAuditRecordsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeAuditRecordsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeAuditRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_audit_records(
         self,
@@ -4334,16 +4152,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeAvailableResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeAvailableResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeAvailableResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_available_resource_with_options_async(
         self,
@@ -4405,16 +4217,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeAvailableResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeAvailableResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeAvailableResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_available_resource(
         self,
@@ -4482,16 +4288,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeBackupPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeBackupPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeBackupPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_backup_policy_with_options_async(
         self,
@@ -4533,16 +4333,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeBackupPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeBackupPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeBackupPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_backup_policy(
         self,
@@ -4614,16 +4408,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeBackupTasksResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeBackupTasksResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeBackupTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_backup_tasks_with_options_async(
         self,
@@ -4669,16 +4457,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeBackupTasksResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeBackupTasksResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeBackupTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_backup_tasks(
         self,
@@ -4712,7 +4494,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeBackupsResponse:
         """
-        @summary Queries the backup files of the ApsaraDB for Redis instance.
+        @summary Queries the backup files of the Tair (Redis OSS-compatible) instance.
         
         @param request: DescribeBackupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4760,16 +4542,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeBackupsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeBackupsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeBackupsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_backups_with_options_async(
         self,
@@ -4777,7 +4553,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeBackupsResponse:
         """
-        @summary Queries the backup files of the ApsaraDB for Redis instance.
+        @summary Queries the backup files of the Tair (Redis OSS-compatible) instance.
         
         @param request: DescribeBackupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4825,23 +4601,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeBackupsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeBackupsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeBackupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_backups(
         self,
         request: r_kvstore_20150101_models.DescribeBackupsRequest,
     ) -> r_kvstore_20150101_models.DescribeBackupsResponse:
         """
-        @summary Queries the backup files of the ApsaraDB for Redis instance.
+        @summary Queries the backup files of the Tair (Redis OSS-compatible) instance.
         
         @param request: DescribeBackupsRequest
         @return: DescribeBackupsResponse
@@ -4854,7 +4624,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeBackupsRequest,
     ) -> r_kvstore_20150101_models.DescribeBackupsResponse:
         """
-        @summary Queries the backup files of the ApsaraDB for Redis instance.
+        @summary Queries the backup files of the Tair (Redis OSS-compatible) instance.
         
         @param request: DescribeBackupsRequest
         @return: DescribeBackupsResponse
@@ -4917,16 +4687,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeCacheAnalysisReportResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeCacheAnalysisReportResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeCacheAnalysisReportResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_cache_analysis_report_with_options_async(
         self,
@@ -4983,16 +4747,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeCacheAnalysisReportResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeCacheAnalysisReportResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeCacheAnalysisReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_cache_analysis_report(
         self,
@@ -5083,16 +4841,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeCacheAnalysisReportListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeCacheAnalysisReportListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeCacheAnalysisReportListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_cache_analysis_report_list_with_options_async(
         self,
@@ -5147,16 +4899,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeCacheAnalysisReportListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeCacheAnalysisReportListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeCacheAnalysisReportListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_cache_analysis_report_list(
         self,
@@ -5224,16 +4970,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeClusterBackupListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeClusterBackupListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeClusterBackupListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_cluster_backup_list_with_options_async(
         self,
@@ -5265,16 +5005,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeClusterBackupListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeClusterBackupListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeClusterBackupListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_cluster_backup_list(
         self,
@@ -5352,16 +5086,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeClusterMemberInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeClusterMemberInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeClusterMemberInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_cluster_member_info_with_options_async(
         self,
@@ -5409,16 +5137,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeClusterMemberInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeClusterMemberInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeClusterMemberInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_cluster_member_info(
         self,
@@ -5490,16 +5212,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeDBInstanceNetInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeDBInstanceNetInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeDBInstanceNetInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_dbinstance_net_info_with_options_async(
         self,
@@ -5541,16 +5257,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeDBInstanceNetInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeDBInstanceNetInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeDBInstanceNetInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_dbinstance_net_info(
         self,
@@ -5618,16 +5328,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeDBNodeDirectVipInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeDBNodeDirectVipInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeDBNodeDirectVipInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_dbnode_direct_vip_info_with_options_async(
         self,
@@ -5669,16 +5373,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeDBNodeDirectVipInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeDBNodeDirectVipInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeDBNodeDirectVipInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_dbnode_direct_vip_info(
         self,
@@ -5772,16 +5470,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeDedicatedClusterInstanceListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeDedicatedClusterInstanceListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeDedicatedClusterInstanceListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_dedicated_cluster_instance_list_with_options_async(
         self,
@@ -5845,16 +5537,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeDedicatedClusterInstanceListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeDedicatedClusterInstanceListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeDedicatedClusterInstanceListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_dedicated_cluster_instance_list(
         self,
@@ -5931,16 +5617,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeEncryptionKeyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeEncryptionKeyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeEncryptionKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_encryption_key_with_options_async(
         self,
@@ -5987,16 +5667,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeEncryptionKeyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeEncryptionKeyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeEncryptionKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_encryption_key(
         self,
@@ -6073,16 +5747,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeEncryptionKeyListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeEncryptionKeyListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeEncryptionKeyListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_encryption_key_list_with_options_async(
         self,
@@ -6127,16 +5795,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeEncryptionKeyListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeEncryptionKeyListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeEncryptionKeyListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_encryption_key_list(
         self,
@@ -6213,16 +5875,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeEngineVersionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeEngineVersionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeEngineVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_engine_version_with_options_async(
         self,
@@ -6267,16 +5923,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeEngineVersionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeEngineVersionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeEngineVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_engine_version(
         self,
@@ -6359,16 +6009,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeGlobalDistributeCacheResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeGlobalDistributeCacheResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeGlobalDistributeCacheResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_global_distribute_cache_with_options_async(
         self,
@@ -6419,16 +6063,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeGlobalDistributeCacheResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeGlobalDistributeCacheResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeGlobalDistributeCacheResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_global_distribute_cache(
         self,
@@ -6490,16 +6128,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_global_security_ipgroup_with_options_async(
         self,
@@ -6529,16 +6161,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_global_security_ipgroup(
         self,
@@ -6594,16 +6220,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRelationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRelationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRelationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_global_security_ipgroup_relation_with_options_async(
         self,
@@ -6633,16 +6253,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRelationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRelationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRelationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_global_security_ipgroup_relation(
         self,
@@ -6676,9 +6290,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeHistoryMonitorValuesResponse:
         """
-        @summary Queries the performance monitoring data of an ApsaraDB for Redis instance.
+        @summary Queries the performance monitoring data of a Tair (Redis OSS-compatible) instance.
         
-        @description You can also query the performance monitoring data of an instance in the ApsaraDB for Redis console. For more information, see [Metrics](https://help.aliyun.com/document_detail/43887.html).
+        @description You can also query the performance monitoring data of an instance in the Tair console. For more information, see [Metrics](https://help.aliyun.com/document_detail/43887.html).
         
         @param request: DescribeHistoryMonitorValuesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6710,6 +6324,8 @@ class Client(OpenApiClient):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6724,16 +6340,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeHistoryMonitorValuesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeHistoryMonitorValuesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeHistoryMonitorValuesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_history_monitor_values_with_options_async(
         self,
@@ -6741,9 +6351,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeHistoryMonitorValuesResponse:
         """
-        @summary Queries the performance monitoring data of an ApsaraDB for Redis instance.
+        @summary Queries the performance monitoring data of a Tair (Redis OSS-compatible) instance.
         
-        @description You can also query the performance monitoring data of an instance in the ApsaraDB for Redis console. For more information, see [Metrics](https://help.aliyun.com/document_detail/43887.html).
+        @description You can also query the performance monitoring data of an instance in the Tair console. For more information, see [Metrics](https://help.aliyun.com/document_detail/43887.html).
         
         @param request: DescribeHistoryMonitorValuesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6775,6 +6385,8 @@ class Client(OpenApiClient):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6789,25 +6401,19 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeHistoryMonitorValuesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeHistoryMonitorValuesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeHistoryMonitorValuesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_history_monitor_values(
         self,
         request: r_kvstore_20150101_models.DescribeHistoryMonitorValuesRequest,
     ) -> r_kvstore_20150101_models.DescribeHistoryMonitorValuesResponse:
         """
-        @summary Queries the performance monitoring data of an ApsaraDB for Redis instance.
+        @summary Queries the performance monitoring data of a Tair (Redis OSS-compatible) instance.
         
-        @description You can also query the performance monitoring data of an instance in the ApsaraDB for Redis console. For more information, see [Metrics](https://help.aliyun.com/document_detail/43887.html).
+        @description You can also query the performance monitoring data of an instance in the Tair console. For more information, see [Metrics](https://help.aliyun.com/document_detail/43887.html).
         
         @param request: DescribeHistoryMonitorValuesRequest
         @return: DescribeHistoryMonitorValuesResponse
@@ -6820,9 +6426,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeHistoryMonitorValuesRequest,
     ) -> r_kvstore_20150101_models.DescribeHistoryMonitorValuesResponse:
         """
-        @summary Queries the performance monitoring data of an ApsaraDB for Redis instance.
+        @summary Queries the performance monitoring data of a Tair (Redis OSS-compatible) instance.
         
-        @description You can also query the performance monitoring data of an instance in the ApsaraDB for Redis console. For more information, see [Metrics](https://help.aliyun.com/document_detail/43887.html).
+        @description You can also query the performance monitoring data of an instance in the Tair console. For more information, see [Metrics](https://help.aliyun.com/document_detail/43887.html).
         
         @param request: DescribeHistoryMonitorValuesRequest
         @return: DescribeHistoryMonitorValuesResponse
@@ -6888,16 +6494,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeHistoryTasksResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeHistoryTasksResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeHistoryTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_history_tasks_with_options_async(
         self,
@@ -6957,16 +6557,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeHistoryTasksResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeHistoryTasksResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeHistoryTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_history_tasks(
         self,
@@ -7034,16 +6628,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeInstanceAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeInstanceAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeInstanceAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_attribute_with_options_async(
         self,
@@ -7085,16 +6673,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeInstanceAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeInstanceAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeInstanceAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance_attribute(
         self,
@@ -7168,16 +6750,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeInstanceAutoRenewalAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeInstanceAutoRenewalAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeInstanceAutoRenewalAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_auto_renewal_attribute_with_options_async(
         self,
@@ -7225,16 +6801,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeInstanceAutoRenewalAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeInstanceAutoRenewalAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeInstanceAutoRenewalAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance_auto_renewal_attribute(
         self,
@@ -7305,16 +6875,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeInstanceConfigResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeInstanceConfigResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeInstanceConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_config_with_options_async(
         self,
@@ -7359,16 +6923,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeInstanceConfigResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeInstanceConfigResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeInstanceConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance_config(
         self,
@@ -7448,16 +7006,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeInstanceSSLResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeInstanceSSLResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeInstanceSSLResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_sslwith_options_async(
         self,
@@ -7505,16 +7057,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeInstanceSSLResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeInstanceSSLResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeInstanceSSLResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance_ssl(
         self,
@@ -7597,16 +7143,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeInstanceTDEStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeInstanceTDEStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeInstanceTDEStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_tdestatus_with_options_async(
         self,
@@ -7651,16 +7191,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeInstanceTDEStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeInstanceTDEStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeInstanceTDEStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance_tdestatus(
         self,
@@ -7774,16 +7308,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instances_with_options_async(
         self,
@@ -7865,16 +7393,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instances(
         self,
@@ -7975,16 +7497,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeInstancesOverviewResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeInstancesOverviewResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeInstancesOverviewResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instances_overview_with_options_async(
         self,
@@ -8059,16 +7575,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeInstancesOverviewResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeInstancesOverviewResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeInstancesOverviewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instances_overview(
         self,
@@ -8146,16 +7656,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeIntranetAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeIntranetAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeIntranetAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_intranet_attribute_with_options_async(
         self,
@@ -8201,16 +7705,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeIntranetAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeIntranetAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeIntranetAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_intranet_attribute(
         self,
@@ -8284,16 +7782,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeLogicInstanceTopologyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeLogicInstanceTopologyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeLogicInstanceTopologyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_logic_instance_topology_with_options_async(
         self,
@@ -8337,16 +7829,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeLogicInstanceTopologyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeLogicInstanceTopologyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeLogicInstanceTopologyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_logic_instance_topology(
         self,
@@ -8384,10 +7870,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeMonitorItemsResponse:
         """
-        @summary Queries the metrics of an ApsaraDB for Redis instance.
+        @summary Queries the metrics of a Tair (Redis OSS-compatible) instance.
         
-        @description >  ApsaraDB for Redis has upgraded the monitoring metrics. The DescribeMonitorItems operation is phased out. For more information, see [The DescribeMonitorItems operation supported by ApsaraDB for Redis is phased out](https://help.aliyun.com/document_detail/189893.html).
-        After you call this operation to retrieve a list of metrics for a specified ApsaraDB for Redis instance, you can call the [DescribeHistoryMonitorValues](~~DescribeHistoryMonitorValues~~) operation to query monitoring history of the instance.
+        @description >  To improve user experience, Tair has upgraded the monitoring metrics. The DescribeMonitorItems operation is phased out. For more information, see [The DescribeMonitorItems operation of Tair (Redis OSS-compatible) is phased out](https://help.aliyun.com/document_detail/189893.html).
+        After you call this operation to retrieve a list of metrics for a specified instance, you can call the [DescribeHistoryMonitorValues](https://help.aliyun.com/document_detail/473827.html) operation to query the monitoring history of the instance.
         
         @param request: DescribeMonitorItemsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8419,16 +7905,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeMonitorItemsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeMonitorItemsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeMonitorItemsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_monitor_items_with_options_async(
         self,
@@ -8436,10 +7916,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeMonitorItemsResponse:
         """
-        @summary Queries the metrics of an ApsaraDB for Redis instance.
+        @summary Queries the metrics of a Tair (Redis OSS-compatible) instance.
         
-        @description >  ApsaraDB for Redis has upgraded the monitoring metrics. The DescribeMonitorItems operation is phased out. For more information, see [The DescribeMonitorItems operation supported by ApsaraDB for Redis is phased out](https://help.aliyun.com/document_detail/189893.html).
-        After you call this operation to retrieve a list of metrics for a specified ApsaraDB for Redis instance, you can call the [DescribeHistoryMonitorValues](~~DescribeHistoryMonitorValues~~) operation to query monitoring history of the instance.
+        @description >  To improve user experience, Tair has upgraded the monitoring metrics. The DescribeMonitorItems operation is phased out. For more information, see [The DescribeMonitorItems operation of Tair (Redis OSS-compatible) is phased out](https://help.aliyun.com/document_detail/189893.html).
+        After you call this operation to retrieve a list of metrics for a specified instance, you can call the [DescribeHistoryMonitorValues](https://help.aliyun.com/document_detail/473827.html) operation to query the monitoring history of the instance.
         
         @param request: DescribeMonitorItemsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8471,26 +7951,20 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeMonitorItemsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeMonitorItemsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeMonitorItemsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_monitor_items(
         self,
         request: r_kvstore_20150101_models.DescribeMonitorItemsRequest,
     ) -> r_kvstore_20150101_models.DescribeMonitorItemsResponse:
         """
-        @summary Queries the metrics of an ApsaraDB for Redis instance.
+        @summary Queries the metrics of a Tair (Redis OSS-compatible) instance.
         
-        @description >  ApsaraDB for Redis has upgraded the monitoring metrics. The DescribeMonitorItems operation is phased out. For more information, see [The DescribeMonitorItems operation supported by ApsaraDB for Redis is phased out](https://help.aliyun.com/document_detail/189893.html).
-        After you call this operation to retrieve a list of metrics for a specified ApsaraDB for Redis instance, you can call the [DescribeHistoryMonitorValues](~~DescribeHistoryMonitorValues~~) operation to query monitoring history of the instance.
+        @description >  To improve user experience, Tair has upgraded the monitoring metrics. The DescribeMonitorItems operation is phased out. For more information, see [The DescribeMonitorItems operation of Tair (Redis OSS-compatible) is phased out](https://help.aliyun.com/document_detail/189893.html).
+        After you call this operation to retrieve a list of metrics for a specified instance, you can call the [DescribeHistoryMonitorValues](https://help.aliyun.com/document_detail/473827.html) operation to query the monitoring history of the instance.
         
         @param request: DescribeMonitorItemsRequest
         @return: DescribeMonitorItemsResponse
@@ -8503,10 +7977,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeMonitorItemsRequest,
     ) -> r_kvstore_20150101_models.DescribeMonitorItemsResponse:
         """
-        @summary Queries the metrics of an ApsaraDB for Redis instance.
+        @summary Queries the metrics of a Tair (Redis OSS-compatible) instance.
         
-        @description >  ApsaraDB for Redis has upgraded the monitoring metrics. The DescribeMonitorItems operation is phased out. For more information, see [The DescribeMonitorItems operation supported by ApsaraDB for Redis is phased out](https://help.aliyun.com/document_detail/189893.html).
-        After you call this operation to retrieve a list of metrics for a specified ApsaraDB for Redis instance, you can call the [DescribeHistoryMonitorValues](~~DescribeHistoryMonitorValues~~) operation to query monitoring history of the instance.
+        @description >  To improve user experience, Tair has upgraded the monitoring metrics. The DescribeMonitorItems operation is phased out. For more information, see [The DescribeMonitorItems operation of Tair (Redis OSS-compatible) is phased out](https://help.aliyun.com/document_detail/189893.html).
+        After you call this operation to retrieve a list of metrics for a specified instance, you can call the [DescribeHistoryMonitorValues](https://help.aliyun.com/document_detail/473827.html) operation to query the monitoring history of the instance.
         
         @param request: DescribeMonitorItemsRequest
         @return: DescribeMonitorItemsResponse
@@ -8556,16 +8030,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeParameterGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeParameterGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeParameterGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_parameter_group_with_options_async(
         self,
@@ -8609,16 +8077,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeParameterGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeParameterGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeParameterGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_parameter_group(
         self,
@@ -8690,16 +8152,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeParameterGroupSupportParamResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeParameterGroupSupportParamResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeParameterGroupSupportParamResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_parameter_group_support_param_with_options_async(
         self,
@@ -8745,16 +8201,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeParameterGroupSupportParamResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeParameterGroupSupportParamResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeParameterGroupSupportParamResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_parameter_group_support_param(
         self,
@@ -8810,16 +8260,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeParameterGroupTemplateListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeParameterGroupTemplateListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeParameterGroupTemplateListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_parameter_group_template_list_with_options_async(
         self,
@@ -8849,16 +8293,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeParameterGroupTemplateListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeParameterGroupTemplateListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeParameterGroupTemplateListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_parameter_group_template_list(
         self,
@@ -8928,16 +8366,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeParameterGroupsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeParameterGroupsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeParameterGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_parameter_groups_with_options_async(
         self,
@@ -8981,16 +8413,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeParameterGroupsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeParameterGroupsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeParameterGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_parameter_groups(
         self,
@@ -9066,16 +8492,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeParameterModificationHistoryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeParameterModificationHistoryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeParameterModificationHistoryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_parameter_modification_history_with_options_async(
         self,
@@ -9125,16 +8545,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeParameterModificationHistoryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeParameterModificationHistoryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeParameterModificationHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_parameter_modification_history(
         self,
@@ -9212,16 +8626,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeParameterTemplatesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeParameterTemplatesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeParameterTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_parameter_templates_with_options_async(
         self,
@@ -9273,16 +8681,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeParameterTemplatesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeParameterTemplatesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeParameterTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_parameter_templates(
         self,
@@ -9361,16 +8763,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeParametersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeParametersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeParametersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_parameters_with_options_async(
         self,
@@ -9419,16 +8815,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeParametersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeParametersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeParametersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_parameters(
         self,
@@ -9468,7 +8858,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribePriceResponse:
         """
-        @summary Queries the fees that you must pay when you create, upgrade, or renew an ApsaraDB for Redis instance.
+        @summary Queries the fees that you must pay when you create, upgrade, or renew a Tair (Redis OSS-compatible) instance.
         
         @param request: DescribePriceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9534,16 +8924,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribePriceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribePriceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribePriceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_price_with_options_async(
         self,
@@ -9551,7 +8935,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribePriceResponse:
         """
-        @summary Queries the fees that you must pay when you create, upgrade, or renew an ApsaraDB for Redis instance.
+        @summary Queries the fees that you must pay when you create, upgrade, or renew a Tair (Redis OSS-compatible) instance.
         
         @param request: DescribePriceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9617,23 +9001,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribePriceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribePriceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribePriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_price(
         self,
         request: r_kvstore_20150101_models.DescribePriceRequest,
     ) -> r_kvstore_20150101_models.DescribePriceResponse:
         """
-        @summary Queries the fees that you must pay when you create, upgrade, or renew an ApsaraDB for Redis instance.
+        @summary Queries the fees that you must pay when you create, upgrade, or renew a Tair (Redis OSS-compatible) instance.
         
         @param request: DescribePriceRequest
         @return: DescribePriceResponse
@@ -9646,7 +9024,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribePriceRequest,
     ) -> r_kvstore_20150101_models.DescribePriceResponse:
         """
-        @summary Queries the fees that you must pay when you create, upgrade, or renew an ApsaraDB for Redis instance.
+        @summary Queries the fees that you must pay when you create, upgrade, or renew a Tair (Redis OSS-compatible) instance.
         
         @param request: DescribePriceRequest
         @return: DescribePriceResponse
@@ -9694,16 +9072,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeRegionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeRegionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_regions_with_options_async(
         self,
@@ -9745,16 +9117,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeRegionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeRegionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_regions(
         self,
@@ -9828,16 +9194,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeRoleZoneInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeRoleZoneInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeRoleZoneInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_role_zone_info_with_options_async(
         self,
@@ -9885,16 +9245,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeRoleZoneInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeRoleZoneInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeRoleZoneInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_role_zone_info(
         self,
@@ -9987,16 +9341,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeRunningLogRecordsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeRunningLogRecordsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeRunningLogRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_running_log_records_with_options_async(
         self,
@@ -10063,16 +9411,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeRunningLogRecordsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeRunningLogRecordsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeRunningLogRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_running_log_records(
         self,
@@ -10112,7 +9454,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeSecurityGroupConfigurationResponse:
         """
-        @summary Queries the security groups that are added to the whitelists of an ApsaraDB for Redis instance.
+        @summary Queries the security groups that are added to the whitelists of a Tair (Redis OSS-compatible) instance.
         
         @param request: DescribeSecurityGroupConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10146,16 +9488,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeSecurityGroupConfigurationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeSecurityGroupConfigurationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeSecurityGroupConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_security_group_configuration_with_options_async(
         self,
@@ -10163,7 +9499,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeSecurityGroupConfigurationResponse:
         """
-        @summary Queries the security groups that are added to the whitelists of an ApsaraDB for Redis instance.
+        @summary Queries the security groups that are added to the whitelists of a Tair (Redis OSS-compatible) instance.
         
         @param request: DescribeSecurityGroupConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10197,23 +9533,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeSecurityGroupConfigurationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeSecurityGroupConfigurationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeSecurityGroupConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_security_group_configuration(
         self,
         request: r_kvstore_20150101_models.DescribeSecurityGroupConfigurationRequest,
     ) -> r_kvstore_20150101_models.DescribeSecurityGroupConfigurationResponse:
         """
-        @summary Queries the security groups that are added to the whitelists of an ApsaraDB for Redis instance.
+        @summary Queries the security groups that are added to the whitelists of a Tair (Redis OSS-compatible) instance.
         
         @param request: DescribeSecurityGroupConfigurationRequest
         @return: DescribeSecurityGroupConfigurationResponse
@@ -10226,7 +9556,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeSecurityGroupConfigurationRequest,
     ) -> r_kvstore_20150101_models.DescribeSecurityGroupConfigurationResponse:
         """
-        @summary Queries the security groups that are added to the whitelists of an ApsaraDB for Redis instance.
+        @summary Queries the security groups that are added to the whitelists of a Tair (Redis OSS-compatible) instance.
         
         @param request: DescribeSecurityGroupConfigurationRequest
         @return: DescribeSecurityGroupConfigurationResponse
@@ -10240,7 +9570,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeSecurityIpsResponse:
         """
-        @summary Queries the IP address whitelists of an ApsaraDB for Redis instance.
+        @summary Queries the IP address whitelists of a Tair (Redis OSS-compatible) instance.
         
         @param request: DescribeSecurityIpsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10274,16 +9604,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeSecurityIpsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeSecurityIpsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeSecurityIpsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_security_ips_with_options_async(
         self,
@@ -10291,7 +9615,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeSecurityIpsResponse:
         """
-        @summary Queries the IP address whitelists of an ApsaraDB for Redis instance.
+        @summary Queries the IP address whitelists of a Tair (Redis OSS-compatible) instance.
         
         @param request: DescribeSecurityIpsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10325,23 +9649,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeSecurityIpsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeSecurityIpsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeSecurityIpsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_security_ips(
         self,
         request: r_kvstore_20150101_models.DescribeSecurityIpsRequest,
     ) -> r_kvstore_20150101_models.DescribeSecurityIpsResponse:
         """
-        @summary Queries the IP address whitelists of an ApsaraDB for Redis instance.
+        @summary Queries the IP address whitelists of a Tair (Redis OSS-compatible) instance.
         
         @param request: DescribeSecurityIpsRequest
         @return: DescribeSecurityIpsResponse
@@ -10354,7 +9672,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeSecurityIpsRequest,
     ) -> r_kvstore_20150101_models.DescribeSecurityIpsResponse:
         """
-        @summary Queries the IP address whitelists of an ApsaraDB for Redis instance.
+        @summary Queries the IP address whitelists of a Tair (Redis OSS-compatible) instance.
         
         @param request: DescribeSecurityIpsRequest
         @return: DescribeSecurityIpsResponse
@@ -10424,16 +9742,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeSlowLogRecordsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeSlowLogRecordsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeSlowLogRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_slow_log_records_with_options_async(
         self,
@@ -10497,16 +9809,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeSlowLogRecordsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeSlowLogRecordsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeSlowLogRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_slow_log_records(
         self,
@@ -10566,16 +9872,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_tair_kvcache_custom_instance_attribute_with_options_async(
         self,
@@ -10605,16 +9905,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_tair_kvcache_custom_instance_attribute(
         self,
@@ -10670,16 +9964,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_tair_kvcache_custom_instance_history_monitor_values_with_options_async(
         self,
@@ -10709,16 +9997,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_tair_kvcache_custom_instance_history_monitor_values(
         self,
@@ -10774,16 +10056,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeTairKVCacheCustomInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeTairKVCacheCustomInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeTairKVCacheCustomInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_tair_kvcache_custom_instances_with_options_async(
         self,
@@ -10813,16 +10089,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeTairKVCacheCustomInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeTairKVCacheCustomInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeTairKVCacheCustomInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_tair_kvcache_custom_instances(
         self,
@@ -10878,16 +10148,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeTairKVCacheInferInstanceAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeTairKVCacheInferInstanceAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeTairKVCacheInferInstanceAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_tair_kvcache_infer_instance_attribute_with_options_async(
         self,
@@ -10917,16 +10181,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeTairKVCacheInferInstanceAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeTairKVCacheInferInstanceAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeTairKVCacheInferInstanceAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_tair_kvcache_infer_instance_attribute(
         self,
@@ -10982,16 +10240,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeTairKVCacheInferInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeTairKVCacheInferInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeTairKVCacheInferInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_tair_kvcache_infer_instances_with_options_async(
         self,
@@ -11021,16 +10273,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeTairKVCacheInferInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeTairKVCacheInferInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeTairKVCacheInferInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_tair_kvcache_infer_instances(
         self,
@@ -11057,162 +10303,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_tair_kvcache_infer_instances_with_options_async(request, runtime)
-
-    def describe_tasks_with_options(
-        self,
-        request: r_kvstore_20150101_models.DescribeTasksRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> r_kvstore_20150101_models.DescribeTasksResponse:
-        """
-        @summary Queries all tasks that are performed on a Tair (Redis OSS-compatible) instance within a specified period of time.
-        
-        @description You can call this operation to query the progress of a task when you perform time-consuming operations. You can also log on to the Tair (Redis OSS-compatible) console and click the Tasks icon in the upper-right corner of the *Instance Information** page to view the progress of the current task.
-        
-        @param request: DescribeTasksRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeTasksResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeTasks',
-            version='2015-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeTasksResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeTasksResponse(),
-                self.execute(params, req, runtime)
-            )
-
-    async def describe_tasks_with_options_async(
-        self,
-        request: r_kvstore_20150101_models.DescribeTasksRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> r_kvstore_20150101_models.DescribeTasksResponse:
-        """
-        @summary Queries all tasks that are performed on a Tair (Redis OSS-compatible) instance within a specified period of time.
-        
-        @description You can call this operation to query the progress of a task when you perform time-consuming operations. You can also log on to the Tair (Redis OSS-compatible) console and click the Tasks icon in the upper-right corner of the *Instance Information** page to view the progress of the current task.
-        
-        @param request: DescribeTasksRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeTasksResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeTasks',
-            version='2015-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeTasksResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeTasksResponse(),
-                await self.execute_async(params, req, runtime)
-            )
-
-    def describe_tasks(
-        self,
-        request: r_kvstore_20150101_models.DescribeTasksRequest,
-    ) -> r_kvstore_20150101_models.DescribeTasksResponse:
-        """
-        @summary Queries all tasks that are performed on a Tair (Redis OSS-compatible) instance within a specified period of time.
-        
-        @description You can call this operation to query the progress of a task when you perform time-consuming operations. You can also log on to the Tair (Redis OSS-compatible) console and click the Tasks icon in the upper-right corner of the *Instance Information** page to view the progress of the current task.
-        
-        @param request: DescribeTasksRequest
-        @return: DescribeTasksResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.describe_tasks_with_options(request, runtime)
-
-    async def describe_tasks_async(
-        self,
-        request: r_kvstore_20150101_models.DescribeTasksRequest,
-    ) -> r_kvstore_20150101_models.DescribeTasksResponse:
-        """
-        @summary Queries all tasks that are performed on a Tair (Redis OSS-compatible) instance within a specified period of time.
-        
-        @description You can call this operation to query the progress of a task when you perform time-consuming operations. You can also log on to the Tair (Redis OSS-compatible) console and click the Tasks icon in the upper-right corner of the *Instance Information** page to view the progress of the current task.
-        
-        @param request: DescribeTasksRequest
-        @return: DescribeTasksResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_tasks_with_options_async(request, runtime)
 
     def describe_zones_with_options(
         self,
@@ -11256,16 +10346,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeZonesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeZonesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeZonesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_zones_with_options_async(
         self,
@@ -11309,16 +10393,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeZonesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.DescribeZonesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeZonesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_zones(
         self,
@@ -11407,16 +10485,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.EnableAdditionalBandwidthResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.EnableAdditionalBandwidthResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.EnableAdditionalBandwidthResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def enable_additional_bandwidth_with_options_async(
         self,
@@ -11479,16 +10551,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.EnableAdditionalBandwidthResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.EnableAdditionalBandwidthResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.EnableAdditionalBandwidthResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def enable_additional_bandwidth(
         self,
@@ -11567,16 +10633,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.FlushExpireKeysResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.FlushExpireKeysResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.FlushExpireKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def flush_expire_keys_with_options_async(
         self,
@@ -11623,16 +10683,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.FlushExpireKeysResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.FlushExpireKeysResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.FlushExpireKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def flush_expire_keys(
         self,
@@ -11706,16 +10760,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.FlushInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.FlushInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.FlushInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def flush_instance_with_options_async(
         self,
@@ -11757,16 +10805,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.FlushInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.FlushInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.FlushInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def flush_instance(
         self,
@@ -11837,16 +10879,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.FlushInstanceForDBResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.FlushInstanceForDBResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.FlushInstanceForDBResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def flush_instance_for_dbwith_options_async(
         self,
@@ -11891,16 +10927,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.FlushInstanceForDBResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.FlushInstanceForDBResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.FlushInstanceForDBResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def flush_instance_for_db(
         self,
@@ -11984,16 +11014,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.GrantAccountPrivilegeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.GrantAccountPrivilegeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.GrantAccountPrivilegeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def grant_account_privilege_with_options_async(
         self,
@@ -12045,16 +11069,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.GrantAccountPrivilegeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.GrantAccountPrivilegeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.GrantAccountPrivilegeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def grant_account_privilege(
         self,
@@ -12096,9 +11114,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.InitializeKvstorePermissionResponse:
         """
-        @summary Assigns a service-linked role to ApsaraDB for Redis.
+        @summary Assigns a service-linked role to Tair (Redis OSS-compatible).
         
-        @description The log management feature of ApsaraDB for Redis requires the resources of [Log Service](https://help.aliyun.com/document_detail/48869.html). To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance. For more information, see [Associated RAM roles of ApsaraDB for Redis](https://help.aliyun.com/document_detail/184337.html).
+        @description The log management feature of Tair (Redis OSS-compatible) requires the resources of [Simple Log Service](https://help.aliyun.com/document_detail/48869.html). To use the log management feature, you can call this operation to assign the AliyunServiceRoleForKvstore service-linked role to Tair (Redis OSS-compatible). For more information, see [Service-linked role of Tair (Redis OSS-compatible)](https://help.aliyun.com/document_detail/184337.html).
         
         @param request: InitializeKvstorePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12132,16 +11150,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.InitializeKvstorePermissionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.InitializeKvstorePermissionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.InitializeKvstorePermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def initialize_kvstore_permission_with_options_async(
         self,
@@ -12149,9 +11161,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.InitializeKvstorePermissionResponse:
         """
-        @summary Assigns a service-linked role to ApsaraDB for Redis.
+        @summary Assigns a service-linked role to Tair (Redis OSS-compatible).
         
-        @description The log management feature of ApsaraDB for Redis requires the resources of [Log Service](https://help.aliyun.com/document_detail/48869.html). To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance. For more information, see [Associated RAM roles of ApsaraDB for Redis](https://help.aliyun.com/document_detail/184337.html).
+        @description The log management feature of Tair (Redis OSS-compatible) requires the resources of [Simple Log Service](https://help.aliyun.com/document_detail/48869.html). To use the log management feature, you can call this operation to assign the AliyunServiceRoleForKvstore service-linked role to Tair (Redis OSS-compatible). For more information, see [Service-linked role of Tair (Redis OSS-compatible)](https://help.aliyun.com/document_detail/184337.html).
         
         @param request: InitializeKvstorePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12185,25 +11197,19 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.InitializeKvstorePermissionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.InitializeKvstorePermissionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.InitializeKvstorePermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def initialize_kvstore_permission(
         self,
         request: r_kvstore_20150101_models.InitializeKvstorePermissionRequest,
     ) -> r_kvstore_20150101_models.InitializeKvstorePermissionResponse:
         """
-        @summary Assigns a service-linked role to ApsaraDB for Redis.
+        @summary Assigns a service-linked role to Tair (Redis OSS-compatible).
         
-        @description The log management feature of ApsaraDB for Redis requires the resources of [Log Service](https://help.aliyun.com/document_detail/48869.html). To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance. For more information, see [Associated RAM roles of ApsaraDB for Redis](https://help.aliyun.com/document_detail/184337.html).
+        @description The log management feature of Tair (Redis OSS-compatible) requires the resources of [Simple Log Service](https://help.aliyun.com/document_detail/48869.html). To use the log management feature, you can call this operation to assign the AliyunServiceRoleForKvstore service-linked role to Tair (Redis OSS-compatible). For more information, see [Service-linked role of Tair (Redis OSS-compatible)](https://help.aliyun.com/document_detail/184337.html).
         
         @param request: InitializeKvstorePermissionRequest
         @return: InitializeKvstorePermissionResponse
@@ -12216,9 +11222,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.InitializeKvstorePermissionRequest,
     ) -> r_kvstore_20150101_models.InitializeKvstorePermissionResponse:
         """
-        @summary Assigns a service-linked role to ApsaraDB for Redis.
+        @summary Assigns a service-linked role to Tair (Redis OSS-compatible).
         
-        @description The log management feature of ApsaraDB for Redis requires the resources of [Log Service](https://help.aliyun.com/document_detail/48869.html). To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance. For more information, see [Associated RAM roles of ApsaraDB for Redis](https://help.aliyun.com/document_detail/184337.html).
+        @description The log management feature of Tair (Redis OSS-compatible) requires the resources of [Simple Log Service](https://help.aliyun.com/document_detail/48869.html). To use the log management feature, you can call this operation to assign the AliyunServiceRoleForKvstore service-linked role to Tair (Redis OSS-compatible). For more information, see [Service-linked role of Tair (Redis OSS-compatible)](https://help.aliyun.com/document_detail/184337.html).
         
         @param request: InitializeKvstorePermissionRequest
         @return: InitializeKvstorePermissionResponse
@@ -12274,16 +11280,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ListTagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ListTagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_tag_resources_with_options_async(
         self,
@@ -12333,16 +11333,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ListTagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ListTagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_tag_resources(
         self,
@@ -12416,16 +11410,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.LockDBInstanceWriteResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.LockDBInstanceWriteResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.LockDBInstanceWriteResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def lock_dbinstance_write_with_options_async(
         self,
@@ -12469,16 +11457,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.LockDBInstanceWriteResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.LockDBInstanceWriteResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.LockDBInstanceWriteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def lock_dbinstance_write(
         self,
@@ -12548,16 +11530,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.MasterNodeShutDownFailOverResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.MasterNodeShutDownFailOverResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.MasterNodeShutDownFailOverResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def master_node_shut_down_fail_over_with_options_async(
         self,
@@ -12601,16 +11577,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.MasterNodeShutDownFailOverResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.MasterNodeShutDownFailOverResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.MasterNodeShutDownFailOverResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def master_node_shut_down_fail_over(
         self,
@@ -12699,16 +11669,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.MigrateToOtherZoneResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.MigrateToOtherZoneResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.MigrateToOtherZoneResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def migrate_to_other_zone_with_options_async(
         self,
@@ -12771,16 +11735,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.MigrateToOtherZoneResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.MigrateToOtherZoneResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.MigrateToOtherZoneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def migrate_to_other_zone(
         self,
@@ -12866,16 +11824,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyAccountDescriptionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyAccountDescriptionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyAccountDescriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_account_description_with_options_async(
         self,
@@ -12925,16 +11877,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyAccountDescriptionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyAccountDescriptionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyAccountDescriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_account_description(
         self,
@@ -13014,16 +11960,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyAccountPasswordResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyAccountPasswordResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyAccountPasswordResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_account_password_with_options_async(
         self,
@@ -13073,16 +12013,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyAccountPasswordResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyAccountPasswordResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyAccountPasswordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_account_password(
         self,
@@ -13154,16 +12088,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyActiveOperationTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyActiveOperationTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyActiveOperationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_active_operation_task_with_options_async(
         self,
@@ -13209,16 +12137,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyActiveOperationTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyActiveOperationTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyActiveOperationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_active_operation_task(
         self,
@@ -13294,16 +12216,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyActiveOperationTasksResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyActiveOperationTasksResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyActiveOperationTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_active_operation_tasks_with_options_async(
         self,
@@ -13349,16 +12265,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyActiveOperationTasksResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyActiveOperationTasksResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyActiveOperationTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_active_operation_tasks(
         self,
@@ -13435,16 +12345,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyAuditLogConfigResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyAuditLogConfigResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyAuditLogConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_audit_log_config_with_options_async(
         self,
@@ -13495,16 +12399,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyAuditLogConfigResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyAuditLogConfigResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyAuditLogConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_audit_log_config(
         self,
@@ -13542,13 +12440,133 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_audit_log_config_with_options_async(request, runtime)
 
+    def modify_backup_expire_time_with_options(
+        self,
+        request: r_kvstore_20150101_models.ModifyBackupExpireTimeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.ModifyBackupExpireTimeResponse:
+        """
+        @summary 修改备份集过期时间
+        
+        @param request: ModifyBackupExpireTimeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackupExpireTimeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.expect_expire_time):
+            query['ExpectExpireTime'] = request.expect_expire_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyBackupExpireTime',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyBackupExpireTimeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_backup_expire_time_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.ModifyBackupExpireTimeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.ModifyBackupExpireTimeResponse:
+        """
+        @summary 修改备份集过期时间
+        
+        @param request: ModifyBackupExpireTimeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackupExpireTimeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.expect_expire_time):
+            query['ExpectExpireTime'] = request.expect_expire_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyBackupExpireTime',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyBackupExpireTimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_backup_expire_time(
+        self,
+        request: r_kvstore_20150101_models.ModifyBackupExpireTimeRequest,
+    ) -> r_kvstore_20150101_models.ModifyBackupExpireTimeResponse:
+        """
+        @summary 修改备份集过期时间
+        
+        @param request: ModifyBackupExpireTimeRequest
+        @return: ModifyBackupExpireTimeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_backup_expire_time_with_options(request, runtime)
+
+    async def modify_backup_expire_time_async(
+        self,
+        request: r_kvstore_20150101_models.ModifyBackupExpireTimeRequest,
+    ) -> r_kvstore_20150101_models.ModifyBackupExpireTimeResponse:
+        """
+        @summary 修改备份集过期时间
+        
+        @param request: ModifyBackupExpireTimeRequest
+        @return: ModifyBackupExpireTimeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_backup_expire_time_with_options_async(request, runtime)
+
     def modify_backup_policy_with_options(
         self,
         request: r_kvstore_20150101_models.ModifyBackupPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyBackupPolicyResponse:
         """
-        @summary Modifies the automatic backup policy of an ApsaraDB for Redis instance.
+        @summary Modifies the automatic backup policy of a Tair (Redis OSS-compatible) instance.
         
         @param request: ModifyBackupPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13590,16 +12608,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyBackupPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyBackupPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyBackupPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_backup_policy_with_options_async(
         self,
@@ -13607,7 +12619,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyBackupPolicyResponse:
         """
-        @summary Modifies the automatic backup policy of an ApsaraDB for Redis instance.
+        @summary Modifies the automatic backup policy of a Tair (Redis OSS-compatible) instance.
         
         @param request: ModifyBackupPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13649,23 +12661,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyBackupPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyBackupPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyBackupPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_backup_policy(
         self,
         request: r_kvstore_20150101_models.ModifyBackupPolicyRequest,
     ) -> r_kvstore_20150101_models.ModifyBackupPolicyResponse:
         """
-        @summary Modifies the automatic backup policy of an ApsaraDB for Redis instance.
+        @summary Modifies the automatic backup policy of a Tair (Redis OSS-compatible) instance.
         
         @param request: ModifyBackupPolicyRequest
         @return: ModifyBackupPolicyResponse
@@ -13678,7 +12684,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyBackupPolicyRequest,
     ) -> r_kvstore_20150101_models.ModifyBackupPolicyResponse:
         """
-        @summary Modifies the automatic backup policy of an ApsaraDB for Redis instance.
+        @summary Modifies the automatic backup policy of a Tair (Redis OSS-compatible) instance.
         
         @param request: ModifyBackupPolicyRequest
         @return: ModifyBackupPolicyResponse
@@ -13728,16 +12734,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyDBInstanceAutoUpgradeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyDBInstanceAutoUpgradeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyDBInstanceAutoUpgradeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_dbinstance_auto_upgrade_with_options_async(
         self,
@@ -13781,16 +12781,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyDBInstanceAutoUpgradeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyDBInstanceAutoUpgradeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyDBInstanceAutoUpgradeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_dbinstance_auto_upgrade(
         self,
@@ -13868,16 +12862,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyDBInstanceConnectionStringResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyDBInstanceConnectionStringResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyDBInstanceConnectionStringResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_dbinstance_connection_string_with_options_async(
         self,
@@ -13929,16 +12917,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyDBInstanceConnectionStringResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyDBInstanceConnectionStringResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyDBInstanceConnectionStringResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_dbinstance_connection_string(
         self,
@@ -14018,16 +13000,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_global_security_ipgroup_with_options_async(
         self,
@@ -14077,16 +13053,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_global_security_ipgroup(
         self,
@@ -14160,16 +13130,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupNameResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupNameResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupNameResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_global_security_ipgroup_name_with_options_async(
         self,
@@ -14217,16 +13181,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupNameResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupNameResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_global_security_ipgroup_name(
         self,
@@ -14300,16 +13258,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRelationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRelationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRelationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_global_security_ipgroup_relation_with_options_async(
         self,
@@ -14357,16 +13309,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRelationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRelationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRelationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_global_security_ipgroup_relation(
         self,
@@ -14442,16 +13388,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_attribute_with_options_async(
         self,
@@ -14501,16 +13441,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_attribute(
         self,
@@ -14548,7 +13482,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceAutoRenewalAttributeResponse:
         """
-        @summary Enables or disables auto-renewal for an ApsaraDB for Redis instance.
+        @summary Enables or disables auto-renewal for a Tair (Redis OSS-compatible) instance.
         
         @description > Auto-renewal is triggered seven days before the expiration date of the instance.
         
@@ -14590,16 +13524,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceAutoRenewalAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceAutoRenewalAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceAutoRenewalAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_auto_renewal_attribute_with_options_async(
         self,
@@ -14607,7 +13535,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceAutoRenewalAttributeResponse:
         """
-        @summary Enables or disables auto-renewal for an ApsaraDB for Redis instance.
+        @summary Enables or disables auto-renewal for a Tair (Redis OSS-compatible) instance.
         
         @description > Auto-renewal is triggered seven days before the expiration date of the instance.
         
@@ -14649,23 +13577,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceAutoRenewalAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceAutoRenewalAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceAutoRenewalAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_auto_renewal_attribute(
         self,
         request: r_kvstore_20150101_models.ModifyInstanceAutoRenewalAttributeRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceAutoRenewalAttributeResponse:
         """
-        @summary Enables or disables auto-renewal for an ApsaraDB for Redis instance.
+        @summary Enables or disables auto-renewal for a Tair (Redis OSS-compatible) instance.
         
         @description > Auto-renewal is triggered seven days before the expiration date of the instance.
         
@@ -14680,7 +13602,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceAutoRenewalAttributeRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceAutoRenewalAttributeResponse:
         """
-        @summary Enables or disables auto-renewal for an ApsaraDB for Redis instance.
+        @summary Enables or disables auto-renewal for a Tair (Redis OSS-compatible) instance.
         
         @description > Auto-renewal is triggered seven days before the expiration date of the instance.
         
@@ -14735,16 +13657,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceBandwidthResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceBandwidthResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceBandwidthResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_bandwidth_with_options_async(
         self,
@@ -14791,16 +13707,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceBandwidthResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceBandwidthResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceBandwidthResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_bandwidth(
         self,
@@ -14840,7 +13750,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceConfigResponse:
         """
-        @summary Modifies the parameter settings of an ApsaraDB for Redis instance.
+        @summary Modifies the parameter settings of a Tair (Redis OSS-compatible) instance.
         
         @param request: ModifyInstanceConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14888,16 +13798,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceConfigResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceConfigResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_config_with_options_async(
         self,
@@ -14905,7 +13809,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceConfigResponse:
         """
-        @summary Modifies the parameter settings of an ApsaraDB for Redis instance.
+        @summary Modifies the parameter settings of a Tair (Redis OSS-compatible) instance.
         
         @param request: ModifyInstanceConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14953,23 +13857,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceConfigResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceConfigResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_config(
         self,
         request: r_kvstore_20150101_models.ModifyInstanceConfigRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceConfigResponse:
         """
-        @summary Modifies the parameter settings of an ApsaraDB for Redis instance.
+        @summary Modifies the parameter settings of a Tair (Redis OSS-compatible) instance.
         
         @param request: ModifyInstanceConfigRequest
         @return: ModifyInstanceConfigResponse
@@ -14982,7 +13880,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceConfigRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceConfigResponse:
         """
-        @summary Modifies the parameter settings of an ApsaraDB for Redis instance.
+        @summary Modifies the parameter settings of a Tair (Redis OSS-compatible) instance.
         
         @param request: ModifyInstanceConfigRequest
         @return: ModifyInstanceConfigResponse
@@ -15036,16 +13934,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceMaintainTimeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceMaintainTimeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceMaintainTimeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_maintain_time_with_options_async(
         self,
@@ -15093,16 +13985,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceMaintainTimeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceMaintainTimeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceMaintainTimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_maintain_time(
         self,
@@ -15180,16 +14066,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceMajorVersionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceMajorVersionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceMajorVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_major_version_with_options_async(
         self,
@@ -15237,16 +14117,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceMajorVersionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceMajorVersionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceMajorVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_major_version(
         self,
@@ -15327,16 +14201,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceMinorVersionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceMinorVersionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceMinorVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_minor_version_with_options_async(
         self,
@@ -15387,16 +14255,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceMinorVersionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceMinorVersionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceMinorVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_minor_version(
         self,
@@ -15481,16 +14343,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceNetExpireTimeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceNetExpireTimeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceNetExpireTimeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_net_expire_time_with_options_async(
         self,
@@ -15539,16 +14395,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceNetExpireTimeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceNetExpireTimeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceNetExpireTimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_net_expire_time(
         self,
@@ -15628,16 +14478,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceParameterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceParameterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceParameterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_parameter_with_options_async(
         self,
@@ -15685,16 +14529,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceParameterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceParameterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceParameterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_parameter(
         self,
@@ -15767,16 +14605,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceSSLResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceSSLResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceSSLResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_sslwith_options_async(
         self,
@@ -15823,16 +14655,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceSSLResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceSSLResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceSSLResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_ssl(
         self,
@@ -15948,16 +14774,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceSpecResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceSpecResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceSpecResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_spec_with_options_async(
         self,
@@ -16041,16 +14861,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceSpecResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceSpecResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceSpecResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_spec(
         self,
@@ -16132,16 +14946,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceTDEResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceTDEResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceTDEResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_tdewith_options_async(
         self,
@@ -16193,16 +15001,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceTDEResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceTDEResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceTDEResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_tde(
         self,
@@ -16240,10 +15042,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceVpcAuthModeResponse:
         """
-        @summary Enables or disables password-free access for an ApsaraDB for Redis instance. This way, you can connect to a database in a convenient and secure manner.
+        @summary Enables or disables password-free access for a Tair (Redis OSS-compatible) instance. This way, you can connect to a database in a convenient and secure manner.
         
-        @description When the password-free access feature is enabled, Elastic Compute Service (ECS) instances in the same virtual private cloud (VPC) can connect to the ApsaraDB for Redis instance without a password. You can also use the username and password to connect to the ApsaraDB for Redis instance.
-        > The ApsaraDB for Redis instance is deployed in a VPC. For more information, see [Enable password-free access](https://help.aliyun.com/document_detail/85168.html).
+        @description When the password-free access feature is enabled, Elastic Compute Service (ECS) instances in the same virtual private cloud (VPC) can connect to the Tair instance without a password. You can also use the username and password to connect to the Tair instance.
+        > The Tair instance is deployed in a VPC. For more information, see [Enable password-free access](https://help.aliyun.com/document_detail/85168.html).
         
         @param request: ModifyInstanceVpcAuthModeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16279,16 +15081,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceVpcAuthModeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceVpcAuthModeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceVpcAuthModeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_vpc_auth_mode_with_options_async(
         self,
@@ -16296,10 +15092,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceVpcAuthModeResponse:
         """
-        @summary Enables or disables password-free access for an ApsaraDB for Redis instance. This way, you can connect to a database in a convenient and secure manner.
+        @summary Enables or disables password-free access for a Tair (Redis OSS-compatible) instance. This way, you can connect to a database in a convenient and secure manner.
         
-        @description When the password-free access feature is enabled, Elastic Compute Service (ECS) instances in the same virtual private cloud (VPC) can connect to the ApsaraDB for Redis instance without a password. You can also use the username and password to connect to the ApsaraDB for Redis instance.
-        > The ApsaraDB for Redis instance is deployed in a VPC. For more information, see [Enable password-free access](https://help.aliyun.com/document_detail/85168.html).
+        @description When the password-free access feature is enabled, Elastic Compute Service (ECS) instances in the same virtual private cloud (VPC) can connect to the Tair instance without a password. You can also use the username and password to connect to the Tair instance.
+        > The Tair instance is deployed in a VPC. For more information, see [Enable password-free access](https://help.aliyun.com/document_detail/85168.html).
         
         @param request: ModifyInstanceVpcAuthModeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16335,26 +15131,20 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceVpcAuthModeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyInstanceVpcAuthModeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceVpcAuthModeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_vpc_auth_mode(
         self,
         request: r_kvstore_20150101_models.ModifyInstanceVpcAuthModeRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceVpcAuthModeResponse:
         """
-        @summary Enables or disables password-free access for an ApsaraDB for Redis instance. This way, you can connect to a database in a convenient and secure manner.
+        @summary Enables or disables password-free access for a Tair (Redis OSS-compatible) instance. This way, you can connect to a database in a convenient and secure manner.
         
-        @description When the password-free access feature is enabled, Elastic Compute Service (ECS) instances in the same virtual private cloud (VPC) can connect to the ApsaraDB for Redis instance without a password. You can also use the username and password to connect to the ApsaraDB for Redis instance.
-        > The ApsaraDB for Redis instance is deployed in a VPC. For more information, see [Enable password-free access](https://help.aliyun.com/document_detail/85168.html).
+        @description When the password-free access feature is enabled, Elastic Compute Service (ECS) instances in the same virtual private cloud (VPC) can connect to the Tair instance without a password. You can also use the username and password to connect to the Tair instance.
+        > The Tair instance is deployed in a VPC. For more information, see [Enable password-free access](https://help.aliyun.com/document_detail/85168.html).
         
         @param request: ModifyInstanceVpcAuthModeRequest
         @return: ModifyInstanceVpcAuthModeResponse
@@ -16367,10 +15157,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceVpcAuthModeRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceVpcAuthModeResponse:
         """
-        @summary Enables or disables password-free access for an ApsaraDB for Redis instance. This way, you can connect to a database in a convenient and secure manner.
+        @summary Enables or disables password-free access for a Tair (Redis OSS-compatible) instance. This way, you can connect to a database in a convenient and secure manner.
         
-        @description When the password-free access feature is enabled, Elastic Compute Service (ECS) instances in the same virtual private cloud (VPC) can connect to the ApsaraDB for Redis instance without a password. You can also use the username and password to connect to the ApsaraDB for Redis instance.
-        > The ApsaraDB for Redis instance is deployed in a VPC. For more information, see [Enable password-free access](https://help.aliyun.com/document_detail/85168.html).
+        @description When the password-free access feature is enabled, Elastic Compute Service (ECS) instances in the same virtual private cloud (VPC) can connect to the Tair instance without a password. You can also use the username and password to connect to the Tair instance.
+        > The Tair instance is deployed in a VPC. For more information, see [Enable password-free access](https://help.aliyun.com/document_detail/85168.html).
         
         @param request: ModifyInstanceVpcAuthModeRequest
         @return: ModifyInstanceVpcAuthModeResponse
@@ -16425,16 +15215,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyIntranetAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyIntranetAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyIntranetAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_intranet_attribute_with_options_async(
         self,
@@ -16483,16 +15267,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyIntranetAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyIntranetAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyIntranetAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_intranet_attribute(
         self,
@@ -16576,16 +15354,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyParameterGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyParameterGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyParameterGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_parameter_group_with_options_async(
         self,
@@ -16637,16 +15409,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyParameterGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyParameterGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyParameterGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_parameter_group(
         self,
@@ -16721,16 +15487,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyResourceGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyResourceGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_resource_group_with_options_async(
         self,
@@ -16779,16 +15539,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyResourceGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyResourceGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_resource_group(
         self,
@@ -16828,9 +15582,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifySecurityGroupConfigurationResponse:
         """
-        @summary Resets the security groups that are added to the whitelists of an ApsaraDB for Redis instance.
+        @summary Resets the security groups that are added to the whitelists of a Tair (Redis OSS-compatible) instance.
         
-        @description > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the *SecurityGroupId** parameter is added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](https://help.aliyun.com/document_detail/148267.html).
+        @description > After you call this operation, the security groups that are added to the whitelists of the Tair instance are deleted, and the security group specified by the *SecurityGroupId** parameter is added to the whitelists. For more information about how to reset security groups in the Tair console, see [Add security groups](https://help.aliyun.com/document_detail/148267.html).
         
         @param request: ModifySecurityGroupConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16866,16 +15620,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifySecurityGroupConfigurationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifySecurityGroupConfigurationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifySecurityGroupConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_security_group_configuration_with_options_async(
         self,
@@ -16883,9 +15631,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifySecurityGroupConfigurationResponse:
         """
-        @summary Resets the security groups that are added to the whitelists of an ApsaraDB for Redis instance.
+        @summary Resets the security groups that are added to the whitelists of a Tair (Redis OSS-compatible) instance.
         
-        @description > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the *SecurityGroupId** parameter is added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](https://help.aliyun.com/document_detail/148267.html).
+        @description > After you call this operation, the security groups that are added to the whitelists of the Tair instance are deleted, and the security group specified by the *SecurityGroupId** parameter is added to the whitelists. For more information about how to reset security groups in the Tair console, see [Add security groups](https://help.aliyun.com/document_detail/148267.html).
         
         @param request: ModifySecurityGroupConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16921,25 +15669,19 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifySecurityGroupConfigurationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifySecurityGroupConfigurationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifySecurityGroupConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_security_group_configuration(
         self,
         request: r_kvstore_20150101_models.ModifySecurityGroupConfigurationRequest,
     ) -> r_kvstore_20150101_models.ModifySecurityGroupConfigurationResponse:
         """
-        @summary Resets the security groups that are added to the whitelists of an ApsaraDB for Redis instance.
+        @summary Resets the security groups that are added to the whitelists of a Tair (Redis OSS-compatible) instance.
         
-        @description > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the *SecurityGroupId** parameter is added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](https://help.aliyun.com/document_detail/148267.html).
+        @description > After you call this operation, the security groups that are added to the whitelists of the Tair instance are deleted, and the security group specified by the *SecurityGroupId** parameter is added to the whitelists. For more information about how to reset security groups in the Tair console, see [Add security groups](https://help.aliyun.com/document_detail/148267.html).
         
         @param request: ModifySecurityGroupConfigurationRequest
         @return: ModifySecurityGroupConfigurationResponse
@@ -16952,9 +15694,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifySecurityGroupConfigurationRequest,
     ) -> r_kvstore_20150101_models.ModifySecurityGroupConfigurationResponse:
         """
-        @summary Resets the security groups that are added to the whitelists of an ApsaraDB for Redis instance.
+        @summary Resets the security groups that are added to the whitelists of a Tair (Redis OSS-compatible) instance.
         
-        @description > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the *SecurityGroupId** parameter is added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](https://help.aliyun.com/document_detail/148267.html).
+        @description > After you call this operation, the security groups that are added to the whitelists of the Tair instance are deleted, and the security group specified by the *SecurityGroupId** parameter is added to the whitelists. For more information about how to reset security groups in the Tair console, see [Add security groups](https://help.aliyun.com/document_detail/148267.html).
         
         @param request: ModifySecurityGroupConfigurationRequest
         @return: ModifySecurityGroupConfigurationResponse
@@ -17012,16 +15754,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifySecurityIpsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifySecurityIpsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifySecurityIpsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_security_ips_with_options_async(
         self,
@@ -17073,16 +15809,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifySecurityIpsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifySecurityIpsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifySecurityIpsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_security_ips(
         self,
@@ -17158,16 +15888,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyTairKVCacheCustomInstanceAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyTairKVCacheCustomInstanceAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyTairKVCacheCustomInstanceAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_tair_kvcache_custom_instance_attribute_with_options_async(
         self,
@@ -17213,16 +15937,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyTairKVCacheCustomInstanceAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyTairKVCacheCustomInstanceAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyTairKVCacheCustomInstanceAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_tair_kvcache_custom_instance_attribute(
         self,
@@ -17294,16 +16012,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyTaskInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyTaskInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyTaskInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_task_info_with_options_async(
         self,
@@ -17349,16 +16061,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyTaskInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ModifyTaskInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyTaskInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_task_info(
         self,
@@ -17428,16 +16134,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ReleaseDirectConnectionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ReleaseDirectConnectionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ReleaseDirectConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def release_direct_connection_with_options_async(
         self,
@@ -17481,16 +16181,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ReleaseDirectConnectionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ReleaseDirectConnectionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ReleaseDirectConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def release_direct_connection(
         self,
@@ -17566,16 +16260,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ReleaseInstancePublicConnectionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ReleaseInstancePublicConnectionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ReleaseInstancePublicConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def release_instance_public_connection_with_options_async(
         self,
@@ -17621,16 +16309,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ReleaseInstancePublicConnectionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ReleaseInstancePublicConnectionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ReleaseInstancePublicConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def release_instance_public_connection(
         self,
@@ -17704,16 +16386,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.RemoveSubInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.RemoveSubInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.RemoveSubInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def remove_sub_instance_with_options_async(
         self,
@@ -17757,16 +16433,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.RemoveSubInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.RemoveSubInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.RemoveSubInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def remove_sub_instance(
         self,
@@ -17848,16 +16518,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.RenewAdditionalBandwidthResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.RenewAdditionalBandwidthResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.RenewAdditionalBandwidthResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def renew_additional_bandwidth_with_options_async(
         self,
@@ -17909,16 +16573,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.RenewAdditionalBandwidthResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.RenewAdditionalBandwidthResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.RenewAdditionalBandwidthResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def renew_additional_bandwidth(
         self,
@@ -18010,16 +16668,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.RenewInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.RenewInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.RenewInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def renew_instance_with_options_async(
         self,
@@ -18081,16 +16733,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.RenewInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.RenewInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.RenewInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def renew_instance(
         self,
@@ -18170,16 +16816,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ResetAccountPasswordResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ResetAccountPasswordResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ResetAccountPasswordResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def reset_account_password_with_options_async(
         self,
@@ -18229,16 +16869,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ResetAccountPasswordResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ResetAccountPasswordResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ResetAccountPasswordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def reset_account_password(
         self,
@@ -18314,16 +16948,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ResetTairKVCacheCustomInstancePasswordResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ResetTairKVCacheCustomInstancePasswordResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ResetTairKVCacheCustomInstancePasswordResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def reset_tair_kvcache_custom_instance_password_with_options_async(
         self,
@@ -18369,16 +16997,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ResetTairKVCacheCustomInstancePasswordResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ResetTairKVCacheCustomInstancePasswordResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ResetTairKVCacheCustomInstancePasswordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def reset_tair_kvcache_custom_instance_password(
         self,
@@ -18452,16 +17074,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ResizeTairKVCacheCustomInstanceDiskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ResizeTairKVCacheCustomInstanceDiskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ResizeTairKVCacheCustomInstanceDiskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def resize_tair_kvcache_custom_instance_disk_with_options_async(
         self,
@@ -18509,16 +17125,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ResizeTairKVCacheCustomInstanceDiskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.ResizeTairKVCacheCustomInstanceDiskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ResizeTairKVCacheCustomInstanceDiskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def resize_tair_kvcache_custom_instance_disk(
         self,
@@ -18590,16 +17200,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.RestartInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.RestartInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.RestartInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def restart_instance_with_options_async(
         self,
@@ -18645,16 +17249,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.RestartInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.RestartInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.RestartInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def restart_instance(
         self,
@@ -18722,16 +17320,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.RestartTairKVCacheCustomInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.RestartTairKVCacheCustomInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.RestartTairKVCacheCustomInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def restart_tair_kvcache_custom_instance_with_options_async(
         self,
@@ -18773,16 +17365,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.RestartTairKVCacheCustomInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.RestartTairKVCacheCustomInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.RestartTairKVCacheCustomInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def restart_tair_kvcache_custom_instance(
         self,
@@ -18816,7 +17402,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.RestoreInstanceResponse:
         """
-        @summary Restores the data in a backup file to a specified ApsaraDB for Redis instance.
+        @summary Restores the data in a backup file to a specified Tair (Redis OSS-compatible) instance.
         
         @description    If your instance is a [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html) or a [persistent memory-optimized instance](https://help.aliyun.com/document_detail/183956.html) and has the [data flashback](https://help.aliyun.com/document_detail/148479.html) feature enabled, you can call this operation to restore the entire instance or specific keys to a specific point in time accurate to the second. This way, you can achieve more fine-grained data restoration.
         For other types of instances, we recommend that you call the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) or [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html) operation to restore the backup data to a new instance.
@@ -18863,16 +17449,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.RestoreInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.RestoreInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.RestoreInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def restore_instance_with_options_async(
         self,
@@ -18880,7 +17460,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.RestoreInstanceResponse:
         """
-        @summary Restores the data in a backup file to a specified ApsaraDB for Redis instance.
+        @summary Restores the data in a backup file to a specified Tair (Redis OSS-compatible) instance.
         
         @description    If your instance is a [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html) or a [persistent memory-optimized instance](https://help.aliyun.com/document_detail/183956.html) and has the [data flashback](https://help.aliyun.com/document_detail/148479.html) feature enabled, you can call this operation to restore the entire instance or specific keys to a specific point in time accurate to the second. This way, you can achieve more fine-grained data restoration.
         For other types of instances, we recommend that you call the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) or [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html) operation to restore the backup data to a new instance.
@@ -18927,23 +17507,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.RestoreInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.RestoreInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.RestoreInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def restore_instance(
         self,
         request: r_kvstore_20150101_models.RestoreInstanceRequest,
     ) -> r_kvstore_20150101_models.RestoreInstanceResponse:
         """
-        @summary Restores the data in a backup file to a specified ApsaraDB for Redis instance.
+        @summary Restores the data in a backup file to a specified Tair (Redis OSS-compatible) instance.
         
         @description    If your instance is a [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html) or a [persistent memory-optimized instance](https://help.aliyun.com/document_detail/183956.html) and has the [data flashback](https://help.aliyun.com/document_detail/148479.html) feature enabled, you can call this operation to restore the entire instance or specific keys to a specific point in time accurate to the second. This way, you can achieve more fine-grained data restoration.
         For other types of instances, we recommend that you call the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) or [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html) operation to restore the backup data to a new instance.
@@ -18959,7 +17533,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.RestoreInstanceRequest,
     ) -> r_kvstore_20150101_models.RestoreInstanceResponse:
         """
-        @summary Restores the data in a backup file to a specified ApsaraDB for Redis instance.
+        @summary Restores the data in a backup file to a specified Tair (Redis OSS-compatible) instance.
         
         @description    If your instance is a [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html) or a [persistent memory-optimized instance](https://help.aliyun.com/document_detail/183956.html) and has the [data flashback](https://help.aliyun.com/document_detail/148479.html) feature enabled, you can call this operation to restore the entire instance or specific keys to a specific point in time accurate to the second. This way, you can achieve more fine-grained data restoration.
         For other types of instances, we recommend that you call the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) or [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html) operation to restore the backup data to a new instance.
@@ -19010,16 +17584,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.StartTairKVCacheCustomInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.StartTairKVCacheCustomInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.StartTairKVCacheCustomInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def start_tair_kvcache_custom_instance_with_options_async(
         self,
@@ -19061,16 +17629,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.StartTairKVCacheCustomInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.StartTairKVCacheCustomInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.StartTairKVCacheCustomInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def start_tair_kvcache_custom_instance(
         self,
@@ -19138,16 +17700,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.StopTairKVCacheCustomInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.StopTairKVCacheCustomInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.StopTairKVCacheCustomInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def stop_tair_kvcache_custom_instance_with_options_async(
         self,
@@ -19189,16 +17745,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.StopTairKVCacheCustomInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.StopTairKVCacheCustomInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.StopTairKVCacheCustomInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def stop_tair_kvcache_custom_instance(
         self,
@@ -19278,16 +17828,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.SwitchInstanceHAResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.SwitchInstanceHAResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.SwitchInstanceHAResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def switch_instance_hawith_options_async(
         self,
@@ -19341,16 +17885,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.SwitchInstanceHAResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.SwitchInstanceHAResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.SwitchInstanceHAResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def switch_instance_ha(
         self,
@@ -19435,16 +17973,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.SwitchInstanceProxyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.SwitchInstanceProxyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.SwitchInstanceProxyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def switch_instance_proxy_with_options_async(
         self,
@@ -19491,16 +18023,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.SwitchInstanceProxyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.SwitchInstanceProxyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.SwitchInstanceProxyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def switch_instance_proxy(
         self,
@@ -19572,16 +18098,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.SwitchInstanceZoneFailOverResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.SwitchInstanceZoneFailOverResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.SwitchInstanceZoneFailOverResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def switch_instance_zone_fail_over_with_options_async(
         self,
@@ -19617,16 +18137,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.SwitchInstanceZoneFailOverResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.SwitchInstanceZoneFailOverResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.SwitchInstanceZoneFailOverResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def switch_instance_zone_fail_over(
         self,
@@ -19704,16 +18218,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.SwitchNetworkResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.SwitchNetworkResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.SwitchNetworkResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def switch_network_with_options_async(
         self,
@@ -19765,16 +18273,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.SwitchNetworkResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.SwitchNetworkResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.SwitchNetworkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def switch_network(
         self,
@@ -19848,16 +18350,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.SyncDtsStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.SyncDtsStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.SyncDtsStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def sync_dts_status_with_options_async(
         self,
@@ -19905,16 +18401,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.SyncDtsStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.SyncDtsStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.SyncDtsStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def sync_dts_status(
         self,
@@ -19994,16 +18484,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.TagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.TagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def tag_resources_with_options_async(
         self,
@@ -20057,16 +18541,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.TagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.TagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def tag_resources(
         self,
@@ -20164,16 +18642,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.TransformInstanceChargeTypeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.TransformInstanceChargeTypeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.TransformInstanceChargeTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def transform_instance_charge_type_with_options_async(
         self,
@@ -20229,16 +18701,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.TransformInstanceChargeTypeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.TransformInstanceChargeTypeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.TransformInstanceChargeTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def transform_instance_charge_type(
         self,
@@ -20325,16 +18791,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.TransformToPrePaidResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.TransformToPrePaidResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.TransformToPrePaidResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def transform_to_pre_paid_with_options_async(
         self,
@@ -20387,16 +18847,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.TransformToPrePaidResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.TransformToPrePaidResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.TransformToPrePaidResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def transform_to_pre_paid(
         self,
@@ -20470,16 +18924,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.UnlockDBInstanceWriteResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.UnlockDBInstanceWriteResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.UnlockDBInstanceWriteResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def unlock_dbinstance_write_with_options_async(
         self,
@@ -20521,16 +18969,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.UnlockDBInstanceWriteResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.UnlockDBInstanceWriteResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.UnlockDBInstanceWriteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def unlock_dbinstance_write(
         self,
@@ -20608,16 +19050,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.UntagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.UntagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def untag_resources_with_options_async(
         self,
@@ -20669,16 +19105,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.UntagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                r_kvstore_20150101_models.UntagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def untag_resources(
         self,
