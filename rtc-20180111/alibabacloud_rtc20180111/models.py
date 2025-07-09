@@ -488,7 +488,6 @@ class CreateAppAgentTemplateRequestAsrConfig(TeaModel):
         self.max_sentence_silence = max_sentence_silence
         # This parameter is required.
         self.name = name
-        # This parameter is required.
         self.word_weights = word_weights
 
     def validate(self):

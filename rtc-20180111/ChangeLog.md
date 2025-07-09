@@ -1,3 +1,6 @@
+2025-07-09 Version: 5.2.1
+- Generated python 2018-01-11 for rtc.
+
 2025-07-03 Version: 5.2.0
 - Support API CreateAppAgentTemplate.
 - Support API DeleteAppAgentTemplate.
