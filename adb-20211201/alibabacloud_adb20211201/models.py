@@ -2073,9 +2073,49 @@ class TableModel(TeaModel):
         return self
 
 
+class OpenStructMvDetailModelBaseTableInfos(TeaModel):
+    def __init__(
+        self,
+        base_table_is_mv: bool = None,
+        schema_name: str = None,
+        table_name: str = None,
+    ):
+        self.base_table_is_mv = base_table_is_mv
+        self.schema_name = schema_name
+        self.table_name = table_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.base_table_is_mv is not None:
+            result['BaseTableIsMv'] = self.base_table_is_mv
+        if self.schema_name is not None:
+            result['SchemaName'] = self.schema_name
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaseTableIsMv') is not None:
+            self.base_table_is_mv = m.get('BaseTableIsMv')
+        if m.get('SchemaName') is not None:
+            self.schema_name = m.get('SchemaName')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        return self
+
+
 class OpenStructMvDetailModel(TeaModel):
     def __init__(
         self,
+        base_table_infos: List[OpenStructMvDetailModelBaseTableInfos] = None,
         base_table_names: List[List[str]] = None,
         explicit_hit: int = None,
         first_refresh_time: str = None,
@@ -2089,6 +2129,7 @@ class OpenStructMvDetailModel(TeaModel):
         resource_group: str = None,
         updated_at: str = None,
     ):
+        self.base_table_infos = base_table_infos
         self.base_table_names = base_table_names
         self.explicit_hit = explicit_hit
         self.first_refresh_time = first_refresh_time
@@ -2103,7 +2144,10 @@ class OpenStructMvDetailModel(TeaModel):
         self.updated_at = updated_at
 
     def validate(self):
-        pass
+        if self.base_table_infos:
+            for k in self.base_table_infos:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2111,6 +2155,10 @@ class OpenStructMvDetailModel(TeaModel):
             return _map
 
         result = dict()
+        result['BaseTableInfos'] = []
+        if self.base_table_infos is not None:
+            for k in self.base_table_infos:
+                result['BaseTableInfos'].append(k.to_map() if k else None)
         if self.base_table_names is not None:
             result['BaseTableNames'] = self.base_table_names
         if self.explicit_hit is not None:
@@ -2139,6 +2187,11 @@ class OpenStructMvDetailModel(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.base_table_infos = []
+        if m.get('BaseTableInfos') is not None:
+            for k in m.get('BaseTableInfos'):
+                temp_model = OpenStructMvDetailModelBaseTableInfos()
+                self.base_table_infos.append(temp_model.from_map(k))
         if m.get('BaseTableNames') is not None:
             self.base_table_names = m.get('BaseTableNames')
         if m.get('ExplicitHit') is not None:
@@ -2482,6 +2535,7 @@ class OpenStructRefreshJobModel(TeaModel):
         refresh_interval: str = None,
         refresh_model: str = None,
         resource_group: str = None,
+        scheduled_start_time: str = None,
         schema_name: str = None,
         start_time: str = None,
         status: str = None,
@@ -2492,6 +2546,7 @@ class OpenStructRefreshJobModel(TeaModel):
         self.refresh_interval = refresh_interval
         self.refresh_model = refresh_model
         self.resource_group = resource_group
+        self.scheduled_start_time = scheduled_start_time
         self.schema_name = schema_name
         self.start_time = start_time
         self.status = status
@@ -2517,6 +2572,8 @@ class OpenStructRefreshJobModel(TeaModel):
             result['RefreshModel'] = self.refresh_model
         if self.resource_group is not None:
             result['ResourceGroup'] = self.resource_group
+        if self.scheduled_start_time is not None:
+            result['ScheduledStartTime'] = self.scheduled_start_time
         if self.schema_name is not None:
             result['SchemaName'] = self.schema_name
         if self.start_time is not None:
@@ -2539,6 +2596,8 @@ class OpenStructRefreshJobModel(TeaModel):
             self.refresh_model = m.get('RefreshModel')
         if m.get('ResourceGroup') is not None:
             self.resource_group = m.get('ResourceGroup')
+        if m.get('ScheduledStartTime') is not None:
+            self.scheduled_start_time = m.get('ScheduledStartTime')
         if m.get('SchemaName') is not None:
             self.schema_name = m.get('SchemaName')
         if m.get('StartTime') is not None:
@@ -2672,6 +2731,8 @@ class ApplyAdviceByIdRequest(TeaModel):
         self,
         advice_date: int = None,
         advice_id: str = None,
+        apply_type: str = None,
+        build_immediately: bool = None,
         dbcluster_id: str = None,
         region_id: str = None,
     ):
@@ -2679,6 +2740,8 @@ class ApplyAdviceByIdRequest(TeaModel):
         self.advice_date = advice_date
         # The suggestion ID.
         self.advice_id = advice_id
+        self.apply_type = apply_type
+        self.build_immediately = build_immediately
         # The cluster ID.
         # 
         # This parameter is required.
@@ -2701,6 +2764,10 @@ class ApplyAdviceByIdRequest(TeaModel):
             result['AdviceDate'] = self.advice_date
         if self.advice_id is not None:
             result['AdviceId'] = self.advice_id
+        if self.apply_type is not None:
+            result['ApplyType'] = self.apply_type
+        if self.build_immediately is not None:
+            result['BuildImmediately'] = self.build_immediately
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
         if self.region_id is not None:
@@ -2713,6 +2780,10 @@ class ApplyAdviceByIdRequest(TeaModel):
             self.advice_date = m.get('AdviceDate')
         if m.get('AdviceId') is not None:
             self.advice_id = m.get('AdviceId')
+        if m.get('ApplyType') is not None:
+            self.apply_type = m.get('ApplyType')
+        if m.get('BuildImmediately') is not None:
+            self.build_immediately = m.get('BuildImmediately')
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('RegionId') is not None:
@@ -2895,6 +2966,8 @@ class BatchApplyAdviceByIdListRequest(TeaModel):
         self,
         advice_date: int = None,
         advice_id_list: str = None,
+        apply_type: str = None,
+        build_immediately: bool = None,
         dbcluster_id: str = None,
         region_id: str = None,
     ):
@@ -2902,6 +2975,8 @@ class BatchApplyAdviceByIdListRequest(TeaModel):
         self.advice_date = advice_date
         # The IDs of the suggestions that you want to apply. Separate multiple IDs with commas (,).
         self.advice_id_list = advice_id_list
+        self.apply_type = apply_type
+        self.build_immediately = build_immediately
         # The cluster ID.
         # 
         # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
@@ -2926,6 +3001,10 @@ class BatchApplyAdviceByIdListRequest(TeaModel):
             result['AdviceDate'] = self.advice_date
         if self.advice_id_list is not None:
             result['AdviceIdList'] = self.advice_id_list
+        if self.apply_type is not None:
+            result['ApplyType'] = self.apply_type
+        if self.build_immediately is not None:
+            result['BuildImmediately'] = self.build_immediately
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
         if self.region_id is not None:
@@ -2938,6 +3017,10 @@ class BatchApplyAdviceByIdListRequest(TeaModel):
             self.advice_date = m.get('AdviceDate')
         if m.get('AdviceIdList') is not None:
             self.advice_id_list = m.get('AdviceIdList')
+        if m.get('ApplyType') is not None:
+            self.apply_type = m.get('ApplyType')
+        if m.get('BuildImmediately') is not None:
+            self.build_immediately = m.get('BuildImmediately')
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('RegionId') is not None:
@@ -13287,6 +13370,7 @@ class DescribeAppliedAdvicesResponseBodyItems(TeaModel):
         advice_id: str = None,
         benefit: str = None,
         build_sql: str = None,
+        index_fields: str = None,
         job_status: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -13304,6 +13388,7 @@ class DescribeAppliedAdvicesResponseBodyItems(TeaModel):
         self.benefit = benefit
         # The SQL statement that is used to execute the BUILD job.
         self.build_sql = build_sql
+        self.index_fields = index_fields
         # The status of the suggestion execution job. Valid values:
         # 
         # *   **SUCCEED**\
@@ -13350,6 +13435,8 @@ class DescribeAppliedAdvicesResponseBodyItems(TeaModel):
             result['Benefit'] = self.benefit
         if self.build_sql is not None:
             result['BuildSQL'] = self.build_sql
+        if self.index_fields is not None:
+            result['IndexFields'] = self.index_fields
         if self.job_status is not None:
             result['JobStatus'] = self.job_status
         if self.page_number is not None:
@@ -13380,6 +13467,8 @@ class DescribeAppliedAdvicesResponseBodyItems(TeaModel):
             self.benefit = m.get('Benefit')
         if m.get('BuildSQL') is not None:
             self.build_sql = m.get('BuildSQL')
+        if m.get('IndexFields') is not None:
+            self.index_fields = m.get('IndexFields')
         if m.get('JobStatus') is not None:
             self.job_status = m.get('JobStatus')
         if m.get('PageNumber') is not None:
@@ -16738,6 +16827,7 @@ class DescribeAvailableAdvicesResponseBodyItems(TeaModel):
         advice_id: str = None,
         advice_type: str = None,
         benefit: str = None,
+        index_fields: str = None,
         page_number: int = None,
         page_size: int = None,
         reason: str = None,
@@ -16757,6 +16847,7 @@ class DescribeAvailableAdvicesResponseBodyItems(TeaModel):
         self.advice_type = advice_type
         # The benefit of the suggestion.
         self.benefit = benefit
+        self.index_fields = index_fields
         # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Valid values:
@@ -16793,6 +16884,8 @@ class DescribeAvailableAdvicesResponseBodyItems(TeaModel):
             result['AdviceType'] = self.advice_type
         if self.benefit is not None:
             result['Benefit'] = self.benefit
+        if self.index_fields is not None:
+            result['IndexFields'] = self.index_fields
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -16819,6 +16912,8 @@ class DescribeAvailableAdvicesResponseBodyItems(TeaModel):
             self.advice_type = m.get('AdviceType')
         if m.get('Benefit') is not None:
             self.benefit = m.get('Benefit')
+        if m.get('IndexFields') is not None:
+            self.index_fields = m.get('IndexFields')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
