@@ -11736,6 +11736,7 @@ class CreateRoutineRouteRequest(TeaModel):
     def __init__(
         self,
         bypass: str = None,
+        fallback: str = None,
         route_enable: str = None,
         route_name: str = None,
         routine_name: str = None,
@@ -11744,6 +11745,7 @@ class CreateRoutineRouteRequest(TeaModel):
         site_id: int = None,
     ):
         self.bypass = bypass
+        self.fallback = fallback
         self.route_enable = route_enable
         self.route_name = route_name
         # This parameter is required.
@@ -11764,6 +11766,8 @@ class CreateRoutineRouteRequest(TeaModel):
         result = dict()
         if self.bypass is not None:
             result['Bypass'] = self.bypass
+        if self.fallback is not None:
+            result['Fallback'] = self.fallback
         if self.route_enable is not None:
             result['RouteEnable'] = self.route_enable
         if self.route_name is not None:
@@ -11782,6 +11786,8 @@ class CreateRoutineRouteRequest(TeaModel):
         m = m or dict()
         if m.get('Bypass') is not None:
             self.bypass = m.get('Bypass')
+        if m.get('Fallback') is not None:
+            self.fallback = m.get('Fallback')
         if m.get('RouteEnable') is not None:
             self.route_enable = m.get('RouteEnable')
         if m.get('RouteName') is not None:
@@ -24459,6 +24465,233 @@ class DescribeSiteTopDataResponse(TeaModel):
         return self
 
 
+class DescribeUrlObservationDataRequest(TeaModel):
+    def __init__(
+        self,
+        client_platform: str = None,
+        end_time: str = None,
+        metric: str = None,
+        site_id: str = None,
+        start_time: str = None,
+        url: str = None,
+    ):
+        self.client_platform = client_platform
+        self.end_time = end_time
+        self.metric = metric
+        # This parameter is required.
+        self.site_id = site_id
+        self.start_time = start_time
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_platform is not None:
+            result['ClientPlatform'] = self.client_platform
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.metric is not None:
+            result['Metric'] = self.metric
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientPlatform') is not None:
+            self.client_platform = m.get('ClientPlatform')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Metric') is not None:
+            self.metric = m.get('Metric')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class DescribeUrlObservationDataResponseBodyUrlDetailData(TeaModel):
+    def __init__(
+        self,
+        cls: float = None,
+        client_platform: str = None,
+        country: str = None,
+        fcp: float = None,
+        fid: float = None,
+        inp: float = None,
+        lcp: float = None,
+        ttfb: float = None,
+        url: str = None,
+    ):
+        self.cls = cls
+        self.client_platform = client_platform
+        self.country = country
+        self.fcp = fcp
+        self.fid = fid
+        self.inp = inp
+        self.lcp = lcp
+        self.ttfb = ttfb
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cls is not None:
+            result['CLS'] = self.cls
+        if self.client_platform is not None:
+            result['ClientPlatform'] = self.client_platform
+        if self.country is not None:
+            result['Country'] = self.country
+        if self.fcp is not None:
+            result['FCP'] = self.fcp
+        if self.fid is not None:
+            result['FID'] = self.fid
+        if self.inp is not None:
+            result['INP'] = self.inp
+        if self.lcp is not None:
+            result['LCP'] = self.lcp
+        if self.ttfb is not None:
+            result['TTFB'] = self.ttfb
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CLS') is not None:
+            self.cls = m.get('CLS')
+        if m.get('ClientPlatform') is not None:
+            self.client_platform = m.get('ClientPlatform')
+        if m.get('Country') is not None:
+            self.country = m.get('Country')
+        if m.get('FCP') is not None:
+            self.fcp = m.get('FCP')
+        if m.get('FID') is not None:
+            self.fid = m.get('FID')
+        if m.get('INP') is not None:
+            self.inp = m.get('INP')
+        if m.get('LCP') is not None:
+            self.lcp = m.get('LCP')
+        if m.get('TTFB') is not None:
+            self.ttfb = m.get('TTFB')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class DescribeUrlObservationDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        request_id: str = None,
+        start_time: str = None,
+        url_detail_data: List[DescribeUrlObservationDataResponseBodyUrlDetailData] = None,
+    ):
+        self.end_time = end_time
+        self.request_id = request_id
+        self.start_time = start_time
+        self.url_detail_data = url_detail_data
+
+    def validate(self):
+        if self.url_detail_data:
+            for k in self.url_detail_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        result['UrlDetailData'] = []
+        if self.url_detail_data is not None:
+            for k in self.url_detail_data:
+                result['UrlDetailData'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        self.url_detail_data = []
+        if m.get('UrlDetailData') is not None:
+            for k in m.get('UrlDetailData'):
+                temp_model = DescribeUrlObservationDataResponseBodyUrlDetailData()
+                self.url_detail_data.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeUrlObservationDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeUrlObservationDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeUrlObservationDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DisableCustomScenePolicyRequest(TeaModel):
     def __init__(
         self,
@@ -27870,11 +28103,15 @@ class GetEdgeContainerAppResourceStatusRequest(TeaModel):
 class GetEdgeContainerAppResourceStatusResponseBodyRegions(TeaModel):
     def __init__(
         self,
+        is_offline: bool = None,
+        is_staging: bool = None,
         isp: str = None,
         ready: int = None,
         region: str = None,
         total: int = None,
     ):
+        self.is_offline = is_offline
+        self.is_staging = is_staging
         self.isp = isp
         self.ready = ready
         self.region = region
@@ -27889,6 +28126,10 @@ class GetEdgeContainerAppResourceStatusResponseBodyRegions(TeaModel):
             return _map
 
         result = dict()
+        if self.is_offline is not None:
+            result['IsOffline'] = self.is_offline
+        if self.is_staging is not None:
+            result['IsStaging'] = self.is_staging
         if self.isp is not None:
             result['Isp'] = self.isp
         if self.ready is not None:
@@ -27901,6 +28142,10 @@ class GetEdgeContainerAppResourceStatusResponseBodyRegions(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('IsOffline') is not None:
+            self.is_offline = m.get('IsOffline')
+        if m.get('IsStaging') is not None:
+            self.is_staging = m.get('IsStaging')
         if m.get('Isp') is not None:
             self.isp = m.get('Isp')
         if m.get('Ready') is not None:
@@ -35629,6 +35874,7 @@ class GetRoutineRouteResponseBody(TeaModel):
         bypass: str = None,
         config_id: int = None,
         config_type: str = None,
+        fallback: str = None,
         mode: str = None,
         request_id: str = None,
         route_enable: str = None,
@@ -35641,6 +35887,7 @@ class GetRoutineRouteResponseBody(TeaModel):
         self.bypass = bypass
         self.config_id = config_id
         self.config_type = config_type
+        self.fallback = fallback
         self.mode = mode
         self.request_id = request_id
         self.route_enable = route_enable
@@ -35665,6 +35912,8 @@ class GetRoutineRouteResponseBody(TeaModel):
             result['ConfigId'] = self.config_id
         if self.config_type is not None:
             result['ConfigType'] = self.config_type
+        if self.fallback is not None:
+            result['Fallback'] = self.fallback
         if self.mode is not None:
             result['Mode'] = self.mode
         if self.request_id is not None:
@@ -35691,6 +35940,8 @@ class GetRoutineRouteResponseBody(TeaModel):
             self.config_id = m.get('ConfigId')
         if m.get('ConfigType') is not None:
             self.config_type = m.get('ConfigType')
+        if m.get('Fallback') is not None:
+            self.fallback = m.get('Fallback')
         if m.get('Mode') is not None:
             self.mode = m.get('Mode')
         if m.get('RequestId') is not None:
@@ -52075,6 +52326,7 @@ class ListRoutineRoutesResponseBodyConfigs(TeaModel):
         bypass: str = None,
         config_id: int = None,
         config_type: str = None,
+        fallback: str = None,
         mode: str = None,
         route_enable: str = None,
         route_name: str = None,
@@ -52088,6 +52340,7 @@ class ListRoutineRoutesResponseBodyConfigs(TeaModel):
         self.bypass = bypass
         self.config_id = config_id
         self.config_type = config_type
+        self.fallback = fallback
         self.mode = mode
         self.route_enable = route_enable
         self.route_name = route_name
@@ -52113,6 +52366,8 @@ class ListRoutineRoutesResponseBodyConfigs(TeaModel):
             result['ConfigId'] = self.config_id
         if self.config_type is not None:
             result['ConfigType'] = self.config_type
+        if self.fallback is not None:
+            result['Fallback'] = self.fallback
         if self.mode is not None:
             result['Mode'] = self.mode
         if self.route_enable is not None:
@@ -52141,6 +52396,8 @@ class ListRoutineRoutesResponseBodyConfigs(TeaModel):
             self.config_id = m.get('ConfigId')
         if m.get('ConfigType') is not None:
             self.config_type = m.get('ConfigType')
+        if m.get('Fallback') is not None:
+            self.fallback = m.get('Fallback')
         if m.get('Mode') is not None:
             self.mode = m.get('Mode')
         if m.get('RouteEnable') is not None:
@@ -53045,6 +53302,7 @@ class ListSiteRoutesResponseBodyConfigs(TeaModel):
         bypass: str = None,
         config_id: int = None,
         config_type: str = None,
+        fallback: str = None,
         mode: str = None,
         route_enable: str = None,
         route_name: str = None,
@@ -53056,6 +53314,7 @@ class ListSiteRoutesResponseBodyConfigs(TeaModel):
         self.bypass = bypass
         self.config_id = config_id
         self.config_type = config_type
+        self.fallback = fallback
         self.mode = mode
         self.route_enable = route_enable
         self.route_name = route_name
@@ -53079,6 +53338,8 @@ class ListSiteRoutesResponseBodyConfigs(TeaModel):
             result['ConfigId'] = self.config_id
         if self.config_type is not None:
             result['ConfigType'] = self.config_type
+        if self.fallback is not None:
+            result['Fallback'] = self.fallback
         if self.mode is not None:
             result['Mode'] = self.mode
         if self.route_enable is not None:
@@ -53103,6 +53364,8 @@ class ListSiteRoutesResponseBodyConfigs(TeaModel):
             self.config_id = m.get('ConfigId')
         if m.get('ConfigType') is not None:
             self.config_type = m.get('ConfigType')
+        if m.get('Fallback') is not None:
+            self.fallback = m.get('Fallback')
         if m.get('Mode') is not None:
             self.mode = m.get('Mode')
         if m.get('RouteEnable') is not None:
@@ -68097,6 +68360,7 @@ class UpdateRoutineRouteRequest(TeaModel):
         self,
         bypass: str = None,
         config_id: int = None,
+        fallback: str = None,
         route_enable: str = None,
         route_name: str = None,
         routine_name: str = None,
@@ -68107,6 +68371,7 @@ class UpdateRoutineRouteRequest(TeaModel):
         self.bypass = bypass
         # This parameter is required.
         self.config_id = config_id
+        self.fallback = fallback
         self.route_enable = route_enable
         self.route_name = route_name
         self.routine_name = routine_name
@@ -68128,6 +68393,8 @@ class UpdateRoutineRouteRequest(TeaModel):
             result['Bypass'] = self.bypass
         if self.config_id is not None:
             result['ConfigId'] = self.config_id
+        if self.fallback is not None:
+            result['Fallback'] = self.fallback
         if self.route_enable is not None:
             result['RouteEnable'] = self.route_enable
         if self.route_name is not None:
@@ -68148,6 +68415,8 @@ class UpdateRoutineRouteRequest(TeaModel):
             self.bypass = m.get('Bypass')
         if m.get('ConfigId') is not None:
             self.config_id = m.get('ConfigId')
+        if m.get('Fallback') is not None:
+            self.fallback = m.get('Fallback')
         if m.get('RouteEnable') is not None:
             self.route_enable = m.get('RouteEnable')
         if m.get('RouteName') is not None:

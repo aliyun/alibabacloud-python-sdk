@@ -1,3 +1,14 @@
+2025-07-10 Version: 2.28.0
+- Support API DescribeUrlObservationData.
+- Update API CreateRoutineRoute: add request parameters Fallback.
+- Update API GetEdgeContainerAppResourceStatus: add response parameters Body.Regions.$.IsOffline.
+- Update API GetEdgeContainerAppResourceStatus: add response parameters Body.Regions.$.IsStaging.
+- Update API GetRoutineRoute: add response parameters Body.Fallback.
+- Update API ListRoutineRoutes: add response parameters Body.Configs.$.Fallback.
+- Update API ListSiteRoutes: add response parameters Body.Configs.$.Fallback.
+- Update API UpdateRoutineRoute: add request parameters Fallback.
+
+
 2025-06-24 Version: 2.27.0
 - Support API CreateUrlObservation.
 - Support API DeleteUrlObservation.
