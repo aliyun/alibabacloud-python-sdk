@@ -1,3 +1,6 @@
+2025-07-10 Version: 3.8.2
+- Generated python 2022-08-09 for Cloudauth-intl.
+
 2025-07-10 Version: 3.8.1
 - Update API Initialize: add request parameters DocName.
 - Update API Initialize: add request parameters DocNo.
