@@ -221,6 +221,10 @@ class Client(OpenApiClient):
             query['AdviceDate'] = request.advice_date
         if not UtilClient.is_unset(request.advice_id):
             query['AdviceId'] = request.advice_id
+        if not UtilClient.is_unset(request.apply_type):
+            query['ApplyType'] = request.apply_type
+        if not UtilClient.is_unset(request.build_immediately):
+            query['BuildImmediately'] = request.build_immediately
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.region_id):
@@ -262,6 +266,10 @@ class Client(OpenApiClient):
             query['AdviceDate'] = request.advice_date
         if not UtilClient.is_unset(request.advice_id):
             query['AdviceId'] = request.advice_id
+        if not UtilClient.is_unset(request.apply_type):
+            query['ApplyType'] = request.apply_type
+        if not UtilClient.is_unset(request.build_immediately):
+            query['BuildImmediately'] = request.build_immediately
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.region_id):
@@ -449,6 +457,10 @@ class Client(OpenApiClient):
             query['AdviceDate'] = request.advice_date
         if not UtilClient.is_unset(request.advice_id_list):
             query['AdviceIdList'] = request.advice_id_list
+        if not UtilClient.is_unset(request.apply_type):
+            query['ApplyType'] = request.apply_type
+        if not UtilClient.is_unset(request.build_immediately):
+            query['BuildImmediately'] = request.build_immediately
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.region_id):
@@ -490,6 +502,10 @@ class Client(OpenApiClient):
             query['AdviceDate'] = request.advice_date
         if not UtilClient.is_unset(request.advice_id_list):
             query['AdviceIdList'] = request.advice_id_list
+        if not UtilClient.is_unset(request.apply_type):
+            query['ApplyType'] = request.apply_type
+        if not UtilClient.is_unset(request.build_immediately):
+            query['BuildImmediately'] = request.build_immediately
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.region_id):

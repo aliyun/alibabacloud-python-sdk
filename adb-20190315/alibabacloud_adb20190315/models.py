@@ -145,6 +145,8 @@ class ApplyAdviceByIdRequest(TeaModel):
         self,
         advice_date: int = None,
         advice_id: str = None,
+        apply_type: str = None,
+        build_immediately: bool = None,
         dbcluster_id: str = None,
         region_id: str = None,
     ):
@@ -152,6 +154,8 @@ class ApplyAdviceByIdRequest(TeaModel):
         self.advice_date = advice_date
         # The suggestion ID.
         self.advice_id = advice_id
+        self.apply_type = apply_type
+        self.build_immediately = build_immediately
         # The cluster ID.
         # 
         # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition clusters within a region.
@@ -178,6 +182,10 @@ class ApplyAdviceByIdRequest(TeaModel):
             result['AdviceDate'] = self.advice_date
         if self.advice_id is not None:
             result['AdviceId'] = self.advice_id
+        if self.apply_type is not None:
+            result['ApplyType'] = self.apply_type
+        if self.build_immediately is not None:
+            result['BuildImmediately'] = self.build_immediately
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
         if self.region_id is not None:
@@ -190,6 +198,10 @@ class ApplyAdviceByIdRequest(TeaModel):
             self.advice_date = m.get('AdviceDate')
         if m.get('AdviceId') is not None:
             self.advice_id = m.get('AdviceId')
+        if m.get('ApplyType') is not None:
+            self.apply_type = m.get('ApplyType')
+        if m.get('BuildImmediately') is not None:
+            self.build_immediately = m.get('BuildImmediately')
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('RegionId') is not None:
@@ -406,6 +418,8 @@ class BatchApplyAdviceByIdListRequest(TeaModel):
         self,
         advice_date: int = None,
         advice_id_list: str = None,
+        apply_type: str = None,
+        build_immediately: bool = None,
         dbcluster_id: str = None,
         region_id: str = None,
     ):
@@ -413,6 +427,8 @@ class BatchApplyAdviceByIdListRequest(TeaModel):
         self.advice_date = advice_date
         # The IDs of the suggestions to be applied. Separate multiple IDs with commas (,).
         self.advice_id_list = advice_id_list
+        self.apply_type = apply_type
+        self.build_immediately = build_immediately
         # The cluster ID.
         # 
         # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition clusters within a region.
@@ -437,6 +453,10 @@ class BatchApplyAdviceByIdListRequest(TeaModel):
             result['AdviceDate'] = self.advice_date
         if self.advice_id_list is not None:
             result['AdviceIdList'] = self.advice_id_list
+        if self.apply_type is not None:
+            result['ApplyType'] = self.apply_type
+        if self.build_immediately is not None:
+            result['BuildImmediately'] = self.build_immediately
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
         if self.region_id is not None:
@@ -449,6 +469,10 @@ class BatchApplyAdviceByIdListRequest(TeaModel):
             self.advice_date = m.get('AdviceDate')
         if m.get('AdviceIdList') is not None:
             self.advice_id_list = m.get('AdviceIdList')
+        if m.get('ApplyType') is not None:
+            self.apply_type = m.get('ApplyType')
+        if m.get('BuildImmediately') is not None:
+            self.build_immediately = m.get('BuildImmediately')
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('RegionId') is not None:
@@ -5951,6 +5975,7 @@ class DescribeAppliedAdvicesResponseBodyItems(TeaModel):
         advice_id: str = None,
         benefit: str = None,
         build_sql: str = None,
+        index_fields: str = None,
         job_status: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -5968,6 +5993,7 @@ class DescribeAppliedAdvicesResponseBodyItems(TeaModel):
         self.benefit = benefit
         # The SQL statement that is used to execute the BUILD job.
         self.build_sql = build_sql
+        self.index_fields = index_fields
         # The state of the suggestion execution job. Valid values:
         # 
         # *   **SUCCEED**\
@@ -6014,6 +6040,8 @@ class DescribeAppliedAdvicesResponseBodyItems(TeaModel):
             result['Benefit'] = self.benefit
         if self.build_sql is not None:
             result['BuildSQL'] = self.build_sql
+        if self.index_fields is not None:
+            result['IndexFields'] = self.index_fields
         if self.job_status is not None:
             result['JobStatus'] = self.job_status
         if self.page_number is not None:
@@ -6044,6 +6072,8 @@ class DescribeAppliedAdvicesResponseBodyItems(TeaModel):
             self.benefit = m.get('Benefit')
         if m.get('BuildSQL') is not None:
             self.build_sql = m.get('BuildSQL')
+        if m.get('IndexFields') is not None:
+            self.index_fields = m.get('IndexFields')
         if m.get('JobStatus') is not None:
             self.job_status = m.get('JobStatus')
         if m.get('PageNumber') is not None:
@@ -7177,6 +7207,7 @@ class DescribeAvailableAdvicesResponseBodyItems(TeaModel):
         advice_id: str = None,
         advice_type: str = None,
         benefit: str = None,
+        index_fields: str = None,
         page_number: int = None,
         page_size: int = None,
         reason: str = None,
@@ -7196,6 +7227,7 @@ class DescribeAvailableAdvicesResponseBodyItems(TeaModel):
         self.advice_type = advice_type
         # The benefit of the suggestion.
         self.benefit = benefit
+        self.index_fields = index_fields
         # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Valid values:
@@ -7232,6 +7264,8 @@ class DescribeAvailableAdvicesResponseBodyItems(TeaModel):
             result['AdviceType'] = self.advice_type
         if self.benefit is not None:
             result['Benefit'] = self.benefit
+        if self.index_fields is not None:
+            result['IndexFields'] = self.index_fields
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -7258,6 +7292,8 @@ class DescribeAvailableAdvicesResponseBodyItems(TeaModel):
             self.advice_type = m.get('AdviceType')
         if m.get('Benefit') is not None:
             self.benefit = m.get('Benefit')
+        if m.get('IndexFields') is not None:
+            self.index_fields = m.get('IndexFields')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:

@@ -1,3 +1,12 @@
+2025-07-10 Version: 5.0.6
+- Update API ApplyAdviceById: add request parameters ApplyType.
+- Update API ApplyAdviceById: add request parameters BuildImmediately.
+- Update API BatchApplyAdviceByIdList: add request parameters ApplyType.
+- Update API BatchApplyAdviceByIdList: add request parameters BuildImmediately.
+- Update API DescribeAppliedAdvices: add response parameters Body.Items.$.IndexFields.
+- Update API DescribeAvailableAdvices: add response parameters Body.Items.$.IndexFields.
+
+
 2025-06-28 Version: 5.0.5
 - Update API DescribeSQLPatterns: add request parameters UserName.
 
