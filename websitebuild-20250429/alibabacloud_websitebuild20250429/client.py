@@ -55,14 +55,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.logo_version):
+            query['LogoVersion'] = request.logo_version
         if not UtilClient.is_unset(request.negative_prompt):
             query['NegativePrompt'] = request.negative_prompt
         if not UtilClient.is_unset(request.parameters):
             query['Parameters'] = request.parameters
         if not UtilClient.is_unset(request.prompt):
             query['Prompt'] = request.prompt
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -96,14 +96,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.logo_version):
+            query['LogoVersion'] = request.logo_version
         if not UtilClient.is_unset(request.negative_prompt):
             query['NegativePrompt'] = request.negative_prompt
         if not UtilClient.is_unset(request.parameters):
             query['Parameters'] = request.parameters
         if not UtilClient.is_unset(request.prompt):
             query['Prompt'] = request.prompt
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

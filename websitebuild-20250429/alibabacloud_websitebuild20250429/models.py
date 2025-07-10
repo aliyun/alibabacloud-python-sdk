@@ -7,15 +7,15 @@ from typing import Dict, List
 class CreateLogoTaskRequest(TeaModel):
     def __init__(
         self,
+        logo_version: str = None,
         negative_prompt: str = None,
         parameters: str = None,
         prompt: str = None,
-        version: str = None,
     ):
+        self.logo_version = logo_version
         self.negative_prompt = negative_prompt
         self.parameters = parameters
         self.prompt = prompt
-        self.version = version
 
     def validate(self):
         pass
@@ -26,26 +26,26 @@ class CreateLogoTaskRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.logo_version is not None:
+            result['LogoVersion'] = self.logo_version
         if self.negative_prompt is not None:
             result['NegativePrompt'] = self.negative_prompt
         if self.parameters is not None:
             result['Parameters'] = self.parameters
         if self.prompt is not None:
             result['Prompt'] = self.prompt
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('LogoVersion') is not None:
+            self.logo_version = m.get('LogoVersion')
         if m.get('NegativePrompt') is not None:
             self.negative_prompt = m.get('NegativePrompt')
         if m.get('Parameters') is not None:
             self.parameters = m.get('Parameters')
         if m.get('Prompt') is not None:
             self.prompt = m.get('Prompt')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 

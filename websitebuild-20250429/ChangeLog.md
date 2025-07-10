@@ -1,3 +1,8 @@
+2025-07-10 Version: 2.0.0
+- Update API CreateLogoTask: add request parameters LogoVersion.
+- Update API CreateLogoTask: delete request parameters Version.
+
+
 2025-06-25 Version: 1.2.1
 - Generated python 2025-04-29 for WebsiteBuild.
 
