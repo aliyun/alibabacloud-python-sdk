@@ -1,3 +1,7 @@
+2025-07-10 Version: 2.5.5
+- Update API ListJobs: add response parameters Body.Data.Applications.$.ImageUrl.
+
+
 2025-07-04 Version: 2.5.4
 - Update API CreateApplication: add request parameters EnablePrometheus.
 - Update API CreateApplication: add request parameters IsStateful.

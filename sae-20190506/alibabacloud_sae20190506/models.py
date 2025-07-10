@@ -42739,6 +42739,7 @@ class ListJobsResponseBodyDataApplications(TeaModel):
         completion_time: int = None,
         cpu: int = None,
         failed: int = None,
+        image_url: str = None,
         last_changeorder_state: str = None,
         last_job_state: str = None,
         last_start_time: int = None,
@@ -42773,6 +42774,7 @@ class ListJobsResponseBodyDataApplications(TeaModel):
         self.cpu = cpu
         # The number of instances that failed to run.
         self.failed = failed
+        self.image_url = image_url
         # Indicates whether the latest change order was executed. Valid values:
         # 
         # *   **0**: The latest change order failed to be executed.
@@ -42840,6 +42842,8 @@ class ListJobsResponseBodyDataApplications(TeaModel):
             result['Cpu'] = self.cpu
         if self.failed is not None:
             result['Failed'] = self.failed
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
         if self.last_changeorder_state is not None:
             result['LastChangeorderState'] = self.last_changeorder_state
         if self.last_job_state is not None:
@@ -42882,6 +42886,8 @@ class ListJobsResponseBodyDataApplications(TeaModel):
             self.cpu = m.get('Cpu')
         if m.get('Failed') is not None:
             self.failed = m.get('Failed')
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
         if m.get('LastChangeorderState') is not None:
             self.last_changeorder_state = m.get('LastChangeorderState')
         if m.get('LastJobState') is not None:
