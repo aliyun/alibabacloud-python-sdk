@@ -11732,22 +11732,34 @@ class Client(OpenApiClient):
 
     def install_cloud_app_with_options(
         self,
-        request: vs_20181212_models.InstallCloudAppRequest,
+        tmp_req: vs_20181212_models.InstallCloudAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.InstallCloudAppResponse:
         """
         @summary 安装云应用
         
-        @param request: InstallCloudAppRequest
+        @param tmp_req: InstallCloudAppRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: InstallCloudAppResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = vs_20181212_models.InstallCloudAppShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.rendering_instance_ids):
+            request.rendering_instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rendering_instance_ids, 'RenderingInstanceIds', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.rendering_instance_id):
             query['RenderingInstanceId'] = request.rendering_instance_id
+        if not UtilClient.is_unset(request.rendering_instance_ids_shrink):
+            query['RenderingInstanceIds'] = request.rendering_instance_ids_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11769,22 +11781,34 @@ class Client(OpenApiClient):
 
     async def install_cloud_app_with_options_async(
         self,
-        request: vs_20181212_models.InstallCloudAppRequest,
+        tmp_req: vs_20181212_models.InstallCloudAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.InstallCloudAppResponse:
         """
         @summary 安装云应用
         
-        @param request: InstallCloudAppRequest
+        @param tmp_req: InstallCloudAppRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: InstallCloudAppResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = vs_20181212_models.InstallCloudAppShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.rendering_instance_ids):
+            request.rendering_instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rendering_instance_ids, 'RenderingInstanceIds', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.rendering_instance_id):
             query['RenderingInstanceId'] = request.rendering_instance_id
+        if not UtilClient.is_unset(request.rendering_instance_ids_shrink):
+            query['RenderingInstanceIds'] = request.rendering_instance_ids_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12308,12 +12332,16 @@ class Client(OpenApiClient):
             query['Category'] = request.category
         if not UtilClient.is_unset(request.data_package_id):
             query['DataPackageId'] = request.data_package_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.size):
             query['Size'] = request.size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
@@ -12353,12 +12381,16 @@ class Client(OpenApiClient):
             query['Category'] = request.category
         if not UtilClient.is_unset(request.data_package_id):
             query['DataPackageId'] = request.data_package_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.size):
             query['Size'] = request.size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
@@ -12420,6 +12452,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.gateway_instance_id):
             query['GatewayInstanceId'] = request.gateway_instance_id
         if not UtilClient.is_unset(request.page_number):
@@ -12428,6 +12462,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.rendering_instance_id):
             query['RenderingInstanceId'] = request.rendering_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12461,6 +12497,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.gateway_instance_id):
             query['GatewayInstanceId'] = request.gateway_instance_id
         if not UtilClient.is_unset(request.page_number):
@@ -12469,6 +12507,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.rendering_instance_id):
             query['RenderingInstanceId'] = request.rendering_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12623,6 +12663,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -12631,6 +12673,8 @@ class Client(OpenApiClient):
             query['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.rendering_instance_id):
             query['RenderingInstanceId'] = request.rendering_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.state):
             query['State'] = request.state
         req = open_api_models.OpenApiRequest(
@@ -12669,6 +12713,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -12677,6 +12723,8 @@ class Client(OpenApiClient):
             query['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.rendering_instance_id):
             query['RenderingInstanceId'] = request.rendering_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.state):
             query['State'] = request.state
         req = open_api_models.OpenApiRequest(
@@ -12748,6 +12796,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -12756,6 +12806,8 @@ class Client(OpenApiClient):
             query['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12793,6 +12845,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -12801,6 +12855,8 @@ class Client(OpenApiClient):
             query['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12876,6 +12932,8 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.client_id):
             query['ClientId'] = request.client_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -12886,6 +12944,8 @@ class Client(OpenApiClient):
             query['RenderingInstanceId'] = request.rendering_instance_id
         if not UtilClient.is_unset(request.session_id):
             query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.state):
             query['State'] = request.state
         req = open_api_models.OpenApiRequest(
@@ -12929,6 +12989,8 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.client_id):
             query['ClientId'] = request.client_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -12939,6 +13001,8 @@ class Client(OpenApiClient):
             query['RenderingInstanceId'] = request.rendering_instance_id
         if not UtilClient.is_unset(request.session_id):
             query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.state):
             query['State'] = request.state
         req = open_api_models.OpenApiRequest(
@@ -17722,22 +17786,34 @@ class Client(OpenApiClient):
 
     def uninstall_cloud_app_with_options(
         self,
-        request: vs_20181212_models.UninstallCloudAppRequest,
+        tmp_req: vs_20181212_models.UninstallCloudAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.UninstallCloudAppResponse:
         """
         @summary 卸载云应用
         
-        @param request: UninstallCloudAppRequest
+        @param tmp_req: UninstallCloudAppRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UninstallCloudAppResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = vs_20181212_models.UninstallCloudAppShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.rendering_instance_ids):
+            request.rendering_instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rendering_instance_ids, 'RenderingInstanceIds', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.rendering_instance_id):
             query['RenderingInstanceId'] = request.rendering_instance_id
+        if not UtilClient.is_unset(request.rendering_instance_ids_shrink):
+            query['RenderingInstanceIds'] = request.rendering_instance_ids_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -17759,22 +17835,34 @@ class Client(OpenApiClient):
 
     async def uninstall_cloud_app_with_options_async(
         self,
-        request: vs_20181212_models.UninstallCloudAppRequest,
+        tmp_req: vs_20181212_models.UninstallCloudAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.UninstallCloudAppResponse:
         """
         @summary 卸载云应用
         
-        @param request: UninstallCloudAppRequest
+        @param tmp_req: UninstallCloudAppRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UninstallCloudAppResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = vs_20181212_models.UninstallCloudAppShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.rendering_instance_ids):
+            request.rendering_instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rendering_instance_ids, 'RenderingInstanceIds', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.rendering_instance_id):
             query['RenderingInstanceId'] = request.rendering_instance_id
+        if not UtilClient.is_unset(request.rendering_instance_ids_shrink):
+            query['RenderingInstanceIds'] = request.rendering_instance_ids_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -18588,6 +18676,10 @@ class Client(OpenApiClient):
             query['DownloadUrl'] = request.download_url
         if not UtilClient.is_unset(request.md_5):
             query['Md5'] = request.md_5
+        if not UtilClient.is_unset(request.pkg_format):
+            query['PkgFormat'] = request.pkg_format
+        if not UtilClient.is_unset(request.pkg_type):
+            query['PkgType'] = request.pkg_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -18631,6 +18723,10 @@ class Client(OpenApiClient):
             query['DownloadUrl'] = request.download_url
         if not UtilClient.is_unset(request.md_5):
             query['Md5'] = request.md_5
+        if not UtilClient.is_unset(request.pkg_format):
+            query['PkgFormat'] = request.pkg_format
+        if not UtilClient.is_unset(request.pkg_type):
+            query['PkgType'] = request.pkg_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

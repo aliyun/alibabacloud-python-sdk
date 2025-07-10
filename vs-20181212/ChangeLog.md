@@ -1,3 +1,51 @@
+2025-07-10 Version: 3.4.1
+- Update API DescribeRenderingInstance: add response parameters Body.InternalIp.
+- Update API InstallCloudApp: add request parameters PageNumber.
+- Update API InstallCloudApp: add request parameters PageSize.
+- Update API InstallCloudApp: add request parameters ProjectId.
+- Update API InstallCloudApp: add request parameters RenderingInstanceIds.
+- Update API InstallCloudApp: add response parameters Body.FailedInstanceCount.
+- Update API InstallCloudApp: add response parameters Body.FailedInstances.
+- Update API InstallCloudApp: add response parameters Body.SuccessInstanceCount.
+- Update API InstallCloudApp: add response parameters Body.SuccessInstances.
+- Update API ListCloudAppInstallations: add request parameters EndTime.
+- Update API ListCloudAppInstallations: add request parameters ProjectId.
+- Update API ListCloudAppInstallations: add request parameters StartTime.
+- Update API ListCloudApps: add request parameters EndTime.
+- Update API ListCloudApps: add request parameters PkgType.
+- Update API ListCloudApps: add request parameters StartTime.
+- Update API ListCloudApps: add response parameters Body.CloudApps.$.PkgFormat.
+- Update API ListCloudApps: add response parameters Body.CloudApps.$.PkgType.
+- Update API ListFilePushStatuses: add request parameters EndTime.
+- Update API ListFilePushStatuses: add request parameters StartTime.
+- Update API ListFiles: add request parameters EndTime.
+- Update API ListFiles: add request parameters StartTime.
+- Update API ListPublicKeys: add request parameters EndTime.
+- Update API ListPublicKeys: add request parameters StartTime.
+- Update API ListRenderingDataPackages: add request parameters EndTime.
+- Update API ListRenderingDataPackages: add request parameters StartTime.
+- Update API ListRenderingInstanceGateway: add request parameters EndTime.
+- Update API ListRenderingInstanceGateway: add request parameters StartTime.
+- Update API ListRenderingInstances: add request parameters EndTime.
+- Update API ListRenderingInstances: add request parameters StartTime.
+- Update API ListRenderingProjectInstances: add request parameters EndTime.
+- Update API ListRenderingProjectInstances: add request parameters StartTime.
+- Update API ListRenderingProjects: add request parameters EndTime.
+- Update API ListRenderingProjects: add request parameters StartTime.
+- Update API ListRenderingSessions: add request parameters EndTime.
+- Update API ListRenderingSessions: add request parameters StartTime.
+- Update API UninstallCloudApp: add request parameters PageNumber.
+- Update API UninstallCloudApp: add request parameters PageSize.
+- Update API UninstallCloudApp: add request parameters ProjectId.
+- Update API UninstallCloudApp: add request parameters RenderingInstanceIds.
+- Update API UninstallCloudApp: add response parameters Body.FailedInstanceCount.
+- Update API UninstallCloudApp: add response parameters Body.FailedInstances.
+- Update API UninstallCloudApp: add response parameters Body.SuccessInstanceCount.
+- Update API UninstallCloudApp: add response parameters Body.SuccessInstances.
+- Update API UploadCloudApp: add request parameters PkgFormat.
+- Update API UploadCloudApp: add request parameters PkgType.
+
+
 2025-06-19 Version: 3.4.0
 - Support API GetRenderingInstanceCommandsStatus.
 - Update API DescribeRenderingSession: add response parameters Body.RenderingInstanceId.

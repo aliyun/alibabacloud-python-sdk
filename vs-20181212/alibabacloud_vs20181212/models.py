@@ -12725,6 +12725,7 @@ class DescribeRenderingInstanceResponseBody(TeaModel):
         creation_time: str = None,
         egress_ip: str = None,
         hostname: str = None,
+        internal_ip: str = None,
         isp: str = None,
         port_mappings: List[DescribeRenderingInstanceResponseBodyPortMappings] = None,
         rendering_instance_id: str = None,
@@ -12739,6 +12740,7 @@ class DescribeRenderingInstanceResponseBody(TeaModel):
         self.creation_time = creation_time
         self.egress_ip = egress_ip
         self.hostname = hostname
+        self.internal_ip = internal_ip
         self.isp = isp
         self.port_mappings = port_mappings
         self.rendering_instance_id = rendering_instance_id
@@ -12782,6 +12784,8 @@ class DescribeRenderingInstanceResponseBody(TeaModel):
             result['EgressIp'] = self.egress_ip
         if self.hostname is not None:
             result['Hostname'] = self.hostname
+        if self.internal_ip is not None:
+            result['InternalIp'] = self.internal_ip
         if self.isp is not None:
             result['Isp'] = self.isp
         result['PortMappings'] = []
@@ -12818,6 +12822,8 @@ class DescribeRenderingInstanceResponseBody(TeaModel):
             self.egress_ip = m.get('EgressIp')
         if m.get('Hostname') is not None:
             self.hostname = m.get('Hostname')
+        if m.get('InternalIp') is not None:
+            self.internal_ip = m.get('InternalIp')
         if m.get('Isp') is not None:
             self.isp = m.get('Isp')
         self.port_mappings = []
@@ -21374,12 +21380,19 @@ class InstallCloudAppRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: str = None,
         rendering_instance_id: str = None,
+        rendering_instance_ids: List[str] = None,
     ):
         # This parameter is required.
         self.app_id = app_id
-        # This parameter is required.
+        self.page_number = page_number
+        self.page_size = page_size
+        self.project_id = project_id
         self.rendering_instance_id = rendering_instance_id
+        self.rendering_instance_ids = rendering_instance_ids
 
     def validate(self):
         pass
@@ -21392,25 +21405,52 @@ class InstallCloudAppRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
         if self.rendering_instance_id is not None:
             result['RenderingInstanceId'] = self.rendering_instance_id
+        if self.rendering_instance_ids is not None:
+            result['RenderingInstanceIds'] = self.rendering_instance_ids
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
         if m.get('RenderingInstanceId') is not None:
             self.rendering_instance_id = m.get('RenderingInstanceId')
+        if m.get('RenderingInstanceIds') is not None:
+            self.rendering_instance_ids = m.get('RenderingInstanceIds')
         return self
 
 
-class InstallCloudAppResponseBody(TeaModel):
+class InstallCloudAppShrinkRequest(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
+        app_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: str = None,
+        rendering_instance_id: str = None,
+        rendering_instance_ids_shrink: str = None,
     ):
-        self.request_id = request_id
+        # This parameter is required.
+        self.app_id = app_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.project_id = project_id
+        self.rendering_instance_id = rendering_instance_id
+        self.rendering_instance_ids_shrink = rendering_instance_ids_shrink
 
     def validate(self):
         pass
@@ -21421,14 +21461,168 @@ class InstallCloudAppResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        if self.rendering_instance_ids_shrink is not None:
+            result['RenderingInstanceIds'] = self.rendering_instance_ids_shrink
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        if m.get('RenderingInstanceIds') is not None:
+            self.rendering_instance_ids_shrink = m.get('RenderingInstanceIds')
+        return self
+
+
+class InstallCloudAppResponseBodyFailedInstances(TeaModel):
+    def __init__(
+        self,
+        err_code: int = None,
+        err_message: str = None,
+        rendering_instance_id: str = None,
+    ):
+        self.err_code = err_code
+        self.err_message = err_message
+        self.rendering_instance_id = rendering_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        return self
+
+
+class InstallCloudAppResponseBodySuccessInstances(TeaModel):
+    def __init__(
+        self,
+        rendering_instance_id: str = None,
+    ):
+        self.rendering_instance_id = rendering_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        return self
+
+
+class InstallCloudAppResponseBody(TeaModel):
+    def __init__(
+        self,
+        failed_instance_count: int = None,
+        failed_instances: List[InstallCloudAppResponseBodyFailedInstances] = None,
+        request_id: str = None,
+        success_instance_count: int = None,
+        success_instances: List[InstallCloudAppResponseBodySuccessInstances] = None,
+    ):
+        self.failed_instance_count = failed_instance_count
+        self.failed_instances = failed_instances
+        self.request_id = request_id
+        self.success_instance_count = success_instance_count
+        self.success_instances = success_instances
+
+    def validate(self):
+        if self.failed_instances:
+            for k in self.failed_instances:
+                if k:
+                    k.validate()
+        if self.success_instances:
+            for k in self.success_instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed_instance_count is not None:
+            result['FailedInstanceCount'] = self.failed_instance_count
+        result['FailedInstances'] = []
+        if self.failed_instances is not None:
+            for k in self.failed_instances:
+                result['FailedInstances'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success_instance_count is not None:
+            result['SuccessInstanceCount'] = self.success_instance_count
+        result['SuccessInstances'] = []
+        if self.success_instances is not None:
+            for k in self.success_instances:
+                result['SuccessInstances'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailedInstanceCount') is not None:
+            self.failed_instance_count = m.get('FailedInstanceCount')
+        self.failed_instances = []
+        if m.get('FailedInstances') is not None:
+            for k in m.get('FailedInstances'):
+                temp_model = InstallCloudAppResponseBodyFailedInstances()
+                self.failed_instances.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('SuccessInstanceCount') is not None:
+            self.success_instance_count = m.get('SuccessInstanceCount')
+        self.success_instances = []
+        if m.get('SuccessInstances') is not None:
+            for k in m.get('SuccessInstances'):
+                temp_model = InstallCloudAppResponseBodySuccessInstances()
+                self.success_instances.append(temp_model.from_map(k))
         return self
 
 
@@ -21479,16 +21673,22 @@ class ListCloudAppInstallationsRequest(TeaModel):
         app_id: str = None,
         app_name: str = None,
         app_version: str = None,
+        end_time: str = None,
         page_number: int = None,
         page_size: int = None,
+        project_id: str = None,
         rendering_instance_id: str = None,
+        start_time: str = None,
     ):
         self.app_id = app_id
         self.app_name = app_name
         self.app_version = app_version
+        self.end_time = end_time
         self.page_number = page_number
         self.page_size = page_size
+        self.project_id = project_id
         self.rendering_instance_id = rendering_instance_id
+        self.start_time = start_time
 
     def validate(self):
         pass
@@ -21505,12 +21705,18 @@ class ListCloudAppInstallationsRequest(TeaModel):
             result['AppName'] = self.app_name
         if self.app_version is not None:
             result['AppVersion'] = self.app_version
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
         if self.rendering_instance_id is not None:
             result['RenderingInstanceId'] = self.rendering_instance_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
         return result
 
     def from_map(self, m: dict = None):
@@ -21521,12 +21727,18 @@ class ListCloudAppInstallationsRequest(TeaModel):
             self.app_name = m.get('AppName')
         if m.get('AppVersion') is not None:
             self.app_version = m.get('AppVersion')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
         if m.get('RenderingInstanceId') is not None:
             self.rendering_instance_id = m.get('RenderingInstanceId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
         return self
 
 
@@ -21705,14 +21917,20 @@ class ListCloudAppsRequest(TeaModel):
         app_id: str = None,
         app_name: str = None,
         app_version: str = None,
+        end_time: str = None,
         page_number: int = None,
         page_size: int = None,
+        pkg_type: str = None,
+        start_time: str = None,
     ):
         self.app_id = app_id
         self.app_name = app_name
         self.app_version = app_version
+        self.end_time = end_time
         self.page_number = page_number
         self.page_size = page_size
+        self.pkg_type = pkg_type
+        self.start_time = start_time
 
     def validate(self):
         pass
@@ -21729,10 +21947,16 @@ class ListCloudAppsRequest(TeaModel):
             result['AppName'] = self.app_name
         if self.app_version is not None:
             result['AppVersion'] = self.app_version
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.pkg_type is not None:
+            result['PkgType'] = self.pkg_type
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
         return result
 
     def from_map(self, m: dict = None):
@@ -21743,10 +21967,16 @@ class ListCloudAppsRequest(TeaModel):
             self.app_name = m.get('AppName')
         if m.get('AppVersion') is not None:
             self.app_version = m.get('AppVersion')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('PkgType') is not None:
+            self.pkg_type = m.get('PkgType')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
         return self
 
 
@@ -21757,6 +21987,8 @@ class ListCloudAppsResponseBodyCloudApps(TeaModel):
         app_name: str = None,
         app_version: str = None,
         description: str = None,
+        pkg_format: str = None,
+        pkg_type: str = None,
         status: str = None,
         status_description: str = None,
         update_time: str = None,
@@ -21766,6 +21998,8 @@ class ListCloudAppsResponseBodyCloudApps(TeaModel):
         self.app_name = app_name
         self.app_version = app_version
         self.description = description
+        self.pkg_format = pkg_format
+        self.pkg_type = pkg_type
         self.status = status
         self.status_description = status_description
         self.update_time = update_time
@@ -21788,6 +22022,10 @@ class ListCloudAppsResponseBodyCloudApps(TeaModel):
             result['AppVersion'] = self.app_version
         if self.description is not None:
             result['Description'] = self.description
+        if self.pkg_format is not None:
+            result['PkgFormat'] = self.pkg_format
+        if self.pkg_type is not None:
+            result['PkgType'] = self.pkg_type
         if self.status is not None:
             result['Status'] = self.status
         if self.status_description is not None:
@@ -21808,6 +22046,10 @@ class ListCloudAppsResponseBodyCloudApps(TeaModel):
             self.app_version = m.get('AppVersion')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('PkgFormat') is not None:
+            self.pkg_format = m.get('PkgFormat')
+        if m.get('PkgType') is not None:
+            self.pkg_type = m.get('PkgType')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('StatusDescription') is not None:
@@ -21922,17 +22164,21 @@ class ListCloudAppsResponse(TeaModel):
 class ListFilePushStatusesRequest(TeaModel):
     def __init__(
         self,
+        end_time: str = None,
         file_id: str = None,
         file_name: str = None,
         page_number: int = None,
         page_size: int = None,
         rendering_instance_id: str = None,
+        start_time: str = None,
     ):
+        self.end_time = end_time
         self.file_id = file_id
         self.file_name = file_name
         self.page_number = page_number
         self.page_size = page_size
         self.rendering_instance_id = rendering_instance_id
+        self.start_time = start_time
 
     def validate(self):
         pass
@@ -21943,6 +22189,8 @@ class ListFilePushStatusesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
         if self.file_id is not None:
             result['FileId'] = self.file_id
         if self.file_name is not None:
@@ -21953,10 +22201,14 @@ class ListFilePushStatusesRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.rendering_instance_id is not None:
             result['RenderingInstanceId'] = self.rendering_instance_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
         if m.get('FileId') is not None:
             self.file_id = m.get('FileId')
         if m.get('FileName') is not None:
@@ -21967,6 +22219,8 @@ class ListFilePushStatusesRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RenderingInstanceId') is not None:
             self.rendering_instance_id = m.get('RenderingInstanceId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
         return self
 
 
@@ -22136,15 +22390,19 @@ class ListFilePushStatusesResponse(TeaModel):
 class ListFilesRequest(TeaModel):
     def __init__(
         self,
+        end_time: str = None,
         file_id: str = None,
         file_name: str = None,
         page_number: int = None,
         page_size: int = None,
+        start_time: str = None,
     ):
+        self.end_time = end_time
         self.file_id = file_id
         self.file_name = file_name
         self.page_number = page_number
         self.page_size = page_size
+        self.start_time = start_time
 
     def validate(self):
         pass
@@ -22155,6 +22413,8 @@ class ListFilesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
         if self.file_id is not None:
             result['FileId'] = self.file_id
         if self.file_name is not None:
@@ -22163,10 +22423,14 @@ class ListFilesRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
         if m.get('FileId') is not None:
             self.file_id = m.get('FileId')
         if m.get('FileName') is not None:
@@ -22175,6 +22439,8 @@ class ListFilesRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
         return self
 
 
@@ -22350,17 +22616,21 @@ class ListFilesResponse(TeaModel):
 class ListPublicKeysRequest(TeaModel):
     def __init__(
         self,
+        end_time: str = None,
         key_group: str = None,
         key_name: str = None,
         key_type: str = None,
         page_number: int = None,
         page_size: int = None,
+        start_time: str = None,
     ):
+        self.end_time = end_time
         self.key_group = key_group
         self.key_name = key_name
         self.key_type = key_type
         self.page_number = page_number
         self.page_size = page_size
+        self.start_time = start_time
 
     def validate(self):
         pass
@@ -22371,6 +22641,8 @@ class ListPublicKeysRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
         if self.key_group is not None:
             result['KeyGroup'] = self.key_group
         if self.key_name is not None:
@@ -22381,10 +22653,14 @@ class ListPublicKeysRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
         if m.get('KeyGroup') is not None:
             self.key_group = m.get('KeyGroup')
         if m.get('KeyName') is not None:
@@ -22395,6 +22671,8 @@ class ListPublicKeysRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
         return self
 
 
@@ -22560,16 +22838,20 @@ class ListRenderingDataPackagesRequest(TeaModel):
         self,
         category: str = None,
         data_package_id: str = None,
+        end_time: str = None,
         page_number: int = None,
         page_size: int = None,
         size: int = None,
+        start_time: str = None,
         status: str = None,
     ):
         self.category = category
         self.data_package_id = data_package_id
+        self.end_time = end_time
         self.page_number = page_number
         self.page_size = page_size
         self.size = size
+        self.start_time = start_time
         self.status = status
 
     def validate(self):
@@ -22585,12 +22867,16 @@ class ListRenderingDataPackagesRequest(TeaModel):
             result['Category'] = self.category
         if self.data_package_id is not None:
             result['DataPackageId'] = self.data_package_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.size is not None:
             result['Size'] = self.size
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -22601,12 +22887,16 @@ class ListRenderingDataPackagesRequest(TeaModel):
             self.category = m.get('Category')
         if m.get('DataPackageId') is not None:
             self.data_package_id = m.get('DataPackageId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('Size') is not None:
             self.size = m.get('Size')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -22773,15 +23063,19 @@ class ListRenderingDataPackagesResponse(TeaModel):
 class ListRenderingInstanceGatewayRequest(TeaModel):
     def __init__(
         self,
+        end_time: str = None,
         gateway_instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
         rendering_instance_id: str = None,
+        start_time: str = None,
     ):
+        self.end_time = end_time
         self.gateway_instance_id = gateway_instance_id
         self.page_number = page_number
         self.page_size = page_size
         self.rendering_instance_id = rendering_instance_id
+        self.start_time = start_time
 
     def validate(self):
         pass
@@ -22792,6 +23086,8 @@ class ListRenderingInstanceGatewayRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
         if self.gateway_instance_id is not None:
             result['GatewayInstanceId'] = self.gateway_instance_id
         if self.page_number is not None:
@@ -22800,10 +23096,14 @@ class ListRenderingInstanceGatewayRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.rendering_instance_id is not None:
             result['RenderingInstanceId'] = self.rendering_instance_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
         if m.get('GatewayInstanceId') is not None:
             self.gateway_instance_id = m.get('GatewayInstanceId')
         if m.get('PageNumber') is not None:
@@ -22812,6 +23112,8 @@ class ListRenderingInstanceGatewayRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RenderingInstanceId') is not None:
             self.rendering_instance_id = m.get('RenderingInstanceId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
         return self
 
 
@@ -22969,16 +23271,20 @@ class ListRenderingInstanceGatewayResponse(TeaModel):
 class ListRenderingInstancesRequest(TeaModel):
     def __init__(
         self,
+        end_time: str = None,
         page_number: int = None,
         page_size: int = None,
         rendering_instance_id: str = None,
         rendering_spec: str = None,
+        start_time: str = None,
         storage_size: int = None,
     ):
+        self.end_time = end_time
         self.page_number = page_number
         self.page_size = page_size
         self.rendering_instance_id = rendering_instance_id
         self.rendering_spec = rendering_spec
+        self.start_time = start_time
         self.storage_size = storage_size
 
     def validate(self):
@@ -22990,6 +23296,8 @@ class ListRenderingInstancesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -22998,12 +23306,16 @@ class ListRenderingInstancesRequest(TeaModel):
             result['RenderingInstanceId'] = self.rendering_instance_id
         if self.rendering_spec is not None:
             result['RenderingSpec'] = self.rendering_spec
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
         if self.storage_size is not None:
             result['StorageSize'] = self.storage_size
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -23012,6 +23324,8 @@ class ListRenderingInstancesRequest(TeaModel):
             self.rendering_instance_id = m.get('RenderingInstanceId')
         if m.get('RenderingSpec') is not None:
             self.rendering_spec = m.get('RenderingSpec')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
         if m.get('StorageSize') is not None:
             self.storage_size = m.get('StorageSize')
         return self
@@ -23153,17 +23467,21 @@ class ListRenderingInstancesResponse(TeaModel):
 class ListRenderingProjectInstancesRequest(TeaModel):
     def __init__(
         self,
+        end_time: str = None,
         page_number: int = None,
         page_size: int = None,
         project_id: str = None,
         rendering_instance_id: str = None,
+        start_time: str = None,
         state: str = None,
     ):
+        self.end_time = end_time
         self.page_number = page_number
         self.page_size = page_size
         # This parameter is required.
         self.project_id = project_id
         self.rendering_instance_id = rendering_instance_id
+        self.start_time = start_time
         self.state = state
 
     def validate(self):
@@ -23175,6 +23493,8 @@ class ListRenderingProjectInstancesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -23183,12 +23503,16 @@ class ListRenderingProjectInstancesRequest(TeaModel):
             result['ProjectId'] = self.project_id
         if self.rendering_instance_id is not None:
             result['RenderingInstanceId'] = self.rendering_instance_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
         if self.state is not None:
             result['State'] = self.state
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -23197,6 +23521,8 @@ class ListRenderingProjectInstancesRequest(TeaModel):
             self.project_id = m.get('ProjectId')
         if m.get('RenderingInstanceId') is not None:
             self.rendering_instance_id = m.get('RenderingInstanceId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
         if m.get('State') is not None:
             self.state = m.get('State')
         return self
@@ -23373,15 +23699,19 @@ class ListRenderingProjectInstancesResponse(TeaModel):
 class ListRenderingProjectsRequest(TeaModel):
     def __init__(
         self,
+        end_time: str = None,
         page_number: int = None,
         page_size: int = None,
         project_id: str = None,
         project_name: str = None,
+        start_time: str = None,
     ):
+        self.end_time = end_time
         self.page_number = page_number
         self.page_size = page_size
         self.project_id = project_id
         self.project_name = project_name
+        self.start_time = start_time
 
     def validate(self):
         pass
@@ -23392,6 +23722,8 @@ class ListRenderingProjectsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -23400,10 +23732,14 @@ class ListRenderingProjectsRequest(TeaModel):
             result['ProjectId'] = self.project_id
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -23412,6 +23748,8 @@ class ListRenderingProjectsRequest(TeaModel):
             self.project_id = m.get('ProjectId')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
         return self
 
 
@@ -23594,21 +23932,25 @@ class ListRenderingSessionsRequest(TeaModel):
         self,
         app_id: str = None,
         client_id: str = None,
+        end_time: str = None,
         page_number: int = None,
         page_size: int = None,
         project_id: str = None,
         rendering_instance_id: str = None,
         session_id: str = None,
+        start_time: str = None,
         state: str = None,
     ):
         self.app_id = app_id
         self.client_id = client_id
+        self.end_time = end_time
         self.page_number = page_number
         self.page_size = page_size
         # This parameter is required.
         self.project_id = project_id
         self.rendering_instance_id = rendering_instance_id
         self.session_id = session_id
+        self.start_time = start_time
         self.state = state
 
     def validate(self):
@@ -23624,6 +23966,8 @@ class ListRenderingSessionsRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.client_id is not None:
             result['ClientId'] = self.client_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -23634,6 +23978,8 @@ class ListRenderingSessionsRequest(TeaModel):
             result['RenderingInstanceId'] = self.rendering_instance_id
         if self.session_id is not None:
             result['SessionId'] = self.session_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
         if self.state is not None:
             result['State'] = self.state
         return result
@@ -23644,6 +23990,8 @@ class ListRenderingSessionsRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('ClientId') is not None:
             self.client_id = m.get('ClientId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -23654,6 +24002,8 @@ class ListRenderingSessionsRequest(TeaModel):
             self.rendering_instance_id = m.get('RenderingInstanceId')
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
         if m.get('State') is not None:
             self.state = m.get('State')
         return self
@@ -29622,12 +29972,19 @@ class UninstallCloudAppRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: str = None,
         rendering_instance_id: str = None,
+        rendering_instance_ids: List[str] = None,
     ):
         # This parameter is required.
         self.app_id = app_id
-        # This parameter is required.
+        self.page_number = page_number
+        self.page_size = page_size
+        self.project_id = project_id
         self.rendering_instance_id = rendering_instance_id
+        self.rendering_instance_ids = rendering_instance_ids
 
     def validate(self):
         pass
@@ -29640,25 +29997,52 @@ class UninstallCloudAppRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
         if self.rendering_instance_id is not None:
             result['RenderingInstanceId'] = self.rendering_instance_id
+        if self.rendering_instance_ids is not None:
+            result['RenderingInstanceIds'] = self.rendering_instance_ids
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
         if m.get('RenderingInstanceId') is not None:
             self.rendering_instance_id = m.get('RenderingInstanceId')
+        if m.get('RenderingInstanceIds') is not None:
+            self.rendering_instance_ids = m.get('RenderingInstanceIds')
         return self
 
 
-class UninstallCloudAppResponseBody(TeaModel):
+class UninstallCloudAppShrinkRequest(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
+        app_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: str = None,
+        rendering_instance_id: str = None,
+        rendering_instance_ids_shrink: str = None,
     ):
-        self.request_id = request_id
+        # This parameter is required.
+        self.app_id = app_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.project_id = project_id
+        self.rendering_instance_id = rendering_instance_id
+        self.rendering_instance_ids_shrink = rendering_instance_ids_shrink
 
     def validate(self):
         pass
@@ -29669,14 +30053,168 @@ class UninstallCloudAppResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        if self.rendering_instance_ids_shrink is not None:
+            result['RenderingInstanceIds'] = self.rendering_instance_ids_shrink
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        if m.get('RenderingInstanceIds') is not None:
+            self.rendering_instance_ids_shrink = m.get('RenderingInstanceIds')
+        return self
+
+
+class UninstallCloudAppResponseBodyFailedInstances(TeaModel):
+    def __init__(
+        self,
+        err_code: int = None,
+        err_message: str = None,
+        rendering_instance_id: str = None,
+    ):
+        self.err_code = err_code
+        self.err_message = err_message
+        self.rendering_instance_id = rendering_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        return self
+
+
+class UninstallCloudAppResponseBodySuccessInstances(TeaModel):
+    def __init__(
+        self,
+        rendering_instance_id: str = None,
+    ):
+        self.rendering_instance_id = rendering_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        return self
+
+
+class UninstallCloudAppResponseBody(TeaModel):
+    def __init__(
+        self,
+        failed_instance_count: int = None,
+        failed_instances: List[UninstallCloudAppResponseBodyFailedInstances] = None,
+        request_id: str = None,
+        success_instance_count: int = None,
+        success_instances: List[UninstallCloudAppResponseBodySuccessInstances] = None,
+    ):
+        self.failed_instance_count = failed_instance_count
+        self.failed_instances = failed_instances
+        self.request_id = request_id
+        self.success_instance_count = success_instance_count
+        self.success_instances = success_instances
+
+    def validate(self):
+        if self.failed_instances:
+            for k in self.failed_instances:
+                if k:
+                    k.validate()
+        if self.success_instances:
+            for k in self.success_instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed_instance_count is not None:
+            result['FailedInstanceCount'] = self.failed_instance_count
+        result['FailedInstances'] = []
+        if self.failed_instances is not None:
+            for k in self.failed_instances:
+                result['FailedInstances'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success_instance_count is not None:
+            result['SuccessInstanceCount'] = self.success_instance_count
+        result['SuccessInstances'] = []
+        if self.success_instances is not None:
+            for k in self.success_instances:
+                result['SuccessInstances'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailedInstanceCount') is not None:
+            self.failed_instance_count = m.get('FailedInstanceCount')
+        self.failed_instances = []
+        if m.get('FailedInstances') is not None:
+            for k in m.get('FailedInstances'):
+                temp_model = UninstallCloudAppResponseBodyFailedInstances()
+                self.failed_instances.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('SuccessInstanceCount') is not None:
+            self.success_instance_count = m.get('SuccessInstanceCount')
+        self.success_instances = []
+        if m.get('SuccessInstances') is not None:
+            for k in m.get('SuccessInstances'):
+                temp_model = UninstallCloudAppResponseBodySuccessInstances()
+                self.success_instances.append(temp_model.from_map(k))
         return self
 
 
@@ -30774,6 +31312,8 @@ class UploadCloudAppRequest(TeaModel):
         description: str = None,
         download_url: str = None,
         md_5: str = None,
+        pkg_format: str = None,
+        pkg_type: str = None,
     ):
         # This parameter is required.
         self.app_name = app_name
@@ -30784,6 +31324,8 @@ class UploadCloudAppRequest(TeaModel):
         self.download_url = download_url
         # This parameter is required.
         self.md_5 = md_5
+        self.pkg_format = pkg_format
+        self.pkg_type = pkg_type
 
     def validate(self):
         pass
@@ -30804,6 +31346,10 @@ class UploadCloudAppRequest(TeaModel):
             result['DownloadUrl'] = self.download_url
         if self.md_5 is not None:
             result['Md5'] = self.md_5
+        if self.pkg_format is not None:
+            result['PkgFormat'] = self.pkg_format
+        if self.pkg_type is not None:
+            result['PkgType'] = self.pkg_type
         return result
 
     def from_map(self, m: dict = None):
@@ -30818,6 +31364,10 @@ class UploadCloudAppRequest(TeaModel):
             self.download_url = m.get('DownloadUrl')
         if m.get('Md5') is not None:
             self.md_5 = m.get('Md5')
+        if m.get('PkgFormat') is not None:
+            self.pkg_format = m.get('PkgFormat')
+        if m.get('PkgType') is not None:
+            self.pkg_type = m.get('PkgType')
         return self
 
 
