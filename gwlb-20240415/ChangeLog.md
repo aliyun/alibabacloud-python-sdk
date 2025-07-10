@@ -1,3 +1,10 @@
+2025-07-10 Version: 2.0.2
+- Update API CreateListener: add request parameters TcpIdleTimeout.
+- Update API GetListenerAttribute: add response parameters Body.TcpIdleTimeout.
+- Update API ListListeners: add response parameters Body.Listeners.$.TcpIdleTimeout.
+- Update API UpdateListenerAttribute: add request parameters TcpIdleTimeout.
+
+
 2025-04-17 Version: 2.0.1
 - Update API CreateServerGroup: add request parameters ServerFailoverMode.
 - Update API GetLoadBalancerAttribute: add response parameters Body.TrafficMode.

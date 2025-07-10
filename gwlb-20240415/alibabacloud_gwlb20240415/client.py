@@ -218,6 +218,8 @@ class Client(OpenApiClient):
         body_flat = {}
         if not UtilClient.is_unset(request.tag):
             body_flat['Tag'] = request.tag
+        if not UtilClient.is_unset(request.tcp_idle_timeout):
+            body['TcpIdleTimeout'] = request.tcp_idle_timeout
         body = TeaCore.merge(body,
             OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
@@ -270,6 +272,8 @@ class Client(OpenApiClient):
         body_flat = {}
         if not UtilClient.is_unset(request.tag):
             body_flat['Tag'] = request.tag
+        if not UtilClient.is_unset(request.tcp_idle_timeout):
+            body['TcpIdleTimeout'] = request.tcp_idle_timeout
         body = TeaCore.merge(body,
             OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
@@ -333,11 +337,11 @@ class Client(OpenApiClient):
         """
         @summary Creates a Gateway Load Balancer (GWLB) instance.
         
-        @description *Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2806160.html) of GWLB before calling this operation**.
+        @description *Ensure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2806160.html) of GWLB before calling this operation.**\
         When you create a GWLB instance, the service-linked role AliyunServiceRoleForGwlb is automatically created.
-        CreateLoadBalancer is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the GetLoadBalancerAttribute operation to query the status of a GWLB instance.
-        If the GWLB instance is in the Provisioning state, the GWLB instance is being created.
-        If the GWLB instance is in the Active state, the GWLB instance is created.
+        **CreateLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/2853555.html) operation to query the status of a GWLB instance.
+        If the GWLB instance is in the **Provisioning** state, the GWLB instance is being created.
+        If the GWLB instance is in the **Active** state, the GWLB instance is created.
         
         @param request: CreateLoadBalancerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -391,11 +395,11 @@ class Client(OpenApiClient):
         """
         @summary Creates a Gateway Load Balancer (GWLB) instance.
         
-        @description *Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2806160.html) of GWLB before calling this operation**.
+        @description *Ensure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2806160.html) of GWLB before calling this operation.**\
         When you create a GWLB instance, the service-linked role AliyunServiceRoleForGwlb is automatically created.
-        CreateLoadBalancer is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the GetLoadBalancerAttribute operation to query the status of a GWLB instance.
-        If the GWLB instance is in the Provisioning state, the GWLB instance is being created.
-        If the GWLB instance is in the Active state, the GWLB instance is created.
+        **CreateLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/2853555.html) operation to query the status of a GWLB instance.
+        If the GWLB instance is in the **Provisioning** state, the GWLB instance is being created.
+        If the GWLB instance is in the **Active** state, the GWLB instance is created.
         
         @param request: CreateLoadBalancerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -448,11 +452,11 @@ class Client(OpenApiClient):
         """
         @summary Creates a Gateway Load Balancer (GWLB) instance.
         
-        @description *Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2806160.html) of GWLB before calling this operation**.
+        @description *Ensure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2806160.html) of GWLB before calling this operation.**\
         When you create a GWLB instance, the service-linked role AliyunServiceRoleForGwlb is automatically created.
-        CreateLoadBalancer is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the GetLoadBalancerAttribute operation to query the status of a GWLB instance.
-        If the GWLB instance is in the Provisioning state, the GWLB instance is being created.
-        If the GWLB instance is in the Active state, the GWLB instance is created.
+        **CreateLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/2853555.html) operation to query the status of a GWLB instance.
+        If the GWLB instance is in the **Provisioning** state, the GWLB instance is being created.
+        If the GWLB instance is in the **Active** state, the GWLB instance is created.
         
         @param request: CreateLoadBalancerRequest
         @return: CreateLoadBalancerResponse
@@ -467,11 +471,11 @@ class Client(OpenApiClient):
         """
         @summary Creates a Gateway Load Balancer (GWLB) instance.
         
-        @description *Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2806160.html) of GWLB before calling this operation**.
+        @description *Ensure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2806160.html) of GWLB before calling this operation.**\
         When you create a GWLB instance, the service-linked role AliyunServiceRoleForGwlb is automatically created.
-        CreateLoadBalancer is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the GetLoadBalancerAttribute operation to query the status of a GWLB instance.
-        If the GWLB instance is in the Provisioning state, the GWLB instance is being created.
-        If the GWLB instance is in the Active state, the GWLB instance is created.
+        **CreateLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/2853555.html) operation to query the status of a GWLB instance.
+        If the GWLB instance is in the **Provisioning** state, the GWLB instance is being created.
+        If the GWLB instance is in the **Active** state, the GWLB instance is created.
         
         @param request: CreateLoadBalancerRequest
         @return: CreateLoadBalancerResponse
@@ -2663,6 +2667,8 @@ class Client(OpenApiClient):
             body['ListenerId'] = request.listener_id
         if not UtilClient.is_unset(request.server_group_id):
             body['ServerGroupId'] = request.server_group_id
+        if not UtilClient.is_unset(request.tcp_idle_timeout):
+            body['TcpIdleTimeout'] = request.tcp_idle_timeout
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -2710,6 +2716,8 @@ class Client(OpenApiClient):
             body['ListenerId'] = request.listener_id
         if not UtilClient.is_unset(request.server_group_id):
             body['ServerGroupId'] = request.server_group_id
+        if not UtilClient.is_unset(request.tcp_idle_timeout):
+            body['TcpIdleTimeout'] = request.tcp_idle_timeout
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -2899,11 +2907,11 @@ class Client(OpenApiClient):
         """
         @summary Updates the zones of a Gateway Load Balancer (GWLB) instance.
         
-        @description *Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2806160.html) of GWLB before calling this operation**.
-        UpdateLoadBalancerZones is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the GetLoadBalancerAttribute operation to query the status of the GWLB instance.
-        If the GWLB instance is in the Configuring state, the GWLB instance is being modified.
-        If the GWLB instance is in the Active state, the GWLB instance is modified.
-        >  Before you call this operation, make sure that all zone parameters, including the current zones and the zones that you want to add, are specified. If you do not specify the current zones, the current zones are deleted. You can call the GetLoadBalancerAttribute operation to query the current zones of a GWLB instance.
+        @description *Ensure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2806160.html) of GWLB before calling this operation.**\
+        *UpdateLoadBalancerZones** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/2853555.html) operation to query the status of the GWLB instance.
+        If the GWLB instance is in the **Configuring** state, the GWLB instance is being modified.
+        If the GWLB instance is in the **Active** state, the GWLB instance is modified.
+        >  Before you initiate a call, ensure that all zones, including the current zones and the zones that you want to add, are specified. The zones that you do not specify are deleted. You can call the GetLoadBalancerAttribute operation to query the current zones of your GWLB instance.
         
         @param request: UpdateLoadBalancerZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2949,11 +2957,11 @@ class Client(OpenApiClient):
         """
         @summary Updates the zones of a Gateway Load Balancer (GWLB) instance.
         
-        @description *Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2806160.html) of GWLB before calling this operation**.
-        UpdateLoadBalancerZones is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the GetLoadBalancerAttribute operation to query the status of the GWLB instance.
-        If the GWLB instance is in the Configuring state, the GWLB instance is being modified.
-        If the GWLB instance is in the Active state, the GWLB instance is modified.
-        >  Before you call this operation, make sure that all zone parameters, including the current zones and the zones that you want to add, are specified. If you do not specify the current zones, the current zones are deleted. You can call the GetLoadBalancerAttribute operation to query the current zones of a GWLB instance.
+        @description *Ensure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2806160.html) of GWLB before calling this operation.**\
+        *UpdateLoadBalancerZones** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/2853555.html) operation to query the status of the GWLB instance.
+        If the GWLB instance is in the **Configuring** state, the GWLB instance is being modified.
+        If the GWLB instance is in the **Active** state, the GWLB instance is modified.
+        >  Before you initiate a call, ensure that all zones, including the current zones and the zones that you want to add, are specified. The zones that you do not specify are deleted. You can call the GetLoadBalancerAttribute operation to query the current zones of your GWLB instance.
         
         @param request: UpdateLoadBalancerZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2998,11 +3006,11 @@ class Client(OpenApiClient):
         """
         @summary Updates the zones of a Gateway Load Balancer (GWLB) instance.
         
-        @description *Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2806160.html) of GWLB before calling this operation**.
-        UpdateLoadBalancerZones is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the GetLoadBalancerAttribute operation to query the status of the GWLB instance.
-        If the GWLB instance is in the Configuring state, the GWLB instance is being modified.
-        If the GWLB instance is in the Active state, the GWLB instance is modified.
-        >  Before you call this operation, make sure that all zone parameters, including the current zones and the zones that you want to add, are specified. If you do not specify the current zones, the current zones are deleted. You can call the GetLoadBalancerAttribute operation to query the current zones of a GWLB instance.
+        @description *Ensure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2806160.html) of GWLB before calling this operation.**\
+        *UpdateLoadBalancerZones** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/2853555.html) operation to query the status of the GWLB instance.
+        If the GWLB instance is in the **Configuring** state, the GWLB instance is being modified.
+        If the GWLB instance is in the **Active** state, the GWLB instance is modified.
+        >  Before you initiate a call, ensure that all zones, including the current zones and the zones that you want to add, are specified. The zones that you do not specify are deleted. You can call the GetLoadBalancerAttribute operation to query the current zones of your GWLB instance.
         
         @param request: UpdateLoadBalancerZonesRequest
         @return: UpdateLoadBalancerZonesResponse
@@ -3017,11 +3025,11 @@ class Client(OpenApiClient):
         """
         @summary Updates the zones of a Gateway Load Balancer (GWLB) instance.
         
-        @description *Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2806160.html) of GWLB before calling this operation**.
-        UpdateLoadBalancerZones is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the GetLoadBalancerAttribute operation to query the status of the GWLB instance.
-        If the GWLB instance is in the Configuring state, the GWLB instance is being modified.
-        If the GWLB instance is in the Active state, the GWLB instance is modified.
-        >  Before you call this operation, make sure that all zone parameters, including the current zones and the zones that you want to add, are specified. If you do not specify the current zones, the current zones are deleted. You can call the GetLoadBalancerAttribute operation to query the current zones of a GWLB instance.
+        @description *Ensure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2806160.html) of GWLB before calling this operation.**\
+        *UpdateLoadBalancerZones** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/2853555.html) operation to query the status of the GWLB instance.
+        If the GWLB instance is in the **Configuring** state, the GWLB instance is being modified.
+        If the GWLB instance is in the **Active** state, the GWLB instance is modified.
+        >  Before you initiate a call, ensure that all zones, including the current zones and the zones that you want to add, are specified. The zones that you do not specify are deleted. You can call the GetLoadBalancerAttribute operation to query the current zones of your GWLB instance.
         
         @param request: UpdateLoadBalancerZonesRequest
         @return: UpdateLoadBalancerZonesResponse

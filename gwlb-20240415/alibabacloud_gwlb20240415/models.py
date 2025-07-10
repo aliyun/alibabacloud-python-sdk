@@ -250,6 +250,7 @@ class CreateListenerRequest(TeaModel):
         load_balancer_id: str = None,
         server_group_id: str = None,
         tag: List[CreateListenerRequestTag] = None,
+        tcp_idle_timeout: int = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -276,6 +277,12 @@ class CreateListenerRequest(TeaModel):
         self.server_group_id = server_group_id
         # The tags. You can specify at most 20 tags in each call.
         self.tag = tag
+        # The timeout period of an idle TCP connection. Unit: seconds.
+        # 
+        # Default value: **350**.
+        # 
+        # Valid values: **60** to **6000**.
+        self.tcp_idle_timeout = tcp_idle_timeout
 
     def validate(self):
         if self.tag:
@@ -303,6 +310,8 @@ class CreateListenerRequest(TeaModel):
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
+        if self.tcp_idle_timeout is not None:
+            result['TcpIdleTimeout'] = self.tcp_idle_timeout
         return result
 
     def from_map(self, m: dict = None):
@@ -322,6 +331,8 @@ class CreateListenerRequest(TeaModel):
             for k in m.get('Tag'):
                 temp_model = CreateListenerRequestTag()
                 self.tag.append(temp_model.from_map(k))
+        if m.get('TcpIdleTimeout') is not None:
+            self.tcp_idle_timeout = m.get('TcpIdleTimeout')
         return self
 
 
@@ -409,9 +420,9 @@ class CreateLoadBalancerRequestTag(TeaModel):
     ):
         # The tag key. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 128 characters in length. The tag key cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # It can be up to 128 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value. The tag value can be up to 256 characters in length and cannot contain `http://` or `https://`.
+        # The tag value. It can be up to 256 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -510,7 +521,7 @@ class CreateLoadBalancerRequest(TeaModel):
         self.load_balancer_name = load_balancer_name
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The tag keys. You can specify at most 20 tags in each call.
+        # The tags that are added to the instance.
         self.tag = tag
         # The virtual private cloud (VPC) ID.
         # 
@@ -720,28 +731,28 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
         healthy_threshold: int = None,
         unhealthy_threshold: int = None,
     ):
-        # The backend server port that is used for health checks.
+        # The backend server port used for health checks.
         # 
         # Valid values: **1** to **65535**.
         # 
         # Default value: **80**.
         self.health_check_connect_port = health_check_connect_port
-        # The maximum timeout period of a health check response.
+        # The maximum timeout period for a health check response.
         # 
-        # Unit: seconds
+        # Unit: seconds.
         # 
         # Valid values: **1** to **300**.
         # 
         # Default value: **5**.
         self.health_check_connect_timeout = health_check_connect_timeout
-        # The domain name that you want to use for health checks. Valid values:
+        # The domain name used for health checks. Valid values:
         # 
         # *   **$SERVER_IP** (default): the private IP address of a backend server.
         # *   **domain**: a domain name. The domain name must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), and periods (.).
         # 
-        # > This parameter takes effect only if you set **HealthCheckProtocol** to **HTTP**.
+        # >  This parameter takes effect only if you set **HealthCheckProtocol** to **HTTP**.
         self.health_check_domain = health_check_domain
-        # Specifies whether to enable the health check feature. Valid values:
+        # Specifies whether to enable health checks. Valid values:
         # 
         # *   **true** (default)
         # *   **false**\
@@ -750,32 +761,32 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
         self.health_check_http_code = health_check_http_code
         # The interval at which health checks are performed.
         # 
-        # Unit: seconds
+        # Unit: seconds.
         # 
         # Valid values: **1** to **50**.
         # 
         # Default value: **10**.
         self.health_check_interval = health_check_interval
-        # The URL that is used for health checks.
+        # The path used for health checks.
         # 
-        # The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: _ ; ~ ! ( ) \\* [ ] @ $ ^ : \\" , + =\
+        # It must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: _ ; ~ ! ( ) \\* [ ] @ $ ^ : \\" , + =\
         # 
-        # The URL must start with a forward slash (/).
+        # It must start with a forward slash (/).
         # 
-        # > This parameter takes effect only if you set **HealthCheckProtocol** to **HTTP**.
+        # >  This parameter takes effect only if you set **HealthCheckProtocol** to **HTTP**.
         self.health_check_path = health_check_path
-        # The protocol that is used for health checks. Valid values:
+        # The protocol used for health checks. Valid values:
         # 
         # *   **TCP** (default): GWLB performs TCP health checks by sending SYN packets to a backend server to check whether the port of the backend server is available to receive requests.
-        # *   **HTTP**: GWLB performs HTTP health checks to check whether backend servers are healthy by sending HEAD or GET requests which simulate access from browsers.
+        # *   **HTTP**: GWLB performs HTTP health checks to check whether backend servers are healthy by sending GET requests which simulate access from browsers.
         self.health_check_protocol = health_check_protocol
-        # The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from **fail** to **success**.
+        # The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health check status of the backend server changes from **fail** to **success**.
         # 
         # Valid values: **2** to **10**.
         # 
         # Default value: **2**.
         self.healthy_threshold = healthy_threshold
-        # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from **success** to **fail**.
+        # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health check status of the backend server changes from **success** to **fail**.
         # 
         # Valid values: **2** to **10**.
         # 
@@ -902,11 +913,11 @@ class CreateServerGroupRequest(TeaModel):
         # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The configurations of the health check feature.
+        # The health check configurations.
         self.health_check_config = health_check_config
-        # The backend protocol. Valid values:
+        # The backend protocol. Valid value:
         # 
-        # *   **GENEVE**(default)
+        # *   **GENEVE** (default)
         self.protocol = protocol
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -916,15 +927,19 @@ class CreateServerGroupRequest(TeaModel):
         # *   **3TCH**: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
         # *   **2TCH**: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
         self.scheduler = scheduler
+        # Specifies how GWLB processes requests over existing connections when a backend server is not running as expected. Valid values:
+        # 
+        # *   **NoRebalance** (default): GWLB continues to forward requests over existing connections to the unavailable backend server.
+        # *   **Rebalance**: GWLB forwards requests over existing connections to the remaining healthy backend servers.
         self.server_failover_mode = server_failover_mode
         # The server group name.
         # 
         # The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
         self.server_group_name = server_group_name
-        # The type of server group. Valid values:
+        # The type of the server group. Valid values:
         # 
-        # *   **Instance** (default): allows you to specify servers of the **Ecs**, **Eni**, or **Eci** type.
-        # *   **Ip**: allows you to add servers of by specifying IP addresses.
+        # *   **Instance** (default): allows you to specify resources of the **Ecs**, **Eni**, or **Eci** type.
+        # *   **Ip**: allows you to add servers by specifying their IP addresses.
         self.server_group_type = server_group_type
         # The tag keys.
         # 
@@ -1836,6 +1851,7 @@ class GetListenerAttributeResponseBody(TeaModel):
         request_id: str = None,
         server_group_id: str = None,
         tags: List[GetListenerAttributeResponseBodyTags] = None,
+        tcp_idle_timeout: int = None,
     ):
         # The listener description.
         # 
@@ -1860,6 +1876,8 @@ class GetListenerAttributeResponseBody(TeaModel):
         self.server_group_id = server_group_id
         # The tags.
         self.tags = tags
+        # The timeout period of an idle TCP connection. Unit: seconds.
+        self.tcp_idle_timeout = tcp_idle_timeout
 
     def validate(self):
         if self.tags:
@@ -1891,6 +1909,8 @@ class GetListenerAttributeResponseBody(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['Tags'].append(k.to_map() if k else None)
+        if self.tcp_idle_timeout is not None:
+            result['TcpIdleTimeout'] = self.tcp_idle_timeout
         return result
 
     def from_map(self, m: dict = None):
@@ -1914,6 +1934,8 @@ class GetListenerAttributeResponseBody(TeaModel):
             for k in m.get('Tags'):
                 temp_model = GetListenerAttributeResponseBodyTags()
                 self.tags.append(temp_model.from_map(k))
+        if m.get('TcpIdleTimeout') is not None:
+            self.tcp_idle_timeout = m.get('TcpIdleTimeout')
         return self
 
 
@@ -2568,6 +2590,10 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
         self.resource_group_id = resource_group_id
         # The tags.
         self.tags = tags
+        # Traffic processing mode. Valid values:
+        # 
+        # *   **LoadBalance**: load balancing mode. GWLB forwards traffic to backend servers.
+        # *   **ByPass**: bypass mode. GWLB directly returns traffic to the GWLB endpoint without forwarding it to the backend servers.
         self.traffic_mode = traffic_mode
         # The VPC ID.
         self.vpc_id = vpc_id
@@ -2851,6 +2877,7 @@ class ListListenersResponseBodyListeners(TeaModel):
         load_balancer_id: str = None,
         server_group_id: str = None,
         tags: List[ListListenersResponseBodyListenersTags] = None,
+        tcp_idle_timeout: int = None,
     ):
         # The description of the listener.
         self.listener_description = listener_description
@@ -2869,6 +2896,8 @@ class ListListenersResponseBodyListeners(TeaModel):
         self.server_group_id = server_group_id
         # The tags.
         self.tags = tags
+        # The timeout period of an idle TCP connection. Unit: seconds.
+        self.tcp_idle_timeout = tcp_idle_timeout
 
     def validate(self):
         if self.tags:
@@ -2896,6 +2925,8 @@ class ListListenersResponseBodyListeners(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['Tags'].append(k.to_map() if k else None)
+        if self.tcp_idle_timeout is not None:
+            result['TcpIdleTimeout'] = self.tcp_idle_timeout
         return result
 
     def from_map(self, m: dict = None):
@@ -2915,6 +2946,8 @@ class ListListenersResponseBodyListeners(TeaModel):
             for k in m.get('Tags'):
                 temp_model = ListListenersResponseBodyListenersTags()
                 self.tags.append(temp_model.from_map(k))
+        if m.get('TcpIdleTimeout') is not None:
+            self.tcp_idle_timeout = m.get('TcpIdleTimeout')
         return self
 
 
@@ -3080,14 +3113,14 @@ class ListLoadBalancersRequest(TeaModel):
         vpc_ids: List[str] = None,
         zone_ids: List[str] = None,
     ):
-        # The IP version. Valid values:
+        # The IP version of the NLB instance. Valid values:
         # 
-        # *   **Ipv4**: IPv4
+        # *   **Ipv4**\
         # 
         # Enumeration values:
         # 
         # *   IPv4: IPv4
-        # *   DualStack: DualStack
+        # *   DualStack: dual-stack
         self.address_ip_version = address_ip_version
         # The business status of the GWLB instance. Valid values:
         # 
@@ -3118,6 +3151,10 @@ class ListLoadBalancersRequest(TeaModel):
         self.skip = skip
         # The tags. You can specify at most 20 tags in each call.
         self.tag = tag
+        # Specifies the traffic processing mode. Valid values:
+        # 
+        # *   **LoadBalance**: load balancing mode. GWLB continues to forward traffic to backend servers.
+        # *   **ByPass**: bypass mode. GWLB directly returns traffic to the GWLB endpoint without forwarding it to the backend servers.
         self.traffic_mode = traffic_mode
         # The virtual private cloud (VPC) IDs. You can query at most 20 IDs in each call.
         self.vpc_ids = vpc_ids
@@ -3883,8 +3920,8 @@ class ListServerGroupsRequest(TeaModel):
         self.server_group_names = server_group_names
         # The server group type. Valid values:
         # 
-        # *   **Instance**: allows you to specify servers of the **Ecs**, **Eni**, or **Eci** type.
-        # *   **Ip**: allows you to add servers of by specifying IP addresses.
+        # *   **Instance**: allows you to specify resources of the **Ecs**, **Eni**, or **Eci** type.
+        # *   **Ip**: allows you to add servers by specifying IP addresses.
         self.server_group_type = server_group_type
         # The number of entries to be skipped in the call.
         self.skip = skip
@@ -4193,6 +4230,10 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
         self.scheduler = scheduler
         # The number of server groups.
         self.server_count = server_count
+        # Specifies how GWLB processes requests over existing connections when a backend server is not running as expected. Valid values:
+        # 
+        # *   **NoRebalance**: GWLB continues to forward requests over existing connections to the unhealthy backend server.
+        # *   **Rebalance**: GWLB forwards requests over existing connections to the remaining healthy backend servers.
         self.server_failover_mode = server_failover_mode
         # The server group ID.
         self.server_group_id = server_group_id
@@ -5351,6 +5392,7 @@ class UpdateListenerAttributeRequest(TeaModel):
         listener_description: str = None,
         listener_id: str = None,
         server_group_id: str = None,
+        tcp_idle_timeout: int = None,
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
@@ -5369,6 +5411,10 @@ class UpdateListenerAttributeRequest(TeaModel):
         self.listener_id = listener_id
         # The server group ID.
         self.server_group_id = server_group_id
+        # The timeout period of an idle TCP connection. Unit: seconds.
+        # 
+        # Valid values: **60** to **6000**.
+        self.tcp_idle_timeout = tcp_idle_timeout
 
     def validate(self):
         pass
@@ -5389,6 +5435,8 @@ class UpdateListenerAttributeRequest(TeaModel):
             result['ListenerId'] = self.listener_id
         if self.server_group_id is not None:
             result['ServerGroupId'] = self.server_group_id
+        if self.tcp_idle_timeout is not None:
+            result['TcpIdleTimeout'] = self.tcp_idle_timeout
         return result
 
     def from_map(self, m: dict = None):
@@ -5403,6 +5451,8 @@ class UpdateListenerAttributeRequest(TeaModel):
             self.listener_id = m.get('ListenerId')
         if m.get('ServerGroupId') is not None:
             self.server_group_id = m.get('ServerGroupId')
+        if m.get('TcpIdleTimeout') is not None:
+            self.tcp_idle_timeout = m.get('TcpIdleTimeout')
         return self
 
 
@@ -5503,6 +5553,10 @@ class UpdateLoadBalancerAttributeRequest(TeaModel):
         # 
         # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         self.load_balancer_name = load_balancer_name
+        # Specifies the traffic processing mode. Valid values:
+        # 
+        # *   **LoadBalance**: load balancing mode. In this mode, GWLB forwards traffic to backend servers.
+        # *   **ByPass**: bypass mode. GWLB returns traffic directly to the GWLB endpoint instead of forwarding the traffic to backend servers.
         self.traffic_mode = traffic_mode
 
     def validate(self):
@@ -5842,24 +5896,24 @@ class UpdateServerGroupAttributeRequestHealthCheckConfig(TeaModel):
         healthy_threshold: int = None,
         unhealthy_threshold: int = None,
     ):
-        # The backend server port that is used by health checks.
+        # The backend server port that is used for health checks.
         # 
-        # Valid values: 1 to 65535.
+        # Valid values: **1** to **65535**.
         self.health_check_connect_port = health_check_connect_port
-        # The maximum timeout period of a health check response.
+        # The maximum timeout period for a health check response.
         # 
-        # Unit: seconds
+        # Unit: seconds.
         # 
         # Valid values: **1** to **300**.
         self.health_check_connect_timeout = health_check_connect_timeout
-        # The domain name that is used for health checks. Valid values:
+        # The domain name used for health checks. Valid values:
         # 
         # *   **$SERVER_IP**: the internal IP address of a backend server.
         # *   **domain**: a domain name. The domain name must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), and periods (.).
         # 
-        # > This parameter takes effect only if you set **HealthCheckProtocol** to **HTTP**.
+        # >  This parameter takes effect only if you set **HealthCheckProtocol** to **HTTP**.
         self.health_check_domain = health_check_domain
-        # Specifies whether to enable the health check feature. Valid values:
+        # Specifies whether to enable health checks. Valid values:
         # 
         # *   **true**\
         # *   **false**\
@@ -5868,26 +5922,26 @@ class UpdateServerGroupAttributeRequestHealthCheckConfig(TeaModel):
         self.health_check_http_code = health_check_http_code
         # The interval at which health checks are performed.
         # 
-        # Unit: seconds
+        # Unit: seconds.
         # 
         # Valid values: **1** to **50**.
         self.health_check_interval = health_check_interval
-        # The URL that is used for health checks.
+        # The URL used for health checks.
         # 
-        # The URL must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: ` - / . % ? # &  `The URL must start with a forward slash (/).
+        # The URL must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: ` - / . % ? # &  `It must start with a forward slash (/).
         # 
-        # > This parameter takes effect only if you set **HealthCheckProtocol** to **HTTP**.
+        # >  This parameter takes effect only if you set **HealthCheckProtocol** to **HTTP**.
         self.health_check_path = health_check_path
         # The protocol that is used for health checks. Valid values:
         # 
         # *   **TCP**: TCP health checks send TCP SYN packets to a backend server to check whether the port of the backend server is reachable.
-        # *   **HTTP**: HTTP health checks simulate a process that uses a web browser to access resources by sending HEAD or GET requests to an instance. These requests are used to check whether the instance is healthy.
+        # *   **HTTP**: HTTP health checks simulate a process that uses a web browser to access resources by sending GET requests to an instance. These requests are used to check whether the instance is healthy.
         self.health_check_protocol = health_check_protocol
-        # The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from **fail** to **success**.
+        # The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health check status of the backend server changes from **fail** to **success**.
         # 
         # Valid values: **2** to **10**.
         self.healthy_threshold = healthy_threshold
-        # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from **success** to **fail**.
+        # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health check status of the backend server changes from **success** to **fail**.
         # 
         # Valid values: **2** to **10**.
         self.unhealthy_threshold = unhealthy_threshold
@@ -5973,14 +6027,18 @@ class UpdateServerGroupAttributeRequest(TeaModel):
         # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The configurations of the health check feature.
+        # The health check configuration.
         self.health_check_config = health_check_config
         # The scheduling algorithm. Valid values:
         # 
         # *   **5TCH**: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
-        # *   **3TCH**: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+        # *   **3TCH**: indicates consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
         # *   **2TCH**: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
         self.scheduler = scheduler
+        # Specifies how GWLB processes requests over existing connections when a backend server is not running as expected. Valid values:
+        # 
+        # *   **NoRebalance**: GWLB continues to forward requests over existing connections to the unavailable backend server.
+        # *   **Rebalance**: GWLB forwards requests over existing connections to the remaining healthy backend servers.
         self.server_failover_mode = server_failover_mode
         # The server group ID.
         # 
