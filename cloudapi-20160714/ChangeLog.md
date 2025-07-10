@@ -1,3 +1,9 @@
+2025-07-10 Version: 4.8.5
+- Update API DescribeApp: add response parameters Body.Disabled.
+- Update API DescribeAppAttributes: add response parameters Body.Apps.$.Disabled.
+- Update API ModifyApp: add request parameters Disabled.
+
+
 2025-05-21 Version: 4.8.4
 - Update API CreateDataset: add request parameters Description.
 - Update API DescribeDatasetInfo: add response parameters Body.DatasetInfo.Description.

@@ -19445,6 +19445,8 @@ class Client(OpenApiClient):
             query['AppName'] = request.app_name
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.disabled):
+            query['Disabled'] = request.disabled
         if not UtilClient.is_unset(request.extend):
             query['Extend'] = request.extend
         if not UtilClient.is_unset(request.security_token):
@@ -19494,6 +19496,8 @@ class Client(OpenApiClient):
             query['AppName'] = request.app_name
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.disabled):
+            query['Disabled'] = request.disabled
         if not UtilClient.is_unset(request.extend):
             query['Extend'] = request.extend
         if not UtilClient.is_unset(request.security_token):
