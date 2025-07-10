@@ -1,3 +1,9 @@
+2025-07-10 Version: 4.0.1
+- Update API RenewAppInstanceGroup: add request parameters RenewAmount.
+- Update API RenewAppInstanceGroup: add request parameters RenewMode.
+- Update API RenewAppInstanceGroup: add request parameters RenewNodes.
+
+
 2025-06-25 Version: 4.0.0
 - Support API ListAuthorizedUserGroups.
 - Delete API AccessPageSetAcl.

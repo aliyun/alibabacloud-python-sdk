@@ -3632,7 +3632,7 @@ class Client(OpenApiClient):
 
     def renew_app_instance_group_with_options(
         self,
-        request: appstream_center_20210901_models.RenewAppInstanceGroupRequest,
+        tmp_req: appstream_center_20210901_models.RenewAppInstanceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.RenewAppInstanceGroupResponse:
         """
@@ -3640,11 +3640,15 @@ class Client(OpenApiClient):
         
         @description Before you call this operation, make sure that you fully understand the [billing methods and prices](https://help.aliyun.com/document_detail/426039.html) of App Streaming.
         
-        @param request: RenewAppInstanceGroupRequest
+        @param tmp_req: RenewAppInstanceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RenewAppInstanceGroupResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = appstream_center_20210901_models.RenewAppInstanceGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.renew_nodes):
+            request.renew_nodes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.renew_nodes, 'RenewNodes', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
             query['AppInstanceGroupId'] = request.app_instance_group_id
@@ -3658,6 +3662,12 @@ class Client(OpenApiClient):
             query['ProductType'] = request.product_type
         if not UtilClient.is_unset(request.promotion_id):
             query['PromotionId'] = request.promotion_id
+        if not UtilClient.is_unset(request.renew_amount):
+            query['RenewAmount'] = request.renew_amount
+        if not UtilClient.is_unset(request.renew_mode):
+            query['RenewMode'] = request.renew_mode
+        if not UtilClient.is_unset(request.renew_nodes_shrink):
+            query['RenewNodes'] = request.renew_nodes_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3679,7 +3689,7 @@ class Client(OpenApiClient):
 
     async def renew_app_instance_group_with_options_async(
         self,
-        request: appstream_center_20210901_models.RenewAppInstanceGroupRequest,
+        tmp_req: appstream_center_20210901_models.RenewAppInstanceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.RenewAppInstanceGroupResponse:
         """
@@ -3687,11 +3697,15 @@ class Client(OpenApiClient):
         
         @description Before you call this operation, make sure that you fully understand the [billing methods and prices](https://help.aliyun.com/document_detail/426039.html) of App Streaming.
         
-        @param request: RenewAppInstanceGroupRequest
+        @param tmp_req: RenewAppInstanceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RenewAppInstanceGroupResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = appstream_center_20210901_models.RenewAppInstanceGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.renew_nodes):
+            request.renew_nodes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.renew_nodes, 'RenewNodes', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
             query['AppInstanceGroupId'] = request.app_instance_group_id
@@ -3705,6 +3719,12 @@ class Client(OpenApiClient):
             query['ProductType'] = request.product_type
         if not UtilClient.is_unset(request.promotion_id):
             query['PromotionId'] = request.promotion_id
+        if not UtilClient.is_unset(request.renew_amount):
+            query['RenewAmount'] = request.renew_amount
+        if not UtilClient.is_unset(request.renew_mode):
+            query['RenewMode'] = request.renew_mode
+        if not UtilClient.is_unset(request.renew_nodes_shrink):
+            query['RenewNodes'] = request.renew_nodes_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
