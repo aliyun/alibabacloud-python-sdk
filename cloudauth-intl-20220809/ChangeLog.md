@@ -1,3 +1,8 @@
+2025-07-10 Version: 3.8.1
+- Update API Initialize: add request parameters DocName.
+- Update API Initialize: add request parameters DocNo.
+
+
 2025-07-04 Version: 3.8.0
 - Support API AddressVerifyIntl.
 

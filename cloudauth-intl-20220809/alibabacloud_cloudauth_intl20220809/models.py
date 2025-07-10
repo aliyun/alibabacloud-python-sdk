@@ -3444,6 +3444,8 @@ class InitializeRequest(TeaModel):
         crop: str = None,
         date_of_birth: str = None,
         date_of_expiry: str = None,
+        doc_name: str = None,
+        doc_no: str = None,
         doc_page_config: List[str] = None,
         doc_scan_mode: str = None,
         doc_type: str = None,
@@ -3483,6 +3485,8 @@ class InitializeRequest(TeaModel):
         self.crop = crop
         self.date_of_birth = date_of_birth
         self.date_of_expiry = date_of_expiry
+        self.doc_name = doc_name
+        self.doc_no = doc_no
         self.doc_page_config = doc_page_config
         self.doc_scan_mode = doc_scan_mode
         self.doc_type = doc_type
@@ -3540,6 +3544,10 @@ class InitializeRequest(TeaModel):
             result['DateOfBirth'] = self.date_of_birth
         if self.date_of_expiry is not None:
             result['DateOfExpiry'] = self.date_of_expiry
+        if self.doc_name is not None:
+            result['DocName'] = self.doc_name
+        if self.doc_no is not None:
+            result['DocNo'] = self.doc_no
         if self.doc_page_config is not None:
             result['DocPageConfig'] = self.doc_page_config
         if self.doc_scan_mode is not None:
@@ -3620,6 +3628,10 @@ class InitializeRequest(TeaModel):
             self.date_of_birth = m.get('DateOfBirth')
         if m.get('DateOfExpiry') is not None:
             self.date_of_expiry = m.get('DateOfExpiry')
+        if m.get('DocName') is not None:
+            self.doc_name = m.get('DocName')
+        if m.get('DocNo') is not None:
+            self.doc_no = m.get('DocNo')
         if m.get('DocPageConfig') is not None:
             self.doc_page_config = m.get('DocPageConfig')
         if m.get('DocScanMode') is not None:
@@ -3694,6 +3706,8 @@ class InitializeShrinkRequest(TeaModel):
         crop: str = None,
         date_of_birth: str = None,
         date_of_expiry: str = None,
+        doc_name: str = None,
+        doc_no: str = None,
         doc_page_config_shrink: str = None,
         doc_scan_mode: str = None,
         doc_type: str = None,
@@ -3733,6 +3747,8 @@ class InitializeShrinkRequest(TeaModel):
         self.crop = crop
         self.date_of_birth = date_of_birth
         self.date_of_expiry = date_of_expiry
+        self.doc_name = doc_name
+        self.doc_no = doc_no
         self.doc_page_config_shrink = doc_page_config_shrink
         self.doc_scan_mode = doc_scan_mode
         self.doc_type = doc_type
@@ -3790,6 +3806,10 @@ class InitializeShrinkRequest(TeaModel):
             result['DateOfBirth'] = self.date_of_birth
         if self.date_of_expiry is not None:
             result['DateOfExpiry'] = self.date_of_expiry
+        if self.doc_name is not None:
+            result['DocName'] = self.doc_name
+        if self.doc_no is not None:
+            result['DocNo'] = self.doc_no
         if self.doc_page_config_shrink is not None:
             result['DocPageConfig'] = self.doc_page_config_shrink
         if self.doc_scan_mode is not None:
@@ -3870,6 +3890,10 @@ class InitializeShrinkRequest(TeaModel):
             self.date_of_birth = m.get('DateOfBirth')
         if m.get('DateOfExpiry') is not None:
             self.date_of_expiry = m.get('DateOfExpiry')
+        if m.get('DocName') is not None:
+            self.doc_name = m.get('DocName')
+        if m.get('DocNo') is not None:
+            self.doc_no = m.get('DocNo')
         if m.get('DocPageConfig') is not None:
             self.doc_page_config_shrink = m.get('DocPageConfig')
         if m.get('DocScanMode') is not None:
