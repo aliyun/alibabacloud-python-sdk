@@ -5745,12 +5745,14 @@ class TextModerationPlusResponseBodyData(TeaModel):
         attack_level: str = None,
         attack_result: List[TextModerationPlusResponseBodyDataAttackResult] = None,
         data_id: str = None,
+        detected_language: str = None,
         manual_task_id: str = None,
         result: List[TextModerationPlusResponseBodyDataResult] = None,
         risk_level: str = None,
         score: float = None,
         sensitive_level: str = None,
         sensitive_result: List[TextModerationPlusResponseBodyDataSensitiveResult] = None,
+        translated_content: str = None,
     ):
         # The suggestion.
         self.advice = advice
@@ -5760,6 +5762,7 @@ class TextModerationPlusResponseBodyData(TeaModel):
         self.attack_result = attack_result
         # The id of data
         self.data_id = data_id
+        self.detected_language = detected_language
         self.manual_task_id = manual_task_id
         # The results.
         self.result = result
@@ -5771,6 +5774,7 @@ class TextModerationPlusResponseBodyData(TeaModel):
         self.sensitive_level = sensitive_level
         # The result of sensitivity data detect
         self.sensitive_result = sensitive_result
+        self.translated_content = translated_content
 
     def validate(self):
         if self.advice:
@@ -5808,6 +5812,8 @@ class TextModerationPlusResponseBodyData(TeaModel):
                 result['AttackResult'].append(k.to_map() if k else None)
         if self.data_id is not None:
             result['DataId'] = self.data_id
+        if self.detected_language is not None:
+            result['DetectedLanguage'] = self.detected_language
         if self.manual_task_id is not None:
             result['ManualTaskId'] = self.manual_task_id
         result['Result'] = []
@@ -5824,6 +5830,8 @@ class TextModerationPlusResponseBodyData(TeaModel):
         if self.sensitive_result is not None:
             for k in self.sensitive_result:
                 result['SensitiveResult'].append(k.to_map() if k else None)
+        if self.translated_content is not None:
+            result['TranslatedContent'] = self.translated_content
         return result
 
     def from_map(self, m: dict = None):
@@ -5842,6 +5850,8 @@ class TextModerationPlusResponseBodyData(TeaModel):
                 self.attack_result.append(temp_model.from_map(k))
         if m.get('DataId') is not None:
             self.data_id = m.get('DataId')
+        if m.get('DetectedLanguage') is not None:
+            self.detected_language = m.get('DetectedLanguage')
         if m.get('ManualTaskId') is not None:
             self.manual_task_id = m.get('ManualTaskId')
         self.result = []
@@ -5860,6 +5870,8 @@ class TextModerationPlusResponseBodyData(TeaModel):
             for k in m.get('SensitiveResult'):
                 temp_model = TextModerationPlusResponseBodyDataSensitiveResult()
                 self.sensitive_result.append(temp_model.from_map(k))
+        if m.get('TranslatedContent') is not None:
+            self.translated_content = m.get('TranslatedContent')
         return self
 
 

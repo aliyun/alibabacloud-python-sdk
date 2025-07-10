@@ -1,3 +1,8 @@
+2025-07-10 Version: 2.21.3
+- Update API TextModerationPlus: add response parameters Body.Data.DetectedLanguage.
+- Update API TextModerationPlus: add response parameters Body.Data.TranslatedContent.
+
+
 2025-06-27 Version: 2.21.2
 - Generated python 2022-03-02 for Green.
 
