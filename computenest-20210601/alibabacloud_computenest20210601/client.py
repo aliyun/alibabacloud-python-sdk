@@ -537,6 +537,8 @@ class Client(OpenApiClient):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.service_id):
             query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
         if not UtilClient.is_unset(request.service_version):
             query['ServiceVersion'] = request.service_version
         if not UtilClient.is_unset(request.specification_code):
@@ -612,6 +614,8 @@ class Client(OpenApiClient):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.service_id):
             query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
         if not UtilClient.is_unset(request.service_version):
             query['ServiceVersion'] = request.service_version
         if not UtilClient.is_unset(request.specification_code):

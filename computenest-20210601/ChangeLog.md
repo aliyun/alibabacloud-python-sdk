@@ -1,3 +1,9 @@
+2025-07-10 Version: 4.1.4
+- Update API CreateServiceInstance: add request parameters ServiceInstanceId.
+- Update API GetServiceInstance: add response parameters Body.SupportTrialToPrivate.
+- Update API ListServiceInstances: add response parameters Body.ServiceInstances.$.SupportTrialToPrivate.
+
+
 2025-05-30 Version: 4.1.3
 - Update API GetServiceInstance: add response parameters Body.Service.OperationMetadata.
 

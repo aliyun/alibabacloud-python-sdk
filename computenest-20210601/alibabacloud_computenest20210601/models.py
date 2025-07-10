@@ -1255,6 +1255,7 @@ class CreateServiceInstanceRequest(TeaModel):
         resource_auto_pay: bool = None,
         resource_group_id: str = None,
         service_id: str = None,
+        service_instance_id: str = None,
         service_version: str = None,
         specification_code: str = None,
         specification_name: str = None,
@@ -1309,6 +1310,7 @@ class CreateServiceInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.service_id = service_id
+        self.service_instance_id = service_instance_id
         # The service version.
         self.service_version = service_version
         # Specification code.
@@ -1367,6 +1369,8 @@ class CreateServiceInstanceRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
+        if self.service_instance_id is not None:
+            result['ServiceInstanceId'] = self.service_instance_id
         if self.service_version is not None:
             result['ServiceVersion'] = self.service_version
         if self.specification_code is not None:
@@ -1413,6 +1417,8 @@ class CreateServiceInstanceRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
+        if m.get('ServiceInstanceId') is not None:
+            self.service_instance_id = m.get('ServiceInstanceId')
         if m.get('ServiceVersion') is not None:
             self.service_version = m.get('ServiceVersion')
         if m.get('SpecificationCode') is not None:
@@ -1604,6 +1610,7 @@ class CreateServiceInstanceShrinkRequest(TeaModel):
         resource_auto_pay: bool = None,
         resource_group_id: str = None,
         service_id: str = None,
+        service_instance_id: str = None,
         service_version: str = None,
         specification_code: str = None,
         specification_name: str = None,
@@ -1658,6 +1665,7 @@ class CreateServiceInstanceShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.service_id = service_id
+        self.service_instance_id = service_instance_id
         # The service version.
         self.service_version = service_version
         # Specification code.
@@ -1716,6 +1724,8 @@ class CreateServiceInstanceShrinkRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
+        if self.service_instance_id is not None:
+            result['ServiceInstanceId'] = self.service_instance_id
         if self.service_version is not None:
             result['ServiceVersion'] = self.service_version
         if self.specification_code is not None:
@@ -1762,6 +1772,8 @@ class CreateServiceInstanceShrinkRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
+        if m.get('ServiceInstanceId') is not None:
+            self.service_instance_id = m.get('ServiceInstanceId')
         if m.get('ServiceVersion') is not None:
             self.service_version = m.get('ServiceVersion')
         if m.get('SpecificationCode') is not None:
@@ -4440,9 +4452,9 @@ class GetServiceInstanceResponseBodyServiceUpgradableServiceInfos(TeaModel):
         version: str = None,
         version_name: str = None,
     ):
-        # An upgradable service version.
+        # The service version.
         self.version = version
-        # The version name of an upgradable service version.
+        # The version name.
         self.version_name = version_name
 
     def validate(self):
@@ -4500,6 +4512,7 @@ class GetServiceInstanceResponseBodyService(TeaModel):
         # *   spi: The service is deployed by calling a service provider interface (SPI).
         # *   operation: The service is deployed by using a hosted O\\&M service.
         self.deploy_type = deploy_type
+        # Operation info.
         self.operation_metadata = operation_metadata
         # The time when the service version was published.
         self.publish_time = publish_time
@@ -4532,7 +4545,7 @@ class GetServiceInstanceResponseBodyService(TeaModel):
         self.supplier_name = supplier_name
         # The URL of the service provider.
         self.supplier_url = supplier_url
-        # The upgradable service version.
+        # The service versions that can be updated.
         self.upgradable_service_infos = upgradable_service_infos
         # The service version that can be updated.
         self.upgradable_service_versions = upgradable_service_versions
@@ -4712,6 +4725,7 @@ class GetServiceInstanceResponseBody(TeaModel):
         status: str = None,
         status_detail: str = None,
         supplier_uid: int = None,
+        support_trial_to_private: bool = None,
         tags: List[GetServiceInstanceResponseBodyTags] = None,
         template_name: str = None,
         update_time: str = None,
@@ -4784,7 +4798,7 @@ class GetServiceInstanceResponseBody(TeaModel):
         self.resource_group_id = resource_group_id
         # The resources.
         self.resources = resources
-        # The information about the service to which the service instance belongs.
+        # The information about the cloud service.
         self.service = service
         # The ID of the service instance.
         self.service_instance_id = service_instance_id
@@ -4813,6 +4827,7 @@ class GetServiceInstanceResponseBody(TeaModel):
         self.status_detail = status_detail
         # The Alibaba Cloud account ID of the service provider.
         self.supplier_uid = supplier_uid
+        self.support_trial_to_private = support_trial_to_private
         # The tags.
         self.tags = tags
         # The template name.
@@ -4898,6 +4913,8 @@ class GetServiceInstanceResponseBody(TeaModel):
             result['StatusDetail'] = self.status_detail
         if self.supplier_uid is not None:
             result['SupplierUid'] = self.supplier_uid
+        if self.support_trial_to_private is not None:
+            result['SupportTrialToPrivate'] = self.support_trial_to_private
         result['Tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -4974,6 +4991,8 @@ class GetServiceInstanceResponseBody(TeaModel):
             self.status_detail = m.get('StatusDetail')
         if m.get('SupplierUid') is not None:
             self.supplier_uid = m.get('SupplierUid')
+        if m.get('SupportTrialToPrivate') is not None:
+            self.support_trial_to_private = m.get('SupportTrialToPrivate')
         self.tags = []
         if m.get('Tags') is not None:
             for k in m.get('Tags'):
@@ -8551,6 +8570,7 @@ class ListServiceInstancesResponseBodyServiceInstances(TeaModel):
         source: str = None,
         status: str = None,
         status_detail: str = None,
+        support_trial_to_private: bool = None,
         tags: List[ListServiceInstancesResponseBodyServiceInstancesTags] = None,
         template_name: str = None,
         update_time: str = None,
@@ -8626,6 +8646,7 @@ class ListServiceInstancesResponseBodyServiceInstances(TeaModel):
         self.status = status
         # The description of the deployment of the service instance.
         self.status_detail = status_detail
+        self.support_trial_to_private = support_trial_to_private
         # The custom tags.
         self.tags = tags
         # The template name.
@@ -8691,6 +8712,8 @@ class ListServiceInstancesResponseBodyServiceInstances(TeaModel):
             result['Status'] = self.status
         if self.status_detail is not None:
             result['StatusDetail'] = self.status_detail
+        if self.support_trial_to_private is not None:
+            result['SupportTrialToPrivate'] = self.support_trial_to_private
         result['Tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -8748,6 +8771,8 @@ class ListServiceInstancesResponseBodyServiceInstances(TeaModel):
             self.status = m.get('Status')
         if m.get('StatusDetail') is not None:
             self.status_detail = m.get('StatusDetail')
+        if m.get('SupportTrialToPrivate') is not None:
+            self.support_trial_to_private = m.get('SupportTrialToPrivate')
         self.tags = []
         if m.get('Tags') is not None:
             for k in m.get('Tags'):
