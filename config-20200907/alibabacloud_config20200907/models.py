@@ -23653,6 +23653,7 @@ class ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvalu
         config_rule_name: str = None,
         ignore_date: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_id: str = None,
         resource_name: str = None,
         resource_owner_id: int = None,
@@ -23672,6 +23673,8 @@ class ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvalu
         self.ignore_date = ignore_date
         # The ID of the region in which your resources reside.
         self.region_id = region_id
+        # This parameter is required.
+        self.resource_group_id = resource_group_id
         # The resource ID.
         self.resource_id = resource_id
         # The resource name.
@@ -23702,6 +23705,8 @@ class ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvalu
             result['IgnoreDate'] = self.ignore_date
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.resource_name is not None:
@@ -23726,6 +23731,8 @@ class ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvalu
             self.ignore_date = m.get('IgnoreDate')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceName') is not None:
@@ -28388,6 +28395,7 @@ class ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResu
         config_rule_name: str = None,
         ignore_date: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_id: str = None,
         resource_name: str = None,
         resource_owner_id: int = None,
@@ -28407,6 +28415,8 @@ class ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResu
         self.ignore_date = ignore_date
         # The ID of the region in which your resources reside.
         self.region_id = region_id
+        # This parameter is required.
+        self.resource_group_id = resource_group_id
         # The resource ID.
         self.resource_id = resource_id
         # The resource name.
@@ -28437,6 +28447,8 @@ class ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResu
             result['IgnoreDate'] = self.ignore_date
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.resource_name is not None:
@@ -28461,6 +28473,8 @@ class ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResu
             self.ignore_date = m.get('IgnoreDate')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceName') is not None:

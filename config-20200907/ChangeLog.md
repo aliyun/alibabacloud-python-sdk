@@ -1,3 +1,8 @@
+2025-07-10 Version: 3.0.16
+- Update API ListAggregateConfigRuleEvaluationResults: add response parameters Body.EvaluationResults.EvaluationResultList.$.EvaluationResultIdentifier.EvaluationResultQualifier.ResourceGroupId.
+- Update API ListConfigRuleEvaluationResults: add response parameters Body.EvaluationResults.EvaluationResultList.$.EvaluationResultIdentifier.EvaluationResultQualifier.ResourceGroupId.
+
+
 2025-06-20 Version: 3.0.15
 - Update API GetAggregateDiscoveredResource: add response parameters Body.DiscoveredResourceDetail.VSwitchId.
 - Update API GetAggregateDiscoveredResource: add response parameters Body.DiscoveredResourceDetail.VpcId.
