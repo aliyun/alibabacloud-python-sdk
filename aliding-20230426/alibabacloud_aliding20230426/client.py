@@ -4073,6 +4073,176 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.CopyDentryHeaders()
         return await self.copy_dentry_with_options_async(request, headers, runtime)
 
+    def create_aliding_assistant_with_options(
+        self,
+        tmp_req: aliding_20230426_models.CreateAlidingAssistantRequest,
+        tmp_header: aliding_20230426_models.CreateAlidingAssistantHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CreateAlidingAssistantResponse:
+        """
+        @param tmp_req: CreateAlidingAssistantRequest
+        @param tmp_header: CreateAlidingAssistantHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAlidingAssistantResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.CreateAlidingAssistantShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.CreateAlidingAssistantShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.ext):
+            request.ext_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ext, 'Ext', 'json')
+        if not UtilClient.is_unset(tmp_req.recommend_prompts):
+            request.recommend_prompts_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.recommend_prompts, 'RecommendPrompts', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_code):
+            body['AppCode'] = request.app_code
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.ext_shrink):
+            body['Ext'] = request.ext_shrink
+        if not UtilClient.is_unset(request.icon):
+            body['Icon'] = request.icon
+        if not UtilClient.is_unset(request.instructions):
+            body['Instructions'] = request.instructions
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.recommend_prompts_shrink):
+            body['RecommendPrompts'] = request.recommend_prompts_shrink
+        if not UtilClient.is_unset(request.source):
+            body['Source'] = request.source
+        if not UtilClient.is_unset(request.source_identity_id):
+            body['SourceIdentityId'] = request.source_identity_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.welcome_content):
+            body['WelcomeContent'] = request.welcome_content
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAlidingAssistant',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/aiagent/createAlidingAssistant',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.CreateAlidingAssistantResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_aliding_assistant_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.CreateAlidingAssistantRequest,
+        tmp_header: aliding_20230426_models.CreateAlidingAssistantHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CreateAlidingAssistantResponse:
+        """
+        @param tmp_req: CreateAlidingAssistantRequest
+        @param tmp_header: CreateAlidingAssistantHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAlidingAssistantResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.CreateAlidingAssistantShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.CreateAlidingAssistantShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.ext):
+            request.ext_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ext, 'Ext', 'json')
+        if not UtilClient.is_unset(tmp_req.recommend_prompts):
+            request.recommend_prompts_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.recommend_prompts, 'RecommendPrompts', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_code):
+            body['AppCode'] = request.app_code
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.ext_shrink):
+            body['Ext'] = request.ext_shrink
+        if not UtilClient.is_unset(request.icon):
+            body['Icon'] = request.icon
+        if not UtilClient.is_unset(request.instructions):
+            body['Instructions'] = request.instructions
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.recommend_prompts_shrink):
+            body['RecommendPrompts'] = request.recommend_prompts_shrink
+        if not UtilClient.is_unset(request.source):
+            body['Source'] = request.source
+        if not UtilClient.is_unset(request.source_identity_id):
+            body['SourceIdentityId'] = request.source_identity_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.welcome_content):
+            body['WelcomeContent'] = request.welcome_content
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAlidingAssistant',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/aiagent/createAlidingAssistant',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.CreateAlidingAssistantResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_aliding_assistant(
+        self,
+        request: aliding_20230426_models.CreateAlidingAssistantRequest,
+    ) -> aliding_20230426_models.CreateAlidingAssistantResponse:
+        """
+        @param request: CreateAlidingAssistantRequest
+        @return: CreateAlidingAssistantResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CreateAlidingAssistantHeaders()
+        return self.create_aliding_assistant_with_options(request, headers, runtime)
+
+    async def create_aliding_assistant_async(
+        self,
+        request: aliding_20230426_models.CreateAlidingAssistantRequest,
+    ) -> aliding_20230426_models.CreateAlidingAssistantResponse:
+        """
+        @param request: CreateAlidingAssistantRequest
+        @return: CreateAlidingAssistantResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CreateAlidingAssistantHeaders()
+        return await self.create_aliding_assistant_with_options_async(request, headers, runtime)
+
     def create_delivery_plan_with_options(
         self,
         tmp_req: aliding_20230426_models.CreateDeliveryPlanRequest,
@@ -8051,6 +8221,132 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.CreateWorkspaceDocHeaders()
         return await self.create_workspace_doc_with_options_async(request, headers, runtime)
 
+    def delete_aliding_assistant_with_options(
+        self,
+        tmp_req: aliding_20230426_models.DeleteAlidingAssistantRequest,
+        tmp_header: aliding_20230426_models.DeleteAlidingAssistantHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.DeleteAlidingAssistantResponse:
+        """
+        @param tmp_req: DeleteAlidingAssistantRequest
+        @param tmp_header: DeleteAlidingAssistantHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAlidingAssistantResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.DeleteAlidingAssistantShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.DeleteAlidingAssistantShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.assistant_id):
+            body['AssistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteAlidingAssistant',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/aiagent/deleteAlidingAssistant',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.DeleteAlidingAssistantResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_aliding_assistant_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.DeleteAlidingAssistantRequest,
+        tmp_header: aliding_20230426_models.DeleteAlidingAssistantHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.DeleteAlidingAssistantResponse:
+        """
+        @param tmp_req: DeleteAlidingAssistantRequest
+        @param tmp_header: DeleteAlidingAssistantHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAlidingAssistantResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.DeleteAlidingAssistantShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.DeleteAlidingAssistantShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.assistant_id):
+            body['AssistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteAlidingAssistant',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/aiagent/deleteAlidingAssistant',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.DeleteAlidingAssistantResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_aliding_assistant(
+        self,
+        request: aliding_20230426_models.DeleteAlidingAssistantRequest,
+    ) -> aliding_20230426_models.DeleteAlidingAssistantResponse:
+        """
+        @param request: DeleteAlidingAssistantRequest
+        @return: DeleteAlidingAssistantResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.DeleteAlidingAssistantHeaders()
+        return self.delete_aliding_assistant_with_options(request, headers, runtime)
+
+    async def delete_aliding_assistant_async(
+        self,
+        request: aliding_20230426_models.DeleteAlidingAssistantRequest,
+    ) -> aliding_20230426_models.DeleteAlidingAssistantResponse:
+        """
+        @param request: DeleteAlidingAssistantRequest
+        @return: DeleteAlidingAssistantResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.DeleteAlidingAssistantHeaders()
+        return await self.delete_aliding_assistant_with_options_async(request, headers, runtime)
+
     def delete_columns_with_options(
         self,
         tmp_req: aliding_20230426_models.DeleteColumnsRequest,
@@ -11812,6 +12108,140 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetActivityListHeaders()
         return await self.get_activity_list_with_options_async(request, headers, runtime)
+
+    def get_aliding_assistant_info_with_options(
+        self,
+        tmp_req: aliding_20230426_models.GetAlidingAssistantInfoRequest,
+        tmp_header: aliding_20230426_models.GetAlidingAssistantInfoHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetAlidingAssistantInfoResponse:
+        """
+        @summary 获取阿里钉ai助理信息
+        
+        @param tmp_req: GetAlidingAssistantInfoRequest
+        @param tmp_header: GetAlidingAssistantInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAlidingAssistantInfoResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetAlidingAssistantInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetAlidingAssistantInfoShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.assistant_id):
+            body['AssistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetAlidingAssistantInfo',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/aiagent/getAlidingAssistantInfo',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetAlidingAssistantInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_aliding_assistant_info_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.GetAlidingAssistantInfoRequest,
+        tmp_header: aliding_20230426_models.GetAlidingAssistantInfoHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetAlidingAssistantInfoResponse:
+        """
+        @summary 获取阿里钉ai助理信息
+        
+        @param tmp_req: GetAlidingAssistantInfoRequest
+        @param tmp_header: GetAlidingAssistantInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAlidingAssistantInfoResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetAlidingAssistantInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetAlidingAssistantInfoShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.assistant_id):
+            body['AssistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetAlidingAssistantInfo',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/aiagent/getAlidingAssistantInfo',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetAlidingAssistantInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_aliding_assistant_info(
+        self,
+        request: aliding_20230426_models.GetAlidingAssistantInfoRequest,
+    ) -> aliding_20230426_models.GetAlidingAssistantInfoResponse:
+        """
+        @summary 获取阿里钉ai助理信息
+        
+        @param request: GetAlidingAssistantInfoRequest
+        @return: GetAlidingAssistantInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetAlidingAssistantInfoHeaders()
+        return self.get_aliding_assistant_info_with_options(request, headers, runtime)
+
+    async def get_aliding_assistant_info_async(
+        self,
+        request: aliding_20230426_models.GetAlidingAssistantInfoRequest,
+    ) -> aliding_20230426_models.GetAlidingAssistantInfoResponse:
+        """
+        @summary 获取阿里钉ai助理信息
+        
+        @param request: GetAlidingAssistantInfoRequest
+        @return: GetAlidingAssistantInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetAlidingAssistantInfoHeaders()
+        return await self.get_aliding_assistant_info_with_options_async(request, headers, runtime)
 
     def get_all_sheets_with_options(
         self,
@@ -33792,6 +34222,180 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UnsubscribeEventHeaders()
         return await self.unsubscribe_event_with_options_async(request, headers, runtime)
+
+    def update_aliding_assistant_with_options(
+        self,
+        tmp_req: aliding_20230426_models.UpdateAlidingAssistantRequest,
+        tmp_header: aliding_20230426_models.UpdateAlidingAssistantHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.UpdateAlidingAssistantResponse:
+        """
+        @param tmp_req: UpdateAlidingAssistantRequest
+        @param tmp_header: UpdateAlidingAssistantHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAlidingAssistantResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.UpdateAlidingAssistantShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.UpdateAlidingAssistantShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.ext):
+            request.ext_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ext, 'Ext', 'json')
+        if not UtilClient.is_unset(tmp_req.feature):
+            request.feature_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.feature, 'Feature', 'json')
+        if not UtilClient.is_unset(tmp_req.recommend_prompts):
+            request.recommend_prompts_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.recommend_prompts, 'RecommendPrompts', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.assistant_id):
+            body['AssistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.ext_shrink):
+            body['Ext'] = request.ext_shrink
+        if not UtilClient.is_unset(request.fallback_content):
+            body['FallbackContent'] = request.fallback_content
+        if not UtilClient.is_unset(request.feature_shrink):
+            body['Feature'] = request.feature_shrink
+        if not UtilClient.is_unset(request.icon):
+            body['Icon'] = request.icon
+        if not UtilClient.is_unset(request.instructions):
+            body['Instructions'] = request.instructions
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.recommend_prompts_shrink):
+            body['RecommendPrompts'] = request.recommend_prompts_shrink
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.welcome_content):
+            body['WelcomeContent'] = request.welcome_content
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateAlidingAssistant',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/aiagent/updateAlidingAssistant',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.UpdateAlidingAssistantResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_aliding_assistant_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.UpdateAlidingAssistantRequest,
+        tmp_header: aliding_20230426_models.UpdateAlidingAssistantHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.UpdateAlidingAssistantResponse:
+        """
+        @param tmp_req: UpdateAlidingAssistantRequest
+        @param tmp_header: UpdateAlidingAssistantHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAlidingAssistantResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.UpdateAlidingAssistantShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.UpdateAlidingAssistantShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.ext):
+            request.ext_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ext, 'Ext', 'json')
+        if not UtilClient.is_unset(tmp_req.feature):
+            request.feature_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.feature, 'Feature', 'json')
+        if not UtilClient.is_unset(tmp_req.recommend_prompts):
+            request.recommend_prompts_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.recommend_prompts, 'RecommendPrompts', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.assistant_id):
+            body['AssistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.ext_shrink):
+            body['Ext'] = request.ext_shrink
+        if not UtilClient.is_unset(request.fallback_content):
+            body['FallbackContent'] = request.fallback_content
+        if not UtilClient.is_unset(request.feature_shrink):
+            body['Feature'] = request.feature_shrink
+        if not UtilClient.is_unset(request.icon):
+            body['Icon'] = request.icon
+        if not UtilClient.is_unset(request.instructions):
+            body['Instructions'] = request.instructions
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.recommend_prompts_shrink):
+            body['RecommendPrompts'] = request.recommend_prompts_shrink
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.welcome_content):
+            body['WelcomeContent'] = request.welcome_content
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateAlidingAssistant',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/aiagent/updateAlidingAssistant',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.UpdateAlidingAssistantResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_aliding_assistant(
+        self,
+        request: aliding_20230426_models.UpdateAlidingAssistantRequest,
+    ) -> aliding_20230426_models.UpdateAlidingAssistantResponse:
+        """
+        @param request: UpdateAlidingAssistantRequest
+        @return: UpdateAlidingAssistantResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.UpdateAlidingAssistantHeaders()
+        return self.update_aliding_assistant_with_options(request, headers, runtime)
+
+    async def update_aliding_assistant_async(
+        self,
+        request: aliding_20230426_models.UpdateAlidingAssistantRequest,
+    ) -> aliding_20230426_models.UpdateAlidingAssistantResponse:
+        """
+        @param request: UpdateAlidingAssistantRequest
+        @return: UpdateAlidingAssistantResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.UpdateAlidingAssistantHeaders()
+        return await self.update_aliding_assistant_with_options_async(request, headers, runtime)
 
     def update_conv_extension_with_options(
         self,

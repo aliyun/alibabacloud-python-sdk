@@ -1,3 +1,10 @@
+2025-07-10 Version: 2.42.0
+- Support API CreateAlidingAssistant.
+- Support API DeleteAlidingAssistant.
+- Support API GetAlidingAssistantInfo.
+- Support API UpdateAlidingAssistant.
+
+
 2025-07-09 Version: 2.41.1
 - Generated python 2023-04-26 for aliding.
 

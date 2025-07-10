@@ -10716,6 +10716,421 @@ class CopyDentryResponse(TeaModel):
         return self
 
 
+class CreateAlidingAssistantHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class CreateAlidingAssistantHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: CreateAlidingAssistantHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = CreateAlidingAssistantHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class CreateAlidingAssistantShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class CreateAlidingAssistantRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class CreateAlidingAssistantRequest(TeaModel):
+    def __init__(
+        self,
+        app_code: str = None,
+        description: str = None,
+        ext: Dict[str, str] = None,
+        icon: str = None,
+        instructions: str = None,
+        name: str = None,
+        recommend_prompts: List[str] = None,
+        source: int = None,
+        source_identity_id: str = None,
+        tenant_context: CreateAlidingAssistantRequestTenantContext = None,
+        welcome_content: str = None,
+    ):
+        self.app_code = app_code
+        # This parameter is required.
+        self.description = description
+        self.ext = ext
+        # This parameter is required.
+        self.icon = icon
+        # This parameter is required.
+        self.instructions = instructions
+        # This parameter is required.
+        self.name = name
+        self.recommend_prompts = recommend_prompts
+        # This parameter is required.
+        self.source = source
+        self.source_identity_id = source_identity_id
+        self.tenant_context = tenant_context
+        # This parameter is required.
+        self.welcome_content = welcome_content
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_code is not None:
+            result['AppCode'] = self.app_code
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.ext is not None:
+            result['Ext'] = self.ext
+        if self.icon is not None:
+            result['Icon'] = self.icon
+        if self.instructions is not None:
+            result['Instructions'] = self.instructions
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.recommend_prompts is not None:
+            result['RecommendPrompts'] = self.recommend_prompts
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.source_identity_id is not None:
+            result['SourceIdentityId'] = self.source_identity_id
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        if self.welcome_content is not None:
+            result['WelcomeContent'] = self.welcome_content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppCode') is not None:
+            self.app_code = m.get('AppCode')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Ext') is not None:
+            self.ext = m.get('Ext')
+        if m.get('Icon') is not None:
+            self.icon = m.get('Icon')
+        if m.get('Instructions') is not None:
+            self.instructions = m.get('Instructions')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RecommendPrompts') is not None:
+            self.recommend_prompts = m.get('RecommendPrompts')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('SourceIdentityId') is not None:
+            self.source_identity_id = m.get('SourceIdentityId')
+        if m.get('TenantContext') is not None:
+            temp_model = CreateAlidingAssistantRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        if m.get('WelcomeContent') is not None:
+            self.welcome_content = m.get('WelcomeContent')
+        return self
+
+
+class CreateAlidingAssistantShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_code: str = None,
+        description: str = None,
+        ext_shrink: str = None,
+        icon: str = None,
+        instructions: str = None,
+        name: str = None,
+        recommend_prompts_shrink: str = None,
+        source: int = None,
+        source_identity_id: str = None,
+        tenant_context_shrink: str = None,
+        welcome_content: str = None,
+    ):
+        self.app_code = app_code
+        # This parameter is required.
+        self.description = description
+        self.ext_shrink = ext_shrink
+        # This parameter is required.
+        self.icon = icon
+        # This parameter is required.
+        self.instructions = instructions
+        # This parameter is required.
+        self.name = name
+        self.recommend_prompts_shrink = recommend_prompts_shrink
+        # This parameter is required.
+        self.source = source
+        self.source_identity_id = source_identity_id
+        self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
+        self.welcome_content = welcome_content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_code is not None:
+            result['AppCode'] = self.app_code
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.ext_shrink is not None:
+            result['Ext'] = self.ext_shrink
+        if self.icon is not None:
+            result['Icon'] = self.icon
+        if self.instructions is not None:
+            result['Instructions'] = self.instructions
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.recommend_prompts_shrink is not None:
+            result['RecommendPrompts'] = self.recommend_prompts_shrink
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.source_identity_id is not None:
+            result['SourceIdentityId'] = self.source_identity_id
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        if self.welcome_content is not None:
+            result['WelcomeContent'] = self.welcome_content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppCode') is not None:
+            self.app_code = m.get('AppCode')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Ext') is not None:
+            self.ext_shrink = m.get('Ext')
+        if m.get('Icon') is not None:
+            self.icon = m.get('Icon')
+        if m.get('Instructions') is not None:
+            self.instructions = m.get('Instructions')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RecommendPrompts') is not None:
+            self.recommend_prompts_shrink = m.get('RecommendPrompts')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('SourceIdentityId') is not None:
+            self.source_identity_id = m.get('SourceIdentityId')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        if m.get('WelcomeContent') is not None:
+            self.welcome_content = m.get('WelcomeContent')
+        return self
+
+
+class CreateAlidingAssistantResponseBody(TeaModel):
+    def __init__(
+        self,
+        aliding_assistant_id: str = None,
+        app_code: str = None,
+        jump_url: str = None,
+        process_instance_id: str = None,
+        request_id: str = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.aliding_assistant_id = aliding_assistant_id
+        self.app_code = app_code
+        self.jump_url = jump_url
+        self.process_instance_id = process_instance_id
+        self.request_id = request_id
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliding_assistant_id is not None:
+            result['alidingAssistantId'] = self.aliding_assistant_id
+        if self.app_code is not None:
+            result['appCode'] = self.app_code
+        if self.jump_url is not None:
+            result['jumpUrl'] = self.jump_url
+        if self.process_instance_id is not None:
+            result['processInstanceId'] = self.process_instance_id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('alidingAssistantId') is not None:
+            self.aliding_assistant_id = m.get('alidingAssistantId')
+        if m.get('appCode') is not None:
+            self.app_code = m.get('appCode')
+        if m.get('jumpUrl') is not None:
+            self.jump_url = m.get('jumpUrl')
+        if m.get('processInstanceId') is not None:
+            self.process_instance_id = m.get('processInstanceId')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class CreateAlidingAssistantResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAlidingAssistantResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAlidingAssistantResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDeliveryPlanHeadersAccountContext(TeaModel):
     def __init__(
         self,
@@ -23856,6 +24271,285 @@ class CreateWorkspaceDocResponse(TeaModel):
         return self
 
 
+class DeleteAlidingAssistantHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class DeleteAlidingAssistantHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: DeleteAlidingAssistantHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = DeleteAlidingAssistantHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class DeleteAlidingAssistantShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class DeleteAlidingAssistantRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class DeleteAlidingAssistantRequest(TeaModel):
+    def __init__(
+        self,
+        assistant_id: str = None,
+        tenant_context: DeleteAlidingAssistantRequestTenantContext = None,
+    ):
+        # This parameter is required.
+        self.assistant_id = assistant_id
+        self.tenant_context = tenant_context
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assistant_id is not None:
+            result['AssistantId'] = self.assistant_id
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssistantId') is not None:
+            self.assistant_id = m.get('AssistantId')
+        if m.get('TenantContext') is not None:
+            temp_model = DeleteAlidingAssistantRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        return self
+
+
+class DeleteAlidingAssistantShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        assistant_id: str = None,
+        tenant_context_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.assistant_id = assistant_id
+        self.tenant_context_shrink = tenant_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assistant_id is not None:
+            result['AssistantId'] = self.assistant_id
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssistantId') is not None:
+            self.assistant_id = m.get('AssistantId')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        return self
+
+
+class DeleteAlidingAssistantResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class DeleteAlidingAssistantResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAlidingAssistantResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAlidingAssistantResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteColumnsHeadersAccountContext(TeaModel):
     def __init__(
         self,
@@ -31553,6 +32247,291 @@ class GetActivityListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetActivityListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAlidingAssistantInfoHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class GetAlidingAssistantInfoHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: GetAlidingAssistantInfoHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = GetAlidingAssistantInfoHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class GetAlidingAssistantInfoShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class GetAlidingAssistantInfoRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class GetAlidingAssistantInfoRequest(TeaModel):
+    def __init__(
+        self,
+        assistant_id: str = None,
+        tenant_context: GetAlidingAssistantInfoRequestTenantContext = None,
+    ):
+        # This parameter is required.
+        self.assistant_id = assistant_id
+        self.tenant_context = tenant_context
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assistant_id is not None:
+            result['AssistantId'] = self.assistant_id
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssistantId') is not None:
+            self.assistant_id = m.get('AssistantId')
+        if m.get('TenantContext') is not None:
+            temp_model = GetAlidingAssistantInfoRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        return self
+
+
+class GetAlidingAssistantInfoShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        assistant_id: str = None,
+        tenant_context_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.assistant_id = assistant_id
+        self.tenant_context_shrink = tenant_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assistant_id is not None:
+            result['AssistantId'] = self.assistant_id
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssistantId') is not None:
+            self.assistant_id = m.get('AssistantId')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        return self
+
+
+class GetAlidingAssistantInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        approval_status: int = None,
+        process_instance_id: str = None,
+        request_id: str = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.approval_status = approval_status
+        self.process_instance_id = process_instance_id
+        self.request_id = request_id
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.approval_status is not None:
+            result['approvalStatus'] = self.approval_status
+        if self.process_instance_id is not None:
+            result['processInstanceId'] = self.process_instance_id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('approvalStatus') is not None:
+            self.approval_status = m.get('approvalStatus')
+        if m.get('processInstanceId') is not None:
+            self.process_instance_id = m.get('processInstanceId')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class GetAlidingAssistantInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAlidingAssistantInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAlidingAssistantInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -96154,6 +97133,393 @@ class UnsubscribeEventResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UnsubscribeEventResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateAlidingAssistantHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class UpdateAlidingAssistantHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: UpdateAlidingAssistantHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = UpdateAlidingAssistantHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class UpdateAlidingAssistantShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class UpdateAlidingAssistantRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class UpdateAlidingAssistantRequest(TeaModel):
+    def __init__(
+        self,
+        assistant_id: str = None,
+        description: str = None,
+        ext: Dict[str, str] = None,
+        fallback_content: str = None,
+        feature: Dict[str, str] = None,
+        icon: str = None,
+        instructions: str = None,
+        name: str = None,
+        recommend_prompts: List[str] = None,
+        tenant_context: UpdateAlidingAssistantRequestTenantContext = None,
+        welcome_content: str = None,
+    ):
+        # This parameter is required.
+        self.assistant_id = assistant_id
+        self.description = description
+        self.ext = ext
+        self.fallback_content = fallback_content
+        self.feature = feature
+        self.icon = icon
+        self.instructions = instructions
+        self.name = name
+        self.recommend_prompts = recommend_prompts
+        self.tenant_context = tenant_context
+        self.welcome_content = welcome_content
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assistant_id is not None:
+            result['AssistantId'] = self.assistant_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.ext is not None:
+            result['Ext'] = self.ext
+        if self.fallback_content is not None:
+            result['FallbackContent'] = self.fallback_content
+        if self.feature is not None:
+            result['Feature'] = self.feature
+        if self.icon is not None:
+            result['Icon'] = self.icon
+        if self.instructions is not None:
+            result['Instructions'] = self.instructions
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.recommend_prompts is not None:
+            result['RecommendPrompts'] = self.recommend_prompts
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        if self.welcome_content is not None:
+            result['WelcomeContent'] = self.welcome_content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssistantId') is not None:
+            self.assistant_id = m.get('AssistantId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Ext') is not None:
+            self.ext = m.get('Ext')
+        if m.get('FallbackContent') is not None:
+            self.fallback_content = m.get('FallbackContent')
+        if m.get('Feature') is not None:
+            self.feature = m.get('Feature')
+        if m.get('Icon') is not None:
+            self.icon = m.get('Icon')
+        if m.get('Instructions') is not None:
+            self.instructions = m.get('Instructions')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RecommendPrompts') is not None:
+            self.recommend_prompts = m.get('RecommendPrompts')
+        if m.get('TenantContext') is not None:
+            temp_model = UpdateAlidingAssistantRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        if m.get('WelcomeContent') is not None:
+            self.welcome_content = m.get('WelcomeContent')
+        return self
+
+
+class UpdateAlidingAssistantShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        assistant_id: str = None,
+        description: str = None,
+        ext_shrink: str = None,
+        fallback_content: str = None,
+        feature_shrink: str = None,
+        icon: str = None,
+        instructions: str = None,
+        name: str = None,
+        recommend_prompts_shrink: str = None,
+        tenant_context_shrink: str = None,
+        welcome_content: str = None,
+    ):
+        # This parameter is required.
+        self.assistant_id = assistant_id
+        self.description = description
+        self.ext_shrink = ext_shrink
+        self.fallback_content = fallback_content
+        self.feature_shrink = feature_shrink
+        self.icon = icon
+        self.instructions = instructions
+        self.name = name
+        self.recommend_prompts_shrink = recommend_prompts_shrink
+        self.tenant_context_shrink = tenant_context_shrink
+        self.welcome_content = welcome_content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assistant_id is not None:
+            result['AssistantId'] = self.assistant_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.ext_shrink is not None:
+            result['Ext'] = self.ext_shrink
+        if self.fallback_content is not None:
+            result['FallbackContent'] = self.fallback_content
+        if self.feature_shrink is not None:
+            result['Feature'] = self.feature_shrink
+        if self.icon is not None:
+            result['Icon'] = self.icon
+        if self.instructions is not None:
+            result['Instructions'] = self.instructions
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.recommend_prompts_shrink is not None:
+            result['RecommendPrompts'] = self.recommend_prompts_shrink
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        if self.welcome_content is not None:
+            result['WelcomeContent'] = self.welcome_content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssistantId') is not None:
+            self.assistant_id = m.get('AssistantId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Ext') is not None:
+            self.ext_shrink = m.get('Ext')
+        if m.get('FallbackContent') is not None:
+            self.fallback_content = m.get('FallbackContent')
+        if m.get('Feature') is not None:
+            self.feature_shrink = m.get('Feature')
+        if m.get('Icon') is not None:
+            self.icon = m.get('Icon')
+        if m.get('Instructions') is not None:
+            self.instructions = m.get('Instructions')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RecommendPrompts') is not None:
+            self.recommend_prompts_shrink = m.get('RecommendPrompts')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        if m.get('WelcomeContent') is not None:
+            self.welcome_content = m.get('WelcomeContent')
+        return self
+
+
+class UpdateAlidingAssistantResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class UpdateAlidingAssistantResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateAlidingAssistantResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateAlidingAssistantResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
