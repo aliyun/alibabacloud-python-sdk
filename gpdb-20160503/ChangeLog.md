@@ -1,3 +1,14 @@
+2025-07-10 Version: 4.10.0
+- Support API CreateSupabaseProject.
+- Support API DeleteSupabaseProject.
+- Support API GetSupabaseProject.
+- Support API GetSupabaseProjectApiKeys.
+- Support API GetSupabaseProjectDashboardAccount.
+- Support API ListSupabaseProjects.
+- Support API ModifySupabaseProjectSecurityIps.
+- Support API ResetSupabaseProjectPassword.
+
+
 2025-06-17 Version: 4.9.2
 - Update API DescribeDBInstanceAttribute: add response parameters Body.Items.$.InstanceSpec.
 
