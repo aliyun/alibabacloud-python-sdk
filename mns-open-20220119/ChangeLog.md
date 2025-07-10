@@ -1,3 +1,17 @@
+2025-07-10 Version: 1.2.3
+- Update API CreateEventRule: add request parameters ClientToken.
+- Update API CreateEventRule: add request parameters DeliveryMode.
+- Update API CreateQueue: add request parameters TenantRateLimitPolicy.
+- Update API GetQueueAttributes: add response parameters Body.Data.TenantRateLimitPolicy.
+- Update API GetSubscriptionAttributes: add response parameters Body.Data.TenantRateLimitPolicy.
+- Update API SetQueueAttributes: add request parameters TenantRateLimitPolicy.
+- Update API SetSubscriptionAttributes: add request parameters TenantRateLimitPolicy.
+- Update API Subscribe: add request parameters DmAttributes.
+- Update API Subscribe: add request parameters DysmsAttributes.
+- Update API Subscribe: add request parameters KafkaAttributes.
+- Update API Subscribe: add request parameters TenantRateLimitPolicy.
+
+
 2025-05-20 Version: 1.2.2
 - Update API Subscribe: add request parameters StsRoleArn.
 

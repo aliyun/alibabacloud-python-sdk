@@ -175,6 +175,10 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.match_rules):
             request.match_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.match_rules, 'MatchRules', 'json')
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.delivery_mode):
+            query['DeliveryMode'] = request.delivery_mode
         if not UtilClient.is_unset(request.endpoints_shrink):
             query['Endpoints'] = request.endpoints_shrink
         if not UtilClient.is_unset(request.event_types_shrink):
@@ -226,6 +230,10 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.match_rules):
             request.match_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.match_rules, 'MatchRules', 'json')
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.delivery_mode):
+            query['DeliveryMode'] = request.delivery_mode
         if not UtilClient.is_unset(request.endpoints_shrink):
             query['Endpoints'] = request.endpoints_shrink
         if not UtilClient.is_unset(request.event_types_shrink):
@@ -298,6 +306,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.dlq_policy):
             request.dlq_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dlq_policy, 'DlqPolicy', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_rate_limit_policy):
+            request.tenant_rate_limit_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_rate_limit_policy, 'TenantRateLimitPolicy', 'json')
         query = {}
         if not UtilClient.is_unset(request.delay_seconds):
             query['DelaySeconds'] = request.delay_seconds
@@ -315,6 +325,8 @@ class Client(OpenApiClient):
             query['QueueName'] = request.queue_name
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.tenant_rate_limit_policy_shrink):
+            query['TenantRateLimitPolicy'] = request.tenant_rate_limit_policy_shrink
         if not UtilClient.is_unset(request.visibility_timeout):
             query['VisibilityTimeout'] = request.visibility_timeout
         req = open_api_models.OpenApiRequest(
@@ -353,6 +365,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.dlq_policy):
             request.dlq_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dlq_policy, 'DlqPolicy', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_rate_limit_policy):
+            request.tenant_rate_limit_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_rate_limit_policy, 'TenantRateLimitPolicy', 'json')
         query = {}
         if not UtilClient.is_unset(request.delay_seconds):
             query['DelaySeconds'] = request.delay_seconds
@@ -370,6 +384,8 @@ class Client(OpenApiClient):
             query['QueueName'] = request.queue_name
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.tenant_rate_limit_policy_shrink):
+            query['TenantRateLimitPolicy'] = request.tenant_rate_limit_policy_shrink
         if not UtilClient.is_unset(request.visibility_timeout):
             query['VisibilityTimeout'] = request.visibility_timeout
         req = open_api_models.OpenApiRequest(
@@ -1870,6 +1886,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.dlq_policy):
             request.dlq_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dlq_policy, 'DlqPolicy', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_rate_limit_policy):
+            request.tenant_rate_limit_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_rate_limit_policy, 'TenantRateLimitPolicy', 'json')
         query = {}
         if not UtilClient.is_unset(request.delay_seconds):
             query['DelaySeconds'] = request.delay_seconds
@@ -1885,6 +1903,8 @@ class Client(OpenApiClient):
             query['PollingWaitSeconds'] = request.polling_wait_seconds
         if not UtilClient.is_unset(request.queue_name):
             query['QueueName'] = request.queue_name
+        if not UtilClient.is_unset(request.tenant_rate_limit_policy_shrink):
+            query['TenantRateLimitPolicy'] = request.tenant_rate_limit_policy_shrink
         if not UtilClient.is_unset(request.visibility_timeout):
             query['VisibilityTimeout'] = request.visibility_timeout
         req = open_api_models.OpenApiRequest(
@@ -1923,6 +1943,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.dlq_policy):
             request.dlq_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dlq_policy, 'DlqPolicy', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_rate_limit_policy):
+            request.tenant_rate_limit_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_rate_limit_policy, 'TenantRateLimitPolicy', 'json')
         query = {}
         if not UtilClient.is_unset(request.delay_seconds):
             query['DelaySeconds'] = request.delay_seconds
@@ -1938,6 +1960,8 @@ class Client(OpenApiClient):
             query['PollingWaitSeconds'] = request.polling_wait_seconds
         if not UtilClient.is_unset(request.queue_name):
             query['QueueName'] = request.queue_name
+        if not UtilClient.is_unset(request.tenant_rate_limit_policy_shrink):
+            query['TenantRateLimitPolicy'] = request.tenant_rate_limit_policy_shrink
         if not UtilClient.is_unset(request.visibility_timeout):
             query['VisibilityTimeout'] = request.visibility_timeout
         req = open_api_models.OpenApiRequest(
@@ -2002,6 +2026,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.dlq_policy):
             request.dlq_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dlq_policy, 'DlqPolicy', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_rate_limit_policy):
+            request.tenant_rate_limit_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_rate_limit_policy, 'TenantRateLimitPolicy', 'json')
         query = {}
         if not UtilClient.is_unset(request.dlq_policy_shrink):
             query['DlqPolicy'] = request.dlq_policy_shrink
@@ -2009,6 +2035,8 @@ class Client(OpenApiClient):
             query['NotifyStrategy'] = request.notify_strategy
         if not UtilClient.is_unset(request.subscription_name):
             query['SubscriptionName'] = request.subscription_name
+        if not UtilClient.is_unset(request.tenant_rate_limit_policy_shrink):
+            query['TenantRateLimitPolicy'] = request.tenant_rate_limit_policy_shrink
         if not UtilClient.is_unset(request.topic_name):
             query['TopicName'] = request.topic_name
         req = open_api_models.OpenApiRequest(
@@ -2047,6 +2075,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.dlq_policy):
             request.dlq_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dlq_policy, 'DlqPolicy', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_rate_limit_policy):
+            request.tenant_rate_limit_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_rate_limit_policy, 'TenantRateLimitPolicy', 'json')
         query = {}
         if not UtilClient.is_unset(request.dlq_policy_shrink):
             query['DlqPolicy'] = request.dlq_policy_shrink
@@ -2054,6 +2084,8 @@ class Client(OpenApiClient):
             query['NotifyStrategy'] = request.notify_strategy
         if not UtilClient.is_unset(request.subscription_name):
             query['SubscriptionName'] = request.subscription_name
+        if not UtilClient.is_unset(request.tenant_rate_limit_policy_shrink):
+            query['TenantRateLimitPolicy'] = request.tenant_rate_limit_policy_shrink
         if not UtilClient.is_unset(request.topic_name):
             query['TopicName'] = request.topic_name
         req = open_api_models.OpenApiRequest(
@@ -2222,11 +2254,25 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.dlq_policy):
             request.dlq_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dlq_policy, 'DlqPolicy', 'json')
+        if not UtilClient.is_unset(tmp_req.dm_attributes):
+            request.dm_attributes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dm_attributes, 'DmAttributes', 'json')
+        if not UtilClient.is_unset(tmp_req.dysms_attributes):
+            request.dysms_attributes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dysms_attributes, 'DysmsAttributes', 'json')
+        if not UtilClient.is_unset(tmp_req.kafka_attributes):
+            request.kafka_attributes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.kafka_attributes, 'KafkaAttributes', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_rate_limit_policy):
+            request.tenant_rate_limit_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_rate_limit_policy, 'TenantRateLimitPolicy', 'json')
         query = {}
         if not UtilClient.is_unset(request.dlq_policy_shrink):
             query['DlqPolicy'] = request.dlq_policy_shrink
+        if not UtilClient.is_unset(request.dm_attributes_shrink):
+            query['DmAttributes'] = request.dm_attributes_shrink
+        if not UtilClient.is_unset(request.dysms_attributes_shrink):
+            query['DysmsAttributes'] = request.dysms_attributes_shrink
         if not UtilClient.is_unset(request.endpoint):
             query['Endpoint'] = request.endpoint
+        if not UtilClient.is_unset(request.kafka_attributes_shrink):
+            query['KafkaAttributes'] = request.kafka_attributes_shrink
         if not UtilClient.is_unset(request.message_tag):
             query['MessageTag'] = request.message_tag
         if not UtilClient.is_unset(request.notify_content_format):
@@ -2239,6 +2285,8 @@ class Client(OpenApiClient):
             query['StsRoleArn'] = request.sts_role_arn
         if not UtilClient.is_unset(request.subscription_name):
             query['SubscriptionName'] = request.subscription_name
+        if not UtilClient.is_unset(request.tenant_rate_limit_policy_shrink):
+            query['TenantRateLimitPolicy'] = request.tenant_rate_limit_policy_shrink
         if not UtilClient.is_unset(request.topic_name):
             query['TopicName'] = request.topic_name
         req = open_api_models.OpenApiRequest(
@@ -2277,11 +2325,25 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.dlq_policy):
             request.dlq_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dlq_policy, 'DlqPolicy', 'json')
+        if not UtilClient.is_unset(tmp_req.dm_attributes):
+            request.dm_attributes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dm_attributes, 'DmAttributes', 'json')
+        if not UtilClient.is_unset(tmp_req.dysms_attributes):
+            request.dysms_attributes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dysms_attributes, 'DysmsAttributes', 'json')
+        if not UtilClient.is_unset(tmp_req.kafka_attributes):
+            request.kafka_attributes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.kafka_attributes, 'KafkaAttributes', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_rate_limit_policy):
+            request.tenant_rate_limit_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_rate_limit_policy, 'TenantRateLimitPolicy', 'json')
         query = {}
         if not UtilClient.is_unset(request.dlq_policy_shrink):
             query['DlqPolicy'] = request.dlq_policy_shrink
+        if not UtilClient.is_unset(request.dm_attributes_shrink):
+            query['DmAttributes'] = request.dm_attributes_shrink
+        if not UtilClient.is_unset(request.dysms_attributes_shrink):
+            query['DysmsAttributes'] = request.dysms_attributes_shrink
         if not UtilClient.is_unset(request.endpoint):
             query['Endpoint'] = request.endpoint
+        if not UtilClient.is_unset(request.kafka_attributes_shrink):
+            query['KafkaAttributes'] = request.kafka_attributes_shrink
         if not UtilClient.is_unset(request.message_tag):
             query['MessageTag'] = request.message_tag
         if not UtilClient.is_unset(request.notify_content_format):
@@ -2294,6 +2356,8 @@ class Client(OpenApiClient):
             query['StsRoleArn'] = request.sts_role_arn
         if not UtilClient.is_unset(request.subscription_name):
             query['SubscriptionName'] = request.subscription_name
+        if not UtilClient.is_unset(request.tenant_rate_limit_policy_shrink):
+            query['TenantRateLimitPolicy'] = request.tenant_rate_limit_policy_shrink
         if not UtilClient.is_unset(request.topic_name):
             query['TopicName'] = request.topic_name
         req = open_api_models.OpenApiRequest(

@@ -288,12 +288,16 @@ class CreateEventRuleRequestEndpoints(TeaModel):
 class CreateEventRuleRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
+        delivery_mode: str = None,
         endpoints: List[CreateEventRuleRequestEndpoints] = None,
         event_types: List[str] = None,
         match_rules: List[List[EventMatchRule]] = None,
         product_name: str = None,
         rule_name: str = None,
     ):
+        self.client_token = client_token
+        self.delivery_mode = delivery_mode
         # This parameter is required.
         self.endpoints = endpoints
         # This parameter is required.
@@ -322,6 +326,10 @@ class CreateEventRuleRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.delivery_mode is not None:
+            result['DeliveryMode'] = self.delivery_mode
         result['Endpoints'] = []
         if self.endpoints is not None:
             for k in self.endpoints:
@@ -343,6 +351,10 @@ class CreateEventRuleRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DeliveryMode') is not None:
+            self.delivery_mode = m.get('DeliveryMode')
         self.endpoints = []
         if m.get('Endpoints') is not None:
             for k in m.get('Endpoints'):
@@ -368,12 +380,16 @@ class CreateEventRuleRequest(TeaModel):
 class CreateEventRuleShrinkRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
+        delivery_mode: str = None,
         endpoints_shrink: str = None,
         event_types_shrink: str = None,
         match_rules_shrink: str = None,
         product_name: str = None,
         rule_name: str = None,
     ):
+        self.client_token = client_token
+        self.delivery_mode = delivery_mode
         # This parameter is required.
         self.endpoints_shrink = endpoints_shrink
         # This parameter is required.
@@ -394,6 +410,10 @@ class CreateEventRuleShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.delivery_mode is not None:
+            result['DeliveryMode'] = self.delivery_mode
         if self.endpoints_shrink is not None:
             result['Endpoints'] = self.endpoints_shrink
         if self.event_types_shrink is not None:
@@ -408,6 +428,10 @@ class CreateEventRuleShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DeliveryMode') is not None:
+            self.delivery_mode = m.get('DeliveryMode')
         if m.get('Endpoints') is not None:
             self.endpoints_shrink = m.get('Endpoints')
         if m.get('EventTypes') is not None:
@@ -596,6 +620,39 @@ class CreateQueueRequestTag(TeaModel):
         return self
 
 
+class CreateQueueRequestTenantRateLimitPolicy(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        max_receives_per_second: int = None,
+    ):
+        self.enabled = enabled
+        self.max_receives_per_second = max_receives_per_second
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.max_receives_per_second is not None:
+            result['MaxReceivesPerSecond'] = self.max_receives_per_second
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('MaxReceivesPerSecond') is not None:
+            self.max_receives_per_second = m.get('MaxReceivesPerSecond')
+        return self
+
+
 class CreateQueueRequest(TeaModel):
     def __init__(
         self,
@@ -607,6 +664,7 @@ class CreateQueueRequest(TeaModel):
         polling_wait_seconds: int = None,
         queue_name: str = None,
         tag: List[CreateQueueRequestTag] = None,
+        tenant_rate_limit_policy: CreateQueueRequestTenantRateLimitPolicy = None,
         visibility_timeout: int = None,
     ):
         # The period after which all messages sent to the queue are consumed. Valid values: 0 to 604800. Unit: seconds. Default value: 0
@@ -632,6 +690,7 @@ class CreateQueueRequest(TeaModel):
         self.queue_name = queue_name
         # The tags.
         self.tag = tag
+        self.tenant_rate_limit_policy = tenant_rate_limit_policy
         # The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
         self.visibility_timeout = visibility_timeout
 
@@ -642,6 +701,8 @@ class CreateQueueRequest(TeaModel):
             for k in self.tag:
                 if k:
                     k.validate()
+        if self.tenant_rate_limit_policy:
+            self.tenant_rate_limit_policy.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -667,6 +728,8 @@ class CreateQueueRequest(TeaModel):
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
+        if self.tenant_rate_limit_policy is not None:
+            result['TenantRateLimitPolicy'] = self.tenant_rate_limit_policy.to_map()
         if self.visibility_timeout is not None:
             result['VisibilityTimeout'] = self.visibility_timeout
         return result
@@ -693,6 +756,9 @@ class CreateQueueRequest(TeaModel):
             for k in m.get('Tag'):
                 temp_model = CreateQueueRequestTag()
                 self.tag.append(temp_model.from_map(k))
+        if m.get('TenantRateLimitPolicy') is not None:
+            temp_model = CreateQueueRequestTenantRateLimitPolicy()
+            self.tenant_rate_limit_policy = temp_model.from_map(m['TenantRateLimitPolicy'])
         if m.get('VisibilityTimeout') is not None:
             self.visibility_timeout = m.get('VisibilityTimeout')
         return self
@@ -744,6 +810,7 @@ class CreateQueueShrinkRequest(TeaModel):
         polling_wait_seconds: int = None,
         queue_name: str = None,
         tag: List[CreateQueueShrinkRequestTag] = None,
+        tenant_rate_limit_policy_shrink: str = None,
         visibility_timeout: int = None,
     ):
         # The period after which all messages sent to the queue are consumed. Valid values: 0 to 604800. Unit: seconds. Default value: 0
@@ -769,6 +836,7 @@ class CreateQueueShrinkRequest(TeaModel):
         self.queue_name = queue_name
         # The tags.
         self.tag = tag
+        self.tenant_rate_limit_policy_shrink = tenant_rate_limit_policy_shrink
         # The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
         self.visibility_timeout = visibility_timeout
 
@@ -802,6 +870,8 @@ class CreateQueueShrinkRequest(TeaModel):
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
+        if self.tenant_rate_limit_policy_shrink is not None:
+            result['TenantRateLimitPolicy'] = self.tenant_rate_limit_policy_shrink
         if self.visibility_timeout is not None:
             result['VisibilityTimeout'] = self.visibility_timeout
         return result
@@ -827,6 +897,8 @@ class CreateQueueShrinkRequest(TeaModel):
             for k in m.get('Tag'):
                 temp_model = CreateQueueShrinkRequestTag()
                 self.tag.append(temp_model.from_map(k))
+        if m.get('TenantRateLimitPolicy') is not None:
+            self.tenant_rate_limit_policy_shrink = m.get('TenantRateLimitPolicy')
         if m.get('VisibilityTimeout') is not None:
             self.visibility_timeout = m.get('VisibilityTimeout')
         return self
@@ -2304,6 +2376,39 @@ class GetQueueAttributesResponseBodyDataTags(TeaModel):
         return self
 
 
+class GetQueueAttributesResponseBodyDataTenantRateLimitPolicy(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        max_receives_per_second: int = None,
+    ):
+        self.enabled = enabled
+        self.max_receives_per_second = max_receives_per_second
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.max_receives_per_second is not None:
+            result['MaxReceivesPerSecond'] = self.max_receives_per_second
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('MaxReceivesPerSecond') is not None:
+            self.max_receives_per_second = m.get('MaxReceivesPerSecond')
+        return self
+
+
 class GetQueueAttributesResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -2320,6 +2425,7 @@ class GetQueueAttributesResponseBodyData(TeaModel):
         polling_wait_seconds: int = None,
         queue_name: str = None,
         tags: List[GetQueueAttributesResponseBodyDataTags] = None,
+        tenant_rate_limit_policy: GetQueueAttributesResponseBodyDataTenantRateLimitPolicy = None,
         visibility_timeout: int = None,
     ):
         # The total number of messages that are in the Active state in the queue. The value is an approximate value. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
@@ -2351,6 +2457,7 @@ class GetQueueAttributesResponseBodyData(TeaModel):
         self.queue_name = queue_name
         # The tag.
         self.tags = tags
+        self.tenant_rate_limit_policy = tenant_rate_limit_policy
         # The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
         self.visibility_timeout = visibility_timeout
 
@@ -2361,6 +2468,8 @@ class GetQueueAttributesResponseBodyData(TeaModel):
             for k in self.tags:
                 if k:
                     k.validate()
+        if self.tenant_rate_limit_policy:
+            self.tenant_rate_limit_policy.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2396,6 +2505,8 @@ class GetQueueAttributesResponseBodyData(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['Tags'].append(k.to_map() if k else None)
+        if self.tenant_rate_limit_policy is not None:
+            result['TenantRateLimitPolicy'] = self.tenant_rate_limit_policy.to_map()
         if self.visibility_timeout is not None:
             result['VisibilityTimeout'] = self.visibility_timeout
         return result
@@ -2432,6 +2543,9 @@ class GetQueueAttributesResponseBodyData(TeaModel):
             for k in m.get('Tags'):
                 temp_model = GetQueueAttributesResponseBodyDataTags()
                 self.tags.append(temp_model.from_map(k))
+        if m.get('TenantRateLimitPolicy') is not None:
+            temp_model = GetQueueAttributesResponseBodyDataTenantRateLimitPolicy()
+            self.tenant_rate_limit_policy = temp_model.from_map(m['TenantRateLimitPolicy'])
         if m.get('VisibilityTimeout') is not None:
             self.visibility_timeout = m.get('VisibilityTimeout')
         return self
@@ -2617,6 +2731,39 @@ class GetSubscriptionAttributesResponseBodyDataDlqPolicy(TeaModel):
         return self
 
 
+class GetSubscriptionAttributesResponseBodyDataTenantRateLimitPolicy(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        max_receives_per_second: int = None,
+    ):
+        self.enabled = enabled
+        self.max_receives_per_second = max_receives_per_second
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.max_receives_per_second is not None:
+            result['MaxReceivesPerSecond'] = self.max_receives_per_second
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('MaxReceivesPerSecond') is not None:
+            self.max_receives_per_second = m.get('MaxReceivesPerSecond')
+        return self
+
+
 class GetSubscriptionAttributesResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -2628,6 +2775,7 @@ class GetSubscriptionAttributesResponseBodyData(TeaModel):
         notify_content_format: str = None,
         notify_strategy: str = None,
         subscription_name: str = None,
+        tenant_rate_limit_policy: GetSubscriptionAttributesResponseBodyDataTenantRateLimitPolicy = None,
         topic_name: str = None,
         topic_owner: str = None,
     ):
@@ -2654,6 +2802,7 @@ class GetSubscriptionAttributesResponseBodyData(TeaModel):
         self.notify_strategy = notify_strategy
         # The name of the subscription.
         self.subscription_name = subscription_name
+        self.tenant_rate_limit_policy = tenant_rate_limit_policy
         # The name of the topic.
         self.topic_name = topic_name
         # The Alibaba Cloud account ID of the topic owner.
@@ -2662,6 +2811,8 @@ class GetSubscriptionAttributesResponseBodyData(TeaModel):
     def validate(self):
         if self.dlq_policy:
             self.dlq_policy.validate()
+        if self.tenant_rate_limit_policy:
+            self.tenant_rate_limit_policy.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2685,6 +2836,8 @@ class GetSubscriptionAttributesResponseBodyData(TeaModel):
             result['NotifyStrategy'] = self.notify_strategy
         if self.subscription_name is not None:
             result['SubscriptionName'] = self.subscription_name
+        if self.tenant_rate_limit_policy is not None:
+            result['TenantRateLimitPolicy'] = self.tenant_rate_limit_policy.to_map()
         if self.topic_name is not None:
             result['TopicName'] = self.topic_name
         if self.topic_owner is not None:
@@ -2710,6 +2863,9 @@ class GetSubscriptionAttributesResponseBodyData(TeaModel):
             self.notify_strategy = m.get('NotifyStrategy')
         if m.get('SubscriptionName') is not None:
             self.subscription_name = m.get('SubscriptionName')
+        if m.get('TenantRateLimitPolicy') is not None:
+            temp_model = GetSubscriptionAttributesResponseBodyDataTenantRateLimitPolicy()
+            self.tenant_rate_limit_policy = temp_model.from_map(m['TenantRateLimitPolicy'])
         if m.get('TopicName') is not None:
             self.topic_name = m.get('TopicName')
         if m.get('TopicOwner') is not None:
@@ -4619,6 +4775,39 @@ class SetQueueAttributesRequestDlqPolicy(TeaModel):
         return self
 
 
+class SetQueueAttributesRequestTenantRateLimitPolicy(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        max_receives_per_second: int = None,
+    ):
+        self.enabled = enabled
+        self.max_receives_per_second = max_receives_per_second
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.max_receives_per_second is not None:
+            result['MaxReceivesPerSecond'] = self.max_receives_per_second
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('MaxReceivesPerSecond') is not None:
+            self.max_receives_per_second = m.get('MaxReceivesPerSecond')
+        return self
+
+
 class SetQueueAttributesRequest(TeaModel):
     def __init__(
         self,
@@ -4629,6 +4818,7 @@ class SetQueueAttributesRequest(TeaModel):
         message_retention_period: int = None,
         polling_wait_seconds: int = None,
         queue_name: str = None,
+        tenant_rate_limit_policy: SetQueueAttributesRequestTenantRateLimitPolicy = None,
         visibility_timeout: int = None,
     ):
         # The period after which all messages sent to the queue are consumed. Valid values: 0 to 604800. Unit: seconds. Default value: 0
@@ -4650,12 +4840,15 @@ class SetQueueAttributesRequest(TeaModel):
         # 
         # This parameter is required.
         self.queue_name = queue_name
+        self.tenant_rate_limit_policy = tenant_rate_limit_policy
         # The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
         self.visibility_timeout = visibility_timeout
 
     def validate(self):
         if self.dlq_policy:
             self.dlq_policy.validate()
+        if self.tenant_rate_limit_policy:
+            self.tenant_rate_limit_policy.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4677,6 +4870,8 @@ class SetQueueAttributesRequest(TeaModel):
             result['PollingWaitSeconds'] = self.polling_wait_seconds
         if self.queue_name is not None:
             result['QueueName'] = self.queue_name
+        if self.tenant_rate_limit_policy is not None:
+            result['TenantRateLimitPolicy'] = self.tenant_rate_limit_policy.to_map()
         if self.visibility_timeout is not None:
             result['VisibilityTimeout'] = self.visibility_timeout
         return result
@@ -4698,6 +4893,9 @@ class SetQueueAttributesRequest(TeaModel):
             self.polling_wait_seconds = m.get('PollingWaitSeconds')
         if m.get('QueueName') is not None:
             self.queue_name = m.get('QueueName')
+        if m.get('TenantRateLimitPolicy') is not None:
+            temp_model = SetQueueAttributesRequestTenantRateLimitPolicy()
+            self.tenant_rate_limit_policy = temp_model.from_map(m['TenantRateLimitPolicy'])
         if m.get('VisibilityTimeout') is not None:
             self.visibility_timeout = m.get('VisibilityTimeout')
         return self
@@ -4713,6 +4911,7 @@ class SetQueueAttributesShrinkRequest(TeaModel):
         message_retention_period: int = None,
         polling_wait_seconds: int = None,
         queue_name: str = None,
+        tenant_rate_limit_policy_shrink: str = None,
         visibility_timeout: int = None,
     ):
         # The period after which all messages sent to the queue are consumed. Valid values: 0 to 604800. Unit: seconds. Default value: 0
@@ -4734,6 +4933,7 @@ class SetQueueAttributesShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.queue_name = queue_name
+        self.tenant_rate_limit_policy_shrink = tenant_rate_limit_policy_shrink
         # The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
         self.visibility_timeout = visibility_timeout
 
@@ -4760,6 +4960,8 @@ class SetQueueAttributesShrinkRequest(TeaModel):
             result['PollingWaitSeconds'] = self.polling_wait_seconds
         if self.queue_name is not None:
             result['QueueName'] = self.queue_name
+        if self.tenant_rate_limit_policy_shrink is not None:
+            result['TenantRateLimitPolicy'] = self.tenant_rate_limit_policy_shrink
         if self.visibility_timeout is not None:
             result['VisibilityTimeout'] = self.visibility_timeout
         return result
@@ -4780,6 +4982,8 @@ class SetQueueAttributesShrinkRequest(TeaModel):
             self.polling_wait_seconds = m.get('PollingWaitSeconds')
         if m.get('QueueName') is not None:
             self.queue_name = m.get('QueueName')
+        if m.get('TenantRateLimitPolicy') is not None:
+            self.tenant_rate_limit_policy_shrink = m.get('TenantRateLimitPolicy')
         if m.get('VisibilityTimeout') is not None:
             self.visibility_timeout = m.get('VisibilityTimeout')
         return self
@@ -4968,12 +5172,46 @@ class SetSubscriptionAttributesRequestDlqPolicy(TeaModel):
         return self
 
 
+class SetSubscriptionAttributesRequestTenantRateLimitPolicy(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        max_receives_per_second: int = None,
+    ):
+        self.enabled = enabled
+        self.max_receives_per_second = max_receives_per_second
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.max_receives_per_second is not None:
+            result['MaxReceivesPerSecond'] = self.max_receives_per_second
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('MaxReceivesPerSecond') is not None:
+            self.max_receives_per_second = m.get('MaxReceivesPerSecond')
+        return self
+
+
 class SetSubscriptionAttributesRequest(TeaModel):
     def __init__(
         self,
         dlq_policy: SetSubscriptionAttributesRequestDlqPolicy = None,
         notify_strategy: str = None,
         subscription_name: str = None,
+        tenant_rate_limit_policy: SetSubscriptionAttributesRequestTenantRateLimitPolicy = None,
         topic_name: str = None,
     ):
         # The dead-letter queue policy.
@@ -4987,6 +5225,7 @@ class SetSubscriptionAttributesRequest(TeaModel):
         # 
         # This parameter is required.
         self.subscription_name = subscription_name
+        self.tenant_rate_limit_policy = tenant_rate_limit_policy
         # The name of the topic.
         # 
         # This parameter is required.
@@ -4995,6 +5234,8 @@ class SetSubscriptionAttributesRequest(TeaModel):
     def validate(self):
         if self.dlq_policy:
             self.dlq_policy.validate()
+        if self.tenant_rate_limit_policy:
+            self.tenant_rate_limit_policy.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5008,6 +5249,8 @@ class SetSubscriptionAttributesRequest(TeaModel):
             result['NotifyStrategy'] = self.notify_strategy
         if self.subscription_name is not None:
             result['SubscriptionName'] = self.subscription_name
+        if self.tenant_rate_limit_policy is not None:
+            result['TenantRateLimitPolicy'] = self.tenant_rate_limit_policy.to_map()
         if self.topic_name is not None:
             result['TopicName'] = self.topic_name
         return result
@@ -5021,6 +5264,9 @@ class SetSubscriptionAttributesRequest(TeaModel):
             self.notify_strategy = m.get('NotifyStrategy')
         if m.get('SubscriptionName') is not None:
             self.subscription_name = m.get('SubscriptionName')
+        if m.get('TenantRateLimitPolicy') is not None:
+            temp_model = SetSubscriptionAttributesRequestTenantRateLimitPolicy()
+            self.tenant_rate_limit_policy = temp_model.from_map(m['TenantRateLimitPolicy'])
         if m.get('TopicName') is not None:
             self.topic_name = m.get('TopicName')
         return self
@@ -5032,6 +5278,7 @@ class SetSubscriptionAttributesShrinkRequest(TeaModel):
         dlq_policy_shrink: str = None,
         notify_strategy: str = None,
         subscription_name: str = None,
+        tenant_rate_limit_policy_shrink: str = None,
         topic_name: str = None,
     ):
         # The dead-letter queue policy.
@@ -5045,6 +5292,7 @@ class SetSubscriptionAttributesShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.subscription_name = subscription_name
+        self.tenant_rate_limit_policy_shrink = tenant_rate_limit_policy_shrink
         # The name of the topic.
         # 
         # This parameter is required.
@@ -5065,6 +5313,8 @@ class SetSubscriptionAttributesShrinkRequest(TeaModel):
             result['NotifyStrategy'] = self.notify_strategy
         if self.subscription_name is not None:
             result['SubscriptionName'] = self.subscription_name
+        if self.tenant_rate_limit_policy_shrink is not None:
+            result['TenantRateLimitPolicy'] = self.tenant_rate_limit_policy_shrink
         if self.topic_name is not None:
             result['TopicName'] = self.topic_name
         return result
@@ -5077,6 +5327,8 @@ class SetSubscriptionAttributesShrinkRequest(TeaModel):
             self.notify_strategy = m.get('NotifyStrategy')
         if m.get('SubscriptionName') is not None:
             self.subscription_name = m.get('SubscriptionName')
+        if m.get('TenantRateLimitPolicy') is not None:
+            self.tenant_rate_limit_policy_shrink = m.get('TenantRateLimitPolicy')
         if m.get('TopicName') is not None:
             self.topic_name = m.get('TopicName')
         return self
@@ -5460,21 +5712,153 @@ class SubscribeRequestDlqPolicy(TeaModel):
         return self
 
 
+class SubscribeRequestDmAttributes(TeaModel):
+    def __init__(
+        self,
+        account_name: str = None,
+        subject: str = None,
+    ):
+        self.account_name = account_name
+        self.subject = subject
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_name is not None:
+            result['AccountName'] = self.account_name
+        if self.subject is not None:
+            result['Subject'] = self.subject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountName') is not None:
+            self.account_name = m.get('AccountName')
+        if m.get('Subject') is not None:
+            self.subject = m.get('Subject')
+        return self
+
+
+class SubscribeRequestDysmsAttributes(TeaModel):
+    def __init__(
+        self,
+        sign_name: str = None,
+        template_code: str = None,
+    ):
+        self.sign_name = sign_name
+        self.template_code = template_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sign_name is not None:
+            result['SignName'] = self.sign_name
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SignName') is not None:
+            self.sign_name = m.get('SignName')
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        return self
+
+
+class SubscribeRequestKafkaAttributes(TeaModel):
+    def __init__(
+        self,
+        business_mode: str = None,
+    ):
+        self.business_mode = business_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_mode is not None:
+            result['BusinessMode'] = self.business_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessMode') is not None:
+            self.business_mode = m.get('BusinessMode')
+        return self
+
+
+class SubscribeRequestTenantRateLimitPolicy(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        max_receives_per_second: int = None,
+    ):
+        self.enabled = enabled
+        self.max_receives_per_second = max_receives_per_second
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.max_receives_per_second is not None:
+            result['MaxReceivesPerSecond'] = self.max_receives_per_second
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('MaxReceivesPerSecond') is not None:
+            self.max_receives_per_second = m.get('MaxReceivesPerSecond')
+        return self
+
+
 class SubscribeRequest(TeaModel):
     def __init__(
         self,
         dlq_policy: SubscribeRequestDlqPolicy = None,
+        dm_attributes: SubscribeRequestDmAttributes = None,
+        dysms_attributes: SubscribeRequestDysmsAttributes = None,
         endpoint: str = None,
+        kafka_attributes: SubscribeRequestKafkaAttributes = None,
         message_tag: str = None,
         notify_content_format: str = None,
         notify_strategy: str = None,
         push_type: str = None,
         sts_role_arn: str = None,
         subscription_name: str = None,
+        tenant_rate_limit_policy: SubscribeRequestTenantRateLimitPolicy = None,
         topic_name: str = None,
     ):
         # The dead-letter queue policy.
         self.dlq_policy = dlq_policy
+        self.dm_attributes = dm_attributes
+        self.dysms_attributes = dysms_attributes
         # The receiver endpoint. The format of the endpoint varies based on the terminal type.
         # 
         # *   If you set PushType to http, set Endpoint to an `HTTP URL that starts with http:// or https://`.
@@ -5485,6 +5869,7 @@ class SubscribeRequest(TeaModel):
         # 
         # This parameter is required.
         self.endpoint = endpoint
+        self.kafka_attributes = kafka_attributes
         # The tag that is used to filter messages. Only messages that have the same tag can be pushed. Set the value to a string of no more than 16 characters.
         # 
         # By default, no tag is specified to filter messages.
@@ -5515,6 +5900,7 @@ class SubscribeRequest(TeaModel):
         # 
         # This parameter is required.
         self.subscription_name = subscription_name
+        self.tenant_rate_limit_policy = tenant_rate_limit_policy
         # The name of the topic.
         # 
         # This parameter is required.
@@ -5523,6 +5909,14 @@ class SubscribeRequest(TeaModel):
     def validate(self):
         if self.dlq_policy:
             self.dlq_policy.validate()
+        if self.dm_attributes:
+            self.dm_attributes.validate()
+        if self.dysms_attributes:
+            self.dysms_attributes.validate()
+        if self.kafka_attributes:
+            self.kafka_attributes.validate()
+        if self.tenant_rate_limit_policy:
+            self.tenant_rate_limit_policy.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5532,8 +5926,14 @@ class SubscribeRequest(TeaModel):
         result = dict()
         if self.dlq_policy is not None:
             result['DlqPolicy'] = self.dlq_policy.to_map()
+        if self.dm_attributes is not None:
+            result['DmAttributes'] = self.dm_attributes.to_map()
+        if self.dysms_attributes is not None:
+            result['DysmsAttributes'] = self.dysms_attributes.to_map()
         if self.endpoint is not None:
             result['Endpoint'] = self.endpoint
+        if self.kafka_attributes is not None:
+            result['KafkaAttributes'] = self.kafka_attributes.to_map()
         if self.message_tag is not None:
             result['MessageTag'] = self.message_tag
         if self.notify_content_format is not None:
@@ -5546,6 +5946,8 @@ class SubscribeRequest(TeaModel):
             result['StsRoleArn'] = self.sts_role_arn
         if self.subscription_name is not None:
             result['SubscriptionName'] = self.subscription_name
+        if self.tenant_rate_limit_policy is not None:
+            result['TenantRateLimitPolicy'] = self.tenant_rate_limit_policy.to_map()
         if self.topic_name is not None:
             result['TopicName'] = self.topic_name
         return result
@@ -5555,8 +5957,17 @@ class SubscribeRequest(TeaModel):
         if m.get('DlqPolicy') is not None:
             temp_model = SubscribeRequestDlqPolicy()
             self.dlq_policy = temp_model.from_map(m['DlqPolicy'])
+        if m.get('DmAttributes') is not None:
+            temp_model = SubscribeRequestDmAttributes()
+            self.dm_attributes = temp_model.from_map(m['DmAttributes'])
+        if m.get('DysmsAttributes') is not None:
+            temp_model = SubscribeRequestDysmsAttributes()
+            self.dysms_attributes = temp_model.from_map(m['DysmsAttributes'])
         if m.get('Endpoint') is not None:
             self.endpoint = m.get('Endpoint')
+        if m.get('KafkaAttributes') is not None:
+            temp_model = SubscribeRequestKafkaAttributes()
+            self.kafka_attributes = temp_model.from_map(m['KafkaAttributes'])
         if m.get('MessageTag') is not None:
             self.message_tag = m.get('MessageTag')
         if m.get('NotifyContentFormat') is not None:
@@ -5569,6 +5980,9 @@ class SubscribeRequest(TeaModel):
             self.sts_role_arn = m.get('StsRoleArn')
         if m.get('SubscriptionName') is not None:
             self.subscription_name = m.get('SubscriptionName')
+        if m.get('TenantRateLimitPolicy') is not None:
+            temp_model = SubscribeRequestTenantRateLimitPolicy()
+            self.tenant_rate_limit_policy = temp_model.from_map(m['TenantRateLimitPolicy'])
         if m.get('TopicName') is not None:
             self.topic_name = m.get('TopicName')
         return self
@@ -5578,17 +5992,23 @@ class SubscribeShrinkRequest(TeaModel):
     def __init__(
         self,
         dlq_policy_shrink: str = None,
+        dm_attributes_shrink: str = None,
+        dysms_attributes_shrink: str = None,
         endpoint: str = None,
+        kafka_attributes_shrink: str = None,
         message_tag: str = None,
         notify_content_format: str = None,
         notify_strategy: str = None,
         push_type: str = None,
         sts_role_arn: str = None,
         subscription_name: str = None,
+        tenant_rate_limit_policy_shrink: str = None,
         topic_name: str = None,
     ):
         # The dead-letter queue policy.
         self.dlq_policy_shrink = dlq_policy_shrink
+        self.dm_attributes_shrink = dm_attributes_shrink
+        self.dysms_attributes_shrink = dysms_attributes_shrink
         # The receiver endpoint. The format of the endpoint varies based on the terminal type.
         # 
         # *   If you set PushType to http, set Endpoint to an `HTTP URL that starts with http:// or https://`.
@@ -5599,6 +6019,7 @@ class SubscribeShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.endpoint = endpoint
+        self.kafka_attributes_shrink = kafka_attributes_shrink
         # The tag that is used to filter messages. Only messages that have the same tag can be pushed. Set the value to a string of no more than 16 characters.
         # 
         # By default, no tag is specified to filter messages.
@@ -5629,6 +6050,7 @@ class SubscribeShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.subscription_name = subscription_name
+        self.tenant_rate_limit_policy_shrink = tenant_rate_limit_policy_shrink
         # The name of the topic.
         # 
         # This parameter is required.
@@ -5645,8 +6067,14 @@ class SubscribeShrinkRequest(TeaModel):
         result = dict()
         if self.dlq_policy_shrink is not None:
             result['DlqPolicy'] = self.dlq_policy_shrink
+        if self.dm_attributes_shrink is not None:
+            result['DmAttributes'] = self.dm_attributes_shrink
+        if self.dysms_attributes_shrink is not None:
+            result['DysmsAttributes'] = self.dysms_attributes_shrink
         if self.endpoint is not None:
             result['Endpoint'] = self.endpoint
+        if self.kafka_attributes_shrink is not None:
+            result['KafkaAttributes'] = self.kafka_attributes_shrink
         if self.message_tag is not None:
             result['MessageTag'] = self.message_tag
         if self.notify_content_format is not None:
@@ -5659,6 +6087,8 @@ class SubscribeShrinkRequest(TeaModel):
             result['StsRoleArn'] = self.sts_role_arn
         if self.subscription_name is not None:
             result['SubscriptionName'] = self.subscription_name
+        if self.tenant_rate_limit_policy_shrink is not None:
+            result['TenantRateLimitPolicy'] = self.tenant_rate_limit_policy_shrink
         if self.topic_name is not None:
             result['TopicName'] = self.topic_name
         return result
@@ -5667,8 +6097,14 @@ class SubscribeShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('DlqPolicy') is not None:
             self.dlq_policy_shrink = m.get('DlqPolicy')
+        if m.get('DmAttributes') is not None:
+            self.dm_attributes_shrink = m.get('DmAttributes')
+        if m.get('DysmsAttributes') is not None:
+            self.dysms_attributes_shrink = m.get('DysmsAttributes')
         if m.get('Endpoint') is not None:
             self.endpoint = m.get('Endpoint')
+        if m.get('KafkaAttributes') is not None:
+            self.kafka_attributes_shrink = m.get('KafkaAttributes')
         if m.get('MessageTag') is not None:
             self.message_tag = m.get('MessageTag')
         if m.get('NotifyContentFormat') is not None:
@@ -5681,6 +6117,8 @@ class SubscribeShrinkRequest(TeaModel):
             self.sts_role_arn = m.get('StsRoleArn')
         if m.get('SubscriptionName') is not None:
             self.subscription_name = m.get('SubscriptionName')
+        if m.get('TenantRateLimitPolicy') is not None:
+            self.tenant_rate_limit_policy_shrink = m.get('TenantRateLimitPolicy')
         if m.get('TopicName') is not None:
             self.topic_name = m.get('TopicName')
         return self
