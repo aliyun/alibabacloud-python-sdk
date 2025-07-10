@@ -1,3 +1,7 @@
+2025-07-10 Version: 4.1.0
+- Support API ChatStream.
+
+
 2025-06-26 Version: 4.0.0
 - Update API GetChatList: update request parameters body.currentPage' type has changed.
 - Update API GetChatList: update request parameters body.currentPage' format has changed.

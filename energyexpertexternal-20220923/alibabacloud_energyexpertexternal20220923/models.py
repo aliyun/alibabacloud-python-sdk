@@ -1989,6 +1989,125 @@ class ChatResponse(TeaModel):
         return self
 
 
+class ChatStreamRequest(TeaModel):
+    def __init__(
+        self,
+        question: str = None,
+        session_id: str = None,
+    ):
+        # Q&A content.
+        # 
+        # This parameter is required.
+        self.question = question
+        # - Q&A session ID.
+        # - Historical sessions can be retrieved through GetSessionList.
+        # - A new session can also be created via CreateChatSession.
+        # 
+        # This parameter is required.
+        self.session_id = session_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.question is not None:
+            result['question'] = self.question
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('question') is not None:
+            self.question = m.get('question')
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        return self
+
+
+class ChatStreamResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ChatItem = None,
+        request_id: str = None,
+    ):
+        # Q&A content.
+        self.data = data
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = ChatItem()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ChatStreamResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ChatStreamResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ChatStreamResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateChatSessionRequest(TeaModel):
     def __init__(
         self,
