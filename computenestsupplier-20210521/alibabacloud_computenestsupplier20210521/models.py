@@ -757,6 +757,7 @@ class CreateArtifactRequestArtifactBuildProperty(TeaModel):
         command_content: str = None,
         command_type: str = None,
         dockerfile_path: str = None,
+        enable_gpu: bool = None,
         region_id: str = None,
         source_container_image: str = None,
         source_image_id: str = None,
@@ -786,6 +787,7 @@ class CreateArtifactRequestArtifactBuildProperty(TeaModel):
         # 
         # >  This parameter is available only if the ArtifactBuildType is Dockerfile type.
         self.dockerfile_path = dockerfile_path
+        self.enable_gpu = enable_gpu
         # The region ID where the source mirror image is located.
         # 
         # >  This parameter is available only if the deployment package is a ecs image type.
@@ -830,6 +832,8 @@ class CreateArtifactRequestArtifactBuildProperty(TeaModel):
             result['CommandType'] = self.command_type
         if self.dockerfile_path is not None:
             result['DockerfilePath'] = self.dockerfile_path
+        if self.enable_gpu is not None:
+            result['EnableGpu'] = self.enable_gpu
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.source_container_image is not None:
@@ -856,6 +860,8 @@ class CreateArtifactRequestArtifactBuildProperty(TeaModel):
             self.command_type = m.get('CommandType')
         if m.get('DockerfilePath') is not None:
             self.dockerfile_path = m.get('DockerfilePath')
+        if m.get('EnableGpu') is not None:
+            self.enable_gpu = m.get('EnableGpu')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('SourceContainerImage') is not None:
@@ -19180,9 +19186,11 @@ class UpdateArtifactRequestArtifactBuildProperty(TeaModel):
         command_content: str = None,
         command_type: str = None,
         dockerfile_path: str = None,
+        enable_gpu: bool = None,
         region_id: str = None,
         source_container_image: str = None,
         source_image_id: str = None,
+        system_disk_size: int = None,
     ):
         # The build arguments used during the image build process.
         # 
@@ -19208,6 +19216,7 @@ class UpdateArtifactRequestArtifactBuildProperty(TeaModel):
         # 
         # >  This parameter is available only if the ArtifactBuildType is Dockerfile type.
         self.dockerfile_path = dockerfile_path
+        self.enable_gpu = enable_gpu
         # The region ID where the source mirror image is located.
         # 
         # >  This parameter is available only if the deployment package is a ecs image type.
@@ -19224,6 +19233,7 @@ class UpdateArtifactRequestArtifactBuildProperty(TeaModel):
         # 
         # >  This parameter is available only if the deployment package is a ecs image type.
         self.source_image_id = source_image_id
+        self.system_disk_size = system_disk_size
 
     def validate(self):
         if self.build_args:
@@ -19251,12 +19261,16 @@ class UpdateArtifactRequestArtifactBuildProperty(TeaModel):
             result['CommandType'] = self.command_type
         if self.dockerfile_path is not None:
             result['DockerfilePath'] = self.dockerfile_path
+        if self.enable_gpu is not None:
+            result['EnableGpu'] = self.enable_gpu
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.source_container_image is not None:
             result['SourceContainerImage'] = self.source_container_image
         if self.source_image_id is not None:
             result['SourceImageId'] = self.source_image_id
+        if self.system_disk_size is not None:
+            result['SystemDiskSize'] = self.system_disk_size
         return result
 
     def from_map(self, m: dict = None):
@@ -19275,12 +19289,16 @@ class UpdateArtifactRequestArtifactBuildProperty(TeaModel):
             self.command_type = m.get('CommandType')
         if m.get('DockerfilePath') is not None:
             self.dockerfile_path = m.get('DockerfilePath')
+        if m.get('EnableGpu') is not None:
+            self.enable_gpu = m.get('EnableGpu')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('SourceContainerImage') is not None:
             self.source_container_image = m.get('SourceContainerImage')
         if m.get('SourceImageId') is not None:
             self.source_image_id = m.get('SourceImageId')
+        if m.get('SystemDiskSize') is not None:
+            self.system_disk_size = m.get('SystemDiskSize')
         return self
 
 

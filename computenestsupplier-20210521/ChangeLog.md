@@ -1,3 +1,9 @@
+2025-07-11 Version: 7.1.5
+- Update API CreateArtifact: add request parameters ArtifactBuildProperty.EnableGpu.
+- Update API UpdateArtifact: add request parameters ArtifactBuildProperty.EnableGpu.
+- Update API UpdateArtifact: add request parameters ArtifactBuildProperty.SystemDiskSize.
+
+
 2025-06-16 Version: 7.1.4
 - Update API CreateArtifact: add request parameters ArtifactBuildProperty.SystemDiskSize.
 
