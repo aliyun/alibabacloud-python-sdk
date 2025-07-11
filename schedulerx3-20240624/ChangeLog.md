@@ -1,3 +1,12 @@
+2025-07-11 Version: 1.3.0
+- Support API GetApp.
+- Support API ListJobScriptHistory.
+- Support API UpdateJobScript.
+- Update API CreateApp: add request parameters LabelRouteStrategy.
+- Update API ListApps: add response parameters Body.Data.Records.$.LabelRouteStrategy.
+- Update API UpdateApp: add request parameters LabelRouteStrategy.
+
+
 2025-07-04 Version: 1.2.0
 - Support API GetJobExecutionThreadDump.
 - Support API GetLogEvent.

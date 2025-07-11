@@ -63,6 +63,8 @@ class Client(OpenApiClient):
             body['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.enable_log):
             body['EnableLog'] = request.enable_log
+        if not UtilClient.is_unset(request.label_route_strategy):
+            body['LabelRouteStrategy'] = request.label_route_strategy
         if not UtilClient.is_unset(request.max_concurrency):
             body['MaxConcurrency'] = request.max_concurrency
         if not UtilClient.is_unset(request.title):
@@ -108,6 +110,8 @@ class Client(OpenApiClient):
             body['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.enable_log):
             body['EnableLog'] = request.enable_log
+        if not UtilClient.is_unset(request.label_route_strategy):
+            body['LabelRouteStrategy'] = request.label_route_strategy
         if not UtilClient.is_unset(request.max_concurrency):
             body['MaxConcurrency'] = request.max_concurrency
         if not UtilClient.is_unset(request.title):
@@ -904,6 +908,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.export_jobs_with_options_async(request, runtime)
+
+    def get_app_with_options(
+        self,
+        request: scheduler_x320240624_models.GetAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> scheduler_x320240624_models.GetAppResponse:
+        """
+        @summary 获取指定应用
+        
+        @param request: GetAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAppResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetApp',
+            version='2024-06-24',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            scheduler_x320240624_models.GetAppResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_app_with_options_async(
+        self,
+        request: scheduler_x320240624_models.GetAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> scheduler_x320240624_models.GetAppResponse:
+        """
+        @summary 获取指定应用
+        
+        @param request: GetAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAppResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetApp',
+            version='2024-06-24',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            scheduler_x320240624_models.GetAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_app(
+        self,
+        request: scheduler_x320240624_models.GetAppRequest,
+    ) -> scheduler_x320240624_models.GetAppResponse:
+        """
+        @summary 获取指定应用
+        
+        @param request: GetAppRequest
+        @return: GetAppResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_app_with_options(request, runtime)
+
+    async def get_app_async(
+        self,
+        request: scheduler_x320240624_models.GetAppRequest,
+    ) -> scheduler_x320240624_models.GetAppResponse:
+        """
+        @summary 获取指定应用
+        
+        @param request: GetAppRequest
+        @return: GetAppResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_app_with_options_async(request, runtime)
 
     def get_cluster_with_options(
         self,
@@ -2425,6 +2529,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_job_executions_with_options_async(request, runtime)
 
+    def list_job_script_history_with_options(
+        self,
+        request: scheduler_x320240624_models.ListJobScriptHistoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> scheduler_x320240624_models.ListJobScriptHistoryResponse:
+        """
+        @summary 获取任务脚本历史列表
+        
+        @param request: ListJobScriptHistoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobScriptHistoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListJobScriptHistory',
+            version='2024-06-24',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            scheduler_x320240624_models.ListJobScriptHistoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_job_script_history_with_options_async(
+        self,
+        request: scheduler_x320240624_models.ListJobScriptHistoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> scheduler_x320240624_models.ListJobScriptHistoryResponse:
+        """
+        @summary 获取任务脚本历史列表
+        
+        @param request: ListJobScriptHistoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobScriptHistoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListJobScriptHistory',
+            version='2024-06-24',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            scheduler_x320240624_models.ListJobScriptHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_job_script_history(
+        self,
+        request: scheduler_x320240624_models.ListJobScriptHistoryRequest,
+    ) -> scheduler_x320240624_models.ListJobScriptHistoryResponse:
+        """
+        @summary 获取任务脚本历史列表
+        
+        @param request: ListJobScriptHistoryRequest
+        @return: ListJobScriptHistoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_job_script_history_with_options(request, runtime)
+
+    async def list_job_script_history_async(
+        self,
+        request: scheduler_x320240624_models.ListJobScriptHistoryRequest,
+    ) -> scheduler_x320240624_models.ListJobScriptHistoryResponse:
+        """
+        @summary 获取任务脚本历史列表
+        
+        @param request: ListJobScriptHistoryRequest
+        @return: ListJobScriptHistoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_job_script_history_with_options_async(request, runtime)
+
     def list_jobs_with_options(
         self,
         request: scheduler_x320240624_models.ListJobsRequest,
@@ -3775,6 +3991,8 @@ class Client(OpenApiClient):
             body['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.enable_log):
             body['EnableLog'] = request.enable_log
+        if not UtilClient.is_unset(request.label_route_strategy):
+            body['LabelRouteStrategy'] = request.label_route_strategy
         if not UtilClient.is_unset(request.max_concurrency):
             body['MaxConcurrency'] = request.max_concurrency
         if not UtilClient.is_unset(request.title):
@@ -3820,6 +4038,8 @@ class Client(OpenApiClient):
             body['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.enable_log):
             body['EnableLog'] = request.enable_log
+        if not UtilClient.is_unset(request.label_route_strategy):
+            body['LabelRouteStrategy'] = request.label_route_strategy
         if not UtilClient.is_unset(request.max_concurrency):
             body['MaxConcurrency'] = request.max_concurrency
         if not UtilClient.is_unset(request.title):
@@ -4160,3 +4380,115 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_job_with_options_async(request, runtime)
+
+    def update_job_script_with_options(
+        self,
+        request: scheduler_x320240624_models.UpdateJobScriptRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> scheduler_x320240624_models.UpdateJobScriptResponse:
+        """
+        @summary 更新任务脚本内容
+        
+        @param request: UpdateJobScriptRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateJobScriptResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_name):
+            body['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.job_id):
+            body['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.script_content):
+            body['ScriptContent'] = request.script_content
+        if not UtilClient.is_unset(request.version_description):
+            body['VersionDescription'] = request.version_description
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateJobScript',
+            version='2024-06-24',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            scheduler_x320240624_models.UpdateJobScriptResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_job_script_with_options_async(
+        self,
+        request: scheduler_x320240624_models.UpdateJobScriptRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> scheduler_x320240624_models.UpdateJobScriptResponse:
+        """
+        @summary 更新任务脚本内容
+        
+        @param request: UpdateJobScriptRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateJobScriptResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_name):
+            body['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.job_id):
+            body['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.script_content):
+            body['ScriptContent'] = request.script_content
+        if not UtilClient.is_unset(request.version_description):
+            body['VersionDescription'] = request.version_description
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateJobScript',
+            version='2024-06-24',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            scheduler_x320240624_models.UpdateJobScriptResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_job_script(
+        self,
+        request: scheduler_x320240624_models.UpdateJobScriptRequest,
+    ) -> scheduler_x320240624_models.UpdateJobScriptResponse:
+        """
+        @summary 更新任务脚本内容
+        
+        @param request: UpdateJobScriptRequest
+        @return: UpdateJobScriptResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_job_script_with_options(request, runtime)
+
+    async def update_job_script_async(
+        self,
+        request: scheduler_x320240624_models.UpdateJobScriptRequest,
+    ) -> scheduler_x320240624_models.UpdateJobScriptResponse:
+        """
+        @summary 更新任务脚本内容
+        
+        @param request: UpdateJobScriptRequest
+        @return: UpdateJobScriptResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_job_script_with_options_async(request, runtime)

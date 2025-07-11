@@ -11,6 +11,7 @@ class CreateAppRequest(TeaModel):
         app_name: str = None,
         cluster_id: str = None,
         enable_log: bool = None,
+        label_route_strategy: int = None,
         max_concurrency: int = None,
         title: str = None,
     ):
@@ -20,6 +21,7 @@ class CreateAppRequest(TeaModel):
         # This parameter is required.
         self.cluster_id = cluster_id
         self.enable_log = enable_log
+        self.label_route_strategy = label_route_strategy
         self.max_concurrency = max_concurrency
         # This parameter is required.
         self.title = title
@@ -41,6 +43,8 @@ class CreateAppRequest(TeaModel):
             result['ClusterId'] = self.cluster_id
         if self.enable_log is not None:
             result['EnableLog'] = self.enable_log
+        if self.label_route_strategy is not None:
+            result['LabelRouteStrategy'] = self.label_route_strategy
         if self.max_concurrency is not None:
             result['MaxConcurrency'] = self.max_concurrency
         if self.title is not None:
@@ -57,6 +61,8 @@ class CreateAppRequest(TeaModel):
             self.cluster_id = m.get('ClusterId')
         if m.get('EnableLog') is not None:
             self.enable_log = m.get('EnableLog')
+        if m.get('LabelRouteStrategy') is not None:
+            self.label_route_strategy = m.get('LabelRouteStrategy')
         if m.get('MaxConcurrency') is not None:
             self.max_concurrency = m.get('MaxConcurrency')
         if m.get('Title') is not None:
@@ -1679,6 +1685,236 @@ class ExportJobsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             self.body = m.get('body')
+        return self
+
+
+class GetAppRequest(TeaModel):
+    def __init__(
+        self,
+        app_name: str = None,
+        cluster_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_name = app_name
+        # This parameter is required.
+        self.cluster_id = cluster_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        return self
+
+
+class GetAppResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        app_name: str = None,
+        creator: str = None,
+        enable_log: bool = None,
+        executor_num: int = None,
+        id: int = None,
+        job_num: int = None,
+        label_route_strategy: int = None,
+        leader: str = None,
+        max_concurrency: int = None,
+        max_jobs: int = None,
+        title: str = None,
+        updater: str = None,
+    ):
+        # AccessToken。
+        self.access_token = access_token
+        self.app_name = app_name
+        self.creator = creator
+        self.enable_log = enable_log
+        self.executor_num = executor_num
+        self.id = id
+        self.job_num = job_num
+        self.label_route_strategy = label_route_strategy
+        self.leader = leader
+        self.max_concurrency = max_concurrency
+        self.max_jobs = max_jobs
+        self.title = title
+        self.updater = updater
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['AccessToken'] = self.access_token
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.enable_log is not None:
+            result['EnableLog'] = self.enable_log
+        if self.executor_num is not None:
+            result['ExecutorNum'] = self.executor_num
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.job_num is not None:
+            result['JobNum'] = self.job_num
+        if self.label_route_strategy is not None:
+            result['LabelRouteStrategy'] = self.label_route_strategy
+        if self.leader is not None:
+            result['Leader'] = self.leader
+        if self.max_concurrency is not None:
+            result['MaxConcurrency'] = self.max_concurrency
+        if self.max_jobs is not None:
+            result['MaxJobs'] = self.max_jobs
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.updater is not None:
+            result['Updater'] = self.updater
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessToken') is not None:
+            self.access_token = m.get('AccessToken')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('EnableLog') is not None:
+            self.enable_log = m.get('EnableLog')
+        if m.get('ExecutorNum') is not None:
+            self.executor_num = m.get('ExecutorNum')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('JobNum') is not None:
+            self.job_num = m.get('JobNum')
+        if m.get('LabelRouteStrategy') is not None:
+            self.label_route_strategy = m.get('LabelRouteStrategy')
+        if m.get('Leader') is not None:
+            self.leader = m.get('Leader')
+        if m.get('MaxConcurrency') is not None:
+            self.max_concurrency = m.get('MaxConcurrency')
+        if m.get('MaxJobs') is not None:
+            self.max_jobs = m.get('MaxJobs')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Updater') is not None:
+            self.updater = m.get('Updater')
+        return self
+
+
+class GetAppResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetAppResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        # -\
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetAppResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetAppResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAppResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAppResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -4443,6 +4679,7 @@ class ListAppsResponseBodyDataRecords(TeaModel):
         executor_num: int = None,
         id: int = None,
         job_num: int = None,
+        label_route_strategy: int = None,
         leader: str = None,
         max_concurrency: int = None,
         max_jobs: int = None,
@@ -4457,6 +4694,7 @@ class ListAppsResponseBodyDataRecords(TeaModel):
         self.executor_num = executor_num
         self.id = id
         self.job_num = job_num
+        self.label_route_strategy = label_route_strategy
         self.leader = leader
         self.max_concurrency = max_concurrency
         self.max_jobs = max_jobs
@@ -4486,6 +4724,8 @@ class ListAppsResponseBodyDataRecords(TeaModel):
             result['Id'] = self.id
         if self.job_num is not None:
             result['JobNum'] = self.job_num
+        if self.label_route_strategy is not None:
+            result['LabelRouteStrategy'] = self.label_route_strategy
         if self.leader is not None:
             result['Leader'] = self.leader
         if self.max_concurrency is not None:
@@ -4514,6 +4754,8 @@ class ListAppsResponseBodyDataRecords(TeaModel):
             self.id = m.get('Id')
         if m.get('JobNum') is not None:
             self.job_num = m.get('JobNum')
+        if m.get('LabelRouteStrategy') is not None:
+            self.label_route_strategy = m.get('LabelRouteStrategy')
         if m.get('Leader') is not None:
             self.leader = m.get('Leader')
         if m.get('MaxConcurrency') is not None:
@@ -5784,6 +6026,255 @@ class ListJobExecutionsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListJobExecutionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListJobScriptHistoryRequest(TeaModel):
+    def __init__(
+        self,
+        app_name: str = None,
+        cluster_id: str = None,
+        job_id: int = None,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        # This parameter is required.
+        self.app_name = app_name
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        # This parameter is required.
+        self.job_id = job_id
+        self.max_results = max_results
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class ListJobScriptHistoryResponseBodyDataRecords(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        creator: str = None,
+        script_content: str = None,
+        version_description: str = None,
+    ):
+        self.create_time = create_time
+        self.creator = creator
+        self.script_content = script_content
+        self.version_description = version_description
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.script_content is not None:
+            result['ScriptContent'] = self.script_content
+        if self.version_description is not None:
+            result['VersionDescription'] = self.version_description
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('ScriptContent') is not None:
+            self.script_content = m.get('ScriptContent')
+        if m.get('VersionDescription') is not None:
+            self.version_description = m.get('VersionDescription')
+        return self
+
+
+class ListJobScriptHistoryResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        records: List[ListJobScriptHistoryResponseBodyDataRecords] = None,
+        total: str = None,
+    ):
+        self.next_token = next_token
+        # -\
+        self.records = records
+        self.total = total
+
+    def validate(self):
+        if self.records:
+            for k in self.records:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['Records'] = []
+        if self.records is not None:
+            for k in self.records:
+                result['Records'].append(k.to_map() if k else None)
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.records = []
+        if m.get('Records') is not None:
+            for k in m.get('Records'):
+                temp_model = ListJobScriptHistoryResponseBodyDataRecords()
+                self.records.append(temp_model.from_map(k))
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListJobScriptHistoryResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: ListJobScriptHistoryResponseBodyData = None,
+        max_results: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        # -\
+        self.data = data
+        self.max_results = max_results
+        # This parameter is required.
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListJobScriptHistoryResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListJobScriptHistoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListJobScriptHistoryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListJobScriptHistoryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8400,6 +8891,7 @@ class UpdateAppRequest(TeaModel):
         app_name: str = None,
         cluster_id: str = None,
         enable_log: bool = None,
+        label_route_strategy: int = None,
         max_concurrency: int = None,
         title: str = None,
     ):
@@ -8409,6 +8901,7 @@ class UpdateAppRequest(TeaModel):
         # This parameter is required.
         self.cluster_id = cluster_id
         self.enable_log = enable_log
+        self.label_route_strategy = label_route_strategy
         self.max_concurrency = max_concurrency
         # This parameter is required.
         self.title = title
@@ -8430,6 +8923,8 @@ class UpdateAppRequest(TeaModel):
             result['ClusterId'] = self.cluster_id
         if self.enable_log is not None:
             result['EnableLog'] = self.enable_log
+        if self.label_route_strategy is not None:
+            result['LabelRouteStrategy'] = self.label_route_strategy
         if self.max_concurrency is not None:
             result['MaxConcurrency'] = self.max_concurrency
         if self.title is not None:
@@ -8446,6 +8941,8 @@ class UpdateAppRequest(TeaModel):
             self.cluster_id = m.get('ClusterId')
         if m.get('EnableLog') is not None:
             self.enable_log = m.get('EnableLog')
+        if m.get('LabelRouteStrategy') is not None:
+            self.label_route_strategy = m.get('LabelRouteStrategy')
         if m.get('MaxConcurrency') is not None:
             self.max_concurrency = m.get('MaxConcurrency')
         if m.get('Title') is not None:
@@ -9167,6 +9664,147 @@ class UpdateJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateJobScriptRequest(TeaModel):
+    def __init__(
+        self,
+        app_name: str = None,
+        cluster_id: str = None,
+        job_id: int = None,
+        script_content: str = None,
+        version_description: str = None,
+    ):
+        # This parameter is required.
+        self.app_name = app_name
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        # This parameter is required.
+        self.job_id = job_id
+        self.script_content = script_content
+        # This parameter is required.
+        self.version_description = version_description
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.script_content is not None:
+            result['ScriptContent'] = self.script_content
+        if self.version_description is not None:
+            result['VersionDescription'] = self.version_description
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('ScriptContent') is not None:
+            self.script_content = m.get('ScriptContent')
+        if m.get('VersionDescription') is not None:
+            self.version_description = m.get('VersionDescription')
+        return self
+
+
+class UpdateJobScriptResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateJobScriptResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateJobScriptResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateJobScriptResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
