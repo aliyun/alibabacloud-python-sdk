@@ -3983,6 +3983,338 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_running_jobs_with_options_async(request, headers, runtime)
 
+    def get_storage_amount_summary_with_options(
+        self,
+        request: max_compute_20220104_models.GetStorageAmountSummaryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetStorageAmountSummaryResponse:
+        """
+        @param request: GetStorageAmountSummaryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStorageAmountSummaryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.date):
+            query['date'] = request.date
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        if not UtilClient.is_unset(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetStorageAmountSummary',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/observations/analysis/storage/amount',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetStorageAmountSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_storage_amount_summary_with_options_async(
+        self,
+        request: max_compute_20220104_models.GetStorageAmountSummaryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetStorageAmountSummaryResponse:
+        """
+        @param request: GetStorageAmountSummaryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStorageAmountSummaryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.date):
+            query['date'] = request.date
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        if not UtilClient.is_unset(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetStorageAmountSummary',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/observations/analysis/storage/amount',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetStorageAmountSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_storage_amount_summary(
+        self,
+        request: max_compute_20220104_models.GetStorageAmountSummaryRequest,
+    ) -> max_compute_20220104_models.GetStorageAmountSummaryResponse:
+        """
+        @param request: GetStorageAmountSummaryRequest
+        @return: GetStorageAmountSummaryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_storage_amount_summary_with_options(request, headers, runtime)
+
+    async def get_storage_amount_summary_async(
+        self,
+        request: max_compute_20220104_models.GetStorageAmountSummaryRequest,
+    ) -> max_compute_20220104_models.GetStorageAmountSummaryResponse:
+        """
+        @param request: GetStorageAmountSummaryRequest
+        @return: GetStorageAmountSummaryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_storage_amount_summary_with_options_async(request, headers, runtime)
+
+    def get_storage_size_summary_with_options(
+        self,
+        request: max_compute_20220104_models.GetStorageSizeSummaryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetStorageSizeSummaryResponse:
+        """
+        @param request: GetStorageSizeSummaryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStorageSizeSummaryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.date):
+            query['date'] = request.date
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        if not UtilClient.is_unset(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetStorageSizeSummary',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/observations/analysis/storage/size',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetStorageSizeSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_storage_size_summary_with_options_async(
+        self,
+        request: max_compute_20220104_models.GetStorageSizeSummaryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetStorageSizeSummaryResponse:
+        """
+        @param request: GetStorageSizeSummaryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStorageSizeSummaryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.date):
+            query['date'] = request.date
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        if not UtilClient.is_unset(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetStorageSizeSummary',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/observations/analysis/storage/size',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetStorageSizeSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_storage_size_summary(
+        self,
+        request: max_compute_20220104_models.GetStorageSizeSummaryRequest,
+    ) -> max_compute_20220104_models.GetStorageSizeSummaryResponse:
+        """
+        @param request: GetStorageSizeSummaryRequest
+        @return: GetStorageSizeSummaryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_storage_size_summary_with_options(request, headers, runtime)
+
+    async def get_storage_size_summary_async(
+        self,
+        request: max_compute_20220104_models.GetStorageSizeSummaryRequest,
+    ) -> max_compute_20220104_models.GetStorageSizeSummaryResponse:
+        """
+        @param request: GetStorageSizeSummaryRequest
+        @return: GetStorageSizeSummaryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_storage_size_summary_with_options_async(request, headers, runtime)
+
+    def get_storage_summary_compared_with_options(
+        self,
+        type: str,
+        tmp_req: max_compute_20220104_models.GetStorageSummaryComparedRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetStorageSummaryComparedResponse:
+        """
+        @param tmp_req: GetStorageSummaryComparedRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStorageSummaryComparedResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = max_compute_20220104_models.GetStorageSummaryComparedShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.projects):
+            request.projects_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.projects, 'projects', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.begin_date):
+            query['beginDate'] = request.begin_date
+        if not UtilClient.is_unset(request.end_date):
+            query['endDate'] = request.end_date
+        if not UtilClient.is_unset(request.projects_shrink):
+            query['projects'] = request.projects_shrink
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        if not UtilClient.is_unset(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetStorageSummaryCompared',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/observations/analysis/storage/{OpenApiUtilClient.get_encode_param(type)}/compared',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetStorageSummaryComparedResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_storage_summary_compared_with_options_async(
+        self,
+        type: str,
+        tmp_req: max_compute_20220104_models.GetStorageSummaryComparedRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetStorageSummaryComparedResponse:
+        """
+        @param tmp_req: GetStorageSummaryComparedRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStorageSummaryComparedResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = max_compute_20220104_models.GetStorageSummaryComparedShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.projects):
+            request.projects_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.projects, 'projects', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.begin_date):
+            query['beginDate'] = request.begin_date
+        if not UtilClient.is_unset(request.end_date):
+            query['endDate'] = request.end_date
+        if not UtilClient.is_unset(request.projects_shrink):
+            query['projects'] = request.projects_shrink
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        if not UtilClient.is_unset(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetStorageSummaryCompared',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/observations/analysis/storage/{OpenApiUtilClient.get_encode_param(type)}/compared',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetStorageSummaryComparedResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_storage_summary_compared(
+        self,
+        type: str,
+        request: max_compute_20220104_models.GetStorageSummaryComparedRequest,
+    ) -> max_compute_20220104_models.GetStorageSummaryComparedResponse:
+        """
+        @param request: GetStorageSummaryComparedRequest
+        @return: GetStorageSummaryComparedResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_storage_summary_compared_with_options(type, request, headers, runtime)
+
+    async def get_storage_summary_compared_async(
+        self,
+        type: str,
+        request: max_compute_20220104_models.GetStorageSummaryComparedRequest,
+    ) -> max_compute_20220104_models.GetStorageSummaryComparedResponse:
+        """
+        @param request: GetStorageSummaryComparedRequest
+        @return: GetStorageSummaryComparedResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_storage_summary_compared_with_options_async(type, request, headers, runtime)
+
     def get_table_info_with_options(
         self,
         project_name: str,
@@ -7033,6 +7365,134 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_storage_partitions_info_with_options_async(project, table, request, headers, runtime)
 
+    def list_storage_projects_info_with_options(
+        self,
+        request: max_compute_20220104_models.ListStorageProjectsInfoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.ListStorageProjectsInfoResponse:
+        """
+        @param request: ListStorageProjectsInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListStorageProjectsInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asc_order):
+            query['ascOrder'] = request.asc_order
+        if not UtilClient.is_unset(request.date):
+            query['date'] = request.date
+        if not UtilClient.is_unset(request.order_column):
+            query['orderColumn'] = request.order_column
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_prefix):
+            query['projectPrefix'] = request.project_prefix
+        if not UtilClient.is_unset(request.recent_days):
+            query['recentDays'] = request.recent_days
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        if not UtilClient.is_unset(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListStorageProjectsInfo',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/observations/analysis/storage/projectsInfo',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListStorageProjectsInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_storage_projects_info_with_options_async(
+        self,
+        request: max_compute_20220104_models.ListStorageProjectsInfoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.ListStorageProjectsInfoResponse:
+        """
+        @param request: ListStorageProjectsInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListStorageProjectsInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asc_order):
+            query['ascOrder'] = request.asc_order
+        if not UtilClient.is_unset(request.date):
+            query['date'] = request.date
+        if not UtilClient.is_unset(request.order_column):
+            query['orderColumn'] = request.order_column
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_prefix):
+            query['projectPrefix'] = request.project_prefix
+        if not UtilClient.is_unset(request.recent_days):
+            query['recentDays'] = request.recent_days
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        if not UtilClient.is_unset(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListStorageProjectsInfo',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/observations/analysis/storage/projectsInfo',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListStorageProjectsInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_storage_projects_info(
+        self,
+        request: max_compute_20220104_models.ListStorageProjectsInfoRequest,
+    ) -> max_compute_20220104_models.ListStorageProjectsInfoResponse:
+        """
+        @param request: ListStorageProjectsInfoRequest
+        @return: ListStorageProjectsInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_storage_projects_info_with_options(request, headers, runtime)
+
+    async def list_storage_projects_info_async(
+        self,
+        request: max_compute_20220104_models.ListStorageProjectsInfoRequest,
+    ) -> max_compute_20220104_models.ListStorageProjectsInfoResponse:
+        """
+        @param request: ListStorageProjectsInfoRequest
+        @return: ListStorageProjectsInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_storage_projects_info_with_options_async(request, headers, runtime)
+
     def list_storage_tables_info_with_options(
         self,
         project: str,
@@ -7724,6 +8184,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.query_quota_with_options_async(nickname, request, headers, runtime)
+
+    def query_storage_metric_with_options(
+        self,
+        metric: str,
+        request: max_compute_20220104_models.QueryStorageMetricRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.QueryStorageMetricResponse:
+        """
+        @summary 查看存储数据的时序指标
+        
+        @param request: QueryStorageMetricRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryStorageMetricResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        body = {}
+        if not UtilClient.is_unset(request.project_list):
+            body['projectList'] = request.project_list
+        if not UtilClient.is_unset(request.type_list):
+            body['typeList'] = request.type_list
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryStorageMetric',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/observations/storage/{OpenApiUtilClient.get_encode_param(metric)}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.QueryStorageMetricResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_storage_metric_with_options_async(
+        self,
+        metric: str,
+        request: max_compute_20220104_models.QueryStorageMetricRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.QueryStorageMetricResponse:
+        """
+        @summary 查看存储数据的时序指标
+        
+        @param request: QueryStorageMetricRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryStorageMetricResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        body = {}
+        if not UtilClient.is_unset(request.project_list):
+            body['projectList'] = request.project_list
+        if not UtilClient.is_unset(request.type_list):
+            body['typeList'] = request.type_list
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryStorageMetric',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/observations/storage/{OpenApiUtilClient.get_encode_param(metric)}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.QueryStorageMetricResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_storage_metric(
+        self,
+        metric: str,
+        request: max_compute_20220104_models.QueryStorageMetricRequest,
+    ) -> max_compute_20220104_models.QueryStorageMetricResponse:
+        """
+        @summary 查看存储数据的时序指标
+        
+        @param request: QueryStorageMetricRequest
+        @return: QueryStorageMetricResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_storage_metric_with_options(metric, request, headers, runtime)
+
+    async def query_storage_metric_async(
+        self,
+        metric: str,
+        request: max_compute_20220104_models.QueryStorageMetricRequest,
+    ) -> max_compute_20220104_models.QueryStorageMetricResponse:
+        """
+        @summary 查看存储数据的时序指标
+        
+        @param request: QueryStorageMetricRequest
+        @return: QueryStorageMetricResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_storage_metric_with_options_async(metric, request, headers, runtime)
 
     def query_tunnel_metric_with_options(
         self,
@@ -9554,3 +10138,119 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_tunnel_quota_timer_with_options_async(nickname, request, headers, runtime)
+
+    def update_users_to_role_with_options(
+        self,
+        project_name: str,
+        role_name: str,
+        request: max_compute_20220104_models.UpdateUsersToRoleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.UpdateUsersToRoleResponse:
+        """
+        @summary Add or remove users from a project role.
+        
+        @param request: UpdateUsersToRoleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUsersToRoleResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.add):
+            body['add'] = request.add
+        if not UtilClient.is_unset(request.remove):
+            body['remove'] = request.remove
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateUsersToRole',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/projects/{OpenApiUtilClient.get_encode_param(project_name)}/roles/{OpenApiUtilClient.get_encode_param(role_name)}/users',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateUsersToRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_users_to_role_with_options_async(
+        self,
+        project_name: str,
+        role_name: str,
+        request: max_compute_20220104_models.UpdateUsersToRoleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.UpdateUsersToRoleResponse:
+        """
+        @summary Add or remove users from a project role.
+        
+        @param request: UpdateUsersToRoleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUsersToRoleResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.add):
+            body['add'] = request.add
+        if not UtilClient.is_unset(request.remove):
+            body['remove'] = request.remove
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateUsersToRole',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/projects/{OpenApiUtilClient.get_encode_param(project_name)}/roles/{OpenApiUtilClient.get_encode_param(role_name)}/users',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateUsersToRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_users_to_role(
+        self,
+        project_name: str,
+        role_name: str,
+        request: max_compute_20220104_models.UpdateUsersToRoleRequest,
+    ) -> max_compute_20220104_models.UpdateUsersToRoleResponse:
+        """
+        @summary Add or remove users from a project role.
+        
+        @param request: UpdateUsersToRoleRequest
+        @return: UpdateUsersToRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_users_to_role_with_options(project_name, role_name, request, headers, runtime)
+
+    async def update_users_to_role_async(
+        self,
+        project_name: str,
+        role_name: str,
+        request: max_compute_20220104_models.UpdateUsersToRoleRequest,
+    ) -> max_compute_20220104_models.UpdateUsersToRoleResponse:
+        """
+        @summary Add or remove users from a project role.
+        
+        @param request: UpdateUsersToRoleRequest
+        @return: UpdateUsersToRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_users_to_role_with_options_async(project_name, role_name, request, headers, runtime)

@@ -10843,6 +10843,613 @@ class GetRunningJobsResponse(TeaModel):
         return self
 
 
+class GetStorageAmountSummaryRequest(TeaModel):
+    def __init__(
+        self,
+        date: str = None,
+        region: str = None,
+        tenant_id: str = None,
+    ):
+        self.date = date
+        self.region = region
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.date is not None:
+            result['date'] = self.date
+        if self.region is not None:
+            result['region'] = self.region
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('date') is not None:
+            self.date = m.get('date')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class GetStorageAmountSummaryResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        date: str = None,
+        timestamp: int = None,
+        unit: Dict[str, str] = None,
+        value: Dict[str, int] = None,
+    ):
+        self.date = date
+        self.timestamp = timestamp
+        self.unit = unit
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.date is not None:
+            result['date'] = self.date
+        if self.timestamp is not None:
+            result['timestamp'] = self.timestamp
+        if self.unit is not None:
+            result['unit'] = self.unit
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('date') is not None:
+            self.date = m.get('date')
+        if m.get('timestamp') is not None:
+            self.timestamp = m.get('timestamp')
+        if m.get('unit') is not None:
+            self.unit = m.get('unit')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class GetStorageAmountSummaryResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetStorageAmountSummaryResponseBodyData = None,
+        error_code: str = None,
+        error_msg: str = None,
+        http_code: int = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.http_code = http_code
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['errorMsg'] = self.error_msg
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = GetStorageAmountSummaryResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMsg') is not None:
+            self.error_msg = m.get('errorMsg')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetStorageAmountSummaryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetStorageAmountSummaryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetStorageAmountSummaryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetStorageSizeSummaryRequest(TeaModel):
+    def __init__(
+        self,
+        date: str = None,
+        region: str = None,
+        tenant_id: str = None,
+    ):
+        self.date = date
+        self.region = region
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.date is not None:
+            result['date'] = self.date
+        if self.region is not None:
+            result['region'] = self.region
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('date') is not None:
+            self.date = m.get('date')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class GetStorageSizeSummaryResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        date: str = None,
+        timestamp: int = None,
+        unit: Dict[str, str] = None,
+        value: Dict[str, float] = None,
+    ):
+        self.date = date
+        self.timestamp = timestamp
+        self.unit = unit
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.date is not None:
+            result['date'] = self.date
+        if self.timestamp is not None:
+            result['timestamp'] = self.timestamp
+        if self.unit is not None:
+            result['unit'] = self.unit
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('date') is not None:
+            self.date = m.get('date')
+        if m.get('timestamp') is not None:
+            self.timestamp = m.get('timestamp')
+        if m.get('unit') is not None:
+            self.unit = m.get('unit')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class GetStorageSizeSummaryResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetStorageSizeSummaryResponseBodyData = None,
+        error_code: str = None,
+        error_msg: str = None,
+        http_code: int = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.http_code = http_code
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['errorMsg'] = self.error_msg
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = GetStorageSizeSummaryResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMsg') is not None:
+            self.error_msg = m.get('errorMsg')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetStorageSizeSummaryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetStorageSizeSummaryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetStorageSizeSummaryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetStorageSummaryComparedRequest(TeaModel):
+    def __init__(
+        self,
+        begin_date: str = None,
+        end_date: str = None,
+        projects: List[str] = None,
+        region: str = None,
+        tenant_id: str = None,
+    ):
+        # This parameter is required.
+        self.begin_date = begin_date
+        # This parameter is required.
+        self.end_date = end_date
+        self.projects = projects
+        self.region = region
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.begin_date is not None:
+            result['beginDate'] = self.begin_date
+        if self.end_date is not None:
+            result['endDate'] = self.end_date
+        if self.projects is not None:
+            result['projects'] = self.projects
+        if self.region is not None:
+            result['region'] = self.region
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('beginDate') is not None:
+            self.begin_date = m.get('beginDate')
+        if m.get('endDate') is not None:
+            self.end_date = m.get('endDate')
+        if m.get('projects') is not None:
+            self.projects = m.get('projects')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class GetStorageSummaryComparedShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        begin_date: str = None,
+        end_date: str = None,
+        projects_shrink: str = None,
+        region: str = None,
+        tenant_id: str = None,
+    ):
+        # This parameter is required.
+        self.begin_date = begin_date
+        # This parameter is required.
+        self.end_date = end_date
+        self.projects_shrink = projects_shrink
+        self.region = region
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.begin_date is not None:
+            result['beginDate'] = self.begin_date
+        if self.end_date is not None:
+            result['endDate'] = self.end_date
+        if self.projects_shrink is not None:
+            result['projects'] = self.projects_shrink
+        if self.region is not None:
+            result['region'] = self.region
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('beginDate') is not None:
+            self.begin_date = m.get('beginDate')
+        if m.get('endDate') is not None:
+            self.end_date = m.get('endDate')
+        if m.get('projects') is not None:
+            self.projects_shrink = m.get('projects')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class GetStorageSummaryComparedResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        begin_date: str = None,
+        end_date: str = None,
+        rate: Dict[str, float] = None,
+        unit: Dict[str, str] = None,
+        value: Dict[str, float] = None,
+    ):
+        self.begin_date = begin_date
+        self.end_date = end_date
+        self.rate = rate
+        self.unit = unit
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.begin_date is not None:
+            result['beginDate'] = self.begin_date
+        if self.end_date is not None:
+            result['endDate'] = self.end_date
+        if self.rate is not None:
+            result['rate'] = self.rate
+        if self.unit is not None:
+            result['unit'] = self.unit
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('beginDate') is not None:
+            self.begin_date = m.get('beginDate')
+        if m.get('endDate') is not None:
+            self.end_date = m.get('endDate')
+        if m.get('rate') is not None:
+            self.rate = m.get('rate')
+        if m.get('unit') is not None:
+            self.unit = m.get('unit')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class GetStorageSummaryComparedResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetStorageSummaryComparedResponseBodyData = None,
+        error_code: str = None,
+        error_msg: str = None,
+        http_code: int = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.http_code = http_code
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['errorMsg'] = self.error_msg
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = GetStorageSummaryComparedResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMsg') is not None:
+            self.error_msg = m.get('errorMsg')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetStorageSummaryComparedResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetStorageSummaryComparedResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetStorageSummaryComparedResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetTableInfoRequest(TeaModel):
     def __init__(
         self,
@@ -22165,6 +22772,340 @@ class ListStoragePartitionsInfoResponse(TeaModel):
         return self
 
 
+class ListStorageProjectsInfoRequest(TeaModel):
+    def __init__(
+        self,
+        asc_order: bool = None,
+        date: str = None,
+        order_column: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_prefix: str = None,
+        recent_days: int = None,
+        region: str = None,
+        tenant_id: str = None,
+    ):
+        self.asc_order = asc_order
+        # This parameter is required.
+        self.date = date
+        self.order_column = order_column
+        self.page_number = page_number
+        self.page_size = page_size
+        self.project_prefix = project_prefix
+        self.recent_days = recent_days
+        self.region = region
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asc_order is not None:
+            result['ascOrder'] = self.asc_order
+        if self.date is not None:
+            result['date'] = self.date
+        if self.order_column is not None:
+            result['orderColumn'] = self.order_column
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.project_prefix is not None:
+            result['projectPrefix'] = self.project_prefix
+        if self.recent_days is not None:
+            result['recentDays'] = self.recent_days
+        if self.region is not None:
+            result['region'] = self.region
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ascOrder') is not None:
+            self.asc_order = m.get('ascOrder')
+        if m.get('date') is not None:
+            self.date = m.get('date')
+        if m.get('orderColumn') is not None:
+            self.order_column = m.get('orderColumn')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('projectPrefix') is not None:
+            self.project_prefix = m.get('projectPrefix')
+        if m.get('recentDays') is not None:
+            self.recent_days = m.get('recentDays')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class ListStorageProjectsInfoResponseBodyDataStorageProjectInfoList(TeaModel):
+    def __init__(
+        self,
+        date: str = None,
+        long_term_storage: float = None,
+        long_term_storage_unit: str = None,
+        low_freq_storage: float = None,
+        low_freq_storage_unit: str = None,
+        project_name: str = None,
+        rate: float = None,
+        recycle_bin_storage: float = None,
+        recycle_bin_storage_unit: str = None,
+        standard_storage: float = None,
+        standard_storage_unit: str = None,
+        timestamp: int = None,
+        total_storage: float = None,
+        total_storage_unit: str = None,
+    ):
+        self.date = date
+        self.long_term_storage = long_term_storage
+        self.long_term_storage_unit = long_term_storage_unit
+        self.low_freq_storage = low_freq_storage
+        self.low_freq_storage_unit = low_freq_storage_unit
+        self.project_name = project_name
+        self.rate = rate
+        self.recycle_bin_storage = recycle_bin_storage
+        self.recycle_bin_storage_unit = recycle_bin_storage_unit
+        self.standard_storage = standard_storage
+        self.standard_storage_unit = standard_storage_unit
+        self.timestamp = timestamp
+        self.total_storage = total_storage
+        self.total_storage_unit = total_storage_unit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.date is not None:
+            result['date'] = self.date
+        if self.long_term_storage is not None:
+            result['longTermStorage'] = self.long_term_storage
+        if self.long_term_storage_unit is not None:
+            result['longTermStorageUnit'] = self.long_term_storage_unit
+        if self.low_freq_storage is not None:
+            result['lowFreqStorage'] = self.low_freq_storage
+        if self.low_freq_storage_unit is not None:
+            result['lowFreqStorageUnit'] = self.low_freq_storage_unit
+        if self.project_name is not None:
+            result['projectName'] = self.project_name
+        if self.rate is not None:
+            result['rate'] = self.rate
+        if self.recycle_bin_storage is not None:
+            result['recycleBinStorage'] = self.recycle_bin_storage
+        if self.recycle_bin_storage_unit is not None:
+            result['recycleBinStorageUnit'] = self.recycle_bin_storage_unit
+        if self.standard_storage is not None:
+            result['standardStorage'] = self.standard_storage
+        if self.standard_storage_unit is not None:
+            result['standardStorageUnit'] = self.standard_storage_unit
+        if self.timestamp is not None:
+            result['timestamp'] = self.timestamp
+        if self.total_storage is not None:
+            result['totalStorage'] = self.total_storage
+        if self.total_storage_unit is not None:
+            result['totalStorageUnit'] = self.total_storage_unit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('date') is not None:
+            self.date = m.get('date')
+        if m.get('longTermStorage') is not None:
+            self.long_term_storage = m.get('longTermStorage')
+        if m.get('longTermStorageUnit') is not None:
+            self.long_term_storage_unit = m.get('longTermStorageUnit')
+        if m.get('lowFreqStorage') is not None:
+            self.low_freq_storage = m.get('lowFreqStorage')
+        if m.get('lowFreqStorageUnit') is not None:
+            self.low_freq_storage_unit = m.get('lowFreqStorageUnit')
+        if m.get('projectName') is not None:
+            self.project_name = m.get('projectName')
+        if m.get('rate') is not None:
+            self.rate = m.get('rate')
+        if m.get('recycleBinStorage') is not None:
+            self.recycle_bin_storage = m.get('recycleBinStorage')
+        if m.get('recycleBinStorageUnit') is not None:
+            self.recycle_bin_storage_unit = m.get('recycleBinStorageUnit')
+        if m.get('standardStorage') is not None:
+            self.standard_storage = m.get('standardStorage')
+        if m.get('standardStorageUnit') is not None:
+            self.standard_storage_unit = m.get('standardStorageUnit')
+        if m.get('timestamp') is not None:
+            self.timestamp = m.get('timestamp')
+        if m.get('totalStorage') is not None:
+            self.total_storage = m.get('totalStorage')
+        if m.get('totalStorageUnit') is not None:
+            self.total_storage_unit = m.get('totalStorageUnit')
+        return self
+
+
+class ListStorageProjectsInfoResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        date: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        storage_project_info_list: List[ListStorageProjectsInfoResponseBodyDataStorageProjectInfoList] = None,
+        total_count: int = None,
+    ):
+        self.date = date
+        self.page_number = page_number
+        self.page_size = page_size
+        self.storage_project_info_list = storage_project_info_list
+        self.total_count = total_count
+
+    def validate(self):
+        if self.storage_project_info_list:
+            for k in self.storage_project_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.date is not None:
+            result['date'] = self.date
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        result['storageProjectInfoList'] = []
+        if self.storage_project_info_list is not None:
+            for k in self.storage_project_info_list:
+                result['storageProjectInfoList'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('date') is not None:
+            self.date = m.get('date')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        self.storage_project_info_list = []
+        if m.get('storageProjectInfoList') is not None:
+            for k in m.get('storageProjectInfoList'):
+                temp_model = ListStorageProjectsInfoResponseBodyDataStorageProjectInfoList()
+                self.storage_project_info_list.append(temp_model.from_map(k))
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ListStorageProjectsInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ListStorageProjectsInfoResponseBodyData = None,
+        error_code: str = None,
+        error_msg: str = None,
+        http_code: int = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.http_code = http_code
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['errorMsg'] = self.error_msg
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = ListStorageProjectsInfoResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMsg') is not None:
+            self.error_msg = m.get('errorMsg')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListStorageProjectsInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListStorageProjectsInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListStorageProjectsInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListStorageTablesInfoRequest(TeaModel):
     def __init__(
         self,
@@ -24345,6 +25286,233 @@ class QueryQuotaResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryQuotaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryStorageMetricRequest(TeaModel):
+    def __init__(
+        self,
+        project_list: List[str] = None,
+        type_list: List[str] = None,
+        end_time: int = None,
+        start_time: int = None,
+    ):
+        self.project_list = project_list
+        self.type_list = type_list
+        # This parameter is required.
+        self.end_time = end_time
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_list is not None:
+            result['projectList'] = self.project_list
+        if self.type_list is not None:
+            result['typeList'] = self.type_list
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('projectList') is not None:
+            self.project_list = m.get('projectList')
+        if m.get('typeList') is not None:
+            self.type_list = m.get('typeList')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        return self
+
+
+class QueryStorageMetricResponseBodyDataMetrics(TeaModel):
+    def __init__(
+        self,
+        metric: Dict[str, str] = None,
+        values: List[List[float]] = None,
+    ):
+        self.metric = metric
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metric is not None:
+            result['metric'] = self.metric
+        if self.values is not None:
+            result['values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('metric') is not None:
+            self.metric = m.get('metric')
+        if m.get('values') is not None:
+            self.values = m.get('values')
+        return self
+
+
+class QueryStorageMetricResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        metrics: List[QueryStorageMetricResponseBodyDataMetrics] = None,
+        name: str = None,
+        period: int = None,
+    ):
+        self.category = category
+        self.metrics = metrics
+        self.name = name
+        self.period = period
+
+    def validate(self):
+        if self.metrics:
+            for k in self.metrics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['category'] = self.category
+        result['metrics'] = []
+        if self.metrics is not None:
+            for k in self.metrics:
+                result['metrics'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['name'] = self.name
+        if self.period is not None:
+            result['period'] = self.period
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('category') is not None:
+            self.category = m.get('category')
+        self.metrics = []
+        if m.get('metrics') is not None:
+            for k in m.get('metrics'):
+                temp_model = QueryStorageMetricResponseBodyDataMetrics()
+                self.metrics.append(temp_model.from_map(k))
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('period') is not None:
+            self.period = m.get('period')
+        return self
+
+
+class QueryStorageMetricResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: QueryStorageMetricResponseBodyData = None,
+        error_code: str = None,
+        error_msg: str = None,
+        http_code: int = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.http_code = http_code
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['errorMsg'] = self.error_msg
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = QueryStorageMetricResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMsg') is not None:
+            self.error_msg = m.get('errorMsg')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class QueryStorageMetricResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryStorageMetricResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryStorageMetricResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -27136,6 +28304,117 @@ class UpdateTunnelQuotaTimerResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateTunnelQuotaTimerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateUsersToRoleRequest(TeaModel):
+    def __init__(
+        self,
+        add: List[str] = None,
+        remove: List[str] = None,
+    ):
+        # The accounts.
+        self.add = add
+        # The accounts.
+        self.remove = remove
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.add is not None:
+            result['add'] = self.add
+        if self.remove is not None:
+            result['remove'] = self.remove
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('add') is not None:
+            self.add = m.get('add')
+        if m.get('remove') is not None:
+            self.remove = m.get('remove')
+        return self
+
+
+class UpdateUsersToRoleResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        request_id: str = None,
+    ):
+        # The data returned.
+        self.data = data
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpdateUsersToRoleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateUsersToRoleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateUsersToRoleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
