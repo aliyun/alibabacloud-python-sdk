@@ -1,3 +1,25 @@
+2025-07-11 Version: 12.0.0
+- Update API DescribeOasAnomalySQLList: update response parameters Body.Data.$.AvgLogicalReads' format has changed.
+- Update API DescribeOasAnomalySQLList: update response parameters Body.Data.$.AvgRetryCount' format has changed.
+- Update API DescribeOasAnomalySQLList: update response parameters Body.Data.$.SqlList.$.AvgLogicalReads' format has changed.
+- Update API DescribeOasAnomalySQLList: update response parameters Body.Data.$.SqlList.$.AvgRetryCount' format has changed.
+- Update API DescribeOasAnomalySQLList: update response parameters Body.Data.$.SqlList.$.SumElapsedTime' type has changed.
+- Update API DescribeOasAnomalySQLList: update response parameters Body.Data.$.SqlList.$.SumElapsedTime' format has changed.
+- Update API DescribeOasAnomalySQLList: update response parameters Body.Data.$.SqlList.$.SumRetryCount' format has changed.
+- Update API DescribeOasAnomalySQLList: update response parameters Body.Data.$.SumElapsedTime' type has changed.
+- Update API DescribeOasAnomalySQLList: update response parameters Body.Data.$.SumElapsedTime' format has changed.
+- Update API DescribeOasAnomalySQLList: update response parameters Body.Data.$.SumRetryCount' format has changed.
+- Update API DescribeProcessStatsComposition: update response parameters Body.Data.ActiveSessionCount' format has changed.
+- Update API DescribeProcessStatsComposition: update response parameters Body.Data.AllProcessList.$.PlanId' type has changed.
+- Update API DescribeProcessStatsComposition: update response parameters Body.Data.AllProcessList.$.PlanId' format has changed.
+- Update API DescribeProcessStatsComposition: update response parameters Body.Data.AllProcessList.$.ProcessSqlLists.$.PlanId' type has changed.
+- Update API DescribeProcessStatsComposition: update response parameters Body.Data.AllProcessList.$.ProcessSqlLists.$.PlanId' format has changed.
+- Update API DescribeProcessStatsComposition: update response parameters Body.Data.AllProcessList.$.ProcessSqlLists.$.ProcessSqlList.$.PlanId' type has changed.
+- Update API DescribeProcessStatsComposition: update response parameters Body.Data.AllProcessList.$.ProcessSqlLists.$.ProcessSqlList.$.PlanId' format has changed.
+- Update API DescribeProcessStatsComposition: update response parameters Body.Data.IdleSessionCount' format has changed.
+- Update API DescribeProcessStatsComposition: update response parameters Body.Data.TotalSessionCount' format has changed.
+
+
 2025-07-09 Version: 11.0.0
 - Update API DescribeOasAnomalySQLList: update response parameters Body.Data.$.LastExecutedTime' type has changed.
 - Update API DescribeOasAnomalySQLList: update response parameters Body.Data.$.LastExecutedTime' format has changed.
