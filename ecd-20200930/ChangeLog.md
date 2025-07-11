@@ -1,3 +1,9 @@
+2025-07-11 Version: 4.9.0
+- Support API CreateDrive.
+- Support API DeleteDrive.
+- Support API DescribeDrives.
+
+
 2025-07-07 Version: 4.8.7
 - Update API CreateDesktops: add request parameters QosRuleId.
 - Update API DescribeDesktopSessions: add request parameters ResourceGroupId.

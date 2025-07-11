@@ -5802,6 +5802,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_disk_encryption_service_with_options_async(request, runtime)
 
+    def create_drive_with_options(
+        self,
+        request: ecd_20200930_models.CreateDriveRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.CreateDriveResponse:
+        """
+        @summary 创建网盘
+        
+        @param request: CreateDriveRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDriveResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid):
+            query['AliUid'] = request.ali_uid
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.domain_id):
+            query['DomainId'] = request.domain_id
+        if not UtilClient.is_unset(request.drive_name):
+            query['DriveName'] = request.drive_name
+        if not UtilClient.is_unset(request.external_domain_id):
+            query['ExternalDomainId'] = request.external_domain_id
+        if not UtilClient.is_unset(request.profile_roaming):
+            query['ProfileRoaming'] = request.profile_roaming
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDrive',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.CreateDriveResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_drive_with_options_async(
+        self,
+        request: ecd_20200930_models.CreateDriveRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.CreateDriveResponse:
+        """
+        @summary 创建网盘
+        
+        @param request: CreateDriveRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDriveResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid):
+            query['AliUid'] = request.ali_uid
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.domain_id):
+            query['DomainId'] = request.domain_id
+        if not UtilClient.is_unset(request.drive_name):
+            query['DriveName'] = request.drive_name
+        if not UtilClient.is_unset(request.external_domain_id):
+            query['ExternalDomainId'] = request.external_domain_id
+        if not UtilClient.is_unset(request.profile_roaming):
+            query['ProfileRoaming'] = request.profile_roaming
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDrive',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.CreateDriveResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_drive(
+        self,
+        request: ecd_20200930_models.CreateDriveRequest,
+    ) -> ecd_20200930_models.CreateDriveResponse:
+        """
+        @summary 创建网盘
+        
+        @param request: CreateDriveRequest
+        @return: CreateDriveResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_drive_with_options(request, runtime)
+
+    async def create_drive_async(
+        self,
+        request: ecd_20200930_models.CreateDriveRequest,
+    ) -> ecd_20200930_models.CreateDriveResponse:
+        """
+        @summary 创建网盘
+        
+        @param request: CreateDriveRequest
+        @return: CreateDriveResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_drive_with_options_async(request, runtime)
+
     def create_image_with_options(
         self,
         request: ecd_20200930_models.CreateImageRequest,
@@ -8319,6 +8451,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_directories_with_options_async(request, runtime)
+
+    def delete_drive_with_options(
+        self,
+        request: ecd_20200930_models.DeleteDriveRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DeleteDriveResponse:
+        """
+        @summary 删除网盘
+        
+        @param request: DeleteDriveRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDriveResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.drive_id):
+            query['DriveId'] = request.drive_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDrive',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DeleteDriveResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_drive_with_options_async(
+        self,
+        request: ecd_20200930_models.DeleteDriveRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DeleteDriveResponse:
+        """
+        @summary 删除网盘
+        
+        @param request: DeleteDriveRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDriveResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.drive_id):
+            query['DriveId'] = request.drive_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDrive',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DeleteDriveResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_drive(
+        self,
+        request: ecd_20200930_models.DeleteDriveRequest,
+    ) -> ecd_20200930_models.DeleteDriveResponse:
+        """
+        @summary 删除网盘
+        
+        @param request: DeleteDriveRequest
+        @return: DeleteDriveResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_drive_with_options(request, runtime)
+
+    async def delete_drive_async(
+        self,
+        request: ecd_20200930_models.DeleteDriveRequest,
+    ) -> ecd_20200930_models.DeleteDriveResponse:
+        """
+        @summary 删除网盘
+        
+        @param request: DeleteDriveRequest
+        @return: DeleteDriveResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_drive_with_options_async(request, runtime)
 
     def delete_edu_room_with_options(
         self,
@@ -12459,6 +12691,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_directories_with_options_async(request, runtime)
+
+    def describe_drives_with_options(
+        self,
+        request: ecd_20200930_models.DescribeDrivesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeDrivesResponse:
+        """
+        @summary 查询网盘列表
+        
+        @param request: DescribeDrivesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDrivesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_ids):
+            query['DomainIds'] = request.domain_ids
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDrives',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeDrivesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_drives_with_options_async(
+        self,
+        request: ecd_20200930_models.DescribeDrivesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeDrivesResponse:
+        """
+        @summary 查询网盘列表
+        
+        @param request: DescribeDrivesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDrivesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_ids):
+            query['DomainIds'] = request.domain_ids
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDrives',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeDrivesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_drives(
+        self,
+        request: ecd_20200930_models.DescribeDrivesRequest,
+    ) -> ecd_20200930_models.DescribeDrivesResponse:
+        """
+        @summary 查询网盘列表
+        
+        @param request: DescribeDrivesRequest
+        @return: DescribeDrivesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_drives_with_options(request, runtime)
+
+    async def describe_drives_async(
+        self,
+        request: ecd_20200930_models.DescribeDrivesRequest,
+    ) -> ecd_20200930_models.DescribeDrivesResponse:
+        """
+        @summary 查询网盘列表
+        
+        @param request: DescribeDrivesRequest
+        @return: DescribeDrivesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_drives_with_options_async(request, runtime)
 
     def describe_flow_metric_with_options(
         self,
