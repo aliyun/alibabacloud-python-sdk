@@ -3440,6 +3440,8 @@ class Client(OpenApiClient):
             query['Category'] = request.category
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_billing_cycle):
+            query['InstanceBillingCycle'] = request.instance_billing_cycle
         if not UtilClient.is_unset(request.rendering_instance_id):
             query['RenderingInstanceId'] = request.rendering_instance_id
         req = open_api_models.OpenApiRequest(
@@ -3479,6 +3481,8 @@ class Client(OpenApiClient):
             query['Category'] = request.category
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_billing_cycle):
+            query['InstanceBillingCycle'] = request.instance_billing_cycle
         if not UtilClient.is_unset(request.rendering_instance_id):
             query['RenderingInstanceId'] = request.rendering_instance_id
         req = open_api_models.OpenApiRequest(

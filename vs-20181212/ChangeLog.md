@@ -1,3 +1,7 @@
+2025-07-11 Version: 3.4.2
+- Update API CreateRenderingDataPackage: add request parameters InstanceBillingCycle.
+
+
 2025-07-10 Version: 3.4.1
 - Update API DescribeRenderingInstance: add response parameters Body.InternalIp.
 - Update API InstallCloudApp: add request parameters PageNumber.
