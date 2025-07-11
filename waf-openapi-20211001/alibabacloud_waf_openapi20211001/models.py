@@ -4603,6 +4603,128 @@ class DeleteDefenseRuleResponse(TeaModel):
         return self
 
 
+class DeleteDefenseRuleBlockIpRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+        rule_id: int = None,
+        template_id: int = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        # This parameter is required.
+        self.rule_id = rule_id
+        # This parameter is required.
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class DeleteDefenseRuleBlockIpResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteDefenseRuleBlockIpResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDefenseRuleBlockIpResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDefenseRuleBlockIpResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteDefenseTemplateRequest(TeaModel):
     def __init__(
         self,
@@ -4745,8 +4867,6 @@ class DeleteDomainRequest(TeaModel):
         # *   **hybrid_cloud_cname:** hybrid cloud reverse proxy mode.
         self.access_type = access_type
         # The domain name that you want to delete.
-        # 
-        # This parameter is required.
         self.domain = domain
         # The ID of the domain name.
         self.domain_id = domain_id
@@ -15861,13 +15981,13 @@ class DescribeDomainDetailRequest(TeaModel):
     def __init__(
         self,
         domain: str = None,
+        domain_id: str = None,
         instance_id: str = None,
         region_id: str = None,
     ):
         # The domain name that you want to query.
-        # 
-        # This parameter is required.
         self.domain = domain
+        self.domain_id = domain_id
         # The ID of the WAF instance.
         # 
         # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
@@ -15891,6 +16011,8 @@ class DescribeDomainDetailRequest(TeaModel):
         result = dict()
         if self.domain is not None:
             result['Domain'] = self.domain
+        if self.domain_id is not None:
+            result['DomainId'] = self.domain_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -15901,6 +16023,8 @@ class DescribeDomainDetailRequest(TeaModel):
         m = m or dict()
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')
+        if m.get('DomainId') is not None:
+            self.domain_id = m.get('DomainId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -16482,6 +16606,7 @@ class DescribeDomainDetailResponseBody(TeaModel):
         cert_detail: DescribeDomainDetailResponseBodyCertDetail = None,
         cname: str = None,
         domain: str = None,
+        domain_id: str = None,
         listen: DescribeDomainDetailResponseBodyListen = None,
         redirect: DescribeDomainDetailResponseBodyRedirect = None,
         request_id: str = None,
@@ -16495,6 +16620,7 @@ class DescribeDomainDetailResponseBody(TeaModel):
         self.cname = cname
         # The domain name.
         self.domain = domain
+        self.domain_id = domain_id
         # The configurations of the listeners.
         self.listen = listen
         # The configurations of the forwarding rule.
@@ -16536,6 +16662,8 @@ class DescribeDomainDetailResponseBody(TeaModel):
             result['Cname'] = self.cname
         if self.domain is not None:
             result['Domain'] = self.domain
+        if self.domain_id is not None:
+            result['DomainId'] = self.domain_id
         if self.listen is not None:
             result['Listen'] = self.listen.to_map()
         if self.redirect is not None:
@@ -16559,6 +16687,8 @@ class DescribeDomainDetailResponseBody(TeaModel):
             self.cname = m.get('Cname')
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')
+        if m.get('DomainId') is not None:
+            self.domain_id = m.get('DomainId')
         if m.get('Listen') is not None:
             temp_model = DescribeDomainDetailResponseBodyListen()
             self.listen = temp_model.from_map(m['Listen'])
@@ -17000,6 +17130,7 @@ class DescribeDomainsResponseBodyDomains(TeaModel):
         backeds: DescribeDomainsResponseBodyDomainsBackeds = None,
         cname: str = None,
         domain: str = None,
+        domain_id: str = None,
         listen_ports: DescribeDomainsResponseBodyDomainsListenPorts = None,
         resource_manager_resource_group_id: str = None,
         status: int = None,
@@ -17010,6 +17141,7 @@ class DescribeDomainsResponseBodyDomains(TeaModel):
         self.cname = cname
         # The domain name that is added to WAF in CNAME record mode.
         self.domain = domain
+        self.domain_id = domain_id
         # The configurations of the listeners.
         self.listen_ports = listen_ports
         # The ID of the resource group.
@@ -17041,6 +17173,8 @@ class DescribeDomainsResponseBodyDomains(TeaModel):
             result['Cname'] = self.cname
         if self.domain is not None:
             result['Domain'] = self.domain
+        if self.domain_id is not None:
+            result['DomainId'] = self.domain_id
         if self.listen_ports is not None:
             result['ListenPorts'] = self.listen_ports.to_map()
         if self.resource_manager_resource_group_id is not None:
@@ -17058,6 +17192,8 @@ class DescribeDomainsResponseBodyDomains(TeaModel):
             self.cname = m.get('Cname')
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')
+        if m.get('DomainId') is not None:
+            self.domain_id = m.get('DomainId')
         if m.get('ListenPorts') is not None:
             temp_model = DescribeDomainsResponseBodyDomainsListenPorts()
             self.listen_ports = temp_model.from_map(m['ListenPorts'])
@@ -36846,6 +36982,7 @@ class ModifyDomainRequest(TeaModel):
         self,
         access_type: str = None,
         domain: str = None,
+        domain_id: str = None,
         instance_id: str = None,
         listen: ModifyDomainRequestListen = None,
         redirect: ModifyDomainRequestRedirect = None,
@@ -36856,9 +36993,8 @@ class ModifyDomainRequest(TeaModel):
         # *   **share:** adds the domain name to WAF in CNAME record mode. This is the default value.
         self.access_type = access_type
         # The domain name whose access configurations you want to modify.
-        # 
-        # This parameter is required.
         self.domain = domain
+        self.domain_id = domain_id
         # The ID of the WAF instance.
         # 
         # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
@@ -36897,6 +37033,8 @@ class ModifyDomainRequest(TeaModel):
             result['AccessType'] = self.access_type
         if self.domain is not None:
             result['Domain'] = self.domain
+        if self.domain_id is not None:
+            result['DomainId'] = self.domain_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.listen is not None:
@@ -36913,6 +37051,8 @@ class ModifyDomainRequest(TeaModel):
             self.access_type = m.get('AccessType')
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')
+        if m.get('DomainId') is not None:
+            self.domain_id = m.get('DomainId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Listen') is not None:
@@ -36931,6 +37071,7 @@ class ModifyDomainShrinkRequest(TeaModel):
         self,
         access_type: str = None,
         domain: str = None,
+        domain_id: str = None,
         instance_id: str = None,
         listen_shrink: str = None,
         redirect_shrink: str = None,
@@ -36941,9 +37082,8 @@ class ModifyDomainShrinkRequest(TeaModel):
         # *   **share:** adds the domain name to WAF in CNAME record mode. This is the default value.
         self.access_type = access_type
         # The domain name whose access configurations you want to modify.
-        # 
-        # This parameter is required.
         self.domain = domain
+        self.domain_id = domain_id
         # The ID of the WAF instance.
         # 
         # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
@@ -36979,6 +37119,8 @@ class ModifyDomainShrinkRequest(TeaModel):
             result['AccessType'] = self.access_type
         if self.domain is not None:
             result['Domain'] = self.domain
+        if self.domain_id is not None:
+            result['DomainId'] = self.domain_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.listen_shrink is not None:
@@ -36995,6 +37137,8 @@ class ModifyDomainShrinkRequest(TeaModel):
             self.access_type = m.get('AccessType')
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')
+        if m.get('DomainId') is not None:
+            self.domain_id = m.get('DomainId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Listen') is not None:

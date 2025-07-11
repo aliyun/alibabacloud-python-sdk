@@ -2719,6 +2719,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_defense_rule_with_options_async(request, runtime)
 
+    def delete_defense_rule_block_ip_with_options(
+        self,
+        request: waf_openapi_20211001_models.DeleteDefenseRuleBlockIpRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DeleteDefenseRuleBlockIpResponse:
+        """
+        @summary 更新防护规则封禁Ip
+        
+        @param request: DeleteDefenseRuleBlockIpRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDefenseRuleBlockIpResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDefenseRuleBlockIp',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DeleteDefenseRuleBlockIpResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_defense_rule_block_ip_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DeleteDefenseRuleBlockIpRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DeleteDefenseRuleBlockIpResponse:
+        """
+        @summary 更新防护规则封禁Ip
+        
+        @param request: DeleteDefenseRuleBlockIpRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDefenseRuleBlockIpResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDefenseRuleBlockIp',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DeleteDefenseRuleBlockIpResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_defense_rule_block_ip(
+        self,
+        request: waf_openapi_20211001_models.DeleteDefenseRuleBlockIpRequest,
+    ) -> waf_openapi_20211001_models.DeleteDefenseRuleBlockIpResponse:
+        """
+        @summary 更新防护规则封禁Ip
+        
+        @param request: DeleteDefenseRuleBlockIpRequest
+        @return: DeleteDefenseRuleBlockIpResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_defense_rule_block_ip_with_options(request, runtime)
+
+    async def delete_defense_rule_block_ip_async(
+        self,
+        request: waf_openapi_20211001_models.DeleteDefenseRuleBlockIpRequest,
+    ) -> waf_openapi_20211001_models.DeleteDefenseRuleBlockIpResponse:
+        """
+        @summary 更新防护规则封禁Ip
+        
+        @param request: DeleteDefenseRuleBlockIpRequest
+        @return: DeleteDefenseRuleBlockIpResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_defense_rule_block_ip_with_options_async(request, runtime)
+
     def delete_defense_template_with_options(
         self,
         request: waf_openapi_20211001_models.DeleteDefenseTemplateRequest,
@@ -8271,6 +8383,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.domain):
             query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain_id):
+            query['DomainId'] = request.domain_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
@@ -8310,6 +8424,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.domain):
             query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain_id):
+            query['DomainId'] = request.domain_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
@@ -18331,6 +18447,8 @@ class Client(OpenApiClient):
             query['AccessType'] = request.access_type
         if not UtilClient.is_unset(request.domain):
             query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain_id):
+            query['DomainId'] = request.domain_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.listen_shrink):
@@ -18382,6 +18500,8 @@ class Client(OpenApiClient):
             query['AccessType'] = request.access_type
         if not UtilClient.is_unset(request.domain):
             query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain_id):
+            query['DomainId'] = request.domain_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.listen_shrink):

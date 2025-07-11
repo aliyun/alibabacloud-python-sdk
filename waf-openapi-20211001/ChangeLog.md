@@ -1,3 +1,12 @@
+2025-07-11 Version: 6.0.0
+- Support API DeleteDefenseRuleBlockIp.
+- Update API DescribeDomainDetail: add request parameters DomainId.
+- Update API DescribeDomainDetail: add response parameters Body.DomainId.
+- Update API DescribeDomainDetail: update response parameters Body.Status' format has changed.
+- Update API DescribeDomains: add response parameters Body.Domains.$.DomainId.
+- Update API ModifyDomain: add request parameters DomainId.
+
+
 2025-06-27 Version: 5.6.0
 - Support API DescribeDefenseResourceOwnerUid.
 - Update API CreateDefenseTemplate: add request parameters UnbindResourceGroups.
