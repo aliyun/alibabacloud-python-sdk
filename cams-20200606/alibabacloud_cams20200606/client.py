@@ -409,298 +409,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_chatapp_phone_number_with_options_async(request, runtime)
 
-    def bee_bot_associate_with_options(
-        self,
-        tmp_req: cams_20200606_models.BeeBotAssociateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cams_20200606_models.BeeBotAssociateResponse:
-        """
-        @summary Associates FAQs in the knowledge base.
-        
-        @description You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param tmp_req: BeeBotAssociateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BeeBotAssociateResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = cams_20200606_models.BeeBotAssociateShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.perspective):
-            request.perspective_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.perspective, 'Perspective', 'json')
-        body = {}
-        if not UtilClient.is_unset(request.chat_bot_instance_id):
-            body['ChatBotInstanceId'] = request.chat_bot_instance_id
-        if not UtilClient.is_unset(request.cust_space_id):
-            body['CustSpaceId'] = request.cust_space_id
-        if not UtilClient.is_unset(request.isv_code):
-            body['IsvCode'] = request.isv_code
-        if not UtilClient.is_unset(request.perspective_shrink):
-            body['Perspective'] = request.perspective_shrink
-        if not UtilClient.is_unset(request.recommend_num):
-            body['RecommendNum'] = request.recommend_num
-        if not UtilClient.is_unset(request.session_id):
-            body['SessionId'] = request.session_id
-        if not UtilClient.is_unset(request.utterance):
-            body['Utterance'] = request.utterance
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='BeeBotAssociate',
-            version='2020-06-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cams_20200606_models.BeeBotAssociateResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def bee_bot_associate_with_options_async(
-        self,
-        tmp_req: cams_20200606_models.BeeBotAssociateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cams_20200606_models.BeeBotAssociateResponse:
-        """
-        @summary Associates FAQs in the knowledge base.
-        
-        @description You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param tmp_req: BeeBotAssociateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BeeBotAssociateResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = cams_20200606_models.BeeBotAssociateShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.perspective):
-            request.perspective_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.perspective, 'Perspective', 'json')
-        body = {}
-        if not UtilClient.is_unset(request.chat_bot_instance_id):
-            body['ChatBotInstanceId'] = request.chat_bot_instance_id
-        if not UtilClient.is_unset(request.cust_space_id):
-            body['CustSpaceId'] = request.cust_space_id
-        if not UtilClient.is_unset(request.isv_code):
-            body['IsvCode'] = request.isv_code
-        if not UtilClient.is_unset(request.perspective_shrink):
-            body['Perspective'] = request.perspective_shrink
-        if not UtilClient.is_unset(request.recommend_num):
-            body['RecommendNum'] = request.recommend_num
-        if not UtilClient.is_unset(request.session_id):
-            body['SessionId'] = request.session_id
-        if not UtilClient.is_unset(request.utterance):
-            body['Utterance'] = request.utterance
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='BeeBotAssociate',
-            version='2020-06-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cams_20200606_models.BeeBotAssociateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def bee_bot_associate(
-        self,
-        request: cams_20200606_models.BeeBotAssociateRequest,
-    ) -> cams_20200606_models.BeeBotAssociateResponse:
-        """
-        @summary Associates FAQs in the knowledge base.
-        
-        @description You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: BeeBotAssociateRequest
-        @return: BeeBotAssociateResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.bee_bot_associate_with_options(request, runtime)
-
-    async def bee_bot_associate_async(
-        self,
-        request: cams_20200606_models.BeeBotAssociateRequest,
-    ) -> cams_20200606_models.BeeBotAssociateResponse:
-        """
-        @summary Associates FAQs in the knowledge base.
-        
-        @description You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: BeeBotAssociateRequest
-        @return: BeeBotAssociateResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.bee_bot_associate_with_options_async(request, runtime)
-
-    def bee_bot_chat_with_options(
-        self,
-        tmp_req: cams_20200606_models.BeeBotChatRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cams_20200606_models.BeeBotChatResponse:
-        """
-        @summary Conducts sessions with the bot based on its unique identifier (ID).
-        
-        @description The ID of the session.
-        
-        @param tmp_req: BeeBotChatRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BeeBotChatResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = cams_20200606_models.BeeBotChatShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.perspective):
-            request.perspective_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.perspective, 'Perspective', 'json')
-        if not UtilClient.is_unset(tmp_req.vendor_param):
-            request.vendor_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vendor_param, 'VendorParam', 'json')
-        body = {}
-        if not UtilClient.is_unset(request.chat_bot_instance_id):
-            body['ChatBotInstanceId'] = request.chat_bot_instance_id
-        if not UtilClient.is_unset(request.cust_space_id):
-            body['CustSpaceId'] = request.cust_space_id
-        if not UtilClient.is_unset(request.intent_name):
-            body['IntentName'] = request.intent_name
-        if not UtilClient.is_unset(request.isv_code):
-            body['IsvCode'] = request.isv_code
-        if not UtilClient.is_unset(request.knowledge_id):
-            body['KnowledgeId'] = request.knowledge_id
-        if not UtilClient.is_unset(request.perspective_shrink):
-            body['Perspective'] = request.perspective_shrink
-        if not UtilClient.is_unset(request.sender_id):
-            body['SenderId'] = request.sender_id
-        if not UtilClient.is_unset(request.sender_nick):
-            body['SenderNick'] = request.sender_nick
-        if not UtilClient.is_unset(request.session_id):
-            body['SessionId'] = request.session_id
-        if not UtilClient.is_unset(request.utterance):
-            body['Utterance'] = request.utterance
-        if not UtilClient.is_unset(request.vendor_param_shrink):
-            body['VendorParam'] = request.vendor_param_shrink
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='BeeBotChat',
-            version='2020-06-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cams_20200606_models.BeeBotChatResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def bee_bot_chat_with_options_async(
-        self,
-        tmp_req: cams_20200606_models.BeeBotChatRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cams_20200606_models.BeeBotChatResponse:
-        """
-        @summary Conducts sessions with the bot based on its unique identifier (ID).
-        
-        @description The ID of the session.
-        
-        @param tmp_req: BeeBotChatRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BeeBotChatResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = cams_20200606_models.BeeBotChatShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.perspective):
-            request.perspective_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.perspective, 'Perspective', 'json')
-        if not UtilClient.is_unset(tmp_req.vendor_param):
-            request.vendor_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vendor_param, 'VendorParam', 'json')
-        body = {}
-        if not UtilClient.is_unset(request.chat_bot_instance_id):
-            body['ChatBotInstanceId'] = request.chat_bot_instance_id
-        if not UtilClient.is_unset(request.cust_space_id):
-            body['CustSpaceId'] = request.cust_space_id
-        if not UtilClient.is_unset(request.intent_name):
-            body['IntentName'] = request.intent_name
-        if not UtilClient.is_unset(request.isv_code):
-            body['IsvCode'] = request.isv_code
-        if not UtilClient.is_unset(request.knowledge_id):
-            body['KnowledgeId'] = request.knowledge_id
-        if not UtilClient.is_unset(request.perspective_shrink):
-            body['Perspective'] = request.perspective_shrink
-        if not UtilClient.is_unset(request.sender_id):
-            body['SenderId'] = request.sender_id
-        if not UtilClient.is_unset(request.sender_nick):
-            body['SenderNick'] = request.sender_nick
-        if not UtilClient.is_unset(request.session_id):
-            body['SessionId'] = request.session_id
-        if not UtilClient.is_unset(request.utterance):
-            body['Utterance'] = request.utterance
-        if not UtilClient.is_unset(request.vendor_param_shrink):
-            body['VendorParam'] = request.vendor_param_shrink
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='BeeBotChat',
-            version='2020-06-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cams_20200606_models.BeeBotChatResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def bee_bot_chat(
-        self,
-        request: cams_20200606_models.BeeBotChatRequest,
-    ) -> cams_20200606_models.BeeBotChatResponse:
-        """
-        @summary Conducts sessions with the bot based on its unique identifier (ID).
-        
-        @description The ID of the session.
-        
-        @param request: BeeBotChatRequest
-        @return: BeeBotChatResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.bee_bot_chat_with_options(request, runtime)
-
-    async def bee_bot_chat_async(
-        self,
-        request: cams_20200606_models.BeeBotChatRequest,
-    ) -> cams_20200606_models.BeeBotChatResponse:
-        """
-        @summary Conducts sessions with the bot based on its unique identifier (ID).
-        
-        @description The ID of the session.
-        
-        @param request: BeeBotChatRequest
-        @return: BeeBotChatResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.bee_bot_chat_with_options_async(request, runtime)
-
     def chatapp_bind_waba_with_options(
         self,
         request: cams_20200606_models.ChatappBindWabaRequest,
@@ -1609,6 +1317,378 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.chatapp_verify_and_register_with_options_async(request, runtime)
 
+    def create_chat_flow_with_options(
+        self,
+        tmp_req: cams_20200606_models.CreateChatFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.CreateChatFlowResponse:
+        """
+        @summary Create Chatflow
+        
+        @param tmp_req: CreateChatFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateChatFlowResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.CreateChatFlowShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.biz_extend):
+            request.biz_extend_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_extend, 'BizExtend', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.biz_extend_shrink):
+            query['BizExtend'] = request.biz_extend_shrink
+        if not UtilClient.is_unset(request.flow_trigger_type):
+            query['FlowTriggerType'] = request.flow_trigger_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateChatFlow',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.CreateChatFlowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_chat_flow_with_options_async(
+        self,
+        tmp_req: cams_20200606_models.CreateChatFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.CreateChatFlowResponse:
+        """
+        @summary Create Chatflow
+        
+        @param tmp_req: CreateChatFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateChatFlowResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.CreateChatFlowShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.biz_extend):
+            request.biz_extend_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_extend, 'BizExtend', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.biz_extend_shrink):
+            query['BizExtend'] = request.biz_extend_shrink
+        if not UtilClient.is_unset(request.flow_trigger_type):
+            query['FlowTriggerType'] = request.flow_trigger_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateChatFlow',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.CreateChatFlowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_chat_flow(
+        self,
+        request: cams_20200606_models.CreateChatFlowRequest,
+    ) -> cams_20200606_models.CreateChatFlowResponse:
+        """
+        @summary Create Chatflow
+        
+        @param request: CreateChatFlowRequest
+        @return: CreateChatFlowResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_chat_flow_with_options(request, runtime)
+
+    async def create_chat_flow_async(
+        self,
+        request: cams_20200606_models.CreateChatFlowRequest,
+    ) -> cams_20200606_models.CreateChatFlowResponse:
+        """
+        @summary Create Chatflow
+        
+        @param request: CreateChatFlowRequest
+        @return: CreateChatFlowResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_chat_flow_with_options_async(request, runtime)
+
+    def create_chat_flow_by_import_with_options(
+        self,
+        tmp_req: cams_20200606_models.CreateChatFlowByImportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.CreateChatFlowByImportResponse:
+        """
+        @summary Import and create flow
+        
+        @param tmp_req: CreateChatFlowByImportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateChatFlowByImportResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.CreateChatFlowByImportShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.biz_extend):
+            request.biz_extend_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_extend, 'BizExtend', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.biz_extend_shrink):
+            query['BizExtend'] = request.biz_extend_shrink
+        if not UtilClient.is_unset(request.flow_view_model):
+            query['FlowViewModel'] = request.flow_view_model
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateChatFlowByImport',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.CreateChatFlowByImportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_chat_flow_by_import_with_options_async(
+        self,
+        tmp_req: cams_20200606_models.CreateChatFlowByImportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.CreateChatFlowByImportResponse:
+        """
+        @summary Import and create flow
+        
+        @param tmp_req: CreateChatFlowByImportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateChatFlowByImportResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.CreateChatFlowByImportShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.biz_extend):
+            request.biz_extend_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_extend, 'BizExtend', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.biz_extend_shrink):
+            query['BizExtend'] = request.biz_extend_shrink
+        if not UtilClient.is_unset(request.flow_view_model):
+            query['FlowViewModel'] = request.flow_view_model
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateChatFlowByImport',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.CreateChatFlowByImportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_chat_flow_by_import(
+        self,
+        request: cams_20200606_models.CreateChatFlowByImportRequest,
+    ) -> cams_20200606_models.CreateChatFlowByImportResponse:
+        """
+        @summary Import and create flow
+        
+        @param request: CreateChatFlowByImportRequest
+        @return: CreateChatFlowByImportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_chat_flow_by_import_with_options(request, runtime)
+
+    async def create_chat_flow_by_import_async(
+        self,
+        request: cams_20200606_models.CreateChatFlowByImportRequest,
+    ) -> cams_20200606_models.CreateChatFlowByImportResponse:
+        """
+        @summary Import and create flow
+        
+        @param request: CreateChatFlowByImportRequest
+        @return: CreateChatFlowByImportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_chat_flow_by_import_with_options_async(request, runtime)
+
+    def create_chat_flow_log_setting_with_options(
+        self,
+        request: cams_20200606_models.CreateChatFlowLogSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.CreateChatFlowLogSettingResponse:
+        """
+        @summary Create chatFlow log setting
+        
+        @param request: CreateChatFlowLogSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateChatFlowLogSettingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateChatFlowLogSetting',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.CreateChatFlowLogSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_chat_flow_log_setting_with_options_async(
+        self,
+        request: cams_20200606_models.CreateChatFlowLogSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.CreateChatFlowLogSettingResponse:
+        """
+        @summary Create chatFlow log setting
+        
+        @param request: CreateChatFlowLogSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateChatFlowLogSettingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateChatFlowLogSetting',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.CreateChatFlowLogSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_chat_flow_log_setting(
+        self,
+        request: cams_20200606_models.CreateChatFlowLogSettingRequest,
+    ) -> cams_20200606_models.CreateChatFlowLogSettingResponse:
+        """
+        @summary Create chatFlow log setting
+        
+        @param request: CreateChatFlowLogSettingRequest
+        @return: CreateChatFlowLogSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_chat_flow_log_setting_with_options(request, runtime)
+
+    async def create_chat_flow_log_setting_async(
+        self,
+        request: cams_20200606_models.CreateChatFlowLogSettingRequest,
+    ) -> cams_20200606_models.CreateChatFlowLogSettingResponse:
+        """
+        @summary Create chatFlow log setting
+        
+        @param request: CreateChatFlowLogSettingRequest
+        @return: CreateChatFlowLogSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_chat_flow_log_setting_with_options_async(request, runtime)
+
     def create_chatapp_migration_initiate_with_options(
         self,
         request: cams_20200606_models.CreateChatappMigrationInitiateRequest,
@@ -2013,6 +2093,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_flow_with_options_async(request, runtime)
 
+    def create_flow_version_with_options(
+        self,
+        tmp_req: cams_20200606_models.CreateFlowVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.CreateFlowVersionResponse:
+        """
+        @summary CreateFlowVersion
+        
+        @param tmp_req: CreateFlowVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFlowVersionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.CreateFlowVersionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.biz_extend):
+            request.biz_extend_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_extend, 'BizExtend', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.biz_extend_shrink):
+            query['BizExtend'] = request.biz_extend_shrink
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.flow_version_copy_from):
+            query['FlowVersionCopyFrom'] = request.flow_version_copy_from
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateFlowVersion',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.CreateFlowVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_flow_version_with_options_async(
+        self,
+        tmp_req: cams_20200606_models.CreateFlowVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.CreateFlowVersionResponse:
+        """
+        @summary CreateFlowVersion
+        
+        @param tmp_req: CreateFlowVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFlowVersionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.CreateFlowVersionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.biz_extend):
+            request.biz_extend_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_extend, 'BizExtend', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.biz_extend_shrink):
+            query['BizExtend'] = request.biz_extend_shrink
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.flow_version_copy_from):
+            query['FlowVersionCopyFrom'] = request.flow_version_copy_from
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateFlowVersion',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.CreateFlowVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_flow_version(
+        self,
+        request: cams_20200606_models.CreateFlowVersionRequest,
+    ) -> cams_20200606_models.CreateFlowVersionResponse:
+        """
+        @summary CreateFlowVersion
+        
+        @param request: CreateFlowVersionRequest
+        @return: CreateFlowVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_flow_version_with_options(request, runtime)
+
+    async def create_flow_version_async(
+        self,
+        request: cams_20200606_models.CreateFlowVersionRequest,
+    ) -> cams_20200606_models.CreateFlowVersionResponse:
+        """
+        @summary CreateFlowVersion
+        
+        @param request: CreateFlowVersionRequest
+        @return: CreateFlowVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_flow_version_with_options_async(request, runtime)
+
     def create_phone_message_qrdl_with_options(
         self,
         request: cams_20200606_models.CreatePhoneMessageQrdlRequest,
@@ -2120,6 +2332,130 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_phone_message_qrdl_with_options_async(request, runtime)
+
+    def delete_chat_flow_with_options(
+        self,
+        tmp_req: cams_20200606_models.DeleteChatFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.DeleteChatFlowResponse:
+        """
+        @summary Delete Process
+        
+        @param tmp_req: DeleteChatFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteChatFlowResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.DeleteChatFlowShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.biz_extend):
+            request.biz_extend_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_extend, 'BizExtend', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.biz_extend_shrink):
+            query['BizExtend'] = request.biz_extend_shrink
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteChatFlow',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.DeleteChatFlowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_chat_flow_with_options_async(
+        self,
+        tmp_req: cams_20200606_models.DeleteChatFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.DeleteChatFlowResponse:
+        """
+        @summary Delete Process
+        
+        @param tmp_req: DeleteChatFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteChatFlowResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.DeleteChatFlowShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.biz_extend):
+            request.biz_extend_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_extend, 'BizExtend', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.biz_extend_shrink):
+            query['BizExtend'] = request.biz_extend_shrink
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteChatFlow',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.DeleteChatFlowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_chat_flow(
+        self,
+        request: cams_20200606_models.DeleteChatFlowRequest,
+    ) -> cams_20200606_models.DeleteChatFlowResponse:
+        """
+        @summary Delete Process
+        
+        @param request: DeleteChatFlowRequest
+        @return: DeleteChatFlowResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_chat_flow_with_options(request, runtime)
+
+    async def delete_chat_flow_async(
+        self,
+        request: cams_20200606_models.DeleteChatFlowRequest,
+    ) -> cams_20200606_models.DeleteChatFlowResponse:
+        """
+        @summary Delete Process
+        
+        @param request: DeleteChatFlowRequest
+        @return: DeleteChatFlowResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_chat_flow_with_options_async(request, runtime)
 
     def delete_chat_group_with_options(
         self,
@@ -2745,6 +3081,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_flow_with_options_async(request, runtime)
 
+    def delete_flow_version_with_options(
+        self,
+        tmp_req: cams_20200606_models.DeleteFlowVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.DeleteFlowVersionResponse:
+        """
+        @summary Delete Flow Version
+        
+        @param tmp_req: DeleteFlowVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFlowVersionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.DeleteFlowVersionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.biz_extend):
+            request.biz_extend_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_extend, 'BizExtend', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.biz_extend_shrink):
+            query['BizExtend'] = request.biz_extend_shrink
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.flow_version):
+            query['FlowVersion'] = request.flow_version
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteFlowVersion',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.DeleteFlowVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_flow_version_with_options_async(
+        self,
+        tmp_req: cams_20200606_models.DeleteFlowVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.DeleteFlowVersionResponse:
+        """
+        @summary Delete Flow Version
+        
+        @param tmp_req: DeleteFlowVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFlowVersionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.DeleteFlowVersionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.biz_extend):
+            request.biz_extend_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_extend, 'BizExtend', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.biz_extend_shrink):
+            query['BizExtend'] = request.biz_extend_shrink
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.flow_version):
+            query['FlowVersion'] = request.flow_version
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteFlowVersion',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.DeleteFlowVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_flow_version(
+        self,
+        request: cams_20200606_models.DeleteFlowVersionRequest,
+    ) -> cams_20200606_models.DeleteFlowVersionResponse:
+        """
+        @summary Delete Flow Version
+        
+        @param request: DeleteFlowVersionRequest
+        @return: DeleteFlowVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_flow_version_with_options(request, runtime)
+
+    async def delete_flow_version_async(
+        self,
+        request: cams_20200606_models.DeleteFlowVersionRequest,
+    ) -> cams_20200606_models.DeleteFlowVersionResponse:
+        """
+        @summary Delete Flow Version
+        
+        @param request: DeleteFlowVersionRequest
+        @return: DeleteFlowVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_flow_version_with_options_async(request, runtime)
+
     def delete_phone_message_qrdl_with_options(
         self,
         request: cams_20200606_models.DeletePhoneMessageQrdlRequest,
@@ -3056,6 +3520,658 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.enable_whatsapp_roimetric_with_options_async(request, runtime)
+
+    def flow_bind_phone_with_options(
+        self,
+        tmp_req: cams_20200606_models.FlowBindPhoneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.FlowBindPhoneResponse:
+        """
+        @summary Bind phone numbers to flow
+        
+        @param tmp_req: FlowBindPhoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlowBindPhoneResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.FlowBindPhoneShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.phone_numbers):
+            request.phone_numbers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.phone_numbers, 'PhoneNumbers', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.channel_code):
+            query['ChannelCode'] = request.channel_code
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.flow_version):
+            query['FlowVersion'] = request.flow_version
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_numbers_shrink):
+            query['PhoneNumbers'] = request.phone_numbers_shrink
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.waba_id):
+            query['WabaId'] = request.waba_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FlowBindPhone',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.FlowBindPhoneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def flow_bind_phone_with_options_async(
+        self,
+        tmp_req: cams_20200606_models.FlowBindPhoneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.FlowBindPhoneResponse:
+        """
+        @summary Bind phone numbers to flow
+        
+        @param tmp_req: FlowBindPhoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlowBindPhoneResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.FlowBindPhoneShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.phone_numbers):
+            request.phone_numbers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.phone_numbers, 'PhoneNumbers', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.channel_code):
+            query['ChannelCode'] = request.channel_code
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.flow_version):
+            query['FlowVersion'] = request.flow_version
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_numbers_shrink):
+            query['PhoneNumbers'] = request.phone_numbers_shrink
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.waba_id):
+            query['WabaId'] = request.waba_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FlowBindPhone',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.FlowBindPhoneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def flow_bind_phone(
+        self,
+        request: cams_20200606_models.FlowBindPhoneRequest,
+    ) -> cams_20200606_models.FlowBindPhoneResponse:
+        """
+        @summary Bind phone numbers to flow
+        
+        @param request: FlowBindPhoneRequest
+        @return: FlowBindPhoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.flow_bind_phone_with_options(request, runtime)
+
+    async def flow_bind_phone_async(
+        self,
+        request: cams_20200606_models.FlowBindPhoneRequest,
+    ) -> cams_20200606_models.FlowBindPhoneResponse:
+        """
+        @summary Bind phone numbers to flow
+        
+        @param request: FlowBindPhoneRequest
+        @return: FlowBindPhoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.flow_bind_phone_with_options_async(request, runtime)
+
+    def flow_rebind_phone_with_options(
+        self,
+        tmp_req: cams_20200606_models.FlowRebindPhoneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.FlowRebindPhoneResponse:
+        """
+        @summary Rebind phone number for flow
+        
+        @param tmp_req: FlowRebindPhoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlowRebindPhoneResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.FlowRebindPhoneShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.phone_numbers):
+            request.phone_numbers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.phone_numbers, 'PhoneNumbers', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.channel_code):
+            query['ChannelCode'] = request.channel_code
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.flow_version):
+            query['FlowVersion'] = request.flow_version
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_numbers_shrink):
+            query['PhoneNumbers'] = request.phone_numbers_shrink
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.waba_id):
+            query['WabaId'] = request.waba_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FlowRebindPhone',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.FlowRebindPhoneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def flow_rebind_phone_with_options_async(
+        self,
+        tmp_req: cams_20200606_models.FlowRebindPhoneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.FlowRebindPhoneResponse:
+        """
+        @summary Rebind phone number for flow
+        
+        @param tmp_req: FlowRebindPhoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlowRebindPhoneResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.FlowRebindPhoneShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.phone_numbers):
+            request.phone_numbers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.phone_numbers, 'PhoneNumbers', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.channel_code):
+            query['ChannelCode'] = request.channel_code
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.flow_version):
+            query['FlowVersion'] = request.flow_version
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_numbers_shrink):
+            query['PhoneNumbers'] = request.phone_numbers_shrink
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.waba_id):
+            query['WabaId'] = request.waba_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FlowRebindPhone',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.FlowRebindPhoneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def flow_rebind_phone(
+        self,
+        request: cams_20200606_models.FlowRebindPhoneRequest,
+    ) -> cams_20200606_models.FlowRebindPhoneResponse:
+        """
+        @summary Rebind phone number for flow
+        
+        @param request: FlowRebindPhoneRequest
+        @return: FlowRebindPhoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.flow_rebind_phone_with_options(request, runtime)
+
+    async def flow_rebind_phone_async(
+        self,
+        request: cams_20200606_models.FlowRebindPhoneRequest,
+    ) -> cams_20200606_models.FlowRebindPhoneResponse:
+        """
+        @summary Rebind phone number for flow
+        
+        @param request: FlowRebindPhoneRequest
+        @return: FlowRebindPhoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.flow_rebind_phone_with_options_async(request, runtime)
+
+    def flow_unbind_phone_with_options(
+        self,
+        tmp_req: cams_20200606_models.FlowUnbindPhoneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.FlowUnbindPhoneResponse:
+        """
+        @summary Unbind phone number from flow
+        
+        @param tmp_req: FlowUnbindPhoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlowUnbindPhoneResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.FlowUnbindPhoneShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.phone_numbers):
+            request.phone_numbers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.phone_numbers, 'PhoneNumbers', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.flow_version):
+            query['FlowVersion'] = request.flow_version
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_numbers_shrink):
+            query['PhoneNumbers'] = request.phone_numbers_shrink
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FlowUnbindPhone',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.FlowUnbindPhoneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def flow_unbind_phone_with_options_async(
+        self,
+        tmp_req: cams_20200606_models.FlowUnbindPhoneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.FlowUnbindPhoneResponse:
+        """
+        @summary Unbind phone number from flow
+        
+        @param tmp_req: FlowUnbindPhoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlowUnbindPhoneResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.FlowUnbindPhoneShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.phone_numbers):
+            request.phone_numbers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.phone_numbers, 'PhoneNumbers', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.flow_version):
+            query['FlowVersion'] = request.flow_version
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_numbers_shrink):
+            query['PhoneNumbers'] = request.phone_numbers_shrink
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FlowUnbindPhone',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.FlowUnbindPhoneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def flow_unbind_phone(
+        self,
+        request: cams_20200606_models.FlowUnbindPhoneRequest,
+    ) -> cams_20200606_models.FlowUnbindPhoneResponse:
+        """
+        @summary Unbind phone number from flow
+        
+        @param request: FlowUnbindPhoneRequest
+        @return: FlowUnbindPhoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.flow_unbind_phone_with_options(request, runtime)
+
+    async def flow_unbind_phone_async(
+        self,
+        request: cams_20200606_models.FlowUnbindPhoneRequest,
+    ) -> cams_20200606_models.FlowUnbindPhoneResponse:
+        """
+        @summary Unbind phone number from flow
+        
+        @param request: FlowUnbindPhoneRequest
+        @return: FlowUnbindPhoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.flow_unbind_phone_with_options_async(request, runtime)
+
+    def get_chat_flow_metric_with_options(
+        self,
+        tmp_req: cams_20200606_models.GetChatFlowMetricRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.GetChatFlowMetricResponse:
+        """
+        @summary Get ChatFlow Runtime Data
+        
+        @param tmp_req: GetChatFlowMetricRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetChatFlowMetricResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.GetChatFlowMetricShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.biz_extend):
+            request.biz_extend_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_extend, 'BizExtend', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.biz_extend_shrink):
+            query['BizExtend'] = request.biz_extend_shrink
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.flow_version):
+            query['FlowVersion'] = request.flow_version
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.metric_name):
+            query['MetricName'] = request.metric_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.to):
+            query['To'] = request.to
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetChatFlowMetric',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.GetChatFlowMetricResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_chat_flow_metric_with_options_async(
+        self,
+        tmp_req: cams_20200606_models.GetChatFlowMetricRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.GetChatFlowMetricResponse:
+        """
+        @summary Get ChatFlow Runtime Data
+        
+        @param tmp_req: GetChatFlowMetricRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetChatFlowMetricResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.GetChatFlowMetricShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.biz_extend):
+            request.biz_extend_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_extend, 'BizExtend', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.biz_extend_shrink):
+            query['BizExtend'] = request.biz_extend_shrink
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.flow_version):
+            query['FlowVersion'] = request.flow_version
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.metric_name):
+            query['MetricName'] = request.metric_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.to):
+            query['To'] = request.to
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetChatFlowMetric',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.GetChatFlowMetricResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_chat_flow_metric(
+        self,
+        request: cams_20200606_models.GetChatFlowMetricRequest,
+    ) -> cams_20200606_models.GetChatFlowMetricResponse:
+        """
+        @summary Get ChatFlow Runtime Data
+        
+        @param request: GetChatFlowMetricRequest
+        @return: GetChatFlowMetricResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_chat_flow_metric_with_options(request, runtime)
+
+    async def get_chat_flow_metric_async(
+        self,
+        request: cams_20200606_models.GetChatFlowMetricRequest,
+    ) -> cams_20200606_models.GetChatFlowMetricResponse:
+        """
+        @summary Get ChatFlow Runtime Data
+        
+        @param request: GetChatFlowMetricRequest
+        @return: GetChatFlowMetricResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_chat_flow_metric_with_options_async(request, runtime)
+
+    def get_chat_flow_template_with_options(
+        self,
+        request: cams_20200606_models.GetChatFlowTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.GetChatFlowTemplateResponse:
+        """
+        @summary Query chatFlow template
+        
+        @param request: GetChatFlowTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetChatFlowTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetChatFlowTemplate',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.GetChatFlowTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_chat_flow_template_with_options_async(
+        self,
+        request: cams_20200606_models.GetChatFlowTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.GetChatFlowTemplateResponse:
+        """
+        @summary Query chatFlow template
+        
+        @param request: GetChatFlowTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetChatFlowTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetChatFlowTemplate',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.GetChatFlowTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_chat_flow_template(
+        self,
+        request: cams_20200606_models.GetChatFlowTemplateRequest,
+    ) -> cams_20200606_models.GetChatFlowTemplateResponse:
+        """
+        @summary Query chatFlow template
+        
+        @param request: GetChatFlowTemplateRequest
+        @return: GetChatFlowTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_chat_flow_template_with_options(request, runtime)
+
+    async def get_chat_flow_template_async(
+        self,
+        request: cams_20200606_models.GetChatFlowTemplateRequest,
+    ) -> cams_20200606_models.GetChatFlowTemplateResponse:
+        """
+        @summary Query chatFlow template
+        
+        @param request: GetChatFlowTemplateRequest
+        @return: GetChatFlowTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_chat_flow_template_with_options_async(request, runtime)
 
     def get_chatapp_phone_number_metric_with_options(
         self,
@@ -5157,6 +6273,386 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.isv_get_app_id_with_options_async(request, runtime)
 
+    def list_binding_relations_for_flow_version_with_options(
+        self,
+        request: cams_20200606_models.ListBindingRelationsForFlowVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ListBindingRelationsForFlowVersionResponse:
+        """
+        @summary 根据flowCode查询已绑定列表
+        
+        @param request: ListBindingRelationsForFlowVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBindingRelationsForFlowVersionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBindingRelationsForFlowVersion',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ListBindingRelationsForFlowVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_binding_relations_for_flow_version_with_options_async(
+        self,
+        request: cams_20200606_models.ListBindingRelationsForFlowVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ListBindingRelationsForFlowVersionResponse:
+        """
+        @summary 根据flowCode查询已绑定列表
+        
+        @param request: ListBindingRelationsForFlowVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBindingRelationsForFlowVersionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBindingRelationsForFlowVersion',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ListBindingRelationsForFlowVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_binding_relations_for_flow_version(
+        self,
+        request: cams_20200606_models.ListBindingRelationsForFlowVersionRequest,
+    ) -> cams_20200606_models.ListBindingRelationsForFlowVersionResponse:
+        """
+        @summary 根据flowCode查询已绑定列表
+        
+        @param request: ListBindingRelationsForFlowVersionRequest
+        @return: ListBindingRelationsForFlowVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_binding_relations_for_flow_version_with_options(request, runtime)
+
+    async def list_binding_relations_for_flow_version_async(
+        self,
+        request: cams_20200606_models.ListBindingRelationsForFlowVersionRequest,
+    ) -> cams_20200606_models.ListBindingRelationsForFlowVersionResponse:
+        """
+        @summary 根据flowCode查询已绑定列表
+        
+        @param request: ListBindingRelationsForFlowVersionRequest
+        @return: ListBindingRelationsForFlowVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_binding_relations_for_flow_version_with_options_async(request, runtime)
+
+    def list_chat_flow_with_options(
+        self,
+        tmp_req: cams_20200606_models.ListChatFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ListChatFlowResponse:
+        """
+        @summary List Flows
+        
+        @param tmp_req: ListChatFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListChatFlowResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.ListChatFlowShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.biz_extend):
+            request.biz_extend_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_extend, 'BizExtend', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.biz_extend_shrink):
+            query['BizExtend'] = request.biz_extend_shrink
+        if not UtilClient.is_unset(request.flow_trigger_type):
+            query['FlowTriggerType'] = request.flow_trigger_type
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.return_with_online_version):
+            query['ReturnWithOnlineVersion'] = request.return_with_online_version
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListChatFlow',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ListChatFlowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_chat_flow_with_options_async(
+        self,
+        tmp_req: cams_20200606_models.ListChatFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ListChatFlowResponse:
+        """
+        @summary List Flows
+        
+        @param tmp_req: ListChatFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListChatFlowResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.ListChatFlowShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.biz_extend):
+            request.biz_extend_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_extend, 'BizExtend', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.biz_extend_shrink):
+            query['BizExtend'] = request.biz_extend_shrink
+        if not UtilClient.is_unset(request.flow_trigger_type):
+            query['FlowTriggerType'] = request.flow_trigger_type
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.return_with_online_version):
+            query['ReturnWithOnlineVersion'] = request.return_with_online_version
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListChatFlow',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ListChatFlowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_chat_flow(
+        self,
+        request: cams_20200606_models.ListChatFlowRequest,
+    ) -> cams_20200606_models.ListChatFlowResponse:
+        """
+        @summary List Flows
+        
+        @param request: ListChatFlowRequest
+        @return: ListChatFlowResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_chat_flow_with_options(request, runtime)
+
+    async def list_chat_flow_async(
+        self,
+        request: cams_20200606_models.ListChatFlowRequest,
+    ) -> cams_20200606_models.ListChatFlowResponse:
+        """
+        @summary List Flows
+        
+        @param request: ListChatFlowRequest
+        @return: ListChatFlowResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_chat_flow_with_options_async(request, runtime)
+
+    def list_chat_flow_template_with_options(
+        self,
+        request: cams_20200606_models.ListChatFlowTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ListChatFlowTemplateResponse:
+        """
+        @summary ChatFlow Template List
+        
+        @param request: ListChatFlowTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListChatFlowTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.trigger_type):
+            query['TriggerType'] = request.trigger_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListChatFlowTemplate',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ListChatFlowTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_chat_flow_template_with_options_async(
+        self,
+        request: cams_20200606_models.ListChatFlowTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ListChatFlowTemplateResponse:
+        """
+        @summary ChatFlow Template List
+        
+        @param request: ListChatFlowTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListChatFlowTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.trigger_type):
+            query['TriggerType'] = request.trigger_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListChatFlowTemplate',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ListChatFlowTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_chat_flow_template(
+        self,
+        request: cams_20200606_models.ListChatFlowTemplateRequest,
+    ) -> cams_20200606_models.ListChatFlowTemplateResponse:
+        """
+        @summary ChatFlow Template List
+        
+        @param request: ListChatFlowTemplateRequest
+        @return: ListChatFlowTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_chat_flow_template_with_options(request, runtime)
+
+    async def list_chat_flow_template_async(
+        self,
+        request: cams_20200606_models.ListChatFlowTemplateRequest,
+    ) -> cams_20200606_models.ListChatFlowTemplateResponse:
+        """
+        @summary ChatFlow Template List
+        
+        @param request: ListChatFlowTemplateRequest
+        @return: ListChatFlowTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_chat_flow_template_with_options_async(request, runtime)
+
     def list_chat_group_with_options(
         self,
         tmp_req: cams_20200606_models.ListChatGroupRequest,
@@ -5709,6 +7205,142 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_flow_with_options_async(request, runtime)
 
+    def list_flow_version_with_options(
+        self,
+        tmp_req: cams_20200606_models.ListFlowVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ListFlowVersionResponse:
+        """
+        @summary List Flow Versions
+        
+        @param tmp_req: ListFlowVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFlowVersionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.ListFlowVersionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.biz_extend):
+            request.biz_extend_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_extend, 'BizExtend', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.biz_extend_shrink):
+            query['BizExtend'] = request.biz_extend_shrink
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFlowVersion',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ListFlowVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_flow_version_with_options_async(
+        self,
+        tmp_req: cams_20200606_models.ListFlowVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ListFlowVersionResponse:
+        """
+        @summary List Flow Versions
+        
+        @param tmp_req: ListFlowVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFlowVersionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.ListFlowVersionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.biz_extend):
+            request.biz_extend_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_extend, 'BizExtend', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.biz_extend_shrink):
+            query['BizExtend'] = request.biz_extend_shrink
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFlowVersion',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ListFlowVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_flow_version(
+        self,
+        request: cams_20200606_models.ListFlowVersionRequest,
+    ) -> cams_20200606_models.ListFlowVersionResponse:
+        """
+        @summary List Flow Versions
+        
+        @param request: ListFlowVersionRequest
+        @return: ListFlowVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_flow_version_with_options(request, runtime)
+
+    async def list_flow_version_async(
+        self,
+        request: cams_20200606_models.ListFlowVersionRequest,
+    ) -> cams_20200606_models.ListFlowVersionResponse:
+        """
+        @summary List Flow Versions
+        
+        @param request: ListFlowVersionRequest
+        @return: ListFlowVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_flow_version_with_options_async(request, runtime)
+
     def list_phone_message_qrdl_with_options(
         self,
         request: cams_20200606_models.ListPhoneMessageQrdlRequest,
@@ -5722,13 +7354,19 @@ class Client(OpenApiClient):
         @return: ListPhoneMessageQrdlResponse
         """
         UtilClient.validate_model(request)
-        body = {}
+        query = {}
         if not UtilClient.is_unset(request.cust_space_id):
-            body['CustSpaceId'] = request.cust_space_id
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.phone_number):
-            body['PhoneNumber'] = request.phone_number
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListPhoneMessageQrdl',
@@ -5759,13 +7397,19 @@ class Client(OpenApiClient):
         @return: ListPhoneMessageQrdlResponse
         """
         UtilClient.validate_model(request)
-        body = {}
+        query = {}
         if not UtilClient.is_unset(request.cust_space_id):
-            body['CustSpaceId'] = request.cust_space_id
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.phone_number):
-            body['PhoneNumber'] = request.phone_number
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListPhoneMessageQrdl',
@@ -6653,6 +8297,270 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_phone_business_profile_with_options_async(request, runtime)
 
+    def offline_flow_version_with_options(
+        self,
+        tmp_req: cams_20200606_models.OfflineFlowVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.OfflineFlowVersionResponse:
+        """
+        @summary Offline Flow Version
+        
+        @param tmp_req: OfflineFlowVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OfflineFlowVersionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.OfflineFlowVersionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.biz_extend):
+            request.biz_extend_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_extend, 'BizExtend', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.biz_extend_shrink):
+            query['BizExtend'] = request.biz_extend_shrink
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.flow_version):
+            query['FlowVersion'] = request.flow_version
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OfflineFlowVersion',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.OfflineFlowVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def offline_flow_version_with_options_async(
+        self,
+        tmp_req: cams_20200606_models.OfflineFlowVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.OfflineFlowVersionResponse:
+        """
+        @summary Offline Flow Version
+        
+        @param tmp_req: OfflineFlowVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OfflineFlowVersionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.OfflineFlowVersionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.biz_extend):
+            request.biz_extend_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_extend, 'BizExtend', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.biz_extend_shrink):
+            query['BizExtend'] = request.biz_extend_shrink
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.flow_version):
+            query['FlowVersion'] = request.flow_version
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OfflineFlowVersion',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.OfflineFlowVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def offline_flow_version(
+        self,
+        request: cams_20200606_models.OfflineFlowVersionRequest,
+    ) -> cams_20200606_models.OfflineFlowVersionResponse:
+        """
+        @summary Offline Flow Version
+        
+        @param request: OfflineFlowVersionRequest
+        @return: OfflineFlowVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.offline_flow_version_with_options(request, runtime)
+
+    async def offline_flow_version_async(
+        self,
+        request: cams_20200606_models.OfflineFlowVersionRequest,
+    ) -> cams_20200606_models.OfflineFlowVersionResponse:
+        """
+        @summary Offline Flow Version
+        
+        @param request: OfflineFlowVersionRequest
+        @return: OfflineFlowVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.offline_flow_version_with_options_async(request, runtime)
+
+    def online_flow_version_with_options(
+        self,
+        tmp_req: cams_20200606_models.OnlineFlowVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.OnlineFlowVersionResponse:
+        """
+        @summary Online Flow Version
+        
+        @param tmp_req: OnlineFlowVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OnlineFlowVersionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.OnlineFlowVersionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.biz_extend):
+            request.biz_extend_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_extend, 'BizExtend', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.biz_extend_shrink):
+            query['BizExtend'] = request.biz_extend_shrink
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.flow_version):
+            query['FlowVersion'] = request.flow_version
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OnlineFlowVersion',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.OnlineFlowVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def online_flow_version_with_options_async(
+        self,
+        tmp_req: cams_20200606_models.OnlineFlowVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.OnlineFlowVersionResponse:
+        """
+        @summary Online Flow Version
+        
+        @param tmp_req: OnlineFlowVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OnlineFlowVersionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.OnlineFlowVersionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.biz_extend):
+            request.biz_extend_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_extend, 'BizExtend', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.biz_extend_shrink):
+            query['BizExtend'] = request.biz_extend_shrink
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.flow_version):
+            query['FlowVersion'] = request.flow_version
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OnlineFlowVersion',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.OnlineFlowVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def online_flow_version(
+        self,
+        request: cams_20200606_models.OnlineFlowVersionRequest,
+    ) -> cams_20200606_models.OnlineFlowVersionResponse:
+        """
+        @summary Online Flow Version
+        
+        @param request: OnlineFlowVersionRequest
+        @return: OnlineFlowVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.online_flow_version_with_options(request, runtime)
+
+    async def online_flow_version_async(
+        self,
+        request: cams_20200606_models.OnlineFlowVersionRequest,
+    ) -> cams_20200606_models.OnlineFlowVersionResponse:
+        """
+        @summary Online Flow Version
+        
+        @param request: OnlineFlowVersionRequest
+        @return: OnlineFlowVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.online_flow_version_with_options_async(request, runtime)
+
     def publish_flow_with_options(
         self,
         request: cams_20200606_models.PublishFlowRequest,
@@ -7244,6 +9152,370 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.query_waba_business_info_with_options_async(request, runtime)
+
+    def read_chat_flow_with_options(
+        self,
+        tmp_req: cams_20200606_models.ReadChatFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ReadChatFlowResponse:
+        """
+        @summary Retrieve Flow
+        
+        @param tmp_req: ReadChatFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReadChatFlowResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.ReadChatFlowShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.biz_extend):
+            request.biz_extend_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_extend, 'BizExtend', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.biz_extend_shrink):
+            query['BizExtend'] = request.biz_extend_shrink
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReadChatFlow',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ReadChatFlowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def read_chat_flow_with_options_async(
+        self,
+        tmp_req: cams_20200606_models.ReadChatFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ReadChatFlowResponse:
+        """
+        @summary Retrieve Flow
+        
+        @param tmp_req: ReadChatFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReadChatFlowResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.ReadChatFlowShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.biz_extend):
+            request.biz_extend_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_extend, 'BizExtend', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.biz_extend_shrink):
+            query['BizExtend'] = request.biz_extend_shrink
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReadChatFlow',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ReadChatFlowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def read_chat_flow(
+        self,
+        request: cams_20200606_models.ReadChatFlowRequest,
+    ) -> cams_20200606_models.ReadChatFlowResponse:
+        """
+        @summary Retrieve Flow
+        
+        @param request: ReadChatFlowRequest
+        @return: ReadChatFlowResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.read_chat_flow_with_options(request, runtime)
+
+    async def read_chat_flow_async(
+        self,
+        request: cams_20200606_models.ReadChatFlowRequest,
+    ) -> cams_20200606_models.ReadChatFlowResponse:
+        """
+        @summary Retrieve Flow
+        
+        @param request: ReadChatFlowRequest
+        @return: ReadChatFlowResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.read_chat_flow_with_options_async(request, runtime)
+
+    def read_chat_flow_log_setting_with_options(
+        self,
+        request: cams_20200606_models.ReadChatFlowLogSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ReadChatFlowLogSettingResponse:
+        """
+        @summary View chatFlow log settings
+        
+        @param request: ReadChatFlowLogSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReadChatFlowLogSettingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReadChatFlowLogSetting',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ReadChatFlowLogSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def read_chat_flow_log_setting_with_options_async(
+        self,
+        request: cams_20200606_models.ReadChatFlowLogSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ReadChatFlowLogSettingResponse:
+        """
+        @summary View chatFlow log settings
+        
+        @param request: ReadChatFlowLogSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReadChatFlowLogSettingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReadChatFlowLogSetting',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ReadChatFlowLogSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def read_chat_flow_log_setting(
+        self,
+        request: cams_20200606_models.ReadChatFlowLogSettingRequest,
+    ) -> cams_20200606_models.ReadChatFlowLogSettingResponse:
+        """
+        @summary View chatFlow log settings
+        
+        @param request: ReadChatFlowLogSettingRequest
+        @return: ReadChatFlowLogSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.read_chat_flow_log_setting_with_options(request, runtime)
+
+    async def read_chat_flow_log_setting_async(
+        self,
+        request: cams_20200606_models.ReadChatFlowLogSettingRequest,
+    ) -> cams_20200606_models.ReadChatFlowLogSettingResponse:
+        """
+        @summary View chatFlow log settings
+        
+        @param request: ReadChatFlowLogSettingRequest
+        @return: ReadChatFlowLogSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.read_chat_flow_log_setting_with_options_async(request, runtime)
+
+    def read_flow_version_with_options(
+        self,
+        tmp_req: cams_20200606_models.ReadFlowVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ReadFlowVersionResponse:
+        """
+        @summary Get Flow Version
+        
+        @param tmp_req: ReadFlowVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReadFlowVersionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.ReadFlowVersionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.biz_extend):
+            request.biz_extend_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_extend, 'BizExtend', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.biz_extend_shrink):
+            query['BizExtend'] = request.biz_extend_shrink
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.flow_version):
+            query['FlowVersion'] = request.flow_version
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReadFlowVersion',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ReadFlowVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def read_flow_version_with_options_async(
+        self,
+        tmp_req: cams_20200606_models.ReadFlowVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ReadFlowVersionResponse:
+        """
+        @summary Get Flow Version
+        
+        @param tmp_req: ReadFlowVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReadFlowVersionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.ReadFlowVersionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.biz_extend):
+            request.biz_extend_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_extend, 'BizExtend', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.biz_extend_shrink):
+            query['BizExtend'] = request.biz_extend_shrink
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.flow_version):
+            query['FlowVersion'] = request.flow_version
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReadFlowVersion',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ReadFlowVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def read_flow_version(
+        self,
+        request: cams_20200606_models.ReadFlowVersionRequest,
+    ) -> cams_20200606_models.ReadFlowVersionResponse:
+        """
+        @summary Get Flow Version
+        
+        @param request: ReadFlowVersionRequest
+        @return: ReadFlowVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.read_flow_version_with_options(request, runtime)
+
+    async def read_flow_version_async(
+        self,
+        request: cams_20200606_models.ReadFlowVersionRequest,
+    ) -> cams_20200606_models.ReadFlowVersionResponse:
+        """
+        @summary Get Flow Version
+        
+        @param request: ReadFlowVersionRequest
+        @return: ReadFlowVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.read_flow_version_with_options_async(request, runtime)
 
     def send_chatapp_mass_message_with_options(
         self,
@@ -8049,6 +10321,254 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_account_webhook_with_options_async(request, runtime)
 
+    def update_chat_flow_with_options(
+        self,
+        tmp_req: cams_20200606_models.UpdateChatFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.UpdateChatFlowResponse:
+        """
+        @summary Get Process
+        
+        @param tmp_req: UpdateChatFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateChatFlowResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.UpdateChatFlowShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.biz_extend):
+            request.biz_extend_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_extend, 'BizExtend', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.biz_extend_shrink):
+            query['BizExtend'] = request.biz_extend_shrink
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateChatFlow',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.UpdateChatFlowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_chat_flow_with_options_async(
+        self,
+        tmp_req: cams_20200606_models.UpdateChatFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.UpdateChatFlowResponse:
+        """
+        @summary Get Process
+        
+        @param tmp_req: UpdateChatFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateChatFlowResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.UpdateChatFlowShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.biz_extend):
+            request.biz_extend_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_extend, 'BizExtend', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.biz_extend_shrink):
+            query['BizExtend'] = request.biz_extend_shrink
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateChatFlow',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.UpdateChatFlowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_chat_flow(
+        self,
+        request: cams_20200606_models.UpdateChatFlowRequest,
+    ) -> cams_20200606_models.UpdateChatFlowResponse:
+        """
+        @summary Get Process
+        
+        @param request: UpdateChatFlowRequest
+        @return: UpdateChatFlowResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_chat_flow_with_options(request, runtime)
+
+    async def update_chat_flow_async(
+        self,
+        request: cams_20200606_models.UpdateChatFlowRequest,
+    ) -> cams_20200606_models.UpdateChatFlowResponse:
+        """
+        @summary Get Process
+        
+        @param request: UpdateChatFlowRequest
+        @return: UpdateChatFlowResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_chat_flow_with_options_async(request, runtime)
+
+    def update_chat_flow_log_setting_with_options(
+        self,
+        request: cams_20200606_models.UpdateChatFlowLogSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.UpdateChatFlowLogSettingResponse:
+        """
+        @summary Modify chatFlow log settings
+        
+        @param request: UpdateChatFlowLogSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateChatFlowLogSettingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateChatFlowLogSetting',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.UpdateChatFlowLogSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_chat_flow_log_setting_with_options_async(
+        self,
+        request: cams_20200606_models.UpdateChatFlowLogSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.UpdateChatFlowLogSettingResponse:
+        """
+        @summary Modify chatFlow log settings
+        
+        @param request: UpdateChatFlowLogSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateChatFlowLogSettingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateChatFlowLogSetting',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.UpdateChatFlowLogSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_chat_flow_log_setting(
+        self,
+        request: cams_20200606_models.UpdateChatFlowLogSettingRequest,
+    ) -> cams_20200606_models.UpdateChatFlowLogSettingResponse:
+        """
+        @summary Modify chatFlow log settings
+        
+        @param request: UpdateChatFlowLogSettingRequest
+        @return: UpdateChatFlowLogSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_chat_flow_log_setting_with_options(request, runtime)
+
+    async def update_chat_flow_log_setting_async(
+        self,
+        request: cams_20200606_models.UpdateChatFlowLogSettingRequest,
+    ) -> cams_20200606_models.UpdateChatFlowLogSettingResponse:
+        """
+        @summary Modify chatFlow log settings
+        
+        @param request: UpdateChatFlowLogSettingRequest
+        @return: UpdateChatFlowLogSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_chat_flow_log_setting_with_options_async(request, runtime)
+
     def update_chat_group_with_options(
         self,
         request: cams_20200606_models.UpdateChatGroupRequest,
@@ -8564,6 +11084,142 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_flow_jsonasset_with_options_async(request, runtime)
+
+    def update_flow_version_with_options(
+        self,
+        tmp_req: cams_20200606_models.UpdateFlowVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.UpdateFlowVersionResponse:
+        """
+        @summary Update flow version, used for updating the flow DSL on the canvas
+        
+        @param tmp_req: UpdateFlowVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFlowVersionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.UpdateFlowVersionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.biz_extend):
+            request.biz_extend_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_extend, 'BizExtend', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.biz_extend_shrink):
+            query['BizExtend'] = request.biz_extend_shrink
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.flow_version):
+            query['FlowVersion'] = request.flow_version
+        if not UtilClient.is_unset(request.flow_view_model):
+            query['FlowViewModel'] = request.flow_view_model
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateFlowVersion',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.UpdateFlowVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_flow_version_with_options_async(
+        self,
+        tmp_req: cams_20200606_models.UpdateFlowVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.UpdateFlowVersionResponse:
+        """
+        @summary Update flow version, used for updating the flow DSL on the canvas
+        
+        @param tmp_req: UpdateFlowVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFlowVersionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.UpdateFlowVersionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.biz_extend):
+            request.biz_extend_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_extend, 'BizExtend', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.biz_extend_shrink):
+            query['BizExtend'] = request.biz_extend_shrink
+        if not UtilClient.is_unset(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not UtilClient.is_unset(request.flow_version):
+            query['FlowVersion'] = request.flow_version
+        if not UtilClient.is_unset(request.flow_view_model):
+            query['FlowViewModel'] = request.flow_view_model
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateFlowVersion',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.UpdateFlowVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_flow_version(
+        self,
+        request: cams_20200606_models.UpdateFlowVersionRequest,
+    ) -> cams_20200606_models.UpdateFlowVersionResponse:
+        """
+        @summary Update flow version, used for updating the flow DSL on the canvas
+        
+        @param request: UpdateFlowVersionRequest
+        @return: UpdateFlowVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_flow_version_with_options(request, runtime)
+
+    async def update_flow_version_async(
+        self,
+        request: cams_20200606_models.UpdateFlowVersionRequest,
+    ) -> cams_20200606_models.UpdateFlowVersionResponse:
+        """
+        @summary Update flow version, used for updating the flow DSL on the canvas
+        
+        @param request: UpdateFlowVersionRequest
+        @return: UpdateFlowVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_flow_version_with_options_async(request, runtime)
 
     def update_phone_encryption_public_key_with_options(
         self,

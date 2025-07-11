@@ -1,3 +1,35 @@
+2025-07-11 Version: 3.0.0
+- Support API CreateChatFlow.
+- Support API CreateChatFlowByImport.
+- Support API CreateChatFlowLogSetting.
+- Support API CreateFlowVersion.
+- Support API DeleteChatFlow.
+- Support API DeleteFlowVersion.
+- Support API FlowBindPhone.
+- Support API FlowRebindPhone.
+- Support API FlowUnbindPhone.
+- Support API GetChatFlowMetric.
+- Support API GetChatFlowTemplate.
+- Support API ListBindingRelationsForFlowVersion.
+- Support API ListChatFlow.
+- Support API ListChatFlowTemplate.
+- Support API ListFlowVersion.
+- Support API OfflineFlowVersion.
+- Support API OnlineFlowVersion.
+- Support API ReadChatFlow.
+- Support API ReadChatFlowLogSetting.
+- Support API ReadFlowVersion.
+- Support API UpdateChatFlow.
+- Support API UpdateChatFlowLogSetting.
+- Support API UpdateFlowVersion.
+- Delete API BeeBotAssociate.
+- Delete API BeeBotChat.
+- Update API ListPhoneMessageQrdl: add request parameters OwnerId.
+- Update API ListPhoneMessageQrdl: add request parameters ResourceOwnerAccount.
+- Update API ListPhoneMessageQrdl: add request parameters ResourceOwnerId.
+- Update API ListPhoneMessageQrdl: add response parameters Body.AccessDeniedDetail.
+
+
 2025-06-24 Version: 2.2.0
 - Support API AddChatGroup.
 - Support API AddChatGroupInviteLink.

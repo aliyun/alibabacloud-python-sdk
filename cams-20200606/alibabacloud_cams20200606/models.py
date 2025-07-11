@@ -517,1095 +517,6 @@ class AddChatappPhoneNumberResponse(TeaModel):
         return self
 
 
-class BeeBotAssociateRequest(TeaModel):
-    def __init__(
-        self,
-        chat_bot_instance_id: str = None,
-        cust_space_id: str = None,
-        isv_code: str = None,
-        perspective: List[str] = None,
-        recommend_num: int = None,
-        session_id: str = None,
-        utterance: str = None,
-    ):
-        # The ID of a bot instance.
-        # 
-        # This parameter is required.
-        self.chat_bot_instance_id = chat_bot_instance_id
-        # The space ID of the user within the independent software vendor (ISV) account.
-        self.cust_space_id = cust_space_id
-        # The ISV verification code, which is used to verify whether the user is authorized by ISV.
-        self.isv_code = isv_code
-        # The list of codes for answers from different perspectives.
-        self.perspective = perspective
-        # The number of recommended questions. The value ranges from 1 to 10.
-        self.recommend_num = recommend_num
-        # The ID of the session, which is used to identify the session and store context information in the session.
-        self.session_id = session_id
-        # The input of the visitor.
-        self.utterance = utterance
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.chat_bot_instance_id is not None:
-            result['ChatBotInstanceId'] = self.chat_bot_instance_id
-        if self.cust_space_id is not None:
-            result['CustSpaceId'] = self.cust_space_id
-        if self.isv_code is not None:
-            result['IsvCode'] = self.isv_code
-        if self.perspective is not None:
-            result['Perspective'] = self.perspective
-        if self.recommend_num is not None:
-            result['RecommendNum'] = self.recommend_num
-        if self.session_id is not None:
-            result['SessionId'] = self.session_id
-        if self.utterance is not None:
-            result['Utterance'] = self.utterance
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ChatBotInstanceId') is not None:
-            self.chat_bot_instance_id = m.get('ChatBotInstanceId')
-        if m.get('CustSpaceId') is not None:
-            self.cust_space_id = m.get('CustSpaceId')
-        if m.get('IsvCode') is not None:
-            self.isv_code = m.get('IsvCode')
-        if m.get('Perspective') is not None:
-            self.perspective = m.get('Perspective')
-        if m.get('RecommendNum') is not None:
-            self.recommend_num = m.get('RecommendNum')
-        if m.get('SessionId') is not None:
-            self.session_id = m.get('SessionId')
-        if m.get('Utterance') is not None:
-            self.utterance = m.get('Utterance')
-        return self
-
-
-class BeeBotAssociateShrinkRequest(TeaModel):
-    def __init__(
-        self,
-        chat_bot_instance_id: str = None,
-        cust_space_id: str = None,
-        isv_code: str = None,
-        perspective_shrink: str = None,
-        recommend_num: int = None,
-        session_id: str = None,
-        utterance: str = None,
-    ):
-        # The ID of a bot instance.
-        # 
-        # This parameter is required.
-        self.chat_bot_instance_id = chat_bot_instance_id
-        # The space ID of the user within the independent software vendor (ISV) account.
-        self.cust_space_id = cust_space_id
-        # The ISV verification code, which is used to verify whether the user is authorized by ISV.
-        self.isv_code = isv_code
-        # The list of codes for answers from different perspectives.
-        self.perspective_shrink = perspective_shrink
-        # The number of recommended questions. The value ranges from 1 to 10.
-        self.recommend_num = recommend_num
-        # The ID of the session, which is used to identify the session and store context information in the session.
-        self.session_id = session_id
-        # The input of the visitor.
-        self.utterance = utterance
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.chat_bot_instance_id is not None:
-            result['ChatBotInstanceId'] = self.chat_bot_instance_id
-        if self.cust_space_id is not None:
-            result['CustSpaceId'] = self.cust_space_id
-        if self.isv_code is not None:
-            result['IsvCode'] = self.isv_code
-        if self.perspective_shrink is not None:
-            result['Perspective'] = self.perspective_shrink
-        if self.recommend_num is not None:
-            result['RecommendNum'] = self.recommend_num
-        if self.session_id is not None:
-            result['SessionId'] = self.session_id
-        if self.utterance is not None:
-            result['Utterance'] = self.utterance
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ChatBotInstanceId') is not None:
-            self.chat_bot_instance_id = m.get('ChatBotInstanceId')
-        if m.get('CustSpaceId') is not None:
-            self.cust_space_id = m.get('CustSpaceId')
-        if m.get('IsvCode') is not None:
-            self.isv_code = m.get('IsvCode')
-        if m.get('Perspective') is not None:
-            self.perspective_shrink = m.get('Perspective')
-        if m.get('RecommendNum') is not None:
-            self.recommend_num = m.get('RecommendNum')
-        if m.get('SessionId') is not None:
-            self.session_id = m.get('SessionId')
-        if m.get('Utterance') is not None:
-            self.utterance = m.get('Utterance')
-        return self
-
-
-class BeeBotAssociateResponseBodyDataAssociate(TeaModel):
-    def __init__(
-        self,
-        meta: str = None,
-        title: str = None,
-    ):
-        # The metadata.
-        self.meta = meta
-        # The title of the related question.
-        self.title = title
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.meta is not None:
-            result['Meta'] = self.meta
-        if self.title is not None:
-            result['Title'] = self.title
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Meta') is not None:
-            self.meta = m.get('Meta')
-        if m.get('Title') is not None:
-            self.title = m.get('Title')
-        return self
-
-
-class BeeBotAssociateResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        associate: List[BeeBotAssociateResponseBodyDataAssociate] = None,
-        message_id: str = None,
-        session_id: str = None,
-    ):
-        # The list of associated recommendations.
-        self.associate = associate
-        # The ID of the response message.
-        self.message_id = message_id
-        # The ID of the session.
-        self.session_id = session_id
-
-    def validate(self):
-        if self.associate:
-            for k in self.associate:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Associate'] = []
-        if self.associate is not None:
-            for k in self.associate:
-                result['Associate'].append(k.to_map() if k else None)
-        if self.message_id is not None:
-            result['MessageId'] = self.message_id
-        if self.session_id is not None:
-            result['SessionId'] = self.session_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.associate = []
-        if m.get('Associate') is not None:
-            for k in m.get('Associate'):
-                temp_model = BeeBotAssociateResponseBodyDataAssociate()
-                self.associate.append(temp_model.from_map(k))
-        if m.get('MessageId') is not None:
-            self.message_id = m.get('MessageId')
-        if m.get('SessionId') is not None:
-            self.session_id = m.get('SessionId')
-        return self
-
-
-class BeeBotAssociateResponseBody(TeaModel):
-    def __init__(
-        self,
-        access_denied_detail: str = None,
-        code: str = None,
-        data: BeeBotAssociateResponseBodyData = None,
-        message: str = None,
-        request_id: str = None,
-    ):
-        # The access denied for detailed information.
-        self.access_denied_detail = access_denied_detail
-        # If OK is returned, the request is successful.
-        self.code = code
-        # The data returned.
-        self.data = data
-        # The error message returned.
-        self.message = message
-        # The ID of the request.
-        self.request_id = request_id
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            self.access_denied_detail = m.get('AccessDeniedDetail')
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            temp_model = BeeBotAssociateResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class BeeBotAssociateResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: BeeBotAssociateResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = BeeBotAssociateResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class BeeBotChatRequest(TeaModel):
-    def __init__(
-        self,
-        chat_bot_instance_id: str = None,
-        cust_space_id: str = None,
-        intent_name: str = None,
-        isv_code: str = None,
-        knowledge_id: str = None,
-        perspective: List[str] = None,
-        sender_id: str = None,
-        sender_nick: str = None,
-        session_id: str = None,
-        utterance: str = None,
-        vendor_param: Dict[str, Any] = None,
-    ):
-        # Indicates whether the answer is in plain text or rich text.
-        # 
-        # This parameter is required.
-        self.chat_bot_instance_id = chat_bot_instance_id
-        # The metadata.
-        self.cust_space_id = cust_space_id
-        # The source of the answer.
-        self.intent_name = intent_name
-        # The source of the answer.
-        self.isv_code = isv_code
-        # The hit statement.
-        self.knowledge_id = knowledge_id
-        # Beijing
-        self.perspective = perspective
-        # The information about the slot.
-        self.sender_id = sender_id
-        # Beijing
-        self.sender_nick = sender_nick
-        # The title of the related knowledge.
-        self.session_id = session_id
-        # The title of the hit question.
-        # 
-        # This parameter is required.
-        self.utterance = utterance
-        # The node name. When AnswerSource is set to BotFramework, a value is returned for this parameter.
-        self.vendor_param = vendor_param
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.chat_bot_instance_id is not None:
-            result['ChatBotInstanceId'] = self.chat_bot_instance_id
-        if self.cust_space_id is not None:
-            result['CustSpaceId'] = self.cust_space_id
-        if self.intent_name is not None:
-            result['IntentName'] = self.intent_name
-        if self.isv_code is not None:
-            result['IsvCode'] = self.isv_code
-        if self.knowledge_id is not None:
-            result['KnowledgeId'] = self.knowledge_id
-        if self.perspective is not None:
-            result['Perspective'] = self.perspective
-        if self.sender_id is not None:
-            result['SenderId'] = self.sender_id
-        if self.sender_nick is not None:
-            result['SenderNick'] = self.sender_nick
-        if self.session_id is not None:
-            result['SessionId'] = self.session_id
-        if self.utterance is not None:
-            result['Utterance'] = self.utterance
-        if self.vendor_param is not None:
-            result['VendorParam'] = self.vendor_param
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ChatBotInstanceId') is not None:
-            self.chat_bot_instance_id = m.get('ChatBotInstanceId')
-        if m.get('CustSpaceId') is not None:
-            self.cust_space_id = m.get('CustSpaceId')
-        if m.get('IntentName') is not None:
-            self.intent_name = m.get('IntentName')
-        if m.get('IsvCode') is not None:
-            self.isv_code = m.get('IsvCode')
-        if m.get('KnowledgeId') is not None:
-            self.knowledge_id = m.get('KnowledgeId')
-        if m.get('Perspective') is not None:
-            self.perspective = m.get('Perspective')
-        if m.get('SenderId') is not None:
-            self.sender_id = m.get('SenderId')
-        if m.get('SenderNick') is not None:
-            self.sender_nick = m.get('SenderNick')
-        if m.get('SessionId') is not None:
-            self.session_id = m.get('SessionId')
-        if m.get('Utterance') is not None:
-            self.utterance = m.get('Utterance')
-        if m.get('VendorParam') is not None:
-            self.vendor_param = m.get('VendorParam')
-        return self
-
-
-class BeeBotChatShrinkRequest(TeaModel):
-    def __init__(
-        self,
-        chat_bot_instance_id: str = None,
-        cust_space_id: str = None,
-        intent_name: str = None,
-        isv_code: str = None,
-        knowledge_id: str = None,
-        perspective_shrink: str = None,
-        sender_id: str = None,
-        sender_nick: str = None,
-        session_id: str = None,
-        utterance: str = None,
-        vendor_param_shrink: str = None,
-    ):
-        # Indicates whether the answer is in plain text or rich text.
-        # 
-        # This parameter is required.
-        self.chat_bot_instance_id = chat_bot_instance_id
-        # The metadata.
-        self.cust_space_id = cust_space_id
-        # The source of the answer.
-        self.intent_name = intent_name
-        # The source of the answer.
-        self.isv_code = isv_code
-        # The hit statement.
-        self.knowledge_id = knowledge_id
-        # Beijing
-        self.perspective_shrink = perspective_shrink
-        # The information about the slot.
-        self.sender_id = sender_id
-        # Beijing
-        self.sender_nick = sender_nick
-        # The title of the related knowledge.
-        self.session_id = session_id
-        # The title of the hit question.
-        # 
-        # This parameter is required.
-        self.utterance = utterance
-        # The node name. When AnswerSource is set to BotFramework, a value is returned for this parameter.
-        self.vendor_param_shrink = vendor_param_shrink
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.chat_bot_instance_id is not None:
-            result['ChatBotInstanceId'] = self.chat_bot_instance_id
-        if self.cust_space_id is not None:
-            result['CustSpaceId'] = self.cust_space_id
-        if self.intent_name is not None:
-            result['IntentName'] = self.intent_name
-        if self.isv_code is not None:
-            result['IsvCode'] = self.isv_code
-        if self.knowledge_id is not None:
-            result['KnowledgeId'] = self.knowledge_id
-        if self.perspective_shrink is not None:
-            result['Perspective'] = self.perspective_shrink
-        if self.sender_id is not None:
-            result['SenderId'] = self.sender_id
-        if self.sender_nick is not None:
-            result['SenderNick'] = self.sender_nick
-        if self.session_id is not None:
-            result['SessionId'] = self.session_id
-        if self.utterance is not None:
-            result['Utterance'] = self.utterance
-        if self.vendor_param_shrink is not None:
-            result['VendorParam'] = self.vendor_param_shrink
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ChatBotInstanceId') is not None:
-            self.chat_bot_instance_id = m.get('ChatBotInstanceId')
-        if m.get('CustSpaceId') is not None:
-            self.cust_space_id = m.get('CustSpaceId')
-        if m.get('IntentName') is not None:
-            self.intent_name = m.get('IntentName')
-        if m.get('IsvCode') is not None:
-            self.isv_code = m.get('IsvCode')
-        if m.get('KnowledgeId') is not None:
-            self.knowledge_id = m.get('KnowledgeId')
-        if m.get('Perspective') is not None:
-            self.perspective_shrink = m.get('Perspective')
-        if m.get('SenderId') is not None:
-            self.sender_id = m.get('SenderId')
-        if m.get('SenderNick') is not None:
-            self.sender_nick = m.get('SenderNick')
-        if m.get('SessionId') is not None:
-            self.session_id = m.get('SessionId')
-        if m.get('Utterance') is not None:
-            self.utterance = m.get('Utterance')
-        if m.get('VendorParam') is not None:
-            self.vendor_param_shrink = m.get('VendorParam')
-        return self
-
-
-class BeeBotChatResponseBodyDataMessagesKnowledgeRelatedKnowledges(TeaModel):
-    def __init__(
-        self,
-        knowledge_id: str = None,
-        title: str = None,
-    ):
-        # The ID of knowledge associated with knowledge.
-        self.knowledge_id = knowledge_id
-        # The title of related knowledge.
-        self.title = title
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.knowledge_id is not None:
-            result['KnowledgeId'] = self.knowledge_id
-        if self.title is not None:
-            result['Title'] = self.title
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('KnowledgeId') is not None:
-            self.knowledge_id = m.get('KnowledgeId')
-        if m.get('Title') is not None:
-            self.title = m.get('Title')
-        return self
-
-
-class BeeBotChatResponseBodyDataMessagesKnowledge(TeaModel):
-    def __init__(
-        self,
-        answer_source: str = None,
-        category: str = None,
-        content: str = None,
-        content_type: str = None,
-        hit_statement: str = None,
-        id: str = None,
-        related_knowledges: List[BeeBotChatResponseBodyDataMessagesKnowledgeRelatedKnowledges] = None,
-        summary: str = None,
-        title: str = None,
-    ):
-        # Distinguish answer types.
-        self.answer_source = answer_source
-        # Knowledge category.
-        self.category = category
-        # Hit the content of the problem.
-        self.content = content
-        # Indication of plain/rich text answers.
-        self.content_type = content_type
-        # Hit statement.
-        self.hit_statement = hit_statement
-        # The ID of the hit problem in the knowledge base.
-        self.id = id
-        # Related knowledge list.
-        self.related_knowledges = related_knowledges
-        # Introduction to hit problems.
-        self.summary = summary
-        # Hit the title of the problem.
-        self.title = title
-
-    def validate(self):
-        if self.related_knowledges:
-            for k in self.related_knowledges:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.answer_source is not None:
-            result['AnswerSource'] = self.answer_source
-        if self.category is not None:
-            result['Category'] = self.category
-        if self.content is not None:
-            result['Content'] = self.content
-        if self.content_type is not None:
-            result['ContentType'] = self.content_type
-        if self.hit_statement is not None:
-            result['HitStatement'] = self.hit_statement
-        if self.id is not None:
-            result['Id'] = self.id
-        result['RelatedKnowledges'] = []
-        if self.related_knowledges is not None:
-            for k in self.related_knowledges:
-                result['RelatedKnowledges'].append(k.to_map() if k else None)
-        if self.summary is not None:
-            result['Summary'] = self.summary
-        if self.title is not None:
-            result['Title'] = self.title
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AnswerSource') is not None:
-            self.answer_source = m.get('AnswerSource')
-        if m.get('Category') is not None:
-            self.category = m.get('Category')
-        if m.get('Content') is not None:
-            self.content = m.get('Content')
-        if m.get('ContentType') is not None:
-            self.content_type = m.get('ContentType')
-        if m.get('HitStatement') is not None:
-            self.hit_statement = m.get('HitStatement')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        self.related_knowledges = []
-        if m.get('RelatedKnowledges') is not None:
-            for k in m.get('RelatedKnowledges'):
-                temp_model = BeeBotChatResponseBodyDataMessagesKnowledgeRelatedKnowledges()
-                self.related_knowledges.append(temp_model.from_map(k))
-        if m.get('Summary') is not None:
-            self.summary = m.get('Summary')
-        if m.get('Title') is not None:
-            self.title = m.get('Title')
-        return self
-
-
-class BeeBotChatResponseBodyDataMessagesRecommends(TeaModel):
-    def __init__(
-        self,
-        answer_source: str = None,
-        knowledge_id: str = None,
-        title: str = None,
-    ):
-        # Clarify the identification of the source.
-        self.answer_source = answer_source
-        # Clarify the knowledge ID.
-        self.knowledge_id = knowledge_id
-        # Clarify the content, which may be the entities of graph Q&A, the knowledge titles of knowledge Q&A, or the column values of table Q&A.
-        self.title = title
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.answer_source is not None:
-            result['AnswerSource'] = self.answer_source
-        if self.knowledge_id is not None:
-            result['KnowledgeId'] = self.knowledge_id
-        if self.title is not None:
-            result['Title'] = self.title
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AnswerSource') is not None:
-            self.answer_source = m.get('AnswerSource')
-        if m.get('KnowledgeId') is not None:
-            self.knowledge_id = m.get('KnowledgeId')
-        if m.get('Title') is not None:
-            self.title = m.get('Title')
-        return self
-
-
-class BeeBotChatResponseBodyDataMessagesTextSlots(TeaModel):
-    def __init__(
-        self,
-        hit: bool = None,
-        name: str = None,
-        origin: str = None,
-        value: str = None,
-    ):
-        # Whether it hits.
-        self.hit = hit
-        # Name.
-        self.name = name
-        # Original value.
-        self.origin = origin
-        # Specific values.
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.hit is not None:
-            result['Hit'] = self.hit
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.origin is not None:
-            result['Origin'] = self.origin
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Hit') is not None:
-            self.hit = m.get('Hit')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Origin') is not None:
-            self.origin = m.get('Origin')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        return self
-
-
-class BeeBotChatResponseBodyDataMessagesText(TeaModel):
-    def __init__(
-        self,
-        answer_source: str = None,
-        content: str = None,
-        content_type: str = None,
-        dialog_name: str = None,
-        ext: Dict[str, Any] = None,
-        external_flags: Dict[str, Any] = None,
-        hit_statement: str = None,
-        intent_name: str = None,
-        meta_data: str = None,
-        node_id: str = None,
-        node_name: str = None,
-        slots: List[BeeBotChatResponseBodyDataMessagesTextSlots] = None,
-        user_defined_chat_title: str = None,
-    ):
-        # Distinguish answer types.
-        self.answer_source = answer_source
-        # The content of the text message.
-        self.content = content
-        # Indication of plain/rich text answers.
-        self.content_type = content_type
-        # When AnswerSource is BotFramework, this field returns the name of the dialogue unit.
-        self.dialog_name = dialog_name
-        # This field returns transparent parameters.
-        self.ext = ext
-        # When AnswerSource is BotFramework, this field returns a transparent parameter.
-        self.external_flags = external_flags
-        # Hit statement.
-        self.hit_statement = hit_statement
-        # When AnswerSource is BotFramework, this field returns the intent name.
-        self.intent_name = intent_name
-        # Metadata.
-        self.meta_data = meta_data
-        # When AnswerSource is BotFramework, this field returns the node ID.
-        self.node_id = node_id
-        # When AnswerSource is BotFramework, this field returns the node name.
-        self.node_name = node_name
-        # Slot information list.
-        self.slots = slots
-        # Custom Chat Topic Title.
-        self.user_defined_chat_title = user_defined_chat_title
-
-    def validate(self):
-        if self.slots:
-            for k in self.slots:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.answer_source is not None:
-            result['AnswerSource'] = self.answer_source
-        if self.content is not None:
-            result['Content'] = self.content
-        if self.content_type is not None:
-            result['ContentType'] = self.content_type
-        if self.dialog_name is not None:
-            result['DialogName'] = self.dialog_name
-        if self.ext is not None:
-            result['Ext'] = self.ext
-        if self.external_flags is not None:
-            result['ExternalFlags'] = self.external_flags
-        if self.hit_statement is not None:
-            result['HitStatement'] = self.hit_statement
-        if self.intent_name is not None:
-            result['IntentName'] = self.intent_name
-        if self.meta_data is not None:
-            result['MetaData'] = self.meta_data
-        if self.node_id is not None:
-            result['NodeId'] = self.node_id
-        if self.node_name is not None:
-            result['NodeName'] = self.node_name
-        result['Slots'] = []
-        if self.slots is not None:
-            for k in self.slots:
-                result['Slots'].append(k.to_map() if k else None)
-        if self.user_defined_chat_title is not None:
-            result['UserDefinedChatTitle'] = self.user_defined_chat_title
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AnswerSource') is not None:
-            self.answer_source = m.get('AnswerSource')
-        if m.get('Content') is not None:
-            self.content = m.get('Content')
-        if m.get('ContentType') is not None:
-            self.content_type = m.get('ContentType')
-        if m.get('DialogName') is not None:
-            self.dialog_name = m.get('DialogName')
-        if m.get('Ext') is not None:
-            self.ext = m.get('Ext')
-        if m.get('ExternalFlags') is not None:
-            self.external_flags = m.get('ExternalFlags')
-        if m.get('HitStatement') is not None:
-            self.hit_statement = m.get('HitStatement')
-        if m.get('IntentName') is not None:
-            self.intent_name = m.get('IntentName')
-        if m.get('MetaData') is not None:
-            self.meta_data = m.get('MetaData')
-        if m.get('NodeId') is not None:
-            self.node_id = m.get('NodeId')
-        if m.get('NodeName') is not None:
-            self.node_name = m.get('NodeName')
-        self.slots = []
-        if m.get('Slots') is not None:
-            for k in m.get('Slots'):
-                temp_model = BeeBotChatResponseBodyDataMessagesTextSlots()
-                self.slots.append(temp_model.from_map(k))
-        if m.get('UserDefinedChatTitle') is not None:
-            self.user_defined_chat_title = m.get('UserDefinedChatTitle')
-        return self
-
-
-class BeeBotChatResponseBodyDataMessages(TeaModel):
-    def __init__(
-        self,
-        answer_source: str = None,
-        answer_type: str = None,
-        knowledge: BeeBotChatResponseBodyDataMessagesKnowledge = None,
-        recommends: List[BeeBotChatResponseBodyDataMessagesRecommends] = None,
-        text: BeeBotChatResponseBodyDataMessagesText = None,
-    ):
-        # When AnswerType is Recommended, this field indicates the source of the recommended answer.
-        self.answer_source = answer_source
-        # The type of this message.
-        self.answer_type = answer_type
-        # When AnswerType is Knowledge, this field contains the Knowledge object returned by the robot.
-        self.knowledge = knowledge
-        # When AnswerType is Recommended, this field contains a list of Recommendations returned by the robot.
-        self.recommends = recommends
-        # When AnswerType is Text, this field contains the Text object returned by the robot.
-        self.text = text
-
-    def validate(self):
-        if self.knowledge:
-            self.knowledge.validate()
-        if self.recommends:
-            for k in self.recommends:
-                if k:
-                    k.validate()
-        if self.text:
-            self.text.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.answer_source is not None:
-            result['AnswerSource'] = self.answer_source
-        if self.answer_type is not None:
-            result['AnswerType'] = self.answer_type
-        if self.knowledge is not None:
-            result['Knowledge'] = self.knowledge.to_map()
-        result['Recommends'] = []
-        if self.recommends is not None:
-            for k in self.recommends:
-                result['Recommends'].append(k.to_map() if k else None)
-        if self.text is not None:
-            result['Text'] = self.text.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AnswerSource') is not None:
-            self.answer_source = m.get('AnswerSource')
-        if m.get('AnswerType') is not None:
-            self.answer_type = m.get('AnswerType')
-        if m.get('Knowledge') is not None:
-            temp_model = BeeBotChatResponseBodyDataMessagesKnowledge()
-            self.knowledge = temp_model.from_map(m['Knowledge'])
-        self.recommends = []
-        if m.get('Recommends') is not None:
-            for k in m.get('Recommends'):
-                temp_model = BeeBotChatResponseBodyDataMessagesRecommends()
-                self.recommends.append(temp_model.from_map(k))
-        if m.get('Text') is not None:
-            temp_model = BeeBotChatResponseBodyDataMessagesText()
-            self.text = temp_model.from_map(m['Text'])
-        return self
-
-
-class BeeBotChatResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        message_id: str = None,
-        messages: List[BeeBotChatResponseBodyDataMessages] = None,
-        session_id: str = None,
-    ):
-        # The ID of the recommended knowledge.
-        self.message_id = message_id
-        # The source of the recommended answer. When AnswerType is set to Recommend, a value is returned for this parameter.
-        self.messages = messages
-        # The source of the recommended answer.
-        self.session_id = session_id
-
-    def validate(self):
-        if self.messages:
-            for k in self.messages:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.message_id is not None:
-            result['MessageId'] = self.message_id
-        result['Messages'] = []
-        if self.messages is not None:
-            for k in self.messages:
-                result['Messages'].append(k.to_map() if k else None)
-        if self.session_id is not None:
-            result['SessionId'] = self.session_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('MessageId') is not None:
-            self.message_id = m.get('MessageId')
-        self.messages = []
-        if m.get('Messages') is not None:
-            for k in m.get('Messages'):
-                temp_model = BeeBotChatResponseBodyDataMessages()
-                self.messages.append(temp_model.from_map(k))
-        if m.get('SessionId') is not None:
-            self.session_id = m.get('SessionId')
-        return self
-
-
-class BeeBotChatResponseBody(TeaModel):
-    def __init__(
-        self,
-        access_denied_detail: str = None,
-        code: str = None,
-        data: BeeBotChatResponseBodyData = None,
-        message: str = None,
-        request_id: str = None,
-    ):
-        # Access denied for detailed information.
-        self.access_denied_detail = access_denied_detail
-        # The content of the text message.
-        self.code = code
-        # The list of the recommended knowledge. When AnswerType is set to Recommend, the list of the recommended knowledge is returned by the bot for this parameter.
-        self.data = data
-        # Indicates whether the answer is in plain text or rich text.
-        self.message = message
-        # The passthrough parameter.
-        self.request_id = request_id
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            self.access_denied_detail = m.get('AccessDeniedDetail')
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            temp_model = BeeBotChatResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class BeeBotChatResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: BeeBotChatResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = BeeBotChatResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ChatappBindWabaRequest(TeaModel):
     def __init__(
         self,
@@ -2663,8 +1574,16 @@ class ChatappSyncPhoneNumberResponseBodyPhoneNumbers(TeaModel):
         up_queue: str = None,
         verified_name: str = None,
     ):
-        # The verification status.
+        # The verification state of the phone number.
+        # 
+        # Valid values:
+        # 
+        # *   REVOKED: The review application is revoked.
+        # *   MORE_INFORMATION_REQUESTED: More information needs to be provided.
+        # *   VERIFIED: The phone number passes the verification.
+        # *   REJECTED: The phone number fails to pass the verification.
         self.code_verification_status = code_verification_status
+        # Indicates whether it is a WhatsApp Official Business Account (OBA).
         self.is_official = is_official
         # The number of phone numbers to which messages can be sent in a day.
         self.messaging_limit_tier = messaging_limit_tier
@@ -2674,15 +1593,35 @@ class ChatappSyncPhoneNumberResponseBodyPhoneNumbers(TeaModel):
         self.new_name_status = new_name_status
         # The phone number.
         self.phone_number = phone_number
-        # The quality rating of the phone number. Valid values: GREEN, YELLOW, and RED.
+        # The quality rating of the phone number.
+        # 
+        # Valid values:
+        # 
+        # *   RED
+        # *   YELLOW
+        # *   GREEN
         self.quality_rating = quality_rating
-        # The status of the phone number.
+        # The state of the phone number.
+        # 
+        # Valid values:
+        # 
+        # *   MIGRATED
+        # *   FLAGGED
+        # *   DISCONNECTED
+        # *   UNVERIFIED
+        # *   BANNED
+        # *   RATE_LIMITED
+        # *   PENDING
+        # *   CONNECTED
+        # *   UNKNOWN
+        # *   DELETED
+        # *   RESTRICTED
         self.status = status
         # The callback URL to which status reports are sent by using HTTP callbacks.
         self.status_callback_url = status_callback_url
         # The status report queue.
         self.status_queue = status_queue
-        # The callback URL to which MO messages are sent by using HTTP callbacks.
+        # The URL that receives the MO messages.
         self.up_callback_url = up_callback_url
         # The mobile originated (MO) message queue.
         self.up_queue = up_queue
@@ -2767,6 +1706,7 @@ class ChatappSyncPhoneNumberResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The HTTP status code returned.
         # 
@@ -2775,10 +1715,14 @@ class ChatappSyncPhoneNumberResponseBody(TeaModel):
         self.code = code
         # The error message returned.
         self.message = message
-        # Details of the phone numbers.
+        # The phone numbers.
         self.phone_numbers = phone_numbers
         # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   **true**: The call was successful.
+        # *   **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -2939,6 +1883,7 @@ class ChatappVerifyAndRegisterResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The HTTP status code returned.
         # 
@@ -2949,6 +1894,10 @@ class ChatappVerifyAndRegisterResponseBody(TeaModel):
         self.message = message
         # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   **true**: The call was successful.
+        # *   **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -3024,6 +1973,667 @@ class ChatappVerifyAndRegisterResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ChatappVerifyAndRegisterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateChatFlowRequest(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        biz_extend: Dict[str, Any] = None,
+        flow_trigger_type: str = None,
+        owner_id: int = None,
+        remark: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        title: str = None,
+    ):
+        # Business tenant code, default is “ALICOM_OPAAS”.
+        self.biz_code = biz_code
+        # Business extension information, default is “{}”.
+        self.biz_extend = biz_extend
+        # Flow trigger type
+        self.flow_trigger_type = flow_trigger_type
+        self.owner_id = owner_id
+        # Flow remarks
+        self.remark = remark
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # Flow title
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.biz_extend is not None:
+            result['BizExtend'] = self.biz_extend
+        if self.flow_trigger_type is not None:
+            result['FlowTriggerType'] = self.flow_trigger_type
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('BizExtend') is not None:
+            self.biz_extend = m.get('BizExtend')
+        if m.get('FlowTriggerType') is not None:
+            self.flow_trigger_type = m.get('FlowTriggerType')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class CreateChatFlowShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        biz_extend_shrink: str = None,
+        flow_trigger_type: str = None,
+        owner_id: int = None,
+        remark: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        title: str = None,
+    ):
+        # Business tenant code, default is “ALICOM_OPAAS”.
+        self.biz_code = biz_code
+        # Business extension information, default is “{}”.
+        self.biz_extend_shrink = biz_extend_shrink
+        # Flow trigger type
+        self.flow_trigger_type = flow_trigger_type
+        self.owner_id = owner_id
+        # Flow remarks
+        self.remark = remark
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # Flow title
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.biz_extend_shrink is not None:
+            result['BizExtend'] = self.biz_extend_shrink
+        if self.flow_trigger_type is not None:
+            result['FlowTriggerType'] = self.flow_trigger_type
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('BizExtend') is not None:
+            self.biz_extend_shrink = m.get('BizExtend')
+        if m.get('FlowTriggerType') is not None:
+            self.flow_trigger_type = m.get('FlowTriggerType')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class CreateChatFlowResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: Dict[str, Any] = None,
+        message: str = None,
+        request_id: str = None,
+        response: Dict[str, Any] = None,
+        success: bool = None,
+    ):
+        # Access denied details, this field is returned only when RAM verification fails.
+        self.access_denied_detail = access_denied_detail
+        # Error code
+        self.code = code
+        # Returned data object.
+        self.data = data
+        # Error message.
+        self.message = message
+        # Unique request ID.
+        self.request_id = request_id
+        # Response data
+        self.response = response
+        # Whether the call was successful.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.response is not None:
+            result['Response'] = self.response
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Response') is not None:
+            self.response = m.get('Response')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateChatFlowResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateChatFlowResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateChatFlowResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateChatFlowByImportRequest(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        biz_extend: Dict[str, Any] = None,
+        flow_view_model: str = None,
+        owner_id: int = None,
+        remark: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        title: str = None,
+    ):
+        # Business tenant code, default is “ALICOM_OPAAS”.
+        self.biz_code = biz_code
+        # Business extension information, default is “{}”.
+        self.biz_extend = biz_extend
+        # Imported flow DSL data
+        self.flow_view_model = flow_view_model
+        self.owner_id = owner_id
+        # Flow remarks
+        self.remark = remark
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # Flow title
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.biz_extend is not None:
+            result['BizExtend'] = self.biz_extend
+        if self.flow_view_model is not None:
+            result['FlowViewModel'] = self.flow_view_model
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('BizExtend') is not None:
+            self.biz_extend = m.get('BizExtend')
+        if m.get('FlowViewModel') is not None:
+            self.flow_view_model = m.get('FlowViewModel')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class CreateChatFlowByImportShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        biz_extend_shrink: str = None,
+        flow_view_model: str = None,
+        owner_id: int = None,
+        remark: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        title: str = None,
+    ):
+        # Business tenant code, default is “ALICOM_OPAAS”.
+        self.biz_code = biz_code
+        # Business extension information, default is “{}”.
+        self.biz_extend_shrink = biz_extend_shrink
+        # Imported flow DSL data
+        self.flow_view_model = flow_view_model
+        self.owner_id = owner_id
+        # Flow remarks
+        self.remark = remark
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # Flow title
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.biz_extend_shrink is not None:
+            result['BizExtend'] = self.biz_extend_shrink
+        if self.flow_view_model is not None:
+            result['FlowViewModel'] = self.flow_view_model
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('BizExtend') is not None:
+            self.biz_extend_shrink = m.get('BizExtend')
+        if m.get('FlowViewModel') is not None:
+            self.flow_view_model = m.get('FlowViewModel')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class CreateChatFlowByImportResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: Dict[str, Any] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Access denied details.
+        self.access_denied_detail = access_denied_detail
+        # Request status code.
+        self.code = code
+        # Returned data object.
+        self.data = data
+        # Error message.
+        self.message = message
+        # Request ID
+        self.request_id = request_id
+        # Whether the request was successful
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateChatFlowByImportResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateChatFlowByImportResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateChatFlowByImportResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateChatFlowLogSettingRequest(TeaModel):
+    def __init__(
+        self,
+        flow_code: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # Process code.
+        self.flow_code = flow_code
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class CreateChatFlowLogSettingResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: Dict[str, Any] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Access denied details.
+        self.access_denied_detail = access_denied_detail
+        # Status code.
+        self.code = code
+        # Returned data.
+        self.data = data
+        # Error message.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+        # Indicates whether the operation was successful. Values: true for success, false for failure.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateChatFlowLogSettingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateChatFlowLogSettingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateChatFlowLogSettingResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4403,6 +4013,258 @@ class CreateFlowResponse(TeaModel):
         return self
 
 
+class CreateFlowVersionRequest(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        biz_extend: Dict[str, Any] = None,
+        flow_code: str = None,
+        flow_version_copy_from: str = None,
+        owner_id: int = None,
+        remark: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # Business tenant code, default is “ALICOM_OPAAS”.
+        self.biz_code = biz_code
+        # Business extension information, default is “{}”.
+        self.biz_extend = biz_extend
+        # Flow code.
+        self.flow_code = flow_code
+        # The flow version to be copied.
+        self.flow_version_copy_from = flow_version_copy_from
+        self.owner_id = owner_id
+        # Version remarks.
+        self.remark = remark
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.biz_extend is not None:
+            result['BizExtend'] = self.biz_extend
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.flow_version_copy_from is not None:
+            result['FlowVersionCopyFrom'] = self.flow_version_copy_from
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('BizExtend') is not None:
+            self.biz_extend = m.get('BizExtend')
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('FlowVersionCopyFrom') is not None:
+            self.flow_version_copy_from = m.get('FlowVersionCopyFrom')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class CreateFlowVersionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        biz_extend_shrink: str = None,
+        flow_code: str = None,
+        flow_version_copy_from: str = None,
+        owner_id: int = None,
+        remark: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # Business tenant code, default is “ALICOM_OPAAS”.
+        self.biz_code = biz_code
+        # Business extension information, default is “{}”.
+        self.biz_extend_shrink = biz_extend_shrink
+        # Flow code.
+        self.flow_code = flow_code
+        # The flow version to be copied.
+        self.flow_version_copy_from = flow_version_copy_from
+        self.owner_id = owner_id
+        # Version remarks.
+        self.remark = remark
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.biz_extend_shrink is not None:
+            result['BizExtend'] = self.biz_extend_shrink
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.flow_version_copy_from is not None:
+            result['FlowVersionCopyFrom'] = self.flow_version_copy_from
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('BizExtend') is not None:
+            self.biz_extend_shrink = m.get('BizExtend')
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('FlowVersionCopyFrom') is not None:
+            self.flow_version_copy_from = m.get('FlowVersionCopyFrom')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class CreateFlowVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        response: Dict[str, Any] = None,
+        success: bool = None,
+    ):
+        # Details of access denial; this field is only returned when RAM verification fails.
+        self.access_denied_detail = access_denied_detail
+        # Request status code.
+        self.code = code
+        # Error message.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+        # Content of the returned data.
+        self.response = response
+        # Indicates whether the operation was successful. Values: true for success, false for failure.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.response is not None:
+            result['Response'] = self.response
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Response') is not None:
+            self.response = m.get('Response')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateFlowVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateFlowVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateFlowVersionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreatePhoneMessageQrdlRequest(TeaModel):
     def __init__(
         self,
@@ -4609,6 +4471,230 @@ class CreatePhoneMessageQrdlResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreatePhoneMessageQrdlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteChatFlowRequest(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        biz_extend: Dict[str, Any] = None,
+        flow_code: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # Business tenant code, default is “ALICOM_OPAAS”.
+        self.biz_code = biz_code
+        # Business extension information, default is “{}”.
+        self.biz_extend = biz_extend
+        # Process code.
+        self.flow_code = flow_code
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.biz_extend is not None:
+            result['BizExtend'] = self.biz_extend
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('BizExtend') is not None:
+            self.biz_extend = m.get('BizExtend')
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DeleteChatFlowShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        biz_extend_shrink: str = None,
+        flow_code: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # Business tenant code, default is “ALICOM_OPAAS”.
+        self.biz_code = biz_code
+        # Business extension information, default is “{}”.
+        self.biz_extend_shrink = biz_extend_shrink
+        # Process code.
+        self.flow_code = flow_code
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.biz_extend_shrink is not None:
+            result['BizExtend'] = self.biz_extend_shrink
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('BizExtend') is not None:
+            self.biz_extend_shrink = m.get('BizExtend')
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DeleteChatFlowResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        response: Dict[str, Any] = None,
+        success: bool = None,
+    ):
+        # Access denied details, this field is returned only when RAM verification fails.
+        self.access_denied_detail = access_denied_detail
+        # Error code
+        self.code = code
+        # Error message.
+        self.message = message
+        # Unique request ID.
+        self.request_id = request_id
+        # Response data
+        self.response = response
+        # Whether the call was successful.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.response is not None:
+            result['Response'] = self.response
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Response') is not None:
+            self.response = m.get('Response')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteChatFlowResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteChatFlowResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteChatFlowResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5531,6 +5617,244 @@ class DeleteFlowResponse(TeaModel):
         return self
 
 
+class DeleteFlowVersionRequest(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        biz_extend: Dict[str, Any] = None,
+        flow_code: str = None,
+        flow_version: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # Business tenant code, default is “ALICOM_OPAAS”.
+        self.biz_code = biz_code
+        # Business extension information, default is “{}”.
+        self.biz_extend = biz_extend
+        # Flow code.
+        self.flow_code = flow_code
+        # Flow version
+        self.flow_version = flow_version
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.biz_extend is not None:
+            result['BizExtend'] = self.biz_extend
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.flow_version is not None:
+            result['FlowVersion'] = self.flow_version
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('BizExtend') is not None:
+            self.biz_extend = m.get('BizExtend')
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('FlowVersion') is not None:
+            self.flow_version = m.get('FlowVersion')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DeleteFlowVersionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        biz_extend_shrink: str = None,
+        flow_code: str = None,
+        flow_version: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # Business tenant code, default is “ALICOM_OPAAS”.
+        self.biz_code = biz_code
+        # Business extension information, default is “{}”.
+        self.biz_extend_shrink = biz_extend_shrink
+        # Flow code.
+        self.flow_code = flow_code
+        # Flow version
+        self.flow_version = flow_version
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.biz_extend_shrink is not None:
+            result['BizExtend'] = self.biz_extend_shrink
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.flow_version is not None:
+            result['FlowVersion'] = self.flow_version
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('BizExtend') is not None:
+            self.biz_extend_shrink = m.get('BizExtend')
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('FlowVersion') is not None:
+            self.flow_version = m.get('FlowVersion')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DeleteFlowVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        response: Dict[str, Any] = None,
+        success: bool = None,
+    ):
+        # Detailed reason for access denial.
+        self.access_denied_detail = access_denied_detail
+        # Status code.
+        self.code = code
+        # Error message.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+        # Content of the returned data.
+        self.response = response
+        # Indicates whether the operation was successful. Values: true: success; false: failure.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.response is not None:
+            result['Response'] = self.response
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Response') is not None:
+            self.response = m.get('Response')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteFlowVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteFlowVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteFlowVersionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeletePhoneMessageQrdlRequest(TeaModel):
     def __init__(
         self,
@@ -5904,6 +6228,1278 @@ class EnableWhatsappROIMetricResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = EnableWhatsappROIMetricResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class FlowBindPhoneRequest(TeaModel):
+    def __init__(
+        self,
+        channel_code: str = None,
+        channel_type: str = None,
+        flow_code: str = None,
+        flow_version: str = None,
+        owner_id: int = None,
+        phone_numbers: List[str] = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        waba_id: str = None,
+    ):
+        # Message channel Code
+        # 
+        # This parameter is required.
+        self.channel_code = channel_code
+        # Message channel Type
+        # 
+        # This parameter is required.
+        self.channel_type = channel_type
+        # Flow code.
+        # 
+        # This parameter is required.
+        self.flow_code = flow_code
+        # Flow version
+        self.flow_version = flow_version
+        self.owner_id = owner_id
+        # Phone numbers or PageIds under the channel instance, etc.
+        self.phone_numbers = phone_numbers
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # WABA account ID, or PageId for other channel types, etc.
+        # 
+        # This parameter is required.
+        self.waba_id = waba_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_code is not None:
+            result['ChannelCode'] = self.channel_code
+        if self.channel_type is not None:
+            result['ChannelType'] = self.channel_type
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.flow_version is not None:
+            result['FlowVersion'] = self.flow_version
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.phone_numbers is not None:
+            result['PhoneNumbers'] = self.phone_numbers
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.waba_id is not None:
+            result['WabaId'] = self.waba_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelCode') is not None:
+            self.channel_code = m.get('ChannelCode')
+        if m.get('ChannelType') is not None:
+            self.channel_type = m.get('ChannelType')
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('FlowVersion') is not None:
+            self.flow_version = m.get('FlowVersion')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PhoneNumbers') is not None:
+            self.phone_numbers = m.get('PhoneNumbers')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('WabaId') is not None:
+            self.waba_id = m.get('WabaId')
+        return self
+
+
+class FlowBindPhoneShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        channel_code: str = None,
+        channel_type: str = None,
+        flow_code: str = None,
+        flow_version: str = None,
+        owner_id: int = None,
+        phone_numbers_shrink: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        waba_id: str = None,
+    ):
+        # Message channel Code
+        # 
+        # This parameter is required.
+        self.channel_code = channel_code
+        # Message channel Type
+        # 
+        # This parameter is required.
+        self.channel_type = channel_type
+        # Flow code.
+        # 
+        # This parameter is required.
+        self.flow_code = flow_code
+        # Flow version
+        self.flow_version = flow_version
+        self.owner_id = owner_id
+        # Phone numbers or PageIds under the channel instance, etc.
+        self.phone_numbers_shrink = phone_numbers_shrink
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # WABA account ID, or PageId for other channel types, etc.
+        # 
+        # This parameter is required.
+        self.waba_id = waba_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_code is not None:
+            result['ChannelCode'] = self.channel_code
+        if self.channel_type is not None:
+            result['ChannelType'] = self.channel_type
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.flow_version is not None:
+            result['FlowVersion'] = self.flow_version
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.phone_numbers_shrink is not None:
+            result['PhoneNumbers'] = self.phone_numbers_shrink
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.waba_id is not None:
+            result['WabaId'] = self.waba_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelCode') is not None:
+            self.channel_code = m.get('ChannelCode')
+        if m.get('ChannelType') is not None:
+            self.channel_type = m.get('ChannelType')
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('FlowVersion') is not None:
+            self.flow_version = m.get('FlowVersion')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PhoneNumbers') is not None:
+            self.phone_numbers_shrink = m.get('PhoneNumbers')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('WabaId') is not None:
+            self.waba_id = m.get('WabaId')
+        return self
+
+
+class FlowBindPhoneResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        model: bool = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Details of access denial; this field is returned only when RAM verification fails.
+        self.access_denied_detail = access_denied_detail
+        # Status code.
+        self.code = code
+        # Error description message.
+        self.message = message
+        # Return result.
+        self.model = model
+        # Request ID.
+        self.request_id = request_id
+        # Indicates whether the operation was successful. Values: true: success; false: failure.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class FlowBindPhoneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: FlowBindPhoneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = FlowBindPhoneResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class FlowRebindPhoneRequest(TeaModel):
+    def __init__(
+        self,
+        channel_code: str = None,
+        channel_type: str = None,
+        flow_code: str = None,
+        flow_version: str = None,
+        owner_id: int = None,
+        phone_numbers: List[str] = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        waba_id: str = None,
+    ):
+        # Message channel code
+        # 
+        # This parameter is required.
+        self.channel_code = channel_code
+        # Message channel type
+        # 
+        # This parameter is required.
+        self.channel_type = channel_type
+        # Flow code.
+        # 
+        # This parameter is required.
+        self.flow_code = flow_code
+        # Flow version
+        self.flow_version = flow_version
+        self.owner_id = owner_id
+        # Phone numbers or PageIds under the channel instance, etc.
+        self.phone_numbers = phone_numbers
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # WABA account ID, or PageId for other channel types, etc.
+        # 
+        # This parameter is required.
+        self.waba_id = waba_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_code is not None:
+            result['ChannelCode'] = self.channel_code
+        if self.channel_type is not None:
+            result['ChannelType'] = self.channel_type
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.flow_version is not None:
+            result['FlowVersion'] = self.flow_version
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.phone_numbers is not None:
+            result['PhoneNumbers'] = self.phone_numbers
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.waba_id is not None:
+            result['WabaId'] = self.waba_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelCode') is not None:
+            self.channel_code = m.get('ChannelCode')
+        if m.get('ChannelType') is not None:
+            self.channel_type = m.get('ChannelType')
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('FlowVersion') is not None:
+            self.flow_version = m.get('FlowVersion')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PhoneNumbers') is not None:
+            self.phone_numbers = m.get('PhoneNumbers')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('WabaId') is not None:
+            self.waba_id = m.get('WabaId')
+        return self
+
+
+class FlowRebindPhoneShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        channel_code: str = None,
+        channel_type: str = None,
+        flow_code: str = None,
+        flow_version: str = None,
+        owner_id: int = None,
+        phone_numbers_shrink: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        waba_id: str = None,
+    ):
+        # Message channel code
+        # 
+        # This parameter is required.
+        self.channel_code = channel_code
+        # Message channel type
+        # 
+        # This parameter is required.
+        self.channel_type = channel_type
+        # Flow code.
+        # 
+        # This parameter is required.
+        self.flow_code = flow_code
+        # Flow version
+        self.flow_version = flow_version
+        self.owner_id = owner_id
+        # Phone numbers or PageIds under the channel instance, etc.
+        self.phone_numbers_shrink = phone_numbers_shrink
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # WABA account ID, or PageId for other channel types, etc.
+        # 
+        # This parameter is required.
+        self.waba_id = waba_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_code is not None:
+            result['ChannelCode'] = self.channel_code
+        if self.channel_type is not None:
+            result['ChannelType'] = self.channel_type
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.flow_version is not None:
+            result['FlowVersion'] = self.flow_version
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.phone_numbers_shrink is not None:
+            result['PhoneNumbers'] = self.phone_numbers_shrink
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.waba_id is not None:
+            result['WabaId'] = self.waba_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelCode') is not None:
+            self.channel_code = m.get('ChannelCode')
+        if m.get('ChannelType') is not None:
+            self.channel_type = m.get('ChannelType')
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('FlowVersion') is not None:
+            self.flow_version = m.get('FlowVersion')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PhoneNumbers') is not None:
+            self.phone_numbers_shrink = m.get('PhoneNumbers')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('WabaId') is not None:
+            self.waba_id = m.get('WabaId')
+        return self
+
+
+class FlowRebindPhoneResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        model: bool = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Access denied details.
+        self.access_denied_detail = access_denied_detail
+        # Status code.
+        self.code = code
+        # Error message.
+        self.message = message
+        # Request result data.
+        self.model = model
+        # Request ID.
+        self.request_id = request_id
+        # Whether the operation was successful. Values: true: success; false: failure.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class FlowRebindPhoneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: FlowRebindPhoneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = FlowRebindPhoneResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class FlowUnbindPhoneRequest(TeaModel):
+    def __init__(
+        self,
+        channel_type: str = None,
+        flow_code: str = None,
+        flow_version: str = None,
+        owner_id: int = None,
+        phone_numbers: List[str] = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # Message channel type
+        self.channel_type = channel_type
+        # Flow code.
+        # 
+        # This parameter is required.
+        self.flow_code = flow_code
+        # Flow version
+        self.flow_version = flow_version
+        self.owner_id = owner_id
+        # Phone numbers or PageIds under the channel instance, etc.
+        self.phone_numbers = phone_numbers
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_type is not None:
+            result['ChannelType'] = self.channel_type
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.flow_version is not None:
+            result['FlowVersion'] = self.flow_version
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.phone_numbers is not None:
+            result['PhoneNumbers'] = self.phone_numbers
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelType') is not None:
+            self.channel_type = m.get('ChannelType')
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('FlowVersion') is not None:
+            self.flow_version = m.get('FlowVersion')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PhoneNumbers') is not None:
+            self.phone_numbers = m.get('PhoneNumbers')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class FlowUnbindPhoneShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        channel_type: str = None,
+        flow_code: str = None,
+        flow_version: str = None,
+        owner_id: int = None,
+        phone_numbers_shrink: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # Message channel type
+        self.channel_type = channel_type
+        # Flow code.
+        # 
+        # This parameter is required.
+        self.flow_code = flow_code
+        # Flow version
+        self.flow_version = flow_version
+        self.owner_id = owner_id
+        # Phone numbers or PageIds under the channel instance, etc.
+        self.phone_numbers_shrink = phone_numbers_shrink
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_type is not None:
+            result['ChannelType'] = self.channel_type
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.flow_version is not None:
+            result['FlowVersion'] = self.flow_version
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.phone_numbers_shrink is not None:
+            result['PhoneNumbers'] = self.phone_numbers_shrink
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelType') is not None:
+            self.channel_type = m.get('ChannelType')
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('FlowVersion') is not None:
+            self.flow_version = m.get('FlowVersion')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PhoneNumbers') is not None:
+            self.phone_numbers_shrink = m.get('PhoneNumbers')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class FlowUnbindPhoneResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        model: bool = None,
+        success: bool = None,
+    ):
+        # Access denied details, this field is returned only when RAM verification fails.
+        self.access_denied_detail = access_denied_detail
+        # Request status code.
+        self.code = code
+        # Error message.
+        self.message = message
+        # Request result data.
+        self.model = model
+        # Whether the operation was successful. Values: true: success; false: failure.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class FlowUnbindPhoneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: FlowUnbindPhoneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = FlowUnbindPhoneResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetChatFlowMetricRequest(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        biz_extend: Dict[str, Any] = None,
+        flow_code: str = None,
+        flow_version: str = None,
+        from_: int = None,
+        metric_name: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        to: int = None,
+    ):
+        # Business tenant code, default is “ALICOM_OPAAS”.
+        self.biz_code = biz_code
+        # Business extension information, default is “{}”.
+        self.biz_extend = biz_extend
+        # Flow code.
+        self.flow_code = flow_code
+        # Flow version.
+        self.flow_version = flow_version
+        # Start timestamp in seconds.
+        self.from_ = from_
+        # Metric name.
+        # 
+        # This parameter is required.
+        self.metric_name = metric_name
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # End timestamp in seconds.
+        self.to = to
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.biz_extend is not None:
+            result['BizExtend'] = self.biz_extend
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.flow_version is not None:
+            result['FlowVersion'] = self.flow_version
+        if self.from_ is not None:
+            result['From'] = self.from_
+        if self.metric_name is not None:
+            result['MetricName'] = self.metric_name
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.to is not None:
+            result['To'] = self.to
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('BizExtend') is not None:
+            self.biz_extend = m.get('BizExtend')
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('FlowVersion') is not None:
+            self.flow_version = m.get('FlowVersion')
+        if m.get('From') is not None:
+            self.from_ = m.get('From')
+        if m.get('MetricName') is not None:
+            self.metric_name = m.get('MetricName')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('To') is not None:
+            self.to = m.get('To')
+        return self
+
+
+class GetChatFlowMetricShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        biz_extend_shrink: str = None,
+        flow_code: str = None,
+        flow_version: str = None,
+        from_: int = None,
+        metric_name: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        to: int = None,
+    ):
+        # Business tenant code, default is “ALICOM_OPAAS”.
+        self.biz_code = biz_code
+        # Business extension information, default is “{}”.
+        self.biz_extend_shrink = biz_extend_shrink
+        # Flow code.
+        self.flow_code = flow_code
+        # Flow version.
+        self.flow_version = flow_version
+        # Start timestamp in seconds.
+        self.from_ = from_
+        # Metric name.
+        # 
+        # This parameter is required.
+        self.metric_name = metric_name
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # End timestamp in seconds.
+        self.to = to
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.biz_extend_shrink is not None:
+            result['BizExtend'] = self.biz_extend_shrink
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.flow_version is not None:
+            result['FlowVersion'] = self.flow_version
+        if self.from_ is not None:
+            result['From'] = self.from_
+        if self.metric_name is not None:
+            result['MetricName'] = self.metric_name
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.to is not None:
+            result['To'] = self.to
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('BizExtend') is not None:
+            self.biz_extend_shrink = m.get('BizExtend')
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('FlowVersion') is not None:
+            self.flow_version = m.get('FlowVersion')
+        if m.get('From') is not None:
+            self.from_ = m.get('From')
+        if m.get('MetricName') is not None:
+            self.metric_name = m.get('MetricName')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('To') is not None:
+            self.to = m.get('To')
+        return self
+
+
+class GetChatFlowMetricResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: Dict[str, Any] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Details of access denial.
+        self.access_denied_detail = access_denied_detail
+        # Status code.
+        self.code = code
+        # Returned data object.
+        self.data = data
+        # Error message.
+        self.message = message
+        # Unique request ID.
+        self.request_id = request_id
+        # Indicates whether the operation was successful. Values: true: success; false: failure.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetChatFlowMetricResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetChatFlowMetricResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetChatFlowMetricResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetChatFlowTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        id: int = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # Business tenant code, default is “ALICOM_OPAAS”.
+        # 
+        # This parameter is required.
+        self.biz_code = biz_code
+        # Template ID
+        self.id = id
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class GetChatFlowTemplateResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        response: Dict[str, Any] = None,
+    ):
+        # Content of the returned data.
+        self.response = response
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.response is not None:
+            result['Response'] = self.response
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Response') is not None:
+            self.response = m.get('Response')
+        return self
+
+
+class GetChatFlowTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: GetChatFlowTemplateResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Access denied details, this field is returned only when RAM verification fails.
+        self.access_denied_detail = access_denied_detail
+        # System returned error code. For more details on error codes, please refer to the error code documentation.
+        self.code = code
+        # Returned data.
+        self.data = data
+        # Error message.
+        self.message = message
+        # Unique request ID.
+        self.request_id = request_id
+        # Indicates whether the operation was successful. Values: true: success; false: failure.
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetChatFlowTemplateResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetChatFlowTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetChatFlowTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetChatFlowTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7682,6 +9278,7 @@ class GetChatappVerifyCodeResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The HTTP status code returned.
         # 
@@ -7692,6 +9289,10 @@ class GetChatappVerifyCodeResponseBody(TeaModel):
         self.message = message
         # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   **true**: The call was successful.
+        # *   **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -10387,6 +11988,677 @@ class IsvGetAppIdResponse(TeaModel):
         return self
 
 
+class ListBindingRelationsForFlowVersionRequest(TeaModel):
+    def __init__(
+        self,
+        channel_type: str = None,
+        flow_code: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.channel_type = channel_type
+        # This parameter is required.
+        self.flow_code = flow_code
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_type is not None:
+            result['ChannelType'] = self.channel_type
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelType') is not None:
+            self.channel_type = m.get('ChannelType')
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ListBindingRelationsForFlowVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: List[Dict[str, Any]] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListBindingRelationsForFlowVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListBindingRelationsForFlowVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListBindingRelationsForFlowVersionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListChatFlowRequest(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        biz_extend: Dict[str, Any] = None,
+        flow_trigger_type: str = None,
+        keyword: str = None,
+        owner_id: int = None,
+        page_no: int = None,
+        page_size: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        return_with_online_version: bool = None,
+        status: str = None,
+    ):
+        # Business tenant code, default is “ALICOM_OPAAS”.
+        self.biz_code = biz_code
+        # Business extension information, default is “{}”.
+        self.biz_extend = biz_extend
+        # Flow trigger type, enum values:
+        # - TriggeredManually
+        # - TriggeredByWhatsApp
+        # - TriggeredByInstagram
+        # - TriggeredByViber
+        # - TriggeredByMessenger
+        self.flow_trigger_type = flow_trigger_type
+        # Search keyword.
+        self.keyword = keyword
+        self.owner_id = owner_id
+        # Page number
+        self.page_no = page_no
+        # Page size.
+        self.page_size = page_size
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # Whether to return the online status
+        self.return_with_online_version = return_with_online_version
+        # Flow status
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.biz_extend is not None:
+            result['BizExtend'] = self.biz_extend
+        if self.flow_trigger_type is not None:
+            result['FlowTriggerType'] = self.flow_trigger_type
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.return_with_online_version is not None:
+            result['ReturnWithOnlineVersion'] = self.return_with_online_version
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('BizExtend') is not None:
+            self.biz_extend = m.get('BizExtend')
+        if m.get('FlowTriggerType') is not None:
+            self.flow_trigger_type = m.get('FlowTriggerType')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ReturnWithOnlineVersion') is not None:
+            self.return_with_online_version = m.get('ReturnWithOnlineVersion')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListChatFlowShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        biz_extend_shrink: str = None,
+        flow_trigger_type: str = None,
+        keyword: str = None,
+        owner_id: int = None,
+        page_no: int = None,
+        page_size: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        return_with_online_version: bool = None,
+        status: str = None,
+    ):
+        # Business tenant code, default is “ALICOM_OPAAS”.
+        self.biz_code = biz_code
+        # Business extension information, default is “{}”.
+        self.biz_extend_shrink = biz_extend_shrink
+        # Flow trigger type, enum values:
+        # - TriggeredManually
+        # - TriggeredByWhatsApp
+        # - TriggeredByInstagram
+        # - TriggeredByViber
+        # - TriggeredByMessenger
+        self.flow_trigger_type = flow_trigger_type
+        # Search keyword.
+        self.keyword = keyword
+        self.owner_id = owner_id
+        # Page number
+        self.page_no = page_no
+        # Page size.
+        self.page_size = page_size
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # Whether to return the online status
+        self.return_with_online_version = return_with_online_version
+        # Flow status
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.biz_extend_shrink is not None:
+            result['BizExtend'] = self.biz_extend_shrink
+        if self.flow_trigger_type is not None:
+            result['FlowTriggerType'] = self.flow_trigger_type
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.return_with_online_version is not None:
+            result['ReturnWithOnlineVersion'] = self.return_with_online_version
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('BizExtend') is not None:
+            self.biz_extend_shrink = m.get('BizExtend')
+        if m.get('FlowTriggerType') is not None:
+            self.flow_trigger_type = m.get('FlowTriggerType')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ReturnWithOnlineVersion') is not None:
+            self.return_with_online_version = m.get('ReturnWithOnlineVersion')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListChatFlowResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        response: Dict[str, Any] = None,
+        success: bool = None,
+    ):
+        # Access denied details, this field is returned only when RAM verification fails.
+        self.access_denied_detail = access_denied_detail
+        # System error code. For more details on error codes, please refer to the error code documentation.
+        self.code = code
+        # Error message.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+        # Response data
+        self.response = response
+        # Whether the request was successful.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.response is not None:
+            result['Response'] = self.response
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Response') is not None:
+            self.response = m.get('Response')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListChatFlowResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListChatFlowResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListChatFlowResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListChatFlowTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        keyword: str = None,
+        owner_id: int = None,
+        page_no: int = None,
+        page_size: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        trigger_type: str = None,
+    ):
+        # Business tenant code, default is “ALICOM_OPAAS”.
+        # 
+        # This parameter is required.
+        self.biz_code = biz_code
+        # Search keyword.
+        self.keyword = keyword
+        self.owner_id = owner_id
+        # Page number
+        self.page_no = page_no
+        # Number of records per page.
+        self.page_size = page_size
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # Trigger type, with the following enum values:
+        # 
+        # - TriggeredManually
+        # - TriggeredByWhatsApp
+        # - TriggeredByInstagram
+        # - TriggeredByViber
+        # - TriggeredByMessenger
+        self.trigger_type = trigger_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.trigger_type is not None:
+            result['TriggerType'] = self.trigger_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TriggerType') is not None:
+            self.trigger_type = m.get('TriggerType')
+        return self
+
+
+class ListChatFlowTemplateResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        response: Dict[str, Any] = None,
+    ):
+        # Content of the returned data.
+        self.response = response
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.response is not None:
+            result['Response'] = self.response
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Response') is not None:
+            self.response = m.get('Response')
+        return self
+
+
+class ListChatFlowTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: ListChatFlowTemplateResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Access denied details.
+        self.access_denied_detail = access_denied_detail
+        # Status code.
+        self.code = code
+        # Returned data object.
+        self.data = data
+        # Error message.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+        # Indicates whether the operation was successful. Values: true: success; false: failure.
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListChatFlowTemplateResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListChatFlowTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListChatFlowTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListChatFlowTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListChatGroupRequestPage(TeaModel):
     def __init__(
         self,
@@ -11187,27 +13459,28 @@ class ListChatappTemplateRequest(TeaModel):
         resource_owner_id: int = None,
         template_type: str = None,
     ):
-        # The review status of the message template. Valid values:
+        # The review state of the template. Valid values:
         # 
-        # *   **pass**: The message template is approved.
-        # *   **fail**: The message template is rejected.
-        # *   **auditing**: The message template is being reviewed.
+        # *   **pass**: The template is approved.
+        # *   **fail**: The template is rejected.
+        # *   **auditing**: The template is being reviewed.
         # *   **unaudit**: The review is suspended.
         self.audit_status = audit_status
+        # The category of the message template.
         self.category = category
-        # Template encoding.
+        # The code of the message template.
         self.code = code
-        # The space ID of the user under the ISV account.
+        # The space ID of the RAM user within the ISV account.
         self.cust_space_id = cust_space_id
-        # The WhatsApp Business account (WABA) ID of the user within the independent software vendor (ISV) account.
+        # The WhatsApp Business Account (WABA) ID of the RAM user within the independent software vendor (ISV) account.
         # 
         # >  CustWabaId is an obsolete parameter. Use CustSpaceId instead.
         self.cust_waba_id = cust_waba_id
-        # The independent software vendor (ISV) verification code, which is used to verify whether the user is authorized by the ISV account.
+        # The ISV verification code. This parameter is used to verify whether the RAM user is authorized by the ISV account.
         self.isv_code = isv_code
         # The language that is used in the message template. For more information, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
         self.language = language
-        # The name of the message template.
+        # The name of the template.
         self.name = name
         self.owner_id = owner_id
         # The pagination settings.
@@ -11218,7 +13491,6 @@ class ListChatappTemplateRequest(TeaModel):
         # 
         # *   **WHATSAPP**\
         # *   **VIBER**\
-        # *   LINE: the Line message template. This type of message template will be released later.
         self.template_type = template_type
 
     def validate(self):
@@ -11308,27 +13580,28 @@ class ListChatappTemplateShrinkRequest(TeaModel):
         resource_owner_id: int = None,
         template_type: str = None,
     ):
-        # The review status of the message template. Valid values:
+        # The review state of the template. Valid values:
         # 
-        # *   **pass**: The message template is approved.
-        # *   **fail**: The message template is rejected.
-        # *   **auditing**: The message template is being reviewed.
+        # *   **pass**: The template is approved.
+        # *   **fail**: The template is rejected.
+        # *   **auditing**: The template is being reviewed.
         # *   **unaudit**: The review is suspended.
         self.audit_status = audit_status
+        # The category of the message template.
         self.category = category
-        # Template encoding.
+        # The code of the message template.
         self.code = code
-        # The space ID of the user under the ISV account.
+        # The space ID of the RAM user within the ISV account.
         self.cust_space_id = cust_space_id
-        # The WhatsApp Business account (WABA) ID of the user within the independent software vendor (ISV) account.
+        # The WhatsApp Business Account (WABA) ID of the RAM user within the independent software vendor (ISV) account.
         # 
         # >  CustWabaId is an obsolete parameter. Use CustSpaceId instead.
         self.cust_waba_id = cust_waba_id
-        # The independent software vendor (ISV) verification code, which is used to verify whether the user is authorized by the ISV account.
+        # The ISV verification code. This parameter is used to verify whether the RAM user is authorized by the ISV account.
         self.isv_code = isv_code
         # The language that is used in the message template. For more information, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
         self.language = language
-        # The name of the message template.
+        # The name of the template.
         self.name = name
         self.owner_id = owner_id
         # The pagination settings.
@@ -11339,7 +13612,6 @@ class ListChatappTemplateShrinkRequest(TeaModel):
         # 
         # *   **WHATSAPP**\
         # *   **VIBER**\
-        # *   LINE: the Line message template. This type of message template will be released later.
         self.template_type = template_type
 
     def validate(self):
@@ -11422,36 +13694,36 @@ class ListChatappTemplateResponseBodyListTemplate(TeaModel):
         template_name: str = None,
         template_type: str = None,
     ):
-        # The review state of the message template. Valid values:
+        # The review state of the template. Valid values:
         # 
-        # *   **pass**: The message template is approved.
-        # *   **fail**: The message template is rejected.
-        # *   **auditing**: The message template is being reviewed.
+        # *   **pass**: The template is approved.
+        # *   **fail**: The template is rejected.
+        # *   **auditing**: The template is being reviewed.
         # *   **unaudit**: The review is suspended.
         self.audit_status = audit_status
-        # The category of the WhatsApp template. Valid values:
+        # The category of the WhatsApp message template. Valid values:
         # 
-        # *   **UTILITY**: utility template
-        # *   **MARKETING**: marketing template
-        # *   **AUTHENTICATION**: authentication template
+        # *   **UTILITY**\
+        # *   **MARKETING**\
+        # *   **AUTHENTICATION**\
         # 
         # The category of the Viber template. Valid values:
         # 
         # *   **text**: template that contains only text
-        # *   **image**: template that contains only an image
-        # *   **text_image_button**: template that contains text, an image, and a button
-        # *   **text_button**: template that contains text and a button
-        # *   **document**: template that contains only a document
-        # *   **video**: template that contains only a video
-        # *   **text_video**: template that contains text and a video
-        # *   **text_video_button**: template that contains text, a video, and a button
-        # *   **text_image**: template that contains text and an image
+        # *   **image**: template that contains only images
+        # *   **text_image_button**: template that contains text, images, and buttons
+        # *   **text_button**: template that contains text and buttons
+        # *   **document**: template that contains only documents
+        # *   **video**: template that contains only videos
+        # *   **text_video**: template that contains text and videos
+        # *   **text_video_button**: template that contains text, videos, and buttons
+        # *   **text_image**: template that contains text and images
         self.category = category
         # The language that is used in the message template. For more information, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
         self.language = language
         # The time when the template was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.last_update_time = last_update_time
-        # The reason for the review failure.
+        # The reason why the template was rejected.
         self.reason = reason
         # The code of the message template.
         self.template_code = template_code
@@ -11526,14 +13798,18 @@ class ListChatappTemplateResponseBody(TeaModel):
         # *   A value of OK indicates that the call is successful.
         # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
-        # The list of the templates.
+        # The message templates.
         self.list_template = list_template
         # The error message returned.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
-        # The total number of entries returned.
+        # The total number of returned entries.
         self.total = total
 
     def validate(self):
@@ -11890,18 +14166,287 @@ class ListFlowResponse(TeaModel):
         return self
 
 
+class ListFlowVersionRequest(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        biz_extend: Dict[str, Any] = None,
+        flow_code: str = None,
+        owner_id: int = None,
+        page_no: int = None,
+        page_size: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        status: str = None,
+    ):
+        # Business tenant code, default is “ALICOM_OPAAS”.
+        self.biz_code = biz_code
+        # Business extension information, default is “{}”.
+        self.biz_extend = biz_extend
+        # Flow code.
+        self.flow_code = flow_code
+        self.owner_id = owner_id
+        # Current page number.
+        self.page_no = page_no
+        # Page size.
+        self.page_size = page_size
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # Flow version status.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.biz_extend is not None:
+            result['BizExtend'] = self.biz_extend
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('BizExtend') is not None:
+            self.biz_extend = m.get('BizExtend')
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListFlowVersionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        biz_extend_shrink: str = None,
+        flow_code: str = None,
+        owner_id: int = None,
+        page_no: int = None,
+        page_size: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        status: str = None,
+    ):
+        # Business tenant code, default is “ALICOM_OPAAS”.
+        self.biz_code = biz_code
+        # Business extension information, default is “{}”.
+        self.biz_extend_shrink = biz_extend_shrink
+        # Flow code.
+        self.flow_code = flow_code
+        self.owner_id = owner_id
+        # Current page number.
+        self.page_no = page_no
+        # Page size.
+        self.page_size = page_size
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # Flow version status.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.biz_extend_shrink is not None:
+            result['BizExtend'] = self.biz_extend_shrink
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('BizExtend') is not None:
+            self.biz_extend_shrink = m.get('BizExtend')
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListFlowVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        response: Dict[str, Any] = None,
+        success: bool = None,
+    ):
+        # Details of access denied.
+        self.access_denied_detail = access_denied_detail
+        # Status code.
+        self.code = code
+        # Error message.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+        # Content of the returned data.
+        self.response = response
+        # Whether the operation was successful. Values: true: success; false: failure.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.response is not None:
+            result['Response'] = self.response
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Response') is not None:
+            self.response = m.get('Response')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListFlowVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListFlowVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListFlowVersionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListPhoneMessageQrdlRequest(TeaModel):
     def __init__(
         self,
         cust_space_id: str = None,
+        owner_id: int = None,
         phone_number: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
-        # The space ID of the user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
-        # The phone number. Add the country code before the phone number.
-        # 
+        self.owner_id = owner_id
         # This parameter is required.
         self.phone_number = phone_number
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -11914,16 +14459,28 @@ class ListPhoneMessageQrdlRequest(TeaModel):
         result = dict()
         if self.cust_space_id is not None:
             result['CustSpaceId'] = self.cust_space_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.phone_number is not None:
             result['PhoneNumber'] = self.phone_number
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CustSpaceId') is not None:
             self.cust_space_id = m.get('CustSpaceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('PhoneNumber') is not None:
             self.phone_number = m.get('PhoneNumber')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -11993,11 +14550,13 @@ class ListPhoneMessageQrdlResponseBodyData(TeaModel):
 class ListPhoneMessageQrdlResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: str = None,
         data: List[ListPhoneMessageQrdlResponseBodyData] = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # If OK is returned, the request was successful.
         self.code = code
         # The returned data.
@@ -12019,6 +14578,8 @@ class ListPhoneMessageQrdlResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         result['Data'] = []
@@ -12033,6 +14594,8 @@ class ListPhoneMessageQrdlResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         self.data = []
@@ -14366,6 +16929,510 @@ class ModifyPhoneBusinessProfileResponse(TeaModel):
         return self
 
 
+class OfflineFlowVersionRequest(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        biz_extend: Dict[str, Any] = None,
+        flow_code: str = None,
+        flow_version: str = None,
+        owner_id: int = None,
+        remark: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # Business tenant code, default is “ALICOM_OPAAS”.
+        self.biz_code = biz_code
+        # Business extension information, default is “{}”.
+        self.biz_extend = biz_extend
+        # Flow code.
+        self.flow_code = flow_code
+        # Flow version
+        self.flow_version = flow_version
+        self.owner_id = owner_id
+        # Flow remarks
+        self.remark = remark
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.biz_extend is not None:
+            result['BizExtend'] = self.biz_extend
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.flow_version is not None:
+            result['FlowVersion'] = self.flow_version
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('BizExtend') is not None:
+            self.biz_extend = m.get('BizExtend')
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('FlowVersion') is not None:
+            self.flow_version = m.get('FlowVersion')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class OfflineFlowVersionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        biz_extend_shrink: str = None,
+        flow_code: str = None,
+        flow_version: str = None,
+        owner_id: int = None,
+        remark: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # Business tenant code, default is “ALICOM_OPAAS”.
+        self.biz_code = biz_code
+        # Business extension information, default is “{}”.
+        self.biz_extend_shrink = biz_extend_shrink
+        # Flow code.
+        self.flow_code = flow_code
+        # Flow version
+        self.flow_version = flow_version
+        self.owner_id = owner_id
+        # Flow remarks
+        self.remark = remark
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.biz_extend_shrink is not None:
+            result['BizExtend'] = self.biz_extend_shrink
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.flow_version is not None:
+            result['FlowVersion'] = self.flow_version
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('BizExtend') is not None:
+            self.biz_extend_shrink = m.get('BizExtend')
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('FlowVersion') is not None:
+            self.flow_version = m.get('FlowVersion')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class OfflineFlowVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        response: Dict[str, Any] = None,
+        success: bool = None,
+    ):
+        # Access denied details; this field is only returned when RAM verification fails.
+        self.access_denied_detail = access_denied_detail
+        # Status code.
+        self.code = code
+        # Error message.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+        # Content of the returned data.
+        self.response = response
+        # Indicates whether the operation was successful. true means success, false means failure.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.response is not None:
+            result['Response'] = self.response
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Response') is not None:
+            self.response = m.get('Response')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class OfflineFlowVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: OfflineFlowVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = OfflineFlowVersionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class OnlineFlowVersionRequest(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        biz_extend: Dict[str, Any] = None,
+        flow_code: str = None,
+        flow_version: str = None,
+        owner_id: int = None,
+        remark: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # Business tenant code, default is “ALICOM_OPAAS”.
+        self.biz_code = biz_code
+        # Business extension information, default is “{}”.
+        self.biz_extend = biz_extend
+        # Flow code.
+        self.flow_code = flow_code
+        # Flow version
+        self.flow_version = flow_version
+        self.owner_id = owner_id
+        # Remark
+        self.remark = remark
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.biz_extend is not None:
+            result['BizExtend'] = self.biz_extend
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.flow_version is not None:
+            result['FlowVersion'] = self.flow_version
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('BizExtend') is not None:
+            self.biz_extend = m.get('BizExtend')
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('FlowVersion') is not None:
+            self.flow_version = m.get('FlowVersion')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class OnlineFlowVersionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        biz_extend_shrink: str = None,
+        flow_code: str = None,
+        flow_version: str = None,
+        owner_id: int = None,
+        remark: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # Business tenant code, default is “ALICOM_OPAAS”.
+        self.biz_code = biz_code
+        # Business extension information, default is “{}”.
+        self.biz_extend_shrink = biz_extend_shrink
+        # Flow code.
+        self.flow_code = flow_code
+        # Flow version
+        self.flow_version = flow_version
+        self.owner_id = owner_id
+        # Remark
+        self.remark = remark
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.biz_extend_shrink is not None:
+            result['BizExtend'] = self.biz_extend_shrink
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.flow_version is not None:
+            result['FlowVersion'] = self.flow_version
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('BizExtend') is not None:
+            self.biz_extend_shrink = m.get('BizExtend')
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('FlowVersion') is not None:
+            self.flow_version = m.get('FlowVersion')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class OnlineFlowVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        response: Dict[str, Any] = None,
+        success: bool = None,
+    ):
+        # Details of access denial.
+        self.access_denied_detail = access_denied_detail
+        # Status code.
+        self.code = code
+        # Error message.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+        # Content of the returned data.
+        self.response = response
+        # Indicates whether the operation was successful. true means success, false means failure.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.response is not None:
+            result['Response'] = self.response
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Response') is not None:
+            self.response = m.get('Response')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class OnlineFlowVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: OnlineFlowVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = OnlineFlowVersionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class PublishFlowRequest(TeaModel):
     def __init__(
         self,
@@ -14567,14 +17634,15 @@ class QueryChatappBindWabaResponseBodyData(TeaModel):
         self.account_review_status = account_review_status
         # WABA related information.
         self.auth_international_rate_eligibility = auth_international_rate_eligibility
-        # The ID of the business platform.
+        # The business ID.
         self.business_id = business_id
-        # The name of the business platform.
+        # The business name.
         self.business_name = business_name
         # The currency.
         self.currency = currency
         # The ID of the WhatsApp Business account.
         self.id = id
+        # The Marketing Messaging Lite status.
         self.marketing_message_lite_status = marketing_message_lite_status
         # The namespace of the message template.
         self.message_template_namespace = message_template_namespace
@@ -14829,7 +17897,15 @@ class QueryChatappPhoneNumbersResponseBodyPhoneNumbers(TeaModel):
         verified_name: str = None,
     ):
         # The verification status of the phone number.
+        # 
+        # Valid values:
+        # 
+        # *   REVOKED: The review application is revoked.
+        # *   MORE_INFORMATION_REQUESTED: More information needs to be provided.
+        # *   VERIFIED: The phone number passes the verification.
+        # *   REJECTED: The phone number fails to pass the verification.
         self.code_verification_status = code_verification_status
+        # Indicates whether it is a WhatsApp Official Business Account (OBA).
         self.is_official = is_official
         # The number of phone numbers to which messages can be sent in a day.
         # 
@@ -14842,9 +17918,9 @@ class QueryChatappPhoneNumbersResponseBodyPhoneNumbers(TeaModel):
         # *   TIER_50: 50
         # *   TIER_10K: 10,000
         self.messaging_limit_tier = messaging_limit_tier
-        # The status of the business name.
+        # The review status of the name.
         self.name_status = name_status
-        # The review status of the new business name.
+        # The review status of the new display name of the enterprise.
         self.new_name_status = new_name_status
         # The phone number.
         self.phone_number = phone_number
@@ -14852,10 +17928,10 @@ class QueryChatappPhoneNumbersResponseBodyPhoneNumbers(TeaModel):
         # 
         # Valid values:
         # 
-        # *   RED
-        # *   YELLOW
-        # *   UNKNOWN
-        # *   GREEN
+        # *   RED: low
+        # *   YELLOW: medium
+        # *   UNKNOWN: unknown
+        # *   GREEN: high
         self.quality_rating = quality_rating
         # The state of the phone number.
         # 
@@ -14873,15 +17949,15 @@ class QueryChatappPhoneNumbersResponseBodyPhoneNumbers(TeaModel):
         # *   DELETED
         # *   RESTRICTED
         self.status = status
-        # The callback URL to which status reports are sent by using HTTP callbacks.
+        # The URL that receives the status reports.
         self.status_callback_url = status_callback_url
         # The status report queue.
         self.status_queue = status_queue
-        # The callback URL to which MO messages are sent by using HTTP callbacks.
+        # The URL that receives the MO messages.
         self.up_callback_url = up_callback_url
-        # The mobile originated (MO) message notification queue.
+        # The mobile originated (MO) message queue.
         self.up_queue = up_queue
-        # The name of the company with which the phone number is associated.
+        # The display name of the enterprise to which the phone number belongs.
         self.verified_name = verified_name
 
     def validate(self):
@@ -14975,6 +18051,10 @@ class QueryChatappPhoneNumbersResponseBody(TeaModel):
         self.phone_numbers = phone_numbers
         # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -15519,6 +18599,632 @@ class QueryWabaBusinessInfoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryWabaBusinessInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ReadChatFlowRequest(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        biz_extend: Dict[str, Any] = None,
+        flow_code: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # Business tenant code, default is “ALICOM_OPAAS”.
+        self.biz_code = biz_code
+        # Business extension information, default is “{}”.
+        self.biz_extend = biz_extend
+        # Flow code.
+        self.flow_code = flow_code
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.biz_extend is not None:
+            result['BizExtend'] = self.biz_extend
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('BizExtend') is not None:
+            self.biz_extend = m.get('BizExtend')
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ReadChatFlowShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        biz_extend_shrink: str = None,
+        flow_code: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # Business tenant code, default is “ALICOM_OPAAS”.
+        self.biz_code = biz_code
+        # Business extension information, default is “{}”.
+        self.biz_extend_shrink = biz_extend_shrink
+        # Flow code.
+        self.flow_code = flow_code
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.biz_extend_shrink is not None:
+            result['BizExtend'] = self.biz_extend_shrink
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('BizExtend') is not None:
+            self.biz_extend_shrink = m.get('BizExtend')
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ReadChatFlowResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        response: Dict[str, Any] = None,
+        success: bool = None,
+    ):
+        # Detailed reason for access denial.
+        self.access_denied_detail = access_denied_detail
+        # Status code.
+        self.code = code
+        # Error message.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+        # Content of the returned data.
+        self.response = response
+        # Indicates whether the operation was successful. Values: true for success, false for failure.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.response is not None:
+            result['Response'] = self.response
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Response') is not None:
+            self.response = m.get('Response')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ReadChatFlowResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ReadChatFlowResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ReadChatFlowResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ReadChatFlowLogSettingRequest(TeaModel):
+    def __init__(
+        self,
+        flow_code: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # Process code.
+        self.flow_code = flow_code
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ReadChatFlowLogSettingResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: Dict[str, Any] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Access denied details.
+        self.access_denied_detail = access_denied_detail
+        # Status code.
+        self.code = code
+        # Returned data.
+        self.data = data
+        # Error message.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+        # Whether the operation was successful. Values: true: success; false: failure.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ReadChatFlowLogSettingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ReadChatFlowLogSettingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ReadChatFlowLogSettingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ReadFlowVersionRequest(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        biz_extend: Dict[str, Any] = None,
+        flow_code: str = None,
+        flow_version: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        status: str = None,
+    ):
+        # Business tenant code, default is “ALICOM_OPAAS”.
+        self.biz_code = biz_code
+        # Business extension information, default is “{}”.
+        self.biz_extend = biz_extend
+        # Flow code.
+        self.flow_code = flow_code
+        # Flow version
+        self.flow_version = flow_version
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # Flow version status.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.biz_extend is not None:
+            result['BizExtend'] = self.biz_extend
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.flow_version is not None:
+            result['FlowVersion'] = self.flow_version
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('BizExtend') is not None:
+            self.biz_extend = m.get('BizExtend')
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('FlowVersion') is not None:
+            self.flow_version = m.get('FlowVersion')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ReadFlowVersionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        biz_extend_shrink: str = None,
+        flow_code: str = None,
+        flow_version: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        status: str = None,
+    ):
+        # Business tenant code, default is “ALICOM_OPAAS”.
+        self.biz_code = biz_code
+        # Business extension information, default is “{}”.
+        self.biz_extend_shrink = biz_extend_shrink
+        # Flow code.
+        self.flow_code = flow_code
+        # Flow version
+        self.flow_version = flow_version
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # Flow version status.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.biz_extend_shrink is not None:
+            result['BizExtend'] = self.biz_extend_shrink
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.flow_version is not None:
+            result['FlowVersion'] = self.flow_version
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('BizExtend') is not None:
+            self.biz_extend_shrink = m.get('BizExtend')
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('FlowVersion') is not None:
+            self.flow_version = m.get('FlowVersion')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ReadFlowVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        response: Dict[str, Any] = None,
+        success: bool = None,
+    ):
+        # Access denied details; this field is only returned when RAM verification fails.
+        self.access_denied_detail = access_denied_detail
+        # Status code.
+        self.code = code
+        # Error message.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+        # Content of the returned data.
+        self.response = response
+        # Indicates whether the operation was successful. Values: true: success; false: failure.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.response is not None:
+            result['Response'] = self.response
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Response') is not None:
+            self.response = m.get('Response')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ReadFlowVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ReadFlowVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ReadFlowVersionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -17581,6 +21287,425 @@ class UpdateAccountWebhookResponse(TeaModel):
         return self
 
 
+class UpdateChatFlowRequest(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        biz_extend: Dict[str, Any] = None,
+        flow_code: str = None,
+        owner_id: int = None,
+        remark: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        title: str = None,
+    ):
+        # Business tenant code, default is “ALICOM_OPAAS”.
+        self.biz_code = biz_code
+        # Business extension information, default is “{}”.
+        self.biz_extend = biz_extend
+        # Process code.
+        self.flow_code = flow_code
+        self.owner_id = owner_id
+        # Process remarks
+        self.remark = remark
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # Process title
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.biz_extend is not None:
+            result['BizExtend'] = self.biz_extend
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('BizExtend') is not None:
+            self.biz_extend = m.get('BizExtend')
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class UpdateChatFlowShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        biz_extend_shrink: str = None,
+        flow_code: str = None,
+        owner_id: int = None,
+        remark: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        title: str = None,
+    ):
+        # Business tenant code, default is “ALICOM_OPAAS”.
+        self.biz_code = biz_code
+        # Business extension information, default is “{}”.
+        self.biz_extend_shrink = biz_extend_shrink
+        # Process code.
+        self.flow_code = flow_code
+        self.owner_id = owner_id
+        # Process remarks
+        self.remark = remark
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # Process title
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.biz_extend_shrink is not None:
+            result['BizExtend'] = self.biz_extend_shrink
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('BizExtend') is not None:
+            self.biz_extend_shrink = m.get('BizExtend')
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class UpdateChatFlowResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        response: Dict[str, Any] = None,
+        success: bool = None,
+    ):
+        # Details of access denial; this field is only returned when RAM verification fails.
+        self.access_denied_detail = access_denied_detail
+        # Status code.
+        self.code = code
+        # Error message.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+        # Content of the returned data.
+        self.response = response
+        # Indicates whether the operation was successful. Values: true: success; false: failure.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.response is not None:
+            result['Response'] = self.response
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Response') is not None:
+            self.response = m.get('Response')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateChatFlowResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateChatFlowResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateChatFlowResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateChatFlowLogSettingRequest(TeaModel):
+    def __init__(
+        self,
+        flow_code: str = None,
+        id: int = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        status: str = None,
+    ):
+        # Flow code.
+        self.flow_code = flow_code
+        # Setting ID.
+        self.id = id
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # Log enable status, enum values:
+        # - ENABLED: Enabled, enables log writing
+        # - DISABLED: Create or retain related resources, but do not enable log writing
+        # - DELETED: Delete, and decide whether to delete related resources based on options
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class UpdateChatFlowLogSettingResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: Dict[str, Any] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Access denied details, this field is returned only when RAM verification fails.
+        self.access_denied_detail = access_denied_detail
+        # Status code.
+        self.code = code
+        # Returned data object.
+        self.data = data
+        # Error message.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+        # Whether the operation was successful. Values: true: success; false: failure.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateChatFlowLogSettingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateChatFlowLogSettingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateChatFlowLogSettingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateChatGroupRequest(TeaModel):
     def __init__(
         self,
@@ -18411,6 +22536,272 @@ class UpdateFlowJSONAssetResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateFlowJSONAssetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateFlowVersionRequest(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        biz_extend: Dict[str, Any] = None,
+        flow_code: str = None,
+        flow_version: str = None,
+        flow_view_model: str = None,
+        owner_id: int = None,
+        remark: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # Business tenant code, default is “ALICOM_OPAAS”.
+        self.biz_code = biz_code
+        # Business extension information, default is “{}”.
+        self.biz_extend = biz_extend
+        # Flow code.
+        self.flow_code = flow_code
+        # Flow version
+        self.flow_version = flow_version
+        # DSL data of the flow version
+        self.flow_view_model = flow_view_model
+        self.owner_id = owner_id
+        # Version remarks
+        self.remark = remark
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.biz_extend is not None:
+            result['BizExtend'] = self.biz_extend
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.flow_version is not None:
+            result['FlowVersion'] = self.flow_version
+        if self.flow_view_model is not None:
+            result['FlowViewModel'] = self.flow_view_model
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('BizExtend') is not None:
+            self.biz_extend = m.get('BizExtend')
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('FlowVersion') is not None:
+            self.flow_version = m.get('FlowVersion')
+        if m.get('FlowViewModel') is not None:
+            self.flow_view_model = m.get('FlowViewModel')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class UpdateFlowVersionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        biz_extend_shrink: str = None,
+        flow_code: str = None,
+        flow_version: str = None,
+        flow_view_model: str = None,
+        owner_id: int = None,
+        remark: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # Business tenant code, default is “ALICOM_OPAAS”.
+        self.biz_code = biz_code
+        # Business extension information, default is “{}”.
+        self.biz_extend_shrink = biz_extend_shrink
+        # Flow code.
+        self.flow_code = flow_code
+        # Flow version
+        self.flow_version = flow_version
+        # DSL data of the flow version
+        self.flow_view_model = flow_view_model
+        self.owner_id = owner_id
+        # Version remarks
+        self.remark = remark
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.biz_extend_shrink is not None:
+            result['BizExtend'] = self.biz_extend_shrink
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+        if self.flow_version is not None:
+            result['FlowVersion'] = self.flow_version
+        if self.flow_view_model is not None:
+            result['FlowViewModel'] = self.flow_view_model
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('BizExtend') is not None:
+            self.biz_extend_shrink = m.get('BizExtend')
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+        if m.get('FlowVersion') is not None:
+            self.flow_version = m.get('FlowVersion')
+        if m.get('FlowViewModel') is not None:
+            self.flow_view_model = m.get('FlowViewModel')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class UpdateFlowVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        response: Dict[str, Any] = None,
+        success: bool = None,
+    ):
+        # Details of access denial.
+        self.access_denied_detail = access_denied_detail
+        # Status code.
+        self.code = code
+        # Error message.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+        # Content of the returned data.
+        self.response = response
+        # Indicates whether the operation was successful. Values: true for success, false for failure.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.response is not None:
+            result['Response'] = self.response
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Response') is not None:
+            self.response = m.get('Response')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateFlowVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateFlowVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateFlowVersionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
