@@ -4979,6 +4979,8 @@ class Client(OpenApiClient):
             query['DefaultInitDesktopCount'] = request.default_init_desktop_count
         if not UtilClient.is_unset(request.default_language):
             query['DefaultLanguage'] = request.default_language
+        if not UtilClient.is_unset(request.delete_duration):
+            query['DeleteDuration'] = request.delete_duration
         if not UtilClient.is_unset(request.desktop_group_name):
             query['DesktopGroupName'] = request.desktop_group_name
         if not UtilClient.is_unset(request.desktop_type):
@@ -5135,6 +5137,8 @@ class Client(OpenApiClient):
             query['DefaultInitDesktopCount'] = request.default_init_desktop_count
         if not UtilClient.is_unset(request.default_language):
             query['DefaultLanguage'] = request.default_language
+        if not UtilClient.is_unset(request.delete_duration):
+            query['DeleteDuration'] = request.delete_duration
         if not UtilClient.is_unset(request.desktop_group_name):
             query['DesktopGroupName'] = request.desktop_group_name
         if not UtilClient.is_unset(request.desktop_type):
@@ -22302,6 +22306,8 @@ class Client(OpenApiClient):
             query['Comments'] = request.comments
         if not UtilClient.is_unset(request.connect_duration):
             query['ConnectDuration'] = request.connect_duration
+        if not UtilClient.is_unset(request.delete_duration):
+            query['DeleteDuration'] = request.delete_duration
         if not UtilClient.is_unset(request.desktop_group_id):
             query['DesktopGroupId'] = request.desktop_group_id
         if not UtilClient.is_unset(request.desktop_group_name):
@@ -22389,6 +22395,8 @@ class Client(OpenApiClient):
             query['Comments'] = request.comments
         if not UtilClient.is_unset(request.connect_duration):
             query['ConnectDuration'] = request.connect_duration
+        if not UtilClient.is_unset(request.delete_duration):
+            query['DeleteDuration'] = request.delete_duration
         if not UtilClient.is_unset(request.desktop_group_id):
             query['DesktopGroupId'] = request.desktop_group_id
         if not UtilClient.is_unset(request.desktop_group_name):

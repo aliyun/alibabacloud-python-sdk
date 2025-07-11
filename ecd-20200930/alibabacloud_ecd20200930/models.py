@@ -8989,6 +8989,7 @@ class CreateDesktopGroupRequest(TeaModel):
         data_disk_size: int = None,
         default_init_desktop_count: int = None,
         default_language: str = None,
+        delete_duration: int = None,
         desktop_group_name: str = None,
         desktop_type: str = None,
         directory_id: str = None,
@@ -9124,6 +9125,7 @@ class CreateDesktopGroupRequest(TeaModel):
         # *   zh-CN: Simplified Chinese
         # *   ja-JP: Japanese.
         self.default_language = default_language
+        self.delete_duration = delete_duration
         # The name of the shared group. The name can be up to 30 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). It must start with a letter but cannot start with `http://` or `https://`.
         self.desktop_group_name = desktop_group_name
         # The specifications of the cloud computer. You can call the [DescribeDesktopTypes](~~DescribeDesktopTypes~~) operation to query all the supported specifications.
@@ -9350,6 +9352,8 @@ class CreateDesktopGroupRequest(TeaModel):
             result['DefaultInitDesktopCount'] = self.default_init_desktop_count
         if self.default_language is not None:
             result['DefaultLanguage'] = self.default_language
+        if self.delete_duration is not None:
+            result['DeleteDuration'] = self.delete_duration
         if self.desktop_group_name is not None:
             result['DesktopGroupName'] = self.desktop_group_name
         if self.desktop_type is not None:
@@ -9476,6 +9480,8 @@ class CreateDesktopGroupRequest(TeaModel):
             self.default_init_desktop_count = m.get('DefaultInitDesktopCount')
         if m.get('DefaultLanguage') is not None:
             self.default_language = m.get('DefaultLanguage')
+        if m.get('DeleteDuration') is not None:
+            self.delete_duration = m.get('DeleteDuration')
         if m.get('DesktopGroupName') is not None:
             self.desktop_group_name = m.get('DesktopGroupName')
         if m.get('DesktopType') is not None:
@@ -23400,6 +23406,7 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         desktop_type: str = None,
         end_user_count: int = None,
         expired_time: str = None,
+        expired_times: List[str] = None,
         gpu_count: float = None,
         gpu_driver_version: str = None,
         gpu_spec: str = None,
@@ -23477,6 +23484,7 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         self.end_user_count = end_user_count
         # The expiration date of the subscription cloud computer share.
         self.expired_time = expired_time
+        self.expired_times = expired_times
         # The number of GPUs.
         self.gpu_count = gpu_count
         # The version of the GPU driver.
@@ -23684,6 +23692,8 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
             result['EndUserCount'] = self.end_user_count
         if self.expired_time is not None:
             result['ExpiredTime'] = self.expired_time
+        if self.expired_times is not None:
+            result['ExpiredTimes'] = self.expired_times
         if self.gpu_count is not None:
             result['GpuCount'] = self.gpu_count
         if self.gpu_driver_version is not None:
@@ -23801,6 +23811,8 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
             self.end_user_count = m.get('EndUserCount')
         if m.get('ExpiredTime') is not None:
             self.expired_time = m.get('ExpiredTime')
+        if m.get('ExpiredTimes') is not None:
+            self.expired_times = m.get('ExpiredTimes')
         if m.get('GpuCount') is not None:
             self.gpu_count = m.get('GpuCount')
         if m.get('GpuDriverVersion') is not None:
@@ -27341,6 +27353,7 @@ class DescribeDesktopsInGroupResponseBodyPaidDesktops(TeaModel):
         end_user_ids: List[str] = None,
         end_user_name: str = None,
         end_user_names: List[str] = None,
+        expired_time: str = None,
         fota_version: str = None,
         gpu_driver_version: str = None,
         image_id: str = None,
@@ -27482,6 +27495,7 @@ class DescribeDesktopsInGroupResponseBodyPaidDesktops(TeaModel):
         self.end_user_name = end_user_name
         # The usernames of the end users who are connected to the cloud computers in the cloud computer share. If no end users are connected, no values are returned for this parameter.
         self.end_user_names = end_user_names
+        self.expired_time = expired_time
         # The image version.
         self.fota_version = fota_version
         # The version of the GPU driver.
@@ -27588,6 +27602,8 @@ class DescribeDesktopsInGroupResponseBodyPaidDesktops(TeaModel):
             result['EndUserName'] = self.end_user_name
         if self.end_user_names is not None:
             result['EndUserNames'] = self.end_user_names
+        if self.expired_time is not None:
+            result['ExpiredTime'] = self.expired_time
         if self.fota_version is not None:
             result['FotaVersion'] = self.fota_version
         if self.gpu_driver_version is not None:
@@ -27634,6 +27650,8 @@ class DescribeDesktopsInGroupResponseBodyPaidDesktops(TeaModel):
             self.end_user_name = m.get('EndUserName')
         if m.get('EndUserNames') is not None:
             self.end_user_names = m.get('EndUserNames')
+        if m.get('ExpiredTime') is not None:
+            self.expired_time = m.get('ExpiredTime')
         if m.get('FotaVersion') is not None:
             self.fota_version = m.get('FotaVersion')
         if m.get('GpuDriverVersion') is not None:
@@ -45061,6 +45079,7 @@ class GetDesktopGroupDetailResponseBodyDesktops(TeaModel):
         directory_id: str = None,
         directory_type: str = None,
         expired_time: str = None,
+        expired_times: List[str] = None,
         gpu_count: float = None,
         gpu_spec: str = None,
         idle_disconnect_duration: int = None,
@@ -45075,6 +45094,7 @@ class GetDesktopGroupDetailResponseBodyDesktops(TeaModel):
         office_site_id: str = None,
         office_site_name: str = None,
         office_site_type: str = None,
+        os_type: str = None,
         own_bundle_id: str = None,
         own_bundle_name: str = None,
         own_type: int = None,
@@ -45084,6 +45104,7 @@ class GetDesktopGroupDetailResponseBodyDesktops(TeaModel):
         policy_group_name: str = None,
         policy_group_names: List[str] = None,
         profile_follow_switch: bool = None,
+        protocol_type: str = None,
         ratio_threshold: float = None,
         res_type: int = None,
         reset_type: int = None,
@@ -45137,6 +45158,7 @@ class GetDesktopGroupDetailResponseBodyDesktops(TeaModel):
         self.directory_type = directory_type
         # The expiration date of the subscription cloud computer share.
         self.expired_time = expired_time
+        self.expired_times = expired_times
         # The number of vGPUs.
         self.gpu_count = gpu_count
         # The GPU specifications.
@@ -45179,6 +45201,7 @@ class GetDesktopGroupDetailResponseBodyDesktops(TeaModel):
         # *   AD_CONNECTOR: enterprise Active Directory (AD) office network
         # *   RAM: Resource Access Management (RAM)-based office network
         self.office_site_type = office_site_type
+        self.os_type = os_type
         # The ID of the cloud computer template.
         self.own_bundle_id = own_bundle_id
         # The name of the cloud computer template.
@@ -45208,6 +45231,7 @@ class GetDesktopGroupDetailResponseBodyDesktops(TeaModel):
         self.policy_group_names = policy_group_names
         # Indicates whether user data roaming is enabled.
         self.profile_follow_switch = profile_follow_switch
+        self.protocol_type = protocol_type
         # The threshold for the ratio of connected sessions, which triggers automatic scaling of cloud computers within the multi-session many-to-many share. To calculate the ratio of connected sessions, use the following formula:
         # 
         # `Ratio of connected sessions = Number of connected sessions/(Total number of cloud computers × Maximum number of sessions allowed for each cloud computer) × 100%`.
@@ -45300,6 +45324,8 @@ class GetDesktopGroupDetailResponseBodyDesktops(TeaModel):
             result['DirectoryType'] = self.directory_type
         if self.expired_time is not None:
             result['ExpiredTime'] = self.expired_time
+        if self.expired_times is not None:
+            result['ExpiredTimes'] = self.expired_times
         if self.gpu_count is not None:
             result['GpuCount'] = self.gpu_count
         if self.gpu_spec is not None:
@@ -45328,6 +45354,8 @@ class GetDesktopGroupDetailResponseBodyDesktops(TeaModel):
             result['OfficeSiteName'] = self.office_site_name
         if self.office_site_type is not None:
             result['OfficeSiteType'] = self.office_site_type
+        if self.os_type is not None:
+            result['OsType'] = self.os_type
         if self.own_bundle_id is not None:
             result['OwnBundleId'] = self.own_bundle_id
         if self.own_bundle_name is not None:
@@ -45346,6 +45374,8 @@ class GetDesktopGroupDetailResponseBodyDesktops(TeaModel):
             result['PolicyGroupNames'] = self.policy_group_names
         if self.profile_follow_switch is not None:
             result['ProfileFollowSwitch'] = self.profile_follow_switch
+        if self.protocol_type is not None:
+            result['ProtocolType'] = self.protocol_type
         if self.ratio_threshold is not None:
             result['RatioThreshold'] = self.ratio_threshold
         if self.res_type is not None:
@@ -45408,6 +45438,8 @@ class GetDesktopGroupDetailResponseBodyDesktops(TeaModel):
             self.directory_type = m.get('DirectoryType')
         if m.get('ExpiredTime') is not None:
             self.expired_time = m.get('ExpiredTime')
+        if m.get('ExpiredTimes') is not None:
+            self.expired_times = m.get('ExpiredTimes')
         if m.get('GpuCount') is not None:
             self.gpu_count = m.get('GpuCount')
         if m.get('GpuSpec') is not None:
@@ -45436,6 +45468,8 @@ class GetDesktopGroupDetailResponseBodyDesktops(TeaModel):
             self.office_site_name = m.get('OfficeSiteName')
         if m.get('OfficeSiteType') is not None:
             self.office_site_type = m.get('OfficeSiteType')
+        if m.get('OsType') is not None:
+            self.os_type = m.get('OsType')
         if m.get('OwnBundleId') is not None:
             self.own_bundle_id = m.get('OwnBundleId')
         if m.get('OwnBundleName') is not None:
@@ -45454,6 +45488,8 @@ class GetDesktopGroupDetailResponseBodyDesktops(TeaModel):
             self.policy_group_names = m.get('PolicyGroupNames')
         if m.get('ProfileFollowSwitch') is not None:
             self.profile_follow_switch = m.get('ProfileFollowSwitch')
+        if m.get('ProtocolType') is not None:
+            self.protocol_type = m.get('ProtocolType')
         if m.get('RatioThreshold') is not None:
             self.ratio_threshold = m.get('RatioThreshold')
         if m.get('ResType') is not None:
@@ -52785,6 +52821,7 @@ class ModifyDesktopGroupRequest(TeaModel):
         classify: str = None,
         comments: str = None,
         connect_duration: int = None,
+        delete_duration: int = None,
         desktop_group_id: str = None,
         desktop_group_name: str = None,
         disable_session_config: bool = None,
@@ -52839,6 +52876,7 @@ class ModifyDesktopGroupRequest(TeaModel):
         self.comments = comments
         # The maximum period of time during which the session is connected. When the specified maximum period of time is reached, the session is automatically disconnected. Unit: milliseconds. Valid values: 900000 to 345600000. That is, the session can be connected for 15 to 5,760 minutes (4 days).
         self.connect_duration = connect_duration
+        self.delete_duration = delete_duration
         # The ID of the cloud computer share.
         # 
         # This parameter is required.
@@ -52940,6 +52978,8 @@ class ModifyDesktopGroupRequest(TeaModel):
             result['Comments'] = self.comments
         if self.connect_duration is not None:
             result['ConnectDuration'] = self.connect_duration
+        if self.delete_duration is not None:
+            result['DeleteDuration'] = self.delete_duration
         if self.desktop_group_id is not None:
             result['DesktopGroupId'] = self.desktop_group_id
         if self.desktop_group_name is not None:
@@ -52996,6 +53036,8 @@ class ModifyDesktopGroupRequest(TeaModel):
             self.comments = m.get('Comments')
         if m.get('ConnectDuration') is not None:
             self.connect_duration = m.get('ConnectDuration')
+        if m.get('DeleteDuration') is not None:
+            self.delete_duration = m.get('DeleteDuration')
         if m.get('DesktopGroupId') is not None:
             self.desktop_group_id = m.get('DesktopGroupId')
         if m.get('DesktopGroupName') is not None:

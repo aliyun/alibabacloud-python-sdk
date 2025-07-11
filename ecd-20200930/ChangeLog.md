@@ -1,3 +1,13 @@
+2025-07-11 Version: 4.9.1
+- Update API CreateDesktopGroup: add request parameters DeleteDuration.
+- Update API DescribeDesktopGroups: add response parameters Body.DesktopGroups.$.ExpiredTimes.
+- Update API DescribeDesktopsInGroup: add response parameters Body.PaidDesktops.$.ExpiredTime.
+- Update API GetDesktopGroupDetail: add response parameters Body.Desktops.ExpiredTimes.
+- Update API GetDesktopGroupDetail: add response parameters Body.Desktops.OsType.
+- Update API GetDesktopGroupDetail: add response parameters Body.Desktops.ProtocolType.
+- Update API ModifyDesktopGroup: add request parameters DeleteDuration.
+
+
 2025-07-11 Version: 4.9.0
 - Support API CreateDrive.
 - Support API DeleteDrive.
