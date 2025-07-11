@@ -1,3 +1,8 @@
+2025-07-11 Version: 2.0.6
+- Update API ListExecutors: add request parameters Filter.Image.
+- Update API ListExecutors: add request parameters Filter.VswitchId.
+
+
 2025-07-04 Version: 2.0.5
 - Update API DeleteJobs: add request parameters JobScheduler.
 

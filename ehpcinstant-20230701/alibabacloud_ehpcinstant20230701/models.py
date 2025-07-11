@@ -3771,18 +3771,22 @@ class ListExecutorsRequestFilter(TeaModel):
     def __init__(
         self,
         executor_ids: List[str] = None,
+        image: str = None,
         ip_addresses: List[str] = None,
         job_name: str = None,
         status: List[str] = None,
         time_created_after: int = None,
         time_created_before: int = None,
+        vswitch_id: str = None,
     ):
         self.executor_ids = executor_ids
+        self.image = image
         self.ip_addresses = ip_addresses
         self.job_name = job_name
         self.status = status
         self.time_created_after = time_created_after
         self.time_created_before = time_created_before
+        self.vswitch_id = vswitch_id
 
     def validate(self):
         pass
@@ -3795,6 +3799,8 @@ class ListExecutorsRequestFilter(TeaModel):
         result = dict()
         if self.executor_ids is not None:
             result['ExecutorIds'] = self.executor_ids
+        if self.image is not None:
+            result['Image'] = self.image
         if self.ip_addresses is not None:
             result['IpAddresses'] = self.ip_addresses
         if self.job_name is not None:
@@ -3805,12 +3811,16 @@ class ListExecutorsRequestFilter(TeaModel):
             result['TimeCreatedAfter'] = self.time_created_after
         if self.time_created_before is not None:
             result['TimeCreatedBefore'] = self.time_created_before
+        if self.vswitch_id is not None:
+            result['VswitchId'] = self.vswitch_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ExecutorIds') is not None:
             self.executor_ids = m.get('ExecutorIds')
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
         if m.get('IpAddresses') is not None:
             self.ip_addresses = m.get('IpAddresses')
         if m.get('JobName') is not None:
@@ -3821,6 +3831,8 @@ class ListExecutorsRequestFilter(TeaModel):
             self.time_created_after = m.get('TimeCreatedAfter')
         if m.get('TimeCreatedBefore') is not None:
             self.time_created_before = m.get('TimeCreatedBefore')
+        if m.get('VswitchId') is not None:
+            self.vswitch_id = m.get('VswitchId')
         return self
 
 
