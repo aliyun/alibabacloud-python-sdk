@@ -1,3 +1,9 @@
+2025-07-11 Version: 6.0.1
+- Update API DescribeHybridCloudClusterRule: add request parameters ClusterRuleResourceId.
+- Update API DescribeHybridCloudClusterRule: add response parameters Body.ClusterRule.ClusterRuleResourceId.
+- Update API ModifyHybridCloudClusterRule: add request parameters ClusterRuleResourceId.
+
+
 2025-07-11 Version: 6.0.0
 - Support API DeleteDefenseRuleBlockIp.
 - Update API DescribeDomainDetail: add request parameters DomainId.

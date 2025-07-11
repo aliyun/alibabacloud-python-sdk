@@ -18743,15 +18743,15 @@ class DescribeHybridCloudClusterRuleRequest(TeaModel):
     def __init__(
         self,
         cluster_id: int = None,
+        cluster_rule_resource_id: str = None,
         instance_id: str = None,
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
         rule_type: str = None,
     ):
         # The ID of the hybrid cloud cluster.
-        # 
-        # This parameter is required.
         self.cluster_id = cluster_id
+        self.cluster_rule_resource_id = cluster_rule_resource_id
         # The ID of the WAF instance.
         # 
         # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
@@ -18768,8 +18768,6 @@ class DescribeHybridCloudClusterRuleRequest(TeaModel):
         # The type of the rule. Valid values:
         # 
         # *   **pullin**: The traffic redirection rule of the hybrid cloud cluster.
-        # 
-        # This parameter is required.
         self.rule_type = rule_type
 
     def validate(self):
@@ -18783,6 +18781,8 @@ class DescribeHybridCloudClusterRuleRequest(TeaModel):
         result = dict()
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
+        if self.cluster_rule_resource_id is not None:
+            result['ClusterRuleResourceId'] = self.cluster_rule_resource_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -18797,6 +18797,8 @@ class DescribeHybridCloudClusterRuleRequest(TeaModel):
         m = m or dict()
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
+        if m.get('ClusterRuleResourceId') is not None:
+            self.cluster_rule_resource_id = m.get('ClusterRuleResourceId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -18811,10 +18813,12 @@ class DescribeHybridCloudClusterRuleRequest(TeaModel):
 class DescribeHybridCloudClusterRuleResponseBodyClusterRule(TeaModel):
     def __init__(
         self,
+        cluster_rule_resource_id: str = None,
         rule_config: str = None,
         rule_status: str = None,
         rule_type: str = None,
     ):
+        self.cluster_rule_resource_id = cluster_rule_resource_id
         # The configuration of the rule.
         self.rule_config = rule_config
         # The status of the rule. Valid values:
@@ -18836,6 +18840,8 @@ class DescribeHybridCloudClusterRuleResponseBodyClusterRule(TeaModel):
             return _map
 
         result = dict()
+        if self.cluster_rule_resource_id is not None:
+            result['ClusterRuleResourceId'] = self.cluster_rule_resource_id
         if self.rule_config is not None:
             result['RuleConfig'] = self.rule_config
         if self.rule_status is not None:
@@ -18846,6 +18852,8 @@ class DescribeHybridCloudClusterRuleResponseBodyClusterRule(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClusterRuleResourceId') is not None:
+            self.cluster_rule_resource_id = m.get('ClusterRuleResourceId')
         if m.get('RuleConfig') is not None:
             self.rule_config = m.get('RuleConfig')
         if m.get('RuleStatus') is not None:
@@ -37542,6 +37550,7 @@ class ModifyHybridCloudClusterRuleRequest(TeaModel):
     def __init__(
         self,
         cluster_id: int = None,
+        cluster_rule_resource_id: str = None,
         instance_id: str = None,
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
@@ -37550,9 +37559,8 @@ class ModifyHybridCloudClusterRuleRequest(TeaModel):
         rule_type: str = None,
     ):
         # The ID of the hybrid cloud cluster.
-        # 
-        # This parameter is required.
         self.cluster_id = cluster_id
+        self.cluster_rule_resource_id = cluster_rule_resource_id
         # The ID of the WAF instance.
         # 
         # >  You can call the DescribeInstanceInfo operation to query the ID of the WAF instance.[](~~140857~~)
@@ -37572,14 +37580,10 @@ class ModifyHybridCloudClusterRuleRequest(TeaModel):
         # 
         # *   **on**: enables the rule.
         # *   **off**: disables the rule.
-        # 
-        # This parameter is required.
         self.rule_status = rule_status
         # The type of the rule. Valid values:
         # 
         # *   **pullin**: The traffic redirection rule.
-        # 
-        # This parameter is required.
         self.rule_type = rule_type
 
     def validate(self):
@@ -37593,6 +37597,8 @@ class ModifyHybridCloudClusterRuleRequest(TeaModel):
         result = dict()
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
+        if self.cluster_rule_resource_id is not None:
+            result['ClusterRuleResourceId'] = self.cluster_rule_resource_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -37611,6 +37617,8 @@ class ModifyHybridCloudClusterRuleRequest(TeaModel):
         m = m or dict()
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
+        if m.get('ClusterRuleResourceId') is not None:
+            self.cluster_rule_resource_id = m.get('ClusterRuleResourceId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
