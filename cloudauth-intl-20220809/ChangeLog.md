@@ -1,3 +1,7 @@
+2025-07-11 Version: 3.9.0
+- Support API KeepaliveIntl.
+
+
 2025-07-10 Version: 3.8.2
 - Generated python 2022-08-09 for Cloudauth-intl.
 

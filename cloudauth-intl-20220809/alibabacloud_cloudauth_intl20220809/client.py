@@ -2636,6 +2636,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.initialize_with_options_async(request, runtime)
 
+    def keepalive_intl_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.KeepaliveIntlResponse:
+        """
+        @summary 客户端连接保持
+        
+        @param request: KeepaliveIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: KeepaliveIntlResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='KeepaliveIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.KeepaliveIntlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def keepalive_intl_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.KeepaliveIntlResponse:
+        """
+        @summary 客户端连接保持
+        
+        @param request: KeepaliveIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: KeepaliveIntlResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='KeepaliveIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.KeepaliveIntlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def keepalive_intl(self) -> cloudauth_intl_20220809_models.KeepaliveIntlResponse:
+        """
+        @summary 客户端连接保持
+        
+        @return: KeepaliveIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.keepalive_intl_with_options(runtime)
+
+    async def keepalive_intl_async(self) -> cloudauth_intl_20220809_models.KeepaliveIntlResponse:
+        """
+        @summary 客户端连接保持
+        
+        @return: KeepaliveIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.keepalive_intl_with_options_async(runtime)
+
     def mobile_3meta_verify_intl_with_options(
         self,
         request: cloudauth_intl_20220809_models.Mobile3MetaVerifyIntlRequest,
