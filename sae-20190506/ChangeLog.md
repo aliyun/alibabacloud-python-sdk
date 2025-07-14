@@ -1,3 +1,11 @@
+2025-07-14 Version: 2.5.6
+- Update API ListIngresses: add request parameters CurrentPage.
+- Update API ListIngresses: add request parameters PageSize.
+- Update API ListIngresses: add response parameters Body.Data.CurrentPage.
+- Update API ListIngresses: add response parameters Body.Data.PageSize.
+- Update API ListIngresses: add response parameters Body.Data.TotalSize.
+
+
 2025-07-10 Version: 2.5.5
 - Update API ListJobs: add response parameters Body.Data.Applications.$.ImageUrl.
 
