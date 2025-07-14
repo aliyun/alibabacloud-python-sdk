@@ -16133,6 +16133,292 @@ class QueryReadableResourcesListByUserIdResponse(TeaModel):
         return self
 
 
+class QueryReadableResourcesListByUserIdV2Request(TeaModel):
+    def __init__(
+        self,
+        user_id: str = None,
+        work_type: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.user_id = user_id
+        self.work_type = work_type
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.work_type is not None:
+            result['WorkType'] = self.work_type
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('WorkType') is not None:
+            self.work_type = m.get('WorkType')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class QueryReadableResourcesListByUserIdV2ResponseBodyResultDirectory(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        name: str = None,
+        path_id: str = None,
+        path_name: str = None,
+    ):
+        self.id = id
+        self.name = name
+        self.path_id = path_id
+        self.path_name = path_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.path_id is not None:
+            result['PathId'] = self.path_id
+        if self.path_name is not None:
+            result['PathName'] = self.path_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PathId') is not None:
+            self.path_id = m.get('PathId')
+        if m.get('PathName') is not None:
+            self.path_name = m.get('PathName')
+        return self
+
+
+class QueryReadableResourcesListByUserIdV2ResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        description: str = None,
+        directory: QueryReadableResourcesListByUserIdV2ResponseBodyResultDirectory = None,
+        modify_name: str = None,
+        modify_time: str = None,
+        owner_id: str = None,
+        owner_name: str = None,
+        security_level: str = None,
+        status: int = None,
+        third_part_auth_flag: int = None,
+        work_name: str = None,
+        work_type: str = None,
+        works_id: str = None,
+        workspace_id: str = None,
+        workspace_name: str = None,
+    ):
+        self.create_time = create_time
+        self.description = description
+        self.directory = directory
+        self.modify_name = modify_name
+        self.modify_time = modify_time
+        self.owner_id = owner_id
+        self.owner_name = owner_name
+        self.security_level = security_level
+        self.status = status
+        self.third_part_auth_flag = third_part_auth_flag
+        self.work_name = work_name
+        self.work_type = work_type
+        self.works_id = works_id
+        self.workspace_id = workspace_id
+        self.workspace_name = workspace_name
+
+    def validate(self):
+        if self.directory:
+            self.directory.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.directory is not None:
+            result['Directory'] = self.directory.to_map()
+        if self.modify_name is not None:
+            result['ModifyName'] = self.modify_name
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.owner_name is not None:
+            result['OwnerName'] = self.owner_name
+        if self.security_level is not None:
+            result['SecurityLevel'] = self.security_level
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.third_part_auth_flag is not None:
+            result['ThirdPartAuthFlag'] = self.third_part_auth_flag
+        if self.work_name is not None:
+            result['WorkName'] = self.work_name
+        if self.work_type is not None:
+            result['WorkType'] = self.work_type
+        if self.works_id is not None:
+            result['WorksId'] = self.works_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        if self.workspace_name is not None:
+            result['WorkspaceName'] = self.workspace_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Directory') is not None:
+            temp_model = QueryReadableResourcesListByUserIdV2ResponseBodyResultDirectory()
+            self.directory = temp_model.from_map(m['Directory'])
+        if m.get('ModifyName') is not None:
+            self.modify_name = m.get('ModifyName')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('OwnerName') is not None:
+            self.owner_name = m.get('OwnerName')
+        if m.get('SecurityLevel') is not None:
+            self.security_level = m.get('SecurityLevel')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('ThirdPartAuthFlag') is not None:
+            self.third_part_auth_flag = m.get('ThirdPartAuthFlag')
+        if m.get('WorkName') is not None:
+            self.work_name = m.get('WorkName')
+        if m.get('WorkType') is not None:
+            self.work_type = m.get('WorkType')
+        if m.get('WorksId') is not None:
+            self.works_id = m.get('WorksId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        if m.get('WorkspaceName') is not None:
+            self.workspace_name = m.get('WorkspaceName')
+        return self
+
+
+class QueryReadableResourcesListByUserIdV2ResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: List[QueryReadableResourcesListByUserIdV2ResponseBodyResult] = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = QueryReadableResourcesListByUserIdV2ResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryReadableResourcesListByUserIdV2Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryReadableResourcesListByUserIdV2ResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryReadableResourcesListByUserIdV2ResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryReportPerformanceRequest(TeaModel):
     def __init__(
         self,

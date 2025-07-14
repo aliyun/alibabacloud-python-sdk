@@ -1,3 +1,7 @@
+2025-07-14 Version: 1.11.0
+- Support API QueryReadableResourcesListByUserIdV2.
+
+
 2025-07-03 Version: 1.10.2
 - Generated python 2022-01-01 for quickbi-public.
 

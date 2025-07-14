@@ -8031,11 +8031,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryReadableResourcesListByUserIdResponse:
         """
+        @deprecated OpenAPI QueryReadableResourcesListByUserId is deprecated, please use quickbi-public::2022-01-01::QueryReadableResourcesListByUserIdV2 instead.
+        
         @summary Queries the list of works that a user has the permission to view, including the statements that are authorized to share in a space.
         
         @param request: QueryReadableResourcesListByUserIdRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryReadableResourcesListByUserIdResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -8066,11 +8069,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryReadableResourcesListByUserIdResponse:
         """
+        @deprecated OpenAPI QueryReadableResourcesListByUserId is deprecated, please use quickbi-public::2022-01-01::QueryReadableResourcesListByUserIdV2 instead.
+        
         @summary Queries the list of works that a user has the permission to view, including the statements that are authorized to share in a space.
         
         @param request: QueryReadableResourcesListByUserIdRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryReadableResourcesListByUserIdResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -8100,10 +8106,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryReadableResourcesListByUserIdRequest,
     ) -> quickbi_public_20220101_models.QueryReadableResourcesListByUserIdResponse:
         """
+        @deprecated OpenAPI QueryReadableResourcesListByUserId is deprecated, please use quickbi-public::2022-01-01::QueryReadableResourcesListByUserIdV2 instead.
+        
         @summary Queries the list of works that a user has the permission to view, including the statements that are authorized to share in a space.
         
         @param request: QueryReadableResourcesListByUserIdRequest
         @return: QueryReadableResourcesListByUserIdResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.query_readable_resources_list_by_user_id_with_options(request, runtime)
@@ -8113,13 +8122,120 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryReadableResourcesListByUserIdRequest,
     ) -> quickbi_public_20220101_models.QueryReadableResourcesListByUserIdResponse:
         """
+        @deprecated OpenAPI QueryReadableResourcesListByUserId is deprecated, please use quickbi-public::2022-01-01::QueryReadableResourcesListByUserIdV2 instead.
+        
         @summary Queries the list of works that a user has the permission to view, including the statements that are authorized to share in a space.
         
         @param request: QueryReadableResourcesListByUserIdRequest
         @return: QueryReadableResourcesListByUserIdResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.query_readable_resources_list_by_user_id_with_options_async(request, runtime)
+
+    def query_readable_resources_list_by_user_id_v2with_options(
+        self,
+        request: quickbi_public_20220101_models.QueryReadableResourcesListByUserIdV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryReadableResourcesListByUserIdV2Response:
+        """
+        @summary 查询用户有权查看的作品列表(新)
+        
+        @param request: QueryReadableResourcesListByUserIdV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryReadableResourcesListByUserIdV2Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.work_type):
+            query['WorkType'] = request.work_type
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryReadableResourcesListByUserIdV2',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryReadableResourcesListByUserIdV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_readable_resources_list_by_user_id_v2with_options_async(
+        self,
+        request: quickbi_public_20220101_models.QueryReadableResourcesListByUserIdV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryReadableResourcesListByUserIdV2Response:
+        """
+        @summary 查询用户有权查看的作品列表(新)
+        
+        @param request: QueryReadableResourcesListByUserIdV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryReadableResourcesListByUserIdV2Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.work_type):
+            query['WorkType'] = request.work_type
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryReadableResourcesListByUserIdV2',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryReadableResourcesListByUserIdV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_readable_resources_list_by_user_id_v2(
+        self,
+        request: quickbi_public_20220101_models.QueryReadableResourcesListByUserIdV2Request,
+    ) -> quickbi_public_20220101_models.QueryReadableResourcesListByUserIdV2Response:
+        """
+        @summary 查询用户有权查看的作品列表(新)
+        
+        @param request: QueryReadableResourcesListByUserIdV2Request
+        @return: QueryReadableResourcesListByUserIdV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_readable_resources_list_by_user_id_v2with_options(request, runtime)
+
+    async def query_readable_resources_list_by_user_id_v2_async(
+        self,
+        request: quickbi_public_20220101_models.QueryReadableResourcesListByUserIdV2Request,
+    ) -> quickbi_public_20220101_models.QueryReadableResourcesListByUserIdV2Response:
+        """
+        @summary 查询用户有权查看的作品列表(新)
+        
+        @param request: QueryReadableResourcesListByUserIdV2Request
+        @return: QueryReadableResourcesListByUserIdV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_readable_resources_list_by_user_id_v2with_options_async(request, runtime)
 
     def query_report_performance_with_options(
         self,
