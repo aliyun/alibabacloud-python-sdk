@@ -1443,6 +1443,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_domain_with_options_async(request, runtime)
 
+    def create_hybrid_cloud_cluster_rule_with_options(
+        self,
+        request: waf_openapi_20211001_models.CreateHybridCloudClusterRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.CreateHybridCloudClusterRuleResponse:
+        """
+        @summary 新增集群规则信息
+        
+        @param request: CreateHybridCloudClusterRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHybridCloudClusterRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.rule_config):
+            query['RuleConfig'] = request.rule_config
+        if not UtilClient.is_unset(request.rule_status):
+            query['RuleStatus'] = request.rule_status
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHybridCloudClusterRule',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateHybridCloudClusterRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_hybrid_cloud_cluster_rule_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.CreateHybridCloudClusterRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.CreateHybridCloudClusterRuleResponse:
+        """
+        @summary 新增集群规则信息
+        
+        @param request: CreateHybridCloudClusterRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHybridCloudClusterRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.rule_config):
+            query['RuleConfig'] = request.rule_config
+        if not UtilClient.is_unset(request.rule_status):
+            query['RuleStatus'] = request.rule_status
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHybridCloudClusterRule',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateHybridCloudClusterRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_hybrid_cloud_cluster_rule(
+        self,
+        request: waf_openapi_20211001_models.CreateHybridCloudClusterRuleRequest,
+    ) -> waf_openapi_20211001_models.CreateHybridCloudClusterRuleResponse:
+        """
+        @summary 新增集群规则信息
+        
+        @param request: CreateHybridCloudClusterRuleRequest
+        @return: CreateHybridCloudClusterRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_hybrid_cloud_cluster_rule_with_options(request, runtime)
+
+    async def create_hybrid_cloud_cluster_rule_async(
+        self,
+        request: waf_openapi_20211001_models.CreateHybridCloudClusterRuleRequest,
+    ) -> waf_openapi_20211001_models.CreateHybridCloudClusterRuleResponse:
+        """
+        @summary 新增集群规则信息
+        
+        @param request: CreateHybridCloudClusterRuleRequest
+        @return: CreateHybridCloudClusterRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_hybrid_cloud_cluster_rule_with_options_async(request, runtime)
+
     def create_hybrid_cloud_group_with_options(
         self,
         request: waf_openapi_20211001_models.CreateHybridCloudGroupRequest,
@@ -3050,6 +3170,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_domain_with_options_async(request, runtime)
+
+    def delete_hybrid_cloud_cluster_rule_with_options(
+        self,
+        request: waf_openapi_20211001_models.DeleteHybridCloudClusterRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DeleteHybridCloudClusterRuleResponse:
+        """
+        @summary 删除集群规则信息
+        
+        @param request: DeleteHybridCloudClusterRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHybridCloudClusterRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_rule_resource_id):
+            query['ClusterRuleResourceId'] = request.cluster_rule_resource_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteHybridCloudClusterRule',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DeleteHybridCloudClusterRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_hybrid_cloud_cluster_rule_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DeleteHybridCloudClusterRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DeleteHybridCloudClusterRuleResponse:
+        """
+        @summary 删除集群规则信息
+        
+        @param request: DeleteHybridCloudClusterRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHybridCloudClusterRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_rule_resource_id):
+            query['ClusterRuleResourceId'] = request.cluster_rule_resource_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteHybridCloudClusterRule',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DeleteHybridCloudClusterRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_hybrid_cloud_cluster_rule(
+        self,
+        request: waf_openapi_20211001_models.DeleteHybridCloudClusterRuleRequest,
+    ) -> waf_openapi_20211001_models.DeleteHybridCloudClusterRuleResponse:
+        """
+        @summary 删除集群规则信息
+        
+        @param request: DeleteHybridCloudClusterRuleRequest
+        @return: DeleteHybridCloudClusterRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_hybrid_cloud_cluster_rule_with_options(request, runtime)
+
+    async def delete_hybrid_cloud_cluster_rule_async(
+        self,
+        request: waf_openapi_20211001_models.DeleteHybridCloudClusterRuleRequest,
+    ) -> waf_openapi_20211001_models.DeleteHybridCloudClusterRuleResponse:
+        """
+        @summary 删除集群规则信息
+        
+        @param request: DeleteHybridCloudClusterRuleRequest
+        @return: DeleteHybridCloudClusterRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_hybrid_cloud_cluster_rule_with_options_async(request, runtime)
 
     def delete_major_protection_black_ip_with_options(
         self,
@@ -9554,6 +9782,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_hybrid_cloud_cluster_rule_with_options_async(request, runtime)
+
+    def describe_hybrid_cloud_cluster_rules_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudClusterRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudClusterRulesResponse:
+        """
+        @summary 集群规则列表
+        
+        @param request: DescribeHybridCloudClusterRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHybridCloudClusterRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.rule_content):
+            query['RuleContent'] = request.rule_content
+        if not UtilClient.is_unset(request.rule_match_type):
+            query['RuleMatchType'] = request.rule_match_type
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHybridCloudClusterRules',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeHybridCloudClusterRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_hybrid_cloud_cluster_rules_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudClusterRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudClusterRulesResponse:
+        """
+        @summary 集群规则列表
+        
+        @param request: DescribeHybridCloudClusterRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHybridCloudClusterRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.rule_content):
+            query['RuleContent'] = request.rule_content
+        if not UtilClient.is_unset(request.rule_match_type):
+            query['RuleMatchType'] = request.rule_match_type
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHybridCloudClusterRules',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeHybridCloudClusterRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_hybrid_cloud_cluster_rules(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudClusterRulesRequest,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudClusterRulesResponse:
+        """
+        @summary 集群规则列表
+        
+        @param request: DescribeHybridCloudClusterRulesRequest
+        @return: DescribeHybridCloudClusterRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_hybrid_cloud_cluster_rules_with_options(request, runtime)
+
+    async def describe_hybrid_cloud_cluster_rules_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudClusterRulesRequest,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudClusterRulesResponse:
+        """
+        @summary 集群规则列表
+        
+        @param request: DescribeHybridCloudClusterRulesRequest
+        @return: DescribeHybridCloudClusterRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_hybrid_cloud_cluster_rules_with_options_async(request, runtime)
 
     def describe_hybrid_cloud_clusters_with_options(
         self,

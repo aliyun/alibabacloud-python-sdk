@@ -3038,6 +3038,147 @@ class CreateDomainResponse(TeaModel):
         return self
 
 
+class CreateHybridCloudClusterRuleRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: int = None,
+        instance_id: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+        rule_config: str = None,
+        rule_status: str = None,
+        rule_type: str = None,
+    ):
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        self.rule_config = rule_config
+        # This parameter is required.
+        self.rule_status = rule_status
+        # This parameter is required.
+        self.rule_type = rule_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        if self.rule_config is not None:
+            result['RuleConfig'] = self.rule_config
+        if self.rule_status is not None:
+            result['RuleStatus'] = self.rule_status
+        if self.rule_type is not None:
+            result['RuleType'] = self.rule_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        if m.get('RuleConfig') is not None:
+            self.rule_config = m.get('RuleConfig')
+        if m.get('RuleStatus') is not None:
+            self.rule_status = m.get('RuleStatus')
+        if m.get('RuleType') is not None:
+            self.rule_type = m.get('RuleType')
+        return self
+
+
+class CreateHybridCloudClusterRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        cluster_rule_resource_id: str = None,
+        request_id: str = None,
+    ):
+        self.cluster_rule_resource_id = cluster_rule_resource_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_rule_resource_id is not None:
+            result['ClusterRuleResourceId'] = self.cluster_rule_resource_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterRuleResourceId') is not None:
+            self.cluster_rule_resource_id = m.get('ClusterRuleResourceId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateHybridCloudClusterRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateHybridCloudClusterRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateHybridCloudClusterRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateHybridCloudGroupRequest(TeaModel):
     def __init__(
         self,
@@ -4985,6 +5126,121 @@ class DeleteDomainResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteDomainResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteHybridCloudClusterRuleRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_rule_resource_id: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # This parameter is required.
+        self.cluster_rule_resource_id = cluster_rule_resource_id
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_rule_resource_id is not None:
+            result['ClusterRuleResourceId'] = self.cluster_rule_resource_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterRuleResourceId') is not None:
+            self.cluster_rule_resource_id = m.get('ClusterRuleResourceId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DeleteHybridCloudClusterRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteHybridCloudClusterRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteHybridCloudClusterRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteHybridCloudClusterRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -18937,6 +19193,229 @@ class DescribeHybridCloudClusterRuleResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeHybridCloudClusterRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeHybridCloudClusterRulesRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: int = None,
+        instance_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+        rule_content: str = None,
+        rule_match_type: str = None,
+        rule_type: str = None,
+    ):
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        self.rule_content = rule_content
+        self.rule_match_type = rule_match_type
+        # This parameter is required.
+        self.rule_type = rule_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        if self.rule_content is not None:
+            result['RuleContent'] = self.rule_content
+        if self.rule_match_type is not None:
+            result['RuleMatchType'] = self.rule_match_type
+        if self.rule_type is not None:
+            result['RuleType'] = self.rule_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        if m.get('RuleContent') is not None:
+            self.rule_content = m.get('RuleContent')
+        if m.get('RuleMatchType') is not None:
+            self.rule_match_type = m.get('RuleMatchType')
+        if m.get('RuleType') is not None:
+            self.rule_type = m.get('RuleType')
+        return self
+
+
+class DescribeHybridCloudClusterRulesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        cluster_id: int = None,
+        cluster_rule_resource_id: str = None,
+        rule_config: str = None,
+        rule_type: str = None,
+        status: str = None,
+        version: int = None,
+    ):
+        self.cluster_id = cluster_id
+        self.cluster_rule_resource_id = cluster_rule_resource_id
+        self.rule_config = rule_config
+        self.rule_type = rule_type
+        self.status = status
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.cluster_rule_resource_id is not None:
+            result['ClusterRuleResourceId'] = self.cluster_rule_resource_id
+        if self.rule_config is not None:
+            result['RuleConfig'] = self.rule_config
+        if self.rule_type is not None:
+            result['RuleType'] = self.rule_type
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ClusterRuleResourceId') is not None:
+            self.cluster_rule_resource_id = m.get('ClusterRuleResourceId')
+        if m.get('RuleConfig') is not None:
+            self.rule_config = m.get('RuleConfig')
+        if m.get('RuleType') is not None:
+            self.rule_type = m.get('RuleType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class DescribeHybridCloudClusterRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[DescribeHybridCloudClusterRulesResponseBodyData] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = DescribeHybridCloudClusterRulesResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeHybridCloudClusterRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeHybridCloudClusterRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeHybridCloudClusterRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
