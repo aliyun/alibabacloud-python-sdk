@@ -143,6 +143,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.AssignJobsResponse:
         """
+        @summary 创建外呼任务
+        
         @param request: AssignJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AssignJobsResponse
@@ -190,6 +192,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.AssignJobsResponse:
         """
+        @summary 创建外呼任务
+        
         @param request: AssignJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AssignJobsResponse
@@ -236,6 +240,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.AssignJobsRequest,
     ) -> outbound_bot_20191226_models.AssignJobsResponse:
         """
+        @summary 创建外呼任务
+        
         @param request: AssignJobsRequest
         @return: AssignJobsResponse
         """
@@ -247,6 +253,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.AssignJobsRequest,
     ) -> outbound_bot_20191226_models.AssignJobsResponse:
         """
+        @summary 创建外呼任务
+        
         @param request: AssignJobsRequest
         @return: AssignJobsResponse
         """
@@ -8285,6 +8293,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.GetEmptyNumberNoMoreCallsInfoResponse:
         """
+        @summary GetEmptyNumberNoMoreCallsInfo
+        
         @param request: GetEmptyNumberNoMoreCallsInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetEmptyNumberNoMoreCallsInfoResponse
@@ -8320,6 +8330,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.GetEmptyNumberNoMoreCallsInfoResponse:
         """
+        @summary GetEmptyNumberNoMoreCallsInfo
+        
         @param request: GetEmptyNumberNoMoreCallsInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetEmptyNumberNoMoreCallsInfoResponse
@@ -8354,6 +8366,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.GetEmptyNumberNoMoreCallsInfoRequest,
     ) -> outbound_bot_20191226_models.GetEmptyNumberNoMoreCallsInfoResponse:
         """
+        @summary GetEmptyNumberNoMoreCallsInfo
+        
         @param request: GetEmptyNumberNoMoreCallsInfoRequest
         @return: GetEmptyNumberNoMoreCallsInfoResponse
         """
@@ -8365,6 +8379,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.GetEmptyNumberNoMoreCallsInfoRequest,
     ) -> outbound_bot_20191226_models.GetEmptyNumberNoMoreCallsInfoResponse:
         """
+        @summary GetEmptyNumberNoMoreCallsInfo
+        
         @param request: GetEmptyNumberNoMoreCallsInfoRequest
         @return: GetEmptyNumberNoMoreCallsInfoResponse
         """
@@ -8489,6 +8505,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.GetMaxAttemptsPerDayResponse:
         """
+        @summary GetMaxAttemptsPerDay
+        
         @param request: GetMaxAttemptsPerDayRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetMaxAttemptsPerDayResponse
@@ -8524,6 +8542,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.GetMaxAttemptsPerDayResponse:
         """
+        @summary GetMaxAttemptsPerDay
+        
         @param request: GetMaxAttemptsPerDayRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetMaxAttemptsPerDayResponse
@@ -8558,6 +8578,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.GetMaxAttemptsPerDayRequest,
     ) -> outbound_bot_20191226_models.GetMaxAttemptsPerDayResponse:
         """
+        @summary GetMaxAttemptsPerDay
+        
         @param request: GetMaxAttemptsPerDayRequest
         @return: GetMaxAttemptsPerDayResponse
         """
@@ -8569,6 +8591,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.GetMaxAttemptsPerDayRequest,
     ) -> outbound_bot_20191226_models.GetMaxAttemptsPerDayResponse:
         """
+        @summary GetMaxAttemptsPerDay
+        
         @param request: GetMaxAttemptsPerDayRequest
         @return: GetMaxAttemptsPerDayResponse
         """
@@ -8747,6 +8771,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.GetSummaryInfoResponse:
         """
+        @summary GetSummaryInfo
+        
         @param request: GetSummaryInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetSummaryInfoResponse
@@ -8780,6 +8806,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.GetSummaryInfoResponse:
         """
+        @summary GetSummaryInfo
+        
         @param request: GetSummaryInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetSummaryInfoResponse
@@ -8812,6 +8840,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.GetSummaryInfoRequest,
     ) -> outbound_bot_20191226_models.GetSummaryInfoResponse:
         """
+        @summary GetSummaryInfo
+        
         @param request: GetSummaryInfoRequest
         @return: GetSummaryInfoResponse
         """
@@ -8823,6 +8853,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.GetSummaryInfoRequest,
     ) -> outbound_bot_20191226_models.GetSummaryInfoResponse:
         """
+        @summary GetSummaryInfo
+        
         @param request: GetSummaryInfoRequest
         @return: GetSummaryInfoResponse
         """
@@ -8918,6 +8950,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.GetVersionResponse:
         """
+        @summary GetVersion
+        
         @param request: GetVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetVersionResponse
@@ -8944,6 +8978,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.GetVersionResponse:
         """
+        @summary GetVersion
+        
         @param request: GetVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetVersionResponse
@@ -8967,6 +9003,8 @@ class Client(OpenApiClient):
 
     def get_version(self) -> outbound_bot_20191226_models.GetVersionResponse:
         """
+        @summary GetVersion
+        
         @return: GetVersionResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -8974,6 +9012,8 @@ class Client(OpenApiClient):
 
     async def get_version_async(self) -> outbound_bot_20191226_models.GetVersionResponse:
         """
+        @summary GetVersion
+        
         @return: GetVersionResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -14463,6 +14503,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.QueryJobsWithResultResponse:
         """
+        @summary 获取外呼任务结果信息
+        
         @param request: QueryJobsWithResultRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryJobsWithResultResponse
@@ -14520,6 +14562,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.QueryJobsWithResultResponse:
         """
+        @summary 获取外呼任务结果信息
+        
         @param request: QueryJobsWithResultRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryJobsWithResultResponse
@@ -14576,6 +14620,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.QueryJobsWithResultRequest,
     ) -> outbound_bot_20191226_models.QueryJobsWithResultResponse:
         """
+        @summary 获取外呼任务结果信息
+        
         @param request: QueryJobsWithResultRequest
         @return: QueryJobsWithResultResponse
         """
@@ -14587,6 +14633,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.QueryJobsWithResultRequest,
     ) -> outbound_bot_20191226_models.QueryJobsWithResultResponse:
         """
+        @summary 获取外呼任务结果信息
+        
         @param request: QueryJobsWithResultRequest
         @return: QueryJobsWithResultResponse
         """
@@ -15915,6 +15963,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.SearchTaskResponse:
         """
+        @summary 外呼历史查询
+        
         @param request: SearchTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SearchTaskResponse
@@ -15946,6 +15996,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.SearchTaskResponse:
         """
+        @summary 外呼历史查询
+        
         @param request: SearchTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SearchTaskResponse
@@ -15976,6 +16028,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.SearchTaskRequest,
     ) -> outbound_bot_20191226_models.SearchTaskResponse:
         """
+        @summary 外呼历史查询
+        
         @param request: SearchTaskRequest
         @return: SearchTaskResponse
         """
@@ -15987,6 +16041,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.SearchTaskRequest,
     ) -> outbound_bot_20191226_models.SearchTaskResponse:
         """
+        @summary 外呼历史查询
+        
         @param request: SearchTaskRequest
         @return: SearchTaskResponse
         """

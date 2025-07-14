@@ -1,3 +1,9 @@
+2025-07-14 Version: 1.2.2
+- Update API CreateTaskExportTask: add request parameters CallingNumber.
+- Update API SearchTask: add request parameters CallingNumber.
+- Update API SearchTask: add response parameters Body.SearchTaskInfoList.$.CallingNumber.
+
+
 2025-06-12 Version: 1.2.1
 - Update API DescribeScript: add response parameters Body.Script.LabelConfig.
 - Update API ModifyScript: add request parameters LabelConfig.

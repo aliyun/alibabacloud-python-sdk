@@ -5552,6 +5552,7 @@ class CreateTaskExportTaskRequest(TeaModel):
         call_duration_gte: int = None,
         call_duration_lte: int = None,
         called_number: str = None,
+        calling_number: str = None,
         has_answered: bool = None,
         has_hang_up_by_rejection: bool = None,
         has_reached_end_of_flow: bool = None,
@@ -5579,6 +5580,7 @@ class CreateTaskExportTaskRequest(TeaModel):
         self.call_duration_gte = call_duration_gte
         self.call_duration_lte = call_duration_lte
         self.called_number = called_number
+        self.calling_number = calling_number
         self.has_answered = has_answered
         self.has_hang_up_by_rejection = has_hang_up_by_rejection
         self.has_reached_end_of_flow = has_reached_end_of_flow
@@ -5621,6 +5623,8 @@ class CreateTaskExportTaskRequest(TeaModel):
             result['CallDurationLte'] = self.call_duration_lte
         if self.called_number is not None:
             result['CalledNumber'] = self.called_number
+        if self.calling_number is not None:
+            result['CallingNumber'] = self.calling_number
         if self.has_answered is not None:
             result['HasAnswered'] = self.has_answered
         if self.has_hang_up_by_rejection is not None:
@@ -5677,6 +5681,8 @@ class CreateTaskExportTaskRequest(TeaModel):
             self.call_duration_lte = m.get('CallDurationLte')
         if m.get('CalledNumber') is not None:
             self.called_number = m.get('CalledNumber')
+        if m.get('CallingNumber') is not None:
+            self.calling_number = m.get('CallingNumber')
         if m.get('HasAnswered') is not None:
             self.has_answered = m.get('HasAnswered')
         if m.get('HasHangUpByRejection') is not None:
@@ -37882,6 +37888,7 @@ class SearchTaskRequest(TeaModel):
         call_duration_gte: int = None,
         call_duration_lte: int = None,
         called_number: str = None,
+        calling_number: str = None,
         instance_id: str = None,
         job_group_id: str = None,
         job_group_name_query: str = None,
@@ -37906,6 +37913,7 @@ class SearchTaskRequest(TeaModel):
         self.call_duration_gte = call_duration_gte
         self.call_duration_lte = call_duration_lte
         self.called_number = called_number
+        self.calling_number = calling_number
         # This parameter is required.
         self.instance_id = instance_id
         self.job_group_id = job_group_id
@@ -37945,6 +37953,8 @@ class SearchTaskRequest(TeaModel):
             result['CallDurationLte'] = self.call_duration_lte
         if self.called_number is not None:
             result['CalledNumber'] = self.called_number
+        if self.calling_number is not None:
+            result['CallingNumber'] = self.calling_number
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.job_group_id is not None:
@@ -37995,6 +38005,8 @@ class SearchTaskRequest(TeaModel):
             self.call_duration_lte = m.get('CallDurationLte')
         if m.get('CalledNumber') is not None:
             self.called_number = m.get('CalledNumber')
+        if m.get('CallingNumber') is not None:
+            self.calling_number = m.get('CallingNumber')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('JobGroupId') is not None:
@@ -38041,6 +38053,7 @@ class SearchTaskResponseBodySearchTaskInfoList(TeaModel):
         call_duration: int = None,
         call_duration_display: str = None,
         called_number: str = None,
+        calling_number: str = None,
         dial_exception: str = None,
         dial_exception_codes: List[str] = None,
         dial_exception_old: str = None,
@@ -38070,6 +38083,7 @@ class SearchTaskResponseBodySearchTaskInfoList(TeaModel):
         self.call_duration = call_duration
         self.call_duration_display = call_duration_display
         self.called_number = called_number
+        self.calling_number = calling_number
         self.dial_exception = dial_exception
         self.dial_exception_codes = dial_exception_codes
         self.dial_exception_old = dial_exception_old
@@ -38112,6 +38126,8 @@ class SearchTaskResponseBodySearchTaskInfoList(TeaModel):
             result['CallDurationDisplay'] = self.call_duration_display
         if self.called_number is not None:
             result['CalledNumber'] = self.called_number
+        if self.calling_number is not None:
+            result['CallingNumber'] = self.calling_number
         if self.dial_exception is not None:
             result['DialException'] = self.dial_exception
         if self.dial_exception_codes is not None:
@@ -38172,6 +38188,8 @@ class SearchTaskResponseBodySearchTaskInfoList(TeaModel):
             self.call_duration_display = m.get('CallDurationDisplay')
         if m.get('CalledNumber') is not None:
             self.called_number = m.get('CalledNumber')
+        if m.get('CallingNumber') is not None:
+            self.calling_number = m.get('CallingNumber')
         if m.get('DialException') is not None:
             self.dial_exception = m.get('DialException')
         if m.get('DialExceptionCodes') is not None:
