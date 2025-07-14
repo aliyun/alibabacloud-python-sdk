@@ -1,3 +1,8 @@
+2025-07-14 Version: 4.10.0
+- Support API ListTransferFiles.
+- Support API TransferTaskApprovalCallback.
+
+
 2025-07-11 Version: 4.9.1
 - Update API CreateDesktopGroup: add request parameters DeleteDuration.
 - Update API DescribeDesktopGroups: add response parameters Body.DesktopGroups.$.ExpiredTimes.

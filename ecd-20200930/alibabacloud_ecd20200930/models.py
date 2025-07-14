@@ -47941,6 +47941,208 @@ class ListTagResourcesResponse(TeaModel):
         return self
 
 
+class ListTransferFilesRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        task_id: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class ListTransferFilesResponseBodyFiles(TeaModel):
+    def __init__(
+        self,
+        icon_url: str = None,
+        id: str = None,
+        name: str = None,
+        oss_file_name: str = None,
+        oss_file_path: str = None,
+        size: str = None,
+        status: str = None,
+        type: str = None,
+    ):
+        self.icon_url = icon_url
+        self.id = id
+        self.name = name
+        self.oss_file_name = oss_file_name
+        self.oss_file_path = oss_file_path
+        self.size = size
+        self.status = status
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.icon_url is not None:
+            result['IconUrl'] = self.icon_url
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.oss_file_name is not None:
+            result['OssFileName'] = self.oss_file_name
+        if self.oss_file_path is not None:
+            result['OssFilePath'] = self.oss_file_path
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IconUrl') is not None:
+            self.icon_url = m.get('IconUrl')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OssFileName') is not None:
+            self.oss_file_name = m.get('OssFileName')
+        if m.get('OssFilePath') is not None:
+            self.oss_file_path = m.get('OssFilePath')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListTransferFilesResponseBody(TeaModel):
+    def __init__(
+        self,
+        files: List[ListTransferFilesResponseBodyFiles] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.files = files
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+
+    def validate(self):
+        if self.files:
+            for k in self.files:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Files'] = []
+        if self.files is not None:
+            for k in self.files:
+                result['Files'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.files = []
+        if m.get('Files') is not None:
+            for k in m.get('Files'):
+                temp_model = ListTransferFilesResponseBodyFiles()
+                self.files.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListTransferFilesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTransferFilesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTransferFilesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListUserAdOrganizationUnitsRequest(TeaModel):
     def __init__(
         self,
@@ -63706,6 +63908,119 @@ class TagResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TransferTaskApprovalCallbackRequest(TeaModel):
+    def __init__(
+        self,
+        oss_bucket_name: str = None,
+        oss_bucket_region_id: str = None,
+        result: str = None,
+        task_id: str = None,
+    ):
+        self.oss_bucket_name = oss_bucket_name
+        self.oss_bucket_region_id = oss_bucket_region_id
+        self.result = result
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.oss_bucket_name is not None:
+            result['OssBucketName'] = self.oss_bucket_name
+        if self.oss_bucket_region_id is not None:
+            result['OssBucketRegionId'] = self.oss_bucket_region_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OssBucketName') is not None:
+            self.oss_bucket_name = m.get('OssBucketName')
+        if m.get('OssBucketRegionId') is not None:
+            self.oss_bucket_region_id = m.get('OssBucketRegionId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class TransferTaskApprovalCallbackResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class TransferTaskApprovalCallbackResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TransferTaskApprovalCallbackResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TransferTaskApprovalCallbackResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

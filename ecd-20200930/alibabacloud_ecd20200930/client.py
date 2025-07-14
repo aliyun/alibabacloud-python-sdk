@@ -19680,6 +19680,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
+    def list_transfer_files_with_options(
+        self,
+        request: ecd_20200930_models.ListTransferFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.ListTransferFilesResponse:
+        """
+        @summary 获取文件下载地址
+        
+        @param request: ListTransferFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTransferFilesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTransferFiles',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.ListTransferFilesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_transfer_files_with_options_async(
+        self,
+        request: ecd_20200930_models.ListTransferFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.ListTransferFilesResponse:
+        """
+        @summary 获取文件下载地址
+        
+        @param request: ListTransferFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTransferFilesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTransferFiles',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.ListTransferFilesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_transfer_files(
+        self,
+        request: ecd_20200930_models.ListTransferFilesRequest,
+    ) -> ecd_20200930_models.ListTransferFilesResponse:
+        """
+        @summary 获取文件下载地址
+        
+        @param request: ListTransferFilesRequest
+        @return: ListTransferFilesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_transfer_files_with_options(request, runtime)
+
+    async def list_transfer_files_async(
+        self,
+        request: ecd_20200930_models.ListTransferFilesRequest,
+    ) -> ecd_20200930_models.ListTransferFilesResponse:
+        """
+        @summary 获取文件下载地址
+        
+        @param request: ListTransferFilesRequest
+        @return: ListTransferFilesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_transfer_files_with_options_async(request, runtime)
+
     def list_user_ad_organization_units_with_options(
         self,
         request: ecd_20200930_models.ListUserAdOrganizationUnitsRequest,
@@ -29077,6 +29181,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
+
+    def transfer_task_approval_callback_with_options(
+        self,
+        request: ecd_20200930_models.TransferTaskApprovalCallbackRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.TransferTaskApprovalCallbackResponse:
+        """
+        @summary 文件传输审批回调
+        
+        @param request: TransferTaskApprovalCallbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransferTaskApprovalCallbackResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.oss_bucket_name):
+            query['OssBucketName'] = request.oss_bucket_name
+        if not UtilClient.is_unset(request.oss_bucket_region_id):
+            query['OssBucketRegionId'] = request.oss_bucket_region_id
+        if not UtilClient.is_unset(request.result):
+            query['Result'] = request.result
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TransferTaskApprovalCallback',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.TransferTaskApprovalCallbackResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def transfer_task_approval_callback_with_options_async(
+        self,
+        request: ecd_20200930_models.TransferTaskApprovalCallbackRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.TransferTaskApprovalCallbackResponse:
+        """
+        @summary 文件传输审批回调
+        
+        @param request: TransferTaskApprovalCallbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransferTaskApprovalCallbackResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.oss_bucket_name):
+            query['OssBucketName'] = request.oss_bucket_name
+        if not UtilClient.is_unset(request.oss_bucket_region_id):
+            query['OssBucketRegionId'] = request.oss_bucket_region_id
+        if not UtilClient.is_unset(request.result):
+            query['Result'] = request.result
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TransferTaskApprovalCallback',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.TransferTaskApprovalCallbackResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def transfer_task_approval_callback(
+        self,
+        request: ecd_20200930_models.TransferTaskApprovalCallbackRequest,
+    ) -> ecd_20200930_models.TransferTaskApprovalCallbackResponse:
+        """
+        @summary 文件传输审批回调
+        
+        @param request: TransferTaskApprovalCallbackRequest
+        @return: TransferTaskApprovalCallbackResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.transfer_task_approval_callback_with_options(request, runtime)
+
+    async def transfer_task_approval_callback_async(
+        self,
+        request: ecd_20200930_models.TransferTaskApprovalCallbackRequest,
+    ) -> ecd_20200930_models.TransferTaskApprovalCallbackResponse:
+        """
+        @summary 文件传输审批回调
+        
+        @param request: TransferTaskApprovalCallbackRequest
+        @return: TransferTaskApprovalCallbackResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.transfer_task_approval_callback_with_options_async(request, runtime)
 
     def unbind_config_group_with_options(
         self,
