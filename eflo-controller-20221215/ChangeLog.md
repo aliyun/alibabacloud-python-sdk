@@ -1,3 +1,9 @@
+2025-07-14 Version: 2.5.4
+- Update API CreateCluster: add request parameters NodeGroups.$.VirtualGpuEnabled.
+- Update API CreateNodeGroup: add request parameters NodeGroup.VirtualGpuEnabled.
+- Update API ListNodeGroups: add response parameters Body.Groups.$.VirtualGpuEnabled.
+
+
 2025-06-20 Version: 2.5.3
 - Update API CreateCluster: add request parameters NodeGroups.$.Nodes.$.DataDisk.
 - Update API ExtendCluster: add request parameters NodeGroups.$.Nodes.$.DataDisk.

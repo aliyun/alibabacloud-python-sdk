@@ -249,7 +249,9 @@ class CloseSessionRequest(TeaModel):
         session_id: str = None,
         session_token: str = None,
     ):
+        # The session ID.
         self.session_id = session_id
+        # Session token.
         self.session_token = session_token
 
     def validate(self):
@@ -283,9 +285,11 @@ class CloseSessionResponseBody(TeaModel):
         session_id: str = None,
         state: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The session ID.
         self.session_id = session_id
-        # ClosingActive
+        # status of session
         self.state = state
 
     def validate(self):
@@ -363,9 +367,9 @@ class CreateClusterRequestComponentsComponentConfig(TeaModel):
         basic_args: Any = None,
         node_units: List[Any] = None,
     ):
-        # The basic parameters of the component.
+        # Basic component parameters
         self.basic_args = basic_args
-        # The node pool configurations, which are used to establish the mappings between node groups and node pools. This parameter is required when ComponentType is set to ACKEdge. Otherwise, this parameter is left empty.
+        # Node pool configuration, used to establish the correspondence between node groups and node pools. Required when ComponentType is "ACKEdge", otherwise it can be empty.
         self.node_units = node_units
 
     def validate(self):
@@ -398,14 +402,9 @@ class CreateClusterRequestComponents(TeaModel):
         component_config: CreateClusterRequestComponentsComponentConfig = None,
         component_type: str = None,
     ):
-        # The component configurations.
+        # Component configuration
         self.component_config = component_config
-        # The component type.
-        # 
-        # Valid values:
-        # 
-        # *   ARMS
-        # *   ACKEdge
+        # Component type
         self.component_type = component_type
 
     def validate(self):
@@ -440,9 +439,9 @@ class CreateClusterRequestNetworksIpAllocationPolicyBondPolicyBonds(TeaModel):
         name: str = None,
         subnet: str = None,
     ):
-        # The bond name.
+        # Bond name
         self.name = name
-        # The cluster subnet from which the IP address originates.
+        # IP source subnet for the cluster
         self.subnet = subnet
 
     def validate(self):
@@ -475,9 +474,9 @@ class CreateClusterRequestNetworksIpAllocationPolicyBondPolicy(TeaModel):
         bond_default_subnet: str = None,
         bonds: List[CreateClusterRequestNetworksIpAllocationPolicyBondPolicyBonds] = None,
     ):
-        # The default bond subnet for the cluster.
+        # Default bond subnet for the cluster
         self.bond_default_subnet = bond_default_subnet
-        # The bond information.
+        # Bond information
         self.bonds = bonds
 
     def validate(self):
@@ -518,9 +517,9 @@ class CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicyBonds(TeaMo
         name: str = None,
         subnet: str = None,
     ):
-        # The bond name.
+        # Bond name
         self.name = name
-        # The cluster subnet from which the IP address originates.
+        # IP source subnet for the cluster
         self.subnet = subnet
 
     def validate(self):
@@ -553,9 +552,9 @@ class CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicy(TeaModel):
         bonds: List[CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicyBonds] = None,
         machine_type: str = None,
     ):
-        # The bond information.
+        # Bond information
         self.bonds = bonds
-        # The instance type.
+        # Machine type
         self.machine_type = machine_type
 
     def validate(self):
@@ -596,9 +595,9 @@ class CreateClusterRequestNetworksIpAllocationPolicyNodePolicyBonds(TeaModel):
         name: str = None,
         subnet: str = None,
     ):
-        # The bond name.
+        # Bond name
         self.name = name
-        # The cluster subnet from which the IP address originates.
+        # IP source subnet for the cluster
         self.subnet = subnet
 
     def validate(self):
@@ -631,9 +630,9 @@ class CreateClusterRequestNetworksIpAllocationPolicyNodePolicy(TeaModel):
         bonds: List[CreateClusterRequestNetworksIpAllocationPolicyNodePolicyBonds] = None,
         node_id: str = None,
     ):
-        # The bond information.
+        # Bond information
         self.bonds = bonds
-        # The node ID.
+        # Node ID
         self.node_id = node_id
 
     def validate(self):
@@ -675,11 +674,11 @@ class CreateClusterRequestNetworksIpAllocationPolicy(TeaModel):
         machine_type_policy: List[CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicy] = None,
         node_policy: List[CreateClusterRequestNetworksIpAllocationPolicyNodePolicy] = None,
     ):
-        # The bond policy.
+        # Bond policy
         self.bond_policy = bond_policy
-        # The allocation policy for the instance type.
+        # Machine type allocation policy
         self.machine_type_policy = machine_type_policy
-        # The node allocation policy.
+        # Node allocation policy
         self.node_policy = node_policy
 
     def validate(self):
@@ -737,11 +736,11 @@ class CreateClusterRequestNetworksNewVpdInfoVpdSubnets(TeaModel):
         subnet_type: str = None,
         zone_id: str = None,
     ):
-        # The subnet CIDR block.
+        # Subnet CIDR
         self.subnet_cidr = subnet_cidr
-        # The subnet type.
+        # Subnet type
         self.subnet_type = subnet_type
-        # The zone ID.
+        # Zone ID
         self.zone_id = zone_id
 
     def validate(self):
@@ -783,19 +782,19 @@ class CreateClusterRequestNetworksNewVpdInfo(TeaModel):
         vpd_cidr: str = None,
         vpd_subnets: List[CreateClusterRequestNetworksNewVpdInfoVpdSubnets] = None,
     ):
-        # The ID of the Cloud Enterprise Network (CEN) instance.
+        # Cloud Enterprise Network ID
         self.cen_id = cen_id
-        # The CIDR block for Cloud Link.
+        # Cloud link CIDR
         self.cloud_link_cidr = cloud_link_cidr
-        # The Cloud Link ID.
+        # Cloud link ID
         self.cloud_link_id = cloud_link_id
-        # The VPC.
+        # Virtual Private Cloud (VPC)
         self.monitor_vpc_id = monitor_vpc_id
-        # The vSwitch.
+        # VPC switch
         self.monitor_vswitch_id = monitor_vswitch_id
-        # The CIDR block for the cluster.
+        # Cluster network segment
         self.vpd_cidr = vpd_cidr
-        # The cluster subnet.
+        # Cluster subnets
         self.vpd_subnets = vpd_subnets
 
     def validate(self):
@@ -856,9 +855,9 @@ class CreateClusterRequestNetworksVpdInfo(TeaModel):
         vpd_id: str = None,
         vpd_subnets: List[str] = None,
     ):
-        # The VPC ID.
+        # VPC ID
         self.vpd_id = vpd_id
-        # The IDs of the subnets for a cluster.
+        # List of cluster subnet IDs
         self.vpd_subnets = vpd_subnets
 
     def validate(self):
@@ -897,21 +896,21 @@ class CreateClusterRequestNetworks(TeaModel):
         vpc_id: str = None,
         vpd_info: CreateClusterRequestNetworksVpdInfo = None,
     ):
-        # The IP allocation policy.
+        # IP allocation policy
         self.ip_allocation_policy = ip_allocation_policy
-        # The virtual private domain (VPD) configuration information.
+        # Vpd configuration information
         self.new_vpd_info = new_vpd_info
-        # The security group ID.
+        # Security group ID
         self.security_group_id = security_group_id
-        # The IP version.
+        # IP version
         self.tail_ip_version = tail_ip_version
-        # The vSwitch ID.
+        # VSwitch ID
         self.v_switch_id = v_switch_id
-        # The ID of the zone to which the vSwitch belongs.
+        # VSwitch Zone ID
         self.v_switch_zone_id = v_switch_zone_id
-        # The VPC ID.
+        # VPC ID
         self.vpc_id = vpc_id
-        # The VPD information.
+        # Reuse VPD information
         self.vpd_info = vpd_info
 
     def validate(self):
@@ -984,9 +983,13 @@ class CreateClusterRequestNodeGroupsNodesDataDisk(TeaModel):
         performance_level: str = None,
         size: int = None,
     ):
+        # Type
         self.category = category
+        # Whether the data disk is deleted with the node when it is unsubscribed
         self.delete_with_node = delete_with_node
+        # Data disk performance level
         self.performance_level = performance_level
+        # Disk size
         self.size = size
 
     def validate(self):
@@ -1031,16 +1034,17 @@ class CreateClusterRequestNodeGroupsNodes(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # Data disk specifications.
         self.data_disk = data_disk
-        # The hostname.
+        # Hostname
         self.hostname = hostname
-        # The logon password.
+        # Login password
         self.login_password = login_password
-        # The node ID.
+        # Node ID
         self.node_id = node_id
-        # The vSwitch ID.
+        # VSwitch ID
         self.v_switch_id = v_switch_id
-        # The ID of the virtual private cloud (VPC).
+        # VPC ID
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -1098,16 +1102,15 @@ class CreateClusterRequestNodeGroupsSystemDisk(TeaModel):
         performance_level: str = None,
         size: int = None,
     ):
-        # The disk category. Valid values:
+        # Disk type. The value range is:
         # 
-        # *   cloud_essd
+        # - cloud_essd: ESSD disk.
         self.category = category
-        # The performance level of the ESSD that is used as the system disk. Valid values:
-        # 
-        # *   PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
-        # *   PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
+        # When creating an ESSD disk as the system disk, set the performance level of the disk. The value range is:
+        # - PL0: Maximum random read/write IOPS for a single disk is 10,000.
+        # - PL1: Maximum random read/write IOPS for a single disk is 50,000.
         self.performance_level = performance_level
-        # Unit: GB
+        # Unit: GB.
         self.size = size
 
     def validate(self):
@@ -1151,28 +1154,32 @@ class CreateClusterRequestNodeGroups(TeaModel):
         nodes: List[CreateClusterRequestNodeGroupsNodes] = None,
         system_disk: CreateClusterRequestNodeGroupsSystemDisk = None,
         user_data: str = None,
+        virtual_gpu_enabled: bool = None,
         zone_id: str = None,
     ):
-        # Specifies whether to support file system mounting.
+        # Whether to support file system mounting
         self.file_system_mount_enabled = file_system_mount_enabled
-        # The system image ID.
+        # System image ID
         self.image_id = image_id
-        # The name of the AccessKey pair.
+        # Key pair name.
         self.key_pair_name = key_pair_name
+        # Login password
         self.login_password = login_password
-        # The instance type.
+        # Machine type
         self.machine_type = machine_type
-        # The node group description.
+        # Node group description
         self.node_group_description = node_group_description
-        # The node group name.
+        # Node group name
         self.node_group_name = node_group_name
-        # The nodes.
+        # Node list
         self.nodes = nodes
-        # The system disk information.
+        # System disk information
         self.system_disk = system_disk
-        # The user data of the instance. The user data must be Base64-encoded. The raw data can be up to 16 KB in size.
+        # Instance custom data. It needs to be encoded in Base64, and the original data should not exceed 16 KB.
         self.user_data = user_data
-        # The zone ID.
+        # Whether to enable gpu virtualization or not
+        self.virtual_gpu_enabled = virtual_gpu_enabled
+        # Zone ID
         self.zone_id = zone_id
 
     def validate(self):
@@ -1211,6 +1218,8 @@ class CreateClusterRequestNodeGroups(TeaModel):
             result['SystemDisk'] = self.system_disk.to_map()
         if self.user_data is not None:
             result['UserData'] = self.user_data
+        if self.virtual_gpu_enabled is not None:
+            result['VirtualGpuEnabled'] = self.virtual_gpu_enabled
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
         return result
@@ -1241,6 +1250,8 @@ class CreateClusterRequestNodeGroups(TeaModel):
             self.system_disk = temp_model.from_map(m['SystemDisk'])
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
+        if m.get('VirtualGpuEnabled') is not None:
+            self.virtual_gpu_enabled = m.get('VirtualGpuEnabled')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
         return self
@@ -1252,9 +1263,9 @@ class CreateClusterRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # Key
         self.key = key
-        # The tag value.
+        # Value
         self.value = value
 
     def validate(self):
@@ -1297,29 +1308,29 @@ class CreateClusterRequest(TeaModel):
         resource_group_id: str = None,
         tag: List[CreateClusterRequestTag] = None,
     ):
-        # The cluster description.
+        # Cluster description
         self.cluster_description = cluster_description
-        # The cluster name.
+        # Cluster name
         self.cluster_name = cluster_name
-        # The cluster type.
+        # Cluster type
         self.cluster_type = cluster_type
-        # The components (software instance).
+        # Components (software instances)
         self.components = components
-        # The cluster number.
+        # Cluster number
         self.hpn_zone = hpn_zone
-        # Specifies whether to allow skipping failed nodes. Default value: False.
+        # Whether to allow skipping failed nodes, the default value is False
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
-        # The network information.
+        # Network information
         self.networks = networks
-        # The node vSwitch.
+        # Node VSwitches
         self.nimiz_vswitches = nimiz_vswitches
-        # The node groups.
+        # Node group list
         self.node_groups = node_groups
-        # Specifies whether the elastic network interface (ENI) supports the Jumbo Frames feature.
+        # Whether the network interface supports jumbo frames
         self.open_eni_jumbo_frame = open_eni_jumbo_frame
-        # The resource group ID.
+        # Resource group ID
         self.resource_group_id = resource_group_id
-        # The resource tags.
+        # Resource tags
         self.tag = tag
 
     def validate(self):
@@ -1421,9 +1432,9 @@ class CreateClusterShrinkRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # Key
         self.key = key
-        # The tag value.
+        # Value
         self.value = value
 
     def validate(self):
@@ -1466,29 +1477,29 @@ class CreateClusterShrinkRequest(TeaModel):
         resource_group_id: str = None,
         tag: List[CreateClusterShrinkRequestTag] = None,
     ):
-        # The cluster description.
+        # Cluster description
         self.cluster_description = cluster_description
-        # The cluster name.
+        # Cluster name
         self.cluster_name = cluster_name
-        # The cluster type.
+        # Cluster type
         self.cluster_type = cluster_type
-        # The components (software instance).
+        # Components (software instances)
         self.components_shrink = components_shrink
-        # The cluster number.
+        # Cluster number
         self.hpn_zone = hpn_zone
-        # Specifies whether to allow skipping failed nodes. Default value: False.
+        # Whether to allow skipping failed nodes, the default value is False
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
-        # The network information.
+        # Network information
         self.networks_shrink = networks_shrink
-        # The node vSwitch.
+        # Node VSwitches
         self.nimiz_vswitches_shrink = nimiz_vswitches_shrink
-        # The node groups.
+        # Node group list
         self.node_groups_shrink = node_groups_shrink
-        # Specifies whether the elastic network interface (ENI) supports the Jumbo Frames feature.
+        # Whether the network interface supports jumbo frames
         self.open_eni_jumbo_frame = open_eni_jumbo_frame
-        # The resource group ID.
+        # Resource group ID
         self.resource_group_id = resource_group_id
-        # The resource tags.
+        # Resource tags
         self.tag = tag
 
     def validate(self):
@@ -1570,11 +1581,11 @@ class CreateClusterResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # The cluster ID.
+        # Cluster ID
         self.cluster_id = cluster_id
-        # The request ID.
+        # Request ID
         self.request_id = request_id
-        # The job ID.
+        # Task ID
         self.task_id = task_id
 
     def validate(self):
@@ -2603,11 +2614,15 @@ class CreateNodeGroupRequestNodeGroupSystemDisk(TeaModel):
         performance_level: str = None,
         size: int = None,
     ):
-        # *\
+        # Disk type. Value range:
+        # 
+        #  - cloud_essd: ESSD cloud disk.
         self.category = category
-        # *\
-        # *\
+        # When creating an ESSD cloud disk as a system disk, set the performance level of the cloud disk. Value range:
+        # - PL0: Maximum random read/write IOPS per disk 10,000.
+        # - PL1: Maximum random read/write IOPS per disk 50,000.
         self.performance_level = performance_level
+        # Unit: GB.
         self.size = size
 
     def validate(self):
@@ -2651,24 +2666,38 @@ class CreateNodeGroupRequestNodeGroup(TeaModel):
         node_group_name: str = None,
         system_disk: CreateNodeGroupRequestNodeGroupSystemDisk = None,
         user_data: str = None,
+        virtual_gpu_enabled: bool = None,
     ):
+        # Availability Zone
+        # 
         # This parameter is required.
         self.az = az
-        # Indicates whether file storage mounting is supported.
+        # Whether file storage mounting is supported
         self.file_system_mount_enabled = file_system_mount_enabled
+        # Image ID.
+        # 
         # This parameter is required.
         self.image_id = image_id
+        # Key pair name.
         self.key_pair_name = key_pair_name
+        # Password
         self.login_password = login_password
-        # The instance type.
+        # Machine type
         # 
         # This parameter is required.
         self.machine_type = machine_type
+        # Node group description
         self.node_group_description = node_group_description
+        # Node group name
+        # 
         # This parameter is required.
         self.node_group_name = node_group_name
+        # Details of the node system disk configuration.
         self.system_disk = system_disk
+        # User-defined data
         self.user_data = user_data
+        # Whether to enable gpu virtualization or not
+        self.virtual_gpu_enabled = virtual_gpu_enabled
 
     def validate(self):
         if self.system_disk:
@@ -2700,6 +2729,8 @@ class CreateNodeGroupRequestNodeGroup(TeaModel):
             result['SystemDisk'] = self.system_disk.to_map()
         if self.user_data is not None:
             result['UserData'] = self.user_data
+        if self.virtual_gpu_enabled is not None:
+            result['VirtualGpuEnabled'] = self.virtual_gpu_enabled
         return result
 
     def from_map(self, m: dict = None):
@@ -2725,6 +2756,8 @@ class CreateNodeGroupRequestNodeGroup(TeaModel):
             self.system_disk = temp_model.from_map(m['SystemDisk'])
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
+        if m.get('VirtualGpuEnabled') is not None:
+            self.virtual_gpu_enabled = m.get('VirtualGpuEnabled')
         return self
 
 
@@ -2735,12 +2768,15 @@ class CreateNodeGroupRequest(TeaModel):
         node_group: CreateNodeGroupRequestNodeGroup = None,
         node_unit: Dict[str, Any] = None,
     ):
-        # The cluster ID.
+        # Cluster ID
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # Node ID.
+        # 
         # This parameter is required.
         self.node_group = node_group
+        # Node information
         self.node_unit = node_unit
 
     def validate(self):
@@ -2780,12 +2816,15 @@ class CreateNodeGroupShrinkRequest(TeaModel):
         node_group_shrink: str = None,
         node_unit_shrink: str = None,
     ):
-        # The cluster ID.
+        # Cluster ID
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # Node ID.
+        # 
         # This parameter is required.
         self.node_group_shrink = node_group_shrink
+        # Node information
         self.node_unit_shrink = node_unit_shrink
 
     def validate(self):
@@ -2823,10 +2862,11 @@ class CreateNodeGroupResponseBody(TeaModel):
         node_group_name: str = None,
         request_id: str = None,
     ):
-        # The node group ID.
+        # Node group ID
         self.node_group_id = node_group_id
+        # NodeGroupName
         self.node_group_name = node_group_name
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -3535,7 +3575,7 @@ class DescribeClusterRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
-        # 集群id。
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
@@ -3566,9 +3606,14 @@ class DescribeClusterResponseBodyComponents(TeaModel):
         component_id: str = None,
         component_type: str = None,
     ):
-        # 组件id
+        # The component ID.
         self.component_id = component_id
-        # 组件类型
+        # The component type.
+        # 
+        # Valid values:
+        # 
+        # *   ARMS
+        # *   ACKEdge
         self.component_type = component_type
 
     def validate(self):
@@ -3600,7 +3645,7 @@ class DescribeClusterResponseBodyNetworks(TeaModel):
         self,
         vpd_id: str = None,
     ):
-        # 集群网段id
+        # The ID of the CIDR block for the cluster.
         self.vpd_id = vpd_id
 
     def validate(self):
@@ -3645,41 +3690,41 @@ class DescribeClusterResponseBody(TeaModel):
         update_time: str = None,
         vpc_id: str = None,
     ):
-        # 集群描述
+        # The cluster description.
         self.cluster_description = cluster_description
-        # 集群id
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # 集群名称
+        # The cluster name.
         self.cluster_name = cluster_name
-        # 集群类型
+        # The cluster type.
         self.cluster_type = cluster_type
-        # 组件信息
+        # The component information.
         self.components = components
-        # 计算网络的IP类型
+        # The IP type of the computing network.
         self.computing_ip_version = computing_ip_version
-        # 创建时间
+        # The creation time.
         self.create_time = create_time
-        # 集群编号
+        # The cluster number.
         self.hpn_zone = hpn_zone
-        # 网络信息
+        # The network information.
         self.networks = networks
-        # 节点数
+        # The number of nodes.
         self.node_count = node_count
-        # 节点组数量
+        # The number of node groups.
         self.node_group_count = node_group_count
-        # 网络接口巨帧
+        # The status of Jumbo Frames for the elastic network interface (ENI).
         self.open_eni_jumbo_frame = open_eni_jumbo_frame
-        # 集群状态
+        # The cluster status.
         self.operating_state = operating_state
-        # 请求id。
+        # The request ID.
         self.request_id = request_id
-        # 资源组id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # 任务id
+        # The job ID.
         self.task_id = task_id
-        # 更新时间
+        # The update time.
         self.update_time = update_time
-        # 专有网络ID
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -4579,6 +4624,7 @@ class DescribeNetTestResultRequest(TeaModel):
         self,
         test_id: str = None,
     ):
+        # The ID of the test task. The unique identifier of a network test task.
         self.test_id = test_id
 
     def validate(self):
@@ -4608,8 +4654,11 @@ class DescribeNetTestResultResponseBodyCommTestHosts(TeaModel):
         resource_id: str = None,
         server_name: str = None,
     ):
+        # The IP address.
         self.ip = ip
+        # The resource ID.
         self.resource_id = resource_id
+        # Service name.
         self.server_name = server_name
 
     def validate(self):
@@ -4648,9 +4697,13 @@ class DescribeNetTestResultResponseBodyCommTest(TeaModel):
         model: str = None,
         type: str = None,
     ):
+        # Number of GPUs
         self.gpunum = gpunum
+        # All hosts infomation
         self.hosts = hosts
+        # The communication library model.
         self.model = model
+        # The CommTest type, which can be ACCL or NCCL.
         self.type = type
 
     def validate(self):
@@ -4701,9 +4754,13 @@ class DescribeNetTestResultResponseBodyDelayTestHosts(TeaModel):
         resource_id: str = None,
         server_name: str = None,
     ):
+        # The bonding of network interface card.
         self.bond = bond
+        # The IP address.
         self.ip = ip
+        # The resource ID.
         self.resource_id = resource_id
+        # Service name.
         self.server_name = server_name
 
     def validate(self):
@@ -4743,6 +4800,7 @@ class DescribeNetTestResultResponseBodyDelayTest(TeaModel):
         self,
         hosts: List[DescribeNetTestResultResponseBodyDelayTestHosts] = None,
     ):
+        # All hosts infomation
         self.hosts = hosts
 
     def validate(self):
@@ -4781,9 +4839,13 @@ class DescribeNetTestResultResponseBodyTrafficTestClients(TeaModel):
         resource_id: str = None,
         server_name: str = None,
     ):
+        # Network interface bond port
         self.bond = bond
+        # IP address.
         self.ip = ip
+        # The resource ID.
         self.resource_id = resource_id
+        # The name of the service.
         self.server_name = server_name
 
     def validate(self):
@@ -4826,9 +4888,13 @@ class DescribeNetTestResultResponseBodyTrafficTestServers(TeaModel):
         resource_id: str = None,
         server_name: str = None,
     ):
+        # Network interface bond port
         self.bond = bond
+        # The IP address.
         self.ip = ip
+        # The resource ID.
         self.resource_id = resource_id
+        # Service name.
         self.server_name = server_name
 
     def validate(self):
@@ -4874,12 +4940,20 @@ class DescribeNetTestResultResponseBodyTrafficTest(TeaModel):
         servers: List[DescribeNetTestResultResponseBodyTrafficTestServers] = None,
         traffic_model: str = None,
     ):
+        # All clients information
         self.clients = clients
+        # Call duration, in seconds.
         self.duration = duration
+        # When the protocol is RDMA, fill in True/False,
+        # when the protocol is TCP, this field is empty.
         self.gdr = gdr
+        # Network protocol, either RDMA or TCP.
         self.protocol = protocol
+        # When the protocol is TCP, fill in the number of concurrent connections; when the protocol is RDMA, fill in the configured QP value.
         self.qp = qp
+        # Servers infomation.
         self.servers = servers
+        # Traffic model, either MTON or Fullmesh.
         self.traffic_model = traffic_model
 
     def validate(self):
@@ -4960,21 +5034,31 @@ class DescribeNetTestResultResponseBody(TeaModel):
         test_id: str = None,
         traffic_test: DescribeNetTestResultResponseBodyTrafficTest = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The cluster name.
         self.cluster_name = cluster_name
+        # Specify when NetTestType is CommTest.
         self.comm_test = comm_test
+        # create time
         self.creation_time = creation_time
+        # Fill in when the network test type is a delay test.
         self.delay_test = delay_test
+        # finish time
         self.finished_time = finished_time
+        # The type of the network test.
         self.net_test_type = net_test_type
+        # Test port number.
         self.port = port
+        # The request ID.
         self.request_id = request_id
+        # result detail
         self.result_detial = result_detial
-        # *\
-        # *\
-        # *\
+        # status of session
         self.status = status
+        # The ID of the test task. The unique identifier of a network test task.
         self.test_id = test_id
+        # Fill in when the network test type is a traffic test.
         self.traffic_test = traffic_test
 
     def validate(self):
@@ -6768,9 +6852,9 @@ class ExtendClusterRequestIpAllocationPolicyBondPolicyBonds(TeaModel):
         name: str = None,
         subnet: str = None,
     ):
-        # The bond name.
+        # Bond name
         self.name = name
-        # The cluster subnet from which the IP address originates.
+        # IP source cluster subnet
         self.subnet = subnet
 
     def validate(self):
@@ -6803,9 +6887,9 @@ class ExtendClusterRequestIpAllocationPolicyBondPolicy(TeaModel):
         bond_default_subnet: str = None,
         bonds: List[ExtendClusterRequestIpAllocationPolicyBondPolicyBonds] = None,
     ):
-        # The default bond subnet for the cluster.
+        # Default bond cluster subnet
         self.bond_default_subnet = bond_default_subnet
-        # The bonds.
+        # Bond information
         self.bonds = bonds
 
     def validate(self):
@@ -6846,9 +6930,9 @@ class ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds(TeaModel):
         name: str = None,
         subnet: str = None,
     ):
-        # The bond name.
+        # Bond name
         self.name = name
-        # The cluster subnet from which the IP address originates.
+        # IP source cluster subnet
         self.subnet = subnet
 
     def validate(self):
@@ -6881,9 +6965,9 @@ class ExtendClusterRequestIpAllocationPolicyMachineTypePolicy(TeaModel):
         bonds: List[ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds] = None,
         machine_type: str = None,
     ):
-        # The bonds.
+        # Bond information
         self.bonds = bonds
-        # The instance type.
+        # Machine type
         self.machine_type = machine_type
 
     def validate(self):
@@ -6924,9 +7008,9 @@ class ExtendClusterRequestIpAllocationPolicyNodePolicyBonds(TeaModel):
         name: str = None,
         subnet: str = None,
     ):
-        # The bond name.
+        # Bond name
         self.name = name
-        # The cluster subnet from which the IP address originates.
+        # IP source cluster subnet
         self.subnet = subnet
 
     def validate(self):
@@ -6960,11 +7044,11 @@ class ExtendClusterRequestIpAllocationPolicyNodePolicy(TeaModel):
         hostname: str = None,
         node_id: str = None,
     ):
-        # The bonds.
+        # Bond information
         self.bonds = bonds
-        # The hostname.
+        # Hostname
         self.hostname = hostname
-        # The node ID.
+        # Node ID
         self.node_id = node_id
 
     def validate(self):
@@ -7010,11 +7094,11 @@ class ExtendClusterRequestIpAllocationPolicy(TeaModel):
         machine_type_policy: List[ExtendClusterRequestIpAllocationPolicyMachineTypePolicy] = None,
         node_policy: List[ExtendClusterRequestIpAllocationPolicyNodePolicy] = None,
     ):
-        # The bond policy that you specify the cluster subnet ID based on the bond name.
+        # Specify the cluster subnet ID based on the bond name
         self.bond_policy = bond_policy
-        # The allocation policies for the instance type.
+        # Machine type allocation policy
         self.machine_type_policy = machine_type_policy
-        # The node allocation policies.
+        # Node allocation policy
         self.node_policy = node_policy
 
     def validate(self):
@@ -7071,9 +7155,9 @@ class ExtendClusterRequestNodeGroupsNodeTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # Node tag key
         self.key = key
-        # The tag value.
+        # Node tag value
         self.value = value
 
     def validate(self):
@@ -7108,9 +7192,13 @@ class ExtendClusterRequestNodeGroupsNodesDataDisk(TeaModel):
         performance_level: str = None,
         size: int = None,
     ):
+        # Type
         self.category = category
+        # Whether the data disk is deleted with the node
         self.delete_with_node = delete_with_node
+        # Data Disk Performance Level
         self.performance_level = performance_level
+        # Disk Size
         self.size = size
 
     def validate(self):
@@ -7155,16 +7243,17 @@ class ExtendClusterRequestNodeGroupsNodes(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # Data Disk Specifications
         self.data_disk = data_disk
-        # The hostname.
+        # Hostname
         self.hostname = hostname
-        # The logon password.
+        # Login Password
         self.login_password = login_password
-        # The node ID.
+        # Node ID
         self.node_id = node_id
-        # The vSwitch ID.
+        # VSwitch ID
         self.v_switch_id = v_switch_id
-        # The ID of the virtual private cloud (VPC).
+        # VPC ID
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -7232,31 +7321,31 @@ class ExtendClusterRequestNodeGroups(TeaModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The number of nodes to be purchased. Valid values: 0 to 500. If you set the value of the Amount parameter to 0, you do not want to purchase nodes and scale out the cluster by using existing nodes. If you set the value of the Amount parameter to a value ranging from 1 to 500, you want to purchase a certain number of nodes for cluster scale-out. Default value: 0.
+        # Number of nodes to purchase. Range: 0~500. If the Amount parameter is set to 0, it means no new nodes will be purchased and existing nodes will be used for scaling. If the Amount parameter is set to 1~500, it means a certain number of nodes will be purchased and used for scaling. Default value: 0
         self.amount = amount
-        # Specifies whether to enable auto-renewal for the purchased nodes. This parameter takes effect only when the Amount parameter is not set to 0 and the ChargeType parameter is set to PrePaid. Valid values: true and false. Default value: False.
+        # Whether to automatically renew the purchased nodes. This parameter takes effect when the Amount parameter is not 0 and the ChargeType is set to PrePaid. Valid values: True (auto-renewal); False (no auto-renewal). Default value: False
         self.auto_renew = auto_renew
-        # The billing method of the node. This parameter does not take effect if you set the Amount parameter to 0. Valid values: PrePaid (subscription) and PostPaid (pay-as-you-go). Default value: PrePaid.
+        # Payment method for the nodes. When the Amount parameter is set to 0, this parameter does not take effect. Valid values: PrePaid (Subscription); PostPaid (Pay-As-You-Go). Default value: PrePaid.
         self.charge_type = charge_type
-        # The hostname for the purchased node. This parameter does not take effect if you set the Amount parameter to 0.
+        # Set the hostnames for the purchased nodes. This parameter does not take effect when the Amount parameter is set to 0.
         self.hostnames = hostnames
-        # The logon password of the purchased node. This parameter does not take effect if you set the Amount parameter to 0.
+        # Set the login password for the purchased nodes. This parameter is not effective when the Amount parameter is set to 0.
         self.login_password = login_password
-        # The node group ID.
+        # Node Group ID
         self.node_group_id = node_group_id
-        # The tags.
+        # Node tags
         self.node_tag = node_tag
-        # The nodes.
+        # List of Nodes
         self.nodes = nodes
-        # The duration of the purchased node. Unit: months. Valid values: 1, 6, 12, 24, 36, and 48. This parameter takes effect only when the Amount parameter is not set to 0 and the ChargeType parameter is set to PrePaid.
+        # Duration of the node purchase (in months). Valid values: 1, 6, 12, 24, 36, 48. This parameter takes effect when the Amount parameter is not 0 and the ChargeType is set to PrePaid.
         self.period = period
-        # The user data.
+        # Custom Data
         self.user_data = user_data
-        # The vSwitch ID.
+        # VSwitch ID
         self.v_switch_id = v_switch_id
-        # The ID of the virtual private cloud (VPC).
+        # VPC ID
         self.vpc_id = vpc_id
-        # The zone ID.
+        # Zone ID
         self.zone_id = zone_id
 
     def validate(self):
@@ -7354,17 +7443,17 @@ class ExtendClusterRequest(TeaModel):
         v_switch_zone_id: str = None,
         vpd_subnets: List[str] = None,
     ):
-        # The cluster ID.
+        # Cluster ID
         self.cluster_id = cluster_id
-        # Specifies whether to allow skipping failed nodes. Default value: False.
+        # Whether to allow skipping failed node tasks, default value is False
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
-        # The combined policies for assigning IP addresses: Only one policy type can be selected for each policy, and multiple policies can be combined.
+        # IP allocation combination policy: Each policy can only choose one type, and multiple policies can be combined
         self.ip_allocation_policy = ip_allocation_policy
-        # The node groups.
+        # Node Groups
         self.node_groups = node_groups
-        # The ID of the zone to which the vSwitch belongs.
+        # VSwitch availability zone ID
         self.v_switch_zone_id = v_switch_zone_id
-        # The subnets of the cluster.
+        # List of cluster subnets
         self.vpd_subnets = vpd_subnets
 
     def validate(self):
@@ -7434,17 +7523,17 @@ class ExtendClusterShrinkRequest(TeaModel):
         v_switch_zone_id: str = None,
         vpd_subnets_shrink: str = None,
     ):
-        # The cluster ID.
+        # Cluster ID
         self.cluster_id = cluster_id
-        # Specifies whether to allow skipping failed nodes. Default value: False.
+        # Whether to allow skipping failed node tasks, default value is False
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
-        # The combined policies for assigning IP addresses: Only one policy type can be selected for each policy, and multiple policies can be combined.
+        # IP allocation combination policy: Each policy can only choose one type, and multiple policies can be combined
         self.ip_allocation_policy_shrink = ip_allocation_policy_shrink
-        # The node groups.
+        # Node Groups
         self.node_groups_shrink = node_groups_shrink
-        # The ID of the zone to which the vSwitch belongs.
+        # VSwitch availability zone ID
         self.v_switch_zone_id = v_switch_zone_id
-        # The subnets of the cluster.
+        # List of cluster subnets
         self.vpd_subnets_shrink = vpd_subnets_shrink
 
     def validate(self):
@@ -7493,9 +7582,9 @@ class ExtendClusterResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # The request ID.
+        # Request ID
         self.request_id = request_id
-        # The job ID.
+        # Task ID
         self.task_id = task_id
 
     def validate(self):
@@ -8420,11 +8509,18 @@ class ListDiagnosticResultsRequest(TeaModel):
         next_token: str = None,
         resource_group_id: str = None,
     ):
+        # Type of diagnosis, indicating which diagnostic rules are hit.
         self.diag_type = diag_type
-        # *\
-        # *\
+        # Number of items per page in a paginated query. The maximum value is 100.
+        # 
+        # Default value:
+        # 
+        # - If no value is set or the set value is less than 20, the default value is 20.
+        # - If the set value is greater than 100, the default value is 100.
         self.max_results = max_results
+        # NextToken for the next page. Include this value when requesting the next page.
         self.next_token = next_token
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -8473,15 +8569,28 @@ class ListDiagnosticResultsResponseBodyDiagnosticResults(TeaModel):
         server_name: str = None,
         status: str = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # Cluster Name
         self.cluster_name = cluster_name
+        # Creation time of the diagnostic task.
         self.creation_time = creation_time
+        # Diagnostic content. For example, in network diagnostics, there are static configuration checks, dynamic operation checks, and other diagnostic contents.
         self.diag_content = diag_content
+        # Diagnosis ID
         self.diag_id = diag_id
+        # Diagnostic result, either success or failure.
         self.diag_result = diag_result
+        # Completion time of the diagnostic task.
         self.finished_time = finished_time
+        # The resource ID.
         self.resource_id = resource_id
+        # Server name.
         self.server_name = server_name
+        # Status of the diagnostic task. Possible values:
+        # - InProgress: Diagnosing.
+        # - Finished: Diagnosis completed.
+        # - Failed: Diagnosis failed.
         self.status = status
 
     def validate(self):
@@ -8548,11 +8657,18 @@ class ListDiagnosticResultsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The diagnostic information.
         self.diagnostic_results = diagnostic_results
-        # *\
-        # *\
+        # Number of items per page in a paginated query. The maximum value is 100.
+        # 
+        # Default value:
+        # 
+        # - If no value is set or the set value is less than 20, the default value is 20.
+        # - If the set value is greater than 100, the default value is 100.
         self.max_results = max_results
+        # NextToken for the next page. Include this value when requesting the next page.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9212,8 +9328,11 @@ class ListMachineNetworkInfoRequestMachineHpnInfo(TeaModel):
         machine_type: str = None,
         region_id: str = None,
     ):
+        # hpn zone infomation
         self.hpn_zone = hpn_zone
+        # The type of machine.
         self.machine_type = machine_type
+        # The ID of the region in which the application is located.
         self.region_id = region_id
 
     def validate(self):
@@ -9249,6 +9368,7 @@ class ListMachineNetworkInfoRequest(TeaModel):
         self,
         machine_hpn_info: List[ListMachineNetworkInfoRequestMachineHpnInfo] = None,
     ):
+        # hpn information of machine
         self.machine_hpn_info = machine_hpn_info
 
     def validate(self):
@@ -9284,6 +9404,7 @@ class ListMachineNetworkInfoShrinkRequest(TeaModel):
         self,
         machine_hpn_info_shrink: str = None,
     ):
+        # hpn information of machine
         self.machine_hpn_info_shrink = machine_hpn_info_shrink
 
     def validate(self):
@@ -9317,12 +9438,28 @@ class ListMachineNetworkInfoResponseBodyMachineNetworkInfo(TeaModel):
         net_arch: str = None,
         region_id: str = None,
     ):
+        # Network of cluster
         self.cluster_net = cluster_net
+        # Specifies whether to enable the Jumbo Frames feature for the instance. Valid values:
+        # 
+        # *   true: The Jumbo Frame feature is enabled for the instance.
+        # *   false: The Jumbo Frame feature is disabled for the instance.
+        # 
+        # Take note of the following items:
+        # 
+        # *   The instance must be in the Running (`Running`) or Stopped (`Stopped`) state.
+        # *   The instance must reside in a VPC.
+        # *   After the Jumbo Frames feature is enabled, the MTU value of the instance is set to 8500. After the Jumbo Frames feature is disabled, the MTU value of the instance is set to 1500. You can enable the Jumbo Frames feature only for specific instance types. For more information, see [Jumbo Frames](https://help.aliyun.com/document_detail/200512.html).
         self.enable_jumbo_frame = enable_jumbo_frame
+        # HPN zone
         self.hpn_zone = hpn_zone
+        # Specifies whether dpu machine.
         self.is_dpu_mode = is_dpu_mode
+        # The type of machine.
         self.machine_type = machine_type
+        # Network architecture
         self.net_arch = net_arch
+        # The ID of the region in which the application is located.
         self.region_id = region_id
 
     def validate(self):
@@ -9375,6 +9512,7 @@ class ListMachineNetworkInfoResponseBody(TeaModel):
         machine_network_info: List[ListMachineNetworkInfoResponseBodyMachineNetworkInfo] = None,
         request_id: str = None,
     ):
+        # machine network infomation
         self.machine_network_info = machine_network_info
         # Id of the request
         self.request_id = request_id
@@ -10374,6 +10512,7 @@ class ListNodeGroupsResponseBodyGroups(TeaModel):
         machine_type: str = None,
         node_count: int = None,
         update_time: str = None,
+        virtual_gpu_enabled: bool = None,
         zone_id: str = None,
     ):
         # The cluster ID.
@@ -10400,6 +10539,8 @@ class ListNodeGroupsResponseBodyGroups(TeaModel):
         self.node_count = node_count
         # The update time.
         self.update_time = update_time
+        # Whether to enable gpu virtualization or not
+        self.virtual_gpu_enabled = virtual_gpu_enabled
         # The zone ID.
         self.zone_id = zone_id
 
@@ -10436,6 +10577,8 @@ class ListNodeGroupsResponseBodyGroups(TeaModel):
             result['NodeCount'] = self.node_count
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
+        if self.virtual_gpu_enabled is not None:
+            result['VirtualGpuEnabled'] = self.virtual_gpu_enabled
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
         return result
@@ -10466,6 +10609,8 @@ class ListNodeGroupsResponseBodyGroups(TeaModel):
             self.node_count = m.get('NodeCount')
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
+        if m.get('VirtualGpuEnabled') is not None:
+            self.virtual_gpu_enabled = m.get('VirtualGpuEnabled')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
         return self
@@ -10853,7 +10998,9 @@ class ListUserClusterTypesResponseBodyClusterTypes(TeaModel):
         access_type: str = None,
         type_name: str = None,
     ):
+        # The access type of cluster type
         self.access_type = access_type
+        # The name of cluster type
         self.type_name = type_name
 
     def validate(self):
@@ -10887,7 +11034,9 @@ class ListUserClusterTypesResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The list of cluster types. Number of elements in the array: 1 to 100.
         self.cluster_types = cluster_types
+        # NextToken for the next page. Include this value when requesting the next page.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
@@ -13427,19 +13576,19 @@ class UpdateNodeGroupRequest(TeaModel):
         node_group_id: str = None,
         user_data: str = None,
     ):
-        # Whether file storage mounting is supported.
+        # Whether file storage mounting is supported
         self.file_system_mount_enabled = file_system_mount_enabled
-        # The default image ID of the node group. if you do not set this parameter, the image ID will not change.
+        # The default image ID of the node group. If not set, it will not change.
         self.image_id = image_id
-        # The name of the key pair.
+        # Key pair name.
         self.key_pair_name = key_pair_name
-        # 节点组内机器的登录密码
+        # Login password for machines within the node group
         self.login_password = login_password
-        # The node group name
+        # Node group name
         self.new_node_group_name = new_node_group_name
-        # The node group ID.
+        # Node group ID
         self.node_group_id = node_group_id
-        # The custom script.
+        # User-defined script
         self.user_data = user_data
 
     def validate(self):
@@ -13492,9 +13641,9 @@ class UpdateNodeGroupResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # Id of the request
+        # Request ID
         self.request_id = request_id
-        # The task ID.
+        # Task ID
         self.task_id = task_id
 
     def validate(self):
