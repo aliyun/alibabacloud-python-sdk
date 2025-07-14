@@ -1,3 +1,7 @@
+2025-07-14 Version: 7.0.14
+- Update API DescribeInstances: add response parameters Body.Instances.$.ClockOptions.
+
+
 2025-07-08 Version: 7.0.13
 - Update API DescribeDedicatedHosts: add request parameters QueryInventory.
 - Update API DescribeDedicatedHosts: add response parameters Body.DedicatedHosts.$.Capacity.AvailableInstanceTypes.
