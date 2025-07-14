@@ -12,9 +12,9 @@ class AddClientIdToOIDCProviderRequest(TeaModel):
     ):
         # The client ID that you want to add.
         # 
-        # The client ID can contain letters, digits, and special characters and cannot start with the special characters. The special characters are periods (.), hyphens (-), underscores (_), colons (:), and forward slashes (/). 
+        # The client ID can contain letters, digits, and special characters and cannot start with the special characters. The special characters are `periods, (.), hyphens (-), underscores (_), colons (:), and forward slashes (/)`.``
         # 
-        # The client ID can be up to 64 characters in length.
+        # The client ID can be up to 128 characters in length.
         self.client_id = client_id
         # The name of the OIDC IdP.
         self.oidcprovider_name = oidcprovider_name
@@ -225,11 +225,11 @@ class AddFingerprintToOIDCProviderRequest(TeaModel):
         fingerprint: str = None,
         oidcprovider_name: str = None,
     ):
-        # The fingerprint of the HTTPS certificate.
+        # The fingerprint of the HTTPS CA certificate.
         # 
         # The fingerprint can contain letters and digits.
         # 
-        # The fingerprint can be up to 40 characters in length.
+        # The fingerprint can be up to 128 characters in length.
         self.fingerprint = fingerprint
         # The name of the OIDC IdP.
         self.oidcprovider_name = oidcprovider_name
@@ -1964,21 +1964,21 @@ class CreateOIDCProviderRequest(TeaModel):
         issuer_url: str = None,
         oidcprovider_name: str = None,
     ):
-        # The ID of the client, which is provided by the external IdP Okta. If you want to specify multiple client IDs, separate the client IDs with commas (,).
+        # The ID of the client, which is provided by the external IdP. If you want to specify multiple client IDs, separate the client IDs with commas (,).
         # 
-        # The client ID can contain letters, digits, and special characters and cannot start with the special characters. The special characters are `periods, (.), hyphens (-), underscores (_), colons (:), and forward slashes (/)`.``
+        # The client ID can contain letters, digits, and special characters and cannot start with the special characters. The special characters are `periods (.), hyphens (-), underscores (_), colons (:), and forward slashes (/)`.``
         # 
-        # The client ID can be up to 64 characters in length.
+        # The client ID can be up to 128 characters in length.
         self.client_ids = client_ids
         # The description of the OIDC IdP.
         # 
         # The description can be up to 256 characters in length.
         self.description = description
-        # The fingerprint of the HTTPS certificate, which is provided by the external IdP Okta. If you want to specify multiple fingerprints, separate the fingerprints with commas (,).
+        # The fingerprint of the HTTPS CA certificate, which is provided by the external IdP. If you want to specify multiple fingerprints, separate the fingerprints with commas (,).
         # 
         # The fingerprint can contain letters and digits.
         # 
-        # The fingerprint can be up to 40 characters in length.
+        # The fingerprint can be up to 128 characters in length.
         self.fingerprints = fingerprints
         # The earliest time when an external IdP can issue an ID token. If the value of the iat field in the ID token is later than the current time, the request is rejected. Unit: hours. Valid values: 1 to 168.
         self.issuance_limit_time = issuance_limit_time
@@ -5267,7 +5267,7 @@ class GetAccountSummaryResponseBodySummaryMap(TeaModel):
         self.attached_system_policies_per_role_quota = attached_system_policies_per_role_quota
         # The maximum number of system policies that can be added to a RAM user.
         self.attached_system_policies_per_user_quota = attached_system_policies_per_user_quota
-        # The number of network access control policies that can be configured for an account or AccessKey pair.
+        # The maximum number of network access control policies that can be configured for an Alibaba Cloud account or AccessKey pair.
         self.conditions_per_akpolicy_quota = conditions_per_akpolicy_quota
         # The number of RAM user groups.
         self.groups = groups
@@ -5275,7 +5275,7 @@ class GetAccountSummaryResponseBodySummaryMap(TeaModel):
         self.groups_per_user_quota = groups_per_user_quota
         # The maximum number of RAM user groups that can be created.
         self.groups_quota = groups_quota
-        # The total number of IP addresses that can be configured in a network access control policy of an account or AccessKey pair.
+        # The maximum number of IP addresses that can be specified in an account-level AccessKey pair-based or AccessKey pair-level policy for network access control.
         self.ipitems_per_akpolicy_quota = ipitems_per_akpolicy_quota
         # The number of virtual multi-factor authentication (MFA) devices.
         self.mfadevices = mfadevices
@@ -8702,6 +8702,7 @@ class GetUserResponseBodyUser(TeaModel):
         self.update_date = update_date
         # The ID of the RAM user.
         self.user_id = user_id
+        # The username of the RAM user, which is the prefix of the logon name of the RAM user.
         self.user_name = user_name
         # The logon name of the RAM user.
         self.user_principal_name = user_principal_name
@@ -9641,7 +9642,7 @@ class ListAccessKeysResponseBody(TeaModel):
         access_keys: ListAccessKeysResponseBodyAccessKeys = None,
         request_id: str = None,
     ):
-        # The information about the AccessKey pairs.
+        # The AccessKey pairs.
         self.access_keys = access_keys
         # The request ID.
         self.request_id = request_id
@@ -14239,7 +14240,7 @@ class ProvisionApplicationRequest(TeaModel):
         self.app_id = app_id
         # The permissions that are granted to the application. Separate multiple permissions with a semicolon (;).
         # 
-        # >  For more information about the supported permissions, see [Overview](https://help.aliyun.com/zh/ram/user-guide/overview-of-oauth-applications).
+        # >  For more information about the supported permissions, see [Overview](https://help.aliyun.com/document_detail/93693.html).
         self.scopes = scopes
 
     def validate(self):
@@ -14540,9 +14541,9 @@ class ProvisionExternalApplicationRequest(TeaModel):
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The information about the scope of permissions granted to the application. You can enter multiple scopes and separate them with semicolons (;).
+        # The permissions that are granted to the application. Separate multiple permissions with a semicolon (;).
         # 
-        # >  For more information about the supported permission scopes, see the "OAuth scope" section in the [Overview](https://help.aliyun.com/zh/ram/user-guide/overview-of-oauth-applications) topic.
+        # >  For more information about the supported permissions, see [Overview](https://help.aliyun.com/document_detail/93693.html).
         self.scopes = scopes
 
     def validate(self):
@@ -14829,7 +14830,7 @@ class RemoveClientIdFromOIDCProviderRequest(TeaModel):
         # 
         # The client ID can contain letters, digits, and special characters and cannot start with the special characters. The special characters are `periods, (.), hyphens (-), underscores (_), colons (:), and forward slashes (/)`.``
         # 
-        # The client ID can be up to 64 characters in length.
+        # The client ID can be up to 128 characters in length.
         self.client_id = client_id
         # The name of the OIDC IdP.
         self.oidcprovider_name = oidcprovider_name
@@ -15994,11 +15995,10 @@ class SetSecurityPreferenceRequest(TeaModel):
         # *   true (default)
         # *   false
         self.allow_user_to_change_password = allow_user_to_change_password
-        # Allow direct login using passkey.
+        # Specifies whether a RAM user can use a passkey for logon. Valid values:
         # 
-        # - true
-        # 
-        # - false
+        # *   true: A RAM user can use a passkey for logon. This is the default value.
+        # *   false: A RAM user cannot use a passkey for logon.
         self.allow_user_to_login_with_passkey = allow_user_to_login_with_passkey
         # Specifies whether RAM users can manage their AccessKey pairs. Valid values:
         # 
@@ -16129,11 +16129,10 @@ class SetSecurityPreferenceShrinkRequest(TeaModel):
         # *   true (default)
         # *   false
         self.allow_user_to_change_password = allow_user_to_change_password
-        # Allow direct login using passkey.
+        # Specifies whether a RAM user can use a passkey for logon. Valid values:
         # 
-        # - true
-        # 
-        # - false
+        # *   true: A RAM user can use a passkey for logon. This is the default value.
+        # *   false: A RAM user cannot use a passkey for logon.
         self.allow_user_to_login_with_passkey = allow_user_to_login_with_passkey
         # Specifies whether RAM users can manage their AccessKey pairs. Valid values:
         # 
@@ -16285,11 +16284,7 @@ class SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference(
     ):
         # Indicates whether RAM users can change their passwords.
         self.allow_user_to_change_password = allow_user_to_change_password
-        # Allow direct login using passkey.
-        # 
-        # - true
-        # 
-        # - false
+        # Indicates whether a RAM user can use a passkey for logon.
         self.allow_user_to_login_with_passkey = allow_user_to_login_with_passkey
         # Indicates whether RAM users can remember the MFA devices for seven days.
         self.enable_save_mfaticket = enable_save_mfaticket
@@ -18508,11 +18503,11 @@ class UpdateOIDCProviderRequest(TeaModel):
     ):
         # The ID of the client. If you want to specify multiple client IDs, separate the client IDs with commas (,).
         # 
-        # The client ID can contain letters, digits, and special characters and cannot start with the special characters. The special characters are `periods, (.), hyphens (-), underscores (_), colons (:), and forward slashes (/)`.``
+        # A client ID can contain letters, digits, and special characters and cannot start with the special characters. The special characters are `periods (.), hyphens (-), underscores (_), colons (:), and forward slashes (/)`.``
         # 
-        # The client ID can be up to 64 characters in length.
+        # A client ID can be up to 128 characters in length.
         # 
-        # > If you specify this parameter, all the client IDs of the OIDC IdP are replaced. If you need to only add or remove a client ID, call the AddClientIdToOIDCProvider or RemoveClientIdFromOIDCProvider operation. For more information, see [AddClientIdToOIDCProvider](https://help.aliyun.com/document_detail/332057.html) or [RemoveClientIdFromOIDCProvider](https://help.aliyun.com/document_detail/332058.html).
+        # >  If you specify this parameter, all the client IDs of the OIDC IdP are replaced. If you need to only add or remove a client ID, call the AddClientIdToOIDCProvider or RemoveClientIdFromOIDCProvider operation. For more information, see [AddClientIdToOIDCProvider](https://help.aliyun.com/document_detail/332057.html) or [RemoveClientIdFromOIDCProvider](https://help.aliyun.com/document_detail/332058.html).
         self.client_ids = client_ids
         # The earliest time when an external IdP can issue an ID token. If the value of the iat field in the ID token is later than the current time, the request is rejected. Unit: hours. Valid values: 1 to 168.
         self.issuance_limit_time = issuance_limit_time
