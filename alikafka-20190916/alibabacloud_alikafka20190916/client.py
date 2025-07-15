@@ -3645,6 +3645,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_quota_tip_with_options_async(request, runtime)
 
+    def get_risk_list_with_options(
+        self,
+        request: alikafka_20190916_models.GetRiskListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.GetRiskListResponse:
+        """
+        @summary 查询实例风险列表
+        
+        @param request: GetRiskListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRiskListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_index):
+            query['StartIndex'] = request.start_index
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRiskList',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetRiskListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_risk_list_with_options_async(
+        self,
+        request: alikafka_20190916_models.GetRiskListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.GetRiskListResponse:
+        """
+        @summary 查询实例风险列表
+        
+        @param request: GetRiskListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRiskListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_index):
+            query['StartIndex'] = request.start_index
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRiskList',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetRiskListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_risk_list(
+        self,
+        request: alikafka_20190916_models.GetRiskListRequest,
+    ) -> alikafka_20190916_models.GetRiskListResponse:
+        """
+        @summary 查询实例风险列表
+        
+        @param request: GetRiskListRequest
+        @return: GetRiskListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_risk_list_with_options(request, runtime)
+
+    async def get_risk_list_async(
+        self,
+        request: alikafka_20190916_models.GetRiskListRequest,
+    ) -> alikafka_20190916_models.GetRiskListResponse:
+        """
+        @summary 查询实例风险列表
+        
+        @param request: GetRiskListRequest
+        @return: GetRiskListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_risk_list_with_options_async(request, runtime)
+
     def get_topic_list_with_options(
         self,
         request: alikafka_20190916_models.GetTopicListRequest,
