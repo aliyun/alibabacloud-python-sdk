@@ -6216,6 +6216,7 @@ class GetApplicationGroupResponseBodyApplicationGroup(TeaModel):
         deploy_outputs: str = None,
         deploy_parameters: str = None,
         deploy_region_id: str = None,
+        deployed_revision_ids: str = None,
         description: str = None,
         error_detail: str = None,
         error_type: str = None,
@@ -6242,6 +6243,7 @@ class GetApplicationGroupResponseBodyApplicationGroup(TeaModel):
         self.deploy_parameters = deploy_parameters
         # The ID of the region in which you deploy the application group.
         self.deploy_region_id = deploy_region_id
+        self.deployed_revision_ids = deployed_revision_ids
         # The description of the application group.
         self.description = description
         self.error_detail = error_detail
@@ -6286,6 +6288,8 @@ class GetApplicationGroupResponseBodyApplicationGroup(TeaModel):
             result['DeployParameters'] = self.deploy_parameters
         if self.deploy_region_id is not None:
             result['DeployRegionId'] = self.deploy_region_id
+        if self.deployed_revision_ids is not None:
+            result['DeployedRevisionIds'] = self.deployed_revision_ids
         if self.description is not None:
             result['Description'] = self.description
         if self.error_detail is not None:
@@ -6326,6 +6330,8 @@ class GetApplicationGroupResponseBodyApplicationGroup(TeaModel):
             self.deploy_parameters = m.get('DeployParameters')
         if m.get('DeployRegionId') is not None:
             self.deploy_region_id = m.get('DeployRegionId')
+        if m.get('DeployedRevisionIds') is not None:
+            self.deployed_revision_ids = m.get('DeployedRevisionIds')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('ErrorDetail') is not None:
@@ -9949,6 +9955,7 @@ class ListApplicationGroupsResponseBodyApplicationGroups(TeaModel):
         create_date: str = None,
         deploy_parameters: str = None,
         deploy_region_id: str = None,
+        deployed_revision_ids: str = None,
         description: str = None,
         error_detail: str = None,
         error_type: str = None,
@@ -9969,6 +9976,7 @@ class ListApplicationGroupsResponseBodyApplicationGroups(TeaModel):
         self.deploy_parameters = deploy_parameters
         # The ID of the region in which the related resources reside.
         self.deploy_region_id = deploy_region_id
+        self.deployed_revision_ids = deployed_revision_ids
         # The description of the application group.
         self.description = description
         self.error_detail = error_detail
@@ -10005,6 +10013,8 @@ class ListApplicationGroupsResponseBodyApplicationGroups(TeaModel):
             result['DeployParameters'] = self.deploy_parameters
         if self.deploy_region_id is not None:
             result['DeployRegionId'] = self.deploy_region_id
+        if self.deployed_revision_ids is not None:
+            result['DeployedRevisionIds'] = self.deployed_revision_ids
         if self.description is not None:
             result['Description'] = self.description
         if self.error_detail is not None:
@@ -10037,6 +10047,8 @@ class ListApplicationGroupsResponseBodyApplicationGroups(TeaModel):
             self.deploy_parameters = m.get('DeployParameters')
         if m.get('DeployRegionId') is not None:
             self.deploy_region_id = m.get('DeployRegionId')
+        if m.get('DeployedRevisionIds') is not None:
+            self.deployed_revision_ids = m.get('DeployedRevisionIds')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('ErrorDetail') is not None:
@@ -19658,6 +19670,7 @@ class UpdateApplicationGroupRequest(TeaModel):
     def __init__(
         self,
         application_name: str = None,
+        deployed_revision_id: str = None,
         name: str = None,
         new_name: str = None,
         operation_name: str = None,
@@ -19668,6 +19681,7 @@ class UpdateApplicationGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.application_name = application_name
+        self.deployed_revision_id = deployed_revision_id
         # The name of the application group.
         # 
         # This parameter is required.
@@ -19692,6 +19706,8 @@ class UpdateApplicationGroupRequest(TeaModel):
         result = dict()
         if self.application_name is not None:
             result['ApplicationName'] = self.application_name
+        if self.deployed_revision_id is not None:
+            result['DeployedRevisionId'] = self.deployed_revision_id
         if self.name is not None:
             result['Name'] = self.name
         if self.new_name is not None:
@@ -19708,6 +19724,8 @@ class UpdateApplicationGroupRequest(TeaModel):
         m = m or dict()
         if m.get('ApplicationName') is not None:
             self.application_name = m.get('ApplicationName')
+        if m.get('DeployedRevisionId') is not None:
+            self.deployed_revision_id = m.get('DeployedRevisionId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('NewName') is not None:
@@ -19725,6 +19743,7 @@ class UpdateApplicationGroupShrinkRequest(TeaModel):
     def __init__(
         self,
         application_name: str = None,
+        deployed_revision_id: str = None,
         name: str = None,
         new_name: str = None,
         operation_name: str = None,
@@ -19735,6 +19754,7 @@ class UpdateApplicationGroupShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.application_name = application_name
+        self.deployed_revision_id = deployed_revision_id
         # The name of the application group.
         # 
         # This parameter is required.
@@ -19759,6 +19779,8 @@ class UpdateApplicationGroupShrinkRequest(TeaModel):
         result = dict()
         if self.application_name is not None:
             result['ApplicationName'] = self.application_name
+        if self.deployed_revision_id is not None:
+            result['DeployedRevisionId'] = self.deployed_revision_id
         if self.name is not None:
             result['Name'] = self.name
         if self.new_name is not None:
@@ -19775,6 +19797,8 @@ class UpdateApplicationGroupShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('ApplicationName') is not None:
             self.application_name = m.get('ApplicationName')
+        if m.get('DeployedRevisionId') is not None:
+            self.deployed_revision_id = m.get('DeployedRevisionId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('NewName') is not None:

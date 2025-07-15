@@ -8981,6 +8981,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.application_name):
             query['ApplicationName'] = request.application_name
+        if not UtilClient.is_unset(request.deployed_revision_id):
+            query['DeployedRevisionId'] = request.deployed_revision_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.new_name):
@@ -9030,6 +9032,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.application_name):
             query['ApplicationName'] = request.application_name
+        if not UtilClient.is_unset(request.deployed_revision_id):
+            query['DeployedRevisionId'] = request.deployed_revision_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.new_name):

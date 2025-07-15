@@ -1,3 +1,9 @@
+2025-07-15 Version: 3.4.4
+- Update API GetApplicationGroup: add response parameters Body.ApplicationGroup.DeployedRevisionIds.
+- Update API ListApplicationGroups: add response parameters Body.ApplicationGroups.$.DeployedRevisionIds.
+- Update API UpdateApplicationGroup: add request parameters DeployedRevisionId.
+
+
 2025-06-12 Version: 3.4.3
 - Update API GetApplicationGroup: add response parameters Body.ApplicationGroup.ErrorDetail.
 - Update API GetApplicationGroup: add response parameters Body.ApplicationGroup.ErrorType.
