@@ -28995,6 +28995,7 @@ class ListCallDetailRecordsV2ResponseBodyDataList(TeaModel):
         off_site_agent_ids: str = None,
         offsite_agent_destination_numbers: str = None,
         offsite_agent_originator_numbers: str = None,
+        offsite_agent_release_reason: str = None,
         outside_number_release_reason: str = None,
         queue_time: int = None,
         recording_duration: int = None,
@@ -29013,6 +29014,8 @@ class ListCallDetailRecordsV2ResponseBodyDataList(TeaModel):
         summary_index: ListCallDetailRecordsV2ResponseBodyDataListSummaryIndex = None,
         talk_time: int = None,
         transfer_count: int = None,
+        voicebot_destination_number: str = None,
+        voicebot_originator_number: str = None,
         wait_time: int = None,
     ):
         self.access_channel_name = access_channel_name
@@ -29053,6 +29056,7 @@ class ListCallDetailRecordsV2ResponseBodyDataList(TeaModel):
         self.off_site_agent_ids = off_site_agent_ids
         self.offsite_agent_destination_numbers = offsite_agent_destination_numbers
         self.offsite_agent_originator_numbers = offsite_agent_originator_numbers
+        self.offsite_agent_release_reason = offsite_agent_release_reason
         self.outside_number_release_reason = outside_number_release_reason
         self.queue_time = queue_time
         self.recording_duration = recording_duration
@@ -29071,6 +29075,8 @@ class ListCallDetailRecordsV2ResponseBodyDataList(TeaModel):
         self.summary_index = summary_index
         self.talk_time = talk_time
         self.transfer_count = transfer_count
+        self.voicebot_destination_number = voicebot_destination_number
+        self.voicebot_originator_number = voicebot_originator_number
         self.wait_time = wait_time
 
     def validate(self):
@@ -29161,6 +29167,8 @@ class ListCallDetailRecordsV2ResponseBodyDataList(TeaModel):
             result['OffsiteAgentDestinationNumbers'] = self.offsite_agent_destination_numbers
         if self.offsite_agent_originator_numbers is not None:
             result['OffsiteAgentOriginatorNumbers'] = self.offsite_agent_originator_numbers
+        if self.offsite_agent_release_reason is not None:
+            result['OffsiteAgentReleaseReason'] = self.offsite_agent_release_reason
         if self.outside_number_release_reason is not None:
             result['OutsideNumberReleaseReason'] = self.outside_number_release_reason
         if self.queue_time is not None:
@@ -29197,6 +29205,10 @@ class ListCallDetailRecordsV2ResponseBodyDataList(TeaModel):
             result['TalkTime'] = self.talk_time
         if self.transfer_count is not None:
             result['TransferCount'] = self.transfer_count
+        if self.voicebot_destination_number is not None:
+            result['VoicebotDestinationNumber'] = self.voicebot_destination_number
+        if self.voicebot_originator_number is not None:
+            result['VoicebotOriginatorNumber'] = self.voicebot_originator_number
         if self.wait_time is not None:
             result['WaitTime'] = self.wait_time
         return result
@@ -29280,6 +29292,8 @@ class ListCallDetailRecordsV2ResponseBodyDataList(TeaModel):
             self.offsite_agent_destination_numbers = m.get('OffsiteAgentDestinationNumbers')
         if m.get('OffsiteAgentOriginatorNumbers') is not None:
             self.offsite_agent_originator_numbers = m.get('OffsiteAgentOriginatorNumbers')
+        if m.get('OffsiteAgentReleaseReason') is not None:
+            self.offsite_agent_release_reason = m.get('OffsiteAgentReleaseReason')
         if m.get('OutsideNumberReleaseReason') is not None:
             self.outside_number_release_reason = m.get('OutsideNumberReleaseReason')
         if m.get('QueueTime') is not None:
@@ -29317,6 +29331,10 @@ class ListCallDetailRecordsV2ResponseBodyDataList(TeaModel):
             self.talk_time = m.get('TalkTime')
         if m.get('TransferCount') is not None:
             self.transfer_count = m.get('TransferCount')
+        if m.get('VoicebotDestinationNumber') is not None:
+            self.voicebot_destination_number = m.get('VoicebotDestinationNumber')
+        if m.get('VoicebotOriginatorNumber') is not None:
+            self.voicebot_originator_number = m.get('VoicebotOriginatorNumber')
         if m.get('WaitTime') is not None:
             self.wait_time = m.get('WaitTime')
         return self
@@ -44366,6 +44384,8 @@ class ListOutboundNumbersOfUserResponseBodyDataList(TeaModel):
         provider: str = None,
         provider_code: str = None,
         provider_display_name: str = None,
+        provider_short_name: str = None,
+        provider_type: str = None,
         province: str = None,
     ):
         self.city = city
@@ -44373,6 +44393,8 @@ class ListOutboundNumbersOfUserResponseBodyDataList(TeaModel):
         self.provider = provider
         self.provider_code = provider_code
         self.provider_display_name = provider_display_name
+        self.provider_short_name = provider_short_name
+        self.provider_type = provider_type
         self.province = province
 
     def validate(self):
@@ -44394,6 +44416,10 @@ class ListOutboundNumbersOfUserResponseBodyDataList(TeaModel):
             result['ProviderCode'] = self.provider_code
         if self.provider_display_name is not None:
             result['ProviderDisplayName'] = self.provider_display_name
+        if self.provider_short_name is not None:
+            result['ProviderShortName'] = self.provider_short_name
+        if self.provider_type is not None:
+            result['ProviderType'] = self.provider_type
         if self.province is not None:
             result['Province'] = self.province
         return result
@@ -44410,6 +44436,10 @@ class ListOutboundNumbersOfUserResponseBodyDataList(TeaModel):
             self.provider_code = m.get('ProviderCode')
         if m.get('ProviderDisplayName') is not None:
             self.provider_display_name = m.get('ProviderDisplayName')
+        if m.get('ProviderShortName') is not None:
+            self.provider_short_name = m.get('ProviderShortName')
+        if m.get('ProviderType') is not None:
+            self.provider_type = m.get('ProviderType')
         if m.get('Province') is not None:
             self.province = m.get('Province')
         return self

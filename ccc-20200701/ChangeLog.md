@@ -1,3 +1,11 @@
+2025-07-15 Version: 2.29.8
+- Update API ListCallDetailRecordsV2: add response parameters Body.Data.List.$.OffsiteAgentReleaseReason.
+- Update API ListCallDetailRecordsV2: add response parameters Body.Data.List.$.VoicebotDestinationNumber.
+- Update API ListCallDetailRecordsV2: add response parameters Body.Data.List.$.VoicebotOriginatorNumber.
+- Update API ListOutboundNumbersOfUser: add response parameters Body.Data.List.$.ProviderShortName.
+- Update API ListOutboundNumbersOfUser: add response parameters Body.Data.List.$.ProviderType.
+
+
 2025-07-02 Version: 2.29.7
 - Update API ListFlashSmsTemplates: add response parameters Body.Data.$.TemplateDetails.
 
