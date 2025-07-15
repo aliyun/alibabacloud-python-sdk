@@ -1,3 +1,29 @@
+2025-07-15 Version: 4.9.1
+- Update API CreateCloudPhoneNode: add request parameters BandwidthPackageId.
+- Update API CreateCloudPhoneNode: add request parameters BandwidthPackageType.
+- Update API CreateCloudPhoneNode: add request parameters DownBandwidthLimit.
+- Update API CreateCloudPhoneNode: add request parameters NetworkInfo.
+- Update API CreateCloudPhoneNode: add request parameters NetworkType.
+- Update API CreateCloudPhoneNode: add request parameters UpBandwidthLimit.
+- Update API CreateCloudPhoneNode: add response parameters Body.NetworkPackageOrderModel.
+- Update API DescribeAndroidInstances: add request parameters PrivateIpAddress.
+- Update API DescribeAndroidInstances: add response parameters Body.InstanceModel.$.BandwidthPackageId.
+- Update API DescribeAndroidInstances: add response parameters Body.InstanceModel.$.BandwidthPackageType.
+- Update API DescribeAndroidInstances: add response parameters Body.InstanceModel.$.DownBandwidthLimit.
+- Update API DescribeAndroidInstances: add response parameters Body.InstanceModel.$.NetworkType.
+- Update API DescribeAndroidInstances: add response parameters Body.InstanceModel.$.UpBandwidthLimit.
+- Update API DescribeCloudPhoneNodes: add request parameters BandwidthPackageId.
+- Update API DescribeCloudPhoneNodes: add response parameters Body.NodeModel.$.BandwidthPackageId.
+- Update API DescribeCloudPhoneNodes: add response parameters Body.NodeModel.$.BandwidthPackageType.
+- Update API DescribeCloudPhoneNodes: add response parameters Body.NodeModel.$.NetworkType.
+- Update API DescribeCloudPhoneNodes: add response parameters Body.NodeModel.$.NetworkInfos.$.BandwidthPackageId.
+- Update API DescribeCloudPhoneNodes: add response parameters Body.NodeModel.$.NetworkInfos.$.BandwidthPackageType.
+- Update API DescribeCloudPhoneNodes: add response parameters Body.NodeModel.$.NetworkInfos.$.NetworkType.
+- Update API ModifyAndroidInstance: add request parameters DownBandwidthLimit.
+- Update API ModifyAndroidInstance: add request parameters InstanceIds.
+- Update API ModifyAndroidInstance: add request parameters UpBandwidthLimit.
+
+
 2025-07-08 Version: 4.9.0
 - Support API DescribeMetricLast.
 

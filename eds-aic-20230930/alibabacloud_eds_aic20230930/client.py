@@ -1123,23 +1123,35 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.display_config):
             request.display_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.display_config, 'DisplayConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.network_info):
+            request.network_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.network_info, 'NetworkInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.bandwidth_package_id):
+            query['BandwidthPackageId'] = request.bandwidth_package_id
+        if not UtilClient.is_unset(request.bandwidth_package_type):
+            query['BandwidthPackageType'] = request.bandwidth_package_type
         if not UtilClient.is_unset(request.biz_region_id):
             query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.count):
             query['Count'] = request.count
+        if not UtilClient.is_unset(request.down_bandwidth_limit):
+            query['DownBandwidthLimit'] = request.down_bandwidth_limit
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.instance_type):
             query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.network_id):
             query['NetworkId'] = request.network_id
+        if not UtilClient.is_unset(request.network_info_shrink):
+            query['NetworkInfo'] = request.network_info_shrink
+        if not UtilClient.is_unset(request.network_type):
+            query['NetworkType'] = request.network_type
         if not UtilClient.is_unset(request.node_name):
             query['NodeName'] = request.node_name
         if not UtilClient.is_unset(request.period):
@@ -1162,6 +1174,8 @@ class Client(OpenApiClient):
             query['StreamMode'] = request.stream_mode
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.up_bandwidth_limit):
+            query['UpBandwidthLimit'] = request.up_bandwidth_limit
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         body = {}
@@ -1204,23 +1218,35 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.display_config):
             request.display_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.display_config, 'DisplayConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.network_info):
+            request.network_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.network_info, 'NetworkInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.bandwidth_package_id):
+            query['BandwidthPackageId'] = request.bandwidth_package_id
+        if not UtilClient.is_unset(request.bandwidth_package_type):
+            query['BandwidthPackageType'] = request.bandwidth_package_type
         if not UtilClient.is_unset(request.biz_region_id):
             query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.count):
             query['Count'] = request.count
+        if not UtilClient.is_unset(request.down_bandwidth_limit):
+            query['DownBandwidthLimit'] = request.down_bandwidth_limit
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.instance_type):
             query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.network_id):
             query['NetworkId'] = request.network_id
+        if not UtilClient.is_unset(request.network_info_shrink):
+            query['NetworkInfo'] = request.network_info_shrink
+        if not UtilClient.is_unset(request.network_type):
+            query['NetworkType'] = request.network_type
         if not UtilClient.is_unset(request.node_name):
             query['NodeName'] = request.node_name
         if not UtilClient.is_unset(request.period):
@@ -1243,6 +1269,8 @@ class Client(OpenApiClient):
             query['StreamMode'] = request.stream_mode
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.up_bandwidth_limit):
+            query['UpBandwidthLimit'] = request.up_bandwidth_limit
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         body = {}
@@ -2666,6 +2694,8 @@ class Client(OpenApiClient):
             query['NodeName'] = request.node_name
         if not UtilClient.is_unset(request.office_site_ids):
             query['OfficeSiteIds'] = request.office_site_ids
+        if not UtilClient.is_unset(request.private_ip_address):
+            query['PrivateIpAddress'] = request.private_ip_address
         if not UtilClient.is_unset(request.qos_rule_ids):
             query['QosRuleIds'] = request.qos_rule_ids
         if not UtilClient.is_unset(request.sale_mode):
@@ -2737,6 +2767,8 @@ class Client(OpenApiClient):
             query['NodeName'] = request.node_name
         if not UtilClient.is_unset(request.office_site_ids):
             query['OfficeSiteIds'] = request.office_site_ids
+        if not UtilClient.is_unset(request.private_ip_address):
+            query['PrivateIpAddress'] = request.private_ip_address
         if not UtilClient.is_unset(request.qos_rule_ids):
             query['QosRuleIds'] = request.qos_rule_ids
         if not UtilClient.is_unset(request.sale_mode):
@@ -3084,6 +3116,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bandwidth_package_id):
+            query['BandwidthPackageId'] = request.bandwidth_package_id
         if not UtilClient.is_unset(request.biz_region_id):
             query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.charge_type):
@@ -3133,6 +3167,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bandwidth_package_id):
+            query['BandwidthPackageId'] = request.bandwidth_package_id
         if not UtilClient.is_unset(request.biz_region_id):
             query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.charge_type):
@@ -5354,8 +5390,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.android_instance_id):
             query['AndroidInstanceId'] = request.android_instance_id
+        if not UtilClient.is_unset(request.down_bandwidth_limit):
+            query['DownBandwidthLimit'] = request.down_bandwidth_limit
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.new_android_instance_name):
             query['NewAndroidInstanceName'] = request.new_android_instance_name
+        if not UtilClient.is_unset(request.up_bandwidth_limit):
+            query['UpBandwidthLimit'] = request.up_bandwidth_limit
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5391,8 +5433,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.android_instance_id):
             query['AndroidInstanceId'] = request.android_instance_id
+        if not UtilClient.is_unset(request.down_bandwidth_limit):
+            query['DownBandwidthLimit'] = request.down_bandwidth_limit
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.new_android_instance_name):
             query['NewAndroidInstanceName'] = request.new_android_instance_name
+        if not UtilClient.is_unset(request.up_bandwidth_limit):
+            query['UpBandwidthLimit'] = request.up_bandwidth_limit
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

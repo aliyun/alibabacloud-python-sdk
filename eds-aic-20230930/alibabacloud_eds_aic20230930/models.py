@@ -1988,6 +1988,63 @@ class CreateCloudPhoneNodeRequestDisplayConfig(TeaModel):
         return self
 
 
+class CreateCloudPhoneNodeRequestNetworkInfo(TeaModel):
+    def __init__(
+        self,
+        bandwidth_package_name: str = None,
+        cidr_block: str = None,
+        internet_charge_type: str = None,
+        ip_ratio: int = None,
+        isp: str = None,
+        limited_bandwidth: int = None,
+    ):
+        self.bandwidth_package_name = bandwidth_package_name
+        self.cidr_block = cidr_block
+        self.internet_charge_type = internet_charge_type
+        self.ip_ratio = ip_ratio
+        self.isp = isp
+        self.limited_bandwidth = limited_bandwidth
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bandwidth_package_name is not None:
+            result['BandwidthPackageName'] = self.bandwidth_package_name
+        if self.cidr_block is not None:
+            result['CidrBlock'] = self.cidr_block
+        if self.internet_charge_type is not None:
+            result['InternetChargeType'] = self.internet_charge_type
+        if self.ip_ratio is not None:
+            result['IpRatio'] = self.ip_ratio
+        if self.isp is not None:
+            result['Isp'] = self.isp
+        if self.limited_bandwidth is not None:
+            result['LimitedBandwidth'] = self.limited_bandwidth
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BandwidthPackageName') is not None:
+            self.bandwidth_package_name = m.get('BandwidthPackageName')
+        if m.get('CidrBlock') is not None:
+            self.cidr_block = m.get('CidrBlock')
+        if m.get('InternetChargeType') is not None:
+            self.internet_charge_type = m.get('InternetChargeType')
+        if m.get('IpRatio') is not None:
+            self.ip_ratio = m.get('IpRatio')
+        if m.get('Isp') is not None:
+            self.isp = m.get('Isp')
+        if m.get('LimitedBandwidth') is not None:
+            self.limited_bandwidth = m.get('LimitedBandwidth')
+        return self
+
+
 class CreateCloudPhoneNodeRequestTag(TeaModel):
     def __init__(
         self,
@@ -2028,13 +2085,18 @@ class CreateCloudPhoneNodeRequest(TeaModel):
         self,
         auto_pay: bool = None,
         auto_renew: bool = None,
+        bandwidth_package_id: str = None,
+        bandwidth_package_type: str = None,
         biz_region_id: str = None,
         charge_type: str = None,
         count: str = None,
         display_config: CreateCloudPhoneNodeRequestDisplayConfig = None,
+        down_bandwidth_limit: int = None,
         image_id: str = None,
         instance_type: str = None,
         network_id: str = None,
+        network_info: CreateCloudPhoneNodeRequestNetworkInfo = None,
+        network_type: str = None,
         node_name: str = None,
         period: int = None,
         period_unit: str = None,
@@ -2046,6 +2108,7 @@ class CreateCloudPhoneNodeRequest(TeaModel):
         server_type: str = None,
         stream_mode: int = None,
         tag: List[CreateCloudPhoneNodeRequestTag] = None,
+        up_bandwidth_limit: int = None,
         v_switch_id: str = None,
     ):
         # Specifies whether to enable the auto-payment feature.
@@ -2062,6 +2125,8 @@ class CreateCloudPhoneNodeRequest(TeaModel):
         # *   true: enables the auto-renewal feature. In this case, the system automatically renews instances upon expiration.
         # *   false (default): disables the auto-renewal feature. In this case, you need to manually renew instances upon expiration.
         self.auto_renew = auto_renew
+        self.bandwidth_package_id = bandwidth_package_id
+        self.bandwidth_package_type = bandwidth_package_type
         # The region ID.
         # 
         # This parameter is required.
@@ -2071,6 +2136,7 @@ class CreateCloudPhoneNodeRequest(TeaModel):
         # The number of cloud phone matrixes you want to purchase.
         self.count = count
         self.display_config = display_config
+        self.down_bandwidth_limit = down_bandwidth_limit
         # The image ID.
         self.image_id = image_id
         # The instance specification.
@@ -2082,6 +2148,8 @@ class CreateCloudPhoneNodeRequest(TeaModel):
         self.instance_type = instance_type
         # The office network ID.
         self.network_id = network_id
+        self.network_info = network_info
+        self.network_type = network_type
         # The name of the cloud phone matrix.
         self.node_name = node_name
         # The subscription duration. The unit is specified by `PeriodUnit`. Valid values:
@@ -2116,12 +2184,15 @@ class CreateCloudPhoneNodeRequest(TeaModel):
         self.stream_mode = stream_mode
         # The resource tags.
         self.tag = tag
+        self.up_bandwidth_limit = up_bandwidth_limit
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
 
     def validate(self):
         if self.display_config:
             self.display_config.validate()
+        if self.network_info:
+            self.network_info.validate()
         if self.tag:
             for k in self.tag:
                 if k:
@@ -2137,6 +2208,10 @@ class CreateCloudPhoneNodeRequest(TeaModel):
             result['AutoPay'] = self.auto_pay
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
+        if self.bandwidth_package_id is not None:
+            result['BandwidthPackageId'] = self.bandwidth_package_id
+        if self.bandwidth_package_type is not None:
+            result['BandwidthPackageType'] = self.bandwidth_package_type
         if self.biz_region_id is not None:
             result['BizRegionId'] = self.biz_region_id
         if self.charge_type is not None:
@@ -2145,12 +2220,18 @@ class CreateCloudPhoneNodeRequest(TeaModel):
             result['Count'] = self.count
         if self.display_config is not None:
             result['DisplayConfig'] = self.display_config.to_map()
+        if self.down_bandwidth_limit is not None:
+            result['DownBandwidthLimit'] = self.down_bandwidth_limit
         if self.image_id is not None:
             result['ImageId'] = self.image_id
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
         if self.network_id is not None:
             result['NetworkId'] = self.network_id
+        if self.network_info is not None:
+            result['NetworkInfo'] = self.network_info.to_map()
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
         if self.node_name is not None:
             result['NodeName'] = self.node_name
         if self.period is not None:
@@ -2175,6 +2256,8 @@ class CreateCloudPhoneNodeRequest(TeaModel):
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
+        if self.up_bandwidth_limit is not None:
+            result['UpBandwidthLimit'] = self.up_bandwidth_limit
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         return result
@@ -2185,6 +2268,10 @@ class CreateCloudPhoneNodeRequest(TeaModel):
             self.auto_pay = m.get('AutoPay')
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
+        if m.get('BandwidthPackageId') is not None:
+            self.bandwidth_package_id = m.get('BandwidthPackageId')
+        if m.get('BandwidthPackageType') is not None:
+            self.bandwidth_package_type = m.get('BandwidthPackageType')
         if m.get('BizRegionId') is not None:
             self.biz_region_id = m.get('BizRegionId')
         if m.get('ChargeType') is not None:
@@ -2194,12 +2281,19 @@ class CreateCloudPhoneNodeRequest(TeaModel):
         if m.get('DisplayConfig') is not None:
             temp_model = CreateCloudPhoneNodeRequestDisplayConfig()
             self.display_config = temp_model.from_map(m['DisplayConfig'])
+        if m.get('DownBandwidthLimit') is not None:
+            self.down_bandwidth_limit = m.get('DownBandwidthLimit')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
         if m.get('NetworkId') is not None:
             self.network_id = m.get('NetworkId')
+        if m.get('NetworkInfo') is not None:
+            temp_model = CreateCloudPhoneNodeRequestNetworkInfo()
+            self.network_info = temp_model.from_map(m['NetworkInfo'])
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
         if m.get('NodeName') is not None:
             self.node_name = m.get('NodeName')
         if m.get('Period') is not None:
@@ -2225,6 +2319,8 @@ class CreateCloudPhoneNodeRequest(TeaModel):
             for k in m.get('Tag'):
                 temp_model = CreateCloudPhoneNodeRequestTag()
                 self.tag.append(temp_model.from_map(k))
+        if m.get('UpBandwidthLimit') is not None:
+            self.up_bandwidth_limit = m.get('UpBandwidthLimit')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         return self
@@ -2270,13 +2366,18 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
         self,
         auto_pay: bool = None,
         auto_renew: bool = None,
+        bandwidth_package_id: str = None,
+        bandwidth_package_type: str = None,
         biz_region_id: str = None,
         charge_type: str = None,
         count: str = None,
         display_config_shrink: str = None,
+        down_bandwidth_limit: int = None,
         image_id: str = None,
         instance_type: str = None,
         network_id: str = None,
+        network_info_shrink: str = None,
+        network_type: str = None,
         node_name: str = None,
         period: int = None,
         period_unit: str = None,
@@ -2288,6 +2389,7 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
         server_type: str = None,
         stream_mode: int = None,
         tag: List[CreateCloudPhoneNodeShrinkRequestTag] = None,
+        up_bandwidth_limit: int = None,
         v_switch_id: str = None,
     ):
         # Specifies whether to enable the auto-payment feature.
@@ -2304,6 +2406,8 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
         # *   true: enables the auto-renewal feature. In this case, the system automatically renews instances upon expiration.
         # *   false (default): disables the auto-renewal feature. In this case, you need to manually renew instances upon expiration.
         self.auto_renew = auto_renew
+        self.bandwidth_package_id = bandwidth_package_id
+        self.bandwidth_package_type = bandwidth_package_type
         # The region ID.
         # 
         # This parameter is required.
@@ -2313,6 +2417,7 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
         # The number of cloud phone matrixes you want to purchase.
         self.count = count
         self.display_config_shrink = display_config_shrink
+        self.down_bandwidth_limit = down_bandwidth_limit
         # The image ID.
         self.image_id = image_id
         # The instance specification.
@@ -2324,6 +2429,8 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
         self.instance_type = instance_type
         # The office network ID.
         self.network_id = network_id
+        self.network_info_shrink = network_info_shrink
+        self.network_type = network_type
         # The name of the cloud phone matrix.
         self.node_name = node_name
         # The subscription duration. The unit is specified by `PeriodUnit`. Valid values:
@@ -2358,6 +2465,7 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
         self.stream_mode = stream_mode
         # The resource tags.
         self.tag = tag
+        self.up_bandwidth_limit = up_bandwidth_limit
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
 
@@ -2377,6 +2485,10 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
             result['AutoPay'] = self.auto_pay
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
+        if self.bandwidth_package_id is not None:
+            result['BandwidthPackageId'] = self.bandwidth_package_id
+        if self.bandwidth_package_type is not None:
+            result['BandwidthPackageType'] = self.bandwidth_package_type
         if self.biz_region_id is not None:
             result['BizRegionId'] = self.biz_region_id
         if self.charge_type is not None:
@@ -2385,12 +2497,18 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
             result['Count'] = self.count
         if self.display_config_shrink is not None:
             result['DisplayConfig'] = self.display_config_shrink
+        if self.down_bandwidth_limit is not None:
+            result['DownBandwidthLimit'] = self.down_bandwidth_limit
         if self.image_id is not None:
             result['ImageId'] = self.image_id
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
         if self.network_id is not None:
             result['NetworkId'] = self.network_id
+        if self.network_info_shrink is not None:
+            result['NetworkInfo'] = self.network_info_shrink
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
         if self.node_name is not None:
             result['NodeName'] = self.node_name
         if self.period is not None:
@@ -2415,6 +2533,8 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
+        if self.up_bandwidth_limit is not None:
+            result['UpBandwidthLimit'] = self.up_bandwidth_limit
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         return result
@@ -2425,6 +2545,10 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
             self.auto_pay = m.get('AutoPay')
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
+        if m.get('BandwidthPackageId') is not None:
+            self.bandwidth_package_id = m.get('BandwidthPackageId')
+        if m.get('BandwidthPackageType') is not None:
+            self.bandwidth_package_type = m.get('BandwidthPackageType')
         if m.get('BizRegionId') is not None:
             self.biz_region_id = m.get('BizRegionId')
         if m.get('ChargeType') is not None:
@@ -2433,12 +2557,18 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
             self.count = m.get('Count')
         if m.get('DisplayConfig') is not None:
             self.display_config_shrink = m.get('DisplayConfig')
+        if m.get('DownBandwidthLimit') is not None:
+            self.down_bandwidth_limit = m.get('DownBandwidthLimit')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
         if m.get('NetworkId') is not None:
             self.network_id = m.get('NetworkId')
+        if m.get('NetworkInfo') is not None:
+            self.network_info_shrink = m.get('NetworkInfo')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
         if m.get('NodeName') is not None:
             self.node_name = m.get('NodeName')
         if m.get('Period') is not None:
@@ -2464,8 +2594,43 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
             for k in m.get('Tag'):
                 temp_model = CreateCloudPhoneNodeShrinkRequestTag()
                 self.tag.append(temp_model.from_map(k))
+        if m.get('UpBandwidthLimit') is not None:
+            self.up_bandwidth_limit = m.get('UpBandwidthLimit')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
+        return self
+
+
+class CreateCloudPhoneNodeResponseBodyNetworkPackageOrderModel(TeaModel):
+    def __init__(
+        self,
+        bandwidth_package_id: str = None,
+        bandwidth_package_order_id: str = None,
+    ):
+        self.bandwidth_package_id = bandwidth_package_id
+        self.bandwidth_package_order_id = bandwidth_package_order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bandwidth_package_id is not None:
+            result['BandwidthPackageId'] = self.bandwidth_package_id
+        if self.bandwidth_package_order_id is not None:
+            result['BandwidthPackageOrderId'] = self.bandwidth_package_order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BandwidthPackageId') is not None:
+            self.bandwidth_package_id = m.get('BandwidthPackageId')
+        if m.get('BandwidthPackageOrderId') is not None:
+            self.bandwidth_package_order_id = m.get('BandwidthPackageOrderId')
         return self
 
 
@@ -2507,10 +2672,12 @@ class CreateCloudPhoneNodeResponseBodyNodeInfos(TeaModel):
 class CreateCloudPhoneNodeResponseBody(TeaModel):
     def __init__(
         self,
+        network_package_order_model: CreateCloudPhoneNodeResponseBodyNetworkPackageOrderModel = None,
         node_infos: List[CreateCloudPhoneNodeResponseBodyNodeInfos] = None,
         order_id: str = None,
         request_id: str = None,
     ):
+        self.network_package_order_model = network_package_order_model
         # The cloud phone matrixes.
         self.node_infos = node_infos
         # The order ID.
@@ -2519,6 +2686,8 @@ class CreateCloudPhoneNodeResponseBody(TeaModel):
         self.request_id = request_id
 
     def validate(self):
+        if self.network_package_order_model:
+            self.network_package_order_model.validate()
         if self.node_infos:
             for k in self.node_infos:
                 if k:
@@ -2530,6 +2699,8 @@ class CreateCloudPhoneNodeResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.network_package_order_model is not None:
+            result['NetworkPackageOrderModel'] = self.network_package_order_model.to_map()
         result['NodeInfos'] = []
         if self.node_infos is not None:
             for k in self.node_infos:
@@ -2542,6 +2713,9 @@ class CreateCloudPhoneNodeResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NetworkPackageOrderModel') is not None:
+            temp_model = CreateCloudPhoneNodeResponseBodyNetworkPackageOrderModel()
+            self.network_package_order_model = temp_model.from_map(m['NetworkPackageOrderModel'])
         self.node_infos = []
         if m.get('NodeInfos') is not None:
             for k in m.get('NodeInfos'):
@@ -4870,6 +5044,7 @@ class DescribeAndroidInstancesRequest(TeaModel):
         node_id: str = None,
         node_name: str = None,
         office_site_ids: List[str] = None,
+        private_ip_address: str = None,
         qos_rule_ids: List[str] = None,
         sale_mode: str = None,
         status: str = None,
@@ -4907,6 +5082,7 @@ class DescribeAndroidInstancesRequest(TeaModel):
         # The name of the node.
         self.node_name = node_name
         self.office_site_ids = office_site_ids
+        self.private_ip_address = private_ip_address
         self.qos_rule_ids = qos_rule_ids
         # The sales mode.
         # 
@@ -4980,6 +5156,8 @@ class DescribeAndroidInstancesRequest(TeaModel):
             result['NodeName'] = self.node_name
         if self.office_site_ids is not None:
             result['OfficeSiteIds'] = self.office_site_ids
+        if self.private_ip_address is not None:
+            result['PrivateIpAddress'] = self.private_ip_address
         if self.qos_rule_ids is not None:
             result['QosRuleIds'] = self.qos_rule_ids
         if self.sale_mode is not None:
@@ -5024,6 +5202,8 @@ class DescribeAndroidInstancesRequest(TeaModel):
             self.node_name = m.get('NodeName')
         if m.get('OfficeSiteIds') is not None:
             self.office_site_ids = m.get('OfficeSiteIds')
+        if m.get('PrivateIpAddress') is not None:
+            self.private_ip_address = m.get('PrivateIpAddress')
         if m.get('QosRuleIds') is not None:
             self.qos_rule_ids = m.get('QosRuleIds')
         if m.get('SaleMode') is not None:
@@ -5237,11 +5417,14 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         app_instance_id: str = None,
         app_manage_policy: DescribeAndroidInstancesResponseBodyInstanceModelAppManagePolicy = None,
         authorized_user_id: str = None,
+        bandwidth_package_id: str = None,
+        bandwidth_package_type: str = None,
         bind_user_id: str = None,
         charge_type: str = None,
         cpu: str = None,
         disks: List[DescribeAndroidInstancesResponseBodyInstanceModelDisks] = None,
         display_config: DescribeAndroidInstancesResponseBodyInstanceModelDisplayConfig = None,
+        down_bandwidth_limit: int = None,
         error_code: str = None,
         gmt_create: str = None,
         gmt_expired: str = None,
@@ -5253,6 +5436,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         memory: int = None,
         network_interface_ip: str = None,
         network_interface_ipv_6address: str = None,
+        network_type: str = None,
         office_site_id: str = None,
         persistent_app_instance_id: str = None,
         phone_data_info: DescribeAndroidInstancesResponseBodyInstanceModelPhoneDataInfo = None,
@@ -5266,6 +5450,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         session_status: str = None,
         stream_mode: int = None,
         tags: List[DescribeAndroidInstancesResponseBodyInstanceModelTags] = None,
+        up_bandwidth_limit: int = None,
         v_switch_id: str = None,
         zone_id: str = None,
     ):
@@ -5286,6 +5471,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         self.app_manage_policy = app_manage_policy
         # The ID of the user to whom the instance is assigned.
         self.authorized_user_id = authorized_user_id
+        self.bandwidth_package_id = bandwidth_package_id
+        self.bandwidth_package_type = bandwidth_package_type
         # The ID of the bound user.
         self.bind_user_id = bind_user_id
         # The billing method of the instance.
@@ -5295,6 +5482,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         # The disks.
         self.disks = disks
         self.display_config = display_config
+        self.down_bandwidth_limit = down_bandwidth_limit
         # The cause of the instance data backup failure or restoration failure.
         self.error_code = error_code
         # The time when the instance was created.
@@ -5316,6 +5504,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         self.network_interface_ip = network_interface_ip
         # >  This parameter is not publicly available.
         self.network_interface_ipv_6address = network_interface_ipv_6address
+        self.network_type = network_type
         # The office network ID.
         self.office_site_id = office_site_id
         # The ID of the persistent session.
@@ -5344,6 +5533,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         self.stream_mode = stream_mode
         # The tags.
         self.tags = tags
+        self.up_bandwidth_limit = up_bandwidth_limit
         self.v_switch_id = v_switch_id
         self.zone_id = zone_id
 
@@ -5387,6 +5577,10 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             result['AppManagePolicy'] = self.app_manage_policy.to_map()
         if self.authorized_user_id is not None:
             result['AuthorizedUserId'] = self.authorized_user_id
+        if self.bandwidth_package_id is not None:
+            result['BandwidthPackageId'] = self.bandwidth_package_id
+        if self.bandwidth_package_type is not None:
+            result['BandwidthPackageType'] = self.bandwidth_package_type
         if self.bind_user_id is not None:
             result['BindUserId'] = self.bind_user_id
         if self.charge_type is not None:
@@ -5399,6 +5593,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
                 result['Disks'].append(k.to_map() if k else None)
         if self.display_config is not None:
             result['DisplayConfig'] = self.display_config.to_map()
+        if self.down_bandwidth_limit is not None:
+            result['DownBandwidthLimit'] = self.down_bandwidth_limit
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
         if self.gmt_create is not None:
@@ -5421,6 +5617,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             result['NetworkInterfaceIp'] = self.network_interface_ip
         if self.network_interface_ipv_6address is not None:
             result['NetworkInterfaceIpv6Address'] = self.network_interface_ipv_6address
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
         if self.office_site_id is not None:
             result['OfficeSiteId'] = self.office_site_id
         if self.persistent_app_instance_id is not None:
@@ -5449,6 +5647,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['Tags'].append(k.to_map() if k else None)
+        if self.up_bandwidth_limit is not None:
+            result['UpBandwidthLimit'] = self.up_bandwidth_limit
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.zone_id is not None:
@@ -5476,6 +5676,10 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             self.app_manage_policy = temp_model.from_map(m['AppManagePolicy'])
         if m.get('AuthorizedUserId') is not None:
             self.authorized_user_id = m.get('AuthorizedUserId')
+        if m.get('BandwidthPackageId') is not None:
+            self.bandwidth_package_id = m.get('BandwidthPackageId')
+        if m.get('BandwidthPackageType') is not None:
+            self.bandwidth_package_type = m.get('BandwidthPackageType')
         if m.get('BindUserId') is not None:
             self.bind_user_id = m.get('BindUserId')
         if m.get('ChargeType') is not None:
@@ -5490,6 +5694,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         if m.get('DisplayConfig') is not None:
             temp_model = DescribeAndroidInstancesResponseBodyInstanceModelDisplayConfig()
             self.display_config = temp_model.from_map(m['DisplayConfig'])
+        if m.get('DownBandwidthLimit') is not None:
+            self.down_bandwidth_limit = m.get('DownBandwidthLimit')
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
         if m.get('GmtCreate') is not None:
@@ -5512,6 +5718,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             self.network_interface_ip = m.get('NetworkInterfaceIp')
         if m.get('NetworkInterfaceIpv6Address') is not None:
             self.network_interface_ipv_6address = m.get('NetworkInterfaceIpv6Address')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
         if m.get('OfficeSiteId') is not None:
             self.office_site_id = m.get('OfficeSiteId')
         if m.get('PersistentAppInstanceId') is not None:
@@ -5542,6 +5750,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             for k in m.get('Tags'):
                 temp_model = DescribeAndroidInstancesResponseBodyInstanceModelTags()
                 self.tags.append(temp_model.from_map(k))
+        if m.get('UpBandwidthLimit') is not None:
+            self.up_bandwidth_limit = m.get('UpBandwidthLimit')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('ZoneId') is not None:
@@ -6371,6 +6581,7 @@ class DescribeBackupFilesResponse(TeaModel):
 class DescribeCloudPhoneNodesRequest(TeaModel):
     def __init__(
         self,
+        bandwidth_package_id: str = None,
         biz_region_id: str = None,
         charge_type: str = None,
         max_results: str = None,
@@ -6380,6 +6591,7 @@ class DescribeCloudPhoneNodesRequest(TeaModel):
         server_type: str = None,
         status: str = None,
     ):
+        self.bandwidth_package_id = bandwidth_package_id
         # The region ID.
         self.biz_region_id = biz_region_id
         # The billing method. Only the subscription billing method is supported.
@@ -6419,6 +6631,8 @@ class DescribeCloudPhoneNodesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.bandwidth_package_id is not None:
+            result['BandwidthPackageId'] = self.bandwidth_package_id
         if self.biz_region_id is not None:
             result['BizRegionId'] = self.biz_region_id
         if self.charge_type is not None:
@@ -6439,6 +6653,8 @@ class DescribeCloudPhoneNodesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BandwidthPackageId') is not None:
+            self.bandwidth_package_id = m.get('BandwidthPackageId')
         if m.get('BizRegionId') is not None:
             self.biz_region_id = m.get('BizRegionId')
         if m.get('ChargeType') is not None:
@@ -6461,10 +6677,16 @@ class DescribeCloudPhoneNodesRequest(TeaModel):
 class DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos(TeaModel):
     def __init__(
         self,
+        bandwidth_package_id: str = None,
+        bandwidth_package_type: str = None,
         network_id: str = None,
+        network_type: str = None,
         v_switch_id: str = None,
     ):
+        self.bandwidth_package_id = bandwidth_package_id
+        self.bandwidth_package_type = bandwidth_package_type
         self.network_id = network_id
+        self.network_type = network_type
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -6476,16 +6698,28 @@ class DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos(TeaModel):
             return _map
 
         result = dict()
+        if self.bandwidth_package_id is not None:
+            result['BandwidthPackageId'] = self.bandwidth_package_id
+        if self.bandwidth_package_type is not None:
+            result['BandwidthPackageType'] = self.bandwidth_package_type
         if self.network_id is not None:
             result['NetworkId'] = self.network_id
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BandwidthPackageId') is not None:
+            self.bandwidth_package_id = m.get('BandwidthPackageId')
+        if m.get('BandwidthPackageType') is not None:
+            self.bandwidth_package_type = m.get('BandwidthPackageType')
         if m.get('NetworkId') is not None:
             self.network_id = m.get('NetworkId')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         return self
@@ -6527,6 +6761,8 @@ class DescribeCloudPhoneNodesResponseBodyNodeModelPhoneDataInfo(TeaModel):
 class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
     def __init__(
         self,
+        bandwidth_package_id: str = None,
+        bandwidth_package_type: str = None,
         charge_type: str = None,
         cpu: str = None,
         gmt_create: str = None,
@@ -6536,6 +6772,7 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
         memory: int = None,
         network_id: str = None,
         network_infos: List[DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos] = None,
+        network_type: str = None,
         node_id: str = None,
         node_name: str = None,
         phone_count: int = None,
@@ -6548,6 +6785,8 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
         status: str = None,
         v_switch_id: str = None,
     ):
+        self.bandwidth_package_id = bandwidth_package_id
+        self.bandwidth_package_type = bandwidth_package_type
         # The billing method.
         self.charge_type = charge_type
         # The number of CPU cores.
@@ -6564,6 +6803,7 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
         # The network ID.
         self.network_id = network_id
         self.network_infos = network_infos
+        self.network_type = network_type
         # The matrix ID.
         self.node_id = node_id
         # The matrix name.
@@ -6600,6 +6840,10 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
             return _map
 
         result = dict()
+        if self.bandwidth_package_id is not None:
+            result['BandwidthPackageId'] = self.bandwidth_package_id
+        if self.bandwidth_package_type is not None:
+            result['BandwidthPackageType'] = self.bandwidth_package_type
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
         if self.cpu is not None:
@@ -6620,6 +6864,8 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
         if self.network_infos is not None:
             for k in self.network_infos:
                 result['NetworkInfos'].append(k.to_map() if k else None)
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
         if self.node_id is not None:
             result['NodeId'] = self.node_id
         if self.node_name is not None:
@@ -6646,6 +6892,10 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BandwidthPackageId') is not None:
+            self.bandwidth_package_id = m.get('BandwidthPackageId')
+        if m.get('BandwidthPackageType') is not None:
+            self.bandwidth_package_type = m.get('BandwidthPackageType')
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
         if m.get('Cpu') is not None:
@@ -6667,6 +6917,8 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
             for k in m.get('NetworkInfos'):
                 temp_model = DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos()
                 self.network_infos.append(temp_model.from_map(k))
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
         if m.get('NodeId') is not None:
             self.node_id = m.get('NodeId')
         if m.get('NodeName') is not None:
@@ -10738,14 +10990,20 @@ class ModifyAndroidInstanceRequest(TeaModel):
     def __init__(
         self,
         android_instance_id: str = None,
+        down_bandwidth_limit: int = None,
+        instance_ids: List[str] = None,
         new_android_instance_name: str = None,
+        up_bandwidth_limit: int = None,
     ):
         # The ID of the cloud phone instance.
         self.android_instance_id = android_instance_id
+        self.down_bandwidth_limit = down_bandwidth_limit
+        self.instance_ids = instance_ids
         # The new name of the cloud phone instance.
         # 
         # >  The name can be up to 30 characters in length. It can contain letters, digits, colons (:), underscores (_), periods (.), or hyphens (-). It must start with letters but cannot start with http:// or https://.
         self.new_android_instance_name = new_android_instance_name
+        self.up_bandwidth_limit = up_bandwidth_limit
 
     def validate(self):
         pass
@@ -10758,16 +11016,28 @@ class ModifyAndroidInstanceRequest(TeaModel):
         result = dict()
         if self.android_instance_id is not None:
             result['AndroidInstanceId'] = self.android_instance_id
+        if self.down_bandwidth_limit is not None:
+            result['DownBandwidthLimit'] = self.down_bandwidth_limit
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
         if self.new_android_instance_name is not None:
             result['NewAndroidInstanceName'] = self.new_android_instance_name
+        if self.up_bandwidth_limit is not None:
+            result['UpBandwidthLimit'] = self.up_bandwidth_limit
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AndroidInstanceId') is not None:
             self.android_instance_id = m.get('AndroidInstanceId')
+        if m.get('DownBandwidthLimit') is not None:
+            self.down_bandwidth_limit = m.get('DownBandwidthLimit')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
         if m.get('NewAndroidInstanceName') is not None:
             self.new_android_instance_name = m.get('NewAndroidInstanceName')
+        if m.get('UpBandwidthLimit') is not None:
+            self.up_bandwidth_limit = m.get('UpBandwidthLimit')
         return self
 
 
