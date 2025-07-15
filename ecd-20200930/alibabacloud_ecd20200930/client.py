@@ -4530,6 +4530,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_center_policy_with_options_async(request, runtime)
 
+    def create_cloud_drive_group_with_options(
+        self,
+        request: ecd_20200930_models.CreateCloudDriveGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.CreateCloudDriveGroupResponse:
+        """
+        @summary Authorizes a user to use a team space.
+        
+        @description The list of teams of a cloud disk in Cloud Drive Service is synchronized from the Organization tab in the Elastic Desktop Service (EDS) console. You can choose Users > Manager User > User > Organization in the console. If you want to authorize a user to use a team space, you must move the user to the corresponding organization. After you move the user, the user can view the menu bar of the team space on a Cloud Drive Service client.
+        
+        @param request: CreateCloudDriveGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCloudDriveGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.admin_user_ids):
+            query['AdminUserIds'] = request.admin_user_ids
+        if not UtilClient.is_unset(request.cds_id):
+            query['CdsId'] = request.cds_id
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.total_size):
+            query['TotalSize'] = request.total_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCloudDriveGroup',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.CreateCloudDriveGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_cloud_drive_group_with_options_async(
+        self,
+        request: ecd_20200930_models.CreateCloudDriveGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.CreateCloudDriveGroupResponse:
+        """
+        @summary Authorizes a user to use a team space.
+        
+        @description The list of teams of a cloud disk in Cloud Drive Service is synchronized from the Organization tab in the Elastic Desktop Service (EDS) console. You can choose Users > Manager User > User > Organization in the console. If you want to authorize a user to use a team space, you must move the user to the corresponding organization. After you move the user, the user can view the menu bar of the team space on a Cloud Drive Service client.
+        
+        @param request: CreateCloudDriveGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCloudDriveGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.admin_user_ids):
+            query['AdminUserIds'] = request.admin_user_ids
+        if not UtilClient.is_unset(request.cds_id):
+            query['CdsId'] = request.cds_id
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.total_size):
+            query['TotalSize'] = request.total_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCloudDriveGroup',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.CreateCloudDriveGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_cloud_drive_group(
+        self,
+        request: ecd_20200930_models.CreateCloudDriveGroupRequest,
+    ) -> ecd_20200930_models.CreateCloudDriveGroupResponse:
+        """
+        @summary Authorizes a user to use a team space.
+        
+        @description The list of teams of a cloud disk in Cloud Drive Service is synchronized from the Organization tab in the Elastic Desktop Service (EDS) console. You can choose Users > Manager User > User > Organization in the console. If you want to authorize a user to use a team space, you must move the user to the corresponding organization. After you move the user, the user can view the menu bar of the team space on a Cloud Drive Service client.
+        
+        @param request: CreateCloudDriveGroupRequest
+        @return: CreateCloudDriveGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_cloud_drive_group_with_options(request, runtime)
+
+    async def create_cloud_drive_group_async(
+        self,
+        request: ecd_20200930_models.CreateCloudDriveGroupRequest,
+    ) -> ecd_20200930_models.CreateCloudDriveGroupResponse:
+        """
+        @summary Authorizes a user to use a team space.
+        
+        @description The list of teams of a cloud disk in Cloud Drive Service is synchronized from the Organization tab in the Elastic Desktop Service (EDS) console. You can choose Users > Manager User > User > Organization in the console. If you want to authorize a user to use a team space, you must move the user to the corresponding organization. After you move the user, the user can view the menu bar of the team space on a Cloud Drive Service client.
+        
+        @param request: CreateCloudDriveGroupRequest
+        @return: CreateCloudDriveGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_cloud_drive_group_with_options_async(request, runtime)
+
     def create_cloud_drive_service_with_options(
         self,
         request: ecd_20200930_models.CreateCloudDriveServiceRequest,
@@ -5937,6 +6057,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_drive_with_options_async(request, runtime)
+
+    def create_ecd_report_task_with_options(
+        self,
+        request: ecd_20200930_models.CreateEcdReportTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.CreateEcdReportTaskResponse:
+        """
+        @summary 创建无影数据报表导出任务
+        
+        @param request: CreateEcdReportTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEcdReportTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter_list):
+            query['FilterList'] = request.filter_list
+        if not UtilClient.is_unset(request.lang_type):
+            query['LangType'] = request.lang_type
+        if not UtilClient.is_unset(request.report_file_name):
+            query['ReportFileName'] = request.report_file_name
+        if not UtilClient.is_unset(request.sub_type):
+            query['SubType'] = request.sub_type
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateEcdReportTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.CreateEcdReportTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_ecd_report_task_with_options_async(
+        self,
+        request: ecd_20200930_models.CreateEcdReportTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.CreateEcdReportTaskResponse:
+        """
+        @summary 创建无影数据报表导出任务
+        
+        @param request: CreateEcdReportTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEcdReportTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter_list):
+            query['FilterList'] = request.filter_list
+        if not UtilClient.is_unset(request.lang_type):
+            query['LangType'] = request.lang_type
+        if not UtilClient.is_unset(request.report_file_name):
+            query['ReportFileName'] = request.report_file_name
+        if not UtilClient.is_unset(request.sub_type):
+            query['SubType'] = request.sub_type
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateEcdReportTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.CreateEcdReportTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_ecd_report_task(
+        self,
+        request: ecd_20200930_models.CreateEcdReportTaskRequest,
+    ) -> ecd_20200930_models.CreateEcdReportTaskResponse:
+        """
+        @summary 创建无影数据报表导出任务
+        
+        @param request: CreateEcdReportTaskRequest
+        @return: CreateEcdReportTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_ecd_report_task_with_options(request, runtime)
+
+    async def create_ecd_report_task_async(
+        self,
+        request: ecd_20200930_models.CreateEcdReportTaskRequest,
+    ) -> ecd_20200930_models.CreateEcdReportTaskResponse:
+        """
+        @summary 创建无影数据报表导出任务
+        
+        @param request: CreateEcdReportTaskRequest
+        @return: CreateEcdReportTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_ecd_report_task_with_options_async(request, runtime)
 
     def create_image_with_options(
         self,
@@ -12811,6 +13043,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_drives_with_options_async(request, runtime)
+
+    def describe_ecd_report_tasks_with_options(
+        self,
+        request: ecd_20200930_models.DescribeEcdReportTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeEcdReportTasksResponse:
+        """
+        @summary 查询数据报表导出任务列表
+        
+        @param request: DescribeEcdReportTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEcdReportTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.sub_type):
+            query['SubType'] = request.sub_type
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEcdReportTasks',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeEcdReportTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ecd_report_tasks_with_options_async(
+        self,
+        request: ecd_20200930_models.DescribeEcdReportTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeEcdReportTasksResponse:
+        """
+        @summary 查询数据报表导出任务列表
+        
+        @param request: DescribeEcdReportTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEcdReportTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.sub_type):
+            query['SubType'] = request.sub_type
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEcdReportTasks',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeEcdReportTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ecd_report_tasks(
+        self,
+        request: ecd_20200930_models.DescribeEcdReportTasksRequest,
+    ) -> ecd_20200930_models.DescribeEcdReportTasksResponse:
+        """
+        @summary 查询数据报表导出任务列表
+        
+        @param request: DescribeEcdReportTasksRequest
+        @return: DescribeEcdReportTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ecd_report_tasks_with_options(request, runtime)
+
+    async def describe_ecd_report_tasks_async(
+        self,
+        request: ecd_20200930_models.DescribeEcdReportTasksRequest,
+    ) -> ecd_20200930_models.DescribeEcdReportTasksResponse:
+        """
+        @summary 查询数据报表导出任务列表
+        
+        @param request: DescribeEcdReportTasksRequest
+        @return: DescribeEcdReportTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ecd_report_tasks_with_options_async(request, runtime)
 
     def describe_flow_metric_with_options(
         self,

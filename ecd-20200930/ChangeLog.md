@@ -1,3 +1,9 @@
+2025-07-15 Version: 4.11.0
+- Support API CreateCloudDriveGroup.
+- Support API CreateEcdReportTask.
+- Support API DescribeEcdReportTasks.
+
+
 2025-07-14 Version: 4.10.0
 - Support API ListTransferFiles.
 - Support API TransferTaskApprovalCallback.

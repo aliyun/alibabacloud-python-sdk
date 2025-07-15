@@ -7953,6 +7953,166 @@ class CreateCenterPolicyResponse(TeaModel):
         return self
 
 
+class CreateCloudDriveGroupRequest(TeaModel):
+    def __init__(
+        self,
+        admin_user_ids: List[str] = None,
+        cds_id: str = None,
+        group_id: str = None,
+        region_id: str = None,
+        total_size: int = None,
+    ):
+        self.admin_user_ids = admin_user_ids
+        # The ID of the cloud disk in Cloud Drive Service.
+        # 
+        # This parameter is required.
+        self.cds_id = cds_id
+        # The ID of the team.
+        # 
+        # This parameter is required.
+        self.group_id = group_id
+        # The ID of the region.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The size of the cloud disk in Cloud Drive Service. Unit: bytes. The size is unlimited.
+        # 
+        # This parameter is required.
+        self.total_size = total_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.admin_user_ids is not None:
+            result['AdminUserIds'] = self.admin_user_ids
+        if self.cds_id is not None:
+            result['CdsId'] = self.cds_id
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdminUserIds') is not None:
+            self.admin_user_ids = m.get('AdminUserIds')
+        if m.get('CdsId') is not None:
+            self.cds_id = m.get('CdsId')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
+        return self
+
+
+class CreateCloudDriveGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The returned results. A value of success indicates that the operation is successful. If the operation failed, an error message is returned.
+        self.code = code
+        # The data information.
+        self.data = data
+        # The error message that is returned. This parameter is not returned if the value of Code is success.
+        self.message = message
+        # The ID of the request.
+        self.request_id = request_id
+        # Indicates whether the call is successful. true: The call is successful. false: The call fails.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateCloudDriveGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateCloudDriveGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateCloudDriveGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateCloudDriveServiceRequest(TeaModel):
     def __init__(
         self,
@@ -12035,6 +12195,192 @@ class CreateDriveResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateDriveResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateEcdReportTaskRequestFilterList(TeaModel):
+    def __init__(
+        self,
+        filter_key: str = None,
+        filter_values: List[str] = None,
+    ):
+        self.filter_key = filter_key
+        self.filter_values = filter_values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter_key is not None:
+            result['FilterKey'] = self.filter_key
+        if self.filter_values is not None:
+            result['FilterValues'] = self.filter_values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FilterKey') is not None:
+            self.filter_key = m.get('FilterKey')
+        if m.get('FilterValues') is not None:
+            self.filter_values = m.get('FilterValues')
+        return self
+
+
+class CreateEcdReportTaskRequest(TeaModel):
+    def __init__(
+        self,
+        filter_list: List[CreateEcdReportTaskRequestFilterList] = None,
+        lang_type: str = None,
+        report_file_name: str = None,
+        sub_type: str = None,
+        task_type: str = None,
+    ):
+        self.filter_list = filter_list
+        self.lang_type = lang_type
+        self.report_file_name = report_file_name
+        # This parameter is required.
+        self.sub_type = sub_type
+        # This parameter is required.
+        self.task_type = task_type
+
+    def validate(self):
+        if self.filter_list:
+            for k in self.filter_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['FilterList'] = []
+        if self.filter_list is not None:
+            for k in self.filter_list:
+                result['FilterList'].append(k.to_map() if k else None)
+        if self.lang_type is not None:
+            result['LangType'] = self.lang_type
+        if self.report_file_name is not None:
+            result['ReportFileName'] = self.report_file_name
+        if self.sub_type is not None:
+            result['SubType'] = self.sub_type
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.filter_list = []
+        if m.get('FilterList') is not None:
+            for k in m.get('FilterList'):
+                temp_model = CreateEcdReportTaskRequestFilterList()
+                self.filter_list.append(temp_model.from_map(k))
+        if m.get('LangType') is not None:
+            self.lang_type = m.get('LangType')
+        if m.get('ReportFileName') is not None:
+            self.report_file_name = m.get('ReportFileName')
+        if m.get('SubType') is not None:
+            self.sub_type = m.get('SubType')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        return self
+
+
+class CreateEcdReportTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        task_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class CreateEcdReportTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateEcdReportTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateEcdReportTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -29548,6 +29894,238 @@ class DescribeDrivesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDrivesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeEcdReportTasksRequest(TeaModel):
+    def __init__(
+        self,
+        page_num: int = None,
+        page_size: int = None,
+        status: List[str] = None,
+        sub_type: str = None,
+        task_id: str = None,
+        task_type: str = None,
+    ):
+        self.page_num = page_num
+        self.page_size = page_size
+        self.status = status
+        self.sub_type = sub_type
+        self.task_id = task_id
+        self.task_type = task_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.sub_type is not None:
+            result['SubType'] = self.sub_type
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SubType') is not None:
+            self.sub_type = m.get('SubType')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        return self
+
+
+class DescribeEcdReportTasksResponseBodyExportTaskList(TeaModel):
+    def __init__(
+        self,
+        download_url: str = None,
+        error_code: str = None,
+        error_msg: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        progress: float = None,
+        report_file_name: str = None,
+        status: str = None,
+        sub_type: str = None,
+        task_id: str = None,
+        task_type: str = None,
+    ):
+        self.download_url = download_url
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.progress = progress
+        self.report_file_name = report_file_name
+        self.status = status
+        self.sub_type = sub_type
+        self.task_id = task_id
+        self.task_type = task_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.download_url is not None:
+            result['DownloadUrl'] = self.download_url
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.report_file_name is not None:
+            result['ReportFileName'] = self.report_file_name
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.sub_type is not None:
+            result['SubType'] = self.sub_type
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DownloadUrl') is not None:
+            self.download_url = m.get('DownloadUrl')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('ReportFileName') is not None:
+            self.report_file_name = m.get('ReportFileName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SubType') is not None:
+            self.sub_type = m.get('SubType')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        return self
+
+
+class DescribeEcdReportTasksResponseBody(TeaModel):
+    def __init__(
+        self,
+        export_task_list: List[DescribeEcdReportTasksResponseBodyExportTaskList] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.export_task_list = export_task_list
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.export_task_list:
+            for k in self.export_task_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ExportTaskList'] = []
+        if self.export_task_list is not None:
+            for k in self.export_task_list:
+                result['ExportTaskList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.export_task_list = []
+        if m.get('ExportTaskList') is not None:
+            for k in m.get('ExportTaskList'):
+                temp_model = DescribeEcdReportTasksResponseBodyExportTaskList()
+                self.export_task_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeEcdReportTasksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeEcdReportTasksResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeEcdReportTasksResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
