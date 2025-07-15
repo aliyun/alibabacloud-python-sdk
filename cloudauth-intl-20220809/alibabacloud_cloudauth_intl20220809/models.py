@@ -1863,6 +1863,7 @@ class DocOcrResponse(TeaModel):
 class DocOcrMaxRequest(TeaModel):
     def __init__(
         self,
+        doc_page: str = None,
         doc_type: str = None,
         id_ocr_picture_base_64: str = None,
         id_ocr_picture_url: str = None,
@@ -1876,6 +1877,7 @@ class DocOcrMaxRequest(TeaModel):
         scene_code: str = None,
         spoof: str = None,
     ):
+        self.doc_page = doc_page
         self.doc_type = doc_type
         self.id_ocr_picture_base_64 = id_ocr_picture_base_64
         self.id_ocr_picture_url = id_ocr_picture_url
@@ -1898,6 +1900,8 @@ class DocOcrMaxRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.doc_page is not None:
+            result['DocPage'] = self.doc_page
         if self.doc_type is not None:
             result['DocType'] = self.doc_type
         if self.id_ocr_picture_base_64 is not None:
@@ -1926,6 +1930,8 @@ class DocOcrMaxRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DocPage') is not None:
+            self.doc_page = m.get('DocPage')
         if m.get('DocType') is not None:
             self.doc_type = m.get('DocType')
         if m.get('IdOcrPictureBase64') is not None:

@@ -1402,6 +1402,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.doc_page):
+            body['DocPage'] = request.doc_page
         if not UtilClient.is_unset(request.doc_type):
             body['DocType'] = request.doc_type
         if not UtilClient.is_unset(request.id_ocr_picture_base_64):
@@ -1459,6 +1461,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.doc_page):
+            body['DocPage'] = request.doc_page
         if not UtilClient.is_unset(request.doc_type):
             body['DocType'] = request.doc_type
         if not UtilClient.is_unset(request.id_ocr_picture_base_64):

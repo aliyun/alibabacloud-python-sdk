@@ -1,3 +1,7 @@
+2025-07-15 Version: 3.9.1
+- Update API DocOcrMax: add request parameters DocPage.
+
+
 2025-07-11 Version: 3.9.0
 - Support API KeepaliveIntl.
 
