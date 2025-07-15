@@ -4034,6 +4034,7 @@ class ListExecutorsResponseBodyExecutors(TeaModel):
         self,
         app_name: str = None,
         array_index: int = None,
+        block_duration: int = None,
         create_time: str = None,
         end_time: str = None,
         executor_id: str = None,
@@ -4044,6 +4045,7 @@ class ListExecutorsResponseBodyExecutors(TeaModel):
         ip_address: List[str] = None,
         job_id: str = None,
         job_name: str = None,
+        preemptible: bool = None,
         resource: ListExecutorsResponseBodyExecutorsResource = None,
         resource_type: str = None,
         start_time: str = None,
@@ -4056,6 +4058,7 @@ class ListExecutorsResponseBodyExecutors(TeaModel):
     ):
         self.app_name = app_name
         self.array_index = array_index
+        self.block_duration = block_duration
         self.create_time = create_time
         self.end_time = end_time
         self.executor_id = executor_id
@@ -4066,6 +4069,7 @@ class ListExecutorsResponseBodyExecutors(TeaModel):
         self.ip_address = ip_address
         self.job_id = job_id
         self.job_name = job_name
+        self.preemptible = preemptible
         self.resource = resource
         self.resource_type = resource_type
         self.start_time = start_time
@@ -4094,6 +4098,8 @@ class ListExecutorsResponseBodyExecutors(TeaModel):
             result['AppName'] = self.app_name
         if self.array_index is not None:
             result['ArrayIndex'] = self.array_index
+        if self.block_duration is not None:
+            result['BlockDuration'] = self.block_duration
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.end_time is not None:
@@ -4114,6 +4120,8 @@ class ListExecutorsResponseBodyExecutors(TeaModel):
             result['JobId'] = self.job_id
         if self.job_name is not None:
             result['JobName'] = self.job_name
+        if self.preemptible is not None:
+            result['Preemptible'] = self.preemptible
         if self.resource is not None:
             result['Resource'] = self.resource.to_map()
         if self.resource_type is not None:
@@ -4142,6 +4150,8 @@ class ListExecutorsResponseBodyExecutors(TeaModel):
             self.app_name = m.get('AppName')
         if m.get('ArrayIndex') is not None:
             self.array_index = m.get('ArrayIndex')
+        if m.get('BlockDuration') is not None:
+            self.block_duration = m.get('BlockDuration')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('EndTime') is not None:
@@ -4162,6 +4172,8 @@ class ListExecutorsResponseBodyExecutors(TeaModel):
             self.job_id = m.get('JobId')
         if m.get('JobName') is not None:
             self.job_name = m.get('JobName')
+        if m.get('Preemptible') is not None:
+            self.preemptible = m.get('Preemptible')
         if m.get('Resource') is not None:
             temp_model = ListExecutorsResponseBodyExecutorsResource()
             self.resource = temp_model.from_map(m['Resource'])
@@ -4754,6 +4766,7 @@ class ListJobExecutorsResponseBodyExecutors(TeaModel):
     def __init__(
         self,
         array_index: int = None,
+        block_duration: int = None,
         create_time: str = None,
         end_time: str = None,
         executor_id: str = None,
@@ -4761,12 +4774,14 @@ class ListJobExecutorsResponseBodyExecutors(TeaModel):
         external_ip_address: List[str] = None,
         host_name: List[str] = None,
         ip_address: List[str] = None,
+        preemptible: bool = None,
         start_time: str = None,
         status: str = None,
         status_reason: str = None,
         tags: List[ListJobExecutorsResponseBodyExecutorsTags] = None,
     ):
         self.array_index = array_index
+        self.block_duration = block_duration
         self.create_time = create_time
         self.end_time = end_time
         self.executor_id = executor_id
@@ -4774,6 +4789,7 @@ class ListJobExecutorsResponseBodyExecutors(TeaModel):
         self.external_ip_address = external_ip_address
         self.host_name = host_name
         self.ip_address = ip_address
+        self.preemptible = preemptible
         self.start_time = start_time
         self.status = status
         self.status_reason = status_reason
@@ -4793,6 +4809,8 @@ class ListJobExecutorsResponseBodyExecutors(TeaModel):
         result = dict()
         if self.array_index is not None:
             result['ArrayIndex'] = self.array_index
+        if self.block_duration is not None:
+            result['BlockDuration'] = self.block_duration
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.end_time is not None:
@@ -4807,6 +4825,8 @@ class ListJobExecutorsResponseBodyExecutors(TeaModel):
             result['HostName'] = self.host_name
         if self.ip_address is not None:
             result['IpAddress'] = self.ip_address
+        if self.preemptible is not None:
+            result['Preemptible'] = self.preemptible
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.status is not None:
@@ -4823,6 +4843,8 @@ class ListJobExecutorsResponseBodyExecutors(TeaModel):
         m = m or dict()
         if m.get('ArrayIndex') is not None:
             self.array_index = m.get('ArrayIndex')
+        if m.get('BlockDuration') is not None:
+            self.block_duration = m.get('BlockDuration')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('EndTime') is not None:
@@ -4837,6 +4859,8 @@ class ListJobExecutorsResponseBodyExecutors(TeaModel):
             self.host_name = m.get('HostName')
         if m.get('IpAddress') is not None:
             self.ip_address = m.get('IpAddress')
+        if m.get('Preemptible') is not None:
+            self.preemptible = m.get('Preemptible')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('Status') is not None:

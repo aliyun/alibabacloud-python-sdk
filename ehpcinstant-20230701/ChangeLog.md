@@ -1,3 +1,10 @@
+2025-07-15 Version: 2.0.7
+- Update API ListExecutors: add response parameters Body.Executors.$.BlockDuration.
+- Update API ListExecutors: add response parameters Body.Executors.$.Preemptible.
+- Update API ListJobExecutors: add response parameters Body.Executors.$.BlockDuration.
+- Update API ListJobExecutors: add response parameters Body.Executors.$.Preemptible.
+
+
 2025-07-11 Version: 2.0.6
 - Update API ListExecutors: add request parameters Filter.Image.
 - Update API ListExecutors: add request parameters Filter.VswitchId.
