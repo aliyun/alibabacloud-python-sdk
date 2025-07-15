@@ -349,7 +349,7 @@ class FullDataType(TeaModel):
     def __init__(
         self,
         element: 'FullDataType' = None,
-        fields: List[DataField] = None,
+        fields: List['DataField'] = None,
         key: 'FullDataType' = None,
         type: str = None,
         value: 'FullDataType' = None,
