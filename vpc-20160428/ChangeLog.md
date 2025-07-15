@@ -1,3 +1,8 @@
+2025-07-15 Version: 6.11.8
+- Update API DescribeNatGatewayAssociateNetworkInterfaces: add response parameters Body.AssociateNetworkInterfaces.$.ResourceVpcId.
+- Update API GetVpcPrefixListAssociations: add response parameters Body.PrefixListAssociation.$.CidrList.
+
+
 2025-06-16 Version: 6.11.7
 - Update API GetDhcpOptionsSet: add response parameters Body.CreationTime.
 - Update API ListDhcpOptionsSets: add response parameters Body.DhcpOptionsSets.$.CreationTime.

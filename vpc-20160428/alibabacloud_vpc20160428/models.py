@@ -1273,7 +1273,7 @@ class AddSourcesToTrafficMirrorSessionRequest(TeaModel):
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         # 
-        # For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](https://help.aliyun.com/document_detail/207513.html).
+        # For more information about regions that support traffic mirror, see [Overview of traffic mirror](https://help.aliyun.com/document_detail/207513.html).
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -3730,22 +3730,22 @@ class AssociateHaVipRequest(TeaModel):
         # 
         # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** in each API request may be different.
         self.client_token = client_token
-        # The ID of the HAVIP.
+        # The ID of the HaVip.
         # 
         # This parameter is required.
         self.ha_vip_id = ha_vip_id
-        # The ID of the ECS instance to be associated with the HAVIP.
+        # The ID of the ECS instance to be associated with the HaVip.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The type of the instance to be associated with the HAVIP. Valid values:
+        # The type of the instance to be associated with the HaVip. Valid values:
         # 
         # *   **EcsInstance**: an ECS instance
-        # *   **NetworkInterface**: an ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
+        # *   **NetworkInterface**: an ENI. If you want to associate the HaVip with an ENI, this parameter is required.
         self.instance_type = instance_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region to which the HAVIP belongs.
+        # The ID of the region to which the HaVip belongs.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         # 
@@ -4941,7 +4941,12 @@ class AssociateVpcCidrBlockResponseBody(TeaModel):
         ip_version: str = None,
         request_id: str = None,
     ):
+        # The IPv4 CIDR block to be added.
         self.cidr_block = cidr_block
+        # The version of the IP address. Valid values:
+        # 
+        # *   **IPV4**: the IPv4 address.
+        # *   **IPV6**: the IPv6 address.
         self.ip_version = ip_version
         # The request ID.
         self.request_id = request_id
@@ -10778,31 +10783,31 @@ class CreateHaVipRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
         self.client_token = client_token
-        # The description of the HAVIP.
+        # The description of the HaVip.
         # 
         # The description must be 1 to 255 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The IP address of the HAVIP.
+        # The IP address of the HaVip.
         # 
-        # The specified IP address must be an idle IP address that falls within the CIDR block of the vSwitch. If this parameter is not set, an idle IP address from the CIDR block of the vSwitch is randomly assigned to the HAVIP.
+        # The specified IP address must be an idle IP address that falls within the CIDR block of the vSwitch. If this parameter is not set, an idle IP address from the CIDR block of the vSwitch is randomly assigned to the HaVip.
         self.ip_address = ip_address
-        # The name of the HAVIP.
+        # The name of the HaVip.
         # 
         # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the HAVIP. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # The region ID of the HaVip. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the HAVIP belongs.
+        # The ID of the resource group to which the HaVip belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The tag of the resource.
         self.tag = tag
-        # The ID of the vSwitch to which the HAVIP belongs.
+        # The ID of the vSwitch to which the HaVip belongs.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
@@ -10886,9 +10891,9 @@ class CreateHaVipResponseBody(TeaModel):
         ip_address: str = None,
         request_id: str = None,
     ):
-        # The ID of the HAVIP.
+        # The ID of the HaVip.
         self.ha_vip_id = ha_vip_id
-        # The IP address of the HAVIP.
+        # The IP address of the HaVip.
         self.ip_address = ip_address
         # The ID of the request.
         self.request_id = request_id
@@ -15954,7 +15959,7 @@ class CreateRouteEntriesRequestRouteEntries(TeaModel):
         # The type of next hop. You can specify at most 50 next hop types. Valid values:
         # 
         # *   **Instance**: Elastic Compute Service (ECS) instance. This is the default value.
-        # *   **HaVip**: high-availability virtual IP address (HAVIP).
+        # *   **HaVip**: high-availability virtual IP address (HaVip).
         # *   **RouterInterface**: router interface.
         # *   **NetworkInterface**: elastic network interface (ENI).
         # *   **VpnGateway**: VPN gateway.
@@ -16029,6 +16034,10 @@ class CreateRouteEntriesRequest(TeaModel):
         resource_owner_id: int = None,
         route_entries: List[CreateRouteEntriesRequestRouteEntries] = None,
     ):
+        # Specifies whether to only precheck the request. Valid values:
+        # 
+        # *   **true**: prechecks the request without performing the operation. The system prechecks the required parameters, request syntax, and limits. If the request fails to pass the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # *   **false** (default): sends the request. After the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -16328,15 +16337,21 @@ class CreateRouteEntryRequest(TeaModel):
         # 
         # This parameter is required.
         self.destination_cidr_block = destination_cidr_block
+        # Specifies whether to perform a dry run. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the required parameters, request syntax, and limits. If the request fails, an error message is returned. If the request passes the validation, the `DryRunOperation` error code is returned.
+        # *   **false** (default): sends the request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the next hop.
+        # The ID of the next hop for the custom route.
+        # 
+        # >  [](#-nexthoptype--ecr-describeexpressconnectrouterassociation--associationid--id)If you set the NextHopType parameter to ECR, call the [DescribeExpressConnectRouterAssociation](https://help.aliyun.com/document_detail/2712069.html) operation to access the AssociationId and use it as the next hop ID.
         self.next_hop_id = next_hop_id
         # The next hop list.
         self.next_hop_list = next_hop_list
         # The type of next hop of the custom route entry. Valid values:
         # 
         # *   **Instance**: an Elastic Compute Service (ECS) instance. This is the default value.
-        # *   **HaVip**: a high-availability virtual IP address (HAVIP).
+        # *   **HaVip**: a high-availability virtual IP address (HaVip).
         # *   **RouterInterface**: a router interface.
         # *   **NetworkInterface**: an elastic network interface (ENI).
         # *   **VpnGateway**: a VPN gateway.
@@ -16607,17 +16622,6 @@ class CreateRouteTableRequest(TeaModel):
         # The tags of the resource.
         self.tag = tag
         # The ID of the VPC to which the custom route table belongs.
-        # 
-        # If a VPC contains an Elastic Compute Service (ECS) instance that belongs to one of the following instance families, you cannot create a custom route table for the VPC:
-        # 
-        # ecs.c1, ecs.c2, ecs.c4, ecs.ce4, ecs.cm4, ecs.d1, ecs.e3, ecs.e4, ecs.ga1, ecs.gn4, ecs.gn5, ecs.i1, ecs.m1, ecs.m2, ecs.mn4, ecs.n1, ecs.n2, ecs.n4, ecs.s1, ecs.s2, ecs.s3, ecs.se1, ecs.sn1, ecs.sn2, ecs.t1, and ecs.xn4
-        # 
-        # You must upgrade or release the ECS instance before you can create a custom route table for the VPC.
-        # 
-        # *   For more information about how to upgrade an ECS instance, see [Upgrade subscription instances](https://help.aliyun.com/document_detail/25438.html) and [Change specifications of pay-as-you-go instances](https://help.aliyun.com/document_detail/60051.html).
-        # *   For more information about how to release an ECS instance, see [Release an ECS instance](https://help.aliyun.com/document_detail/25442.html).
-        # 
-        # >  If a custom route table is created for a VPC that contains an ECS instance from one of the preceding instance families, you must upgrade or release the ECS instance. Otherwise, the custom route table cannot work as expected.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
@@ -17956,10 +17960,10 @@ class CreateTrafficMirrorFilterRequestEgressRules(TeaModel):
         source_cidr_block: str = None,
         source_port_range: str = None,
     ):
-        # The collection policy of the outbound rule. Valid value:
+        # The collection policy of the outbound rule. Valid values:
         # 
-        # *   **accept**: collects network traffic.
-        # *   **drop**: does not collect network traffic.
+        # *   **accept**: collects the network traffic.
+        # *   **drop**: does not collect the network traffic.
         self.action = action
         # The destination CIDR block of the outbound traffic.
         self.destination_cidr_block = destination_cidr_block
@@ -17967,10 +17971,14 @@ class CreateTrafficMirrorFilterRequestEgressRules(TeaModel):
         # 
         # >  If **EgressRules.N.Protocol** is set to **ALL** or **ICMP**, you do not need to specify this parameter. This indicates that all ports are available.
         self.destination_port_range = destination_port_range
+        # The IP version of the instance. The following value may be returned:
+        # 
+        # *   **IPv4**: IPv4
+        # *   **IPv6**: IPv6
         self.ip_version = ip_version
         # The priority of the outbound rule. A smaller value indicates a higher priority. The maximum value of **N** is **10**. You can configure up to 10 outbound rules for a filter.
         self.priority = priority
-        # The type of the protocol that is used by the outbound traffic that you want to mirror. Valid value:
+        # The type of the protocol that is used by the outbound traffic that you want to mirror. Valid values:
         # 
         # *   **ALL**: all protocols
         # *   **ICMP**: Internet Control Message Protocol.
@@ -18044,10 +18052,10 @@ class CreateTrafficMirrorFilterRequestIngressRules(TeaModel):
         source_cidr_block: str = None,
         source_port_range: str = None,
     ):
-        # The collection policy of the inbound rule. Valid value:
+        # The collection policy of the inbound rule. Valid values:
         # 
-        # *   **accept**: collects network traffic.
-        # *   **drop**: does not collect network traffic.
+        # *   **accept**: collects the network traffic.
+        # *   **drop**: does not collect the network traffic.
         self.action = action
         # The destination CIDR block of the inbound traffic.
         self.destination_cidr_block = destination_cidr_block
@@ -18055,10 +18063,14 @@ class CreateTrafficMirrorFilterRequestIngressRules(TeaModel):
         # 
         # >  If you set **IngressRules.N.Protocol** to **ALL** or **ICMP**, you do not need to set this parameter. In this case, all ports are available.
         self.destination_port_range = destination_port_range
+        # The IP version of the instance. The following value may be returned:
+        # 
+        # *   **IPv4**\
+        # *   **IPv6**\
         self.ip_version = ip_version
         # The priority of the inbound rule. A smaller value indicates a higher priority. The maximum value of **N** is **10**. You can configure up to 10 inbound rules for a filter.
         self.priority = priority
-        # The type of the protocol is used by the inbound traffic that you want to mirror. Valid value:
+        # The type of the protocol is used by the inbound traffic that you want to mirror. Valid values:
         # 
         # *   **ALL**: all protocols
         # *   **ICMP**: Internet Control Message Protocol.
@@ -18195,7 +18207,7 @@ class CreateTrafficMirrorFilterRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region to which the mirrored traffic belongs.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](https://help.aliyun.com/document_detail/207513.html).
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirror, see [Overview of traffic mirror](https://help.aliyun.com/document_detail/207513.html).
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -18403,32 +18415,36 @@ class CreateTrafficMirrorFilterRulesRequestEgressRules(TeaModel):
         source_cidr_block: str = None,
         source_port_range: str = None,
     ):
-        # The action of the outbound rule. Valid values:
+        # The collection policy of the outbound rule. Valid values:
         # 
         # *   **accept**: accepts network traffic.
         # *   **drop**: drops network traffic.
         self.action = action
         # The destination CIDR block of the outbound traffic.
         self.destination_cidr_block = destination_cidr_block
-        # The destination port range of the outbound traffic. Valid values for a port: **1** to **65535**. Separate the first port and the last port with a forward slash (/). Examples: **1/200** and **80/80**. You cannot set this parameter to only **-1/-1**, which specifies all ports.
+        # The destination port range of the outbound traffic. Valid value: **1** to **65535**. Separate the first and last port with a forward slash (/). For example **1/200** and **80/80**. You cannot set this parameter to \\*\\*-1/-1\\*\\*, which indicates all ports.
         # 
-        # >  If you set **EgressRules.N.Protocol** to **ALL** or **ICMP**, you do not need to set this parameter. In this case, all ports are available.
+        # >  If **EgressRules.N.Protocol** is set to **ALL** or **ICMP**, you do not need to set this parameter. In this case, all ports are available.
         self.destination_port_range = destination_port_range
+        # The IP version of the instance. Valid values:
+        # 
+        # *   **IPv4**: IPv4
+        # *   **IPv6**: IPv6
         self.ip_version = ip_version
         # The priority of the outbound rule. A smaller value indicates a higher priority. The maximum value of **N** is **10**. You can configure up to 10 outbound rules for a filter.
         self.priority = priority
         # The protocol that is used by the outbound traffic to be mirrored. Valid values:
         # 
         # *   **ALL**: all protocols
-        # *   **ICMP**: ICMP
-        # *   **TCP**: TCP
-        # *   **UDP**: UDP
+        # *   **ICMP**: Internet Control Message Protocol.
+        # *   **TCP**: Transmission Control Protocol.
+        # *   **UDP**: User Datagram Protocol.
         self.protocol = protocol
         # The source CIDR block of the outbound traffic.
         self.source_cidr_block = source_cidr_block
-        # The source port range of the outbound traffic. Valid values for a port: **1** to **65535**. Separate the first port and the last port with a forward slash (/). Examples: **1/200** and **80/80**. You cannot set this parameter to only **-1/-1**, which specifies all ports.
+        # The source port range of the outbound traffic. Valid value: **1** to **65535**. Separate the first and last port with a forward slash (/). For example **1/200** and **80/80**. You cannot set this parameter to \\*\\*-1/-1\\*\\*, which indicates all ports.
         # 
-        # >  If you set **EgressRules.N.Protocol** to **ALL** or **ICMP**, you do not need to set this parameter. In this case, all ports are available.
+        # >  If **EgressRules.N.Protocol** is set to **ALL** or **ICMP**, you do not need to set this parameter. In this case, all ports are available.
         self.source_port_range = source_port_range
 
     def validate(self):
@@ -18491,32 +18507,36 @@ class CreateTrafficMirrorFilterRulesRequestIngressRules(TeaModel):
         source_cidr_block: str = None,
         source_port_range: str = None,
     ):
-        # The action of the inbound rule. Valid values:
+        # The policy of the inbound rule. Valid values:
         # 
-        # *   **accept**: accepts network traffic.
+        # *   **accept**: collects network traffic.
         # *   **drop**: drops network traffic.
         self.action = action
         # The destination CIDR block of the inbound traffic.
         self.destination_cidr_block = destination_cidr_block
-        # The destination port range of the inbound traffic. Valid values for a port: **1** to **65535**. Separate the first port and the last port with a forward slash (/). Examples: **1/200** and **80/80**.
+        # The destination port range of the inbound traffic. Valid value: **1** to **65535**. Separate the first and the last port with a forward slash (/). For example, **1/200** or **80/80**.
         # 
-        # >  If you set **IngressRules.N.Protocol** to **ALL** or **ICMP**, you do not need to set this parameter. In this case, all ports are available.
+        # >  If the **IngressRules.N.Protocol** parameter is set to **ALL** or **ICMP**, you do not need to set this parameter. In this case, all ports are available.
         self.destination_port_range = destination_port_range
+        # The IP version of the instance. The following value may be returned:
+        # 
+        # *   **IPv4**: IPv4
+        # *   **IPv6**: IPv6
         self.ip_version = ip_version
         # The priority of the inbound rule. A smaller value indicates a higher priority. The maximum value of **N** is **10**. You can configure up to 10 inbound rules for a filter.
         self.priority = priority
         # The protocol that is used by the inbound traffic to be mirrored. Valid values:
         # 
         # *   **ALL**: all protocols
-        # *   **ICMP**: Internet Control Message Protocol (ICMP)
-        # *   **TCP**: TCP
-        # *   **UDP**: User Datagram Protocol (UDP)
+        # *   **ICMP**: Internet Control Message Protocol.
+        # *   **TCP**: Transmission Control Protocol.
+        # *   **UDP**: User Datagram Protocol.
         self.protocol = protocol
         # The source CIDR block of the inbound traffic.
         self.source_cidr_block = source_cidr_block
-        # The source port range of the inbound traffic. Valid values for a port: **1** to **65535**. Separate the first port and the last port with a forward slash (/). Examples: **1/200** and **80/80**. You cannot set this parameter to only **-1/-1**, which specifies all ports.
+        # The source port range of the inbound traffic. Valid value: **1** to **65535**. Separate the first and last port with a forward slash (/). For example **1/200** and **80/80**. You cannot set this parameter to \\*\\*-1/-1\\*\\*, which indicates all ports.
         # 
-        # >  If you set **IngressRules.N.Protocol** to **ALL** or **ICMP**, you do not need to set this parameter. In this case, all ports are available.
+        # >  If the **IngressRules.N.Protocol** parameter is set to **ALL** or **ICMP**, you do not need to set this parameter. In this case, all ports are available.
         self.source_port_range = source_port_range
 
     def validate(self):
@@ -18592,15 +18612,15 @@ class CreateTrafficMirrorFilterRulesRequest(TeaModel):
         # *   **true**: checks the request without performing the operation. The system checks the required parameters, request format, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
         # *   **false** (default): sends the request. After the request passes the check, the operation is performed.
         self.dry_run = dry_run
-        # The list of outbound rules.
+        # The information about the outbound rule.
         self.egress_rules = egress_rules
-        # The list of inbound rules.
+        # The information about the inbound rules.
         self.ingress_rules = ingress_rules
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region to which the mirrored traffic belongs.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](https://help.aliyun.com/document_detail/207513.html).
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirror, see [Overview of traffic mirror](https://help.aliyun.com/document_detail/207513.html).
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -18930,7 +18950,7 @@ class CreateTrafficMirrorSessionRequest(TeaModel):
         # 
         # This parameter is required.
         self.priority = priority
-        # The ID of the region to which the traffic mirror session belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](https://help.aliyun.com/document_detail/207513.html).
+        # The ID of the region to which the traffic mirror session belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirror, see [Overview of traffic mirror](https://help.aliyun.com/document_detail/207513.html).
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -20798,8 +20818,8 @@ class CreateVpcRequest(TeaModel):
     ):
         # The CIDR block of the VPC.
         # 
-        # *   You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
-        # *   You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, and their subnets as the primary IPv4 CIDR block of the VPC.
+        # *   We recommend using the private IPv4 address specified in RFC 1918 as the primary IPv4 CIDR block of the VPC with a recommended mask length of 16 to 28 bits. For example, 10.0.0.0/16, 172.16.0.0/16, and 192.168.0.0/16.
+        # *   You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the primary IPv4 CIDR block.
         self.cidr_block = cidr_block
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -20816,16 +20836,21 @@ class CreateVpcRequest(TeaModel):
         # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # Whether to enable the DNS hostname feature. Values:
+        # - **false** (default): Not enabled. 
+        # - **true**: Enabled.
         self.enable_dns_hostname = enable_dns_hostname
-        # Specifies whether to enable IPv6. Valid values:
+        # Indicates whether IPv6 is enabled. Valid values:
         # 
-        # *   **false** (default)
-        # *   **true**\
+        # *   **false** (default): disabled.
+        # *   **true**: enabled.
         self.enable_ipv_6 = enable_ipv_6
+        # Allocate VPC from the IPAM address pool by inputting a mask.
+        # > When creating a VPC with a specified IPAM address pool, at least one of the parameters CidrBlock or Ipv4CidrMask must be provided.
         self.ipv_4cidr_mask = ipv_4cidr_mask
         # The ID of the IP Address Manager (IPAM) pool of the IPv4 type.
         self.ipv_4ipam_pool_id = ipv_4ipam_pool_id
-        # The IPv6 CIDR block of the VPC.
+        # The IPv6 CIDR block of the VPC. If you enable IPv6 for a VPC, the system allocates an IPv6 CIDR block. To specify an IPv6 CIDR block, you must call the [AllocateVpcIpv6Cidr](https://help.aliyun.com/document_detail/448916.html) operation to reserve the specified IPv6 CIDR block.
         self.ipv_6cidr_block = ipv_6cidr_block
         # The type of the IPv6 CIDR block of the VPC. Valid values:
         # 
@@ -26596,13 +26621,13 @@ class DeleteHaVipRequest(TeaModel):
         # 
         # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** in each API request may be different.
         self.client_token = client_token
-        # The ID of the HAVIP that you want to delete.
+        # The ID of the HaVip that you want to delete.
         # 
         # This parameter is required.
         self.ha_vip_id = ha_vip_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the HAVIP is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # The region where the HaVip resides. Call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -30229,7 +30254,7 @@ class DeleteTrafficMirrorFilterRequest(TeaModel):
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region to which the mirrored traffic belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](https://help.aliyun.com/document_detail/207513.html).
+        # The ID of the region to which the mirrored traffic belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirror, see [Overview of traffic mirror](https://help.aliyun.com/document_detail/207513.html).
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -30383,7 +30408,7 @@ class DeleteTrafficMirrorFilterRulesRequest(TeaModel):
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region to which the mirrored traffic belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](https://help.aliyun.com/document_detail/207513.html).
+        # The ID of the region to which the mirrored traffic belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirror, see [Overview of traffic mirror](https://help.aliyun.com/document_detail/207513.html).
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -30544,7 +30569,7 @@ class DeleteTrafficMirrorSessionRequest(TeaModel):
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region to which the traffic mirror session belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](https://help.aliyun.com/document_detail/207513.html).
+        # The ID of the region to which the traffic mirror session belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirror, see [Overview of traffic mirror](https://help.aliyun.com/document_detail/207513.html).
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -30822,7 +30847,17 @@ class DeleteVSwitchCidrReservationRequest(TeaModel):
         resource_owner_id: int = None,
         v_switch_cidr_reservation_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform a dry run. Valid values:
+        # 
+        # **true**: performs a dry run. The system checks the required parameters, request format, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # 
+        # **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -42121,13 +42156,13 @@ class DescribeHaVipsRequestFilter(TeaModel):
         # 
         # *   **VpcId**: virtual private cloud (VPC) ID
         # *   **VSwitchId**: vSwitch ID
-        # *   **Status**: HAVIP status
-        # *   **HaVipId**: HAVIP ID
-        # *   **HaVipAddress**: HAVIP IP address
+        # *   **Status**: HaVip status
+        # *   **HaVipId**: HaVip ID
+        # *   **HaVipAddress**: HaVip IP address
         # 
         # You can specify multiple values for each filter key. The logical operator among multiple values is OR. If one value is matched, the filter key is matched.
         # 
-        # The logical operator among multiple filter keys is AND. HAVIPs can be queried only if all filter keys are matched.
+        # The logical operator among multiple filter keys is AND. HaVips can be queried only if all filter keys are matched.
         self.key = key
         # The value of the filter key. Valid values of **N**: **1 to 5**.
         self.value = value
@@ -42213,17 +42248,17 @@ class DescribeHaVipsRequest(TeaModel):
         self.filter = filter
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Default value: **1**.
+        # The number of the returned page. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The region ID of the HAVIP.
+        # The region ID of the HaVip.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the HAVIP belongs.
+        # The ID of the resource group to which the HaVip belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -42447,34 +42482,34 @@ class DescribeHaVipsResponseBodyHaVipsHaVip(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The list of EIPs associated with the HAVIP.
+        # The list of EIPs associated with the HaVip.
         self.associated_eip_addresses = associated_eip_addresses
-        # The type of the instance with which the HAVIP is associated. Valid values:
+        # The type of the instance with which the HaVip is associated. Valid values:
         # 
         # *   **EcsInstance**: Elastic Compute Service (ECS) instance
         # *   **NetworkInterface**: elastic network interface (ENI)
         self.associated_instance_type = associated_instance_type
-        # The information about the instance associated with the HAVIP.
+        # The information about the instance associated with the HaVip.
         self.associated_instances = associated_instances
         # The parameter is invalid. No value is returned.
         self.charge_type = charge_type
-        # The time when the HAVIP was created.
+        # The time when the HaVip was created.
         self.create_time = create_time
-        # The description of the HAVIP.
+        # The description of the HaVip.
         self.description = description
-        # The ID of the HAVIP.
+        # The ID of the HaVip.
         self.ha_vip_id = ha_vip_id
-        # The private IP address of the HAVIP.
+        # The private IP address of the HaVip.
         self.ip_address = ip_address
-        # The ID of the active instance that is associated with the HAVIP.
+        # The ID of the active instance that is associated with the HaVip.
         self.master_instance_id = master_instance_id
-        # The name of the HAVIP.
+        # The name of the HaVip.
         self.name = name
-        # The ID of the region to which the HAVIP belongs.
+        # The ID of the region to which the HaVip belongs.
         self.region_id = region_id
-        # The ID of the resource group to which the HAVIP belongs.
+        # The ID of the resource group to which the HaVip belongs.
         self.resource_group_id = resource_group_id
-        # The status of the HAVIP. Valid values:
+        # The status of the HaVip. Valid values:
         # 
         # *   **Creating**: The server group is being created.
         # *   **Available**: The FULLNAT entry is available.
@@ -42482,9 +42517,9 @@ class DescribeHaVipsResponseBodyHaVipsHaVip(TeaModel):
         self.status = status
         # The tag list.
         self.tags = tags
-        # The ID of the vSwitch to which the HAVIP belongs.
+        # The ID of the vSwitch to which the HaVip belongs.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC to which the HAVIP belongs.
+        # The ID of the VPC to which the HaVip belongs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -42619,7 +42654,7 @@ class DescribeHaVipsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details about the HAVIP.
+        # The details about the HaVip.
         self.ha_vips = ha_vips
         # The page number.
         self.page_number = page_number
@@ -46345,6 +46380,7 @@ class DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkIn
         resource_id: str = None,
         resource_owner_id: str = None,
         resource_type: str = None,
+        resource_vpc_id: str = None,
         tunnel_index: str = None,
     ):
         self.ipv_4sets = ipv_4sets
@@ -46352,6 +46388,7 @@ class DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkIn
         self.resource_id = resource_id
         self.resource_owner_id = resource_owner_id
         self.resource_type = resource_type
+        self.resource_vpc_id = resource_vpc_id
         self.tunnel_index = tunnel_index
 
     def validate(self):
@@ -46374,6 +46411,8 @@ class DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkIn
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
+        if self.resource_vpc_id is not None:
+            result['ResourceVpcId'] = self.resource_vpc_id
         if self.tunnel_index is not None:
             result['TunnelIndex'] = self.tunnel_index
         return result
@@ -46391,6 +46430,8 @@ class DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkIn
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
+        if m.get('ResourceVpcId') is not None:
+            self.resource_vpc_id = m.get('ResourceVpcId')
         if m.get('TunnelIndex') is not None:
             self.tunnel_index = m.get('TunnelIndex')
         return self
@@ -50763,7 +50804,7 @@ class DescribeRouteEntryListRequest(TeaModel):
         # The next hop type. Valid values:
         # 
         # *   **Instance**: an Elastic Compute Service (ECS) instance. This is the default value.
-        # *   **HaVip**: a high-availability virtual IP address (HAVIP).
+        # *   **HaVip**: a high-availability virtual IP address (HaVip).
         # *   **VpnGateway**: a VPN gateway.
         # *   **NatGateway**: a NAT gateway.
         # *   **NetworkInterface**: a secondary elastic network interface (ENI).
@@ -50971,7 +51012,7 @@ class DescribeRouteEntryListResponseBodyRouteEntrysRouteEntryNextHopsNextHop(Tea
         # The next hop type. Valid values:
         # 
         # *   **Instance**: an ECS instance.
-        # *   **HaVip**: an HAVIP.
+        # *   **HaVip**: an HaVip.
         # *   **VpnGateway**: a VPN gateway.
         # *   **NatGateway**: a NAT gateway.
         # *   **NetworkInterface**: a secondary ENI.
@@ -51111,11 +51152,12 @@ class DescribeRouteEntryListResponseBodyRouteEntrysRouteEntry(TeaModel):
         # 
         # If **TR** is returned, the route is hosted by a transit router.
         self.service_type = service_type
-        # The route status. Valid values:
+        # The status of the route entry. Valid values:
         # 
         # *   **Pending**\
         # *   **Available**\
         # *   **Modifying**\
+        # *   **Deleting**\
         self.status = status
         # The route type. Valid values:
         # 
@@ -51241,7 +51283,7 @@ class DescribeRouteEntryListResponseBody(TeaModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The information about the route.
+        # The information about the routes.
         self.route_entrys = route_entrys
 
     def validate(self):
@@ -52058,7 +52100,7 @@ class DescribeRouteTablesResponseBodyRouteTablesRouteTableRouteEntrysRouteEntryN
         # The type of the next hop. Valid values:
         # 
         # *   **Instance**: an ECS instance
-        # *   **HaVip**: an HAVIP
+        # *   **HaVip**: an HaVip
         # *   **VpnGateway**: a VPN gateway
         # *   **NatGateway**: a NAT gateway
         # *   **NetworkInterface**: a secondary ENI
@@ -52162,7 +52204,7 @@ class DescribeRouteTablesResponseBodyRouteTablesRouteTableRouteEntrysRouteEntry(
         # The type of the next hop. Valid values:
         # 
         # *   **Instance** (default): an Elastic Compute Service (ECS) instance
-        # *   **HaVip**: a high-availability virtual IP address (HAVIP).
+        # *   **HaVip**: a high-availability virtual IP address (HaVip).
         # *   **VpnGateway**: a VPN gateway
         # *   **NatGateway**: a NAT gateway
         # *   **NetworkInterface**: a secondary elastic network interface (ENI)
@@ -55740,7 +55782,7 @@ class DescribeTagKeysRequest(TeaModel):
     ):
         # The tag keys.
         self.keyword = keyword
-        # The number of entries to return on each page. Valid values: 1 to 50. Default value: 50.
+        # The number of entries per page. Valid values: 1 to 50. Default value: 50.
         self.max_result = max_result
         # The token that is used for the next query. Valid values:
         # 
@@ -55755,6 +55797,7 @@ class DescribeTagKeysRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource IDs. You can specify up to 20 resource IDs.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -56291,7 +56334,7 @@ class DescribeTagsRequest(TeaModel):
         resource_type: str = None,
         tag: List[DescribeTagsRequestTag] = None,
     ):
-        # The number of entries to return on each page. Valid values: 1 to 50. Default value: 50.
+        # The number of entries per page. Valid values: 1 to 50. Default value: 50.
         self.max_result = max_result
         # The token that is used for the next query. Valid values:
         # 
@@ -72309,7 +72352,7 @@ class GetTrafficMirrorServiceStatusResponseBody(TeaModel):
         enabled: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether the traffic mirroring feature is enabled. Valid values:
+        # Indicates whether the traffic mirror feature is enabled. Valid values:
         # 
         # *   **true**\
         # *   **false**\
@@ -72981,6 +73024,7 @@ class GetVpcPrefixListAssociationsRequest(TeaModel):
 class GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation(TeaModel):
     def __init__(
         self,
+        cidr_list: str = None,
         owner_id: str = None,
         prefix_list_id: str = None,
         reason: str = None,
@@ -72990,6 +73034,7 @@ class GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation(TeaModel):
         resource_uid: str = None,
         status: str = None,
     ):
+        self.cidr_list = cidr_list
         # The ID of the Alibaba Cloud account to which the prefix list belongs.
         self.owner_id = owner_id
         # The prefix list ID.
@@ -73026,6 +73071,8 @@ class GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation(TeaModel):
             return _map
 
         result = dict()
+        if self.cidr_list is not None:
+            result['CidrList'] = self.cidr_list
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.prefix_list_id is not None:
@@ -73046,6 +73093,8 @@ class GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CidrList') is not None:
+            self.cidr_list = m.get('CidrList')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('PrefixListId') is not None:
@@ -75790,7 +75839,7 @@ class ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModelsNextHops(Te
         # The type of the next hop. Valid values:
         # 
         # *   **Instance** (default): an ECS instance
-        # *   **HaVip**: a high-availability virtual IP address (HAVIP).
+        # *   **HaVip**: a high-availability virtual IP address (HaVip).
         # *   **VpnGateway**: a VPN gateway
         # *   **NatGateway**: a NAT gateway
         # *   **NetworkInterface**: a secondary ENI
@@ -79790,7 +79839,7 @@ class ListTrafficMirrorFiltersRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region to which the mirrored traffic belongs.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](https://help.aliyun.com/document_detail/207513.html).
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirror, see [Overview of traffic mirror](https://help.aliyun.com/document_detail/207513.html).
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -80456,7 +80505,7 @@ class ListTrafficMirrorSessionsRequest(TeaModel):
         # 
         # A smaller value indicates a higher priority. You cannot specify identical priorities for traffic mirror sessions that are created in the same region by using the same account.
         self.priority = priority
-        # The ID of the region to which the traffic mirror session belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](https://help.aliyun.com/document_detail/207513.html).
+        # The ID of the region to which the traffic mirror session belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirror, see [Overview of traffic mirror](https://help.aliyun.com/document_detail/207513.html).
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -82597,17 +82646,28 @@ class ListVpcPublishedRouteEntriesRequest(TeaModel):
         target_instance_id: str = None,
         target_type: str = None,
     ):
+        # The destination CIDR block of the route entry, supporting both IPv4 and IPv6 segments.
         self.destination_cidr_block = destination_cidr_block
+        # The number of entries to display per batch query. Range: **1**~**500**, default value is **50**.
         self.max_results = max_results
+        # Indicates whether there is a token for the next query. Values:
+        # - If **NextToken** is empty, it means there is no next query.
+        # - If **NextToken** has a return value, this value indicates the token for the start of the next query.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the instance is located.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the route table.
+        # 
         # This parameter is required.
         self.route_table_id = route_table_id
+        # The ID of the route publishing target instance.
         self.target_instance_id = target_instance_id
+        # The type of the route publishing target.
+        # 
         # This parameter is required.
         self.target_type = target_type
 
@@ -82678,8 +82738,11 @@ class ListVpcPublishedRouteEntriesResponseBodyRouteEntriesRoutePublishTargets(Te
         publish_target_instance_id: str = None,
         publish_target_type: str = None,
     ):
+        # The publishing status of the route entry in the publishing target.
         self.publish_status = publish_status
+        # The ID of the route publishing target instance.
         self.publish_target_instance_id = publish_target_instance_id
+        # The type of the route publishing target.
         self.publish_target_type = publish_target_type
 
     def validate(self):
@@ -82718,9 +82781,13 @@ class ListVpcPublishedRouteEntriesResponseBodyRouteEntries(TeaModel):
         route_publish_targets: List[ListVpcPublishedRouteEntriesResponseBodyRouteEntriesRoutePublishTargets] = None,
         route_table_id: str = None,
     ):
+        # The destination CIDR block of the route entry.
         self.destination_cidr_block = destination_cidr_block
+        # The ID of the route entry.
         self.route_entry_id = route_entry_id
+        # List of route entry publishing status information in the publishing targets.
         self.route_publish_targets = route_publish_targets
+        # The ID of the route table.
         self.route_table_id = route_table_id
 
     def validate(self):
@@ -82770,8 +82837,14 @@ class ListVpcPublishedRouteEntriesResponseBody(TeaModel):
         request_id: str = None,
         route_entries: List[ListVpcPublishedRouteEntriesResponseBodyRouteEntries] = None,
     ):
+        # Indicates whether there is a token for the next query. Values:
+        # 
+        # - If **NextToken** is empty, it means there is no next query.
+        # - If **NextToken** has a return value, this value indicates the token for the start of the next query.
         self.next_token = next_token
+        # Request ID.
         self.request_id = request_id
+        # List of route entry publishing status information.
         self.route_entries = route_entries
 
     def validate(self):
@@ -86429,21 +86502,21 @@ class ModifyHaVipAttributeRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
         self.client_token = client_token
-        # The description of the HAVIP.
+        # The description of the HaVip.
         # 
         # The description must be 1 to 255 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The ID of the HAVIP.
+        # The ID of the HaVip.
         # 
         # This parameter is required.
         self.ha_vip_id = ha_vip_id
-        # The name of the HAVIP.
+        # The name of the HaVip.
         # 
         # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region to which the HAVIP belongs.
+        # The ID of the region to which the HaVip belongs.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         # 
@@ -89212,6 +89285,10 @@ class ModifyRouteEntryRequest(TeaModel):
         self.description = description
         # The destination CIDR block of the route entry. Only IPv4 CIDR blocks, IPv6 CIDR blocks, and prefix lists are supported.
         self.destination_cidr_block = destination_cidr_block
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs a dry run. The system checks the request for potential issues, including the AccessKey pair, the permissions of the RAM user, and the required parameters. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the new next hop instance.
         self.new_next_hop_id = new_next_hop_id
@@ -97971,7 +98048,7 @@ class OpenTrafficMirrorServiceResponseBody(TeaModel):
     ):
         # The error code.
         self.code = code
-        # The information returned after traffic mirroring is enabled.
+        # The information returned after traffic mirror is enabled.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -98051,8 +98128,12 @@ class PublishVpcRouteEntriesRequestRouteEntries(TeaModel):
         destination_cidr_block: str = None,
         route_table_id: str = None,
     ):
+        # The destination CIDR block for the route entry.
+        # 
         # This parameter is required.
         self.destination_cidr_block = destination_cidr_block
+        # The ID of the route table for the route entry.
+        # 
         # This parameter is required.
         self.route_table_id = route_table_id
 
@@ -98093,15 +98174,26 @@ class PublishVpcRouteEntriesRequest(TeaModel):
         target_instance_id: str = None,
         target_type: str = None,
     ):
+        # Indicates whether to perform a dry run of this request. Values:
+        # 
+        # - **true**: Sends a check request without publishing the route. The checks include whether the AccessKey is valid, the authorization status of the RAM user, and if all required parameters are filled out. If the check fails, the corresponding error is returned. If the check passes, the `DryRunOperation` error code is returned.
+        # 
+        # - **false** (default): Sends a normal request. After passing the check, it returns a 2xx HTTP status code and directly queries the resource status.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the instance is located. You can obtain the region ID by calling the DescribeRegions interface.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # List of route entries to be published, supporting up to 50 routes at most.
         self.route_entries = route_entries
+        # The ID of the target instance for route publication.
+        # 
         # This parameter is required.
         self.target_instance_id = target_instance_id
+        # The type of the target for route publication.
+        # 
         # This parameter is required.
         self.target_type = target_type
 
@@ -98170,6 +98262,7 @@ class PublishVpcRouteEntriesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -99599,7 +99692,7 @@ class RemoveSourcesFromTrafficMirrorSessionRequest(TeaModel):
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region to which the traffic mirror session belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](https://help.aliyun.com/document_detail/207513.html).
+        # The ID of the region to which the traffic mirror session belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirror, see [Overview of traffic mirror](https://help.aliyun.com/document_detail/207513.html).
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -105353,7 +105446,7 @@ class UpdateTrafficMirrorFilterAttributeRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region to which the mirrored traffic belongs.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](https://help.aliyun.com/document_detail/207513.html).
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirror, see [Overview of traffic mirror](https://help.aliyun.com/document_detail/207513.html).
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -105760,7 +105853,7 @@ class UpdateTrafficMirrorSessionAttributeRequest(TeaModel):
         # 
         # A smaller value indicates a higher priority. You cannot specify identical priorities for traffic mirror sessions that are created in the same region by using the same account.
         self.priority = priority
-        # The region ID of the traffic mirror session. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about the regions that support traffic mirroring, see [Overview of traffic mirroring](https://help.aliyun.com/document_detail/207513.html).
+        # The region ID of the traffic mirror session. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about the regions that support traffic mirror, see [Overview of traffic mirror](https://help.aliyun.com/document_detail/207513.html).
         # 
         # This parameter is required.
         self.region_id = region_id

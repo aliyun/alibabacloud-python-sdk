@@ -2845,18 +2845,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateHaVipResponse:
         """
-        @summary Associates a high-availability virtual IP address (HAVIP) with an Elastic Compute Service (ECS) instance or an elastic network interface (ENI).
+        @summary Associates a high-availability virtual IP address (HaVip) with an Elastic Compute Service (ECS) instance or an elastic network interface (ENI).
         
         @description When you call this operation, take note of the following limits:
-        An HAVIP immediately takes effect after it is associated. You do not need to restart the ECS instance. However, you must associate the HAVIP with the ENI of the ECS instance.
-        The HAVIP and ECS instance must belong to the same vSwitch.
-        You can associate an HAVIP with at most two ECS instances.
+        An HaVip immediately takes effect after it is associated. You do not need to restart the ECS instance. However, you must associate the HaVip with the ENI of the ECS instance.
+        The HaVip and ECS instance must belong to the same vSwitch.
+        You can associate an HaVip with at most two ECS instances.
         The ECS instance must be in the **Running** or **Stopped** state.
-        The HAVIP must be in the **Available** or **InUse** state.
-        The **AssociateHaVip** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of an HAVIP:
-        If the HAVIP is in the **Associating** state, the HAVIP is being associated.
-        If the HAVIP is in the **InUse** state, the HAVIP is associated.
-        You cannot repeatedly call the **AssociateHaVip** operation to associate an HAVIP within the specified period of time.
+        The HaVip must be in the **Available** or **InUse** state.
+        The **AssociateHaVip** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of an HaVip:
+        If the HaVip is in the **Associating** state, the HaVip is being associated.
+        If the HaVip is in the **InUse** state, the HaVip is associated.
+        You cannot repeatedly call the **AssociateHaVip** operation to associate an HaVip within the specified period of time.
         
         @param request: AssociateHaVipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2907,18 +2907,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateHaVipResponse:
         """
-        @summary Associates a high-availability virtual IP address (HAVIP) with an Elastic Compute Service (ECS) instance or an elastic network interface (ENI).
+        @summary Associates a high-availability virtual IP address (HaVip) with an Elastic Compute Service (ECS) instance or an elastic network interface (ENI).
         
         @description When you call this operation, take note of the following limits:
-        An HAVIP immediately takes effect after it is associated. You do not need to restart the ECS instance. However, you must associate the HAVIP with the ENI of the ECS instance.
-        The HAVIP and ECS instance must belong to the same vSwitch.
-        You can associate an HAVIP with at most two ECS instances.
+        An HaVip immediately takes effect after it is associated. You do not need to restart the ECS instance. However, you must associate the HaVip with the ENI of the ECS instance.
+        The HaVip and ECS instance must belong to the same vSwitch.
+        You can associate an HaVip with at most two ECS instances.
         The ECS instance must be in the **Running** or **Stopped** state.
-        The HAVIP must be in the **Available** or **InUse** state.
-        The **AssociateHaVip** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of an HAVIP:
-        If the HAVIP is in the **Associating** state, the HAVIP is being associated.
-        If the HAVIP is in the **InUse** state, the HAVIP is associated.
-        You cannot repeatedly call the **AssociateHaVip** operation to associate an HAVIP within the specified period of time.
+        The HaVip must be in the **Available** or **InUse** state.
+        The **AssociateHaVip** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of an HaVip:
+        If the HaVip is in the **Associating** state, the HaVip is being associated.
+        If the HaVip is in the **InUse** state, the HaVip is associated.
+        You cannot repeatedly call the **AssociateHaVip** operation to associate an HaVip within the specified period of time.
         
         @param request: AssociateHaVipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2968,18 +2968,18 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AssociateHaVipRequest,
     ) -> vpc_20160428_models.AssociateHaVipResponse:
         """
-        @summary Associates a high-availability virtual IP address (HAVIP) with an Elastic Compute Service (ECS) instance or an elastic network interface (ENI).
+        @summary Associates a high-availability virtual IP address (HaVip) with an Elastic Compute Service (ECS) instance or an elastic network interface (ENI).
         
         @description When you call this operation, take note of the following limits:
-        An HAVIP immediately takes effect after it is associated. You do not need to restart the ECS instance. However, you must associate the HAVIP with the ENI of the ECS instance.
-        The HAVIP and ECS instance must belong to the same vSwitch.
-        You can associate an HAVIP with at most two ECS instances.
+        An HaVip immediately takes effect after it is associated. You do not need to restart the ECS instance. However, you must associate the HaVip with the ENI of the ECS instance.
+        The HaVip and ECS instance must belong to the same vSwitch.
+        You can associate an HaVip with at most two ECS instances.
         The ECS instance must be in the **Running** or **Stopped** state.
-        The HAVIP must be in the **Available** or **InUse** state.
-        The **AssociateHaVip** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of an HAVIP:
-        If the HAVIP is in the **Associating** state, the HAVIP is being associated.
-        If the HAVIP is in the **InUse** state, the HAVIP is associated.
-        You cannot repeatedly call the **AssociateHaVip** operation to associate an HAVIP within the specified period of time.
+        The HaVip must be in the **Available** or **InUse** state.
+        The **AssociateHaVip** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of an HaVip:
+        If the HaVip is in the **Associating** state, the HaVip is being associated.
+        If the HaVip is in the **InUse** state, the HaVip is associated.
+        You cannot repeatedly call the **AssociateHaVip** operation to associate an HaVip within the specified period of time.
         
         @param request: AssociateHaVipRequest
         @return: AssociateHaVipResponse
@@ -2992,18 +2992,18 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AssociateHaVipRequest,
     ) -> vpc_20160428_models.AssociateHaVipResponse:
         """
-        @summary Associates a high-availability virtual IP address (HAVIP) with an Elastic Compute Service (ECS) instance or an elastic network interface (ENI).
+        @summary Associates a high-availability virtual IP address (HaVip) with an Elastic Compute Service (ECS) instance or an elastic network interface (ENI).
         
         @description When you call this operation, take note of the following limits:
-        An HAVIP immediately takes effect after it is associated. You do not need to restart the ECS instance. However, you must associate the HAVIP with the ENI of the ECS instance.
-        The HAVIP and ECS instance must belong to the same vSwitch.
-        You can associate an HAVIP with at most two ECS instances.
+        An HaVip immediately takes effect after it is associated. You do not need to restart the ECS instance. However, you must associate the HaVip with the ENI of the ECS instance.
+        The HaVip and ECS instance must belong to the same vSwitch.
+        You can associate an HaVip with at most two ECS instances.
         The ECS instance must be in the **Running** or **Stopped** state.
-        The HAVIP must be in the **Available** or **InUse** state.
-        The **AssociateHaVip** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of an HAVIP:
-        If the HAVIP is in the **Associating** state, the HAVIP is being associated.
-        If the HAVIP is in the **InUse** state, the HAVIP is associated.
-        You cannot repeatedly call the **AssociateHaVip** operation to associate an HAVIP within the specified period of time.
+        The HaVip must be in the **Available** or **InUse** state.
+        The **AssociateHaVip** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of an HaVip:
+        If the HaVip is in the **Associating** state, the HaVip is being associated.
+        If the HaVip is in the **InUse** state, the HaVip is associated.
+        You cannot repeatedly call the **AssociateHaVip** operation to associate an HaVip within the specified period of time.
         
         @param request: AssociateHaVipRequest
         @return: AssociateHaVipResponse
@@ -5389,6 +5389,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ConvertBandwidthPackageResponse:
         """
+        @deprecated OpenAPI ConvertBandwidthPackage is deprecated
+        
         @summary Converts a NAT service plan to an Internet Shared Bandwidth instance.
         
         @description Before you convert a NAT service plan to an Internet Shared Bandwidth instance, take note of the following limits:
@@ -5399,6 +5401,7 @@ class Client(OpenApiClient):
         @param request: ConvertBandwidthPackageRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ConvertBandwidthPackageResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -5441,6 +5444,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ConvertBandwidthPackageResponse:
         """
+        @deprecated OpenAPI ConvertBandwidthPackage is deprecated
+        
         @summary Converts a NAT service plan to an Internet Shared Bandwidth instance.
         
         @description Before you convert a NAT service plan to an Internet Shared Bandwidth instance, take note of the following limits:
@@ -5451,6 +5456,7 @@ class Client(OpenApiClient):
         @param request: ConvertBandwidthPackageRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ConvertBandwidthPackageResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -5492,6 +5498,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ConvertBandwidthPackageRequest,
     ) -> vpc_20160428_models.ConvertBandwidthPackageResponse:
         """
+        @deprecated OpenAPI ConvertBandwidthPackage is deprecated
+        
         @summary Converts a NAT service plan to an Internet Shared Bandwidth instance.
         
         @description Before you convert a NAT service plan to an Internet Shared Bandwidth instance, take note of the following limits:
@@ -5501,6 +5509,7 @@ class Client(OpenApiClient):
         
         @param request: ConvertBandwidthPackageRequest
         @return: ConvertBandwidthPackageResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.convert_bandwidth_package_with_options(request, runtime)
@@ -5510,6 +5519,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ConvertBandwidthPackageRequest,
     ) -> vpc_20160428_models.ConvertBandwidthPackageResponse:
         """
+        @deprecated OpenAPI ConvertBandwidthPackage is deprecated
+        
         @summary Converts a NAT service plan to an Internet Shared Bandwidth instance.
         
         @description Before you convert a NAT service plan to an Internet Shared Bandwidth instance, take note of the following limits:
@@ -5519,6 +5530,7 @@ class Client(OpenApiClient):
         
         @param request: ConvertBandwidthPackageRequest
         @return: ConvertBandwidthPackageResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.convert_bandwidth_package_with_options_async(request, runtime)
@@ -8313,11 +8325,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateHaVipResponse:
         """
-        @summary Creates a high-availability virtual IP address (HAVIP).
+        @summary Creates a high-availability virtual IP address (HaVip).
         
         @description *CreateHaVip** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of the task:
-        If the HAVIP is in the **Creating** state, the HAVIP is being created.
-        If the HAVIP is in the **Available** state, the HAVIP is created.
+        If the HaVip is in the **Creating** state, the HaVip is being created.
+        If the HaVip is in the **Available** state, the HaVip is created.
         
         @param request: CreateHaVipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8374,11 +8386,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateHaVipResponse:
         """
-        @summary Creates a high-availability virtual IP address (HAVIP).
+        @summary Creates a high-availability virtual IP address (HaVip).
         
         @description *CreateHaVip** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of the task:
-        If the HAVIP is in the **Creating** state, the HAVIP is being created.
-        If the HAVIP is in the **Available** state, the HAVIP is created.
+        If the HaVip is in the **Creating** state, the HaVip is being created.
+        If the HaVip is in the **Available** state, the HaVip is created.
         
         @param request: CreateHaVipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8434,11 +8446,11 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateHaVipRequest,
     ) -> vpc_20160428_models.CreateHaVipResponse:
         """
-        @summary Creates a high-availability virtual IP address (HAVIP).
+        @summary Creates a high-availability virtual IP address (HaVip).
         
         @description *CreateHaVip** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of the task:
-        If the HAVIP is in the **Creating** state, the HAVIP is being created.
-        If the HAVIP is in the **Available** state, the HAVIP is created.
+        If the HaVip is in the **Creating** state, the HaVip is being created.
+        If the HaVip is in the **Available** state, the HaVip is created.
         
         @param request: CreateHaVipRequest
         @return: CreateHaVipResponse
@@ -8451,11 +8463,11 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateHaVipRequest,
     ) -> vpc_20160428_models.CreateHaVipResponse:
         """
-        @summary Creates a high-availability virtual IP address (HAVIP).
+        @summary Creates a high-availability virtual IP address (HaVip).
         
         @description *CreateHaVip** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of the task:
-        If the HAVIP is in the **Creating** state, the HAVIP is being created.
-        If the HAVIP is in the **Available** state, the HAVIP is created.
+        If the HaVip is in the **Creating** state, the HaVip is being created.
+        If the HaVip is in the **Available** state, the HaVip is created.
         
         @param request: CreateHaVipRequest
         @return: CreateHaVipResponse
@@ -12413,7 +12425,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateTrafficMirrorFilterResponse:
         """
-        @summary Creates a filter for traffic mirroring.
+        @summary Creates a filter for traffic mirror.
         
         @description *CreateTrafficMirrorFilter** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListTrafficMirrorFilters](https://help.aliyun.com/document_detail/261353.html) operation to query the status of the task.
         If the filter is in the **Creating** state, the filter is being created.
@@ -12476,7 +12488,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateTrafficMirrorFilterResponse:
         """
-        @summary Creates a filter for traffic mirroring.
+        @summary Creates a filter for traffic mirror.
         
         @description *CreateTrafficMirrorFilter** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListTrafficMirrorFilters](https://help.aliyun.com/document_detail/261353.html) operation to query the status of the task.
         If the filter is in the **Creating** state, the filter is being created.
@@ -12538,7 +12550,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateTrafficMirrorFilterRequest,
     ) -> vpc_20160428_models.CreateTrafficMirrorFilterResponse:
         """
-        @summary Creates a filter for traffic mirroring.
+        @summary Creates a filter for traffic mirror.
         
         @description *CreateTrafficMirrorFilter** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListTrafficMirrorFilters](https://help.aliyun.com/document_detail/261353.html) operation to query the status of the task.
         If the filter is in the **Creating** state, the filter is being created.
@@ -12555,7 +12567,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateTrafficMirrorFilterRequest,
     ) -> vpc_20160428_models.CreateTrafficMirrorFilterResponse:
         """
-        @summary Creates a filter for traffic mirroring.
+        @summary Creates a filter for traffic mirror.
         
         @description *CreateTrafficMirrorFilter** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListTrafficMirrorFilters](https://help.aliyun.com/document_detail/261353.html) operation to query the status of the task.
         If the filter is in the **Creating** state, the filter is being created.
@@ -12573,7 +12585,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateTrafficMirrorFilterRulesResponse:
         """
-        @summary Creates an inbound or outbound rule for traffic mirroring.
+        @summary Creates an inbound or outbound rule for traffic mirror.
         
         @description    **CreateTrafficMirrorFilterRules** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListTrafficMirrorFilters](https://help.aliyun.com/document_detail/261353.html) to query the status of the task.
         If the inbound or outbound rule is in the **Creating** state, the rule is being created.
@@ -12631,7 +12643,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateTrafficMirrorFilterRulesResponse:
         """
-        @summary Creates an inbound or outbound rule for traffic mirroring.
+        @summary Creates an inbound or outbound rule for traffic mirror.
         
         @description    **CreateTrafficMirrorFilterRules** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListTrafficMirrorFilters](https://help.aliyun.com/document_detail/261353.html) to query the status of the task.
         If the inbound or outbound rule is in the **Creating** state, the rule is being created.
@@ -12688,7 +12700,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateTrafficMirrorFilterRulesRequest,
     ) -> vpc_20160428_models.CreateTrafficMirrorFilterRulesResponse:
         """
-        @summary Creates an inbound or outbound rule for traffic mirroring.
+        @summary Creates an inbound or outbound rule for traffic mirror.
         
         @description    **CreateTrafficMirrorFilterRules** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListTrafficMirrorFilters](https://help.aliyun.com/document_detail/261353.html) to query the status of the task.
         If the inbound or outbound rule is in the **Creating** state, the rule is being created.
@@ -12706,7 +12718,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateTrafficMirrorFilterRulesRequest,
     ) -> vpc_20160428_models.CreateTrafficMirrorFilterRulesResponse:
         """
-        @summary Creates an inbound or outbound rule for traffic mirroring.
+        @summary Creates an inbound or outbound rule for traffic mirror.
         
         @description    **CreateTrafficMirrorFilterRules** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListTrafficMirrorFilters](https://help.aliyun.com/document_detail/261353.html) to query the status of the task.
         If the inbound or outbound rule is in the **Creating** state, the rule is being created.
@@ -17729,16 +17741,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteHaVipResponse:
         """
-        @summary Deletes a high-availability virtual IP address (HAVIP).
+        @summary Deletes a high-availability virtual IP address (HaVip).
         
         @description When you call this operation, take note of the following rules:
-        You can delete only HAVIPs that are in the Available state.
-        Make sure that no route points to the HAVIP that you want to delete.
-        Make sure that no elastic IP address (EIP) is associated with the HAVIP that you want to delete.
-        The **DeleteHaVip** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of an HAVIP:
-        If the HAVIP is in the **Deleting** state, the HAVIP is being deleted.
-        If you cannot query the HAVIP, the HAVIP is deleted.
-        You cannot repeatedly call the **DeleteHaVip** operation to delete an HAVIP within the specified period of time.
+        The HaVip must be in the available state before it can be deleted.
+        Make sure that no routes are destined for the HaVip.
+        Make sure that no elastic IP addresses (EIPs) are associated with the HaVip.
+        **DeleteHaVip** is an asynchronous operation. After a request is sent, the system returns a request ID while deleting the HaVip in the background. Call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of an HaVip:
+        The **Deleting** state indicates the HaVip is being deleted.
+        If no HaVip is found, the HaVip is deleted.
+        You cannot repeatedly call the **DeleteHaVip** operation to delete the same HaVip.
         
         @param request: DeleteHaVipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17785,16 +17797,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteHaVipResponse:
         """
-        @summary Deletes a high-availability virtual IP address (HAVIP).
+        @summary Deletes a high-availability virtual IP address (HaVip).
         
         @description When you call this operation, take note of the following rules:
-        You can delete only HAVIPs that are in the Available state.
-        Make sure that no route points to the HAVIP that you want to delete.
-        Make sure that no elastic IP address (EIP) is associated with the HAVIP that you want to delete.
-        The **DeleteHaVip** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of an HAVIP:
-        If the HAVIP is in the **Deleting** state, the HAVIP is being deleted.
-        If you cannot query the HAVIP, the HAVIP is deleted.
-        You cannot repeatedly call the **DeleteHaVip** operation to delete an HAVIP within the specified period of time.
+        The HaVip must be in the available state before it can be deleted.
+        Make sure that no routes are destined for the HaVip.
+        Make sure that no elastic IP addresses (EIPs) are associated with the HaVip.
+        **DeleteHaVip** is an asynchronous operation. After a request is sent, the system returns a request ID while deleting the HaVip in the background. Call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of an HaVip:
+        The **Deleting** state indicates the HaVip is being deleted.
+        If no HaVip is found, the HaVip is deleted.
+        You cannot repeatedly call the **DeleteHaVip** operation to delete the same HaVip.
         
         @param request: DeleteHaVipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17840,16 +17852,16 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteHaVipRequest,
     ) -> vpc_20160428_models.DeleteHaVipResponse:
         """
-        @summary Deletes a high-availability virtual IP address (HAVIP).
+        @summary Deletes a high-availability virtual IP address (HaVip).
         
         @description When you call this operation, take note of the following rules:
-        You can delete only HAVIPs that are in the Available state.
-        Make sure that no route points to the HAVIP that you want to delete.
-        Make sure that no elastic IP address (EIP) is associated with the HAVIP that you want to delete.
-        The **DeleteHaVip** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of an HAVIP:
-        If the HAVIP is in the **Deleting** state, the HAVIP is being deleted.
-        If you cannot query the HAVIP, the HAVIP is deleted.
-        You cannot repeatedly call the **DeleteHaVip** operation to delete an HAVIP within the specified period of time.
+        The HaVip must be in the available state before it can be deleted.
+        Make sure that no routes are destined for the HaVip.
+        Make sure that no elastic IP addresses (EIPs) are associated with the HaVip.
+        **DeleteHaVip** is an asynchronous operation. After a request is sent, the system returns a request ID while deleting the HaVip in the background. Call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of an HaVip:
+        The **Deleting** state indicates the HaVip is being deleted.
+        If no HaVip is found, the HaVip is deleted.
+        You cannot repeatedly call the **DeleteHaVip** operation to delete the same HaVip.
         
         @param request: DeleteHaVipRequest
         @return: DeleteHaVipResponse
@@ -17862,16 +17874,16 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteHaVipRequest,
     ) -> vpc_20160428_models.DeleteHaVipResponse:
         """
-        @summary Deletes a high-availability virtual IP address (HAVIP).
+        @summary Deletes a high-availability virtual IP address (HaVip).
         
         @description When you call this operation, take note of the following rules:
-        You can delete only HAVIPs that are in the Available state.
-        Make sure that no route points to the HAVIP that you want to delete.
-        Make sure that no elastic IP address (EIP) is associated with the HAVIP that you want to delete.
-        The **DeleteHaVip** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of an HAVIP:
-        If the HAVIP is in the **Deleting** state, the HAVIP is being deleted.
-        If you cannot query the HAVIP, the HAVIP is deleted.
-        You cannot repeatedly call the **DeleteHaVip** operation to delete an HAVIP within the specified period of time.
+        The HaVip must be in the available state before it can be deleted.
+        Make sure that no routes are destined for the HaVip.
+        Make sure that no elastic IP addresses (EIPs) are associated with the HaVip.
+        **DeleteHaVip** is an asynchronous operation. After a request is sent, the system returns a request ID while deleting the HaVip in the background. Call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of an HaVip:
+        The **Deleting** state indicates the HaVip is being deleted.
+        If no HaVip is found, the HaVip is deleted.
+        You cannot repeatedly call the **DeleteHaVip** operation to delete the same HaVip.
         
         @param request: DeleteHaVipRequest
         @return: DeleteHaVipResponse
@@ -21065,7 +21077,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteTrafficMirrorFilterResponse:
         """
-        @summary Deletes a filter of traffic mirroring.
+        @summary Deletes a filter of traffic mirror.
         
         @description    The **DeleteTrafficMirrorFilter** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorFilters](https://help.aliyun.com/document_detail/261353.html) operation to query the status of a filter:
         If the filter is in the **Deleting** state, the filter is being deleted.
@@ -21119,7 +21131,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteTrafficMirrorFilterResponse:
         """
-        @summary Deletes a filter of traffic mirroring.
+        @summary Deletes a filter of traffic mirror.
         
         @description    The **DeleteTrafficMirrorFilter** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorFilters](https://help.aliyun.com/document_detail/261353.html) operation to query the status of a filter:
         If the filter is in the **Deleting** state, the filter is being deleted.
@@ -21172,7 +21184,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteTrafficMirrorFilterRequest,
     ) -> vpc_20160428_models.DeleteTrafficMirrorFilterResponse:
         """
-        @summary Deletes a filter of traffic mirroring.
+        @summary Deletes a filter of traffic mirror.
         
         @description    The **DeleteTrafficMirrorFilter** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorFilters](https://help.aliyun.com/document_detail/261353.html) operation to query the status of a filter:
         If the filter is in the **Deleting** state, the filter is being deleted.
@@ -21190,7 +21202,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteTrafficMirrorFilterRequest,
     ) -> vpc_20160428_models.DeleteTrafficMirrorFilterResponse:
         """
-        @summary Deletes a filter of traffic mirroring.
+        @summary Deletes a filter of traffic mirror.
         
         @description    The **DeleteTrafficMirrorFilter** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorFilters](https://help.aliyun.com/document_detail/261353.html) operation to query the status of a filter:
         If the filter is in the **Deleting** state, the filter is being deleted.
@@ -21209,7 +21221,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteTrafficMirrorFilterRulesResponse:
         """
-        @summary Deletes an inbound or outbound rule of a filter for traffic mirroring.
+        @summary Deletes an inbound or outbound rule of a filter for traffic mirror.
         
         @description    **DeleteTrafficMirrorFilterRules** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListTrafficMirrorFilters](https://help.aliyun.com/document_detail/261353.html) to query the status of the task.
         If the inbound or outbound rule is in the **Deleting** state, the rule is being deleted.
@@ -21265,7 +21277,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteTrafficMirrorFilterRulesResponse:
         """
-        @summary Deletes an inbound or outbound rule of a filter for traffic mirroring.
+        @summary Deletes an inbound or outbound rule of a filter for traffic mirror.
         
         @description    **DeleteTrafficMirrorFilterRules** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListTrafficMirrorFilters](https://help.aliyun.com/document_detail/261353.html) to query the status of the task.
         If the inbound or outbound rule is in the **Deleting** state, the rule is being deleted.
@@ -21320,7 +21332,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteTrafficMirrorFilterRulesRequest,
     ) -> vpc_20160428_models.DeleteTrafficMirrorFilterRulesResponse:
         """
-        @summary Deletes an inbound or outbound rule of a filter for traffic mirroring.
+        @summary Deletes an inbound or outbound rule of a filter for traffic mirror.
         
         @description    **DeleteTrafficMirrorFilterRules** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListTrafficMirrorFilters](https://help.aliyun.com/document_detail/261353.html) to query the status of the task.
         If the inbound or outbound rule is in the **Deleting** state, the rule is being deleted.
@@ -21338,7 +21350,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteTrafficMirrorFilterRulesRequest,
     ) -> vpc_20160428_models.DeleteTrafficMirrorFilterRulesResponse:
         """
-        @summary Deletes an inbound or outbound rule of a filter for traffic mirroring.
+        @summary Deletes an inbound or outbound rule of a filter for traffic mirror.
         
         @description    **DeleteTrafficMirrorFilterRules** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListTrafficMirrorFilters](https://help.aliyun.com/document_detail/261353.html) to query the status of the task.
         If the inbound or outbound rule is in the **Deleting** state, the rule is being deleted.
@@ -21504,7 +21516,7 @@ class Client(OpenApiClient):
         @summary Deletes a vSwitch.
         
         @description When you call this operation, take note of the following limits:
-        Before you delete a vSwitch, you must first release or remove all virtual private cloud (VPC) resources, including vSwitches, instances, router interfaces, and high-availability virtual IP addresses (HAVIPs).
+        Before you delete a vSwitch, you must first release or remove all virtual private cloud (VPC) resources, including vSwitches, instances, router interfaces, and high-availability virtual IP addresses (HaVips).
         You can delete only vSwitches that are in the **Available** state.
         You cannot delete a vSwitch from a VPC where a vSwitch or a route is being created or deleted.
         **DeleteVSwitch** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVSwitchAttributes](https://help.aliyun.com/document_detail/94567.html) operation to query the status of the task:
@@ -21560,7 +21572,7 @@ class Client(OpenApiClient):
         @summary Deletes a vSwitch.
         
         @description When you call this operation, take note of the following limits:
-        Before you delete a vSwitch, you must first release or remove all virtual private cloud (VPC) resources, including vSwitches, instances, router interfaces, and high-availability virtual IP addresses (HAVIPs).
+        Before you delete a vSwitch, you must first release or remove all virtual private cloud (VPC) resources, including vSwitches, instances, router interfaces, and high-availability virtual IP addresses (HaVips).
         You can delete only vSwitches that are in the **Available** state.
         You cannot delete a vSwitch from a VPC where a vSwitch or a route is being created or deleted.
         **DeleteVSwitch** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVSwitchAttributes](https://help.aliyun.com/document_detail/94567.html) operation to query the status of the task:
@@ -21615,7 +21627,7 @@ class Client(OpenApiClient):
         @summary Deletes a vSwitch.
         
         @description When you call this operation, take note of the following limits:
-        Before you delete a vSwitch, you must first release or remove all virtual private cloud (VPC) resources, including vSwitches, instances, router interfaces, and high-availability virtual IP addresses (HAVIPs).
+        Before you delete a vSwitch, you must first release or remove all virtual private cloud (VPC) resources, including vSwitches, instances, router interfaces, and high-availability virtual IP addresses (HaVips).
         You can delete only vSwitches that are in the **Available** state.
         You cannot delete a vSwitch from a VPC where a vSwitch or a route is being created or deleted.
         **DeleteVSwitch** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVSwitchAttributes](https://help.aliyun.com/document_detail/94567.html) operation to query the status of the task:
@@ -21637,7 +21649,7 @@ class Client(OpenApiClient):
         @summary Deletes a vSwitch.
         
         @description When you call this operation, take note of the following limits:
-        Before you delete a vSwitch, you must first release or remove all virtual private cloud (VPC) resources, including vSwitches, instances, router interfaces, and high-availability virtual IP addresses (HAVIPs).
+        Before you delete a vSwitch, you must first release or remove all virtual private cloud (VPC) resources, including vSwitches, instances, router interfaces, and high-availability virtual IP addresses (HaVips).
         You can delete only vSwitches that are in the **Available** state.
         You cannot delete a vSwitch from a VPC where a vSwitch or a route is being created or deleted.
         **DeleteVSwitch** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVSwitchAttributes](https://help.aliyun.com/document_detail/94567.html) operation to query the status of the task:
@@ -22220,7 +22232,7 @@ class Client(OpenApiClient):
         @summary Deletes a virtual private cloud (VPC).
         
         @description When you call this operation, take note of the following limits:
-        Before you delete a VPC, make sure that all resources deployed in the VPC are released or removed, such as vSwitches, instances, and high-availability virtual IP addresses (HAVIPs).
+        Before you delete a VPC, make sure that all resources deployed in the VPC are released or removed, such as vSwitches, instances, and high-availability virtual IP addresses (HaVips).
         You can delete only a VPC that is in the **Available** state.
         The **DeleteVpc** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpcAttribute](https://help.aliyun.com/document_detail/94565.html) operation to query the status of a VPC:
         If the VPC is in the **Deleting** state, the VPC is being deleted.
@@ -22279,7 +22291,7 @@ class Client(OpenApiClient):
         @summary Deletes a virtual private cloud (VPC).
         
         @description When you call this operation, take note of the following limits:
-        Before you delete a VPC, make sure that all resources deployed in the VPC are released or removed, such as vSwitches, instances, and high-availability virtual IP addresses (HAVIPs).
+        Before you delete a VPC, make sure that all resources deployed in the VPC are released or removed, such as vSwitches, instances, and high-availability virtual IP addresses (HaVips).
         You can delete only a VPC that is in the **Available** state.
         The **DeleteVpc** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpcAttribute](https://help.aliyun.com/document_detail/94565.html) operation to query the status of a VPC:
         If the VPC is in the **Deleting** state, the VPC is being deleted.
@@ -22337,7 +22349,7 @@ class Client(OpenApiClient):
         @summary Deletes a virtual private cloud (VPC).
         
         @description When you call this operation, take note of the following limits:
-        Before you delete a VPC, make sure that all resources deployed in the VPC are released or removed, such as vSwitches, instances, and high-availability virtual IP addresses (HAVIPs).
+        Before you delete a VPC, make sure that all resources deployed in the VPC are released or removed, such as vSwitches, instances, and high-availability virtual IP addresses (HaVips).
         You can delete only a VPC that is in the **Available** state.
         The **DeleteVpc** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpcAttribute](https://help.aliyun.com/document_detail/94565.html) operation to query the status of a VPC:
         If the VPC is in the **Deleting** state, the VPC is being deleted.
@@ -22358,7 +22370,7 @@ class Client(OpenApiClient):
         @summary Deletes a virtual private cloud (VPC).
         
         @description When you call this operation, take note of the following limits:
-        Before you delete a VPC, make sure that all resources deployed in the VPC are released or removed, such as vSwitches, instances, and high-availability virtual IP addresses (HAVIPs).
+        Before you delete a VPC, make sure that all resources deployed in the VPC are released or removed, such as vSwitches, instances, and high-availability virtual IP addresses (HaVips).
         You can delete only a VPC that is in the **Available** state.
         The **DeleteVpc** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpcAttribute](https://help.aliyun.com/document_detail/94565.html) operation to query the status of a VPC:
         If the VPC is in the **Deleting** state, the VPC is being deleted.
@@ -26485,7 +26497,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeHaVipsResponse:
         """
-        @summary Queries HAVIPs in a region.
+        @summary Queries HaVips in a region.
         
         @param request: DescribeHaVipsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26538,7 +26550,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeHaVipsResponse:
         """
-        @summary Queries HAVIPs in a region.
+        @summary Queries HaVips in a region.
         
         @param request: DescribeHaVipsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26590,7 +26602,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeHaVipsRequest,
     ) -> vpc_20160428_models.DescribeHaVipsResponse:
         """
-        @summary Queries HAVIPs in a region.
+        @summary Queries HaVips in a region.
         
         @param request: DescribeHaVipsRequest
         @return: DescribeHaVipsResponse
@@ -26603,7 +26615,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeHaVipsRequest,
     ) -> vpc_20160428_models.DescribeHaVipsResponse:
         """
-        @summary Queries HAVIPs in a region.
+        @summary Queries HaVips in a region.
         
         @param request: DescribeHaVipsRequest
         @return: DescribeHaVipsResponse
@@ -30581,7 +30593,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeTagKeysResponse:
         """
-        @summary 查询标签键列表。
+        @summary Queries tag keys.
         
         @param request: DescribeTagKeysRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -30634,7 +30646,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeTagKeysResponse:
         """
-        @summary 查询标签键列表。
+        @summary Queries tag keys.
         
         @param request: DescribeTagKeysRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -30686,7 +30698,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeTagKeysRequest,
     ) -> vpc_20160428_models.DescribeTagKeysResponse:
         """
-        @summary 查询标签键列表。
+        @summary Queries tag keys.
         
         @param request: DescribeTagKeysRequest
         @return: DescribeTagKeysResponse
@@ -30699,7 +30711,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeTagKeysRequest,
     ) -> vpc_20160428_models.DescribeTagKeysResponse:
         """
-        @summary 查询标签键列表。
+        @summary Queries tag keys.
         
         @param request: DescribeTagKeysRequest
         @return: DescribeTagKeysResponse
@@ -36145,7 +36157,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.GetTrafficMirrorServiceStatusResponse:
         """
-        @summary Queries the status of the traffic mirroring feature.
+        @summary Queries the status of the traffic mirror feature.
         
         @param request: GetTrafficMirrorServiceStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -36192,7 +36204,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.GetTrafficMirrorServiceStatusResponse:
         """
-        @summary Queries the status of the traffic mirroring feature.
+        @summary Queries the status of the traffic mirror feature.
         
         @param request: GetTrafficMirrorServiceStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -36238,7 +36250,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.GetTrafficMirrorServiceStatusRequest,
     ) -> vpc_20160428_models.GetTrafficMirrorServiceStatusResponse:
         """
-        @summary Queries the status of the traffic mirroring feature.
+        @summary Queries the status of the traffic mirror feature.
         
         @param request: GetTrafficMirrorServiceStatusRequest
         @return: GetTrafficMirrorServiceStatusResponse
@@ -36251,7 +36263,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.GetTrafficMirrorServiceStatusRequest,
     ) -> vpc_20160428_models.GetTrafficMirrorServiceStatusResponse:
         """
-        @summary Queries the status of the traffic mirroring feature.
+        @summary Queries the status of the traffic mirror feature.
         
         @param request: GetTrafficMirrorServiceStatusRequest
         @return: GetTrafficMirrorServiceStatusResponse
@@ -39431,7 +39443,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListTrafficMirrorFiltersResponse:
         """
-        @summary Queries filters for traffic mirroring.
+        @summary Queries filters for traffic mirror.
         
         @param request: ListTrafficMirrorFiltersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -39486,7 +39498,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListTrafficMirrorFiltersResponse:
         """
-        @summary Queries filters for traffic mirroring.
+        @summary Queries filters for traffic mirror.
         
         @param request: ListTrafficMirrorFiltersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -39540,7 +39552,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ListTrafficMirrorFiltersRequest,
     ) -> vpc_20160428_models.ListTrafficMirrorFiltersResponse:
         """
-        @summary Queries filters for traffic mirroring.
+        @summary Queries filters for traffic mirror.
         
         @param request: ListTrafficMirrorFiltersRequest
         @return: ListTrafficMirrorFiltersResponse
@@ -39553,7 +39565,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ListTrafficMirrorFiltersRequest,
     ) -> vpc_20160428_models.ListTrafficMirrorFiltersResponse:
         """
-        @summary Queries filters for traffic mirroring.
+        @summary Queries filters for traffic mirror.
         
         @param request: ListTrafficMirrorFiltersRequest
         @return: ListTrafficMirrorFiltersResponse
@@ -40275,7 +40287,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListVpcPublishedRouteEntriesResponse:
         """
-        @summary 查询路由发布情况
+        @summary Queries advertised routes.
         
         @param request: ListVpcPublishedRouteEntriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -40332,7 +40344,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListVpcPublishedRouteEntriesResponse:
         """
-        @summary 查询路由发布情况
+        @summary Queries advertised routes.
         
         @param request: ListVpcPublishedRouteEntriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -40388,7 +40400,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ListVpcPublishedRouteEntriesRequest,
     ) -> vpc_20160428_models.ListVpcPublishedRouteEntriesResponse:
         """
-        @summary 查询路由发布情况
+        @summary Queries advertised routes.
         
         @param request: ListVpcPublishedRouteEntriesRequest
         @return: ListVpcPublishedRouteEntriesResponse
@@ -40401,7 +40413,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ListVpcPublishedRouteEntriesRequest,
     ) -> vpc_20160428_models.ListVpcPublishedRouteEntriesResponse:
         """
-        @summary 查询路由发布情况
+        @summary Queries advertised routes.
         
         @param request: ListVpcPublishedRouteEntriesRequest
         @return: ListVpcPublishedRouteEntriesResponse
@@ -43143,7 +43155,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyHaVipAttributeResponse:
         """
-        @description You cannot repeatedly call the *ModifyHaVipAttribute** operation to modify the name and description of an HAVIP within the specified periods of time.
+        @summary Modifies the name and description of a high-availability virtual IP address (HaVip).
+        
+        @description You cannot repeatedly call the *ModifyHaVipAttribute** operation to modify the name and description of an HaVip within the specified periods of time.
         
         @param request: ModifyHaVipAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -43194,7 +43208,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyHaVipAttributeResponse:
         """
-        @description You cannot repeatedly call the *ModifyHaVipAttribute** operation to modify the name and description of an HAVIP within the specified periods of time.
+        @summary Modifies the name and description of a high-availability virtual IP address (HaVip).
+        
+        @description You cannot repeatedly call the *ModifyHaVipAttribute** operation to modify the name and description of an HaVip within the specified periods of time.
         
         @param request: ModifyHaVipAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -43244,7 +43260,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyHaVipAttributeRequest,
     ) -> vpc_20160428_models.ModifyHaVipAttributeResponse:
         """
-        @description You cannot repeatedly call the *ModifyHaVipAttribute** operation to modify the name and description of an HAVIP within the specified periods of time.
+        @summary Modifies the name and description of a high-availability virtual IP address (HaVip).
+        
+        @description You cannot repeatedly call the *ModifyHaVipAttribute** operation to modify the name and description of an HaVip within the specified periods of time.
         
         @param request: ModifyHaVipAttributeRequest
         @return: ModifyHaVipAttributeResponse
@@ -43257,7 +43275,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyHaVipAttributeRequest,
     ) -> vpc_20160428_models.ModifyHaVipAttributeResponse:
         """
-        @description You cannot repeatedly call the *ModifyHaVipAttribute** operation to modify the name and description of an HAVIP within the specified periods of time.
+        @summary Modifies the name and description of a high-availability virtual IP address (HaVip).
+        
+        @description You cannot repeatedly call the *ModifyHaVipAttribute** operation to modify the name and description of an HaVip within the specified periods of time.
         
         @param request: ModifyHaVipAttributeRequest
         @return: ModifyHaVipAttributeResponse
@@ -49531,10 +49551,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.OpenTrafficMirrorServiceResponse:
         """
-        @summary Enables traffic mirroring.
+        @summary Enables traffic mirror.
         
         @description ## [](#)Usage notes
-        You can enable traffic mirroring for different regions. You cannot repeatedly call the *OpenTrafficMirrorService** operation to enable traffic mirroring for one region within the specified period of time.
+        You can enable traffic mirror for different regions. You cannot repeatedly call the *OpenTrafficMirrorService** operation to enable traffic mirror for one region within the specified period of time.
         
         @param request: OpenTrafficMirrorServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -49581,10 +49601,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.OpenTrafficMirrorServiceResponse:
         """
-        @summary Enables traffic mirroring.
+        @summary Enables traffic mirror.
         
         @description ## [](#)Usage notes
-        You can enable traffic mirroring for different regions. You cannot repeatedly call the *OpenTrafficMirrorService** operation to enable traffic mirroring for one region within the specified period of time.
+        You can enable traffic mirror for different regions. You cannot repeatedly call the *OpenTrafficMirrorService** operation to enable traffic mirror for one region within the specified period of time.
         
         @param request: OpenTrafficMirrorServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -49630,10 +49650,10 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.OpenTrafficMirrorServiceRequest,
     ) -> vpc_20160428_models.OpenTrafficMirrorServiceResponse:
         """
-        @summary Enables traffic mirroring.
+        @summary Enables traffic mirror.
         
         @description ## [](#)Usage notes
-        You can enable traffic mirroring for different regions. You cannot repeatedly call the *OpenTrafficMirrorService** operation to enable traffic mirroring for one region within the specified period of time.
+        You can enable traffic mirror for different regions. You cannot repeatedly call the *OpenTrafficMirrorService** operation to enable traffic mirror for one region within the specified period of time.
         
         @param request: OpenTrafficMirrorServiceRequest
         @return: OpenTrafficMirrorServiceResponse
@@ -49646,10 +49666,10 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.OpenTrafficMirrorServiceRequest,
     ) -> vpc_20160428_models.OpenTrafficMirrorServiceResponse:
         """
-        @summary Enables traffic mirroring.
+        @summary Enables traffic mirror.
         
         @description ## [](#)Usage notes
-        You can enable traffic mirroring for different regions. You cannot repeatedly call the *OpenTrafficMirrorService** operation to enable traffic mirroring for one region within the specified period of time.
+        You can enable traffic mirror for different regions. You cannot repeatedly call the *OpenTrafficMirrorService** operation to enable traffic mirror for one region within the specified period of time.
         
         @param request: OpenTrafficMirrorServiceRequest
         @return: OpenTrafficMirrorServiceResponse
@@ -49663,7 +49683,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.PublishVpcRouteEntriesResponse:
         """
-        @summary 发布VPC路由
+        @summary Advertises VPC routes to an external component.
         
         @param request: PublishVpcRouteEntriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -49716,7 +49736,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.PublishVpcRouteEntriesResponse:
         """
-        @summary 发布VPC路由
+        @summary Advertises VPC routes to an external component.
         
         @param request: PublishVpcRouteEntriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -49768,7 +49788,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.PublishVpcRouteEntriesRequest,
     ) -> vpc_20160428_models.PublishVpcRouteEntriesResponse:
         """
-        @summary 发布VPC路由
+        @summary Advertises VPC routes to an external component.
         
         @param request: PublishVpcRouteEntriesRequest
         @return: PublishVpcRouteEntriesResponse
@@ -49781,7 +49801,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.PublishVpcRouteEntriesRequest,
     ) -> vpc_20160428_models.PublishVpcRouteEntriesResponse:
         """
-        @summary 发布VPC路由
+        @summary Advertises VPC routes to an external component.
         
         @param request: PublishVpcRouteEntriesRequest
         @return: PublishVpcRouteEntriesResponse
@@ -53343,16 +53363,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UnassociateHaVipResponse:
         """
-        @summary Disassociates a high-availability virtual IP address (HAVIP) from an Elastic Compute Service (ECS) in a virtual private cloud (VPC) or from an elastic network interface (ENI).
+        @summary Disassociates a high-availability virtual IP address (HaVip) from an Elastic Compute Service (ECS) in a virtual private cloud (VPC) or from an elastic network interface (ENI).
         
         @description ## [](#)
         When you call this operation, take note of the following limits:
         The ECS instance must be in the **Running** or **Stopped** state.
-        The HAVIP must be in the **Available** or **InUse** state.
-        **UnassociateHaVip** is an asynchronous operation. After a request is sent, the system returns a request ID and an instance ID and runs the task in the background. You can call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of an HAVIP:
-        If the HAVIP is in the **Unassociating** state, the HAVIP is being disassociated.
-        If the HAVIP is in the **Inuse** or **Available** state, the HAVIP is disassociated.
-        You cannot repeatedly call the **UnassociateHaVip** operation to disassociate an HAVIP within the specified period of time.
+        The HaVip must be in the **Available** or **InUse** state.
+        **UnassociateHaVip** is an asynchronous operation. After a request is sent, the system returns a request ID and an instance ID and runs the task in the background. You can call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of an HaVip:
+        If the HaVip is in the **Unassociating** state, the HaVip is being disassociated.
+        If the HaVip is in the **Inuse** or **Available** state, the HaVip is disassociated.
+        You cannot repeatedly call the **UnassociateHaVip** operation to disassociate an HaVip within the specified period of time.
         
         @param request: UnassociateHaVipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -53405,16 +53425,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UnassociateHaVipResponse:
         """
-        @summary Disassociates a high-availability virtual IP address (HAVIP) from an Elastic Compute Service (ECS) in a virtual private cloud (VPC) or from an elastic network interface (ENI).
+        @summary Disassociates a high-availability virtual IP address (HaVip) from an Elastic Compute Service (ECS) in a virtual private cloud (VPC) or from an elastic network interface (ENI).
         
         @description ## [](#)
         When you call this operation, take note of the following limits:
         The ECS instance must be in the **Running** or **Stopped** state.
-        The HAVIP must be in the **Available** or **InUse** state.
-        **UnassociateHaVip** is an asynchronous operation. After a request is sent, the system returns a request ID and an instance ID and runs the task in the background. You can call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of an HAVIP:
-        If the HAVIP is in the **Unassociating** state, the HAVIP is being disassociated.
-        If the HAVIP is in the **Inuse** or **Available** state, the HAVIP is disassociated.
-        You cannot repeatedly call the **UnassociateHaVip** operation to disassociate an HAVIP within the specified period of time.
+        The HaVip must be in the **Available** or **InUse** state.
+        **UnassociateHaVip** is an asynchronous operation. After a request is sent, the system returns a request ID and an instance ID and runs the task in the background. You can call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of an HaVip:
+        If the HaVip is in the **Unassociating** state, the HaVip is being disassociated.
+        If the HaVip is in the **Inuse** or **Available** state, the HaVip is disassociated.
+        You cannot repeatedly call the **UnassociateHaVip** operation to disassociate an HaVip within the specified period of time.
         
         @param request: UnassociateHaVipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -53466,16 +53486,16 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.UnassociateHaVipRequest,
     ) -> vpc_20160428_models.UnassociateHaVipResponse:
         """
-        @summary Disassociates a high-availability virtual IP address (HAVIP) from an Elastic Compute Service (ECS) in a virtual private cloud (VPC) or from an elastic network interface (ENI).
+        @summary Disassociates a high-availability virtual IP address (HaVip) from an Elastic Compute Service (ECS) in a virtual private cloud (VPC) or from an elastic network interface (ENI).
         
         @description ## [](#)
         When you call this operation, take note of the following limits:
         The ECS instance must be in the **Running** or **Stopped** state.
-        The HAVIP must be in the **Available** or **InUse** state.
-        **UnassociateHaVip** is an asynchronous operation. After a request is sent, the system returns a request ID and an instance ID and runs the task in the background. You can call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of an HAVIP:
-        If the HAVIP is in the **Unassociating** state, the HAVIP is being disassociated.
-        If the HAVIP is in the **Inuse** or **Available** state, the HAVIP is disassociated.
-        You cannot repeatedly call the **UnassociateHaVip** operation to disassociate an HAVIP within the specified period of time.
+        The HaVip must be in the **Available** or **InUse** state.
+        **UnassociateHaVip** is an asynchronous operation. After a request is sent, the system returns a request ID and an instance ID and runs the task in the background. You can call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of an HaVip:
+        If the HaVip is in the **Unassociating** state, the HaVip is being disassociated.
+        If the HaVip is in the **Inuse** or **Available** state, the HaVip is disassociated.
+        You cannot repeatedly call the **UnassociateHaVip** operation to disassociate an HaVip within the specified period of time.
         
         @param request: UnassociateHaVipRequest
         @return: UnassociateHaVipResponse
@@ -53488,16 +53508,16 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.UnassociateHaVipRequest,
     ) -> vpc_20160428_models.UnassociateHaVipResponse:
         """
-        @summary Disassociates a high-availability virtual IP address (HAVIP) from an Elastic Compute Service (ECS) in a virtual private cloud (VPC) or from an elastic network interface (ENI).
+        @summary Disassociates a high-availability virtual IP address (HaVip) from an Elastic Compute Service (ECS) in a virtual private cloud (VPC) or from an elastic network interface (ENI).
         
         @description ## [](#)
         When you call this operation, take note of the following limits:
         The ECS instance must be in the **Running** or **Stopped** state.
-        The HAVIP must be in the **Available** or **InUse** state.
-        **UnassociateHaVip** is an asynchronous operation. After a request is sent, the system returns a request ID and an instance ID and runs the task in the background. You can call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of an HAVIP:
-        If the HAVIP is in the **Unassociating** state, the HAVIP is being disassociated.
-        If the HAVIP is in the **Inuse** or **Available** state, the HAVIP is disassociated.
-        You cannot repeatedly call the **UnassociateHaVip** operation to disassociate an HAVIP within the specified period of time.
+        The HaVip must be in the **Available** or **InUse** state.
+        **UnassociateHaVip** is an asynchronous operation. After a request is sent, the system returns a request ID and an instance ID and runs the task in the background. You can call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of an HaVip:
+        If the HaVip is in the **Unassociating** state, the HaVip is being disassociated.
+        If the HaVip is in the **Inuse** or **Available** state, the HaVip is disassociated.
+        You cannot repeatedly call the **UnassociateHaVip** operation to disassociate an HaVip within the specified period of time.
         
         @param request: UnassociateHaVipRequest
         @return: UnassociateHaVipResponse
@@ -55451,9 +55471,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateTrafficMirrorFilterAttributeResponse:
         """
-        @summary Modifies the configuration of a filter for traffic mirroring.
+        @summary Modifies the configuration of a filter for traffic mirror.
         
-        @description You cannot repeatedly call the *UpdateTrafficMirrorFilterAttribute** operation to modify the configuration of a filter for traffic mirroring within the specified period of time.
+        @description You cannot repeatedly call the *UpdateTrafficMirrorFilterAttribute** operation to modify the configuration of a filter for traffic mirror within the specified period of time.
         
         @param request: UpdateTrafficMirrorFilterAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -55506,9 +55526,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateTrafficMirrorFilterAttributeResponse:
         """
-        @summary Modifies the configuration of a filter for traffic mirroring.
+        @summary Modifies the configuration of a filter for traffic mirror.
         
-        @description You cannot repeatedly call the *UpdateTrafficMirrorFilterAttribute** operation to modify the configuration of a filter for traffic mirroring within the specified period of time.
+        @description You cannot repeatedly call the *UpdateTrafficMirrorFilterAttribute** operation to modify the configuration of a filter for traffic mirror within the specified period of time.
         
         @param request: UpdateTrafficMirrorFilterAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -55560,9 +55580,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.UpdateTrafficMirrorFilterAttributeRequest,
     ) -> vpc_20160428_models.UpdateTrafficMirrorFilterAttributeResponse:
         """
-        @summary Modifies the configuration of a filter for traffic mirroring.
+        @summary Modifies the configuration of a filter for traffic mirror.
         
-        @description You cannot repeatedly call the *UpdateTrafficMirrorFilterAttribute** operation to modify the configuration of a filter for traffic mirroring within the specified period of time.
+        @description You cannot repeatedly call the *UpdateTrafficMirrorFilterAttribute** operation to modify the configuration of a filter for traffic mirror within the specified period of time.
         
         @param request: UpdateTrafficMirrorFilterAttributeRequest
         @return: UpdateTrafficMirrorFilterAttributeResponse
@@ -55575,9 +55595,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.UpdateTrafficMirrorFilterAttributeRequest,
     ) -> vpc_20160428_models.UpdateTrafficMirrorFilterAttributeResponse:
         """
-        @summary Modifies the configuration of a filter for traffic mirroring.
+        @summary Modifies the configuration of a filter for traffic mirror.
         
-        @description You cannot repeatedly call the *UpdateTrafficMirrorFilterAttribute** operation to modify the configuration of a filter for traffic mirroring within the specified period of time.
+        @description You cannot repeatedly call the *UpdateTrafficMirrorFilterAttribute** operation to modify the configuration of a filter for traffic mirror within the specified period of time.
         
         @param request: UpdateTrafficMirrorFilterAttributeRequest
         @return: UpdateTrafficMirrorFilterAttributeResponse
