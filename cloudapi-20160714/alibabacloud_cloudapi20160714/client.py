@@ -13895,6 +13895,8 @@ class Client(OpenApiClient):
             query['EnableTagAuthorization'] = request.enable_tag_authorization
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
         if not UtilClient.is_unset(request.security_token):
@@ -13938,6 +13940,8 @@ class Client(OpenApiClient):
             query['EnableTagAuthorization'] = request.enable_tag_authorization
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
         if not UtilClient.is_unset(request.security_token):

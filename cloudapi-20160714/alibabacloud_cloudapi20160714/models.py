@@ -30749,6 +30749,7 @@ class DescribeInstancesRequest(TeaModel):
         self,
         enable_tag_authorization: bool = None,
         instance_id: str = None,
+        instance_type: str = None,
         language: str = None,
         security_token: str = None,
         tag: List[DescribeInstancesRequestTag] = None,
@@ -30757,6 +30758,7 @@ class DescribeInstancesRequest(TeaModel):
         self.enable_tag_authorization = enable_tag_authorization
         # The instance ID. If you do not specify this parameter, all instances are returned.
         self.instance_id = instance_id
+        self.instance_type = instance_type
         # The language in which you want the description of the system policy to be returned. Valid values:
         # 
         # *   en: English
@@ -30783,6 +30785,8 @@ class DescribeInstancesRequest(TeaModel):
             result['EnableTagAuthorization'] = self.enable_tag_authorization
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
         if self.language is not None:
             result['Language'] = self.language
         if self.security_token is not None:
@@ -30799,6 +30803,8 @@ class DescribeInstancesRequest(TeaModel):
             self.enable_tag_authorization = m.get('EnableTagAuthorization')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
         if m.get('Language') is not None:
             self.language = m.get('Language')
         if m.get('SecurityToken') is not None:
