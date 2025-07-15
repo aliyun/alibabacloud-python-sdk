@@ -1,3 +1,12 @@
+2025-07-15 Version: 1.31.1
+- Update API GetSmartAuditResult: add response parameters Body.Data.ErrorItemDetails.$.Url.
+- Update API RunAbbreviationContent: add request parameters Prompt.
+- Update API RunExpandContent: add request parameters Prompt.
+- Update API RunKeywordsExtractionGeneration: add request parameters Prompt.
+- Update API RunTextPolishing: add request parameters Prompt.
+- Update API SubmitSmartAudit: add request parameters imageUrls.
+
+
 2025-07-15 Version: 1.31.0
 - Support API AddAuditTerms.
 - Support API DeleteAuditTerms.

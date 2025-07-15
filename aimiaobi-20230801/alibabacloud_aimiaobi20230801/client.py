@@ -11973,6 +11973,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.content):
             body['Content'] = request.content
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -12010,6 +12012,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.content):
             body['Content'] = request.content
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -13797,6 +13801,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.content):
             body['Content'] = request.content
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -13834,6 +13840,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.content):
             body['Content'] = request.content
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -14127,6 +14135,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.reference_data):
             request.reference_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.reference_data, 'ReferenceData', 'json')
         body = {}
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
         if not UtilClient.is_unset(request.reference_data_shrink):
             body['ReferenceData'] = request.reference_data_shrink
         if not UtilClient.is_unset(request.task_id):
@@ -14170,6 +14180,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.reference_data):
             request.reference_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.reference_data, 'ReferenceData', 'json')
         body = {}
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
         if not UtilClient.is_unset(request.reference_data_shrink):
             body['ReferenceData'] = request.reference_data_shrink
         if not UtilClient.is_unset(request.task_id):
@@ -14965,6 +14977,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.content):
             body['Content'] = request.content
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -15002,6 +15016,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.content):
             body['Content'] = request.content
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -17602,6 +17618,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.sub_codes):
             request.sub_codes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sub_codes, 'SubCodes', 'json')
+        if not UtilClient.is_unset(tmp_req.image_urls):
+            request.image_urls_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.image_urls, 'imageUrls', 'json')
         body = {}
         if not UtilClient.is_unset(request.sub_codes_shrink):
             body['SubCodes'] = request.sub_codes_shrink
@@ -17609,6 +17627,8 @@ class Client(OpenApiClient):
             body['Text'] = request.text
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
+        if not UtilClient.is_unset(request.image_urls_shrink):
+            body['imageUrls'] = request.image_urls_shrink
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -17645,6 +17665,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.sub_codes):
             request.sub_codes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sub_codes, 'SubCodes', 'json')
+        if not UtilClient.is_unset(tmp_req.image_urls):
+            request.image_urls_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.image_urls, 'imageUrls', 'json')
         body = {}
         if not UtilClient.is_unset(request.sub_codes_shrink):
             body['SubCodes'] = request.sub_codes_shrink
@@ -17652,6 +17674,8 @@ class Client(OpenApiClient):
             body['Text'] = request.text
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
+        if not UtilClient.is_unset(request.image_urls_shrink):
+            body['imageUrls'] = request.image_urls_shrink
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
