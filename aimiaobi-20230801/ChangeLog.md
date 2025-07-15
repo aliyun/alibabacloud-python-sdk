@@ -1,3 +1,14 @@
+2025-07-15 Version: 1.31.0
+- Support API AddAuditTerms.
+- Support API DeleteAuditTerms.
+- Support API EditAuditTerms.
+- Support API FetchExportTermsTask.
+- Support API FetchImportTermsTask.
+- Support API ListAuditTerms.
+- Support API SubmitExportTermsTask.
+- Support API SubmitImportTermsTask.
+
+
 2025-06-26 Version: 1.30.3
 - Update API GetCustomSourceTopicAnalysisTask: add response parameters Body.Data.rt.
 - Update API GetCustomSourceTopicAnalysisTask: add response parameters Body.Data.usages.

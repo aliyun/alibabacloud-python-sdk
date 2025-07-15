@@ -41,6 +41,114 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_audit_terms_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.AddAuditTermsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.AddAuditTermsResponse:
+        """
+        @summary 添加审核自定义词库记录
+        
+        @param request: AddAuditTermsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddAuditTermsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.suggest_word):
+            body['SuggestWord'] = request.suggest_word
+        if not UtilClient.is_unset(request.terms_desc):
+            body['TermsDesc'] = request.terms_desc
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddAuditTerms',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.AddAuditTermsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_audit_terms_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.AddAuditTermsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.AddAuditTermsResponse:
+        """
+        @summary 添加审核自定义词库记录
+        
+        @param request: AddAuditTermsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddAuditTermsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.suggest_word):
+            body['SuggestWord'] = request.suggest_word
+        if not UtilClient.is_unset(request.terms_desc):
+            body['TermsDesc'] = request.terms_desc
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddAuditTerms',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.AddAuditTermsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_audit_terms(
+        self,
+        request: ai_miao_bi_20230801_models.AddAuditTermsRequest,
+    ) -> ai_miao_bi_20230801_models.AddAuditTermsResponse:
+        """
+        @summary 添加审核自定义词库记录
+        
+        @param request: AddAuditTermsRequest
+        @return: AddAuditTermsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_audit_terms_with_options(request, runtime)
+
+    async def add_audit_terms_async(
+        self,
+        request: ai_miao_bi_20230801_models.AddAuditTermsRequest,
+    ) -> ai_miao_bi_20230801_models.AddAuditTermsResponse:
+        """
+        @summary 添加审核自定义词库记录
+        
+        @param request: AddAuditTermsRequest
+        @return: AddAuditTermsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_audit_terms_with_options_async(request, runtime)
+
     def add_dataset_document_with_options(
         self,
         tmp_req: ai_miao_bi_20230801_models.AddDatasetDocumentRequest,
@@ -1305,6 +1413,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_token_with_options_async(request, runtime)
 
+    def delete_audit_terms_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.DeleteAuditTermsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.DeleteAuditTermsResponse:
+        """
+        @summary 删除指定的词库记录
+        
+        @param tmp_req: DeleteAuditTermsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAuditTermsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.DeleteAuditTermsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.id_list):
+            request.id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.id_list, 'IdList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.id_list_shrink):
+            body['IdList'] = request.id_list_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteAuditTerms',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.DeleteAuditTermsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_audit_terms_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.DeleteAuditTermsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.DeleteAuditTermsResponse:
+        """
+        @summary 删除指定的词库记录
+        
+        @param tmp_req: DeleteAuditTermsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAuditTermsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.DeleteAuditTermsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.id_list):
+            request.id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.id_list, 'IdList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.id_list_shrink):
+            body['IdList'] = request.id_list_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteAuditTerms',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.DeleteAuditTermsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_audit_terms(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteAuditTermsRequest,
+    ) -> ai_miao_bi_20230801_models.DeleteAuditTermsResponse:
+        """
+        @summary 删除指定的词库记录
+        
+        @param request: DeleteAuditTermsRequest
+        @return: DeleteAuditTermsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_audit_terms_with_options(request, runtime)
+
+    async def delete_audit_terms_async(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteAuditTermsRequest,
+    ) -> ai_miao_bi_20230801_models.DeleteAuditTermsResponse:
+        """
+        @summary 删除指定的词库记录
+        
+        @param request: DeleteAuditTermsRequest
+        @return: DeleteAuditTermsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_audit_terms_with_options_async(request, runtime)
+
     def delete_custom_text_with_options(
         self,
         request: ai_miao_bi_20230801_models.DeleteCustomTextRequest,
@@ -2473,6 +2689,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.document_extraction_with_options_async(request, runtime)
 
+    def edit_audit_terms_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.EditAuditTermsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.EditAuditTermsResponse:
+        """
+        @summary 编辑审核自定义词库记录
+        
+        @param request: EditAuditTermsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EditAuditTermsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.suggest_word):
+            body['SuggestWord'] = request.suggest_word
+        if not UtilClient.is_unset(request.terms_desc):
+            body['TermsDesc'] = request.terms_desc
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EditAuditTerms',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.EditAuditTermsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def edit_audit_terms_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.EditAuditTermsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.EditAuditTermsResponse:
+        """
+        @summary 编辑审核自定义词库记录
+        
+        @param request: EditAuditTermsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EditAuditTermsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.suggest_word):
+            body['SuggestWord'] = request.suggest_word
+        if not UtilClient.is_unset(request.terms_desc):
+            body['TermsDesc'] = request.terms_desc
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EditAuditTerms',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.EditAuditTermsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def edit_audit_terms(
+        self,
+        request: ai_miao_bi_20230801_models.EditAuditTermsRequest,
+    ) -> ai_miao_bi_20230801_models.EditAuditTermsResponse:
+        """
+        @summary 编辑审核自定义词库记录
+        
+        @param request: EditAuditTermsRequest
+        @return: EditAuditTermsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.edit_audit_terms_with_options(request, runtime)
+
+    async def edit_audit_terms_async(
+        self,
+        request: ai_miao_bi_20230801_models.EditAuditTermsRequest,
+    ) -> ai_miao_bi_20230801_models.EditAuditTermsResponse:
+        """
+        @summary 编辑审核自定义词库记录
+        
+        @param request: EditAuditTermsRequest
+        @return: EditAuditTermsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.edit_audit_terms_with_options_async(request, runtime)
+
     def export_analysis_tag_detail_by_task_id_with_options(
         self,
         tmp_req: ai_miao_bi_20230801_models.ExportAnalysisTagDetailByTaskIdRequest,
@@ -3257,6 +3585,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.feedback_dialogue_with_options_async(request, runtime)
 
+    def fetch_export_terms_task_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.FetchExportTermsTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.FetchExportTermsTaskResponse:
+        """
+        @summary 获取词库导出任务结果
+        
+        @param request: FetchExportTermsTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FetchExportTermsTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='FetchExportTermsTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.FetchExportTermsTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def fetch_export_terms_task_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.FetchExportTermsTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.FetchExportTermsTaskResponse:
+        """
+        @summary 获取词库导出任务结果
+        
+        @param request: FetchExportTermsTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FetchExportTermsTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='FetchExportTermsTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.FetchExportTermsTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def fetch_export_terms_task(
+        self,
+        request: ai_miao_bi_20230801_models.FetchExportTermsTaskRequest,
+    ) -> ai_miao_bi_20230801_models.FetchExportTermsTaskResponse:
+        """
+        @summary 获取词库导出任务结果
+        
+        @param request: FetchExportTermsTaskRequest
+        @return: FetchExportTermsTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.fetch_export_terms_task_with_options(request, runtime)
+
+    async def fetch_export_terms_task_async(
+        self,
+        request: ai_miao_bi_20230801_models.FetchExportTermsTaskRequest,
+    ) -> ai_miao_bi_20230801_models.FetchExportTermsTaskResponse:
+        """
+        @summary 获取词库导出任务结果
+        
+        @param request: FetchExportTermsTaskRequest
+        @return: FetchExportTermsTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.fetch_export_terms_task_with_options_async(request, runtime)
+
     def fetch_export_word_task_with_options(
         self,
         request: ai_miao_bi_20230801_models.FetchExportWordTaskRequest,
@@ -3476,6 +3904,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.fetch_image_task_with_options_async(request, runtime)
+
+    def fetch_import_terms_task_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.FetchImportTermsTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.FetchImportTermsTaskResponse:
+        """
+        @summary 获取导入词库任务结果
+        
+        @param request: FetchImportTermsTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FetchImportTermsTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='FetchImportTermsTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.FetchImportTermsTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def fetch_import_terms_task_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.FetchImportTermsTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.FetchImportTermsTaskResponse:
+        """
+        @summary 获取导入词库任务结果
+        
+        @param request: FetchImportTermsTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FetchImportTermsTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='FetchImportTermsTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.FetchImportTermsTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def fetch_import_terms_task(
+        self,
+        request: ai_miao_bi_20230801_models.FetchImportTermsTaskRequest,
+    ) -> ai_miao_bi_20230801_models.FetchImportTermsTaskResponse:
+        """
+        @summary 获取导入词库任务结果
+        
+        @param request: FetchImportTermsTaskRequest
+        @return: FetchImportTermsTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.fetch_import_terms_task_with_options(request, runtime)
+
+    async def fetch_import_terms_task_async(
+        self,
+        request: ai_miao_bi_20230801_models.FetchImportTermsTaskRequest,
+    ) -> ai_miao_bi_20230801_models.FetchImportTermsTaskResponse:
+        """
+        @summary 获取导入词库任务结果
+        
+        @param request: FetchImportTermsTaskRequest
+        @return: FetchImportTermsTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.fetch_import_terms_task_with_options_async(request, runtime)
 
     def generate_export_word_task_with_options(
         self,
@@ -7588,6 +8116,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_audit_content_error_types_with_options_async(request, runtime)
+
+    def list_audit_terms_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.ListAuditTermsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListAuditTermsResponse:
+        """
+        @summary 获取词库列表
+        
+        @param request: ListAuditTermsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAuditTermsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListAuditTerms',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListAuditTermsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_audit_terms_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListAuditTermsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListAuditTermsResponse:
+        """
+        @summary 获取词库列表
+        
+        @param request: ListAuditTermsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAuditTermsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListAuditTerms',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListAuditTermsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_audit_terms(
+        self,
+        request: ai_miao_bi_20230801_models.ListAuditTermsRequest,
+    ) -> ai_miao_bi_20230801_models.ListAuditTermsResponse:
+        """
+        @summary 获取词库列表
+        
+        @param request: ListAuditTermsRequest
+        @return: ListAuditTermsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_audit_terms_with_options(request, runtime)
+
+    async def list_audit_terms_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListAuditTermsRequest,
+    ) -> ai_miao_bi_20230801_models.ListAuditTermsResponse:
+        """
+        @summary 获取词库列表
+        
+        @param request: ListAuditTermsRequest
+        @return: ListAuditTermsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_audit_terms_with_options_async(request, runtime)
 
     def list_build_configs_with_options(
         self,
@@ -16756,6 +17388,202 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.submit_enterprise_voc_analysis_task_with_options_async(request, runtime)
+
+    def submit_export_terms_task_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitExportTermsTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SubmitExportTermsTaskResponse:
+        """
+        @summary 导出词库任务
+        
+        @param request: SubmitExportTermsTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitExportTermsTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitExportTermsTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SubmitExportTermsTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_export_terms_task_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitExportTermsTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SubmitExportTermsTaskResponse:
+        """
+        @summary 导出词库任务
+        
+        @param request: SubmitExportTermsTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitExportTermsTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitExportTermsTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SubmitExportTermsTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_export_terms_task(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitExportTermsTaskRequest,
+    ) -> ai_miao_bi_20230801_models.SubmitExportTermsTaskResponse:
+        """
+        @summary 导出词库任务
+        
+        @param request: SubmitExportTermsTaskRequest
+        @return: SubmitExportTermsTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_export_terms_task_with_options(request, runtime)
+
+    async def submit_export_terms_task_async(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitExportTermsTaskRequest,
+    ) -> ai_miao_bi_20230801_models.SubmitExportTermsTaskResponse:
+        """
+        @summary 导出词库任务
+        
+        @param request: SubmitExportTermsTaskRequest
+        @return: SubmitExportTermsTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_export_terms_task_with_options_async(request, runtime)
+
+    def submit_import_terms_task_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitImportTermsTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SubmitImportTermsTaskResponse:
+        """
+        @summary 提交导入自定义词库任务
+        
+        @param request: SubmitImportTermsTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitImportTermsTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_key):
+            body['FileKey'] = request.file_key
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitImportTermsTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SubmitImportTermsTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_import_terms_task_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitImportTermsTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SubmitImportTermsTaskResponse:
+        """
+        @summary 提交导入自定义词库任务
+        
+        @param request: SubmitImportTermsTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitImportTermsTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_key):
+            body['FileKey'] = request.file_key
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitImportTermsTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SubmitImportTermsTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_import_terms_task(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitImportTermsTaskRequest,
+    ) -> ai_miao_bi_20230801_models.SubmitImportTermsTaskResponse:
+        """
+        @summary 提交导入自定义词库任务
+        
+        @param request: SubmitImportTermsTaskRequest
+        @return: SubmitImportTermsTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_import_terms_task_with_options(request, runtime)
+
+    async def submit_import_terms_task_async(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitImportTermsTaskRequest,
+    ) -> ai_miao_bi_20230801_models.SubmitImportTermsTaskResponse:
+        """
+        @summary 提交导入自定义词库任务
+        
+        @param request: SubmitImportTermsTaskRequest
+        @return: SubmitImportTermsTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_import_terms_task_with_options_async(request, runtime)
 
     def submit_smart_audit_with_options(
         self,
