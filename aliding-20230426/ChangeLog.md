@@ -1,3 +1,7 @@
+2025-07-16 Version: 2.43.0
+- Support API ChangeDingTalkId.
+
+
 2025-07-10 Version: 2.42.0
 - Support API CreateAlidingAssistant.
 - Support API DeleteAlidingAssistant.

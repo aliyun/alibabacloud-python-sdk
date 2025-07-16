@@ -2949,6 +2949,140 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.CancelScheduleConferenceHeaders()
         return await self.cancel_schedule_conference_with_options_async(request, headers, runtime)
 
+    def change_ding_talk_id_with_options(
+        self,
+        tmp_req: aliding_20230426_models.ChangeDingTalkIdRequest,
+        tmp_header: aliding_20230426_models.ChangeDingTalkIdHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.ChangeDingTalkIdResponse:
+        """
+        @summary 修改阿里钉号
+        
+        @param tmp_req: ChangeDingTalkIdRequest
+        @param tmp_header: ChangeDingTalkIdHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeDingTalkIdResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.ChangeDingTalkIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.ChangeDingTalkIdShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.ding_talk_id):
+            body['DingTalkId'] = request.ding_talk_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ChangeDingTalkId',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/user/changeDingTalkId',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.ChangeDingTalkIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_ding_talk_id_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.ChangeDingTalkIdRequest,
+        tmp_header: aliding_20230426_models.ChangeDingTalkIdHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.ChangeDingTalkIdResponse:
+        """
+        @summary 修改阿里钉号
+        
+        @param tmp_req: ChangeDingTalkIdRequest
+        @param tmp_header: ChangeDingTalkIdHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeDingTalkIdResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.ChangeDingTalkIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.ChangeDingTalkIdShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.ding_talk_id):
+            body['DingTalkId'] = request.ding_talk_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ChangeDingTalkId',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/user/changeDingTalkId',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.ChangeDingTalkIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_ding_talk_id(
+        self,
+        request: aliding_20230426_models.ChangeDingTalkIdRequest,
+    ) -> aliding_20230426_models.ChangeDingTalkIdResponse:
+        """
+        @summary 修改阿里钉号
+        
+        @param request: ChangeDingTalkIdRequest
+        @return: ChangeDingTalkIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.ChangeDingTalkIdHeaders()
+        return self.change_ding_talk_id_with_options(request, headers, runtime)
+
+    async def change_ding_talk_id_async(
+        self,
+        request: aliding_20230426_models.ChangeDingTalkIdRequest,
+    ) -> aliding_20230426_models.ChangeDingTalkIdResponse:
+        """
+        @summary 修改阿里钉号
+        
+        @param request: ChangeDingTalkIdRequest
+        @return: ChangeDingTalkIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.ChangeDingTalkIdHeaders()
+        return await self.change_ding_talk_id_with_options_async(request, headers, runtime)
+
     def check_alibaba_staff_with_options(
         self,
         tmp_req: aliding_20230426_models.CheckAlibabaStaffRequest,
