@@ -132,6 +132,7 @@ class CatalogSummary(TeaModel):
         self,
         api_visit_count_monthly: int = None,
         database_count: MoMValues = None,
+        file_access_count_monthly: int = None,
         generated_date: str = None,
         partition_count: MoMValues = None,
         table_count: MoMValues = None,
@@ -141,6 +142,7 @@ class CatalogSummary(TeaModel):
     ):
         self.api_visit_count_monthly = api_visit_count_monthly
         self.database_count = database_count
+        self.file_access_count_monthly = file_access_count_monthly
         # Update date of the statistics
         self.generated_date = generated_date
         self.partition_count = partition_count
@@ -171,6 +173,8 @@ class CatalogSummary(TeaModel):
             result['apiVisitCountMonthly'] = self.api_visit_count_monthly
         if self.database_count is not None:
             result['databaseCount'] = self.database_count.to_map()
+        if self.file_access_count_monthly is not None:
+            result['fileAccessCountMonthly'] = self.file_access_count_monthly
         if self.generated_date is not None:
             result['generatedDate'] = self.generated_date
         if self.partition_count is not None:
@@ -192,6 +196,8 @@ class CatalogSummary(TeaModel):
         if m.get('databaseCount') is not None:
             temp_model = MoMValues()
             self.database_count = temp_model.from_map(m['databaseCount'])
+        if m.get('fileAccessCountMonthly') is not None:
+            self.file_access_count_monthly = m.get('fileAccessCountMonthly')
         if m.get('generatedDate') is not None:
             self.generated_date = m.get('generatedDate')
         if m.get('partitionCount') is not None:
@@ -249,6 +255,7 @@ class CatalogSummaryTrend(TeaModel):
     def __init__(
         self,
         api_visit_count: List[DateSummary] = None,
+        file_access_count: List[DateSummary] = None,
         throughput: List[DateSummary] = None,
         total_file_count: List[DateSummary] = None,
         total_file_size_in_bytes: List[DateSummary] = None,
@@ -256,6 +263,8 @@ class CatalogSummaryTrend(TeaModel):
     ):
         # API visit count trends
         self.api_visit_count = api_visit_count
+        # file access count trends
+        self.file_access_count = file_access_count
         # Table count trends
         self.throughput = throughput
         # Historical total file count
@@ -268,6 +277,10 @@ class CatalogSummaryTrend(TeaModel):
     def validate(self):
         if self.api_visit_count:
             for k in self.api_visit_count:
+                if k:
+                    k.validate()
+        if self.file_access_count:
+            for k in self.file_access_count:
                 if k:
                     k.validate()
         if self.throughput:
@@ -297,6 +310,10 @@ class CatalogSummaryTrend(TeaModel):
         if self.api_visit_count is not None:
             for k in self.api_visit_count:
                 result['apiVisitCount'].append(k.to_map() if k else None)
+        result['fileAccessCount'] = []
+        if self.file_access_count is not None:
+            for k in self.file_access_count:
+                result['fileAccessCount'].append(k.to_map() if k else None)
         result['throughput'] = []
         if self.throughput is not None:
             for k in self.throughput:
@@ -322,6 +339,11 @@ class CatalogSummaryTrend(TeaModel):
             for k in m.get('apiVisitCount'):
                 temp_model = DateSummary()
                 self.api_visit_count.append(temp_model.from_map(k))
+        self.file_access_count = []
+        if m.get('fileAccessCount') is not None:
+            for k in m.get('fileAccessCount'):
+                temp_model = DateSummary()
+                self.file_access_count.append(temp_model.from_map(k))
         self.throughput = []
         if m.get('throughput') is not None:
             for k in m.get('throughput'):
@@ -349,7 +371,7 @@ class FullDataType(TeaModel):
     def __init__(
         self,
         element: 'FullDataType' = None,
-        fields: List['DataField'] = None,
+        fields: List[DataField] = None,
         key: 'FullDataType' = None,
         type: str = None,
         value: 'FullDataType' = None,
@@ -2046,11 +2068,13 @@ class TableCompaction(TeaModel):
     def __init__(
         self,
         catalog_id: str = None,
+        cu_usage: float = None,
         last_compacted_file_time: int = None,
         max_level_0file_count: str = None,
         table_id: str = None,
     ):
         self.catalog_id = catalog_id
+        self.cu_usage = cu_usage
         self.last_compacted_file_time = last_compacted_file_time
         self.max_level_0file_count = max_level_0file_count
         self.table_id = table_id
@@ -2066,6 +2090,8 @@ class TableCompaction(TeaModel):
         result = dict()
         if self.catalog_id is not None:
             result['catalogId'] = self.catalog_id
+        if self.cu_usage is not None:
+            result['cuUsage'] = self.cu_usage
         if self.last_compacted_file_time is not None:
             result['lastCompactedFileTime'] = self.last_compacted_file_time
         if self.max_level_0file_count is not None:
@@ -2078,6 +2104,8 @@ class TableCompaction(TeaModel):
         m = m or dict()
         if m.get('catalogId') is not None:
             self.catalog_id = m.get('catalogId')
+        if m.get('cuUsage') is not None:
+            self.cu_usage = m.get('cuUsage')
         if m.get('lastCompactedFileTime') is not None:
             self.last_compacted_file_time = m.get('lastCompactedFileTime')
         if m.get('maxLevel0FileCount') is not None:
@@ -2583,12 +2611,10 @@ class CreateCatalogRequest(TeaModel):
     def __init__(
         self,
         name: str = None,
-        optimization_config: Dict[str, str] = None,
         options: Dict[str, str] = None,
         type: str = None,
     ):
         self.name = name
-        self.optimization_config = optimization_config
         self.options = options
         self.type = type
 
@@ -2603,8 +2629,6 @@ class CreateCatalogRequest(TeaModel):
         result = dict()
         if self.name is not None:
             result['name'] = self.name
-        if self.optimization_config is not None:
-            result['optimizationConfig'] = self.optimization_config
         if self.options is not None:
             result['options'] = self.options
         if self.type is not None:
@@ -2615,8 +2639,6 @@ class CreateCatalogRequest(TeaModel):
         m = m or dict()
         if m.get('name') is not None:
             self.name = m.get('name')
-        if m.get('optimizationConfig') is not None:
-            self.optimization_config = m.get('optimizationConfig')
         if m.get('options') is not None:
             self.options = m.get('options')
         if m.get('type') is not None:
@@ -3893,7 +3915,7 @@ class ListPermissionsResponse(TeaModel):
 class ListRoleUsersRequest(TeaModel):
     def __init__(
         self,
-        max_results: str = None,
+        max_results: int = None,
         page_token: str = None,
         role_principal: str = None,
     ):
@@ -4135,7 +4157,7 @@ class ListRolesResponse(TeaModel):
 class ListUserRolesRequest(TeaModel):
     def __init__(
         self,
-        max_results: str = None,
+        max_results: int = None,
         page_token: str = None,
         user_principal: str = None,
     ):

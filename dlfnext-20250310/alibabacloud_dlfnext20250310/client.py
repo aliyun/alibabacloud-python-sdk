@@ -387,8 +387,6 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
-        if not UtilClient.is_unset(request.optimization_config):
-            body['optimizationConfig'] = request.optimization_config
         if not UtilClient.is_unset(request.options):
             body['options'] = request.options
         if not UtilClient.is_unset(request.type):
@@ -431,8 +429,6 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
-        if not UtilClient.is_unset(request.optimization_config):
-            body['optimizationConfig'] = request.optimization_config
         if not UtilClient.is_unset(request.options):
             body['options'] = request.options
         if not UtilClient.is_unset(request.type):

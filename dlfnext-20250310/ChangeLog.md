@@ -1,3 +1,11 @@
+2025-07-16 Version: 2.0.0
+- Update API CreateCatalog: delete request parameters body.optimizationConfig.
+- Update API ListRoleUsers: update request parameters maxResults' type has changed.
+- Update API ListRoleUsers: update request parameters maxResults' format has changed.
+- Update API ListUserRoles: update request parameters maxResults' type has changed.
+- Update API ListUserRoles: update request parameters maxResults' format has changed.
+
+
 2025-07-02 Version: 1.1.3
 - Update API ListPermissions: add request parameters function.
 - Update API ListPermissions: add request parameters view.
