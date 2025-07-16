@@ -1,3 +1,6 @@
+2025-07-16 Version: 1.5.1
+- Generated python 2018-10-12 for alimt.
+
 2025-05-08 Version: 1.5.0
 - Support API GetDetectLanguageVpc.
 
