@@ -1,3 +1,7 @@
+2025-07-16 Version: 7.0.1
+- Update API DescribeDomainUsageData: add request parameters ServiceType.
+
+
 2025-07-04 Version: 7.0.0
 - Generated python 2018-05-10 for Cdn.
 

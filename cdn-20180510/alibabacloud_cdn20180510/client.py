@@ -13648,6 +13648,8 @@ class Client(OpenApiClient):
             query['Field'] = request.field
         if not UtilClient.is_unset(request.interval):
             query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.service_type):
+            query['ServiceType'] = request.service_type
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.type):
@@ -13705,6 +13707,8 @@ class Client(OpenApiClient):
             query['Field'] = request.field
         if not UtilClient.is_unset(request.interval):
             query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.service_type):
+            query['ServiceType'] = request.service_type
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.type):

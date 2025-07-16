@@ -24055,6 +24055,7 @@ class DescribeDomainUsageDataRequest(TeaModel):
         end_time: str = None,
         field: str = None,
         interval: str = None,
+        service_type: str = None,
         start_time: str = None,
         type: str = None,
     ):
@@ -24106,6 +24107,7 @@ class DescribeDomainUsageDataRequest(TeaModel):
         # *   If **Interval** is set to **3600** or **86400**, you can query usage data of the previous year.
         # *   If you leave the **Interval** parameter empty, the maximum time range that you can query is 1 month. If you specify a time range of 1 to 3 days, the time interval between the entries that are returned is 1 hour. If you specify a time range of at least 4 days, the time interval between the entries that are returned is 1 day.
         self.interval = interval
+        self.service_type = service_type
         # The beginning of the time range to query.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -24142,6 +24144,8 @@ class DescribeDomainUsageDataRequest(TeaModel):
             result['Field'] = self.field
         if self.interval is not None:
             result['Interval'] = self.interval
+        if self.service_type is not None:
+            result['ServiceType'] = self.service_type
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.type is not None:
@@ -24162,6 +24166,8 @@ class DescribeDomainUsageDataRequest(TeaModel):
             self.field = m.get('Field')
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
+        if m.get('ServiceType') is not None:
+            self.service_type = m.get('ServiceType')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('Type') is not None:
