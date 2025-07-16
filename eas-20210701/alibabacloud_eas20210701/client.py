@@ -8182,6 +8182,10 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.label):
             request.label_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.label, 'Label', 'json')
         query = {}
+        if not UtilClient.is_unset(request.autoscaler_enabled):
+            query['AutoscalerEnabled'] = request.autoscaler_enabled
+        if not UtilClient.is_unset(request.cronscaler_enabled):
+            query['CronscalerEnabled'] = request.cronscaler_enabled
         if not UtilClient.is_unset(request.filter):
             query['Filter'] = request.filter
         if not UtilClient.is_unset(request.gateway):
@@ -8204,6 +8208,8 @@ class Client(OpenApiClient):
             query['QuotaId'] = request.quota_id
         if not UtilClient.is_unset(request.resource_alias_name):
             query['ResourceAliasName'] = request.resource_alias_name
+        if not UtilClient.is_unset(request.resource_burstable):
+            query['ResourceBurstable'] = request.resource_burstable
         if not UtilClient.is_unset(request.resource_id):
             query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_name):
@@ -8264,6 +8270,10 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.label):
             request.label_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.label, 'Label', 'json')
         query = {}
+        if not UtilClient.is_unset(request.autoscaler_enabled):
+            query['AutoscalerEnabled'] = request.autoscaler_enabled
+        if not UtilClient.is_unset(request.cronscaler_enabled):
+            query['CronscalerEnabled'] = request.cronscaler_enabled
         if not UtilClient.is_unset(request.filter):
             query['Filter'] = request.filter
         if not UtilClient.is_unset(request.gateway):
@@ -8286,6 +8296,8 @@ class Client(OpenApiClient):
             query['QuotaId'] = request.quota_id
         if not UtilClient.is_unset(request.resource_alias_name):
             query['ResourceAliasName'] = request.resource_alias_name
+        if not UtilClient.is_unset(request.resource_burstable):
+            query['ResourceBurstable'] = request.resource_burstable
         if not UtilClient.is_unset(request.resource_id):
             query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_name):

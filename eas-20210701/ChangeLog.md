@@ -1,3 +1,14 @@
+2025-07-16 Version: 6.8.3
+- Update API DescribeResource: add response parameters Body.Features.
+- Update API DescribeResource: add response parameters Body.InstanceMaxAllocatableCPU.
+- Update API DescribeResource: add response parameters Body.InstanceMaxAllocatableGPU.
+- Update API DescribeResource: add response parameters Body.InstanceMaxAllocatableMemory.
+- Update API DescribeVirtualResource: add response parameters Body.Features.
+- Update API ListServices: add request parameters AutoscalerEnabled.
+- Update API ListServices: add request parameters CronscalerEnabled.
+- Update API ListServices: add request parameters ResourceBurstable.
+
+
 2025-07-16 Version: 6.8.2
 - Generated python 2021-07-01 for eas.
 
