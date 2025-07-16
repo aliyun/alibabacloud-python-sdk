@@ -1,3 +1,7 @@
+2025-07-16 Version: 3.0.3
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstance.CpuType.
+
+
 2025-07-03 Version: 3.0.2
 - Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstance.StorageType.
 - Update API DescribeDBInstances: add response parameters Body.DBInstances.$.StorageType.

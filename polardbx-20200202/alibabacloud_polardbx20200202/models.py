@@ -5288,6 +5288,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(TeaModel):
         commodity_code: str = None,
         conn_addrs: List[DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs] = None,
         connection_string: str = None,
+        cpu_type: str = None,
         create_time: str = None,
         dbinstance_type: str = None,
         dbnode_class: str = None,
@@ -5345,6 +5346,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(TeaModel):
         self.commodity_code = commodity_code
         self.conn_addrs = conn_addrs
         self.connection_string = connection_string
+        self.cpu_type = cpu_type
         self.create_time = create_time
         self.dbinstance_type = dbinstance_type
         self.dbnode_class = dbnode_class
@@ -5449,6 +5451,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(TeaModel):
                 result['ConnAddrs'].append(k.to_map() if k else None)
         if self.connection_string is not None:
             result['ConnectionString'] = self.connection_string
+        if self.cpu_type is not None:
+            result['CpuType'] = self.cpu_type
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.dbinstance_type is not None:
@@ -5574,6 +5578,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(TeaModel):
                 self.conn_addrs.append(temp_model.from_map(k))
         if m.get('ConnectionString') is not None:
             self.connection_string = m.get('ConnectionString')
+        if m.get('CpuType') is not None:
+            self.cpu_type = m.get('CpuType')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('DBInstanceType') is not None:
