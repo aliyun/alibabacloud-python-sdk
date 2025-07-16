@@ -10729,7 +10729,7 @@ class ListGatewayDomainsResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The list of custom domain names.
+        # The custom domain names.
         self.custom_domains = custom_domains
         # The message that is returned.
         self.message = message
@@ -11076,7 +11076,7 @@ class ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcList(TeaModel):
         peer_vpcs: List[ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs] = None,
         vpc_id: str = None,
     ):
-        # The ID of the VPC peers.
+        # The IDs of the VPC peers.
         self.peer_vpcs = peer_vpcs
         # The VPC ID.
         self.vpc_id = vpc_id
@@ -11122,7 +11122,7 @@ class ListGatewayIntranetLinkedVpcPeerResponseBody(TeaModel):
     ):
         # The ID of the private gateway.
         self.gateway_id = gateway_id
-        # The list of VPC peers.
+        # The VPC peers.
         self.peer_vpc_list = peer_vpc_list
         # The ID of the request.
         self.request_id = request_id

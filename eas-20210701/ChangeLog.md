@@ -1,3 +1,6 @@
+2025-07-16 Version: 6.8.2
+- Generated python 2021-07-01 for eas.
+
 2025-06-13 Version: 6.8.1
 - Update API DescribeGateway: add response parameters Body.ChargeType.
 - Update API ListGatewayDomains: add response parameters Body.CustomDomains.$.CertificateEndDate.
