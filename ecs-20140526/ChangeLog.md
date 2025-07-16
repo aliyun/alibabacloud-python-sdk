@@ -1,3 +1,6 @@
+2025-07-16 Version: 7.0.15
+- Generated python 2014-05-26 for Ecs.
+
 2025-07-14 Version: 7.0.14
 - Update API DescribeInstances: add response parameters Body.Instances.$.ClockOptions.
 
