@@ -83,11 +83,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.AddAliClusterIdsToPrometheusGlobalViewResponse:
         """
-        @summary Adds data sources to a global aggregation instance in Prometheus Service.
+        @deprecated OpenAPI AddAliClusterIdsToPrometheusGlobalView is deprecated
+        
+        @summary Adds a global aggregation instance as a data source in Managed Service for Prometheus.
         
         @param request: AddAliClusterIdsToPrometheusGlobalViewRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddAliClusterIdsToPrometheusGlobalViewResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -124,11 +127,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.AddAliClusterIdsToPrometheusGlobalViewResponse:
         """
-        @summary Adds data sources to a global aggregation instance in Prometheus Service.
+        @deprecated OpenAPI AddAliClusterIdsToPrometheusGlobalView is deprecated
+        
+        @summary Adds a global aggregation instance as a data source in Managed Service for Prometheus.
         
         @param request: AddAliClusterIdsToPrometheusGlobalViewRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddAliClusterIdsToPrometheusGlobalViewResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -164,10 +170,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.AddAliClusterIdsToPrometheusGlobalViewRequest,
     ) -> arms20190808_models.AddAliClusterIdsToPrometheusGlobalViewResponse:
         """
-        @summary Adds data sources to a global aggregation instance in Prometheus Service.
+        @deprecated OpenAPI AddAliClusterIdsToPrometheusGlobalView is deprecated
+        
+        @summary Adds a global aggregation instance as a data source in Managed Service for Prometheus.
         
         @param request: AddAliClusterIdsToPrometheusGlobalViewRequest
         @return: AddAliClusterIdsToPrometheusGlobalViewResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.add_ali_cluster_ids_to_prometheus_global_view_with_options(request, runtime)
@@ -177,10 +186,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.AddAliClusterIdsToPrometheusGlobalViewRequest,
     ) -> arms20190808_models.AddAliClusterIdsToPrometheusGlobalViewResponse:
         """
-        @summary Adds data sources to a global aggregation instance in Prometheus Service.
+        @deprecated OpenAPI AddAliClusterIdsToPrometheusGlobalView is deprecated
+        
+        @summary Adds a global aggregation instance as a data source in Managed Service for Prometheus.
         
         @param request: AddAliClusterIdsToPrometheusGlobalViewRequest
         @return: AddAliClusterIdsToPrometheusGlobalViewResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.add_ali_cluster_ids_to_prometheus_global_view_with_options_async(request, runtime)
@@ -191,11 +203,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.AddGrafanaResponse:
         """
+        @deprecated OpenAPI AddGrafana is deprecated
+        
         @summary Integrates the dashboard of Prometheus Service.
         
         @param request: AddGrafanaRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddGrafanaResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -230,11 +245,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.AddGrafanaResponse:
         """
+        @deprecated OpenAPI AddGrafana is deprecated
+        
         @summary Integrates the dashboard of Prometheus Service.
         
         @param request: AddGrafanaRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddGrafanaResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -268,10 +286,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.AddGrafanaRequest,
     ) -> arms20190808_models.AddGrafanaResponse:
         """
+        @deprecated OpenAPI AddGrafana is deprecated
+        
         @summary Integrates the dashboard of Prometheus Service.
         
         @param request: AddGrafanaRequest
         @return: AddGrafanaResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.add_grafana_with_options(request, runtime)
@@ -281,10 +302,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.AddGrafanaRequest,
     ) -> arms20190808_models.AddGrafanaResponse:
         """
+        @deprecated OpenAPI AddGrafana is deprecated
+        
         @summary Integrates the dashboard of Prometheus Service.
         
         @param request: AddGrafanaRequest
         @return: AddGrafanaResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.add_grafana_with_options_async(request, runtime)
@@ -411,11 +435,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.AddPrometheusGlobalViewResponse:
         """
+        @deprecated OpenAPI AddPrometheusGlobalView is deprecated
+        
         @summary Adds a global aggregation instance in Prometheus Service.
         
         @param request: AddPrometheusGlobalViewRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddPrometheusGlobalViewResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -454,11 +481,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.AddPrometheusGlobalViewResponse:
         """
+        @deprecated OpenAPI AddPrometheusGlobalView is deprecated
+        
         @summary Adds a global aggregation instance in Prometheus Service.
         
         @param request: AddPrometheusGlobalViewRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddPrometheusGlobalViewResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -496,10 +526,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.AddPrometheusGlobalViewRequest,
     ) -> arms20190808_models.AddPrometheusGlobalViewResponse:
         """
+        @deprecated OpenAPI AddPrometheusGlobalView is deprecated
+        
         @summary Adds a global aggregation instance in Prometheus Service.
         
         @param request: AddPrometheusGlobalViewRequest
         @return: AddPrometheusGlobalViewResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.add_prometheus_global_view_with_options(request, runtime)
@@ -509,10 +542,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.AddPrometheusGlobalViewRequest,
     ) -> arms20190808_models.AddPrometheusGlobalViewResponse:
         """
+        @deprecated OpenAPI AddPrometheusGlobalView is deprecated
+        
         @summary Adds a global aggregation instance in Prometheus Service.
         
         @param request: AddPrometheusGlobalViewRequest
         @return: AddPrometheusGlobalViewResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.add_prometheus_global_view_with_options_async(request, runtime)
@@ -523,11 +559,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.AddPrometheusGlobalViewByAliClusterIdsResponse:
         """
-        @summary Creates a global aggregation instance in Prometheus Service.
+        @deprecated OpenAPI AddPrometheusGlobalViewByAliClusterIds is deprecated
+        
+        @summary Adds a global aggregation instance in Managed Service for Prometheus.
         
         @param request: AddPrometheusGlobalViewByAliClusterIdsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddPrometheusGlobalViewByAliClusterIdsResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -564,11 +603,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.AddPrometheusGlobalViewByAliClusterIdsResponse:
         """
-        @summary Creates a global aggregation instance in Prometheus Service.
+        @deprecated OpenAPI AddPrometheusGlobalViewByAliClusterIds is deprecated
+        
+        @summary Adds a global aggregation instance in Managed Service for Prometheus.
         
         @param request: AddPrometheusGlobalViewByAliClusterIdsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddPrometheusGlobalViewByAliClusterIdsResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -604,10 +646,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.AddPrometheusGlobalViewByAliClusterIdsRequest,
     ) -> arms20190808_models.AddPrometheusGlobalViewByAliClusterIdsResponse:
         """
-        @summary Creates a global aggregation instance in Prometheus Service.
+        @deprecated OpenAPI AddPrometheusGlobalViewByAliClusterIds is deprecated
+        
+        @summary Adds a global aggregation instance in Managed Service for Prometheus.
         
         @param request: AddPrometheusGlobalViewByAliClusterIdsRequest
         @return: AddPrometheusGlobalViewByAliClusterIdsResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.add_prometheus_global_view_by_ali_cluster_ids_with_options(request, runtime)
@@ -617,10 +662,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.AddPrometheusGlobalViewByAliClusterIdsRequest,
     ) -> arms20190808_models.AddPrometheusGlobalViewByAliClusterIdsResponse:
         """
-        @summary Creates a global aggregation instance in Prometheus Service.
+        @deprecated OpenAPI AddPrometheusGlobalViewByAliClusterIds is deprecated
+        
+        @summary Adds a global aggregation instance in Managed Service for Prometheus.
         
         @param request: AddPrometheusGlobalViewByAliClusterIdsRequest
         @return: AddPrometheusGlobalViewByAliClusterIdsResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.add_prometheus_global_view_by_ali_cluster_ids_with_options_async(request, runtime)
@@ -747,11 +795,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.AddPrometheusIntegrationResponse:
         """
+        @deprecated OpenAPI AddPrometheusIntegration is deprecated
+        
         @summary Adds an exporter to a Prometheus instance for Container Service or a Prometheus instance for ECS.
         
         @param request: AddPrometheusIntegrationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddPrometheusIntegrationResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -788,11 +839,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.AddPrometheusIntegrationResponse:
         """
+        @deprecated OpenAPI AddPrometheusIntegration is deprecated
+        
         @summary Adds an exporter to a Prometheus instance for Container Service or a Prometheus instance for ECS.
         
         @param request: AddPrometheusIntegrationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddPrometheusIntegrationResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -828,10 +882,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.AddPrometheusIntegrationRequest,
     ) -> arms20190808_models.AddPrometheusIntegrationResponse:
         """
+        @deprecated OpenAPI AddPrometheusIntegration is deprecated
+        
         @summary Adds an exporter to a Prometheus instance for Container Service or a Prometheus instance for ECS.
         
         @param request: AddPrometheusIntegrationRequest
         @return: AddPrometheusIntegrationResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.add_prometheus_integration_with_options(request, runtime)
@@ -841,10 +898,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.AddPrometheusIntegrationRequest,
     ) -> arms20190808_models.AddPrometheusIntegrationResponse:
         """
+        @deprecated OpenAPI AddPrometheusIntegration is deprecated
+        
         @summary Adds an exporter to a Prometheus instance for Container Service or a Prometheus instance for ECS.
         
         @param request: AddPrometheusIntegrationRequest
         @return: AddPrometheusIntegrationResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.add_prometheus_integration_with_options_async(request, runtime)
@@ -855,11 +915,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.AddRecordingRuleResponse:
         """
+        @deprecated OpenAPI AddRecordingRule is deprecated
+        
         @summary Creates or updates a recording rule of Managed Service for Prometheus.
         
         @param request: AddRecordingRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddRecordingRuleResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -894,11 +957,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.AddRecordingRuleResponse:
         """
+        @deprecated OpenAPI AddRecordingRule is deprecated
+        
         @summary Creates or updates a recording rule of Managed Service for Prometheus.
         
         @param request: AddRecordingRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddRecordingRuleResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -932,10 +998,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.AddRecordingRuleRequest,
     ) -> arms20190808_models.AddRecordingRuleResponse:
         """
+        @deprecated OpenAPI AddRecordingRule is deprecated
+        
         @summary Creates or updates a recording rule of Managed Service for Prometheus.
         
         @param request: AddRecordingRuleRequest
         @return: AddRecordingRuleResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.add_recording_rule_with_options(request, runtime)
@@ -945,10 +1014,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.AddRecordingRuleRequest,
     ) -> arms20190808_models.AddRecordingRuleResponse:
         """
+        @deprecated OpenAPI AddRecordingRule is deprecated
+        
         @summary Creates or updates a recording rule of Managed Service for Prometheus.
         
         @param request: AddRecordingRuleRequest
         @return: AddRecordingRuleResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.add_recording_rule_with_options_async(request, runtime)
@@ -959,11 +1031,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.AddTagToFlinkClusterResponse:
         """
+        @deprecated OpenAPI AddTagToFlinkCluster is deprecated
+        
         @summary Attaches the workspace ID and workspace name tags to the Prometheus instance corresponding to a Flink workspace.
         
         @param request: AddTagToFlinkClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddTagToFlinkClusterResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -1004,11 +1079,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.AddTagToFlinkClusterResponse:
         """
+        @deprecated OpenAPI AddTagToFlinkCluster is deprecated
+        
         @summary Attaches the workspace ID and workspace name tags to the Prometheus instance corresponding to a Flink workspace.
         
         @param request: AddTagToFlinkClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddTagToFlinkClusterResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -1048,10 +1126,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.AddTagToFlinkClusterRequest,
     ) -> arms20190808_models.AddTagToFlinkClusterResponse:
         """
+        @deprecated OpenAPI AddTagToFlinkCluster is deprecated
+        
         @summary Attaches the workspace ID and workspace name tags to the Prometheus instance corresponding to a Flink workspace.
         
         @param request: AddTagToFlinkClusterRequest
         @return: AddTagToFlinkClusterResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.add_tag_to_flink_cluster_with_options(request, runtime)
@@ -1061,10 +1142,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.AddTagToFlinkClusterRequest,
     ) -> arms20190808_models.AddTagToFlinkClusterResponse:
         """
+        @deprecated OpenAPI AddTagToFlinkCluster is deprecated
+        
         @summary Attaches the workspace ID and workspace name tags to the Prometheus instance corresponding to a Flink workspace.
         
         @param request: AddTagToFlinkClusterRequest
         @return: AddTagToFlinkClusterResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.add_tag_to_flink_cluster_with_options_async(request, runtime)
@@ -1075,11 +1159,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.AppendInstancesToPrometheusGlobalViewResponse:
         """
+        @deprecated OpenAPI AppendInstancesToPrometheusGlobalView is deprecated
+        
         @summary Adds a data source to a global aggregation instance.
         
         @param request: AppendInstancesToPrometheusGlobalViewRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AppendInstancesToPrometheusGlobalViewResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -1116,11 +1203,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.AppendInstancesToPrometheusGlobalViewResponse:
         """
+        @deprecated OpenAPI AppendInstancesToPrometheusGlobalView is deprecated
+        
         @summary Adds a data source to a global aggregation instance.
         
         @param request: AppendInstancesToPrometheusGlobalViewRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AppendInstancesToPrometheusGlobalViewResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -1156,10 +1246,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.AppendInstancesToPrometheusGlobalViewRequest,
     ) -> arms20190808_models.AppendInstancesToPrometheusGlobalViewResponse:
         """
+        @deprecated OpenAPI AppendInstancesToPrometheusGlobalView is deprecated
+        
         @summary Adds a data source to a global aggregation instance.
         
         @param request: AppendInstancesToPrometheusGlobalViewRequest
         @return: AppendInstancesToPrometheusGlobalViewResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.append_instances_to_prometheus_global_view_with_options(request, runtime)
@@ -1169,10 +1262,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.AppendInstancesToPrometheusGlobalViewRequest,
     ) -> arms20190808_models.AppendInstancesToPrometheusGlobalViewResponse:
         """
+        @deprecated OpenAPI AppendInstancesToPrometheusGlobalView is deprecated
+        
         @summary Adds a data source to a global aggregation instance.
         
         @param request: AppendInstancesToPrometheusGlobalViewRequest
         @return: AppendInstancesToPrometheusGlobalViewResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.append_instances_to_prometheus_global_view_with_options_async(request, runtime)
@@ -1319,11 +1415,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.BindPrometheusGrafanaInstanceResponse:
         """
+        @deprecated OpenAPI BindPrometheusGrafanaInstance is deprecated
+        
         @summary Binds a Grafana workspace to a Prometheus instance.
         
         @param request: BindPrometheusGrafanaInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: BindPrometheusGrafanaInstanceResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -1360,11 +1459,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.BindPrometheusGrafanaInstanceResponse:
         """
+        @deprecated OpenAPI BindPrometheusGrafanaInstance is deprecated
+        
         @summary Binds a Grafana workspace to a Prometheus instance.
         
         @param request: BindPrometheusGrafanaInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: BindPrometheusGrafanaInstanceResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -1400,10 +1502,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.BindPrometheusGrafanaInstanceRequest,
     ) -> arms20190808_models.BindPrometheusGrafanaInstanceResponse:
         """
+        @deprecated OpenAPI BindPrometheusGrafanaInstance is deprecated
+        
         @summary Binds a Grafana workspace to a Prometheus instance.
         
         @param request: BindPrometheusGrafanaInstanceRequest
         @return: BindPrometheusGrafanaInstanceResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.bind_prometheus_grafana_instance_with_options(request, runtime)
@@ -1413,10 +1518,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.BindPrometheusGrafanaInstanceRequest,
     ) -> arms20190808_models.BindPrometheusGrafanaInstanceResponse:
         """
+        @deprecated OpenAPI BindPrometheusGrafanaInstance is deprecated
+        
         @summary Binds a Grafana workspace to a Prometheus instance.
         
         @param request: BindPrometheusGrafanaInstanceRequest
         @return: BindPrometheusGrafanaInstanceResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.bind_prometheus_grafana_instance_with_options_async(request, runtime)
@@ -3441,6 +3549,8 @@ class Client(OpenApiClient):
             body['AutoAddNewApplication'] = request.auto_add_new_application
         if not UtilClient.is_unset(request.auto_add_target_config):
             body['AutoAddTargetConfig'] = request.auto_add_target_config
+        if not UtilClient.is_unset(request.check_cycle):
+            body['CheckCycle'] = request.check_cycle
         if not UtilClient.is_unset(request.cluster_id):
             body['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.data_config):
@@ -3532,6 +3642,8 @@ class Client(OpenApiClient):
             body['AutoAddNewApplication'] = request.auto_add_new_application
         if not UtilClient.is_unset(request.auto_add_target_config):
             body['AutoAddTargetConfig'] = request.auto_add_target_config
+        if not UtilClient.is_unset(request.check_cycle):
+            body['CheckCycle'] = request.check_cycle
         if not UtilClient.is_unset(request.cluster_id):
             body['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.data_config):
@@ -4807,11 +4919,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.CreatePrometheusMonitoringResponse:
         """
+        @deprecated OpenAPI CreatePrometheusMonitoring is deprecated
+        
         @summary Creates a monitoring configuration for a Prometheus instance.
         
         @param request: CreatePrometheusMonitoringRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreatePrometheusMonitoringResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -4852,11 +4967,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.CreatePrometheusMonitoringResponse:
         """
+        @deprecated OpenAPI CreatePrometheusMonitoring is deprecated
+        
         @summary Creates a monitoring configuration for a Prometheus instance.
         
         @param request: CreatePrometheusMonitoringRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreatePrometheusMonitoringResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -4896,10 +5014,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.CreatePrometheusMonitoringRequest,
     ) -> arms20190808_models.CreatePrometheusMonitoringResponse:
         """
+        @deprecated OpenAPI CreatePrometheusMonitoring is deprecated
+        
         @summary Creates a monitoring configuration for a Prometheus instance.
         
         @param request: CreatePrometheusMonitoringRequest
         @return: CreatePrometheusMonitoringResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.create_prometheus_monitoring_with_options(request, runtime)
@@ -4909,10 +5030,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.CreatePrometheusMonitoringRequest,
     ) -> arms20190808_models.CreatePrometheusMonitoringResponse:
         """
+        @deprecated OpenAPI CreatePrometheusMonitoring is deprecated
+        
         @summary Creates a monitoring configuration for a Prometheus instance.
         
         @param request: CreatePrometheusMonitoringRequest
         @return: CreatePrometheusMonitoringResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_prometheus_monitoring_with_options_async(request, runtime)
@@ -5053,6 +5177,8 @@ class Client(OpenApiClient):
             query['AppName'] = request.app_name
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
         if not UtilClient.is_unset(request.nick_name):
             query['NickName'] = request.nick_name
         if not UtilClient.is_unset(request.package_name):
@@ -5112,6 +5238,8 @@ class Client(OpenApiClient):
             query['AppName'] = request.app_name
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
         if not UtilClient.is_unset(request.nick_name):
             query['NickName'] = request.nick_name
         if not UtilClient.is_unset(request.package_name):
@@ -7539,11 +7667,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DeleteGrafanaResourceResponse:
         """
-        @summary Deletes Grafana dashboard resources from a cluster monitored by Prometheus Service.
+        @deprecated OpenAPI DeleteGrafanaResource is deprecated
+        
+        @summary Deletes Grafana dashboard resources from a Managed Service for Prometheus instance.
         
         @param request: DeleteGrafanaResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteGrafanaResourceResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -7580,11 +7711,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DeleteGrafanaResourceResponse:
         """
-        @summary Deletes Grafana dashboard resources from a cluster monitored by Prometheus Service.
+        @deprecated OpenAPI DeleteGrafanaResource is deprecated
+        
+        @summary Deletes Grafana dashboard resources from a Managed Service for Prometheus instance.
         
         @param request: DeleteGrafanaResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteGrafanaResourceResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -7620,10 +7754,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.DeleteGrafanaResourceRequest,
     ) -> arms20190808_models.DeleteGrafanaResourceResponse:
         """
-        @summary Deletes Grafana dashboard resources from a cluster monitored by Prometheus Service.
+        @deprecated OpenAPI DeleteGrafanaResource is deprecated
+        
+        @summary Deletes Grafana dashboard resources from a Managed Service for Prometheus instance.
         
         @param request: DeleteGrafanaResourceRequest
         @return: DeleteGrafanaResourceResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.delete_grafana_resource_with_options(request, runtime)
@@ -7633,10 +7770,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.DeleteGrafanaResourceRequest,
     ) -> arms20190808_models.DeleteGrafanaResourceResponse:
         """
-        @summary Deletes Grafana dashboard resources from a cluster monitored by Prometheus Service.
+        @deprecated OpenAPI DeleteGrafanaResource is deprecated
+        
+        @summary Deletes Grafana dashboard resources from a Managed Service for Prometheus instance.
         
         @param request: DeleteGrafanaResourceRequest
         @return: DeleteGrafanaResourceResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_grafana_resource_with_options_async(request, runtime)
@@ -8259,11 +8399,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DeletePrometheusGlobalViewResponse:
         """
+        @deprecated OpenAPI DeletePrometheusGlobalView is deprecated
+        
         @summary Deletes a global aggregation instance from Prometheus Service.
         
         @param request: DeletePrometheusGlobalViewRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeletePrometheusGlobalViewResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -8296,11 +8439,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DeletePrometheusGlobalViewResponse:
         """
+        @deprecated OpenAPI DeletePrometheusGlobalView is deprecated
+        
         @summary Deletes a global aggregation instance from Prometheus Service.
         
         @param request: DeletePrometheusGlobalViewRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeletePrometheusGlobalViewResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -8332,10 +8478,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.DeletePrometheusGlobalViewRequest,
     ) -> arms20190808_models.DeletePrometheusGlobalViewResponse:
         """
+        @deprecated OpenAPI DeletePrometheusGlobalView is deprecated
+        
         @summary Deletes a global aggregation instance from Prometheus Service.
         
         @param request: DeletePrometheusGlobalViewRequest
         @return: DeletePrometheusGlobalViewResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.delete_prometheus_global_view_with_options(request, runtime)
@@ -8345,10 +8494,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.DeletePrometheusGlobalViewRequest,
     ) -> arms20190808_models.DeletePrometheusGlobalViewResponse:
         """
+        @deprecated OpenAPI DeletePrometheusGlobalView is deprecated
+        
         @summary Deletes a global aggregation instance from Prometheus Service.
         
         @param request: DeletePrometheusGlobalViewRequest
         @return: DeletePrometheusGlobalViewResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_prometheus_global_view_with_options_async(request, runtime)
@@ -8359,11 +8511,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DeletePrometheusIntegrationResponse:
         """
+        @deprecated OpenAPI DeletePrometheusIntegration is deprecated
+        
         @summary Deletes an exporter from a Prometheus instance for Container Service or a Prometheus instance for ECS.
         
         @param request: DeletePrometheusIntegrationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeletePrometheusIntegrationResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -8400,11 +8555,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DeletePrometheusIntegrationResponse:
         """
+        @deprecated OpenAPI DeletePrometheusIntegration is deprecated
+        
         @summary Deletes an exporter from a Prometheus instance for Container Service or a Prometheus instance for ECS.
         
         @param request: DeletePrometheusIntegrationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeletePrometheusIntegrationResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -8440,10 +8598,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.DeletePrometheusIntegrationRequest,
     ) -> arms20190808_models.DeletePrometheusIntegrationResponse:
         """
+        @deprecated OpenAPI DeletePrometheusIntegration is deprecated
+        
         @summary Deletes an exporter from a Prometheus instance for Container Service or a Prometheus instance for ECS.
         
         @param request: DeletePrometheusIntegrationRequest
         @return: DeletePrometheusIntegrationResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.delete_prometheus_integration_with_options(request, runtime)
@@ -8453,10 +8614,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.DeletePrometheusIntegrationRequest,
     ) -> arms20190808_models.DeletePrometheusIntegrationResponse:
         """
+        @deprecated OpenAPI DeletePrometheusIntegration is deprecated
+        
         @summary Deletes an exporter from a Prometheus instance for Container Service or a Prometheus instance for ECS.
         
         @param request: DeletePrometheusIntegrationRequest
         @return: DeletePrometheusIntegrationResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_prometheus_integration_with_options_async(request, runtime)
@@ -8467,11 +8631,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DeletePrometheusMonitoringResponse:
         """
+        @deprecated OpenAPI DeletePrometheusMonitoring is deprecated
+        
         @summary Deletes the monitoring configuration of a Prometheus instance.
         
         @param request: DeletePrometheusMonitoringRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeletePrometheusMonitoringResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -8508,11 +8675,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DeletePrometheusMonitoringResponse:
         """
+        @deprecated OpenAPI DeletePrometheusMonitoring is deprecated
+        
         @summary Deletes the monitoring configuration of a Prometheus instance.
         
         @param request: DeletePrometheusMonitoringRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeletePrometheusMonitoringResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -8548,10 +8718,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.DeletePrometheusMonitoringRequest,
     ) -> arms20190808_models.DeletePrometheusMonitoringResponse:
         """
+        @deprecated OpenAPI DeletePrometheusMonitoring is deprecated
+        
         @summary Deletes the monitoring configuration of a Prometheus instance.
         
         @param request: DeletePrometheusMonitoringRequest
         @return: DeletePrometheusMonitoringResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.delete_prometheus_monitoring_with_options(request, runtime)
@@ -8561,10 +8734,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.DeletePrometheusMonitoringRequest,
     ) -> arms20190808_models.DeletePrometheusMonitoringResponse:
         """
+        @deprecated OpenAPI DeletePrometheusMonitoring is deprecated
+        
         @summary Deletes the monitoring configuration of a Prometheus instance.
         
         @param request: DeletePrometheusMonitoringRequest
         @return: DeletePrometheusMonitoringResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_prometheus_monitoring_with_options_async(request, runtime)
@@ -10293,6 +10469,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_env_custom_job_with_options_async(request, runtime)
 
+    def describe_env_drop_metrics_rule_with_options(
+        self,
+        request: arms20190808_models.DescribeEnvDropMetricsRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.DescribeEnvDropMetricsRuleResponse:
+        """
+        @summary 查询指定环境实例的废弃指标列表
+        
+        @param request: DescribeEnvDropMetricsRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnvDropMetricsRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.environment_id):
+            query['EnvironmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEnvDropMetricsRule',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.DescribeEnvDropMetricsRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_env_drop_metrics_rule_with_options_async(
+        self,
+        request: arms20190808_models.DescribeEnvDropMetricsRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.DescribeEnvDropMetricsRuleResponse:
+        """
+        @summary 查询指定环境实例的废弃指标列表
+        
+        @param request: DescribeEnvDropMetricsRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnvDropMetricsRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.environment_id):
+            query['EnvironmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEnvDropMetricsRule',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.DescribeEnvDropMetricsRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_env_drop_metrics_rule(
+        self,
+        request: arms20190808_models.DescribeEnvDropMetricsRuleRequest,
+    ) -> arms20190808_models.DescribeEnvDropMetricsRuleResponse:
+        """
+        @summary 查询指定环境实例的废弃指标列表
+        
+        @param request: DescribeEnvDropMetricsRuleRequest
+        @return: DescribeEnvDropMetricsRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_env_drop_metrics_rule_with_options(request, runtime)
+
+    async def describe_env_drop_metrics_rule_async(
+        self,
+        request: arms20190808_models.DescribeEnvDropMetricsRuleRequest,
+    ) -> arms20190808_models.DescribeEnvDropMetricsRuleResponse:
+        """
+        @summary 查询指定环境实例的废弃指标列表
+        
+        @param request: DescribeEnvDropMetricsRuleRequest
+        @return: DescribeEnvDropMetricsRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_env_drop_metrics_rule_with_options_async(request, runtime)
+
     def describe_env_pod_monitor_with_options(
         self,
         request: arms20190808_models.DescribeEnvPodMonitorRequest,
@@ -11119,7 +11395,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DoInsightsActionResponse:
         """
-        @summary Performs the corresponding operation based on the specified module type.
+        @summary Performs actions based on the specified module type.
         
         @param request: DoInsightsActionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11160,7 +11436,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DoInsightsActionResponse:
         """
-        @summary Performs the corresponding operation based on the specified module type.
+        @summary Performs actions based on the specified module type.
         
         @param request: DoInsightsActionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11200,7 +11476,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.DoInsightsActionRequest,
     ) -> arms20190808_models.DoInsightsActionResponse:
         """
-        @summary Performs the corresponding operation based on the specified module type.
+        @summary Performs actions based on the specified module type.
         
         @param request: DoInsightsActionRequest
         @return: DoInsightsActionResponse
@@ -11213,7 +11489,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.DoInsightsActionRequest,
     ) -> arms20190808_models.DoInsightsActionResponse:
         """
-        @summary Performs the corresponding operation based on the specified module type.
+        @summary Performs actions based on the specified module type.
         
         @param request: DoInsightsActionRequest
         @return: DoInsightsActionResponse
@@ -11227,11 +11503,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.EnableMetricResponse:
         """
+        @deprecated OpenAPI EnableMetric is deprecated
+        
         @summary Enables a discarded metric.
         
         @param request: EnableMetricRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: EnableMetricResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -11266,11 +11545,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.EnableMetricResponse:
         """
+        @deprecated OpenAPI EnableMetric is deprecated
+        
         @summary Enables a discarded metric.
         
         @param request: EnableMetricRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: EnableMetricResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -11304,10 +11586,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.EnableMetricRequest,
     ) -> arms20190808_models.EnableMetricResponse:
         """
+        @deprecated OpenAPI EnableMetric is deprecated
+        
         @summary Enables a discarded metric.
         
         @param request: EnableMetricRequest
         @return: EnableMetricResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.enable_metric_with_options(request, runtime)
@@ -11317,10 +11602,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.EnableMetricRequest,
     ) -> arms20190808_models.EnableMetricResponse:
         """
+        @deprecated OpenAPI EnableMetric is deprecated
+        
         @summary Enables a discarded metric.
         
         @param request: EnableMetricRequest
         @return: EnableMetricResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.enable_metric_with_options_async(request, runtime)
@@ -11331,7 +11619,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetAgentDownloadUrlResponse:
         """
-        @summary Obtains the download URL of the Application Real-Time Monitoring Service (ARMS) agent.
+        @summary Obtains the URL for downloading an agent.
         
         @param request: GetAgentDownloadUrlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11364,7 +11652,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetAgentDownloadUrlResponse:
         """
-        @summary Obtains the download URL of the Application Real-Time Monitoring Service (ARMS) agent.
+        @summary Obtains the URL for downloading an agent.
         
         @param request: GetAgentDownloadUrlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11396,7 +11684,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetAgentDownloadUrlRequest,
     ) -> arms20190808_models.GetAgentDownloadUrlResponse:
         """
-        @summary Obtains the download URL of the Application Real-Time Monitoring Service (ARMS) agent.
+        @summary Obtains the URL for downloading an agent.
         
         @param request: GetAgentDownloadUrlRequest
         @return: GetAgentDownloadUrlResponse
@@ -11409,7 +11697,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetAgentDownloadUrlRequest,
     ) -> arms20190808_models.GetAgentDownloadUrlResponse:
         """
-        @summary Obtains the download URL of the Application Real-Time Monitoring Service (ARMS) agent.
+        @summary Obtains the URL for downloading an agent.
         
         @param request: GetAgentDownloadUrlRequest
         @return: GetAgentDownloadUrlResponse
@@ -11423,7 +11711,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetAgentDownloadUrlV2Response:
         """
-        @summary Obtains the download URL of the Application Real-Time Monitoring Service (ARMS) agent.
+        @summary Obtains the URL for downloading an agent.
         
         @param request: GetAgentDownloadUrlV2Request
         @param runtime: runtime options for this request RuntimeOptions
@@ -11462,7 +11750,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetAgentDownloadUrlV2Response:
         """
-        @summary Obtains the download URL of the Application Real-Time Monitoring Service (ARMS) agent.
+        @summary Obtains the URL for downloading an agent.
         
         @param request: GetAgentDownloadUrlV2Request
         @param runtime: runtime options for this request RuntimeOptions
@@ -11500,7 +11788,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetAgentDownloadUrlV2Request,
     ) -> arms20190808_models.GetAgentDownloadUrlV2Response:
         """
-        @summary Obtains the download URL of the Application Real-Time Monitoring Service (ARMS) agent.
+        @summary Obtains the URL for downloading an agent.
         
         @param request: GetAgentDownloadUrlV2Request
         @return: GetAgentDownloadUrlV2Response
@@ -11513,7 +11801,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetAgentDownloadUrlV2Request,
     ) -> arms20190808_models.GetAgentDownloadUrlV2Response:
         """
-        @summary Obtains the download URL of the Application Real-Time Monitoring Service (ARMS) agent.
+        @summary Obtains the URL for downloading an agent.
         
         @param request: GetAgentDownloadUrlV2Request
         @return: GetAgentDownloadUrlV2Response
@@ -12295,11 +12583,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetExploreUrlResponse:
         """
+        @deprecated OpenAPI GetExploreUrl is deprecated
+        
         @summary Enables the Explore feature of Grafana.
         
         @param request: GetExploreUrlRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetExploreUrlResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -12336,11 +12627,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetExploreUrlResponse:
         """
+        @deprecated OpenAPI GetExploreUrl is deprecated
+        
         @summary Enables the Explore feature of Grafana.
         
         @param request: GetExploreUrlRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetExploreUrlResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -12376,10 +12670,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetExploreUrlRequest,
     ) -> arms20190808_models.GetExploreUrlResponse:
         """
+        @deprecated OpenAPI GetExploreUrl is deprecated
+        
         @summary Enables the Explore feature of Grafana.
         
         @param request: GetExploreUrlRequest
         @return: GetExploreUrlResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.get_explore_url_with_options(request, runtime)
@@ -12389,10 +12686,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetExploreUrlRequest,
     ) -> arms20190808_models.GetExploreUrlResponse:
         """
+        @deprecated OpenAPI GetExploreUrl is deprecated
+        
         @summary Enables the Explore feature of Grafana.
         
         @param request: GetExploreUrlRequest
         @return: GetExploreUrlResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_explore_url_with_options_async(request, runtime)
@@ -12765,6 +13065,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.start_time):
@@ -12806,6 +13110,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.start_time):
@@ -13259,11 +13567,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetPrometheusIntegrationResponse:
         """
+        @deprecated OpenAPI GetPrometheusIntegration is deprecated
+        
         @summary Queries the information about an exporter that is integrated into a Prometheus instance for Container Service or a Prometheus instance for ECS.
         
         @param request: GetPrometheusIntegrationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetPrometheusIntegrationResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -13300,11 +13611,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetPrometheusIntegrationResponse:
         """
+        @deprecated OpenAPI GetPrometheusIntegration is deprecated
+        
         @summary Queries the information about an exporter that is integrated into a Prometheus instance for Container Service or a Prometheus instance for ECS.
         
         @param request: GetPrometheusIntegrationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetPrometheusIntegrationResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -13340,10 +13654,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetPrometheusIntegrationRequest,
     ) -> arms20190808_models.GetPrometheusIntegrationResponse:
         """
+        @deprecated OpenAPI GetPrometheusIntegration is deprecated
+        
         @summary Queries the information about an exporter that is integrated into a Prometheus instance for Container Service or a Prometheus instance for ECS.
         
         @param request: GetPrometheusIntegrationRequest
         @return: GetPrometheusIntegrationResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.get_prometheus_integration_with_options(request, runtime)
@@ -13353,10 +13670,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetPrometheusIntegrationRequest,
     ) -> arms20190808_models.GetPrometheusIntegrationResponse:
         """
+        @deprecated OpenAPI GetPrometheusIntegration is deprecated
+        
         @summary Queries the information about an exporter that is integrated into a Prometheus instance for Container Service or a Prometheus instance for ECS.
         
         @param request: GetPrometheusIntegrationRequest
         @return: GetPrometheusIntegrationResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_prometheus_integration_with_options_async(request, runtime)
@@ -13367,11 +13687,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetPrometheusMonitoringResponse:
         """
+        @deprecated OpenAPI GetPrometheusMonitoring is deprecated
+        
         @summary Queries the monitoring configuration of a Prometheus instance.
         
         @param request: GetPrometheusMonitoringRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetPrometheusMonitoringResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -13408,11 +13731,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetPrometheusMonitoringResponse:
         """
+        @deprecated OpenAPI GetPrometheusMonitoring is deprecated
+        
         @summary Queries the monitoring configuration of a Prometheus instance.
         
         @param request: GetPrometheusMonitoringRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetPrometheusMonitoringResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -13448,10 +13774,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetPrometheusMonitoringRequest,
     ) -> arms20190808_models.GetPrometheusMonitoringResponse:
         """
+        @deprecated OpenAPI GetPrometheusMonitoring is deprecated
+        
         @summary Queries the monitoring configuration of a Prometheus instance.
         
         @param request: GetPrometheusMonitoringRequest
         @return: GetPrometheusMonitoringResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.get_prometheus_monitoring_with_options(request, runtime)
@@ -13461,10 +13790,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetPrometheusMonitoringRequest,
     ) -> arms20190808_models.GetPrometheusMonitoringResponse:
         """
+        @deprecated OpenAPI GetPrometheusMonitoring is deprecated
+        
         @summary Queries the monitoring configuration of a Prometheus instance.
         
         @param request: GetPrometheusMonitoringRequest
         @return: GetPrometheusMonitoringResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_prometheus_monitoring_with_options_async(request, runtime)
@@ -13475,11 +13807,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetRecordingRuleResponse:
         """
+        @deprecated OpenAPI GetRecordingRule is deprecated
+        
         @summary Obtains the recording rule of a cluster.
         
         @param request: GetRecordingRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetRecordingRuleResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -13512,11 +13847,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetRecordingRuleResponse:
         """
+        @deprecated OpenAPI GetRecordingRule is deprecated
+        
         @summary Obtains the recording rule of a cluster.
         
         @param request: GetRecordingRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetRecordingRuleResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -13548,10 +13886,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetRecordingRuleRequest,
     ) -> arms20190808_models.GetRecordingRuleResponse:
         """
+        @deprecated OpenAPI GetRecordingRule is deprecated
+        
         @summary Obtains the recording rule of a cluster.
         
         @param request: GetRecordingRuleRequest
         @return: GetRecordingRuleResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.get_recording_rule_with_options(request, runtime)
@@ -13561,10 +13902,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetRecordingRuleRequest,
     ) -> arms20190808_models.GetRecordingRuleResponse:
         """
+        @deprecated OpenAPI GetRecordingRule is deprecated
+        
         @summary Obtains the recording rule of a cluster.
         
         @param request: GetRecordingRuleRequest
         @return: GetRecordingRuleResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_recording_rule_with_options_async(request, runtime)
@@ -13879,7 +14223,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetRetcodeShareUrlResponse:
         """
-        @summary Queries the logon-free URL of a Browser Monitoring application.
+        @summary Queries the share URL of an application monitored by Browser Monitoring.
         
         @param request: GetRetcodeShareUrlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13914,7 +14258,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetRetcodeShareUrlResponse:
         """
-        @summary Queries the logon-free URL of a Browser Monitoring application.
+        @summary Queries the share URL of an application monitored by Browser Monitoring.
         
         @param request: GetRetcodeShareUrlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13948,7 +14292,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetRetcodeShareUrlRequest,
     ) -> arms20190808_models.GetRetcodeShareUrlResponse:
         """
-        @summary Queries the logon-free URL of a Browser Monitoring application.
+        @summary Queries the share URL of an application monitored by Browser Monitoring.
         
         @param request: GetRetcodeShareUrlRequest
         @return: GetRetcodeShareUrlResponse
@@ -13961,7 +14305,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetRetcodeShareUrlRequest,
     ) -> arms20190808_models.GetRetcodeShareUrlResponse:
         """
-        @summary Queries the logon-free URL of a Browser Monitoring application.
+        @summary Queries the share URL of an application monitored by Browser Monitoring.
         
         @param request: GetRetcodeShareUrlRequest
         @return: GetRetcodeShareUrlResponse
@@ -13975,7 +14319,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetRumAppInfoResponse:
         """
-        @summary Queries the information about a Real User Monitoring (RUM) application.
+        @summary Obtains the information about a single application in Browser Monitoring.
         
         @description Real User Monitoring (RUM) is available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
         
@@ -14016,7 +14360,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetRumAppInfoResponse:
         """
-        @summary Queries the information about a Real User Monitoring (RUM) application.
+        @summary Obtains the information about a single application in Browser Monitoring.
         
         @description Real User Monitoring (RUM) is available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
         
@@ -14056,7 +14400,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetRumAppInfoRequest,
     ) -> arms20190808_models.GetRumAppInfoResponse:
         """
-        @summary Queries the information about a Real User Monitoring (RUM) application.
+        @summary Obtains the information about a single application in Browser Monitoring.
         
         @description Real User Monitoring (RUM) is available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
         
@@ -14071,7 +14415,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetRumAppInfoRequest,
     ) -> arms20190808_models.GetRumAppInfoResponse:
         """
-        @summary Queries the information about a Real User Monitoring (RUM) application.
+        @summary Obtains the information about a single application in Browser Monitoring.
         
         @description Real User Monitoring (RUM) is available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
         
@@ -14107,6 +14451,8 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.app_name):
             query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.app_type):
+            query['AppType'] = request.app_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -14158,6 +14504,8 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.app_name):
             query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.app_type):
+            query['AppType'] = request.app_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -15471,6 +15819,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.start_time):
@@ -15514,6 +15866,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.start_time):
@@ -16414,6 +16770,8 @@ class Client(OpenApiClient):
             query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vc_extra_info):
+            query['VcExtraInfo'] = request.vc_extra_info
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
@@ -16472,6 +16830,8 @@ class Client(OpenApiClient):
             query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vc_extra_info):
+            query['VcExtraInfo'] = request.vc_extra_info
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
@@ -17127,11 +17487,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.ListClusterFromGrafanaResponse:
         """
+        @deprecated OpenAPI ListClusterFromGrafana is deprecated
+        
         @summary Queries all Grafana dashboards in a specified region.
         
         @param request: ListClusterFromGrafanaRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListClusterFromGrafanaResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -17162,11 +17525,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.ListClusterFromGrafanaResponse:
         """
+        @deprecated OpenAPI ListClusterFromGrafana is deprecated
+        
         @summary Queries all Grafana dashboards in a specified region.
         
         @param request: ListClusterFromGrafanaRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListClusterFromGrafanaResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -17196,10 +17562,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.ListClusterFromGrafanaRequest,
     ) -> arms20190808_models.ListClusterFromGrafanaResponse:
         """
+        @deprecated OpenAPI ListClusterFromGrafana is deprecated
+        
         @summary Queries all Grafana dashboards in a specified region.
         
         @param request: ListClusterFromGrafanaRequest
         @return: ListClusterFromGrafanaResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.list_cluster_from_grafana_with_options(request, runtime)
@@ -17209,10 +17578,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.ListClusterFromGrafanaRequest,
     ) -> arms20190808_models.ListClusterFromGrafanaResponse:
         """
+        @deprecated OpenAPI ListClusterFromGrafana is deprecated
+        
         @summary Queries all Grafana dashboards in a specified region.
         
         @param request: ListClusterFromGrafanaRequest
         @return: ListClusterFromGrafanaResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_cluster_from_grafana_with_options_async(request, runtime)
@@ -17223,9 +17595,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.ListCmsInstancesResponse:
         """
-        @deprecated OpenAPI ListCmsInstances is deprecated, please use ARMS::2019-08-08::ListEnvironmentAddons instead.
+        @deprecated OpenAPI ListCmsInstances is deprecated
         
-        @summary 查询Cms安装信息
+        @summary Queries the collection of cloud services.
         
         @param request: ListCmsInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17265,9 +17637,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.ListCmsInstancesResponse:
         """
-        @deprecated OpenAPI ListCmsInstances is deprecated, please use ARMS::2019-08-08::ListEnvironmentAddons instead.
+        @deprecated OpenAPI ListCmsInstances is deprecated
         
-        @summary 查询Cms安装信息
+        @summary Queries the collection of cloud services.
         
         @param request: ListCmsInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17306,9 +17678,9 @@ class Client(OpenApiClient):
         request: arms20190808_models.ListCmsInstancesRequest,
     ) -> arms20190808_models.ListCmsInstancesResponse:
         """
-        @deprecated OpenAPI ListCmsInstances is deprecated, please use ARMS::2019-08-08::ListEnvironmentAddons instead.
+        @deprecated OpenAPI ListCmsInstances is deprecated
         
-        @summary 查询Cms安装信息
+        @summary Queries the collection of cloud services.
         
         @param request: ListCmsInstancesRequest
         @return: ListCmsInstancesResponse
@@ -17322,9 +17694,9 @@ class Client(OpenApiClient):
         request: arms20190808_models.ListCmsInstancesRequest,
     ) -> arms20190808_models.ListCmsInstancesResponse:
         """
-        @deprecated OpenAPI ListCmsInstances is deprecated, please use ARMS::2019-08-08::ListEnvironmentAddons instead.
+        @deprecated OpenAPI ListCmsInstances is deprecated
         
-        @summary 查询Cms安装信息
+        @summary Queries the collection of cloud services.
         
         @param request: ListCmsInstancesRequest
         @return: ListCmsInstancesResponse
@@ -17471,11 +17843,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.ListDashboardsByNameResponse:
         """
-        @summary Uses Loki data sources and other data sources to create a dashboard in Prometheus Service.
+        @deprecated OpenAPI ListDashboardsByName is deprecated
+        
+        @summary Uses Loki data sources and other data sources to create a Grafana dashboard in Managed Service for Prometheus.
         
         @param request: ListDashboardsByNameRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDashboardsByNameResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -17522,11 +17897,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.ListDashboardsByNameResponse:
         """
-        @summary Uses Loki data sources and other data sources to create a dashboard in Prometheus Service.
+        @deprecated OpenAPI ListDashboardsByName is deprecated
+        
+        @summary Uses Loki data sources and other data sources to create a Grafana dashboard in Managed Service for Prometheus.
         
         @param request: ListDashboardsByNameRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDashboardsByNameResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -17572,10 +17950,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.ListDashboardsByNameRequest,
     ) -> arms20190808_models.ListDashboardsByNameResponse:
         """
-        @summary Uses Loki data sources and other data sources to create a dashboard in Prometheus Service.
+        @deprecated OpenAPI ListDashboardsByName is deprecated
+        
+        @summary Uses Loki data sources and other data sources to create a Grafana dashboard in Managed Service for Prometheus.
         
         @param request: ListDashboardsByNameRequest
         @return: ListDashboardsByNameResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.list_dashboards_by_name_with_options(request, runtime)
@@ -17585,10 +17966,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.ListDashboardsByNameRequest,
     ) -> arms20190808_models.ListDashboardsByNameResponse:
         """
-        @summary Uses Loki data sources and other data sources to create a dashboard in Prometheus Service.
+        @deprecated OpenAPI ListDashboardsByName is deprecated
+        
+        @summary Uses Loki data sources and other data sources to create a Grafana dashboard in Managed Service for Prometheus.
         
         @param request: ListDashboardsByNameRequest
         @return: ListDashboardsByNameResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_dashboards_by_name_with_options_async(request, runtime)
@@ -20039,11 +20423,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.ListPrometheusIntegrationResponse:
         """
+        @deprecated OpenAPI ListPrometheusIntegration is deprecated
+        
         @summary Queries a list of exporters that are integrated into a Prometheus instance. Only aliyun-cs and ecs instances are supported.
         
         @param request: ListPrometheusIntegrationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListPrometheusIntegrationResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -20078,11 +20465,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.ListPrometheusIntegrationResponse:
         """
+        @deprecated OpenAPI ListPrometheusIntegration is deprecated
+        
         @summary Queries a list of exporters that are integrated into a Prometheus instance. Only aliyun-cs and ecs instances are supported.
         
         @param request: ListPrometheusIntegrationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListPrometheusIntegrationResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -20116,10 +20506,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.ListPrometheusIntegrationRequest,
     ) -> arms20190808_models.ListPrometheusIntegrationResponse:
         """
+        @deprecated OpenAPI ListPrometheusIntegration is deprecated
+        
         @summary Queries a list of exporters that are integrated into a Prometheus instance. Only aliyun-cs and ecs instances are supported.
         
         @param request: ListPrometheusIntegrationRequest
         @return: ListPrometheusIntegrationResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.list_prometheus_integration_with_options(request, runtime)
@@ -20129,10 +20522,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.ListPrometheusIntegrationRequest,
     ) -> arms20190808_models.ListPrometheusIntegrationResponse:
         """
+        @deprecated OpenAPI ListPrometheusIntegration is deprecated
+        
         @summary Queries a list of exporters that are integrated into a Prometheus instance. Only aliyun-cs and ecs instances are supported.
         
         @param request: ListPrometheusIntegrationRequest
         @return: ListPrometheusIntegrationResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_prometheus_integration_with_options_async(request, runtime)
@@ -20143,11 +20539,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.ListPrometheusMonitoringResponse:
         """
+        @deprecated OpenAPI ListPrometheusMonitoring is deprecated
+        
         @summary Queries the monitoring configuration of a Prometheus instance.
         
         @param request: ListPrometheusMonitoringRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListPrometheusMonitoringResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -20182,11 +20581,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.ListPrometheusMonitoringResponse:
         """
+        @deprecated OpenAPI ListPrometheusMonitoring is deprecated
+        
         @summary Queries the monitoring configuration of a Prometheus instance.
         
         @param request: ListPrometheusMonitoringRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListPrometheusMonitoringResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -20220,10 +20622,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.ListPrometheusMonitoringRequest,
     ) -> arms20190808_models.ListPrometheusMonitoringResponse:
         """
+        @deprecated OpenAPI ListPrometheusMonitoring is deprecated
+        
         @summary Queries the monitoring configuration of a Prometheus instance.
         
         @param request: ListPrometheusMonitoringRequest
         @return: ListPrometheusMonitoringResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.list_prometheus_monitoring_with_options(request, runtime)
@@ -20233,10 +20638,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.ListPrometheusMonitoringRequest,
     ) -> arms20190808_models.ListPrometheusMonitoringResponse:
         """
+        @deprecated OpenAPI ListPrometheusMonitoring is deprecated
+        
         @summary Queries the monitoring configuration of a Prometheus instance.
         
         @param request: ListPrometheusMonitoringRequest
         @return: ListPrometheusMonitoringResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_prometheus_monitoring_with_options_async(request, runtime)
@@ -20893,218 +21301,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_trace_apps_with_options_async(request, runtime)
 
-    def manage_get_recording_rule_with_options(
-        self,
-        request: arms20190808_models.ManageGetRecordingRuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> arms20190808_models.ManageGetRecordingRuleResponse:
-        """
-        @summary Obtains the recording rule of a cluster monitored by Prometheus Service.
-        
-        @param request: ManageGetRecordingRuleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ManageGetRecordingRuleResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.query_user_id):
-            query['QueryUserId'] = request.query_user_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ManageGetRecordingRule',
-            version='2019-08-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            arms20190808_models.ManageGetRecordingRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def manage_get_recording_rule_with_options_async(
-        self,
-        request: arms20190808_models.ManageGetRecordingRuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> arms20190808_models.ManageGetRecordingRuleResponse:
-        """
-        @summary Obtains the recording rule of a cluster monitored by Prometheus Service.
-        
-        @param request: ManageGetRecordingRuleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ManageGetRecordingRuleResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.query_user_id):
-            query['QueryUserId'] = request.query_user_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ManageGetRecordingRule',
-            version='2019-08-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            arms20190808_models.ManageGetRecordingRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def manage_get_recording_rule(
-        self,
-        request: arms20190808_models.ManageGetRecordingRuleRequest,
-    ) -> arms20190808_models.ManageGetRecordingRuleResponse:
-        """
-        @summary Obtains the recording rule of a cluster monitored by Prometheus Service.
-        
-        @param request: ManageGetRecordingRuleRequest
-        @return: ManageGetRecordingRuleResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.manage_get_recording_rule_with_options(request, runtime)
-
-    async def manage_get_recording_rule_async(
-        self,
-        request: arms20190808_models.ManageGetRecordingRuleRequest,
-    ) -> arms20190808_models.ManageGetRecordingRuleResponse:
-        """
-        @summary Obtains the recording rule of a cluster monitored by Prometheus Service.
-        
-        @param request: ManageGetRecordingRuleRequest
-        @return: ManageGetRecordingRuleResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.manage_get_recording_rule_with_options_async(request, runtime)
-
-    def manage_recording_rule_with_options(
-        self,
-        request: arms20190808_models.ManageRecordingRuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> arms20190808_models.ManageRecordingRuleResponse:
-        """
-        @summary Edits the recording rule of a cluster monitored by Prometheus Service.
-        
-        @param request: ManageRecordingRuleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ManageRecordingRuleResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.query_user_id):
-            query['QueryUserId'] = request.query_user_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.rule_yaml):
-            query['RuleYaml'] = request.rule_yaml
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ManageRecordingRule',
-            version='2019-08-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            arms20190808_models.ManageRecordingRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def manage_recording_rule_with_options_async(
-        self,
-        request: arms20190808_models.ManageRecordingRuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> arms20190808_models.ManageRecordingRuleResponse:
-        """
-        @summary Edits the recording rule of a cluster monitored by Prometheus Service.
-        
-        @param request: ManageRecordingRuleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ManageRecordingRuleResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.query_user_id):
-            query['QueryUserId'] = request.query_user_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.rule_yaml):
-            query['RuleYaml'] = request.rule_yaml
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ManageRecordingRule',
-            version='2019-08-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            arms20190808_models.ManageRecordingRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def manage_recording_rule(
-        self,
-        request: arms20190808_models.ManageRecordingRuleRequest,
-    ) -> arms20190808_models.ManageRecordingRuleResponse:
-        """
-        @summary Edits the recording rule of a cluster monitored by Prometheus Service.
-        
-        @param request: ManageRecordingRuleRequest
-        @return: ManageRecordingRuleResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.manage_recording_rule_with_options(request, runtime)
-
-    async def manage_recording_rule_async(
-        self,
-        request: arms20190808_models.ManageRecordingRuleRequest,
-    ) -> arms20190808_models.ManageRecordingRuleResponse:
-        """
-        @summary Edits the recording rule of a cluster monitored by Prometheus Service.
-        
-        @param request: ManageRecordingRuleRequest
-        @return: ManageRecordingRuleResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.manage_recording_rule_with_options_async(request, runtime)
-
     def open_arms_default_slrwith_options(
         self,
         request: arms20190808_models.OpenArmsDefaultSLRRequest,
@@ -21331,11 +21527,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.OpenVClusterResponse:
         """
+        @deprecated OpenAPI OpenVCluster is deprecated
+        
         @summary Activates a virtual cluster.
         
         @param request: OpenVClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: OpenVClusterResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -21374,11 +21573,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.OpenVClusterResponse:
         """
+        @deprecated OpenAPI OpenVCluster is deprecated
+        
         @summary Activates a virtual cluster.
         
         @param request: OpenVClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: OpenVClusterResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -21416,10 +21618,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.OpenVClusterRequest,
     ) -> arms20190808_models.OpenVClusterResponse:
         """
+        @deprecated OpenAPI OpenVCluster is deprecated
+        
         @summary Activates a virtual cluster.
         
         @param request: OpenVClusterRequest
         @return: OpenVClusterResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.open_vcluster_with_options(request, runtime)
@@ -21429,10 +21634,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.OpenVClusterRequest,
     ) -> arms20190808_models.OpenVClusterResponse:
         """
+        @deprecated OpenAPI OpenVCluster is deprecated
+        
         @summary Activates a virtual cluster.
         
         @param request: OpenVClusterRequest
         @return: OpenVClusterResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.open_vcluster_with_options_async(request, runtime)
@@ -21631,7 +21839,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.QueryAppTopologyResponse:
         """
-        @summary 查询应用拓扑
+        @summary Queries the topology of an application.
         
         @param tmp_req: QueryAppTopologyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21688,7 +21896,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.QueryAppTopologyResponse:
         """
-        @summary 查询应用拓扑
+        @summary Queries the topology of an application.
         
         @param tmp_req: QueryAppTopologyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21744,7 +21952,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.QueryAppTopologyRequest,
     ) -> arms20190808_models.QueryAppTopologyResponse:
         """
-        @summary 查询应用拓扑
+        @summary Queries the topology of an application.
         
         @param request: QueryAppTopologyRequest
         @return: QueryAppTopologyResponse
@@ -21757,7 +21965,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.QueryAppTopologyRequest,
     ) -> arms20190808_models.QueryAppTopologyResponse:
         """
-        @summary 查询应用拓扑
+        @summary Queries the topology of an application.
         
         @param request: QueryAppTopologyRequest
         @return: QueryAppTopologyResponse
@@ -22043,11 +22251,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.QueryPromInstallStatusResponse:
         """
+        @deprecated OpenAPI QueryPromInstallStatus is deprecated
+        
         @summary Queries whether the Prometheus agent is installed on a cluster.
         
         @param request: QueryPromInstallStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryPromInstallStatusResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -22080,11 +22291,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.QueryPromInstallStatusResponse:
         """
+        @deprecated OpenAPI QueryPromInstallStatus is deprecated
+        
         @summary Queries whether the Prometheus agent is installed on a cluster.
         
         @param request: QueryPromInstallStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryPromInstallStatusResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -22116,10 +22330,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.QueryPromInstallStatusRequest,
     ) -> arms20190808_models.QueryPromInstallStatusResponse:
         """
+        @deprecated OpenAPI QueryPromInstallStatus is deprecated
+        
         @summary Queries whether the Prometheus agent is installed on a cluster.
         
         @param request: QueryPromInstallStatusRequest
         @return: QueryPromInstallStatusResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.query_prom_install_status_with_options(request, runtime)
@@ -22129,10 +22346,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.QueryPromInstallStatusRequest,
     ) -> arms20190808_models.QueryPromInstallStatusResponse:
         """
+        @deprecated OpenAPI QueryPromInstallStatus is deprecated
+        
         @summary Queries whether the Prometheus agent is installed on a cluster.
         
         @param request: QueryPromInstallStatusRequest
         @return: QueryPromInstallStatusResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.query_prom_install_status_with_options_async(request, runtime)
@@ -22267,11 +22487,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.RemoveAliClusterIdsFromPrometheusGlobalViewResponse:
         """
-        @summary Removes data sources from a global aggregation instance.
+        @deprecated OpenAPI RemoveAliClusterIdsFromPrometheusGlobalView is deprecated
+        
+        @summary Removes data sources from a global aggregation instance in Managed Service for Prometheus.
         
         @param request: RemoveAliClusterIdsFromPrometheusGlobalViewRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveAliClusterIdsFromPrometheusGlobalViewResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -22308,11 +22531,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.RemoveAliClusterIdsFromPrometheusGlobalViewResponse:
         """
-        @summary Removes data sources from a global aggregation instance.
+        @deprecated OpenAPI RemoveAliClusterIdsFromPrometheusGlobalView is deprecated
+        
+        @summary Removes data sources from a global aggregation instance in Managed Service for Prometheus.
         
         @param request: RemoveAliClusterIdsFromPrometheusGlobalViewRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveAliClusterIdsFromPrometheusGlobalViewResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -22348,10 +22574,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.RemoveAliClusterIdsFromPrometheusGlobalViewRequest,
     ) -> arms20190808_models.RemoveAliClusterIdsFromPrometheusGlobalViewResponse:
         """
-        @summary Removes data sources from a global aggregation instance.
+        @deprecated OpenAPI RemoveAliClusterIdsFromPrometheusGlobalView is deprecated
+        
+        @summary Removes data sources from a global aggregation instance in Managed Service for Prometheus.
         
         @param request: RemoveAliClusterIdsFromPrometheusGlobalViewRequest
         @return: RemoveAliClusterIdsFromPrometheusGlobalViewResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.remove_ali_cluster_ids_from_prometheus_global_view_with_options(request, runtime)
@@ -22361,10 +22590,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.RemoveAliClusterIdsFromPrometheusGlobalViewRequest,
     ) -> arms20190808_models.RemoveAliClusterIdsFromPrometheusGlobalViewResponse:
         """
-        @summary Removes data sources from a global aggregation instance.
+        @deprecated OpenAPI RemoveAliClusterIdsFromPrometheusGlobalView is deprecated
+        
+        @summary Removes data sources from a global aggregation instance in Managed Service for Prometheus.
         
         @param request: RemoveAliClusterIdsFromPrometheusGlobalViewRequest
         @return: RemoveAliClusterIdsFromPrometheusGlobalViewResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.remove_ali_cluster_ids_from_prometheus_global_view_with_options_async(request, runtime)
@@ -22375,11 +22607,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.RemoveSourcesFromPrometheusGlobalViewResponse:
         """
-        @summary Removes custom data sources from a global aggregation instance in Prometheus Service.
+        @deprecated OpenAPI RemoveSourcesFromPrometheusGlobalView is deprecated
+        
+        @summary Removes data sources from a global aggregation instance in Managed Service for Prometheus. You can delete only data sources that are not from Alibaba Cloud.
         
         @param request: RemoveSourcesFromPrometheusGlobalViewRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveSourcesFromPrometheusGlobalViewResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -22416,11 +22651,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.RemoveSourcesFromPrometheusGlobalViewResponse:
         """
-        @summary Removes custom data sources from a global aggregation instance in Prometheus Service.
+        @deprecated OpenAPI RemoveSourcesFromPrometheusGlobalView is deprecated
+        
+        @summary Removes data sources from a global aggregation instance in Managed Service for Prometheus. You can delete only data sources that are not from Alibaba Cloud.
         
         @param request: RemoveSourcesFromPrometheusGlobalViewRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveSourcesFromPrometheusGlobalViewResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -22456,10 +22694,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.RemoveSourcesFromPrometheusGlobalViewRequest,
     ) -> arms20190808_models.RemoveSourcesFromPrometheusGlobalViewResponse:
         """
-        @summary Removes custom data sources from a global aggregation instance in Prometheus Service.
+        @deprecated OpenAPI RemoveSourcesFromPrometheusGlobalView is deprecated
+        
+        @summary Removes data sources from a global aggregation instance in Managed Service for Prometheus. You can delete only data sources that are not from Alibaba Cloud.
         
         @param request: RemoveSourcesFromPrometheusGlobalViewRequest
         @return: RemoveSourcesFromPrometheusGlobalViewResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.remove_sources_from_prometheus_global_view_with_options(request, runtime)
@@ -22469,10 +22710,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.RemoveSourcesFromPrometheusGlobalViewRequest,
     ) -> arms20190808_models.RemoveSourcesFromPrometheusGlobalViewResponse:
         """
-        @summary Removes custom data sources from a global aggregation instance in Prometheus Service.
+        @deprecated OpenAPI RemoveSourcesFromPrometheusGlobalView is deprecated
+        
+        @summary Removes data sources from a global aggregation instance in Managed Service for Prometheus. You can delete only data sources that are not from Alibaba Cloud.
         
         @param request: RemoveSourcesFromPrometheusGlobalViewRequest
         @return: RemoveSourcesFromPrometheusGlobalViewResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.remove_sources_from_prometheus_global_view_with_options_async(request, runtime)
@@ -24703,11 +24947,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.SyncRecordingRulesResponse:
         """
+        @deprecated OpenAPI SyncRecordingRules is deprecated
+        
         @summary Synchronizes the aggregation rule of a cluster to other clusters in a region.
         
         @param request: SyncRecordingRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SyncRecordingRulesResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -24742,11 +24989,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.SyncRecordingRulesResponse:
         """
+        @deprecated OpenAPI SyncRecordingRules is deprecated
+        
         @summary Synchronizes the aggregation rule of a cluster to other clusters in a region.
         
         @param request: SyncRecordingRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SyncRecordingRulesResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -24780,10 +25030,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.SyncRecordingRulesRequest,
     ) -> arms20190808_models.SyncRecordingRulesResponse:
         """
+        @deprecated OpenAPI SyncRecordingRules is deprecated
+        
         @summary Synchronizes the aggregation rule of a cluster to other clusters in a region.
         
         @param request: SyncRecordingRulesRequest
         @return: SyncRecordingRulesResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.sync_recording_rules_with_options(request, runtime)
@@ -24793,10 +25046,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.SyncRecordingRulesRequest,
     ) -> arms20190808_models.SyncRecordingRulesResponse:
         """
+        @deprecated OpenAPI SyncRecordingRules is deprecated
+        
         @summary Synchronizes the aggregation rule of a cluster to other clusters in a region.
         
         @param request: SyncRecordingRulesRequest
         @return: SyncRecordingRulesResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.sync_recording_rules_with_options_async(request, runtime)
@@ -25813,6 +26069,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_env_custom_job_with_options_async(request, runtime)
 
+    def update_env_drop_metrics_rule_with_options(
+        self,
+        request: arms20190808_models.UpdateEnvDropMetricsRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.UpdateEnvDropMetricsRuleResponse:
+        """
+        @summary 更新环境实例的废弃指标列表
+        
+        @param request: UpdateEnvDropMetricsRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEnvDropMetricsRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aliyun_lang):
+            query['AliyunLang'] = request.aliyun_lang
+        if not UtilClient.is_unset(request.environment_id):
+            query['EnvironmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.drop_metrics):
+            body['DropMetrics'] = request.drop_metrics
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateEnvDropMetricsRule',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.UpdateEnvDropMetricsRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_env_drop_metrics_rule_with_options_async(
+        self,
+        request: arms20190808_models.UpdateEnvDropMetricsRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.UpdateEnvDropMetricsRuleResponse:
+        """
+        @summary 更新环境实例的废弃指标列表
+        
+        @param request: UpdateEnvDropMetricsRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEnvDropMetricsRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aliyun_lang):
+            query['AliyunLang'] = request.aliyun_lang
+        if not UtilClient.is_unset(request.environment_id):
+            query['EnvironmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.drop_metrics):
+            body['DropMetrics'] = request.drop_metrics
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateEnvDropMetricsRule',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.UpdateEnvDropMetricsRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_env_drop_metrics_rule(
+        self,
+        request: arms20190808_models.UpdateEnvDropMetricsRuleRequest,
+    ) -> arms20190808_models.UpdateEnvDropMetricsRuleResponse:
+        """
+        @summary 更新环境实例的废弃指标列表
+        
+        @param request: UpdateEnvDropMetricsRuleRequest
+        @return: UpdateEnvDropMetricsRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_env_drop_metrics_rule_with_options(request, runtime)
+
+    async def update_env_drop_metrics_rule_async(
+        self,
+        request: arms20190808_models.UpdateEnvDropMetricsRuleRequest,
+    ) -> arms20190808_models.UpdateEnvDropMetricsRuleResponse:
+        """
+        @summary 更新环境实例的废弃指标列表
+        
+        @param request: UpdateEnvDropMetricsRuleRequest
+        @return: UpdateEnvDropMetricsRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_env_drop_metrics_rule_with_options_async(request, runtime)
+
     def update_env_pod_monitor_with_options(
         self,
         request: arms20190808_models.UpdateEnvPodMonitorRequest,
@@ -26555,11 +26923,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.UpdateMetricDropResponse:
         """
+        @deprecated OpenAPI UpdateMetricDrop is deprecated, please use ARMS::2019-08-08::UpdateEnvDropMetricsRule instead.
+        
         @summary Updates the list of discarded metrics.
         
         @param request: UpdateMetricDropRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateMetricDropResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -26594,11 +26965,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.UpdateMetricDropResponse:
         """
+        @deprecated OpenAPI UpdateMetricDrop is deprecated, please use ARMS::2019-08-08::UpdateEnvDropMetricsRule instead.
+        
         @summary Updates the list of discarded metrics.
         
         @param request: UpdateMetricDropRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateMetricDropResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -26632,10 +27006,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.UpdateMetricDropRequest,
     ) -> arms20190808_models.UpdateMetricDropResponse:
         """
+        @deprecated OpenAPI UpdateMetricDrop is deprecated, please use ARMS::2019-08-08::UpdateEnvDropMetricsRule instead.
+        
         @summary Updates the list of discarded metrics.
         
         @param request: UpdateMetricDropRequest
         @return: UpdateMetricDropResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.update_metric_drop_with_options(request, runtime)
@@ -26645,10 +27022,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.UpdateMetricDropRequest,
     ) -> arms20190808_models.UpdateMetricDropResponse:
         """
+        @deprecated OpenAPI UpdateMetricDrop is deprecated, please use ARMS::2019-08-08::UpdateEnvDropMetricsRule instead.
+        
         @summary Updates the list of discarded metrics.
         
         @param request: UpdateMetricDropRequest
         @return: UpdateMetricDropResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_metric_drop_with_options_async(request, runtime)
@@ -26803,11 +27183,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.UpdatePrometheusGlobalViewResponse:
         """
+        @deprecated OpenAPI UpdatePrometheusGlobalView is deprecated
+        
         @summary Updates the data sources of Prometheus instance for GlobalView.
         
         @param request: UpdatePrometheusGlobalViewRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdatePrometheusGlobalViewResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -26850,11 +27233,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.UpdatePrometheusGlobalViewResponse:
         """
+        @deprecated OpenAPI UpdatePrometheusGlobalView is deprecated
+        
         @summary Updates the data sources of Prometheus instance for GlobalView.
         
         @param request: UpdatePrometheusGlobalViewRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdatePrometheusGlobalViewResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -26896,10 +27282,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.UpdatePrometheusGlobalViewRequest,
     ) -> arms20190808_models.UpdatePrometheusGlobalViewResponse:
         """
+        @deprecated OpenAPI UpdatePrometheusGlobalView is deprecated
+        
         @summary Updates the data sources of Prometheus instance for GlobalView.
         
         @param request: UpdatePrometheusGlobalViewRequest
         @return: UpdatePrometheusGlobalViewResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.update_prometheus_global_view_with_options(request, runtime)
@@ -26909,10 +27298,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.UpdatePrometheusGlobalViewRequest,
     ) -> arms20190808_models.UpdatePrometheusGlobalViewResponse:
         """
+        @deprecated OpenAPI UpdatePrometheusGlobalView is deprecated
+        
         @summary Updates the data sources of Prometheus instance for GlobalView.
         
         @param request: UpdatePrometheusGlobalViewRequest
         @return: UpdatePrometheusGlobalViewResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_prometheus_global_view_with_options_async(request, runtime)
@@ -27059,11 +27451,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.UpdatePrometheusIntegrationResponse:
         """
+        @deprecated OpenAPI UpdatePrometheusIntegration is deprecated
+        
         @summary Modifies the configurations of an exporter that is integrated into a Prometheus instance for Container Service or a Prometheus instance for ECS.
         
         @param request: UpdatePrometheusIntegrationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdatePrometheusIntegrationResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -27102,11 +27497,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.UpdatePrometheusIntegrationResponse:
         """
+        @deprecated OpenAPI UpdatePrometheusIntegration is deprecated
+        
         @summary Modifies the configurations of an exporter that is integrated into a Prometheus instance for Container Service or a Prometheus instance for ECS.
         
         @param request: UpdatePrometheusIntegrationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdatePrometheusIntegrationResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -27144,10 +27542,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.UpdatePrometheusIntegrationRequest,
     ) -> arms20190808_models.UpdatePrometheusIntegrationResponse:
         """
+        @deprecated OpenAPI UpdatePrometheusIntegration is deprecated
+        
         @summary Modifies the configurations of an exporter that is integrated into a Prometheus instance for Container Service or a Prometheus instance for ECS.
         
         @param request: UpdatePrometheusIntegrationRequest
         @return: UpdatePrometheusIntegrationResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.update_prometheus_integration_with_options(request, runtime)
@@ -27157,10 +27558,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.UpdatePrometheusIntegrationRequest,
     ) -> arms20190808_models.UpdatePrometheusIntegrationResponse:
         """
+        @deprecated OpenAPI UpdatePrometheusIntegration is deprecated
+        
         @summary Modifies the configurations of an exporter that is integrated into a Prometheus instance for Container Service or a Prometheus instance for ECS.
         
         @param request: UpdatePrometheusIntegrationRequest
         @return: UpdatePrometheusIntegrationResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_prometheus_integration_with_options_async(request, runtime)
@@ -27171,11 +27575,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.UpdatePrometheusMonitoringResponse:
         """
+        @deprecated OpenAPI UpdatePrometheusMonitoring is deprecated
+        
         @summary Updates the monitoring configuration of a Prometheus instance.
         
         @param request: UpdatePrometheusMonitoringRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdatePrometheusMonitoringResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -27216,11 +27623,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.UpdatePrometheusMonitoringResponse:
         """
+        @deprecated OpenAPI UpdatePrometheusMonitoring is deprecated
+        
         @summary Updates the monitoring configuration of a Prometheus instance.
         
         @param request: UpdatePrometheusMonitoringRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdatePrometheusMonitoringResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -27260,10 +27670,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.UpdatePrometheusMonitoringRequest,
     ) -> arms20190808_models.UpdatePrometheusMonitoringResponse:
         """
+        @deprecated OpenAPI UpdatePrometheusMonitoring is deprecated
+        
         @summary Updates the monitoring configuration of a Prometheus instance.
         
         @param request: UpdatePrometheusMonitoringRequest
         @return: UpdatePrometheusMonitoringResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.update_prometheus_monitoring_with_options(request, runtime)
@@ -27273,10 +27686,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.UpdatePrometheusMonitoringRequest,
     ) -> arms20190808_models.UpdatePrometheusMonitoringResponse:
         """
+        @deprecated OpenAPI UpdatePrometheusMonitoring is deprecated
+        
         @summary Updates the monitoring configuration of a Prometheus instance.
         
         @param request: UpdatePrometheusMonitoringRequest
         @return: UpdatePrometheusMonitoringResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_prometheus_monitoring_with_options_async(request, runtime)
@@ -27287,11 +27703,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.UpdatePrometheusMonitoringStatusResponse:
         """
+        @deprecated OpenAPI UpdatePrometheusMonitoringStatus is deprecated
+        
         @summary Updates the status of the monitoring configuration of a Prometheus instance.
         
         @param request: UpdatePrometheusMonitoringStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdatePrometheusMonitoringStatusResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -27330,11 +27749,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.UpdatePrometheusMonitoringStatusResponse:
         """
+        @deprecated OpenAPI UpdatePrometheusMonitoringStatus is deprecated
+        
         @summary Updates the status of the monitoring configuration of a Prometheus instance.
         
         @param request: UpdatePrometheusMonitoringStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdatePrometheusMonitoringStatusResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -27372,10 +27794,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.UpdatePrometheusMonitoringStatusRequest,
     ) -> arms20190808_models.UpdatePrometheusMonitoringStatusResponse:
         """
+        @deprecated OpenAPI UpdatePrometheusMonitoringStatus is deprecated
+        
         @summary Updates the status of the monitoring configuration of a Prometheus instance.
         
         @param request: UpdatePrometheusMonitoringStatusRequest
         @return: UpdatePrometheusMonitoringStatusResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.update_prometheus_monitoring_status_with_options(request, runtime)
@@ -27385,10 +27810,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.UpdatePrometheusMonitoringStatusRequest,
     ) -> arms20190808_models.UpdatePrometheusMonitoringStatusResponse:
         """
+        @deprecated OpenAPI UpdatePrometheusMonitoringStatus is deprecated
+        
         @summary Updates the status of the monitoring configuration of a Prometheus instance.
         
         @param request: UpdatePrometheusMonitoringStatusRequest
         @return: UpdatePrometheusMonitoringStatusResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_prometheus_monitoring_status_with_options_async(request, runtime)
@@ -27409,6 +27837,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.app_config):
+            query['AppConfig'] = request.app_config
         if not UtilClient.is_unset(request.auto_restart):
             query['AutoRestart'] = request.auto_restart
         if not UtilClient.is_unset(request.backend_service_trace_region):
@@ -27468,6 +27898,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.app_config):
+            query['AppConfig'] = request.app_config
         if not UtilClient.is_unset(request.auto_restart):
             query['AutoRestart'] = request.auto_restart
         if not UtilClient.is_unset(request.backend_service_trace_region):
@@ -27675,7 +28107,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.UpdateTimingSyntheticTaskResponse:
         """
-        @summary 更新定时拨测任务
+        @summary Updates a scheduled synthetic test task.
         
         @param tmp_req: UpdateTimingSyntheticTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27744,7 +28176,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.UpdateTimingSyntheticTaskResponse:
         """
-        @summary 更新定时拨测任务
+        @summary Updates a scheduled synthetic test task.
         
         @param tmp_req: UpdateTimingSyntheticTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27812,7 +28244,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.UpdateTimingSyntheticTaskRequest,
     ) -> arms20190808_models.UpdateTimingSyntheticTaskResponse:
         """
-        @summary 更新定时拨测任务
+        @summary Updates a scheduled synthetic test task.
         
         @param request: UpdateTimingSyntheticTaskRequest
         @return: UpdateTimingSyntheticTaskResponse
@@ -27825,7 +28257,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.UpdateTimingSyntheticTaskRequest,
     ) -> arms20190808_models.UpdateTimingSyntheticTaskResponse:
         """
-        @summary 更新定时拨测任务
+        @summary Updates a scheduled synthetic test task.
         
         @param request: UpdateTimingSyntheticTaskRequest
         @return: UpdateTimingSyntheticTaskResponse

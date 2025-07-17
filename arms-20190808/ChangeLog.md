@@ -1,3 +1,14 @@
+2025-07-17 Version: 9.0.0
+- Support API DescribeEnvDropMetricsRule.
+- Support API UpdateEnvDropMetricsRule.
+- Update API CreateRumApp: delete request parameters Workspace.
+- Update API GetPrometheusInstance: add response parameters Body.Data.OpenTelemetryInterUrl.
+- Update API GetPrometheusInstance: add response parameters Body.Data.OpenTelemetryIntraUrl.
+- Update API GetRumAppInfo: delete request parameters Workspace.
+- Update API GetRumApps: delete request parameters Workspace.
+- Update API GetRumDataForPage: delete request parameters Workspace.
+
+
 2025-01-08 Version: 8.0.0
 - Update API CreateGrafanaWorkspace: add param AccountNumber.
 - Update API CreateGrafanaWorkspace: add param AutoRenew.
