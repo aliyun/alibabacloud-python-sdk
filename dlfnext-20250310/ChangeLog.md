@@ -1,3 +1,16 @@
+2025-07-17 Version: 2.1.0
+- Support API AlterDatabase.
+- Support API AlterTable.
+- Support API CreateDatabase.
+- Support API CreateTable.
+- Support API DropDatabase.
+- Support API DropTable.
+- Support API GetDatabase.
+- Support API GetTable.
+- Support API ListDatabases.
+- Support API ListTables.
+
+
 2025-07-16 Version: 2.0.0
 - Update API CreateCatalog: delete request parameters body.optimizationConfig.
 - Update API ListRoleUsers: update request parameters maxResults' type has changed.

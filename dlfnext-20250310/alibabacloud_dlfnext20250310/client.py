@@ -153,6 +153,238 @@ class Client(OpenApiClient):
         headers = {}
         return await self.alter_catalog_with_options_async(catalog, request, headers, runtime)
 
+    def alter_database_with_options(
+        self,
+        catalog_id: str,
+        database: str,
+        request: dlf_next_20250310_models.AlterDatabaseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.AlterDatabaseResponse:
+        """
+        @summary 更新数据库
+        
+        @param request: AlterDatabaseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AlterDatabaseResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.removals):
+            body['removals'] = request.removals
+        if not UtilClient.is_unset(request.updates):
+            body['updates'] = request.updates
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AlterDatabase',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/databases/{OpenApiUtilClient.get_encode_param(database)}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.AlterDatabaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def alter_database_with_options_async(
+        self,
+        catalog_id: str,
+        database: str,
+        request: dlf_next_20250310_models.AlterDatabaseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.AlterDatabaseResponse:
+        """
+        @summary 更新数据库
+        
+        @param request: AlterDatabaseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AlterDatabaseResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.removals):
+            body['removals'] = request.removals
+        if not UtilClient.is_unset(request.updates):
+            body['updates'] = request.updates
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AlterDatabase',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/databases/{OpenApiUtilClient.get_encode_param(database)}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.AlterDatabaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def alter_database(
+        self,
+        catalog_id: str,
+        database: str,
+        request: dlf_next_20250310_models.AlterDatabaseRequest,
+    ) -> dlf_next_20250310_models.AlterDatabaseResponse:
+        """
+        @summary 更新数据库
+        
+        @param request: AlterDatabaseRequest
+        @return: AlterDatabaseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.alter_database_with_options(catalog_id, database, request, headers, runtime)
+
+    async def alter_database_async(
+        self,
+        catalog_id: str,
+        database: str,
+        request: dlf_next_20250310_models.AlterDatabaseRequest,
+    ) -> dlf_next_20250310_models.AlterDatabaseResponse:
+        """
+        @summary 更新数据库
+        
+        @param request: AlterDatabaseRequest
+        @return: AlterDatabaseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.alter_database_with_options_async(catalog_id, database, request, headers, runtime)
+
+    def alter_table_with_options(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        request: dlf_next_20250310_models.AlterTableRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.AlterTableResponse:
+        """
+        @summary 更改Table
+        
+        @param request: AlterTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AlterTableResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.changes):
+            body['changes'] = request.changes
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AlterTable',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/databases/{OpenApiUtilClient.get_encode_param(database)}/tables/{OpenApiUtilClient.get_encode_param(table)}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.AlterTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def alter_table_with_options_async(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        request: dlf_next_20250310_models.AlterTableRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.AlterTableResponse:
+        """
+        @summary 更改Table
+        
+        @param request: AlterTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AlterTableResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.changes):
+            body['changes'] = request.changes
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AlterTable',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/databases/{OpenApiUtilClient.get_encode_param(database)}/tables/{OpenApiUtilClient.get_encode_param(table)}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.AlterTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def alter_table(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        request: dlf_next_20250310_models.AlterTableRequest,
+    ) -> dlf_next_20250310_models.AlterTableResponse:
+        """
+        @summary 更改Table
+        
+        @param request: AlterTableRequest
+        @return: AlterTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.alter_table_with_options(catalog_id, database, table, request, headers, runtime)
+
+    async def alter_table_async(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        request: dlf_next_20250310_models.AlterTableRequest,
+    ) -> dlf_next_20250310_models.AlterTableResponse:
+        """
+        @summary 更改Table
+        
+        @param request: AlterTableRequest
+        @return: AlterTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.alter_table_with_options_async(catalog_id, database, table, request, headers, runtime)
+
     def batch_grant_permissions_with_options(
         self,
         catalog_id: str,
@@ -481,6 +713,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_catalog_with_options_async(request, headers, runtime)
 
+    def create_database_with_options(
+        self,
+        catalog_id: str,
+        request: dlf_next_20250310_models.CreateDatabaseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.CreateDatabaseResponse:
+        """
+        @summary 创建数据库
+        
+        @param request: CreateDatabaseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatabaseResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.options):
+            body['options'] = request.options
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDatabase',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/databases',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.CreateDatabaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_database_with_options_async(
+        self,
+        catalog_id: str,
+        request: dlf_next_20250310_models.CreateDatabaseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.CreateDatabaseResponse:
+        """
+        @summary 创建数据库
+        
+        @param request: CreateDatabaseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatabaseResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.options):
+            body['options'] = request.options
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDatabase',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/databases',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.CreateDatabaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_database(
+        self,
+        catalog_id: str,
+        request: dlf_next_20250310_models.CreateDatabaseRequest,
+    ) -> dlf_next_20250310_models.CreateDatabaseResponse:
+        """
+        @summary 创建数据库
+        
+        @param request: CreateDatabaseRequest
+        @return: CreateDatabaseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_database_with_options(catalog_id, request, headers, runtime)
+
+    async def create_database_async(
+        self,
+        catalog_id: str,
+        request: dlf_next_20250310_models.CreateDatabaseRequest,
+    ) -> dlf_next_20250310_models.CreateDatabaseResponse:
+        """
+        @summary 创建数据库
+        
+        @param request: CreateDatabaseRequest
+        @return: CreateDatabaseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_database_with_options_async(catalog_id, request, headers, runtime)
+
     def create_role_with_options(
         self,
         request: dlf_next_20250310_models.CreateRoleRequest,
@@ -592,6 +936,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_role_with_options_async(request, headers, runtime)
+
+    def create_table_with_options(
+        self,
+        catalog_id: str,
+        database: str,
+        request: dlf_next_20250310_models.CreateTableRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.CreateTableResponse:
+        """
+        @summary 创建表
+        
+        @param request: CreateTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTableResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.identifier):
+            body['identifier'] = request.identifier
+        if not UtilClient.is_unset(request.schema):
+            body['schema'] = request.schema
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTable',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/databases/{OpenApiUtilClient.get_encode_param(database)}/tables',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.CreateTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_table_with_options_async(
+        self,
+        catalog_id: str,
+        database: str,
+        request: dlf_next_20250310_models.CreateTableRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.CreateTableResponse:
+        """
+        @summary 创建表
+        
+        @param request: CreateTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTableResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.identifier):
+            body['identifier'] = request.identifier
+        if not UtilClient.is_unset(request.schema):
+            body['schema'] = request.schema
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTable',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/databases/{OpenApiUtilClient.get_encode_param(database)}/tables',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.CreateTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_table(
+        self,
+        catalog_id: str,
+        database: str,
+        request: dlf_next_20250310_models.CreateTableRequest,
+    ) -> dlf_next_20250310_models.CreateTableResponse:
+        """
+        @summary 创建表
+        
+        @param request: CreateTableRequest
+        @return: CreateTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_table_with_options(catalog_id, database, request, headers, runtime)
+
+    async def create_table_async(
+        self,
+        catalog_id: str,
+        database: str,
+        request: dlf_next_20250310_models.CreateTableRequest,
+    ) -> dlf_next_20250310_models.CreateTableResponse:
+        """
+        @summary 创建表
+        
+        @param request: CreateTableRequest
+        @return: CreateTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_table_with_options_async(catalog_id, database, request, headers, runtime)
 
     def delete_role_with_options(
         self,
@@ -868,6 +1328,198 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.drop_catalog_with_options_async(catalog, headers, runtime)
+
+    def drop_database_with_options(
+        self,
+        catalog_id: str,
+        database: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.DropDatabaseResponse:
+        """
+        @summary 删除数据库
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DropDatabaseResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DropDatabase',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/databases/{OpenApiUtilClient.get_encode_param(database)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.DropDatabaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def drop_database_with_options_async(
+        self,
+        catalog_id: str,
+        database: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.DropDatabaseResponse:
+        """
+        @summary 删除数据库
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DropDatabaseResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DropDatabase',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/databases/{OpenApiUtilClient.get_encode_param(database)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.DropDatabaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def drop_database(
+        self,
+        catalog_id: str,
+        database: str,
+    ) -> dlf_next_20250310_models.DropDatabaseResponse:
+        """
+        @summary 删除数据库
+        
+        @return: DropDatabaseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.drop_database_with_options(catalog_id, database, headers, runtime)
+
+    async def drop_database_async(
+        self,
+        catalog_id: str,
+        database: str,
+    ) -> dlf_next_20250310_models.DropDatabaseResponse:
+        """
+        @summary 删除数据库
+        
+        @return: DropDatabaseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.drop_database_with_options_async(catalog_id, database, headers, runtime)
+
+    def drop_table_with_options(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.DropTableResponse:
+        """
+        @summary 删除表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DropTableResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DropTable',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/databases/{OpenApiUtilClient.get_encode_param(database)}/tables/{OpenApiUtilClient.get_encode_param(table)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.DropTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def drop_table_with_options_async(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.DropTableResponse:
+        """
+        @summary 删除表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DropTableResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DropTable',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/databases/{OpenApiUtilClient.get_encode_param(database)}/tables/{OpenApiUtilClient.get_encode_param(table)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.DropTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def drop_table(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+    ) -> dlf_next_20250310_models.DropTableResponse:
+        """
+        @summary 删除表
+        
+        @return: DropTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.drop_table_with_options(catalog_id, database, table, headers, runtime)
+
+    async def drop_table_async(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+    ) -> dlf_next_20250310_models.DropTableResponse:
+        """
+        @summary 删除表
+        
+        @return: DropTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.drop_table_with_options_async(catalog_id, database, table, headers, runtime)
 
     def get_catalog_with_options(
         self,
@@ -1251,6 +1903,100 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_catalog_token_with_options_async(catalog, headers, runtime)
 
+    def get_database_with_options(
+        self,
+        catalog_id: str,
+        database: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.GetDatabaseResponse:
+        """
+        @summary 查看数据库
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatabaseResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetDatabase',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/databases/{OpenApiUtilClient.get_encode_param(database)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.GetDatabaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_database_with_options_async(
+        self,
+        catalog_id: str,
+        database: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.GetDatabaseResponse:
+        """
+        @summary 查看数据库
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatabaseResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetDatabase',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/databases/{OpenApiUtilClient.get_encode_param(database)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.GetDatabaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_database(
+        self,
+        catalog_id: str,
+        database: str,
+    ) -> dlf_next_20250310_models.GetDatabaseResponse:
+        """
+        @summary 查看数据库
+        
+        @return: GetDatabaseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_database_with_options(catalog_id, database, headers, runtime)
+
+    async def get_database_async(
+        self,
+        catalog_id: str,
+        database: str,
+    ) -> dlf_next_20250310_models.GetDatabaseResponse:
+        """
+        @summary 查看数据库
+        
+        @return: GetDatabaseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_database_with_options_async(catalog_id, database, headers, runtime)
+
     def get_database_summary_with_options(
         self,
         catalog_id: str,
@@ -1530,6 +2276,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_role_with_options_async(request, headers, runtime)
+
+    def get_table_with_options(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.GetTableResponse:
+        """
+        @summary 查看表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetTable',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/databases/{OpenApiUtilClient.get_encode_param(database)}/tables/{OpenApiUtilClient.get_encode_param(table)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.GetTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_table_with_options_async(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.GetTableResponse:
+        """
+        @summary 查看表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetTable',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/databases/{OpenApiUtilClient.get_encode_param(database)}/tables/{OpenApiUtilClient.get_encode_param(table)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.GetTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_table(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+    ) -> dlf_next_20250310_models.GetTableResponse:
+        """
+        @summary 查看表
+        
+        @return: GetTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_table_with_options(catalog_id, database, table, headers, runtime)
+
+    async def get_table_async(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+    ) -> dlf_next_20250310_models.GetTableResponse:
+        """
+        @summary 查看表
+        
+        @return: GetTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_table_with_options_async(catalog_id, database, table, headers, runtime)
 
     def get_table_summary_with_options(
         self,
@@ -1952,6 +2796,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_catalogs_with_options_async(request, headers, runtime)
+
+    def list_databases_with_options(
+        self,
+        catalog_id: str,
+        request: dlf_next_20250310_models.ListDatabasesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.ListDatabasesResponse:
+        """
+        @summary 查看数据库列表
+        
+        @param request: ListDatabasesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatabasesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_name_pattern):
+            query['databaseNamePattern'] = request.database_name_pattern
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.page_token):
+            query['pageToken'] = request.page_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatabases',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/databases',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.ListDatabasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_databases_with_options_async(
+        self,
+        catalog_id: str,
+        request: dlf_next_20250310_models.ListDatabasesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.ListDatabasesResponse:
+        """
+        @summary 查看数据库列表
+        
+        @param request: ListDatabasesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatabasesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_name_pattern):
+            query['databaseNamePattern'] = request.database_name_pattern
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.page_token):
+            query['pageToken'] = request.page_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatabases',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/databases',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.ListDatabasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_databases(
+        self,
+        catalog_id: str,
+        request: dlf_next_20250310_models.ListDatabasesRequest,
+    ) -> dlf_next_20250310_models.ListDatabasesResponse:
+        """
+        @summary 查看数据库列表
+        
+        @param request: ListDatabasesRequest
+        @return: ListDatabasesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_databases_with_options(catalog_id, request, headers, runtime)
+
+    async def list_databases_async(
+        self,
+        catalog_id: str,
+        request: dlf_next_20250310_models.ListDatabasesRequest,
+    ) -> dlf_next_20250310_models.ListDatabasesResponse:
+        """
+        @summary 查看数据库列表
+        
+        @param request: ListDatabasesRequest
+        @return: ListDatabasesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_databases_with_options_async(catalog_id, request, headers, runtime)
 
     def list_partition_summaries_with_options(
         self,
@@ -2436,6 +3396,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_roles_with_options_async(request, headers, runtime)
+
+    def list_tables_with_options(
+        self,
+        catalog_id: str,
+        database: str,
+        request: dlf_next_20250310_models.ListTablesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.ListTablesResponse:
+        """
+        @summary 查看表详情列表
+        
+        @param request: ListTablesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTablesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.page_token):
+            query['pageToken'] = request.page_token
+        if not UtilClient.is_unset(request.table_name_pattern):
+            query['tableNamePattern'] = request.table_name_pattern
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTables',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/databases/{OpenApiUtilClient.get_encode_param(database)}/tables',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.ListTablesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tables_with_options_async(
+        self,
+        catalog_id: str,
+        database: str,
+        request: dlf_next_20250310_models.ListTablesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.ListTablesResponse:
+        """
+        @summary 查看表详情列表
+        
+        @param request: ListTablesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTablesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.page_token):
+            query['pageToken'] = request.page_token
+        if not UtilClient.is_unset(request.table_name_pattern):
+            query['tableNamePattern'] = request.table_name_pattern
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTables',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/databases/{OpenApiUtilClient.get_encode_param(database)}/tables',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.ListTablesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tables(
+        self,
+        catalog_id: str,
+        database: str,
+        request: dlf_next_20250310_models.ListTablesRequest,
+    ) -> dlf_next_20250310_models.ListTablesResponse:
+        """
+        @summary 查看表详情列表
+        
+        @param request: ListTablesRequest
+        @return: ListTablesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_tables_with_options(catalog_id, database, request, headers, runtime)
+
+    async def list_tables_async(
+        self,
+        catalog_id: str,
+        database: str,
+        request: dlf_next_20250310_models.ListTablesRequest,
+    ) -> dlf_next_20250310_models.ListTablesResponse:
+        """
+        @summary 查看表详情列表
+        
+        @param request: ListTablesRequest
+        @return: ListTablesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_tables_with_options_async(catalog_id, database, request, headers, runtime)
 
     def list_user_roles_with_options(
         self,

@@ -2361,6 +2361,187 @@ class AlterCatalogResponse(TeaModel):
         return self
 
 
+class AlterDatabaseRequest(TeaModel):
+    def __init__(
+        self,
+        removals: List[str] = None,
+        updates: Dict[str, str] = None,
+    ):
+        self.removals = removals
+        self.updates = updates
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.removals is not None:
+            result['removals'] = self.removals
+        if self.updates is not None:
+            result['updates'] = self.updates
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('removals') is not None:
+            self.removals = m.get('removals')
+        if m.get('updates') is not None:
+            self.updates = m.get('updates')
+        return self
+
+
+class AlterDatabaseResponseBody(TeaModel):
+    def __init__(
+        self,
+        missing: List[str] = None,
+        removed: List[str] = None,
+        updated: List[str] = None,
+    ):
+        self.missing = missing
+        self.removed = removed
+        self.updated = updated
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.missing is not None:
+            result['missing'] = self.missing
+        if self.removed is not None:
+            result['removed'] = self.removed
+        if self.updated is not None:
+            result['updated'] = self.updated
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('missing') is not None:
+            self.missing = m.get('missing')
+        if m.get('removed') is not None:
+            self.removed = m.get('removed')
+        if m.get('updated') is not None:
+            self.updated = m.get('updated')
+        return self
+
+
+class AlterDatabaseResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AlterDatabaseResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AlterDatabaseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AlterTableRequest(TeaModel):
+    def __init__(
+        self,
+        changes: List[FullSchemaChange] = None,
+    ):
+        self.changes = changes
+
+    def validate(self):
+        if self.changes:
+            for k in self.changes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['changes'] = []
+        if self.changes is not None:
+            for k in self.changes:
+                result['changes'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.changes = []
+        if m.get('changes') is not None:
+            for k in m.get('changes'):
+                temp_model = FullSchemaChange()
+                self.changes.append(temp_model.from_map(k))
+        return self
+
+
+class AlterTableResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
 class BatchGrantPermissionsRequest(TeaModel):
     def __init__(
         self,
@@ -2679,6 +2860,72 @@ class CreateCatalogResponse(TeaModel):
         return self
 
 
+class CreateDatabaseRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        options: Dict[str, str] = None,
+    ):
+        self.name = name
+        self.options = options
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.options is not None:
+            result['options'] = self.options
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('options') is not None:
+            self.options = m.get('options')
+        return self
+
+
+class CreateDatabaseResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
 class CreateRoleRequest(TeaModel):
     def __init__(
         self,
@@ -2719,6 +2966,77 @@ class CreateRoleRequest(TeaModel):
 
 
 class CreateRoleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class CreateTableRequest(TeaModel):
+    def __init__(
+        self,
+        identifier: Identifier = None,
+        schema: Schema = None,
+    ):
+        self.identifier = identifier
+        self.schema = schema
+
+    def validate(self):
+        if self.identifier:
+            self.identifier.validate()
+        if self.schema:
+            self.schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identifier is not None:
+            result['identifier'] = self.identifier.to_map()
+        if self.schema is not None:
+            result['schema'] = self.schema.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('identifier') is not None:
+            temp_model = Identifier()
+            self.identifier = temp_model.from_map(m['identifier'])
+        if m.get('schema') is not None:
+            temp_model = Schema()
+            self.schema = temp_model.from_map(m['schema'])
+        return self
+
+
+class CreateTableResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -2937,6 +3255,72 @@ class DescribeRegionsResponse(TeaModel):
 
 
 class DropCatalogResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class DropDatabaseResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class DropTableResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -3201,6 +3585,47 @@ class GetCatalogTokenResponse(TeaModel):
         return self
 
 
+class GetDatabaseResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: Database = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = Database()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetDatabaseSummaryResponse(TeaModel):
     def __init__(
         self,
@@ -3380,6 +3805,47 @@ class GetRoleResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = Role()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetTableResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: Table = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = Table()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3676,6 +4142,119 @@ class ListCatalogsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListCatalogsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDatabasesRequest(TeaModel):
+    def __init__(
+        self,
+        database_name_pattern: str = None,
+        max_results: int = None,
+        page_token: str = None,
+    ):
+        self.database_name_pattern = database_name_pattern
+        self.max_results = max_results
+        self.page_token = page_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.database_name_pattern is not None:
+            result['databaseNamePattern'] = self.database_name_pattern
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.page_token is not None:
+            result['pageToken'] = self.page_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('databaseNamePattern') is not None:
+            self.database_name_pattern = m.get('databaseNamePattern')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('pageToken') is not None:
+            self.page_token = m.get('pageToken')
+        return self
+
+
+class ListDatabasesResponseBody(TeaModel):
+    def __init__(
+        self,
+        databases: List[str] = None,
+        next_page_token: str = None,
+    ):
+        self.databases = databases
+        self.next_page_token = next_page_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.databases is not None:
+            result['databases'] = self.databases
+        if self.next_page_token is not None:
+            result['nextPageToken'] = self.next_page_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('databases') is not None:
+            self.databases = m.get('databases')
+        if m.get('nextPageToken') is not None:
+            self.next_page_token = m.get('nextPageToken')
+        return self
+
+
+class ListDatabasesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDatabasesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDatabasesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4150,6 +4729,119 @@ class ListRolesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListRolesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTablesRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        page_token: str = None,
+        table_name_pattern: str = None,
+    ):
+        self.max_results = max_results
+        self.page_token = page_token
+        self.table_name_pattern = table_name_pattern
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.page_token is not None:
+            result['pageToken'] = self.page_token
+        if self.table_name_pattern is not None:
+            result['tableNamePattern'] = self.table_name_pattern
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('pageToken') is not None:
+            self.page_token = m.get('pageToken')
+        if m.get('tableNamePattern') is not None:
+            self.table_name_pattern = m.get('tableNamePattern')
+        return self
+
+
+class ListTablesResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_page_token: str = None,
+        tables: List[str] = None,
+    ):
+        self.next_page_token = next_page_token
+        self.tables = tables
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_page_token is not None:
+            result['nextPageToken'] = self.next_page_token
+        if self.tables is not None:
+            result['tables'] = self.tables
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('nextPageToken') is not None:
+            self.next_page_token = m.get('nextPageToken')
+        if m.get('tables') is not None:
+            self.tables = m.get('tables')
+        return self
+
+
+class ListTablesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTablesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTablesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
