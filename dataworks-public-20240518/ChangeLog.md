@@ -1,3 +1,8 @@
+2025-07-17 Version: 7.2.6
+- Update API GetProjectMember: add response parameters Body.ProjectMember.UserName.
+- Update API ListProjectMembers: add response parameters Body.PagingInfo.ProjectMembers.$.UserName.
+
+
 2025-07-07 Version: 7.2.5
 - Generated python 2024-05-18 for dataworks-public.
 

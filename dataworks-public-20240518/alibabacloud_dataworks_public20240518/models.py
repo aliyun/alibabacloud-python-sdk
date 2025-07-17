@@ -6134,25 +6134,25 @@ class CreateDIJobRequest(TeaModel):
         # This parameter is deprecated and is replaced by the Name parameter.
         self.job_name = job_name
         self.job_settings = job_settings
-        # The type of the task. This parameter is optional. Valid values:
+        # The type of the synchronization task. Valid values:
         # 
-        # *   DatabaseRealtimeMigration: A real-time synchronization task used to synchronize only full data, only incremental data, or full and incremental data in multiple tables of multiple databases at the source.
-        # *   DatabaseOfflineMigration: A batch synchronization task used to synchronize only full data, only incremental data, or full and incremental data in multiple tables of multiple databases at the source.
-        # *   SingleTableRealtimeMigration: A real-time synchronization task used to synchronize only data in single table at the source.
+        # *   DatabaseRealtimeMigration: A real-time synchronization task used to synchronize only full data, only incremental data, or full and incremental data in multiple tables of multiple databases in the source.
+        # *   DatabaseOfflineMigration: A batch synchronization task used to synchronize only full data, only incremental data, or full and incremental data in multiple tables of multiple databases in the source.
+        # *   SingleTableRealtimeMigration: A real-time synchronization task used to synchronize data only in a single table in the source.
         self.job_type = job_type
         # The synchronization type. Valid values:
         # 
-        # *   FullAndRealtimeIncremental: full synchronization and real-time incremental synchronization of data in an entire database
-        # *   RealtimeIncremental: real-time incremental synchronization of data in a single table
-        # *   Full: full batch synchronization of data in an entire database
-        # *   OfflineIncremental: batch incremental synchronization of data in an entire database
-        # *   FullAndOfflineIncremental: full synchronization and batch incremental synchronization of data in an entire database
+        # *   FullAndRealtimeIncremental
+        # *   RealtimeIncremental
+        # *   Full
+        # *   OfflineIncremental
+        # *   FullAndOfflineIncremental
         # 
         # This parameter is required.
         self.migration_type = migration_type
         # The name of the synchronization task.
         self.name = name
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the ID.
         # 
         # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
         self.project_id = project_id
@@ -6309,25 +6309,25 @@ class CreateDIJobShrinkRequest(TeaModel):
         # This parameter is deprecated and is replaced by the Name parameter.
         self.job_name = job_name
         self.job_settings_shrink = job_settings_shrink
-        # The type of the task. This parameter is optional. Valid values:
+        # The type of the synchronization task. Valid values:
         # 
-        # *   DatabaseRealtimeMigration: A real-time synchronization task used to synchronize only full data, only incremental data, or full and incremental data in multiple tables of multiple databases at the source.
-        # *   DatabaseOfflineMigration: A batch synchronization task used to synchronize only full data, only incremental data, or full and incremental data in multiple tables of multiple databases at the source.
-        # *   SingleTableRealtimeMigration: A real-time synchronization task used to synchronize only data in single table at the source.
+        # *   DatabaseRealtimeMigration: A real-time synchronization task used to synchronize only full data, only incremental data, or full and incremental data in multiple tables of multiple databases in the source.
+        # *   DatabaseOfflineMigration: A batch synchronization task used to synchronize only full data, only incremental data, or full and incremental data in multiple tables of multiple databases in the source.
+        # *   SingleTableRealtimeMigration: A real-time synchronization task used to synchronize data only in a single table in the source.
         self.job_type = job_type
         # The synchronization type. Valid values:
         # 
-        # *   FullAndRealtimeIncremental: full synchronization and real-time incremental synchronization of data in an entire database
-        # *   RealtimeIncremental: real-time incremental synchronization of data in a single table
-        # *   Full: full batch synchronization of data in an entire database
-        # *   OfflineIncremental: batch incremental synchronization of data in an entire database
-        # *   FullAndOfflineIncremental: full synchronization and batch incremental synchronization of data in an entire database
+        # *   FullAndRealtimeIncremental
+        # *   RealtimeIncremental
+        # *   Full
+        # *   OfflineIncremental
+        # *   FullAndOfflineIncremental
         # 
         # This parameter is required.
         self.migration_type = migration_type
         # The name of the synchronization task.
         self.name = name
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the ID.
         # 
         # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
         self.project_id = project_id
@@ -12554,8 +12554,8 @@ class CreateWorkflowInstancesRequestDefaultRunPropertiesAlert(TeaModel):
         self.notice_type = notice_type
         # The alerting policy. Valid values:
         # 
-        # *   SUCCESS: An alert is reported when data backfill succeeds.
-        # *   FAILURE: An alert is reported when data backfill fails.
+        # *   Success: An alert is reported when data backfill succeeds.
+        # *   Failure: An alert is reported when data backfill fails.
         # *   SuccessFailure: An alert is reported regardless of whether data backfill succeeds or fails.
         self.type = type
 
@@ -12589,9 +12589,9 @@ class CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis(TeaModel):
         blocked: bool = None,
         enabled: bool = None,
     ):
-        # Specifies whether to block the running of the instance if the analysis fails. If you set the Type parameter to SupplementData, this parameter is required.
+        # Specifies whether to block running if the analysis fails. If you set the Type parameter to SupplementData, this parameter is required. Valid values: true and false.
         self.blocked = blocked
-        # Specifies whether to enable the analysis feature. If you set the Type parameter to SupplementData, this parameter is required.
+        # Specifies whether to enable the analysis feature. If you set the Type parameter to SupplementData, this parameter is required. Valid values: true and false.
         self.enabled = enabled
 
     def validate(self):
@@ -12628,7 +12628,7 @@ class CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy(TeaModel):
     ):
         # The end time of running. Configure this parameter in the `hh:mm:ss` format. The time must be in the 24-hour clock. This parameter is required if you configure the RunPolicy parameter.
         self.end_time = end_time
-        # Specifies whether the instance can be run immediately during the time period in the future. Default value: false.
+        # Specifies whether the instances can be run immediately during the time period in the future. Valid values: true and false.
         self.immediately = immediately
         # The start time of running. Configure this parameter in the `hh:mm:ss` format. The time must be in the 24-hour clock. This parameter is required if you configure the RunPolicy parameter.
         self.start_time = start_time
@@ -12707,14 +12707,19 @@ class CreateWorkflowInstancesRequestDefaultRunProperties(TeaModel):
         # *   Chain: If you set the Mode parameter to Chain, you must leave the `RootTaskIds` parameter empty and set the `IncludeTaskIds` parameter to the start task ID and the end task ID.
         # *   AllDownstream: You can specify only one `root task ID`.
         self.mode = mode
-        # The running order. Default value: Asc. Valid values:
+        # The running order. Valid values:
         # 
-        # *   Asc: The tasks are sorted by data timestamp in ascending order.
+        # *   Asc (default): The tasks are sorted by data timestamp in ascending order.
         # *   Desc: The tasks are sorted by data timestamp in descending order.
         self.order = order
         # The number of tasks that can be run in parallel. If you specify a value that ranges from 2 to 10, the value indicates the number of tasks that can be run in parallel. If you set the value to 1, the tasks are run one by one. If you set the Type parameter to SupplementData, this parameter is required.
         self.parallelism = parallelism
+        # The running priority. Valid values: 1 to 11. A larger value indicates a higher priority.
         self.priority = priority
+        # The weight policy for the priority. Valid values:
+        # 
+        # *   `Disable`: No weight policy for the priority is enabled. This is the default value.
+        # *   `Upstream`: The sum of the weights for the ancestor nodes of the current node is calculated. The more ancestor nodes, the higher the weight.
         self.priority_weight_strategy = priority_weight_strategy
         # The root task IDs.
         # 
@@ -12723,7 +12728,7 @@ class CreateWorkflowInstancesRequestDefaultRunProperties(TeaModel):
         # *   If you set the Type parameter to Manual, the RootTaskIds parameter is required. The RootTaskIds parameter specifies the IDs of the manually triggered tasks that need to be run.
         # *   If you set the Type parameter to SmokeTest, the RootTaskIds parameter is required. The RootTaskIds parameter specifies the IDs of the test tasks that need to be run.
         self.root_task_ids = root_task_ids
-        # The policy for running. If you leave this parameter empty, the runtime configuration is used.
+        # The policy for running. If you leave this parameter empty, the task configuration is used.
         self.run_policy = run_policy
         # The identifier of the custom resource group for scheduling. If you leave this parameter empty, the runtime configuration is used.
         self.runtime_resource = runtime_resource
@@ -12954,7 +12959,7 @@ class CreateWorkflowInstancesRequest(TeaModel):
         # 
         # This parameter is required.
         self.workflow_id = workflow_id
-        # The workflow parameters. The priority of workflow parameters is higher than that of task parameters. You can call the GetTask operation to obtain the format of the workflow parameters by querying the Parameters parameter.
+        # The workflow parameters. This parameter takes effect only when you set the `WorkflowId` parameter to a value other than 1. If your workflow is an auto triggered workflow, configure this parameter in the key=value format. The parameters that you configure in this parameter have a lower priority than task parameters. If your workflow is a manually triggered workflow, configure this parameter in the JSON format. The parameters that you configure in this parameter have a higher priority than task parameters.
         self.workflow_parameters = workflow_parameters
 
     def validate(self):
@@ -13073,7 +13078,7 @@ class CreateWorkflowInstancesShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.workflow_id = workflow_id
-        # The workflow parameters. The priority of workflow parameters is higher than that of task parameters. You can call the GetTask operation to obtain the format of the workflow parameters by querying the Parameters parameter.
+        # The workflow parameters. This parameter takes effect only when you set the `WorkflowId` parameter to a value other than 1. If your workflow is an auto triggered workflow, configure this parameter in the key=value format. The parameters that you configure in this parameter have a lower priority than task parameters. If your workflow is a manually triggered workflow, configure this parameter in the JSON format. The parameters that you configure in this parameter have a higher priority than task parameters.
         self.workflow_parameters = workflow_parameters
 
     def validate(self):
@@ -27749,6 +27754,7 @@ class GetProjectMemberResponseBodyProjectMember(TeaModel):
         roles: List[GetProjectMemberResponseBodyProjectMemberRoles] = None,
         status: str = None,
         user_id: str = None,
+        user_name: str = None,
     ):
         # The DataWorks workspace ID.
         self.project_id = project_id
@@ -27761,6 +27767,7 @@ class GetProjectMemberResponseBodyProjectMember(TeaModel):
         self.status = status
         # The ID of the account used by the member in the workspace.
         self.user_id = user_id
+        self.user_name = user_name
 
     def validate(self):
         if self.roles:
@@ -27784,6 +27791,8 @@ class GetProjectMemberResponseBodyProjectMember(TeaModel):
             result['Status'] = self.status
         if self.user_id is not None:
             result['UserId'] = self.user_id
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
         return result
 
     def from_map(self, m: dict = None):
@@ -27799,6 +27808,8 @@ class GetProjectMemberResponseBodyProjectMember(TeaModel):
             self.status = m.get('Status')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
         return self
 
 
@@ -50804,6 +50815,7 @@ class ListProjectMembersResponseBodyPagingInfoProjectMembers(TeaModel):
         roles: List[ListProjectMembersResponseBodyPagingInfoProjectMembersRoles] = None,
         status: str = None,
         user_id: str = None,
+        user_name: str = None,
     ):
         # The ID of the DataWorks workspace.
         self.project_id = project_id
@@ -50816,6 +50828,7 @@ class ListProjectMembersResponseBodyPagingInfoProjectMembers(TeaModel):
         self.status = status
         # The ID of the account used by the member.
         self.user_id = user_id
+        self.user_name = user_name
 
     def validate(self):
         if self.roles:
@@ -50839,6 +50852,8 @@ class ListProjectMembersResponseBodyPagingInfoProjectMembers(TeaModel):
             result['Status'] = self.status
         if self.user_id is not None:
             result['UserId'] = self.user_id
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
         return result
 
     def from_map(self, m: dict = None):
@@ -50854,6 +50869,8 @@ class ListProjectMembersResponseBodyPagingInfoProjectMembers(TeaModel):
             self.status = m.get('Status')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
         return self
 
 
@@ -65867,9 +65884,7 @@ class UpdateDIJobRequest(TeaModel):
         # The ID of the synchronization task.
         self.id = id
         self.job_settings = job_settings
-        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the workspace ID.
-        # 
-        # You must configure this parameter to specify the DataWorks workspace to which the operation is applied.
+        # The DataWorks workspace ID. You can call the [ListProjects](https://help.aliyun.com/document_detail/178393.html) operation to obtain the ID.
         self.project_id = project_id
         self.resource_settings = resource_settings
         self.table_mappings = table_mappings
@@ -65964,9 +65979,7 @@ class UpdateDIJobShrinkRequest(TeaModel):
         # The ID of the synchronization task.
         self.id = id
         self.job_settings_shrink = job_settings_shrink
-        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the workspace ID.
-        # 
-        # You must configure this parameter to specify the DataWorks workspace to which the operation is applied.
+        # The DataWorks workspace ID. You can call the [ListProjects](https://help.aliyun.com/document_detail/178393.html) operation to obtain the ID.
         self.project_id = project_id
         self.resource_settings_shrink = resource_settings_shrink
         self.table_mappings_shrink = table_mappings_shrink
