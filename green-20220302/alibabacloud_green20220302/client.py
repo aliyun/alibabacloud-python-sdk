@@ -369,6 +369,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_image_result_ext_with_options_async(request, runtime)
 
+    def describe_multimodal_moderation_result_with_options(
+        self,
+        request: green_20220302_models.DescribeMultimodalModerationResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220302_models.DescribeMultimodalModerationResultResponse:
+        """
+        @summary 查询异步多模态检测结果
+        
+        @param request: DescribeMultimodalModerationResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMultimodalModerationResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.req_id):
+            query['ReqId'] = request.req_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMultimodalModerationResult',
+            version='2022-03-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220302_models.DescribeMultimodalModerationResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_multimodal_moderation_result_with_options_async(
+        self,
+        request: green_20220302_models.DescribeMultimodalModerationResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220302_models.DescribeMultimodalModerationResultResponse:
+        """
+        @summary 查询异步多模态检测结果
+        
+        @param request: DescribeMultimodalModerationResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMultimodalModerationResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.req_id):
+            query['ReqId'] = request.req_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMultimodalModerationResult',
+            version='2022-03-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220302_models.DescribeMultimodalModerationResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_multimodal_moderation_result(
+        self,
+        request: green_20220302_models.DescribeMultimodalModerationResultRequest,
+    ) -> green_20220302_models.DescribeMultimodalModerationResultResponse:
+        """
+        @summary 查询异步多模态检测结果
+        
+        @param request: DescribeMultimodalModerationResultRequest
+        @return: DescribeMultimodalModerationResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_multimodal_moderation_result_with_options(request, runtime)
+
+    async def describe_multimodal_moderation_result_async(
+        self,
+        request: green_20220302_models.DescribeMultimodalModerationResultRequest,
+    ) -> green_20220302_models.DescribeMultimodalModerationResultResponse:
+        """
+        @summary 查询异步多模态检测结果
+        
+        @param request: DescribeMultimodalModerationResultRequest
+        @return: DescribeMultimodalModerationResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_multimodal_moderation_result_with_options_async(request, runtime)
+
     def describe_upload_token_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -1374,6 +1470,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.multi_modal_guard_with_options_async(request, runtime)
+
+    def multimodal_async_moderation_with_options(
+        self,
+        request: green_20220302_models.MultimodalAsyncModerationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220302_models.MultimodalAsyncModerationResponse:
+        """
+        @summary 多模态-异步检测
+        
+        @param request: MultimodalAsyncModerationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MultimodalAsyncModerationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.service):
+            query['Service'] = request.service
+        if not UtilClient.is_unset(request.service_parameters):
+            query['ServiceParameters'] = request.service_parameters
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MultimodalAsyncModeration',
+            version='2022-03-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220302_models.MultimodalAsyncModerationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def multimodal_async_moderation_with_options_async(
+        self,
+        request: green_20220302_models.MultimodalAsyncModerationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220302_models.MultimodalAsyncModerationResponse:
+        """
+        @summary 多模态-异步检测
+        
+        @param request: MultimodalAsyncModerationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MultimodalAsyncModerationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.service):
+            query['Service'] = request.service
+        if not UtilClient.is_unset(request.service_parameters):
+            query['ServiceParameters'] = request.service_parameters
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MultimodalAsyncModeration',
+            version='2022-03-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220302_models.MultimodalAsyncModerationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def multimodal_async_moderation(
+        self,
+        request: green_20220302_models.MultimodalAsyncModerationRequest,
+    ) -> green_20220302_models.MultimodalAsyncModerationResponse:
+        """
+        @summary 多模态-异步检测
+        
+        @param request: MultimodalAsyncModerationRequest
+        @return: MultimodalAsyncModerationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.multimodal_async_moderation_with_options(request, runtime)
+
+    async def multimodal_async_moderation_async(
+        self,
+        request: green_20220302_models.MultimodalAsyncModerationRequest,
+    ) -> green_20220302_models.MultimodalAsyncModerationResponse:
+        """
+        @summary 多模态-异步检测
+        
+        @param request: MultimodalAsyncModerationRequest
+        @return: MultimodalAsyncModerationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.multimodal_async_moderation_with_options_async(request, runtime)
 
     def text_moderation_with_options(
         self,

@@ -1,3 +1,8 @@
+2025-07-17 Version: 2.22.0
+- Support API DescribeMultimodalModerationResult.
+- Support API MultimodalAsyncModeration.
+
+
 2025-07-10 Version: 2.21.3
 - Update API TextModerationPlus: add response parameters Body.Data.DetectedLanguage.
 - Update API TextModerationPlus: add response parameters Body.Data.TranslatedContent.

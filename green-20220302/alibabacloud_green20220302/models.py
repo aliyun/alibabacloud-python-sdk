@@ -1336,6 +1336,396 @@ class DescribeImageResultExtResponse(TeaModel):
         return self
 
 
+class DescribeMultimodalModerationResultRequest(TeaModel):
+    def __init__(
+        self,
+        req_id: str = None,
+    ):
+        self.req_id = req_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.req_id is not None:
+            result['ReqId'] = self.req_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReqId') is not None:
+            self.req_id = m.get('ReqId')
+        return self
+
+
+class DescribeMultimodalModerationResultResponseBodyDataCommentDatasCommentDatasResults(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        label: str = None,
+    ):
+        self.description = description
+        self.label = label
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.label is not None:
+            result['Label'] = self.label
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        return self
+
+
+class DescribeMultimodalModerationResultResponseBodyDataCommentDatasCommentDatas(TeaModel):
+    def __init__(
+        self,
+        results: List[DescribeMultimodalModerationResultResponseBodyDataCommentDatasCommentDatasResults] = None,
+    ):
+        self.results = results
+
+    def validate(self):
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['Results'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.results = []
+        if m.get('Results') is not None:
+            for k in m.get('Results'):
+                temp_model = DescribeMultimodalModerationResultResponseBodyDataCommentDatasCommentDatasResults()
+                self.results.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeMultimodalModerationResultResponseBodyDataCommentDatasResults(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        label: str = None,
+    ):
+        self.description = description
+        self.label = label
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.label is not None:
+            result['Label'] = self.label
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        return self
+
+
+class DescribeMultimodalModerationResultResponseBodyDataCommentDatas(TeaModel):
+    def __init__(
+        self,
+        comment_datas: List[DescribeMultimodalModerationResultResponseBodyDataCommentDatasCommentDatas] = None,
+        results: List[DescribeMultimodalModerationResultResponseBodyDataCommentDatasResults] = None,
+    ):
+        self.comment_datas = comment_datas
+        self.results = results
+
+    def validate(self):
+        if self.comment_datas:
+            for k in self.comment_datas:
+                if k:
+                    k.validate()
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CommentDatas'] = []
+        if self.comment_datas is not None:
+            for k in self.comment_datas:
+                result['CommentDatas'].append(k.to_map() if k else None)
+        result['Results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['Results'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.comment_datas = []
+        if m.get('CommentDatas') is not None:
+            for k in m.get('CommentDatas'):
+                temp_model = DescribeMultimodalModerationResultResponseBodyDataCommentDatasCommentDatas()
+                self.comment_datas.append(temp_model.from_map(k))
+        self.results = []
+        if m.get('Results') is not None:
+            for k in m.get('Results'):
+                temp_model = DescribeMultimodalModerationResultResponseBodyDataCommentDatasResults()
+                self.results.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeMultimodalModerationResultResponseBodyDataMainDataResults(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        label: str = None,
+    ):
+        self.description = description
+        self.label = label
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.label is not None:
+            result['Label'] = self.label
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        return self
+
+
+class DescribeMultimodalModerationResultResponseBodyDataMainData(TeaModel):
+    def __init__(
+        self,
+        results: List[DescribeMultimodalModerationResultResponseBodyDataMainDataResults] = None,
+    ):
+        self.results = results
+
+    def validate(self):
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['Results'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.results = []
+        if m.get('Results') is not None:
+            for k in m.get('Results'):
+                temp_model = DescribeMultimodalModerationResultResponseBodyDataMainDataResults()
+                self.results.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeMultimodalModerationResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        comment_datas: List[DescribeMultimodalModerationResultResponseBodyDataCommentDatas] = None,
+        main_data: DescribeMultimodalModerationResultResponseBodyDataMainData = None,
+        req_id: str = None,
+        risk_level: str = None,
+    ):
+        self.comment_datas = comment_datas
+        self.main_data = main_data
+        self.req_id = req_id
+        self.risk_level = risk_level
+
+    def validate(self):
+        if self.comment_datas:
+            for k in self.comment_datas:
+                if k:
+                    k.validate()
+        if self.main_data:
+            self.main_data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CommentDatas'] = []
+        if self.comment_datas is not None:
+            for k in self.comment_datas:
+                result['CommentDatas'].append(k.to_map() if k else None)
+        if self.main_data is not None:
+            result['MainData'] = self.main_data.to_map()
+        if self.req_id is not None:
+            result['ReqId'] = self.req_id
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.comment_datas = []
+        if m.get('CommentDatas') is not None:
+            for k in m.get('CommentDatas'):
+                temp_model = DescribeMultimodalModerationResultResponseBodyDataCommentDatas()
+                self.comment_datas.append(temp_model.from_map(k))
+        if m.get('MainData') is not None:
+            temp_model = DescribeMultimodalModerationResultResponseBodyDataMainData()
+            self.main_data = temp_model.from_map(m['MainData'])
+        if m.get('ReqId') is not None:
+            self.req_id = m.get('ReqId')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+        return self
+
+
+class DescribeMultimodalModerationResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: DescribeMultimodalModerationResultResponseBodyData = None,
+        msg: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.msg = msg
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DescribeMultimodalModerationResultResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeMultimodalModerationResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeMultimodalModerationResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeMultimodalModerationResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeUploadTokenResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -5246,6 +5636,160 @@ class MultiModalGuardResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = MultiModalGuardResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class MultimodalAsyncModerationRequest(TeaModel):
+    def __init__(
+        self,
+        service: str = None,
+        service_parameters: str = None,
+    ):
+        self.service = service
+        self.service_parameters = service_parameters
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.service is not None:
+            result['Service'] = self.service
+        if self.service_parameters is not None:
+            result['ServiceParameters'] = self.service_parameters
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Service') is not None:
+            self.service = m.get('Service')
+        if m.get('ServiceParameters') is not None:
+            self.service_parameters = m.get('ServiceParameters')
+        return self
+
+
+class MultimodalAsyncModerationResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        data_id: str = None,
+        req_id: str = None,
+    ):
+        self.data_id = data_id
+        self.req_id = req_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        if self.req_id is not None:
+            result['ReqId'] = self.req_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        if m.get('ReqId') is not None:
+            self.req_id = m.get('ReqId')
+        return self
+
+
+class MultimodalAsyncModerationResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: MultimodalAsyncModerationResponseBodyData = None,
+        msg: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.msg = msg
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = MultimodalAsyncModerationResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class MultimodalAsyncModerationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: MultimodalAsyncModerationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = MultimodalAsyncModerationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
