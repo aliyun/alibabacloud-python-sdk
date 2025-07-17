@@ -1,3 +1,27 @@
+2025-07-17 Version: 1.74.0
+- Support API AddTableToCategory.
+- Support API CreateMetaCategory.
+- Support API DeleteMetaCategory.
+- Support API DescribeDifyEditions.
+- Support API GenMetaKnowledgeAsset.
+- Support API ListMetaCategory.
+- Support API ListTablesInCategory.
+- Support API RemoveTableFromCategory.
+- Support API UpdateMetaCategory.
+- Update API CreateDifyInstance: add request parameters BackupVSwitchId.
+- Update API CreateDifyInstance: add request parameters Edition.
+- Update API CreateDifyInstance: add request parameters EnableExtraEndpoint.
+- Update API CreateDifyInstance: add request parameters MajorVersion.
+- Update API ListDifyInstances: add response parameters Body.Root.Data.$.CreatedTime.
+- Update API ListDifyInstances: add response parameters Body.Root.Data.$.Edition.
+- Update API ListDifyInstances: add response parameters Body.Root.Data.$.EnterpriseInternetUrl.
+- Update API ListDifyInstances: add response parameters Body.Root.Data.$.EnterpriseIntranetUrl.
+- Update API ListDifyInstances: add response parameters Body.Root.Data.$.InternetUrl.
+- Update API ListDifyInstances: add response parameters Body.Root.Data.$.IntranetUrl.
+- Update API ListDifyInstances: add response parameters Body.Root.Data.$.MajorVersion.
+- Update API ListInstances: add request parameters Region.
+
+
 2025-06-18 Version: 1.73.1
 - Update API GetInstance: add response parameters Body.Instance.SellTrust.
 - Update API ListInstances: add response parameters Body.InstanceList.$.SellTrust.

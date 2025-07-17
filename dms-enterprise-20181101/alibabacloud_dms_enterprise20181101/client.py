@@ -735,6 +735,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_logic_table_route_config_with_options_async(request, runtime)
 
+    def add_table_to_category_with_options(
+        self,
+        request: dms_enterprise_20181101_models.AddTableToCategoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.AddTableToCategoryResponse:
+        """
+        @summary 添加表到资产类目
+        
+        @param request: AddTableToCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddTableToCategoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.table_schema_name):
+            query['TableSchemaName'] = request.table_schema_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddTableToCategory',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.AddTableToCategoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_table_to_category_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.AddTableToCategoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.AddTableToCategoryResponse:
+        """
+        @summary 添加表到资产类目
+        
+        @param request: AddTableToCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddTableToCategoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.table_schema_name):
+            query['TableSchemaName'] = request.table_schema_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddTableToCategory',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.AddTableToCategoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_table_to_category(
+        self,
+        request: dms_enterprise_20181101_models.AddTableToCategoryRequest,
+    ) -> dms_enterprise_20181101_models.AddTableToCategoryResponse:
+        """
+        @summary 添加表到资产类目
+        
+        @param request: AddTableToCategoryRequest
+        @return: AddTableToCategoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_table_to_category_with_options(request, runtime)
+
+    async def add_table_to_category_async(
+        self,
+        request: dms_enterprise_20181101_models.AddTableToCategoryRequest,
+    ) -> dms_enterprise_20181101_models.AddTableToCategoryResponse:
+        """
+        @summary 添加表到资产类目
+        
+        @param request: AddTableToCategoryRequest
+        @return: AddTableToCategoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_table_to_category_with_options_async(request, runtime)
+
     def add_task_flow_edges_with_options(
         self,
         tmp_req: dms_enterprise_20181101_models.AddTaskFlowEdgesRequest,
@@ -4056,6 +4168,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.adbpg_instance_mode):
             query['AdbpgInstanceMode'] = request.adbpg_instance_mode
+        if not UtilClient.is_unset(request.backup_vswitch_id):
+            query['BackupVSwitchId'] = request.backup_vswitch_id
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.data_region):
@@ -4082,6 +4196,10 @@ class Client(OpenApiClient):
             query['DbStorageType'] = request.db_storage_type
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
+        if not UtilClient.is_unset(request.enable_extra_endpoint):
+            query['EnableExtraEndpoint'] = request.enable_extra_endpoint
         if not UtilClient.is_unset(request.gpu_node_spec):
             query['GpuNodeSpec'] = request.gpu_node_spec
         if not UtilClient.is_unset(request.kv_store_account):
@@ -4100,6 +4218,8 @@ class Client(OpenApiClient):
             query['KvStoreResourceId'] = request.kv_store_resource_id
         if not UtilClient.is_unset(request.kv_store_type):
             query['KvStoreType'] = request.kv_store_type
+        if not UtilClient.is_unset(request.major_version):
+            query['MajorVersion'] = request.major_version
         if not UtilClient.is_unset(request.model_id):
             query['ModelId'] = request.model_id
         if not UtilClient.is_unset(request.model_option):
@@ -4206,6 +4326,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.adbpg_instance_mode):
             query['AdbpgInstanceMode'] = request.adbpg_instance_mode
+        if not UtilClient.is_unset(request.backup_vswitch_id):
+            query['BackupVSwitchId'] = request.backup_vswitch_id
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.data_region):
@@ -4232,6 +4354,10 @@ class Client(OpenApiClient):
             query['DbStorageType'] = request.db_storage_type
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
+        if not UtilClient.is_unset(request.enable_extra_endpoint):
+            query['EnableExtraEndpoint'] = request.enable_extra_endpoint
         if not UtilClient.is_unset(request.gpu_node_spec):
             query['GpuNodeSpec'] = request.gpu_node_spec
         if not UtilClient.is_unset(request.kv_store_account):
@@ -4250,6 +4376,8 @@ class Client(OpenApiClient):
             query['KvStoreResourceId'] = request.kv_store_resource_id
         if not UtilClient.is_unset(request.kv_store_type):
             query['KvStoreType'] = request.kv_store_type
+        if not UtilClient.is_unset(request.major_version):
+            query['MajorVersion'] = request.major_version
         if not UtilClient.is_unset(request.model_id):
             query['ModelId'] = request.model_id
         if not UtilClient.is_unset(request.model_option):
@@ -4762,6 +4890,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_logic_database_with_options_async(request, runtime)
+
+    def create_meta_category_with_options(
+        self,
+        request: dms_enterprise_20181101_models.CreateMetaCategoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateMetaCategoryResponse:
+        """
+        @summary 创建资产类目
+        
+        @param request: CreateMetaCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMetaCategoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.parent_category_id):
+            query['ParentCategoryId'] = request.parent_category_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateMetaCategory',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateMetaCategoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_meta_category_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateMetaCategoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateMetaCategoryResponse:
+        """
+        @summary 创建资产类目
+        
+        @param request: CreateMetaCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMetaCategoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.parent_category_id):
+            query['ParentCategoryId'] = request.parent_category_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateMetaCategory',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateMetaCategoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_meta_category(
+        self,
+        request: dms_enterprise_20181101_models.CreateMetaCategoryRequest,
+    ) -> dms_enterprise_20181101_models.CreateMetaCategoryResponse:
+        """
+        @summary 创建资产类目
+        
+        @param request: CreateMetaCategoryRequest
+        @return: CreateMetaCategoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_meta_category_with_options(request, runtime)
+
+    async def create_meta_category_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateMetaCategoryRequest,
+    ) -> dms_enterprise_20181101_models.CreateMetaCategoryResponse:
+        """
+        @summary 创建资产类目
+        
+        @param request: CreateMetaCategoryRequest
+        @return: CreateMetaCategoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_meta_category_with_options_async(request, runtime)
 
     def create_order_with_options(
         self,
@@ -7655,6 +7887,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_logic_table_route_config_with_options_async(request, runtime)
 
+    def delete_meta_category_with_options(
+        self,
+        request: dms_enterprise_20181101_models.DeleteMetaCategoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DeleteMetaCategoryResponse:
+        """
+        @summary 删除资产类目
+        
+        @param request: DeleteMetaCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMetaCategoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMetaCategory',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DeleteMetaCategoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_meta_category_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.DeleteMetaCategoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DeleteMetaCategoryResponse:
+        """
+        @summary 删除资产类目
+        
+        @param request: DeleteMetaCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMetaCategoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMetaCategory',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DeleteMetaCategoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_meta_category(
+        self,
+        request: dms_enterprise_20181101_models.DeleteMetaCategoryRequest,
+    ) -> dms_enterprise_20181101_models.DeleteMetaCategoryResponse:
+        """
+        @summary 删除资产类目
+        
+        @param request: DeleteMetaCategoryRequest
+        @return: DeleteMetaCategoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_meta_category_with_options(request, runtime)
+
+    async def delete_meta_category_async(
+        self,
+        request: dms_enterprise_20181101_models.DeleteMetaCategoryRequest,
+    ) -> dms_enterprise_20181101_models.DeleteMetaCategoryResponse:
+        """
+        @summary 删除资产类目
+        
+        @param request: DeleteMetaCategoryRequest
+        @return: DeleteMetaCategoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_meta_category_with_options_async(request, runtime)
+
     def delete_proxy_with_options(
         self,
         request: dms_enterprise_20181101_models.DeleteProxyRequest,
@@ -8786,6 +9118,142 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dify_default_vpc_with_options_async(request, runtime)
+
+    def describe_dify_editions_with_options(
+        self,
+        request: dms_enterprise_20181101_models.DescribeDifyEditionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DescribeDifyEditionsResponse:
+        """
+        @summary 用于获取Dify当前支持的版本信息
+        
+        @description ## 请求说明
+        - `workspaceOption` 参数指示是否新建工作空间，默认使用已有工作空间。
+        - 如果选择新建工作空间 (`CreateNewInstance`)，则必须提供 `workspaceName` 和 `workspaceDescription`。
+        - `vpcId`, `VSwitchID`, `zoneId`, `regionCode`, `ResourceQuota`, `Replicas`, `storageType`, `dbInstanceClass`, `dbEngineVersion`, `kvstoreEngineVersion` 是必填项。
+        - 当 `storageType` 为 `oss` 时，需要指定 `ossBucketResourceId` 和 `ossPath`。
+        - 如果需要新建数据库实例，则必须提供 `instanceAccount` 和 `instancePassword`。
+        - 预付费模式下，`PayPeriodType` 和 `PayPeriod` 必须填写。
+        - 可以通过设置 `dryRun` 为 `true` 来执行预检查而不实际创建实例。
+        
+        @param request: DescribeDifyEditionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDifyEditionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.data_region):
+            query['DataRegion'] = request.data_region
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDifyEditions',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DescribeDifyEditionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dify_editions_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.DescribeDifyEditionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DescribeDifyEditionsResponse:
+        """
+        @summary 用于获取Dify当前支持的版本信息
+        
+        @description ## 请求说明
+        - `workspaceOption` 参数指示是否新建工作空间，默认使用已有工作空间。
+        - 如果选择新建工作空间 (`CreateNewInstance`)，则必须提供 `workspaceName` 和 `workspaceDescription`。
+        - `vpcId`, `VSwitchID`, `zoneId`, `regionCode`, `ResourceQuota`, `Replicas`, `storageType`, `dbInstanceClass`, `dbEngineVersion`, `kvstoreEngineVersion` 是必填项。
+        - 当 `storageType` 为 `oss` 时，需要指定 `ossBucketResourceId` 和 `ossPath`。
+        - 如果需要新建数据库实例，则必须提供 `instanceAccount` 和 `instancePassword`。
+        - 预付费模式下，`PayPeriodType` 和 `PayPeriod` 必须填写。
+        - 可以通过设置 `dryRun` 为 `true` 来执行预检查而不实际创建实例。
+        
+        @param request: DescribeDifyEditionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDifyEditionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.data_region):
+            query['DataRegion'] = request.data_region
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDifyEditions',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DescribeDifyEditionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dify_editions(
+        self,
+        request: dms_enterprise_20181101_models.DescribeDifyEditionsRequest,
+    ) -> dms_enterprise_20181101_models.DescribeDifyEditionsResponse:
+        """
+        @summary 用于获取Dify当前支持的版本信息
+        
+        @description ## 请求说明
+        - `workspaceOption` 参数指示是否新建工作空间，默认使用已有工作空间。
+        - 如果选择新建工作空间 (`CreateNewInstance`)，则必须提供 `workspaceName` 和 `workspaceDescription`。
+        - `vpcId`, `VSwitchID`, `zoneId`, `regionCode`, `ResourceQuota`, `Replicas`, `storageType`, `dbInstanceClass`, `dbEngineVersion`, `kvstoreEngineVersion` 是必填项。
+        - 当 `storageType` 为 `oss` 时，需要指定 `ossBucketResourceId` 和 `ossPath`。
+        - 如果需要新建数据库实例，则必须提供 `instanceAccount` 和 `instancePassword`。
+        - 预付费模式下，`PayPeriodType` 和 `PayPeriod` 必须填写。
+        - 可以通过设置 `dryRun` 为 `true` 来执行预检查而不实际创建实例。
+        
+        @param request: DescribeDifyEditionsRequest
+        @return: DescribeDifyEditionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dify_editions_with_options(request, runtime)
+
+    async def describe_dify_editions_async(
+        self,
+        request: dms_enterprise_20181101_models.DescribeDifyEditionsRequest,
+    ) -> dms_enterprise_20181101_models.DescribeDifyEditionsResponse:
+        """
+        @summary 用于获取Dify当前支持的版本信息
+        
+        @description ## 请求说明
+        - `workspaceOption` 参数指示是否新建工作空间，默认使用已有工作空间。
+        - 如果选择新建工作空间 (`CreateNewInstance`)，则必须提供 `workspaceName` 和 `workspaceDescription`。
+        - `vpcId`, `VSwitchID`, `zoneId`, `regionCode`, `ResourceQuota`, `Replicas`, `storageType`, `dbInstanceClass`, `dbEngineVersion`, `kvstoreEngineVersion` 是必填项。
+        - 当 `storageType` 为 `oss` 时，需要指定 `ossBucketResourceId` 和 `ossPath`。
+        - 如果需要新建数据库实例，则必须提供 `instanceAccount` 和 `instancePassword`。
+        - 预付费模式下，`PayPeriodType` 和 `PayPeriod` 必须填写。
+        - 可以通过设置 `dryRun` 为 `true` 来执行预检查而不实际创建实例。
+        
+        @param request: DescribeDifyEditionsRequest
+        @return: DescribeDifyEditionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dify_editions_with_options_async(request, runtime)
 
     def describe_dify_regions_with_options(
         self,
@@ -9982,6 +10450,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.execute_struct_sync_with_options_async(request, runtime)
+
+    def gen_meta_knowledge_asset_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GenMetaKnowledgeAssetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GenMetaKnowledgeAssetResponse:
+        """
+        @summary 数据库知识库补数据接口
+        
+        @param request: GenMetaKnowledgeAssetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenMetaKnowledgeAssetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenMetaKnowledgeAsset',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GenMetaKnowledgeAssetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def gen_meta_knowledge_asset_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GenMetaKnowledgeAssetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GenMetaKnowledgeAssetResponse:
+        """
+        @summary 数据库知识库补数据接口
+        
+        @param request: GenMetaKnowledgeAssetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenMetaKnowledgeAssetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenMetaKnowledgeAsset',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GenMetaKnowledgeAssetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def gen_meta_knowledge_asset(
+        self,
+        request: dms_enterprise_20181101_models.GenMetaKnowledgeAssetRequest,
+    ) -> dms_enterprise_20181101_models.GenMetaKnowledgeAssetResponse:
+        """
+        @summary 数据库知识库补数据接口
+        
+        @param request: GenMetaKnowledgeAssetRequest
+        @return: GenMetaKnowledgeAssetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.gen_meta_knowledge_asset_with_options(request, runtime)
+
+    async def gen_meta_knowledge_asset_async(
+        self,
+        request: dms_enterprise_20181101_models.GenMetaKnowledgeAssetRequest,
+    ) -> dms_enterprise_20181101_models.GenMetaKnowledgeAssetResponse:
+        """
+        @summary 数据库知识库补数据接口
+        
+        @param request: GenMetaKnowledgeAssetRequest
+        @return: GenMetaKnowledgeAssetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.gen_meta_knowledge_asset_with_options_async(request, runtime)
 
     def generate_sql_from_nlwith_options(
         self,
@@ -21675,6 +22239,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
         if not UtilClient.is_unset(request.search_key):
             query['SearchKey'] = request.search_key
         if not UtilClient.is_unset(request.tid):
@@ -21726,6 +22292,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
         if not UtilClient.is_unset(request.search_key):
             query['SearchKey'] = request.search_key
         if not UtilClient.is_unset(request.tid):
@@ -22210,6 +22778,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_logic_tables_with_options_async(request, runtime)
+
+    def list_meta_category_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListMetaCategoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListMetaCategoryResponse:
+        """
+        @summary 获取资产类目列表
+        
+        @param request: ListMetaCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMetaCategoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.parent_category_id):
+            query['ParentCategoryId'] = request.parent_category_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMetaCategory',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListMetaCategoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_meta_category_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListMetaCategoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListMetaCategoryResponse:
+        """
+        @summary 获取资产类目列表
+        
+        @param request: ListMetaCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMetaCategoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.parent_category_id):
+            query['ParentCategoryId'] = request.parent_category_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMetaCategory',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListMetaCategoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_meta_category(
+        self,
+        request: dms_enterprise_20181101_models.ListMetaCategoryRequest,
+    ) -> dms_enterprise_20181101_models.ListMetaCategoryResponse:
+        """
+        @summary 获取资产类目列表
+        
+        @param request: ListMetaCategoryRequest
+        @return: ListMetaCategoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_meta_category_with_options(request, runtime)
+
+    async def list_meta_category_async(
+        self,
+        request: dms_enterprise_20181101_models.ListMetaCategoryRequest,
+    ) -> dms_enterprise_20181101_models.ListMetaCategoryResponse:
+        """
+        @summary 获取资产类目列表
+        
+        @param request: ListMetaCategoryRequest
+        @return: ListMetaCategoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_meta_category_with_options_async(request, runtime)
 
     def list_orders_with_options(
         self,
@@ -24026,6 +24702,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_tables_with_options_async(request, runtime)
+
+    def list_tables_in_category_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListTablesInCategoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListTablesInCategoryResponse:
+        """
+        @summary 获取类目下的表列表
+        
+        @param request: ListTablesInCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTablesInCategoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTablesInCategory',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListTablesInCategoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tables_in_category_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListTablesInCategoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListTablesInCategoryResponse:
+        """
+        @summary 获取类目下的表列表
+        
+        @param request: ListTablesInCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTablesInCategoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTablesInCategory',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListTablesInCategoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tables_in_category(
+        self,
+        request: dms_enterprise_20181101_models.ListTablesInCategoryRequest,
+    ) -> dms_enterprise_20181101_models.ListTablesInCategoryResponse:
+        """
+        @summary 获取类目下的表列表
+        
+        @param request: ListTablesInCategoryRequest
+        @return: ListTablesInCategoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_tables_in_category_with_options(request, runtime)
+
+    async def list_tables_in_category_async(
+        self,
+        request: dms_enterprise_20181101_models.ListTablesInCategoryRequest,
+    ) -> dms_enterprise_20181101_models.ListTablesInCategoryResponse:
+        """
+        @summary 获取类目下的表列表
+        
+        @param request: ListTablesInCategoryRequest
+        @return: ListTablesInCategoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tables_in_category_with_options_async(request, runtime)
 
     def list_task_flow_with_options(
         self,
@@ -27615,6 +28399,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.remove_data_export_job_with_options_async(request, runtime)
 
+    def remove_table_from_category_with_options(
+        self,
+        request: dms_enterprise_20181101_models.RemoveTableFromCategoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.RemoveTableFromCategoryResponse:
+        """
+        @summary 从资产类目移除表
+        
+        @param request: RemoveTableFromCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveTableFromCategoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.table_schema_name):
+            query['TableSchemaName'] = request.table_schema_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveTableFromCategory',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.RemoveTableFromCategoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_table_from_category_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.RemoveTableFromCategoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.RemoveTableFromCategoryResponse:
+        """
+        @summary 从资产类目移除表
+        
+        @param request: RemoveTableFromCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveTableFromCategoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.table_schema_name):
+            query['TableSchemaName'] = request.table_schema_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveTableFromCategory',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.RemoveTableFromCategoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_table_from_category(
+        self,
+        request: dms_enterprise_20181101_models.RemoveTableFromCategoryRequest,
+    ) -> dms_enterprise_20181101_models.RemoveTableFromCategoryResponse:
+        """
+        @summary 从资产类目移除表
+        
+        @param request: RemoveTableFromCategoryRequest
+        @return: RemoveTableFromCategoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.remove_table_from_category_with_options(request, runtime)
+
+    async def remove_table_from_category_async(
+        self,
+        request: dms_enterprise_20181101_models.RemoveTableFromCategoryRequest,
+    ) -> dms_enterprise_20181101_models.RemoveTableFromCategoryResponse:
+        """
+        @summary 从资产类目移除表
+        
+        @param request: RemoveTableFromCategoryRequest
+        @return: RemoveTableFromCategoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.remove_table_from_category_with_options_async(request, runtime)
+
     def restart_data_correct_sqljob_with_options(
         self,
         request: dms_enterprise_20181101_models.RestartDataCorrectSQLJobRequest,
@@ -30934,6 +31830,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_instance_with_options_async(request, runtime)
+
+    def update_meta_category_with_options(
+        self,
+        request: dms_enterprise_20181101_models.UpdateMetaCategoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateMetaCategoryResponse:
+        """
+        @summary 更新资产类目信息
+        
+        @param request: UpdateMetaCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMetaCategoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateMetaCategory',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateMetaCategoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_meta_category_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateMetaCategoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateMetaCategoryResponse:
+        """
+        @summary 更新资产类目信息
+        
+        @param request: UpdateMetaCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMetaCategoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateMetaCategory',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateMetaCategoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_meta_category(
+        self,
+        request: dms_enterprise_20181101_models.UpdateMetaCategoryRequest,
+    ) -> dms_enterprise_20181101_models.UpdateMetaCategoryResponse:
+        """
+        @summary 更新资产类目信息
+        
+        @param request: UpdateMetaCategoryRequest
+        @return: UpdateMetaCategoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_meta_category_with_options(request, runtime)
+
+    async def update_meta_category_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateMetaCategoryRequest,
+    ) -> dms_enterprise_20181101_models.UpdateMetaCategoryResponse:
+        """
+        @summary 更新资产类目信息
+        
+        @param request: UpdateMetaCategoryRequest
+        @return: UpdateMetaCategoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_meta_category_with_options_async(request, runtime)
 
     def update_slarules_with_options(
         self,
