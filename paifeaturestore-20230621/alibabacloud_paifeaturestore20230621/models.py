@@ -3140,6 +3140,33 @@ class GetFeatureViewResponse(TeaModel):
         return self
 
 
+class GetInstanceResponseBodyFeatureDBInfo(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+    ):
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
 class GetInstanceResponseBodyFeatureDBInstanceInfo(TeaModel):
     def __init__(
         self,
@@ -3170,6 +3197,7 @@ class GetInstanceResponseBodyFeatureDBInstanceInfo(TeaModel):
 class GetInstanceResponseBody(TeaModel):
     def __init__(
         self,
+        feature_dbinfo: GetInstanceResponseBodyFeatureDBInfo = None,
         feature_dbinstance_info: GetInstanceResponseBodyFeatureDBInstanceInfo = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
@@ -3180,6 +3208,7 @@ class GetInstanceResponseBody(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        self.feature_dbinfo = feature_dbinfo
         self.feature_dbinstance_info = feature_dbinstance_info
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
@@ -3191,6 +3220,8 @@ class GetInstanceResponseBody(TeaModel):
         self.type = type
 
     def validate(self):
+        if self.feature_dbinfo:
+            self.feature_dbinfo.validate()
         if self.feature_dbinstance_info:
             self.feature_dbinstance_info.validate()
 
@@ -3200,6 +3231,8 @@ class GetInstanceResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.feature_dbinfo is not None:
+            result['FeatureDBInfo'] = self.feature_dbinfo.to_map()
         if self.feature_dbinstance_info is not None:
             result['FeatureDBInstanceInfo'] = self.feature_dbinstance_info.to_map()
         if self.gmt_create_time is not None:
@@ -3222,6 +3255,9 @@ class GetInstanceResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FeatureDBInfo') is not None:
+            temp_model = GetInstanceResponseBodyFeatureDBInfo()
+            self.feature_dbinfo = temp_model.from_map(m['FeatureDBInfo'])
         if m.get('FeatureDBInstanceInfo') is not None:
             temp_model = GetInstanceResponseBodyFeatureDBInstanceInfo()
             self.feature_dbinstance_info = temp_model.from_map(m['FeatureDBInstanceInfo'])
@@ -6788,6 +6824,33 @@ class ListInstancesRequest(TeaModel):
         return self
 
 
+class ListInstancesResponseBodyInstancesFeatureDBInfo(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+    ):
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
 class ListInstancesResponseBodyInstancesFeatureDBInstanceInfo(TeaModel):
     def __init__(
         self,
@@ -6818,6 +6881,7 @@ class ListInstancesResponseBodyInstancesFeatureDBInstanceInfo(TeaModel):
 class ListInstancesResponseBodyInstances(TeaModel):
     def __init__(
         self,
+        feature_dbinfo: ListInstancesResponseBodyInstancesFeatureDBInfo = None,
         feature_dbinstance_info: ListInstancesResponseBodyInstancesFeatureDBInstanceInfo = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
@@ -6826,6 +6890,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        self.feature_dbinfo = feature_dbinfo
         self.feature_dbinstance_info = feature_dbinstance_info
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
@@ -6835,6 +6900,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
         self.type = type
 
     def validate(self):
+        if self.feature_dbinfo:
+            self.feature_dbinfo.validate()
         if self.feature_dbinstance_info:
             self.feature_dbinstance_info.validate()
 
@@ -6844,6 +6911,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
             return _map
 
         result = dict()
+        if self.feature_dbinfo is not None:
+            result['FeatureDBInfo'] = self.feature_dbinfo.to_map()
         if self.feature_dbinstance_info is not None:
             result['FeatureDBInstanceInfo'] = self.feature_dbinstance_info.to_map()
         if self.gmt_create_time is not None:
@@ -6862,6 +6931,9 @@ class ListInstancesResponseBodyInstances(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FeatureDBInfo') is not None:
+            temp_model = ListInstancesResponseBodyInstancesFeatureDBInfo()
+            self.feature_dbinfo = temp_model.from_map(m['FeatureDBInfo'])
         if m.get('FeatureDBInstanceInfo') is not None:
             temp_model = ListInstancesResponseBodyInstancesFeatureDBInstanceInfo()
             self.feature_dbinstance_info = temp_model.from_map(m['FeatureDBInstanceInfo'])
