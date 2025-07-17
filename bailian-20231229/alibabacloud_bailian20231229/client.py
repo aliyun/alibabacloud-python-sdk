@@ -317,6 +317,146 @@ class Client(OpenApiClient):
         headers = {}
         return await self.add_file_with_options_async(workspace_id, request, headers, runtime)
 
+    def add_files_from_authorized_oss_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: bailian_20231229_models.AddFilesFromAuthorizedOssRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.AddFilesFromAuthorizedOssResponse:
+        """
+        @summary 将已授权OSS Bucket中的文件添加到百炼应用数据
+        
+        @param tmp_req: AddFilesFromAuthorizedOssRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddFilesFromAuthorizedOssResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bailian_20231229_models.AddFilesFromAuthorizedOssShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.file_details):
+            request.file_details_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.file_details, 'FileDetails', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.category_id):
+            body['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.category_type):
+            body['CategoryType'] = request.category_type
+        if not UtilClient.is_unset(request.file_details_shrink):
+            body['FileDetails'] = request.file_details_shrink
+        if not UtilClient.is_unset(request.oss_bucket_name):
+            body['OssBucketName'] = request.oss_bucket_name
+        if not UtilClient.is_unset(request.oss_region_id):
+            body['OssRegionId'] = request.oss_region_id
+        if not UtilClient.is_unset(request.tags_shrink):
+            body['Tags'] = request.tags_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddFilesFromAuthorizedOss',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/datacenter/file/fromoss',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.AddFilesFromAuthorizedOssResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_files_from_authorized_oss_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: bailian_20231229_models.AddFilesFromAuthorizedOssRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.AddFilesFromAuthorizedOssResponse:
+        """
+        @summary 将已授权OSS Bucket中的文件添加到百炼应用数据
+        
+        @param tmp_req: AddFilesFromAuthorizedOssRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddFilesFromAuthorizedOssResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bailian_20231229_models.AddFilesFromAuthorizedOssShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.file_details):
+            request.file_details_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.file_details, 'FileDetails', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.category_id):
+            body['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.category_type):
+            body['CategoryType'] = request.category_type
+        if not UtilClient.is_unset(request.file_details_shrink):
+            body['FileDetails'] = request.file_details_shrink
+        if not UtilClient.is_unset(request.oss_bucket_name):
+            body['OssBucketName'] = request.oss_bucket_name
+        if not UtilClient.is_unset(request.oss_region_id):
+            body['OssRegionId'] = request.oss_region_id
+        if not UtilClient.is_unset(request.tags_shrink):
+            body['Tags'] = request.tags_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddFilesFromAuthorizedOss',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/datacenter/file/fromoss',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.AddFilesFromAuthorizedOssResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_files_from_authorized_oss(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.AddFilesFromAuthorizedOssRequest,
+    ) -> bailian_20231229_models.AddFilesFromAuthorizedOssResponse:
+        """
+        @summary 将已授权OSS Bucket中的文件添加到百炼应用数据
+        
+        @param request: AddFilesFromAuthorizedOssRequest
+        @return: AddFilesFromAuthorizedOssResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.add_files_from_authorized_oss_with_options(workspace_id, request, headers, runtime)
+
+    async def add_files_from_authorized_oss_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.AddFilesFromAuthorizedOssRequest,
+    ) -> bailian_20231229_models.AddFilesFromAuthorizedOssResponse:
+        """
+        @summary 将已授权OSS Bucket中的文件添加到百炼应用数据
+        
+        @param request: AddFilesFromAuthorizedOssRequest
+        @return: AddFilesFromAuthorizedOssResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.add_files_from_authorized_oss_with_options_async(workspace_id, request, headers, runtime)
+
     def apply_file_upload_lease_with_options(
         self,
         category_id: str,

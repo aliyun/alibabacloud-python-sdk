@@ -1,3 +1,7 @@
+2025-07-17 Version: 2.1.0
+- Support API AddFilesFromAuthorizedOss.
+
+
 2025-06-04 Version: 2.0.8
 - Update API ListIndexDocuments: add request parameters EnableNameLike.
 

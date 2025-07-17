@@ -189,10 +189,13 @@ class AddFileRequest(TeaModel):
         parser: str = None,
         tags: List[str] = None,
     ):
-        # The primary key ID of the category to which the document is uploaded. This parameter corresponds to the `CategoryId`<props="china"> returned by the [AddCategory](https://www.alibabacloud.com/help/zh/model-studio/developer-reference/api-bailian-2023-12-29-addcategory) operation. You can also click the ID icon next to the category name on the Unstructured Data tab of the [Data Management](https://bailian.console.alibabacloud.com/#/data-center) page to view the ID. You can set the parameter to default, which specifies the Default Category created by the system.
+        # The primary key ID of the category to which the document is uploaded. This parameter corresponds to the `CategoryId` returned by the [AddCategory](https://www.alibabacloud.com/help/eh/model-studio/developer-reference/api-bailian-2023-12-29-addcategory) operation. You can also click the ID icon next to the category name on the Unstructured Data tab of the [Application Data](https://modelstudio.console.alibabacloud.com/#/data-center) page to view the ID. You can set the parameter to default, which specifies the Default Category created by the system.
         # 
         # This parameter is required.
         self.category_id = category_id
+        # The type of the category. Valid values:
+        # - UNSTRUCTURED
+        # - SESSION_FILE
         self.category_type = category_type
         # The lease ID, which corresponds to the `FileUploadLeaseId` parameter returned by the [ApplyFileUploadLease](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation.
         # 
@@ -258,10 +261,13 @@ class AddFileShrinkRequest(TeaModel):
         parser: str = None,
         tags_shrink: str = None,
     ):
-        # The primary key ID of the category to which the document is uploaded. This parameter corresponds to the `CategoryId`<props="china"> returned by the [AddCategory](https://www.alibabacloud.com/help/zh/model-studio/developer-reference/api-bailian-2023-12-29-addcategory) operation. You can also click the ID icon next to the category name on the Unstructured Data tab of the [Data Management](https://bailian.console.alibabacloud.com/#/data-center) page to view the ID. You can set the parameter to default, which specifies the Default Category created by the system.
+        # The primary key ID of the category to which the document is uploaded. This parameter corresponds to the `CategoryId` returned by the [AddCategory](https://www.alibabacloud.com/help/eh/model-studio/developer-reference/api-bailian-2023-12-29-addcategory) operation. You can also click the ID icon next to the category name on the Unstructured Data tab of the [Application Data](https://modelstudio.console.alibabacloud.com/#/data-center) page to view the ID. You can set the parameter to default, which specifies the Default Category created by the system.
         # 
         # This parameter is required.
         self.category_id = category_id
+        # The type of the category. Valid values:
+        # - UNSTRUCTURED
+        # - SESSION_FILE
         self.category_type = category_type
         # The lease ID, which corresponds to the `FileUploadLeaseId` parameter returned by the [ApplyFileUploadLease](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation.
         # 
@@ -459,6 +465,354 @@ class AddFileResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AddFileResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AddFilesFromAuthorizedOssRequestFileDetails(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        oss_key: str = None,
+    ):
+        # This parameter is required.
+        self.file_name = file_name
+        # This parameter is required.
+        self.oss_key = oss_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        return self
+
+
+class AddFilesFromAuthorizedOssRequest(TeaModel):
+    def __init__(
+        self,
+        category_id: str = None,
+        category_type: str = None,
+        file_details: List[AddFilesFromAuthorizedOssRequestFileDetails] = None,
+        oss_bucket_name: str = None,
+        oss_region_id: str = None,
+        tags: List[str] = None,
+    ):
+        # This parameter is required.
+        self.category_id = category_id
+        # This parameter is required.
+        self.category_type = category_type
+        # This parameter is required.
+        self.file_details = file_details
+        # This parameter is required.
+        self.oss_bucket_name = oss_bucket_name
+        # This parameter is required.
+        self.oss_region_id = oss_region_id
+        self.tags = tags
+
+    def validate(self):
+        if self.file_details:
+            for k in self.file_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category_id is not None:
+            result['CategoryId'] = self.category_id
+        if self.category_type is not None:
+            result['CategoryType'] = self.category_type
+        result['FileDetails'] = []
+        if self.file_details is not None:
+            for k in self.file_details:
+                result['FileDetails'].append(k.to_map() if k else None)
+        if self.oss_bucket_name is not None:
+            result['OssBucketName'] = self.oss_bucket_name
+        if self.oss_region_id is not None:
+            result['OssRegionId'] = self.oss_region_id
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CategoryId') is not None:
+            self.category_id = m.get('CategoryId')
+        if m.get('CategoryType') is not None:
+            self.category_type = m.get('CategoryType')
+        self.file_details = []
+        if m.get('FileDetails') is not None:
+            for k in m.get('FileDetails'):
+                temp_model = AddFilesFromAuthorizedOssRequestFileDetails()
+                self.file_details.append(temp_model.from_map(k))
+        if m.get('OssBucketName') is not None:
+            self.oss_bucket_name = m.get('OssBucketName')
+        if m.get('OssRegionId') is not None:
+            self.oss_region_id = m.get('OssRegionId')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        return self
+
+
+class AddFilesFromAuthorizedOssShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        category_id: str = None,
+        category_type: str = None,
+        file_details_shrink: str = None,
+        oss_bucket_name: str = None,
+        oss_region_id: str = None,
+        tags_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.category_id = category_id
+        # This parameter is required.
+        self.category_type = category_type
+        # This parameter is required.
+        self.file_details_shrink = file_details_shrink
+        # This parameter is required.
+        self.oss_bucket_name = oss_bucket_name
+        # This parameter is required.
+        self.oss_region_id = oss_region_id
+        self.tags_shrink = tags_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category_id is not None:
+            result['CategoryId'] = self.category_id
+        if self.category_type is not None:
+            result['CategoryType'] = self.category_type
+        if self.file_details_shrink is not None:
+            result['FileDetails'] = self.file_details_shrink
+        if self.oss_bucket_name is not None:
+            result['OssBucketName'] = self.oss_bucket_name
+        if self.oss_region_id is not None:
+            result['OssRegionId'] = self.oss_region_id
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CategoryId') is not None:
+            self.category_id = m.get('CategoryId')
+        if m.get('CategoryType') is not None:
+            self.category_type = m.get('CategoryType')
+        if m.get('FileDetails') is not None:
+            self.file_details_shrink = m.get('FileDetails')
+        if m.get('OssBucketName') is not None:
+            self.oss_bucket_name = m.get('OssBucketName')
+        if m.get('OssRegionId') is not None:
+            self.oss_region_id = m.get('OssRegionId')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
+        return self
+
+
+class AddFilesFromAuthorizedOssResponseBodyDataAddFileResultList(TeaModel):
+    def __init__(
+        self,
+        file_id: str = None,
+        msg: str = None,
+        oss_key: str = None,
+        status: str = None,
+    ):
+        self.file_id = file_id
+        self.msg = msg
+        self.oss_key = oss_key
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class AddFilesFromAuthorizedOssResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        add_file_result_list: List[AddFilesFromAuthorizedOssResponseBodyDataAddFileResultList] = None,
+    ):
+        self.add_file_result_list = add_file_result_list
+
+    def validate(self):
+        if self.add_file_result_list:
+            for k in self.add_file_result_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AddFileResultList'] = []
+        if self.add_file_result_list is not None:
+            for k in self.add_file_result_list:
+                result['AddFileResultList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.add_file_result_list = []
+        if m.get('AddFileResultList') is not None:
+            for k in m.get('AddFileResultList'):
+                temp_model = AddFilesFromAuthorizedOssResponseBodyDataAddFileResultList()
+                self.add_file_result_list.append(temp_model.from_map(k))
+        return self
+
+
+class AddFilesFromAuthorizedOssResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: AddFilesFromAuthorizedOssResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.status = status
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = AddFilesFromAuthorizedOssResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AddFilesFromAuthorizedOssResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddFilesFromAuthorizedOssResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddFilesFromAuthorizedOssResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
