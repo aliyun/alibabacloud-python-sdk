@@ -6409,8 +6409,10 @@ class CreateHttpApiRequest(TeaModel):
         description: str = None,
         enable_auth: bool = None,
         ingress_config: CreateHttpApiRequestIngressConfig = None,
+        model_category: str = None,
         name: str = None,
         protocols: List[str] = None,
+        remove_base_path_on_forward: bool = None,
         resource_group_id: str = None,
         type: str = None,
         version_config: HttpApiVersionConfig = None,
@@ -6432,12 +6434,14 @@ class CreateHttpApiRequest(TeaModel):
         self.enable_auth = enable_auth
         # The HTTP Ingress configurations.
         self.ingress_config = ingress_config
+        self.model_category = model_category
         # The API name.
         # 
         # This parameter is required.
         self.name = name
         # The protocols that are used to call the API.
         self.protocols = protocols
+        self.remove_base_path_on_forward = remove_base_path_on_forward
         # The resource group ID.
         self.resource_group_id = resource_group_id
         # The API type. Valid values:
@@ -6486,10 +6490,14 @@ class CreateHttpApiRequest(TeaModel):
             result['enableAuth'] = self.enable_auth
         if self.ingress_config is not None:
             result['ingressConfig'] = self.ingress_config.to_map()
+        if self.model_category is not None:
+            result['modelCategory'] = self.model_category
         if self.name is not None:
             result['name'] = self.name
         if self.protocols is not None:
             result['protocols'] = self.protocols
+        if self.remove_base_path_on_forward is not None:
+            result['removeBasePathOnForward'] = self.remove_base_path_on_forward
         if self.resource_group_id is not None:
             result['resourceGroupId'] = self.resource_group_id
         if self.type is not None:
@@ -6521,10 +6529,14 @@ class CreateHttpApiRequest(TeaModel):
         if m.get('ingressConfig') is not None:
             temp_model = CreateHttpApiRequestIngressConfig()
             self.ingress_config = temp_model.from_map(m['ingressConfig'])
+        if m.get('modelCategory') is not None:
+            self.model_category = m.get('modelCategory')
         if m.get('name') is not None:
             self.name = m.get('name')
         if m.get('protocols') is not None:
             self.protocols = m.get('protocols')
+        if m.get('removeBasePathOnForward') is not None:
+            self.remove_base_path_on_forward = m.get('removeBasePathOnForward')
         if m.get('resourceGroupId') is not None:
             self.resource_group_id = m.get('resourceGroupId')
         if m.get('type') is not None:
@@ -17487,6 +17499,7 @@ class UpdateHttpApiRequest(TeaModel):
         ingress_config: UpdateHttpApiRequestIngressConfig = None,
         only_change_config: bool = None,
         protocols: List[str] = None,
+        remove_base_path_on_forward: bool = None,
         version_config: HttpApiVersionConfig = None,
     ):
         self.agent_protocols = agent_protocols
@@ -17509,6 +17522,7 @@ class UpdateHttpApiRequest(TeaModel):
         self.only_change_config = only_change_config
         # The protocols that are used to access the API.
         self.protocols = protocols
+        self.remove_base_path_on_forward = remove_base_path_on_forward
         # The versioning configurations.
         self.version_config = version_config
 
@@ -17552,6 +17566,8 @@ class UpdateHttpApiRequest(TeaModel):
             result['onlyChangeConfig'] = self.only_change_config
         if self.protocols is not None:
             result['protocols'] = self.protocols
+        if self.remove_base_path_on_forward is not None:
+            result['removeBasePathOnForward'] = self.remove_base_path_on_forward
         if self.version_config is not None:
             result['versionConfig'] = self.version_config.to_map()
         return result
@@ -17583,6 +17599,8 @@ class UpdateHttpApiRequest(TeaModel):
             self.only_change_config = m.get('onlyChangeConfig')
         if m.get('protocols') is not None:
             self.protocols = m.get('protocols')
+        if m.get('removeBasePathOnForward') is not None:
+            self.remove_base_path_on_forward = m.get('removeBasePathOnForward')
         if m.get('versionConfig') is not None:
             temp_model = HttpApiVersionConfig()
             self.version_config = temp_model.from_map(m['versionConfig'])

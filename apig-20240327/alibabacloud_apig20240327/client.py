@@ -605,10 +605,14 @@ class Client(OpenApiClient):
             body['enableAuth'] = request.enable_auth
         if not UtilClient.is_unset(request.ingress_config):
             body['ingressConfig'] = request.ingress_config
+        if not UtilClient.is_unset(request.model_category):
+            body['modelCategory'] = request.model_category
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
         if not UtilClient.is_unset(request.protocols):
             body['protocols'] = request.protocols
+        if not UtilClient.is_unset(request.remove_base_path_on_forward):
+            body['removeBasePathOnForward'] = request.remove_base_path_on_forward
         if not UtilClient.is_unset(request.resource_group_id):
             body['resourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.type):
@@ -667,10 +671,14 @@ class Client(OpenApiClient):
             body['enableAuth'] = request.enable_auth
         if not UtilClient.is_unset(request.ingress_config):
             body['ingressConfig'] = request.ingress_config
+        if not UtilClient.is_unset(request.model_category):
+            body['modelCategory'] = request.model_category
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
         if not UtilClient.is_unset(request.protocols):
             body['protocols'] = request.protocols
+        if not UtilClient.is_unset(request.remove_base_path_on_forward):
+            body['removeBasePathOnForward'] = request.remove_base_path_on_forward
         if not UtilClient.is_unset(request.resource_group_id):
             body['resourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.type):
@@ -6504,6 +6512,8 @@ class Client(OpenApiClient):
             body['onlyChangeConfig'] = request.only_change_config
         if not UtilClient.is_unset(request.protocols):
             body['protocols'] = request.protocols
+        if not UtilClient.is_unset(request.remove_base_path_on_forward):
+            body['removeBasePathOnForward'] = request.remove_base_path_on_forward
         if not UtilClient.is_unset(request.version_config):
             body['versionConfig'] = request.version_config
         req = open_api_models.OpenApiRequest(
@@ -6563,6 +6573,8 @@ class Client(OpenApiClient):
             body['onlyChangeConfig'] = request.only_change_config
         if not UtilClient.is_unset(request.protocols):
             body['protocols'] = request.protocols
+        if not UtilClient.is_unset(request.remove_base_path_on_forward):
+            body['removeBasePathOnForward'] = request.remove_base_path_on_forward
         if not UtilClient.is_unset(request.version_config):
             body['versionConfig'] = request.version_config
         req = open_api_models.OpenApiRequest(

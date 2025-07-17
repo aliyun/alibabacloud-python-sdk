@@ -1,3 +1,9 @@
+2025-07-17 Version: 4.2.2
+- Update API CreateHttpApi: add request parameters body.modelCategory.
+- Update API CreateHttpApi: add request parameters body.removeBasePathOnForward.
+- Update API UpdateHttpApi: add request parameters body.removeBasePathOnForward.
+
+
 2025-07-03 Version: 4.2.1
 - Update API ListZones: add response parameters Body.data.items.$.supportQat.
 
