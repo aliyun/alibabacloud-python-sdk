@@ -10581,6 +10581,8 @@ class Client(OpenApiClient):
             query['Model'] = request.model
         if not UtilClient.is_unset(request.question):
             query['Question'] = request.question
+        if not UtilClient.is_unset(request.table_names):
+            query['TableNames'] = request.table_names
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10634,6 +10636,8 @@ class Client(OpenApiClient):
             query['Model'] = request.model
         if not UtilClient.is_unset(request.question):
             query['Question'] = request.question
+        if not UtilClient.is_unset(request.table_names):
+            query['TableNames'] = request.table_names
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

@@ -1,3 +1,7 @@
+2025-07-17 Version: 1.74.1
+- Update API GenerateSqlFromNL: add request parameters TableNames.
+
+
 2025-07-17 Version: 1.74.0
 - Support API AddTableToCategory.
 - Support API CreateMetaCategory.

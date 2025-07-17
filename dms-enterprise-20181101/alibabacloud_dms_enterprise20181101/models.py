@@ -20331,6 +20331,7 @@ class GenerateSqlFromNLRequest(TeaModel):
         level: str = None,
         model: str = None,
         question: str = None,
+        table_names: str = None,
     ):
         # This parameter is required.
         self.db_id = db_id
@@ -20340,6 +20341,7 @@ class GenerateSqlFromNLRequest(TeaModel):
         self.model = model
         # This parameter is required.
         self.question = question
+        self.table_names = table_names
 
     def validate(self):
         pass
@@ -20362,6 +20364,8 @@ class GenerateSqlFromNLRequest(TeaModel):
             result['Model'] = self.model
         if self.question is not None:
             result['Question'] = self.question
+        if self.table_names is not None:
+            result['TableNames'] = self.table_names
         return result
 
     def from_map(self, m: dict = None):
@@ -20378,6 +20382,8 @@ class GenerateSqlFromNLRequest(TeaModel):
             self.model = m.get('Model')
         if m.get('Question') is not None:
             self.question = m.get('Question')
+        if m.get('TableNames') is not None:
+            self.table_names = m.get('TableNames')
         return self
 
 
