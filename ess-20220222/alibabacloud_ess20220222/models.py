@@ -924,7 +924,7 @@ class AttachLoadBalancersRequest(TeaModel):
         # 
         #     **\
         # 
-        #     **Note** If a load balancer is currently attached to your scaling group, and you want to add the instances in your scaling group to the backend server groups of the load balancer, you can call this operation again and set ForceAttach request to true.
+        #     **Note** If a load balancer is currently attached to your scaling group, and you only want to add the instances in your scaling group to the backend server groups of the load balancer, you can call this operation again and set ForceAttach request to true.
         # 
         # *   false: If you set this parameter to false, the attachment of the load balancer does not entail the addition of the existing instances in the scaling group to the backend server groups of the load balancer.
         # 
@@ -2253,8 +2253,8 @@ class CreateAlarmRequest(TeaModel):
         self.metric_name = metric_name
         # The metric type. Valid values:
         # 
-        # *   system: system metrics of CloudMonitor.
-        # *   custom: custom metrics that are reported to CloudMonitor.
+        # *   system: a system metric of CloudMonitor.
+        # *   custom: a custom metric that is reported to CloudMonitor.
         self.metric_type = metric_type
         # The name of the event-triggered task.
         self.name = name
@@ -3057,7 +3057,7 @@ class CreateEciScalingConfigurationRequestContainersEnvironmentVars(TeaModel):
     ):
         # >  This parameter is unavailable for use.
         self.field_ref_field_path = field_ref_field_path
-        # The name of the environment variable. The name can be 1 to 128 characters in length and can contain letters, underscores (_), and digits. The name cannot start with a digit. Specify the value in the [0-9a-zA-Z] format.
+        # The name of the environment variable. The name can be 1 to 128 characters in length and can contain letters, underscores (_), and digits. It cannot start with a digit. Specify the value in the [0-9a-zA-Z] format.
         self.key = key
         # The value of the environment variable. The value can be up to 256 characters in length.
         self.value = value
@@ -3096,11 +3096,11 @@ class CreateEciScalingConfigurationRequestContainersPorts(TeaModel):
         port: int = None,
         protocol: str = None,
     ):
-        # The port number. Valid values: 1 to 65535.
+        # The port. Valid values: 1 to 65535.
         self.port = port
-        # The protocol type. Valid values:
+        # The type of the protocol. Valid values:
         # 
-        # *   TCP
+        # *   TCP.
         # *   UDP
         self.protocol = protocol
 
@@ -3137,19 +3137,19 @@ class CreateEciScalingConfigurationRequestContainersVolumeMounts(TeaModel):
         read_only: bool = None,
         sub_path: str = None,
     ):
-        # The directory to which the container mounts the volume.
+        # The directory in which the container mounts the volume.
         # 
         # >  Data in this directory is overwritten by data on the volume. Specify this parameter with caution.
         self.mount_path = mount_path
-        # The mount propagation settings of the volume. Mount propagation enables volume sharing from one container to other containers within the same pod or to containers across separate pods on the same node. Valid values:
+        # The mount propagation setting. Mount propagation enables volume sharing from one container to other containers within the same pod or to containers across separate pods on the same node. Valid values:
         # 
-        # *   None: Subsequent mounts executed on the volume or its subdirectories do not propagate to the volume.
-        # *   HostToCotainer: Subsequent mounts executed on the volume or its subdirectories propagate to the volume.
-        # *   Bidirectional: This value is similar to HostToCotainer. Subsequent mounts executed on the volume or its subdirectories propagate to the volume. All volume mounts executed on the container not only propagate back to the underlying host but also to all containers across every pod that uses the same volume.
+        # *   None: Subsequent mounts executed on the volume or its subdirectories are not propagated to the volume.
+        # *   HostToCotainer: Subsequent mounts executed on the volume or its subdirectories are propagated to the volume.
+        # *   Bidirectional: This value is similar to HostToCotainer. Subsequent mounts executed on the volume or its subdirectories are propagated to the volume. All volume mounts executed on the container are not only propagate back to the underlying host but also to all containers across every pod that uses the same volume.
         # 
         # Default value: None.
         self.mount_propagation = mount_propagation
-        # The name of the volume. The value of this parameter is the same as the value of Volumes.Name.
+        # The volume name. The value of this parameter is the same as the value of Volumes.Name.
         self.name = name
         # Specifies whether the volume is read-only. Valid values:
         # 
@@ -3158,7 +3158,7 @@ class CreateEciScalingConfigurationRequestContainersVolumeMounts(TeaModel):
         # 
         # Default value: false.
         self.read_only = read_only
-        # The subdirectory of the volume.
+        # The volume subdirectory.
         self.sub_path = sub_path
 
     def validate(self):
@@ -3236,9 +3236,9 @@ class CreateEciScalingConfigurationRequestContainers(TeaModel):
         self.liveness_probe = liveness_probe
         self.readiness_probe = readiness_probe
         self.security_context = security_context
-        # The startup arguments of the containers. You can specify up to 10 arguments.
+        # The startup arguments of the container. You can specify up to 10 arguments.
         self.args = args
-        # The commands that you can run by using a CLI to perform liveness probes within the container.
+        # The commands that you want to run by using the CLI for liveness probing within the container.
         self.commands = commands
         # The number of vCPUs per container.
         self.cpu = cpu
@@ -3246,49 +3246,49 @@ class CreateEciScalingConfigurationRequestContainers(TeaModel):
         self.environment_vars = environment_vars
         # The number of GPUs per container.
         self.gpu = gpu
-        # The container image.
+        # The image in the container.
         self.image = image
         # The image pulling policy. Valid values:
         # 
         # *   Always: Each time instances are created, image pulling is performed.
-        # *   IfNotPresent: Image pulling is performed as needed. On-premises images are preferentially used. If no on-premises images are available, image pulling is performed.
-        # *   Never: On-premises images are always used. Image pulling is not performed.
+        # *   IfNotPresent: Image pulling is performed based on your business requirements. On-premises images are used by default. If no on-premises images are available, images are pulled from remote sources.
+        # *   Never: Image pulling is not performed. On-premises images are always used. Image pulling is not performed.
         self.image_pull_policy = image_pull_policy
-        # The commands that you can run by using a CLI to configure the postStart callback function within the container.
+        # The commands that you want to run by using the CLI to configure the postStart callback function within the container.
         self.lifecycle_post_start_handler_execs = lifecycle_post_start_handler_execs
-        # The IP address of the host to which you send an HTTP GET request to configure the postStart callback function.
+        # The IP address of the host to which you want to send HTTP GET requests to configure the postStart callback function.
         self.lifecycle_post_start_handler_http_get_host = lifecycle_post_start_handler_http_get_host
-        # The path to which you send an HTTP GET request to configure the postStart callback function.
+        # The path to which you want to send HTTP GET requests to configure the postStart callback function.
         self.lifecycle_post_start_handler_http_get_path = lifecycle_post_start_handler_http_get_path
-        # The port over which you send an HTTP GET request to configure the postStart callback function.
+        # The port over which you want to send HTTP GET requests to configure the postStart callback function.
         self.lifecycle_post_start_handler_http_get_port = lifecycle_post_start_handler_http_get_port
-        # The protocol type of the HTTP GET request that you send to configure the postStart callback function. Valid values:
+        # The protocol type of HTTP GET requests that you want to send to configure the postStart callback function. Valid values:
         # 
         # *   HTTP
         # *   HTTPS
         self.lifecycle_post_start_handler_http_get_scheme = lifecycle_post_start_handler_http_get_scheme
-        # The IP address of the host detected by the TCP socket that you use to configure the postStart callback function.
+        # The IP address of the host detected by the TCP sockets that you want to use to configure the postStart callback function.
         self.lifecycle_post_start_handler_tcp_socket_host = lifecycle_post_start_handler_tcp_socket_host
-        # The port detected by the TCP socket that you use to configure the postStart callback function.
+        # The port detected by the TCP sockets that you want to use to configure the postStart callback function.
         self.lifecycle_post_start_handler_tcp_socket_port = lifecycle_post_start_handler_tcp_socket_port
-        # The commands that you can run by using a CLI to configure the preStop callback function within the container.
+        # The commands that you want to run by using the CLI to configure the preStop callback function within the container.
         self.lifecycle_pre_stop_handler_execs = lifecycle_pre_stop_handler_execs
-        # The IP address of the host to which you send an HTTP GET request to configure the preStop callback function.
+        # The IP address of the host to which you want to send HTTP GET requests to configure the preStop callback function.
         self.lifecycle_pre_stop_handler_http_get_host = lifecycle_pre_stop_handler_http_get_host
-        # The path to which you send an HTTP GET request to configure the preStop callback function.
+        # The path to which you want to send HTTP GET requests to configure the preStop callback function.
         self.lifecycle_pre_stop_handler_http_get_path = lifecycle_pre_stop_handler_http_get_path
-        # The port over which you send an HTTP GET request to configure the preStop callback function.
+        # The port over which you want to send HTTP GET requests to configure the preStop callback function.
         self.lifecycle_pre_stop_handler_http_get_port = lifecycle_pre_stop_handler_http_get_port
-        # The protocol type of the HTTP GET request that you send to configure the preStop callback function. Valid values:
+        # The protocol type of the HTTP GET requests that you want to send to configure the preStop callback function. Valid values:
         # 
         # *   HTTP
         # *   HTTPS
         self.lifecycle_pre_stop_handler_http_get_scheme = lifecycle_pre_stop_handler_http_get_scheme
-        # The IP address of the host detected by the TCP socket that you use to configure the preStop callback function.
+        # The IP address of the host detected by the TCP sockets that you want to use to configure the preStop callback function.
         self.lifecycle_pre_stop_handler_tcp_socket_host = lifecycle_pre_stop_handler_tcp_socket_host
-        # The port detected by the TCP socket that you use to configure the preStop callback function.
+        # The port detected by the TCP sockets that you want to use to configure the preStop callback function.
         self.lifecycle_pre_stop_handler_tcp_socket_port = lifecycle_pre_stop_handler_tcp_socket_port
-        # The memory size per container. Unit: GiB.
+        # The memory size that you want to allocate to the container. Unit: GiB.
         self.memory = memory
         # The name of the container image.
         self.name = name
@@ -3302,7 +3302,7 @@ class CreateEciScalingConfigurationRequestContainers(TeaModel):
         # 
         # If you set StdinOnce to true, standard input streams are connected after the container is started, and remain idle until a client is connected to receive data. After the client is disconnected, streams are also disconnected and remain disconnected until the container is restarted.
         self.stdin_once = stdin_once
-        # Specifies whether to enable the Interaction feature. Valid values:
+        # Specifies whether to enable interaction. Valid values:
         # 
         # *   true
         # *   false
@@ -4429,7 +4429,7 @@ class CreateEciScalingConfigurationRequest(TeaModel):
         # 
         # If you want to use an ordered instance name, specify the value for this parameter in the following format: name_prefix[begin_number,bits]name_suffix.
         self.container_group_name = container_group_name
-        # The containers on the elastic container instance.
+        # The containers per elastic container instance.
         self.containers = containers
         # Specifies whether to enable the Cost Optimization feature. Valid values:
         # 
@@ -6089,7 +6089,15 @@ class CreateScalingConfigurationRequestResourcePoolOptions(TeaModel):
         private_pool_ids: List[str] = None,
         strategy: str = None,
     ):
+        # The IDs of private pools. The ID of a private pool is the same as the ID of the elasticity assurance or capacity reservation that is associated with the private pool. You can specify the IDs of only targeted private pools for this parameter.
         self.private_pool_ids = private_pool_ids
+        # The resource pool used for instance creation, which can be the public pool or a private pool associated with any active elasticity assurance or capacity reservation. Valid values:
+        # 
+        # *   PrivatePoolFirst: prioritizes private pools. When this option is set along with ResourcePoolOptions.PrivatePoolIds, the specified private pools are used first. If you leave ResourcePoolOptions.PrivatePoolIds empty or if the specified private pools lack sufficient capacity, the system will automatically use available open private pools instead. If no matching private pools are available, the system defaults to the public pool.
+        # *   PrivatePoolOnly: uses only private pools. If you set this value, you must specify ResourcePoolOptions.PrivatePoolIds. If the specified private pools lack sufficient capacity, instance creation will fail.
+        # *   None: uses no resource pools.
+        # 
+        # Default value: None.
         self.strategy = strategy
 
     def validate(self):
@@ -6338,7 +6346,7 @@ class CreateScalingConfigurationRequest(TeaModel):
         self.instance_type_overrides = instance_type_overrides
         # The instance types. If you specify InstanceTypes, InstanceType is ignored.
         # 
-        # Auto Scaling creates instances based on the priorities of the instance types. If Auto Scaling cannot create instances by using the instance type that has the highest priority, Auto Scaling creates instances by using the instance type that has the next highest priority.
+        # Auto Scaling creates instances based on a priority list of instance types. If it fails to create instances using the highest-priority type, it automatically moves to the next type in the priority order.
         self.instance_types = instance_types
         # The metering method for network usage. Valid values:
         # 
@@ -6400,6 +6408,10 @@ class CreateScalingConfigurationRequest(TeaModel):
         # The ID of the resource group to which the ECS instances that are created by using the scaling configuration belong.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
+        # The resource pools used for instance creation, which can be the public pool or a private pool associated with any active elasticity assurance or capacity reservation. When you specify this parameter, take note of the following items:
+        # 
+        # *   This parameter takes effect only when you create pay-as-you-go instances.
+        # *   If you specify this parameter, you cannot specify PrivatePoolOptions.MatchCriteria or PrivatePoolOptions.Id.
         self.resource_pool_options = resource_pool_options
         # The name of the scaling configuration. The name must be 2 to 64 characters in length and can contain letters, digits, underscores (_), hyphens (-), and periods (.). The name must start with a letter or a digit.
         # 
@@ -7576,7 +7588,15 @@ class CreateScalingConfigurationShrinkRequestResourcePoolOptions(TeaModel):
         private_pool_ids: List[str] = None,
         strategy: str = None,
     ):
+        # The IDs of private pools. The ID of a private pool is the same as the ID of the elasticity assurance or capacity reservation that is associated with the private pool. You can specify the IDs of only targeted private pools for this parameter.
         self.private_pool_ids = private_pool_ids
+        # The resource pool used for instance creation, which can be the public pool or a private pool associated with any active elasticity assurance or capacity reservation. Valid values:
+        # 
+        # *   PrivatePoolFirst: prioritizes private pools. When this option is set along with ResourcePoolOptions.PrivatePoolIds, the specified private pools are used first. If you leave ResourcePoolOptions.PrivatePoolIds empty or if the specified private pools lack sufficient capacity, the system will automatically use available open private pools instead. If no matching private pools are available, the system defaults to the public pool.
+        # *   PrivatePoolOnly: uses only private pools. If you set this value, you must specify ResourcePoolOptions.PrivatePoolIds. If the specified private pools lack sufficient capacity, instance creation will fail.
+        # *   None: uses no resource pools.
+        # 
+        # Default value: None.
         self.strategy = strategy
 
     def validate(self):
@@ -7825,7 +7845,7 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
         self.instance_type_overrides = instance_type_overrides
         # The instance types. If you specify InstanceTypes, InstanceType is ignored.
         # 
-        # Auto Scaling creates instances based on the priorities of the instance types. If Auto Scaling cannot create instances by using the instance type that has the highest priority, Auto Scaling creates instances by using the instance type that has the next highest priority.
+        # Auto Scaling creates instances based on a priority list of instance types. If it fails to create instances using the highest-priority type, it automatically moves to the next type in the priority order.
         self.instance_types = instance_types
         # The metering method for network usage. Valid values:
         # 
@@ -7887,6 +7907,10 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
         # The ID of the resource group to which the ECS instances that are created by using the scaling configuration belong.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
+        # The resource pools used for instance creation, which can be the public pool or a private pool associated with any active elasticity assurance or capacity reservation. When you specify this parameter, take note of the following items:
+        # 
+        # *   This parameter takes effect only when you create pay-as-you-go instances.
+        # *   If you specify this parameter, you cannot specify PrivatePoolOptions.MatchCriteria or PrivatePoolOptions.Id.
         self.resource_pool_options = resource_pool_options
         # The name of the scaling configuration. The name must be 2 to 64 characters in length and can contain letters, digits, underscores (_), hyphens (-), and periods (.). The name must start with a letter or a digit.
         # 
@@ -8431,8 +8455,11 @@ class CreateScalingGroupRequestCapacityOptions(TeaModel):
         self.on_demand_percentage_above_base_capacity = on_demand_percentage_above_base_capacity
         # The cost comparison method. Valid values:
         # 
-        # *   PricePerUnit: compares costs based on unit price divided by instance capacities (weights). The capacity of an instance in a scaling group is determined by the weight of the instance type used. If no weight is set, the capacity defaults to 1.
-        # *   PricePerVCpu: compares costs based on unit price divided by the number of vCPUs.
+        # *   PricePerUnit: Prices are compared based on the price per instance capacity.
+        # 
+        #     Capacity is determined by the weights assigned to instance types in the scaling group. If no weight is specified, a default weight of 1 is used, meaning each instance is assigned a capacity of 1.
+        # 
+        # *   PricePerVCpu: Prices are compared based on the price per vCPU.
         # 
         # Default value: PricePerUnit.
         self.price_comparison_mode = price_comparison_mode
@@ -11582,16 +11609,16 @@ class DescribeAlarmsRequest(TeaModel):
         self.metric_name = metric_name
         # The metric type. Valid values:
         # 
-        # *   system: system metrics of CloudMonitor
-        # *   custom: custom metrics that are reported to CloudMonitor.
-        # *   hybrid: metrics of Hybrid Cloud Monitoring.
+        # *   system: a system metric of CloudMonitor
+        # *   custom: a custom metric that is reported to CloudMonitor.
+        # *   hybrid: a metric of Hybrid Cloud Monitoring.
         self.metric_type = metric_type
         self.owner_id = owner_id
         # The page number. Pages start from page 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: 50.
+        # The number of entries per page. Valid values: 1 to 50.
         # 
         # Default value: 10.
         self.page_size = page_size
@@ -20656,7 +20683,13 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsResourcePool
         private_pool_ids: List[str] = None,
         strategy: str = None,
     ):
+        # The IDs of private pools. The ID of a private pool is the same as the ID of the elasticity assurance or capacity reservation that is associated with the private pool.
         self.private_pool_ids = private_pool_ids
+        # The resource pool used for instance creation, which can be the public pool or a private pool associated with any active elasticity assurance or capacity reservation. Valid values:
+        # 
+        # *   PrivatePoolFirst: prioritizes private pools. When this option is set along with ResourcePoolOptions.PrivatePoolIds, the specified private pools are used first. If you leave ResourcePoolOptions.PrivatePoolIds empty or if the specified private pools lack sufficient capacity, the system will automatically use available open private pools instead. If no matching private pools are available, the system defaults to the public pool.
+        # *   PrivatePoolOnly: uses only private pools. If you use this value, you must specify ResourcePoolOptions.PrivatePoolIds. If the specified private pools lack sufficient capacity, instance creation will fail.
+        # *   None: uses no resource pools.
         self.strategy = strategy
 
     def validate(self):
@@ -21021,6 +21054,9 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         self.ram_role_name = ram_role_name
         # The ID of the resource group to which the ECS instances belong.
         self.resource_group_id = resource_group_id
+        # The resource pools used for instance creation, which can be the public pool or a private pool associated with any active elasticity assurance or capacity reservation.
+        # 
+        # *   This parameter takes effect only when you create pay-as-you-go instances.
         self.resource_pool_options = resource_pool_options
         # The ID of the scaling configuration.
         self.scaling_configuration_id = scaling_configuration_id
@@ -22643,36 +22679,29 @@ class DescribeScalingGroupDiagnoseDetailsResponseBodyDetails(TeaModel):
         resource_id: str = None,
         status: str = None,
     ):
-        # Item type for diagnostics. Possible values:
-        # - AccountArrearage: Checks if the user\\"s account is in arrears.
-        # - AccountNotEnoughBalance: Checks the account balance.
-        # - ElasticStrength: Checks the inventory health of instance types corresponding to the scaling group configuration.
-        # - VSwitch: Checks if the switch is available, for example, whether it has been deleted.
-        # - SecurityGroup: Checks if the security group is available, for example, whether it has been deleted.
-        # - KeyPair: Checks if the key pair is available, for example, whether it has been deleted.
-        # - SlbBackendServerQuota: Checks if the number of ECS instances mounted to the default SLB group and virtual server group exceeds the quota.
-        # - AlbBackendServerQuota: Checks if the number of ECS instances mounted to the ALB group exceeds the quota.
-        # - NlbBackendServerQuota: Checks if the number of ECS instances mounted to the NLB group exceeds the quota.
+        # The type of the diagnostic item. Valid values:
+        # 
+        # *   AccountArrearage: Checks whether your Alibaba Cloud account has overdue payments.
+        # *   AccountNotEnoughBalance: Checks whether the balance of your Alibaba Cloud account is sufficient.
+        # *   ElasticStrength: Checks whether the instance types that are specified in the scaling configuration are sufficient.
+        # *   VSwitch: Checks whether the vSwitch is available. If the specified vSwitch is deleted, specify an existing vSwitch for the scaling group.
+        # *   SecurityGroup: Checks whether the security group is available. If the specified security group is deleted, specify an existing security group for the scaling group.
+        # *   KeyPair: Checks whether the key pair is available. If the specified key pair is deleted, specify another key pair for the scaling group.
+        # *   SlbBackendServerQuota: Checks whether the number of ECS instances that are added to the default server group and the vServer groups of the SLB instances associated with the scaling group has reached the upper limit.
+        # *   AlbBackendServerQuota: Checks whether the number of ECS instances that are attached to the ALB instances of the scaling group has reached the upper limit.
+        # *   NlbBackendServerQuota: Checks whether the number of ECS instances that are attached to the NLB instances of the scaling group has reached the upper limit.
         self.diagnose_type = diagnose_type
-        # Error code of the diagnostic item. Possible values:
+        # The error code of the diagnostic item. Valid values:
         # 
-        # - VSwitchIdNotFound: The VSwitch does not exist.
-        # 
-        # - SecurityGroupNotFound: The security group does not exist.
-        # 
-        # - KeyPairNotFound: The key pair does not exist.
-        # 
-        # - SlbBackendServerQuotaExceeded: The number of ECS instances mounted on the backend of the SLB default group and virtual server group exceeds the quota.
-        # 
-        # - AlbBackendServerQuotaExceeded: The number of ECS instances mounted on the backend of the ALB group exceeds the quota.
-        # 
-        # - NlbBackendServerQuotaExceeded: The number of ECS instances mounted on the backend of the NLB group exceeds the quota.
-        # 
-        # - AccountArrearage: The account is in arrears.
-        # 
-        # - AccountNotEnoughBalance: The account balance is insufficient.
-        # 
-        # - ElasticStrengthAlert: The inventory health is poor.
+        # *   VSwitchIdNotFound: The vSwitch does not exist.
+        # *   SecurityGroupNotFound: The security group does not exist.
+        # *   KeyPairNotFound: The key pair does not exist.
+        # *   SlbBackendServerQuotaExceeded: The number of ECS instances that are added to the default server group and the vServer groups of the SLB instances associated with the scaling group has reached the upper limit.
+        # *   AlbBackendServerQuotaExceeded: The number of ECS instances that are attached to the ALB instances of the scaling group has reached the upper limit.
+        # *   NlbBackendServerQuotaExceeded: The number of ECS instances that are attached to the NLB instances of the scaling group has reached the upper limit.
+        # *   AccountArrearage: Your account has an overdue payment.
+        # *   AccountNotEnoughBalance: The balance of your Alibaba Cloud account is insufficient.
+        # *   ElasticStrengthAlert: The inventory levels are lower than required.
         self.error_code = error_code
         # The resource ID corresponding to the diagnostic result.
         self.resource_id = resource_id
@@ -22723,7 +22752,7 @@ class DescribeScalingGroupDiagnoseDetailsResponseBody(TeaModel):
         details: List[DescribeScalingGroupDiagnoseDetailsResponseBodyDetails] = None,
         request_id: str = None,
     ):
-        # Details of the diagnostic report.
+        # The diagnostic reports.
         self.details = details
         # ID of the request
         self.request_id = request_id
@@ -22860,9 +22889,9 @@ class DescribeScalingGroupsRequest(TeaModel):
         self.group_type = group_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Minimum value: 1.
+        # The page number. Pages start from page 1.
         # 
-        # Default value: 1
+        # Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Maximum value: 50.
         # 
@@ -24778,6 +24807,7 @@ class DescribeScalingRulesResponseBodyScalingRulesAlarms(TeaModel):
         # *   system: system metrics
         # *   custom: custom metrics
         self.metric_type = metric_type
+        # The statistical period of the metric data in the target tracking scaling rule.
         self.period = period
         # The statistical method of the event-triggered task that is associated with the scaling rule. Valid values:
         # 
@@ -28870,8 +28900,8 @@ class ModifyAlarmRequest(TeaModel):
         self.metric_name = metric_name
         # The metric type. Valid values:
         # 
-        # *   system: system metrics of CloudMonitor.
-        # *   custom: custom metrics that are reported to CloudMonitor.
+        # *   system: a system metric of CloudMonitor
+        # *   custom: a custom metric that is reported to CloudMonitor.
         self.metric_type = metric_type
         # The name of the event-triggered task.
         self.name = name
@@ -31097,7 +31127,7 @@ class ModifyEciScalingConfigurationRequest(TeaModel):
         # The name series of elastic container instances. Naming conventions:
         # 
         # *   The name must be 2 to 128 characters in length.
-        # *   The name can contain only lowercase letters, digits, and hyphens (-). The name cannot start or end with a hyphen (-).
+        # *   The name can contain only lowercase letters, digits, and hyphens (-). It cannot start or end with a hyphen (-).
         self.container_group_name = container_group_name
         # The containers.
         self.containers = containers
@@ -31147,7 +31177,7 @@ class ModifyEciScalingConfigurationRequest(TeaModel):
         # 
         # >  For more information about ESSD AutoPL disks, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
         self.data_cache_provisioned_iops = data_cache_provisioned_iops
-        # >  This parameter is unavailable.
+        # >  This parameter is unavailable for use.
         self.description = description
         # The IP addresses of DNS servers.
         self.dns_config_name_servers = dns_config_name_servers
@@ -32918,7 +32948,15 @@ class ModifyScalingConfigurationRequestResourcePoolOptions(TeaModel):
         private_pool_ids: List[str] = None,
         strategy: str = None,
     ):
+        # The IDs of private pools. The ID of a private pool is the same as that of the elasticity assurance or capacity reservation for which the private pool is generated. You can specify the IDs of only targeted private pools for this parameter.
         self.private_pool_ids = private_pool_ids
+        # The resource pool used for instance creation, which can be the public pool or a private pool associated with any active elasticity assurance or capacity reservation. Valid values:
+        # 
+        # *   PrivatePoolFirst: prioritizes private pools. When this option is set along with ResourcePoolOptions.PrivatePoolIds, the specified private pools are used first. If you leave ResourcePoolOptions.PrivatePoolIds empty or if the specified private pools lack sufficient capacity, the system will automatically use available open private pools instead. If no matching private pools are available, the system defaults to the public pool.
+        # *   PrivatePoolOnly: uses only private pools. If you use this value, you must specify ResourcePoolOptions.PrivatePoolIds. If the specified private pools lack sufficient capacity, instance creation will fail.
+        # *   None: uses no resource pools.
+        # 
+        # Default value: None.
         self.strategy = strategy
 
     def validate(self):
@@ -33163,9 +33201,9 @@ class ModifyScalingConfigurationRequest(TeaModel):
         self.instance_pattern_infos = instance_pattern_infos
         # The instance types.
         self.instance_type_overrides = instance_type_overrides
-        # The instance type. If you specify InstanceTypes, InstanceType is ignored.
+        # The instance types. If you specify InstanceTypes, InstanceType is ignored.
         # 
-        # Auto Scaling creates instances based on the priorities of instance types. If Auto Scaling cannot create instances by using the instance type that has the highest priority, Auto Scaling creates instances by using the instance type that has the next highest priority.
+        # Auto Scaling creates instances based on a priority list of instance types. If it fails to create instances using the highest-priority type, it automatically moves to the next type in the priority order.
         self.instance_types = instance_types
         # The billing method for network usage. Valid values:
         # 
@@ -33225,6 +33263,10 @@ class ModifyScalingConfigurationRequest(TeaModel):
         # The ID of the resource group to which the ECS instances belong.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
+        # The resource pools used for instance creation, which can be the public pool or a private pool associated with any active elasticity assurance or capacity reservation. When you specify this parameter, take note of the following items:
+        # 
+        # *   This parameter takes effect only when you create pay-as-you-go instances.
+        # *   If you specify this parameter, you cannot specify PrivatePoolOptions.MatchCriteria or PrivatePoolOptions.Id.
         self.resource_pool_options = resource_pool_options
         # The ID of the scaling configuration that you want to modify.
         # 
@@ -34393,7 +34435,15 @@ class ModifyScalingConfigurationShrinkRequestResourcePoolOptions(TeaModel):
         private_pool_ids: List[str] = None,
         strategy: str = None,
     ):
+        # The IDs of private pools. The ID of a private pool is the same as that of the elasticity assurance or capacity reservation for which the private pool is generated. You can specify the IDs of only targeted private pools for this parameter.
         self.private_pool_ids = private_pool_ids
+        # The resource pool used for instance creation, which can be the public pool or a private pool associated with any active elasticity assurance or capacity reservation. Valid values:
+        # 
+        # *   PrivatePoolFirst: prioritizes private pools. When this option is set along with ResourcePoolOptions.PrivatePoolIds, the specified private pools are used first. If you leave ResourcePoolOptions.PrivatePoolIds empty or if the specified private pools lack sufficient capacity, the system will automatically use available open private pools instead. If no matching private pools are available, the system defaults to the public pool.
+        # *   PrivatePoolOnly: uses only private pools. If you use this value, you must specify ResourcePoolOptions.PrivatePoolIds. If the specified private pools lack sufficient capacity, instance creation will fail.
+        # *   None: uses no resource pools.
+        # 
+        # Default value: None.
         self.strategy = strategy
 
     def validate(self):
@@ -34638,9 +34688,9 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         self.instance_pattern_infos = instance_pattern_infos
         # The instance types.
         self.instance_type_overrides = instance_type_overrides
-        # The instance type. If you specify InstanceTypes, InstanceType is ignored.
+        # The instance types. If you specify InstanceTypes, InstanceType is ignored.
         # 
-        # Auto Scaling creates instances based on the priorities of instance types. If Auto Scaling cannot create instances by using the instance type that has the highest priority, Auto Scaling creates instances by using the instance type that has the next highest priority.
+        # Auto Scaling creates instances based on a priority list of instance types. If it fails to create instances using the highest-priority type, it automatically moves to the next type in the priority order.
         self.instance_types = instance_types
         # The billing method for network usage. Valid values:
         # 
@@ -34700,6 +34750,10 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         # The ID of the resource group to which the ECS instances belong.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
+        # The resource pools used for instance creation, which can be the public pool or a private pool associated with any active elasticity assurance or capacity reservation. When you specify this parameter, take note of the following items:
+        # 
+        # *   This parameter takes effect only when you create pay-as-you-go instances.
+        # *   If you specify this parameter, you cannot specify PrivatePoolOptions.MatchCriteria or PrivatePoolOptions.Id.
         self.resource_pool_options = resource_pool_options
         # The ID of the scaling configuration that you want to modify.
         # 
@@ -35762,6 +35816,15 @@ class ModifyScalingRuleRequestAlarmOptions(TeaModel):
         self,
         period: int = None,
     ):
+        # The statistical period of the metric data in the target tracking scaling rule. Unit: seconds. Valid values:
+        # 
+        # *   15
+        # *   60
+        # *   120
+        # *   300
+        # *   900
+        # 
+        # >  Default value: 60.
         self.period = period
 
     def validate(self):
@@ -35976,6 +36039,7 @@ class ModifyScalingRuleRequest(TeaModel):
         self.adjustment_value = adjustment_value
         # The dimensions. This parameter is applicable to target tracking scaling rules. You can specify this parameter if your predefined metric requires extra dimensions. For example, if you predefine the LoadBalancerRealServerAverageQps metric, you must use this parameter to specify the rulePool dimension.
         self.alarm_dimensions = alarm_dimensions
+        # The alert attributes.
         self.alarm_options = alarm_options
         # The cooldown time of the scaling rule. This parameter is available only if you set the ScalingRuleType parameter to SimpleScalingRule.
         # 
@@ -37829,6 +37893,7 @@ class ScaleWithAdjustmentRequest(TeaModel):
         adjustment_type: str = None,
         adjustment_value: int = None,
         client_token: str = None,
+        execution_mode: str = None,
         lifecycle_hook_context: ScaleWithAdjustmentRequestLifecycleHookContext = None,
         min_adjustment_magnitude: int = None,
         overrides: ScaleWithAdjustmentRequestOverrides = None,
@@ -37858,6 +37923,7 @@ class ScaleWithAdjustmentRequest(TeaModel):
         self.adjustment_value = adjustment_value
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        self.execution_mode = execution_mode
         # The context of the lifecycle hook.
         self.lifecycle_hook_context = lifecycle_hook_context
         # The minimum number of instances allowed in each adjustment. This parameter takes effect only if you set the `AdjustmentType` parameter to `PercentChangeInCapacity`.
@@ -37901,6 +37967,8 @@ class ScaleWithAdjustmentRequest(TeaModel):
             result['AdjustmentValue'] = self.adjustment_value
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.execution_mode is not None:
+            result['ExecutionMode'] = self.execution_mode
         if self.lifecycle_hook_context is not None:
             result['LifecycleHookContext'] = self.lifecycle_hook_context.to_map()
         if self.min_adjustment_magnitude is not None:
@@ -37929,6 +37997,8 @@ class ScaleWithAdjustmentRequest(TeaModel):
             self.adjustment_value = m.get('AdjustmentValue')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('ExecutionMode') is not None:
+            self.execution_mode = m.get('ExecutionMode')
         if m.get('LifecycleHookContext') is not None:
             temp_model = ScaleWithAdjustmentRequestLifecycleHookContext()
             self.lifecycle_hook_context = temp_model.from_map(m['LifecycleHookContext'])
@@ -37957,6 +38027,7 @@ class ScaleWithAdjustmentShrinkRequest(TeaModel):
         adjustment_type: str = None,
         adjustment_value: int = None,
         client_token: str = None,
+        execution_mode: str = None,
         lifecycle_hook_context_shrink: str = None,
         min_adjustment_magnitude: int = None,
         overrides_shrink: str = None,
@@ -37986,6 +38057,7 @@ class ScaleWithAdjustmentShrinkRequest(TeaModel):
         self.adjustment_value = adjustment_value
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        self.execution_mode = execution_mode
         # The context of the lifecycle hook.
         self.lifecycle_hook_context_shrink = lifecycle_hook_context_shrink
         # The minimum number of instances allowed in each adjustment. This parameter takes effect only if you set the `AdjustmentType` parameter to `PercentChangeInCapacity`.
@@ -38026,6 +38098,8 @@ class ScaleWithAdjustmentShrinkRequest(TeaModel):
             result['AdjustmentValue'] = self.adjustment_value
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.execution_mode is not None:
+            result['ExecutionMode'] = self.execution_mode
         if self.lifecycle_hook_context_shrink is not None:
             result['LifecycleHookContext'] = self.lifecycle_hook_context_shrink
         if self.min_adjustment_magnitude is not None:
@@ -38054,6 +38128,8 @@ class ScaleWithAdjustmentShrinkRequest(TeaModel):
             self.adjustment_value = m.get('AdjustmentValue')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('ExecutionMode') is not None:
+            self.execution_mode = m.get('ExecutionMode')
         if m.get('LifecycleHookContext') is not None:
             self.lifecycle_hook_context_shrink = m.get('LifecycleHookContext')
         if m.get('MinAdjustmentMagnitude') is not None:
@@ -38073,23 +38149,20 @@ class ScaleWithAdjustmentShrinkRequest(TeaModel):
         return self
 
 
-class ScaleWithAdjustmentResponseBody(TeaModel):
+class ScaleWithAdjustmentResponseBodyPlanResultResourceAllocations(TeaModel):
     def __init__(
         self,
-        activity_type: str = None,
-        request_id: str = None,
-        scaling_activity_id: str = None,
+        amount: int = None,
+        instance_charge_type: str = None,
+        instance_type: str = None,
+        spot_strategy: str = None,
+        zone_id: str = None,
     ):
-        # The type of the scaling activity.
-        # 
-        # If `ActivityType` is set to `CapacityChange`, only the expected number of instances is changed during the scaling activity specified by ScalingActivityId and no scale-out is triggered.
-        # 
-        # This parameter is applicable to only scaling groups that have an expected number of instances.
-        self.activity_type = activity_type
-        # The ID of the request.
-        self.request_id = request_id
-        # The ID of the scaling activity.
-        self.scaling_activity_id = scaling_activity_id
+        self.amount = amount
+        self.instance_charge_type = instance_charge_type
+        self.instance_type = instance_type
+        self.spot_strategy = spot_strategy
+        self.zone_id = zone_id
 
     def validate(self):
         pass
@@ -38100,8 +38173,102 @@ class ScaleWithAdjustmentResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        if self.instance_charge_type is not None:
+            result['InstanceChargeType'] = self.instance_charge_type
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.spot_strategy is not None:
+            result['SpotStrategy'] = self.spot_strategy
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        if m.get('InstanceChargeType') is not None:
+            self.instance_charge_type = m.get('InstanceChargeType')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('SpotStrategy') is not None:
+            self.spot_strategy = m.get('SpotStrategy')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class ScaleWithAdjustmentResponseBodyPlanResult(TeaModel):
+    def __init__(
+        self,
+        resource_allocations: List[ScaleWithAdjustmentResponseBodyPlanResultResourceAllocations] = None,
+    ):
+        self.resource_allocations = resource_allocations
+
+    def validate(self):
+        if self.resource_allocations:
+            for k in self.resource_allocations:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ResourceAllocations'] = []
+        if self.resource_allocations is not None:
+            for k in self.resource_allocations:
+                result['ResourceAllocations'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.resource_allocations = []
+        if m.get('ResourceAllocations') is not None:
+            for k in m.get('ResourceAllocations'):
+                temp_model = ScaleWithAdjustmentResponseBodyPlanResultResourceAllocations()
+                self.resource_allocations.append(temp_model.from_map(k))
+        return self
+
+
+class ScaleWithAdjustmentResponseBody(TeaModel):
+    def __init__(
+        self,
+        activity_type: str = None,
+        plan_result: ScaleWithAdjustmentResponseBodyPlanResult = None,
+        request_id: str = None,
+        scaling_activity_id: str = None,
+    ):
+        # The type of the scaling activity.
+        # 
+        # If `ActivityType` is set to `CapacityChange`, only the expected number of instances is changed during the scaling activity specified by ScalingActivityId and no scale-out is triggered.
+        # 
+        # This parameter is applicable to only scaling groups that have an expected number of instances.
+        self.activity_type = activity_type
+        self.plan_result = plan_result
+        # The ID of the request.
+        self.request_id = request_id
+        # The ID of the scaling activity.
+        self.scaling_activity_id = scaling_activity_id
+
+    def validate(self):
+        if self.plan_result:
+            self.plan_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.activity_type is not None:
             result['ActivityType'] = self.activity_type
+        if self.plan_result is not None:
+            result['PlanResult'] = self.plan_result.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.scaling_activity_id is not None:
@@ -38112,6 +38279,9 @@ class ScaleWithAdjustmentResponseBody(TeaModel):
         m = m or dict()
         if m.get('ActivityType') is not None:
             self.activity_type = m.get('ActivityType')
+        if m.get('PlanResult') is not None:
+            temp_model = ScaleWithAdjustmentResponseBodyPlanResult()
+            self.plan_result = temp_model.from_map(m['PlanResult'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('ScalingActivityId') is not None:
