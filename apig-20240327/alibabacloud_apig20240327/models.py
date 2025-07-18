@@ -10851,6 +10851,7 @@ class GetGatewayResponseBodyData(TeaModel):
         expire_timestamp: int = None,
         gateway_id: str = None,
         gateway_type: str = None,
+        isp: str = None,
         load_balancers: List[GetGatewayResponseBodyDataLoadBalancers] = None,
         name: str = None,
         replicas: str = None,
@@ -10887,6 +10888,7 @@ class GetGatewayResponseBodyData(TeaModel):
         # - API: indicates an API gateway
         # - AI: Indicates an AI gateway
         self.gateway_type = gateway_type
+        self.isp = isp
         # The ingress addresses of the instance.
         self.load_balancers = load_balancers
         # The instance name.
@@ -10974,6 +10976,8 @@ class GetGatewayResponseBodyData(TeaModel):
             result['gatewayId'] = self.gateway_id
         if self.gateway_type is not None:
             result['gatewayType'] = self.gateway_type
+        if self.isp is not None:
+            result['isp'] = self.isp
         result['loadBalancers'] = []
         if self.load_balancers is not None:
             for k in self.load_balancers:
@@ -11029,6 +11033,8 @@ class GetGatewayResponseBodyData(TeaModel):
             self.gateway_id = m.get('gatewayId')
         if m.get('gatewayType') is not None:
             self.gateway_type = m.get('gatewayType')
+        if m.get('isp') is not None:
+            self.isp = m.get('isp')
         self.load_balancers = []
         if m.get('loadBalancers') is not None:
             for k in m.get('loadBalancers'):

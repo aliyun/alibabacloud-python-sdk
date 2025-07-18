@@ -1,3 +1,7 @@
+2025-07-18 Version: 4.2.3
+- Update API GetGateway: add response parameters Body.data.isp.
+
+
 2025-07-17 Version: 4.2.2
 - Update API CreateHttpApi: add request parameters body.modelCategory.
 - Update API CreateHttpApi: add request parameters body.removeBasePathOnForward.
