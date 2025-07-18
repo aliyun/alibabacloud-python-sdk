@@ -25303,6 +25303,8 @@ class Client(OpenApiClient):
             body['Separators'] = request.separators_shrink
         if not UtilClient.is_unset(request.text_splitter_name):
             body['TextSplitterName'] = request.text_splitter_name
+        if not UtilClient.is_unset(request.vl_enhance):
+            body['VlEnhance'] = request.vl_enhance
         if not UtilClient.is_unset(request.zh_title_enhance):
             body['ZhTitleEnhance'] = request.zh_title_enhance
         req = open_api_models.OpenApiRequest(
@@ -25385,6 +25387,8 @@ class Client(OpenApiClient):
             body['Separators'] = request.separators_shrink
         if not UtilClient.is_unset(request.text_splitter_name):
             body['TextSplitterName'] = request.text_splitter_name
+        if not UtilClient.is_unset(request.vl_enhance):
+            body['VlEnhance'] = request.vl_enhance
         if not UtilClient.is_unset(request.zh_title_enhance):
             body['ZhTitleEnhance'] = request.zh_title_enhance
         req = open_api_models.OpenApiRequest(

@@ -45079,6 +45079,7 @@ class UploadDocumentAsyncRequest(TeaModel):
         region_id: str = None,
         separators: List[str] = None,
         text_splitter_name: str = None,
+        vl_enhance: bool = None,
         zh_title_enhance: bool = None,
     ):
         # The size of data that is overlapped between consecutive chunks. The maximum value of this parameter cannot be greater than the value of the ChunkSize parameter.
@@ -45158,6 +45159,7 @@ class UploadDocumentAsyncRequest(TeaModel):
         # *   **SpacyTextSplitter**: uses `\\n\\n` as separators by default and uses the en_core_web_sm model of spaCy. The splitter can obtain better splitting effect.
         # *   **MarkdownHeaderTextSplitter**: splits text in the `[("#", "head1"), ("##", "head2"), ("###", "head3"), ("####", "head4")]` format. The splitter is suitable for Markdown text.
         self.text_splitter_name = text_splitter_name
+        self.vl_enhance = vl_enhance
         # Specifies whether to enable title enhancement.
         # 
         # >  You can determine the title text, mark the text in the metadata, and then combine the text with the upper-level title to implement text enhancement.
@@ -45202,6 +45204,8 @@ class UploadDocumentAsyncRequest(TeaModel):
             result['Separators'] = self.separators
         if self.text_splitter_name is not None:
             result['TextSplitterName'] = self.text_splitter_name
+        if self.vl_enhance is not None:
+            result['VlEnhance'] = self.vl_enhance
         if self.zh_title_enhance is not None:
             result['ZhTitleEnhance'] = self.zh_title_enhance
         return result
@@ -45238,6 +45242,8 @@ class UploadDocumentAsyncRequest(TeaModel):
             self.separators = m.get('Separators')
         if m.get('TextSplitterName') is not None:
             self.text_splitter_name = m.get('TextSplitterName')
+        if m.get('VlEnhance') is not None:
+            self.vl_enhance = m.get('VlEnhance')
         if m.get('ZhTitleEnhance') is not None:
             self.zh_title_enhance = m.get('ZhTitleEnhance')
         return self
@@ -45261,6 +45267,7 @@ class UploadDocumentAsyncAdvanceRequest(TeaModel):
         region_id: str = None,
         separators: List[str] = None,
         text_splitter_name: str = None,
+        vl_enhance: bool = None,
         zh_title_enhance: bool = None,
     ):
         # The size of data that is overlapped between consecutive chunks. The maximum value of this parameter cannot be greater than the value of the ChunkSize parameter.
@@ -45340,6 +45347,7 @@ class UploadDocumentAsyncAdvanceRequest(TeaModel):
         # *   **SpacyTextSplitter**: uses `\\n\\n` as separators by default and uses the en_core_web_sm model of spaCy. The splitter can obtain better splitting effect.
         # *   **MarkdownHeaderTextSplitter**: splits text in the `[("#", "head1"), ("##", "head2"), ("###", "head3"), ("####", "head4")]` format. The splitter is suitable for Markdown text.
         self.text_splitter_name = text_splitter_name
+        self.vl_enhance = vl_enhance
         # Specifies whether to enable title enhancement.
         # 
         # >  You can determine the title text, mark the text in the metadata, and then combine the text with the upper-level title to implement text enhancement.
@@ -45384,6 +45392,8 @@ class UploadDocumentAsyncAdvanceRequest(TeaModel):
             result['Separators'] = self.separators
         if self.text_splitter_name is not None:
             result['TextSplitterName'] = self.text_splitter_name
+        if self.vl_enhance is not None:
+            result['VlEnhance'] = self.vl_enhance
         if self.zh_title_enhance is not None:
             result['ZhTitleEnhance'] = self.zh_title_enhance
         return result
@@ -45420,6 +45430,8 @@ class UploadDocumentAsyncAdvanceRequest(TeaModel):
             self.separators = m.get('Separators')
         if m.get('TextSplitterName') is not None:
             self.text_splitter_name = m.get('TextSplitterName')
+        if m.get('VlEnhance') is not None:
+            self.vl_enhance = m.get('VlEnhance')
         if m.get('ZhTitleEnhance') is not None:
             self.zh_title_enhance = m.get('ZhTitleEnhance')
         return self
@@ -45443,6 +45455,7 @@ class UploadDocumentAsyncShrinkRequest(TeaModel):
         region_id: str = None,
         separators_shrink: str = None,
         text_splitter_name: str = None,
+        vl_enhance: bool = None,
         zh_title_enhance: bool = None,
     ):
         # The size of data that is overlapped between consecutive chunks. The maximum value of this parameter cannot be greater than the value of the ChunkSize parameter.
@@ -45522,6 +45535,7 @@ class UploadDocumentAsyncShrinkRequest(TeaModel):
         # *   **SpacyTextSplitter**: uses `\\n\\n` as separators by default and uses the en_core_web_sm model of spaCy. The splitter can obtain better splitting effect.
         # *   **MarkdownHeaderTextSplitter**: splits text in the `[("#", "head1"), ("##", "head2"), ("###", "head3"), ("####", "head4")]` format. The splitter is suitable for Markdown text.
         self.text_splitter_name = text_splitter_name
+        self.vl_enhance = vl_enhance
         # Specifies whether to enable title enhancement.
         # 
         # >  You can determine the title text, mark the text in the metadata, and then combine the text with the upper-level title to implement text enhancement.
@@ -45566,6 +45580,8 @@ class UploadDocumentAsyncShrinkRequest(TeaModel):
             result['Separators'] = self.separators_shrink
         if self.text_splitter_name is not None:
             result['TextSplitterName'] = self.text_splitter_name
+        if self.vl_enhance is not None:
+            result['VlEnhance'] = self.vl_enhance
         if self.zh_title_enhance is not None:
             result['ZhTitleEnhance'] = self.zh_title_enhance
         return result
@@ -45602,6 +45618,8 @@ class UploadDocumentAsyncShrinkRequest(TeaModel):
             self.separators_shrink = m.get('Separators')
         if m.get('TextSplitterName') is not None:
             self.text_splitter_name = m.get('TextSplitterName')
+        if m.get('VlEnhance') is not None:
+            self.vl_enhance = m.get('VlEnhance')
         if m.get('ZhTitleEnhance') is not None:
             self.zh_title_enhance = m.get('ZhTitleEnhance')
         return self
