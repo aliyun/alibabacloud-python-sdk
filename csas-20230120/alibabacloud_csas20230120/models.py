@@ -37,6 +37,253 @@ class AuthReportInterval(TeaModel):
         return self
 
 
+class CommonConfigIdpDingtalk(TeaModel):
+    def __init__(
+        self,
+        event_callback_base: str = None,
+        event_label: str = None,
+        home_page: str = None,
+        login_redirect: str = None,
+    ):
+        self.event_callback_base = event_callback_base
+        self.event_label = event_label
+        self.home_page = home_page
+        self.login_redirect = login_redirect
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_callback_base is not None:
+            result['EventCallbackBase'] = self.event_callback_base
+        if self.event_label is not None:
+            result['EventLabel'] = self.event_label
+        if self.home_page is not None:
+            result['HomePage'] = self.home_page
+        if self.login_redirect is not None:
+            result['LoginRedirect'] = self.login_redirect
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventCallbackBase') is not None:
+            self.event_callback_base = m.get('EventCallbackBase')
+        if m.get('EventLabel') is not None:
+            self.event_label = m.get('EventLabel')
+        if m.get('HomePage') is not None:
+            self.home_page = m.get('HomePage')
+        if m.get('LoginRedirect') is not None:
+            self.login_redirect = m.get('LoginRedirect')
+        return self
+
+
+class CommonConfigIdpFeishu(TeaModel):
+    def __init__(
+        self,
+        event_callback_base: str = None,
+        event_label: str = None,
+        home_page: str = None,
+        login_redirect: str = None,
+    ):
+        self.event_callback_base = event_callback_base
+        self.event_label = event_label
+        self.home_page = home_page
+        self.login_redirect = login_redirect
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_callback_base is not None:
+            result['EventCallbackBase'] = self.event_callback_base
+        if self.event_label is not None:
+            result['EventLabel'] = self.event_label
+        if self.home_page is not None:
+            result['HomePage'] = self.home_page
+        if self.login_redirect is not None:
+            result['LoginRedirect'] = self.login_redirect
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventCallbackBase') is not None:
+            self.event_callback_base = m.get('EventCallbackBase')
+        if m.get('EventLabel') is not None:
+            self.event_label = m.get('EventLabel')
+        if m.get('HomePage') is not None:
+            self.home_page = m.get('HomePage')
+        if m.get('LoginRedirect') is not None:
+            self.login_redirect = m.get('LoginRedirect')
+        return self
+
+
+class CommonConfigIdpIdaas2(TeaModel):
+    def __init__(
+        self,
+        event_callback_base: str = None,
+        event_label: str = None,
+    ):
+        self.event_callback_base = event_callback_base
+        self.event_label = event_label
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_callback_base is not None:
+            result['EventCallbackBase'] = self.event_callback_base
+        if self.event_label is not None:
+            result['EventLabel'] = self.event_label
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventCallbackBase') is not None:
+            self.event_callback_base = m.get('EventCallbackBase')
+        if m.get('EventLabel') is not None:
+            self.event_label = m.get('EventLabel')
+        return self
+
+
+class CommonConfigIdpSaml(TeaModel):
+    def __init__(
+        self,
+        acs: str = None,
+        metadata: str = None,
+    ):
+        self.acs = acs
+        self.metadata = metadata
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acs is not None:
+            result['Acs'] = self.acs
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Acs') is not None:
+            self.acs = m.get('Acs')
+        if m.get('Metadata') is not None:
+            self.metadata = m.get('Metadata')
+        return self
+
+
+class CommonConfigIdp(TeaModel):
+    def __init__(
+        self,
+        ap_oidc_callback_url: str = None,
+        dingtalk: CommonConfigIdpDingtalk = None,
+        feishu: CommonConfigIdpFeishu = None,
+        idaas_2: CommonConfigIdpIdaas2 = None,
+        saml: CommonConfigIdpSaml = None,
+    ):
+        self.ap_oidc_callback_url = ap_oidc_callback_url
+        self.dingtalk = dingtalk
+        self.feishu = feishu
+        self.idaas_2 = idaas_2
+        self.saml = saml
+
+    def validate(self):
+        if self.dingtalk:
+            self.dingtalk.validate()
+        if self.feishu:
+            self.feishu.validate()
+        if self.idaas_2:
+            self.idaas_2.validate()
+        if self.saml:
+            self.saml.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ap_oidc_callback_url is not None:
+            result['ApOidcCallbackUrl'] = self.ap_oidc_callback_url
+        if self.dingtalk is not None:
+            result['Dingtalk'] = self.dingtalk.to_map()
+        if self.feishu is not None:
+            result['Feishu'] = self.feishu.to_map()
+        if self.idaas_2 is not None:
+            result['Idaas2'] = self.idaas_2.to_map()
+        if self.saml is not None:
+            result['Saml'] = self.saml.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApOidcCallbackUrl') is not None:
+            self.ap_oidc_callback_url = m.get('ApOidcCallbackUrl')
+        if m.get('Dingtalk') is not None:
+            temp_model = CommonConfigIdpDingtalk()
+            self.dingtalk = temp_model.from_map(m['Dingtalk'])
+        if m.get('Feishu') is not None:
+            temp_model = CommonConfigIdpFeishu()
+            self.feishu = temp_model.from_map(m['Feishu'])
+        if m.get('Idaas2') is not None:
+            temp_model = CommonConfigIdpIdaas2()
+            self.idaas_2 = temp_model.from_map(m['Idaas2'])
+        if m.get('Saml') is not None:
+            temp_model = CommonConfigIdpSaml()
+            self.saml = temp_model.from_map(m['Saml'])
+        return self
+
+
+class CommonConfig(TeaModel):
+    def __init__(
+        self,
+        idp: CommonConfigIdp = None,
+    ):
+        self.idp = idp
+
+    def validate(self):
+        if self.idp:
+            self.idp.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.idp is not None:
+            result['Idp'] = self.idp.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Idp') is not None:
+            temp_model = CommonConfigIdp()
+            self.idp = temp_model.from_map(m['Idp'])
+        return self
+
+
 class DisposalContent(TeaModel):
     def __init__(
         self,
@@ -110,6 +357,1271 @@ class DisposalContent(TeaModel):
             self.notify_actions = m.get('NotifyActions')
         if m.get('ProhibitActions') is not None:
             self.prohibit_actions = m.get('ProhibitActions')
+        return self
+
+
+class IdpAttrMapConfigItem(TeaModel):
+    def __init__(
+        self,
+        source: str = None,
+        target: str = None,
+        target_type: str = None,
+    ):
+        self.source = source
+        self.target = target
+        self.target_type = target_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.target is not None:
+            result['Target'] = self.target
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        return self
+
+
+class IdpAttrMapConfig(TeaModel):
+    def __init__(
+        self,
+        map_items: List[IdpAttrMapConfigItem] = None,
+    ):
+        self.map_items = map_items
+
+    def validate(self):
+        if self.map_items:
+            for k in self.map_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['MapItems'] = []
+        if self.map_items is not None:
+            for k in self.map_items:
+                result['MapItems'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.map_items = []
+        if m.get('MapItems') is not None:
+            for k in m.get('MapItems'):
+                temp_model = IdpAttrMapConfigItem()
+                self.map_items.append(temp_model.from_map(k))
+        return self
+
+
+class IdpConnectConfig(TeaModel):
+    def __init__(
+        self,
+        connector_id: str = None,
+        use_connector: bool = None,
+    ):
+        self.connector_id = connector_id
+        self.use_connector = use_connector
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connector_id is not None:
+            result['ConnectorId'] = self.connector_id
+        if self.use_connector is not None:
+            result['UseConnector'] = self.use_connector
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectorId') is not None:
+            self.connector_id = m.get('ConnectorId')
+        if m.get('UseConnector') is not None:
+            self.use_connector = m.get('UseConnector')
+        return self
+
+
+class IdpDingtalkSubConfig(TeaModel):
+    def __init__(
+        self,
+        app_key: str = None,
+        app_secret: str = None,
+        corp_id: str = None,
+        event_aes_key: str = None,
+        event_label: str = None,
+        event_verify_token: str = None,
+        exclusive: bool = None,
+        redirect_uri: str = None,
+    ):
+        self.app_key = app_key
+        self.app_secret = app_secret
+        self.corp_id = corp_id
+        self.event_aes_key = event_aes_key
+        self.event_label = event_label
+        self.event_verify_token = event_verify_token
+        self.exclusive = exclusive
+        self.redirect_uri = redirect_uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.app_secret is not None:
+            result['AppSecret'] = self.app_secret
+        if self.corp_id is not None:
+            result['CorpId'] = self.corp_id
+        if self.event_aes_key is not None:
+            result['EventAesKey'] = self.event_aes_key
+        if self.event_label is not None:
+            result['EventLabel'] = self.event_label
+        if self.event_verify_token is not None:
+            result['EventVerifyToken'] = self.event_verify_token
+        if self.exclusive is not None:
+            result['Exclusive'] = self.exclusive
+        if self.redirect_uri is not None:
+            result['RedirectUri'] = self.redirect_uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('AppSecret') is not None:
+            self.app_secret = m.get('AppSecret')
+        if m.get('CorpId') is not None:
+            self.corp_id = m.get('CorpId')
+        if m.get('EventAesKey') is not None:
+            self.event_aes_key = m.get('EventAesKey')
+        if m.get('EventLabel') is not None:
+            self.event_label = m.get('EventLabel')
+        if m.get('EventVerifyToken') is not None:
+            self.event_verify_token = m.get('EventVerifyToken')
+        if m.get('Exclusive') is not None:
+            self.exclusive = m.get('Exclusive')
+        if m.get('RedirectUri') is not None:
+            self.redirect_uri = m.get('RedirectUri')
+        return self
+
+
+class IdpFeishuSubConfig(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        app_secret: str = None,
+        corp_id: str = None,
+        event_aes_key: str = None,
+        event_label: str = None,
+        event_verify_token: str = None,
+        redirect_uri: str = None,
+    ):
+        self.app_id = app_id
+        self.app_secret = app_secret
+        self.corp_id = corp_id
+        self.event_aes_key = event_aes_key
+        self.event_label = event_label
+        self.event_verify_token = event_verify_token
+        self.redirect_uri = redirect_uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_secret is not None:
+            result['AppSecret'] = self.app_secret
+        if self.corp_id is not None:
+            result['CorpId'] = self.corp_id
+        if self.event_aes_key is not None:
+            result['EventAesKey'] = self.event_aes_key
+        if self.event_label is not None:
+            result['EventLabel'] = self.event_label
+        if self.event_verify_token is not None:
+            result['EventVerifyToken'] = self.event_verify_token
+        if self.redirect_uri is not None:
+            result['RedirectUri'] = self.redirect_uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppSecret') is not None:
+            self.app_secret = m.get('AppSecret')
+        if m.get('CorpId') is not None:
+            self.corp_id = m.get('CorpId')
+        if m.get('EventAesKey') is not None:
+            self.event_aes_key = m.get('EventAesKey')
+        if m.get('EventLabel') is not None:
+            self.event_label = m.get('EventLabel')
+        if m.get('EventVerifyToken') is not None:
+            self.event_verify_token = m.get('EventVerifyToken')
+        if m.get('RedirectUri') is not None:
+            self.redirect_uri = m.get('RedirectUri')
+        return self
+
+
+class IdpIdaas2SubConfig(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        client_id: str = None,
+        client_secret: str = None,
+        event_aes_key: str = None,
+        event_label: str = None,
+        instance_id: str = None,
+        public_key_endpoint: str = None,
+        region: str = None,
+        saml_metadata: str = None,
+    ):
+        self.application_id = application_id
+        self.client_id = client_id
+        self.client_secret = client_secret
+        self.event_aes_key = event_aes_key
+        self.event_label = event_label
+        self.instance_id = instance_id
+        self.public_key_endpoint = public_key_endpoint
+        self.region = region
+        self.saml_metadata = saml_metadata
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.client_secret is not None:
+            result['ClientSecret'] = self.client_secret
+        if self.event_aes_key is not None:
+            result['EventAesKey'] = self.event_aes_key
+        if self.event_label is not None:
+            result['EventLabel'] = self.event_label
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.public_key_endpoint is not None:
+            result['PublicKeyEndpoint'] = self.public_key_endpoint
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.saml_metadata is not None:
+            result['SamlMetadata'] = self.saml_metadata
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('ClientSecret') is not None:
+            self.client_secret = m.get('ClientSecret')
+        if m.get('EventAesKey') is not None:
+            self.event_aes_key = m.get('EventAesKey')
+        if m.get('EventLabel') is not None:
+            self.event_label = m.get('EventLabel')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PublicKeyEndpoint') is not None:
+            self.public_key_endpoint = m.get('PublicKeyEndpoint')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('SamlMetadata') is not None:
+            self.saml_metadata = m.get('SamlMetadata')
+        return self
+
+
+class IdpLdapSubConfig(TeaModel):
+    def __init__(
+        self,
+        base_dn: str = None,
+        group_base_dn: str = None,
+        group_filter: str = None,
+        group_membership_attr: str = None,
+        group_name_attr: str = None,
+        login_name_attr: str = None,
+        server_addr: str = None,
+        server_port: str = None,
+        server_type: str = None,
+        use_ssl: bool = None,
+        user_dn: str = None,
+        user_filter: str = None,
+        user_password: str = None,
+    ):
+        self.base_dn = base_dn
+        self.group_base_dn = group_base_dn
+        self.group_filter = group_filter
+        self.group_membership_attr = group_membership_attr
+        self.group_name_attr = group_name_attr
+        self.login_name_attr = login_name_attr
+        self.server_addr = server_addr
+        self.server_port = server_port
+        self.server_type = server_type
+        self.use_ssl = use_ssl
+        self.user_dn = user_dn
+        self.user_filter = user_filter
+        self.user_password = user_password
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.base_dn is not None:
+            result['BaseDn'] = self.base_dn
+        if self.group_base_dn is not None:
+            result['GroupBaseDn'] = self.group_base_dn
+        if self.group_filter is not None:
+            result['GroupFilter'] = self.group_filter
+        if self.group_membership_attr is not None:
+            result['GroupMembershipAttr'] = self.group_membership_attr
+        if self.group_name_attr is not None:
+            result['GroupNameAttr'] = self.group_name_attr
+        if self.login_name_attr is not None:
+            result['LoginNameAttr'] = self.login_name_attr
+        if self.server_addr is not None:
+            result['ServerAddr'] = self.server_addr
+        if self.server_port is not None:
+            result['ServerPort'] = self.server_port
+        if self.server_type is not None:
+            result['ServerType'] = self.server_type
+        if self.use_ssl is not None:
+            result['UseSsl'] = self.use_ssl
+        if self.user_dn is not None:
+            result['UserDn'] = self.user_dn
+        if self.user_filter is not None:
+            result['UserFilter'] = self.user_filter
+        if self.user_password is not None:
+            result['UserPassword'] = self.user_password
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaseDn') is not None:
+            self.base_dn = m.get('BaseDn')
+        if m.get('GroupBaseDn') is not None:
+            self.group_base_dn = m.get('GroupBaseDn')
+        if m.get('GroupFilter') is not None:
+            self.group_filter = m.get('GroupFilter')
+        if m.get('GroupMembershipAttr') is not None:
+            self.group_membership_attr = m.get('GroupMembershipAttr')
+        if m.get('GroupNameAttr') is not None:
+            self.group_name_attr = m.get('GroupNameAttr')
+        if m.get('LoginNameAttr') is not None:
+            self.login_name_attr = m.get('LoginNameAttr')
+        if m.get('ServerAddr') is not None:
+            self.server_addr = m.get('ServerAddr')
+        if m.get('ServerPort') is not None:
+            self.server_port = m.get('ServerPort')
+        if m.get('ServerType') is not None:
+            self.server_type = m.get('ServerType')
+        if m.get('UseSsl') is not None:
+            self.use_ssl = m.get('UseSsl')
+        if m.get('UserDn') is not None:
+            self.user_dn = m.get('UserDn')
+        if m.get('UserFilter') is not None:
+            self.user_filter = m.get('UserFilter')
+        if m.get('UserPassword') is not None:
+            self.user_password = m.get('UserPassword')
+        return self
+
+
+class IdpLoginConfig(TeaModel):
+    def __init__(
+        self,
+        mobile_login_type: str = None,
+        mobile_mfa_types: str = None,
+        pc_login_type: str = None,
+        pc_mfa_types: str = None,
+        totp_corp_verify_aes_key: str = None,
+        totp_corp_verify_token: str = None,
+        totp_corp_verify_url: str = None,
+    ):
+        self.mobile_login_type = mobile_login_type
+        self.mobile_mfa_types = mobile_mfa_types
+        self.pc_login_type = pc_login_type
+        self.pc_mfa_types = pc_mfa_types
+        self.totp_corp_verify_aes_key = totp_corp_verify_aes_key
+        self.totp_corp_verify_token = totp_corp_verify_token
+        self.totp_corp_verify_url = totp_corp_verify_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mobile_login_type is not None:
+            result['MobileLoginType'] = self.mobile_login_type
+        if self.mobile_mfa_types is not None:
+            result['MobileMfaTypes'] = self.mobile_mfa_types
+        if self.pc_login_type is not None:
+            result['PcLoginType'] = self.pc_login_type
+        if self.pc_mfa_types is not None:
+            result['PcMfaTypes'] = self.pc_mfa_types
+        if self.totp_corp_verify_aes_key is not None:
+            result['TotpCorpVerifyAesKey'] = self.totp_corp_verify_aes_key
+        if self.totp_corp_verify_token is not None:
+            result['TotpCorpVerifyToken'] = self.totp_corp_verify_token
+        if self.totp_corp_verify_url is not None:
+            result['TotpCorpVerifyUrl'] = self.totp_corp_verify_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MobileLoginType') is not None:
+            self.mobile_login_type = m.get('MobileLoginType')
+        if m.get('MobileMfaTypes') is not None:
+            self.mobile_mfa_types = m.get('MobileMfaTypes')
+        if m.get('PcLoginType') is not None:
+            self.pc_login_type = m.get('PcLoginType')
+        if m.get('PcMfaTypes') is not None:
+            self.pc_mfa_types = m.get('PcMfaTypes')
+        if m.get('TotpCorpVerifyAesKey') is not None:
+            self.totp_corp_verify_aes_key = m.get('TotpCorpVerifyAesKey')
+        if m.get('TotpCorpVerifyToken') is not None:
+            self.totp_corp_verify_token = m.get('TotpCorpVerifyToken')
+        if m.get('TotpCorpVerifyUrl') is not None:
+            self.totp_corp_verify_url = m.get('TotpCorpVerifyUrl')
+        return self
+
+
+class IdpSyncConfigIdpDepartmentInfos(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class IdpSyncConfig(TeaModel):
+    def __init__(
+        self,
+        auto_sync_enabled: bool = None,
+        idp_department_infos: List[IdpSyncConfigIdpDepartmentInfos] = None,
+        schedule_sync_interval_second: int = None,
+        user_sync_enabled: bool = None,
+    ):
+        self.auto_sync_enabled = auto_sync_enabled
+        self.idp_department_infos = idp_department_infos
+        self.schedule_sync_interval_second = schedule_sync_interval_second
+        self.user_sync_enabled = user_sync_enabled
+
+    def validate(self):
+        if self.idp_department_infos:
+            for k in self.idp_department_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_sync_enabled is not None:
+            result['AutoSyncEnabled'] = self.auto_sync_enabled
+        result['IdpDepartmentInfos'] = []
+        if self.idp_department_infos is not None:
+            for k in self.idp_department_infos:
+                result['IdpDepartmentInfos'].append(k.to_map() if k else None)
+        if self.schedule_sync_interval_second is not None:
+            result['ScheduleSyncIntervalSecond'] = self.schedule_sync_interval_second
+        if self.user_sync_enabled is not None:
+            result['UserSyncEnabled'] = self.user_sync_enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoSyncEnabled') is not None:
+            self.auto_sync_enabled = m.get('AutoSyncEnabled')
+        self.idp_department_infos = []
+        if m.get('IdpDepartmentInfos') is not None:
+            for k in m.get('IdpDepartmentInfos'):
+                temp_model = IdpSyncConfigIdpDepartmentInfos()
+                self.idp_department_infos.append(temp_model.from_map(k))
+        if m.get('ScheduleSyncIntervalSecond') is not None:
+            self.schedule_sync_interval_second = m.get('ScheduleSyncIntervalSecond')
+        if m.get('UserSyncEnabled') is not None:
+            self.user_sync_enabled = m.get('UserSyncEnabled')
+        return self
+
+
+class IdpWeixin2SubConfig(TeaModel):
+    def __init__(
+        self,
+        agent_id: str = None,
+        app_schema: str = None,
+        app_secret: str = None,
+        corp_id: str = None,
+        event_aes_key: str = None,
+        event_label: str = None,
+        event_verify_token: str = None,
+        redirect_uri: str = None,
+    ):
+        self.agent_id = agent_id
+        self.app_schema = app_schema
+        self.app_secret = app_secret
+        self.corp_id = corp_id
+        self.event_aes_key = event_aes_key
+        self.event_label = event_label
+        self.event_verify_token = event_verify_token
+        self.redirect_uri = redirect_uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_id is not None:
+            result['AgentId'] = self.agent_id
+        if self.app_schema is not None:
+            result['AppSchema'] = self.app_schema
+        if self.app_secret is not None:
+            result['AppSecret'] = self.app_secret
+        if self.corp_id is not None:
+            result['CorpId'] = self.corp_id
+        if self.event_aes_key is not None:
+            result['EventAesKey'] = self.event_aes_key
+        if self.event_label is not None:
+            result['EventLabel'] = self.event_label
+        if self.event_verify_token is not None:
+            result['EventVerifyToken'] = self.event_verify_token
+        if self.redirect_uri is not None:
+            result['RedirectUri'] = self.redirect_uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentId') is not None:
+            self.agent_id = m.get('AgentId')
+        if m.get('AppSchema') is not None:
+            self.app_schema = m.get('AppSchema')
+        if m.get('AppSecret') is not None:
+            self.app_secret = m.get('AppSecret')
+        if m.get('CorpId') is not None:
+            self.corp_id = m.get('CorpId')
+        if m.get('EventAesKey') is not None:
+            self.event_aes_key = m.get('EventAesKey')
+        if m.get('EventLabel') is not None:
+            self.event_label = m.get('EventLabel')
+        if m.get('EventVerifyToken') is not None:
+            self.event_verify_token = m.get('EventVerifyToken')
+        if m.get('RedirectUri') is not None:
+            self.redirect_uri = m.get('RedirectUri')
+        return self
+
+
+class OpenStructIdpWuyingSubConfig(TeaModel):
+    def __init__(
+        self,
+        aliuids: List[str] = None,
+    ):
+        self.aliuids = aliuids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliuids is not None:
+            result['Aliuids'] = self.aliuids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Aliuids') is not None:
+            self.aliuids = m.get('Aliuids')
+        return self
+
+
+class IdpConfig(TeaModel):
+    def __init__(
+        self,
+        attr_map_config: IdpAttrMapConfig = None,
+        connect_config: IdpConnectConfig = None,
+        description: str = None,
+        dingtalk_config: IdpDingtalkSubConfig = None,
+        enabled: bool = None,
+        feishu_config: IdpFeishuSubConfig = None,
+        idaas_config: IdpIdaas2SubConfig = None,
+        idp_config_id: str = None,
+        last_sync_time_unix: int = None,
+        ldap_config: IdpLdapSubConfig = None,
+        login_config: IdpLoginConfig = None,
+        name: str = None,
+        sync_config: IdpSyncConfig = None,
+        sync_status: str = None,
+        type: str = None,
+        weixin_config: IdpWeixin2SubConfig = None,
+        wuying_config: OpenStructIdpWuyingSubConfig = None,
+    ):
+        self.attr_map_config = attr_map_config
+        self.connect_config = connect_config
+        self.description = description
+        self.dingtalk_config = dingtalk_config
+        self.enabled = enabled
+        self.feishu_config = feishu_config
+        self.idaas_config = idaas_config
+        self.idp_config_id = idp_config_id
+        self.last_sync_time_unix = last_sync_time_unix
+        self.ldap_config = ldap_config
+        self.login_config = login_config
+        self.name = name
+        self.sync_config = sync_config
+        self.sync_status = sync_status
+        self.type = type
+        self.weixin_config = weixin_config
+        self.wuying_config = wuying_config
+
+    def validate(self):
+        if self.attr_map_config:
+            self.attr_map_config.validate()
+        if self.connect_config:
+            self.connect_config.validate()
+        if self.dingtalk_config:
+            self.dingtalk_config.validate()
+        if self.feishu_config:
+            self.feishu_config.validate()
+        if self.idaas_config:
+            self.idaas_config.validate()
+        if self.ldap_config:
+            self.ldap_config.validate()
+        if self.login_config:
+            self.login_config.validate()
+        if self.sync_config:
+            self.sync_config.validate()
+        if self.weixin_config:
+            self.weixin_config.validate()
+        if self.wuying_config:
+            self.wuying_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attr_map_config is not None:
+            result['AttrMapConfig'] = self.attr_map_config.to_map()
+        if self.connect_config is not None:
+            result['ConnectConfig'] = self.connect_config.to_map()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.dingtalk_config is not None:
+            result['DingtalkConfig'] = self.dingtalk_config.to_map()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.feishu_config is not None:
+            result['FeishuConfig'] = self.feishu_config.to_map()
+        if self.idaas_config is not None:
+            result['IdaasConfig'] = self.idaas_config.to_map()
+        if self.idp_config_id is not None:
+            result['IdpConfigId'] = self.idp_config_id
+        if self.last_sync_time_unix is not None:
+            result['LastSyncTimeUnix'] = self.last_sync_time_unix
+        if self.ldap_config is not None:
+            result['LdapConfig'] = self.ldap_config.to_map()
+        if self.login_config is not None:
+            result['LoginConfig'] = self.login_config.to_map()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.sync_config is not None:
+            result['SyncConfig'] = self.sync_config.to_map()
+        if self.sync_status is not None:
+            result['SyncStatus'] = self.sync_status
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.weixin_config is not None:
+            result['WeixinConfig'] = self.weixin_config.to_map()
+        if self.wuying_config is not None:
+            result['WuyingConfig'] = self.wuying_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AttrMapConfig') is not None:
+            temp_model = IdpAttrMapConfig()
+            self.attr_map_config = temp_model.from_map(m['AttrMapConfig'])
+        if m.get('ConnectConfig') is not None:
+            temp_model = IdpConnectConfig()
+            self.connect_config = temp_model.from_map(m['ConnectConfig'])
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DingtalkConfig') is not None:
+            temp_model = IdpDingtalkSubConfig()
+            self.dingtalk_config = temp_model.from_map(m['DingtalkConfig'])
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('FeishuConfig') is not None:
+            temp_model = IdpFeishuSubConfig()
+            self.feishu_config = temp_model.from_map(m['FeishuConfig'])
+        if m.get('IdaasConfig') is not None:
+            temp_model = IdpIdaas2SubConfig()
+            self.idaas_config = temp_model.from_map(m['IdaasConfig'])
+        if m.get('IdpConfigId') is not None:
+            self.idp_config_id = m.get('IdpConfigId')
+        if m.get('LastSyncTimeUnix') is not None:
+            self.last_sync_time_unix = m.get('LastSyncTimeUnix')
+        if m.get('LdapConfig') is not None:
+            temp_model = IdpLdapSubConfig()
+            self.ldap_config = temp_model.from_map(m['LdapConfig'])
+        if m.get('LoginConfig') is not None:
+            temp_model = IdpLoginConfig()
+            self.login_config = temp_model.from_map(m['LoginConfig'])
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SyncConfig') is not None:
+            temp_model = IdpSyncConfig()
+            self.sync_config = temp_model.from_map(m['SyncConfig'])
+        if m.get('SyncStatus') is not None:
+            self.sync_status = m.get('SyncStatus')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('WeixinConfig') is not None:
+            temp_model = IdpWeixin2SubConfig()
+            self.weixin_config = temp_model.from_map(m['WeixinConfig'])
+        if m.get('WuyingConfig') is not None:
+            temp_model = OpenStructIdpWuyingSubConfig()
+            self.wuying_config = temp_model.from_map(m['WuyingConfig'])
+        return self
+
+
+class IdpCustomField(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        key: str = None,
+        name: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.description = description
+        self.key = key
+        self.name = name
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class IdpLoginOrderItem(TeaModel):
+    def __init__(
+        self,
+        class_: str = None,
+        config_id: str = None,
+        desc: str = None,
+        enabled: bool = None,
+        name: str = None,
+        type: str = None,
+    ):
+        self.class_ = class_
+        self.config_id = config_id
+        self.desc = desc
+        self.enabled = enabled
+        self.name = name
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.class_ is not None:
+            result['Class'] = self.class_
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.desc is not None:
+            result['Desc'] = self.desc
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Class') is not None:
+            self.class_ = m.get('Class')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Desc') is not None:
+            self.desc = m.get('Desc')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class OpenStructIdpSyncRecord(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        idp_raw_json: str = None,
+        idp_resource_id: str = None,
+        name: str = None,
+        record_type: str = None,
+        sase_raw_json: str = None,
+        sase_resource_id: str = None,
+        success: bool = None,
+        sync_record_id: str = None,
+        sync_task_id: str = None,
+        time_unix: str = None,
+    ):
+        self.action = action
+        self.idp_raw_json = idp_raw_json
+        self.idp_resource_id = idp_resource_id
+        self.name = name
+        self.record_type = record_type
+        self.sase_raw_json = sase_raw_json
+        self.sase_resource_id = sase_resource_id
+        self.success = success
+        self.sync_record_id = sync_record_id
+        self.sync_task_id = sync_task_id
+        self.time_unix = time_unix
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.idp_raw_json is not None:
+            result['IdpRawJson'] = self.idp_raw_json
+        if self.idp_resource_id is not None:
+            result['IdpResourceId'] = self.idp_resource_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.record_type is not None:
+            result['RecordType'] = self.record_type
+        if self.sase_raw_json is not None:
+            result['SaseRawJson'] = self.sase_raw_json
+        if self.sase_resource_id is not None:
+            result['SaseResourceId'] = self.sase_resource_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.sync_record_id is not None:
+            result['SyncRecordId'] = self.sync_record_id
+        if self.sync_task_id is not None:
+            result['SyncTaskId'] = self.sync_task_id
+        if self.time_unix is not None:
+            result['TimeUnix'] = self.time_unix
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('IdpRawJson') is not None:
+            self.idp_raw_json = m.get('IdpRawJson')
+        if m.get('IdpResourceId') is not None:
+            self.idp_resource_id = m.get('IdpResourceId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RecordType') is not None:
+            self.record_type = m.get('RecordType')
+        if m.get('SaseRawJson') is not None:
+            self.sase_raw_json = m.get('SaseRawJson')
+        if m.get('SaseResourceId') is not None:
+            self.sase_resource_id = m.get('SaseResourceId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('SyncRecordId') is not None:
+            self.sync_record_id = m.get('SyncRecordId')
+        if m.get('SyncTaskId') is not None:
+            self.sync_task_id = m.get('SyncTaskId')
+        if m.get('TimeUnix') is not None:
+            self.time_unix = m.get('TimeUnix')
+        return self
+
+
+class OpenStructIdpSyncTask(TeaModel):
+    def __init__(
+        self,
+        department_failed: int = None,
+        department_total: int = None,
+        end_time_unix: int = None,
+        fail_type: str = None,
+        idp_config_id: bytes = None,
+        start_time_unix: int = None,
+        status: str = None,
+        sync_task_id: str = None,
+        update_time_unix: int = None,
+        user_failed: int = None,
+        user_total: int = None,
+    ):
+        self.department_failed = department_failed
+        self.department_total = department_total
+        self.end_time_unix = end_time_unix
+        self.fail_type = fail_type
+        self.idp_config_id = idp_config_id
+        self.start_time_unix = start_time_unix
+        self.status = status
+        self.sync_task_id = sync_task_id
+        self.update_time_unix = update_time_unix
+        self.user_failed = user_failed
+        self.user_total = user_total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.department_failed is not None:
+            result['DepartmentFailed'] = self.department_failed
+        if self.department_total is not None:
+            result['DepartmentTotal'] = self.department_total
+        if self.end_time_unix is not None:
+            result['EndTimeUnix'] = self.end_time_unix
+        if self.fail_type is not None:
+            result['FailType'] = self.fail_type
+        if self.idp_config_id is not None:
+            result['IdpConfigId'] = self.idp_config_id
+        if self.start_time_unix is not None:
+            result['StartTimeUnix'] = self.start_time_unix
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.sync_task_id is not None:
+            result['SyncTaskId'] = self.sync_task_id
+        if self.update_time_unix is not None:
+            result['UpdateTimeUnix'] = self.update_time_unix
+        if self.user_failed is not None:
+            result['UserFailed'] = self.user_failed
+        if self.user_total is not None:
+            result['UserTotal'] = self.user_total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DepartmentFailed') is not None:
+            self.department_failed = m.get('DepartmentFailed')
+        if m.get('DepartmentTotal') is not None:
+            self.department_total = m.get('DepartmentTotal')
+        if m.get('EndTimeUnix') is not None:
+            self.end_time_unix = m.get('EndTimeUnix')
+        if m.get('FailType') is not None:
+            self.fail_type = m.get('FailType')
+        if m.get('IdpConfigId') is not None:
+            self.idp_config_id = m.get('IdpConfigId')
+        if m.get('StartTimeUnix') is not None:
+            self.start_time_unix = m.get('StartTimeUnix')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SyncTaskId') is not None:
+            self.sync_task_id = m.get('SyncTaskId')
+        if m.get('UpdateTimeUnix') is not None:
+            self.update_time_unix = m.get('UpdateTimeUnix')
+        if m.get('UserFailed') is not None:
+            self.user_failed = m.get('UserFailed')
+        if m.get('UserTotal') is not None:
+            self.user_total = m.get('UserTotal')
+        return self
+
+
+class OpenStructSaseDepartment(TeaModel):
+    def __init__(
+        self,
+        department_id: str = None,
+        full_dn: str = None,
+        name: str = None,
+        parent_department_id: str = None,
+    ):
+        self.department_id = department_id
+        self.full_dn = full_dn
+        self.name = name
+        self.parent_department_id = parent_department_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.department_id is not None:
+            result['DepartmentId'] = self.department_id
+        if self.full_dn is not None:
+            result['FullDn'] = self.full_dn
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.parent_department_id is not None:
+            result['ParentDepartmentId'] = self.parent_department_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DepartmentId') is not None:
+            self.department_id = m.get('DepartmentId')
+        if m.get('FullDn') is not None:
+            self.full_dn = m.get('FullDn')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ParentDepartmentId') is not None:
+            self.parent_department_id = m.get('ParentDepartmentId')
+        return self
+
+
+class OpenStructSaseUser(TeaModel):
+    def __init__(
+        self,
+        create_time_unix: int = None,
+        custom_fields: List[IdpCustomField] = None,
+        departments: List[OpenStructSaseDepartment] = None,
+        email: str = None,
+        idp_config_id: str = None,
+        leave_time_unix: int = None,
+        login_time_unix: int = None,
+        sase_user_id: str = None,
+        sase_user_status: str = None,
+        sync_time_unix: int = None,
+        telephone: str = None,
+        title: str = None,
+        update_time_unix: int = None,
+        username: str = None,
+        work_status: str = None,
+    ):
+        self.create_time_unix = create_time_unix
+        self.custom_fields = custom_fields
+        self.departments = departments
+        self.email = email
+        self.idp_config_id = idp_config_id
+        self.leave_time_unix = leave_time_unix
+        self.login_time_unix = login_time_unix
+        self.sase_user_id = sase_user_id
+        self.sase_user_status = sase_user_status
+        self.sync_time_unix = sync_time_unix
+        self.telephone = telephone
+        self.title = title
+        self.update_time_unix = update_time_unix
+        self.username = username
+        self.work_status = work_status
+
+    def validate(self):
+        if self.custom_fields:
+            for k in self.custom_fields:
+                if k:
+                    k.validate()
+        if self.departments:
+            for k in self.departments:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time_unix is not None:
+            result['CreateTimeUnix'] = self.create_time_unix
+        result['CustomFields'] = []
+        if self.custom_fields is not None:
+            for k in self.custom_fields:
+                result['CustomFields'].append(k.to_map() if k else None)
+        result['Departments'] = []
+        if self.departments is not None:
+            for k in self.departments:
+                result['Departments'].append(k.to_map() if k else None)
+        if self.email is not None:
+            result['Email'] = self.email
+        if self.idp_config_id is not None:
+            result['IdpConfigId'] = self.idp_config_id
+        if self.leave_time_unix is not None:
+            result['LeaveTimeUnix'] = self.leave_time_unix
+        if self.login_time_unix is not None:
+            result['LoginTimeUnix'] = self.login_time_unix
+        if self.sase_user_id is not None:
+            result['SaseUserId'] = self.sase_user_id
+        if self.sase_user_status is not None:
+            result['SaseUserStatus'] = self.sase_user_status
+        if self.sync_time_unix is not None:
+            result['SyncTimeUnix'] = self.sync_time_unix
+        if self.telephone is not None:
+            result['Telephone'] = self.telephone
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.update_time_unix is not None:
+            result['UpdateTimeUnix'] = self.update_time_unix
+        if self.username is not None:
+            result['Username'] = self.username
+        if self.work_status is not None:
+            result['WorkStatus'] = self.work_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTimeUnix') is not None:
+            self.create_time_unix = m.get('CreateTimeUnix')
+        self.custom_fields = []
+        if m.get('CustomFields') is not None:
+            for k in m.get('CustomFields'):
+                temp_model = IdpCustomField()
+                self.custom_fields.append(temp_model.from_map(k))
+        self.departments = []
+        if m.get('Departments') is not None:
+            for k in m.get('Departments'):
+                temp_model = OpenStructSaseDepartment()
+                self.departments.append(temp_model.from_map(k))
+        if m.get('Email') is not None:
+            self.email = m.get('Email')
+        if m.get('IdpConfigId') is not None:
+            self.idp_config_id = m.get('IdpConfigId')
+        if m.get('LeaveTimeUnix') is not None:
+            self.leave_time_unix = m.get('LeaveTimeUnix')
+        if m.get('LoginTimeUnix') is not None:
+            self.login_time_unix = m.get('LoginTimeUnix')
+        if m.get('SaseUserId') is not None:
+            self.sase_user_id = m.get('SaseUserId')
+        if m.get('SaseUserStatus') is not None:
+            self.sase_user_status = m.get('SaseUserStatus')
+        if m.get('SyncTimeUnix') is not None:
+            self.sync_time_unix = m.get('SyncTimeUnix')
+        if m.get('Telephone') is not None:
+            self.telephone = m.get('Telephone')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('UpdateTimeUnix') is not None:
+            self.update_time_unix = m.get('UpdateTimeUnix')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        if m.get('WorkStatus') is not None:
+            self.work_status = m.get('WorkStatus')
         return self
 
 
@@ -10814,6 +12326,11 @@ class GetUserDeviceResponseBodyDevice(TeaModel):
         pa_status: str = None,
         sase_user_id: str = None,
         sharing_status: bool = None,
+        sn_base_board: str = None,
+        sn_bios: str = None,
+        sn_disk_drive: str = None,
+        sn_processor: str = None,
+        sn_system: str = None,
         src_ip: str = None,
         update_time: str = None,
         username: str = None,
@@ -10845,6 +12362,11 @@ class GetUserDeviceResponseBodyDevice(TeaModel):
         self.pa_status = pa_status
         self.sase_user_id = sase_user_id
         self.sharing_status = sharing_status
+        self.sn_base_board = sn_base_board
+        self.sn_bios = sn_bios
+        self.sn_disk_drive = sn_disk_drive
+        self.sn_processor = sn_processor
+        self.sn_system = sn_system
         self.src_ip = src_ip
         self.update_time = update_time
         self.username = username
@@ -10922,6 +12444,16 @@ class GetUserDeviceResponseBodyDevice(TeaModel):
             result['SaseUserId'] = self.sase_user_id
         if self.sharing_status is not None:
             result['SharingStatus'] = self.sharing_status
+        if self.sn_base_board is not None:
+            result['SnBaseBoard'] = self.sn_base_board
+        if self.sn_bios is not None:
+            result['SnBios'] = self.sn_bios
+        if self.sn_disk_drive is not None:
+            result['SnDiskDrive'] = self.sn_disk_drive
+        if self.sn_processor is not None:
+            result['SnProcessor'] = self.sn_processor
+        if self.sn_system is not None:
+            result['SnSystem'] = self.sn_system
         if self.src_ip is not None:
             result['SrcIP'] = self.src_ip
         if self.update_time is not None:
@@ -10992,6 +12524,16 @@ class GetUserDeviceResponseBodyDevice(TeaModel):
             self.sase_user_id = m.get('SaseUserId')
         if m.get('SharingStatus') is not None:
             self.sharing_status = m.get('SharingStatus')
+        if m.get('SnBaseBoard') is not None:
+            self.sn_base_board = m.get('SnBaseBoard')
+        if m.get('SnBios') is not None:
+            self.sn_bios = m.get('SnBios')
+        if m.get('SnDiskDrive') is not None:
+            self.sn_disk_drive = m.get('SnDiskDrive')
+        if m.get('SnProcessor') is not None:
+            self.sn_processor = m.get('SnProcessor')
+        if m.get('SnSystem') is not None:
+            self.sn_system = m.get('SnSystem')
         if m.get('SrcIP') is not None:
             self.src_ip = m.get('SrcIP')
         if m.get('UpdateTime') is not None:
@@ -21222,6 +22764,7 @@ class ListUserDevicesRequest(TeaModel):
         page_size: int = None,
         sase_user_id: str = None,
         sharing_status: bool = None,
+        sn_system: str = None,
         sort_by: str = None,
         username: str = None,
         workshop: str = None,
@@ -21247,6 +22790,7 @@ class ListUserDevicesRequest(TeaModel):
         self.page_size = page_size
         self.sase_user_id = sase_user_id
         self.sharing_status = sharing_status
+        self.sn_system = sn_system
         self.sort_by = sort_by
         self.username = username
         self.workshop = workshop
@@ -21298,6 +22842,8 @@ class ListUserDevicesRequest(TeaModel):
             result['SaseUserId'] = self.sase_user_id
         if self.sharing_status is not None:
             result['SharingStatus'] = self.sharing_status
+        if self.sn_system is not None:
+            result['SnSystem'] = self.sn_system
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
         if self.username is not None:
@@ -21346,6 +22892,8 @@ class ListUserDevicesRequest(TeaModel):
             self.sase_user_id = m.get('SaseUserId')
         if m.get('SharingStatus') is not None:
             self.sharing_status = m.get('SharingStatus')
+        if m.get('SnSystem') is not None:
+            self.sn_system = m.get('SnSystem')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
         if m.get('Username') is not None:
@@ -21416,6 +22964,11 @@ class ListUserDevicesResponseBodyDevices(TeaModel):
         pa_status: str = None,
         sase_user_id: str = None,
         sharing_status: bool = None,
+        sn_base_board: str = None,
+        sn_bios: str = None,
+        sn_disk_drive: str = None,
+        sn_processor: str = None,
+        sn_system: str = None,
         src_ip: str = None,
         update_time: str = None,
         username: str = None,
@@ -21446,6 +22999,11 @@ class ListUserDevicesResponseBodyDevices(TeaModel):
         self.pa_status = pa_status
         self.sase_user_id = sase_user_id
         self.sharing_status = sharing_status
+        self.sn_base_board = sn_base_board
+        self.sn_bios = sn_bios
+        self.sn_disk_drive = sn_disk_drive
+        self.sn_processor = sn_processor
+        self.sn_system = sn_system
         self.src_ip = src_ip
         self.update_time = update_time
         self.username = username
@@ -21515,6 +23073,16 @@ class ListUserDevicesResponseBodyDevices(TeaModel):
             result['SaseUserId'] = self.sase_user_id
         if self.sharing_status is not None:
             result['SharingStatus'] = self.sharing_status
+        if self.sn_base_board is not None:
+            result['SnBaseBoard'] = self.sn_base_board
+        if self.sn_bios is not None:
+            result['SnBios'] = self.sn_bios
+        if self.sn_disk_drive is not None:
+            result['SnDiskDrive'] = self.sn_disk_drive
+        if self.sn_processor is not None:
+            result['SnProcessor'] = self.sn_processor
+        if self.sn_system is not None:
+            result['SnSystem'] = self.sn_system
         if self.src_ip is not None:
             result['SrcIP'] = self.src_ip
         if self.update_time is not None:
@@ -21580,6 +23148,16 @@ class ListUserDevicesResponseBodyDevices(TeaModel):
             self.sase_user_id = m.get('SaseUserId')
         if m.get('SharingStatus') is not None:
             self.sharing_status = m.get('SharingStatus')
+        if m.get('SnBaseBoard') is not None:
+            self.sn_base_board = m.get('SnBaseBoard')
+        if m.get('SnBios') is not None:
+            self.sn_bios = m.get('SnBios')
+        if m.get('SnDiskDrive') is not None:
+            self.sn_disk_drive = m.get('SnDiskDrive')
+        if m.get('SnProcessor') is not None:
+            self.sn_processor = m.get('SnProcessor')
+        if m.get('SnSystem') is not None:
+            self.sn_system = m.get('SnSystem')
         if m.get('SrcIP') is not None:
             self.src_ip = m.get('SrcIP')
         if m.get('UpdateTime') is not None:
