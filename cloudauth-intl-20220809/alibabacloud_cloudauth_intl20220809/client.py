@@ -264,7 +264,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.BankMetaVerifyIntlResponse:
         """
-        @summary 银行卡核验
+        @summary Bank Card Verification
+        
+        @description Verification of bank card elements, including: two-element verification (name + bank card number), three-element verification (name + ID number + bank card number), and four-element verification (name + ID number + phone number + bank card number) for consistency.
         
         @param request: BankMetaVerifyIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -315,7 +317,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.BankMetaVerifyIntlResponse:
         """
-        @summary 银行卡核验
+        @summary Bank Card Verification
+        
+        @description Verification of bank card elements, including: two-element verification (name + bank card number), three-element verification (name + ID number + bank card number), and four-element verification (name + ID number + phone number + bank card number) for consistency.
         
         @param request: BankMetaVerifyIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -365,7 +369,9 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.BankMetaVerifyIntlRequest,
     ) -> cloudauth_intl_20220809_models.BankMetaVerifyIntlResponse:
         """
-        @summary 银行卡核验
+        @summary Bank Card Verification
+        
+        @description Verification of bank card elements, including: two-element verification (name + bank card number), three-element verification (name + ID number + bank card number), and four-element verification (name + ID number + phone number + bank card number) for consistency.
         
         @param request: BankMetaVerifyIntlRequest
         @return: BankMetaVerifyIntlResponse
@@ -378,7 +384,9 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.BankMetaVerifyIntlRequest,
     ) -> cloudauth_intl_20220809_models.BankMetaVerifyIntlResponse:
         """
-        @summary 银行卡核验
+        @summary Bank Card Verification
+        
+        @description Verification of bank card elements, including: two-element verification (name + bank card number), three-element verification (name + ID number + bank card number), and four-element verification (name + ID number + phone number + bank card number) for consistency.
         
         @param request: BankMetaVerifyIntlRequest
         @return: BankMetaVerifyIntlResponse
@@ -2713,6 +2721,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.keepalive_intl_with_options_async(runtime)
+
+    def mobile_2meta_verify_intl_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.Mobile2MetaVerifyIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.Mobile2MetaVerifyIntlResponse:
+        """
+        @summary 手机号二要素核验API
+        
+        @param request: Mobile2MetaVerifyIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: Mobile2MetaVerifyIntlResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.mobile):
+            body['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.param_type):
+            body['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.product_code):
+            body['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.user_name):
+            body['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Mobile2MetaVerifyIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.Mobile2MetaVerifyIntlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def mobile_2meta_verify_intl_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.Mobile2MetaVerifyIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.Mobile2MetaVerifyIntlResponse:
+        """
+        @summary 手机号二要素核验API
+        
+        @param request: Mobile2MetaVerifyIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: Mobile2MetaVerifyIntlResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.mobile):
+            body['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.param_type):
+            body['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.product_code):
+            body['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.user_name):
+            body['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Mobile2MetaVerifyIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.Mobile2MetaVerifyIntlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def mobile_2meta_verify_intl(
+        self,
+        request: cloudauth_intl_20220809_models.Mobile2MetaVerifyIntlRequest,
+    ) -> cloudauth_intl_20220809_models.Mobile2MetaVerifyIntlResponse:
+        """
+        @summary 手机号二要素核验API
+        
+        @param request: Mobile2MetaVerifyIntlRequest
+        @return: Mobile2MetaVerifyIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.mobile_2meta_verify_intl_with_options(request, runtime)
+
+    async def mobile_2meta_verify_intl_async(
+        self,
+        request: cloudauth_intl_20220809_models.Mobile2MetaVerifyIntlRequest,
+    ) -> cloudauth_intl_20220809_models.Mobile2MetaVerifyIntlResponse:
+        """
+        @summary 手机号二要素核验API
+        
+        @param request: Mobile2MetaVerifyIntlRequest
+        @return: Mobile2MetaVerifyIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.mobile_2meta_verify_intl_with_options_async(request, runtime)
 
     def mobile_3meta_verify_intl_with_options(
         self,

@@ -1,3 +1,7 @@
+2025-07-18 Version: 3.10.0
+- Support API Mobile2MetaVerifyIntl.
+
+
 2025-07-15 Version: 3.9.1
 - Update API DocOcrMax: add request parameters DocPage.
 
