@@ -39589,6 +39589,8 @@ class Client(OpenApiClient):
             request.agent_upgrade_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.agent_upgrade_config, 'AgentUpgradeConfig', 'json')
         if not UtilClient.is_unset(tmp_req.oss_delivery_config):
             request.oss_delivery_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.oss_delivery_config, 'OssDeliveryConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.session_manager_config):
+            request.session_manager_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.session_manager_config, 'SessionManagerConfig', 'json')
         if not UtilClient.is_unset(tmp_req.sls_delivery_config):
             request.sls_delivery_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sls_delivery_config, 'SlsDeliveryConfig', 'json')
         query = {}
@@ -39606,6 +39608,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.session_manager_config_shrink):
+            query['SessionManagerConfig'] = request.session_manager_config_shrink
         if not UtilClient.is_unset(request.setting_type):
             query['SettingType'] = request.setting_type
         if not UtilClient.is_unset(request.sls_delivery_config_shrink):
@@ -39648,6 +39652,8 @@ class Client(OpenApiClient):
             request.agent_upgrade_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.agent_upgrade_config, 'AgentUpgradeConfig', 'json')
         if not UtilClient.is_unset(tmp_req.oss_delivery_config):
             request.oss_delivery_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.oss_delivery_config, 'OssDeliveryConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.session_manager_config):
+            request.session_manager_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.session_manager_config, 'SessionManagerConfig', 'json')
         if not UtilClient.is_unset(tmp_req.sls_delivery_config):
             request.sls_delivery_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sls_delivery_config, 'SlsDeliveryConfig', 'json')
         query = {}
@@ -39665,6 +39671,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.session_manager_config_shrink):
+            query['SessionManagerConfig'] = request.session_manager_config_shrink
         if not UtilClient.is_unset(request.setting_type):
             query['SettingType'] = request.setting_type
         if not UtilClient.is_unset(request.sls_delivery_config_shrink):

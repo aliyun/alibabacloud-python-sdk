@@ -1,3 +1,8 @@
+2025-07-18 Version: 7.0.16
+- Update API DescribeCloudAssistantSettings: add response parameters Body.SessionManagerConfig.
+- Update API ModifyCloudAssistantSettings: add request parameters SessionManagerConfig.
+
+
 2025-07-16 Version: 7.0.15
 - Generated python 2014-05-26 for Ecs.
 
