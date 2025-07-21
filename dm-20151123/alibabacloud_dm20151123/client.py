@@ -1,21 +1,20 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
-from typing import Dict
+from Tea.request import TeaRequest
+from Tea.exceptions import TeaException
 from Tea.core import TeaCore
+from typing import Dict
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
 from alibabacloud_tea_util.client import Client as UtilClient
+from alibabacloud_tea_fileform.client import Client as FileFormClient
+from alibabacloud_tea_xml.client import Client as XMLClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_dm20151123 import models as dm_20151123_models
 from alibabacloud_tea_util import models as util_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
-from alibabacloud_openplatform20191219.client import Client as OpenPlatformClient
-from alibabacloud_openplatform20191219 import models as open_platform_models
-from alibabacloud_oss_sdk import models as oss_models
-from alibabacloud_oss_sdk.client import Client as OSSClient
 from alibabacloud_tea_fileform import models as file_form_models
-from alibabacloud_oss_util import models as ossutil_models
 from alibabacloud_darabonba_number.client import Client as NumberClient
 
 
@@ -31,6 +30,82 @@ class Client(OpenApiClient):
         self._endpoint_rule = ''
         self.check_config(config)
         self._endpoint = self.get_endpoint('dm', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
+
+    def _post_ossobject(
+        self,
+        bucket_name: str,
+        data: dict,
+    ) -> dict:
+        _request = TeaRequest()
+        form = UtilClient.assert_as_map(data)
+        boundary = FileFormClient.get_boundary()
+        host = UtilClient.assert_as_string(form.get('host'))
+        _request.protocol = 'HTTPS'
+        _request.method = 'POST'
+        _request.pathname = f'/'
+        _request.headers = {
+            'host': host,
+            'date': UtilClient.get_date_utcstring(),
+            'user-agent': UtilClient.get_user_agent('')
+        }
+        _request.headers['content-type'] = f'multipart/form-data; boundary={boundary}'
+        _request.body = FileFormClient.to_file_form(form, boundary)
+        _last_request = _request
+        _response = TeaCore.do_action(_request)
+        resp_map = None
+        body_str = UtilClient.read_as_string(_response.body)
+        if UtilClient.is_4xx(_response.status_code) or UtilClient.is_5xx(_response.status_code):
+            resp_map = XMLClient.parse_xml(body_str, None)
+            err = UtilClient.assert_as_map(resp_map.get('Error'))
+            raise TeaException({
+                'code': err.get('Code'),
+                'message': err.get('Message'),
+                'data': {
+                    'httpCode': _response.status_code,
+                    'requestId': err.get('RequestId'),
+                    'hostId': err.get('HostId')
+                }
+            })
+        resp_map = XMLClient.parse_xml(body_str, None)
+        return TeaCore.merge(resp_map)
+
+    async def _post_ossobject_async(
+        self,
+        bucket_name: str,
+        data: dict,
+    ) -> dict:
+        _request = TeaRequest()
+        form = UtilClient.assert_as_map(data)
+        boundary = FileFormClient.get_boundary()
+        host = UtilClient.assert_as_string(form.get('host'))
+        _request.protocol = 'HTTPS'
+        _request.method = 'POST'
+        _request.pathname = f'/'
+        _request.headers = {
+            'host': host,
+            'date': UtilClient.get_date_utcstring(),
+            'user-agent': UtilClient.get_user_agent('')
+        }
+        _request.headers['content-type'] = f'multipart/form-data; boundary={boundary}'
+        _request.body = FileFormClient.to_file_form(form, boundary)
+        _last_request = _request
+        _response = await TeaCore.async_do_action(_request)
+        resp_map = None
+        body_str = await UtilClient.read_as_string_async(_response.body)
+        if UtilClient.is_4xx(_response.status_code) or UtilClient.is_5xx(_response.status_code):
+            resp_map = XMLClient.parse_xml(body_str, None)
+            err = UtilClient.assert_as_map(resp_map.get('Error'))
+            raise TeaException({
+                'code': err.get('Code'),
+                'message': err.get('Message'),
+                'data': {
+                    'httpCode': _response.status_code,
+                    'requestId': err.get('RequestId'),
+                    'hostId': err.get('HostId')
+                }
+            })
+        resp_map = XMLClient.parse_xml(body_str, None)
+        return TeaCore.merge(resp_map)
 
     def get_endpoint(
         self,
@@ -1315,6 +1390,788 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_user_suppression_with_options_async(request, runtime)
+
+    def dedicated_ip_auto_renewal_with_options(
+        self,
+        request: dm_20151123_models.DedicatedIpAutoRenewalRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.DedicatedIpAutoRenewalResponse:
+        """
+        @summary Set Dedicated IP Auto Renewal
+        
+        @param request: DedicatedIpAutoRenewalRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DedicatedIpAutoRenewalResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_renewal):
+            query['AutoRenewal'] = request.auto_renewal
+        if not UtilClient.is_unset(request.buy_resource_ids):
+            query['BuyResourceIds'] = request.buy_resource_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DedicatedIpAutoRenewal',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DedicatedIpAutoRenewalResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dedicated_ip_auto_renewal_with_options_async(
+        self,
+        request: dm_20151123_models.DedicatedIpAutoRenewalRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.DedicatedIpAutoRenewalResponse:
+        """
+        @summary Set Dedicated IP Auto Renewal
+        
+        @param request: DedicatedIpAutoRenewalRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DedicatedIpAutoRenewalResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_renewal):
+            query['AutoRenewal'] = request.auto_renewal
+        if not UtilClient.is_unset(request.buy_resource_ids):
+            query['BuyResourceIds'] = request.buy_resource_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DedicatedIpAutoRenewal',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DedicatedIpAutoRenewalResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dedicated_ip_auto_renewal(
+        self,
+        request: dm_20151123_models.DedicatedIpAutoRenewalRequest,
+    ) -> dm_20151123_models.DedicatedIpAutoRenewalResponse:
+        """
+        @summary Set Dedicated IP Auto Renewal
+        
+        @param request: DedicatedIpAutoRenewalRequest
+        @return: DedicatedIpAutoRenewalResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dedicated_ip_auto_renewal_with_options(request, runtime)
+
+    async def dedicated_ip_auto_renewal_async(
+        self,
+        request: dm_20151123_models.DedicatedIpAutoRenewalRequest,
+    ) -> dm_20151123_models.DedicatedIpAutoRenewalResponse:
+        """
+        @summary Set Dedicated IP Auto Renewal
+        
+        @param request: DedicatedIpAutoRenewalRequest
+        @return: DedicatedIpAutoRenewalResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dedicated_ip_auto_renewal_with_options_async(request, runtime)
+
+    def dedicated_ip_change_warmup_type_with_options(
+        self,
+        request: dm_20151123_models.DedicatedIpChangeWarmupTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.DedicatedIpChangeWarmupTypeResponse:
+        """
+        @summary Change the warmup method for a dedicated IP
+        
+        @param request: DedicatedIpChangeWarmupTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DedicatedIpChangeWarmupTypeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.warmup_type):
+            query['WarmupType'] = request.warmup_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DedicatedIpChangeWarmupType',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DedicatedIpChangeWarmupTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dedicated_ip_change_warmup_type_with_options_async(
+        self,
+        request: dm_20151123_models.DedicatedIpChangeWarmupTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.DedicatedIpChangeWarmupTypeResponse:
+        """
+        @summary Change the warmup method for a dedicated IP
+        
+        @param request: DedicatedIpChangeWarmupTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DedicatedIpChangeWarmupTypeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.warmup_type):
+            query['WarmupType'] = request.warmup_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DedicatedIpChangeWarmupType',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DedicatedIpChangeWarmupTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dedicated_ip_change_warmup_type(
+        self,
+        request: dm_20151123_models.DedicatedIpChangeWarmupTypeRequest,
+    ) -> dm_20151123_models.DedicatedIpChangeWarmupTypeResponse:
+        """
+        @summary Change the warmup method for a dedicated IP
+        
+        @param request: DedicatedIpChangeWarmupTypeRequest
+        @return: DedicatedIpChangeWarmupTypeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dedicated_ip_change_warmup_type_with_options(request, runtime)
+
+    async def dedicated_ip_change_warmup_type_async(
+        self,
+        request: dm_20151123_models.DedicatedIpChangeWarmupTypeRequest,
+    ) -> dm_20151123_models.DedicatedIpChangeWarmupTypeResponse:
+        """
+        @summary Change the warmup method for a dedicated IP
+        
+        @param request: DedicatedIpChangeWarmupTypeRequest
+        @return: DedicatedIpChangeWarmupTypeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dedicated_ip_change_warmup_type_with_options_async(request, runtime)
+
+    def dedicated_ip_list_with_options(
+        self,
+        request: dm_20151123_models.DedicatedIpListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.DedicatedIpListResponse:
+        """
+        @summary Dedicated IP User IP List
+        
+        @param request: DedicatedIpListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DedicatedIpListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DedicatedIpList',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DedicatedIpListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dedicated_ip_list_with_options_async(
+        self,
+        request: dm_20151123_models.DedicatedIpListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.DedicatedIpListResponse:
+        """
+        @summary Dedicated IP User IP List
+        
+        @param request: DedicatedIpListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DedicatedIpListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DedicatedIpList',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DedicatedIpListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dedicated_ip_list(
+        self,
+        request: dm_20151123_models.DedicatedIpListRequest,
+    ) -> dm_20151123_models.DedicatedIpListResponse:
+        """
+        @summary Dedicated IP User IP List
+        
+        @param request: DedicatedIpListRequest
+        @return: DedicatedIpListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dedicated_ip_list_with_options(request, runtime)
+
+    async def dedicated_ip_list_async(
+        self,
+        request: dm_20151123_models.DedicatedIpListRequest,
+    ) -> dm_20151123_models.DedicatedIpListResponse:
+        """
+        @summary Dedicated IP User IP List
+        
+        @param request: DedicatedIpListRequest
+        @return: DedicatedIpListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dedicated_ip_list_with_options_async(request, runtime)
+
+    def dedicated_ip_none_pool_list_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.DedicatedIpNonePoolListResponse:
+        """
+        @summary Purchased Independent IPs Not Added to Pool
+        
+        @param request: DedicatedIpNonePoolListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DedicatedIpNonePoolListResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DedicatedIpNonePoolList',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DedicatedIpNonePoolListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dedicated_ip_none_pool_list_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.DedicatedIpNonePoolListResponse:
+        """
+        @summary Purchased Independent IPs Not Added to Pool
+        
+        @param request: DedicatedIpNonePoolListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DedicatedIpNonePoolListResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DedicatedIpNonePoolList',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DedicatedIpNonePoolListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dedicated_ip_none_pool_list(self) -> dm_20151123_models.DedicatedIpNonePoolListResponse:
+        """
+        @summary Purchased Independent IPs Not Added to Pool
+        
+        @return: DedicatedIpNonePoolListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dedicated_ip_none_pool_list_with_options(runtime)
+
+    async def dedicated_ip_none_pool_list_async(self) -> dm_20151123_models.DedicatedIpNonePoolListResponse:
+        """
+        @summary Purchased Independent IPs Not Added to Pool
+        
+        @return: DedicatedIpNonePoolListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dedicated_ip_none_pool_list_with_options_async(runtime)
+
+    def dedicated_ip_pool_create_with_options(
+        self,
+        request: dm_20151123_models.DedicatedIpPoolCreateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.DedicatedIpPoolCreateResponse:
+        """
+        @summary Creation of Independent IP Pool
+        
+        @param request: DedicatedIpPoolCreateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DedicatedIpPoolCreateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.buy_resource_ids):
+            query['BuyResourceIds'] = request.buy_resource_ids
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DedicatedIpPoolCreate',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DedicatedIpPoolCreateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dedicated_ip_pool_create_with_options_async(
+        self,
+        request: dm_20151123_models.DedicatedIpPoolCreateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.DedicatedIpPoolCreateResponse:
+        """
+        @summary Creation of Independent IP Pool
+        
+        @param request: DedicatedIpPoolCreateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DedicatedIpPoolCreateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.buy_resource_ids):
+            query['BuyResourceIds'] = request.buy_resource_ids
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DedicatedIpPoolCreate',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DedicatedIpPoolCreateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dedicated_ip_pool_create(
+        self,
+        request: dm_20151123_models.DedicatedIpPoolCreateRequest,
+    ) -> dm_20151123_models.DedicatedIpPoolCreateResponse:
+        """
+        @summary Creation of Independent IP Pool
+        
+        @param request: DedicatedIpPoolCreateRequest
+        @return: DedicatedIpPoolCreateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dedicated_ip_pool_create_with_options(request, runtime)
+
+    async def dedicated_ip_pool_create_async(
+        self,
+        request: dm_20151123_models.DedicatedIpPoolCreateRequest,
+    ) -> dm_20151123_models.DedicatedIpPoolCreateResponse:
+        """
+        @summary Creation of Independent IP Pool
+        
+        @param request: DedicatedIpPoolCreateRequest
+        @return: DedicatedIpPoolCreateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dedicated_ip_pool_create_with_options_async(request, runtime)
+
+    def dedicated_ip_pool_delete_with_options(
+        self,
+        request: dm_20151123_models.DedicatedIpPoolDeleteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.DedicatedIpPoolDeleteResponse:
+        """
+        @summary 独立IP池删除
+        
+        @param request: DedicatedIpPoolDeleteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DedicatedIpPoolDeleteResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DedicatedIpPoolDelete',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DedicatedIpPoolDeleteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dedicated_ip_pool_delete_with_options_async(
+        self,
+        request: dm_20151123_models.DedicatedIpPoolDeleteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.DedicatedIpPoolDeleteResponse:
+        """
+        @summary 独立IP池删除
+        
+        @param request: DedicatedIpPoolDeleteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DedicatedIpPoolDeleteResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DedicatedIpPoolDelete',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DedicatedIpPoolDeleteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dedicated_ip_pool_delete(
+        self,
+        request: dm_20151123_models.DedicatedIpPoolDeleteRequest,
+    ) -> dm_20151123_models.DedicatedIpPoolDeleteResponse:
+        """
+        @summary 独立IP池删除
+        
+        @param request: DedicatedIpPoolDeleteRequest
+        @return: DedicatedIpPoolDeleteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dedicated_ip_pool_delete_with_options(request, runtime)
+
+    async def dedicated_ip_pool_delete_async(
+        self,
+        request: dm_20151123_models.DedicatedIpPoolDeleteRequest,
+    ) -> dm_20151123_models.DedicatedIpPoolDeleteResponse:
+        """
+        @summary 独立IP池删除
+        
+        @param request: DedicatedIpPoolDeleteRequest
+        @return: DedicatedIpPoolDeleteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dedicated_ip_pool_delete_with_options_async(request, runtime)
+
+    def dedicated_ip_pool_list_with_options(
+        self,
+        request: dm_20151123_models.DedicatedIpPoolListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.DedicatedIpPoolListResponse:
+        """
+        @summary Dedicated IP Pool List
+        
+        @param request: DedicatedIpPoolListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DedicatedIpPoolListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DedicatedIpPoolList',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DedicatedIpPoolListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dedicated_ip_pool_list_with_options_async(
+        self,
+        request: dm_20151123_models.DedicatedIpPoolListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.DedicatedIpPoolListResponse:
+        """
+        @summary Dedicated IP Pool List
+        
+        @param request: DedicatedIpPoolListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DedicatedIpPoolListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DedicatedIpPoolList',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DedicatedIpPoolListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dedicated_ip_pool_list(
+        self,
+        request: dm_20151123_models.DedicatedIpPoolListRequest,
+    ) -> dm_20151123_models.DedicatedIpPoolListResponse:
+        """
+        @summary Dedicated IP Pool List
+        
+        @param request: DedicatedIpPoolListRequest
+        @return: DedicatedIpPoolListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dedicated_ip_pool_list_with_options(request, runtime)
+
+    async def dedicated_ip_pool_list_async(
+        self,
+        request: dm_20151123_models.DedicatedIpPoolListRequest,
+    ) -> dm_20151123_models.DedicatedIpPoolListResponse:
+        """
+        @summary Dedicated IP Pool List
+        
+        @param request: DedicatedIpPoolListRequest
+        @return: DedicatedIpPoolListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dedicated_ip_pool_list_with_options_async(request, runtime)
+
+    def dedicated_ip_pool_update_with_options(
+        self,
+        request: dm_20151123_models.DedicatedIpPoolUpdateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.DedicatedIpPoolUpdateResponse:
+        """
+        @summary Update of dedicated IP Pool
+        
+        @param request: DedicatedIpPoolUpdateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DedicatedIpPoolUpdateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.buy_resource_ids):
+            query['BuyResourceIds'] = request.buy_resource_ids
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.update_resource):
+            query['UpdateResource'] = request.update_resource
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DedicatedIpPoolUpdate',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DedicatedIpPoolUpdateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dedicated_ip_pool_update_with_options_async(
+        self,
+        request: dm_20151123_models.DedicatedIpPoolUpdateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.DedicatedIpPoolUpdateResponse:
+        """
+        @summary Update of dedicated IP Pool
+        
+        @param request: DedicatedIpPoolUpdateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DedicatedIpPoolUpdateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.buy_resource_ids):
+            query['BuyResourceIds'] = request.buy_resource_ids
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.update_resource):
+            query['UpdateResource'] = request.update_resource
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DedicatedIpPoolUpdate',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DedicatedIpPoolUpdateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dedicated_ip_pool_update(
+        self,
+        request: dm_20151123_models.DedicatedIpPoolUpdateRequest,
+    ) -> dm_20151123_models.DedicatedIpPoolUpdateResponse:
+        """
+        @summary Update of dedicated IP Pool
+        
+        @param request: DedicatedIpPoolUpdateRequest
+        @return: DedicatedIpPoolUpdateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dedicated_ip_pool_update_with_options(request, runtime)
+
+    async def dedicated_ip_pool_update_async(
+        self,
+        request: dm_20151123_models.DedicatedIpPoolUpdateRequest,
+    ) -> dm_20151123_models.DedicatedIpPoolUpdateResponse:
+        """
+        @summary Update of dedicated IP Pool
+        
+        @param request: DedicatedIpPoolUpdateRequest
+        @return: DedicatedIpPoolUpdateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dedicated_ip_pool_update_with_options_async(request, runtime)
 
     def delete_domain_with_options(
         self,
@@ -3728,7 +4585,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.QueryMailAddressByParamResponse:
         """
-        @summary Query the list of mail addresses.
+        @summary Query the list of sending addresses.
         
         @param request: QueryMailAddressByParamRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3775,7 +4632,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.QueryMailAddressByParamResponse:
         """
-        @summary Query the list of mail addresses.
+        @summary Query the list of sending addresses.
         
         @param request: QueryMailAddressByParamRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3821,7 +4678,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.QueryMailAddressByParamRequest,
     ) -> dm_20151123_models.QueryMailAddressByParamResponse:
         """
-        @summary Query the list of mail addresses.
+        @summary Query the list of sending addresses.
         
         @param request: QueryMailAddressByParamRequest
         @return: QueryMailAddressByParamResponse
@@ -3834,7 +4691,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.QueryMailAddressByParamRequest,
     ) -> dm_20151123_models.QueryMailAddressByParamResponse:
         """
-        @summary Query the list of mail addresses.
+        @summary Query the list of sending addresses.
         
         @param request: QueryMailAddressByParamRequest
         @return: QueryMailAddressByParamResponse
@@ -4204,7 +5061,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.QueryTaskByParamResponse:
         """
-        @summary Query task.
+        @summary Query task list
         
         @param request: QueryTaskByParamRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4251,7 +5108,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.QueryTaskByParamResponse:
         """
-        @summary Query task.
+        @summary Query task list
         
         @param request: QueryTaskByParamRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4297,7 +5154,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.QueryTaskByParamRequest,
     ) -> dm_20151123_models.QueryTaskByParamResponse:
         """
-        @summary Query task.
+        @summary Query task list
         
         @param request: QueryTaskByParamRequest
         @return: QueryTaskByParamResponse
@@ -4310,7 +5167,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.QueryTaskByParamRequest,
     ) -> dm_20151123_models.QueryTaskByParamResponse:
         """
-        @summary Query task.
+        @summary Query task list
         
         @param request: QueryTaskByParamRequest
         @return: QueryTaskByParamResponse
@@ -5064,48 +5921,50 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.account_name):
-            query['AccountName'] = request.account_name
-        if not UtilClient.is_unset(request.address_type):
-            query['AddressType'] = request.address_type
-        if not UtilClient.is_unset(request.attachments):
-            query['Attachments'] = request.attachments
-        if not UtilClient.is_unset(request.click_trace):
-            query['ClickTrace'] = request.click_trace
-        if not UtilClient.is_unset(request.from_alias):
-            query['FromAlias'] = request.from_alias
-        if not UtilClient.is_unset(request.headers):
-            query['Headers'] = request.headers
-        if not UtilClient.is_unset(request.html_body):
-            query['HtmlBody'] = request.html_body
-        if not UtilClient.is_unset(request.ip_pool_id):
-            query['IpPoolId'] = request.ip_pool_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.reply_address):
-            query['ReplyAddress'] = request.reply_address
-        if not UtilClient.is_unset(request.reply_address_alias):
-            query['ReplyAddressAlias'] = request.reply_address_alias
-        if not UtilClient.is_unset(request.reply_to_address):
-            query['ReplyToAddress'] = request.reply_to_address
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        body = {}
+        if not UtilClient.is_unset(request.account_name):
+            body['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.address_type):
+            body['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.attachments):
+            body['Attachments'] = request.attachments
+        if not UtilClient.is_unset(request.click_trace):
+            body['ClickTrace'] = request.click_trace
+        if not UtilClient.is_unset(request.from_alias):
+            body['FromAlias'] = request.from_alias
+        if not UtilClient.is_unset(request.headers):
+            body['Headers'] = request.headers
+        if not UtilClient.is_unset(request.html_body):
+            body['HtmlBody'] = request.html_body
+        if not UtilClient.is_unset(request.ip_pool_id):
+            body['IpPoolId'] = request.ip_pool_id
+        if not UtilClient.is_unset(request.reply_address):
+            body['ReplyAddress'] = request.reply_address
+        if not UtilClient.is_unset(request.reply_address_alias):
+            body['ReplyAddressAlias'] = request.reply_address_alias
+        if not UtilClient.is_unset(request.reply_to_address):
+            body['ReplyToAddress'] = request.reply_to_address
         if not UtilClient.is_unset(request.subject):
-            query['Subject'] = request.subject
+            body['Subject'] = request.subject
         if not UtilClient.is_unset(request.tag_name):
-            query['TagName'] = request.tag_name
+            body['TagName'] = request.tag_name
         if not UtilClient.is_unset(request.text_body):
-            query['TextBody'] = request.text_body
+            body['TextBody'] = request.text_body
         if not UtilClient.is_unset(request.to_address):
-            query['ToAddress'] = request.to_address
+            body['ToAddress'] = request.to_address
         if not UtilClient.is_unset(request.un_subscribe_filter_level):
-            query['UnSubscribeFilterLevel'] = request.un_subscribe_filter_level
+            body['UnSubscribeFilterLevel'] = request.un_subscribe_filter_level
         if not UtilClient.is_unset(request.un_subscribe_link_type):
-            query['UnSubscribeLinkType'] = request.un_subscribe_link_type
+            body['UnSubscribeLinkType'] = request.un_subscribe_link_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='SingleSendMail',
@@ -5137,48 +5996,50 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.account_name):
-            query['AccountName'] = request.account_name
-        if not UtilClient.is_unset(request.address_type):
-            query['AddressType'] = request.address_type
-        if not UtilClient.is_unset(request.attachments):
-            query['Attachments'] = request.attachments
-        if not UtilClient.is_unset(request.click_trace):
-            query['ClickTrace'] = request.click_trace
-        if not UtilClient.is_unset(request.from_alias):
-            query['FromAlias'] = request.from_alias
-        if not UtilClient.is_unset(request.headers):
-            query['Headers'] = request.headers
-        if not UtilClient.is_unset(request.html_body):
-            query['HtmlBody'] = request.html_body
-        if not UtilClient.is_unset(request.ip_pool_id):
-            query['IpPoolId'] = request.ip_pool_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.reply_address):
-            query['ReplyAddress'] = request.reply_address
-        if not UtilClient.is_unset(request.reply_address_alias):
-            query['ReplyAddressAlias'] = request.reply_address_alias
-        if not UtilClient.is_unset(request.reply_to_address):
-            query['ReplyToAddress'] = request.reply_to_address
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        body = {}
+        if not UtilClient.is_unset(request.account_name):
+            body['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.address_type):
+            body['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.attachments):
+            body['Attachments'] = request.attachments
+        if not UtilClient.is_unset(request.click_trace):
+            body['ClickTrace'] = request.click_trace
+        if not UtilClient.is_unset(request.from_alias):
+            body['FromAlias'] = request.from_alias
+        if not UtilClient.is_unset(request.headers):
+            body['Headers'] = request.headers
+        if not UtilClient.is_unset(request.html_body):
+            body['HtmlBody'] = request.html_body
+        if not UtilClient.is_unset(request.ip_pool_id):
+            body['IpPoolId'] = request.ip_pool_id
+        if not UtilClient.is_unset(request.reply_address):
+            body['ReplyAddress'] = request.reply_address
+        if not UtilClient.is_unset(request.reply_address_alias):
+            body['ReplyAddressAlias'] = request.reply_address_alias
+        if not UtilClient.is_unset(request.reply_to_address):
+            body['ReplyToAddress'] = request.reply_to_address
         if not UtilClient.is_unset(request.subject):
-            query['Subject'] = request.subject
+            body['Subject'] = request.subject
         if not UtilClient.is_unset(request.tag_name):
-            query['TagName'] = request.tag_name
+            body['TagName'] = request.tag_name
         if not UtilClient.is_unset(request.text_body):
-            query['TextBody'] = request.text_body
+            body['TextBody'] = request.text_body
         if not UtilClient.is_unset(request.to_address):
-            query['ToAddress'] = request.to_address
+            body['ToAddress'] = request.to_address
         if not UtilClient.is_unset(request.un_subscribe_filter_level):
-            query['UnSubscribeFilterLevel'] = request.un_subscribe_filter_level
+            body['UnSubscribeFilterLevel'] = request.un_subscribe_filter_level
         if not UtilClient.is_unset(request.un_subscribe_link_type):
-            query['UnSubscribeLinkType'] = request.un_subscribe_link_type
+            body['UnSubscribeLinkType'] = request.un_subscribe_link_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='SingleSendMail',
@@ -5228,10 +6089,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.SingleSendMailResponse:
         # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -5246,55 +6114,59 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='Dm',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'Dm',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         single_send_mail_req = dm_20151123_models.SingleSendMailRequest()
         OpenApiUtilClient.convert(request, single_send_mail_req)
         if not UtilClient.is_unset(request.attachments):
             i_0 = 0
             for item_0 in request.attachments:
                 if not UtilClient.is_unset(item_0.attachment_url_object):
-                    auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-                    oss_config.access_key_id = auth_response.body.access_key_id
-                    oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-                    oss_client = OSSClient(oss_config)
+                    tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
+                    auth_response = UtilClient.assert_as_map(tmp_resp_0)
+                    tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+                    use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+                    auth_response_body = UtilClient.stringify_map_value(tmp_body)
                     file_obj = file_form_models.FileField(
-                        filename=auth_response.body.object_key,
+                        filename=auth_response_body.get('ObjectKey'),
                         content=item_0.attachment_url_object,
                         content_type=''
                     )
-                    oss_header = oss_models.PostObjectRequestHeader(
-                        access_key_id=auth_response.body.access_key_id,
-                        policy=auth_response.body.encoded_policy,
-                        signature=auth_response.body.signature,
-                        key=auth_response.body.object_key,
-                        file=file_obj,
-                        success_action_status='201'
-                    )
-                    upload_request = oss_models.PostObjectRequest(
-                        bucket_name=auth_response.body.bucket,
-                        header=oss_header
-                    )
-                    oss_client.post_object(upload_request, oss_runtime)
+                    oss_header = {
+                        'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                        'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                        'policy': auth_response_body.get('EncodedPolicy'),
+                        'Signature': auth_response_body.get('Signature'),
+                        'key': auth_response_body.get('ObjectKey'),
+                        'file': file_obj,
+                        'success_action_status': '201'
+                    }
+                    self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
                     tmp = single_send_mail_req.attachments[i_0]
-                    tmp.attachment_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+                    tmp.attachment_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         single_send_mail_resp = self.single_send_mail_with_options(single_send_mail_req, runtime)
         return single_send_mail_resp
@@ -5305,10 +6177,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.SingleSendMailResponse:
         # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -5323,58 +6202,166 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='Dm',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'Dm',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         single_send_mail_req = dm_20151123_models.SingleSendMailRequest()
         OpenApiUtilClient.convert(request, single_send_mail_req)
         if not UtilClient.is_unset(request.attachments):
             i_0 = 0
             for item_0 in request.attachments:
                 if not UtilClient.is_unset(item_0.attachment_url_object):
-                    auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-                    oss_config.access_key_id = auth_response.body.access_key_id
-                    oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-                    oss_client = OSSClient(oss_config)
+                    tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+                    auth_response = UtilClient.assert_as_map(tmp_resp_0)
+                    tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+                    use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+                    auth_response_body = UtilClient.stringify_map_value(tmp_body)
                     file_obj = file_form_models.FileField(
-                        filename=auth_response.body.object_key,
+                        filename=auth_response_body.get('ObjectKey'),
                         content=item_0.attachment_url_object,
                         content_type=''
                     )
-                    oss_header = oss_models.PostObjectRequestHeader(
-                        access_key_id=auth_response.body.access_key_id,
-                        policy=auth_response.body.encoded_policy,
-                        signature=auth_response.body.signature,
-                        key=auth_response.body.object_key,
-                        file=file_obj,
-                        success_action_status='201'
-                    )
-                    upload_request = oss_models.PostObjectRequest(
-                        bucket_name=auth_response.body.bucket,
-                        header=oss_header
-                    )
-                    await oss_client.post_object_async(upload_request, oss_runtime)
+                    oss_header = {
+                        'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                        'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                        'policy': auth_response_body.get('EncodedPolicy'),
+                        'Signature': auth_response_body.get('Signature'),
+                        'key': auth_response_body.get('ObjectKey'),
+                        'file': file_obj,
+                        'success_action_status': '201'
+                    }
+                    await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
                     tmp = single_send_mail_req.attachments[i_0]
-                    tmp.attachment_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+                    tmp.attachment_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         single_send_mail_resp = await self.single_send_mail_with_options_async(single_send_mail_req, runtime)
         return single_send_mail_resp
+
+    def unblock_sending_with_options(
+        self,
+        request: dm_20151123_models.UnblockSendingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.UnblockSendingResponse:
+        """
+        @summary Lift sending restrictions due to unsubscription, reporting, etc.
+        
+        @param request: UnblockSendingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnblockSendingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.block_email):
+            query['BlockEmail'] = request.block_email
+        if not UtilClient.is_unset(request.block_type):
+            query['BlockType'] = request.block_type
+        if not UtilClient.is_unset(request.sender_email):
+            query['SenderEmail'] = request.sender_email
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnblockSending',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.UnblockSendingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unblock_sending_with_options_async(
+        self,
+        request: dm_20151123_models.UnblockSendingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.UnblockSendingResponse:
+        """
+        @summary Lift sending restrictions due to unsubscription, reporting, etc.
+        
+        @param request: UnblockSendingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnblockSendingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.block_email):
+            query['BlockEmail'] = request.block_email
+        if not UtilClient.is_unset(request.block_type):
+            query['BlockType'] = request.block_type
+        if not UtilClient.is_unset(request.sender_email):
+            query['SenderEmail'] = request.sender_email
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnblockSending',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.UnblockSendingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unblock_sending(
+        self,
+        request: dm_20151123_models.UnblockSendingRequest,
+    ) -> dm_20151123_models.UnblockSendingResponse:
+        """
+        @summary Lift sending restrictions due to unsubscription, reporting, etc.
+        
+        @param request: UnblockSendingRequest
+        @return: UnblockSendingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.unblock_sending_with_options(request, runtime)
+
+    async def unblock_sending_async(
+        self,
+        request: dm_20151123_models.UnblockSendingRequest,
+    ) -> dm_20151123_models.UnblockSendingResponse:
+        """
+        @summary Lift sending restrictions due to unsubscription, reporting, etc.
+        
+        @param request: UnblockSendingRequest
+        @return: UnblockSendingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.unblock_sending_with_options_async(request, runtime)
 
     def update_ip_protection_with_options(
         self,

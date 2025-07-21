@@ -276,11 +276,12 @@ class BatchSendMailRequest(TeaModel):
         # - 1: Enable data tracking function
         # - 0 (default): Disable data tracking function
         self.click_trace = click_trace
-        # Currently, the standard fields that can be added to the email header are Message-ID, List-Unsubscribe, and List-Unsubscribe-Post. Standard fields will overwrite the existing values in the email header, while non-standard fields need to start with X-User- and will be appended to the email header. Currently, up to 10 headers can be passed in JSON format, and both standard and non-standard fields must comply with the syntax requirements for headers.
+        # Currently, the standard fields that can be added to the email header are Message-ID, List-Unsubscribe, and List-Unsubscribe-Post. Standard fields will overwrite the existing values in the email header, while non-standard fields must start with X-User- and will be appended to the email header. Currently, up to 10 headers can be passed in JSON format, and both standard and non-standard fields must comply with the syntax requirements for headers.
         self.headers = headers
+        # dedicated IP pool ID. Users who have purchased an dedicated IP can use this parameter to specify the outgoing IP for this send operation.
         self.ip_pool_id = ip_pool_id
         self.owner_id = owner_id
-        # The name of the recipient list that has been created and uploaded. Note: The recipient list should not be deleted until at least 10 minutes after the task is triggered, otherwise it may cause sending failure.
+        # The name of the recipient list that has been created and uploaded with recipients. Note: The recipient list should not be deleted until at least 10 minutes after the task is triggered, otherwise it may cause sending failure.
         # 
         # This parameter is required.
         self.receivers_name = receivers_name
@@ -292,24 +293,24 @@ class BatchSendMailRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # Email tag name.
         self.tag_name = tag_name
-        # The name of a pre-created and approved template.
+        # The name of the template that has been created and approved in advance.
         # 
         # This parameter is required.
         self.template_name = template_name
-        # Filter level. Refer to the [Unsubscribe Function Link Generation and Filtering Mechanism](https://help.aliyun.com/document_detail/2689048.html) document.
+        # Filtering level. Refer to the [Unsubscribe Function Link Generation and Filtering Mechanism](https://help.aliyun.com/document_detail/2689048.html) document.
         # - disabled: No filtering
-        # - default: Use the default strategy, bulk addresses use sender address level filtering
-        # - mailfrom: Sender address level filtering
-        # - mailfrom_domain: Sender domain level filtering
-        # - edm_id: Account level filtering
+        # - default: Use the default strategy, bulk addresses use sender address-level filtering
+        # - mailfrom: Sender address-level filtering
+        # - mailfrom_domain: Sender domain-level filtering
+        # - edm_id: Account-level filtering
         self.un_subscribe_filter_level = un_subscribe_filter_level
-        # Type of generated unsubscribe link. Refer to the [Unsubscribe Function Link Generation and Filtering Mechanism](https://help.aliyun.com/document_detail/2689048.html) document.
-        # - disabled: Not generated
-        # - default: Use the default strategy: Generate an unsubscribe link when sending from a bulk email address to specific domains, such as those containing keywords like "gmail", "yahoo",
+        # The type of generated unsubscribe link. Refer to the [Unsubscribe Function Link Generation and Filtering Mechanism](https://help.aliyun.com/document_detail/2689048.html) document.
+        # - disabled: Do not generate
+        # - default: Use the default strategy: Generate an unsubscribe link when a bulk-type sending address sends to specific domains, such as those containing keywords like "gmail", "yahoo",
         # "google", "aol.com", "hotmail",
         # "outlook", "ymail.com", etc.
-        # - zh-cn: Generated, for future content preparation
-        # - en-us: Generated, for future content preparation
+        # - zh-cn: Generate, for future content preparation
+        # - en-us: Generate, for future content preparation
         self.un_subscribe_link_type = un_subscribe_link_type
 
     def validate(self):
@@ -1537,6 +1538,1197 @@ class CreateUserSuppressionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateUserSuppressionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DedicatedIpAutoRenewalRequest(TeaModel):
+    def __init__(
+        self,
+        auto_renewal: str = None,
+        buy_resource_ids: str = None,
+    ):
+        # Whether to enable auto-renewal
+        # 
+        # This parameter is required.
+        self.auto_renewal = auto_renewal
+        # Purchase instance ID, separated by English commas if multiple.
+        # 
+        # This parameter is required.
+        self.buy_resource_ids = buy_resource_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_renewal is not None:
+            result['AutoRenewal'] = self.auto_renewal
+        if self.buy_resource_ids is not None:
+            result['BuyResourceIds'] = self.buy_resource_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoRenewal') is not None:
+            self.auto_renewal = m.get('AutoRenewal')
+        if m.get('BuyResourceIds') is not None:
+            self.buy_resource_ids = m.get('BuyResourceIds')
+        return self
+
+
+class DedicatedIpAutoRenewalResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Request ID
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DedicatedIpAutoRenewalResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DedicatedIpAutoRenewalResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DedicatedIpAutoRenewalResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DedicatedIpChangeWarmupTypeRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        warmup_type: str = None,
+    ):
+        # Dedicated IP ID
+        self.id = id
+        # Warmup method
+        self.warmup_type = warmup_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.warmup_type is not None:
+            result['WarmupType'] = self.warmup_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('WarmupType') is not None:
+            self.warmup_type = m.get('WarmupType')
+        return self
+
+
+class DedicatedIpChangeWarmupTypeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Request ID
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DedicatedIpChangeWarmupTypeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DedicatedIpChangeWarmupTypeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DedicatedIpChangeWarmupTypeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DedicatedIpListRequest(TeaModel):
+    def __init__(
+        self,
+        keyword: str = None,
+        page_index: int = None,
+        page_size: int = None,
+    ):
+        # IP search keyword
+        self.keyword = keyword
+        # Pagination index, starting from 1
+        self.page_index = page_index
+        # Page size
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DedicatedIpListResponseBodyIpsIpExt(TeaModel):
+    def __init__(
+        self,
+        auto_renewal: bool = None,
+        has_send_mail: bool = None,
+    ):
+        # Whether auto-renewal is enabled
+        self.auto_renewal = auto_renewal
+        # Whether an email has been sent
+        self.has_send_mail = has_send_mail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_renewal is not None:
+            result['AutoRenewal'] = self.auto_renewal
+        if self.has_send_mail is not None:
+            result['HasSendMail'] = self.has_send_mail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoRenewal') is not None:
+            self.auto_renewal = m.get('AutoRenewal')
+        if m.get('HasSendMail') is not None:
+            self.has_send_mail = m.get('HasSendMail')
+        return self
+
+
+class DedicatedIpListResponseBodyIps(TeaModel):
+    def __init__(
+        self,
+        expired_time: str = None,
+        id: str = None,
+        instance_id: str = None,
+        ip: str = None,
+        ip_ext: DedicatedIpListResponseBodyIpsIpExt = None,
+        ip_pool_name: str = None,
+        start_time: str = None,
+        status: str = None,
+        warmup_status: str = None,
+        warmup_type: str = None,
+    ):
+        # Expiration time
+        self.expired_time = expired_time
+        # IP ID, consistent with the purchased instance ID
+        self.id = id
+        # Purchased instance ID
+        self.instance_id = instance_id
+        # IP address
+        self.ip = ip
+        # Extended information
+        self.ip_ext = ip_ext
+        # Name of the IP pool
+        self.ip_pool_name = ip_pool_name
+        # Purchase time
+        self.start_time = start_time
+        # IP status
+        self.status = status
+        # Warm-up status
+        self.warmup_status = warmup_status
+        # Warm-up method
+        self.warmup_type = warmup_type
+
+    def validate(self):
+        if self.ip_ext:
+            self.ip_ext.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expired_time is not None:
+            result['ExpiredTime'] = self.expired_time
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.ip_ext is not None:
+            result['IpExt'] = self.ip_ext.to_map()
+        if self.ip_pool_name is not None:
+            result['IpPoolName'] = self.ip_pool_name
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.warmup_status is not None:
+            result['WarmupStatus'] = self.warmup_status
+        if self.warmup_type is not None:
+            result['WarmupType'] = self.warmup_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExpiredTime') is not None:
+            self.expired_time = m.get('ExpiredTime')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('IpExt') is not None:
+            temp_model = DedicatedIpListResponseBodyIpsIpExt()
+            self.ip_ext = temp_model.from_map(m['IpExt'])
+        if m.get('IpPoolName') is not None:
+            self.ip_pool_name = m.get('IpPoolName')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('WarmupStatus') is not None:
+            self.warmup_status = m.get('WarmupStatus')
+        if m.get('WarmupType') is not None:
+            self.warmup_type = m.get('WarmupType')
+        return self
+
+
+class DedicatedIpListResponseBody(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        has_more: bool = None,
+        ips: List[DedicatedIpListResponseBodyIps] = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_counts: int = None,
+    ):
+        # Current page
+        self.current_page = current_page
+        # Whether there is a next page
+        self.has_more = has_more
+        # IP list
+        self.ips = ips
+        # Page size
+        self.page_size = page_size
+        # Request ID
+        self.request_id = request_id
+        # Total amount of purchased IP data
+        self.total_counts = total_counts
+
+    def validate(self):
+        if self.ips:
+            for k in self.ips:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.has_more is not None:
+            result['HasMore'] = self.has_more
+        result['Ips'] = []
+        if self.ips is not None:
+            for k in self.ips:
+                result['Ips'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_counts is not None:
+            result['TotalCounts'] = self.total_counts
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('HasMore') is not None:
+            self.has_more = m.get('HasMore')
+        self.ips = []
+        if m.get('Ips') is not None:
+            for k in m.get('Ips'):
+                temp_model = DedicatedIpListResponseBodyIps()
+                self.ips.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCounts') is not None:
+            self.total_counts = m.get('TotalCounts')
+        return self
+
+
+class DedicatedIpListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DedicatedIpListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DedicatedIpListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DedicatedIpNonePoolListResponseBodyIps(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        ip: str = None,
+    ):
+        # Purchased instance ID
+        self.id = id
+        # IP address
+        self.ip = ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        return self
+
+
+class DedicatedIpNonePoolListResponseBody(TeaModel):
+    def __init__(
+        self,
+        ips: List[DedicatedIpNonePoolListResponseBodyIps] = None,
+        request_id: str = None,
+    ):
+        # Information on IPs not added to the IP pool
+        self.ips = ips
+        # Request ID
+        self.request_id = request_id
+
+    def validate(self):
+        if self.ips:
+            for k in self.ips:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Ips'] = []
+        if self.ips is not None:
+            for k in self.ips:
+                result['Ips'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ips = []
+        if m.get('Ips') is not None:
+            for k in m.get('Ips'):
+                temp_model = DedicatedIpNonePoolListResponseBodyIps()
+                self.ips.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DedicatedIpNonePoolListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DedicatedIpNonePoolListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DedicatedIpNonePoolListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DedicatedIpPoolCreateRequest(TeaModel):
+    def __init__(
+        self,
+        buy_resource_ids: str = None,
+        name: str = None,
+    ):
+        # Purchased IP instance IDs, separated by commas; derived from the IP purchase instance IDs returned by the DedicatedIpNonePoolList interface.
+        self.buy_resource_ids = buy_resource_ids
+        # IP pool name;
+        # Length should be 1-50 characters, allowing English letters, numbers, _, and -. The name cannot be modified after the IP pool is created.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.buy_resource_ids is not None:
+            result['BuyResourceIds'] = self.buy_resource_ids
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BuyResourceIds') is not None:
+            self.buy_resource_ids = m.get('BuyResourceIds')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class DedicatedIpPoolCreateResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        request_id: str = None,
+    ):
+        # IP pool ID
+        self.id = id
+        # Request ID
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DedicatedIpPoolCreateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DedicatedIpPoolCreateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DedicatedIpPoolCreateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DedicatedIpPoolDeleteRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class DedicatedIpPoolDeleteResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DedicatedIpPoolDeleteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DedicatedIpPoolDeleteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DedicatedIpPoolDeleteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DedicatedIpPoolListRequest(TeaModel):
+    def __init__(
+        self,
+        keyword: str = None,
+        page_index: int = None,
+        page_size: int = None,
+    ):
+        # Search keyword for the name
+        self.keyword = keyword
+        # Page index, starting from 1
+        self.page_index = page_index
+        # Number of items per page
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DedicatedIpPoolListResponseBodyIpPoolsIps(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        ip: str = None,
+    ):
+        # Instance purchase ID
+        self.id = id
+        # IP address
+        self.ip = ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        return self
+
+
+class DedicatedIpPoolListResponseBodyIpPools(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        id: str = None,
+        ip_count: int = None,
+        ips: List[DedicatedIpPoolListResponseBodyIpPoolsIps] = None,
+        name: str = None,
+    ):
+        # Creation time
+        self.create_time = create_time
+        # IP pool ID
+        self.id = id
+        # Number of source IP addresses
+        self.ip_count = ip_count
+        # List of IPs
+        self.ips = ips
+        # IP pool name
+        self.name = name
+
+    def validate(self):
+        if self.ips:
+            for k in self.ips:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.ip_count is not None:
+            result['IpCount'] = self.ip_count
+        result['Ips'] = []
+        if self.ips is not None:
+            for k in self.ips:
+                result['Ips'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IpCount') is not None:
+            self.ip_count = m.get('IpCount')
+        self.ips = []
+        if m.get('Ips') is not None:
+            for k in m.get('Ips'):
+                temp_model = DedicatedIpPoolListResponseBodyIpPoolsIps()
+                self.ips.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class DedicatedIpPoolListResponseBody(TeaModel):
+    def __init__(
+        self,
+        current_page: str = None,
+        has_more: bool = None,
+        ip_pools: List[DedicatedIpPoolListResponseBodyIpPools] = None,
+        page_size: str = None,
+        request_id: str = None,
+        total_counts: int = None,
+    ):
+        # Current page
+        self.current_page = current_page
+        # Whether there is a next page
+        self.has_more = has_more
+        # List of IP pools
+        self.ip_pools = ip_pools
+        # Page size
+        self.page_size = page_size
+        # Request ID
+        self.request_id = request_id
+        # Total number of data under the current request conditions
+        self.total_counts = total_counts
+
+    def validate(self):
+        if self.ip_pools:
+            for k in self.ip_pools:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.has_more is not None:
+            result['HasMore'] = self.has_more
+        result['IpPools'] = []
+        if self.ip_pools is not None:
+            for k in self.ip_pools:
+                result['IpPools'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_counts is not None:
+            result['TotalCounts'] = self.total_counts
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('HasMore') is not None:
+            self.has_more = m.get('HasMore')
+        self.ip_pools = []
+        if m.get('IpPools') is not None:
+            for k in m.get('IpPools'):
+                temp_model = DedicatedIpPoolListResponseBodyIpPools()
+                self.ip_pools.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCounts') is not None:
+            self.total_counts = m.get('TotalCounts')
+        return self
+
+
+class DedicatedIpPoolListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DedicatedIpPoolListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DedicatedIpPoolListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DedicatedIpPoolUpdateRequest(TeaModel):
+    def __init__(
+        self,
+        buy_resource_ids: str = None,
+        id: str = None,
+        update_resource: bool = None,
+    ):
+        # Purchased IP instance IDs, separated by commas; sourced from the DedicatedIpNonePoolList API\\"s returned IP purchase instance IDs
+        self.buy_resource_ids = buy_resource_ids
+        # IP pool ID
+        self.id = id
+        # Whether to change the associated IP, enter true
+        self.update_resource = update_resource
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.buy_resource_ids is not None:
+            result['BuyResourceIds'] = self.buy_resource_ids
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.update_resource is not None:
+            result['UpdateResource'] = self.update_resource
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BuyResourceIds') is not None:
+            self.buy_resource_ids = m.get('BuyResourceIds')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('UpdateResource') is not None:
+            self.update_resource = m.get('UpdateResource')
+        return self
+
+
+class DedicatedIpPoolUpdateResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        request_id: str = None,
+    ):
+        # IP pool ID
+        self.id = id
+        # Request ID
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DedicatedIpPoolUpdateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DedicatedIpPoolUpdateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DedicatedIpPoolUpdateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5505,7 +6697,7 @@ class QueryMailAddressByParamRequest(TeaModel):
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Type of sending address. Values:
+        # Sending address type. Values:
         # 
         # - batch: bulk email
         # - trigger: triggered email
@@ -5583,7 +6775,7 @@ class QueryMailAddressByParamResponseBodyDataMailAddress(TeaModel):
         self.daily_req_count = daily_req_count
         # Domain status, 0 indicates normal, 1 indicates abnormal.
         self.domain_status = domain_status
-        # Mail address ID
+        # Sending address ID
         self.mail_address_id = mail_address_id
         # Monthly quota limit
         self.month_count = month_count
@@ -5593,7 +6785,7 @@ class QueryMailAddressByParamResponseBodyDataMailAddress(TeaModel):
         self.reply_address = reply_address
         # Reply address status
         self.reply_status = reply_status
-        # Type of sending address. Values:
+        # Sending address type. Values:
         # 
         # - batch: bulk email
         # - trigger: triggered email
@@ -5715,7 +6907,7 @@ class QueryMailAddressByParamResponseBody(TeaModel):
         self.request_id = request_id
         # Total count
         self.total_count = total_count
-        # List of mail addresses
+        # List of sending addresses
         self.data = data
 
     def validate(self):
@@ -6582,16 +7774,16 @@ class QueryTaskByParamRequest(TeaModel):
         resource_owner_id: int = None,
         status: int = None,
     ):
-        # Keyword, defaults to all information.
+        # Keyword, defaults to all information
         self.key_word = key_word
         self.owner_id = owner_id
-        # Current page number, default is 1.
+        # Current page number, default is 1
         self.page_no = page_no
-        # Page size, default is 10.
+        # Page size, default is 10
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Status, defaults to all statuses.
+        # Status, defaults to all statuses
         self.status = status
 
     def validate(self):
@@ -6655,23 +7847,25 @@ class QueryTaskByParamResponseBodyDataTask(TeaModel):
     ):
         # Address type, sending address: 1; random address: 0;
         self.address_type = address_type
-        # Creation time.
+        # Creation time
         self.create_time = create_time
+        # dedicated IP pool ID.
         self.ip_pool_id = ip_pool_id
+        # dedicated IP pool name.
         self.ip_pool_name = ip_pool_name
-        # Receiver\\"s name.
+        # Receiver\\"s name
         self.receivers_name = receivers_name
-        # Request count.
+        # Request count
         self.request_count = request_count
-        # Tag.
+        # Tag
         self.tag_name = tag_name
-        # Task ID.
+        # Task ID
         self.task_id = task_id
-        # Task status, sent successfully: 1.
+        # Task status, sent successfully: 1
         self.task_status = task_status
-        # Template name.
+        # Template name
         self.template_name = template_name
-        # Creation time in UTC format.
+        # Creation time in UTC format
         self.utc_create_time = utc_create_time
 
     def validate(self):
@@ -6778,15 +7972,15 @@ class QueryTaskByParamResponseBody(TeaModel):
         total_count: int = None,
         data: QueryTaskByParamResponseBodyData = None,
     ):
-        # Current page number.
+        # Current page number
         self.page_number = page_number
-        # Page size.
+        # Page size
         self.page_size = page_size
-        # Request ID.
+        # Request ID
         self.request_id = request_id
-        # Total count.
+        # Total count
         self.total_count = total_count
-        # Returned results.
+        # Returned results
         self.data = data
 
     def validate(self):
@@ -8124,81 +9318,30 @@ class SingleSendMailRequest(TeaModel):
         un_subscribe_filter_level: str = None,
         un_subscribe_link_type: str = None,
     ):
-        # The sending address configured in the management console.
-        # 
         # This parameter is required.
         self.account_name = account_name
-        # Address type. Values:
-        # 
-        # 0: Random account
-        # 
-        # 1: Sending address
-        # 
         # This parameter is required.
         self.address_type = address_type
         self.attachments = attachments
-        # 1: Enable data tracking function
-        # 
-        # 0 (default): Disable data tracking function.
         self.click_trace = click_trace
-        # Sender nickname, with a maximum length of 15 characters.
-        # 
-        # For example, if the sender\\"s nickname is set to "Xiaohong" and the sending address is test***@example.net, the recipient will see the sending address as "Xiaohong" <test***@example.net>.
         self.from_alias = from_alias
-        # Standard fields that can currently be added to the email header include Message-ID, List-Unsubscribe, and List-Unsubscribe-Post. Standard fields will overwrite existing values in the email header, while non-standard fields need to start with X-User- and will be appended to the email header.
-        # Currently, up to 10 headers can be passed in JSON format, and both standard and non-standard fields must comply with the syntax requirements for headers.
         self.headers = headers
-        # Email HTML body, limited to 80K by the SDK. Note: HtmlBody and TextBody are for different types of email content, and one of them must be provided.
         self.html_body = html_body
         self.ip_pool_id = ip_pool_id
         self.owner_id = owner_id
-        # Reply-to address
         self.reply_address = reply_address
-        # Reply-to address nickname
         self.reply_address_alias = reply_address_alias
-        # Whether to enable the reply-to address configured in the management console (the status must be verified). The value range is the string `true` or `false` (not a boolean value).
-        # 
         # This parameter is required.
         self.reply_to_address = reply_to_address
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Email subject, with a maximum length of 100 characters.
-        # 
         # This parameter is required.
         self.subject = subject
-        # A tag created in the email push console, used to categorize batches of emails sent. You can use tags to query the sending status of each batch. Additionally, if the email tracking feature is enabled, you must use an email tag when sending emails.
         self.tag_name = tag_name
-        # Email text body, limited to 80K by the SDK. Note: HtmlBody and TextBody are for different types of email content, and one of them must be provided.
         self.text_body = text_body
-        # Recipient addresses. Multiple email addresses can be separated by commas, with a maximum of 100 addresses (supports mailing lists).
-        # 
         # This parameter is required.
         self.to_address = to_address
-        # Filtering level. Refer to the [Unsubscribe Function Link Generation and Filtering Mechanism](https://help.aliyun.com/document_detail/2689048.html) document.
-        # 
-        # disabled: No filtering
-        # 
-        # default: Use the default strategy, bulk addresses use the sending address level filtering
-        # 
-        # mailfrom: Sending address level filtering
-        # 
-        # mailfrom_domain: Sending domain level filtering
-        # 
-        # edm_id: Account level filtering
         self.un_subscribe_filter_level = un_subscribe_filter_level
-        # Type of the generated unsubscribe link. Refer to the [Unsubscribe Function Link Generation and Filtering Mechanism](https://help.aliyun.com/document_detail/2689048.html) document.
-        # 
-        # disabled: Do not generate
-        # 
-        # default: Use the default strategy: Generate unsubscribe links for bulk-type sending addresses when sending to specific domains, such as those containing keywords like "gmail", "yahoo",
-        # 
-        # "google", "aol.com", "hotmail",
-        # 
-        # "outlook", "ymail.com", etc.
-        # 
-        # zh-cn: Generate, for future content preparation
-        # 
-        # en-us: Generate, for future content preparation
         self.un_subscribe_link_type = un_subscribe_link_type
 
     def validate(self):
@@ -8362,81 +9505,30 @@ class SingleSendMailAdvanceRequest(TeaModel):
         un_subscribe_filter_level: str = None,
         un_subscribe_link_type: str = None,
     ):
-        # The sending address configured in the management console.
-        # 
         # This parameter is required.
         self.account_name = account_name
-        # Address type. Values:
-        # 
-        # 0: Random account
-        # 
-        # 1: Sending address
-        # 
         # This parameter is required.
         self.address_type = address_type
         self.attachments = attachments
-        # 1: Enable data tracking function
-        # 
-        # 0 (default): Disable data tracking function.
         self.click_trace = click_trace
-        # Sender nickname, with a maximum length of 15 characters.
-        # 
-        # For example, if the sender\\"s nickname is set to "Xiaohong" and the sending address is test***@example.net, the recipient will see the sending address as "Xiaohong" <test***@example.net>.
         self.from_alias = from_alias
-        # Standard fields that can currently be added to the email header include Message-ID, List-Unsubscribe, and List-Unsubscribe-Post. Standard fields will overwrite existing values in the email header, while non-standard fields need to start with X-User- and will be appended to the email header.
-        # Currently, up to 10 headers can be passed in JSON format, and both standard and non-standard fields must comply with the syntax requirements for headers.
         self.headers = headers
-        # Email HTML body, limited to 80K by the SDK. Note: HtmlBody and TextBody are for different types of email content, and one of them must be provided.
         self.html_body = html_body
         self.ip_pool_id = ip_pool_id
         self.owner_id = owner_id
-        # Reply-to address
         self.reply_address = reply_address
-        # Reply-to address nickname
         self.reply_address_alias = reply_address_alias
-        # Whether to enable the reply-to address configured in the management console (the status must be verified). The value range is the string `true` or `false` (not a boolean value).
-        # 
         # This parameter is required.
         self.reply_to_address = reply_to_address
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Email subject, with a maximum length of 100 characters.
-        # 
         # This parameter is required.
         self.subject = subject
-        # A tag created in the email push console, used to categorize batches of emails sent. You can use tags to query the sending status of each batch. Additionally, if the email tracking feature is enabled, you must use an email tag when sending emails.
         self.tag_name = tag_name
-        # Email text body, limited to 80K by the SDK. Note: HtmlBody and TextBody are for different types of email content, and one of them must be provided.
         self.text_body = text_body
-        # Recipient addresses. Multiple email addresses can be separated by commas, with a maximum of 100 addresses (supports mailing lists).
-        # 
         # This parameter is required.
         self.to_address = to_address
-        # Filtering level. Refer to the [Unsubscribe Function Link Generation and Filtering Mechanism](https://help.aliyun.com/document_detail/2689048.html) document.
-        # 
-        # disabled: No filtering
-        # 
-        # default: Use the default strategy, bulk addresses use the sending address level filtering
-        # 
-        # mailfrom: Sending address level filtering
-        # 
-        # mailfrom_domain: Sending domain level filtering
-        # 
-        # edm_id: Account level filtering
         self.un_subscribe_filter_level = un_subscribe_filter_level
-        # Type of the generated unsubscribe link. Refer to the [Unsubscribe Function Link Generation and Filtering Mechanism](https://help.aliyun.com/document_detail/2689048.html) document.
-        # 
-        # disabled: Do not generate
-        # 
-        # default: Use the default strategy: Generate unsubscribe links for bulk-type sending addresses when sending to specific domains, such as those containing keywords like "gmail", "yahoo",
-        # 
-        # "google", "aol.com", "hotmail",
-        # 
-        # "outlook", "ymail.com", etc.
-        # 
-        # zh-cn: Generate, for future content preparation
-        # 
-        # en-us: Generate, for future content preparation
         self.un_subscribe_link_type = un_subscribe_link_type
 
     def validate(self):
@@ -8615,6 +9707,125 @@ class SingleSendMailResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SingleSendMailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UnblockSendingRequest(TeaModel):
+    def __init__(
+        self,
+        block_email: str = None,
+        block_type: str = None,
+        sender_email: str = None,
+    ):
+        # Blacklisted recipient\\"s email address
+        # 
+        # This parameter is required.
+        self.block_email = block_email
+        # Blacklist type
+        # - UNSUB: Unsubscribe
+        # - REPORT: Report
+        # 
+        # This parameter is required.
+        self.block_type = block_type
+        # Sender\\"s email address
+        # 
+        # This parameter is required.
+        self.sender_email = sender_email
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.block_email is not None:
+            result['BlockEmail'] = self.block_email
+        if self.block_type is not None:
+            result['BlockType'] = self.block_type
+        if self.sender_email is not None:
+            result['SenderEmail'] = self.sender_email
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BlockEmail') is not None:
+            self.block_email = m.get('BlockEmail')
+        if m.get('BlockType') is not None:
+            self.block_type = m.get('BlockType')
+        if m.get('SenderEmail') is not None:
+            self.sender_email = m.get('SenderEmail')
+        return self
+
+
+class UnblockSendingResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Request ID
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UnblockSendingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UnblockSendingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UnblockSendingResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -1,3 +1,15 @@
+2025-07-21 Version: 1.4.0
+- Support API DedicatedIpAutoRenewal.
+- Support API DedicatedIpChangeWarmupType.
+- Support API DedicatedIpList.
+- Support API DedicatedIpNonePoolList.
+- Support API DedicatedIpPoolCreate.
+- Support API DedicatedIpPoolDelete.
+- Support API DedicatedIpPoolList.
+- Support API DedicatedIpPoolUpdate.
+- Support API UnblockSending.
+
+
 2025-06-23 Version: 1.3.0
 - Support API ChangeDomainDkimRecord.
 - Update API DescDomain: add response parameters Body.DkimRsaLength.

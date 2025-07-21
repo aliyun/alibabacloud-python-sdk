@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_dm20151123.
 
-Created on 23/06/2025
+Created on 21/07/2025
 
 @author: Alibaba Cloud SDK
 """
@@ -38,9 +38,8 @@ URL = "https://github.com/aliyun/alibabacloud-python-sdk"
 VERSION = __import__(PACKAGE).__version__
 REQUIRES = [
     "alibabacloud_tea_util>=0.3.13, <1.0.0",
-    "alibabacloud_oss_sdk>=0.1.1, <1.0.0",
-    "alibabacloud_openplatform20191219>=2.0.0, <3.0.0",
-    "alibabacloud_oss_util>=0.0.5, <1.0.0",
+    "alibabacloud_tea_xml>=0.0.3, <1.0.0",
+    "alibabacloud_credentials>=1.0.2, <2.0.0",
     "alibabacloud_tea_fileform>=0.0.3, <1.0.0",
     "alibabacloud_darabonba_number>=0.0.4, <1.0.0",
     "alibabacloud_tea_openapi>=0.3.15, <1.0.0",
