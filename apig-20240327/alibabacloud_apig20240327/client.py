@@ -157,6 +157,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.add_gateway_security_group_rule_with_options_async(gateway_id, request, headers, runtime)
 
+    def batch_delete_consumer_authorization_rule_with_options(
+        self,
+        request: apig20240327_models.BatchDeleteConsumerAuthorizationRuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.BatchDeleteConsumerAuthorizationRuleResponse:
+        """
+        @summary Removes consumer authentication rules.
+        
+        @param request: BatchDeleteConsumerAuthorizationRuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDeleteConsumerAuthorizationRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.consumer_authorization_rule_ids):
+            query['consumerAuthorizationRuleIds'] = request.consumer_authorization_rule_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchDeleteConsumerAuthorizationRule',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/authorization-rules',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.BatchDeleteConsumerAuthorizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_delete_consumer_authorization_rule_with_options_async(
+        self,
+        request: apig20240327_models.BatchDeleteConsumerAuthorizationRuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.BatchDeleteConsumerAuthorizationRuleResponse:
+        """
+        @summary Removes consumer authentication rules.
+        
+        @param request: BatchDeleteConsumerAuthorizationRuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDeleteConsumerAuthorizationRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.consumer_authorization_rule_ids):
+            query['consumerAuthorizationRuleIds'] = request.consumer_authorization_rule_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchDeleteConsumerAuthorizationRule',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/authorization-rules',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.BatchDeleteConsumerAuthorizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_delete_consumer_authorization_rule(
+        self,
+        request: apig20240327_models.BatchDeleteConsumerAuthorizationRuleRequest,
+    ) -> apig20240327_models.BatchDeleteConsumerAuthorizationRuleResponse:
+        """
+        @summary Removes consumer authentication rules.
+        
+        @param request: BatchDeleteConsumerAuthorizationRuleRequest
+        @return: BatchDeleteConsumerAuthorizationRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.batch_delete_consumer_authorization_rule_with_options(request, headers, runtime)
+
+    async def batch_delete_consumer_authorization_rule_async(
+        self,
+        request: apig20240327_models.BatchDeleteConsumerAuthorizationRuleRequest,
+    ) -> apig20240327_models.BatchDeleteConsumerAuthorizationRuleResponse:
+        """
+        @summary Removes consumer authentication rules.
+        
+        @param request: BatchDeleteConsumerAuthorizationRuleRequest
+        @return: BatchDeleteConsumerAuthorizationRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.batch_delete_consumer_authorization_rule_with_options_async(request, headers, runtime)
+
     def change_resource_group_with_options(
         self,
         request: apig20240327_models.ChangeResourceGroupRequest,
@@ -272,6 +376,362 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.change_resource_group_with_options_async(request, headers, runtime)
+
+    def create_consumer_with_options(
+        self,
+        request: apig20240327_models.CreateConsumerRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.CreateConsumerResponse:
+        """
+        @summary 创建消费者
+        
+        @param request: CreateConsumerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConsumerResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ak_sk_identity_configs):
+            body['akSkIdentityConfigs'] = request.ak_sk_identity_configs
+        if not UtilClient.is_unset(request.apikey_identity_config):
+            body['apikeyIdentityConfig'] = request.apikey_identity_config
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.enable):
+            body['enable'] = request.enable
+        if not UtilClient.is_unset(request.gateway_type):
+            body['gatewayType'] = request.gateway_type
+        if not UtilClient.is_unset(request.jwt_identity_config):
+            body['jwtIdentityConfig'] = request.jwt_identity_config
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateConsumer',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/consumers',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.CreateConsumerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_consumer_with_options_async(
+        self,
+        request: apig20240327_models.CreateConsumerRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.CreateConsumerResponse:
+        """
+        @summary 创建消费者
+        
+        @param request: CreateConsumerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConsumerResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ak_sk_identity_configs):
+            body['akSkIdentityConfigs'] = request.ak_sk_identity_configs
+        if not UtilClient.is_unset(request.apikey_identity_config):
+            body['apikeyIdentityConfig'] = request.apikey_identity_config
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.enable):
+            body['enable'] = request.enable
+        if not UtilClient.is_unset(request.gateway_type):
+            body['gatewayType'] = request.gateway_type
+        if not UtilClient.is_unset(request.jwt_identity_config):
+            body['jwtIdentityConfig'] = request.jwt_identity_config
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateConsumer',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/consumers',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.CreateConsumerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_consumer(
+        self,
+        request: apig20240327_models.CreateConsumerRequest,
+    ) -> apig20240327_models.CreateConsumerResponse:
+        """
+        @summary 创建消费者
+        
+        @param request: CreateConsumerRequest
+        @return: CreateConsumerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_consumer_with_options(request, headers, runtime)
+
+    async def create_consumer_async(
+        self,
+        request: apig20240327_models.CreateConsumerRequest,
+    ) -> apig20240327_models.CreateConsumerResponse:
+        """
+        @summary 创建消费者
+        
+        @param request: CreateConsumerRequest
+        @return: CreateConsumerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_consumer_with_options_async(request, headers, runtime)
+
+    def create_consumer_authorization_rule_with_options(
+        self,
+        consumer_id: str,
+        request: apig20240327_models.CreateConsumerAuthorizationRuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.CreateConsumerAuthorizationRuleResponse:
+        """
+        @summary 创建消费者授权规则
+        
+        @param request: CreateConsumerAuthorizationRuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConsumerAuthorizationRuleResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.authorization_resource_infos):
+            body['authorizationResourceInfos'] = request.authorization_resource_infos
+        if not UtilClient.is_unset(request.expire_mode):
+            body['expireMode'] = request.expire_mode
+        if not UtilClient.is_unset(request.expire_timestamp):
+            body['expireTimestamp'] = request.expire_timestamp
+        if not UtilClient.is_unset(request.parent_resource_type):
+            body['parentResourceType'] = request.parent_resource_type
+        if not UtilClient.is_unset(request.resource_type):
+            body['resourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateConsumerAuthorizationRule',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/consumers/{OpenApiUtilClient.get_encode_param(consumer_id)}/authorization-rules',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.CreateConsumerAuthorizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_consumer_authorization_rule_with_options_async(
+        self,
+        consumer_id: str,
+        request: apig20240327_models.CreateConsumerAuthorizationRuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.CreateConsumerAuthorizationRuleResponse:
+        """
+        @summary 创建消费者授权规则
+        
+        @param request: CreateConsumerAuthorizationRuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConsumerAuthorizationRuleResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.authorization_resource_infos):
+            body['authorizationResourceInfos'] = request.authorization_resource_infos
+        if not UtilClient.is_unset(request.expire_mode):
+            body['expireMode'] = request.expire_mode
+        if not UtilClient.is_unset(request.expire_timestamp):
+            body['expireTimestamp'] = request.expire_timestamp
+        if not UtilClient.is_unset(request.parent_resource_type):
+            body['parentResourceType'] = request.parent_resource_type
+        if not UtilClient.is_unset(request.resource_type):
+            body['resourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateConsumerAuthorizationRule',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/consumers/{OpenApiUtilClient.get_encode_param(consumer_id)}/authorization-rules',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.CreateConsumerAuthorizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_consumer_authorization_rule(
+        self,
+        consumer_id: str,
+        request: apig20240327_models.CreateConsumerAuthorizationRuleRequest,
+    ) -> apig20240327_models.CreateConsumerAuthorizationRuleResponse:
+        """
+        @summary 创建消费者授权规则
+        
+        @param request: CreateConsumerAuthorizationRuleRequest
+        @return: CreateConsumerAuthorizationRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_consumer_authorization_rule_with_options(consumer_id, request, headers, runtime)
+
+    async def create_consumer_authorization_rule_async(
+        self,
+        consumer_id: str,
+        request: apig20240327_models.CreateConsumerAuthorizationRuleRequest,
+    ) -> apig20240327_models.CreateConsumerAuthorizationRuleResponse:
+        """
+        @summary 创建消费者授权规则
+        
+        @param request: CreateConsumerAuthorizationRuleRequest
+        @return: CreateConsumerAuthorizationRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_consumer_authorization_rule_with_options_async(consumer_id, request, headers, runtime)
+
+    def create_consumer_authorization_rules_with_options(
+        self,
+        request: apig20240327_models.CreateConsumerAuthorizationRulesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.CreateConsumerAuthorizationRulesResponse:
+        """
+        @summary Creates a consumer authentication rule.
+        
+        @param request: CreateConsumerAuthorizationRulesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConsumerAuthorizationRulesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.authorization_rules):
+            body['authorizationRules'] = request.authorization_rules
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateConsumerAuthorizationRules',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/authorization-rules',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.CreateConsumerAuthorizationRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_consumer_authorization_rules_with_options_async(
+        self,
+        request: apig20240327_models.CreateConsumerAuthorizationRulesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.CreateConsumerAuthorizationRulesResponse:
+        """
+        @summary Creates a consumer authentication rule.
+        
+        @param request: CreateConsumerAuthorizationRulesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConsumerAuthorizationRulesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.authorization_rules):
+            body['authorizationRules'] = request.authorization_rules
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateConsumerAuthorizationRules',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/authorization-rules',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.CreateConsumerAuthorizationRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_consumer_authorization_rules(
+        self,
+        request: apig20240327_models.CreateConsumerAuthorizationRulesRequest,
+    ) -> apig20240327_models.CreateConsumerAuthorizationRulesResponse:
+        """
+        @summary Creates a consumer authentication rule.
+        
+        @param request: CreateConsumerAuthorizationRulesRequest
+        @return: CreateConsumerAuthorizationRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_consumer_authorization_rules_with_options(request, headers, runtime)
+
+    async def create_consumer_authorization_rules_async(
+        self,
+        request: apig20240327_models.CreateConsumerAuthorizationRulesRequest,
+    ) -> apig20240327_models.CreateConsumerAuthorizationRulesResponse:
+        """
+        @summary Creates a consumer authentication rule.
+        
+        @param request: CreateConsumerAuthorizationRulesRequest
+        @return: CreateConsumerAuthorizationRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_consumer_authorization_rules_with_options_async(request, headers, runtime)
 
     def create_domain_with_options(
         self,
@@ -572,6 +1032,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_environment_with_options_async(request, headers, runtime)
+
+    def create_gateway_with_options(
+        self,
+        request: apig20240327_models.CreateGatewayRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.CreateGatewayResponse:
+        """
+        @summary 创建云原生网关
+        
+        @param request: CreateGatewayRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGatewayResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.charge_type):
+            body['chargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.gateway_type):
+            body['gatewayType'] = request.gateway_type
+        if not UtilClient.is_unset(request.log_config):
+            body['logConfig'] = request.log_config
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.network_access_config):
+            body['networkAccessConfig'] = request.network_access_config
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.spec):
+            body['spec'] = request.spec
+        if not UtilClient.is_unset(request.tag):
+            body['tag'] = request.tag
+        if not UtilClient.is_unset(request.vpc_id):
+            body['vpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_config):
+            body['zoneConfig'] = request.zone_config
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateGateway',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/gateways',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.CreateGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_gateway_with_options_async(
+        self,
+        request: apig20240327_models.CreateGatewayRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.CreateGatewayResponse:
+        """
+        @summary 创建云原生网关
+        
+        @param request: CreateGatewayRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGatewayResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.charge_type):
+            body['chargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.gateway_type):
+            body['gatewayType'] = request.gateway_type
+        if not UtilClient.is_unset(request.log_config):
+            body['logConfig'] = request.log_config
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.network_access_config):
+            body['networkAccessConfig'] = request.network_access_config
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.spec):
+            body['spec'] = request.spec
+        if not UtilClient.is_unset(request.tag):
+            body['tag'] = request.tag
+        if not UtilClient.is_unset(request.vpc_id):
+            body['vpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_config):
+            body['zoneConfig'] = request.zone_config
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateGateway',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/gateways',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.CreateGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_gateway(
+        self,
+        request: apig20240327_models.CreateGatewayRequest,
+    ) -> apig20240327_models.CreateGatewayResponse:
+        """
+        @summary 创建云原生网关
+        
+        @param request: CreateGatewayRequest
+        @return: CreateGatewayResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_gateway_with_options(request, headers, runtime)
+
+    async def create_gateway_async(
+        self,
+        request: apig20240327_models.CreateGatewayRequest,
+    ) -> apig20240327_models.CreateGatewayResponse:
+        """
+        @summary 创建云原生网关
+        
+        @param request: CreateGatewayRequest
+        @return: CreateGatewayResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_gateway_with_options_async(request, headers, runtime)
 
     def create_http_api_with_options(
         self,
@@ -1464,6 +2064,190 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_service_with_options_async(request, headers, runtime)
+
+    def delete_consumer_with_options(
+        self,
+        consumer_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.DeleteConsumerResponse:
+        """
+        @summary 删除消费者
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConsumerResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteConsumer',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/consumers/{OpenApiUtilClient.get_encode_param(consumer_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.DeleteConsumerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_consumer_with_options_async(
+        self,
+        consumer_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.DeleteConsumerResponse:
+        """
+        @summary 删除消费者
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConsumerResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteConsumer',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/consumers/{OpenApiUtilClient.get_encode_param(consumer_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.DeleteConsumerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_consumer(
+        self,
+        consumer_id: str,
+    ) -> apig20240327_models.DeleteConsumerResponse:
+        """
+        @summary 删除消费者
+        
+        @return: DeleteConsumerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_consumer_with_options(consumer_id, headers, runtime)
+
+    async def delete_consumer_async(
+        self,
+        consumer_id: str,
+    ) -> apig20240327_models.DeleteConsumerResponse:
+        """
+        @summary 删除消费者
+        
+        @return: DeleteConsumerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_consumer_with_options_async(consumer_id, headers, runtime)
+
+    def delete_consumer_authorization_rule_with_options(
+        self,
+        consumer_authorization_rule_id: str,
+        consumer_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.DeleteConsumerAuthorizationRuleResponse:
+        """
+        @summary 删除消费者授权规则
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConsumerAuthorizationRuleResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteConsumerAuthorizationRule',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/consumers/{OpenApiUtilClient.get_encode_param(consumer_id)}/authorization-rules/{OpenApiUtilClient.get_encode_param(consumer_authorization_rule_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.DeleteConsumerAuthorizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_consumer_authorization_rule_with_options_async(
+        self,
+        consumer_authorization_rule_id: str,
+        consumer_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.DeleteConsumerAuthorizationRuleResponse:
+        """
+        @summary 删除消费者授权规则
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConsumerAuthorizationRuleResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteConsumerAuthorizationRule',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/consumers/{OpenApiUtilClient.get_encode_param(consumer_id)}/authorization-rules/{OpenApiUtilClient.get_encode_param(consumer_authorization_rule_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.DeleteConsumerAuthorizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_consumer_authorization_rule(
+        self,
+        consumer_authorization_rule_id: str,
+        consumer_id: str,
+    ) -> apig20240327_models.DeleteConsumerAuthorizationRuleResponse:
+        """
+        @summary 删除消费者授权规则
+        
+        @return: DeleteConsumerAuthorizationRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_consumer_authorization_rule_with_options(consumer_authorization_rule_id, consumer_id, headers, runtime)
+
+    async def delete_consumer_authorization_rule_async(
+        self,
+        consumer_authorization_rule_id: str,
+        consumer_id: str,
+    ) -> apig20240327_models.DeleteConsumerAuthorizationRuleResponse:
+        """
+        @summary 删除消费者授权规则
+        
+        @return: DeleteConsumerAuthorizationRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_consumer_authorization_rule_with_options_async(consumer_authorization_rule_id, consumer_id, headers, runtime)
 
     def delete_domain_with_options(
         self,
@@ -2702,6 +3486,190 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.export_http_api_with_options_async(http_api_id, headers, runtime)
+
+    def get_consumer_with_options(
+        self,
+        consumer_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.GetConsumerResponse:
+        """
+        @summary 查询消费者
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConsumerResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetConsumer',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/consumers/{OpenApiUtilClient.get_encode_param(consumer_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.GetConsumerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_consumer_with_options_async(
+        self,
+        consumer_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.GetConsumerResponse:
+        """
+        @summary 查询消费者
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConsumerResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetConsumer',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/consumers/{OpenApiUtilClient.get_encode_param(consumer_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.GetConsumerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_consumer(
+        self,
+        consumer_id: str,
+    ) -> apig20240327_models.GetConsumerResponse:
+        """
+        @summary 查询消费者
+        
+        @return: GetConsumerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_consumer_with_options(consumer_id, headers, runtime)
+
+    async def get_consumer_async(
+        self,
+        consumer_id: str,
+    ) -> apig20240327_models.GetConsumerResponse:
+        """
+        @summary 查询消费者
+        
+        @return: GetConsumerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_consumer_with_options_async(consumer_id, headers, runtime)
+
+    def get_consumer_authorization_rule_with_options(
+        self,
+        consumer_authorization_rule_id: str,
+        consumer_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.GetConsumerAuthorizationRuleResponse:
+        """
+        @summary 查询消费者授权规则
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConsumerAuthorizationRuleResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetConsumerAuthorizationRule',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/consumers/{OpenApiUtilClient.get_encode_param(consumer_id)}/authorization-rules/{OpenApiUtilClient.get_encode_param(consumer_authorization_rule_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.GetConsumerAuthorizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_consumer_authorization_rule_with_options_async(
+        self,
+        consumer_authorization_rule_id: str,
+        consumer_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.GetConsumerAuthorizationRuleResponse:
+        """
+        @summary 查询消费者授权规则
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConsumerAuthorizationRuleResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetConsumerAuthorizationRule',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/consumers/{OpenApiUtilClient.get_encode_param(consumer_id)}/authorization-rules/{OpenApiUtilClient.get_encode_param(consumer_authorization_rule_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.GetConsumerAuthorizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_consumer_authorization_rule(
+        self,
+        consumer_authorization_rule_id: str,
+        consumer_id: str,
+    ) -> apig20240327_models.GetConsumerAuthorizationRuleResponse:
+        """
+        @summary 查询消费者授权规则
+        
+        @return: GetConsumerAuthorizationRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_consumer_authorization_rule_with_options(consumer_authorization_rule_id, consumer_id, headers, runtime)
+
+    async def get_consumer_authorization_rule_async(
+        self,
+        consumer_authorization_rule_id: str,
+        consumer_id: str,
+    ) -> apig20240327_models.GetConsumerAuthorizationRuleResponse:
+        """
+        @summary 查询消费者授权规则
+        
+        @return: GetConsumerAuthorizationRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_consumer_authorization_rule_with_options_async(consumer_authorization_rule_id, consumer_id, headers, runtime)
 
     def get_dashboard_with_options(
         self,
@@ -4166,6 +5134,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.import_http_api_with_options_async(request, headers, runtime)
+
+    def list_consumers_with_options(
+        self,
+        request: apig20240327_models.ListConsumersRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.ListConsumersResponse:
+        """
+        @summary 查询消费者列表
+        
+        @param request: ListConsumersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConsumersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gateway_type):
+            query['gatewayType'] = request.gateway_type
+        if not UtilClient.is_unset(request.name_like):
+            query['nameLike'] = request.name_like
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListConsumers',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/consumers',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.ListConsumersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_consumers_with_options_async(
+        self,
+        request: apig20240327_models.ListConsumersRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.ListConsumersResponse:
+        """
+        @summary 查询消费者列表
+        
+        @param request: ListConsumersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConsumersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gateway_type):
+            query['gatewayType'] = request.gateway_type
+        if not UtilClient.is_unset(request.name_like):
+            query['nameLike'] = request.name_like
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListConsumers',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/consumers',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.ListConsumersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_consumers(
+        self,
+        request: apig20240327_models.ListConsumersRequest,
+    ) -> apig20240327_models.ListConsumersResponse:
+        """
+        @summary 查询消费者列表
+        
+        @param request: ListConsumersRequest
+        @return: ListConsumersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_consumers_with_options(request, headers, runtime)
+
+    async def list_consumers_async(
+        self,
+        request: apig20240327_models.ListConsumersRequest,
+    ) -> apig20240327_models.ListConsumersResponse:
+        """
+        @summary 查询消费者列表
+        
+        @param request: ListConsumersRequest
+        @return: ListConsumersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_consumers_with_options_async(request, headers, runtime)
 
     def list_domains_with_options(
         self,
@@ -5777,6 +6861,236 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_zones_with_options_async(headers, runtime)
 
+    def query_consumer_authorization_rules_with_options(
+        self,
+        request: apig20240327_models.QueryConsumerAuthorizationRulesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.QueryConsumerAuthorizationRulesResponse:
+        """
+        @summary Queries a list of consumer authentication rules.
+        
+        @param request: QueryConsumerAuthorizationRulesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryConsumerAuthorizationRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_name_like):
+            query['apiNameLike'] = request.api_name_like
+        if not UtilClient.is_unset(request.consumer_id):
+            query['consumerId'] = request.consumer_id
+        if not UtilClient.is_unset(request.consumer_name_like):
+            query['consumerNameLike'] = request.consumer_name_like
+        if not UtilClient.is_unset(request.environment_id):
+            query['environmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.group_by_api):
+            query['groupByApi'] = request.group_by_api
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.parent_resource_id):
+            query['parentResourceId'] = request.parent_resource_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['resourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['resourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryConsumerAuthorizationRules',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/authorization-rules',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.QueryConsumerAuthorizationRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_consumer_authorization_rules_with_options_async(
+        self,
+        request: apig20240327_models.QueryConsumerAuthorizationRulesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.QueryConsumerAuthorizationRulesResponse:
+        """
+        @summary Queries a list of consumer authentication rules.
+        
+        @param request: QueryConsumerAuthorizationRulesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryConsumerAuthorizationRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_name_like):
+            query['apiNameLike'] = request.api_name_like
+        if not UtilClient.is_unset(request.consumer_id):
+            query['consumerId'] = request.consumer_id
+        if not UtilClient.is_unset(request.consumer_name_like):
+            query['consumerNameLike'] = request.consumer_name_like
+        if not UtilClient.is_unset(request.environment_id):
+            query['environmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.group_by_api):
+            query['groupByApi'] = request.group_by_api
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.parent_resource_id):
+            query['parentResourceId'] = request.parent_resource_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['resourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['resourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryConsumerAuthorizationRules',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/authorization-rules',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.QueryConsumerAuthorizationRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_consumer_authorization_rules(
+        self,
+        request: apig20240327_models.QueryConsumerAuthorizationRulesRequest,
+    ) -> apig20240327_models.QueryConsumerAuthorizationRulesResponse:
+        """
+        @summary Queries a list of consumer authentication rules.
+        
+        @param request: QueryConsumerAuthorizationRulesRequest
+        @return: QueryConsumerAuthorizationRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_consumer_authorization_rules_with_options(request, headers, runtime)
+
+    async def query_consumer_authorization_rules_async(
+        self,
+        request: apig20240327_models.QueryConsumerAuthorizationRulesRequest,
+    ) -> apig20240327_models.QueryConsumerAuthorizationRulesResponse:
+        """
+        @summary Queries a list of consumer authentication rules.
+        
+        @param request: QueryConsumerAuthorizationRulesRequest
+        @return: QueryConsumerAuthorizationRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_consumer_authorization_rules_with_options_async(request, headers, runtime)
+
+    def remove_consumer_authorization_rule_with_options(
+        self,
+        consumer_authorization_rule_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.RemoveConsumerAuthorizationRuleResponse:
+        """
+        @summary Deletes a consumer authorization rule.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveConsumerAuthorizationRuleResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='RemoveConsumerAuthorizationRule',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/authorization-rules/{OpenApiUtilClient.get_encode_param(consumer_authorization_rule_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.RemoveConsumerAuthorizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_consumer_authorization_rule_with_options_async(
+        self,
+        consumer_authorization_rule_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.RemoveConsumerAuthorizationRuleResponse:
+        """
+        @summary Deletes a consumer authorization rule.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveConsumerAuthorizationRuleResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='RemoveConsumerAuthorizationRule',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/authorization-rules/{OpenApiUtilClient.get_encode_param(consumer_authorization_rule_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.RemoveConsumerAuthorizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_consumer_authorization_rule(
+        self,
+        consumer_authorization_rule_id: str,
+    ) -> apig20240327_models.RemoveConsumerAuthorizationRuleResponse:
+        """
+        @summary Deletes a consumer authorization rule.
+        
+        @return: RemoveConsumerAuthorizationRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.remove_consumer_authorization_rule_with_options(consumer_authorization_rule_id, headers, runtime)
+
+    async def remove_consumer_authorization_rule_async(
+        self,
+        consumer_authorization_rule_id: str,
+    ) -> apig20240327_models.RemoveConsumerAuthorizationRuleResponse:
+        """
+        @summary Deletes a consumer authorization rule.
+        
+        @return: RemoveConsumerAuthorizationRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.remove_consumer_authorization_rule_with_options_async(consumer_authorization_rule_id, headers, runtime)
+
     def restart_gateway_with_options(
         self,
         gateway_id: str,
@@ -5986,6 +7300,250 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.undeploy_http_api_with_options_async(http_api_id, request, headers, runtime)
+
+    def update_consumer_with_options(
+        self,
+        consumer_id: str,
+        request: apig20240327_models.UpdateConsumerRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.UpdateConsumerResponse:
+        """
+        @summary 更新消费者
+        
+        @param request: UpdateConsumerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConsumerResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ak_sk_identity_configs):
+            body['akSkIdentityConfigs'] = request.ak_sk_identity_configs
+        if not UtilClient.is_unset(request.apikey_identity_config):
+            body['apikeyIdentityConfig'] = request.apikey_identity_config
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.enable):
+            body['enable'] = request.enable
+        if not UtilClient.is_unset(request.jwt_identity_config):
+            body['jwtIdentityConfig'] = request.jwt_identity_config
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateConsumer',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/consumers/{OpenApiUtilClient.get_encode_param(consumer_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.UpdateConsumerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_consumer_with_options_async(
+        self,
+        consumer_id: str,
+        request: apig20240327_models.UpdateConsumerRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.UpdateConsumerResponse:
+        """
+        @summary 更新消费者
+        
+        @param request: UpdateConsumerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConsumerResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ak_sk_identity_configs):
+            body['akSkIdentityConfigs'] = request.ak_sk_identity_configs
+        if not UtilClient.is_unset(request.apikey_identity_config):
+            body['apikeyIdentityConfig'] = request.apikey_identity_config
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.enable):
+            body['enable'] = request.enable
+        if not UtilClient.is_unset(request.jwt_identity_config):
+            body['jwtIdentityConfig'] = request.jwt_identity_config
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateConsumer',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/consumers/{OpenApiUtilClient.get_encode_param(consumer_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.UpdateConsumerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_consumer(
+        self,
+        consumer_id: str,
+        request: apig20240327_models.UpdateConsumerRequest,
+    ) -> apig20240327_models.UpdateConsumerResponse:
+        """
+        @summary 更新消费者
+        
+        @param request: UpdateConsumerRequest
+        @return: UpdateConsumerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_consumer_with_options(consumer_id, request, headers, runtime)
+
+    async def update_consumer_async(
+        self,
+        consumer_id: str,
+        request: apig20240327_models.UpdateConsumerRequest,
+    ) -> apig20240327_models.UpdateConsumerResponse:
+        """
+        @summary 更新消费者
+        
+        @param request: UpdateConsumerRequest
+        @return: UpdateConsumerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_consumer_with_options_async(consumer_id, request, headers, runtime)
+
+    def update_consumer_authorization_rule_with_options(
+        self,
+        consumer_id: str,
+        consumer_authorization_rule_id: str,
+        request: apig20240327_models.UpdateConsumerAuthorizationRuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.UpdateConsumerAuthorizationRuleResponse:
+        """
+        @summary 更新消费者授权规则
+        
+        @param request: UpdateConsumerAuthorizationRuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConsumerAuthorizationRuleResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.authorization_resource_infos):
+            body['authorizationResourceInfos'] = request.authorization_resource_infos
+        if not UtilClient.is_unset(request.expire_mode):
+            body['expireMode'] = request.expire_mode
+        if not UtilClient.is_unset(request.expire_timestamp):
+            body['expireTimestamp'] = request.expire_timestamp
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateConsumerAuthorizationRule',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/consumers/{OpenApiUtilClient.get_encode_param(consumer_id)}/authorization-rules/{OpenApiUtilClient.get_encode_param(consumer_authorization_rule_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.UpdateConsumerAuthorizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_consumer_authorization_rule_with_options_async(
+        self,
+        consumer_id: str,
+        consumer_authorization_rule_id: str,
+        request: apig20240327_models.UpdateConsumerAuthorizationRuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.UpdateConsumerAuthorizationRuleResponse:
+        """
+        @summary 更新消费者授权规则
+        
+        @param request: UpdateConsumerAuthorizationRuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConsumerAuthorizationRuleResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.authorization_resource_infos):
+            body['authorizationResourceInfos'] = request.authorization_resource_infos
+        if not UtilClient.is_unset(request.expire_mode):
+            body['expireMode'] = request.expire_mode
+        if not UtilClient.is_unset(request.expire_timestamp):
+            body['expireTimestamp'] = request.expire_timestamp
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateConsumerAuthorizationRule',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/consumers/{OpenApiUtilClient.get_encode_param(consumer_id)}/authorization-rules/{OpenApiUtilClient.get_encode_param(consumer_authorization_rule_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.UpdateConsumerAuthorizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_consumer_authorization_rule(
+        self,
+        consumer_id: str,
+        consumer_authorization_rule_id: str,
+        request: apig20240327_models.UpdateConsumerAuthorizationRuleRequest,
+    ) -> apig20240327_models.UpdateConsumerAuthorizationRuleResponse:
+        """
+        @summary 更新消费者授权规则
+        
+        @param request: UpdateConsumerAuthorizationRuleRequest
+        @return: UpdateConsumerAuthorizationRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_consumer_authorization_rule_with_options(consumer_id, consumer_authorization_rule_id, request, headers, runtime)
+
+    async def update_consumer_authorization_rule_async(
+        self,
+        consumer_id: str,
+        consumer_authorization_rule_id: str,
+        request: apig20240327_models.UpdateConsumerAuthorizationRuleRequest,
+    ) -> apig20240327_models.UpdateConsumerAuthorizationRuleResponse:
+        """
+        @summary 更新消费者授权规则
+        
+        @param request: UpdateConsumerAuthorizationRuleRequest
+        @return: UpdateConsumerAuthorizationRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_consumer_authorization_rule_with_options_async(consumer_id, consumer_authorization_rule_id, request, headers, runtime)
 
     def update_domain_with_options(
         self,

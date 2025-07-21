@@ -1,3 +1,20 @@
+2025-07-21 Version: 4.3.0
+- Support API BatchDeleteConsumerAuthorizationRule.
+- Support API CreateConsumer.
+- Support API CreateConsumerAuthorizationRule.
+- Support API CreateConsumerAuthorizationRules.
+- Support API CreateGateway.
+- Support API DeleteConsumer.
+- Support API DeleteConsumerAuthorizationRule.
+- Support API GetConsumer.
+- Support API GetConsumerAuthorizationRule.
+- Support API ListConsumers.
+- Support API QueryConsumerAuthorizationRules.
+- Support API RemoveConsumerAuthorizationRule.
+- Support API UpdateConsumer.
+- Support API UpdateConsumerAuthorizationRule.
+
+
 2025-07-18 Version: 4.2.3
 - Update API GetGateway: add response parameters Body.data.isp.
 

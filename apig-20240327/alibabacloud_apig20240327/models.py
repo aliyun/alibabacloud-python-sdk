@@ -4652,6 +4652,39 @@ class JwtIdentityConfig(TeaModel):
         return self
 
 
+class LabelDetail(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        values: List[str] = None,
+    ):
+        self.key = key
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.values is not None:
+            result['values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('values') is not None:
+            self.values = m.get('values')
+        return self
+
+
 class ParentResourceInfo(TeaModel):
     def __init__(
         self,
@@ -5248,10 +5281,12 @@ class Service(TeaModel):
         agent_service_config: AgentServiceConfig = None,
         ai_service_config: AiServiceConfig = None,
         create_timestamp: int = None,
+        express_type: str = None,
         gateway_id: str = None,
         group_name: str = None,
         health_check: ServiceHealthCheck = None,
         health_status: str = None,
+        label_details: LabelDetail = None,
         name: str = None,
         namespace: str = None,
         ports: List[ServicePorts] = None,
@@ -5267,10 +5302,12 @@ class Service(TeaModel):
         self.agent_service_config = agent_service_config
         self.ai_service_config = ai_service_config
         self.create_timestamp = create_timestamp
+        self.express_type = express_type
         self.gateway_id = gateway_id
         self.group_name = group_name
         self.health_check = health_check
         self.health_status = health_status
+        self.label_details = label_details
         self.name = name
         self.namespace = namespace
         self.ports = ports
@@ -5289,6 +5326,8 @@ class Service(TeaModel):
             self.ai_service_config.validate()
         if self.health_check:
             self.health_check.validate()
+        if self.label_details:
+            self.label_details.validate()
         if self.ports:
             for k in self.ports:
                 if k:
@@ -5308,6 +5347,8 @@ class Service(TeaModel):
             result['aiServiceConfig'] = self.ai_service_config.to_map()
         if self.create_timestamp is not None:
             result['createTimestamp'] = self.create_timestamp
+        if self.express_type is not None:
+            result['expressType'] = self.express_type
         if self.gateway_id is not None:
             result['gatewayId'] = self.gateway_id
         if self.group_name is not None:
@@ -5316,6 +5357,8 @@ class Service(TeaModel):
             result['healthCheck'] = self.health_check.to_map()
         if self.health_status is not None:
             result['healthStatus'] = self.health_status
+        if self.label_details is not None:
+            result['labelDetails'] = self.label_details.to_map()
         if self.name is not None:
             result['name'] = self.name
         if self.namespace is not None:
@@ -5352,6 +5395,8 @@ class Service(TeaModel):
             self.ai_service_config = temp_model.from_map(m['aiServiceConfig'])
         if m.get('createTimestamp') is not None:
             self.create_timestamp = m.get('createTimestamp')
+        if m.get('expressType') is not None:
+            self.express_type = m.get('expressType')
         if m.get('gatewayId') is not None:
             self.gateway_id = m.get('gatewayId')
         if m.get('groupName') is not None:
@@ -5361,6 +5406,9 @@ class Service(TeaModel):
             self.health_check = temp_model.from_map(m['healthCheck'])
         if m.get('healthStatus') is not None:
             self.health_status = m.get('healthStatus')
+        if m.get('labelDetails') is not None:
+            temp_model = LabelDetail()
+            self.label_details = temp_model.from_map(m['labelDetails'])
         if m.get('name') is not None:
             self.name = m.get('name')
         if m.get('namespace') is not None:
@@ -5790,6 +5838,117 @@ class AddGatewaySecurityGroupRuleResponse(TeaModel):
         return self
 
 
+class BatchDeleteConsumerAuthorizationRuleRequest(TeaModel):
+    def __init__(
+        self,
+        consumer_authorization_rule_ids: str = None,
+    ):
+        # The rule IDs.
+        self.consumer_authorization_rule_ids = consumer_authorization_rule_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.consumer_authorization_rule_ids is not None:
+            result['consumerAuthorizationRuleIds'] = self.consumer_authorization_rule_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('consumerAuthorizationRuleIds') is not None:
+            self.consumer_authorization_rule_ids = m.get('consumerAuthorizationRuleIds')
+        return self
+
+
+class BatchDeleteConsumerAuthorizationRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # The status code.
+        self.code = code
+        # The returned message.
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class BatchDeleteConsumerAuthorizationRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BatchDeleteConsumerAuthorizationRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BatchDeleteConsumerAuthorizationRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ChangeResourceGroupRequest(TeaModel):
     def __init__(
         self,
@@ -5904,6 +6063,622 @@ class ChangeResourceGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ChangeResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateConsumerRequest(TeaModel):
+    def __init__(
+        self,
+        ak_sk_identity_configs: List[AkSkIdentityConfig] = None,
+        apikey_identity_config: ApiKeyIdentityConfig = None,
+        description: str = None,
+        enable: bool = None,
+        gateway_type: str = None,
+        jwt_identity_config: JwtIdentityConfig = None,
+        name: str = None,
+    ):
+        self.ak_sk_identity_configs = ak_sk_identity_configs
+        self.apikey_identity_config = apikey_identity_config
+        self.description = description
+        self.enable = enable
+        self.gateway_type = gateway_type
+        self.jwt_identity_config = jwt_identity_config
+        self.name = name
+
+    def validate(self):
+        if self.ak_sk_identity_configs:
+            for k in self.ak_sk_identity_configs:
+                if k:
+                    k.validate()
+        if self.apikey_identity_config:
+            self.apikey_identity_config.validate()
+        if self.jwt_identity_config:
+            self.jwt_identity_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['akSkIdentityConfigs'] = []
+        if self.ak_sk_identity_configs is not None:
+            for k in self.ak_sk_identity_configs:
+                result['akSkIdentityConfigs'].append(k.to_map() if k else None)
+        if self.apikey_identity_config is not None:
+            result['apikeyIdentityConfig'] = self.apikey_identity_config.to_map()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.gateway_type is not None:
+            result['gatewayType'] = self.gateway_type
+        if self.jwt_identity_config is not None:
+            result['jwtIdentityConfig'] = self.jwt_identity_config.to_map()
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ak_sk_identity_configs = []
+        if m.get('akSkIdentityConfigs') is not None:
+            for k in m.get('akSkIdentityConfigs'):
+                temp_model = AkSkIdentityConfig()
+                self.ak_sk_identity_configs.append(temp_model.from_map(k))
+        if m.get('apikeyIdentityConfig') is not None:
+            temp_model = ApiKeyIdentityConfig()
+            self.apikey_identity_config = temp_model.from_map(m['apikeyIdentityConfig'])
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('gatewayType') is not None:
+            self.gateway_type = m.get('gatewayType')
+        if m.get('jwtIdentityConfig') is not None:
+            temp_model = JwtIdentityConfig()
+            self.jwt_identity_config = temp_model.from_map(m['jwtIdentityConfig'])
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class CreateConsumerResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        consumer_id: str = None,
+    ):
+        self.consumer_id = consumer_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.consumer_id is not None:
+            result['consumerId'] = self.consumer_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('consumerId') is not None:
+            self.consumer_id = m.get('consumerId')
+        return self
+
+
+class CreateConsumerResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateConsumerResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = CreateConsumerResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreateConsumerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateConsumerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateConsumerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateConsumerAuthorizationRuleRequest(TeaModel):
+    def __init__(
+        self,
+        authorization_resource_infos: List[AuthorizationResourceInfo] = None,
+        expire_mode: str = None,
+        expire_timestamp: int = None,
+        parent_resource_type: str = None,
+        resource_type: str = None,
+    ):
+        self.authorization_resource_infos = authorization_resource_infos
+        self.expire_mode = expire_mode
+        self.expire_timestamp = expire_timestamp
+        self.parent_resource_type = parent_resource_type
+        self.resource_type = resource_type
+
+    def validate(self):
+        if self.authorization_resource_infos:
+            for k in self.authorization_resource_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['authorizationResourceInfos'] = []
+        if self.authorization_resource_infos is not None:
+            for k in self.authorization_resource_infos:
+                result['authorizationResourceInfos'].append(k.to_map() if k else None)
+        if self.expire_mode is not None:
+            result['expireMode'] = self.expire_mode
+        if self.expire_timestamp is not None:
+            result['expireTimestamp'] = self.expire_timestamp
+        if self.parent_resource_type is not None:
+            result['parentResourceType'] = self.parent_resource_type
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.authorization_resource_infos = []
+        if m.get('authorizationResourceInfos') is not None:
+            for k in m.get('authorizationResourceInfos'):
+                temp_model = AuthorizationResourceInfo()
+                self.authorization_resource_infos.append(temp_model.from_map(k))
+        if m.get('expireMode') is not None:
+            self.expire_mode = m.get('expireMode')
+        if m.get('expireTimestamp') is not None:
+            self.expire_timestamp = m.get('expireTimestamp')
+        if m.get('parentResourceType') is not None:
+            self.parent_resource_type = m.get('parentResourceType')
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
+        return self
+
+
+class CreateConsumerAuthorizationRuleResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        consumer_authorization_rule_id: str = None,
+    ):
+        self.consumer_authorization_rule_id = consumer_authorization_rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.consumer_authorization_rule_id is not None:
+            result['consumerAuthorizationRuleId'] = self.consumer_authorization_rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('consumerAuthorizationRuleId') is not None:
+            self.consumer_authorization_rule_id = m.get('consumerAuthorizationRuleId')
+        return self
+
+
+class CreateConsumerAuthorizationRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateConsumerAuthorizationRuleResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = CreateConsumerAuthorizationRuleResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreateConsumerAuthorizationRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateConsumerAuthorizationRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateConsumerAuthorizationRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier(TeaModel):
+    def __init__(
+        self,
+        environment_id: str = None,
+        resource_id: str = None,
+    ):
+        # The environment ID.
+        self.environment_id = environment_id
+        # The resource ID.
+        self.resource_id = resource_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.environment_id is not None:
+            result['environmentId'] = self.environment_id
+        if self.resource_id is not None:
+            result['resourceId'] = self.resource_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('environmentId') is not None:
+            self.environment_id = m.get('environmentId')
+        if m.get('resourceId') is not None:
+            self.resource_id = m.get('resourceId')
+        return self
+
+
+class CreateConsumerAuthorizationRulesRequestAuthorizationRules(TeaModel):
+    def __init__(
+        self,
+        consumer_id: str = None,
+        expire_mode: str = None,
+        expire_timestamp: int = None,
+        resource_identifier: CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier = None,
+        resource_type: str = None,
+    ):
+        # The consumer ID.
+        self.consumer_id = consumer_id
+        # The expiration mode. Valid values: LongTerm and ShortTerm.
+        self.expire_mode = expire_mode
+        # The expiration timestamp.
+        self.expire_timestamp = expire_timestamp
+        # The resource identifier, which is provided to non-standard code sources for space reuse.
+        self.resource_identifier = resource_identifier
+        # The resource type.
+        self.resource_type = resource_type
+
+    def validate(self):
+        if self.resource_identifier:
+            self.resource_identifier.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.consumer_id is not None:
+            result['consumerId'] = self.consumer_id
+        if self.expire_mode is not None:
+            result['expireMode'] = self.expire_mode
+        if self.expire_timestamp is not None:
+            result['expireTimestamp'] = self.expire_timestamp
+        if self.resource_identifier is not None:
+            result['resourceIdentifier'] = self.resource_identifier.to_map()
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('consumerId') is not None:
+            self.consumer_id = m.get('consumerId')
+        if m.get('expireMode') is not None:
+            self.expire_mode = m.get('expireMode')
+        if m.get('expireTimestamp') is not None:
+            self.expire_timestamp = m.get('expireTimestamp')
+        if m.get('resourceIdentifier') is not None:
+            temp_model = CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier()
+            self.resource_identifier = temp_model.from_map(m['resourceIdentifier'])
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
+        return self
+
+
+class CreateConsumerAuthorizationRulesRequest(TeaModel):
+    def __init__(
+        self,
+        authorization_rules: List[CreateConsumerAuthorizationRulesRequestAuthorizationRules] = None,
+    ):
+        # The consumer authentication rules to be created.
+        self.authorization_rules = authorization_rules
+
+    def validate(self):
+        if self.authorization_rules:
+            for k in self.authorization_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['authorizationRules'] = []
+        if self.authorization_rules is not None:
+            for k in self.authorization_rules:
+                result['authorizationRules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.authorization_rules = []
+        if m.get('authorizationRules') is not None:
+            for k in m.get('authorizationRules'):
+                temp_model = CreateConsumerAuthorizationRulesRequestAuthorizationRules()
+                self.authorization_rules.append(temp_model.from_map(k))
+        return self
+
+
+class CreateConsumerAuthorizationRulesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        consumer_authorization_rule_ids: List[str] = None,
+    ):
+        # The authentication rule IDs.
+        self.consumer_authorization_rule_ids = consumer_authorization_rule_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.consumer_authorization_rule_ids is not None:
+            result['consumerAuthorizationRuleIds'] = self.consumer_authorization_rule_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('consumerAuthorizationRuleIds') is not None:
+            self.consumer_authorization_rule_ids = m.get('consumerAuthorizationRuleIds')
+        return self
+
+
+class CreateConsumerAuthorizationRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateConsumerAuthorizationRulesResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # The status code.
+        self.code = code
+        # The response parameters.
+        self.data = data
+        # The returned message.
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = CreateConsumerAuthorizationRulesResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreateConsumerAuthorizationRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateConsumerAuthorizationRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateConsumerAuthorizationRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6332,6 +7107,416 @@ class CreateEnvironmentResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateEnvironmentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateGatewayRequestLogConfigSls(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+    ):
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        return self
+
+
+class CreateGatewayRequestLogConfig(TeaModel):
+    def __init__(
+        self,
+        sls: CreateGatewayRequestLogConfigSls = None,
+    ):
+        self.sls = sls
+
+    def validate(self):
+        if self.sls:
+            self.sls.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sls is not None:
+            result['sls'] = self.sls.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('sls') is not None:
+            temp_model = CreateGatewayRequestLogConfigSls()
+            self.sls = temp_model.from_map(m['sls'])
+        return self
+
+
+class CreateGatewayRequestNetworkAccessConfig(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+    ):
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class CreateGatewayRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class CreateGatewayRequestZoneConfigZones(TeaModel):
+    def __init__(
+        self,
+        v_switch_id: str = None,
+        zone_id: str = None,
+    ):
+        self.v_switch_id = v_switch_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.v_switch_id is not None:
+            result['vSwitchId'] = self.v_switch_id
+        if self.zone_id is not None:
+            result['zoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('vSwitchId') is not None:
+            self.v_switch_id = m.get('vSwitchId')
+        if m.get('zoneId') is not None:
+            self.zone_id = m.get('zoneId')
+        return self
+
+
+class CreateGatewayRequestZoneConfig(TeaModel):
+    def __init__(
+        self,
+        select_option: str = None,
+        v_switch_id: str = None,
+        zones: List[CreateGatewayRequestZoneConfigZones] = None,
+    ):
+        self.select_option = select_option
+        self.v_switch_id = v_switch_id
+        self.zones = zones
+
+    def validate(self):
+        if self.zones:
+            for k in self.zones:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.select_option is not None:
+            result['selectOption'] = self.select_option
+        if self.v_switch_id is not None:
+            result['vSwitchId'] = self.v_switch_id
+        result['zones'] = []
+        if self.zones is not None:
+            for k in self.zones:
+                result['zones'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('selectOption') is not None:
+            self.select_option = m.get('selectOption')
+        if m.get('vSwitchId') is not None:
+            self.v_switch_id = m.get('vSwitchId')
+        self.zones = []
+        if m.get('zones') is not None:
+            for k in m.get('zones'):
+                temp_model = CreateGatewayRequestZoneConfigZones()
+                self.zones.append(temp_model.from_map(k))
+        return self
+
+
+class CreateGatewayRequest(TeaModel):
+    def __init__(
+        self,
+        charge_type: str = None,
+        gateway_type: str = None,
+        log_config: CreateGatewayRequestLogConfig = None,
+        name: str = None,
+        network_access_config: CreateGatewayRequestNetworkAccessConfig = None,
+        resource_group_id: str = None,
+        spec: str = None,
+        tag: List[CreateGatewayRequestTag] = None,
+        vpc_id: str = None,
+        zone_config: CreateGatewayRequestZoneConfig = None,
+    ):
+        self.charge_type = charge_type
+        self.gateway_type = gateway_type
+        self.log_config = log_config
+        self.name = name
+        self.network_access_config = network_access_config
+        self.resource_group_id = resource_group_id
+        self.spec = spec
+        self.tag = tag
+        self.vpc_id = vpc_id
+        self.zone_config = zone_config
+
+    def validate(self):
+        if self.log_config:
+            self.log_config.validate()
+        if self.network_access_config:
+            self.network_access_config.validate()
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+        if self.zone_config:
+            self.zone_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.charge_type is not None:
+            result['chargeType'] = self.charge_type
+        if self.gateway_type is not None:
+            result['gatewayType'] = self.gateway_type
+        if self.log_config is not None:
+            result['logConfig'] = self.log_config.to_map()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.network_access_config is not None:
+            result['networkAccessConfig'] = self.network_access_config.to_map()
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+        if self.spec is not None:
+            result['spec'] = self.spec
+        result['tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['tag'].append(k.to_map() if k else None)
+        if self.vpc_id is not None:
+            result['vpcId'] = self.vpc_id
+        if self.zone_config is not None:
+            result['zoneConfig'] = self.zone_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('chargeType') is not None:
+            self.charge_type = m.get('chargeType')
+        if m.get('gatewayType') is not None:
+            self.gateway_type = m.get('gatewayType')
+        if m.get('logConfig') is not None:
+            temp_model = CreateGatewayRequestLogConfig()
+            self.log_config = temp_model.from_map(m['logConfig'])
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('networkAccessConfig') is not None:
+            temp_model = CreateGatewayRequestNetworkAccessConfig()
+            self.network_access_config = temp_model.from_map(m['networkAccessConfig'])
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+        if m.get('spec') is not None:
+            self.spec = m.get('spec')
+        self.tag = []
+        if m.get('tag') is not None:
+            for k in m.get('tag'):
+                temp_model = CreateGatewayRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        if m.get('vpcId') is not None:
+            self.vpc_id = m.get('vpcId')
+        if m.get('zoneConfig') is not None:
+            temp_model = CreateGatewayRequestZoneConfig()
+            self.zone_config = temp_model.from_map(m['zoneConfig'])
+        return self
+
+
+class CreateGatewayResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        gateway_id: str = None,
+    ):
+        self.gateway_id = gateway_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gateway_id is not None:
+            result['gatewayId'] = self.gateway_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('gatewayId') is not None:
+            self.gateway_id = m.get('gatewayId')
+        return self
+
+
+class CreateGatewayResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateGatewayResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = CreateGatewayResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreateGatewayResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateGatewayResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateGatewayResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8035,6 +9220,168 @@ class CreateServiceResponse(TeaModel):
         return self
 
 
+class DeleteConsumerResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeleteConsumerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteConsumerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteConsumerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteConsumerAuthorizationRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeleteConsumerAuthorizationRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteConsumerAuthorizationRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteConsumerAuthorizationRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteDomainResponseBody(TeaModel):
     def __init__(
         self,
@@ -9429,6 +10776,333 @@ class ExportHttpApiResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ExportHttpApiResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetConsumerResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        ak_sk_identity_configs: AkSkIdentityConfig = None,
+        api_key_identity_config: ApiKeyIdentityConfig = None,
+        consumer_id: str = None,
+        create_timestamp: int = None,
+        deploy_status: str = None,
+        description: str = None,
+        enable: bool = None,
+        jwt_identity_config: JwtIdentityConfig = None,
+        name: str = None,
+        update_timestamp: int = None,
+    ):
+        self.ak_sk_identity_configs = ak_sk_identity_configs
+        self.api_key_identity_config = api_key_identity_config
+        self.consumer_id = consumer_id
+        self.create_timestamp = create_timestamp
+        self.deploy_status = deploy_status
+        self.description = description
+        self.enable = enable
+        self.jwt_identity_config = jwt_identity_config
+        self.name = name
+        self.update_timestamp = update_timestamp
+
+    def validate(self):
+        if self.ak_sk_identity_configs:
+            self.ak_sk_identity_configs.validate()
+        if self.api_key_identity_config:
+            self.api_key_identity_config.validate()
+        if self.jwt_identity_config:
+            self.jwt_identity_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ak_sk_identity_configs is not None:
+            result['akSkIdentityConfigs'] = self.ak_sk_identity_configs.to_map()
+        if self.api_key_identity_config is not None:
+            result['apiKeyIdentityConfig'] = self.api_key_identity_config.to_map()
+        if self.consumer_id is not None:
+            result['consumerId'] = self.consumer_id
+        if self.create_timestamp is not None:
+            result['createTimestamp'] = self.create_timestamp
+        if self.deploy_status is not None:
+            result['deployStatus'] = self.deploy_status
+        if self.description is not None:
+            result['description'] = self.description
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.jwt_identity_config is not None:
+            result['jwtIdentityConfig'] = self.jwt_identity_config.to_map()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.update_timestamp is not None:
+            result['updateTimestamp'] = self.update_timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('akSkIdentityConfigs') is not None:
+            temp_model = AkSkIdentityConfig()
+            self.ak_sk_identity_configs = temp_model.from_map(m['akSkIdentityConfigs'])
+        if m.get('apiKeyIdentityConfig') is not None:
+            temp_model = ApiKeyIdentityConfig()
+            self.api_key_identity_config = temp_model.from_map(m['apiKeyIdentityConfig'])
+        if m.get('consumerId') is not None:
+            self.consumer_id = m.get('consumerId')
+        if m.get('createTimestamp') is not None:
+            self.create_timestamp = m.get('createTimestamp')
+        if m.get('deployStatus') is not None:
+            self.deploy_status = m.get('deployStatus')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('jwtIdentityConfig') is not None:
+            temp_model = JwtIdentityConfig()
+            self.jwt_identity_config = temp_model.from_map(m['jwtIdentityConfig'])
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('updateTimestamp') is not None:
+            self.update_timestamp = m.get('updateTimestamp')
+        return self
+
+
+class GetConsumerResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetConsumerResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = GetConsumerResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetConsumerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetConsumerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetConsumerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetConsumerAuthorizationRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        api_info: HttpApiApiInfo = None,
+        consumer_authorization_rule_id: str = None,
+        consumer_id: str = None,
+        create_timestamp: int = None,
+        deploy_status: str = None,
+        environment_info: EnvironmentInfo = None,
+        expire_mode: str = None,
+        expire_status: str = None,
+        expire_timestamp: int = None,
+        gateway_info: GatewayInfo = None,
+        request_id: str = None,
+        resource_type: str = None,
+        update_timestamp: int = None,
+    ):
+        self.api_info = api_info
+        self.consumer_authorization_rule_id = consumer_authorization_rule_id
+        self.consumer_id = consumer_id
+        self.create_timestamp = create_timestamp
+        self.deploy_status = deploy_status
+        self.environment_info = environment_info
+        self.expire_mode = expire_mode
+        self.expire_status = expire_status
+        self.expire_timestamp = expire_timestamp
+        self.gateway_info = gateway_info
+        # Id of the request
+        self.request_id = request_id
+        self.resource_type = resource_type
+        self.update_timestamp = update_timestamp
+
+    def validate(self):
+        if self.api_info:
+            self.api_info.validate()
+        if self.environment_info:
+            self.environment_info.validate()
+        if self.gateway_info:
+            self.gateway_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_info is not None:
+            result['apiInfo'] = self.api_info.to_map()
+        if self.consumer_authorization_rule_id is not None:
+            result['consumerAuthorizationRuleId'] = self.consumer_authorization_rule_id
+        if self.consumer_id is not None:
+            result['consumerId'] = self.consumer_id
+        if self.create_timestamp is not None:
+            result['createTimestamp'] = self.create_timestamp
+        if self.deploy_status is not None:
+            result['deployStatus'] = self.deploy_status
+        if self.environment_info is not None:
+            result['environmentInfo'] = self.environment_info.to_map()
+        if self.expire_mode is not None:
+            result['expireMode'] = self.expire_mode
+        if self.expire_status is not None:
+            result['expireStatus'] = self.expire_status
+        if self.expire_timestamp is not None:
+            result['expireTimestamp'] = self.expire_timestamp
+        if self.gateway_info is not None:
+            result['gatewayInfo'] = self.gateway_info.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
+        if self.update_timestamp is not None:
+            result['updateTimestamp'] = self.update_timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('apiInfo') is not None:
+            temp_model = HttpApiApiInfo()
+            self.api_info = temp_model.from_map(m['apiInfo'])
+        if m.get('consumerAuthorizationRuleId') is not None:
+            self.consumer_authorization_rule_id = m.get('consumerAuthorizationRuleId')
+        if m.get('consumerId') is not None:
+            self.consumer_id = m.get('consumerId')
+        if m.get('createTimestamp') is not None:
+            self.create_timestamp = m.get('createTimestamp')
+        if m.get('deployStatus') is not None:
+            self.deploy_status = m.get('deployStatus')
+        if m.get('environmentInfo') is not None:
+            temp_model = EnvironmentInfo()
+            self.environment_info = temp_model.from_map(m['environmentInfo'])
+        if m.get('expireMode') is not None:
+            self.expire_mode = m.get('expireMode')
+        if m.get('expireStatus') is not None:
+            self.expire_status = m.get('expireStatus')
+        if m.get('expireTimestamp') is not None:
+            self.expire_timestamp = m.get('expireTimestamp')
+        if m.get('gatewayInfo') is not None:
+            temp_model = GatewayInfo()
+            self.gateway_info = temp_model.from_map(m['gatewayInfo'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
+        if m.get('updateTimestamp') is not None:
+            self.update_timestamp = m.get('updateTimestamp')
+        return self
+
+
+class GetConsumerAuthorizationRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetConsumerAuthorizationRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetConsumerAuthorizationRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12964,6 +14638,256 @@ class ImportHttpApiResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ImportHttpApiResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListConsumersRequest(TeaModel):
+    def __init__(
+        self,
+        gateway_type: str = None,
+        name_like: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.gateway_type = gateway_type
+        self.name_like = name_like
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gateway_type is not None:
+            result['gatewayType'] = self.gateway_type
+        if self.name_like is not None:
+            result['nameLike'] = self.name_like
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('gatewayType') is not None:
+            self.gateway_type = m.get('gatewayType')
+        if m.get('nameLike') is not None:
+            self.name_like = m.get('nameLike')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        return self
+
+
+class ListConsumersResponseBodyDataItems(TeaModel):
+    def __init__(
+        self,
+        consumer_id: str = None,
+        create_timestamp: int = None,
+        deploy_status: str = None,
+        description: str = None,
+        enable: bool = None,
+        name: str = None,
+        update_timestamp: int = None,
+    ):
+        self.consumer_id = consumer_id
+        self.create_timestamp = create_timestamp
+        self.deploy_status = deploy_status
+        self.description = description
+        self.enable = enable
+        self.name = name
+        self.update_timestamp = update_timestamp
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.consumer_id is not None:
+            result['consumerId'] = self.consumer_id
+        if self.create_timestamp is not None:
+            result['createTimestamp'] = self.create_timestamp
+        if self.deploy_status is not None:
+            result['deployStatus'] = self.deploy_status
+        if self.description is not None:
+            result['description'] = self.description
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.name is not None:
+            result['name'] = self.name
+        if self.update_timestamp is not None:
+            result['updateTimestamp'] = self.update_timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('consumerId') is not None:
+            self.consumer_id = m.get('consumerId')
+        if m.get('createTimestamp') is not None:
+            self.create_timestamp = m.get('createTimestamp')
+        if m.get('deployStatus') is not None:
+            self.deploy_status = m.get('deployStatus')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('updateTimestamp') is not None:
+            self.update_timestamp = m.get('updateTimestamp')
+        return self
+
+
+class ListConsumersResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        items: List[ListConsumersResponseBodyDataItems] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_size: int = None,
+    ):
+        self.items = items
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_size = total_size
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.total_size is not None:
+            result['totalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('items') is not None:
+            for k in m.get('items'):
+                temp_model = ListConsumersResponseBodyDataItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('totalSize') is not None:
+            self.total_size = m.get('totalSize')
+        return self
+
+
+class ListConsumersResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListConsumersResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = ListConsumersResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListConsumersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListConsumersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListConsumersResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -16657,6 +18581,509 @@ class ListZonesResponse(TeaModel):
         return self
 
 
+class QueryConsumerAuthorizationRulesRequest(TeaModel):
+    def __init__(
+        self,
+        api_name_like: str = None,
+        consumer_id: str = None,
+        consumer_name_like: str = None,
+        environment_id: str = None,
+        group_by_api: bool = None,
+        page_number: int = None,
+        page_size: int = None,
+        parent_resource_id: str = None,
+        resource_id: str = None,
+        resource_type: str = None,
+    ):
+        # The API name.
+        self.api_name_like = api_name_like
+        # The consumer ID.
+        self.consumer_id = consumer_id
+        # The consumer name.
+        self.consumer_name_like = consumer_name_like
+        # The environment ID.
+        self.environment_id = environment_id
+        # Specifies whether to group the results by API.
+        self.group_by_api = group_by_api
+        # The number of the page to return.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        # The parent resource ID.
+        self.parent_resource_id = parent_resource_id
+        # The resource ID.
+        self.resource_id = resource_id
+        # The resource type.
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_name_like is not None:
+            result['apiNameLike'] = self.api_name_like
+        if self.consumer_id is not None:
+            result['consumerId'] = self.consumer_id
+        if self.consumer_name_like is not None:
+            result['consumerNameLike'] = self.consumer_name_like
+        if self.environment_id is not None:
+            result['environmentId'] = self.environment_id
+        if self.group_by_api is not None:
+            result['groupByApi'] = self.group_by_api
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.parent_resource_id is not None:
+            result['parentResourceId'] = self.parent_resource_id
+        if self.resource_id is not None:
+            result['resourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('apiNameLike') is not None:
+            self.api_name_like = m.get('apiNameLike')
+        if m.get('consumerId') is not None:
+            self.consumer_id = m.get('consumerId')
+        if m.get('consumerNameLike') is not None:
+            self.consumer_name_like = m.get('consumerNameLike')
+        if m.get('environmentId') is not None:
+            self.environment_id = m.get('environmentId')
+        if m.get('groupByApi') is not None:
+            self.group_by_api = m.get('groupByApi')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('parentResourceId') is not None:
+            self.parent_resource_id = m.get('parentResourceId')
+        if m.get('resourceId') is not None:
+            self.resource_id = m.get('resourceId')
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
+        return self
+
+
+class QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo(TeaModel):
+    def __init__(
+        self,
+        operation_info: HttpApiOperationInfo = None,
+        route: HttpRoute = None,
+    ):
+        # The operation information.
+        self.operation_info = operation_info
+        # The route.
+        self.route = route
+
+    def validate(self):
+        if self.operation_info:
+            self.operation_info.validate()
+        if self.route:
+            self.route.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operation_info is not None:
+            result['operationInfo'] = self.operation_info.to_map()
+        if self.route is not None:
+            result['route'] = self.route.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('operationInfo') is not None:
+            temp_model = HttpApiOperationInfo()
+            self.operation_info = temp_model.from_map(m['operationInfo'])
+        if m.get('route') is not None:
+            temp_model = HttpRoute()
+            self.route = temp_model.from_map(m['route'])
+        return self
+
+
+class QueryConsumerAuthorizationRulesResponseBodyDataItems(TeaModel):
+    def __init__(
+        self,
+        api_info: HttpApiApiInfo = None,
+        consumer_authorization_rule_id: str = None,
+        consumer_id: str = None,
+        consumer_info: ConsumerInfo = None,
+        create_timestamp: int = None,
+        deploy_status: str = None,
+        environment_info: EnvironmentInfo = None,
+        expire_mode: str = None,
+        expire_status: str = None,
+        expire_timestamp: int = None,
+        gateway_info: GatewayInfo = None,
+        resource_id: str = None,
+        resource_info: QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo = None,
+        resource_type: str = None,
+        update_timestamp: int = None,
+    ):
+        # The API details.
+        self.api_info = api_info
+        # The rule ID.
+        self.consumer_authorization_rule_id = consumer_authorization_rule_id
+        # The consumer ID.
+        self.consumer_id = consumer_id
+        # The consumer information.
+        self.consumer_info = consumer_info
+        # The creation timestamp. Unit: milliseconds.
+        self.create_timestamp = create_timestamp
+        # The deployment status of the API in the current environment.
+        self.deploy_status = deploy_status
+        # The environment information.
+        self.environment_info = environment_info
+        # The expiry mode. Valid values: LongTerm and ShortTerm.
+        self.expire_mode = expire_mode
+        # The rule status.
+        self.expire_status = expire_status
+        # The time when the rule expires.
+        self.expire_timestamp = expire_timestamp
+        # The instance information.
+        self.gateway_info = gateway_info
+        # The resource IDs.
+        self.resource_id = resource_id
+        # The resource information.
+        self.resource_info = resource_info
+        # The resource type.
+        self.resource_type = resource_type
+        # The update timestamp. Unit: milliseconds.
+        self.update_timestamp = update_timestamp
+
+    def validate(self):
+        if self.api_info:
+            self.api_info.validate()
+        if self.consumer_info:
+            self.consumer_info.validate()
+        if self.environment_info:
+            self.environment_info.validate()
+        if self.gateway_info:
+            self.gateway_info.validate()
+        if self.resource_info:
+            self.resource_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_info is not None:
+            result['apiInfo'] = self.api_info.to_map()
+        if self.consumer_authorization_rule_id is not None:
+            result['consumerAuthorizationRuleId'] = self.consumer_authorization_rule_id
+        if self.consumer_id is not None:
+            result['consumerId'] = self.consumer_id
+        if self.consumer_info is not None:
+            result['consumerInfo'] = self.consumer_info.to_map()
+        if self.create_timestamp is not None:
+            result['createTimestamp'] = self.create_timestamp
+        if self.deploy_status is not None:
+            result['deployStatus'] = self.deploy_status
+        if self.environment_info is not None:
+            result['environmentInfo'] = self.environment_info.to_map()
+        if self.expire_mode is not None:
+            result['expireMode'] = self.expire_mode
+        if self.expire_status is not None:
+            result['expireStatus'] = self.expire_status
+        if self.expire_timestamp is not None:
+            result['expireTimestamp'] = self.expire_timestamp
+        if self.gateway_info is not None:
+            result['gatewayInfo'] = self.gateway_info.to_map()
+        if self.resource_id is not None:
+            result['resourceId'] = self.resource_id
+        if self.resource_info is not None:
+            result['resourceInfo'] = self.resource_info.to_map()
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
+        if self.update_timestamp is not None:
+            result['updateTimestamp'] = self.update_timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('apiInfo') is not None:
+            temp_model = HttpApiApiInfo()
+            self.api_info = temp_model.from_map(m['apiInfo'])
+        if m.get('consumerAuthorizationRuleId') is not None:
+            self.consumer_authorization_rule_id = m.get('consumerAuthorizationRuleId')
+        if m.get('consumerId') is not None:
+            self.consumer_id = m.get('consumerId')
+        if m.get('consumerInfo') is not None:
+            temp_model = ConsumerInfo()
+            self.consumer_info = temp_model.from_map(m['consumerInfo'])
+        if m.get('createTimestamp') is not None:
+            self.create_timestamp = m.get('createTimestamp')
+        if m.get('deployStatus') is not None:
+            self.deploy_status = m.get('deployStatus')
+        if m.get('environmentInfo') is not None:
+            temp_model = EnvironmentInfo()
+            self.environment_info = temp_model.from_map(m['environmentInfo'])
+        if m.get('expireMode') is not None:
+            self.expire_mode = m.get('expireMode')
+        if m.get('expireStatus') is not None:
+            self.expire_status = m.get('expireStatus')
+        if m.get('expireTimestamp') is not None:
+            self.expire_timestamp = m.get('expireTimestamp')
+        if m.get('gatewayInfo') is not None:
+            temp_model = GatewayInfo()
+            self.gateway_info = temp_model.from_map(m['gatewayInfo'])
+        if m.get('resourceId') is not None:
+            self.resource_id = m.get('resourceId')
+        if m.get('resourceInfo') is not None:
+            temp_model = QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo()
+            self.resource_info = temp_model.from_map(m['resourceInfo'])
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
+        if m.get('updateTimestamp') is not None:
+            self.update_timestamp = m.get('updateTimestamp')
+        return self
+
+
+class QueryConsumerAuthorizationRulesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        items: List[QueryConsumerAuthorizationRulesResponseBodyDataItems] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_size: str = None,
+    ):
+        # The rules.
+        self.items = items
+        # The page number of the returned page.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        # The total number of entries returned.
+        self.total_size = total_size
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.total_size is not None:
+            result['totalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('items') is not None:
+            for k in m.get('items'):
+                temp_model = QueryConsumerAuthorizationRulesResponseBodyDataItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('totalSize') is not None:
+            self.total_size = m.get('totalSize')
+        return self
+
+
+class QueryConsumerAuthorizationRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: QueryConsumerAuthorizationRulesResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # The status code.
+        self.code = code
+        # The response parameters.
+        self.data = data
+        # The returned message.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = QueryConsumerAuthorizationRulesResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class QueryConsumerAuthorizationRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryConsumerAuthorizationRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryConsumerAuthorizationRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RemoveConsumerAuthorizationRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # The status code returned.
+        self.code = code
+        # The returned message.
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class RemoveConsumerAuthorizationRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RemoveConsumerAuthorizationRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RemoveConsumerAuthorizationRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RestartGatewayResponseBody(TeaModel):
     def __init__(
         self,
@@ -16866,6 +19293,280 @@ class UndeployHttpApiResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UndeployHttpApiResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateConsumerRequest(TeaModel):
+    def __init__(
+        self,
+        ak_sk_identity_configs: List[AkSkIdentityConfig] = None,
+        apikey_identity_config: ApiKeyIdentityConfig = None,
+        description: str = None,
+        enable: bool = None,
+        jwt_identity_config: JwtIdentityConfig = None,
+    ):
+        self.ak_sk_identity_configs = ak_sk_identity_configs
+        self.apikey_identity_config = apikey_identity_config
+        self.description = description
+        self.enable = enable
+        self.jwt_identity_config = jwt_identity_config
+
+    def validate(self):
+        if self.ak_sk_identity_configs:
+            for k in self.ak_sk_identity_configs:
+                if k:
+                    k.validate()
+        if self.apikey_identity_config:
+            self.apikey_identity_config.validate()
+        if self.jwt_identity_config:
+            self.jwt_identity_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['akSkIdentityConfigs'] = []
+        if self.ak_sk_identity_configs is not None:
+            for k in self.ak_sk_identity_configs:
+                result['akSkIdentityConfigs'].append(k.to_map() if k else None)
+        if self.apikey_identity_config is not None:
+            result['apikeyIdentityConfig'] = self.apikey_identity_config.to_map()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.jwt_identity_config is not None:
+            result['jwtIdentityConfig'] = self.jwt_identity_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ak_sk_identity_configs = []
+        if m.get('akSkIdentityConfigs') is not None:
+            for k in m.get('akSkIdentityConfigs'):
+                temp_model = AkSkIdentityConfig()
+                self.ak_sk_identity_configs.append(temp_model.from_map(k))
+        if m.get('apikeyIdentityConfig') is not None:
+            temp_model = ApiKeyIdentityConfig()
+            self.apikey_identity_config = temp_model.from_map(m['apikeyIdentityConfig'])
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('jwtIdentityConfig') is not None:
+            temp_model = JwtIdentityConfig()
+            self.jwt_identity_config = temp_model.from_map(m['jwtIdentityConfig'])
+        return self
+
+
+class UpdateConsumerResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpdateConsumerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateConsumerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateConsumerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateConsumerAuthorizationRuleRequest(TeaModel):
+    def __init__(
+        self,
+        authorization_resource_infos: List[AuthorizationResourceInfo] = None,
+        expire_mode: str = None,
+        expire_timestamp: int = None,
+    ):
+        self.authorization_resource_infos = authorization_resource_infos
+        self.expire_mode = expire_mode
+        self.expire_timestamp = expire_timestamp
+
+    def validate(self):
+        if self.authorization_resource_infos:
+            for k in self.authorization_resource_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['authorizationResourceInfos'] = []
+        if self.authorization_resource_infos is not None:
+            for k in self.authorization_resource_infos:
+                result['authorizationResourceInfos'].append(k.to_map() if k else None)
+        if self.expire_mode is not None:
+            result['expireMode'] = self.expire_mode
+        if self.expire_timestamp is not None:
+            result['expireTimestamp'] = self.expire_timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.authorization_resource_infos = []
+        if m.get('authorizationResourceInfos') is not None:
+            for k in m.get('authorizationResourceInfos'):
+                temp_model = AuthorizationResourceInfo()
+                self.authorization_resource_infos.append(temp_model.from_map(k))
+        if m.get('expireMode') is not None:
+            self.expire_mode = m.get('expireMode')
+        if m.get('expireTimestamp') is not None:
+            self.expire_timestamp = m.get('expireTimestamp')
+        return self
+
+
+class UpdateConsumerAuthorizationRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpdateConsumerAuthorizationRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateConsumerAuthorizationRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateConsumerAuthorizationRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
