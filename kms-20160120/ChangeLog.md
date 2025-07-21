@@ -1,3 +1,12 @@
+2025-07-21 Version: 2.3.0
+- Support API GetDefaultKmsInstance.
+- Support API ReleaseKmsInstance.
+- Update API CreateKey: add request parameters KeyStorageMechanism.
+- Update API GetKmsInstance: add response parameters Body.KmsInstance.ChargeType.
+- Update API GetKmsInstance: add response parameters Body.KmsInstance.ProductVersion.
+- Update API SetDeletionProtection: add request parameters KeyId.
+
+
 2024-08-30 Version: 2.2.3
 - Generated python 2016-01-20 for Kms.
 

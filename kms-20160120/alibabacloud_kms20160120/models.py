@@ -2216,6 +2216,7 @@ class CreateKeyRequest(TeaModel):
         description: str = None,
         enable_automatic_rotation: bool = None,
         key_spec: str = None,
+        key_storage_mechanism: str = None,
         key_usage: str = None,
         origin: str = None,
         policy: str = None,
@@ -2242,6 +2243,7 @@ class CreateKeyRequest(TeaModel):
         # 
         # > If you do not specify a value for this parameter, the default key specification is Aliyun_AES_256.
         self.key_spec = key_spec
+        self.key_storage_mechanism = key_storage_mechanism
         # The usage of the key. Valid values:
         # 
         # - ENCRYPT/DECRYPT
@@ -2305,6 +2307,8 @@ class CreateKeyRequest(TeaModel):
             result['EnableAutomaticRotation'] = self.enable_automatic_rotation
         if self.key_spec is not None:
             result['KeySpec'] = self.key_spec
+        if self.key_storage_mechanism is not None:
+            result['KeyStorageMechanism'] = self.key_storage_mechanism
         if self.key_usage is not None:
             result['KeyUsage'] = self.key_usage
         if self.origin is not None:
@@ -2329,6 +2333,8 @@ class CreateKeyRequest(TeaModel):
             self.enable_automatic_rotation = m.get('EnableAutomaticRotation')
         if m.get('KeySpec') is not None:
             self.key_spec = m.get('KeySpec')
+        if m.get('KeyStorageMechanism') is not None:
+            self.key_storage_mechanism = m.get('KeyStorageMechanism')
         if m.get('KeyUsage') is not None:
             self.key_usage = m.get('KeyUsage')
         if m.get('Origin') is not None:
@@ -7970,6 +7976,80 @@ class GetClientKeyResponse(TeaModel):
         return self
 
 
+class GetDefaultKmsInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        default_kms_instance_id: str = None,
+        request_id: str = None,
+    ):
+        self.default_kms_instance_id = default_kms_instance_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.default_kms_instance_id is not None:
+            result['DefaultKmsInstanceId'] = self.default_kms_instance_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DefaultKmsInstanceId') is not None:
+            self.default_kms_instance_id = m.get('DefaultKmsInstanceId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetDefaultKmsInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDefaultKmsInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDefaultKmsInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetKeyPolicyRequest(TeaModel):
     def __init__(
         self,
@@ -8197,11 +8277,13 @@ class GetKmsInstanceResponseBodyKmsInstance(TeaModel):
         self,
         bind_vpcs: GetKmsInstanceResponseBodyKmsInstanceBindVpcs = None,
         ca_certificate_chain_pem: str = None,
+        charge_type: str = None,
         create_time: str = None,
         end_date: str = None,
         instance_id: str = None,
         instance_name: str = None,
         key_num: int = None,
+        product_version: str = None,
         secret_num: str = None,
         spec: int = None,
         start_date: str = None,
@@ -8217,6 +8299,7 @@ class GetKmsInstanceResponseBodyKmsInstance(TeaModel):
         self.bind_vpcs = bind_vpcs
         # The content of the certificate authority (CA) certificate of the KMS instance.
         self.ca_certificate_chain_pem = ca_certificate_chain_pem
+        self.charge_type = charge_type
         # The time when the KMS instance is created.
         self.create_time = create_time
         # The expiration time of the KMS instance.
@@ -8227,6 +8310,7 @@ class GetKmsInstanceResponseBodyKmsInstance(TeaModel):
         self.instance_name = instance_name
         # The number of keys that can be created for the KMS instance.
         self.key_num = key_num
+        self.product_version = product_version
         # The number of secrets that can be created for the KMS instance.
         self.secret_num = secret_num
         # The computing performance of the KMS instance.
@@ -8264,6 +8348,8 @@ class GetKmsInstanceResponseBodyKmsInstance(TeaModel):
             result['BindVpcs'] = self.bind_vpcs.to_map()
         if self.ca_certificate_chain_pem is not None:
             result['CaCertificateChainPem'] = self.ca_certificate_chain_pem
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.end_date is not None:
@@ -8274,6 +8360,8 @@ class GetKmsInstanceResponseBodyKmsInstance(TeaModel):
             result['InstanceName'] = self.instance_name
         if self.key_num is not None:
             result['KeyNum'] = self.key_num
+        if self.product_version is not None:
+            result['ProductVersion'] = self.product_version
         if self.secret_num is not None:
             result['SecretNum'] = self.secret_num
         if self.spec is not None:
@@ -8299,6 +8387,8 @@ class GetKmsInstanceResponseBodyKmsInstance(TeaModel):
             self.bind_vpcs = temp_model.from_map(m['BindVpcs'])
         if m.get('CaCertificateChainPem') is not None:
             self.ca_certificate_chain_pem = m.get('CaCertificateChainPem')
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('EndDate') is not None:
@@ -8309,6 +8399,8 @@ class GetKmsInstanceResponseBodyKmsInstance(TeaModel):
             self.instance_name = m.get('InstanceName')
         if m.get('KeyNum') is not None:
             self.key_num = m.get('KeyNum')
+        if m.get('ProductVersion') is not None:
+            self.product_version = m.get('ProductVersion')
         if m.get('SecretNum') is not None:
             self.secret_num = m.get('SecretNum')
         if m.get('Spec') is not None:
@@ -9053,33 +9145,6 @@ class GetSecretValueRequest(TeaModel):
         return self
 
 
-class GetSecretValueResponseBodyVersionStages(TeaModel):
-    def __init__(
-        self,
-        version_stage: List[str] = None,
-    ):
-        self.version_stage = version_stage
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.version_stage is not None:
-            result['VersionStage'] = self.version_stage
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('VersionStage') is not None:
-            self.version_stage = m.get('VersionStage')
-        return self
-
-
 class GetSecretValueResponseBody(TeaModel):
     def __init__(
         self,
@@ -9095,7 +9160,7 @@ class GetSecretValueResponseBody(TeaModel):
         secret_name: str = None,
         secret_type: str = None,
         version_id: str = None,
-        version_stages: GetSecretValueResponseBodyVersionStages = None,
+        version_stages: List[str] = None,
     ):
         # Indicates whether automatic rotation is enabled. Valid values:
         # 
@@ -9160,8 +9225,7 @@ class GetSecretValueResponseBody(TeaModel):
         self.version_stages = version_stages
 
     def validate(self):
-        if self.version_stages:
-            self.version_stages.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -9194,7 +9258,7 @@ class GetSecretValueResponseBody(TeaModel):
         if self.version_id is not None:
             result['VersionId'] = self.version_id
         if self.version_stages is not None:
-            result['VersionStages'] = self.version_stages.to_map()
+            result['VersionStages'] = self.version_stages
         return result
 
     def from_map(self, m: dict = None):
@@ -9224,8 +9288,7 @@ class GetSecretValueResponseBody(TeaModel):
         if m.get('VersionId') is not None:
             self.version_id = m.get('VersionId')
         if m.get('VersionStages') is not None:
-            temp_model = GetSecretValueResponseBodyVersionStages()
-            self.version_stages = temp_model.from_map(m['VersionStages'])
+            self.version_stages = m.get('VersionStages')
         return self
 
 
@@ -12985,6 +13048,108 @@ class ReEncryptResponse(TeaModel):
         return self
 
 
+class ReleaseKmsInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        force_delete_without_backup: str = None,
+        kms_instance_id: str = None,
+    ):
+        self.force_delete_without_backup = force_delete_without_backup
+        # This parameter is required.
+        self.kms_instance_id = kms_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.force_delete_without_backup is not None:
+            result['ForceDeleteWithoutBackup'] = self.force_delete_without_backup
+        if self.kms_instance_id is not None:
+            result['KmsInstanceId'] = self.kms_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ForceDeleteWithoutBackup') is not None:
+            self.force_delete_without_backup = m.get('ForceDeleteWithoutBackup')
+        if m.get('KmsInstanceId') is not None:
+            self.kms_instance_id = m.get('KmsInstanceId')
+        return self
+
+
+class ReleaseKmsInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ReleaseKmsInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ReleaseKmsInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ReleaseKmsInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RestoreSecretRequest(TeaModel):
     def __init__(
         self,
@@ -13339,6 +13504,7 @@ class SetDeletionProtectionRequest(TeaModel):
         self,
         deletion_protection_description: str = None,
         enable_deletion_protection: bool = None,
+        key_id: str = None,
         protected_resource_arn: str = None,
     ):
         # The description of deletion protection.
@@ -13352,11 +13518,10 @@ class SetDeletionProtectionRequest(TeaModel):
         # 
         # This parameter is required.
         self.enable_deletion_protection = enable_deletion_protection
+        self.key_id = key_id
         # The ARN of the CMK for which you want to set deletion protection.
         # 
         # You can call the [DescribeKey](https://help.aliyun.com/document_detail/28952.html) operation to query the CMK ARN.
-        # 
-        # This parameter is required.
         self.protected_resource_arn = protected_resource_arn
 
     def validate(self):
@@ -13372,6 +13537,8 @@ class SetDeletionProtectionRequest(TeaModel):
             result['DeletionProtectionDescription'] = self.deletion_protection_description
         if self.enable_deletion_protection is not None:
             result['EnableDeletionProtection'] = self.enable_deletion_protection
+        if self.key_id is not None:
+            result['KeyId'] = self.key_id
         if self.protected_resource_arn is not None:
             result['ProtectedResourceArn'] = self.protected_resource_arn
         return result
@@ -13382,6 +13549,8 @@ class SetDeletionProtectionRequest(TeaModel):
             self.deletion_protection_description = m.get('DeletionProtectionDescription')
         if m.get('EnableDeletionProtection') is not None:
             self.enable_deletion_protection = m.get('EnableDeletionProtection')
+        if m.get('KeyId') is not None:
+            self.key_id = m.get('KeyId')
         if m.get('ProtectedResourceArn') is not None:
             self.protected_resource_arn = m.get('ProtectedResourceArn')
         return self
