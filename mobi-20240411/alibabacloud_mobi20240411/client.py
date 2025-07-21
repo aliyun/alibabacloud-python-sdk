@@ -57,6 +57,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.actual_parameters):
             query['ActualParameters'] = request.actual_parameters
+        if not UtilClient.is_unset(request.agent_id):
+            query['AgentId'] = request.agent_id
         if not UtilClient.is_unset(request.connections_content):
             query['ConnectionsContent'] = request.connections_content
         if not UtilClient.is_unset(request.databases_content):
@@ -91,16 +93,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                mobi_20240411_models.CreateAppFromTemplateResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                mobi_20240411_models.CreateAppFromTemplateResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            mobi_20240411_models.CreateAppFromTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_app_from_template_with_options_async(
         self,
@@ -118,6 +114,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.actual_parameters):
             query['ActualParameters'] = request.actual_parameters
+        if not UtilClient.is_unset(request.agent_id):
+            query['AgentId'] = request.agent_id
         if not UtilClient.is_unset(request.connections_content):
             query['ConnectionsContent'] = request.connections_content
         if not UtilClient.is_unset(request.databases_content):
@@ -152,16 +150,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                mobi_20240411_models.CreateAppFromTemplateResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                mobi_20240411_models.CreateAppFromTemplateResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            mobi_20240411_models.CreateAppFromTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_app_from_template(
         self,

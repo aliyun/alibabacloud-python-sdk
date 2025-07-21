@@ -8,6 +8,7 @@ class CreateAppFromTemplateRequest(TeaModel):
     def __init__(
         self,
         actual_parameters: str = None,
+        agent_id: str = None,
         connections_content: str = None,
         databases_content: str = None,
         description: str = None,
@@ -20,6 +21,7 @@ class CreateAppFromTemplateRequest(TeaModel):
         workspace_id: str = None,
     ):
         self.actual_parameters = actual_parameters
+        self.agent_id = agent_id
         self.connections_content = connections_content
         self.databases_content = databases_content
         self.description = description
@@ -46,6 +48,8 @@ class CreateAppFromTemplateRequest(TeaModel):
         result = dict()
         if self.actual_parameters is not None:
             result['ActualParameters'] = self.actual_parameters
+        if self.agent_id is not None:
+            result['AgentId'] = self.agent_id
         if self.connections_content is not None:
             result['ConnectionsContent'] = self.connections_content
         if self.databases_content is not None:
@@ -72,6 +76,8 @@ class CreateAppFromTemplateRequest(TeaModel):
         m = m or dict()
         if m.get('ActualParameters') is not None:
             self.actual_parameters = m.get('ActualParameters')
+        if m.get('AgentId') is not None:
+            self.agent_id = m.get('AgentId')
         if m.get('ConnectionsContent') is not None:
             self.connections_content = m.get('ConnectionsContent')
         if m.get('DatabasesContent') is not None:
