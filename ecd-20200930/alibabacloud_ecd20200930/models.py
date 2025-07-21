@@ -26913,6 +26913,7 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
         directory_id: str = None,
         directory_type: str = None,
         disks: List[DescribeDesktopsResponseBodyDesktopsDisks] = None,
+        domain_type: str = None,
         downgrade_quota: int = None,
         downgraded_times: int = None,
         end_user_ids: List[str] = None,
@@ -27026,6 +27027,7 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
         self.directory_type = directory_type
         # The information about the disks.
         self.disks = disks
+        self.domain_type = domain_type
         # The number of times for which the cloud desktop can be downgraded.
         self.downgrade_quota = downgrade_quota
         # The number of times for which the cloud desktop has been downgraded.
@@ -27238,6 +27240,8 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
         if self.disks is not None:
             for k in self.disks:
                 result['Disks'].append(k.to_map() if k else None)
+        if self.domain_type is not None:
+            result['DomainType'] = self.domain_type
         if self.downgrade_quota is not None:
             result['DowngradeQuota'] = self.downgrade_quota
         if self.downgraded_times is not None:
@@ -27382,6 +27386,8 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
             for k in m.get('Disks'):
                 temp_model = DescribeDesktopsResponseBodyDesktopsDisks()
                 self.disks.append(temp_model.from_map(k))
+        if m.get('DomainType') is not None:
+            self.domain_type = m.get('DomainType')
         if m.get('DowngradeQuota') is not None:
             self.downgrade_quota = m.get('DowngradeQuota')
         if m.get('DowngradedTimes') is not None:

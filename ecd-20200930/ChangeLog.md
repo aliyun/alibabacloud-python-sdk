@@ -1,3 +1,7 @@
+2025-07-21 Version: 4.11.1
+- Update API DescribeDesktops: add response parameters Body.Desktops.$.DomainType.
+
+
 2025-07-15 Version: 4.11.0
 - Support API CreateCloudDriveGroup.
 - Support API CreateEcdReportTask.
