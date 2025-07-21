@@ -714,11 +714,15 @@ class ChatappEmbedSignUpRequest(TeaModel):
     def __init__(
         self,
         input_token: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
-        # The InputToken returned after the embedded signup flow is complete.
-        # 
         # This parameter is required.
         self.input_token = input_token
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -731,12 +735,24 @@ class ChatappEmbedSignUpRequest(TeaModel):
         result = dict()
         if self.input_token is not None:
             result['InputToken'] = self.input_token
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('InputToken') is not None:
             self.input_token = m.get('InputToken')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -908,16 +924,22 @@ class ChatappMigrationRegisterRequest(TeaModel):
     def __init__(
         self,
         cust_space_id: str = None,
+        owner_id: int = None,
         phone_number: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
         # None
         # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
+        self.owner_id = owner_id
         # phone number.
         # 
         # This parameter is required.
         self.phone_number = phone_number
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -930,16 +952,28 @@ class ChatappMigrationRegisterRequest(TeaModel):
         result = dict()
         if self.cust_space_id is not None:
             result['CustSpaceId'] = self.cust_space_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.phone_number is not None:
             result['PhoneNumber'] = self.phone_number
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CustSpaceId') is not None:
             self.cust_space_id = m.get('CustSpaceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('PhoneNumber') is not None:
             self.phone_number = m.get('PhoneNumber')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -1040,17 +1074,23 @@ class ChatappMigrationVerifiedRequest(TeaModel):
     def __init__(
         self,
         cust_space_id: str = None,
+        owner_id: int = None,
         phone_number: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
         verify_code: str = None,
     ):
         # The space ID of the RAM user within the independent software vendor (ISV) account.
         # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
+        self.owner_id = owner_id
         # The phone number.
         # 
         # This parameter is required.
         self.phone_number = phone_number
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
         # The verification code.
         # 
         # This parameter is required.
@@ -1067,8 +1107,14 @@ class ChatappMigrationVerifiedRequest(TeaModel):
         result = dict()
         if self.cust_space_id is not None:
             result['CustSpaceId'] = self.cust_space_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.phone_number is not None:
             result['PhoneNumber'] = self.phone_number
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         if self.verify_code is not None:
             result['VerifyCode'] = self.verify_code
         return result
@@ -1077,8 +1123,14 @@ class ChatappMigrationVerifiedRequest(TeaModel):
         m = m or dict()
         if m.get('CustSpaceId') is not None:
             self.cust_space_id = m.get('CustSpaceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('PhoneNumber') is not None:
             self.phone_number = m.get('PhoneNumber')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('VerifyCode') is not None:
             self.verify_code = m.get('VerifyCode')
         return self
@@ -1225,16 +1277,18 @@ class ChatappPhoneNumberDeregisterRequest(TeaModel):
     def __init__(
         self,
         cust_space_id: str = None,
+        owner_id: int = None,
         phone_number: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
-        # The space ID of the RAM user within the independent software vendor (ISV) account.
-        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
-        # The phone number that you want to deregister.
-        # 
+        self.owner_id = owner_id
         # This parameter is required.
         self.phone_number = phone_number
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -1247,16 +1301,28 @@ class ChatappPhoneNumberDeregisterRequest(TeaModel):
         result = dict()
         if self.cust_space_id is not None:
             result['CustSpaceId'] = self.cust_space_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.phone_number is not None:
             result['PhoneNumber'] = self.phone_number
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CustSpaceId') is not None:
             self.cust_space_id = m.get('CustSpaceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('PhoneNumber') is not None:
             self.phone_number = m.get('PhoneNumber')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -2644,6 +2710,9 @@ class CreateChatappMigrationInitiateRequest(TeaModel):
         country_code: str = None,
         cust_space_id: str = None,
         mobile_number: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
         # The code of the country or region.
         # 
@@ -2657,6 +2726,9 @@ class CreateChatappMigrationInitiateRequest(TeaModel):
         # 
         # This parameter is required.
         self.mobile_number = mobile_number
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -2673,6 +2745,12 @@ class CreateChatappMigrationInitiateRequest(TeaModel):
             result['CustSpaceId'] = self.cust_space_id
         if self.mobile_number is not None:
             result['MobileNumber'] = self.mobile_number
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
@@ -2683,6 +2761,12 @@ class CreateChatappMigrationInitiateRequest(TeaModel):
             self.cust_space_id = m.get('CustSpaceId')
         if m.get('MobileNumber') is not None:
             self.mobile_number = m.get('MobileNumber')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -3793,17 +3877,18 @@ class CreateFlowRequest(TeaModel):
         categories: List[str] = None,
         cust_space_id: str = None,
         flow_name: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
-        # The categories of the Flow.
-        # 
         # This parameter is required.
         self.categories = categories
-        # The space ID of the user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
-        # The name of the Flow.
-        # 
         # This parameter is required.
         self.flow_name = flow_name
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -3820,6 +3905,12 @@ class CreateFlowRequest(TeaModel):
             result['CustSpaceId'] = self.cust_space_id
         if self.flow_name is not None:
             result['FlowName'] = self.flow_name
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3830,6 +3921,12 @@ class CreateFlowRequest(TeaModel):
             self.cust_space_id = m.get('CustSpaceId')
         if m.get('FlowName') is not None:
             self.flow_name = m.get('FlowName')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -3839,17 +3936,18 @@ class CreateFlowShrinkRequest(TeaModel):
         categories_shrink: str = None,
         cust_space_id: str = None,
         flow_name: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
-        # The categories of the Flow.
-        # 
         # This parameter is required.
         self.categories_shrink = categories_shrink
-        # The space ID of the user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
-        # The name of the Flow.
-        # 
         # This parameter is required.
         self.flow_name = flow_name
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -3866,6 +3964,12 @@ class CreateFlowShrinkRequest(TeaModel):
             result['CustSpaceId'] = self.cust_space_id
         if self.flow_name is not None:
             result['FlowName'] = self.flow_name
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3876,6 +3980,12 @@ class CreateFlowShrinkRequest(TeaModel):
             self.cust_space_id = m.get('CustSpaceId')
         if m.get('FlowName') is not None:
             self.flow_name = m.get('FlowName')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -3924,11 +4034,13 @@ class CreateFlowResponseBodyData(TeaModel):
 class CreateFlowResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: str = None,
         data: CreateFlowResponseBodyData = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # If OK is returned, the request was successful.
         self.code = code
         # The returned data.
@@ -3948,6 +4060,8 @@ class CreateFlowResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -3960,6 +4074,8 @@ class CreateFlowResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -4270,23 +4386,22 @@ class CreatePhoneMessageQrdlRequest(TeaModel):
         self,
         cust_space_id: str = None,
         generate_qr_image: str = None,
+        owner_id: int = None,
         phone_number: str = None,
         prefilled_message: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
-        # The space ID of the RAM user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
-        # Produce QR code image format.
-        # 
         # This parameter is required.
         self.generate_qr_image = generate_qr_image
-        # The phone number. Add the country code before the phone number.
-        # 
+        self.owner_id = owner_id
         # This parameter is required.
         self.phone_number = phone_number
-        # Message content.
-        # 
         # This parameter is required.
         self.prefilled_message = prefilled_message
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -4301,10 +4416,16 @@ class CreatePhoneMessageQrdlRequest(TeaModel):
             result['CustSpaceId'] = self.cust_space_id
         if self.generate_qr_image is not None:
             result['GenerateQrImage'] = self.generate_qr_image
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.phone_number is not None:
             result['PhoneNumber'] = self.phone_number
         if self.prefilled_message is not None:
             result['PrefilledMessage'] = self.prefilled_message
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
@@ -4313,10 +4434,16 @@ class CreatePhoneMessageQrdlRequest(TeaModel):
             self.cust_space_id = m.get('CustSpaceId')
         if m.get('GenerateQrImage') is not None:
             self.generate_qr_image = m.get('GenerateQrImage')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('PhoneNumber') is not None:
             self.phone_number = m.get('PhoneNumber')
         if m.get('PrefilledMessage') is not None:
             self.prefilled_message = m.get('PrefilledMessage')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -4386,11 +4513,13 @@ class CreatePhoneMessageQrdlResponseBodyData(TeaModel):
 class CreatePhoneMessageQrdlResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: str = None,
         data: CreatePhoneMessageQrdlResponseBodyData = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # If OK is returned, the request was successful.
         self.code = code
         # The returned data.
@@ -4410,6 +4539,8 @@ class CreatePhoneMessageQrdlResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -4422,6 +4553,8 @@ class CreatePhoneMessageQrdlResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -5502,13 +5635,16 @@ class DeleteFlowRequest(TeaModel):
         self,
         cust_space_id: str = None,
         flow_id: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
-        # The space ID of the RAM user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
-        # The Flow ID.
-        # 
         # This parameter is required.
         self.flow_id = flow_id
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -5523,6 +5659,12 @@ class DeleteFlowRequest(TeaModel):
             result['CustSpaceId'] = self.cust_space_id
         if self.flow_id is not None:
             result['FlowId'] = self.flow_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5531,16 +5673,24 @@ class DeleteFlowRequest(TeaModel):
             self.cust_space_id = m.get('CustSpaceId')
         if m.get('FlowId') is not None:
             self.flow_id = m.get('FlowId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
 class DeleteFlowResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: str = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # If OK is returned, the request was successful.
         self.code = code
         # The error message.
@@ -5557,6 +5707,8 @@ class DeleteFlowResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -5567,6 +5719,8 @@ class DeleteFlowResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -5859,19 +6013,20 @@ class DeletePhoneMessageQrdlRequest(TeaModel):
     def __init__(
         self,
         cust_space_id: str = None,
+        owner_id: int = None,
         phone_number: str = None,
         qrdl_code: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
-        # The space ID of the RAM user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
-        # The phone number. Add the country code before the phone number.
-        # 
+        self.owner_id = owner_id
         # This parameter is required.
         self.phone_number = phone_number
-        # QR code encoding.
-        # 
         # This parameter is required.
         self.qrdl_code = qrdl_code
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -5884,30 +6039,44 @@ class DeletePhoneMessageQrdlRequest(TeaModel):
         result = dict()
         if self.cust_space_id is not None:
             result['CustSpaceId'] = self.cust_space_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.phone_number is not None:
             result['PhoneNumber'] = self.phone_number
         if self.qrdl_code is not None:
             result['QrdlCode'] = self.qrdl_code
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CustSpaceId') is not None:
             self.cust_space_id = m.get('CustSpaceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('PhoneNumber') is not None:
             self.phone_number = m.get('PhoneNumber')
         if m.get('QrdlCode') is not None:
             self.qrdl_code = m.get('QrdlCode')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
 class DeletePhoneMessageQrdlResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: str = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
@@ -5927,6 +6096,8 @@ class DeletePhoneMessageQrdlResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -5937,6 +6108,8 @@ class DeletePhoneMessageQrdlResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -5992,13 +6165,16 @@ class DeprecateFlowRequest(TeaModel):
         self,
         cust_space_id: str = None,
         flow_id: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
-        # The space ID of the RAM user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
-        # The Flow ID.
-        # 
         # This parameter is required.
         self.flow_id = flow_id
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -6013,6 +6189,12 @@ class DeprecateFlowRequest(TeaModel):
             result['CustSpaceId'] = self.cust_space_id
         if self.flow_id is not None:
             result['FlowId'] = self.flow_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
@@ -6021,16 +6203,24 @@ class DeprecateFlowRequest(TeaModel):
             self.cust_space_id = m.get('CustSpaceId')
         if m.get('FlowId') is not None:
             self.flow_id = m.get('FlowId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
 class DeprecateFlowResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: str = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The result returns OK as normal.
         self.code = code
         # Error description information.
@@ -6047,6 +6237,8 @@ class DeprecateFlowResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -6057,6 +6249,8 @@ class DeprecateFlowResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -6112,11 +6306,17 @@ class EnableWhatsappROIMetricRequest(TeaModel):
         self,
         cust_space_id: str = None,
         isv_code: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
         # The space ID of the user within the ISV account.
         self.cust_space_id = cust_space_id
         # The verification code used to verify whether the RAM user is authorized by the independent software vendor (ISV) account.
         self.isv_code = isv_code
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -6131,6 +6331,12 @@ class EnableWhatsappROIMetricRequest(TeaModel):
             result['CustSpaceId'] = self.cust_space_id
         if self.isv_code is not None:
             result['IsvCode'] = self.isv_code
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
@@ -6139,6 +6345,12 @@ class EnableWhatsappROIMetricRequest(TeaModel):
             self.cust_space_id = m.get('CustSpaceId')
         if m.get('IsvCode') is not None:
             self.isv_code = m.get('IsvCode')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -7040,6 +7252,7 @@ class GetChatFlowMetricRequest(TeaModel):
         flow_version: str = None,
         from_: int = None,
         metric_name: str = None,
+        metric_param: Dict[str, Any] = None,
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -7059,6 +7272,7 @@ class GetChatFlowMetricRequest(TeaModel):
         # 
         # This parameter is required.
         self.metric_name = metric_name
+        self.metric_param = metric_param
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -7086,6 +7300,8 @@ class GetChatFlowMetricRequest(TeaModel):
             result['From'] = self.from_
         if self.metric_name is not None:
             result['MetricName'] = self.metric_name
+        if self.metric_param is not None:
+            result['MetricParam'] = self.metric_param
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.resource_owner_account is not None:
@@ -7110,6 +7326,8 @@ class GetChatFlowMetricRequest(TeaModel):
             self.from_ = m.get('From')
         if m.get('MetricName') is not None:
             self.metric_name = m.get('MetricName')
+        if m.get('MetricParam') is not None:
+            self.metric_param = m.get('MetricParam')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('ResourceOwnerAccount') is not None:
@@ -7130,6 +7348,7 @@ class GetChatFlowMetricShrinkRequest(TeaModel):
         flow_version: str = None,
         from_: int = None,
         metric_name: str = None,
+        metric_param_shrink: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -7149,6 +7368,7 @@ class GetChatFlowMetricShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.metric_name = metric_name
+        self.metric_param_shrink = metric_param_shrink
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -7176,6 +7396,8 @@ class GetChatFlowMetricShrinkRequest(TeaModel):
             result['From'] = self.from_
         if self.metric_name is not None:
             result['MetricName'] = self.metric_name
+        if self.metric_param_shrink is not None:
+            result['MetricParam'] = self.metric_param_shrink
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.resource_owner_account is not None:
@@ -7200,6 +7422,8 @@ class GetChatFlowMetricShrinkRequest(TeaModel):
             self.from_ = m.get('From')
         if m.get('MetricName') is not None:
             self.metric_name = m.get('MetricName')
+        if m.get('MetricParam') is not None:
+            self.metric_param_shrink = m.get('MetricParam')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('ResourceOwnerAccount') is not None:
@@ -7511,7 +7735,10 @@ class GetChatappPhoneNumberMetricRequest(TeaModel):
         end: int = None,
         granularity: str = None,
         isv_code: str = None,
+        owner_id: int = None,
         phone_number: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
         start: int = None,
     ):
         # The space ID of the RAM user within the ISV account.
@@ -7529,8 +7756,11 @@ class GetChatappPhoneNumberMetricRequest(TeaModel):
         self.granularity = granularity
         # The independent software vendor (ISV) verification code, which is used to verify whether the RAM user is authorized by the ISV account.
         self.isv_code = isv_code
+        self.owner_id = owner_id
         # The business phone number.
         self.phone_number = phone_number
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
         # The beginning of the time range to query.
         # 
         # This parameter is required.
@@ -7553,8 +7783,14 @@ class GetChatappPhoneNumberMetricRequest(TeaModel):
             result['Granularity'] = self.granularity
         if self.isv_code is not None:
             result['IsvCode'] = self.isv_code
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.phone_number is not None:
             result['PhoneNumber'] = self.phone_number
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         if self.start is not None:
             result['Start'] = self.start
         return result
@@ -7569,8 +7805,14 @@ class GetChatappPhoneNumberMetricRequest(TeaModel):
             self.granularity = m.get('Granularity')
         if m.get('IsvCode') is not None:
             self.isv_code = m.get('IsvCode')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('PhoneNumber') is not None:
             self.phone_number = m.get('PhoneNumber')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('Start') is not None:
             self.start = m.get('Start')
         return self
@@ -8677,6 +8919,9 @@ class GetChatappTemplateMetricRequest(TeaModel):
         granularity: str = None,
         isv_code: str = None,
         language: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
         start: int = None,
         template_code: str = None,
         template_type: str = None,
@@ -8698,6 +8943,9 @@ class GetChatappTemplateMetricRequest(TeaModel):
         self.isv_code = isv_code
         # The template language.
         self.language = language
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
         # The beginning of the time range to query.
         # 
         # This parameter is required.
@@ -8733,6 +8981,12 @@ class GetChatappTemplateMetricRequest(TeaModel):
             result['IsvCode'] = self.isv_code
         if self.language is not None:
             result['Language'] = self.language
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         if self.start is not None:
             result['Start'] = self.start
         if self.template_code is not None:
@@ -8753,6 +9007,12 @@ class GetChatappTemplateMetricRequest(TeaModel):
             self.isv_code = m.get('IsvCode')
         if m.get('Language') is not None:
             self.language = m.get('Language')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('Start') is not None:
             self.start = m.get('Start')
         if m.get('TemplateCode') is not None:
@@ -9004,11 +9264,17 @@ class GetChatappUploadAuthorizationRequest(TeaModel):
     def __init__(
         self,
         cust_space_id: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
         # The space ID of the RAM user within the independent software vendor (ISV) account.
         # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -9021,12 +9287,24 @@ class GetChatappUploadAuthorizationRequest(TeaModel):
         result = dict()
         if self.cust_space_id is not None:
             result['CustSpaceId'] = self.cust_space_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CustSpaceId') is not None:
             self.cust_space_id = m.get('CustSpaceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -9848,13 +10126,16 @@ class GetFlowRequest(TeaModel):
         self,
         cust_space_id: str = None,
         flow_id: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
-        # The space ID of the RAM user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
-        # The Flow ID.
-        # 
         # This parameter is required.
         self.flow_id = flow_id
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -9869,6 +10150,12 @@ class GetFlowRequest(TeaModel):
             result['CustSpaceId'] = self.cust_space_id
         if self.flow_id is not None:
             result['FlowId'] = self.flow_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
@@ -9877,6 +10164,12 @@ class GetFlowRequest(TeaModel):
             self.cust_space_id = m.get('CustSpaceId')
         if m.get('FlowId') is not None:
             self.flow_id = m.get('FlowId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -9986,11 +10279,13 @@ class GetFlowResponseBodyData(TeaModel):
 class GetFlowResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: str = None,
         data: GetFlowResponseBodyData = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # If OK is returned, the request was successful.
         self.code = code
         # The returned data.
@@ -10010,6 +10305,8 @@ class GetFlowResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -10022,6 +10319,8 @@ class GetFlowResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -10080,13 +10379,15 @@ class GetFlowJSONAssestRequest(TeaModel):
         self,
         cust_space_id: str = None,
         flow_id: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
-        # The space ID of the user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
-        # The Flow ID.
-        # 
-        # This parameter is required.
         self.flow_id = flow_id
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -10101,6 +10402,12 @@ class GetFlowJSONAssestRequest(TeaModel):
             result['CustSpaceId'] = self.cust_space_id
         if self.flow_id is not None:
             result['FlowId'] = self.flow_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
@@ -10109,6 +10416,12 @@ class GetFlowJSONAssestRequest(TeaModel):
             self.cust_space_id = m.get('CustSpaceId')
         if m.get('FlowId') is not None:
             self.flow_id = m.get('FlowId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -10150,11 +10463,13 @@ class GetFlowJSONAssestResponseBodyData(TeaModel):
 class GetFlowJSONAssestResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: str = None,
         data: GetFlowJSONAssestResponseBodyData = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # If OK is returned, the request was successful.
         self.code = code
         # The returned data.
@@ -10174,6 +10489,8 @@ class GetFlowJSONAssestResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -10186,6 +10503,8 @@ class GetFlowJSONAssestResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -10244,13 +10563,16 @@ class GetFlowPreviewUrlRequest(TeaModel):
         self,
         cust_space_id: str = None,
         flow_id: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
-        # The space ID of the RAM user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
-        # The Flow ID.
-        # 
         # This parameter is required.
         self.flow_id = flow_id
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -10265,6 +10587,12 @@ class GetFlowPreviewUrlRequest(TeaModel):
             result['CustSpaceId'] = self.cust_space_id
         if self.flow_id is not None:
             result['FlowId'] = self.flow_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
@@ -10273,6 +10601,12 @@ class GetFlowPreviewUrlRequest(TeaModel):
             self.cust_space_id = m.get('CustSpaceId')
         if m.get('FlowId') is not None:
             self.flow_id = m.get('FlowId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -10321,11 +10655,13 @@ class GetFlowPreviewUrlResponseBodyData(TeaModel):
 class GetFlowPreviewUrlResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: str = None,
         data: GetFlowPreviewUrlResponseBodyData = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # If OK is returned, the request was successful.
         self.code = code
         # The returned data.
@@ -10345,6 +10681,8 @@ class GetFlowPreviewUrlResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -10357,6 +10695,8 @@ class GetFlowPreviewUrlResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -10416,7 +10756,10 @@ class GetMigrationVerifyCodeRequest(TeaModel):
         cust_space_id: str = None,
         locale: str = None,
         method: str = None,
+        owner_id: int = None,
         phone_number: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
         # The space ID of the user under the independent software vendor (ISV) account.
         # 
@@ -10430,10 +10773,13 @@ class GetMigrationVerifyCodeRequest(TeaModel):
         # 
         # This parameter is required.
         self.method = method
+        self.owner_id = owner_id
         # Phone number.
         # 
         # This parameter is required.
         self.phone_number = phone_number
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -10450,8 +10796,14 @@ class GetMigrationVerifyCodeRequest(TeaModel):
             result['Locale'] = self.locale
         if self.method is not None:
             result['Method'] = self.method
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.phone_number is not None:
             result['PhoneNumber'] = self.phone_number
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
@@ -10462,8 +10814,14 @@ class GetMigrationVerifyCodeRequest(TeaModel):
             self.locale = m.get('Locale')
         if m.get('Method') is not None:
             self.method = m.get('Method')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('PhoneNumber') is not None:
             self.phone_number = m.get('PhoneNumber')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -10609,16 +10967,18 @@ class GetPermissionByCodeRequest(TeaModel):
         self,
         code: str = None,
         cust_space_id: str = None,
+        owner_id: int = None,
         permissions: List[str] = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
-        # Authorize code information.
-        # 
         # This parameter is required.
         self.code = code
-        # The space ID of the RAM user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
-        # The permissions.
+        self.owner_id = owner_id
         self.permissions = permissions
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -10633,8 +10993,14 @@ class GetPermissionByCodeRequest(TeaModel):
             result['Code'] = self.code
         if self.cust_space_id is not None:
             result['CustSpaceId'] = self.cust_space_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.permissions is not None:
             result['Permissions'] = self.permissions
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
@@ -10643,8 +11009,14 @@ class GetPermissionByCodeRequest(TeaModel):
             self.code = m.get('Code')
         if m.get('CustSpaceId') is not None:
             self.cust_space_id = m.get('CustSpaceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('Permissions') is not None:
             self.permissions = m.get('Permissions')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -10653,16 +11025,18 @@ class GetPermissionByCodeShrinkRequest(TeaModel):
         self,
         code: str = None,
         cust_space_id: str = None,
+        owner_id: int = None,
         permissions_shrink: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
-        # Authorize code information.
-        # 
         # This parameter is required.
         self.code = code
-        # The space ID of the RAM user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
-        # The permissions.
+        self.owner_id = owner_id
         self.permissions_shrink = permissions_shrink
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -10677,8 +11051,14 @@ class GetPermissionByCodeShrinkRequest(TeaModel):
             result['Code'] = self.code
         if self.cust_space_id is not None:
             result['CustSpaceId'] = self.cust_space_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.permissions_shrink is not None:
             result['Permissions'] = self.permissions_shrink
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
@@ -10687,18 +11067,26 @@ class GetPermissionByCodeShrinkRequest(TeaModel):
             self.code = m.get('Code')
         if m.get('CustSpaceId') is not None:
             self.cust_space_id = m.get('CustSpaceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('Permissions') is not None:
             self.permissions_shrink = m.get('Permissions')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
 class GetPermissionByCodeResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: str = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
@@ -10718,6 +11106,8 @@ class GetPermissionByCodeResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -10728,6 +11118,8 @@ class GetPermissionByCodeResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -10782,14 +11174,17 @@ class GetPhoneEncryptionPublicKeyRequest(TeaModel):
     def __init__(
         self,
         cust_space_id: str = None,
+        owner_id: int = None,
         phone_number: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
-        # The space ID of the user under the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
-        # The phone number.
-        # 
+        self.owner_id = owner_id
         # This parameter is required.
         self.phone_number = phone_number
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -10802,16 +11197,28 @@ class GetPhoneEncryptionPublicKeyRequest(TeaModel):
         result = dict()
         if self.cust_space_id is not None:
             result['CustSpaceId'] = self.cust_space_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.phone_number is not None:
             result['PhoneNumber'] = self.phone_number
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CustSpaceId') is not None:
             self.cust_space_id = m.get('CustSpaceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('PhoneNumber') is not None:
             self.phone_number = m.get('PhoneNumber')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -10863,11 +11270,13 @@ class GetPhoneEncryptionPublicKeyResponseBodyData(TeaModel):
 class GetPhoneEncryptionPublicKeyResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: str = None,
         data: GetPhoneEncryptionPublicKeyResponseBodyData = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
@@ -10890,6 +11299,8 @@ class GetPhoneEncryptionPublicKeyResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -10902,6 +11313,8 @@ class GetPhoneEncryptionPublicKeyResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -10959,16 +11372,18 @@ class GetPhoneNumberVerificationStatusRequest(TeaModel):
     def __init__(
         self,
         cust_space_id: str = None,
+        owner_id: int = None,
         phone_number: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
-        # The space ID of the user under the ISV account.
-        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
-        # The phone number.
-        # 
+        self.owner_id = owner_id
         # This parameter is required.
         self.phone_number = phone_number
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -10981,16 +11396,28 @@ class GetPhoneNumberVerificationStatusRequest(TeaModel):
         result = dict()
         if self.cust_space_id is not None:
             result['CustSpaceId'] = self.cust_space_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.phone_number is not None:
             result['PhoneNumber'] = self.phone_number
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CustSpaceId') is not None:
             self.cust_space_id = m.get('CustSpaceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('PhoneNumber') is not None:
             self.phone_number = m.get('PhoneNumber')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -11039,11 +11466,13 @@ class GetPhoneNumberVerificationStatusResponseBodyData(TeaModel):
 class GetPhoneNumberVerificationStatusResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: str = None,
         data: GetPhoneNumberVerificationStatusResponseBodyData = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The HTTP status code returned.
         # 
         # *   A value of OK indicates that the call is successful.
@@ -11066,6 +11495,8 @@ class GetPhoneNumberVerificationStatusResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -11078,6 +11509,8 @@ class GetPhoneNumberVerificationStatusResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -11841,19 +12274,18 @@ class GetWhatsappHealthStatusResponse(TeaModel):
 class IsvGetAppIdRequest(TeaModel):
     def __init__(
         self,
+        intl_version: str = None,
+        owner_id: int = None,
         permissions: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
         type: str = None,
     ):
-        # The permission.
-        # 
-        # Valid values:
-        # 
-        # *   whatsapp_business_messaging: sending permission on WhatsApp messages
-        # *   ads_management: management permission on advertisements
-        # *   catalog_management: management permission on catalogs
+        self.intl_version = intl_version
+        self.owner_id = owner_id
         self.permissions = permissions
-        # The type of the app. Valid value: WHATSAPP.
-        # 
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
         # This parameter is required.
         self.type = type
 
@@ -11866,16 +12298,32 @@ class IsvGetAppIdRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.intl_version is not None:
+            result['IntlVersion'] = self.intl_version
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.permissions is not None:
             result['Permissions'] = self.permissions
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         if self.type is not None:
             result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('IntlVersion') is not None:
+            self.intl_version = m.get('IntlVersion')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('Permissions') is not None:
             self.permissions = m.get('Permissions')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -11997,8 +12445,18 @@ class ListBindingRelationsForFlowVersionRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # Channel type. Values:
+        # - INSTAGRAM
+        # - WHATSAPP
+        # - MESSENGER
+        # 
+        # 
+        # <props="intl">- VIBER
+        # 
         # This parameter is required.
         self.channel_type = channel_type
+        # Process code. View the process code in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) interface.
+        # 
         # This parameter is required.
         self.flow_code = flow_code
         self.owner_id = owner_id
@@ -12051,11 +12509,21 @@ class ListBindingRelationsForFlowVersionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Access denied details.
         self.access_denied_detail = access_denied_detail
+        # Error code. For more information, see [Error Codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # Returned data list.
         self.data = data
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the operation was successful. Values:
+        # 
+        # - true: Success.
+        # 
+        # - false: Failure.
         self.success = success
 
     def validate(self):
@@ -13403,6 +13871,556 @@ class ListChatGroupParticipantsResponse(TeaModel):
         return self
 
 
+class ListChatappMessageRequestPage(TeaModel):
+    def __init__(
+        self,
+        index: int = None,
+        size: int = None,
+    ):
+        # This parameter is required.
+        self.index = index
+        # This parameter is required.
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.index is not None:
+            result['Index'] = self.index
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class ListChatappMessageRequest(TeaModel):
+    def __init__(
+        self,
+        business_number: str = None,
+        channel_type: str = None,
+        client_accept_status: str = None,
+        cust_space_id: str = None,
+        end_time: int = None,
+        event_action: str = None,
+        group_message_id: str = None,
+        message_status: str = None,
+        owner_id: int = None,
+        page: ListChatappMessageRequestPage = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        start_time: int = None,
+        template_code: str = None,
+        user_number: str = None,
+    ):
+        # This parameter is required.
+        self.business_number = business_number
+        # This parameter is required.
+        self.channel_type = channel_type
+        self.client_accept_status = client_accept_status
+        # This parameter is required.
+        self.cust_space_id = cust_space_id
+        self.end_time = end_time
+        self.event_action = event_action
+        self.group_message_id = group_message_id
+        self.message_status = message_status
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.page = page
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.start_time = start_time
+        self.template_code = template_code
+        self.user_number = user_number
+
+    def validate(self):
+        if self.page:
+            self.page.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_number is not None:
+            result['BusinessNumber'] = self.business_number
+        if self.channel_type is not None:
+            result['ChannelType'] = self.channel_type
+        if self.client_accept_status is not None:
+            result['ClientAcceptStatus'] = self.client_accept_status
+        if self.cust_space_id is not None:
+            result['CustSpaceId'] = self.cust_space_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.event_action is not None:
+            result['EventAction'] = self.event_action
+        if self.group_message_id is not None:
+            result['GroupMessageId'] = self.group_message_id
+        if self.message_status is not None:
+            result['MessageStatus'] = self.message_status
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page is not None:
+            result['Page'] = self.page.to_map()
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        if self.user_number is not None:
+            result['UserNumber'] = self.user_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessNumber') is not None:
+            self.business_number = m.get('BusinessNumber')
+        if m.get('ChannelType') is not None:
+            self.channel_type = m.get('ChannelType')
+        if m.get('ClientAcceptStatus') is not None:
+            self.client_accept_status = m.get('ClientAcceptStatus')
+        if m.get('CustSpaceId') is not None:
+            self.cust_space_id = m.get('CustSpaceId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('EventAction') is not None:
+            self.event_action = m.get('EventAction')
+        if m.get('GroupMessageId') is not None:
+            self.group_message_id = m.get('GroupMessageId')
+        if m.get('MessageStatus') is not None:
+            self.message_status = m.get('MessageStatus')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Page') is not None:
+            temp_model = ListChatappMessageRequestPage()
+            self.page = temp_model.from_map(m['Page'])
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        if m.get('UserNumber') is not None:
+            self.user_number = m.get('UserNumber')
+        return self
+
+
+class ListChatappMessageShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        business_number: str = None,
+        channel_type: str = None,
+        client_accept_status: str = None,
+        cust_space_id: str = None,
+        end_time: int = None,
+        event_action: str = None,
+        group_message_id: str = None,
+        message_status: str = None,
+        owner_id: int = None,
+        page_shrink: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        start_time: int = None,
+        template_code: str = None,
+        user_number: str = None,
+    ):
+        # This parameter is required.
+        self.business_number = business_number
+        # This parameter is required.
+        self.channel_type = channel_type
+        self.client_accept_status = client_accept_status
+        # This parameter is required.
+        self.cust_space_id = cust_space_id
+        self.end_time = end_time
+        self.event_action = event_action
+        self.group_message_id = group_message_id
+        self.message_status = message_status
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.page_shrink = page_shrink
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.start_time = start_time
+        self.template_code = template_code
+        self.user_number = user_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_number is not None:
+            result['BusinessNumber'] = self.business_number
+        if self.channel_type is not None:
+            result['ChannelType'] = self.channel_type
+        if self.client_accept_status is not None:
+            result['ClientAcceptStatus'] = self.client_accept_status
+        if self.cust_space_id is not None:
+            result['CustSpaceId'] = self.cust_space_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.event_action is not None:
+            result['EventAction'] = self.event_action
+        if self.group_message_id is not None:
+            result['GroupMessageId'] = self.group_message_id
+        if self.message_status is not None:
+            result['MessageStatus'] = self.message_status
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_shrink is not None:
+            result['Page'] = self.page_shrink
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        if self.user_number is not None:
+            result['UserNumber'] = self.user_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessNumber') is not None:
+            self.business_number = m.get('BusinessNumber')
+        if m.get('ChannelType') is not None:
+            self.channel_type = m.get('ChannelType')
+        if m.get('ClientAcceptStatus') is not None:
+            self.client_accept_status = m.get('ClientAcceptStatus')
+        if m.get('CustSpaceId') is not None:
+            self.cust_space_id = m.get('CustSpaceId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('EventAction') is not None:
+            self.event_action = m.get('EventAction')
+        if m.get('GroupMessageId') is not None:
+            self.group_message_id = m.get('GroupMessageId')
+        if m.get('MessageStatus') is not None:
+            self.message_status = m.get('MessageStatus')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Page') is not None:
+            self.page_shrink = m.get('Page')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        if m.get('UserNumber') is not None:
+            self.user_number = m.get('UserNumber')
+        return self
+
+
+class ListChatappMessageResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        business_number: str = None,
+        channel_type: str = None,
+        client_accept_status_name: str = None,
+        client_read_status: str = None,
+        client_read_status_name: str = None,
+        conversation_id: str = None,
+        event_action: str = None,
+        event_action_name: str = None,
+        fail_back_content: str = None,
+        fail_back_flag: str = None,
+        fail_reason: str = None,
+        language_code: str = None,
+        message: str = None,
+        message_id: str = None,
+        message_source: str = None,
+        message_status: str = None,
+        message_status_name: str = None,
+        message_type: str = None,
+        message_type_name: str = None,
+        month: str = None,
+        send_time: str = None,
+        template_code: str = None,
+        template_name: str = None,
+        type: str = None,
+        unique_message_id: str = None,
+        user_number: str = None,
+    ):
+        self.business_number = business_number
+        self.channel_type = channel_type
+        self.client_accept_status_name = client_accept_status_name
+        self.client_read_status = client_read_status
+        self.client_read_status_name = client_read_status_name
+        self.conversation_id = conversation_id
+        self.event_action = event_action
+        self.event_action_name = event_action_name
+        self.fail_back_content = fail_back_content
+        self.fail_back_flag = fail_back_flag
+        self.fail_reason = fail_reason
+        self.language_code = language_code
+        self.message = message
+        self.message_id = message_id
+        self.message_source = message_source
+        self.message_status = message_status
+        self.message_status_name = message_status_name
+        self.message_type = message_type
+        self.message_type_name = message_type_name
+        self.month = month
+        self.send_time = send_time
+        self.template_code = template_code
+        self.template_name = template_name
+        self.type = type
+        self.unique_message_id = unique_message_id
+        self.user_number = user_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_number is not None:
+            result['BusinessNumber'] = self.business_number
+        if self.channel_type is not None:
+            result['ChannelType'] = self.channel_type
+        if self.client_accept_status_name is not None:
+            result['ClientAcceptStatusName'] = self.client_accept_status_name
+        if self.client_read_status is not None:
+            result['ClientReadStatus'] = self.client_read_status
+        if self.client_read_status_name is not None:
+            result['ClientReadStatusName'] = self.client_read_status_name
+        if self.conversation_id is not None:
+            result['ConversationId'] = self.conversation_id
+        if self.event_action is not None:
+            result['EventAction'] = self.event_action
+        if self.event_action_name is not None:
+            result['EventActionName'] = self.event_action_name
+        if self.fail_back_content is not None:
+            result['FailBackContent'] = self.fail_back_content
+        if self.fail_back_flag is not None:
+            result['FailBackFlag'] = self.fail_back_flag
+        if self.fail_reason is not None:
+            result['FailReason'] = self.fail_reason
+        if self.language_code is not None:
+            result['LanguageCode'] = self.language_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_id is not None:
+            result['MessageId'] = self.message_id
+        if self.message_source is not None:
+            result['MessageSource'] = self.message_source
+        if self.message_status is not None:
+            result['MessageStatus'] = self.message_status
+        if self.message_status_name is not None:
+            result['MessageStatusName'] = self.message_status_name
+        if self.message_type is not None:
+            result['MessageType'] = self.message_type
+        if self.message_type_name is not None:
+            result['MessageTypeName'] = self.message_type_name
+        if self.month is not None:
+            result['Month'] = self.month
+        if self.send_time is not None:
+            result['SendTime'] = self.send_time
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.unique_message_id is not None:
+            result['UniqueMessageId'] = self.unique_message_id
+        if self.user_number is not None:
+            result['UserNumber'] = self.user_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessNumber') is not None:
+            self.business_number = m.get('BusinessNumber')
+        if m.get('ChannelType') is not None:
+            self.channel_type = m.get('ChannelType')
+        if m.get('ClientAcceptStatusName') is not None:
+            self.client_accept_status_name = m.get('ClientAcceptStatusName')
+        if m.get('ClientReadStatus') is not None:
+            self.client_read_status = m.get('ClientReadStatus')
+        if m.get('ClientReadStatusName') is not None:
+            self.client_read_status_name = m.get('ClientReadStatusName')
+        if m.get('ConversationId') is not None:
+            self.conversation_id = m.get('ConversationId')
+        if m.get('EventAction') is not None:
+            self.event_action = m.get('EventAction')
+        if m.get('EventActionName') is not None:
+            self.event_action_name = m.get('EventActionName')
+        if m.get('FailBackContent') is not None:
+            self.fail_back_content = m.get('FailBackContent')
+        if m.get('FailBackFlag') is not None:
+            self.fail_back_flag = m.get('FailBackFlag')
+        if m.get('FailReason') is not None:
+            self.fail_reason = m.get('FailReason')
+        if m.get('LanguageCode') is not None:
+            self.language_code = m.get('LanguageCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageId') is not None:
+            self.message_id = m.get('MessageId')
+        if m.get('MessageSource') is not None:
+            self.message_source = m.get('MessageSource')
+        if m.get('MessageStatus') is not None:
+            self.message_status = m.get('MessageStatus')
+        if m.get('MessageStatusName') is not None:
+            self.message_status_name = m.get('MessageStatusName')
+        if m.get('MessageType') is not None:
+            self.message_type = m.get('MessageType')
+        if m.get('MessageTypeName') is not None:
+            self.message_type_name = m.get('MessageTypeName')
+        if m.get('Month') is not None:
+            self.month = m.get('Month')
+        if m.get('SendTime') is not None:
+            self.send_time = m.get('SendTime')
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UniqueMessageId') is not None:
+            self.unique_message_id = m.get('UniqueMessageId')
+        if m.get('UserNumber') is not None:
+            self.user_number = m.get('UserNumber')
+        return self
+
+
+class ListChatappMessageResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: List[ListChatappMessageResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListChatappMessageResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListChatappMessageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListChatappMessageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListChatappMessageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListChatappTemplateRequestPage(TeaModel):
     def __init__(
         self,
@@ -13911,9 +14929,7 @@ class ListFlowRequestPage(TeaModel):
         index: int = None,
         size: int = None,
     ):
-        # The page number.
         self.index = index
-        # The number of entries per page.
         self.size = size
 
     def validate(self):
@@ -13945,14 +14961,17 @@ class ListFlowRequest(TeaModel):
         self,
         cust_space_id: str = None,
         flow_name: str = None,
+        owner_id: int = None,
         page: ListFlowRequestPage = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
-        # The space ID of the RAM user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
-        # The name of the Flow that you want to query. If FlowName is left empty, the information about all Flows is queried.
         self.flow_name = flow_name
-        # The returned pages.
+        self.owner_id = owner_id
         self.page = page
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         if self.page:
@@ -13968,8 +14987,14 @@ class ListFlowRequest(TeaModel):
             result['CustSpaceId'] = self.cust_space_id
         if self.flow_name is not None:
             result['FlowName'] = self.flow_name
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.page is not None:
             result['Page'] = self.page.to_map()
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
@@ -13978,9 +15003,15 @@ class ListFlowRequest(TeaModel):
             self.cust_space_id = m.get('CustSpaceId')
         if m.get('FlowName') is not None:
             self.flow_name = m.get('FlowName')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('Page') is not None:
             temp_model = ListFlowRequestPage()
             self.page = temp_model.from_map(m['Page'])
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -13989,14 +15020,17 @@ class ListFlowShrinkRequest(TeaModel):
         self,
         cust_space_id: str = None,
         flow_name: str = None,
+        owner_id: int = None,
         page_shrink: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
-        # The space ID of the RAM user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
-        # The name of the Flow that you want to query. If FlowName is left empty, the information about all Flows is queried.
         self.flow_name = flow_name
-        # The returned pages.
+        self.owner_id = owner_id
         self.page_shrink = page_shrink
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -14011,8 +15045,14 @@ class ListFlowShrinkRequest(TeaModel):
             result['CustSpaceId'] = self.cust_space_id
         if self.flow_name is not None:
             result['FlowName'] = self.flow_name
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.page_shrink is not None:
             result['Page'] = self.page_shrink
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
@@ -14021,8 +15061,14 @@ class ListFlowShrinkRequest(TeaModel):
             self.cust_space_id = m.get('CustSpaceId')
         if m.get('FlowName') is not None:
             self.flow_name = m.get('FlowName')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('Page') is not None:
             self.page_shrink = m.get('Page')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -14071,11 +15117,13 @@ class ListFlowResponseBodyData(TeaModel):
 class ListFlowResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: str = None,
         data: List[ListFlowResponseBodyData] = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # If OK is returned, the request was successful.
         self.code = code
         # The returned data.
@@ -14097,6 +15145,8 @@ class ListFlowResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         result['Data'] = []
@@ -14111,6 +15161,8 @@ class ListFlowResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         self.data = []
@@ -14162,6 +15214,258 @@ class ListFlowResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListFlowResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListFlowNodePrototypeV2Request(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        group_code: str = None,
+        keyword: str = None,
+        owner_id: int = None,
+        page_no: int = None,
+        page_size: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.biz_code = biz_code
+        self.group_code = group_code
+        self.keyword = keyword
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.page_no = page_no
+        # This parameter is required.
+        self.page_size = page_size
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.group_code is not None:
+            result['GroupCode'] = self.group_code
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('GroupCode') is not None:
+            self.group_code = m.get('GroupCode')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ListFlowNodePrototypeV2ResponseBodyDataModel(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        group_code: str = None,
+        public_extend: str = None,
+        status: str = None,
+    ):
+        self.code = code
+        self.group_code = group_code
+        self.public_extend = public_extend
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.group_code is not None:
+            result['GroupCode'] = self.group_code
+        if self.public_extend is not None:
+            result['PublicExtend'] = self.public_extend
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('GroupCode') is not None:
+            self.group_code = m.get('GroupCode')
+        if m.get('PublicExtend') is not None:
+            self.public_extend = m.get('PublicExtend')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListFlowNodePrototypeV2ResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        model: List[ListFlowNodePrototypeV2ResponseBodyDataModel] = None,
+    ):
+        self.model = model
+
+    def validate(self):
+        if self.model:
+            for k in self.model:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Model'] = []
+        if self.model is not None:
+            for k in self.model:
+                result['Model'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.model = []
+        if m.get('Model') is not None:
+            for k in m.get('Model'):
+                temp_model = ListFlowNodePrototypeV2ResponseBodyDataModel()
+                self.model.append(temp_model.from_map(k))
+        return self
+
+
+class ListFlowNodePrototypeV2ResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: int = None,
+        data: ListFlowNodePrototypeV2ResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListFlowNodePrototypeV2ResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListFlowNodePrototypeV2Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListFlowNodePrototypeV2ResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListFlowNodePrototypeV2ResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -16380,19 +17684,19 @@ class ModifyFlowRequest(TeaModel):
         cust_space_id: str = None,
         flow_id: str = None,
         flow_name: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
-        # The information about the categories of the Flow.
-        # 
         # This parameter is required.
         self.categories = categories
-        # The space ID of the user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
-        # The Flow ID.
         self.flow_id = flow_id
-        # The name of the Flow.
-        # 
         # This parameter is required.
         self.flow_name = flow_name
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -16411,6 +17715,12 @@ class ModifyFlowRequest(TeaModel):
             result['FlowId'] = self.flow_id
         if self.flow_name is not None:
             result['FlowName'] = self.flow_name
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
@@ -16423,6 +17733,12 @@ class ModifyFlowRequest(TeaModel):
             self.flow_id = m.get('FlowId')
         if m.get('FlowName') is not None:
             self.flow_name = m.get('FlowName')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -16433,19 +17749,19 @@ class ModifyFlowShrinkRequest(TeaModel):
         cust_space_id: str = None,
         flow_id: str = None,
         flow_name: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
-        # The information about the categories of the Flow.
-        # 
         # This parameter is required.
         self.categories_shrink = categories_shrink
-        # The space ID of the user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
-        # The Flow ID.
         self.flow_id = flow_id
-        # The name of the Flow.
-        # 
         # This parameter is required.
         self.flow_name = flow_name
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -16464,6 +17780,12 @@ class ModifyFlowShrinkRequest(TeaModel):
             result['FlowId'] = self.flow_id
         if self.flow_name is not None:
             result['FlowName'] = self.flow_name
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
@@ -16476,6 +17798,12 @@ class ModifyFlowShrinkRequest(TeaModel):
             self.flow_id = m.get('FlowId')
         if m.get('FlowName') is not None:
             self.flow_name = m.get('FlowName')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -16524,11 +17852,13 @@ class ModifyFlowResponseBodyData(TeaModel):
 class ModifyFlowResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: str = None,
         data: ModifyFlowResponseBodyData = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # If OK is returned, the request was successful.
         self.code = code
         # The returned data.
@@ -16548,6 +17878,8 @@ class ModifyFlowResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -16560,6 +17892,8 @@ class ModifyFlowResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -17438,13 +18772,16 @@ class PublishFlowRequest(TeaModel):
         self,
         cust_space_id: str = None,
         flow_id: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
-        # The space ID of the user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
-        # The Flow ID.
-        # 
         # This parameter is required.
         self.flow_id = flow_id
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -17459,6 +18796,12 @@ class PublishFlowRequest(TeaModel):
             result['CustSpaceId'] = self.cust_space_id
         if self.flow_id is not None:
             result['FlowId'] = self.flow_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
@@ -17467,16 +18810,24 @@ class PublishFlowRequest(TeaModel):
             self.cust_space_id = m.get('CustSpaceId')
         if m.get('FlowId') is not None:
             self.flow_id = m.get('FlowId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
 class PublishFlowResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: str = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # If OK is returned, the request was successful.
         self.code = code
         # The error message.
@@ -17493,6 +18844,8 @@ class PublishFlowResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -17503,6 +18856,8 @@ class PublishFlowResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -20696,6 +22051,9 @@ class SubmitIsvCustomerTermsRequest(TeaModel):
         cust_space_id: str = None,
         isv_terms: str = None,
         office_address: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
         # The business scenario.
         # 
@@ -20727,6 +22085,9 @@ class SubmitIsvCustomerTermsRequest(TeaModel):
         # 
         # This parameter is required.
         self.office_address = office_address
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -20751,6 +22112,12 @@ class SubmitIsvCustomerTermsRequest(TeaModel):
             result['IsvTerms'] = self.isv_terms
         if self.office_address is not None:
             result['OfficeAddress'] = self.office_address
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
@@ -20769,6 +22136,12 @@ class SubmitIsvCustomerTermsRequest(TeaModel):
             self.isv_terms = m.get('IsvTerms')
         if m.get('OfficeAddress') is not None:
             self.office_address = m.get('OfficeAddress')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -21142,7 +22515,10 @@ class UpdateAccountWebhookRequest(TeaModel):
         self,
         cust_space_id: str = None,
         http_flag: str = None,
+        owner_id: int = None,
         queue_flag: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
         status_callback_url: str = None,
     ):
         # The space ID of the RAM user within the independent software vendor (ISV) account.
@@ -21154,11 +22530,14 @@ class UpdateAccountWebhookRequest(TeaModel):
         # *   Y: indicates that HTTP callbacks are used to receive receipts.
         # *   N: indicates that HTTP callbacks are not used to receive receipts.
         self.http_flag = http_flag
+        self.owner_id = owner_id
         # Specifies whether to use Message Service (MNS) queues to receive receipts. Valid values:
         # 
         # *   Y: indicates that MNS queues are used to receive receipts.
         # *   N: indicates that MNS queues are not used to receive receipts.
         self.queue_flag = queue_flag
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
         # The callback URL to which status reports are sent by using HTTP callbacks.
         self.status_callback_url = status_callback_url
 
@@ -21175,8 +22554,14 @@ class UpdateAccountWebhookRequest(TeaModel):
             result['CustSpaceId'] = self.cust_space_id
         if self.http_flag is not None:
             result['HttpFlag'] = self.http_flag
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.queue_flag is not None:
             result['QueueFlag'] = self.queue_flag
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         if self.status_callback_url is not None:
             result['StatusCallbackUrl'] = self.status_callback_url
         return result
@@ -21187,8 +22572,14 @@ class UpdateAccountWebhookRequest(TeaModel):
             self.cust_space_id = m.get('CustSpaceId')
         if m.get('HttpFlag') is not None:
             self.http_flag = m.get('HttpFlag')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('QueueFlag') is not None:
             self.queue_flag = m.get('QueueFlag')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('StatusCallbackUrl') is not None:
             self.status_callback_url = m.get('StatusCallbackUrl')
         return self
@@ -22380,17 +23771,18 @@ class UpdateFlowJSONAssetRequest(TeaModel):
         cust_space_id: str = None,
         file_path: str = None,
         flow_id: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
-        # SpaceId/instance ID of ISV sub customer.
         self.cust_space_id = cust_space_id
-        # JSON file generated according to Facebook flow rules.
-        # 
         # This parameter is required.
         self.file_path = file_path
-        # The Flow ID.
-        # 
         # This parameter is required.
         self.flow_id = flow_id
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -22407,6 +23799,12 @@ class UpdateFlowJSONAssetRequest(TeaModel):
             result['FilePath'] = self.file_path
         if self.flow_id is not None:
             result['FlowId'] = self.flow_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
@@ -22417,6 +23815,12 @@ class UpdateFlowJSONAssetRequest(TeaModel):
             self.file_path = m.get('FilePath')
         if m.get('FlowId') is not None:
             self.flow_id = m.get('FlowId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -22451,11 +23855,13 @@ class UpdateFlowJSONAssetResponseBodyData(TeaModel):
 class UpdateFlowJSONAssetResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: str = None,
         data: UpdateFlowJSONAssetResponseBodyData = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The result returns OK as normal.
         self.code = code
         # The returned data.
@@ -22475,6 +23881,8 @@ class UpdateFlowJSONAssetResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -22487,6 +23895,8 @@ class UpdateFlowJSONAssetResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -22811,18 +24221,19 @@ class UpdatePhoneEncryptionPublicKeyRequest(TeaModel):
         self,
         cust_space_id: str = None,
         encryption_public_key: str = None,
+        owner_id: int = None,
         phone_number: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
-        # SpaceId/instanceId of ISV sub clients.
         self.cust_space_id = cust_space_id
-        # Encrypt the public key.
-        # 
         # This parameter is required.
         self.encryption_public_key = encryption_public_key
-        # The phone number.
-        # 
+        self.owner_id = owner_id
         # This parameter is required.
         self.phone_number = phone_number
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -22837,8 +24248,14 @@ class UpdatePhoneEncryptionPublicKeyRequest(TeaModel):
             result['CustSpaceId'] = self.cust_space_id
         if self.encryption_public_key is not None:
             result['EncryptionPublicKey'] = self.encryption_public_key
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.phone_number is not None:
             result['PhoneNumber'] = self.phone_number
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
@@ -22847,18 +24264,26 @@ class UpdatePhoneEncryptionPublicKeyRequest(TeaModel):
             self.cust_space_id = m.get('CustSpaceId')
         if m.get('EncryptionPublicKey') is not None:
             self.encryption_public_key = m.get('EncryptionPublicKey')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('PhoneNumber') is not None:
             self.phone_number = m.get('PhoneNumber')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
 class UpdatePhoneEncryptionPublicKeyResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: str = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The result returns OK as normal.
         self.code = code
         # Error description information.
@@ -22875,6 +24300,8 @@ class UpdatePhoneEncryptionPublicKeyResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -22885,6 +24312,8 @@ class UpdatePhoneEncryptionPublicKeyResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -22940,28 +24369,25 @@ class UpdatePhoneMessageQrdlRequest(TeaModel):
         self,
         cust_space_id: str = None,
         generate_qr_image: str = None,
+        owner_id: int = None,
         phone_number: str = None,
         prefilled_message: str = None,
         qrdl_code: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
-        # SpaceId/instance ID of ISV sub customer.
         self.cust_space_id = cust_space_id
-        # Produce QR code image format.
-        # 
         # This parameter is required.
         self.generate_qr_image = generate_qr_image
-        # Number, enter the country/region code+number.
-        # 
+        self.owner_id = owner_id
         # This parameter is required.
         self.phone_number = phone_number
-        # Message content.
-        # 
         # This parameter is required.
         self.prefilled_message = prefilled_message
-        # QR code encoding.
-        # 
         # This parameter is required.
         self.qrdl_code = qrdl_code
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -22976,12 +24402,18 @@ class UpdatePhoneMessageQrdlRequest(TeaModel):
             result['CustSpaceId'] = self.cust_space_id
         if self.generate_qr_image is not None:
             result['GenerateQrImage'] = self.generate_qr_image
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.phone_number is not None:
             result['PhoneNumber'] = self.phone_number
         if self.prefilled_message is not None:
             result['PrefilledMessage'] = self.prefilled_message
         if self.qrdl_code is not None:
             result['QrdlCode'] = self.qrdl_code
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
@@ -22990,12 +24422,18 @@ class UpdatePhoneMessageQrdlRequest(TeaModel):
             self.cust_space_id = m.get('CustSpaceId')
         if m.get('GenerateQrImage') is not None:
             self.generate_qr_image = m.get('GenerateQrImage')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('PhoneNumber') is not None:
             self.phone_number = m.get('PhoneNumber')
         if m.get('PrefilledMessage') is not None:
             self.prefilled_message = m.get('PrefilledMessage')
         if m.get('QrdlCode') is not None:
             self.qrdl_code = m.get('QrdlCode')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -23065,11 +24503,13 @@ class UpdatePhoneMessageQrdlResponseBodyData(TeaModel):
 class UpdatePhoneMessageQrdlResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: str = None,
         data: UpdatePhoneMessageQrdlResponseBodyData = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The result returns OK as normal.
         self.code = code
         # The returned data.
@@ -23089,6 +24529,8 @@ class UpdatePhoneMessageQrdlResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -23101,6 +24543,8 @@ class UpdatePhoneMessageQrdlResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -23159,8 +24603,11 @@ class UpdatePhoneWebhookRequest(TeaModel):
         self,
         cust_space_id: str = None,
         http_flag: str = None,
+        owner_id: int = None,
         phone_number: str = None,
         queue_flag: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
         status_callback_url: str = None,
         up_callback_url: str = None,
     ):
@@ -23172,6 +24619,7 @@ class UpdatePhoneWebhookRequest(TeaModel):
         # *   Y: Yes.
         # *   N: No.
         self.http_flag = http_flag
+        self.owner_id = owner_id
         # phone number.
         # 
         # This parameter is required.
@@ -23180,6 +24628,8 @@ class UpdatePhoneWebhookRequest(TeaModel):
         # *   Y: Yes.
         # *   N: No.
         self.queue_flag = queue_flag
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
         # HTTP status report interface callback address.
         self.status_callback_url = status_callback_url
         # HTTP upstream message interface callback address.
@@ -23198,10 +24648,16 @@ class UpdatePhoneWebhookRequest(TeaModel):
             result['CustSpaceId'] = self.cust_space_id
         if self.http_flag is not None:
             result['HttpFlag'] = self.http_flag
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.phone_number is not None:
             result['PhoneNumber'] = self.phone_number
         if self.queue_flag is not None:
             result['QueueFlag'] = self.queue_flag
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         if self.status_callback_url is not None:
             result['StatusCallbackUrl'] = self.status_callback_url
         if self.up_callback_url is not None:
@@ -23214,10 +24670,16 @@ class UpdatePhoneWebhookRequest(TeaModel):
             self.cust_space_id = m.get('CustSpaceId')
         if m.get('HttpFlag') is not None:
             self.http_flag = m.get('HttpFlag')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('PhoneNumber') is not None:
             self.phone_number = m.get('PhoneNumber')
         if m.get('QueueFlag') is not None:
             self.queue_flag = m.get('QueueFlag')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('StatusCallbackUrl') is not None:
             self.status_callback_url = m.get('StatusCallbackUrl')
         if m.get('UpCallbackUrl') is not None:
