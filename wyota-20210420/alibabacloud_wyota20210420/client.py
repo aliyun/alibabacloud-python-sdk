@@ -1456,6 +1456,8 @@ class Client(OpenApiClient):
             body['CustomId'] = request.custom_id
         if not UtilClient.is_unset(request.ether_mac):
             body['EtherMac'] = request.ether_mac
+        if not UtilClient.is_unset(request.host_os_info):
+            body['HostOsInfo'] = request.host_os_info
         if not UtilClient.is_unset(request.login_region_id):
             body['LoginRegionId'] = request.login_region_id
         if not UtilClient.is_unset(request.login_token):
@@ -1517,6 +1519,8 @@ class Client(OpenApiClient):
             body['CustomId'] = request.custom_id
         if not UtilClient.is_unset(request.ether_mac):
             body['EtherMac'] = request.ether_mac
+        if not UtilClient.is_unset(request.host_os_info):
+            body['HostOsInfo'] = request.host_os_info
         if not UtilClient.is_unset(request.login_region_id):
             body['LoginRegionId'] = request.login_region_id
         if not UtilClient.is_unset(request.login_token):
@@ -4074,6 +4078,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.area_site):
+            body['AreaSite'] = request.area_site
         if not UtilClient.is_unset(request.dir_prefix):
             body['DirPrefix'] = request.dir_prefix
         if not UtilClient.is_unset(request.is_dedicated_line):
@@ -4113,6 +4119,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.area_site):
+            body['AreaSite'] = request.area_site
         if not UtilClient.is_unset(request.dir_prefix):
             body['DirPrefix'] = request.dir_prefix
         if not UtilClient.is_unset(request.is_dedicated_line):
@@ -6872,14 +6880,22 @@ class Client(OpenApiClient):
             body['FbType'] = request.fb_type
         if not UtilClient.is_unset(request.file_list_shrink):
             body['FileList'] = request.file_list_shrink
+        if not UtilClient.is_unset(request.is_substitute_report):
+            body['IsSubstituteReport'] = request.is_substitute_report
         if not UtilClient.is_unset(request.issue_label):
             body['IssueLabel'] = request.issue_label
+        if not UtilClient.is_unset(request.login_region_id):
+            body['LoginRegionId'] = request.login_region_id
+        if not UtilClient.is_unset(request.login_token):
+            body['LoginToken'] = request.login_token
         if not UtilClient.is_unset(request.occur_time):
             body['OccurTime'] = request.occur_time
         if not UtilClient.is_unset(request.reserved_a):
             body['ReservedA'] = request.reserved_a
         if not UtilClient.is_unset(request.reserved_b):
             body['ReservedB'] = request.reserved_b
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
         if not UtilClient.is_unset(request.tel_no):
             body['TelNo'] = request.tel_no
         if not UtilClient.is_unset(request.title):
@@ -6961,14 +6977,22 @@ class Client(OpenApiClient):
             body['FbType'] = request.fb_type
         if not UtilClient.is_unset(request.file_list_shrink):
             body['FileList'] = request.file_list_shrink
+        if not UtilClient.is_unset(request.is_substitute_report):
+            body['IsSubstituteReport'] = request.is_substitute_report
         if not UtilClient.is_unset(request.issue_label):
             body['IssueLabel'] = request.issue_label
+        if not UtilClient.is_unset(request.login_region_id):
+            body['LoginRegionId'] = request.login_region_id
+        if not UtilClient.is_unset(request.login_token):
+            body['LoginToken'] = request.login_token
         if not UtilClient.is_unset(request.occur_time):
             body['OccurTime'] = request.occur_time
         if not UtilClient.is_unset(request.reserved_a):
             body['ReservedA'] = request.reserved_a
         if not UtilClient.is_unset(request.reserved_b):
             body['ReservedB'] = request.reserved_b
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
         if not UtilClient.is_unset(request.tel_no):
             body['TelNo'] = request.tel_no
         if not UtilClient.is_unset(request.title):

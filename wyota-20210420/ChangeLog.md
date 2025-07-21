@@ -1,3 +1,12 @@
+2025-07-21 Version: 1.4.1
+- Update API CheckUuidValid: add request parameters HostOsInfo.
+- Update API GetFbOssConfig: add request parameters AreaSite.
+- Update API ReportUserFbIssue: add request parameters IsSubstituteReport.
+- Update API ReportUserFbIssue: add request parameters LoginRegionId.
+- Update API ReportUserFbIssue: add request parameters LoginToken.
+- Update API ReportUserFbIssue: add request parameters SessionId.
+
+
 2025-07-02 Version: 1.4.0
 - Support API ListBoundDevices.
 - Support API ListUnbindDevices.

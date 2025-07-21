@@ -1761,6 +1761,7 @@ class CheckUuidValidRequest(TeaModel):
         client_version: str = None,
         custom_id: str = None,
         ether_mac: str = None,
+        host_os_info: str = None,
         login_region_id: str = None,
         login_token: str = None,
         serial_no: str = None,
@@ -1778,6 +1779,7 @@ class CheckUuidValidRequest(TeaModel):
         # This parameter is required.
         self.custom_id = custom_id
         self.ether_mac = ether_mac
+        self.host_os_info = host_os_info
         self.login_region_id = login_region_id
         self.login_token = login_token
         # This parameter is required.
@@ -1811,6 +1813,8 @@ class CheckUuidValidRequest(TeaModel):
             result['CustomId'] = self.custom_id
         if self.ether_mac is not None:
             result['EtherMac'] = self.ether_mac
+        if self.host_os_info is not None:
+            result['HostOsInfo'] = self.host_os_info
         if self.login_region_id is not None:
             result['LoginRegionId'] = self.login_region_id
         if self.login_token is not None:
@@ -1843,6 +1847,8 @@ class CheckUuidValidRequest(TeaModel):
             self.custom_id = m.get('CustomId')
         if m.get('EtherMac') is not None:
             self.ether_mac = m.get('EtherMac')
+        if m.get('HostOsInfo') is not None:
+            self.host_os_info = m.get('HostOsInfo')
         if m.get('LoginRegionId') is not None:
             self.login_region_id = m.get('LoginRegionId')
         if m.get('LoginToken') is not None:
@@ -6543,10 +6549,12 @@ class GetExportDeviceInfoOssUrlResponse(TeaModel):
 class GetFbOssConfigRequest(TeaModel):
     def __init__(
         self,
+        area_site: str = None,
         dir_prefix: str = None,
         is_dedicated_line: int = None,
         region: str = None,
     ):
+        self.area_site = area_site
         self.dir_prefix = dir_prefix
         self.is_dedicated_line = is_dedicated_line
         self.region = region
@@ -6560,6 +6568,8 @@ class GetFbOssConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.area_site is not None:
+            result['AreaSite'] = self.area_site
         if self.dir_prefix is not None:
             result['DirPrefix'] = self.dir_prefix
         if self.is_dedicated_line is not None:
@@ -6570,6 +6580,8 @@ class GetFbOssConfigRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AreaSite') is not None:
+            self.area_site = m.get('AreaSite')
         if m.get('DirPrefix') is not None:
             self.dir_prefix = m.get('DirPrefix')
         if m.get('IsDedicatedLine') is not None:
@@ -12706,10 +12718,14 @@ class ReportUserFbIssueRequest(TeaModel):
         error_msg: str = None,
         fb_type: int = None,
         file_list: List[ReportUserFbIssueRequestFileList] = None,
+        is_substitute_report: bool = None,
         issue_label: str = None,
+        login_region_id: str = None,
+        login_token: str = None,
         occur_time: int = None,
         reserved_a: str = None,
         reserved_b: str = None,
+        session_id: str = None,
         tel_no: str = None,
         title: str = None,
         user_email: str = None,
@@ -12733,10 +12749,14 @@ class ReportUserFbIssueRequest(TeaModel):
         self.error_msg = error_msg
         self.fb_type = fb_type
         self.file_list = file_list
+        self.is_substitute_report = is_substitute_report
         self.issue_label = issue_label
+        self.login_region_id = login_region_id
+        self.login_token = login_token
         self.occur_time = occur_time
         self.reserved_a = reserved_a
         self.reserved_b = reserved_b
+        self.session_id = session_id
         self.tel_no = tel_no
         self.title = title
         self.user_email = user_email
@@ -12789,14 +12809,22 @@ class ReportUserFbIssueRequest(TeaModel):
         if self.file_list is not None:
             for k in self.file_list:
                 result['FileList'].append(k.to_map() if k else None)
+        if self.is_substitute_report is not None:
+            result['IsSubstituteReport'] = self.is_substitute_report
         if self.issue_label is not None:
             result['IssueLabel'] = self.issue_label
+        if self.login_region_id is not None:
+            result['LoginRegionId'] = self.login_region_id
+        if self.login_token is not None:
+            result['LoginToken'] = self.login_token
         if self.occur_time is not None:
             result['OccurTime'] = self.occur_time
         if self.reserved_a is not None:
             result['ReservedA'] = self.reserved_a
         if self.reserved_b is not None:
             result['ReservedB'] = self.reserved_b
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
         if self.tel_no is not None:
             result['TelNo'] = self.tel_no
         if self.title is not None:
@@ -12848,14 +12876,22 @@ class ReportUserFbIssueRequest(TeaModel):
             for k in m.get('FileList'):
                 temp_model = ReportUserFbIssueRequestFileList()
                 self.file_list.append(temp_model.from_map(k))
+        if m.get('IsSubstituteReport') is not None:
+            self.is_substitute_report = m.get('IsSubstituteReport')
         if m.get('IssueLabel') is not None:
             self.issue_label = m.get('IssueLabel')
+        if m.get('LoginRegionId') is not None:
+            self.login_region_id = m.get('LoginRegionId')
+        if m.get('LoginToken') is not None:
+            self.login_token = m.get('LoginToken')
         if m.get('OccurTime') is not None:
             self.occur_time = m.get('OccurTime')
         if m.get('ReservedA') is not None:
             self.reserved_a = m.get('ReservedA')
         if m.get('ReservedB') is not None:
             self.reserved_b = m.get('ReservedB')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
         if m.get('TelNo') is not None:
             self.tel_no = m.get('TelNo')
         if m.get('Title') is not None:
@@ -12891,10 +12927,14 @@ class ReportUserFbIssueShrinkRequest(TeaModel):
         error_msg: str = None,
         fb_type: int = None,
         file_list_shrink: str = None,
+        is_substitute_report: bool = None,
         issue_label: str = None,
+        login_region_id: str = None,
+        login_token: str = None,
         occur_time: int = None,
         reserved_a: str = None,
         reserved_b: str = None,
+        session_id: str = None,
         tel_no: str = None,
         title: str = None,
         user_email: str = None,
@@ -12918,10 +12958,14 @@ class ReportUserFbIssueShrinkRequest(TeaModel):
         self.error_msg = error_msg
         self.fb_type = fb_type
         self.file_list_shrink = file_list_shrink
+        self.is_substitute_report = is_substitute_report
         self.issue_label = issue_label
+        self.login_region_id = login_region_id
+        self.login_token = login_token
         self.occur_time = occur_time
         self.reserved_a = reserved_a
         self.reserved_b = reserved_b
+        self.session_id = session_id
         self.tel_no = tel_no
         self.title = title
         self.user_email = user_email
@@ -12969,14 +13013,22 @@ class ReportUserFbIssueShrinkRequest(TeaModel):
             result['FbType'] = self.fb_type
         if self.file_list_shrink is not None:
             result['FileList'] = self.file_list_shrink
+        if self.is_substitute_report is not None:
+            result['IsSubstituteReport'] = self.is_substitute_report
         if self.issue_label is not None:
             result['IssueLabel'] = self.issue_label
+        if self.login_region_id is not None:
+            result['LoginRegionId'] = self.login_region_id
+        if self.login_token is not None:
+            result['LoginToken'] = self.login_token
         if self.occur_time is not None:
             result['OccurTime'] = self.occur_time
         if self.reserved_a is not None:
             result['ReservedA'] = self.reserved_a
         if self.reserved_b is not None:
             result['ReservedB'] = self.reserved_b
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
         if self.tel_no is not None:
             result['TelNo'] = self.tel_no
         if self.title is not None:
@@ -13025,14 +13077,22 @@ class ReportUserFbIssueShrinkRequest(TeaModel):
             self.fb_type = m.get('FbType')
         if m.get('FileList') is not None:
             self.file_list_shrink = m.get('FileList')
+        if m.get('IsSubstituteReport') is not None:
+            self.is_substitute_report = m.get('IsSubstituteReport')
         if m.get('IssueLabel') is not None:
             self.issue_label = m.get('IssueLabel')
+        if m.get('LoginRegionId') is not None:
+            self.login_region_id = m.get('LoginRegionId')
+        if m.get('LoginToken') is not None:
+            self.login_token = m.get('LoginToken')
         if m.get('OccurTime') is not None:
             self.occur_time = m.get('OccurTime')
         if m.get('ReservedA') is not None:
             self.reserved_a = m.get('ReservedA')
         if m.get('ReservedB') is not None:
             self.reserved_b = m.get('ReservedB')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
         if m.get('TelNo') is not None:
             self.tel_no = m.get('TelNo')
         if m.get('Title') is not None:
