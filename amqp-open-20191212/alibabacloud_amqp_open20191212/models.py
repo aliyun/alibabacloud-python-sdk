@@ -2009,6 +2009,7 @@ class GetInstanceResponseBodyData(TeaModel):
         self,
         auto_renew_instance: bool = None,
         classic_endpoint: str = None,
+        edition: str = None,
         encrypted_instance: bool = None,
         expire_time: int = None,
         instance_id: str = None,
@@ -2023,6 +2024,7 @@ class GetInstanceResponseBodyData(TeaModel):
         order_create_time: int = None,
         order_type: str = None,
         private_endpoint: str = None,
+        provisioned_capacity: int = None,
         public_endpoint: str = None,
         resource_group_id: str = None,
         status: str = None,
@@ -2034,6 +2036,7 @@ class GetInstanceResponseBodyData(TeaModel):
     ):
         self.auto_renew_instance = auto_renew_instance
         self.classic_endpoint = classic_endpoint
+        self.edition = edition
         self.encrypted_instance = encrypted_instance
         self.expire_time = expire_time
         self.instance_id = instance_id
@@ -2048,6 +2051,7 @@ class GetInstanceResponseBodyData(TeaModel):
         self.order_create_time = order_create_time
         self.order_type = order_type
         self.private_endpoint = private_endpoint
+        self.provisioned_capacity = provisioned_capacity
         self.public_endpoint = public_endpoint
         self.resource_group_id = resource_group_id
         self.status = status
@@ -2073,6 +2077,8 @@ class GetInstanceResponseBodyData(TeaModel):
             result['AutoRenewInstance'] = self.auto_renew_instance
         if self.classic_endpoint is not None:
             result['ClassicEndpoint'] = self.classic_endpoint
+        if self.edition is not None:
+            result['Edition'] = self.edition
         if self.encrypted_instance is not None:
             result['EncryptedInstance'] = self.encrypted_instance
         if self.expire_time is not None:
@@ -2101,6 +2107,8 @@ class GetInstanceResponseBodyData(TeaModel):
             result['OrderType'] = self.order_type
         if self.private_endpoint is not None:
             result['PrivateEndpoint'] = self.private_endpoint
+        if self.provisioned_capacity is not None:
+            result['ProvisionedCapacity'] = self.provisioned_capacity
         if self.public_endpoint is not None:
             result['PublicEndpoint'] = self.public_endpoint
         if self.resource_group_id is not None:
@@ -2127,6 +2135,8 @@ class GetInstanceResponseBodyData(TeaModel):
             self.auto_renew_instance = m.get('AutoRenewInstance')
         if m.get('ClassicEndpoint') is not None:
             self.classic_endpoint = m.get('ClassicEndpoint')
+        if m.get('Edition') is not None:
+            self.edition = m.get('Edition')
         if m.get('EncryptedInstance') is not None:
             self.encrypted_instance = m.get('EncryptedInstance')
         if m.get('ExpireTime') is not None:
@@ -2155,6 +2165,8 @@ class GetInstanceResponseBodyData(TeaModel):
             self.order_type = m.get('OrderType')
         if m.get('PrivateEndpoint') is not None:
             self.private_endpoint = m.get('PrivateEndpoint')
+        if m.get('ProvisionedCapacity') is not None:
+            self.provisioned_capacity = m.get('ProvisionedCapacity')
         if m.get('PublicEndpoint') is not None:
             self.public_endpoint = m.get('PublicEndpoint')
         if m.get('ResourceGroupId') is not None:
@@ -3728,6 +3740,7 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
         self,
         auto_renew_instance: bool = None,
         classic_endpoint: str = None,
+        edition: str = None,
         encrypted_instance: bool = None,
         expire_time: int = None,
         instance_id: str = None,
@@ -3741,6 +3754,7 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
         order_create_time: int = None,
         order_type: str = None,
         private_endpoint: str = None,
+        provisioned_capacity: int = None,
         public_endpoint: str = None,
         resource_group_id: str = None,
         status: str = None,
@@ -3752,6 +3766,7 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
         self.auto_renew_instance = auto_renew_instance
         # The endpoint that is used to access the instance over the classic network. This parameter is no longer available.
         self.classic_endpoint = classic_endpoint
+        self.edition = edition
         # Indicates whether the encryption at rest feature is enabled for the instance.
         self.encrypted_instance = encrypted_instance
         # The timestamp that indicates when the instance expires. Unit: milliseconds.
@@ -3785,6 +3800,7 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
         self.order_type = order_type
         # The virtual private cloud (VPC) endpoint of the instance.
         self.private_endpoint = private_endpoint
+        self.provisioned_capacity = provisioned_capacity
         # The public endpoint of the instance.
         self.public_endpoint = public_endpoint
         # The ID of the resource group to which the instance belongs.
@@ -3821,6 +3837,8 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
             result['AutoRenewInstance'] = self.auto_renew_instance
         if self.classic_endpoint is not None:
             result['ClassicEndpoint'] = self.classic_endpoint
+        if self.edition is not None:
+            result['Edition'] = self.edition
         if self.encrypted_instance is not None:
             result['EncryptedInstance'] = self.encrypted_instance
         if self.expire_time is not None:
@@ -3847,6 +3865,8 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
             result['OrderType'] = self.order_type
         if self.private_endpoint is not None:
             result['PrivateEndpoint'] = self.private_endpoint
+        if self.provisioned_capacity is not None:
+            result['ProvisionedCapacity'] = self.provisioned_capacity
         if self.public_endpoint is not None:
             result['PublicEndpoint'] = self.public_endpoint
         if self.resource_group_id is not None:
@@ -3869,6 +3889,8 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
             self.auto_renew_instance = m.get('AutoRenewInstance')
         if m.get('ClassicEndpoint') is not None:
             self.classic_endpoint = m.get('ClassicEndpoint')
+        if m.get('Edition') is not None:
+            self.edition = m.get('Edition')
         if m.get('EncryptedInstance') is not None:
             self.encrypted_instance = m.get('EncryptedInstance')
         if m.get('ExpireTime') is not None:
@@ -3895,6 +3917,8 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
             self.order_type = m.get('OrderType')
         if m.get('PrivateEndpoint') is not None:
             self.private_endpoint = m.get('PrivateEndpoint')
+        if m.get('ProvisionedCapacity') is not None:
+            self.provisioned_capacity = m.get('ProvisionedCapacity')
         if m.get('PublicEndpoint') is not None:
             self.public_endpoint = m.get('PublicEndpoint')
         if m.get('ResourceGroupId') is not None:

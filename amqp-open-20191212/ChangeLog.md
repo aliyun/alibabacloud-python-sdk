@@ -1,3 +1,10 @@
+2025-07-21 Version: 1.4.3
+- Update API GetInstance: add response parameters Body.Data.Edition.
+- Update API GetInstance: add response parameters Body.Data.ProvisionedCapacity.
+- Update API ListInstances: add response parameters Body.Data.Instances.$.Edition.
+- Update API ListInstances: add response parameters Body.Data.Instances.$.ProvisionedCapacity.
+
+
 2025-04-29 Version: 1.4.2
 - Update API UpdateInstance: add request parameters Edition.
 - Update API UpdateInstance: add request parameters ProvisionedCapacity.
