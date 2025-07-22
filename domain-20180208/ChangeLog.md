@@ -1,3 +1,7 @@
+2025-07-22 Version: 1.5.1
+- Update API QueryExportDomainExpireSnatchs: add response parameters Body.Data.$.Registrar.
+
+
 2025-06-17 Version: 1.5.0
 - Support API BatchIntrudeDomains.
 - Support API QueryExportAuctionDetail.

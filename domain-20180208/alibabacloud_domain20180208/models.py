@@ -3941,6 +3941,7 @@ class QueryExportDomainExpireSnatchsResponseBodyData(TeaModel):
         product_id: str = None,
         publish_time: str = None,
         reg_date: str = None,
+        registrar: str = None,
         renew_price: float = None,
         reserved: bool = None,
         rmb_price: float = None,
@@ -3983,6 +3984,7 @@ class QueryExportDomainExpireSnatchsResponseBodyData(TeaModel):
         self.product_id = product_id
         self.publish_time = publish_time
         self.reg_date = reg_date
+        self.registrar = registrar
         self.renew_price = renew_price
         self.reserved = reserved
         self.rmb_price = rmb_price
@@ -4062,6 +4064,8 @@ class QueryExportDomainExpireSnatchsResponseBodyData(TeaModel):
             result['PublishTime'] = self.publish_time
         if self.reg_date is not None:
             result['RegDate'] = self.reg_date
+        if self.registrar is not None:
+            result['Registrar'] = self.registrar
         if self.renew_price is not None:
             result['RenewPrice'] = self.renew_price
         if self.reserved is not None:
@@ -4148,6 +4152,8 @@ class QueryExportDomainExpireSnatchsResponseBodyData(TeaModel):
             self.publish_time = m.get('PublishTime')
         if m.get('RegDate') is not None:
             self.reg_date = m.get('RegDate')
+        if m.get('Registrar') is not None:
+            self.registrar = m.get('Registrar')
         if m.get('RenewPrice') is not None:
             self.renew_price = m.get('RenewPrice')
         if m.get('Reserved') is not None:
