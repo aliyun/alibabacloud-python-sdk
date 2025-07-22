@@ -1,3 +1,8 @@
+2025-07-22 Version: 1.6.0
+- Support API GetUserCommand.
+- Support API ListSystemLogs.
+
+
 2025-06-09 Version: 1.5.15
 - Update API CreateInstance: add request parameters body.UserCommand.
 - Update API GetInstance: add response parameters Body.UserCommandId.

@@ -2175,6 +2175,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_token_with_options_async(request, headers, runtime)
 
+    def get_user_command_with_options(
+        self,
+        user_command_id: str,
+        request: pai_dsw_20220101_models.GetUserCommandRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.GetUserCommandResponse:
+        """
+        @summary 获取自定义用户命令
+        
+        @param request: GetUserCommandRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserCommandResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUserCommand',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/usercommands/{OpenApiUtilClient.get_encode_param(user_command_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetUserCommandResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_user_command_with_options_async(
+        self,
+        user_command_id: str,
+        request: pai_dsw_20220101_models.GetUserCommandRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.GetUserCommandResponse:
+        """
+        @summary 获取自定义用户命令
+        
+        @param request: GetUserCommandRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserCommandResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUserCommand',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/usercommands/{OpenApiUtilClient.get_encode_param(user_command_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetUserCommandResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_user_command(
+        self,
+        user_command_id: str,
+        request: pai_dsw_20220101_models.GetUserCommandRequest,
+    ) -> pai_dsw_20220101_models.GetUserCommandResponse:
+        """
+        @summary 获取自定义用户命令
+        
+        @param request: GetUserCommandRequest
+        @return: GetUserCommandResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_user_command_with_options(user_command_id, request, headers, runtime)
+
+    async def get_user_command_async(
+        self,
+        user_command_id: str,
+        request: pai_dsw_20220101_models.GetUserCommandRequest,
+    ) -> pai_dsw_20220101_models.GetUserCommandResponse:
+        """
+        @summary 获取自定义用户命令
+        
+        @param request: GetUserCommandRequest
+        @return: GetUserCommandResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_user_command_with_options_async(user_command_id, request, headers, runtime)
+
     def get_user_config_with_options(
         self,
         headers: Dict[str, str],
@@ -2824,6 +2936,150 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_instances_with_options_async(request, headers, runtime)
+
+    def list_system_logs_with_options(
+        self,
+        request: pai_dsw_20220101_models.ListSystemLogsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.ListSystemLogsResponse:
+        """
+        @summary 获取系统日志
+        
+        @param request: ListSystemLogsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSystemLogsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gmt_end_time):
+            query['GmtEndTime'] = request.gmt_end_time
+        if not UtilClient.is_unset(request.gmt_start_time):
+            query['GmtStartTime'] = request.gmt_start_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.log_level):
+            query['LogLevel'] = request.log_level
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.problem_category):
+            query['ProblemCategory'] = request.problem_category
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.source_request_id):
+            query['SourceRequestId'] = request.source_request_id
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSystemLogs',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/systemlogs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.ListSystemLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_system_logs_with_options_async(
+        self,
+        request: pai_dsw_20220101_models.ListSystemLogsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.ListSystemLogsResponse:
+        """
+        @summary 获取系统日志
+        
+        @param request: ListSystemLogsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSystemLogsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gmt_end_time):
+            query['GmtEndTime'] = request.gmt_end_time
+        if not UtilClient.is_unset(request.gmt_start_time):
+            query['GmtStartTime'] = request.gmt_start_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.log_level):
+            query['LogLevel'] = request.log_level
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.problem_category):
+            query['ProblemCategory'] = request.problem_category
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.source_request_id):
+            query['SourceRequestId'] = request.source_request_id
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSystemLogs',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/systemlogs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.ListSystemLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_system_logs(
+        self,
+        request: pai_dsw_20220101_models.ListSystemLogsRequest,
+    ) -> pai_dsw_20220101_models.ListSystemLogsResponse:
+        """
+        @summary 获取系统日志
+        
+        @param request: ListSystemLogsRequest
+        @return: ListSystemLogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_system_logs_with_options(request, headers, runtime)
+
+    async def list_system_logs_async(
+        self,
+        request: pai_dsw_20220101_models.ListSystemLogsRequest,
+    ) -> pai_dsw_20220101_models.ListSystemLogsResponse:
+        """
+        @summary 获取系统日志
+        
+        @param request: ListSystemLogsRequest
+        @return: ListSystemLogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_system_logs_with_options_async(request, headers, runtime)
 
     def start_instance_with_options(
         self,

@@ -5502,6 +5502,172 @@ class GetTokenResponse(TeaModel):
         return self
 
 
+class GetUserCommandRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        token: str = None,
+    ):
+        self.instance_id = instance_id
+        self.token = token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.token is not None:
+            result['Token'] = self.token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        return self
+
+
+class GetUserCommandResponseBodyOnStart(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+    ):
+        self.content = content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        return self
+
+
+class GetUserCommandResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        on_start: GetUserCommandResponseBodyOnStart = None,
+        request_id: str = None,
+        success: bool = None,
+        user_command_id: str = None,
+        access_denied_detail: Dict[str, Any] = None,
+    ):
+        self.code = code
+        self.message = message
+        self.on_start = on_start
+        self.request_id = request_id
+        self.success = success
+        self.user_command_id = user_command_id
+        self.access_denied_detail = access_denied_detail
+
+    def validate(self):
+        if self.on_start:
+            self.on_start.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.on_start is not None:
+            result['OnStart'] = self.on_start.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.user_command_id is not None:
+            result['UserCommandId'] = self.user_command_id
+        if self.access_denied_detail is not None:
+            result['accessDeniedDetail'] = self.access_denied_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('OnStart') is not None:
+            temp_model = GetUserCommandResponseBodyOnStart()
+            self.on_start = temp_model.from_map(m['OnStart'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('UserCommandId') is not None:
+            self.user_command_id = m.get('UserCommandId')
+        if m.get('accessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('accessDeniedDetail')
+        return self
+
+
+class GetUserCommandResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetUserCommandResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetUserCommandResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetUserConfigResponseBodyFreeTier(TeaModel):
     def __init__(
         self,
@@ -8243,6 +8409,217 @@ class ListInstancesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListSystemLogsRequest(TeaModel):
+    def __init__(
+        self,
+        gmt_end_time: str = None,
+        gmt_start_time: str = None,
+        instance_id: str = None,
+        log_level: str = None,
+        order: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        problem_category: str = None,
+        sort_by: str = None,
+        source_request_id: str = None,
+        source_type: str = None,
+    ):
+        # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
+        self.gmt_end_time = gmt_end_time
+        # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
+        self.gmt_start_time = gmt_start_time
+        self.instance_id = instance_id
+        self.log_level = log_level
+        self.order = order
+        self.page_number = page_number
+        self.page_size = page_size
+        self.problem_category = problem_category
+        self.sort_by = sort_by
+        self.source_request_id = source_request_id
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gmt_end_time is not None:
+            result['GmtEndTime'] = self.gmt_end_time
+        if self.gmt_start_time is not None:
+            result['GmtStartTime'] = self.gmt_start_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.log_level is not None:
+            result['LogLevel'] = self.log_level
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.problem_category is not None:
+            result['ProblemCategory'] = self.problem_category
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.source_request_id is not None:
+            result['SourceRequestId'] = self.source_request_id
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GmtEndTime') is not None:
+            self.gmt_end_time = m.get('GmtEndTime')
+        if m.get('GmtStartTime') is not None:
+            self.gmt_start_time = m.get('GmtStartTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LogLevel') is not None:
+            self.log_level = m.get('LogLevel')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProblemCategory') is not None:
+            self.problem_category = m.get('ProblemCategory')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('SourceRequestId') is not None:
+            self.source_request_id = m.get('SourceRequestId')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
+class ListSystemLogsResponseBodySystemLogs(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        gmt_create_time: str = None,
+        level: str = None,
+    ):
+        self.content = content
+        # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
+        self.gmt_create_time = gmt_create_time
+        self.level = level
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.gmt_create_time is not None:
+            result['GmtCreateTime'] = self.gmt_create_time
+        if self.level is not None:
+            result['Level'] = self.level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('GmtCreateTime') is not None:
+            self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        return self
+
+
+class ListSystemLogsResponseBody(TeaModel):
+    def __init__(
+        self,
+        system_logs: List[ListSystemLogsResponseBodySystemLogs] = None,
+        total_count: int = None,
+    ):
+        self.system_logs = system_logs
+        self.total_count = total_count
+
+    def validate(self):
+        if self.system_logs:
+            for k in self.system_logs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['SystemLogs'] = []
+        if self.system_logs is not None:
+            for k in self.system_logs:
+                result['SystemLogs'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.system_logs = []
+        if m.get('SystemLogs') is not None:
+            for k in m.get('SystemLogs'):
+                temp_model = ListSystemLogsResponseBodySystemLogs()
+                self.system_logs.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListSystemLogsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListSystemLogsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListSystemLogsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
