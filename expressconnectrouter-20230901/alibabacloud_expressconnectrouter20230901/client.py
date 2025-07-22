@@ -47,7 +47,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.ActivateFlowLogResponse:
         """
-        @summary Enables log delivery.
+        @summary Enables log delivery for flow logs.
         
         @param request: ActivateFlowLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -77,16 +77,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ActivateFlowLogResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ActivateFlowLogResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.ActivateFlowLogResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def activate_flow_log_with_options_async(
         self,
@@ -94,7 +88,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.ActivateFlowLogResponse:
         """
-        @summary Enables log delivery.
+        @summary Enables log delivery for flow logs.
         
         @param request: ActivateFlowLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -124,23 +118,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ActivateFlowLogResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ActivateFlowLogResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.ActivateFlowLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def activate_flow_log(
         self,
         request: express_connect_router_20230901_models.ActivateFlowLogRequest,
     ) -> express_connect_router_20230901_models.ActivateFlowLogResponse:
         """
-        @summary Enables log delivery.
+        @summary Enables log delivery for flow logs.
         
         @param request: ActivateFlowLogRequest
         @return: ActivateFlowLogResponse
@@ -153,7 +141,7 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.ActivateFlowLogRequest,
     ) -> express_connect_router_20230901_models.ActivateFlowLogResponse:
         """
-        @summary Enables log delivery.
+        @summary Enables log delivery for flow logs.
         
         @param request: ActivateFlowLogRequest
         @return: ActivateFlowLogResponse
@@ -207,16 +195,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.AttachExpressConnectRouterChildInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.AttachExpressConnectRouterChildInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.AttachExpressConnectRouterChildInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def attach_express_connect_router_child_instance_with_options_async(
         self,
@@ -264,16 +246,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.AttachExpressConnectRouterChildInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.AttachExpressConnectRouterChildInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.AttachExpressConnectRouterChildInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def attach_express_connect_router_child_instance(
         self,
@@ -341,16 +317,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.CheckAddRegionToExpressConnectRouterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.CheckAddRegionToExpressConnectRouterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.CheckAddRegionToExpressConnectRouterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def check_add_region_to_express_connect_router_with_options_async(
         self,
@@ -388,16 +358,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.CheckAddRegionToExpressConnectRouterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.CheckAddRegionToExpressConnectRouterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.CheckAddRegionToExpressConnectRouterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def check_add_region_to_express_connect_router(
         self,
@@ -469,16 +433,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.CreateExpressConnectRouterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.CreateExpressConnectRouterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.CreateExpressConnectRouterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_express_connect_router_with_options_async(
         self,
@@ -524,16 +482,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.CreateExpressConnectRouterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.CreateExpressConnectRouterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.CreateExpressConnectRouterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_express_connect_router(
         self,
@@ -619,16 +571,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.CreateExpressConnectRouterAssociationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.CreateExpressConnectRouterAssociationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.CreateExpressConnectRouterAssociationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_express_connect_router_association_with_options_async(
         self,
@@ -684,16 +630,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.CreateExpressConnectRouterAssociationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.CreateExpressConnectRouterAssociationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.CreateExpressConnectRouterAssociationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_express_connect_router_association(
         self,
@@ -727,7 +667,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.CreateFlowLogResponse:
         """
-        @summary 创建流日志
+        @summary Creates a flow log and enables log delivery.
         
         @param request: CreateFlowLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -749,6 +689,8 @@ class Client(OpenApiClient):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.sampling_rate):
             query['SamplingRate'] = request.sampling_rate
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -758,6 +700,8 @@ class Client(OpenApiClient):
             body['EcrId'] = request.ecr_id
         if not UtilClient.is_unset(request.flow_log_name):
             body['FlowLogName'] = request.flow_log_name
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
@@ -773,16 +717,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.CreateFlowLogResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.CreateFlowLogResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.CreateFlowLogResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_flow_log_with_options_async(
         self,
@@ -790,7 +728,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.CreateFlowLogResponse:
         """
-        @summary 创建流日志
+        @summary Creates a flow log and enables log delivery.
         
         @param request: CreateFlowLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -812,6 +750,8 @@ class Client(OpenApiClient):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.sampling_rate):
             query['SamplingRate'] = request.sampling_rate
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -821,6 +761,8 @@ class Client(OpenApiClient):
             body['EcrId'] = request.ecr_id
         if not UtilClient.is_unset(request.flow_log_name):
             body['FlowLogName'] = request.flow_log_name
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
@@ -836,23 +778,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.CreateFlowLogResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.CreateFlowLogResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.CreateFlowLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_flow_log(
         self,
         request: express_connect_router_20230901_models.CreateFlowLogRequest,
     ) -> express_connect_router_20230901_models.CreateFlowLogResponse:
         """
-        @summary 创建流日志
+        @summary Creates a flow log and enables log delivery.
         
         @param request: CreateFlowLogRequest
         @return: CreateFlowLogResponse
@@ -865,7 +801,7 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.CreateFlowLogRequest,
     ) -> express_connect_router_20230901_models.CreateFlowLogResponse:
         """
-        @summary 创建流日志
+        @summary Creates a flow log and enables log delivery.
         
         @param request: CreateFlowLogRequest
         @return: CreateFlowLogResponse
@@ -879,7 +815,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DeactivateFlowLogResponse:
         """
-        @summary 停止流日志
+        @summary Disables log delivery.
         
         @param request: DeactivateFlowLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -909,16 +845,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DeactivateFlowLogResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DeactivateFlowLogResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DeactivateFlowLogResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def deactivate_flow_log_with_options_async(
         self,
@@ -926,7 +856,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DeactivateFlowLogResponse:
         """
-        @summary 停止流日志
+        @summary Disables log delivery.
         
         @param request: DeactivateFlowLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -956,23 +886,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DeactivateFlowLogResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DeactivateFlowLogResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DeactivateFlowLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def deactivate_flow_log(
         self,
         request: express_connect_router_20230901_models.DeactivateFlowLogRequest,
     ) -> express_connect_router_20230901_models.DeactivateFlowLogResponse:
         """
-        @summary 停止流日志
+        @summary Disables log delivery.
         
         @param request: DeactivateFlowLogRequest
         @return: DeactivateFlowLogResponse
@@ -985,7 +909,7 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DeactivateFlowLogRequest,
     ) -> express_connect_router_20230901_models.DeactivateFlowLogResponse:
         """
-        @summary 停止流日志
+        @summary Disables log delivery.
         
         @param request: DeactivateFlowLogRequest
         @return: DeactivateFlowLogResponse
@@ -1031,16 +955,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DeleteExpressConnectRouterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DeleteExpressConnectRouterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DeleteExpressConnectRouterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_express_connect_router_with_options_async(
         self,
@@ -1080,16 +998,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DeleteExpressConnectRouterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DeleteExpressConnectRouterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DeleteExpressConnectRouterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_express_connect_router(
         self,
@@ -1163,16 +1075,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DeleteExpressConnectRouterAssociationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DeleteExpressConnectRouterAssociationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DeleteExpressConnectRouterAssociationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_express_connect_router_association_with_options_async(
         self,
@@ -1212,16 +1118,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DeleteExpressConnectRouterAssociationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DeleteExpressConnectRouterAssociationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DeleteExpressConnectRouterAssociationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_express_connect_router_association(
         self,
@@ -1255,7 +1155,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DeleteFlowlogResponse:
         """
-        @summary 删除流日志
+        @summary Deletes a flow log.
         
         @param request: DeleteFlowlogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1287,16 +1187,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DeleteFlowlogResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DeleteFlowlogResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DeleteFlowlogResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_flowlog_with_options_async(
         self,
@@ -1304,7 +1198,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DeleteFlowlogResponse:
         """
-        @summary 删除流日志
+        @summary Deletes a flow log.
         
         @param request: DeleteFlowlogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1336,23 +1230,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DeleteFlowlogResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DeleteFlowlogResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DeleteFlowlogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_flowlog(
         self,
         request: express_connect_router_20230901_models.DeleteFlowlogRequest,
     ) -> express_connect_router_20230901_models.DeleteFlowlogResponse:
         """
-        @summary 删除流日志
+        @summary Deletes a flow log.
         
         @param request: DeleteFlowlogRequest
         @return: DeleteFlowlogResponse
@@ -1365,7 +1253,7 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DeleteFlowlogRequest,
     ) -> express_connect_router_20230901_models.DeleteFlowlogResponse:
         """
-        @summary 删除流日志
+        @summary Deletes a flow log.
         
         @param request: DeleteFlowlogRequest
         @return: DeleteFlowlogResponse
@@ -1411,16 +1299,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeDisabledExpressConnectRouterRouteEntriesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeDisabledExpressConnectRouterRouteEntriesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DescribeDisabledExpressConnectRouterRouteEntriesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_disabled_express_connect_router_route_entries_with_options_async(
         self,
@@ -1460,16 +1342,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeDisabledExpressConnectRouterRouteEntriesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeDisabledExpressConnectRouterRouteEntriesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DescribeDisabledExpressConnectRouterRouteEntriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_disabled_express_connect_router_route_entries(
         self,
@@ -1541,16 +1417,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeExpressConnectRouterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeExpressConnectRouterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DescribeExpressConnectRouterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_express_connect_router_with_options_async(
         self,
@@ -1596,16 +1466,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeExpressConnectRouterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeExpressConnectRouterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DescribeExpressConnectRouterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_express_connect_router(
         self,
@@ -1673,16 +1537,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeExpressConnectRouterAllowedPrefixHistoryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeExpressConnectRouterAllowedPrefixHistoryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DescribeExpressConnectRouterAllowedPrefixHistoryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_express_connect_router_allowed_prefix_history_with_options_async(
         self,
@@ -1724,16 +1582,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeExpressConnectRouterAllowedPrefixHistoryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeExpressConnectRouterAllowedPrefixHistoryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DescribeExpressConnectRouterAllowedPrefixHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_express_connect_router_allowed_prefix_history(
         self,
@@ -1811,16 +1663,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeExpressConnectRouterAssociationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeExpressConnectRouterAssociationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DescribeExpressConnectRouterAssociationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_express_connect_router_association_with_options_async(
         self,
@@ -1872,16 +1718,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeExpressConnectRouterAssociationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeExpressConnectRouterAssociationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DescribeExpressConnectRouterAssociationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_express_connect_router_association(
         self,
@@ -1955,16 +1795,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeExpressConnectRouterChildInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeExpressConnectRouterChildInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DescribeExpressConnectRouterChildInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_express_connect_router_child_instance_with_options_async(
         self,
@@ -2012,16 +1846,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeExpressConnectRouterChildInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeExpressConnectRouterChildInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DescribeExpressConnectRouterChildInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_express_connect_router_child_instance(
         self,
@@ -2083,16 +1911,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeExpressConnectRouterInterRegionTransitModeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeExpressConnectRouterInterRegionTransitModeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DescribeExpressConnectRouterInterRegionTransitModeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_express_connect_router_inter_region_transit_mode_with_options_async(
         self,
@@ -2128,16 +1950,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeExpressConnectRouterInterRegionTransitModeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeExpressConnectRouterInterRegionTransitModeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DescribeExpressConnectRouterInterRegionTransitModeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_express_connect_router_inter_region_transit_mode(
         self,
@@ -2199,16 +2015,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeExpressConnectRouterRegionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeExpressConnectRouterRegionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DescribeExpressConnectRouterRegionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_express_connect_router_region_with_options_async(
         self,
@@ -2244,16 +2054,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeExpressConnectRouterRegionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeExpressConnectRouterRegionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DescribeExpressConnectRouterRegionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_express_connect_router_region(
         self,
@@ -2329,16 +2133,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeExpressConnectRouterRouteEntriesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeExpressConnectRouterRouteEntriesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DescribeExpressConnectRouterRouteEntriesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_express_connect_router_route_entries_with_options_async(
         self,
@@ -2388,16 +2186,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeExpressConnectRouterRouteEntriesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeExpressConnectRouterRouteEntriesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DescribeExpressConnectRouterRouteEntriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_express_connect_router_route_entries(
         self,
@@ -2431,7 +2223,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeFlowLogsResponse:
         """
-        @summary 查询流日志
+        @summary Queries flow logs.
         
         @param request: DescribeFlowLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2453,6 +2245,10 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -2475,16 +2271,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeFlowLogsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeFlowLogsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DescribeFlowLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_flow_logs_with_options_async(
         self,
@@ -2492,7 +2282,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeFlowLogsResponse:
         """
-        @summary 查询流日志
+        @summary Queries flow logs.
         
         @param request: DescribeFlowLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2514,6 +2304,10 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -2536,23 +2330,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeFlowLogsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeFlowLogsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DescribeFlowLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_flow_logs(
         self,
         request: express_connect_router_20230901_models.DescribeFlowLogsRequest,
     ) -> express_connect_router_20230901_models.DescribeFlowLogsResponse:
         """
-        @summary 查询流日志
+        @summary Queries flow logs.
         
         @param request: DescribeFlowLogsRequest
         @return: DescribeFlowLogsResponse
@@ -2565,7 +2353,7 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DescribeFlowLogsRequest,
     ) -> express_connect_router_20230901_models.DescribeFlowLogsResponse:
         """
-        @summary 查询流日志
+        @summary Queries flow logs.
         
         @param request: DescribeFlowLogsRequest
         @return: DescribeFlowLogsResponse
@@ -2625,16 +2413,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeInstanceGrantedToExpressConnectRouterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeInstanceGrantedToExpressConnectRouterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DescribeInstanceGrantedToExpressConnectRouterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_granted_to_express_connect_router_with_options_async(
         self,
@@ -2688,16 +2470,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeInstanceGrantedToExpressConnectRouterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DescribeInstanceGrantedToExpressConnectRouterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DescribeInstanceGrantedToExpressConnectRouterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance_granted_to_express_connect_router(
         self,
@@ -2765,16 +2541,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DetachExpressConnectRouterChildInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DetachExpressConnectRouterChildInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DetachExpressConnectRouterChildInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def detach_express_connect_router_child_instance_with_options_async(
         self,
@@ -2816,16 +2586,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DetachExpressConnectRouterChildInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DetachExpressConnectRouterChildInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DetachExpressConnectRouterChildInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def detach_express_connect_router_child_instance(
         self,
@@ -2895,16 +2659,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DisableExpressConnectRouterRouteEntriesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DisableExpressConnectRouterRouteEntriesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DisableExpressConnectRouterRouteEntriesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def disable_express_connect_router_route_entries_with_options_async(
         self,
@@ -2944,16 +2702,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DisableExpressConnectRouterRouteEntriesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.DisableExpressConnectRouterRouteEntriesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.DisableExpressConnectRouterRouteEntriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def disable_express_connect_router_route_entries(
         self,
@@ -3019,16 +2771,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.EnableExpressConnectRouterRouteEntriesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.EnableExpressConnectRouterRouteEntriesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.EnableExpressConnectRouterRouteEntriesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def enable_express_connect_router_route_entries_with_options_async(
         self,
@@ -3068,16 +2814,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.EnableExpressConnectRouterRouteEntriesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.EnableExpressConnectRouterRouteEntriesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.EnableExpressConnectRouterRouteEntriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def enable_express_connect_router_route_entries(
         self,
@@ -3142,16 +2882,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ForceDeleteExpressConnectRouterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ForceDeleteExpressConnectRouterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.ForceDeleteExpressConnectRouterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def force_delete_express_connect_router_with_options_async(
         self,
@@ -3190,16 +2924,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ForceDeleteExpressConnectRouterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ForceDeleteExpressConnectRouterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.ForceDeleteExpressConnectRouterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def force_delete_express_connect_router(
         self,
@@ -3277,16 +3005,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.GrantInstanceToExpressConnectRouterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.GrantInstanceToExpressConnectRouterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.GrantInstanceToExpressConnectRouterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def grant_instance_to_express_connect_router_with_options_async(
         self,
@@ -3332,16 +3054,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.GrantInstanceToExpressConnectRouterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.GrantInstanceToExpressConnectRouterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.GrantInstanceToExpressConnectRouterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def grant_instance_to_express_connect_router(
         self,
@@ -3405,16 +3121,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ListExpressConnectRouterSupportedRegionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ListExpressConnectRouterSupportedRegionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.ListExpressConnectRouterSupportedRegionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_express_connect_router_supported_region_with_options_async(
         self,
@@ -3448,16 +3158,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ListExpressConnectRouterSupportedRegionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ListExpressConnectRouterSupportedRegionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.ListExpressConnectRouterSupportedRegionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_express_connect_router_supported_region(
         self,
@@ -3523,16 +3227,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ListTagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ListTagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_tag_resources_with_options_async(
         self,
@@ -3572,16 +3270,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ListTagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ListTagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_tag_resources(
         self,
@@ -3649,16 +3341,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ModifyExpressConnectRouterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ModifyExpressConnectRouterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.ModifyExpressConnectRouterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_express_connect_router_with_options_async(
         self,
@@ -3700,16 +3386,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ModifyExpressConnectRouterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ModifyExpressConnectRouterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.ModifyExpressConnectRouterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_express_connect_router(
         self,
@@ -3783,16 +3463,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationAllowedPrefixResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationAllowedPrefixResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationAllowedPrefixResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_express_connect_router_association_allowed_prefix_with_options_async(
         self,
@@ -3836,16 +3510,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationAllowedPrefixResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationAllowedPrefixResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationAllowedPrefixResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_express_connect_router_association_allowed_prefix(
         self,
@@ -3909,16 +3577,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ModifyExpressConnectRouterInterRegionTransitModeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ModifyExpressConnectRouterInterRegionTransitModeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.ModifyExpressConnectRouterInterRegionTransitModeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_express_connect_router_inter_region_transit_mode_with_options_async(
         self,
@@ -3956,16 +3618,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ModifyExpressConnectRouterInterRegionTransitModeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ModifyExpressConnectRouterInterRegionTransitModeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.ModifyExpressConnectRouterInterRegionTransitModeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_express_connect_router_inter_region_transit_mode(
         self,
@@ -3999,7 +3655,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.ModifyFlowLogAttributeResponse:
         """
-        @summary 修改流日志
+        @summary Modifies the name, description, sampling rate, and sampling interval.
         
         @param request: ModifyFlowLogAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4039,16 +3695,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ModifyFlowLogAttributeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ModifyFlowLogAttributeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.ModifyFlowLogAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_flow_log_attribute_with_options_async(
         self,
@@ -4056,7 +3706,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.ModifyFlowLogAttributeResponse:
         """
-        @summary 修改流日志
+        @summary Modifies the name, description, sampling rate, and sampling interval.
         
         @param request: ModifyFlowLogAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4096,23 +3746,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ModifyFlowLogAttributeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.ModifyFlowLogAttributeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.ModifyFlowLogAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_flow_log_attribute(
         self,
         request: express_connect_router_20230901_models.ModifyFlowLogAttributeRequest,
     ) -> express_connect_router_20230901_models.ModifyFlowLogAttributeResponse:
         """
-        @summary 修改流日志
+        @summary Modifies the name, description, sampling rate, and sampling interval.
         
         @param request: ModifyFlowLogAttributeRequest
         @return: ModifyFlowLogAttributeResponse
@@ -4125,7 +3769,7 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.ModifyFlowLogAttributeRequest,
     ) -> express_connect_router_20230901_models.ModifyFlowLogAttributeResponse:
         """
-        @summary 修改流日志
+        @summary Modifies the name, description, sampling rate, and sampling interval.
         
         @param request: ModifyFlowLogAttributeRequest
         @return: ModifyFlowLogAttributeResponse
@@ -4171,16 +3815,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.MoveResourceGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.MoveResourceGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.MoveResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def move_resource_group_with_options_async(
         self,
@@ -4220,16 +3858,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.MoveResourceGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.MoveResourceGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.MoveResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def move_resource_group(
         self,
@@ -4299,16 +3931,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.RevokeInstanceFromExpressConnectRouterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.RevokeInstanceFromExpressConnectRouterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.RevokeInstanceFromExpressConnectRouterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def revoke_instance_from_express_connect_router_with_options_async(
         self,
@@ -4352,16 +3978,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.RevokeInstanceFromExpressConnectRouterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.RevokeInstanceFromExpressConnectRouterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.RevokeInstanceFromExpressConnectRouterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def revoke_instance_from_express_connect_router(
         self,
@@ -4425,16 +4045,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.SynchronizeExpressConnectRouterInterRegionBandwidthResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.SynchronizeExpressConnectRouterInterRegionBandwidthResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.SynchronizeExpressConnectRouterInterRegionBandwidthResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def synchronize_express_connect_router_inter_region_bandwidth_with_options_async(
         self,
@@ -4472,16 +4086,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.SynchronizeExpressConnectRouterInterRegionBandwidthResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.SynchronizeExpressConnectRouterInterRegionBandwidthResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.SynchronizeExpressConnectRouterInterRegionBandwidthResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def synchronize_express_connect_router_inter_region_bandwidth(
         self,
@@ -4551,16 +4159,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.TagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.TagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def tag_resources_with_options_async(
         self,
@@ -4600,16 +4202,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.TagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.TagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def tag_resources(
         self,
@@ -4677,16 +4273,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.UntagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.UntagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def untag_resources_with_options_async(
         self,
@@ -4728,16 +4318,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.UntagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                express_connect_router_20230901_models.UntagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def untag_resources(
         self,

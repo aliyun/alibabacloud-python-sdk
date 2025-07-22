@@ -1,3 +1,10 @@
+2025-07-22 Version: 4.0.2
+- Update API CreateFlowLog: add request parameters ResourceGroupId.
+- Update API CreateFlowLog: add request parameters Tag.
+- Update API DescribeFlowLogs: add request parameters ResourceGroupId.
+- Update API DescribeFlowLogs: add request parameters Tag.
+
+
 2025-02-17 Version: 4.0.0
 - Support API ActivateFlowLog.
 - Support API CreateFlowLog.

@@ -221,6 +221,7 @@ class AttachExpressConnectRouterChildInstanceRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # The description of the sub-instance. It must be 0 to 128 characters in length.
         self.description = description
         # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
@@ -697,6 +698,8 @@ class CreateExpressConnectRouterRequest(TeaModel):
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The description of the ECR.
+        # 
+        # >  The description can be empty or 0 to 256 characters in length and cannot start with http:// or https://.
         self.description = description
         # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
@@ -704,6 +707,8 @@ class CreateExpressConnectRouterRequest(TeaModel):
         # *   **false** (default): performs a dry run and performs the actual request.
         self.dry_run = dry_run
         # The name of the ECR.
+        # 
+        # >  The name must be 0 to 128 characters in length, and cannot start with http:// or https://.
         self.name = name
         # The ID of the resource group to which the ECR belongs.
         self.resource_group_id = resource_group_id
@@ -913,6 +918,11 @@ class CreateExpressConnectRouterAssociationRequest(TeaModel):
     ):
         # The allowed route prefixes.
         self.allowed_prefixes = allowed_prefixes
+        # The route prefix mode. Valid values:
+        # 
+        # - **MatchMode**: After you distribute new route CIDR blocks to data centers, original specific routes that are distributed are withdrawn.
+        # 
+        # - **IncrementalMode**: After you distribute new route CIDR blocks to data centers, the original specific routes that fall in the CIDR blocks that you configure are withdrawn, and the original specific routes that do not fall in the CIDR blocks are still distributed.
         self.allowed_prefixes_mode = allowed_prefixes_mode
         # The region ID of the resource to be associated.
         # 
@@ -931,6 +941,7 @@ class CreateExpressConnectRouterAssociationRequest(TeaModel):
         # *   **true**: You do not need to initiate an association on the TR.
         # *   **false**: You need to initiate an association on the TR.
         self.create_attachment = create_attachment
+        # The information about the associated resource. It must be 0 to 128 characters in length.
         self.description = description
         # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
@@ -1152,6 +1163,39 @@ class CreateExpressConnectRouterAssociationResponse(TeaModel):
         return self
 
 
+class CreateFlowLogRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateFlowLogRequest(TeaModel):
     def __init__(
         self,
@@ -1165,23 +1209,92 @@ class CreateFlowLogRequest(TeaModel):
         interval: int = None,
         log_store_name: str = None,
         project_name: str = None,
+        resource_group_id: str = None,
         sampling_rate: str = None,
+        tag: List[CreateFlowLogRequestTag] = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # The description of the flow log.
+        # 
+        # > The description can be empty or 1 to 256 characters in length. It cannot start with http:// or https://.
         self.description = description
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run.
+        # *   **false** (default): performs a dry run and performs the actual request.
         self.dry_run = dry_run
+        # The ID of the ECR.
+        # 
         # This parameter is required.
         self.ecr_id = ecr_id
+        # The name of the flow log.
+        # 
+        # > The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
         self.flow_log_name = flow_log_name
+        # The VBR ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The type of network instance. Valid values:
+        # 
+        # *   **VBR**\
+        # 
+        # This parameter is required.
         self.instance_type = instance_type
+        # The time window for collecting log data. Unit: seconds. Valid values:
+        # 
+        # - **60**\
+        # - **600**\
+        # 
+        # Default value: **600**.
         self.interval = interval
+        # The Logstore that stores the captured traffic data.
+        # 
+        # *   If a Logstore is already created in the selected region, enter the name of the Logstore.
+        # *   If no Logstores are created in the selected region, enter a name and the system automatically creates a Logstore. The name of the Logstore. The name must meet the following requirements:
+        # *   The name must be unique in a project.
+        # *   It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+        # *   The name must start and end with a lowercase letter or a digit.
+        # *   The name must be 3 to 63 characters in length.
+        # 
+        # This parameter is required.
         self.log_store_name = log_store_name
+        # The project that stores the captured traffic data.
+        # 
+        # *   If a project is already created in the selected region, enter the name of the project.
+        # *   If no projects are created in the selected region, enter a name and the system automatically creates a project.
+        # 
+        # The project name must be unique in a region. You cannot change the name after the project is created. The name must meet the following requirements:
+        # 
+        # *   The name must be globally unique.
+        # *   The name can contain only lowercase letters,
+        # *   digits, and hyphens (-).
+        # *   The name must start and end with a lowercase letter or a digit.
+        # *   The name must be 3 to 63 characters in length.
+        # 
+        # This parameter is required.
         self.project_name = project_name
+        self.resource_group_id = resource_group_id
+        # The sampling proportion. Valid values:
+        # 
+        # - **1:4096**\
+        # - **1:2048**\
+        # - **1:1024**\
+        # 
+        # Default value: **1:4096**.
         self.sampling_rate = sampling_rate
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1209,8 +1322,14 @@ class CreateFlowLogRequest(TeaModel):
             result['LogStoreName'] = self.log_store_name
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.sampling_rate is not None:
             result['SamplingRate'] = self.sampling_rate
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -1235,8 +1354,15 @@ class CreateFlowLogRequest(TeaModel):
             self.log_store_name = m.get('LogStoreName')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SamplingRate') is not None:
             self.sampling_rate = m.get('SamplingRate')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateFlowLogRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -1253,14 +1379,28 @@ class CreateFlowLogResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The queried information about the request denial.
         self.access_denied_detail = access_denied_detail
+        # The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
         self.code = code
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic error message. This parameter is used to replace the % **s** in the **ErrMessage** error message of the response parameter.
+        # 
+        # > For example, if the value of **ErrMessage** is **The Value of Input Parameter** %**s is not valid** and the value of **DynamicMessage** is **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
+        # The ID of the flow log.
         self.flow_log_id = flow_log_id
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # - **True**\
+        # - **False**\
         self.success = success
 
     def validate(self):
@@ -1364,10 +1504,23 @@ class DeactivateFlowLogRequest(TeaModel):
         ecr_id: str = None,
         flow_log_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run.
+        # *   **false** (default): performs a dry run and performs the actual request.
         self.dry_run = dry_run
+        # The ECR ID.
+        # 
         # This parameter is required.
         self.ecr_id = ecr_id
+        # The ID of the flow log.
+        # 
         # This parameter is required.
         self.flow_log_id = flow_log_id
 
@@ -1415,13 +1568,26 @@ class DeactivateFlowLogResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
         self.code = code
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+        # 
+        # >  For example, if the value of **ErrMessage** is **The Value of Input Parameter %s is not valid** and the value of **DynamicMessage** is **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -1888,10 +2054,23 @@ class DeleteFlowlogRequest(TeaModel):
         ecr_id: str = None,
         flow_log_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   true: performs only a dry run.
+        # *   false (default): performs a dry run and performs the actual request.
         self.dry_run = dry_run
+        # The ECR ID.
+        # 
         # This parameter is required.
         self.ecr_id = ecr_id
+        # The ID of the flow log.
+        # 
         # This parameter is required.
         self.flow_log_id = flow_log_id
 
@@ -1939,13 +2118,26 @@ class DeleteFlowlogResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
         self.code = code
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+        # 
+        # >  For example, if the value of **ErrMessage** is **The Value of Input Parameter %s is not valid** and the value of **DynamicMessage** is **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # - **True**\
+        # - **False**\
         self.success = success
 
     def validate(self):
@@ -2391,7 +2583,7 @@ class DescribeExpressConnectRouterRequest(TeaModel):
         self.ecr_id = ecr_id
         # The maximum number of entries to read. Valid values: 1 to 2147483647. Default value: 20.
         self.max_results = max_results
-        # The name of the ECR.
+        # The name of the ECR. The name must be 0 to 128 characters in length.
         self.name = name
         # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
@@ -3161,6 +3353,10 @@ class DescribeExpressConnectRouterAssociationResponseBodyAssociationList(TeaMode
     ):
         # The allowed route prefixes.
         self.allowed_prefixes = allowed_prefixes
+        # The prefix route mode. Valid values:
+        # 
+        # *   MatchMode
+        # *   IncrementalMode
         self.allowed_prefixes_mode = allowed_prefixes_mode
         # The ID of the association between the ECR and the VPC or TR.
         self.association_id = association_id
@@ -3171,6 +3367,7 @@ class DescribeExpressConnectRouterAssociationResponseBodyAssociationList(TeaMode
         self.association_node_type = association_node_type
         # The ID of the CEN instance.
         self.cen_id = cen_id
+        # The description of the associated resource.
         self.description = description
         # The ECR ID.
         self.ecr_id = ecr_id
@@ -4341,6 +4538,11 @@ class DescribeExpressConnectRouterRouteEntriesResponseBodyRouteEntriesList(TeaMo
         self.community = community
         # The destination CIDR block of the route.
         self.destination_cidr_block = destination_cidr_block
+        # The MED value of the BGP route, which is used between the ECR and the transit router.
+        # 
+        # *   You can set the MED value to 2000. In this case, the transit router and the ECR are used as default paths.
+        # *   If a non-default path is used, the MED value is empty.
+        # *   You can set the MED value to 2000 only for one object associated with a transit router of a CEN instance.
         self.med = med
         # The ID of the next-hop instance.
         self.nexthop_instance_id = nexthop_instance_id
@@ -4432,7 +4634,7 @@ class DescribeExpressConnectRouterRouteEntriesResponseBody(TeaModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The route entries.
+        # The routes.
         self.route_entries_list = route_entries_list
         # Indicates whether the request was successful. Valid values:
         # 
@@ -4555,6 +4757,39 @@ class DescribeExpressConnectRouterRouteEntriesResponse(TeaModel):
         return self
 
 
+class DescribeFlowLogsRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeFlowLogsRequest(TeaModel):
     def __init__(
         self,
@@ -4568,21 +4803,67 @@ class DescribeFlowLogsRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
         project_name: str = None,
+        resource_group_id: str = None,
+        tag: List[DescribeFlowLogsRequestTag] = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run.
+        # *   **false** (default): performs a dry run and performs the actual request.
         self.dry_run = dry_run
+        # The ECR ID.
+        # 
         # This parameter is required.
         self.ecr_id = ecr_id
+        # The ID of the flow log.
         self.flow_log_id = flow_log_id
+        # The flow log name. The name must be 0 to 128 characters in length.
         self.flow_log_name = flow_log_name
+        # The ID of the VBR associated with the ECR.
         self.instance_id = instance_id
+        # The Logstore that stores the captured traffic data.
+        # 
+        # *   If a Logstore is already created in the selected region, enter the name of the Logstore.
+        # *   If no Logstores are created in the selected region, enter a name and the system automatically creates a Logstore. The name of the Logstore. The name must meet the following requirements:
+        # *   The name must be unique in a project.
+        # *   It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+        # *   The name must start and end with a lowercase letter or a digit.
+        # *   The name must be 3 to 63 characters in length.
         self.log_store_name = log_store_name
+        # The maximum number of entries to return. Valid values: 1 to 2147483647. Default value: 10.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # - You do not need to specify this parameter for the first request.
+        # - You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The project that stores the captured traffic data.
+        # 
+        # *   If a project is already created in the selected region, enter the name of the project.
+        # *   If no projects are created in the selected region, enter a name and the system automatically creates a project.
+        # 
+        # The project name must be unique in a region. You cannot change the name after the project is created. The name must meet the following requirements:
+        # 
+        # *   The name must be globally unique.
+        # *   The name can contain only lowercase letters,
+        # *   digits, and hyphens (-).
+        # *   The name must start and end with a lowercase letter or a digit.
+        # *   The name must be 3 to 63 characters in length.
         self.project_name = project_name
+        self.resource_group_id = resource_group_id
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4610,6 +4891,12 @@ class DescribeFlowLogsRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -4634,6 +4921,13 @@ class DescribeFlowLogsRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeFlowLogsRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -4643,7 +4937,13 @@ class DescribeFlowLogsResponseBodyFlowLogsTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N of the instance. The tag key cannot be an empty string.
+        # 
+        # > It can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value.
+        # 
+        # > It can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`. The tag value can be an empty string.
         self.value = value
 
     def validate(self):
@@ -4690,21 +4990,54 @@ class DescribeFlowLogsResponseBodyFlowLogs(TeaModel):
         status: str = None,
         tags: List[DescribeFlowLogsResponseBodyFlowLogsTags] = None,
     ):
+        # The time when the flow log was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
         self.creation_time = creation_time
+        # The description of the flow log.
         self.description = description
+        # The ECR ID.
         self.ecr_id = ecr_id
+        # The ID of the flow log.
         self.flow_log_id = flow_log_id
+        # The name of the flow log.
         self.flow_log_name = flow_log_name
+        # The ID of the network instance.
         self.instance_id = instance_id
+        # The type of the network instance. Valid values:
+        # 
+        # - **VBR**: virtual border router (VBR)
         self.instance_type = instance_type
+        # The time window for collecting log data. Unit: seconds. Valid values:
+        # 
+        # - **60**\
+        # - **600**\
+        # 
+        # Default value: **600**.
         self.interval = interval
+        # The Logstore that stores the captured traffic data.
         self.log_store_name = log_store_name
+        # The name of the project that stores the captured traffic data.
         self.project_name = project_name
+        # The region ID of the flow log.
         self.region_id = region_id
+        # The ID of the resource group to which the ECR belongs.
         self.resource_group_id = resource_group_id
+        # The sampling proportion. Valid values:
+        # 
+        # - **1:4096**\
+        # - **1:2048**\
+        # - **1:1024**\
+        # 
+        # Default value: **1:4096**.
         self.sampling_rate = sampling_rate
+        # The ID of the region where Log Service is deployed.
         self.sls_region_id = sls_region_id
+        # The status of the flow log. Valid values:
+        # 
+        # *   **Active**\
+        # 
+        # *   **Inactive**\
         self.status = status
+        # The tag key.
         self.tags = tags
 
     def validate(self):
@@ -4811,17 +5144,37 @@ class DescribeFlowLogsResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The queried information about the request denial.
         self.access_denied_detail = access_denied_detail
+        # The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
         self.code = code
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+        # 
+        # >  For example, if the value of **ErrMessage** is **The Value of Input Parameter %s is not valid** and the value of **DynamicMessage** is **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
+        # The information about the flow logs.
         self.flow_logs = flow_logs
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The total number of entries returned. Valid values: 1 to 2147483647. Default value: 10.
         self.max_results = max_results
+        # The returned message.
         self.message = message
+        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # - **True**\
+        # - **False**\
         self.success = success
+        # The total number of records that meet the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -4992,6 +5345,10 @@ class DescribeInstanceGrantedToExpressConnectRouterRequest(TeaModel):
         resource_group_id: str = None,
         tag_models: List[DescribeInstanceGrantedToExpressConnectRouterRequestTagModels] = None,
     ):
+        # The type of the user account. Valid values:
+        # 
+        # *   **sub**: a Resource Access Management (RAM) user.
+        # *   **parent**: an Alibaba Cloud account.
         self.caller_type = caller_type
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -5120,6 +5477,7 @@ class DescribeInstanceGrantedToExpressConnectRouterResponseBodyEcrGrantedInstanc
     ):
         # The ECR ID.
         self.ecr_id = ecr_id
+        # The ID of the Alibaba Cloud account that owns the ECR to which you want to grant permissions.
         self.ecr_owner_ali_uid = ecr_owner_ali_uid
         # The time when the network instance was created.
         self.gmt_create = gmt_create
@@ -6545,9 +6903,9 @@ class ListTagResourcesRequest(TeaModel):
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tags.
+        # The tag.
         # 
-        # You can bind up to 20 tags to an ECR.
+        # You can specify at most 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -6791,6 +7149,8 @@ class ModifyExpressConnectRouterRequest(TeaModel):
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The description of the ECR.
+        # 
+        # >  The description can be empty or 0 to 256 characters in length and cannot start with http:// or https://.
         self.description = description
         # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
@@ -6802,6 +7162,8 @@ class ModifyExpressConnectRouterRequest(TeaModel):
         # This parameter is required.
         self.ecr_id = ecr_id
         # The name of the ECR.
+        # 
+        # >  The name must be 0 to 128 characters in length, and cannot start with http:// or https://.
         self.name = name
 
     def validate(self):
@@ -6976,6 +7338,10 @@ class ModifyExpressConnectRouterAssociationAllowedPrefixRequest(TeaModel):
     ):
         # The allowed route prefixes.
         self.allowed_prefixes = allowed_prefixes
+        # The route prefix mode.
+        # 
+        # *   MatchMode: After you distribute new route CIDR blocks to data centers, original specific routes that are distributed are withdrawn.
+        # *   IncrementalMode: After you distribute new route CIDR blocks to data centers, the original specific routes that fall in the CIDR blocks that you configure are withdrawn, and the original specific routes that do not fall in the CIDR blocks are still distributed.
         self.allowed_prefixes_mode = allowed_prefixes_mode
         # The ID of the association between the ECR and the VPC or TR.
         # 
@@ -7404,15 +7770,44 @@ class ModifyFlowLogAttributeRequest(TeaModel):
         interval: int = None,
         sampling_rate: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # The description of the flow log.
+        # The description can be empty or 0 to 256 characters in length.
         self.description = description
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run.
+        # *   **false** (default): performs a dry run and performs the actual request.
         self.dry_run = dry_run
+        # The ECR ID.
+        # 
         # This parameter is required.
         self.ecr_id = ecr_id
+        # The ID of the flow log.
+        # 
         # This parameter is required.
         self.flow_log_id = flow_log_id
+        # The new name of the flow log. The name must be 0 to 128 characters in length.
         self.flow_log_name = flow_log_name
+        # The time window for collecting log data. Unit: seconds. Valid values:
+        # 
+        # - **60**\
+        # - **600**\
+        # 
+        # Default value: **600**.
         self.interval = interval
+        # The sampling proportion. Valid values:
+        # 
+        # - **1:4096**\
+        # - **1:2048**\
+        # - **1:1024**\
+        # 
+        # Default value: **1:4096**.
         self.sampling_rate = sampling_rate
 
     def validate(self):
@@ -7475,13 +7870,26 @@ class ModifyFlowLogAttributeResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
         self.code = code
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+        # 
+        # >  For example, if the value of **ErrMessage** is **The Value of Input Parameter %s is not valid** and the value of **DynamicMessage** is **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether routes are disabled by the ECR. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -8339,12 +8747,12 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        # Specifies whether to remove all tags. This parameter is valid only when the TagKey.N parameter is not specified. Valid values:
+        # Specifies whether to remove all tags. This parameter is valid only when the **TagKey** parameter is not specified. Valid values:
         # 
-        # *   true
-        # *   false
+        # *   **true**\
+        # *   **false** (default)
         # 
-        # Default value: false.
+        # >  You must specify one of **TagKey** and **All**.
         self.all = all
         # The client token that is used to ensure the idempotence of the request.
         # 
