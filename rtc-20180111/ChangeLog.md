@@ -1,3 +1,14 @@
+2025-07-22 Version: 5.2.2
+- Update API StartCloudRecord: add request parameters Annotation.
+- Update API StartCloudRecord: add request parameters RecordMode.
+- Update API StartCloudRecord: add request parameters SingleStreamingRecord.
+- Update API StartCloudRecord: add request parameters StartWithoutChannel.
+- Update API StartCloudRecord: add request parameters StartWithoutChannelWaitTime.
+- Update API StartStreamingOut: add request parameters Annotation.
+- Update API StartStreamingOut: add request parameters SpecMixedUserList.
+- Update API UpdateStreamingOut: add request parameters SpecMixedUserList.
+
+
 2025-07-09 Version: 5.2.1
 - Generated python 2018-01-11 for rtc.
 

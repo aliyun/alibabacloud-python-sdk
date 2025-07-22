@@ -23615,6 +23615,166 @@ class StartCloudRecordRequestRegionColor(TeaModel):
         return self
 
 
+class StartCloudRecordRequestSingleStreamingRecordSpecifiedStreams(TeaModel):
+    def __init__(
+        self,
+        ids: List[str] = None,
+        stream_type: str = None,
+        type: str = None,
+    ):
+        # This parameter is required.
+        self.ids = ids
+        # This parameter is required.
+        self.stream_type = stream_type
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        if self.stream_type is not None:
+            result['StreamType'] = self.stream_type
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        if m.get('StreamType') is not None:
+            self.stream_type = m.get('StreamType')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class StartCloudRecordRequestSingleStreamingRecordTranscodingParametersAudio(TeaModel):
+    def __init__(
+        self,
+        bitrate: int = None,
+        codec: str = None,
+        sample_rate: int = None,
+    ):
+        self.bitrate = bitrate
+        self.codec = codec
+        self.sample_rate = sample_rate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bitrate is not None:
+            result['Bitrate'] = self.bitrate
+        if self.codec is not None:
+            result['Codec'] = self.codec
+        if self.sample_rate is not None:
+            result['SampleRate'] = self.sample_rate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bitrate') is not None:
+            self.bitrate = m.get('Bitrate')
+        if m.get('Codec') is not None:
+            self.codec = m.get('Codec')
+        if m.get('SampleRate') is not None:
+            self.sample_rate = m.get('SampleRate')
+        return self
+
+
+class StartCloudRecordRequestSingleStreamingRecordTranscodingParameters(TeaModel):
+    def __init__(
+        self,
+        audio: StartCloudRecordRequestSingleStreamingRecordTranscodingParametersAudio = None,
+        container: str = None,
+    ):
+        self.audio = audio
+        self.container = container
+
+    def validate(self):
+        if self.audio:
+            self.audio.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio is not None:
+            result['Audio'] = self.audio.to_map()
+        if self.container is not None:
+            result['Container'] = self.container
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Audio') is not None:
+            temp_model = StartCloudRecordRequestSingleStreamingRecordTranscodingParametersAudio()
+            self.audio = temp_model.from_map(m['Audio'])
+        if m.get('Container') is not None:
+            self.container = m.get('Container')
+        return self
+
+
+class StartCloudRecordRequestSingleStreamingRecord(TeaModel):
+    def __init__(
+        self,
+        specified_streams: List[StartCloudRecordRequestSingleStreamingRecordSpecifiedStreams] = None,
+        transcoding_parameters: StartCloudRecordRequestSingleStreamingRecordTranscodingParameters = None,
+    ):
+        # This parameter is required.
+        self.specified_streams = specified_streams
+        self.transcoding_parameters = transcoding_parameters
+
+    def validate(self):
+        if self.specified_streams:
+            for k in self.specified_streams:
+                if k:
+                    k.validate()
+        if self.transcoding_parameters:
+            self.transcoding_parameters.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['SpecifiedStreams'] = []
+        if self.specified_streams is not None:
+            for k in self.specified_streams:
+                result['SpecifiedStreams'].append(k.to_map() if k else None)
+        if self.transcoding_parameters is not None:
+            result['TranscodingParameters'] = self.transcoding_parameters.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.specified_streams = []
+        if m.get('SpecifiedStreams') is not None:
+            for k in m.get('SpecifiedStreams'):
+                temp_model = StartCloudRecordRequestSingleStreamingRecordSpecifiedStreams()
+                self.specified_streams.append(temp_model.from_map(k))
+        if m.get('TranscodingParameters') is not None:
+            temp_model = StartCloudRecordRequestSingleStreamingRecordTranscodingParameters()
+            self.transcoding_parameters = temp_model.from_map(m['TranscodingParameters'])
+        return self
+
+
 class StartCloudRecordRequestStorageConfig(TeaModel):
     def __init__(
         self,
@@ -23869,6 +24029,7 @@ class StartCloudRecordRequestTexts(TeaModel):
 class StartCloudRecordRequest(TeaModel):
     def __init__(
         self,
+        annotation: str = None,
         app_id: str = None,
         backgrounds: List[StartCloudRecordRequestBackgrounds] = None,
         bg_color: StartCloudRecordRequestBgColor = None,
@@ -23878,15 +24039,20 @@ class StartCloudRecordRequest(TeaModel):
         images: List[StartCloudRecordRequestImages] = None,
         layout_specified_users: StartCloudRecordRequestLayoutSpecifiedUsers = None,
         panes: List[StartCloudRecordRequestPanes] = None,
+        record_mode: int = None,
         region_color: StartCloudRecordRequestRegionColor = None,
         reserve_pane_for_no_camera_user: bool = None,
         show_default_background_on_mute: bool = None,
+        single_streaming_record: StartCloudRecordRequestSingleStreamingRecord = None,
+        start_without_channel: bool = None,
+        start_without_channel_wait_time: int = None,
         storage_config: StartCloudRecordRequestStorageConfig = None,
         sub_high_resolution_stream: bool = None,
         task_id: str = None,
         template_id: str = None,
         texts: List[StartCloudRecordRequestTexts] = None,
     ):
+        self.annotation = annotation
         # appId
         # 
         # This parameter is required.
@@ -23903,9 +24069,13 @@ class StartCloudRecordRequest(TeaModel):
         self.layout_specified_users = layout_specified_users
         # panes
         self.panes = panes
+        self.record_mode = record_mode
         self.region_color = region_color
         self.reserve_pane_for_no_camera_user = reserve_pane_for_no_camera_user
         self.show_default_background_on_mute = show_default_background_on_mute
+        self.single_streaming_record = single_streaming_record
+        self.start_without_channel = start_without_channel
+        self.start_without_channel_wait_time = start_without_channel_wait_time
         # storageConfig
         # 
         # This parameter is required.
@@ -23942,6 +24112,8 @@ class StartCloudRecordRequest(TeaModel):
                     k.validate()
         if self.region_color:
             self.region_color.validate()
+        if self.single_streaming_record:
+            self.single_streaming_record.validate()
         if self.storage_config:
             self.storage_config.validate()
         if self.texts:
@@ -23955,6 +24127,8 @@ class StartCloudRecordRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.annotation is not None:
+            result['Annotation'] = self.annotation
         if self.app_id is not None:
             result['AppId'] = self.app_id
         result['Backgrounds'] = []
@@ -23981,12 +24155,20 @@ class StartCloudRecordRequest(TeaModel):
         if self.panes is not None:
             for k in self.panes:
                 result['Panes'].append(k.to_map() if k else None)
+        if self.record_mode is not None:
+            result['RecordMode'] = self.record_mode
         if self.region_color is not None:
             result['RegionColor'] = self.region_color.to_map()
         if self.reserve_pane_for_no_camera_user is not None:
             result['ReservePaneForNoCameraUser'] = self.reserve_pane_for_no_camera_user
         if self.show_default_background_on_mute is not None:
             result['ShowDefaultBackgroundOnMute'] = self.show_default_background_on_mute
+        if self.single_streaming_record is not None:
+            result['SingleStreamingRecord'] = self.single_streaming_record.to_map()
+        if self.start_without_channel is not None:
+            result['StartWithoutChannel'] = self.start_without_channel
+        if self.start_without_channel_wait_time is not None:
+            result['StartWithoutChannelWaitTime'] = self.start_without_channel_wait_time
         if self.storage_config is not None:
             result['StorageConfig'] = self.storage_config.to_map()
         if self.sub_high_resolution_stream is not None:
@@ -24003,6 +24185,8 @@ class StartCloudRecordRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Annotation') is not None:
+            self.annotation = m.get('Annotation')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         self.backgrounds = []
@@ -24035,6 +24219,8 @@ class StartCloudRecordRequest(TeaModel):
             for k in m.get('Panes'):
                 temp_model = StartCloudRecordRequestPanes()
                 self.panes.append(temp_model.from_map(k))
+        if m.get('RecordMode') is not None:
+            self.record_mode = m.get('RecordMode')
         if m.get('RegionColor') is not None:
             temp_model = StartCloudRecordRequestRegionColor()
             self.region_color = temp_model.from_map(m['RegionColor'])
@@ -24042,6 +24228,13 @@ class StartCloudRecordRequest(TeaModel):
             self.reserve_pane_for_no_camera_user = m.get('ReservePaneForNoCameraUser')
         if m.get('ShowDefaultBackgroundOnMute') is not None:
             self.show_default_background_on_mute = m.get('ShowDefaultBackgroundOnMute')
+        if m.get('SingleStreamingRecord') is not None:
+            temp_model = StartCloudRecordRequestSingleStreamingRecord()
+            self.single_streaming_record = temp_model.from_map(m['SingleStreamingRecord'])
+        if m.get('StartWithoutChannel') is not None:
+            self.start_without_channel = m.get('StartWithoutChannel')
+        if m.get('StartWithoutChannelWaitTime') is not None:
+            self.start_without_channel_wait_time = m.get('StartWithoutChannelWaitTime')
         if m.get('StorageConfig') is not None:
             temp_model = StartCloudRecordRequestStorageConfig()
             self.storage_config = temp_model.from_map(m['StorageConfig'])
@@ -25204,6 +25397,7 @@ class StartCloudRecordShrinkRequestTexts(TeaModel):
 class StartCloudRecordShrinkRequest(TeaModel):
     def __init__(
         self,
+        annotation: str = None,
         app_id: str = None,
         backgrounds: List[StartCloudRecordShrinkRequestBackgrounds] = None,
         bg_color: StartCloudRecordShrinkRequestBgColor = None,
@@ -25213,15 +25407,20 @@ class StartCloudRecordShrinkRequest(TeaModel):
         images: List[StartCloudRecordShrinkRequestImages] = None,
         layout_specified_users_shrink: str = None,
         panes: List[StartCloudRecordShrinkRequestPanes] = None,
+        record_mode: int = None,
         region_color: StartCloudRecordShrinkRequestRegionColor = None,
         reserve_pane_for_no_camera_user: bool = None,
         show_default_background_on_mute: bool = None,
+        single_streaming_record_shrink: str = None,
+        start_without_channel: bool = None,
+        start_without_channel_wait_time: int = None,
         storage_config: StartCloudRecordShrinkRequestStorageConfig = None,
         sub_high_resolution_stream: bool = None,
         task_id: str = None,
         template_id: str = None,
         texts: List[StartCloudRecordShrinkRequestTexts] = None,
     ):
+        self.annotation = annotation
         # appId
         # 
         # This parameter is required.
@@ -25238,9 +25437,13 @@ class StartCloudRecordShrinkRequest(TeaModel):
         self.layout_specified_users_shrink = layout_specified_users_shrink
         # panes
         self.panes = panes
+        self.record_mode = record_mode
         self.region_color = region_color
         self.reserve_pane_for_no_camera_user = reserve_pane_for_no_camera_user
         self.show_default_background_on_mute = show_default_background_on_mute
+        self.single_streaming_record_shrink = single_streaming_record_shrink
+        self.start_without_channel = start_without_channel
+        self.start_without_channel_wait_time = start_without_channel_wait_time
         # storageConfig
         # 
         # This parameter is required.
@@ -25288,6 +25491,8 @@ class StartCloudRecordShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.annotation is not None:
+            result['Annotation'] = self.annotation
         if self.app_id is not None:
             result['AppId'] = self.app_id
         result['Backgrounds'] = []
@@ -25314,12 +25519,20 @@ class StartCloudRecordShrinkRequest(TeaModel):
         if self.panes is not None:
             for k in self.panes:
                 result['Panes'].append(k.to_map() if k else None)
+        if self.record_mode is not None:
+            result['RecordMode'] = self.record_mode
         if self.region_color is not None:
             result['RegionColor'] = self.region_color.to_map()
         if self.reserve_pane_for_no_camera_user is not None:
             result['ReservePaneForNoCameraUser'] = self.reserve_pane_for_no_camera_user
         if self.show_default_background_on_mute is not None:
             result['ShowDefaultBackgroundOnMute'] = self.show_default_background_on_mute
+        if self.single_streaming_record_shrink is not None:
+            result['SingleStreamingRecord'] = self.single_streaming_record_shrink
+        if self.start_without_channel is not None:
+            result['StartWithoutChannel'] = self.start_without_channel
+        if self.start_without_channel_wait_time is not None:
+            result['StartWithoutChannelWaitTime'] = self.start_without_channel_wait_time
         if self.storage_config is not None:
             result['StorageConfig'] = self.storage_config.to_map()
         if self.sub_high_resolution_stream is not None:
@@ -25336,6 +25549,8 @@ class StartCloudRecordShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Annotation') is not None:
+            self.annotation = m.get('Annotation')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         self.backgrounds = []
@@ -25367,6 +25582,8 @@ class StartCloudRecordShrinkRequest(TeaModel):
             for k in m.get('Panes'):
                 temp_model = StartCloudRecordShrinkRequestPanes()
                 self.panes.append(temp_model.from_map(k))
+        if m.get('RecordMode') is not None:
+            self.record_mode = m.get('RecordMode')
         if m.get('RegionColor') is not None:
             temp_model = StartCloudRecordShrinkRequestRegionColor()
             self.region_color = temp_model.from_map(m['RegionColor'])
@@ -25374,6 +25591,12 @@ class StartCloudRecordShrinkRequest(TeaModel):
             self.reserve_pane_for_no_camera_user = m.get('ReservePaneForNoCameraUser')
         if m.get('ShowDefaultBackgroundOnMute') is not None:
             self.show_default_background_on_mute = m.get('ShowDefaultBackgroundOnMute')
+        if m.get('SingleStreamingRecord') is not None:
+            self.single_streaming_record_shrink = m.get('SingleStreamingRecord')
+        if m.get('StartWithoutChannel') is not None:
+            self.start_without_channel = m.get('StartWithoutChannel')
+        if m.get('StartWithoutChannelWaitTime') is not None:
+            self.start_without_channel_wait_time = m.get('StartWithoutChannelWaitTime')
         if m.get('StorageConfig') is not None:
             temp_model = StartCloudRecordShrinkRequestStorageConfig()
             self.storage_config = temp_model.from_map(m['StorageConfig'])
@@ -27784,6 +28007,7 @@ class StartStreamingOutRequestTexts(TeaModel):
 class StartStreamingOutRequest(TeaModel):
     def __init__(
         self,
+        annotation: str = None,
         app_id: str = None,
         backgrounds: List[StartStreamingOutRequestBackgrounds] = None,
         bg_color: StartStreamingOutRequestBgColor = None,
@@ -27796,6 +28020,7 @@ class StartStreamingOutRequest(TeaModel):
         region_color: StartStreamingOutRequestRegionColor = None,
         reserve_pane_for_no_camera_user: bool = None,
         show_default_background_on_mute: bool = None,
+        spec_mixed_user_list: List[str] = None,
         start_without_channel: bool = None,
         start_without_channel_wait_time: int = None,
         sub_high_resolution_stream: bool = None,
@@ -27804,6 +28029,7 @@ class StartStreamingOutRequest(TeaModel):
         texts: List[StartStreamingOutRequestTexts] = None,
         url: str = None,
     ):
+        self.annotation = annotation
         # This parameter is required.
         self.app_id = app_id
         self.backgrounds = backgrounds
@@ -27818,6 +28044,7 @@ class StartStreamingOutRequest(TeaModel):
         self.region_color = region_color
         self.reserve_pane_for_no_camera_user = reserve_pane_for_no_camera_user
         self.show_default_background_on_mute = show_default_background_on_mute
+        self.spec_mixed_user_list = spec_mixed_user_list
         self.start_without_channel = start_without_channel
         self.start_without_channel_wait_time = start_without_channel_wait_time
         self.sub_high_resolution_stream = sub_high_resolution_stream
@@ -27862,6 +28089,8 @@ class StartStreamingOutRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.annotation is not None:
+            result['Annotation'] = self.annotation
         if self.app_id is not None:
             result['AppId'] = self.app_id
         result['Backgrounds'] = []
@@ -27894,6 +28123,8 @@ class StartStreamingOutRequest(TeaModel):
             result['ReservePaneForNoCameraUser'] = self.reserve_pane_for_no_camera_user
         if self.show_default_background_on_mute is not None:
             result['ShowDefaultBackgroundOnMute'] = self.show_default_background_on_mute
+        if self.spec_mixed_user_list is not None:
+            result['SpecMixedUserList'] = self.spec_mixed_user_list
         if self.start_without_channel is not None:
             result['StartWithoutChannel'] = self.start_without_channel
         if self.start_without_channel_wait_time is not None:
@@ -27914,6 +28145,8 @@ class StartStreamingOutRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Annotation') is not None:
+            self.annotation = m.get('Annotation')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         self.backgrounds = []
@@ -27953,6 +28186,8 @@ class StartStreamingOutRequest(TeaModel):
             self.reserve_pane_for_no_camera_user = m.get('ReservePaneForNoCameraUser')
         if m.get('ShowDefaultBackgroundOnMute') is not None:
             self.show_default_background_on_mute = m.get('ShowDefaultBackgroundOnMute')
+        if m.get('SpecMixedUserList') is not None:
+            self.spec_mixed_user_list = m.get('SpecMixedUserList')
         if m.get('StartWithoutChannel') is not None:
             self.start_without_channel = m.get('StartWithoutChannel')
         if m.get('StartWithoutChannelWaitTime') is not None:
@@ -29042,6 +29277,7 @@ class StartStreamingOutShrinkRequestTexts(TeaModel):
 class StartStreamingOutShrinkRequest(TeaModel):
     def __init__(
         self,
+        annotation: str = None,
         app_id: str = None,
         backgrounds: List[StartStreamingOutShrinkRequestBackgrounds] = None,
         bg_color: StartStreamingOutShrinkRequestBgColor = None,
@@ -29054,6 +29290,7 @@ class StartStreamingOutShrinkRequest(TeaModel):
         region_color: StartStreamingOutShrinkRequestRegionColor = None,
         reserve_pane_for_no_camera_user: bool = None,
         show_default_background_on_mute: bool = None,
+        spec_mixed_user_list: List[str] = None,
         start_without_channel: bool = None,
         start_without_channel_wait_time: int = None,
         sub_high_resolution_stream: bool = None,
@@ -29062,6 +29299,7 @@ class StartStreamingOutShrinkRequest(TeaModel):
         texts: List[StartStreamingOutShrinkRequestTexts] = None,
         url: str = None,
     ):
+        self.annotation = annotation
         # This parameter is required.
         self.app_id = app_id
         self.backgrounds = backgrounds
@@ -29076,6 +29314,7 @@ class StartStreamingOutShrinkRequest(TeaModel):
         self.region_color = region_color
         self.reserve_pane_for_no_camera_user = reserve_pane_for_no_camera_user
         self.show_default_background_on_mute = show_default_background_on_mute
+        self.spec_mixed_user_list = spec_mixed_user_list
         self.start_without_channel = start_without_channel
         self.start_without_channel_wait_time = start_without_channel_wait_time
         self.sub_high_resolution_stream = sub_high_resolution_stream
@@ -29118,6 +29357,8 @@ class StartStreamingOutShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.annotation is not None:
+            result['Annotation'] = self.annotation
         if self.app_id is not None:
             result['AppId'] = self.app_id
         result['Backgrounds'] = []
@@ -29150,6 +29391,8 @@ class StartStreamingOutShrinkRequest(TeaModel):
             result['ReservePaneForNoCameraUser'] = self.reserve_pane_for_no_camera_user
         if self.show_default_background_on_mute is not None:
             result['ShowDefaultBackgroundOnMute'] = self.show_default_background_on_mute
+        if self.spec_mixed_user_list is not None:
+            result['SpecMixedUserList'] = self.spec_mixed_user_list
         if self.start_without_channel is not None:
             result['StartWithoutChannel'] = self.start_without_channel
         if self.start_without_channel_wait_time is not None:
@@ -29170,6 +29413,8 @@ class StartStreamingOutShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Annotation') is not None:
+            self.annotation = m.get('Annotation')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         self.backgrounds = []
@@ -29208,6 +29453,8 @@ class StartStreamingOutShrinkRequest(TeaModel):
             self.reserve_pane_for_no_camera_user = m.get('ReservePaneForNoCameraUser')
         if m.get('ShowDefaultBackgroundOnMute') is not None:
             self.show_default_background_on_mute = m.get('ShowDefaultBackgroundOnMute')
+        if m.get('SpecMixedUserList') is not None:
+            self.spec_mixed_user_list = m.get('SpecMixedUserList')
         if m.get('StartWithoutChannel') is not None:
             self.start_without_channel = m.get('StartWithoutChannel')
         if m.get('StartWithoutChannelWaitTime') is not None:
@@ -35612,6 +35859,7 @@ class UpdateStreamingOutRequest(TeaModel):
         layout_specified_users: UpdateStreamingOutRequestLayoutSpecifiedUsers = None,
         panes: List[UpdateStreamingOutRequestPanes] = None,
         region_color: UpdateStreamingOutRequestRegionColor = None,
+        spec_mixed_user_list: List[str] = None,
         task_id: str = None,
         template_id: str = None,
         texts: List[UpdateStreamingOutRequestTexts] = None,
@@ -35628,6 +35876,7 @@ class UpdateStreamingOutRequest(TeaModel):
         self.layout_specified_users = layout_specified_users
         self.panes = panes
         self.region_color = region_color
+        self.spec_mixed_user_list = spec_mixed_user_list
         # This parameter is required.
         self.task_id = task_id
         # This parameter is required.
@@ -35696,6 +35945,8 @@ class UpdateStreamingOutRequest(TeaModel):
                 result['Panes'].append(k.to_map() if k else None)
         if self.region_color is not None:
             result['RegionColor'] = self.region_color.to_map()
+        if self.spec_mixed_user_list is not None:
+            result['SpecMixedUserList'] = self.spec_mixed_user_list
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         if self.template_id is not None:
@@ -35743,6 +35994,8 @@ class UpdateStreamingOutRequest(TeaModel):
         if m.get('RegionColor') is not None:
             temp_model = UpdateStreamingOutRequestRegionColor()
             self.region_color = temp_model.from_map(m['RegionColor'])
+        if m.get('SpecMixedUserList') is not None:
+            self.spec_mixed_user_list = m.get('SpecMixedUserList')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         if m.get('TemplateId') is not None:
@@ -36833,6 +37086,7 @@ class UpdateStreamingOutShrinkRequest(TeaModel):
         layout_specified_users_shrink: str = None,
         panes: List[UpdateStreamingOutShrinkRequestPanes] = None,
         region_color: UpdateStreamingOutShrinkRequestRegionColor = None,
+        spec_mixed_user_list: List[str] = None,
         task_id: str = None,
         template_id: str = None,
         texts: List[UpdateStreamingOutShrinkRequestTexts] = None,
@@ -36849,6 +37103,7 @@ class UpdateStreamingOutShrinkRequest(TeaModel):
         self.layout_specified_users_shrink = layout_specified_users_shrink
         self.panes = panes
         self.region_color = region_color
+        self.spec_mixed_user_list = spec_mixed_user_list
         # This parameter is required.
         self.task_id = task_id
         # This parameter is required.
@@ -36915,6 +37170,8 @@ class UpdateStreamingOutShrinkRequest(TeaModel):
                 result['Panes'].append(k.to_map() if k else None)
         if self.region_color is not None:
             result['RegionColor'] = self.region_color.to_map()
+        if self.spec_mixed_user_list is not None:
+            result['SpecMixedUserList'] = self.spec_mixed_user_list
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         if self.template_id is not None:
@@ -36961,6 +37218,8 @@ class UpdateStreamingOutShrinkRequest(TeaModel):
         if m.get('RegionColor') is not None:
             temp_model = UpdateStreamingOutShrinkRequestRegionColor()
             self.region_color = temp_model.from_map(m['RegionColor'])
+        if m.get('SpecMixedUserList') is not None:
+            self.spec_mixed_user_list = m.get('SpecMixedUserList')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         if m.get('TemplateId') is not None:

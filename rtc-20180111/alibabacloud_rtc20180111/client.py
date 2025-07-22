@@ -10748,7 +10748,11 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.layout_specified_users):
             request.layout_specified_users_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.layout_specified_users, 'LayoutSpecifiedUsers', 'json')
+        if not UtilClient.is_unset(tmp_req.single_streaming_record):
+            request.single_streaming_record_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.single_streaming_record, 'SingleStreamingRecord', 'json')
         query = {}
+        if not UtilClient.is_unset(request.annotation):
+            query['Annotation'] = request.annotation
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.backgrounds):
@@ -10767,12 +10771,20 @@ class Client(OpenApiClient):
             query['LayoutSpecifiedUsers'] = request.layout_specified_users_shrink
         if not UtilClient.is_unset(request.panes):
             query['Panes'] = request.panes
+        if not UtilClient.is_unset(request.record_mode):
+            query['RecordMode'] = request.record_mode
         if not UtilClient.is_unset(request.region_color):
             query['RegionColor'] = request.region_color
         if not UtilClient.is_unset(request.reserve_pane_for_no_camera_user):
             query['ReservePaneForNoCameraUser'] = request.reserve_pane_for_no_camera_user
         if not UtilClient.is_unset(request.show_default_background_on_mute):
             query['ShowDefaultBackgroundOnMute'] = request.show_default_background_on_mute
+        if not UtilClient.is_unset(request.single_streaming_record_shrink):
+            query['SingleStreamingRecord'] = request.single_streaming_record_shrink
+        if not UtilClient.is_unset(request.start_without_channel):
+            query['StartWithoutChannel'] = request.start_without_channel
+        if not UtilClient.is_unset(request.start_without_channel_wait_time):
+            query['StartWithoutChannelWaitTime'] = request.start_without_channel_wait_time
         if not UtilClient.is_unset(request.storage_config):
             query['StorageConfig'] = request.storage_config
         if not UtilClient.is_unset(request.sub_high_resolution_stream):
@@ -10819,7 +10831,11 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.layout_specified_users):
             request.layout_specified_users_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.layout_specified_users, 'LayoutSpecifiedUsers', 'json')
+        if not UtilClient.is_unset(tmp_req.single_streaming_record):
+            request.single_streaming_record_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.single_streaming_record, 'SingleStreamingRecord', 'json')
         query = {}
+        if not UtilClient.is_unset(request.annotation):
+            query['Annotation'] = request.annotation
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.backgrounds):
@@ -10838,12 +10854,20 @@ class Client(OpenApiClient):
             query['LayoutSpecifiedUsers'] = request.layout_specified_users_shrink
         if not UtilClient.is_unset(request.panes):
             query['Panes'] = request.panes
+        if not UtilClient.is_unset(request.record_mode):
+            query['RecordMode'] = request.record_mode
         if not UtilClient.is_unset(request.region_color):
             query['RegionColor'] = request.region_color
         if not UtilClient.is_unset(request.reserve_pane_for_no_camera_user):
             query['ReservePaneForNoCameraUser'] = request.reserve_pane_for_no_camera_user
         if not UtilClient.is_unset(request.show_default_background_on_mute):
             query['ShowDefaultBackgroundOnMute'] = request.show_default_background_on_mute
+        if not UtilClient.is_unset(request.single_streaming_record_shrink):
+            query['SingleStreamingRecord'] = request.single_streaming_record_shrink
+        if not UtilClient.is_unset(request.start_without_channel):
+            query['StartWithoutChannel'] = request.start_without_channel
+        if not UtilClient.is_unset(request.start_without_channel_wait_time):
+            query['StartWithoutChannelWaitTime'] = request.start_without_channel_wait_time
         if not UtilClient.is_unset(request.storage_config):
             query['StorageConfig'] = request.storage_config
         if not UtilClient.is_unset(request.sub_high_resolution_stream):
@@ -11295,6 +11319,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.layout_specified_users):
             request.layout_specified_users_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.layout_specified_users, 'LayoutSpecifiedUsers', 'json')
         query = {}
+        if not UtilClient.is_unset(request.annotation):
+            query['Annotation'] = request.annotation
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.backgrounds):
@@ -11319,6 +11345,8 @@ class Client(OpenApiClient):
             query['ReservePaneForNoCameraUser'] = request.reserve_pane_for_no_camera_user
         if not UtilClient.is_unset(request.show_default_background_on_mute):
             query['ShowDefaultBackgroundOnMute'] = request.show_default_background_on_mute
+        if not UtilClient.is_unset(request.spec_mixed_user_list):
+            query['SpecMixedUserList'] = request.spec_mixed_user_list
         if not UtilClient.is_unset(request.start_without_channel):
             query['StartWithoutChannel'] = request.start_without_channel
         if not UtilClient.is_unset(request.start_without_channel_wait_time):
@@ -11370,6 +11398,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.layout_specified_users):
             request.layout_specified_users_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.layout_specified_users, 'LayoutSpecifiedUsers', 'json')
         query = {}
+        if not UtilClient.is_unset(request.annotation):
+            query['Annotation'] = request.annotation
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.backgrounds):
@@ -11394,6 +11424,8 @@ class Client(OpenApiClient):
             query['ReservePaneForNoCameraUser'] = request.reserve_pane_for_no_camera_user
         if not UtilClient.is_unset(request.show_default_background_on_mute):
             query['ShowDefaultBackgroundOnMute'] = request.show_default_background_on_mute
+        if not UtilClient.is_unset(request.spec_mixed_user_list):
+            query['SpecMixedUserList'] = request.spec_mixed_user_list
         if not UtilClient.is_unset(request.start_without_channel):
             query['StartWithoutChannel'] = request.start_without_channel
         if not UtilClient.is_unset(request.start_without_channel_wait_time):
@@ -13171,6 +13203,8 @@ class Client(OpenApiClient):
             query['Panes'] = request.panes
         if not UtilClient.is_unset(request.region_color):
             query['RegionColor'] = request.region_color
+        if not UtilClient.is_unset(request.spec_mixed_user_list):
+            query['SpecMixedUserList'] = request.spec_mixed_user_list
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.template_id):
@@ -13234,6 +13268,8 @@ class Client(OpenApiClient):
             query['Panes'] = request.panes
         if not UtilClient.is_unset(request.region_color):
             query['RegionColor'] = request.region_color
+        if not UtilClient.is_unset(request.spec_mixed_user_list):
+            query['SpecMixedUserList'] = request.spec_mixed_user_list
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.template_id):
