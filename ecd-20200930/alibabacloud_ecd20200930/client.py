@@ -738,6 +738,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_user_to_desktop_oversold_user_group_with_options_async(request, runtime)
 
+    def allocate_ip_address_with_options(
+        self,
+        request: ecd_20200930_models.AllocateIpAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.AllocateIpAddressResponse:
+        """
+        @summary 实例开通公网IP
+        
+        @param request: AllocateIpAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AllocateIpAddressResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.network_interface_id):
+            query['NetworkInterfaceId'] = request.network_interface_id
+        if not UtilClient.is_unset(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AllocateIpAddress',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.AllocateIpAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def allocate_ip_address_with_options_async(
+        self,
+        request: ecd_20200930_models.AllocateIpAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.AllocateIpAddressResponse:
+        """
+        @summary 实例开通公网IP
+        
+        @param request: AllocateIpAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AllocateIpAddressResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.network_interface_id):
+            query['NetworkInterfaceId'] = request.network_interface_id
+        if not UtilClient.is_unset(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AllocateIpAddress',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.AllocateIpAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def allocate_ip_address(
+        self,
+        request: ecd_20200930_models.AllocateIpAddressRequest,
+    ) -> ecd_20200930_models.AllocateIpAddressResponse:
+        """
+        @summary 实例开通公网IP
+        
+        @param request: AllocateIpAddressRequest
+        @return: AllocateIpAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.allocate_ip_address_with_options(request, runtime)
+
+    async def allocate_ip_address_async(
+        self,
+        request: ecd_20200930_models.AllocateIpAddressRequest,
+    ) -> ecd_20200930_models.AllocateIpAddressResponse:
+        """
+        @summary 实例开通公网IP
+        
+        @param request: AllocateIpAddressRequest
+        @return: AllocateIpAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.allocate_ip_address_with_options_async(request, runtime)
+
     def apply_auto_snapshot_policy_with_options(
         self,
         request: ecd_20200930_models.ApplyAutoSnapshotPolicyRequest,
@@ -1194,6 +1298,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.approve_fota_update_with_options_async(request, runtime)
 
+    def associate_ip_address_with_options(
+        self,
+        request: ecd_20200930_models.AssociateIpAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.AssociateIpAddressResponse:
+        """
+        @summary 实例绑定公网IP
+        
+        @param request: AssociateIpAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssociateIpAddressResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.eip_id):
+            query['EipId'] = request.eip_id
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.network_interface_id):
+            query['NetworkInterfaceId'] = request.network_interface_id
+        if not UtilClient.is_unset(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AssociateIpAddress',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.AssociateIpAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def associate_ip_address_with_options_async(
+        self,
+        request: ecd_20200930_models.AssociateIpAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.AssociateIpAddressResponse:
+        """
+        @summary 实例绑定公网IP
+        
+        @param request: AssociateIpAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssociateIpAddressResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.eip_id):
+            query['EipId'] = request.eip_id
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.network_interface_id):
+            query['NetworkInterfaceId'] = request.network_interface_id
+        if not UtilClient.is_unset(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AssociateIpAddress',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.AssociateIpAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def associate_ip_address(
+        self,
+        request: ecd_20200930_models.AssociateIpAddressRequest,
+    ) -> ecd_20200930_models.AssociateIpAddressResponse:
+        """
+        @summary 实例绑定公网IP
+        
+        @param request: AssociateIpAddressRequest
+        @return: AssociateIpAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.associate_ip_address_with_options(request, runtime)
+
+    async def associate_ip_address_async(
+        self,
+        request: ecd_20200930_models.AssociateIpAddressRequest,
+    ) -> ecd_20200930_models.AssociateIpAddressResponse:
+        """
+        @summary 实例绑定公网IP
+        
+        @param request: AssociateIpAddressRequest
+        @return: AssociateIpAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.associate_ip_address_with_options_async(request, runtime)
+
     def associate_network_package_with_options(
         self,
         request: ecd_20200930_models.AssociateNetworkPackageRequest,
@@ -1297,6 +1513,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.associate_network_package_with_options_async(request, runtime)
+
+    def associate_route_table_with_options(
+        self,
+        request: ecd_20200930_models.AssociateRouteTableRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.AssociateRouteTableResponse:
+        """
+        @summary 将创建的自定义路由表和同一VPC内的交换机绑定
+        
+        @param request: AssociateRouteTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssociateRouteTableResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AssociateRouteTable',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.AssociateRouteTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def associate_route_table_with_options_async(
+        self,
+        request: ecd_20200930_models.AssociateRouteTableRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.AssociateRouteTableResponse:
+        """
+        @summary 将创建的自定义路由表和同一VPC内的交换机绑定
+        
+        @param request: AssociateRouteTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssociateRouteTableResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AssociateRouteTable',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.AssociateRouteTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def associate_route_table(
+        self,
+        request: ecd_20200930_models.AssociateRouteTableRequest,
+    ) -> ecd_20200930_models.AssociateRouteTableResponse:
+        """
+        @summary 将创建的自定义路由表和同一VPC内的交换机绑定
+        
+        @param request: AssociateRouteTableRequest
+        @return: AssociateRouteTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.associate_route_table_with_options(request, runtime)
+
+    async def associate_route_table_async(
+        self,
+        request: ecd_20200930_models.AssociateRouteTableRequest,
+    ) -> ecd_20200930_models.AssociateRouteTableResponse:
+        """
+        @summary 将创建的自定义路由表和同一VPC内的交换机绑定
+        
+        @param request: AssociateRouteTableRequest
+        @return: AssociateRouteTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.associate_route_table_with_options_async(request, runtime)
 
     def attach_cen_with_options(
         self,
@@ -6170,6 +6490,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_ecd_report_task_with_options_async(request, runtime)
 
+    def create_forward_entry_with_options(
+        self,
+        request: ecd_20200930_models.CreateForwardEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.CreateForwardEntryResponse:
+        """
+        @summary 添加DNAT条目
+        
+        @param request: CreateForwardEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateForwardEntryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.external_ip):
+            query['ExternalIp'] = request.external_ip
+        if not UtilClient.is_unset(request.external_port):
+            query['ExternalPort'] = request.external_port
+        if not UtilClient.is_unset(request.forward_entry_name):
+            query['ForwardEntryName'] = request.forward_entry_name
+        if not UtilClient.is_unset(request.forward_table_id):
+            query['ForwardTableId'] = request.forward_table_id
+        if not UtilClient.is_unset(request.internal_ip):
+            query['InternalIp'] = request.internal_ip
+        if not UtilClient.is_unset(request.internal_port):
+            query['InternalPort'] = request.internal_port
+        if not UtilClient.is_unset(request.ip_protocol):
+            query['IpProtocol'] = request.ip_protocol
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateForwardEntry',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.CreateForwardEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_forward_entry_with_options_async(
+        self,
+        request: ecd_20200930_models.CreateForwardEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.CreateForwardEntryResponse:
+        """
+        @summary 添加DNAT条目
+        
+        @param request: CreateForwardEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateForwardEntryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.external_ip):
+            query['ExternalIp'] = request.external_ip
+        if not UtilClient.is_unset(request.external_port):
+            query['ExternalPort'] = request.external_port
+        if not UtilClient.is_unset(request.forward_entry_name):
+            query['ForwardEntryName'] = request.forward_entry_name
+        if not UtilClient.is_unset(request.forward_table_id):
+            query['ForwardTableId'] = request.forward_table_id
+        if not UtilClient.is_unset(request.internal_ip):
+            query['InternalIp'] = request.internal_ip
+        if not UtilClient.is_unset(request.internal_port):
+            query['InternalPort'] = request.internal_port
+        if not UtilClient.is_unset(request.ip_protocol):
+            query['IpProtocol'] = request.ip_protocol
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateForwardEntry',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.CreateForwardEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_forward_entry(
+        self,
+        request: ecd_20200930_models.CreateForwardEntryRequest,
+    ) -> ecd_20200930_models.CreateForwardEntryResponse:
+        """
+        @summary 添加DNAT条目
+        
+        @param request: CreateForwardEntryRequest
+        @return: CreateForwardEntryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_forward_entry_with_options(request, runtime)
+
+    async def create_forward_entry_async(
+        self,
+        request: ecd_20200930_models.CreateForwardEntryRequest,
+    ) -> ecd_20200930_models.CreateForwardEntryResponse:
+        """
+        @summary 添加DNAT条目
+        
+        @param request: CreateForwardEntryRequest
+        @return: CreateForwardEntryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_forward_entry_with_options_async(request, runtime)
+
     def create_image_with_options(
         self,
         request: ecd_20200930_models.CreateImageRequest,
@@ -6461,6 +6905,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_nasfile_system_with_options_async(request, runtime)
+
+    def create_nat_gateway_with_options(
+        self,
+        request: ecd_20200930_models.CreateNatGatewayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.CreateNatGatewayResponse:
+        """
+        @summary 新建NAT网关
+        
+        @param request: CreateNatGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNatGatewayResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateNatGateway',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.CreateNatGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_nat_gateway_with_options_async(
+        self,
+        request: ecd_20200930_models.CreateNatGatewayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.CreateNatGatewayResponse:
+        """
+        @summary 新建NAT网关
+        
+        @param request: CreateNatGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNatGatewayResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateNatGateway',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.CreateNatGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_nat_gateway(
+        self,
+        request: ecd_20200930_models.CreateNatGatewayRequest,
+    ) -> ecd_20200930_models.CreateNatGatewayResponse:
+        """
+        @summary 新建NAT网关
+        
+        @param request: CreateNatGatewayRequest
+        @return: CreateNatGatewayResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_nat_gateway_with_options(request, runtime)
+
+    async def create_nat_gateway_async(
+        self,
+        request: ecd_20200930_models.CreateNatGatewayRequest,
+    ) -> ecd_20200930_models.CreateNatGatewayResponse:
+        """
+        @summary 新建NAT网关
+        
+        @param request: CreateNatGatewayRequest
+        @return: CreateNatGatewayResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_nat_gateway_with_options_async(request, runtime)
 
     def create_network_package_with_options(
         self,
@@ -7058,6 +7606,238 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_ramdirectory_with_options_async(request, runtime)
 
+    def create_route_entry_with_options(
+        self,
+        request: ecd_20200930_models.CreateRouteEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.CreateRouteEntryResponse:
+        """
+        @summary 新建路由条目
+        
+        @param request: CreateRouteEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRouteEntryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            query['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.next_hop_id):
+            query['NextHopId'] = request.next_hop_id
+        if not UtilClient.is_unset(request.next_hop_type):
+            query['NextHopType'] = request.next_hop_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.route_entry_name):
+            query['RouteEntryName'] = request.route_entry_name
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRouteEntry',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.CreateRouteEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_route_entry_with_options_async(
+        self,
+        request: ecd_20200930_models.CreateRouteEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.CreateRouteEntryResponse:
+        """
+        @summary 新建路由条目
+        
+        @param request: CreateRouteEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRouteEntryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            query['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.next_hop_id):
+            query['NextHopId'] = request.next_hop_id
+        if not UtilClient.is_unset(request.next_hop_type):
+            query['NextHopType'] = request.next_hop_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.route_entry_name):
+            query['RouteEntryName'] = request.route_entry_name
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRouteEntry',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.CreateRouteEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_route_entry(
+        self,
+        request: ecd_20200930_models.CreateRouteEntryRequest,
+    ) -> ecd_20200930_models.CreateRouteEntryResponse:
+        """
+        @summary 新建路由条目
+        
+        @param request: CreateRouteEntryRequest
+        @return: CreateRouteEntryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_route_entry_with_options(request, runtime)
+
+    async def create_route_entry_async(
+        self,
+        request: ecd_20200930_models.CreateRouteEntryRequest,
+    ) -> ecd_20200930_models.CreateRouteEntryResponse:
+        """
+        @summary 新建路由条目
+        
+        @param request: CreateRouteEntryRequest
+        @return: CreateRouteEntryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_route_entry_with_options_async(request, runtime)
+
+    def create_route_table_with_options(
+        self,
+        request: ecd_20200930_models.CreateRouteTableRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.CreateRouteTableResponse:
+        """
+        @summary 新建自定义路由表
+        
+        @param request: CreateRouteTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRouteTableResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.route_table_name):
+            query['RouteTableName'] = request.route_table_name
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRouteTable',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.CreateRouteTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_route_table_with_options_async(
+        self,
+        request: ecd_20200930_models.CreateRouteTableRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.CreateRouteTableResponse:
+        """
+        @summary 新建自定义路由表
+        
+        @param request: CreateRouteTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRouteTableResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.route_table_name):
+            query['RouteTableName'] = request.route_table_name
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRouteTable',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.CreateRouteTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_route_table(
+        self,
+        request: ecd_20200930_models.CreateRouteTableRequest,
+    ) -> ecd_20200930_models.CreateRouteTableResponse:
+        """
+        @summary 新建自定义路由表
+        
+        @param request: CreateRouteTableRequest
+        @return: CreateRouteTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_route_table_with_options(request, runtime)
+
+    async def create_route_table_async(
+        self,
+        request: ecd_20200930_models.CreateRouteTableRequest,
+    ) -> ecd_20200930_models.CreateRouteTableResponse:
+        """
+        @summary 新建自定义路由表
+        
+        @param request: CreateRouteTableRequest
+        @return: CreateRouteTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_route_table_with_options_async(request, runtime)
+
     def create_simple_office_site_with_options(
         self,
         request: ecd_20200930_models.CreateSimpleOfficeSiteRequest,
@@ -7325,6 +8105,234 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_snapshot_with_options_async(request, runtime)
+
+    def create_snat_entry_with_options(
+        self,
+        request: ecd_20200930_models.CreateSnatEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.CreateSnatEntryResponse:
+        """
+        @summary 添加SNAT条目
+        
+        @param request: CreateSnatEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSnatEntryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.eip_affinity):
+            query['EipAffinity'] = request.eip_affinity
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.snat_entry_name):
+            query['SnatEntryName'] = request.snat_entry_name
+        if not UtilClient.is_unset(request.snat_ip):
+            query['SnatIp'] = request.snat_ip
+        if not UtilClient.is_unset(request.snat_table_id):
+            query['SnatTableId'] = request.snat_table_id
+        if not UtilClient.is_unset(request.source_cidr):
+            query['SourceCIDR'] = request.source_cidr
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSnatEntry',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.CreateSnatEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_snat_entry_with_options_async(
+        self,
+        request: ecd_20200930_models.CreateSnatEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.CreateSnatEntryResponse:
+        """
+        @summary 添加SNAT条目
+        
+        @param request: CreateSnatEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSnatEntryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.eip_affinity):
+            query['EipAffinity'] = request.eip_affinity
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.snat_entry_name):
+            query['SnatEntryName'] = request.snat_entry_name
+        if not UtilClient.is_unset(request.snat_ip):
+            query['SnatIp'] = request.snat_ip
+        if not UtilClient.is_unset(request.snat_table_id):
+            query['SnatTableId'] = request.snat_table_id
+        if not UtilClient.is_unset(request.source_cidr):
+            query['SourceCIDR'] = request.source_cidr
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSnatEntry',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.CreateSnatEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_snat_entry(
+        self,
+        request: ecd_20200930_models.CreateSnatEntryRequest,
+    ) -> ecd_20200930_models.CreateSnatEntryResponse:
+        """
+        @summary 添加SNAT条目
+        
+        @param request: CreateSnatEntryRequest
+        @return: CreateSnatEntryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_snat_entry_with_options(request, runtime)
+
+    async def create_snat_entry_async(
+        self,
+        request: ecd_20200930_models.CreateSnatEntryRequest,
+    ) -> ecd_20200930_models.CreateSnatEntryResponse:
+        """
+        @summary 添加SNAT条目
+        
+        @param request: CreateSnatEntryRequest
+        @return: CreateSnatEntryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_snat_entry_with_options_async(request, runtime)
+
+    def create_subnet_with_options(
+        self,
+        request: ecd_20200930_models.CreateSubnetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.CreateSubnetResponse:
+        """
+        @summary 新建子网
+        
+        @param request: CreateSubnetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSubnetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cidr_block):
+            query['CidrBlock'] = request.cidr_block
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSubnet',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.CreateSubnetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_subnet_with_options_async(
+        self,
+        request: ecd_20200930_models.CreateSubnetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.CreateSubnetResponse:
+        """
+        @summary 新建子网
+        
+        @param request: CreateSubnetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSubnetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cidr_block):
+            query['CidrBlock'] = request.cidr_block
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSubnet',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.CreateSubnetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_subnet(
+        self,
+        request: ecd_20200930_models.CreateSubnetRequest,
+    ) -> ecd_20200930_models.CreateSubnetResponse:
+        """
+        @summary 新建子网
+        
+        @param request: CreateSubnetRequest
+        @return: CreateSubnetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_subnet_with_options(request, runtime)
+
+    async def create_subnet_async(
+        self,
+        request: ecd_20200930_models.CreateSubnetRequest,
+    ) -> ecd_20200930_models.CreateSubnetResponse:
+        """
+        @summary 新建子网
+        
+        @param request: CreateSubnetRequest
+        @return: CreateSubnetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_subnet_with_options_async(request, runtime)
 
     def create_template_with_options(
         self,
@@ -8880,6 +9888,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_edu_room_with_options_async(request, runtime)
 
+    def delete_forward_entry_with_options(
+        self,
+        request: ecd_20200930_models.DeleteForwardEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DeleteForwardEntryResponse:
+        """
+        @summary 删除DNAT条目
+        
+        @param request: DeleteForwardEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteForwardEntryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.forward_entry_id):
+            query['ForwardEntryId'] = request.forward_entry_id
+        if not UtilClient.is_unset(request.forward_table_id):
+            query['ForwardTableId'] = request.forward_table_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteForwardEntry',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DeleteForwardEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_forward_entry_with_options_async(
+        self,
+        request: ecd_20200930_models.DeleteForwardEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DeleteForwardEntryResponse:
+        """
+        @summary 删除DNAT条目
+        
+        @param request: DeleteForwardEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteForwardEntryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.forward_entry_id):
+            query['ForwardEntryId'] = request.forward_entry_id
+        if not UtilClient.is_unset(request.forward_table_id):
+            query['ForwardTableId'] = request.forward_table_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteForwardEntry',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DeleteForwardEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_forward_entry(
+        self,
+        request: ecd_20200930_models.DeleteForwardEntryRequest,
+    ) -> ecd_20200930_models.DeleteForwardEntryResponse:
+        """
+        @summary 删除DNAT条目
+        
+        @param request: DeleteForwardEntryRequest
+        @return: DeleteForwardEntryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_forward_entry_with_options(request, runtime)
+
+    async def delete_forward_entry_async(
+        self,
+        request: ecd_20200930_models.DeleteForwardEntryRequest,
+    ) -> ecd_20200930_models.DeleteForwardEntryResponse:
+        """
+        @summary 删除DNAT条目
+        
+        @param request: DeleteForwardEntryRequest
+        @return: DeleteForwardEntryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_forward_entry_with_options_async(request, runtime)
+
     def delete_images_with_options(
         self,
         request: ecd_20200930_models.DeleteImagesRequest,
@@ -9107,6 +10219,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_nasfile_systems_with_options_async(request, runtime)
+
+    def delete_nat_gateway_with_options(
+        self,
+        request: ecd_20200930_models.DeleteNatGatewayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DeleteNatGatewayResponse:
+        """
+        @summary 删除NAT网关
+        
+        @param request: DeleteNatGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNatGatewayResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteNatGateway',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DeleteNatGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_nat_gateway_with_options_async(
+        self,
+        request: ecd_20200930_models.DeleteNatGatewayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DeleteNatGatewayResponse:
+        """
+        @summary 删除NAT网关
+        
+        @param request: DeleteNatGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNatGatewayResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteNatGateway',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DeleteNatGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_nat_gateway(
+        self,
+        request: ecd_20200930_models.DeleteNatGatewayRequest,
+    ) -> ecd_20200930_models.DeleteNatGatewayResponse:
+        """
+        @summary 删除NAT网关
+        
+        @param request: DeleteNatGatewayRequest
+        @return: DeleteNatGatewayResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_nat_gateway_with_options(request, runtime)
+
+    async def delete_nat_gateway_async(
+        self,
+        request: ecd_20200930_models.DeleteNatGatewayRequest,
+    ) -> ecd_20200930_models.DeleteNatGatewayResponse:
+        """
+        @summary 删除NAT网关
+        
+        @param request: DeleteNatGatewayRequest
+        @return: DeleteNatGatewayResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_nat_gateway_with_options_async(request, runtime)
 
     def delete_network_packages_with_options(
         self,
@@ -9444,6 +10656,218 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_policy_groups_with_options_async(request, runtime)
 
+    def delete_route_entry_with_options(
+        self,
+        request: ecd_20200930_models.DeleteRouteEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DeleteRouteEntryResponse:
+        """
+        @summary 删除路由条目
+        
+        @param request: DeleteRouteEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRouteEntryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            query['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.next_hop_id):
+            query['NextHopId'] = request.next_hop_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.route_entry_id):
+            query['RouteEntryId'] = request.route_entry_id
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRouteEntry',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DeleteRouteEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_route_entry_with_options_async(
+        self,
+        request: ecd_20200930_models.DeleteRouteEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DeleteRouteEntryResponse:
+        """
+        @summary 删除路由条目
+        
+        @param request: DeleteRouteEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRouteEntryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            query['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.next_hop_id):
+            query['NextHopId'] = request.next_hop_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.route_entry_id):
+            query['RouteEntryId'] = request.route_entry_id
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRouteEntry',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DeleteRouteEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_route_entry(
+        self,
+        request: ecd_20200930_models.DeleteRouteEntryRequest,
+    ) -> ecd_20200930_models.DeleteRouteEntryResponse:
+        """
+        @summary 删除路由条目
+        
+        @param request: DeleteRouteEntryRequest
+        @return: DeleteRouteEntryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_route_entry_with_options(request, runtime)
+
+    async def delete_route_entry_async(
+        self,
+        request: ecd_20200930_models.DeleteRouteEntryRequest,
+    ) -> ecd_20200930_models.DeleteRouteEntryResponse:
+        """
+        @summary 删除路由条目
+        
+        @param request: DeleteRouteEntryRequest
+        @return: DeleteRouteEntryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_route_entry_with_options_async(request, runtime)
+
+    def delete_route_table_with_options(
+        self,
+        request: ecd_20200930_models.DeleteRouteTableRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DeleteRouteTableResponse:
+        """
+        @summary 删除自定义路由表
+        
+        @param request: DeleteRouteTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRouteTableResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRouteTable',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DeleteRouteTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_route_table_with_options_async(
+        self,
+        request: ecd_20200930_models.DeleteRouteTableRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DeleteRouteTableResponse:
+        """
+        @summary 删除自定义路由表
+        
+        @param request: DeleteRouteTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRouteTableResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRouteTable',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DeleteRouteTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_route_table(
+        self,
+        request: ecd_20200930_models.DeleteRouteTableRequest,
+    ) -> ecd_20200930_models.DeleteRouteTableResponse:
+        """
+        @summary 删除自定义路由表
+        
+        @param request: DeleteRouteTableRequest
+        @return: DeleteRouteTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_route_table_with_options(request, runtime)
+
+    async def delete_route_table_async(
+        self,
+        request: ecd_20200930_models.DeleteRouteTableRequest,
+    ) -> ecd_20200930_models.DeleteRouteTableResponse:
+        """
+        @summary 删除自定义路由表
+        
+        @param request: DeleteRouteTableRequest
+        @return: DeleteRouteTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_route_table_with_options_async(request, runtime)
+
     def delete_snapshot_with_options(
         self,
         request: ecd_20200930_models.DeleteSnapshotRequest,
@@ -9551,6 +10975,210 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_snapshot_with_options_async(request, runtime)
+
+    def delete_snat_entry_with_options(
+        self,
+        request: ecd_20200930_models.DeleteSnatEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DeleteSnatEntryResponse:
+        """
+        @summary 删除SNAT条目
+        
+        @param request: DeleteSnatEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSnatEntryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.snat_entry_id):
+            query['SnatEntryId'] = request.snat_entry_id
+        if not UtilClient.is_unset(request.snat_table_id):
+            query['SnatTableId'] = request.snat_table_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSnatEntry',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DeleteSnatEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_snat_entry_with_options_async(
+        self,
+        request: ecd_20200930_models.DeleteSnatEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DeleteSnatEntryResponse:
+        """
+        @summary 删除SNAT条目
+        
+        @param request: DeleteSnatEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSnatEntryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.snat_entry_id):
+            query['SnatEntryId'] = request.snat_entry_id
+        if not UtilClient.is_unset(request.snat_table_id):
+            query['SnatTableId'] = request.snat_table_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSnatEntry',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DeleteSnatEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_snat_entry(
+        self,
+        request: ecd_20200930_models.DeleteSnatEntryRequest,
+    ) -> ecd_20200930_models.DeleteSnatEntryResponse:
+        """
+        @summary 删除SNAT条目
+        
+        @param request: DeleteSnatEntryRequest
+        @return: DeleteSnatEntryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_snat_entry_with_options(request, runtime)
+
+    async def delete_snat_entry_async(
+        self,
+        request: ecd_20200930_models.DeleteSnatEntryRequest,
+    ) -> ecd_20200930_models.DeleteSnatEntryResponse:
+        """
+        @summary 删除SNAT条目
+        
+        @param request: DeleteSnatEntryRequest
+        @return: DeleteSnatEntryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_snat_entry_with_options_async(request, runtime)
+
+    def delete_subnet_with_options(
+        self,
+        request: ecd_20200930_models.DeleteSubnetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DeleteSubnetResponse:
+        """
+        @summary 删除子网
+        
+        @param request: DeleteSubnetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSubnetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subnet_id):
+            query['SubnetId'] = request.subnet_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSubnet',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DeleteSubnetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_subnet_with_options_async(
+        self,
+        request: ecd_20200930_models.DeleteSubnetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DeleteSubnetResponse:
+        """
+        @summary 删除子网
+        
+        @param request: DeleteSubnetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSubnetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subnet_id):
+            query['SubnetId'] = request.subnet_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSubnet',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DeleteSubnetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_subnet(
+        self,
+        request: ecd_20200930_models.DeleteSubnetRequest,
+    ) -> ecd_20200930_models.DeleteSubnetResponse:
+        """
+        @summary 删除子网
+        
+        @param request: DeleteSubnetRequest
+        @return: DeleteSubnetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_subnet_with_options(request, runtime)
+
+    async def delete_subnet_async(
+        self,
+        request: ecd_20200930_models.DeleteSubnetRequest,
+    ) -> ecd_20200930_models.DeleteSubnetResponse:
+        """
+        @summary 删除子网
+        
+        @param request: DeleteSubnetRequest
+        @return: DeleteSubnetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_subnet_with_options_async(request, runtime)
 
     def delete_templates_with_options(
         self,
@@ -13404,6 +15032,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_flow_statistic_with_options_async(request, runtime)
 
+    def describe_forward_table_entries_with_options(
+        self,
+        request: ecd_20200930_models.DescribeForwardTableEntriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeForwardTableEntriesResponse:
+        """
+        @summary 查询DNAT条目
+        
+        @param request: DescribeForwardTableEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeForwardTableEntriesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.forward_entry_id):
+            query['ForwardEntryId'] = request.forward_entry_id
+        if not UtilClient.is_unset(request.forward_table_id):
+            query['ForwardTableId'] = request.forward_table_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeForwardTableEntries',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeForwardTableEntriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_forward_table_entries_with_options_async(
+        self,
+        request: ecd_20200930_models.DescribeForwardTableEntriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeForwardTableEntriesResponse:
+        """
+        @summary 查询DNAT条目
+        
+        @param request: DescribeForwardTableEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeForwardTableEntriesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.forward_entry_id):
+            query['ForwardEntryId'] = request.forward_entry_id
+        if not UtilClient.is_unset(request.forward_table_id):
+            query['ForwardTableId'] = request.forward_table_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeForwardTableEntries',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeForwardTableEntriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_forward_table_entries(
+        self,
+        request: ecd_20200930_models.DescribeForwardTableEntriesRequest,
+    ) -> ecd_20200930_models.DescribeForwardTableEntriesResponse:
+        """
+        @summary 查询DNAT条目
+        
+        @param request: DescribeForwardTableEntriesRequest
+        @return: DescribeForwardTableEntriesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_forward_table_entries_with_options(request, runtime)
+
+    async def describe_forward_table_entries_async(
+        self,
+        request: ecd_20200930_models.DescribeForwardTableEntriesRequest,
+    ) -> ecd_20200930_models.DescribeForwardTableEntriesResponse:
+        """
+        @summary 查询DNAT条目
+        
+        @param request: DescribeForwardTableEntriesRequest
+        @return: DescribeForwardTableEntriesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_forward_table_entries_with_options_async(request, runtime)
+
     def describe_fota_pending_desktops_with_options(
         self,
         request: ecd_20200930_models.DescribeFotaPendingDesktopsRequest,
@@ -14260,6 +16004,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_invocations_with_options_async(request, runtime)
 
+    def describe_ip_addresses_with_options(
+        self,
+        request: ecd_20200930_models.DescribeIpAddressesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeIpAddressesResponse:
+        """
+        @summary 查询公网IP
+        
+        @param request: DescribeIpAddressesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIpAddressesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.eip_id):
+            query['EipId'] = request.eip_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeIpAddresses',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeIpAddressesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ip_addresses_with_options_async(
+        self,
+        request: ecd_20200930_models.DescribeIpAddressesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeIpAddressesResponse:
+        """
+        @summary 查询公网IP
+        
+        @param request: DescribeIpAddressesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIpAddressesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.eip_id):
+            query['EipId'] = request.eip_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeIpAddresses',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeIpAddressesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ip_addresses(
+        self,
+        request: ecd_20200930_models.DescribeIpAddressesRequest,
+    ) -> ecd_20200930_models.DescribeIpAddressesResponse:
+        """
+        @summary 查询公网IP
+        
+        @param request: DescribeIpAddressesRequest
+        @return: DescribeIpAddressesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ip_addresses_with_options(request, runtime)
+
+    async def describe_ip_addresses_async(
+        self,
+        request: ecd_20200930_models.DescribeIpAddressesRequest,
+    ) -> ecd_20200930_models.DescribeIpAddressesResponse:
+        """
+        @summary 查询公网IP
+        
+        @param request: DescribeIpAddressesRequest
+        @return: DescribeIpAddressesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ip_addresses_with_options_async(request, runtime)
+
     def describe_kms_keys_with_options(
         self,
         request: ecd_20200930_models.DescribeKmsKeysRequest,
@@ -14599,6 +16455,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_nasfile_systems_with_options_async(request, runtime)
+
+    def describe_nat_gateways_with_options(
+        self,
+        request: ecd_20200930_models.DescribeNatGatewaysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeNatGatewaysResponse:
+        """
+        @summary 查询NAT详细列表
+        
+        @param request: DescribeNatGatewaysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNatGatewaysResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNatGateways',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeNatGatewaysResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_nat_gateways_with_options_async(
+        self,
+        request: ecd_20200930_models.DescribeNatGatewaysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeNatGatewaysResponse:
+        """
+        @summary 查询NAT详细列表
+        
+        @param request: DescribeNatGatewaysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNatGatewaysResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNatGateways',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeNatGatewaysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_nat_gateways(
+        self,
+        request: ecd_20200930_models.DescribeNatGatewaysRequest,
+    ) -> ecd_20200930_models.DescribeNatGatewaysResponse:
+        """
+        @summary 查询NAT详细列表
+        
+        @param request: DescribeNatGatewaysRequest
+        @return: DescribeNatGatewaysResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_nat_gateways_with_options(request, runtime)
+
+    async def describe_nat_gateways_async(
+        self,
+        request: ecd_20200930_models.DescribeNatGatewaysRequest,
+    ) -> ecd_20200930_models.DescribeNatGatewaysResponse:
+        """
+        @summary 查询NAT详细列表
+        
+        @param request: DescribeNatGatewaysRequest
+        @return: DescribeNatGatewaysResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_nat_gateways_with_options_async(request, runtime)
 
     def describe_network_packages_with_options(
         self,
@@ -16044,6 +18016,230 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_resource_by_center_policy_id_with_options_async(request, runtime)
 
+    def describe_route_entry_list_with_options(
+        self,
+        request: ecd_20200930_models.DescribeRouteEntryListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeRouteEntryListResponse:
+        """
+        @summary 查询路由条目列表
+        
+        @param request: DescribeRouteEntryListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRouteEntryListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRouteEntryList',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeRouteEntryListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_route_entry_list_with_options_async(
+        self,
+        request: ecd_20200930_models.DescribeRouteEntryListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeRouteEntryListResponse:
+        """
+        @summary 查询路由条目列表
+        
+        @param request: DescribeRouteEntryListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRouteEntryListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRouteEntryList',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeRouteEntryListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_route_entry_list(
+        self,
+        request: ecd_20200930_models.DescribeRouteEntryListRequest,
+    ) -> ecd_20200930_models.DescribeRouteEntryListResponse:
+        """
+        @summary 查询路由条目列表
+        
+        @param request: DescribeRouteEntryListRequest
+        @return: DescribeRouteEntryListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_route_entry_list_with_options(request, runtime)
+
+    async def describe_route_entry_list_async(
+        self,
+        request: ecd_20200930_models.DescribeRouteEntryListRequest,
+    ) -> ecd_20200930_models.DescribeRouteEntryListResponse:
+        """
+        @summary 查询路由条目列表
+        
+        @param request: DescribeRouteEntryListRequest
+        @return: DescribeRouteEntryListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_route_entry_list_with_options_async(request, runtime)
+
+    def describe_route_table_list_with_options(
+        self,
+        request: ecd_20200930_models.DescribeRouteTableListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeRouteTableListResponse:
+        """
+        @summary 查询路由表列表
+        
+        @param request: DescribeRouteTableListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRouteTableListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
+        if not UtilClient.is_unset(request.route_table_name):
+            query['RouteTableName'] = request.route_table_name
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRouteTableList',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeRouteTableListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_route_table_list_with_options_async(
+        self,
+        request: ecd_20200930_models.DescribeRouteTableListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeRouteTableListResponse:
+        """
+        @summary 查询路由表列表
+        
+        @param request: DescribeRouteTableListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRouteTableListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
+        if not UtilClient.is_unset(request.route_table_name):
+            query['RouteTableName'] = request.route_table_name
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRouteTableList',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeRouteTableListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_route_table_list(
+        self,
+        request: ecd_20200930_models.DescribeRouteTableListRequest,
+    ) -> ecd_20200930_models.DescribeRouteTableListResponse:
+        """
+        @summary 查询路由表列表
+        
+        @param request: DescribeRouteTableListRequest
+        @return: DescribeRouteTableListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_route_table_list_with_options(request, runtime)
+
+    async def describe_route_table_list_async(
+        self,
+        request: ecd_20200930_models.DescribeRouteTableListRequest,
+    ) -> ecd_20200930_models.DescribeRouteTableListResponse:
+        """
+        @summary 查询路由表列表
+        
+        @param request: DescribeRouteTableListRequest
+        @return: DescribeRouteTableListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_route_table_list_with_options_async(request, runtime)
+
     def describe_session_statistic_with_options(
         self,
         request: ecd_20200930_models.DescribeSessionStatisticRequest,
@@ -16315,6 +18511,238 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_snapshots_with_options_async(request, runtime)
+
+    def describe_snat_table_entries_with_options(
+        self,
+        request: ecd_20200930_models.DescribeSnatTableEntriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeSnatTableEntriesResponse:
+        """
+        @summary 查询SNAT条目
+        
+        @param request: DescribeSnatTableEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSnatTableEntriesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.snat_entry_id):
+            query['SnatEntryId'] = request.snat_entry_id
+        if not UtilClient.is_unset(request.snat_table_id):
+            query['SnatTableId'] = request.snat_table_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSnatTableEntries',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeSnatTableEntriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_snat_table_entries_with_options_async(
+        self,
+        request: ecd_20200930_models.DescribeSnatTableEntriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeSnatTableEntriesResponse:
+        """
+        @summary 查询SNAT条目
+        
+        @param request: DescribeSnatTableEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSnatTableEntriesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.snat_entry_id):
+            query['SnatEntryId'] = request.snat_entry_id
+        if not UtilClient.is_unset(request.snat_table_id):
+            query['SnatTableId'] = request.snat_table_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSnatTableEntries',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeSnatTableEntriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_snat_table_entries(
+        self,
+        request: ecd_20200930_models.DescribeSnatTableEntriesRequest,
+    ) -> ecd_20200930_models.DescribeSnatTableEntriesResponse:
+        """
+        @summary 查询SNAT条目
+        
+        @param request: DescribeSnatTableEntriesRequest
+        @return: DescribeSnatTableEntriesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_snat_table_entries_with_options(request, runtime)
+
+    async def describe_snat_table_entries_async(
+        self,
+        request: ecd_20200930_models.DescribeSnatTableEntriesRequest,
+    ) -> ecd_20200930_models.DescribeSnatTableEntriesResponse:
+        """
+        @summary 查询SNAT条目
+        
+        @param request: DescribeSnatTableEntriesRequest
+        @return: DescribeSnatTableEntriesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_snat_table_entries_with_options_async(request, runtime)
+
+    def describe_subnets_with_options(
+        self,
+        request: ecd_20200930_models.DescribeSubnetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeSubnetsResponse:
+        """
+        @summary 查询子网
+        
+        @param request: DescribeSubnetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSubnetsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subnet_id):
+            query['SubnetId'] = request.subnet_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSubnets',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeSubnetsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_subnets_with_options_async(
+        self,
+        request: ecd_20200930_models.DescribeSubnetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeSubnetsResponse:
+        """
+        @summary 查询子网
+        
+        @param request: DescribeSubnetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSubnetsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subnet_id):
+            query['SubnetId'] = request.subnet_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSubnets',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeSubnetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_subnets(
+        self,
+        request: ecd_20200930_models.DescribeSubnetsRequest,
+    ) -> ecd_20200930_models.DescribeSubnetsResponse:
+        """
+        @summary 查询子网
+        
+        @param request: DescribeSubnetsRequest
+        @return: DescribeSubnetsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_subnets_with_options(request, runtime)
+
+    async def describe_subnets_async(
+        self,
+        request: ecd_20200930_models.DescribeSubnetsRequest,
+    ) -> ecd_20200930_models.DescribeSubnetsResponse:
+        """
+        @summary 查询子网
+        
+        @param request: DescribeSubnetsRequest
+        @return: DescribeSubnetsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_subnets_with_options_async(request, runtime)
 
     def describe_templates_with_options(
         self,
@@ -17787,6 +20215,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.disconnect_desktop_sessions_with_options_async(request, runtime)
+
+    def dissociate_ip_address_with_options(
+        self,
+        request: ecd_20200930_models.DissociateIpAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DissociateIpAddressResponse:
+        """
+        @summary 实例解绑/删除公网IP
+        
+        @param request: DissociateIpAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DissociateIpAddressResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.eip_id):
+            query['EipId'] = request.eip_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DissociateIpAddress',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DissociateIpAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dissociate_ip_address_with_options_async(
+        self,
+        request: ecd_20200930_models.DissociateIpAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DissociateIpAddressResponse:
+        """
+        @summary 实例解绑/删除公网IP
+        
+        @param request: DissociateIpAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DissociateIpAddressResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.eip_id):
+            query['EipId'] = request.eip_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DissociateIpAddress',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DissociateIpAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dissociate_ip_address(
+        self,
+        request: ecd_20200930_models.DissociateIpAddressRequest,
+    ) -> ecd_20200930_models.DissociateIpAddressResponse:
+        """
+        @summary 实例解绑/删除公网IP
+        
+        @param request: DissociateIpAddressRequest
+        @return: DissociateIpAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dissociate_ip_address_with_options(request, runtime)
+
+    async def dissociate_ip_address_async(
+        self,
+        request: ecd_20200930_models.DissociateIpAddressRequest,
+    ) -> ecd_20200930_models.DissociateIpAddressResponse:
+        """
+        @summary 实例解绑/删除公网IP
+        
+        @param request: DissociateIpAddressRequest
+        @return: DissociateIpAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dissociate_ip_address_with_options_async(request, runtime)
 
     def dissociate_network_package_with_options(
         self,
@@ -26653,6 +29181,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.rebuild_desktops_with_options_async(request, runtime)
+
+    def release_ip_address_with_options(
+        self,
+        request: ecd_20200930_models.ReleaseIpAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.ReleaseIpAddressResponse:
+        """
+        @summary 删除公网IP
+        
+        @param request: ReleaseIpAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseIpAddressResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.eip_id):
+            query['EipId'] = request.eip_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReleaseIpAddress',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.ReleaseIpAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def release_ip_address_with_options_async(
+        self,
+        request: ecd_20200930_models.ReleaseIpAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.ReleaseIpAddressResponse:
+        """
+        @summary 删除公网IP
+        
+        @param request: ReleaseIpAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseIpAddressResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.eip_id):
+            query['EipId'] = request.eip_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReleaseIpAddress',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.ReleaseIpAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def release_ip_address(
+        self,
+        request: ecd_20200930_models.ReleaseIpAddressRequest,
+    ) -> ecd_20200930_models.ReleaseIpAddressResponse:
+        """
+        @summary 删除公网IP
+        
+        @param request: ReleaseIpAddressRequest
+        @return: ReleaseIpAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.release_ip_address_with_options(request, runtime)
+
+    async def release_ip_address_async(
+        self,
+        request: ecd_20200930_models.ReleaseIpAddressRequest,
+    ) -> ecd_20200930_models.ReleaseIpAddressResponse:
+        """
+        @summary 删除公网IP
+        
+        @param request: ReleaseIpAddressRequest
+        @return: ReleaseIpAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.release_ip_address_with_options_async(request, runtime)
 
     def remove_file_permission_with_options(
         self,

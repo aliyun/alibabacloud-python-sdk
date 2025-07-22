@@ -1,3 +1,30 @@
+2025-07-22 Version: 4.12.0
+- Support API AllocateIpAddress.
+- Support API AssociateIpAddress.
+- Support API AssociateRouteTable.
+- Support API CreateForwardEntry.
+- Support API CreateNatGateway.
+- Support API CreateRouteEntry.
+- Support API CreateRouteTable.
+- Support API CreateSnatEntry.
+- Support API CreateSubnet.
+- Support API DeleteForwardEntry.
+- Support API DeleteNatGateway.
+- Support API DeleteRouteEntry.
+- Support API DeleteRouteTable.
+- Support API DeleteSnatEntry.
+- Support API DeleteSubnet.
+- Support API DescribeForwardTableEntries.
+- Support API DescribeIpAddresses.
+- Support API DescribeNatGateways.
+- Support API DescribeRouteEntryList.
+- Support API DescribeRouteTableList.
+- Support API DescribeSnatTableEntries.
+- Support API DescribeSubnets.
+- Support API DissociateIpAddress.
+- Support API ReleaseIpAddress.
+
+
 2025-07-21 Version: 4.11.1
 - Update API DescribeDesktops: add response parameters Body.Desktops.$.DomainType.
 

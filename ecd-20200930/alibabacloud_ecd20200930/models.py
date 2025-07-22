@@ -1382,6 +1382,126 @@ class AddUserToDesktopOversoldUserGroupResponse(TeaModel):
         return self
 
 
+class AllocateIpAddressRequest(TeaModel):
+    def __init__(
+        self,
+        network_interface_id: str = None,
+        office_site_id: str = None,
+        region_id: str = None,
+    ):
+        self.network_interface_id = network_interface_id
+        self.office_site_id = office_site_id
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.network_interface_id is not None:
+            result['NetworkInterfaceId'] = self.network_interface_id
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NetworkInterfaceId') is not None:
+            self.network_interface_id = m.get('NetworkInterfaceId')
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class AllocateIpAddressResponseBody(TeaModel):
+    def __init__(
+        self,
+        eip_address: str = None,
+        eip_id: str = None,
+        request_id: str = None,
+    ):
+        self.eip_address = eip_address
+        self.eip_id = eip_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.eip_address is not None:
+            result['EipAddress'] = self.eip_address
+        if self.eip_id is not None:
+            result['EipId'] = self.eip_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EipAddress') is not None:
+            self.eip_address = m.get('EipAddress')
+        if m.get('EipId') is not None:
+            self.eip_id = m.get('EipId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AllocateIpAddressResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AllocateIpAddressResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AllocateIpAddressResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ApplyAutoSnapshotPolicyRequest(TeaModel):
     def __init__(
         self,
@@ -2110,6 +2230,127 @@ class ApproveFotaUpdateResponse(TeaModel):
         return self
 
 
+class AssociateIpAddressRequest(TeaModel):
+    def __init__(
+        self,
+        eip_id: str = None,
+        nat_gateway_id: str = None,
+        network_interface_id: str = None,
+        office_site_id: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.eip_id = eip_id
+        self.nat_gateway_id = nat_gateway_id
+        self.network_interface_id = network_interface_id
+        self.office_site_id = office_site_id
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.eip_id is not None:
+            result['EipId'] = self.eip_id
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+        if self.network_interface_id is not None:
+            result['NetworkInterfaceId'] = self.network_interface_id
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EipId') is not None:
+            self.eip_id = m.get('EipId')
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+        if m.get('NetworkInterfaceId') is not None:
+            self.network_interface_id = m.get('NetworkInterfaceId')
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class AssociateIpAddressResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AssociateIpAddressResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AssociateIpAddressResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AssociateIpAddressResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AssociateNetworkPackageRequest(TeaModel):
     def __init__(
         self,
@@ -2223,6 +2464,116 @@ class AssociateNetworkPackageResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AssociateNetworkPackageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AssociateRouteTableRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        route_table_id: str = None,
+        v_switch_id: str = None,
+    ):
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.route_table_id = route_table_id
+        # This parameter is required.
+        self.v_switch_id = v_switch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.route_table_id is not None:
+            result['RouteTableId'] = self.route_table_id
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RouteTableId') is not None:
+            self.route_table_id = m.get('RouteTableId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        return self
+
+
+class AssociateRouteTableResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AssociateRouteTableResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AssociateRouteTableResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AssociateRouteTableResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12385,6 +12736,156 @@ class CreateEcdReportTaskResponse(TeaModel):
         return self
 
 
+class CreateForwardEntryRequest(TeaModel):
+    def __init__(
+        self,
+        external_ip: str = None,
+        external_port: str = None,
+        forward_entry_name: str = None,
+        forward_table_id: str = None,
+        internal_ip: str = None,
+        internal_port: str = None,
+        ip_protocol: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.external_ip = external_ip
+        # This parameter is required.
+        self.external_port = external_port
+        self.forward_entry_name = forward_entry_name
+        # This parameter is required.
+        self.forward_table_id = forward_table_id
+        # This parameter is required.
+        self.internal_ip = internal_ip
+        # This parameter is required.
+        self.internal_port = internal_port
+        # This parameter is required.
+        self.ip_protocol = ip_protocol
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_ip is not None:
+            result['ExternalIp'] = self.external_ip
+        if self.external_port is not None:
+            result['ExternalPort'] = self.external_port
+        if self.forward_entry_name is not None:
+            result['ForwardEntryName'] = self.forward_entry_name
+        if self.forward_table_id is not None:
+            result['ForwardTableId'] = self.forward_table_id
+        if self.internal_ip is not None:
+            result['InternalIp'] = self.internal_ip
+        if self.internal_port is not None:
+            result['InternalPort'] = self.internal_port
+        if self.ip_protocol is not None:
+            result['IpProtocol'] = self.ip_protocol
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExternalIp') is not None:
+            self.external_ip = m.get('ExternalIp')
+        if m.get('ExternalPort') is not None:
+            self.external_port = m.get('ExternalPort')
+        if m.get('ForwardEntryName') is not None:
+            self.forward_entry_name = m.get('ForwardEntryName')
+        if m.get('ForwardTableId') is not None:
+            self.forward_table_id = m.get('ForwardTableId')
+        if m.get('InternalIp') is not None:
+            self.internal_ip = m.get('InternalIp')
+        if m.get('InternalPort') is not None:
+            self.internal_port = m.get('InternalPort')
+        if m.get('IpProtocol') is not None:
+            self.ip_protocol = m.get('IpProtocol')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class CreateForwardEntryResponseBody(TeaModel):
+    def __init__(
+        self,
+        forward_entry_id: str = None,
+        request_id: str = None,
+    ):
+        self.forward_entry_id = forward_entry_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.forward_entry_id is not None:
+            result['ForwardEntryId'] = self.forward_entry_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ForwardEntryId') is not None:
+            self.forward_entry_id = m.get('ForwardEntryId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateForwardEntryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateForwardEntryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateForwardEntryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateImageRequest(TeaModel):
     def __init__(
         self,
@@ -12736,6 +13237,134 @@ class CreateNASFileSystemResponse(TeaModel):
         return self
 
 
+class CreateNatGatewayRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+    ):
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.v_switch_id = v_switch_id
+        # This parameter is required.
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class CreateNatGatewayResponseBody(TeaModel):
+    def __init__(
+        self,
+        forward_table_ids: List[str] = None,
+        nat_gateway_id: str = None,
+        request_id: str = None,
+        snat_table_ids: List[str] = None,
+    ):
+        self.forward_table_ids = forward_table_ids
+        self.nat_gateway_id = nat_gateway_id
+        self.request_id = request_id
+        self.snat_table_ids = snat_table_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.forward_table_ids is not None:
+            result['ForwardTableIds'] = self.forward_table_ids
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.snat_table_ids is not None:
+            result['SnatTableIds'] = self.snat_table_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ForwardTableIds') is not None:
+            self.forward_table_ids = m.get('ForwardTableIds')
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SnatTableIds') is not None:
+            self.snat_table_ids = m.get('SnatTableIds')
+        return self
+
+
+class CreateNatGatewayResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateNatGatewayResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateNatGatewayResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateNetworkPackageRequest(TeaModel):
     def __init__(
         self,
@@ -12815,8 +13444,6 @@ class CreateNetworkPackageRequest(TeaModel):
         #     *   PayByBandwidth: charges by fixed bandwidth.
         self.internet_charge_type = internet_charge_type
         # The office network ID.
-        # 
-        # This parameter is required.
         self.office_site_id = office_site_id
         # The billing method of the premium bandwidth plan.
         # 
@@ -14615,6 +15242,273 @@ class CreateRAMDirectoryResponse(TeaModel):
         return self
 
 
+class CreateRouteEntryRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        destination_cidr_block: str = None,
+        next_hop_id: str = None,
+        next_hop_type: str = None,
+        region_id: str = None,
+        route_entry_name: str = None,
+        route_table_id: str = None,
+    ):
+        self.description = description
+        # This parameter is required.
+        self.destination_cidr_block = destination_cidr_block
+        self.next_hop_id = next_hop_id
+        self.next_hop_type = next_hop_type
+        # This parameter is required.
+        self.region_id = region_id
+        self.route_entry_name = route_entry_name
+        # This parameter is required.
+        self.route_table_id = route_table_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.destination_cidr_block is not None:
+            result['DestinationCidrBlock'] = self.destination_cidr_block
+        if self.next_hop_id is not None:
+            result['NextHopId'] = self.next_hop_id
+        if self.next_hop_type is not None:
+            result['NextHopType'] = self.next_hop_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.route_entry_name is not None:
+            result['RouteEntryName'] = self.route_entry_name
+        if self.route_table_id is not None:
+            result['RouteTableId'] = self.route_table_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DestinationCidrBlock') is not None:
+            self.destination_cidr_block = m.get('DestinationCidrBlock')
+        if m.get('NextHopId') is not None:
+            self.next_hop_id = m.get('NextHopId')
+        if m.get('NextHopType') is not None:
+            self.next_hop_type = m.get('NextHopType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RouteEntryName') is not None:
+            self.route_entry_name = m.get('RouteEntryName')
+        if m.get('RouteTableId') is not None:
+            self.route_table_id = m.get('RouteTableId')
+        return self
+
+
+class CreateRouteEntryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        route_entry_id: str = None,
+    ):
+        self.request_id = request_id
+        self.route_entry_id = route_entry_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.route_entry_id is not None:
+            result['RouteEntryId'] = self.route_entry_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RouteEntryId') is not None:
+            self.route_entry_id = m.get('RouteEntryId')
+        return self
+
+
+class CreateRouteEntryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateRouteEntryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateRouteEntryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateRouteTableRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        description: str = None,
+        region_id: str = None,
+        route_table_name: str = None,
+        vpc_id: str = None,
+    ):
+        self.client_token = client_token
+        self.description = description
+        # This parameter is required.
+        self.region_id = region_id
+        self.route_table_name = route_table_name
+        # This parameter is required.
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.route_table_name is not None:
+            result['RouteTableName'] = self.route_table_name
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RouteTableName') is not None:
+            self.route_table_name = m.get('RouteTableName')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class CreateRouteTableResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        route_table_id: str = None,
+    ):
+        self.request_id = request_id
+        self.route_table_id = route_table_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.route_table_id is not None:
+            result['RouteTableId'] = self.route_table_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RouteTableId') is not None:
+            self.route_table_id = m.get('RouteTableId')
+        return self
+
+
+class CreateRouteTableResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateRouteTableResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateRouteTableResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateSimpleOfficeSiteRequest(TeaModel):
     def __init__(
         self,
@@ -15023,6 +15917,269 @@ class CreateSnapshotResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateSnapshotResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateSnatEntryRequest(TeaModel):
+    def __init__(
+        self,
+        eip_affinity: int = None,
+        region_id: str = None,
+        snat_entry_name: str = None,
+        snat_ip: str = None,
+        snat_table_id: str = None,
+        source_cidr: str = None,
+    ):
+        self.eip_affinity = eip_affinity
+        # This parameter is required.
+        self.region_id = region_id
+        self.snat_entry_name = snat_entry_name
+        # This parameter is required.
+        self.snat_ip = snat_ip
+        # This parameter is required.
+        self.snat_table_id = snat_table_id
+        # This parameter is required.
+        self.source_cidr = source_cidr
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.eip_affinity is not None:
+            result['EipAffinity'] = self.eip_affinity
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.snat_entry_name is not None:
+            result['SnatEntryName'] = self.snat_entry_name
+        if self.snat_ip is not None:
+            result['SnatIp'] = self.snat_ip
+        if self.snat_table_id is not None:
+            result['SnatTableId'] = self.snat_table_id
+        if self.source_cidr is not None:
+            result['SourceCIDR'] = self.source_cidr
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EipAffinity') is not None:
+            self.eip_affinity = m.get('EipAffinity')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SnatEntryName') is not None:
+            self.snat_entry_name = m.get('SnatEntryName')
+        if m.get('SnatIp') is not None:
+            self.snat_ip = m.get('SnatIp')
+        if m.get('SnatTableId') is not None:
+            self.snat_table_id = m.get('SnatTableId')
+        if m.get('SourceCIDR') is not None:
+            self.source_cidr = m.get('SourceCIDR')
+        return self
+
+
+class CreateSnatEntryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        snat_entry_id: str = None,
+    ):
+        self.request_id = request_id
+        self.snat_entry_id = snat_entry_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.snat_entry_id is not None:
+            result['SnatEntryId'] = self.snat_entry_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SnatEntryId') is not None:
+            self.snat_entry_id = m.get('SnatEntryId')
+        return self
+
+
+class CreateSnatEntryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSnatEntryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSnatEntryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateSubnetRequest(TeaModel):
+    def __init__(
+        self,
+        cidr_block: str = None,
+        name: str = None,
+        office_site_id: str = None,
+        region_id: str = None,
+        zone_id: str = None,
+    ):
+        # This parameter is required.
+        self.cidr_block = cidr_block
+        self.name = name
+        # This parameter is required.
+        self.office_site_id = office_site_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidr_block is not None:
+            result['CidrBlock'] = self.cidr_block
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CidrBlock') is not None:
+            self.cidr_block = m.get('CidrBlock')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class CreateSubnetResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        subnet_id: str = None,
+    ):
+        self.request_id = request_id
+        self.subnet_id = subnet_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.subnet_id is not None:
+            result['SubnetId'] = self.subnet_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SubnetId') is not None:
+            self.subnet_id = m.get('SubnetId')
+        return self
+
+
+class CreateSubnetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSubnetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSubnetResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -17077,6 +18234,115 @@ class DeleteEduRoomResponse(TeaModel):
         return self
 
 
+class DeleteForwardEntryRequest(TeaModel):
+    def __init__(
+        self,
+        forward_entry_id: str = None,
+        forward_table_id: str = None,
+        region_id: str = None,
+    ):
+        self.forward_entry_id = forward_entry_id
+        # This parameter is required.
+        self.forward_table_id = forward_table_id
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.forward_entry_id is not None:
+            result['ForwardEntryId'] = self.forward_entry_id
+        if self.forward_table_id is not None:
+            result['ForwardTableId'] = self.forward_table_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ForwardEntryId') is not None:
+            self.forward_entry_id = m.get('ForwardEntryId')
+        if m.get('ForwardTableId') is not None:
+            self.forward_table_id = m.get('ForwardTableId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DeleteForwardEntryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteForwardEntryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteForwardEntryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteForwardEntryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteImagesRequest(TeaModel):
     def __init__(
         self,
@@ -17296,6 +18562,109 @@ class DeleteNASFileSystemsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteNASFileSystemsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteNatGatewayRequest(TeaModel):
+    def __init__(
+        self,
+        nat_gateway_id: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.nat_gateway_id = nat_gateway_id
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DeleteNatGatewayResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteNatGatewayResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteNatGatewayResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteNatGatewayResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -17630,6 +18999,230 @@ class DeletePolicyGroupsResponse(TeaModel):
         return self
 
 
+class DeleteRouteEntryRequest(TeaModel):
+    def __init__(
+        self,
+        destination_cidr_block: str = None,
+        next_hop_id: str = None,
+        region_id: str = None,
+        route_entry_id: str = None,
+        route_table_id: str = None,
+    ):
+        self.destination_cidr_block = destination_cidr_block
+        self.next_hop_id = next_hop_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.route_entry_id = route_entry_id
+        # This parameter is required.
+        self.route_table_id = route_table_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_cidr_block is not None:
+            result['DestinationCidrBlock'] = self.destination_cidr_block
+        if self.next_hop_id is not None:
+            result['NextHopId'] = self.next_hop_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.route_entry_id is not None:
+            result['RouteEntryId'] = self.route_entry_id
+        if self.route_table_id is not None:
+            result['RouteTableId'] = self.route_table_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestinationCidrBlock') is not None:
+            self.destination_cidr_block = m.get('DestinationCidrBlock')
+        if m.get('NextHopId') is not None:
+            self.next_hop_id = m.get('NextHopId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RouteEntryId') is not None:
+            self.route_entry_id = m.get('RouteEntryId')
+        if m.get('RouteTableId') is not None:
+            self.route_table_id = m.get('RouteTableId')
+        return self
+
+
+class DeleteRouteEntryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteRouteEntryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteRouteEntryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteRouteEntryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteRouteTableRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        route_table_id: str = None,
+    ):
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.route_table_id = route_table_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.route_table_id is not None:
+            result['RouteTableId'] = self.route_table_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RouteTableId') is not None:
+            self.route_table_id = m.get('RouteTableId')
+        return self
+
+
+class DeleteRouteTableResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteRouteTableResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteRouteTableResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteRouteTableResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteSnapshotRequest(TeaModel):
     def __init__(
         self,
@@ -17734,6 +19327,225 @@ class DeleteSnapshotResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteSnapshotResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteSnatEntryRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        snat_entry_id: str = None,
+        snat_table_id: str = None,
+    ):
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.snat_entry_id = snat_entry_id
+        # This parameter is required.
+        self.snat_table_id = snat_table_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.snat_entry_id is not None:
+            result['SnatEntryId'] = self.snat_entry_id
+        if self.snat_table_id is not None:
+            result['SnatTableId'] = self.snat_table_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SnatEntryId') is not None:
+            self.snat_entry_id = m.get('SnatEntryId')
+        if m.get('SnatTableId') is not None:
+            self.snat_table_id = m.get('SnatTableId')
+        return self
+
+
+class DeleteSnatEntryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteSnatEntryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteSnatEntryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteSnatEntryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteSubnetRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        subnet_id: str = None,
+    ):
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.subnet_id = subnet_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.subnet_id is not None:
+            result['SubnetId'] = self.subnet_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SubnetId') is not None:
+            self.subnet_id = m.get('SubnetId')
+        return self
+
+
+class DeleteSubnetResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        subnet_id: str = None,
+    ):
+        self.request_id = request_id
+        self.subnet_id = subnet_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.subnet_id is not None:
+            result['SubnetId'] = self.subnet_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SubnetId') is not None:
+            self.subnet_id = m.get('SubnetId')
+        return self
+
+
+class DeleteSubnetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteSubnetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteSubnetResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -30496,6 +32308,239 @@ class DescribeFlowStatisticResponse(TeaModel):
         return self
 
 
+class DescribeForwardTableEntriesRequest(TeaModel):
+    def __init__(
+        self,
+        forward_entry_id: str = None,
+        forward_table_id: str = None,
+        max_results: int = None,
+        nat_gateway_id: str = None,
+        next_token: str = None,
+        region_id: str = None,
+    ):
+        self.forward_entry_id = forward_entry_id
+        self.forward_table_id = forward_table_id
+        self.max_results = max_results
+        self.nat_gateway_id = nat_gateway_id
+        self.next_token = next_token
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.forward_entry_id is not None:
+            result['ForwardEntryId'] = self.forward_entry_id
+        if self.forward_table_id is not None:
+            result['ForwardTableId'] = self.forward_table_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ForwardEntryId') is not None:
+            self.forward_entry_id = m.get('ForwardEntryId')
+        if m.get('ForwardTableId') is not None:
+            self.forward_table_id = m.get('ForwardTableId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeForwardTableEntriesResponseBodyForwardTableEntries(TeaModel):
+    def __init__(
+        self,
+        external_ip: str = None,
+        external_port: str = None,
+        forward_entry_id: str = None,
+        forward_entry_name: str = None,
+        forward_table_id: str = None,
+        internal_ip: str = None,
+        internal_port: str = None,
+        ip_protocol: str = None,
+        nat_gateway_id: str = None,
+        status: str = None,
+    ):
+        self.external_ip = external_ip
+        self.external_port = external_port
+        self.forward_entry_id = forward_entry_id
+        self.forward_entry_name = forward_entry_name
+        self.forward_table_id = forward_table_id
+        self.internal_ip = internal_ip
+        self.internal_port = internal_port
+        self.ip_protocol = ip_protocol
+        self.nat_gateway_id = nat_gateway_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_ip is not None:
+            result['ExternalIp'] = self.external_ip
+        if self.external_port is not None:
+            result['ExternalPort'] = self.external_port
+        if self.forward_entry_id is not None:
+            result['ForwardEntryId'] = self.forward_entry_id
+        if self.forward_entry_name is not None:
+            result['ForwardEntryName'] = self.forward_entry_name
+        if self.forward_table_id is not None:
+            result['ForwardTableId'] = self.forward_table_id
+        if self.internal_ip is not None:
+            result['InternalIp'] = self.internal_ip
+        if self.internal_port is not None:
+            result['InternalPort'] = self.internal_port
+        if self.ip_protocol is not None:
+            result['IpProtocol'] = self.ip_protocol
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExternalIp') is not None:
+            self.external_ip = m.get('ExternalIp')
+        if m.get('ExternalPort') is not None:
+            self.external_port = m.get('ExternalPort')
+        if m.get('ForwardEntryId') is not None:
+            self.forward_entry_id = m.get('ForwardEntryId')
+        if m.get('ForwardEntryName') is not None:
+            self.forward_entry_name = m.get('ForwardEntryName')
+        if m.get('ForwardTableId') is not None:
+            self.forward_table_id = m.get('ForwardTableId')
+        if m.get('InternalIp') is not None:
+            self.internal_ip = m.get('InternalIp')
+        if m.get('InternalPort') is not None:
+            self.internal_port = m.get('InternalPort')
+        if m.get('IpProtocol') is not None:
+            self.ip_protocol = m.get('IpProtocol')
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeForwardTableEntriesResponseBody(TeaModel):
+    def __init__(
+        self,
+        forward_table_entries: List[DescribeForwardTableEntriesResponseBodyForwardTableEntries] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.forward_table_entries = forward_table_entries
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+
+    def validate(self):
+        if self.forward_table_entries:
+            for k in self.forward_table_entries:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ForwardTableEntries'] = []
+        if self.forward_table_entries is not None:
+            for k in self.forward_table_entries:
+                result['ForwardTableEntries'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.forward_table_entries = []
+        if m.get('ForwardTableEntries') is not None:
+            for k in m.get('ForwardTableEntries'):
+                temp_model = DescribeForwardTableEntriesResponseBodyForwardTableEntries()
+                self.forward_table_entries.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeForwardTableEntriesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeForwardTableEntriesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeForwardTableEntriesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeFotaPendingDesktopsRequest(TeaModel):
     def __init__(
         self,
@@ -32780,6 +34825,209 @@ class DescribeInvocationsResponse(TeaModel):
         return self
 
 
+class DescribeIpAddressesRequest(TeaModel):
+    def __init__(
+        self,
+        eip_id: str = None,
+        instance_id: List[str] = None,
+        max_results: int = None,
+        next_token: str = None,
+        region_id: str = None,
+    ):
+        self.eip_id = eip_id
+        self.instance_id = instance_id
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.eip_id is not None:
+            result['EipId'] = self.eip_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EipId') is not None:
+            self.eip_id = m.get('EipId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeIpAddressesResponseBodyIpAddresses(TeaModel):
+    def __init__(
+        self,
+        create_by_wuying: bool = None,
+        eip_address: str = None,
+        eip_id: str = None,
+        eip_status: str = None,
+        instance_id: str = None,
+        instance_type: str = None,
+    ):
+        self.create_by_wuying = create_by_wuying
+        self.eip_address = eip_address
+        self.eip_id = eip_id
+        self.eip_status = eip_status
+        self.instance_id = instance_id
+        self.instance_type = instance_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_by_wuying is not None:
+            result['CreateByWuying'] = self.create_by_wuying
+        if self.eip_address is not None:
+            result['EipAddress'] = self.eip_address
+        if self.eip_id is not None:
+            result['EipId'] = self.eip_id
+        if self.eip_status is not None:
+            result['EipStatus'] = self.eip_status
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateByWuying') is not None:
+            self.create_by_wuying = m.get('CreateByWuying')
+        if m.get('EipAddress') is not None:
+            self.eip_address = m.get('EipAddress')
+        if m.get('EipId') is not None:
+            self.eip_id = m.get('EipId')
+        if m.get('EipStatus') is not None:
+            self.eip_status = m.get('EipStatus')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        return self
+
+
+class DescribeIpAddressesResponseBody(TeaModel):
+    def __init__(
+        self,
+        ip_addresses: List[DescribeIpAddressesResponseBodyIpAddresses] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.ip_addresses = ip_addresses
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+
+    def validate(self):
+        if self.ip_addresses:
+            for k in self.ip_addresses:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['IpAddresses'] = []
+        if self.ip_addresses is not None:
+            for k in self.ip_addresses:
+                result['IpAddresses'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ip_addresses = []
+        if m.get('IpAddresses') is not None:
+            for k in m.get('IpAddresses'):
+                temp_model = DescribeIpAddressesResponseBodyIpAddresses()
+                self.ip_addresses.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeIpAddressesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeIpAddressesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeIpAddressesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeKmsKeysRequest(TeaModel):
     def __init__(
         self,
@@ -33898,6 +36146,280 @@ class DescribeNASFileSystemsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeNASFileSystemsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeNatGatewaysRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        name: str = None,
+        nat_gateway_id: str = None,
+        next_token: str = None,
+        region_id: str = None,
+        vpc_id: str = None,
+    ):
+        self.max_results = max_results
+        self.name = name
+        self.nat_gateway_id = nat_gateway_id
+        self.next_token = next_token
+        # This parameter is required.
+        self.region_id = region_id
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class DescribeNatGatewaysResponseBodyNatGatewaysIpLists(TeaModel):
+    def __init__(
+        self,
+        allocation_id: str = None,
+        ip_address: str = None,
+        private_ip_address: str = None,
+        snat_entry_enabled: str = None,
+        using_status: str = None,
+    ):
+        self.allocation_id = allocation_id
+        self.ip_address = ip_address
+        self.private_ip_address = private_ip_address
+        self.snat_entry_enabled = snat_entry_enabled
+        self.using_status = using_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allocation_id is not None:
+            result['AllocationId'] = self.allocation_id
+        if self.ip_address is not None:
+            result['IpAddress'] = self.ip_address
+        if self.private_ip_address is not None:
+            result['PrivateIpAddress'] = self.private_ip_address
+        if self.snat_entry_enabled is not None:
+            result['SnatEntryEnabled'] = self.snat_entry_enabled
+        if self.using_status is not None:
+            result['UsingStatus'] = self.using_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllocationId') is not None:
+            self.allocation_id = m.get('AllocationId')
+        if m.get('IpAddress') is not None:
+            self.ip_address = m.get('IpAddress')
+        if m.get('PrivateIpAddress') is not None:
+            self.private_ip_address = m.get('PrivateIpAddress')
+        if m.get('SnatEntryEnabled') is not None:
+            self.snat_entry_enabled = m.get('SnatEntryEnabled')
+        if m.get('UsingStatus') is not None:
+            self.using_status = m.get('UsingStatus')
+        return self
+
+
+class DescribeNatGatewaysResponseBodyNatGateways(TeaModel):
+    def __init__(
+        self,
+        forward_table_ids: List[str] = None,
+        ip_lists: List[DescribeNatGatewaysResponseBodyNatGatewaysIpLists] = None,
+        name: str = None,
+        nat_gateway_id: str = None,
+        snat_table_ids: List[str] = None,
+        status: str = None,
+        vpc_id: str = None,
+    ):
+        self.forward_table_ids = forward_table_ids
+        self.ip_lists = ip_lists
+        self.name = name
+        self.nat_gateway_id = nat_gateway_id
+        self.snat_table_ids = snat_table_ids
+        self.status = status
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        if self.ip_lists:
+            for k in self.ip_lists:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.forward_table_ids is not None:
+            result['ForwardTableIds'] = self.forward_table_ids
+        result['IpLists'] = []
+        if self.ip_lists is not None:
+            for k in self.ip_lists:
+                result['IpLists'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+        if self.snat_table_ids is not None:
+            result['SnatTableIds'] = self.snat_table_ids
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ForwardTableIds') is not None:
+            self.forward_table_ids = m.get('ForwardTableIds')
+        self.ip_lists = []
+        if m.get('IpLists') is not None:
+            for k in m.get('IpLists'):
+                temp_model = DescribeNatGatewaysResponseBodyNatGatewaysIpLists()
+                self.ip_lists.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+        if m.get('SnatTableIds') is not None:
+            self.snat_table_ids = m.get('SnatTableIds')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class DescribeNatGatewaysResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        nat_gateways: List[DescribeNatGatewaysResponseBodyNatGateways] = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.max_results = max_results
+        self.nat_gateways = nat_gateways
+        self.next_token = next_token
+        self.request_id = request_id
+
+    def validate(self):
+        if self.nat_gateways:
+            for k in self.nat_gateways:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        result['NatGateways'] = []
+        if self.nat_gateways is not None:
+            for k in self.nat_gateways:
+                result['NatGateways'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        self.nat_gateways = []
+        if m.get('NatGateways') is not None:
+            for k in m.get('NatGateways'):
+                temp_model = DescribeNatGatewaysResponseBodyNatGateways()
+                self.nat_gateways.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeNatGatewaysResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeNatGatewaysResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeNatGatewaysResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -39370,6 +41892,478 @@ class DescribeResourceByCenterPolicyIdResponse(TeaModel):
         return self
 
 
+class DescribeRouteEntryListRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        region_id: str = None,
+        route_table_id: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.route_table_id = route_table_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.route_table_id is not None:
+            result['RouteTableId'] = self.route_table_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RouteTableId') is not None:
+            self.route_table_id = m.get('RouteTableId')
+        return self
+
+
+class DescribeRouteEntryListResponseBodyRouteEntriesNextHops(TeaModel):
+    def __init__(
+        self,
+        next_hop_id: str = None,
+        next_hop_type: str = None,
+    ):
+        self.next_hop_id = next_hop_id
+        self.next_hop_type = next_hop_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_hop_id is not None:
+            result['NextHopId'] = self.next_hop_id
+        if self.next_hop_type is not None:
+            result['NextHopType'] = self.next_hop_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextHopId') is not None:
+            self.next_hop_id = m.get('NextHopId')
+        if m.get('NextHopType') is not None:
+            self.next_hop_type = m.get('NextHopType')
+        return self
+
+
+class DescribeRouteEntryListResponseBodyRouteEntries(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        destination_cidr_block: str = None,
+        ip_version: str = None,
+        next_hops: List[DescribeRouteEntryListResponseBodyRouteEntriesNextHops] = None,
+        route_entry_id: str = None,
+        route_entry_name: str = None,
+        route_table_id: str = None,
+        status: str = None,
+        type: str = None,
+    ):
+        self.description = description
+        self.destination_cidr_block = destination_cidr_block
+        self.ip_version = ip_version
+        self.next_hops = next_hops
+        self.route_entry_id = route_entry_id
+        self.route_entry_name = route_entry_name
+        self.route_table_id = route_table_id
+        self.status = status
+        self.type = type
+
+    def validate(self):
+        if self.next_hops:
+            for k in self.next_hops:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.destination_cidr_block is not None:
+            result['DestinationCidrBlock'] = self.destination_cidr_block
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
+        result['NextHops'] = []
+        if self.next_hops is not None:
+            for k in self.next_hops:
+                result['NextHops'].append(k.to_map() if k else None)
+        if self.route_entry_id is not None:
+            result['RouteEntryId'] = self.route_entry_id
+        if self.route_entry_name is not None:
+            result['RouteEntryName'] = self.route_entry_name
+        if self.route_table_id is not None:
+            result['RouteTableId'] = self.route_table_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DestinationCidrBlock') is not None:
+            self.destination_cidr_block = m.get('DestinationCidrBlock')
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
+        self.next_hops = []
+        if m.get('NextHops') is not None:
+            for k in m.get('NextHops'):
+                temp_model = DescribeRouteEntryListResponseBodyRouteEntriesNextHops()
+                self.next_hops.append(temp_model.from_map(k))
+        if m.get('RouteEntryId') is not None:
+            self.route_entry_id = m.get('RouteEntryId')
+        if m.get('RouteEntryName') is not None:
+            self.route_entry_name = m.get('RouteEntryName')
+        if m.get('RouteTableId') is not None:
+            self.route_table_id = m.get('RouteTableId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeRouteEntryListResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        route_entries: List[DescribeRouteEntryListResponseBodyRouteEntries] = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+        self.route_entries = route_entries
+
+    def validate(self):
+        if self.route_entries:
+            for k in self.route_entries:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['RouteEntries'] = []
+        if self.route_entries is not None:
+            for k in self.route_entries:
+                result['RouteEntries'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.route_entries = []
+        if m.get('RouteEntries') is not None:
+            for k in m.get('RouteEntries'):
+                temp_model = DescribeRouteEntryListResponseBodyRouteEntries()
+                self.route_entries.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeRouteEntryListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeRouteEntryListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeRouteEntryListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeRouteTableListRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        region_id: str = None,
+        route_table_id: str = None,
+        route_table_name: str = None,
+        vpc_id: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.region_id = region_id
+        self.route_table_id = route_table_id
+        self.route_table_name = route_table_name
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.route_table_id is not None:
+            result['RouteTableId'] = self.route_table_id
+        if self.route_table_name is not None:
+            result['RouteTableName'] = self.route_table_name
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RouteTableId') is not None:
+            self.route_table_id = m.get('RouteTableId')
+        if m.get('RouteTableName') is not None:
+            self.route_table_name = m.get('RouteTableName')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class DescribeRouteTableListResponseBodyRouteTableList(TeaModel):
+    def __init__(
+        self,
+        associate_type: str = None,
+        route_table_id: str = None,
+        route_table_type: str = None,
+        router_type: str = None,
+        status: str = None,
+        v_switch_ids: List[str] = None,
+        vpc_id: str = None,
+    ):
+        self.associate_type = associate_type
+        self.route_table_id = route_table_id
+        self.route_table_type = route_table_type
+        self.router_type = router_type
+        self.status = status
+        self.v_switch_ids = v_switch_ids
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.associate_type is not None:
+            result['AssociateType'] = self.associate_type
+        if self.route_table_id is not None:
+            result['RouteTableId'] = self.route_table_id
+        if self.route_table_type is not None:
+            result['RouteTableType'] = self.route_table_type
+        if self.router_type is not None:
+            result['RouterType'] = self.router_type
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssociateType') is not None:
+            self.associate_type = m.get('AssociateType')
+        if m.get('RouteTableId') is not None:
+            self.route_table_id = m.get('RouteTableId')
+        if m.get('RouteTableType') is not None:
+            self.route_table_type = m.get('RouteTableType')
+        if m.get('RouterType') is not None:
+            self.router_type = m.get('RouterType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class DescribeRouteTableListResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        route_table_list: List[DescribeRouteTableListResponseBodyRouteTableList] = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+        self.route_table_list = route_table_list
+
+    def validate(self):
+        if self.route_table_list:
+            for k in self.route_table_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['RouteTableList'] = []
+        if self.route_table_list is not None:
+            for k in self.route_table_list:
+                result['RouteTableList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.route_table_list = []
+        if m.get('RouteTableList') is not None:
+            for k in m.get('RouteTableList'):
+                temp_model = DescribeRouteTableListResponseBodyRouteTableList()
+                self.route_table_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeRouteTableListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeRouteTableListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeRouteTableListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeSessionStatisticRequest(TeaModel):
     def __init__(
         self,
@@ -40064,6 +43058,448 @@ class DescribeSnapshotsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSnapshotsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeSnatTableEntriesRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        nat_gateway_id: str = None,
+        next_token: str = None,
+        region_id: str = None,
+        snat_entry_id: str = None,
+        snat_table_id: str = None,
+    ):
+        self.max_results = max_results
+        self.nat_gateway_id = nat_gateway_id
+        self.next_token = next_token
+        # This parameter is required.
+        self.region_id = region_id
+        self.snat_entry_id = snat_entry_id
+        self.snat_table_id = snat_table_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.snat_entry_id is not None:
+            result['SnatEntryId'] = self.snat_entry_id
+        if self.snat_table_id is not None:
+            result['SnatTableId'] = self.snat_table_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SnatEntryId') is not None:
+            self.snat_entry_id = m.get('SnatEntryId')
+        if m.get('SnatTableId') is not None:
+            self.snat_table_id = m.get('SnatTableId')
+        return self
+
+
+class DescribeSnatTableEntriesResponseBodySnatTableEntries(TeaModel):
+    def __init__(
+        self,
+        eip_affinity: str = None,
+        nat_gateway_id: str = None,
+        snat_entry_id: str = None,
+        snat_entry_name: str = None,
+        snat_ip: str = None,
+        snat_table_id: str = None,
+        source_cidr: str = None,
+        source_vswitch_id: str = None,
+        status: str = None,
+    ):
+        self.eip_affinity = eip_affinity
+        self.nat_gateway_id = nat_gateway_id
+        self.snat_entry_id = snat_entry_id
+        self.snat_entry_name = snat_entry_name
+        self.snat_ip = snat_ip
+        self.snat_table_id = snat_table_id
+        self.source_cidr = source_cidr
+        self.source_vswitch_id = source_vswitch_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.eip_affinity is not None:
+            result['EipAffinity'] = self.eip_affinity
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+        if self.snat_entry_id is not None:
+            result['SnatEntryId'] = self.snat_entry_id
+        if self.snat_entry_name is not None:
+            result['SnatEntryName'] = self.snat_entry_name
+        if self.snat_ip is not None:
+            result['SnatIp'] = self.snat_ip
+        if self.snat_table_id is not None:
+            result['SnatTableId'] = self.snat_table_id
+        if self.source_cidr is not None:
+            result['SourceCIDR'] = self.source_cidr
+        if self.source_vswitch_id is not None:
+            result['SourceVSwitchId'] = self.source_vswitch_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EipAffinity') is not None:
+            self.eip_affinity = m.get('EipAffinity')
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+        if m.get('SnatEntryId') is not None:
+            self.snat_entry_id = m.get('SnatEntryId')
+        if m.get('SnatEntryName') is not None:
+            self.snat_entry_name = m.get('SnatEntryName')
+        if m.get('SnatIp') is not None:
+            self.snat_ip = m.get('SnatIp')
+        if m.get('SnatTableId') is not None:
+            self.snat_table_id = m.get('SnatTableId')
+        if m.get('SourceCIDR') is not None:
+            self.source_cidr = m.get('SourceCIDR')
+        if m.get('SourceVSwitchId') is not None:
+            self.source_vswitch_id = m.get('SourceVSwitchId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeSnatTableEntriesResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        snat_table_entries: List[DescribeSnatTableEntriesResponseBodySnatTableEntries] = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+        self.snat_table_entries = snat_table_entries
+
+    def validate(self):
+        if self.snat_table_entries:
+            for k in self.snat_table_entries:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SnatTableEntries'] = []
+        if self.snat_table_entries is not None:
+            for k in self.snat_table_entries:
+                result['SnatTableEntries'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.snat_table_entries = []
+        if m.get('SnatTableEntries') is not None:
+            for k in m.get('SnatTableEntries'):
+                temp_model = DescribeSnatTableEntriesResponseBodySnatTableEntries()
+                self.snat_table_entries.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeSnatTableEntriesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSnatTableEntriesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSnatTableEntriesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeSubnetsRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        name: str = None,
+        next_token: str = None,
+        office_site_id: str = None,
+        region_id: str = None,
+        subnet_id: str = None,
+    ):
+        self.max_results = max_results
+        self.name = name
+        self.next_token = next_token
+        self.office_site_id = office_site_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.subnet_id = subnet_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.subnet_id is not None:
+            result['SubnetId'] = self.subnet_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SubnetId') is not None:
+            self.subnet_id = m.get('SubnetId')
+        return self
+
+
+class DescribeSubnetsResponseBodySubnets(TeaModel):
+    def __init__(
+        self,
+        cidr_block: str = None,
+        name: str = None,
+        office_site_id: str = None,
+        status: str = None,
+        subnet_id: str = None,
+        total_eds_count: int = None,
+        total_eds_count_for_group: int = None,
+        zone_id: str = None,
+    ):
+        self.cidr_block = cidr_block
+        self.name = name
+        self.office_site_id = office_site_id
+        self.status = status
+        self.subnet_id = subnet_id
+        self.total_eds_count = total_eds_count
+        self.total_eds_count_for_group = total_eds_count_for_group
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidr_block is not None:
+            result['CidrBlock'] = self.cidr_block
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.subnet_id is not None:
+            result['SubnetId'] = self.subnet_id
+        if self.total_eds_count is not None:
+            result['TotalEdsCount'] = self.total_eds_count
+        if self.total_eds_count_for_group is not None:
+            result['TotalEdsCountForGroup'] = self.total_eds_count_for_group
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CidrBlock') is not None:
+            self.cidr_block = m.get('CidrBlock')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SubnetId') is not None:
+            self.subnet_id = m.get('SubnetId')
+        if m.get('TotalEdsCount') is not None:
+            self.total_eds_count = m.get('TotalEdsCount')
+        if m.get('TotalEdsCountForGroup') is not None:
+            self.total_eds_count_for_group = m.get('TotalEdsCountForGroup')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeSubnetsResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        request_id: str = None,
+        subnets: List[DescribeSubnetsResponseBodySubnets] = None,
+    ):
+        self.next_token = next_token
+        self.request_id = request_id
+        self.subnets = subnets
+
+    def validate(self):
+        if self.subnets:
+            for k in self.subnets:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Subnets'] = []
+        if self.subnets is not None:
+            for k in self.subnets:
+                result['Subnets'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.subnets = []
+        if m.get('Subnets') is not None:
+            for k in m.get('Subnets'):
+                temp_model = DescribeSubnetsResponseBodySubnets()
+                self.subnets.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeSubnetsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSubnetsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSubnetsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -43635,6 +47071,109 @@ class DisconnectDesktopSessionsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DisconnectDesktopSessionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DissociateIpAddressRequest(TeaModel):
+    def __init__(
+        self,
+        eip_id: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.eip_id = eip_id
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.eip_id is not None:
+            result['EipId'] = self.eip_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EipId') is not None:
+            self.eip_id = m.get('EipId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DissociateIpAddressResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DissociateIpAddressResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DissociateIpAddressResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DissociateIpAddressResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -60299,6 +63838,109 @@ class RebuildDesktopsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RebuildDesktopsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ReleaseIpAddressRequest(TeaModel):
+    def __init__(
+        self,
+        eip_id: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.eip_id = eip_id
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.eip_id is not None:
+            result['EipId'] = self.eip_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EipId') is not None:
+            self.eip_id = m.get('EipId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ReleaseIpAddressResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ReleaseIpAddressResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ReleaseIpAddressResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ReleaseIpAddressResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
