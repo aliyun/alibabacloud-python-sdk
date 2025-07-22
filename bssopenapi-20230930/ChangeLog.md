@@ -1,3 +1,17 @@
+2025-07-22 Version: 1.4.0
+- Support API AllocateCostCenterResource.
+- Support API CreateCostCenterRule.
+- Support API CreateInvoice.
+- Support API DeleteCostCenterRule.
+- Support API GetOrderDetail.
+- Support API GetOrders.
+- Support API ListInvoiceCandidate.
+- Support API ListInvoiceTitle.
+- Support API ModifyCostCenterRule.
+- Support API QueryCostCenterRule.
+- Update API QueryCostCenterResource: add response parameters Body.CostCenterResourceDtoList.$.InstanceId.
+
+
 2025-05-28 Version: 1.3.0
 - Support API CreateCostCenter.
 - Support API CreateFundAccountPayRelation.
