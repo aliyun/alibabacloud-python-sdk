@@ -298,6 +298,210 @@ class AssignJobsResponse(TeaModel):
         return self
 
 
+class AssignJobsAsyncRequest(TeaModel):
+    def __init__(
+        self,
+        calling_number: List[str] = None,
+        instance_id: str = None,
+        job_group_id: str = None,
+        jobs_json: List[str] = None,
+        strategy_json: str = None,
+    ):
+        self.calling_number = calling_number
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.job_group_id = job_group_id
+        self.jobs_json = jobs_json
+        self.strategy_json = strategy_json
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.calling_number is not None:
+            result['CallingNumber'] = self.calling_number
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.job_group_id is not None:
+            result['JobGroupId'] = self.job_group_id
+        if self.jobs_json is not None:
+            result['JobsJson'] = self.jobs_json
+        if self.strategy_json is not None:
+            result['StrategyJson'] = self.strategy_json
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallingNumber') is not None:
+            self.calling_number = m.get('CallingNumber')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('JobGroupId') is not None:
+            self.job_group_id = m.get('JobGroupId')
+        if m.get('JobsJson') is not None:
+            self.jobs_json = m.get('JobsJson')
+        if m.get('StrategyJson') is not None:
+            self.strategy_json = m.get('StrategyJson')
+        return self
+
+
+class AssignJobsAsyncShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        calling_number_shrink: str = None,
+        instance_id: str = None,
+        job_group_id: str = None,
+        jobs_json_shrink: str = None,
+        strategy_json: str = None,
+    ):
+        self.calling_number_shrink = calling_number_shrink
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.job_group_id = job_group_id
+        self.jobs_json_shrink = jobs_json_shrink
+        self.strategy_json = strategy_json
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.calling_number_shrink is not None:
+            result['CallingNumber'] = self.calling_number_shrink
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.job_group_id is not None:
+            result['JobGroupId'] = self.job_group_id
+        if self.jobs_json_shrink is not None:
+            result['JobsJson'] = self.jobs_json_shrink
+        if self.strategy_json is not None:
+            result['StrategyJson'] = self.strategy_json
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallingNumber') is not None:
+            self.calling_number_shrink = m.get('CallingNumber')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('JobGroupId') is not None:
+            self.job_group_id = m.get('JobGroupId')
+        if m.get('JobsJson') is not None:
+            self.jobs_json_shrink = m.get('JobsJson')
+        if m.get('StrategyJson') is not None:
+            self.strategy_json = m.get('StrategyJson')
+        return self
+
+
+class AssignJobsAsyncResponseBody(TeaModel):
+    def __init__(
+        self,
+        async_task_id: str = None,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.async_task_id = async_task_id
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.async_task_id is not None:
+            result['AsyncTaskId'] = self.async_task_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AsyncTaskId') is not None:
+            self.async_task_id = m.get('AsyncTaskId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AssignJobsAsyncResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AssignJobsAsyncResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AssignJobsAsyncResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CancelJobsRequest(TeaModel):
     def __init__(
         self,
@@ -12239,10 +12443,12 @@ class DescribeScriptResponseBodyScriptNluProfile(TeaModel):
         fc_function: str = None,
         fc_http_trigger_url: str = None,
         fc_region: str = None,
+        support_beebot_prompts: bool = None,
     ):
         self.fc_function = fc_function
         self.fc_http_trigger_url = fc_http_trigger_url
         self.fc_region = fc_region
+        self.support_beebot_prompts = support_beebot_prompts
 
     def validate(self):
         pass
@@ -12259,6 +12465,8 @@ class DescribeScriptResponseBodyScriptNluProfile(TeaModel):
             result['FcHttpTriggerUrl'] = self.fc_http_trigger_url
         if self.fc_region is not None:
             result['FcRegion'] = self.fc_region
+        if self.support_beebot_prompts is not None:
+            result['SupportBeebotPrompts'] = self.support_beebot_prompts
         return result
 
     def from_map(self, m: dict = None):
@@ -12269,6 +12477,8 @@ class DescribeScriptResponseBodyScriptNluProfile(TeaModel):
             self.fc_http_trigger_url = m.get('FcHttpTriggerUrl')
         if m.get('FcRegion') is not None:
             self.fc_region = m.get('FcRegion')
+        if m.get('SupportBeebotPrompts') is not None:
+            self.support_beebot_prompts = m.get('SupportBeebotPrompts')
         return self
 
 
@@ -16175,6 +16385,150 @@ class GetAsrServerInfoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAsrServerInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAssignJobsAsyncResultRequest(TeaModel):
+    def __init__(
+        self,
+        async_task_id: str = None,
+    ):
+        # This parameter is required.
+        self.async_task_id = async_task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.async_task_id is not None:
+            result['AsyncTaskId'] = self.async_task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AsyncTaskId') is not None:
+            self.async_task_id = m.get('AsyncTaskId')
+        return self
+
+
+class GetAssignJobsAsyncResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        job_group_id: str = None,
+        jobs_id: List[str] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        timeout: bool = None,
+        valid: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.job_group_id = job_group_id
+        self.jobs_id = jobs_id
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.timeout = timeout
+        self.valid = valid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.job_group_id is not None:
+            result['JobGroupId'] = self.job_group_id
+        if self.jobs_id is not None:
+            result['JobsId'] = self.jobs_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        if self.valid is not None:
+            result['Valid'] = self.valid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('JobGroupId') is not None:
+            self.job_group_id = m.get('JobGroupId')
+        if m.get('JobsId') is not None:
+            self.jobs_id = m.get('JobsId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        if m.get('Valid') is not None:
+            self.valid = m.get('Valid')
+        return self
+
+
+class GetAssignJobsAsyncResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAssignJobsAsyncResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAssignJobsAsyncResultResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

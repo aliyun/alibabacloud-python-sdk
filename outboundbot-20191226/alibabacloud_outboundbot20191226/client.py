@@ -261,6 +261,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.assign_jobs_with_options_async(request, runtime)
 
+    def assign_jobs_async_with_options(
+        self,
+        tmp_req: outbound_bot_20191226_models.AssignJobsAsyncRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> outbound_bot_20191226_models.AssignJobsAsyncResponse:
+        """
+        @summary 异步创建外呼任务
+        
+        @param tmp_req: AssignJobsAsyncRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssignJobsAsyncResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = outbound_bot_20191226_models.AssignJobsAsyncShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.calling_number):
+            request.calling_number_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.calling_number, 'CallingNumber', 'json')
+        if not UtilClient.is_unset(tmp_req.jobs_json):
+            request.jobs_json_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.jobs_json, 'JobsJson', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.calling_number_shrink):
+            body['CallingNumber'] = request.calling_number_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.job_group_id):
+            body['JobGroupId'] = request.job_group_id
+        if not UtilClient.is_unset(request.jobs_json_shrink):
+            body['JobsJson'] = request.jobs_json_shrink
+        if not UtilClient.is_unset(request.strategy_json):
+            body['StrategyJson'] = request.strategy_json
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AssignJobsAsync',
+            version='2019-12-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            outbound_bot_20191226_models.AssignJobsAsyncResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def assign_jobs_async_with_options_async(
+        self,
+        tmp_req: outbound_bot_20191226_models.AssignJobsAsyncRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> outbound_bot_20191226_models.AssignJobsAsyncResponse:
+        """
+        @summary 异步创建外呼任务
+        
+        @param tmp_req: AssignJobsAsyncRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssignJobsAsyncResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = outbound_bot_20191226_models.AssignJobsAsyncShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.calling_number):
+            request.calling_number_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.calling_number, 'CallingNumber', 'json')
+        if not UtilClient.is_unset(tmp_req.jobs_json):
+            request.jobs_json_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.jobs_json, 'JobsJson', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.calling_number_shrink):
+            body['CallingNumber'] = request.calling_number_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.job_group_id):
+            body['JobGroupId'] = request.job_group_id
+        if not UtilClient.is_unset(request.jobs_json_shrink):
+            body['JobsJson'] = request.jobs_json_shrink
+        if not UtilClient.is_unset(request.strategy_json):
+            body['StrategyJson'] = request.strategy_json
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AssignJobsAsync',
+            version='2019-12-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            outbound_bot_20191226_models.AssignJobsAsyncResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def assign_jobs_async(
+        self,
+        request: outbound_bot_20191226_models.AssignJobsAsyncRequest,
+    ) -> outbound_bot_20191226_models.AssignJobsAsyncResponse:
+        """
+        @summary 异步创建外呼任务
+        
+        @param request: AssignJobsAsyncRequest
+        @return: AssignJobsAsyncResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.assign_jobs_async_with_options(request, runtime)
+
+    async def assign_jobs_async_async(
+        self,
+        request: outbound_bot_20191226_models.AssignJobsAsyncRequest,
+    ) -> outbound_bot_20191226_models.AssignJobsAsyncResponse:
+        """
+        @summary 异步创建外呼任务
+        
+        @param request: AssignJobsAsyncRequest
+        @return: AssignJobsAsyncResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.assign_jobs_async_with_options_async(request, runtime)
+
     def cancel_jobs_with_options(
         self,
         request: outbound_bot_20191226_models.CancelJobsRequest,
@@ -7724,6 +7848,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_asr_server_info_with_options_async(request, runtime)
+
+    def get_assign_jobs_async_result_with_options(
+        self,
+        request: outbound_bot_20191226_models.GetAssignJobsAsyncResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> outbound_bot_20191226_models.GetAssignJobsAsyncResultResponse:
+        """
+        @summary 获取异步外呼任务上传结果
+        
+        @param request: GetAssignJobsAsyncResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAssignJobsAsyncResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.async_task_id):
+            query['AsyncTaskId'] = request.async_task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAssignJobsAsyncResult',
+            version='2019-12-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            outbound_bot_20191226_models.GetAssignJobsAsyncResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_assign_jobs_async_result_with_options_async(
+        self,
+        request: outbound_bot_20191226_models.GetAssignJobsAsyncResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> outbound_bot_20191226_models.GetAssignJobsAsyncResultResponse:
+        """
+        @summary 获取异步外呼任务上传结果
+        
+        @param request: GetAssignJobsAsyncResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAssignJobsAsyncResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.async_task_id):
+            query['AsyncTaskId'] = request.async_task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAssignJobsAsyncResult',
+            version='2019-12-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            outbound_bot_20191226_models.GetAssignJobsAsyncResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_assign_jobs_async_result(
+        self,
+        request: outbound_bot_20191226_models.GetAssignJobsAsyncResultRequest,
+    ) -> outbound_bot_20191226_models.GetAssignJobsAsyncResultResponse:
+        """
+        @summary 获取异步外呼任务上传结果
+        
+        @param request: GetAssignJobsAsyncResultRequest
+        @return: GetAssignJobsAsyncResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_assign_jobs_async_result_with_options(request, runtime)
+
+    async def get_assign_jobs_async_result_async(
+        self,
+        request: outbound_bot_20191226_models.GetAssignJobsAsyncResultRequest,
+    ) -> outbound_bot_20191226_models.GetAssignJobsAsyncResultResponse:
+        """
+        @summary 获取异步外呼任务上传结果
+        
+        @param request: GetAssignJobsAsyncResultRequest
+        @return: GetAssignJobsAsyncResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_assign_jobs_async_result_with_options_async(request, runtime)
 
     def get_base_strategy_period_with_options(
         self,

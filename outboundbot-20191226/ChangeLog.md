@@ -1,3 +1,9 @@
+2025-07-22 Version: 1.3.0
+- Support API AssignJobsAsync.
+- Support API GetAssignJobsAsyncResult.
+- Update API DescribeScript: add response parameters Body.Script.NluProfile.SupportBeebotPrompts.
+
+
 2025-07-14 Version: 1.2.2
 - Update API CreateTaskExportTask: add request parameters CallingNumber.
 - Update API SearchTask: add request parameters CallingNumber.
