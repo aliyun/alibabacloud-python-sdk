@@ -1,3 +1,7 @@
+2025-07-22 Version: 2.2.0
+- Support API ListTableDetails.
+
+
 2025-07-17 Version: 2.1.0
 - Support API AlterDatabase.
 - Support API AlterTable.
