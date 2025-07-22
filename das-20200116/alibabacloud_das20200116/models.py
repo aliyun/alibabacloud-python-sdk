@@ -18466,6 +18466,7 @@ class GetDasSQLLogHotDataResponseBodyDataList(TeaModel):
         latancy: int = None,
         lock_time: int = None,
         logic_read: int = None,
+        node_id: str = None,
         origin_time: str = None,
         physic_async_read: int = None,
         physic_sync_read: int = None,
@@ -18494,6 +18495,7 @@ class GetDasSQLLogHotDataResponseBodyDataList(TeaModel):
         self.lock_time = lock_time
         # The number of logical reads.
         self.logic_read = logic_read
+        self.node_id = node_id
         # The execution time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.origin_time = origin_time
         # The number of physical asynchronous reads.
@@ -18546,6 +18548,8 @@ class GetDasSQLLogHotDataResponseBodyDataList(TeaModel):
             result['LockTime'] = self.lock_time
         if self.logic_read is not None:
             result['LogicRead'] = self.logic_read
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
         if self.origin_time is not None:
             result['OriginTime'] = self.origin_time
         if self.physic_async_read is not None:
@@ -18588,6 +18592,8 @@ class GetDasSQLLogHotDataResponseBodyDataList(TeaModel):
             self.lock_time = m.get('LockTime')
         if m.get('LogicRead') is not None:
             self.logic_read = m.get('LogicRead')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
         if m.get('OriginTime') is not None:
             self.origin_time = m.get('OriginTime')
         if m.get('PhysicAsyncRead') is not None:
