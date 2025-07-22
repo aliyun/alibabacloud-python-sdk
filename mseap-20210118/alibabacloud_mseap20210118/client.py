@@ -47,6 +47,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mseap_20210118_models.ActivateLicenseResponse:
         """
+        @summary 商品授权码激活
+        
         @param request: ActivateLicenseRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ActivateLicenseResponse
@@ -88,6 +90,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mseap_20210118_models.ActivateLicenseResponse:
         """
+        @summary 商品授权码激活
+        
         @param request: ActivateLicenseRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ActivateLicenseResponse
@@ -128,6 +132,8 @@ class Client(OpenApiClient):
         request: mseap_20210118_models.ActivateLicenseRequest,
     ) -> mseap_20210118_models.ActivateLicenseResponse:
         """
+        @summary 商品授权码激活
+        
         @param request: ActivateLicenseRequest
         @return: ActivateLicenseResponse
         """
@@ -139,6 +145,8 @@ class Client(OpenApiClient):
         request: mseap_20210118_models.ActivateLicenseRequest,
     ) -> mseap_20210118_models.ActivateLicenseResponse:
         """
+        @summary 商品授权码激活
+        
         @param request: ActivateLicenseRequest
         @return: ActivateLicenseResponse
         """
@@ -327,6 +335,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mseap_20210118_models.DescribeAgreementStatusResponse:
         """
+        @summary 查询协议状态
+        
         @param request: DescribeAgreementStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeAgreementStatusResponse
@@ -360,6 +370,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mseap_20210118_models.DescribeAgreementStatusResponse:
         """
+        @summary 查询协议状态
+        
         @param request: DescribeAgreementStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeAgreementStatusResponse
@@ -392,6 +404,8 @@ class Client(OpenApiClient):
         request: mseap_20210118_models.DescribeAgreementStatusRequest,
     ) -> mseap_20210118_models.DescribeAgreementStatusResponse:
         """
+        @summary 查询协议状态
+        
         @param request: DescribeAgreementStatusRequest
         @return: DescribeAgreementStatusResponse
         """
@@ -403,6 +417,8 @@ class Client(OpenApiClient):
         request: mseap_20210118_models.DescribeAgreementStatusRequest,
     ) -> mseap_20210118_models.DescribeAgreementStatusResponse:
         """
+        @summary 查询协议状态
+        
         @param request: DescribeAgreementStatusRequest
         @return: DescribeAgreementStatusResponse
         """
@@ -816,6 +832,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_node_by_template_id_with_options_async(request, runtime)
+
+    def get_order_summary_for_partner_with_options(
+        self,
+        request: mseap_20210118_models.GetOrderSummaryForPartnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mseap_20210118_models.GetOrderSummaryForPartnerResponse:
+        """
+        @summary 合作伙伴获取订单概要信息
+        
+        @param request: GetOrderSummaryForPartnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOrderSummaryForPartnerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOrderSummaryForPartner',
+            version='2021-01-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mseap_20210118_models.GetOrderSummaryForPartnerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_order_summary_for_partner_with_options_async(
+        self,
+        request: mseap_20210118_models.GetOrderSummaryForPartnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mseap_20210118_models.GetOrderSummaryForPartnerResponse:
+        """
+        @summary 合作伙伴获取订单概要信息
+        
+        @param request: GetOrderSummaryForPartnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOrderSummaryForPartnerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOrderSummaryForPartner',
+            version='2021-01-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mseap_20210118_models.GetOrderSummaryForPartnerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_order_summary_for_partner(
+        self,
+        request: mseap_20210118_models.GetOrderSummaryForPartnerRequest,
+    ) -> mseap_20210118_models.GetOrderSummaryForPartnerResponse:
+        """
+        @summary 合作伙伴获取订单概要信息
+        
+        @param request: GetOrderSummaryForPartnerRequest
+        @return: GetOrderSummaryForPartnerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_order_summary_for_partner_with_options(request, runtime)
+
+    async def get_order_summary_for_partner_async(
+        self,
+        request: mseap_20210118_models.GetOrderSummaryForPartnerRequest,
+    ) -> mseap_20210118_models.GetOrderSummaryForPartnerResponse:
+        """
+        @summary 合作伙伴获取订单概要信息
+        
+        @param request: GetOrderSummaryForPartnerRequest
+        @return: GetOrderSummaryForPartnerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_order_summary_for_partner_with_options_async(request, runtime)
 
     def get_platform_user_info_for_partner_with_options(
         self,
@@ -2507,6 +2619,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mseap_20210118_models.UpdateAgreementStatusResponse:
         """
+        @summary 更新协议状态
+        
         @param request: UpdateAgreementStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateAgreementStatusResponse
@@ -2540,6 +2654,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mseap_20210118_models.UpdateAgreementStatusResponse:
         """
+        @summary 更新协议状态
+        
         @param request: UpdateAgreementStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateAgreementStatusResponse
@@ -2572,6 +2688,8 @@ class Client(OpenApiClient):
         request: mseap_20210118_models.UpdateAgreementStatusRequest,
     ) -> mseap_20210118_models.UpdateAgreementStatusResponse:
         """
+        @summary 更新协议状态
+        
         @param request: UpdateAgreementStatusRequest
         @return: UpdateAgreementStatusResponse
         """
@@ -2583,6 +2701,8 @@ class Client(OpenApiClient):
         request: mseap_20210118_models.UpdateAgreementStatusRequest,
     ) -> mseap_20210118_models.UpdateAgreementStatusResponse:
         """
+        @summary 更新协议状态
+        
         @param request: UpdateAgreementStatusRequest
         @return: UpdateAgreementStatusResponse
         """

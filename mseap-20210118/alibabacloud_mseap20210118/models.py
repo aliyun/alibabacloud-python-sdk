@@ -1288,6 +1288,208 @@ class GetNodeByTemplateIdResponse(TeaModel):
         return self
 
 
+class GetOrderSummaryForPartnerRequest(TeaModel):
+    def __init__(
+        self,
+        order_id: str = None,
+    ):
+        self.order_id = order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        return self
+
+
+class GetOrderSummaryForPartnerResponseBodyDataOrderLines(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        order_line_id: str = None,
+        order_type: str = None,
+    ):
+        self.instance_id = instance_id
+        self.order_line_id = order_line_id
+        self.order_type = order_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.order_line_id is not None:
+            result['OrderLineId'] = self.order_line_id
+        if self.order_type is not None:
+            result['OrderType'] = self.order_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OrderLineId') is not None:
+            self.order_line_id = m.get('OrderLineId')
+        if m.get('OrderType') is not None:
+            self.order_type = m.get('OrderType')
+        return self
+
+
+class GetOrderSummaryForPartnerResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        encrypted_buyer_id: str = None,
+        encrypted_payer_id: str = None,
+        encrypted_user_id: str = None,
+        order_id: str = None,
+        order_lines: List[GetOrderSummaryForPartnerResponseBodyDataOrderLines] = None,
+    ):
+        self.encrypted_buyer_id = encrypted_buyer_id
+        self.encrypted_payer_id = encrypted_payer_id
+        self.encrypted_user_id = encrypted_user_id
+        self.order_id = order_id
+        self.order_lines = order_lines
+
+    def validate(self):
+        if self.order_lines:
+            for k in self.order_lines:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encrypted_buyer_id is not None:
+            result['EncryptedBuyerId'] = self.encrypted_buyer_id
+        if self.encrypted_payer_id is not None:
+            result['EncryptedPayerId'] = self.encrypted_payer_id
+        if self.encrypted_user_id is not None:
+            result['EncryptedUserId'] = self.encrypted_user_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        result['OrderLines'] = []
+        if self.order_lines is not None:
+            for k in self.order_lines:
+                result['OrderLines'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncryptedBuyerId') is not None:
+            self.encrypted_buyer_id = m.get('EncryptedBuyerId')
+        if m.get('EncryptedPayerId') is not None:
+            self.encrypted_payer_id = m.get('EncryptedPayerId')
+        if m.get('EncryptedUserId') is not None:
+            self.encrypted_user_id = m.get('EncryptedUserId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        self.order_lines = []
+        if m.get('OrderLines') is not None:
+            for k in m.get('OrderLines'):
+                temp_model = GetOrderSummaryForPartnerResponseBodyDataOrderLines()
+                self.order_lines.append(temp_model.from_map(k))
+        return self
+
+
+class GetOrderSummaryForPartnerResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetOrderSummaryForPartnerResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GetOrderSummaryForPartnerResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetOrderSummaryForPartnerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetOrderSummaryForPartnerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetOrderSummaryForPartnerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetPlatformUserInfoForPartnerRequest(TeaModel):
     def __init__(
         self,

@@ -1,3 +1,7 @@
+2025-07-22 Version: 1.2.0
+- Support API GetOrderSummaryForPartner.
+
+
 2025-05-21 Version: 1.1.0
 - Support API GetPlatformUserInfoForPartner.
 
