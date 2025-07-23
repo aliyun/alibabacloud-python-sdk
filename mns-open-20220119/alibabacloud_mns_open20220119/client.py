@@ -168,6 +168,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = mns_open_20220119_models.CreateEventRuleShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.endpoint):
+            request.endpoint_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.endpoint, 'Endpoint', 'json')
         if not UtilClient.is_unset(tmp_req.endpoints):
             request.endpoints_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.endpoints, 'Endpoints', 'json')
         if not UtilClient.is_unset(tmp_req.event_types):
@@ -179,6 +181,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.delivery_mode):
             query['DeliveryMode'] = request.delivery_mode
+        if not UtilClient.is_unset(request.endpoint_shrink):
+            query['Endpoint'] = request.endpoint_shrink
         if not UtilClient.is_unset(request.endpoints_shrink):
             query['Endpoints'] = request.endpoints_shrink
         if not UtilClient.is_unset(request.event_types_shrink):
@@ -223,6 +227,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = mns_open_20220119_models.CreateEventRuleShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.endpoint):
+            request.endpoint_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.endpoint, 'Endpoint', 'json')
         if not UtilClient.is_unset(tmp_req.endpoints):
             request.endpoints_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.endpoints, 'Endpoints', 'json')
         if not UtilClient.is_unset(tmp_req.event_types):
@@ -234,6 +240,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.delivery_mode):
             query['DeliveryMode'] = request.delivery_mode
+        if not UtilClient.is_unset(request.endpoint_shrink):
+            query['Endpoint'] = request.endpoint_shrink
         if not UtilClient.is_unset(request.endpoints_shrink):
             query['Endpoints'] = request.endpoints_shrink
         if not UtilClient.is_unset(request.event_types_shrink):

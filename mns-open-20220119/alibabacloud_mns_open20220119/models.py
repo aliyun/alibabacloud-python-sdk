@@ -250,15 +250,46 @@ class AuthorizeEndpointAclResponse(TeaModel):
         return self
 
 
+class CreateEventRuleRequestEndpoint(TeaModel):
+    def __init__(
+        self,
+        endpoint_type: str = None,
+        endpoint_value: str = None,
+    ):
+        self.endpoint_type = endpoint_type
+        self.endpoint_value = endpoint_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.endpoint_type is not None:
+            result['EndpointType'] = self.endpoint_type
+        if self.endpoint_value is not None:
+            result['EndpointValue'] = self.endpoint_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndpointType') is not None:
+            self.endpoint_type = m.get('EndpointType')
+        if m.get('EndpointValue') is not None:
+            self.endpoint_value = m.get('EndpointValue')
+        return self
+
+
 class CreateEventRuleRequestEndpoints(TeaModel):
     def __init__(
         self,
         endpoint_type: str = None,
         endpoint_value: str = None,
     ):
-        # This parameter is required.
         self.endpoint_type = endpoint_type
-        # This parameter is required.
         self.endpoint_value = endpoint_value
 
     def validate(self):
@@ -290,6 +321,7 @@ class CreateEventRuleRequest(TeaModel):
         self,
         client_token: str = None,
         delivery_mode: str = None,
+        endpoint: CreateEventRuleRequestEndpoint = None,
         endpoints: List[CreateEventRuleRequestEndpoints] = None,
         event_types: List[str] = None,
         match_rules: List[List[EventMatchRule]] = None,
@@ -298,7 +330,7 @@ class CreateEventRuleRequest(TeaModel):
     ):
         self.client_token = client_token
         self.delivery_mode = delivery_mode
-        # This parameter is required.
+        self.endpoint = endpoint
         self.endpoints = endpoints
         # This parameter is required.
         self.event_types = event_types
@@ -310,6 +342,8 @@ class CreateEventRuleRequest(TeaModel):
         self.rule_name = rule_name
 
     def validate(self):
+        if self.endpoint:
+            self.endpoint.validate()
         if self.endpoints:
             for k in self.endpoints:
                 if k:
@@ -330,6 +364,8 @@ class CreateEventRuleRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.delivery_mode is not None:
             result['DeliveryMode'] = self.delivery_mode
+        if self.endpoint is not None:
+            result['Endpoint'] = self.endpoint.to_map()
         result['Endpoints'] = []
         if self.endpoints is not None:
             for k in self.endpoints:
@@ -355,6 +391,9 @@ class CreateEventRuleRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('DeliveryMode') is not None:
             self.delivery_mode = m.get('DeliveryMode')
+        if m.get('Endpoint') is not None:
+            temp_model = CreateEventRuleRequestEndpoint()
+            self.endpoint = temp_model.from_map(m['Endpoint'])
         self.endpoints = []
         if m.get('Endpoints') is not None:
             for k in m.get('Endpoints'):
@@ -382,6 +421,7 @@ class CreateEventRuleShrinkRequest(TeaModel):
         self,
         client_token: str = None,
         delivery_mode: str = None,
+        endpoint_shrink: str = None,
         endpoints_shrink: str = None,
         event_types_shrink: str = None,
         match_rules_shrink: str = None,
@@ -390,7 +430,7 @@ class CreateEventRuleShrinkRequest(TeaModel):
     ):
         self.client_token = client_token
         self.delivery_mode = delivery_mode
-        # This parameter is required.
+        self.endpoint_shrink = endpoint_shrink
         self.endpoints_shrink = endpoints_shrink
         # This parameter is required.
         self.event_types_shrink = event_types_shrink
@@ -414,6 +454,8 @@ class CreateEventRuleShrinkRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.delivery_mode is not None:
             result['DeliveryMode'] = self.delivery_mode
+        if self.endpoint_shrink is not None:
+            result['Endpoint'] = self.endpoint_shrink
         if self.endpoints_shrink is not None:
             result['Endpoints'] = self.endpoints_shrink
         if self.event_types_shrink is not None:
@@ -432,6 +474,8 @@ class CreateEventRuleShrinkRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('DeliveryMode') is not None:
             self.delivery_mode = m.get('DeliveryMode')
+        if m.get('Endpoint') is not None:
+            self.endpoint_shrink = m.get('Endpoint')
         if m.get('Endpoints') is not None:
             self.endpoints_shrink = m.get('Endpoints')
         if m.get('EventTypes') is not None:
