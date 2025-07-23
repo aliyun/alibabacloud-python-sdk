@@ -3472,6 +3472,7 @@ class GetTemplateResponseBodyData(TeaModel):
         self,
         create_time: str = None,
         description: str = None,
+        document_url: str = None,
         image_url: str = None,
         name: str = None,
         resource_group_id: str = None,
@@ -3482,6 +3483,7 @@ class GetTemplateResponseBodyData(TeaModel):
         self.create_time = create_time
         # Template Description
         self.description = description
+        self.document_url = document_url
         # The path to the template schema image file
         self.image_url = image_url
         # The name of the template
@@ -3509,6 +3511,8 @@ class GetTemplateResponseBodyData(TeaModel):
             result['CreateTime'] = self.create_time
         if self.description is not None:
             result['Description'] = self.description
+        if self.document_url is not None:
+            result['DocumentUrl'] = self.document_url
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
         if self.name is not None:
@@ -3529,6 +3533,8 @@ class GetTemplateResponseBodyData(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DocumentUrl') is not None:
+            self.document_url = m.get('DocumentUrl')
         if m.get('ImageURL') is not None:
             self.image_url = m.get('ImageURL')
         if m.get('Name') is not None:
@@ -4830,31 +4836,14 @@ class ListTemplateShrinkRequest(TeaModel):
         return self
 
 
-class ListTemplateResponseBodyData(TeaModel):
+class ListTemplateResponseBodyDataTag(TeaModel):
     def __init__(
         self,
-        create_time: str = None,
-        image_url: str = None,
-        name: str = None,
-        resource_group_id: str = None,
-        tag_id: int = None,
-        tag_name: str = None,
-        template_id: str = None,
+        key: str = None,
+        value: str = None,
     ):
-        # The time when the template was created.
-        self.create_time = create_time
-        # The URL of the architecture image.
-        self.image_url = image_url
-        # The name of the template.
-        self.name = name
-        # The ID of the resource group.
-        self.resource_group_id = resource_group_id
-        # The ID of the tag that is added to the template.
-        self.tag_id = tag_id
-        # The name of the tag that is added to the template.
-        self.tag_name = tag_name
-        # The ID of the template.
-        self.template_id = template_id
+        self.key = key
+        self.value = value
 
     def validate(self):
         pass
@@ -4865,14 +4854,81 @@ class ListTemplateResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListTemplateResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        description: str = None,
+        document_url: str = None,
+        image_url: str = None,
+        name: str = None,
+        resource_group_id: str = None,
+        tag: List[ListTemplateResponseBodyDataTag] = None,
+        tag_id: int = None,
+        tag_name: str = None,
+        template_id: str = None,
+    ):
+        # The time when the template was created.
+        self.create_time = create_time
+        self.description = description
+        self.document_url = document_url
+        # The URL of the architecture image.
+        self.image_url = image_url
+        # The name of the template.
+        self.name = name
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
+        self.tag = tag
+        # The ID of the tag that is added to the template.
+        self.tag_id = tag_id
+        # The name of the tag that is added to the template.
+        self.tag_name = tag_name
+        # The ID of the template.
+        self.template_id = template_id
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.document_url is not None:
+            result['DocumentUrl'] = self.document_url
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
         if self.name is not None:
             result['Name'] = self.name
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.tag_id is not None:
             result['TagId'] = self.tag_id
         if self.tag_name is not None:
@@ -4885,12 +4941,21 @@ class ListTemplateResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DocumentUrl') is not None:
+            self.document_url = m.get('DocumentUrl')
         if m.get('ImageURL') is not None:
             self.image_url = m.get('ImageURL')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListTemplateResponseBodyDataTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('TagId') is not None:
             self.tag_id = m.get('TagId')
         if m.get('TagName') is not None:
