@@ -1,3 +1,7 @@
+2025-07-23 Version: 1.6.1
+- Update API GetLifecycle: add response parameters Body.Lifecycle.$.$.GmtEndTime.
+
+
 2025-07-22 Version: 1.6.0
 - Support API GetUserCommand.
 - Support API ListSystemLogs.

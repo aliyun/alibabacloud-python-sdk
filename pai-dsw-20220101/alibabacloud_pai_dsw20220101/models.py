@@ -4858,6 +4858,7 @@ class GetLifecycleResponseBodyLifecycle(TeaModel):
         reason_code: str = None,
         reason_message: str = None,
         gmt_create_time: str = None,
+        gmt_end_time: str = None,
     ):
         # The status of the instance. Valid values:
         # 
@@ -4884,6 +4885,7 @@ class GetLifecycleResponseBodyLifecycle(TeaModel):
         self.reason_message = reason_message
         # The time the status was created, specifically the time the instance transitioned to this status (in GMT).
         self.gmt_create_time = gmt_create_time
+        self.gmt_end_time = gmt_end_time
 
     def validate(self):
         pass
@@ -4902,6 +4904,8 @@ class GetLifecycleResponseBodyLifecycle(TeaModel):
             result['ReasonMessage'] = self.reason_message
         if self.gmt_create_time is not None:
             result['GmtCreateTime'] = self.gmt_create_time
+        if self.gmt_end_time is not None:
+            result['GmtEndTime'] = self.gmt_end_time
         return result
 
     def from_map(self, m: dict = None):
@@ -4914,6 +4918,8 @@ class GetLifecycleResponseBodyLifecycle(TeaModel):
             self.reason_message = m.get('ReasonMessage')
         if m.get('GmtCreateTime') is not None:
             self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('GmtEndTime') is not None:
+            self.gmt_end_time = m.get('GmtEndTime')
         return self
 
 
