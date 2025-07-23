@@ -1,3 +1,7 @@
+2025-07-23 Version: 2.1.0
+- Support API SyncAppInstanceForPartner.
+
+
 2025-07-10 Version: 2.0.0
 - Update API CreateLogoTask: add request parameters LogoVersion.
 - Update API CreateLogoTask: delete request parameters Version.

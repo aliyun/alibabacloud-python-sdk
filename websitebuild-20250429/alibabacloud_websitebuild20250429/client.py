@@ -452,3 +452,123 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.operate_app_service_for_partner_with_options_async(request, runtime)
+
+    def sync_app_instance_for_partner_with_options(
+        self,
+        tmp_req: website_build_20250429_models.SyncAppInstanceForPartnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.SyncAppInstanceForPartnerResponse:
+        """
+        @summary 合作伙伴同步应用实例
+        
+        @param tmp_req: SyncAppInstanceForPartnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncAppInstanceForPartnerResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = website_build_20250429_models.SyncAppInstanceForPartnerShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.app_instance):
+            request.app_instance_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.app_instance, 'AppInstance', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_instance_shrink):
+            query['AppInstance'] = request.app_instance_shrink
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.operator):
+            query['Operator'] = request.operator
+        if not UtilClient.is_unset(request.source_biz_id):
+            query['SourceBizId'] = request.source_biz_id
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SyncAppInstanceForPartner',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.SyncAppInstanceForPartnerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sync_app_instance_for_partner_with_options_async(
+        self,
+        tmp_req: website_build_20250429_models.SyncAppInstanceForPartnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.SyncAppInstanceForPartnerResponse:
+        """
+        @summary 合作伙伴同步应用实例
+        
+        @param tmp_req: SyncAppInstanceForPartnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncAppInstanceForPartnerResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = website_build_20250429_models.SyncAppInstanceForPartnerShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.app_instance):
+            request.app_instance_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.app_instance, 'AppInstance', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_instance_shrink):
+            query['AppInstance'] = request.app_instance_shrink
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.operator):
+            query['Operator'] = request.operator
+        if not UtilClient.is_unset(request.source_biz_id):
+            query['SourceBizId'] = request.source_biz_id
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SyncAppInstanceForPartner',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.SyncAppInstanceForPartnerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sync_app_instance_for_partner(
+        self,
+        request: website_build_20250429_models.SyncAppInstanceForPartnerRequest,
+    ) -> website_build_20250429_models.SyncAppInstanceForPartnerResponse:
+        """
+        @summary 合作伙伴同步应用实例
+        
+        @param request: SyncAppInstanceForPartnerRequest
+        @return: SyncAppInstanceForPartnerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.sync_app_instance_for_partner_with_options(request, runtime)
+
+    async def sync_app_instance_for_partner_async(
+        self,
+        request: website_build_20250429_models.SyncAppInstanceForPartnerRequest,
+    ) -> website_build_20250429_models.SyncAppInstanceForPartnerResponse:
+        """
+        @summary 合作伙伴同步应用实例
+        
+        @param request: SyncAppInstanceForPartnerRequest
+        @return: SyncAppInstanceForPartnerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.sync_app_instance_for_partner_with_options_async(request, runtime)
