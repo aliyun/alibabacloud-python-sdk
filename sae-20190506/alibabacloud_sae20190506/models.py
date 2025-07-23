@@ -21945,11 +21945,11 @@ class DescribeApplicationConfigRequest(TeaModel):
         app_id: str = None,
         version_id: str = None,
     ):
-        # 7171a6ca-d1cd-4928-8642-7d5cfe69\\*\\*\\*\\*\
+        # The app id.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # 0026ff7f-2b57-4127-bdd0-9bf202bb\\*\\*\\*\\*\
+        # The version id.
         self.version_id = version_id
 
     def validate(self):
@@ -22033,9 +22033,13 @@ class DescribeApplicationConfigResponseBodyDataInitContainersConfigConfigMapMoun
         key: str = None,
         mount_path: str = None,
     ):
+        # ConfigMap ID。
         self.config_map_id = config_map_id
+        # The name of the ConfigMap.
         self.config_map_name = config_map_name
+        # The key.
         self.key = key
+        # The mount path.
         self.mount_path = mount_path
 
     def validate(self):
@@ -22080,11 +22084,41 @@ class DescribeApplicationConfigResponseBodyDataInitContainersConfig(TeaModel):
         image_url: str = None,
         name: str = None,
     ):
+        # The command that is used to start the image. The command must be an existing executable object in the container. Sample statements:
+        # 
+        #     command:
+        #           - echo
+        #           - abc
+        #           - >
+        #           - file0
+        # 
+        # In this example, the Command parameter is set to `Command="echo", CommandArgs=["abc", ">", "file0"]`.
         self.command = command
+        # The parameters of the image startup command. The CommandArgs parameter specifies the parameters that are required for the **Command** parameter. You can specify the name in one of the following formats:
+        # 
+        # `["a","b"]`
+        # 
+        # In the preceding example, the CommandArgs parameter is set to `CommandArgs=["abc", ">", "file0"]`. The data type of `["abc", ">", "file0"]` must be an array of strings in the JSON format. This parameter is optional.
         self.command_args = command_args
+        # The information of ConfigMap.
         self.config_map_mount_desc = config_map_mount_desc
+        # The environment variables. You can configure custom environment variables or reference a ConfigMap. If you want to reference a ConfigMap, you must first create a ConfigMap. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Take note of the following rules:
+        # 
+        # *   Customize
+        # 
+        #     *   **name**: the name of the environment variable.
+        #     *   **value**: the value of the environment variable.
+        # 
+        # *   Reference ConfigMap
+        # 
+        #     *   **name**: the name of the environment variable. You can reference one or all keys. If you want to reference all keys, specify `sae-sys-configmap-all-<ConfigMap name>`. Example: `sae-sys-configmap-all-test1`.
+        #     *   **valueFrom**: the reference of the environment variable. Set the value to `configMapRef`.
+        #     *   **configMapId**: the ConfigMap ID.
+        #     *   **key**: the key. If you want to reference all keys, do not configure this parameter.
         self.envs = envs
+        # The image URL of the initialized container.
         self.image_url = image_url
+        # The name of the initialized container.
         self.name = name
 
     def validate(self):
@@ -22230,9 +22264,13 @@ class DescribeApplicationConfigResponseBodyDataSecretMountDesc(TeaModel):
         secret_id: int = None,
         secret_name: str = None,
     ):
+        # The key to Base64 encode values.
         self.key = key
+        # The mount path.
         self.mount_path = mount_path
+        # The secret ID of the instance.
         self.secret_id = secret_id
+        # The name of the secret.
         self.secret_name = secret_name
 
     def validate(self):
@@ -22275,9 +22313,13 @@ class DescribeApplicationConfigResponseBodyDataSidecarContainersConfigConfigMapM
         key: str = None,
         mount_path: str = None,
     ):
+        # The ConfigMap ID.
         self.config_map_id = config_map_id
+        # The ConfigMap name.
         self.config_map_name = config_map_name
+        # The ConfigMap key
         self.key = key
+        # The mount path.
         self.mount_path = mount_path
 
     def validate(self):
@@ -22318,7 +22360,9 @@ class DescribeApplicationConfigResponseBodyDataSidecarContainersConfigEmptyDirDe
         mount_path: str = None,
         name: str = None,
     ):
+        # Mount path of the data volume within the container.
         self.mount_path = mount_path
+        # The name of the shared temporary storage.
         self.name = name
 
     def validate(self):
@@ -22359,15 +22403,56 @@ class DescribeApplicationConfigResponseBodyDataSidecarContainersConfig(TeaModel)
         memory: int = None,
         name: str = None,
     ):
+        # The ID of Container Registry Enterprise Edition instance. This parameter is required when the **ImageUrl** parameter is set to the URL of an image in an ACR Enterprise Edition instance.
         self.acr_instance_id = acr_instance_id
+        # The command that is used to start the image. The command must be an existing executable object in the container. Sample statements:
+        # 
+        #     command:
+        #           - echo
+        #           - abc
+        #           - >
+        #           - file0
+        # 
+        # In this example, the Command parameter is set to `Command="echo", CommandArgs=["abc", ">", "file0"]`.
         self.command = command
+        # The parameters of the image startup command. The CommandArgs parameter specifies the parameters that are required for the **Command** parameter. You can specify the name in one of the following formats:
+        # 
+        # `["a","b"]`
+        # 
+        # In the preceding example, the CommandArgs parameter is set to `CommandArgs=["abc", ">", "file0"]`. The data type of `["abc", ">", "file0"]` must be an array of strings in the JSON format. This parameter is optional.
         self.command_args = command_args
+        # The description of the **ConfigMap** instance mounted to the application. Use configurations created on the Configuration Items page to configure containers. The following table describes the parameters that are used in the preceding statements.
+        # 
+        # *   **congfigMapId**: the ID of the ConfigMap instance. You can call the [ListNamespacedConfigMaps](https://help.aliyun.com/document_detail/176917.html) operation to obtain the ID.
+        # *   **key**: the key.
+        # 
+        # > You can use the `sae-sys-configmap-all` key to mount all keys.
+        # 
+        # *   **mountPath**: the mount path in the container.
         self.config_map_mount_desc = config_map_mount_desc
+        # Set the CPU resource limit of the primary container that can be used by Sidecar container.
         self.cpu = cpu
+        # Shared temporary storage mounted to the primary container and the Sidecar container.
         self.empty_dir_desc = empty_dir_desc
+        # The environment variables. You can configure custom environment variables or reference a ConfigMap. If you want to reference a ConfigMap, you must first create a ConfigMap. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Take note of the following rules:
+        # 
+        # *   Customize
+        # 
+        #     *   **name**: the name of the environment variable.
+        #     *   **value**: the value of the environment variable.
+        # 
+        # *   Reference ConfigMap
+        # 
+        #     *   **name**: the name of the environment variable. You can reference one or all keys. If you want to reference all keys, specify `sae-sys-configmap-all-<ConfigMap name>`. Example: `sae-sys-configmap-all-test1`.
+        #     *   **valueFrom**: the reference of the environment variable. Set the value to `configMapRef`.
+        #     *   **configMapId**: the ConfigMap ID.
+        #     *   **key**: the key. If you want to reference all keys, do not configure this parameter.
         self.envs = envs
+        # The URL of the image.
         self.image_url = image_url
+        # Set the memory limit of the primary container that can be used by Sidecar container.
         self.memory = memory
+        # The container name.
         self.name = name
 
     def validate(self):
@@ -22591,9 +22676,11 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         # *   **true**: The EIP is associated with the application instance.
         # *   **false**: The EIP is not associated with the application instance.
         self.associate_eip = associate_eip
+        # The base app ID.
         self.base_app_id = base_app_id
         # The interval between batches in a phased release. Unit: seconds.
         self.batch_wait_time = batch_wait_time
+        # The cluster ID.
         self.cluster_id = cluster_id
         # The command that is used to start the image. The command must be an existing executable object in the container. Example:
         # 
@@ -22631,8 +22718,21 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         # *   **hostName**: the domain name or hostname.
         # *   **ip**: the IP address.
         self.custom_host_alias = custom_host_alias
+        # The type of custom image. Set to empty string if using pre-built image.
+        # 
+        # - internet: public network image.
+        # 
+        # - intranet: private network image.
         self.custom_image_network_type = custom_image_network_type
+        # The disk size. Unit: GB.
         self.disk_size = disk_size
+        # The version of .NET.
+        # 
+        # - .NET 3.1
+        # - .NET 5.0
+        # - .NET 6.0
+        # - .NET 7.0
+        # - .NET 8.0
         self.dotnet = dotnet
         # The version of the container, such as Ali-Tomcat, in which an application developed based on High-speed Service Framework (HSF) is deployed.
         self.edas_container_version = edas_container_version
@@ -22641,13 +22741,28 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         # *   **true**: Access to AHAS is enabled.
         # *   **false**: Access to AHAS is disabled.
         self.enable_ahas = enable_ahas
+        # Enable CPU Burst.
+        # 
+        # - true: enable
+        # 
+        # - false: disable
         self.enable_cpu_burst = enable_cpu_burst
         # Indicates whether canary release rules are enabled. Canary release rules apply only to applications in Spring Cloud and Dubbo frameworks. Valid values:
         # 
         # *   **true**: The canary release rules are enabled.
         # *   **false**: The canary release rules are disabled.
         self.enable_grey_tag_route = enable_grey_tag_route
+        # Enable idle mode.
+        # 
+        # - true: enable
+        # 
+        # - false: disable
         self.enable_idle = enable_idle
+        # Enable new ARMS feature.
+        # 
+        # - true: enable
+        # 
+        # - false: disable
         self.enable_new_arms = enable_new_arms
         self.enable_prometheus = enable_prometheus
         # The environment variables. Variable description:
@@ -22657,9 +22772,11 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self.envs = envs
         self.gpu_count = gpu_count
         self.gpu_type = gpu_type
+        # The ID of the corresponding secret dictionary.
         self.image_pull_secrets = image_pull_secrets
         # The URL of the image. This parameter is returned only if the **PackageType** parameter is set to **Image**.
         self.image_url = image_url
+        # Initialize container configuration.
         self.init_containers_config = init_containers_config
         self.is_stateful = is_stateful
         # The arguments in the JAR package. The arguments are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
@@ -22731,8 +22848,27 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         # *   This parameter is set to **65536** if the Cpu parameter is set to 8000, 16000, or 32000.
         # *   This parameter is set to **131072** if the Cpu parameter is set to 32000.
         self.memory = memory
+        # The Nacos registry. Valid values:
+        # 
+        # *   **0**: SAE built-in Nacos registry
+        # *   **1**: self-managed Nacos registry
+        # *   **2** : MSE Nacos registry
         self.micro_registration = micro_registration
+        # The configuration of registration center. Takes effect only the type of registration center is MSE enterprise Nacos.
         self.micro_registration_config = micro_registration_config
+        # Configure microservices governance
+        # 
+        # enable: Whether to enable microservices governance
+        # 
+        # - true: Enable
+        # - false: Disable
+        # 
+        # mseLosslessRule: Configure lossless online/offline deployment
+        # 
+        # - delayTime: Delay duration (unit: seconds)
+        # - enable: Whether to enable lossless deployment. Set to "true" to enable; set to "false" to disable.
+        # - notice: Whether to enable notifications. Set to "true" to enable; set to "false" to disable.
+        # - warmupTime: Small-traffic warm-up duration (unit: seconds)
         self.microservice_engine_config = microservice_engine_config
         # The percentage of the minimum number of available instances. Valid values:
         # 
@@ -22754,13 +22890,23 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self.mount_host = mount_host
         # The ID of the microservice application.
         self.mse_application_id = mse_application_id
+        # The application name of SAE service registered in MSE.
         self.mse_application_name = mse_application_name
         # The ID of the namespace.
         self.namespace_id = namespace_id
+        # The configurations for mounting the NAS file system.
         self.nas_configs = nas_configs
         # The ID of the NAS file system.
         self.nas_id = nas_id
+        # The SAE application edition.
+        # 
+        # - lite: The lightweight edition.
+        # - std: The standard edition.
+        # - pro: The professional edition.
         self.new_sae_version = new_sae_version
+        # The name of the RAM role used to authenticate the user identity.
+        # 
+        # >  You need to create an OpenID Connect (OIDC) identity provider (IdP) and an identity provider (IdP) for role-based single sign-on (SSO) in advance. For more information, see [Creates an OpenID Connect (OIDC) identity provider (IdP)](https://help.aliyun.com/document_detail/2331022.html) and [Creates an identity provider (IdP) for role-based single sign-on (SSO)](https://help.aliyun.com/document_detail/2331016.html).
         self.oidc_role_name = oidc_role_name
         # The AccessKey ID that is used to read data from and write data to Object Storage Service (OSS) buckets.
         self.oss_ak_id = oss_ak_id
@@ -22794,6 +22940,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self.package_url = package_url
         # The version of the deployment package. This parameter is returned only if the **PackageType** parameter is set to **FatJar** or **War**.
         self.package_version = package_version
+        # The version of PHP supporting PHP deployment packages. Image is not supported.
         self.php = php
         # The path on which the PHP configuration file for application monitoring is mounted. Make sure that the PHP server loads the configuration file.
         # 
@@ -22813,8 +22960,11 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         # *   **php**: PHP
         # *   **other**: Other programming languages, such as Python, C++, Go, .NET, and Node.js.
         self.programming_language = programming_language
+        # Enable K8s Service discovery and registration.
         self.pvtz_discovery = pvtz_discovery
+        # The Python environment. PYTHON 3.9.15 is supported.
         self.python = python
+        # The configurations for installing custom module dependencies. By default, the dependencies defined by the requirements.txt file in the root directory are installed. If no software package is configured, you can specify dependencies based on your business requirements.
         self.python_modules = python_modules
         # The details of the health check that was performed on the container. If the container fails this health check multiple times, the system disables and restarts the container. Containers that fail health checks cannot receive traffic from Server Load Balancer (SLB) instances. You can use the **exec**, **httpGet**, or **tcpSocket** method to perform health checks. For more information, see the description of the **Liveness** parameter.
         # 
@@ -22824,12 +22974,15 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self.region_id = region_id
         # The number of application instances.
         self.replicas = replicas
+        # The type of the resource. Set the value to `application`.
         self.resource_type = resource_type
+        # Secret mount description.
         self.secret_mount_desc = secret_mount_desc
         # The ID of the security group.
         self.security_group_id = security_group_id
         # The canary tag configured for the application.
         self.service_tags = service_tags
+        # The configuration of the Sidecar container.
         self.sidecar_containers_config = sidecar_containers_config
         # The logging configurations of Log Service.
         # 
@@ -22846,7 +22999,9 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         # 
         # If you do not need to modify the logging configurations when you deploy the application, configure the **SlsConfigs** parameter only in the first request. You do not need to include this parameter in subsequent requests. If you no longer need to use Log Service, leave the **SlsConfigs** parameter empty in the request.
         self.sls_configs = sls_configs
+        # Enable startup probe.
         self.startup_probe = startup_probe
+        # Configuration of K8s Service discovery and registration, and full-chain gray-release feature.
         self.swimlane_pvtz_discovery = swimlane_pvtz_discovery
         # The details of the tags.
         self.tags = tags
@@ -30356,7 +30511,7 @@ class DescribeInstanceLogRequest(TeaModel):
     ):
         # The ID of the sidecar container. You can call the [DescribeApplicationInstances](https://help.aliyun.com/document_detail/2834847.html) to obtain the ID.
         self.container_id = container_id
-        # The ID of the request.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -30396,32 +30551,35 @@ class DescribeInstanceLogResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # Indicates whether the log of the instance was obtained. Valid values:
-        # 
-        # *   **true**: indicates that the log was obtained.
-        # *   **false**: indicates that the log could not be obtained.
-        self.code = code
-        # The error code.
-        # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
-        self.data = data
-        # The HTTP status code. Valid values:
+        # The interface state or POP error code. Valid values:
         # 
         # *   **2xx**: indicates that the request was successful.
         # *   **3xx**: indicates that the request was redirected.
         # *   **4xx**: indicates that the request was invalid.
         # *   **5xx**: indicates that a server error occurred.
+        self.code = code
+        # The information of instance logs.
+        self.data = data
+        # Error code.
+        # 
+        # - No error code returned if the request succeeded.
+        # 
+        # - Error code returned if the request failed. Refer to error code list below for details.
         self.error_code = error_code
-        # The ID of the trace.
-        self.message = message
         # The returned message.
         # 
-        # *   **success** is returned when the request succeeds.
-        # *   An error code is returned when the request fails.
+        # success is returned when the request succeeds.
+        # An error code is returned when the request fails.
+        self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the logs of the instance is obtained.
+        # 
+        # - true: logs obtained.
+        # 
+        # - false: failed to obtain logs.
         self.success = success
-        # The log of the instance.
+        # Trace ID.
         self.trace_id = trace_id
 
     def validate(self):
@@ -49647,10 +49805,14 @@ class UpdateAppModeRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        app_ids: str = None,
         enable_idle: bool = None,
+        namespace_id: str = None,
     ):
         self.app_id = app_id
+        self.app_ids = app_ids
         self.enable_idle = enable_idle
+        self.namespace_id = namespace_id
 
     def validate(self):
         pass
@@ -49663,16 +49825,24 @@ class UpdateAppModeRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.app_ids is not None:
+            result['AppIds'] = self.app_ids
         if self.enable_idle is not None:
             result['EnableIdle'] = self.enable_idle
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('AppIds') is not None:
+            self.app_ids = m.get('AppIds')
         if m.get('EnableIdle') is not None:
             self.enable_idle = m.get('EnableIdle')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
         return self
 
 

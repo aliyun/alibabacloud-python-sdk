@@ -15205,8 +15205,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_ids):
+            query['AppIds'] = request.app_ids
         if not UtilClient.is_unset(request.enable_idle):
             query['EnableIdle'] = request.enable_idle
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -15245,8 +15249,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_ids):
+            query['AppIds'] = request.app_ids
         if not UtilClient.is_unset(request.enable_idle):
             query['EnableIdle'] = request.enable_idle
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
