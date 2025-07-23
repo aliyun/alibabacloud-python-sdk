@@ -1,3 +1,9 @@
+2025-07-23 Version: 1.1.2
+- Update API GetCluster: add response parameters Body.Cluster.CertManaged.
+- Update API GetCluster: add response parameters Body.Cluster.ClusterMode.
+- Update API GetCluster: add response parameters Body.Cluster.EntityCertExpireTime.
+
+
 2024-09-24 Version: 1.1.1
 - Update API GetInstance: update response param.
 - Update API ListInstances: add param TenantIsolationType.

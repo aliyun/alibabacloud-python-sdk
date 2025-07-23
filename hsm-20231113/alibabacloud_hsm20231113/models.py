@@ -11,7 +11,7 @@ class ConfigAuditLogRequest(TeaModel):
         audit_oss_bucket: str = None,
         region_id: str = None,
     ):
-        # The status of the audit log feature.
+        # Specifies whether to enable the audit log feature. Valid values:
         # 
         # *   enable
         # *   disable
@@ -129,9 +129,13 @@ class ConfigBackupRemarkRequest(TeaModel):
         name: str = None,
         remark: str = None,
     ):
+        # The ID of the backup.
+        # 
         # This parameter is required.
         self.backup_id = backup_id
+        # The name of the backup.
         self.name = name
+        # The description of the backup.
         self.remark = remark
 
     def validate(self):
@@ -167,6 +171,7 @@ class ConfigBackupRemarkResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -239,13 +244,48 @@ class ConfigBackupTaskRequest(TeaModel):
         manual_2periodic_list: List[str] = None,
         periodic_2manual_list: List[str] = None,
     ):
+        # The backup time in the 24-hour format. Valid values: 1 to 24.
+        # 
+        # Enumeration values:
+        # 
+        # *   0
+        # *   1
+        # *   2
+        # *   3
+        # *   4
+        # *   5
+        # *   6
+        # *   7
+        # *   8
+        # *   9
+        # *   10
+        # *   11
+        # *   12
+        # *   13
+        # *   14
+        # *   15
+        # *   16
+        # *   17
+        # *   18
+        # *   19
+        # *   20
+        # *   21
+        # *   22
+        # *   23
+        # 
         # This parameter is required.
         self.backup_hour_in_day = backup_hour_in_day
+        # The ID of the backup.
+        # 
         # This parameter is required.
         self.backup_id = backup_id
+        # The automatic backup cycle. Unit: days. Valid values: 1, 3, 7, and 30.
+        # 
         # This parameter is required.
         self.backup_period = backup_period
+        # The IDs of images for which the manual backup mode is updated to the automatic backup mode.
         self.manual_2periodic_list = manual_2periodic_list
+        # The IDs of images for which the automatic backup mode is updated to the manual backup mode.
         self.periodic_2manual_list = periodic_2manual_list
 
     def validate(self):
@@ -289,6 +329,7 @@ class ConfigBackupTaskResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -359,10 +400,16 @@ class ConfigClusterCertificateRequest(TeaModel):
         cluster_id: str = None,
         issuer_certificate: str = None,
     ):
+        # The cluster certificate.
+        # 
         # This parameter is required.
         self.cluster_certificate = cluster_certificate
+        # The ID of the cluster.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The self-signed certificate.
+        # 
         # This parameter is required.
         self.issuer_certificate = issuer_certificate
 
@@ -399,6 +446,7 @@ class ConfigClusterCertificateResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -468,11 +516,11 @@ class ConfigClusterNameRequest(TeaModel):
         cluster_id: str = None,
         cluster_name: str = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The cluster name.
+        # The name of the cluster.
         # 
         # This parameter is required.
         self.cluster_name = cluster_name
@@ -578,12 +626,20 @@ class ConfigClusterSubnetRequest(TeaModel):
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
     ):
+        # The ID of the cluster. You can call the ListCluster operation to obtain cluster IDs.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The ID of the region.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # A list of vSwitches that are associated with the cluster. Note: You must include all vSwitches that you want to associate with the cluster.
+        # 
         # This parameter is required.
         self.v_switch_ids = v_switch_ids
+        # The ID of the virtual private cloud (VPC).
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
 
@@ -627,12 +683,20 @@ class ConfigClusterSubnetShrinkRequest(TeaModel):
         v_switch_ids_shrink: str = None,
         vpc_id: str = None,
     ):
+        # The ID of the cluster. You can call the ListCluster operation to obtain cluster IDs.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The ID of the region.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # A list of vSwitches that are associated with the cluster. Note: You must include all vSwitches that you want to associate with the cluster.
+        # 
         # This parameter is required.
         self.v_switch_ids_shrink = v_switch_ids_shrink
+        # The ID of the virtual private cloud (VPC).
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
 
@@ -673,6 +737,7 @@ class ConfigClusterSubnetResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -742,7 +807,7 @@ class ConfigClusterWhitelistRequest(TeaModel):
         cluster_id: str = None,
         whitelist: str = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
@@ -850,8 +915,12 @@ class ConfigImageRemarkRequest(TeaModel):
         image_id: str = None,
         remark: str = None,
     ):
+        # The ID of the image.
+        # 
         # This parameter is required.
         self.image_id = image_id
+        # The description of the image.
+        # 
         # This parameter is required.
         self.remark = remark
 
@@ -884,6 +953,7 @@ class ConfigImageRemarkResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -956,23 +1026,23 @@ class ConfigInstanceIpAddressRequest(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The HSM ID.
+        # The ID of the HSM.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The IP address of the HSM in the VPC.
+        # The endpoint of the VPC to which the HMS belongs.
         # 
         # This parameter is required.
         self.ip = ip
-        # The region ID.
+        # The ID of the region.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The vSwitch ID of the subnet to which the HSM belongs.
+        # The ID of the vSwitch to which the HMS belongs.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC to which the HSM belongs.
+        # The ID of the VPC to which the HMS belongs.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
@@ -1088,11 +1158,11 @@ class ConfigInstanceRemarkRequest(TeaModel):
         instance_id: str = None,
         remark: str = None,
     ):
-        # The HSM ID.
+        # The ID of the HSM.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The description.
+        # The description of the HSM.
         # 
         # This parameter is required.
         self.remark = remark
@@ -1196,8 +1266,12 @@ class ConfigInstanceWhitelistRequest(TeaModel):
         instance_id: str = None,
         whitelist: str = None,
     ):
+        # The ID of the HSM.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # A list of IP addresses that you want to configure in the whitelist. Separate multiple IP addresses with spaces or commas (,).
+        # 
         # This parameter is required.
         self.whitelist = whitelist
 
@@ -1230,6 +1304,7 @@ class ConfigInstanceWhitelistResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1299,7 +1374,9 @@ class CopyImageRequest(TeaModel):
         image_uid: str = None,
         target_region_id: str = None,
     ):
+        # The ID of the image.
         self.image_uid = image_uid
+        # The ID of the destination region.
         self.target_region_id = target_region_id
 
     def validate(self):
@@ -1339,14 +1416,26 @@ class CopyImageResponseBody(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # Indicates whether the task is complete.
         self.completed = completed
+        # The time when the task is created. The value is accurate to the millisecond. The value is a UNIX timestamp.
         self.create_time = create_time
+        # The error message returned if the task fails.
         self.error = error
+        # The ID of the task.
         self.job_id = job_id
+        # The progress of the task. Unit: percent (%).
         self.progress = progress
+        # The request ID.
         self.request_id = request_id
+        # The response returned after the task succeeds.
         self.response = response
+        # The task status.
         self.status = status
+        # The operation type. Valid values:
+        # 
+        # *   create
+        # *   cancel
         self.type = type
 
     def validate(self):
@@ -1449,15 +1538,15 @@ class CreateClusterRequest(TeaModel):
         master_instance_id: str = None,
         region_id: str = None,
     ):
-        # The cluster name.
+        # The name of the cluster.
         # 
         # This parameter is required.
         self.cluster_name = cluster_name
-        # The HSM ID.
+        # The ID of the master HSM.
         # 
         # This parameter is required.
         self.master_instance_id = master_instance_id
-        # The region ID.
+        # The ID of the region.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -1496,7 +1585,7 @@ class CreateClusterResponseBody(TeaModel):
         cluster_id: str = None,
         request_id: str = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster.
         self.cluster_id = cluster_id
         # The request ID.
         self.request_id = request_id
@@ -1571,7 +1660,7 @@ class DeleteClusterRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
@@ -1670,6 +1759,10 @@ class DescribeRegionsRequest(TeaModel):
         self,
         accept_language: str = None,
     ):
+        # The language of the content. Valid values:
+        # 
+        # *   zh: Chinese.
+        # *   en: English.
         self.accept_language = accept_language
 
     def validate(self):
@@ -1699,8 +1792,14 @@ class DescribeRegionsResponseBodyRegionsZones(TeaModel):
         local_name: str = None,
         zone_id: str = None,
     ):
+        # Indicates whether clusters are supported. Valid values:
+        # 
+        # *   yes
+        # *   no
         self.cluster = cluster
+        # The name of the zone.
         self.local_name = local_name
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1738,8 +1837,11 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
         region_id: str = None,
         zones: List[DescribeRegionsResponseBodyRegionsZones] = None,
     ):
+        # The name of the region.
         self.local_name = local_name
+        # The region ID.
         self.region_id = region_id
+        # The zones.
         self.zones = zones
 
     def validate(self):
@@ -1784,7 +1886,9 @@ class DescribeRegionsResponseBody(TeaModel):
         regions: List[DescribeRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
+        # The regions.
         self.regions = regions
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1866,8 +1970,12 @@ class EnableBackupRequest(TeaModel):
         backup_id: str = None,
         instance_id: str = None,
     ):
+        # The ID of the backup.
+        # 
         # This parameter is required.
         self.backup_id = backup_id
+        # The ID of the HSM.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 
@@ -1900,6 +2008,7 @@ class EnableBackupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1969,8 +2078,12 @@ class ExportImageRequest(TeaModel):
         image_id: str = None,
         instance_id: str = None,
     ):
+        # The ID of the image.
+        # 
         # This parameter is required.
         self.image_id = image_id
+        # The ID of the HSM.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 
@@ -2009,12 +2122,30 @@ class ExportImageResponseBodyJob(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # Indicates whether the task is complete. Valid values:
+        # 
+        # *   true
+        # *   false
         self.completed = completed
+        # The error message returned if the operation is abnormal or fails.
         self.error = error
+        # The ID of the task.
         self.job_id = job_id
+        # The progress of the task. Unit: percent (%).
         self.process = process
+        # The response returned after the operation succeeds.
         self.response = response
+        # The task status. Valid values:
+        # 
+        # *   running
+        # *   cancel
+        # *   fail
+        # *   success
         self.status = status
+        # The type of the task operation. Valid values:
+        # 
+        # *   create
+        # *   cancel
         self.type = type
 
     def validate(self):
@@ -2067,7 +2198,9 @@ class ExportImageResponseBody(TeaModel):
         job: ExportImageResponseBodyJob = None,
         request_id: str = None,
     ):
+        # The information about the asynchronous task returned.
         self.job = job
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2143,7 +2276,13 @@ class GetAuditLogStatusRequest(TeaModel):
         get_oss_bucket: bool = None,
         region_id: str = None,
     ):
+        # Specifies whether to obtain the list of OSS buckets that can be used to store audit logs. Valid values:
+        # 
+        # *   true
+        # *   false
         self.get_oss_bucket = get_oss_bucket
+        # The ID of the region.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -2182,12 +2321,28 @@ class GetAuditLogStatusResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Indicates whether the audit log feature is enabled. Valid values:
+        # 
+        # *   enable
+        # *   disable
         self.audit_log_status = audit_log_status
+        # The bucket that stores audit logs.
         self.audit_oss_bucket = audit_oss_bucket
+        # Indicates whether Cloud Hardware Security Module is authorized to deliver logs. Valid values:
+        # 
+        # *   true
+        # *   false
         self.granted_service_access = granted_service_access
+        # A list of buckets that can be used to store audit logs.
         self.oss_buckets = oss_buckets
+        # The ID of the region.
         self.region_id = region_id
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -2280,6 +2435,7 @@ class GetBackupRequest(TeaModel):
         self,
         backup_id: str = None,
     ):
+        # The ID of the backup.
         self.backup_id = backup_id
 
     def validate(self):
@@ -2323,22 +2479,46 @@ class GetBackupResponseBodyBackup(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # The number of images that are automatically backed up.
         self.auto_image_count = auto_image_count
+        # The backup time in the 24-hour format.
         self.backup_hour_in_day = backup_hour_in_day
+        # The ID of the backup.
         self.backup_id = backup_id
+        # The automatic backup cycle. Unit: days.
         self.backup_period = backup_period
+        # The time when the backup is created. The value is accurate to the millisecond. The value is a UNIX timestamp.
         self.create_time = create_time
+        # The expiration time of the backup. The value is accurate to the millisecond. The value is a UNIX timestamp.
         self.expire_time = expire_time
+        # The ID of the hardware security module (HSM) that is associated with the backup.
         self.instance_id = instance_id
+        # The maximum number of images.
         self.max_image_count = max_image_count
+        # The name of the backup.
         self.name = name
+        # The next time when the image is created. The value is accurate to the millisecond. The value is a UNIX timestamp.
         self.next_image_create_time = next_image_create_time
+        # The ID of the HSM to which the backup belongs. This parameter is available only for HSM backups outside the Chinese mainland and the value of this parameter is consistent with the value of InstanceId.
         self.owner_instance_id = owner_instance_id
+        # The ID of the region.
         self.region_id = region_id
+        # The time when the backup is released. The value is accurate to the millisecond. The value is a UNIX timestamp.
         self.release_time = release_time
+        # The description of the backup.
         self.remark = remark
+        # The ID of the backup. This parameter is available only for HSM backups in the Chinese mainland.
         self.sp_instance_id = sp_instance_id
+        # The status of the backup. Valid values:
+        # 
+        # *   NEW
+        # *   EXPIRED
+        # *   ENABLED
         self.status = status
+        # The type of the backup. Valid values:
+        # 
+        # *   DEFAULT
+        # *   NORMAL
         self.type = type
 
     def validate(self):
@@ -2431,7 +2611,9 @@ class GetBackupResponseBody(TeaModel):
         backup: GetBackupResponseBodyBackup = None,
         request_id: str = None,
     ):
+        # The information about the backup.
         self.backup = backup
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2506,7 +2688,7 @@ class GetClusterRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
@@ -2538,14 +2720,14 @@ class GetClusterResponseBodyClusterInstances(TeaModel):
         master: bool = None,
         node_id: int = None,
     ):
-        # The HSM ID.
+        # The ID of the HSM.
         self.instance_id = instance_id
-        # Indicates whether the HSM is the master HSM.
+        # Indicates whether the HSM is a master HSM. Valid values:
         # 
         # *   true
         # *   false
         self.master = master
-        # The sequence number of the HSM in the cluster.
+        # The ID of the HSM in the cluster.
         self.node_id = node_id
 
     def validate(self):
@@ -2582,9 +2764,9 @@ class GetClusterResponseBodyClusterZones(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # The vSwitch ID.
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
-        # The zone ID.
+        # The ID of the zone.
         self.zone_id = zone_id
 
     def validate(self):
@@ -2614,13 +2796,16 @@ class GetClusterResponseBodyClusterZones(TeaModel):
 class GetClusterResponseBodyCluster(TeaModel):
     def __init__(
         self,
+        cert_managed: bool = None,
         cluster_certificate: str = None,
         cluster_csr: str = None,
         cluster_id: str = None,
+        cluster_mode: int = None,
         cluster_name: str = None,
         cluster_owner_certificate: str = None,
         create_time: int = None,
         device_type: str = None,
+        entity_cert_expire_time: str = None,
         instances: List[GetClusterResponseBodyClusterInstances] = None,
         region_id: str = None,
         size: int = None,
@@ -2629,39 +2814,45 @@ class GetClusterResponseBodyCluster(TeaModel):
         whitelist: str = None,
         zones: List[GetClusterResponseBodyClusterZones] = None,
     ):
+        self.cert_managed = cert_managed
         # The cluster certificate.
         self.cluster_certificate = cluster_certificate
         # The certificate signing request (CSR) file of the cluster.
         self.cluster_csr = cluster_csr
-        # The cluster ID.
+        # The ID of the cluster.
         self.cluster_id = cluster_id
-        # The cluster name.
+        # The cluster mode.
+        # 
+        # 2: automatically synchronizes the cluster.
+        self.cluster_mode = cluster_mode
+        # The name of the cluster.
         self.cluster_name = cluster_name
         # The self-signed certificate of the cluster.
         self.cluster_owner_certificate = cluster_owner_certificate
         # The time when the cluster was created. Unit: milliseconds. The value is a UNIX timestamp.
         self.create_time = create_time
-        # The device type.
+        # The type of the device.
         self.device_type = device_type
+        self.entity_cert_expire_time = entity_cert_expire_time
         # The HSMs in the cluster.
         self.instances = instances
         # The ID of the region in which the cluster resides.
         self.region_id = region_id
         # The number of hardware security modules (HSMs) in the cluster.
         self.size = size
-        # The cluster status.
+        # The status of the cluster. Valid values:
         # 
         # *   NEW: The cluster is not initialized.
         # *   INITIALIZED: The cluster is initialized.
         # *   DELETED: The cluster is deleted.
         # *   SYNCHRONIZING: The cluster is being synchronized.
-        # *   TO_DELETE: The cluster is to be deleted.
+        # *   TO_DELETE: The cluster is pending deletion.
         self.status = status
         # The ID of the virtual private cloud (VPC) to which the cluster belongs.
         self.vpc_id = vpc_id
         # The IP address whitelist of the cluster.
         self.whitelist = whitelist
-        # The information about the zone in which the cluster is deployed.
+        # The information about the zones in which the cluster is deployed.
         self.zones = zones
 
     def validate(self):
@@ -2680,12 +2871,16 @@ class GetClusterResponseBodyCluster(TeaModel):
             return _map
 
         result = dict()
+        if self.cert_managed is not None:
+            result['CertManaged'] = self.cert_managed
         if self.cluster_certificate is not None:
             result['ClusterCertificate'] = self.cluster_certificate
         if self.cluster_csr is not None:
             result['ClusterCsr'] = self.cluster_csr
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
+        if self.cluster_mode is not None:
+            result['ClusterMode'] = self.cluster_mode
         if self.cluster_name is not None:
             result['ClusterName'] = self.cluster_name
         if self.cluster_owner_certificate is not None:
@@ -2694,6 +2889,8 @@ class GetClusterResponseBodyCluster(TeaModel):
             result['CreateTime'] = self.create_time
         if self.device_type is not None:
             result['DeviceType'] = self.device_type
+        if self.entity_cert_expire_time is not None:
+            result['EntityCertExpireTime'] = self.entity_cert_expire_time
         result['Instances'] = []
         if self.instances is not None:
             for k in self.instances:
@@ -2716,12 +2913,16 @@ class GetClusterResponseBodyCluster(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CertManaged') is not None:
+            self.cert_managed = m.get('CertManaged')
         if m.get('ClusterCertificate') is not None:
             self.cluster_certificate = m.get('ClusterCertificate')
         if m.get('ClusterCsr') is not None:
             self.cluster_csr = m.get('ClusterCsr')
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
+        if m.get('ClusterMode') is not None:
+            self.cluster_mode = m.get('ClusterMode')
         if m.get('ClusterName') is not None:
             self.cluster_name = m.get('ClusterName')
         if m.get('ClusterOwnerCertificate') is not None:
@@ -2730,6 +2931,8 @@ class GetClusterResponseBodyCluster(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('DeviceType') is not None:
             self.device_type = m.get('DeviceType')
+        if m.get('EntityCertExpireTime') is not None:
+            self.entity_cert_expire_time = m.get('EntityCertExpireTime')
         self.instances = []
         if m.get('Instances') is not None:
             for k in m.get('Instances'):
@@ -2759,7 +2962,7 @@ class GetClusterResponseBody(TeaModel):
         cluster: GetClusterResponseBodyCluster = None,
         request_id: str = None,
     ):
-        # The information about the cluster.
+        # The cluster details.
         self.cluster = cluster
         # The request ID.
         self.request_id = request_id
@@ -2836,6 +3039,8 @@ class GetImageRequest(TeaModel):
         self,
         image_id: str = None,
     ):
+        # The ID of the image.
+        # 
         # This parameter is required.
         self.image_id = image_id
 
@@ -2877,19 +3082,41 @@ class GetImageResponseBodyImage(TeaModel):
         status: str = None,
         vsm_digest: str = None,
     ):
+        # The ID of the backup.
         self.backup_id = backup_id
+        # The time when the image was copied. The value is accurate to the millisecond. The value is a UNIX timestamp.
         self.copy_time = copy_time
+        # The time when the image was generated. The value is accurate to the millisecond. The value is a UNIX timestamp.
         self.export_time = export_time
+        # The ID of the image.
         self.image_id = image_id
+        # The ID of the hardware security module (HSM).
         self.instance_id = instance_id
+        # The image generation mode. Valid values:
+        # 
+        # *   PERIODIC
+        # *   MANUAL
         self.mode = mode
+        # The ID of the region.
         self.region_id = region_id
+        # The description of the backup.
         self.remark = remark
+        # The ID of the source backup.
         self.source_backup_uid = source_backup_uid
+        # The ID of the source image.
         self.source_image_uid = source_image_uid
+        # The ID of the source HSM.
         self.source_instance_id = source_instance_id
+        # The region ID of the source image.
         self.source_region_id = source_region_id
+        # The status of the image. Valid values:
+        # 
+        # *   NEW
+        # *   DELETED
+        # *   CREATING
+        # *   NORMAL
         self.status = status
+        # The digest of the HSM.
         self.vsm_digest = vsm_digest
 
     def validate(self):
@@ -2970,7 +3197,9 @@ class GetImageResponseBody(TeaModel):
         image: GetImageResponseBodyImage = None,
         request_id: str = None,
     ):
+        # The image information.
         self.image = image
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3045,7 +3274,7 @@ class GetInstanceRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
-        # The HSM ID.
+        # The ID of the HSM.
         self.instance_id = instance_id
 
     def validate(self):
@@ -3093,15 +3322,15 @@ class GetInstanceResponseBodyInstance(TeaModel):
     ):
         # The ID of the cluster to which the HSM belongs.
         self.cluster_id = cluster_id
-        # The cluster name.
+        # The name of the cluster.
         self.cluster_name = cluster_name
         # The time when the HSM was created.
         self.create_time = create_time
-        # The device type.
+        # The type of the device.
         self.device_type = device_type
-        # The time when the instance expired.
+        # The time when the HSM expired.
         self.expire_time = expire_time
-        # The HSM ID.
+        # The ID of the HSM.
         self.instance_id = instance_id
         # The IP address of the HSM in the VPC.
         self.ip = ip
@@ -3110,38 +3339,41 @@ class GetInstanceResponseBodyInstance(TeaModel):
         # *   true
         # *   false
         self.is_trial = is_trial
-        # Indicates whether the HSM is the master HSM.
+        # Indicates whether the HSM is a master HSM. Valid values:
         # 
         # *   true
         # *   false
         self.master = master
-        # The order ID.
+        # The ID of the order.
         self.order_id = order_id
-        # The region ID.
+        # The ID of the region.
         self.region_id = region_id
-        # The HSM description.
+        # The description of the HSM.
         self.remark = remark
-        # The HSM status.
+        # The status of the HSM. Valid values:
         # 
-        # *   PENDING
-        # *   ACTIVE
-        # *   EXPIRED
-        # *   INVALID
-        # *   FAILURE
-        # *   RESET
-        # *   PAUSED
-        # *   MODIFYING
+        # *   PENDING: The HSM is disabled.
+        # *   ACTIVE: The HSM is enabled.
+        # *   EXPIRED: The HSM expired.
+        # *   INVALID: The HSM is invalid.
+        # *   FAILURE: The HSM failed to be created.
+        # *   RESET: The HSM is being reset.
+        # *   PAUSED: The HSM is paused.
+        # *   MODIFYING: The HSM is being modified.
         self.status = status
+        # The type of HSMs that is classified based on resource isolation. Valid values: 
+        # - vsm: Virtual security modules (VSMs)
+        # - hostedHsm: Dedicated HSMs.
         self.tenant_isolation_type = tenant_isolation_type
-        # The ID of the vSwitch configured for the HSM.
+        # The ID of the vSwitch that is configured for the HSM.
         self.v_switch_id = v_switch_id
-        # The vendor information.
+        # The information about the vendor.
         self.vendor = vendor
         # The ID of the virtual private cloud (VPC) to which the HSM belongs.
         self.vpc_id = vpc_id
-        # The IP address whitelist of the HSM.
+        # The IP addresses in the whitelist.
         self.whitelist = whitelist
-        # The zone ID.
+        # The ID of the zone.
         self.zone_id = zone_id
 
     def validate(self):
@@ -3242,7 +3474,7 @@ class GetInstanceResponseBody(TeaModel):
         instance: GetInstanceResponseBodyInstance = None,
         request_id: str = None,
     ):
-        # The HSM details.
+        # The information about the HSM.
         self.instance = instance
         # The request ID.
         self.request_id = request_id
@@ -3319,6 +3551,8 @@ class GetJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The ID of the task.
+        # 
         # This parameter is required.
         self.job_id = job_id
 
@@ -3353,12 +3587,30 @@ class GetJobResponseBodyJob(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # Indicates whether the task is complete. Valid values:
+        # 
+        # *   true
+        # *   false
         self.completed = completed
+        # The error message returned if the task fails.
         self.error = error
+        # The ID of the task.
         self.job_id = job_id
+        # The progress of the task. Unit: percent (%).
         self.progress = progress
+        # The response returned after the task succeeds.
         self.response = response
+        # The task status. Valid values:
+        # 
+        # *   success
+        # *   running
+        # *   fail
+        # *   cancel
         self.status = status
+        # The operation type. Valid values:
+        # 
+        # *   create
+        # *   cancel
         self.type = type
 
     def validate(self):
@@ -3411,7 +3663,9 @@ class GetJobResponseBody(TeaModel):
         job: GetJobResponseBodyJob = None,
         request_id: str = None,
     ):
+        # The details of the task.
         self.job = job
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3486,6 +3740,7 @@ class InitializeAuditLogResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3554,7 +3809,7 @@ class InitializeClusterRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
@@ -3654,7 +3909,7 @@ class JoinClusterRequest(TeaModel):
         cluster_id: str = None,
         instance_id: str = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
@@ -3708,23 +3963,23 @@ class JoinClusterResponseBodyJob(TeaModel):
         self.create_time = create_time
         # The error message returned if the task fails.
         self.error = error
-        # The task ID.
+        # The ID of the task.
         self.job_id = job_id
-        # The task progress. Unit: percent (%).
+        # The progress of the task. Unit: percent (%).
         self.progress = progress
-        # The response parameters.
+        # The response returned after the task succeeds.
         self.response = response
-        # The task status. Valid values:
+        # The status of the task. Valid values:
         # 
         # *   success
         # *   running
         # *   cancel
         # *   fail
         self.status = status
-        # The type of the action.
+        # The operation type. Valid values:
         # 
-        # *   create: creates a task.
-        # *   cancel: cancels a task.
+        # *   create
+        # *   cancel
         self.type = type
 
     def validate(self):
@@ -3781,7 +4036,7 @@ class JoinClusterResponseBody(TeaModel):
         job: JoinClusterResponseBodyJob = None,
         request_id: str = None,
     ):
-        # The task details.
+        # The details of the task.
         self.job = job
         # The request ID.
         self.request_id = request_id
@@ -3859,11 +4114,11 @@ class LeaveClusterRequest(TeaModel):
         cluster_id: str = None,
         instance_id: str = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The ID of the HSM that you want to remove from the cluster.
+        # The ID of the HSM.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -3971,13 +4226,22 @@ class ListBackupsRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The ID of the backup.
         self.backup_id = backup_id
+        # The page number.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # The ID of the hardware security module (HSM).
         self.instance_id = instance_id
+        # The name of the backup.
         self.name = name
+        # The number of entries per page. Valid values: 1 to 1000.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The ID of the region.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -4042,22 +4306,46 @@ class ListBackupsResponseBodyBackups(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # The number of images that are automatically backed up.
         self.auto_image_count = auto_image_count
+        # The backup time on the hour that is in the 24-hour clock.
         self.backup_hour_in_day = backup_hour_in_day
+        # The ID of the backup.
         self.backup_id = backup_id
+        # The automatic backup cycle. Unit: days.
         self.backup_period = backup_period
+        # The time when the backup is created. The value is accurate to the millisecond. The value is a UNIX timestamp.
         self.create_time = create_time
+        # The expiration time of the backup. The value is accurate to the millisecond. The value is a UNIX timestamp.
         self.expire_time = expire_time
+        # The ID of the HSM that is associated with the backup.
         self.instance_id = instance_id
+        # The number of images.
         self.max_image_count = max_image_count
+        # The name of the backup.
         self.name = name
+        # The time when the image is created next time. The value is accurate to the millisecond. The value is a UNIX timestamp.
         self.next_image_create_time = next_image_create_time
+        # The ID of the HSM to which the backup belongs. This parameter is available only for HSM backups outside the Chinese mainland and the value of this parameter is consistent with the value of InstanceId.
         self.owner_instance_id = owner_instance_id
+        # The ID of the region.
         self.region_id = region_id
+        # The time when the backup is released. The value is accurate to the millisecond. The value is a UNIX timestamp.
         self.release_time = release_time
+        # The description of the backup.
         self.remark = remark
+        # The ID of the backup. This parameter is available only for HSM backups in the Chinese mainland.
         self.sp_instance_id = sp_instance_id
+        # The status of the backup. Valid values:
+        # 
+        # *   NEW: The backup is disabled.
+        # *   EXPIRED: The backup expired.
+        # *   ENABLED: The backup is enabled.
         self.status = status
+        # The type of the backup. Valid values:
+        # 
+        # *   DEFAULT
+        # *   NORMAL
         self.type = type
 
     def validate(self):
@@ -4153,10 +4441,15 @@ class ListBackupsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The backups returned.
         self.backups = backups
+        # The page number.
         self.current_page = current_page
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -4259,7 +4552,7 @@ class ListClustersRequest(TeaModel):
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The region ID.
+        # The ID of the region.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -4298,15 +4591,15 @@ class ListClustersResponseBodyClusters(TeaModel):
         cluster_id: str = None,
         status: str = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster.
         self.cluster_id = cluster_id
-        # The cluster status.
+        # The status of the cluster. Valid values:
         # 
-        # *   NEW: not initialized
-        # *   INITIALIZED: initialized
-        # *   DELETED: deleted
-        # *   SYNCHRONIZING: being synchronized
-        # *   TO_DELETE: pending deletion
+        # *   NEW: The cluster is not initialized.
+        # *   INITIALIZED: The cluster is initialized.
+        # *   DELETED: The cluster is deleted.
+        # *   SYNCHRONIZING: The cluster is being synchronized.
+        # *   TO_DELETE: The cluster is pending deletion.
         self.status = status
 
     def validate(self):
@@ -4342,7 +4635,7 @@ class ListClustersResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
-        # Details of the clusters.
+        # The clusters.
         self.clusters = clusters
         # The page number.
         self.current_page = current_page
@@ -4350,7 +4643,7 @@ class ListClustersResponseBody(TeaModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of clusters.
         self.total = total
 
     def validate(self):
@@ -4447,13 +4740,25 @@ class ListImagesRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The ID of the backup.
+        # 
         # This parameter is required.
         self.backup_id = backup_id
+        # The page number.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # The image generation mode. Valid values:
+        # 
+        # *   PERIODIC: It is automatically generated.
+        # *   MANUAL: It is manually generated.
         self.mode = mode
+        # The number of images per page. Valid values: 1 to 1000.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The ID of the region.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -4511,19 +4816,41 @@ class ListImagesResponseBodyImages(TeaModel):
         status: str = None,
         vsm_digest: str = None,
     ):
+        # The ID of the backup.
         self.backup_id = backup_id
+        # The time when the image was copied. Unit: milliseconds. The value is a UNIX timestamp.
         self.copy_time = copy_time
+        # The time when the image was generated. Unit: milliseconds. The value is a UNIX timestamp.
         self.export_time = export_time
+        # The ID of the image.
         self.image_id = image_id
+        # The ID of the hardware security module (HSM).
         self.instance_id = instance_id
+        # The image generation mode. Valid values:
+        # 
+        # *   PERIODIC: It is automatically generated.
+        # *   MANUAL: It is manually generated.
         self.mode = mode
+        # The ID of the region.
         self.region_id = region_id
+        # The description of the backup.
         self.remark = remark
+        # The ID of the source backup.
         self.source_backup_uid = source_backup_uid
+        # The ID of the source image.
         self.source_image_uid = source_image_uid
+        # The ID of the source HSM.
         self.source_instance_id = source_instance_id
+        # The ID of the region in which the source image resides.
         self.source_region_id = source_region_id
+        # The status of the image. Valid values:
+        # 
+        # *   NEW: It is disabled.
+        # *   DELETED: It is deleted.
+        # *   CREATING: It is being created.
+        # *   NORMAL: It is created.
         self.status = status
+        # The digest of the HSM.
         self.vsm_digest = vsm_digest
 
     def validate(self):
@@ -4607,10 +4934,15 @@ class ListImagesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number.
         self.current_page = current_page
+        # The images returned.
         self.images = images
+        # The number of images per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of images returned.
         self.total_count = total_count
 
     def validate(self):
@@ -4707,11 +5039,20 @@ class ListInstancesRequest(TeaModel):
         tenant_isolation_type: str = None,
     ):
         # The page number.
+        # 
+        # This parameter is required.
         self.current_page = current_page
-        # The number of entries per page.
+        # The number of entries per page. Valid values: 1 to 1000.
+        # 
+        # This parameter is required.
         self.page_size = page_size
-        # The region ID.
+        # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
+        # The type of HSMs that is classified based on resource isolation. Valid values:
+        # - vsm: Virtual security modules (VSMs).
+        # - hostedHsm: Dedicated HSMs.
         self.tenant_isolation_type = tenant_isolation_type
 
     def validate(self):
@@ -4752,9 +5093,18 @@ class ListInstancesResponseBodyInstances(TeaModel):
         instance_id: str = None,
         status: str = None,
     ):
-        # The HSM ID.
+        # The ID of the HSM.
         self.instance_id = instance_id
-        # The HSM status. PENDING ACTIVE EXPIRED INVALID FAILURE RESET PAUSED MODIFYING
+        # The HSM status. Valid values:
+        # 
+        # *   PENDING: The HSM is disabled.
+        # *   ACTIVE: The HSM is enabled.
+        # *   EXPIRED: The HSM expired.
+        # *   INVALID: The HSM is invalid.
+        # *   FAILURE: The HSM failed to be created.
+        # *   RESET: The HSM is being reset.
+        # *   PAUSED: The HSM is paused.
+        # *   MODIFYING: The HSM is being modified.
         self.status = status
 
     def validate(self):
@@ -4794,7 +5144,7 @@ class ListInstancesResponseBody(TeaModel):
         self.current_page = current_page
         # The HSMs.
         self.instances = instances
-        # The number of entries per page. Valid values: 1 to 1000.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -4894,12 +5244,20 @@ class MoveResourceGroupRequest(TeaModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The ID of the region.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group.
+        # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
+        # The ID of the hardware security module (HSM).
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The type of the resource.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
 
@@ -4940,6 +5298,7 @@ class MoveResourceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5008,7 +5367,7 @@ class PauseInstanceRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
-        # The HSM ID.
+        # The ID of the HSM.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -5107,7 +5466,7 @@ class QuickInitInstanceRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
-        # The HSM ID.
+        # The ID of the HSM.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -5146,19 +5505,27 @@ class QuickInitInstanceResponseBodyJob(TeaModel):
     ):
         # Indicates whether the task is complete.
         self.completed = completed
-        # The time when the task was created. Unit: milliseconds. The value is a UNIX timestamp.
+        # The time when the task is created. The value is accurate to the millisecond. The value is a UNIX timestamp.
         self.create_time = create_time
         # The error message returned if the task fails.
         self.error = error
-        # The task ID.
+        # The ID of the task.
         self.job_id = job_id
-        # The task progress. Unit: percent (%).
+        # The progress of the task. Unit: percent (%).
         self.progress = progress
-        # The response parameters.
+        # The response returned after the task succeeds.
         self.response = response
-        # The task status. Valid values: success running cancel fail
+        # The task status. Valid values:
+        # 
+        # *   success
+        # *   running
+        # *   cancel
+        # *   fail
         self.status = status
-        # The type of the SQL statement. Valid values: create: creates a task. cancel: cancels a task.
+        # The operation type. Valid values:
+        # 
+        # *   create
+        # *   cancel
         self.type = type
 
     def validate(self):
@@ -5215,7 +5582,7 @@ class QuickInitInstanceResponseBody(TeaModel):
         job: QuickInitInstanceResponseBodyJob = None,
         request_id: str = None,
     ):
-        # The task details.
+        # The details of the task.
         self.job = job
         # The request ID.
         self.request_id = request_id
@@ -5292,6 +5659,7 @@ class ResetBackupRequest(TeaModel):
         self,
         backup_id: str = None,
     ):
+        # The ID of the backup.
         self.backup_id = backup_id
 
     def validate(self):
@@ -5319,6 +5687,7 @@ class ResetBackupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5387,7 +5756,7 @@ class ResetInstanceRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
-        # The HSM ID.
+        # The ID of the HSM.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -5424,21 +5793,29 @@ class ResetInstanceResponseBodyJob(TeaModel):
         status: str = None,
         type: str = None,
     ):
-        # Indicates whether the task is complete. Valid values:
+        # Indicates whether the task is complete.
         self.completed = completed
-        # The time when the task was created. Unit: milliseconds. The value is a UNIX timestamp.
+        # The time when the task is created. The value is accurate to the millisecond. The value is a UNIX timestamp.
         self.create_time = create_time
         # The error message returned if the task fails.
         self.error = error
-        # The task ID.
+        # The ID of the task.
         self.job_id = job_id
-        # The task progress. Unit: percent (%).
+        # The progress of the task. Unit: percent (%).
         self.progress = progress
-        # The response parameters.
+        # The response returned after the task succeeds.
         self.response = response
-        # The task status. Valid values: success running cancel fail
+        # The task status. Valid values:
+        # 
+        # *   success
+        # *   running
+        # *   cancel
+        # *   fail
         self.status = status
-        # The type of the action. create: creates a task. cancel: cancels a task.
+        # The operation type. Valid values:
+        # 
+        # *   create
+        # *   cancel
         self.type = type
 
     def validate(self):
@@ -5495,7 +5872,7 @@ class ResetInstanceResponseBody(TeaModel):
         job: ResetInstanceResponseBodyJob = None,
         request_id: str = None,
     ):
-        # The task details.
+        # The details of the task.
         self.job = job
         # The request ID.
         self.request_id = request_id
@@ -5577,7 +5954,7 @@ class RestoreInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.image_id = image_id
-        # The HSM ID.
+        # The ID of the HSM.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -5620,19 +5997,22 @@ class RestoreInstanceResponseBodyJob(TeaModel):
     ):
         # Indicates whether the task is complete.
         self.completed = completed
-        # The time when the task was created. Unit: milliseconds. The value is a UNIX timestamp.
+        # The time when the task is created. The value is accurate to the millisecond. The value is a UNIX timestamp.
         self.create_time = create_time
         # The error message returned if the task fails.
         self.error = error
-        # The task ID.
+        # The ID of the task.
         self.job_id = job_id
-        # The task progress. Unit: percent (%).
+        # The progress of the task. Unit: percent (%).
         self.progress = progress
-        # The response returned if the task succeeds.
+        # The response returned after the task succeeds.
         self.response = response
-        # The task status. Valid values:
+        # The task status.
         self.status = status
-        # The type of the action. Valid values: create: creates a task. cancel: cancels a task.
+        # The operation type. Valid values:
+        # 
+        # *   create
+        # *   cancel
         self.type = type
 
     def validate(self):
@@ -5689,7 +6069,7 @@ class RestoreInstanceResponseBody(TeaModel):
         job: RestoreInstanceResponseBodyJob = None,
         request_id: str = None,
     ):
-        # The task details.
+        # The details of the task.
         self.job = job
         # The request ID.
         self.request_id = request_id
@@ -5766,7 +6146,7 @@ class ResumeInstanceRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
-        # The HSM ID.
+        # The ID of the HSM.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -5866,7 +6246,7 @@ class SwitchClusterMasterRequest(TeaModel):
         cluster_id: str = None,
         instance_id: str = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
@@ -5973,7 +6353,7 @@ class SyncClusterRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
@@ -6019,23 +6399,23 @@ class SyncClusterResponseBodyJob(TeaModel):
         self.create_time = create_time
         # The error message returned if the task fails.
         self.error = error
-        # The task ID.
+        # The ID of the task.
         self.job_id = job_id
-        # The task progress. Unit: percent (%).
+        # The progress of the task. Unit: percent (%).
         self.progress = progress
-        # The response parameters.
+        # The response returned after the task succeeds.
         self.response = response
-        # The task status. Valid values:
+        # The status of the task. Valid values:
         # 
         # *   success
         # *   running
         # *   cancel
         # *   fail
         self.status = status
-        # The type of the action.
+        # The operation type. Valid values:
         # 
-        # *   create: creates a task.
-        # *   cancel: cancels a task.
+        # *   create
+        # *   cancel
         self.type = type
 
     def validate(self):
@@ -6092,7 +6472,7 @@ class SyncClusterResponseBody(TeaModel):
         job: SyncClusterResponseBodyJob = None,
         request_id: str = None,
     ):
-        # The task details.
+        # The details of the task.
         self.job = job
         # The request ID.
         self.request_id = request_id
