@@ -77,16 +77,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.ActivateLicenseResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.ActivateLicenseResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            brain_industrial_20200920_models.ActivateLicenseResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def activate_license_with_options_async(
         self,
@@ -124,16 +118,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.ActivateLicenseResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.ActivateLicenseResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            brain_industrial_20200920_models.ActivateLicenseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def activate_license(
         self,
@@ -203,16 +191,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.AicsOpenApiInvokeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.AicsOpenApiInvokeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            brain_industrial_20200920_models.AicsOpenApiInvokeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def aics_open_api_invoke_with_options_async(
         self,
@@ -256,16 +238,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.AicsOpenApiInvokeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.AicsOpenApiInvokeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            brain_industrial_20200920_models.AicsOpenApiInvokeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def aics_open_api_invoke(
         self,
@@ -317,6 +293,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.system_data):
             request.system_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.system_data, 'SystemData', 'json')
         body = {}
+        if not UtilClient.is_unset(request.business_key):
+            body['BusinessKey'] = request.business_key
         if not UtilClient.is_unset(request.duration):
             body['Duration'] = request.duration
         if not UtilClient.is_unset(request.elec_price_shrink):
@@ -351,16 +329,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.CreateEssOptJobResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.CreateEssOptJobResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            brain_industrial_20200920_models.CreateEssOptJobResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_ess_opt_job_with_options_async(
         self,
@@ -386,6 +358,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.system_data):
             request.system_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.system_data, 'SystemData', 'json')
         body = {}
+        if not UtilClient.is_unset(request.business_key):
+            body['BusinessKey'] = request.business_key
         if not UtilClient.is_unset(request.duration):
             body['Duration'] = request.duration
         if not UtilClient.is_unset(request.elec_price_shrink):
@@ -420,16 +394,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.CreateEssOptJobResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.CreateEssOptJobResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            brain_industrial_20200920_models.CreateEssOptJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_ess_opt_job(
         self,
@@ -475,6 +443,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.history_data):
             request.history_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.history_data, 'HistoryData', 'json')
         body = {}
+        if not UtilClient.is_unset(request.business_key):
+            body['BusinessKey'] = request.business_key
         if not UtilClient.is_unset(request.device_type):
             body['DeviceType'] = request.device_type
         if not UtilClient.is_unset(request.duration):
@@ -505,16 +475,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.CreateLoadForecastJobResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.CreateLoadForecastJobResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            brain_industrial_20200920_models.CreateLoadForecastJobResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_load_forecast_job_with_options_async(
         self,
@@ -534,6 +498,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.history_data):
             request.history_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.history_data, 'HistoryData', 'json')
         body = {}
+        if not UtilClient.is_unset(request.business_key):
+            body['BusinessKey'] = request.business_key
         if not UtilClient.is_unset(request.device_type):
             body['DeviceType'] = request.device_type
         if not UtilClient.is_unset(request.duration):
@@ -564,16 +530,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.CreateLoadForecastJobResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.CreateLoadForecastJobResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            brain_industrial_20200920_models.CreateLoadForecastJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_load_forecast_job(
         self,
@@ -621,6 +581,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.location):
             request.location_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.location, 'Location', 'json')
         body = {}
+        if not UtilClient.is_unset(request.business_key):
+            body['BusinessKey'] = request.business_key
         if not UtilClient.is_unset(request.device_type):
             body['DeviceType'] = request.device_type
         if not UtilClient.is_unset(request.duration):
@@ -653,16 +615,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.CreatePowerForecastJobResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.CreatePowerForecastJobResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            brain_industrial_20200920_models.CreatePowerForecastJobResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_power_forecast_job_with_options_async(
         self,
@@ -684,6 +640,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.location):
             request.location_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.location, 'Location', 'json')
         body = {}
+        if not UtilClient.is_unset(request.business_key):
+            body['BusinessKey'] = request.business_key
         if not UtilClient.is_unset(request.device_type):
             body['DeviceType'] = request.device_type
         if not UtilClient.is_unset(request.duration):
@@ -716,16 +674,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.CreatePowerForecastJobResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.CreatePowerForecastJobResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            brain_industrial_20200920_models.CreatePowerForecastJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_power_forecast_job(
         self,
@@ -783,16 +735,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.GetAivppAlgoJobResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.GetAivppAlgoJobResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            brain_industrial_20200920_models.GetAivppAlgoJobResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_aivpp_algo_job_with_options_async(
         self,
@@ -824,16 +770,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.GetAivppAlgoJobResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.GetAivppAlgoJobResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            brain_industrial_20200920_models.GetAivppAlgoJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_aivpp_algo_job(
         self,
@@ -893,16 +833,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.GetLicenseResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.GetLicenseResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            brain_industrial_20200920_models.GetLicenseResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_license_with_options_async(
         self,
@@ -936,16 +870,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.GetLicenseResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.GetLicenseResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            brain_industrial_20200920_models.GetLicenseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_license(
         self,
@@ -1005,16 +933,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.ListAivppResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.ListAivppResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            brain_industrial_20200920_models.ListAivppResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_aivpp_resources_with_options_async(
         self,
@@ -1048,16 +970,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.ListAivppResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.ListAivppResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            brain_industrial_20200920_models.ListAivppResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_aivpp_resources(
         self,
@@ -1119,16 +1035,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.ListLicensesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.ListLicensesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            brain_industrial_20200920_models.ListLicensesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_licenses_with_options_async(
         self,
@@ -1164,16 +1074,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.ListLicensesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.ListLicensesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            brain_industrial_20200920_models.ListLicensesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_licenses(
         self,
@@ -1231,16 +1135,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.ListUserResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.ListUserResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            brain_industrial_20200920_models.ListUserResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_user_resources_with_options_async(
         self,
@@ -1272,16 +1170,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.ListUserResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.ListUserResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            brain_industrial_20200920_models.ListUserResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_user_resources(
         self,
@@ -1341,16 +1233,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.UpdateLicenseDescriptionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.UpdateLicenseDescriptionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            brain_industrial_20200920_models.UpdateLicenseDescriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_license_description_with_options_async(
         self,
@@ -1384,16 +1270,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.UpdateLicenseDescriptionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                brain_industrial_20200920_models.UpdateLicenseDescriptionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            brain_industrial_20200920_models.UpdateLicenseDescriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_license_description(
         self,

@@ -696,6 +696,7 @@ class CreateEssOptJobRequestSystemData(TeaModel):
 class CreateEssOptJobRequest(TeaModel):
     def __init__(
         self,
+        business_key: str = None,
         duration: int = None,
         elec_price: List[CreateEssOptJobRequestElecPrice] = None,
         freq: str = None,
@@ -707,6 +708,7 @@ class CreateEssOptJobRequest(TeaModel):
         time_zone: str = None,
         topo_type: str = None,
     ):
+        self.business_key = business_key
         self.duration = duration
         self.elec_price = elec_price
         self.freq = freq
@@ -740,6 +742,8 @@ class CreateEssOptJobRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.business_key is not None:
+            result['BusinessKey'] = self.business_key
         if self.duration is not None:
             result['Duration'] = self.duration
         result['ElecPrice'] = []
@@ -770,6 +774,8 @@ class CreateEssOptJobRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BusinessKey') is not None:
+            self.business_key = m.get('BusinessKey')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
         self.elec_price = []
@@ -806,6 +812,7 @@ class CreateEssOptJobRequest(TeaModel):
 class CreateEssOptJobShrinkRequest(TeaModel):
     def __init__(
         self,
+        business_key: str = None,
         duration: int = None,
         elec_price_shrink: str = None,
         freq: str = None,
@@ -817,6 +824,7 @@ class CreateEssOptJobShrinkRequest(TeaModel):
         time_zone: str = None,
         topo_type: str = None,
     ):
+        self.business_key = business_key
         self.duration = duration
         self.elec_price_shrink = elec_price_shrink
         self.freq = freq
@@ -837,6 +845,8 @@ class CreateEssOptJobShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.business_key is not None:
+            result['BusinessKey'] = self.business_key
         if self.duration is not None:
             result['Duration'] = self.duration
         if self.elec_price_shrink is not None:
@@ -861,6 +871,8 @@ class CreateEssOptJobShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BusinessKey') is not None:
+            self.business_key = m.get('BusinessKey')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
         if m.get('ElecPrice') is not None:
@@ -1119,6 +1131,7 @@ class CreateLoadForecastJobRequestHistoryData(TeaModel):
 class CreateLoadForecastJobRequest(TeaModel):
     def __init__(
         self,
+        business_key: str = None,
         device_type: str = None,
         duration: int = None,
         freq: str = None,
@@ -1128,6 +1141,7 @@ class CreateLoadForecastJobRequest(TeaModel):
         system_type: str = None,
         time_zone: str = None,
     ):
+        self.business_key = business_key
         self.device_type = device_type
         self.duration = duration
         self.freq = freq
@@ -1149,6 +1163,8 @@ class CreateLoadForecastJobRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.business_key is not None:
+            result['BusinessKey'] = self.business_key
         if self.device_type is not None:
             result['DeviceType'] = self.device_type
         if self.duration is not None:
@@ -1171,6 +1187,8 @@ class CreateLoadForecastJobRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BusinessKey') is not None:
+            self.business_key = m.get('BusinessKey')
         if m.get('DeviceType') is not None:
             self.device_type = m.get('DeviceType')
         if m.get('Duration') is not None:
@@ -1196,6 +1214,7 @@ class CreateLoadForecastJobRequest(TeaModel):
 class CreateLoadForecastJobShrinkRequest(TeaModel):
     def __init__(
         self,
+        business_key: str = None,
         device_type: str = None,
         duration: int = None,
         freq: str = None,
@@ -1205,6 +1224,7 @@ class CreateLoadForecastJobShrinkRequest(TeaModel):
         system_type: str = None,
         time_zone: str = None,
     ):
+        self.business_key = business_key
         self.device_type = device_type
         self.duration = duration
         self.freq = freq
@@ -1223,6 +1243,8 @@ class CreateLoadForecastJobShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.business_key is not None:
+            result['BusinessKey'] = self.business_key
         if self.device_type is not None:
             result['DeviceType'] = self.device_type
         if self.duration is not None:
@@ -1243,6 +1265,8 @@ class CreateLoadForecastJobShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BusinessKey') is not None:
+            self.business_key = m.get('BusinessKey')
         if m.get('DeviceType') is not None:
             self.device_type = m.get('DeviceType')
         if m.get('Duration') is not None:
@@ -1536,6 +1560,7 @@ class CreatePowerForecastJobRequestLocation(TeaModel):
 class CreatePowerForecastJobRequest(TeaModel):
     def __init__(
         self,
+        business_key: str = None,
         device_type: str = None,
         duration: int = None,
         freq: str = None,
@@ -1546,6 +1571,7 @@ class CreatePowerForecastJobRequest(TeaModel):
         system_type: str = None,
         time_zone: str = None,
     ):
+        self.business_key = business_key
         self.device_type = device_type
         self.duration = duration
         self.freq = freq
@@ -1570,6 +1596,8 @@ class CreatePowerForecastJobRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.business_key is not None:
+            result['BusinessKey'] = self.business_key
         if self.device_type is not None:
             result['DeviceType'] = self.device_type
         if self.duration is not None:
@@ -1594,6 +1622,8 @@ class CreatePowerForecastJobRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BusinessKey') is not None:
+            self.business_key = m.get('BusinessKey')
         if m.get('DeviceType') is not None:
             self.device_type = m.get('DeviceType')
         if m.get('Duration') is not None:
@@ -1622,6 +1652,7 @@ class CreatePowerForecastJobRequest(TeaModel):
 class CreatePowerForecastJobShrinkRequest(TeaModel):
     def __init__(
         self,
+        business_key: str = None,
         device_type: str = None,
         duration: int = None,
         freq: str = None,
@@ -1632,6 +1663,7 @@ class CreatePowerForecastJobShrinkRequest(TeaModel):
         system_type: str = None,
         time_zone: str = None,
     ):
+        self.business_key = business_key
         self.device_type = device_type
         self.duration = duration
         self.freq = freq
@@ -1651,6 +1683,8 @@ class CreatePowerForecastJobShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.business_key is not None:
+            result['BusinessKey'] = self.business_key
         if self.device_type is not None:
             result['DeviceType'] = self.device_type
         if self.duration is not None:
@@ -1673,6 +1707,8 @@ class CreatePowerForecastJobShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BusinessKey') is not None:
+            self.business_key = m.get('BusinessKey')
         if m.get('DeviceType') is not None:
             self.device_type = m.get('DeviceType')
         if m.get('Duration') is not None:

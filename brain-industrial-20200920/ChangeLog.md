@@ -1,3 +1,9 @@
+2025-07-23 Version: 2.0.1
+- Update API CreateEssOptJob: add request parameters BusinessKey.
+- Update API CreateLoadForecastJob: add request parameters BusinessKey.
+- Update API CreatePowerForecastJob: add request parameters BusinessKey.
+
+
 2025-04-09 Version: 2.0.0
 - Delete API OpenApiInvoke.
 
