@@ -1,3 +1,9 @@
+2025-07-23 Version: 2.1.0
+- Support API GetServiceObservability.
+- Update API ListAlertActions: add response parameters Body.alertActions.$.ebParam.
+- Update API ListAlertActions: add response parameters Body.alertActions.$.fc3Param.
+
+
 2025-05-13 Version: 2.0.0
 - Support API CreateEntityStore.
 - Support API CreatePrometheusInstance.

@@ -1361,15 +1361,261 @@ class AlertRuleConditionCompareList(TeaModel):
         return self
 
 
+class AlertRuleConditionCompositeEscalationEscalations(TeaModel):
+    def __init__(
+        self,
+        comparison_operator: str = None,
+        metric_name: str = None,
+        period: int = None,
+        statistics: str = None,
+        threshold: float = None,
+    ):
+        self.comparison_operator = comparison_operator
+        self.metric_name = metric_name
+        self.period = period
+        self.statistics = statistics
+        self.threshold = threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comparison_operator is not None:
+            result['comparisonOperator'] = self.comparison_operator
+        if self.metric_name is not None:
+            result['metricName'] = self.metric_name
+        if self.period is not None:
+            result['period'] = self.period
+        if self.statistics is not None:
+            result['statistics'] = self.statistics
+        if self.threshold is not None:
+            result['threshold'] = self.threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('comparisonOperator') is not None:
+            self.comparison_operator = m.get('comparisonOperator')
+        if m.get('metricName') is not None:
+            self.metric_name = m.get('metricName')
+        if m.get('period') is not None:
+            self.period = m.get('period')
+        if m.get('statistics') is not None:
+            self.statistics = m.get('statistics')
+        if m.get('threshold') is not None:
+            self.threshold = m.get('threshold')
+        return self
+
+
+class AlertRuleConditionCompositeEscalation(TeaModel):
+    def __init__(
+        self,
+        escalations: List[AlertRuleConditionCompositeEscalationEscalations] = None,
+        level: str = None,
+        relation: str = None,
+        times: int = None,
+    ):
+        self.escalations = escalations
+        self.level = level
+        self.relation = relation
+        self.times = times
+
+    def validate(self):
+        if self.escalations:
+            for k in self.escalations:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['escalations'] = []
+        if self.escalations is not None:
+            for k in self.escalations:
+                result['escalations'].append(k.to_map() if k else None)
+        if self.level is not None:
+            result['level'] = self.level
+        if self.relation is not None:
+            result['relation'] = self.relation
+        if self.times is not None:
+            result['times'] = self.times
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.escalations = []
+        if m.get('escalations') is not None:
+            for k in m.get('escalations'):
+                temp_model = AlertRuleConditionCompositeEscalationEscalations()
+                self.escalations.append(temp_model.from_map(k))
+        if m.get('level') is not None:
+            self.level = m.get('level')
+        if m.get('relation') is not None:
+            self.relation = m.get('relation')
+        if m.get('times') is not None:
+            self.times = m.get('times')
+        return self
+
+
+class AlertRuleConditionExpressEscalation(TeaModel):
+    def __init__(
+        self,
+        level: str = None,
+        raw_expression: str = None,
+        times: int = None,
+    ):
+        self.level = level
+        self.raw_expression = raw_expression
+        self.times = times
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.level is not None:
+            result['level'] = self.level
+        if self.raw_expression is not None:
+            result['rawExpression'] = self.raw_expression
+        if self.times is not None:
+            result['times'] = self.times
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('level') is not None:
+            self.level = m.get('level')
+        if m.get('rawExpression') is not None:
+            self.raw_expression = m.get('rawExpression')
+        if m.get('times') is not None:
+            self.times = m.get('times')
+        return self
+
+
+class AlertRuleConditionSimpleEscalationEscalations(TeaModel):
+    def __init__(
+        self,
+        comparison_operator: str = None,
+        level: str = None,
+        statistics: str = None,
+        threshold: float = None,
+        times: int = None,
+    ):
+        self.comparison_operator = comparison_operator
+        self.level = level
+        self.statistics = statistics
+        self.threshold = threshold
+        self.times = times
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comparison_operator is not None:
+            result['comparisonOperator'] = self.comparison_operator
+        if self.level is not None:
+            result['level'] = self.level
+        if self.statistics is not None:
+            result['statistics'] = self.statistics
+        if self.threshold is not None:
+            result['threshold'] = self.threshold
+        if self.times is not None:
+            result['times'] = self.times
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('comparisonOperator') is not None:
+            self.comparison_operator = m.get('comparisonOperator')
+        if m.get('level') is not None:
+            self.level = m.get('level')
+        if m.get('statistics') is not None:
+            self.statistics = m.get('statistics')
+        if m.get('threshold') is not None:
+            self.threshold = m.get('threshold')
+        if m.get('times') is not None:
+            self.times = m.get('times')
+        return self
+
+
+class AlertRuleConditionSimpleEscalation(TeaModel):
+    def __init__(
+        self,
+        escalations: List[AlertRuleConditionSimpleEscalationEscalations] = None,
+        metric_name: str = None,
+        period: int = None,
+    ):
+        self.escalations = escalations
+        self.metric_name = metric_name
+        self.period = period
+
+    def validate(self):
+        if self.escalations:
+            for k in self.escalations:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['escalations'] = []
+        if self.escalations is not None:
+            for k in self.escalations:
+                result['escalations'].append(k.to_map() if k else None)
+        if self.metric_name is not None:
+            result['metricName'] = self.metric_name
+        if self.period is not None:
+            result['period'] = self.period
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.escalations = []
+        if m.get('escalations') is not None:
+            for k in m.get('escalations'):
+                temp_model = AlertRuleConditionSimpleEscalationEscalations()
+                self.escalations.append(temp_model.from_map(k))
+        if m.get('metricName') is not None:
+            self.metric_name = m.get('metricName')
+        if m.get('period') is not None:
+            self.period = m.get('period')
+        return self
+
+
 class AlertRuleCondition(TeaModel):
     def __init__(
         self,
         alert_count: int = None,
         case_list: List[AlertRuleConditionCaseList] = None,
         compare_list: List[AlertRuleConditionCompareList] = None,
+        composite_escalation: AlertRuleConditionCompositeEscalation = None,
+        escalation_type: str = None,
+        express_escalation: AlertRuleConditionExpressEscalation = None,
+        no_data_alert_level: str = None,
         no_data_append_value: str = None,
-        nodata_alert_level: str = None,
+        no_data_policy: str = None,
         relation: str = None,
+        simple_escalation: AlertRuleConditionSimpleEscalation = None,
         type: str = None,
     ):
         # type=SLS_CONDITION时指定，满足条件几次后告警，默认为1
@@ -1377,10 +1623,15 @@ class AlertRuleCondition(TeaModel):
         # type=SLS_CONDITION时指定
         self.case_list = case_list
         self.compare_list = compare_list
-        self.no_data_append_value = no_data_append_value
+        self.composite_escalation = composite_escalation
+        self.escalation_type = escalation_type
+        self.express_escalation = express_escalation
         # 无数据时按什么级别告警，不指定则不对无数据报警
-        self.nodata_alert_level = nodata_alert_level
+        self.no_data_alert_level = no_data_alert_level
+        self.no_data_append_value = no_data_append_value
+        self.no_data_policy = no_data_policy
         self.relation = relation
+        self.simple_escalation = simple_escalation
         # 规则条件类型，可选值：SLS_CONDITION
         # 
         # This parameter is required.
@@ -1395,6 +1646,12 @@ class AlertRuleCondition(TeaModel):
             for k in self.compare_list:
                 if k:
                     k.validate()
+        if self.composite_escalation:
+            self.composite_escalation.validate()
+        if self.express_escalation:
+            self.express_escalation.validate()
+        if self.simple_escalation:
+            self.simple_escalation.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1412,12 +1669,22 @@ class AlertRuleCondition(TeaModel):
         if self.compare_list is not None:
             for k in self.compare_list:
                 result['compareList'].append(k.to_map() if k else None)
+        if self.composite_escalation is not None:
+            result['compositeEscalation'] = self.composite_escalation.to_map()
+        if self.escalation_type is not None:
+            result['escalationType'] = self.escalation_type
+        if self.express_escalation is not None:
+            result['expressEscalation'] = self.express_escalation.to_map()
+        if self.no_data_alert_level is not None:
+            result['noDataAlertLevel'] = self.no_data_alert_level
         if self.no_data_append_value is not None:
             result['noDataAppendValue'] = self.no_data_append_value
-        if self.nodata_alert_level is not None:
-            result['nodataAlertLevel'] = self.nodata_alert_level
+        if self.no_data_policy is not None:
+            result['noDataPolicy'] = self.no_data_policy
         if self.relation is not None:
             result['relation'] = self.relation
+        if self.simple_escalation is not None:
+            result['simpleEscalation'] = self.simple_escalation.to_map()
         if self.type is not None:
             result['type'] = self.type
         return result
@@ -1436,12 +1703,25 @@ class AlertRuleCondition(TeaModel):
             for k in m.get('compareList'):
                 temp_model = AlertRuleConditionCompareList()
                 self.compare_list.append(temp_model.from_map(k))
+        if m.get('compositeEscalation') is not None:
+            temp_model = AlertRuleConditionCompositeEscalation()
+            self.composite_escalation = temp_model.from_map(m['compositeEscalation'])
+        if m.get('escalationType') is not None:
+            self.escalation_type = m.get('escalationType')
+        if m.get('expressEscalation') is not None:
+            temp_model = AlertRuleConditionExpressEscalation()
+            self.express_escalation = temp_model.from_map(m['expressEscalation'])
+        if m.get('noDataAlertLevel') is not None:
+            self.no_data_alert_level = m.get('noDataAlertLevel')
         if m.get('noDataAppendValue') is not None:
             self.no_data_append_value = m.get('noDataAppendValue')
-        if m.get('nodataAlertLevel') is not None:
-            self.nodata_alert_level = m.get('nodataAlertLevel')
+        if m.get('noDataPolicy') is not None:
+            self.no_data_policy = m.get('noDataPolicy')
         if m.get('relation') is not None:
             self.relation = m.get('relation')
+        if m.get('simpleEscalation') is not None:
+            temp_model = AlertRuleConditionSimpleEscalation()
+            self.simple_escalation = temp_model.from_map(m['simpleEscalation'])
         if m.get('type') is not None:
             self.type = m.get('type')
         return self
@@ -2006,22 +2286,30 @@ class AlertRuleQuery(TeaModel):
     def __init__(
         self,
         check_after_data_complete: bool = None,
+        dimensions: List[Dict[str, str]] = None,
         duration: int = None,
         expr: str = None,
         first_join: AlertRuleSlsQueryJoin = None,
         group_field_list: List[str] = None,
+        group_id: str = None,
         group_type: str = None,
+        namespace: str = None,
         queries: List[AlertRuleQueryQueries] = None,
+        relation_type: str = None,
         second_join: AlertRuleSlsQueryJoin = None,
         type: str = None,
     ):
         self.check_after_data_complete = check_after_data_complete
+        self.dimensions = dimensions
         self.duration = duration
         self.expr = expr
         self.first_join = first_join
         self.group_field_list = group_field_list
+        self.group_id = group_id
         self.group_type = group_type
+        self.namespace = namespace
         self.queries = queries
+        self.relation_type = relation_type
         self.second_join = second_join
         # 查询类型
         # 
@@ -2046,6 +2334,8 @@ class AlertRuleQuery(TeaModel):
         result = dict()
         if self.check_after_data_complete is not None:
             result['checkAfterDataComplete'] = self.check_after_data_complete
+        if self.dimensions is not None:
+            result['dimensions'] = self.dimensions
         if self.duration is not None:
             result['duration'] = self.duration
         if self.expr is not None:
@@ -2054,12 +2344,18 @@ class AlertRuleQuery(TeaModel):
             result['firstJoin'] = self.first_join.to_map()
         if self.group_field_list is not None:
             result['groupFieldList'] = self.group_field_list
+        if self.group_id is not None:
+            result['groupId'] = self.group_id
         if self.group_type is not None:
             result['groupType'] = self.group_type
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
         result['queries'] = []
         if self.queries is not None:
             for k in self.queries:
                 result['queries'].append(k.to_map() if k else None)
+        if self.relation_type is not None:
+            result['relationType'] = self.relation_type
         if self.second_join is not None:
             result['secondJoin'] = self.second_join.to_map()
         if self.type is not None:
@@ -2070,6 +2366,8 @@ class AlertRuleQuery(TeaModel):
         m = m or dict()
         if m.get('checkAfterDataComplete') is not None:
             self.check_after_data_complete = m.get('checkAfterDataComplete')
+        if m.get('dimensions') is not None:
+            self.dimensions = m.get('dimensions')
         if m.get('duration') is not None:
             self.duration = m.get('duration')
         if m.get('expr') is not None:
@@ -2079,13 +2377,19 @@ class AlertRuleQuery(TeaModel):
             self.first_join = temp_model.from_map(m['firstJoin'])
         if m.get('groupFieldList') is not None:
             self.group_field_list = m.get('groupFieldList')
+        if m.get('groupId') is not None:
+            self.group_id = m.get('groupId')
         if m.get('groupType') is not None:
             self.group_type = m.get('groupType')
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
         self.queries = []
         if m.get('queries') is not None:
             for k in m.get('queries'):
                 temp_model = AlertRuleQueryQueries()
                 self.queries.append(temp_model.from_map(k))
+        if m.get('relationType') is not None:
+            self.relation_type = m.get('relationType')
         if m.get('secondJoin') is not None:
             temp_model = AlertRuleSlsQueryJoin()
             self.second_join = temp_model.from_map(m['secondJoin'])
@@ -2099,9 +2403,11 @@ class AlertRuleSend(TeaModel):
         self,
         action: AlertRuleAction = None,
         notification: AlertRuleNotification = None,
+        send_to_arms: bool = None,
     ):
         self.action = action
         self.notification = notification
+        self.send_to_arms = send_to_arms
 
     def validate(self):
         if self.action:
@@ -2119,6 +2425,8 @@ class AlertRuleSend(TeaModel):
             result['action'] = self.action.to_map()
         if self.notification is not None:
             result['notification'] = self.notification.to_map()
+        if self.send_to_arms is not None:
+            result['sendToArms'] = self.send_to_arms
         return result
 
     def from_map(self, m: dict = None):
@@ -2129,6 +2437,8 @@ class AlertRuleSend(TeaModel):
         if m.get('notification') is not None:
             temp_model = AlertRuleNotification()
             self.notification = temp_model.from_map(m['notification'])
+        if m.get('sendToArms') is not None:
+            self.send_to_arms = m.get('sendToArms')
         return self
 
 
@@ -2249,6 +2559,427 @@ class DataStorageItem(TeaModel):
             self.store_name = m.get('storeName')
         if m.get('storeType') is not None:
             self.store_type = m.get('storeType')
+        return self
+
+
+class EntityDiscoverRuleAnnotations(TeaModel):
+    def __init__(
+        self,
+        op: str = None,
+        tag_key: str = None,
+        tag_values: List[str] = None,
+    ):
+        self.op = op
+        self.tag_key = tag_key
+        self.tag_values = tag_values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.op is not None:
+            result['op'] = self.op
+        if self.tag_key is not None:
+            result['tagKey'] = self.tag_key
+        if self.tag_values is not None:
+            result['tagValues'] = self.tag_values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('op') is not None:
+            self.op = m.get('op')
+        if m.get('tagKey') is not None:
+            self.tag_key = m.get('tagKey')
+        if m.get('tagValues') is not None:
+            self.tag_values = m.get('tagValues')
+        return self
+
+
+class EntityDiscoverRuleFieldRules(TeaModel):
+    def __init__(
+        self,
+        field_key: str = None,
+        field_values: List[str] = None,
+        op: str = None,
+    ):
+        self.field_key = field_key
+        self.field_values = field_values
+        self.op = op
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.field_key is not None:
+            result['fieldKey'] = self.field_key
+        if self.field_values is not None:
+            result['fieldValues'] = self.field_values
+        if self.op is not None:
+            result['op'] = self.op
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fieldKey') is not None:
+            self.field_key = m.get('fieldKey')
+        if m.get('fieldValues') is not None:
+            self.field_values = m.get('fieldValues')
+        if m.get('op') is not None:
+            self.op = m.get('op')
+        return self
+
+
+class EntityDiscoverRuleIpMatchRule(TeaModel):
+    def __init__(
+        self,
+        ip_cidr: str = None,
+        ip_field_key: str = None,
+    ):
+        self.ip_cidr = ip_cidr
+        self.ip_field_key = ip_field_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip_cidr is not None:
+            result['ipCIDR'] = self.ip_cidr
+        if self.ip_field_key is not None:
+            result['ipFieldKey'] = self.ip_field_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ipCIDR') is not None:
+            self.ip_cidr = m.get('ipCIDR')
+        if m.get('ipFieldKey') is not None:
+            self.ip_field_key = m.get('ipFieldKey')
+        return self
+
+
+class EntityDiscoverRuleLabels(TeaModel):
+    def __init__(
+        self,
+        op: str = None,
+        tag_key: str = None,
+        tag_values: List[str] = None,
+    ):
+        self.op = op
+        self.tag_key = tag_key
+        self.tag_values = tag_values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.op is not None:
+            result['op'] = self.op
+        if self.tag_key is not None:
+            result['tagKey'] = self.tag_key
+        if self.tag_values is not None:
+            result['tagValues'] = self.tag_values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('op') is not None:
+            self.op = m.get('op')
+        if m.get('tagKey') is not None:
+            self.tag_key = m.get('tagKey')
+        if m.get('tagValues') is not None:
+            self.tag_values = m.get('tagValues')
+        return self
+
+
+class EntityDiscoverRuleTags(TeaModel):
+    def __init__(
+        self,
+        op: str = None,
+        tag_key: str = None,
+        tag_values: List[str] = None,
+    ):
+        self.op = op
+        self.tag_key = tag_key
+        self.tag_values = tag_values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.op is not None:
+            result['op'] = self.op
+        if self.tag_key is not None:
+            result['tagKey'] = self.tag_key
+        if self.tag_values is not None:
+            result['tagValues'] = self.tag_values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('op') is not None:
+            self.op = m.get('op')
+        if m.get('tagKey') is not None:
+            self.tag_key = m.get('tagKey')
+        if m.get('tagValues') is not None:
+            self.tag_values = m.get('tagValues')
+        return self
+
+
+class EntityDiscoverRule(TeaModel):
+    def __init__(
+        self,
+        annotations: List[EntityDiscoverRuleAnnotations] = None,
+        entity_types: List[str] = None,
+        field_rules: List[EntityDiscoverRuleFieldRules] = None,
+        instance_ids: List[str] = None,
+        ip_match_rule: List[EntityDiscoverRuleIpMatchRule] = None,
+        labels: List[EntityDiscoverRuleLabels] = None,
+        region_ids: List[str] = None,
+        resource_group_id: str = None,
+        tags: List[EntityDiscoverRuleTags] = None,
+    ):
+        self.annotations = annotations
+        self.entity_types = entity_types
+        self.field_rules = field_rules
+        self.instance_ids = instance_ids
+        self.ip_match_rule = ip_match_rule
+        self.labels = labels
+        self.region_ids = region_ids
+        self.resource_group_id = resource_group_id
+        self.tags = tags
+
+    def validate(self):
+        if self.annotations:
+            for k in self.annotations:
+                if k:
+                    k.validate()
+        if self.field_rules:
+            for k in self.field_rules:
+                if k:
+                    k.validate()
+        if self.ip_match_rule:
+            for k in self.ip_match_rule:
+                if k:
+                    k.validate()
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['annotations'] = []
+        if self.annotations is not None:
+            for k in self.annotations:
+                result['annotations'].append(k.to_map() if k else None)
+        if self.entity_types is not None:
+            result['entityTypes'] = self.entity_types
+        result['fieldRules'] = []
+        if self.field_rules is not None:
+            for k in self.field_rules:
+                result['fieldRules'].append(k.to_map() if k else None)
+        if self.instance_ids is not None:
+            result['instanceIds'] = self.instance_ids
+        result['ipMatchRule'] = []
+        if self.ip_match_rule is not None:
+            for k in self.ip_match_rule:
+                result['ipMatchRule'].append(k.to_map() if k else None)
+        result['labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['labels'].append(k.to_map() if k else None)
+        if self.region_ids is not None:
+            result['regionIds'] = self.region_ids
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.annotations = []
+        if m.get('annotations') is not None:
+            for k in m.get('annotations'):
+                temp_model = EntityDiscoverRuleAnnotations()
+                self.annotations.append(temp_model.from_map(k))
+        if m.get('entityTypes') is not None:
+            self.entity_types = m.get('entityTypes')
+        self.field_rules = []
+        if m.get('fieldRules') is not None:
+            for k in m.get('fieldRules'):
+                temp_model = EntityDiscoverRuleFieldRules()
+                self.field_rules.append(temp_model.from_map(k))
+        if m.get('instanceIds') is not None:
+            self.instance_ids = m.get('instanceIds')
+        self.ip_match_rule = []
+        if m.get('ipMatchRule') is not None:
+            for k in m.get('ipMatchRule'):
+                temp_model = EntityDiscoverRuleIpMatchRule()
+                self.ip_match_rule.append(temp_model.from_map(k))
+        self.labels = []
+        if m.get('labels') is not None:
+            for k in m.get('labels'):
+                temp_model = EntityDiscoverRuleLabels()
+                self.labels.append(temp_model.from_map(k))
+        if m.get('regionIds') is not None:
+            self.region_ids = m.get('regionIds')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = EntityDiscoverRuleTags()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
+class EntityGroupBaseEntityQueries(TeaModel):
+    def __init__(
+        self,
+        entity_type: str = None,
+        spl: str = None,
+    ):
+        self.entity_type = entity_type
+        self.spl = spl
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.entity_type is not None:
+            result['entityType'] = self.entity_type
+        if self.spl is not None:
+            result['spl'] = self.spl
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('entityType') is not None:
+            self.entity_type = m.get('entityType')
+        if m.get('spl') is not None:
+            self.spl = m.get('spl')
+        return self
+
+
+class EntityGroupBase(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        entity_group_id: str = None,
+        entity_group_name: str = None,
+        entity_queries: List[EntityGroupBaseEntityQueries] = None,
+        entity_rules: EntityDiscoverRule = None,
+        region_id: str = None,
+        user_id: str = None,
+        workspace: str = None,
+    ):
+        self.description = description
+        self.entity_group_id = entity_group_id
+        self.entity_group_name = entity_group_name
+        self.entity_queries = entity_queries
+        self.entity_rules = entity_rules
+        self.region_id = region_id
+        self.user_id = user_id
+        self.workspace = workspace
+
+    def validate(self):
+        if self.entity_queries:
+            for k in self.entity_queries:
+                if k:
+                    k.validate()
+        if self.entity_rules:
+            self.entity_rules.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.entity_group_id is not None:
+            result['entityGroupId'] = self.entity_group_id
+        if self.entity_group_name is not None:
+            result['entityGroupName'] = self.entity_group_name
+        result['entityQueries'] = []
+        if self.entity_queries is not None:
+            for k in self.entity_queries:
+                result['entityQueries'].append(k.to_map() if k else None)
+        if self.entity_rules is not None:
+            result['entityRules'] = self.entity_rules.to_map()
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('entityGroupId') is not None:
+            self.entity_group_id = m.get('entityGroupId')
+        if m.get('entityGroupName') is not None:
+            self.entity_group_name = m.get('entityGroupName')
+        self.entity_queries = []
+        if m.get('entityQueries') is not None:
+            for k in m.get('entityQueries'):
+                temp_model = EntityGroupBaseEntityQueries()
+                self.entity_queries.append(temp_model.from_map(k))
+        if m.get('entityRules') is not None:
+            temp_model = EntityDiscoverRule()
+            self.entity_rules = temp_model.from_map(m['entityRules'])
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
         return self
 
 
@@ -5789,6 +6520,170 @@ class GetEntityStoreDataResponse(TeaModel):
         return self
 
 
+class GetServiceObservabilityResponseBodyEntryPointInfo(TeaModel):
+    def __init__(
+        self,
+        auth_token: str = None,
+        private_domain: str = None,
+        project: str = None,
+        public_domain: str = None,
+    ):
+        self.auth_token = auth_token
+        self.private_domain = private_domain
+        # SLS Project
+        self.project = project
+        self.public_domain = public_domain
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_token is not None:
+            result['authToken'] = self.auth_token
+        if self.private_domain is not None:
+            result['privateDomain'] = self.private_domain
+        if self.project is not None:
+            result['project'] = self.project
+        if self.public_domain is not None:
+            result['publicDomain'] = self.public_domain
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('authToken') is not None:
+            self.auth_token = m.get('authToken')
+        if m.get('privateDomain') is not None:
+            self.private_domain = m.get('privateDomain')
+        if m.get('project') is not None:
+            self.project = m.get('project')
+        if m.get('publicDomain') is not None:
+            self.public_domain = m.get('publicDomain')
+        return self
+
+
+class GetServiceObservabilityResponseBody(TeaModel):
+    def __init__(
+        self,
+        entry_point_info: GetServiceObservabilityResponseBodyEntryPointInfo = None,
+        fee_type: str = None,
+        quotas: Dict[str, str] = None,
+        region_id: str = None,
+        request_id: str = None,
+        settings: Dict[str, str] = None,
+        status: str = None,
+        type: str = None,
+        workspace: str = None,
+    ):
+        self.entry_point_info = entry_point_info
+        self.fee_type = fee_type
+        self.quotas = quotas
+        self.region_id = region_id
+        self.request_id = request_id
+        self.settings = settings
+        self.status = status
+        self.type = type
+        self.workspace = workspace
+
+    def validate(self):
+        if self.entry_point_info:
+            self.entry_point_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.entry_point_info is not None:
+            result['entryPointInfo'] = self.entry_point_info.to_map()
+        if self.fee_type is not None:
+            result['feeType'] = self.fee_type
+        if self.quotas is not None:
+            result['quotas'] = self.quotas
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.settings is not None:
+            result['settings'] = self.settings
+        if self.status is not None:
+            result['status'] = self.status
+        if self.type is not None:
+            result['type'] = self.type
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('entryPointInfo') is not None:
+            temp_model = GetServiceObservabilityResponseBodyEntryPointInfo()
+            self.entry_point_info = temp_model.from_map(m['entryPointInfo'])
+        if m.get('feeType') is not None:
+            self.fee_type = m.get('feeType')
+        if m.get('quotas') is not None:
+            self.quotas = m.get('quotas')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('settings') is not None:
+            self.settings = m.get('settings')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class GetServiceObservabilityResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetServiceObservabilityResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetServiceObservabilityResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetUmodelResponseBodyCommonSchemaRef(TeaModel):
     def __init__(
         self,
@@ -6321,6 +7216,51 @@ class ListAlertActionsShrinkRequest(TeaModel):
         return self
 
 
+class ListAlertActionsResponseBodyAlertActionsEbParam(TeaModel):
+    def __init__(
+        self,
+        eb_source: str = None,
+        event_bus_name: str = None,
+        region_id: str = None,
+        subject: str = None,
+    ):
+        self.eb_source = eb_source
+        self.event_bus_name = event_bus_name
+        self.region_id = region_id
+        self.subject = subject
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.eb_source is not None:
+            result['ebSource'] = self.eb_source
+        if self.event_bus_name is not None:
+            result['eventBusName'] = self.event_bus_name
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.subject is not None:
+            result['subject'] = self.subject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ebSource') is not None:
+            self.eb_source = m.get('ebSource')
+        if m.get('eventBusName') is not None:
+            self.event_bus_name = m.get('eventBusName')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('subject') is not None:
+            self.subject = m.get('subject')
+        return self
+
+
 class ListAlertActionsResponseBodyAlertActionsEssParam(TeaModel):
     def __init__(
         self,
@@ -6355,6 +7295,45 @@ class ListAlertActionsResponseBodyAlertActionsEssParam(TeaModel):
             self.ess_group_id = m.get('essGroupId')
         if m.get('essRuleId') is not None:
             self.ess_rule_id = m.get('essRuleId')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class ListAlertActionsResponseBodyAlertActionsFc3Param(TeaModel):
+    def __init__(
+        self,
+        function: str = None,
+        qualifier: str = None,
+        region_id: str = None,
+    ):
+        self.function = function
+        self.qualifier = qualifier
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.function is not None:
+            result['function'] = self.function
+        if self.qualifier is not None:
+            result['qualifier'] = self.qualifier
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('function') is not None:
+            self.function = m.get('function')
+        if m.get('qualifier') is not None:
+            self.qualifier = m.get('qualifier')
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
         return self
@@ -6560,7 +7539,9 @@ class ListAlertActionsResponseBodyAlertActions(TeaModel):
         self,
         alert_action_id: str = None,
         alert_action_name: str = None,
+        eb_param: ListAlertActionsResponseBodyAlertActionsEbParam = None,
         ess_param: ListAlertActionsResponseBodyAlertActionsEssParam = None,
+        fc_3param: ListAlertActionsResponseBodyAlertActionsFc3Param = None,
         fc_param: ListAlertActionsResponseBodyAlertActionsFcParam = None,
         mns_param: ListAlertActionsResponseBodyAlertActionsMnsParam = None,
         pager_duty_param: ListAlertActionsResponseBodyAlertActionsPagerDutyParam = None,
@@ -6570,7 +7551,9 @@ class ListAlertActionsResponseBodyAlertActions(TeaModel):
     ):
         self.alert_action_id = alert_action_id
         self.alert_action_name = alert_action_name
+        self.eb_param = eb_param
         self.ess_param = ess_param
+        self.fc_3param = fc_3param
         self.fc_param = fc_param
         self.mns_param = mns_param
         self.pager_duty_param = pager_duty_param
@@ -6579,8 +7562,12 @@ class ListAlertActionsResponseBodyAlertActions(TeaModel):
         self.webhook_param = webhook_param
 
     def validate(self):
+        if self.eb_param:
+            self.eb_param.validate()
         if self.ess_param:
             self.ess_param.validate()
+        if self.fc_3param:
+            self.fc_3param.validate()
         if self.fc_param:
             self.fc_param.validate()
         if self.mns_param:
@@ -6602,8 +7589,12 @@ class ListAlertActionsResponseBodyAlertActions(TeaModel):
             result['alertActionId'] = self.alert_action_id
         if self.alert_action_name is not None:
             result['alertActionName'] = self.alert_action_name
+        if self.eb_param is not None:
+            result['ebParam'] = self.eb_param.to_map()
         if self.ess_param is not None:
             result['essParam'] = self.ess_param.to_map()
+        if self.fc_3param is not None:
+            result['fc3Param'] = self.fc_3param.to_map()
         if self.fc_param is not None:
             result['fcParam'] = self.fc_param.to_map()
         if self.mns_param is not None:
@@ -6624,9 +7615,15 @@ class ListAlertActionsResponseBodyAlertActions(TeaModel):
             self.alert_action_id = m.get('alertActionId')
         if m.get('alertActionName') is not None:
             self.alert_action_name = m.get('alertActionName')
+        if m.get('ebParam') is not None:
+            temp_model = ListAlertActionsResponseBodyAlertActionsEbParam()
+            self.eb_param = temp_model.from_map(m['ebParam'])
         if m.get('essParam') is not None:
             temp_model = ListAlertActionsResponseBodyAlertActionsEssParam()
             self.ess_param = temp_model.from_map(m['essParam'])
+        if m.get('fc3Param') is not None:
+            temp_model = ListAlertActionsResponseBodyAlertActionsFc3Param()
+            self.fc_3param = temp_model.from_map(m['fc3Param'])
         if m.get('fcParam') is not None:
             temp_model = ListAlertActionsResponseBodyAlertActionsFcParam()
             self.fc_param = temp_model.from_map(m['fcParam'])

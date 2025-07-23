@@ -993,6 +993,100 @@ class Client(OpenApiClient):
         headers = cms_20240330_models.GetEntityStoreDataHeaders()
         return await self.get_entity_store_data_with_options_async(workspace, request, headers, runtime)
 
+    def get_service_observability_with_options(
+        self,
+        workspace: str,
+        type: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.GetServiceObservabilityResponse:
+        """
+        @summary 获取应用可观测实例
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceObservabilityResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetServiceObservability',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/workspace/{OpenApiUtilClient.get_encode_param(workspace)}/service-observability/{OpenApiUtilClient.get_encode_param(type)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.GetServiceObservabilityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_service_observability_with_options_async(
+        self,
+        workspace: str,
+        type: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.GetServiceObservabilityResponse:
+        """
+        @summary 获取应用可观测实例
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceObservabilityResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetServiceObservability',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/workspace/{OpenApiUtilClient.get_encode_param(workspace)}/service-observability/{OpenApiUtilClient.get_encode_param(type)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.GetServiceObservabilityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_service_observability(
+        self,
+        workspace: str,
+        type: str,
+    ) -> cms_20240330_models.GetServiceObservabilityResponse:
+        """
+        @summary 获取应用可观测实例
+        
+        @return: GetServiceObservabilityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_service_observability_with_options(workspace, type, headers, runtime)
+
+    async def get_service_observability_async(
+        self,
+        workspace: str,
+        type: str,
+    ) -> cms_20240330_models.GetServiceObservabilityResponse:
+        """
+        @summary 获取应用可观测实例
+        
+        @return: GetServiceObservabilityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_service_observability_with_options_async(workspace, type, headers, runtime)
+
     def get_umodel_with_options(
         self,
         workspace: str,
