@@ -1091,20 +1091,20 @@ class CreateDeploymentJobRequest(TeaModel):
         resource_ids: str = None,
         schedule_time: int = None,
     ):
-        # The certificate IDs.
+        # The ID of the certificate. Separate multiple certificate IDs with commas (,). You can call the [ListUserCertificateOrder](https://help.aliyun.com/document_detail/455804.html) operation to obtain the IDs of certificates from the **CertificateId** parameter.
         # 
         # This parameter is required.
         self.cert_ids = cert_ids
-        # The contact IDs.
+        # The ID of the contact. Separate multiple contact IDs with commas (,). You can call the [ListContact](https://help.aliyun.com/document_detail/2712221.html) operation to obtain the IDs of contacts from the **ContactId** parameter.
         # 
         # This parameter is required.
         self.contact_ids = contact_ids
-        # The type of the task.
+        # The type of the deployment task.
         # 
         # Valid values:
         # 
-        # *   cloud
-        # *   user
+        # *   cloud: multi-cloud deployment task.
+        # *   user: cloud service deployment task. This type of task does not support cloud servers.
         # 
         # This parameter is required.
         self.job_type = job_type
@@ -1112,11 +1112,11 @@ class CreateDeploymentJobRequest(TeaModel):
         # 
         # This parameter is required.
         self.name = name
-        # The resource IDs.
+        # The ID of the cloud resource. Separate multiple resource IDs with commas (,). You can call the [ListCloudResources](https://help.aliyun.com/document_detail/2712230.html) operation to obtain the IDs of cloud resources from the **Id** parameter.
         # 
         # This parameter is required.
         self.resource_ids = resource_ids
-        # The time when the task was scheduled.
+        # The time when the task starts. The value is a UNIX timestamp. If you do not specify this parameter, the system immediately starts the task after the task is in the pending state.
         self.schedule_time = schedule_time
 
     def validate(self):
@@ -2025,6 +2025,7 @@ class DescribeCertificateStateRequest(TeaModel):
 class DescribeCertificateStateResponseBody(TeaModel):
     def __init__(
         self,
+        cert_id: str = None,
         certificate: str = None,
         content: str = None,
         domain: str = None,
@@ -2037,6 +2038,7 @@ class DescribeCertificateStateResponseBody(TeaModel):
         uri: str = None,
         validate_type: str = None,
     ):
+        self.cert_id = cert_id
         # The content of the certificate in the PEM format. For more information about the PEM format and how to convert certificate formats, see [What formats are used for mainstream digital certificates?](https://help.aliyun.com/document_detail/42214.html)
         # 
         # >  This parameter is returned only when the value of the **Type** parameter is **certificate**. The value certificate indicates that the certificate is issued.
@@ -2107,6 +2109,8 @@ class DescribeCertificateStateResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.cert_id is not None:
+            result['CertId'] = self.cert_id
         if self.certificate is not None:
             result['Certificate'] = self.certificate
         if self.content is not None:
@@ -2133,6 +2137,8 @@ class DescribeCertificateStateResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CertId') is not None:
+            self.cert_id = m.get('CertId')
         if m.get('Certificate') is not None:
             self.certificate = m.get('Certificate')
         if m.get('Content') is not None:
@@ -4365,13 +4371,13 @@ class ListCloudAccessRequest(TeaModel):
         secret_id: str = None,
         show_size: int = None,
     ):
-        # The cloud service provider.
+        # The cloud service provider. Set the value to **Tencent**, which indicates Tencent Cloud.
         self.cloud_name = cloud_name
         # The page number. Default value: 1.
         self.current_page = current_page
-        # The AccessKey secret used to access the cloud service.
+        # The AccessKey ID that is used to access cloud resources.
         self.secret_id = secret_id
-        # The number of certificates per page. Default value: **20**.
+        # The number of entries per page. Valid values: **10**, **20**, and **50**.
         self.show_size = show_size
 
     def validate(self):
@@ -4414,13 +4420,13 @@ class ListCloudAccessResponseBodyCloudAccessList(TeaModel):
         secret_id: str = None,
         service_status: str = None,
     ):
-        # The AccessKey ID used to access the cloud service.
+        # The ID of the primary key.
         self.access_id = access_id
         # The cloud service provider.
         self.cloud_name = cloud_name
-        # The AccessKey secret used to access the cloud service.
+        # The AccessKey ID that is used to access cloud resources.
         self.secret_id = secret_id
-        # The status of the service.
+        # The service status. The value normal indicates that the service runs as expected.
         self.service_status = service_status
 
     def validate(self):
@@ -4464,13 +4470,13 @@ class ListCloudAccessResponseBody(TeaModel):
         show_size: int = None,
         total_count: int = None,
     ):
-        # The list of the AccessKey pairs.
+        # The query results.
         self.cloud_access_list = cloud_access_list
-        # The page number. Default value: 1.
+        # The default value is the current page. If CurrentPage is not specified, this parameter is not returned.
         self.current_page = current_page
         # The request ID.
         self.request_id = request_id
-        # The number of revoked certificates per page. Default value: **20**.
+        # The number of entries per page. If ShowSize is not specified, this parameter is not returned.
         self.show_size = show_size
         # The total number of entries returned.
         self.total_count = total_count

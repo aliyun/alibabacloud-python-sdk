@@ -1,3 +1,7 @@
+2025-07-23 Version: 3.0.1
+- Update API DescribeCertificateState: add response parameters Body.CertId.
+
+
 2025-02-18 Version: 3.0.0
 - Update API GetUserCertificateDetail: update response param.
 - Update API UploadUserCertificate: update response param.
