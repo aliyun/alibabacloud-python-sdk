@@ -1090,6 +1090,7 @@ class CreateServiceInstanceRequestCommodity(TeaModel):
         coupon_id: str = None,
         pay_period: int = None,
         pay_period_unit: str = None,
+        quotation_id: str = None,
     ):
         # Specifies whether to automatically complete the payment. Valid values:
         # 
@@ -1111,6 +1112,7 @@ class CreateServiceInstanceRequestCommodity(TeaModel):
         # *   **Month**\
         # *   **Day**\
         self.pay_period_unit = pay_period_unit
+        self.quotation_id = quotation_id
 
     def validate(self):
         pass
@@ -1131,6 +1133,8 @@ class CreateServiceInstanceRequestCommodity(TeaModel):
             result['PayPeriod'] = self.pay_period
         if self.pay_period_unit is not None:
             result['PayPeriodUnit'] = self.pay_period_unit
+        if self.quotation_id is not None:
+            result['QuotationId'] = self.quotation_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1145,6 +1149,8 @@ class CreateServiceInstanceRequestCommodity(TeaModel):
             self.pay_period = m.get('PayPeriod')
         if m.get('PayPeriodUnit') is not None:
             self.pay_period_unit = m.get('PayPeriodUnit')
+        if m.get('QuotationId') is not None:
+            self.quotation_id = m.get('QuotationId')
         return self
 
 
@@ -1310,6 +1316,7 @@ class CreateServiceInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.service_id = service_id
+        # The trial service instance id witch you want to convert to formal
         self.service_instance_id = service_instance_id
         # The service version.
         self.service_version = service_version
@@ -1445,6 +1452,7 @@ class CreateServiceInstanceShrinkRequestCommodity(TeaModel):
         coupon_id: str = None,
         pay_period: int = None,
         pay_period_unit: str = None,
+        quotation_id: str = None,
     ):
         # Specifies whether to automatically complete the payment. Valid values:
         # 
@@ -1466,6 +1474,7 @@ class CreateServiceInstanceShrinkRequestCommodity(TeaModel):
         # *   **Month**\
         # *   **Day**\
         self.pay_period_unit = pay_period_unit
+        self.quotation_id = quotation_id
 
     def validate(self):
         pass
@@ -1486,6 +1495,8 @@ class CreateServiceInstanceShrinkRequestCommodity(TeaModel):
             result['PayPeriod'] = self.pay_period
         if self.pay_period_unit is not None:
             result['PayPeriodUnit'] = self.pay_period_unit
+        if self.quotation_id is not None:
+            result['QuotationId'] = self.quotation_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1500,6 +1511,8 @@ class CreateServiceInstanceShrinkRequestCommodity(TeaModel):
             self.pay_period = m.get('PayPeriod')
         if m.get('PayPeriodUnit') is not None:
             self.pay_period_unit = m.get('PayPeriodUnit')
+        if m.get('QuotationId') is not None:
+            self.quotation_id = m.get('QuotationId')
         return self
 
 
@@ -1665,6 +1678,7 @@ class CreateServiceInstanceShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.service_id = service_id
+        # The trial service instance id witch you want to convert to formal
         self.service_instance_id = service_instance_id
         # The service version.
         self.service_version = service_version
@@ -3010,6 +3024,7 @@ class GetServiceResponseBodyComplianceMetadata(TeaModel):
         self,
         compliance_packs: List[str] = None,
     ):
+        # The compliance pack list.
         self.compliance_packs = compliance_packs
 
     def validate(self):
@@ -3394,6 +3409,7 @@ class GetServiceResponseBody(TeaModel):
         self.categories = categories
         # The information about the order placed in Alibaba Cloud Marketplace.
         self.commodity = commodity
+        # Compliance check metadata.
         self.compliance_metadata = compliance_metadata
         # Service deployment approach, Valid values：
         # 
@@ -3756,6 +3772,7 @@ class GetServiceEstimateCostRequestCommodity(TeaModel):
         coupon_id: str = None,
         pay_period: int = None,
         pay_period_unit: str = None,
+        quotation_id: str = None,
     ):
         # 优惠券ID
         self.coupon_id = coupon_id
@@ -3767,6 +3784,7 @@ class GetServiceEstimateCostRequestCommodity(TeaModel):
         # *   Month
         # *   Day
         self.pay_period_unit = pay_period_unit
+        self.quotation_id = quotation_id
 
     def validate(self):
         pass
@@ -3783,6 +3801,8 @@ class GetServiceEstimateCostRequestCommodity(TeaModel):
             result['PayPeriod'] = self.pay_period
         if self.pay_period_unit is not None:
             result['PayPeriodUnit'] = self.pay_period_unit
+        if self.quotation_id is not None:
+            result['QuotationId'] = self.quotation_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3793,6 +3813,8 @@ class GetServiceEstimateCostRequestCommodity(TeaModel):
             self.pay_period = m.get('PayPeriod')
         if m.get('PayPeriodUnit') is not None:
             self.pay_period_unit = m.get('PayPeriodUnit')
+        if m.get('QuotationId') is not None:
+            self.quotation_id = m.get('QuotationId')
         return self
 
 
@@ -4512,7 +4534,7 @@ class GetServiceInstanceResponseBodyService(TeaModel):
         # *   spi: The service is deployed by calling a service provider interface (SPI).
         # *   operation: The service is deployed by using a hosted O\\&M service.
         self.deploy_type = deploy_type
-        # Operation info.
+        # Parameters related to O\\&M operations, including configuration change, prometheus, and log configurations.
         self.operation_metadata = operation_metadata
         # The time when the service version was published.
         self.publish_time = publish_time
@@ -4798,7 +4820,7 @@ class GetServiceInstanceResponseBody(TeaModel):
         self.resource_group_id = resource_group_id
         # The resources.
         self.resources = resources
-        # The information about the cloud service.
+        # The service details.
         self.service = service
         # The ID of the service instance.
         self.service_instance_id = service_instance_id
@@ -4827,6 +4849,7 @@ class GetServiceInstanceResponseBody(TeaModel):
         self.status_detail = status_detail
         # The Alibaba Cloud account ID of the service provider.
         self.supplier_uid = supplier_uid
+        # Is it supported to convert from trial to private
         self.support_trial_to_private = support_trial_to_private
         # The tags.
         self.tags = tags
@@ -5594,8 +5617,11 @@ class GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions(TeaMo
         enable_url: str = None,
         status: str = None,
     ):
+        # Commodity Code
         self.commodity_code = commodity_code
+        # Product activation link.
         self.enable_url = enable_url
+        # Cloud service activation status.
         self.status = status
 
     def validate(self):
@@ -5793,6 +5819,7 @@ class GetServiceProvisionsResponseBodyServiceProvisions(TeaModel):
         # *   true: Automatic activation for the service is defined in the template.
         # *   false: Manual activation for the service is defined in the template.
         self.auto_enable_service = auto_enable_service
+        # Product details. Some services (such as ACS) involve the activation of multiple products
         self.commodity_provisions = commodity_provisions
         # The URL that points to the activation page of the service.
         # 
@@ -5876,7 +5903,7 @@ class GetServiceProvisionsResponseBody(TeaModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the services.
+        # The information about the cloud services.
         self.service_provisions = service_provisions
 
     def validate(self):
@@ -8646,6 +8673,7 @@ class ListServiceInstancesResponseBodyServiceInstances(TeaModel):
         self.status = status
         # The description of the deployment of the service instance.
         self.status_detail = status_detail
+        # Is it supported to convert from trial to formal
         self.support_trial_to_private = support_trial_to_private
         # The custom tags.
         self.tags = tags
@@ -8800,7 +8828,7 @@ class ListServiceInstancesResponseBody(TeaModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The information about the service instances.
+        # The information about service instances.
         self.service_instances = service_instances
         # The total number of entries returned.
         self.total_count = total_count
@@ -9401,7 +9429,9 @@ class ListServicesResponseBodyServicesServiceInfosSoftwares(TeaModel):
         name: str = None,
         version: str = None,
     ):
+        # The name of the software.
         self.name = name
+        # The version of the software.
         self.version = version
 
     def validate(self):
@@ -9448,6 +9478,7 @@ class ListServicesResponseBodyServicesServiceInfos(TeaModel):
         self.name = name
         # The description of the service.
         self.short_description = short_description
+        # Service software information.
         self.softwares = softwares
 
     def validate(self):
@@ -9582,7 +9613,7 @@ class ListServicesResponseBodyServices(TeaModel):
         self.score = score
         # The service ID.
         self.service_id = service_id
-        # The information about the service.
+        # The service information.
         self.service_infos = service_infos
         # The URL of the service page.
         self.service_product_url = service_product_url
@@ -10044,9 +10075,9 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
-        # The region ID.
+        # The region ID of the resource.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -10056,7 +10087,7 @@ class ListTagResourcesRequest(TeaModel):
         # 
         # *   service: service
         # *   serviceinstance: service instance
-        # *   artifact: artifact
+        # *   artifact: deployment package
         # 
         # This parameter is required.
         self.resource_type = resource_type
@@ -10121,11 +10152,12 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
         # 
         # *   service: service
         # *   serviceinstance: service instance
-        # *   artifact: artifact
+        # *   artifact: deployment package
+        # *   dataset: dataset
         self.resource_type = resource_type
-        # The key of the tag.
+        # The tag key.
         self.tag_key = tag_key
-        # The values of the tags.
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -10171,7 +10203,7 @@ class ListTagResourcesResponseBody(TeaModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # A list of resources that have tags.
+        # The collection of details about resources and tags, such as resource IDs, resource types, and tag key-value pairs.
         self.tag_resources = tag_resources
 
     def validate(self):

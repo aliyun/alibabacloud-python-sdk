@@ -1699,7 +1699,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_20210601_models.GetServiceProvisionsResponse:
         """
-        @summary 计算巢查询服务是否开通
+        @summary Queries the information about the activation status and Resource Access Management (RAM) roles of the cloud services required by a service.
         
         @param tmp_req: GetServiceProvisionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1748,7 +1748,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_20210601_models.GetServiceProvisionsResponse:
         """
-        @summary 计算巢查询服务是否开通
+        @summary Queries the information about the activation status and Resource Access Management (RAM) roles of the cloud services required by a service.
         
         @param tmp_req: GetServiceProvisionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1796,7 +1796,7 @@ class Client(OpenApiClient):
         request: compute_nest_20210601_models.GetServiceProvisionsRequest,
     ) -> compute_nest_20210601_models.GetServiceProvisionsResponse:
         """
-        @summary 计算巢查询服务是否开通
+        @summary Queries the information about the activation status and Resource Access Management (RAM) roles of the cloud services required by a service.
         
         @param request: GetServiceProvisionsRequest
         @return: GetServiceProvisionsResponse
@@ -1809,7 +1809,7 @@ class Client(OpenApiClient):
         request: compute_nest_20210601_models.GetServiceProvisionsRequest,
     ) -> compute_nest_20210601_models.GetServiceProvisionsResponse:
         """
-        @summary 计算巢查询服务是否开通
+        @summary Queries the information about the activation status and Resource Access Management (RAM) roles of the cloud services required by a service.
         
         @param request: GetServiceProvisionsRequest
         @return: GetServiceProvisionsResponse
