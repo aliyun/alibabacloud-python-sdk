@@ -6438,12 +6438,16 @@ class CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifie
     def __init__(
         self,
         environment_id: str = None,
+        parent_resource_id: str = None,
         resource_id: str = None,
+        resources: List[str] = None,
     ):
         # The environment ID.
         self.environment_id = environment_id
+        self.parent_resource_id = parent_resource_id
         # The resource ID.
         self.resource_id = resource_id
+        self.resources = resources
 
     def validate(self):
         pass
@@ -6456,16 +6460,24 @@ class CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifie
         result = dict()
         if self.environment_id is not None:
             result['environmentId'] = self.environment_id
+        if self.parent_resource_id is not None:
+            result['parentResourceId'] = self.parent_resource_id
         if self.resource_id is not None:
             result['resourceId'] = self.resource_id
+        if self.resources is not None:
+            result['resources'] = self.resources
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('environmentId') is not None:
             self.environment_id = m.get('environmentId')
+        if m.get('parentResourceId') is not None:
+            self.parent_resource_id = m.get('parentResourceId')
         if m.get('resourceId') is not None:
             self.resource_id = m.get('resourceId')
+        if m.get('resources') is not None:
+            self.resources = m.get('resources')
         return self
 
 
@@ -8162,9 +8174,11 @@ class CreateHttpApiRouteRequestMcpRouteConfig(TeaModel):
     def __init__(
         self,
         exposed_uri_path: str = None,
+        mcp_statistics_enable: bool = None,
         protocol: str = None,
     ):
         self.exposed_uri_path = exposed_uri_path
+        self.mcp_statistics_enable = mcp_statistics_enable
         self.protocol = protocol
 
     def validate(self):
@@ -8178,6 +8192,8 @@ class CreateHttpApiRouteRequestMcpRouteConfig(TeaModel):
         result = dict()
         if self.exposed_uri_path is not None:
             result['exposedUriPath'] = self.exposed_uri_path
+        if self.mcp_statistics_enable is not None:
+            result['mcpStatisticsEnable'] = self.mcp_statistics_enable
         if self.protocol is not None:
             result['protocol'] = self.protocol
         return result
@@ -8186,6 +8202,8 @@ class CreateHttpApiRouteRequestMcpRouteConfig(TeaModel):
         m = m or dict()
         if m.get('exposedUriPath') is not None:
             self.exposed_uri_path = m.get('exposedUriPath')
+        if m.get('mcpStatisticsEnable') is not None:
+            self.mcp_statistics_enable = m.get('mcpStatisticsEnable')
         if m.get('protocol') is not None:
             self.protocol = m.get('protocol')
         return self
@@ -11144,6 +11162,7 @@ class GetDashboardRequest(TeaModel):
         name: str = None,
         plugin_class_id: str = None,
         plugin_id: str = None,
+        route_id: str = None,
         source: str = None,
         upstream_cluster: str = None,
     ):
@@ -11161,6 +11180,7 @@ class GetDashboardRequest(TeaModel):
         # The plug-in ID.
         self.plugin_class_id = plugin_class_id
         self.plugin_id = plugin_id
+        self.route_id = route_id
         # The dashboard source. Valid values:
         # 
         # *   SLS: Simple Log Service
@@ -11189,6 +11209,8 @@ class GetDashboardRequest(TeaModel):
             result['pluginClassId'] = self.plugin_class_id
         if self.plugin_id is not None:
             result['pluginId'] = self.plugin_id
+        if self.route_id is not None:
+            result['routeId'] = self.route_id
         if self.source is not None:
             result['source'] = self.source
         if self.upstream_cluster is not None:
@@ -11210,6 +11232,8 @@ class GetDashboardRequest(TeaModel):
             self.plugin_class_id = m.get('pluginClassId')
         if m.get('pluginId') is not None:
             self.plugin_id = m.get('pluginId')
+        if m.get('routeId') is not None:
+            self.route_id = m.get('routeId')
         if m.get('source') is not None:
             self.source = m.get('source')
         if m.get('upstreamCluster') is not None:
@@ -11226,6 +11250,7 @@ class GetDashboardShrinkRequest(TeaModel):
         name: str = None,
         plugin_class_id: str = None,
         plugin_id: str = None,
+        route_id: str = None,
         source: str = None,
         upstream_cluster: str = None,
     ):
@@ -11243,6 +11268,7 @@ class GetDashboardShrinkRequest(TeaModel):
         # The plug-in ID.
         self.plugin_class_id = plugin_class_id
         self.plugin_id = plugin_id
+        self.route_id = route_id
         # The dashboard source. Valid values:
         # 
         # *   SLS: Simple Log Service
@@ -11270,6 +11296,8 @@ class GetDashboardShrinkRequest(TeaModel):
             result['pluginClassId'] = self.plugin_class_id
         if self.plugin_id is not None:
             result['pluginId'] = self.plugin_id
+        if self.route_id is not None:
+            result['routeId'] = self.route_id
         if self.source is not None:
             result['source'] = self.source
         if self.upstream_cluster is not None:
@@ -11290,6 +11318,8 @@ class GetDashboardShrinkRequest(TeaModel):
             self.plugin_class_id = m.get('pluginClassId')
         if m.get('pluginId') is not None:
             self.plugin_id = m.get('pluginId')
+        if m.get('routeId') is not None:
+            self.route_id = m.get('routeId')
         if m.get('source') is not None:
             self.source = m.get('source')
         if m.get('upstreamCluster') is not None:
@@ -18594,6 +18624,7 @@ class QueryConsumerAuthorizationRulesRequest(TeaModel):
         parent_resource_id: str = None,
         resource_id: str = None,
         resource_type: str = None,
+        resource_types: str = None,
     ):
         # The API name.
         self.api_name_like = api_name_like
@@ -18615,6 +18646,7 @@ class QueryConsumerAuthorizationRulesRequest(TeaModel):
         self.resource_id = resource_id
         # The resource type.
         self.resource_type = resource_type
+        self.resource_types = resource_types
 
     def validate(self):
         pass
@@ -18645,6 +18677,8 @@ class QueryConsumerAuthorizationRulesRequest(TeaModel):
             result['resourceId'] = self.resource_id
         if self.resource_type is not None:
             result['resourceType'] = self.resource_type
+        if self.resource_types is not None:
+            result['resourceTypes'] = self.resource_types
         return result
 
     def from_map(self, m: dict = None):
@@ -18669,6 +18703,8 @@ class QueryConsumerAuthorizationRulesRequest(TeaModel):
             self.resource_id = m.get('resourceId')
         if m.get('resourceType') is not None:
             self.resource_type = m.get('resourceType')
+        if m.get('resourceTypes') is not None:
+            self.resource_types = m.get('resourceTypes')
         return self
 
 
@@ -20619,6 +20655,45 @@ class UpdateHttpApiRouteRequestBackendConfig(TeaModel):
         return self
 
 
+class UpdateHttpApiRouteRequestMcpRouteConfig(TeaModel):
+    def __init__(
+        self,
+        exposed_uri_path: str = None,
+        mcp_statistics_enable: bool = None,
+        protocol: str = None,
+    ):
+        self.exposed_uri_path = exposed_uri_path
+        self.mcp_statistics_enable = mcp_statistics_enable
+        self.protocol = protocol
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exposed_uri_path is not None:
+            result['exposedUriPath'] = self.exposed_uri_path
+        if self.mcp_statistics_enable is not None:
+            result['mcpStatisticsEnable'] = self.mcp_statistics_enable
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('exposedUriPath') is not None:
+            self.exposed_uri_path = m.get('exposedUriPath')
+        if m.get('mcpStatisticsEnable') is not None:
+            self.mcp_statistics_enable = m.get('mcpStatisticsEnable')
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+        return self
+
+
 class UpdateHttpApiRouteRequest(TeaModel):
     def __init__(
         self,
@@ -20628,6 +20703,8 @@ class UpdateHttpApiRouteRequest(TeaModel):
         domain_ids: List[str] = None,
         environment_id: str = None,
         match: HttpRouteMatch = None,
+        mcp_route_config: UpdateHttpApiRouteRequestMcpRouteConfig = None,
+        name: str = None,
     ):
         # The backend service configurations of the route.
         self.backend_config = backend_config
@@ -20640,6 +20717,8 @@ class UpdateHttpApiRouteRequest(TeaModel):
         self.environment_id = environment_id
         # The rules for matching the route.
         self.match = match
+        self.mcp_route_config = mcp_route_config
+        self.name = name
 
     def validate(self):
         if self.backend_config:
@@ -20650,6 +20729,8 @@ class UpdateHttpApiRouteRequest(TeaModel):
                     k.validate()
         if self.match:
             self.match.validate()
+        if self.mcp_route_config:
+            self.mcp_route_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -20671,6 +20752,10 @@ class UpdateHttpApiRouteRequest(TeaModel):
             result['environmentId'] = self.environment_id
         if self.match is not None:
             result['match'] = self.match.to_map()
+        if self.mcp_route_config is not None:
+            result['mcpRouteConfig'] = self.mcp_route_config.to_map()
+        if self.name is not None:
+            result['name'] = self.name
         return result
 
     def from_map(self, m: dict = None):
@@ -20692,6 +20777,11 @@ class UpdateHttpApiRouteRequest(TeaModel):
         if m.get('match') is not None:
             temp_model = HttpRouteMatch()
             self.match = temp_model.from_map(m['match'])
+        if m.get('mcpRouteConfig') is not None:
+            temp_model = UpdateHttpApiRouteRequestMcpRouteConfig()
+            self.mcp_route_config = temp_model.from_map(m['mcpRouteConfig'])
+        if m.get('name') is not None:
+            self.name = m.get('name')
         return self
 
 

@@ -3704,6 +3704,8 @@ class Client(OpenApiClient):
             query['pluginClassId'] = request.plugin_class_id
         if not UtilClient.is_unset(request.plugin_id):
             query['pluginId'] = request.plugin_id
+        if not UtilClient.is_unset(request.route_id):
+            query['routeId'] = request.route_id
         if not UtilClient.is_unset(request.source):
             query['source'] = request.source
         if not UtilClient.is_unset(request.upstream_cluster):
@@ -3761,6 +3763,8 @@ class Client(OpenApiClient):
             query['pluginClassId'] = request.plugin_class_id
         if not UtilClient.is_unset(request.plugin_id):
             query['pluginId'] = request.plugin_id
+        if not UtilClient.is_unset(request.route_id):
+            query['routeId'] = request.route_id
         if not UtilClient.is_unset(request.source):
             query['source'] = request.source
         if not UtilClient.is_unset(request.upstream_cluster):
@@ -6897,6 +6901,8 @@ class Client(OpenApiClient):
             query['resourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_type):
             query['resourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.resource_types):
+            query['resourceTypes'] = request.resource_types
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -6953,6 +6959,8 @@ class Client(OpenApiClient):
             query['resourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_type):
             query['resourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.resource_types):
+            query['resourceTypes'] = request.resource_types
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -8327,6 +8335,10 @@ class Client(OpenApiClient):
             body['environmentId'] = request.environment_id
         if not UtilClient.is_unset(request.match):
             body['match'] = request.match
+        if not UtilClient.is_unset(request.mcp_route_config):
+            body['mcpRouteConfig'] = request.mcp_route_config
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -8377,6 +8389,10 @@ class Client(OpenApiClient):
             body['environmentId'] = request.environment_id
         if not UtilClient.is_unset(request.match):
             body['match'] = request.match
+        if not UtilClient.is_unset(request.mcp_route_config):
+            body['mcpRouteConfig'] = request.mcp_route_config
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)

@@ -1,3 +1,13 @@
+2025-07-24 Version: 4.3.1
+- Update API CreateConsumerAuthorizationRules: add request parameters body.authorizationRules.$.resourceIdentifier.parentResourceId.
+- Update API CreateConsumerAuthorizationRules: add request parameters body.authorizationRules.$.resourceIdentifier.resources.
+- Update API CreateHttpApiRoute: add request parameters body.mcpRouteConfig.mcpStatisticsEnable.
+- Update API GetDashboard: add request parameters routeId.
+- Update API QueryConsumerAuthorizationRules: add request parameters resourceTypes.
+- Update API UpdateHttpApiRoute: add request parameters body.mcpRouteConfig.
+- Update API UpdateHttpApiRoute: add request parameters body.name.
+
+
 2025-07-21 Version: 4.3.0
 - Support API BatchDeleteConsumerAuthorizationRule.
 - Support API CreateConsumer.
