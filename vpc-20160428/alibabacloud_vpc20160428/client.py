@@ -3809,6 +3809,8 @@ class Client(OpenApiClient):
             query['IpVersion'] = request.ip_version
         if not UtilClient.is_unset(request.ipam_pool_id):
             query['IpamPoolId'] = request.ipam_pool_id
+        if not UtilClient.is_unset(request.ipv_6cidr_mask):
+            query['Ipv6CidrMask'] = request.ipv_6cidr_mask
         if not UtilClient.is_unset(request.ipv_6isp):
             query['Ipv6Isp'] = request.ipv_6isp
         if not UtilClient.is_unset(request.owner_account):
@@ -3874,6 +3876,8 @@ class Client(OpenApiClient):
             query['IpVersion'] = request.ip_version
         if not UtilClient.is_unset(request.ipam_pool_id):
             query['IpamPoolId'] = request.ipam_pool_id
+        if not UtilClient.is_unset(request.ipv_6cidr_mask):
+            query['Ipv6CidrMask'] = request.ipv_6cidr_mask
         if not UtilClient.is_unset(request.ipv_6isp):
             query['Ipv6Isp'] = request.ipv_6isp
         if not UtilClient.is_unset(request.owner_account):
@@ -13994,6 +13998,10 @@ class Client(OpenApiClient):
             query['Ipv4IpamPoolId'] = request.ipv_4ipam_pool_id
         if not UtilClient.is_unset(request.ipv_6cidr_block):
             query['Ipv6CidrBlock'] = request.ipv_6cidr_block
+        if not UtilClient.is_unset(request.ipv_6cidr_mask):
+            query['Ipv6CidrMask'] = request.ipv_6cidr_mask
+        if not UtilClient.is_unset(request.ipv_6ipam_pool_id):
+            query['Ipv6IpamPoolId'] = request.ipv_6ipam_pool_id
         if not UtilClient.is_unset(request.ipv_6isp):
             query['Ipv6Isp'] = request.ipv_6isp
         if not UtilClient.is_unset(request.owner_account):
@@ -14076,6 +14084,10 @@ class Client(OpenApiClient):
             query['Ipv4IpamPoolId'] = request.ipv_4ipam_pool_id
         if not UtilClient.is_unset(request.ipv_6cidr_block):
             query['Ipv6CidrBlock'] = request.ipv_6cidr_block
+        if not UtilClient.is_unset(request.ipv_6cidr_mask):
+            query['Ipv6CidrMask'] = request.ipv_6cidr_mask
+        if not UtilClient.is_unset(request.ipv_6ipam_pool_id):
+            query['Ipv6IpamPoolId'] = request.ipv_6ipam_pool_id
         if not UtilClient.is_unset(request.ipv_6isp):
             query['Ipv6Isp'] = request.ipv_6isp
         if not UtilClient.is_unset(request.owner_account):

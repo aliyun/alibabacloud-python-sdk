@@ -4808,6 +4808,7 @@ class AssociateVpcCidrBlockRequest(TeaModel):
         ipv_6cidr_block: str = None,
         ip_version: str = None,
         ipam_pool_id: str = None,
+        ipv_6cidr_mask: int = None,
         ipv_6isp: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -4829,6 +4830,7 @@ class AssociateVpcCidrBlockRequest(TeaModel):
         self.ip_version = ip_version
         # The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
         self.ipam_pool_id = ipam_pool_id
+        self.ipv_6cidr_mask = ipv_6cidr_mask
         # The type of the IPv6 CIDR block. Valid values:
         # 
         # *   **BGP** (default)
@@ -4843,8 +4845,6 @@ class AssociateVpcCidrBlockRequest(TeaModel):
         # The region ID of the VPC to which you want to add a secondary CIDR block.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
-        # 
-        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -4885,6 +4885,8 @@ class AssociateVpcCidrBlockRequest(TeaModel):
             result['IpVersion'] = self.ip_version
         if self.ipam_pool_id is not None:
             result['IpamPoolId'] = self.ipam_pool_id
+        if self.ipv_6cidr_mask is not None:
+            result['Ipv6CidrMask'] = self.ipv_6cidr_mask
         if self.ipv_6isp is not None:
             result['Ipv6Isp'] = self.ipv_6isp
         if self.owner_account is not None:
@@ -4913,6 +4915,8 @@ class AssociateVpcCidrBlockRequest(TeaModel):
             self.ip_version = m.get('IpVersion')
         if m.get('IpamPoolId') is not None:
             self.ipam_pool_id = m.get('IpamPoolId')
+        if m.get('Ipv6CidrMask') is not None:
+            self.ipv_6cidr_mask = m.get('Ipv6CidrMask')
         if m.get('Ipv6Isp') is not None:
             self.ipv_6isp = m.get('Ipv6Isp')
         if m.get('OwnerAccount') is not None:
@@ -20805,6 +20809,8 @@ class CreateVpcRequest(TeaModel):
         ipv_4cidr_mask: int = None,
         ipv_4ipam_pool_id: str = None,
         ipv_6cidr_block: str = None,
+        ipv_6cidr_mask: int = None,
+        ipv_6ipam_pool_id: str = None,
         ipv_6isp: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -20852,6 +20858,8 @@ class CreateVpcRequest(TeaModel):
         self.ipv_4ipam_pool_id = ipv_4ipam_pool_id
         # The IPv6 CIDR block of the VPC. If you enable IPv6 for a VPC, the system allocates an IPv6 CIDR block. To specify an IPv6 CIDR block, you must call the [AllocateVpcIpv6Cidr](https://help.aliyun.com/document_detail/448916.html) operation to reserve the specified IPv6 CIDR block.
         self.ipv_6cidr_block = ipv_6cidr_block
+        self.ipv_6cidr_mask = ipv_6cidr_mask
+        self.ipv_6ipam_pool_id = ipv_6ipam_pool_id
         # The type of the IPv6 CIDR block of the VPC. Valid values:
         # 
         # *   **BGP** (default)
@@ -20916,6 +20924,10 @@ class CreateVpcRequest(TeaModel):
             result['Ipv4IpamPoolId'] = self.ipv_4ipam_pool_id
         if self.ipv_6cidr_block is not None:
             result['Ipv6CidrBlock'] = self.ipv_6cidr_block
+        if self.ipv_6cidr_mask is not None:
+            result['Ipv6CidrMask'] = self.ipv_6cidr_mask
+        if self.ipv_6ipam_pool_id is not None:
+            result['Ipv6IpamPoolId'] = self.ipv_6ipam_pool_id
         if self.ipv_6isp is not None:
             result['Ipv6Isp'] = self.ipv_6isp
         if self.owner_account is not None:
@@ -20960,6 +20972,10 @@ class CreateVpcRequest(TeaModel):
             self.ipv_4ipam_pool_id = m.get('Ipv4IpamPoolId')
         if m.get('Ipv6CidrBlock') is not None:
             self.ipv_6cidr_block = m.get('Ipv6CidrBlock')
+        if m.get('Ipv6CidrMask') is not None:
+            self.ipv_6cidr_mask = m.get('Ipv6CidrMask')
+        if m.get('Ipv6IpamPoolId') is not None:
+            self.ipv_6ipam_pool_id = m.get('Ipv6IpamPoolId')
         if m.get('Ipv6Isp') is not None:
             self.ipv_6isp = m.get('Ipv6Isp')
         if m.get('OwnerAccount') is not None:
@@ -72951,7 +72967,7 @@ class GetVpcPrefixListAssociationsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The number of entries per page. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries to return in each call. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
@@ -73034,6 +73050,7 @@ class GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation(TeaModel):
         resource_uid: str = None,
         status: str = None,
     ):
+        # List of CIDR addresses where the prefix list is effective in the currently associated resources.
         self.cidr_list = cidr_list
         # The ID of the Alibaba Cloud account to which the prefix list belongs.
         self.owner_id = owner_id
