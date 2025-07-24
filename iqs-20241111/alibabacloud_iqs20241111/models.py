@@ -594,6 +594,134 @@ class GenericSearchResult(TeaModel):
         return self
 
 
+class GetIqsUsageResultRecords(TeaModel):
+    def __init__(
+        self,
+        api: str = None,
+        billing_qps: int = None,
+        date: str = None,
+        engine_type: str = None,
+        failed_calls: int = None,
+        ladder_type: str = None,
+        main_account_id: str = None,
+        sub_account_id: str = None,
+        success_calls: int = None,
+        total_calls: int = None,
+        value_added_advanced: int = None,
+        value_added_summary: int = None,
+    ):
+        self.api = api
+        self.billing_qps = billing_qps
+        self.date = date
+        self.engine_type = engine_type
+        self.failed_calls = failed_calls
+        self.ladder_type = ladder_type
+        self.main_account_id = main_account_id
+        self.sub_account_id = sub_account_id
+        self.success_calls = success_calls
+        self.total_calls = total_calls
+        self.value_added_advanced = value_added_advanced
+        self.value_added_summary = value_added_summary
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api is not None:
+            result['api'] = self.api
+        if self.billing_qps is not None:
+            result['billingQps'] = self.billing_qps
+        if self.date is not None:
+            result['date'] = self.date
+        if self.engine_type is not None:
+            result['engineType'] = self.engine_type
+        if self.failed_calls is not None:
+            result['failedCalls'] = self.failed_calls
+        if self.ladder_type is not None:
+            result['ladderType'] = self.ladder_type
+        if self.main_account_id is not None:
+            result['mainAccountId'] = self.main_account_id
+        if self.sub_account_id is not None:
+            result['subAccountId'] = self.sub_account_id
+        if self.success_calls is not None:
+            result['successCalls'] = self.success_calls
+        if self.total_calls is not None:
+            result['totalCalls'] = self.total_calls
+        if self.value_added_advanced is not None:
+            result['valueAddedAdvanced'] = self.value_added_advanced
+        if self.value_added_summary is not None:
+            result['valueAddedSummary'] = self.value_added_summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('api') is not None:
+            self.api = m.get('api')
+        if m.get('billingQps') is not None:
+            self.billing_qps = m.get('billingQps')
+        if m.get('date') is not None:
+            self.date = m.get('date')
+        if m.get('engineType') is not None:
+            self.engine_type = m.get('engineType')
+        if m.get('failedCalls') is not None:
+            self.failed_calls = m.get('failedCalls')
+        if m.get('ladderType') is not None:
+            self.ladder_type = m.get('ladderType')
+        if m.get('mainAccountId') is not None:
+            self.main_account_id = m.get('mainAccountId')
+        if m.get('subAccountId') is not None:
+            self.sub_account_id = m.get('subAccountId')
+        if m.get('successCalls') is not None:
+            self.success_calls = m.get('successCalls')
+        if m.get('totalCalls') is not None:
+            self.total_calls = m.get('totalCalls')
+        if m.get('valueAddedAdvanced') is not None:
+            self.value_added_advanced = m.get('valueAddedAdvanced')
+        if m.get('valueAddedSummary') is not None:
+            self.value_added_summary = m.get('valueAddedSummary')
+        return self
+
+
+class GetIqsUsageResult(TeaModel):
+    def __init__(
+        self,
+        records: List[GetIqsUsageResultRecords] = None,
+    ):
+        self.records = records
+
+    def validate(self):
+        if self.records:
+            for k in self.records:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['records'] = []
+        if self.records is not None:
+            for k in self.records:
+                result['records'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.records = []
+        if m.get('records') is not None:
+            for k in m.get('records'):
+                temp_model = GetIqsUsageResultRecords()
+                self.records.append(temp_model.from_map(k))
+        return self
+
+
 class GlobalPageItem(TeaModel):
     def __init__(
         self,
@@ -1883,6 +2011,80 @@ class GenericSearchResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GenericSearchResult()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetIqsUsageRequest(TeaModel):
+    def __init__(
+        self,
+        end_date: str = None,
+        start_date: str = None,
+    ):
+        self.end_date = end_date
+        self.start_date = start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_date is not None:
+            result['endDate'] = self.end_date
+        if self.start_date is not None:
+            result['startDate'] = self.start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endDate') is not None:
+            self.end_date = m.get('endDate')
+        if m.get('startDate') is not None:
+            self.start_date = m.get('startDate')
+        return self
+
+
+class GetIqsUsageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetIqsUsageResult = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetIqsUsageResult()
             self.body = temp_model.from_map(m['body'])
         return self
 

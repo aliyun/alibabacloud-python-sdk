@@ -413,6 +413,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.generic_search_with_options_async(request, headers, runtime)
 
+    def get_iqs_usage_with_options(
+        self,
+        request: iqs20241111_models.GetIqsUsageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20241111_models.GetIqsUsageResponse:
+        """
+        @summary 信息查询服务接口日维度使用量查询
+        
+        @param request: GetIqsUsageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIqsUsageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_date):
+            query['endDate'] = request.end_date
+        if not UtilClient.is_unset(request.start_date):
+            query['startDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetIqsUsage',
+            version='2024-11-11',
+            protocol='HTTPS',
+            pathname=f'/linked-retrieval/linked-retrieval-admin/v1/iqs/usage',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iqs20241111_models.GetIqsUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_iqs_usage_with_options_async(
+        self,
+        request: iqs20241111_models.GetIqsUsageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20241111_models.GetIqsUsageResponse:
+        """
+        @summary 信息查询服务接口日维度使用量查询
+        
+        @param request: GetIqsUsageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIqsUsageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_date):
+            query['endDate'] = request.end_date
+        if not UtilClient.is_unset(request.start_date):
+            query['startDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetIqsUsage',
+            version='2024-11-11',
+            protocol='HTTPS',
+            pathname=f'/linked-retrieval/linked-retrieval-admin/v1/iqs/usage',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iqs20241111_models.GetIqsUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_iqs_usage(
+        self,
+        request: iqs20241111_models.GetIqsUsageRequest,
+    ) -> iqs20241111_models.GetIqsUsageResponse:
+        """
+        @summary 信息查询服务接口日维度使用量查询
+        
+        @param request: GetIqsUsageRequest
+        @return: GetIqsUsageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_iqs_usage_with_options(request, headers, runtime)
+
+    async def get_iqs_usage_async(
+        self,
+        request: iqs20241111_models.GetIqsUsageRequest,
+    ) -> iqs20241111_models.GetIqsUsageResponse:
+        """
+        @summary 信息查询服务接口日维度使用量查询
+        
+        @param request: GetIqsUsageRequest
+        @return: GetIqsUsageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_iqs_usage_with_options_async(request, headers, runtime)
+
     def global_search_with_options(
         self,
         request: iqs20241111_models.GlobalSearchRequest,

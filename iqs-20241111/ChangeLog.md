@@ -1,3 +1,7 @@
+2025-07-24 Version: 1.4.0
+- Support API GetIqsUsage.
+
+
 2025-07-01 Version: 1.3.2
 - Generated python 2024-11-11 for IQS.
 
