@@ -1,3 +1,11 @@
+2025-07-24 Version: 2.2.0
+- Support API CreateService.
+- Support API DeleteService.
+- Support API GetService.
+- Support API ListServices.
+- Support API UpdateService.
+
+
 2025-07-23 Version: 2.1.0
 - Support API GetServiceObservability.
 - Update API ListAlertActions: add response parameters Body.alertActions.$.ebParam.

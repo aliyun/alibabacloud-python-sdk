@@ -279,6 +279,138 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_prometheus_instance_with_options_async(request, headers, runtime)
 
+    def create_service_with_options(
+        self,
+        workspace: str,
+        request: cms_20240330_models.CreateServiceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.CreateServiceResponse:
+        """
+        @summary 创建Service
+        
+        @param request: CreateServiceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.attributes):
+            body['attributes'] = request.attributes
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.display_name):
+            body['displayName'] = request.display_name
+        if not UtilClient.is_unset(request.pid):
+            body['pid'] = request.pid
+        if not UtilClient.is_unset(request.service_name):
+            body['serviceName'] = request.service_name
+        if not UtilClient.is_unset(request.service_status):
+            body['serviceStatus'] = request.service_status
+        if not UtilClient.is_unset(request.service_type):
+            body['serviceType'] = request.service_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateService',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/workspace/{OpenApiUtilClient.get_encode_param(workspace)}/service',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.CreateServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_service_with_options_async(
+        self,
+        workspace: str,
+        request: cms_20240330_models.CreateServiceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.CreateServiceResponse:
+        """
+        @summary 创建Service
+        
+        @param request: CreateServiceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.attributes):
+            body['attributes'] = request.attributes
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.display_name):
+            body['displayName'] = request.display_name
+        if not UtilClient.is_unset(request.pid):
+            body['pid'] = request.pid
+        if not UtilClient.is_unset(request.service_name):
+            body['serviceName'] = request.service_name
+        if not UtilClient.is_unset(request.service_status):
+            body['serviceStatus'] = request.service_status
+        if not UtilClient.is_unset(request.service_type):
+            body['serviceType'] = request.service_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateService',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/workspace/{OpenApiUtilClient.get_encode_param(workspace)}/service',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.CreateServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_service(
+        self,
+        workspace: str,
+        request: cms_20240330_models.CreateServiceRequest,
+    ) -> cms_20240330_models.CreateServiceResponse:
+        """
+        @summary 创建Service
+        
+        @param request: CreateServiceRequest
+        @return: CreateServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_service_with_options(workspace, request, headers, runtime)
+
+    async def create_service_async(
+        self,
+        workspace: str,
+        request: cms_20240330_models.CreateServiceRequest,
+    ) -> cms_20240330_models.CreateServiceResponse:
+        """
+        @summary 创建Service
+        
+        @param request: CreateServiceRequest
+        @return: CreateServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_service_with_options_async(workspace, request, headers, runtime)
+
     def create_umodel_with_options(
         self,
         workspace: str,
@@ -480,6 +612,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_entity_store_with_options_async(workspace_name, headers, runtime)
+
+    def delete_service_with_options(
+        self,
+        workspace: str,
+        service_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.DeleteServiceResponse:
+        """
+        @summary 删除Service
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteServiceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteService',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/workspace/{OpenApiUtilClient.get_encode_param(workspace)}/service/{OpenApiUtilClient.get_encode_param(service_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.DeleteServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_service_with_options_async(
+        self,
+        workspace: str,
+        service_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.DeleteServiceResponse:
+        """
+        @summary 删除Service
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteServiceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteService',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/workspace/{OpenApiUtilClient.get_encode_param(workspace)}/service/{OpenApiUtilClient.get_encode_param(service_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.DeleteServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_service(
+        self,
+        workspace: str,
+        service_id: str,
+    ) -> cms_20240330_models.DeleteServiceResponse:
+        """
+        @summary 删除Service
+        
+        @return: DeleteServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_service_with_options(workspace, service_id, headers, runtime)
+
+    async def delete_service_async(
+        self,
+        workspace: str,
+        service_id: str,
+    ) -> cms_20240330_models.DeleteServiceResponse:
+        """
+        @summary 删除Service
+        
+        @return: DeleteServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_service_with_options_async(workspace, service_id, headers, runtime)
 
     def delete_umodel_with_options(
         self,
@@ -992,6 +1218,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = cms_20240330_models.GetEntityStoreDataHeaders()
         return await self.get_entity_store_data_with_options_async(workspace, request, headers, runtime)
+
+    def get_service_with_options(
+        self,
+        workspace: str,
+        service_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.GetServiceResponse:
+        """
+        @summary 查询 Service
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetService',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/workspace/{OpenApiUtilClient.get_encode_param(workspace)}/service/{OpenApiUtilClient.get_encode_param(service_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.GetServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_service_with_options_async(
+        self,
+        workspace: str,
+        service_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.GetServiceResponse:
+        """
+        @summary 查询 Service
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetService',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/workspace/{OpenApiUtilClient.get_encode_param(workspace)}/service/{OpenApiUtilClient.get_encode_param(service_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.GetServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_service(
+        self,
+        workspace: str,
+        service_id: str,
+    ) -> cms_20240330_models.GetServiceResponse:
+        """
+        @summary 查询 Service
+        
+        @return: GetServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_service_with_options(workspace, service_id, headers, runtime)
+
+    async def get_service_async(
+        self,
+        workspace: str,
+        service_id: str,
+    ) -> cms_20240330_models.GetServiceResponse:
+        """
+        @summary 查询 Service
+        
+        @return: GetServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_service_with_options_async(workspace, service_id, headers, runtime)
 
     def get_service_observability_with_options(
         self,
@@ -1511,6 +1831,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_alert_actions_with_options_async(request, headers, runtime)
 
+    def list_services_with_options(
+        self,
+        workspace: str,
+        request: cms_20240330_models.ListServicesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.ListServicesResponse:
+        """
+        @summary 列出资源Service
+        
+        @param request: ListServicesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServicesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.service_type):
+            query['serviceType'] = request.service_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListServices',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/workspace/{OpenApiUtilClient.get_encode_param(workspace)}/services',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.ListServicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_services_with_options_async(
+        self,
+        workspace: str,
+        request: cms_20240330_models.ListServicesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.ListServicesResponse:
+        """
+        @summary 列出资源Service
+        
+        @param request: ListServicesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServicesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.service_type):
+            query['serviceType'] = request.service_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListServices',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/workspace/{OpenApiUtilClient.get_encode_param(workspace)}/services',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.ListServicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_services(
+        self,
+        workspace: str,
+        request: cms_20240330_models.ListServicesRequest,
+    ) -> cms_20240330_models.ListServicesResponse:
+        """
+        @summary 列出资源Service
+        
+        @param request: ListServicesRequest
+        @return: ListServicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_services_with_options(workspace, request, headers, runtime)
+
+    async def list_services_async(
+        self,
+        workspace: str,
+        request: cms_20240330_models.ListServicesRequest,
+    ) -> cms_20240330_models.ListServicesResponse:
+        """
+        @summary 列出资源Service
+        
+        @param request: ListServicesRequest
+        @return: ListServicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_services_with_options_async(workspace, request, headers, runtime)
+
     def list_workspaces_with_options(
         self,
         tmp_req: cms_20240330_models.ListWorkspacesRequest,
@@ -1754,6 +2190,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.put_workspace_with_options_async(workspace_name, request, headers, runtime)
+
+    def update_service_with_options(
+        self,
+        workspace: str,
+        service_id: str,
+        request: cms_20240330_models.UpdateServiceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.UpdateServiceResponse:
+        """
+        @summary 更新UpdateService
+        
+        @param request: UpdateServiceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.attributes):
+            body['attributes'] = request.attributes
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.display_name):
+            body['displayName'] = request.display_name
+        if not UtilClient.is_unset(request.service_status):
+            body['serviceStatus'] = request.service_status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateService',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/workspace/{OpenApiUtilClient.get_encode_param(workspace)}/service/{OpenApiUtilClient.get_encode_param(service_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.UpdateServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_service_with_options_async(
+        self,
+        workspace: str,
+        service_id: str,
+        request: cms_20240330_models.UpdateServiceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.UpdateServiceResponse:
+        """
+        @summary 更新UpdateService
+        
+        @param request: UpdateServiceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.attributes):
+            body['attributes'] = request.attributes
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.display_name):
+            body['displayName'] = request.display_name
+        if not UtilClient.is_unset(request.service_status):
+            body['serviceStatus'] = request.service_status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateService',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/workspace/{OpenApiUtilClient.get_encode_param(workspace)}/service/{OpenApiUtilClient.get_encode_param(service_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.UpdateServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_service(
+        self,
+        workspace: str,
+        service_id: str,
+        request: cms_20240330_models.UpdateServiceRequest,
+    ) -> cms_20240330_models.UpdateServiceResponse:
+        """
+        @summary 更新UpdateService
+        
+        @param request: UpdateServiceRequest
+        @return: UpdateServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_service_with_options(workspace, service_id, request, headers, runtime)
+
+    async def update_service_async(
+        self,
+        workspace: str,
+        service_id: str,
+        request: cms_20240330_models.UpdateServiceRequest,
+    ) -> cms_20240330_models.UpdateServiceResponse:
+        """
+        @summary 更新UpdateService
+        
+        @param request: UpdateServiceRequest
+        @return: UpdateServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_service_with_options_async(workspace, service_id, request, headers, runtime)
 
     def update_umodel_with_options(
         self,

@@ -4374,6 +4374,389 @@ class MaintainWindowForView(TeaModel):
         return self
 
 
+class MergeContact(TeaModel):
+    def __init__(
+        self,
+        email: str = None,
+        email_verify: bool = None,
+        extend: Dict[str, Any] = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        identifier: str = None,
+        lang: str = None,
+        name: str = None,
+        phone: str = None,
+        phone_code: str = None,
+        phone_verify: bool = None,
+        source: str = None,
+    ):
+        self.email = email
+        self.email_verify = email_verify
+        self.extend = extend
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.identifier = identifier
+        self.lang = lang
+        self.name = name
+        self.phone = phone
+        self.phone_code = phone_code
+        self.phone_verify = phone_verify
+        self.source = source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.email is not None:
+            result['email'] = self.email
+        if self.email_verify is not None:
+            result['emailVerify'] = self.email_verify
+        if self.extend is not None:
+            result['extend'] = self.extend
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.identifier is not None:
+            result['identifier'] = self.identifier
+        if self.lang is not None:
+            result['lang'] = self.lang
+        if self.name is not None:
+            result['name'] = self.name
+        if self.phone is not None:
+            result['phone'] = self.phone
+        if self.phone_code is not None:
+            result['phoneCode'] = self.phone_code
+        if self.phone_verify is not None:
+            result['phoneVerify'] = self.phone_verify
+        if self.source is not None:
+            result['source'] = self.source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('email') is not None:
+            self.email = m.get('email')
+        if m.get('emailVerify') is not None:
+            self.email_verify = m.get('emailVerify')
+        if m.get('extend') is not None:
+            self.extend = m.get('extend')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('identifier') is not None:
+            self.identifier = m.get('identifier')
+        if m.get('lang') is not None:
+            self.lang = m.get('lang')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('phone') is not None:
+            self.phone = m.get('phone')
+        if m.get('phoneCode') is not None:
+            self.phone_code = m.get('phoneCode')
+        if m.get('phoneVerify') is not None:
+            self.phone_verify = m.get('phoneVerify')
+        if m.get('source') is not None:
+            self.source = m.get('source')
+        return self
+
+
+class MergeContactGroup(TeaModel):
+    def __init__(
+        self,
+        contacts: List[str] = None,
+        extend: Dict[str, Any] = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        identifier: str = None,
+        name: str = None,
+        source: str = None,
+    ):
+        self.contacts = contacts
+        self.extend = extend
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.identifier = identifier
+        self.name = name
+        self.source = source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.contacts is not None:
+            result['contacts'] = self.contacts
+        if self.extend is not None:
+            result['extend'] = self.extend
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.identifier is not None:
+            result['identifier'] = self.identifier
+        if self.name is not None:
+            result['name'] = self.name
+        if self.source is not None:
+            result['source'] = self.source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('contacts') is not None:
+            self.contacts = m.get('contacts')
+        if m.get('extend') is not None:
+            self.extend = m.get('extend')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('identifier') is not None:
+            self.identifier = m.get('identifier')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('source') is not None:
+            self.source = m.get('source')
+        return self
+
+
+class MergeRobotExtend(TeaModel):
+    def __init__(
+        self,
+        card_template: str = None,
+        daily_noc: bool = None,
+        daily_noc_time: str = None,
+        ding_sign_key: str = None,
+        enable_outgoing: bool = None,
+        token: str = None,
+    ):
+        self.card_template = card_template
+        self.daily_noc = daily_noc
+        self.daily_noc_time = daily_noc_time
+        self.ding_sign_key = ding_sign_key
+        self.enable_outgoing = enable_outgoing
+        self.token = token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.card_template is not None:
+            result['cardTemplate'] = self.card_template
+        if self.daily_noc is not None:
+            result['dailyNoc'] = self.daily_noc
+        if self.daily_noc_time is not None:
+            result['dailyNocTime'] = self.daily_noc_time
+        if self.ding_sign_key is not None:
+            result['dingSignKey'] = self.ding_sign_key
+        if self.enable_outgoing is not None:
+            result['enableOutgoing'] = self.enable_outgoing
+        if self.token is not None:
+            result['token'] = self.token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cardTemplate') is not None:
+            self.card_template = m.get('cardTemplate')
+        if m.get('dailyNoc') is not None:
+            self.daily_noc = m.get('dailyNoc')
+        if m.get('dailyNocTime') is not None:
+            self.daily_noc_time = m.get('dailyNocTime')
+        if m.get('dingSignKey') is not None:
+            self.ding_sign_key = m.get('dingSignKey')
+        if m.get('enableOutgoing') is not None:
+            self.enable_outgoing = m.get('enableOutgoing')
+        if m.get('token') is not None:
+            self.token = m.get('token')
+        return self
+
+
+class MergeRobot(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        extend: MergeRobotExtend = None,
+        gmt_modified: str = None,
+        identifier: str = None,
+        lang: str = None,
+        name: str = None,
+        source: str = None,
+        type: str = None,
+        webhook: str = None,
+    ):
+        self.create_time = create_time
+        self.extend = extend
+        self.gmt_modified = gmt_modified
+        self.identifier = identifier
+        self.lang = lang
+        self.name = name
+        self.source = source
+        self.type = type
+        self.webhook = webhook
+
+    def validate(self):
+        if self.extend:
+            self.extend.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.extend is not None:
+            result['extend'] = self.extend.to_map()
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.identifier is not None:
+            result['identifier'] = self.identifier
+        if self.lang is not None:
+            result['lang'] = self.lang
+        if self.name is not None:
+            result['name'] = self.name
+        if self.source is not None:
+            result['source'] = self.source
+        if self.type is not None:
+            result['type'] = self.type
+        if self.webhook is not None:
+            result['webhook'] = self.webhook
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('extend') is not None:
+            temp_model = MergeRobotExtend()
+            self.extend = temp_model.from_map(m['extend'])
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('identifier') is not None:
+            self.identifier = m.get('identifier')
+        if m.get('lang') is not None:
+            self.lang = m.get('lang')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('source') is not None:
+            self.source = m.get('source')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('webhook') is not None:
+            self.webhook = m.get('webhook')
+        return self
+
+
+class MergeWebhook(TeaModel):
+    def __init__(
+        self,
+        content_type: str = None,
+        extend: str = None,
+        gmt_create: str = None,
+        gmt_modified: Dict[str, Any] = None,
+        headers: str = None,
+        identifier: str = None,
+        lang: str = None,
+        method: str = None,
+        name: str = None,
+        source: str = None,
+        type: str = None,
+        webhook: str = None,
+    ):
+        self.content_type = content_type
+        self.extend = extend
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.headers = headers
+        self.identifier = identifier
+        self.lang = lang
+        self.method = method
+        self.name = name
+        self.source = source
+        self.type = type
+        self.webhook = webhook
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content_type is not None:
+            result['contentType'] = self.content_type
+        if self.extend is not None:
+            result['extend'] = self.extend
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.identifier is not None:
+            result['identifier'] = self.identifier
+        if self.lang is not None:
+            result['lang'] = self.lang
+        if self.method is not None:
+            result['method'] = self.method
+        if self.name is not None:
+            result['name'] = self.name
+        if self.source is not None:
+            result['source'] = self.source
+        if self.type is not None:
+            result['type'] = self.type
+        if self.webhook is not None:
+            result['webhook'] = self.webhook
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('contentType') is not None:
+            self.content_type = m.get('contentType')
+        if m.get('extend') is not None:
+            self.extend = m.get('extend')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('identifier') is not None:
+            self.identifier = m.get('identifier')
+        if m.get('lang') is not None:
+            self.lang = m.get('lang')
+        if m.get('method') is not None:
+            self.method = m.get('method')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('source') is not None:
+            self.source = m.get('source')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('webhook') is not None:
+            self.webhook = m.get('webhook')
+        return self
+
+
 class NotifyStrategyForModifyCustomTemplateEntries(TeaModel):
     def __init__(
         self,
@@ -5820,6 +6203,151 @@ class CreatePrometheusInstanceResponse(TeaModel):
         return self
 
 
+class CreateServiceRequest(TeaModel):
+    def __init__(
+        self,
+        attributes: str = None,
+        description: str = None,
+        display_name: str = None,
+        pid: str = None,
+        service_name: str = None,
+        service_status: str = None,
+        service_type: str = None,
+    ):
+        self.attributes = attributes
+        self.description = description
+        self.display_name = display_name
+        self.pid = pid
+        # This parameter is required.
+        self.service_name = service_name
+        self.service_status = service_status
+        # This parameter is required.
+        self.service_type = service_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attributes is not None:
+            result['attributes'] = self.attributes
+        if self.description is not None:
+            result['description'] = self.description
+        if self.display_name is not None:
+            result['displayName'] = self.display_name
+        if self.pid is not None:
+            result['pid'] = self.pid
+        if self.service_name is not None:
+            result['serviceName'] = self.service_name
+        if self.service_status is not None:
+            result['serviceStatus'] = self.service_status
+        if self.service_type is not None:
+            result['serviceType'] = self.service_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('attributes') is not None:
+            self.attributes = m.get('attributes')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('displayName') is not None:
+            self.display_name = m.get('displayName')
+        if m.get('pid') is not None:
+            self.pid = m.get('pid')
+        if m.get('serviceName') is not None:
+            self.service_name = m.get('serviceName')
+        if m.get('serviceStatus') is not None:
+            self.service_status = m.get('serviceStatus')
+        if m.get('serviceType') is not None:
+            self.service_type = m.get('serviceType')
+        return self
+
+
+class CreateServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        pid: str = None,
+        request_id: str = None,
+        service_id: str = None,
+    ):
+        self.pid = pid
+        self.request_id = request_id
+        self.service_id = service_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pid is not None:
+            result['pid'] = self.pid
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('pid') is not None:
+            self.pid = m.get('pid')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('serviceId') is not None:
+            self.service_id = m.get('serviceId')
+        return self
+
+
+class CreateServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateServiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateUmodelRequestCommonSchemaRef(TeaModel):
     def __init__(
         self,
@@ -6038,6 +6566,74 @@ class DeleteEntityStoreResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteEntityStoreResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeleteServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteServiceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6516,6 +7112,169 @@ class GetEntityStoreDataResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetEntityStoreDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetServiceResponseBodyService(TeaModel):
+    def __init__(
+        self,
+        attributes: str = None,
+        create_time: str = None,
+        description: str = None,
+        display_name: str = None,
+        pid: str = None,
+        region_id: str = None,
+        service_id: str = None,
+        service_name: str = None,
+        service_status: str = None,
+        service_type: str = None,
+        workspace: str = None,
+    ):
+        self.attributes = attributes
+        self.create_time = create_time
+        self.description = description
+        self.display_name = display_name
+        self.pid = pid
+        self.region_id = region_id
+        self.service_id = service_id
+        self.service_name = service_name
+        self.service_status = service_status
+        self.service_type = service_type
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attributes is not None:
+            result['attributes'] = self.attributes
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.display_name is not None:
+            result['displayName'] = self.display_name
+        if self.pid is not None:
+            result['pid'] = self.pid
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
+        if self.service_name is not None:
+            result['serviceName'] = self.service_name
+        if self.service_status is not None:
+            result['serviceStatus'] = self.service_status
+        if self.service_type is not None:
+            result['serviceType'] = self.service_type
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('attributes') is not None:
+            self.attributes = m.get('attributes')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('displayName') is not None:
+            self.display_name = m.get('displayName')
+        if m.get('pid') is not None:
+            self.pid = m.get('pid')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('serviceId') is not None:
+            self.service_id = m.get('serviceId')
+        if m.get('serviceName') is not None:
+            self.service_name = m.get('serviceName')
+        if m.get('serviceStatus') is not None:
+            self.service_status = m.get('serviceStatus')
+        if m.get('serviceType') is not None:
+            self.service_type = m.get('serviceType')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class GetServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        service: GetServiceResponseBodyService = None,
+    ):
+        self.request_id = request_id
+        self.service = service
+
+    def validate(self):
+        if self.service:
+            self.service.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.service is not None:
+            result['service'] = self.service.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('service') is not None:
+            temp_model = GetServiceResponseBodyService()
+            self.service = temp_model.from_map(m['service'])
+        return self
+
+
+class GetServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetServiceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7744,6 +8503,226 @@ class ListAlertActionsResponse(TeaModel):
         return self
 
 
+class ListServicesRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        service_type: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.service_type = service_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.service_type is not None:
+            result['serviceType'] = self.service_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('serviceType') is not None:
+            self.service_type = m.get('serviceType')
+        return self
+
+
+class ListServicesResponseBodyServices(TeaModel):
+    def __init__(
+        self,
+        attributes: str = None,
+        create_time: str = None,
+        description: str = None,
+        display_name: str = None,
+        pid: str = None,
+        service_id: str = None,
+        service_name: str = None,
+        service_status: str = None,
+        service_type: str = None,
+        workspace: str = None,
+    ):
+        self.attributes = attributes
+        self.create_time = create_time
+        self.description = description
+        self.display_name = display_name
+        self.pid = pid
+        self.service_id = service_id
+        self.service_name = service_name
+        self.service_status = service_status
+        self.service_type = service_type
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attributes is not None:
+            result['attributes'] = self.attributes
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.display_name is not None:
+            result['displayName'] = self.display_name
+        if self.pid is not None:
+            result['pid'] = self.pid
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
+        if self.service_name is not None:
+            result['serviceName'] = self.service_name
+        if self.service_status is not None:
+            result['serviceStatus'] = self.service_status
+        if self.service_type is not None:
+            result['serviceType'] = self.service_type
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('attributes') is not None:
+            self.attributes = m.get('attributes')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('displayName') is not None:
+            self.display_name = m.get('displayName')
+        if m.get('pid') is not None:
+            self.pid = m.get('pid')
+        if m.get('serviceId') is not None:
+            self.service_id = m.get('serviceId')
+        if m.get('serviceName') is not None:
+            self.service_name = m.get('serviceName')
+        if m.get('serviceStatus') is not None:
+            self.service_status = m.get('serviceStatus')
+        if m.get('serviceType') is not None:
+            self.service_type = m.get('serviceType')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class ListServicesResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        services: List[ListServicesResponseBodyServices] = None,
+        total_count: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+        self.services = services
+        self.total_count = total_count
+
+    def validate(self):
+        if self.services:
+            for k in self.services:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        result['services'] = []
+        if self.services is not None:
+            for k in self.services:
+                result['services'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        self.services = []
+        if m.get('services') is not None:
+            for k in m.get('services'):
+                temp_model = ListServicesResponseBodyServices()
+                self.services.append(temp_model.from_map(k))
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ListServicesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListServicesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListServicesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListWorkspacesRequest(TeaModel):
     def __init__(
         self,
@@ -8131,6 +9110,125 @@ class PutWorkspaceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PutWorkspaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateServiceRequest(TeaModel):
+    def __init__(
+        self,
+        attributes: str = None,
+        description: str = None,
+        display_name: str = None,
+        service_status: str = None,
+    ):
+        self.attributes = attributes
+        self.description = description
+        self.display_name = display_name
+        self.service_status = service_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attributes is not None:
+            result['attributes'] = self.attributes
+        if self.description is not None:
+            result['description'] = self.description
+        if self.display_name is not None:
+            result['displayName'] = self.display_name
+        if self.service_status is not None:
+            result['serviceStatus'] = self.service_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('attributes') is not None:
+            self.attributes = m.get('attributes')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('displayName') is not None:
+            self.display_name = m.get('displayName')
+        if m.get('serviceStatus') is not None:
+            self.service_status = m.get('serviceStatus')
+        return self
+
+
+class UpdateServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        service_id: str = None,
+    ):
+        self.request_id = request_id
+        self.service_id = service_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('serviceId') is not None:
+            self.service_id = m.get('serviceId')
+        return self
+
+
+class UpdateServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateServiceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
