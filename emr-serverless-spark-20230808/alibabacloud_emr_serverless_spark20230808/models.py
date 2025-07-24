@@ -7652,6 +7652,7 @@ class ListKyuubiSparkApplicationsResponseBodyApplications(TeaModel):
         application_name: str = None,
         cu_hours: float = None,
         end_time: str = None,
+        latest_sql_statement_status: str = None,
         mb_seconds: int = None,
         resource_queue_id: str = None,
         start_time: str = None,
@@ -7667,6 +7668,7 @@ class ListKyuubiSparkApplicationsResponseBodyApplications(TeaModel):
         self.cu_hours = cu_hours
         # The time when the task ended.
         self.end_time = end_time
+        self.latest_sql_statement_status = latest_sql_statement_status
         # The total amount of memory allocated to the job multiplied by the running duration (seconds).
         self.mb_seconds = mb_seconds
         # The name of the resource queue on which the Spark jobs run.
@@ -7701,6 +7703,8 @@ class ListKyuubiSparkApplicationsResponseBodyApplications(TeaModel):
             result['cuHours'] = self.cu_hours
         if self.end_time is not None:
             result['endTime'] = self.end_time
+        if self.latest_sql_statement_status is not None:
+            result['latestSqlStatementStatus'] = self.latest_sql_statement_status
         if self.mb_seconds is not None:
             result['mbSeconds'] = self.mb_seconds
         if self.resource_queue_id is not None:
@@ -7725,6 +7729,8 @@ class ListKyuubiSparkApplicationsResponseBodyApplications(TeaModel):
             self.cu_hours = m.get('cuHours')
         if m.get('endTime') is not None:
             self.end_time = m.get('endTime')
+        if m.get('latestSqlStatementStatus') is not None:
+            self.latest_sql_statement_status = m.get('latestSqlStatementStatus')
         if m.get('mbSeconds') is not None:
             self.mb_seconds = m.get('mbSeconds')
         if m.get('resourceQueueId') is not None:
@@ -9173,6 +9179,7 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
         application_configs: List[ListSessionClustersResponseBodySessionClustersApplicationConfigs] = None,
         auto_start_configuration: ListSessionClustersResponseBodySessionClustersAutoStartConfiguration = None,
         auto_stop_configuration: ListSessionClustersResponseBodySessionClustersAutoStopConfiguration = None,
+        connection_token: str = None,
         display_release_version: str = None,
         domain: str = None,
         domain_inner: str = None,
@@ -9200,6 +9207,7 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
         self.auto_start_configuration = auto_start_configuration
         # The configurations of automatic termination.
         self.auto_stop_configuration = auto_stop_configuration
+        self.connection_token = connection_token
         # The version of the Spark engine.
         self.display_release_version = display_release_version
         # The public endpoint of the Thrift server.
@@ -9278,6 +9286,8 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
             result['autoStartConfiguration'] = self.auto_start_configuration.to_map()
         if self.auto_stop_configuration is not None:
             result['autoStopConfiguration'] = self.auto_stop_configuration.to_map()
+        if self.connection_token is not None:
+            result['connectionToken'] = self.connection_token
         if self.display_release_version is not None:
             result['displayReleaseVersion'] = self.display_release_version
         if self.domain is not None:
@@ -9333,6 +9343,8 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
         if m.get('autoStopConfiguration') is not None:
             temp_model = ListSessionClustersResponseBodySessionClustersAutoStopConfiguration()
             self.auto_stop_configuration = temp_model.from_map(m['autoStopConfiguration'])
+        if m.get('connectionToken') is not None:
+            self.connection_token = m.get('connectionToken')
         if m.get('displayReleaseVersion') is not None:
             self.display_release_version = m.get('displayReleaseVersion')
         if m.get('domain') is not None:
