@@ -2792,6 +2792,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_diagnostic_report_list_with_options_async(request, runtime)
 
+    def describe_error_log_records_with_options(
+        self,
+        request: das20200116_models.DescribeErrorLogRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.DescribeErrorLogRecordsResponse:
+        """
+        @summary 查询实例错误日志
+        
+        @param request: DescribeErrorLogRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeErrorLogRecordsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.filters):
+            body['Filters'] = request.filters
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.node_id):
+            body['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.role):
+            body['Role'] = request.role
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeErrorLogRecords',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.DescribeErrorLogRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_error_log_records_with_options_async(
+        self,
+        request: das20200116_models.DescribeErrorLogRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.DescribeErrorLogRecordsResponse:
+        """
+        @summary 查询实例错误日志
+        
+        @param request: DescribeErrorLogRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeErrorLogRecordsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.filters):
+            body['Filters'] = request.filters
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.node_id):
+            body['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.role):
+            body['Role'] = request.role
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeErrorLogRecords',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.DescribeErrorLogRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_error_log_records(
+        self,
+        request: das20200116_models.DescribeErrorLogRecordsRequest,
+    ) -> das20200116_models.DescribeErrorLogRecordsResponse:
+        """
+        @summary 查询实例错误日志
+        
+        @param request: DescribeErrorLogRecordsRequest
+        @return: DescribeErrorLogRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_error_log_records_with_options(request, runtime)
+
+    async def describe_error_log_records_async(
+        self,
+        request: das20200116_models.DescribeErrorLogRecordsRequest,
+    ) -> das20200116_models.DescribeErrorLogRecordsResponse:
+        """
+        @summary 查询实例错误日志
+        
+        @param request: DescribeErrorLogRecordsRequest
+        @return: DescribeErrorLogRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_error_log_records_with_options_async(request, runtime)
+
     def describe_hot_big_keys_with_options(
         self,
         request: das20200116_models.DescribeHotBigKeysRequest,

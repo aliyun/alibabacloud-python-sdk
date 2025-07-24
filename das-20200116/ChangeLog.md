@@ -1,3 +1,7 @@
+2025-07-24 Version: 2.8.0
+- Support API DescribeErrorLogRecords.
+
+
 2025-07-22 Version: 2.7.4
 - Update API GetDasSQLLogHotData: add response parameters Body.Data.List.$.NodeId.
 
