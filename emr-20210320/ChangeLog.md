@@ -1,3 +1,7 @@
+2025-07-24 Version: 3.1.0
+- Support API GetManagedScalingPolicy.
+
+
 2025-07-02 Version: 3.0.0
 - Support API PutManagedScalingPolicy.
 - Delete API GetDoctorHDFSUGI.

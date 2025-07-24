@@ -3353,6 +3353,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_doctor_report_component_summary_with_options_async(request, runtime)
 
+    def get_managed_scaling_policy_with_options(
+        self,
+        request: emr_20210320_models.GetManagedScalingPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.GetManagedScalingPolicyResponse:
+        """
+        @param request: GetManagedScalingPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetManagedScalingPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetManagedScalingPolicy',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.GetManagedScalingPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_managed_scaling_policy_with_options_async(
+        self,
+        request: emr_20210320_models.GetManagedScalingPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.GetManagedScalingPolicyResponse:
+        """
+        @param request: GetManagedScalingPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetManagedScalingPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetManagedScalingPolicy',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.GetManagedScalingPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_managed_scaling_policy(
+        self,
+        request: emr_20210320_models.GetManagedScalingPolicyRequest,
+    ) -> emr_20210320_models.GetManagedScalingPolicyResponse:
+        """
+        @param request: GetManagedScalingPolicyRequest
+        @return: GetManagedScalingPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_managed_scaling_policy_with_options(request, runtime)
+
+    async def get_managed_scaling_policy_async(
+        self,
+        request: emr_20210320_models.GetManagedScalingPolicyRequest,
+    ) -> emr_20210320_models.GetManagedScalingPolicyResponse:
+        """
+        @param request: GetManagedScalingPolicyRequest
+        @return: GetManagedScalingPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_managed_scaling_policy_with_options_async(request, runtime)
+
     def get_node_group_with_options(
         self,
         request: emr_20210320_models.GetNodeGroupRequest,
