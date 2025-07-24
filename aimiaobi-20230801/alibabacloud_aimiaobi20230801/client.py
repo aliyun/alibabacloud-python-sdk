@@ -419,6 +419,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.additional_content):
+            body['AdditionalContent'] = request.additional_content
+        if not UtilClient.is_unset(request.custom_content):
+            body['CustomContent'] = request.custom_content
+        if not UtilClient.is_unset(request.no_ref_video):
+            body['NoRefVideo'] = request.no_ref_video
         if not UtilClient.is_unset(request.process_prompt):
             body['ProcessPrompt'] = request.process_prompt
         if not UtilClient.is_unset(request.task_id):
@@ -458,6 +464,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.additional_content):
+            body['AdditionalContent'] = request.additional_content
+        if not UtilClient.is_unset(request.custom_content):
+            body['CustomContent'] = request.custom_content
+        if not UtilClient.is_unset(request.no_ref_video):
+            body['NoRefVideo'] = request.no_ref_video
         if not UtilClient.is_unset(request.process_prompt):
             body['ProcessPrompt'] = request.process_prompt
         if not UtilClient.is_unset(request.task_id):
@@ -640,13 +652,19 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.AsyncUploadVideoShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.reference_video):
+            request.reference_video_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.reference_video, 'ReferenceVideo', 'json')
         if not UtilClient.is_unset(tmp_req.source_videos):
             request.source_videos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_videos, 'SourceVideos', 'json')
         body = {}
         if not UtilClient.is_unset(request.anlysis_prompt):
             body['AnlysisPrompt'] = request.anlysis_prompt
+        if not UtilClient.is_unset(request.reference_video_shrink):
+            body['ReferenceVideo'] = request.reference_video_shrink
         if not UtilClient.is_unset(request.source_videos_shrink):
             body['SourceVideos'] = request.source_videos_shrink
+        if not UtilClient.is_unset(request.split_interval):
+            body['SplitInterval'] = request.split_interval
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -683,13 +701,19 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.AsyncUploadVideoShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.reference_video):
+            request.reference_video_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.reference_video, 'ReferenceVideo', 'json')
         if not UtilClient.is_unset(tmp_req.source_videos):
             request.source_videos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_videos, 'SourceVideos', 'json')
         body = {}
         if not UtilClient.is_unset(request.anlysis_prompt):
             body['AnlysisPrompt'] = request.anlysis_prompt
+        if not UtilClient.is_unset(request.reference_video_shrink):
+            body['ReferenceVideo'] = request.reference_video_shrink
         if not UtilClient.is_unset(request.source_videos_shrink):
             body['SourceVideos'] = request.source_videos_shrink
+        if not UtilClient.is_unset(request.split_interval):
+            body['SplitInterval'] = request.split_interval
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(

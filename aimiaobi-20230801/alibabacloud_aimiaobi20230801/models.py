@@ -1214,10 +1214,16 @@ class AsyncCreateClipsTaskResponse(TeaModel):
 class AsyncCreateClipsTimeLineRequest(TeaModel):
     def __init__(
         self,
+        additional_content: str = None,
+        custom_content: str = None,
+        no_ref_video: bool = None,
         process_prompt: str = None,
         task_id: str = None,
         workspace_id: str = None,
     ):
+        self.additional_content = additional_content
+        self.custom_content = custom_content
+        self.no_ref_video = no_ref_video
         self.process_prompt = process_prompt
         # This parameter is required.
         self.task_id = task_id
@@ -1233,6 +1239,12 @@ class AsyncCreateClipsTimeLineRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.additional_content is not None:
+            result['AdditionalContent'] = self.additional_content
+        if self.custom_content is not None:
+            result['CustomContent'] = self.custom_content
+        if self.no_ref_video is not None:
+            result['NoRefVideo'] = self.no_ref_video
         if self.process_prompt is not None:
             result['ProcessPrompt'] = self.process_prompt
         if self.task_id is not None:
@@ -1243,6 +1255,12 @@ class AsyncCreateClipsTimeLineRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdditionalContent') is not None:
+            self.additional_content = m.get('AdditionalContent')
+        if m.get('CustomContent') is not None:
+            self.custom_content = m.get('CustomContent')
+        if m.get('NoRefVideo') is not None:
+            self.no_ref_video = m.get('NoRefVideo')
         if m.get('ProcessPrompt') is not None:
             self.process_prompt = m.get('ProcessPrompt')
         if m.get('TaskId') is not None:
@@ -1368,14 +1386,18 @@ class AsyncEditTimelineRequestTimelinesClips(TeaModel):
         clip_id: str = None,
         content_inner: str = None,
         in_: int = None,
+        in_ex: float = None,
         out: int = None,
+        out_ex: float = None,
         video_id: str = None,
         video_name: str = None,
     ):
         self.clip_id = clip_id
         self.content_inner = content_inner
         self.in_ = in_
+        self.in_ex = in_ex
         self.out = out
+        self.out_ex = out_ex
         self.video_id = video_id
         self.video_name = video_name
 
@@ -1394,8 +1416,12 @@ class AsyncEditTimelineRequestTimelinesClips(TeaModel):
             result['ContentInner'] = self.content_inner
         if self.in_ is not None:
             result['In'] = self.in_
+        if self.in_ex is not None:
+            result['InEx'] = self.in_ex
         if self.out is not None:
             result['Out'] = self.out
+        if self.out_ex is not None:
+            result['OutEx'] = self.out_ex
         if self.video_id is not None:
             result['VideoId'] = self.video_id
         if self.video_name is not None:
@@ -1410,8 +1436,12 @@ class AsyncEditTimelineRequestTimelinesClips(TeaModel):
             self.content_inner = m.get('ContentInner')
         if m.get('In') is not None:
             self.in_ = m.get('In')
+        if m.get('InEx') is not None:
+            self.in_ex = m.get('InEx')
         if m.get('Out') is not None:
             self.out = m.get('Out')
+        if m.get('OutEx') is not None:
+            self.out_ex = m.get('OutEx')
         if m.get('VideoId') is not None:
             self.video_id = m.get('VideoId')
         if m.get('VideoName') is not None:
@@ -1681,6 +1711,45 @@ class AsyncEditTimelineResponse(TeaModel):
         return self
 
 
+class AsyncUploadVideoRequestReferenceVideo(TeaModel):
+    def __init__(
+        self,
+        video_extra_info: str = None,
+        video_name: str = None,
+        video_url: str = None,
+    ):
+        self.video_extra_info = video_extra_info
+        self.video_name = video_name
+        self.video_url = video_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.video_extra_info is not None:
+            result['VideoExtraInfo'] = self.video_extra_info
+        if self.video_name is not None:
+            result['VideoName'] = self.video_name
+        if self.video_url is not None:
+            result['VideoUrl'] = self.video_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoExtraInfo') is not None:
+            self.video_extra_info = m.get('VideoExtraInfo')
+        if m.get('VideoName') is not None:
+            self.video_name = m.get('VideoName')
+        if m.get('VideoUrl') is not None:
+            self.video_url = m.get('VideoUrl')
+        return self
+
+
 class AsyncUploadVideoRequestSourceVideos(TeaModel):
     def __init__(
         self,
@@ -1726,16 +1795,22 @@ class AsyncUploadVideoRequest(TeaModel):
     def __init__(
         self,
         anlysis_prompt: str = None,
+        reference_video: AsyncUploadVideoRequestReferenceVideo = None,
         source_videos: List[AsyncUploadVideoRequestSourceVideos] = None,
+        split_interval: int = None,
         workspace_id: str = None,
     ):
         self.anlysis_prompt = anlysis_prompt
+        self.reference_video = reference_video
         # This parameter is required.
         self.source_videos = source_videos
+        self.split_interval = split_interval
         # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
+        if self.reference_video:
+            self.reference_video.validate()
         if self.source_videos:
             for k in self.source_videos:
                 if k:
@@ -1749,10 +1824,14 @@ class AsyncUploadVideoRequest(TeaModel):
         result = dict()
         if self.anlysis_prompt is not None:
             result['AnlysisPrompt'] = self.anlysis_prompt
+        if self.reference_video is not None:
+            result['ReferenceVideo'] = self.reference_video.to_map()
         result['SourceVideos'] = []
         if self.source_videos is not None:
             for k in self.source_videos:
                 result['SourceVideos'].append(k.to_map() if k else None)
+        if self.split_interval is not None:
+            result['SplitInterval'] = self.split_interval
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -1761,11 +1840,16 @@ class AsyncUploadVideoRequest(TeaModel):
         m = m or dict()
         if m.get('AnlysisPrompt') is not None:
             self.anlysis_prompt = m.get('AnlysisPrompt')
+        if m.get('ReferenceVideo') is not None:
+            temp_model = AsyncUploadVideoRequestReferenceVideo()
+            self.reference_video = temp_model.from_map(m['ReferenceVideo'])
         self.source_videos = []
         if m.get('SourceVideos') is not None:
             for k in m.get('SourceVideos'):
                 temp_model = AsyncUploadVideoRequestSourceVideos()
                 self.source_videos.append(temp_model.from_map(k))
+        if m.get('SplitInterval') is not None:
+            self.split_interval = m.get('SplitInterval')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -1775,12 +1859,16 @@ class AsyncUploadVideoShrinkRequest(TeaModel):
     def __init__(
         self,
         anlysis_prompt: str = None,
+        reference_video_shrink: str = None,
         source_videos_shrink: str = None,
+        split_interval: int = None,
         workspace_id: str = None,
     ):
         self.anlysis_prompt = anlysis_prompt
+        self.reference_video_shrink = reference_video_shrink
         # This parameter is required.
         self.source_videos_shrink = source_videos_shrink
+        self.split_interval = split_interval
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -1795,8 +1883,12 @@ class AsyncUploadVideoShrinkRequest(TeaModel):
         result = dict()
         if self.anlysis_prompt is not None:
             result['AnlysisPrompt'] = self.anlysis_prompt
+        if self.reference_video_shrink is not None:
+            result['ReferenceVideo'] = self.reference_video_shrink
         if self.source_videos_shrink is not None:
             result['SourceVideos'] = self.source_videos_shrink
+        if self.split_interval is not None:
+            result['SplitInterval'] = self.split_interval
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -1805,8 +1897,12 @@ class AsyncUploadVideoShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('AnlysisPrompt') is not None:
             self.anlysis_prompt = m.get('AnlysisPrompt')
+        if m.get('ReferenceVideo') is not None:
+            self.reference_video_shrink = m.get('ReferenceVideo')
         if m.get('SourceVideos') is not None:
             self.source_videos_shrink = m.get('SourceVideos')
+        if m.get('SplitInterval') is not None:
+            self.split_interval = m.get('SplitInterval')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -8784,14 +8880,18 @@ class GetAutoClipsTaskInfoResponseBodyDataTimelinesClips(TeaModel):
         clip_id: str = None,
         content_inner: str = None,
         in_: int = None,
+        in_ex: float = None,
         out: int = None,
+        out_ex: float = None,
         video_id: str = None,
         video_name: str = None,
     ):
         self.clip_id = clip_id
         self.content_inner = content_inner
         self.in_ = in_
+        self.in_ex = in_ex
         self.out = out
+        self.out_ex = out_ex
         self.video_id = video_id
         self.video_name = video_name
 
@@ -8810,8 +8910,12 @@ class GetAutoClipsTaskInfoResponseBodyDataTimelinesClips(TeaModel):
             result['ContentInner'] = self.content_inner
         if self.in_ is not None:
             result['In'] = self.in_
+        if self.in_ex is not None:
+            result['InEx'] = self.in_ex
         if self.out is not None:
             result['Out'] = self.out
+        if self.out_ex is not None:
+            result['OutEx'] = self.out_ex
         if self.video_id is not None:
             result['VideoId'] = self.video_id
         if self.video_name is not None:
@@ -8826,8 +8930,12 @@ class GetAutoClipsTaskInfoResponseBodyDataTimelinesClips(TeaModel):
             self.content_inner = m.get('ContentInner')
         if m.get('In') is not None:
             self.in_ = m.get('In')
+        if m.get('InEx') is not None:
+            self.in_ex = m.get('InEx')
         if m.get('Out') is not None:
             self.out = m.get('Out')
+        if m.get('OutEx') is not None:
+            self.out_ex = m.get('OutEx')
         if m.get('VideoId') is not None:
             self.video_id = m.get('VideoId')
         if m.get('VideoName') is not None:
@@ -8887,6 +8995,7 @@ class GetAutoClipsTaskInfoResponseBodyData(TeaModel):
         self,
         color_words: List[GetAutoClipsTaskInfoResponseBodyDataColorWords] = None,
         content: str = None,
+        error_message: str = None,
         media_cloud_timeline: str = None,
         music_style: str = None,
         music_url: str = None,
@@ -8902,6 +9011,7 @@ class GetAutoClipsTaskInfoResponseBodyData(TeaModel):
     ):
         self.color_words = color_words
         self.content = content
+        self.error_message = error_message
         self.media_cloud_timeline = media_cloud_timeline
         self.music_style = music_style
         self.music_url = music_url
@@ -8937,6 +9047,8 @@ class GetAutoClipsTaskInfoResponseBodyData(TeaModel):
                 result['ColorWords'].append(k.to_map() if k else None)
         if self.content is not None:
             result['Content'] = self.content
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
         if self.media_cloud_timeline is not None:
             result['MediaCloudTimeline'] = self.media_cloud_timeline
         if self.music_style is not None:
@@ -8974,6 +9086,8 @@ class GetAutoClipsTaskInfoResponseBodyData(TeaModel):
                 self.color_words.append(temp_model.from_map(k))
         if m.get('Content') is not None:
             self.content = m.get('Content')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
         if m.get('MediaCloudTimeline') is not None:
             self.media_cloud_timeline = m.get('MediaCloudTimeline')
         if m.get('MusicStyle') is not None:

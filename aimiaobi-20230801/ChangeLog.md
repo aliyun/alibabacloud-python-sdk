@@ -1,3 +1,16 @@
+2025-07-24 Version: 1.31.2
+- Update API AsyncCreateClipsTimeLine: add request parameters AdditionalContent.
+- Update API AsyncCreateClipsTimeLine: add request parameters CustomContent.
+- Update API AsyncCreateClipsTimeLine: add request parameters NoRefVideo.
+- Update API AsyncEditTimeline: add request parameters Timelines.$.Clips.$.InEx.
+- Update API AsyncEditTimeline: add request parameters Timelines.$.Clips.$.OutEx.
+- Update API AsyncUploadVideo: add request parameters ReferenceVideo.
+- Update API AsyncUploadVideo: add request parameters SplitInterval.
+- Update API GetAutoClipsTaskInfo: add response parameters Body.Data.ErrorMessage.
+- Update API GetAutoClipsTaskInfo: add response parameters Body.Data.Timelines.$.Clips.$.InEx.
+- Update API GetAutoClipsTaskInfo: add response parameters Body.Data.Timelines.$.Clips.$.OutEx.
+
+
 2025-07-15 Version: 1.31.1
 - Update API GetSmartAuditResult: add response parameters Body.Data.ErrorItemDetails.$.Url.
 - Update API RunAbbreviationContent: add request parameters Prompt.
