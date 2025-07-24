@@ -13736,9 +13736,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteImageComponentResponse:
         """
-        @summary Deletes an image component.
+        @summary Deletes an image component. You can specify RegionId and ImageComponentId in the request.
         
-        @description Only custom image components can be deleted.
+        @description    Only custom image components can be deleted.
+        When you delete a component, make sure that the component is not used in the template. Otherwise, the component fails to be deleted.
         
         @param request: DeleteImageComponentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13785,9 +13786,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteImageComponentResponse:
         """
-        @summary Deletes an image component.
+        @summary Deletes an image component. You can specify RegionId and ImageComponentId in the request.
         
-        @description Only custom image components can be deleted.
+        @description    Only custom image components can be deleted.
+        When you delete a component, make sure that the component is not used in the template. Otherwise, the component fails to be deleted.
         
         @param request: DeleteImageComponentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13833,9 +13835,10 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteImageComponentRequest,
     ) -> ecs_20140526_models.DeleteImageComponentResponse:
         """
-        @summary Deletes an image component.
+        @summary Deletes an image component. You can specify RegionId and ImageComponentId in the request.
         
-        @description Only custom image components can be deleted.
+        @description    Only custom image components can be deleted.
+        When you delete a component, make sure that the component is not used in the template. Otherwise, the component fails to be deleted.
         
         @param request: DeleteImageComponentRequest
         @return: DeleteImageComponentResponse
@@ -13848,9 +13851,10 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteImageComponentRequest,
     ) -> ecs_20140526_models.DeleteImageComponentResponse:
         """
-        @summary Deletes an image component.
+        @summary Deletes an image component. You can specify RegionId and ImageComponentId in the request.
         
-        @description Only custom image components can be deleted.
+        @description    Only custom image components can be deleted.
+        When you delete a component, make sure that the component is not used in the template. Otherwise, the component fails to be deleted.
         
         @param request: DeleteImageComponentRequest
         @return: DeleteImageComponentResponse
@@ -13864,7 +13868,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteImagePipelineResponse:
         """
-        @summary Deletes an image template. You can specify RegionId and ImagePipelineId in the request.
+        @summary Deletes an image template.
         
         @description If an ongoing image building task is associated with an image template, you cannot delete the image template. You can delete the image template only if the image building task reaches the SUCCESS, FAILED, TEST_FAILED, PARTITION_SUCCESS, or CANCELLED state. You can call the DescribeImagePipelineExecutions operation to query the details of an image building task.
         
@@ -13913,7 +13917,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteImagePipelineResponse:
         """
-        @summary Deletes an image template. You can specify RegionId and ImagePipelineId in the request.
+        @summary Deletes an image template.
         
         @description If an ongoing image building task is associated with an image template, you cannot delete the image template. You can delete the image template only if the image building task reaches the SUCCESS, FAILED, TEST_FAILED, PARTITION_SUCCESS, or CANCELLED state. You can call the DescribeImagePipelineExecutions operation to query the details of an image building task.
         
@@ -13961,7 +13965,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteImagePipelineRequest,
     ) -> ecs_20140526_models.DeleteImagePipelineResponse:
         """
-        @summary Deletes an image template. You can specify RegionId and ImagePipelineId in the request.
+        @summary Deletes an image template.
         
         @description If an ongoing image building task is associated with an image template, you cannot delete the image template. You can delete the image template only if the image building task reaches the SUCCESS, FAILED, TEST_FAILED, PARTITION_SUCCESS, or CANCELLED state. You can call the DescribeImagePipelineExecutions operation to query the details of an image building task.
         
@@ -13976,7 +13980,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteImagePipelineRequest,
     ) -> ecs_20140526_models.DeleteImagePipelineResponse:
         """
-        @summary Deletes an image template. You can specify RegionId and ImagePipelineId in the request.
+        @summary Deletes an image template.
         
         @description If an ongoing image building task is associated with an image template, you cannot delete the image template. You can delete the image template only if the image building task reaches the SUCCESS, FAILED, TEST_FAILED, PARTITION_SUCCESS, or CANCELLED state. You can call the DescribeImagePipelineExecutions operation to query the details of an image building task.
         
@@ -19716,7 +19720,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeDedicatedHostsResponse:
         """
-        @summary Queries the information about dedicated hosts, including the physical performance specifications, machine codes, and status of the dedicated hosts, and Elastic Compute Service (ECS) instances that are created on the dedicated hosts.
+        @summary Queries the details of one or more Dedicated Hosts (DDHs). You can call this operation to obtain information about a DDH, including the physical performance specifications, machine code, service status, and the list of created ECS instances. You can specify relevant parameters, such as DDH IDs, DDH cluster IDs, hostname, and status, to query the required DDH details. This helps you efficiently manage and optimize cloud computing resources.
         
         @description ## [](#)Usage notes
         You can use one of the following methods to query the information about dedicated hosts:
@@ -19794,7 +19798,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeDedicatedHostsResponse:
         """
-        @summary Queries the information about dedicated hosts, including the physical performance specifications, machine codes, and status of the dedicated hosts, and Elastic Compute Service (ECS) instances that are created on the dedicated hosts.
+        @summary Queries the details of one or more Dedicated Hosts (DDHs). You can call this operation to obtain information about a DDH, including the physical performance specifications, machine code, service status, and the list of created ECS instances. You can specify relevant parameters, such as DDH IDs, DDH cluster IDs, hostname, and status, to query the required DDH details. This helps you efficiently manage and optimize cloud computing resources.
         
         @description ## [](#)Usage notes
         You can use one of the following methods to query the information about dedicated hosts:
@@ -19871,7 +19875,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeDedicatedHostsRequest,
     ) -> ecs_20140526_models.DescribeDedicatedHostsResponse:
         """
-        @summary Queries the information about dedicated hosts, including the physical performance specifications, machine codes, and status of the dedicated hosts, and Elastic Compute Service (ECS) instances that are created on the dedicated hosts.
+        @summary Queries the details of one or more Dedicated Hosts (DDHs). You can call this operation to obtain information about a DDH, including the physical performance specifications, machine code, service status, and the list of created ECS instances. You can specify relevant parameters, such as DDH IDs, DDH cluster IDs, hostname, and status, to query the required DDH details. This helps you efficiently manage and optimize cloud computing resources.
         
         @description ## [](#)Usage notes
         You can use one of the following methods to query the information about dedicated hosts:
@@ -19889,7 +19893,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeDedicatedHostsRequest,
     ) -> ecs_20140526_models.DescribeDedicatedHostsResponse:
         """
-        @summary Queries the information about dedicated hosts, including the physical performance specifications, machine codes, and status of the dedicated hosts, and Elastic Compute Service (ECS) instances that are created on the dedicated hosts.
+        @summary Queries the details of one or more Dedicated Hosts (DDHs). You can call this operation to obtain information about a DDH, including the physical performance specifications, machine code, service status, and the list of created ECS instances. You can specify relevant parameters, such as DDH IDs, DDH cluster IDs, hostname, and status, to query the required DDH details. This helps you efficiently manage and optimize cloud computing resources.
         
         @description ## [](#)Usage notes
         You can use one of the following methods to query the information about dedicated hosts:
@@ -24147,7 +24151,8 @@ class Client(OpenApiClient):
         @summary Queries the system events of Elastic Compute Service (ECS) instances. When you call this operation, you can specify parameters, such as InstanceId and EventType, in the request. By default, non-active system events are queried.
         
         @description    You can query system events that were completed within the last 30 days. No limits apply to the time range for querying uncompleted system events.
-        You can also specify InstanceEventCycleStatus to query the system events that are in the Scheduled, Executing, or Inquiring state.
+        If you do not specify the EventCycleStatus or InstanceEventCycleStatus parameter, only system events in the Avoidated, Executed, Canceled, or Failed state are included in the query results by default.
+        You can also specify the InstanceEventCycleStatus parameter in the request to query the system events that are in the Scheduled, Executing, or Inquiring state.
         
         @param request: DescribeInstanceHistoryEventsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24229,7 +24234,8 @@ class Client(OpenApiClient):
         @summary Queries the system events of Elastic Compute Service (ECS) instances. When you call this operation, you can specify parameters, such as InstanceId and EventType, in the request. By default, non-active system events are queried.
         
         @description    You can query system events that were completed within the last 30 days. No limits apply to the time range for querying uncompleted system events.
-        You can also specify InstanceEventCycleStatus to query the system events that are in the Scheduled, Executing, or Inquiring state.
+        If you do not specify the EventCycleStatus or InstanceEventCycleStatus parameter, only system events in the Avoidated, Executed, Canceled, or Failed state are included in the query results by default.
+        You can also specify the InstanceEventCycleStatus parameter in the request to query the system events that are in the Scheduled, Executing, or Inquiring state.
         
         @param request: DescribeInstanceHistoryEventsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24310,7 +24316,8 @@ class Client(OpenApiClient):
         @summary Queries the system events of Elastic Compute Service (ECS) instances. When you call this operation, you can specify parameters, such as InstanceId and EventType, in the request. By default, non-active system events are queried.
         
         @description    You can query system events that were completed within the last 30 days. No limits apply to the time range for querying uncompleted system events.
-        You can also specify InstanceEventCycleStatus to query the system events that are in the Scheduled, Executing, or Inquiring state.
+        If you do not specify the EventCycleStatus or InstanceEventCycleStatus parameter, only system events in the Avoidated, Executed, Canceled, or Failed state are included in the query results by default.
+        You can also specify the InstanceEventCycleStatus parameter in the request to query the system events that are in the Scheduled, Executing, or Inquiring state.
         
         @param request: DescribeInstanceHistoryEventsRequest
         @return: DescribeInstanceHistoryEventsResponse
@@ -24326,7 +24333,8 @@ class Client(OpenApiClient):
         @summary Queries the system events of Elastic Compute Service (ECS) instances. When you call this operation, you can specify parameters, such as InstanceId and EventType, in the request. By default, non-active system events are queried.
         
         @description    You can query system events that were completed within the last 30 days. No limits apply to the time range for querying uncompleted system events.
-        You can also specify InstanceEventCycleStatus to query the system events that are in the Scheduled, Executing, or Inquiring state.
+        If you do not specify the EventCycleStatus or InstanceEventCycleStatus parameter, only system events in the Avoidated, Executed, Canceled, or Failed state are included in the query results by default.
+        You can also specify the InstanceEventCycleStatus parameter in the request to query the system events that are in the Scheduled, Executing, or Inquiring state.
         
         @param request: DescribeInstanceHistoryEventsRequest
         @return: DescribeInstanceHistoryEventsResponse
@@ -38324,19 +38332,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.JoinSecurityGroupResponse:
         """
-        @summary Adds an Elastic Compute Service (ECS) instance or an elastic network interface (ENI) to a security group. When you call this operation, you can specify parameters, such as SecurityGroupId, InstanceId, and NetworkInterfaceId, in the request.
+        @summary Adds an Elastic Compute Service (ECS) instance or an elastic network interface (ENI) to a specified security group.
         
-        @description ## [](#)Usage notes
-        >  This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](https://help.aliyun.com/document_detail/25503.html) operation to add an instance to or remove an instance from a security group, and call the [ModifyNetworkInterfaceAttribute](https://help.aliyun.com/document_detail/58513.html) operation to add an ENI to or remove an ENI from a security group.
-        Take note of the following items:
-        Before you add an instance to a security group, the instance must be in the **Stopped** (Stopped) or **Running** (Running) state.
-        An instance can be added to up to five security groups by default.
-        You can [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex) to change the maximum number of security groups to which an instance can be added to 4 or 10.
-        A basic security group can contain up to 2,000 instances. An advanced security group can contain up to 65,536 instances.
-        The security group and the instance must reside in the same region.
-        The security group and the instance must be of the same network type. If the network type is Virtual Private Cloud (VPC), the security group and the instance must reside in the same VPC.
+        @description > This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](https://help.aliyun.com/document_detail/25503.html) operation to add an instance to or remove an instance from a security group, and call the [ModifyNetworkInterfaceAttribute](https://help.aliyun.com/document_detail/58513.html) operation to add an ENI to or remove an ENI from a security group.
         An instance and an ENI cannot be added to a security group at the same time. You cannot specify `InstanceId` and `NetworkInterfaceId` at the same time in a request.
-        For more information, see [Limits](https://help.aliyun.com/document_detail/25412.html).
+        The security group and the ECS instance to be added to the security group must reside in the same region.
+        The security group and the instance must be of the same network type. If the network type is Virtual Private Cloud (VPC), the security group and the instance must reside in the same VPC.
+        Before you add an instance to a security group, the instance must be in the **Stopped** or **Running** state.
+        An instance can be added to up to five security groups by default. For more information, see [Security group limits](~~25412#SecurityGroupQuota1~~).
         
         @param request: JoinSecurityGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -38385,19 +38388,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.JoinSecurityGroupResponse:
         """
-        @summary Adds an Elastic Compute Service (ECS) instance or an elastic network interface (ENI) to a security group. When you call this operation, you can specify parameters, such as SecurityGroupId, InstanceId, and NetworkInterfaceId, in the request.
+        @summary Adds an Elastic Compute Service (ECS) instance or an elastic network interface (ENI) to a specified security group.
         
-        @description ## [](#)Usage notes
-        >  This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](https://help.aliyun.com/document_detail/25503.html) operation to add an instance to or remove an instance from a security group, and call the [ModifyNetworkInterfaceAttribute](https://help.aliyun.com/document_detail/58513.html) operation to add an ENI to or remove an ENI from a security group.
-        Take note of the following items:
-        Before you add an instance to a security group, the instance must be in the **Stopped** (Stopped) or **Running** (Running) state.
-        An instance can be added to up to five security groups by default.
-        You can [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex) to change the maximum number of security groups to which an instance can be added to 4 or 10.
-        A basic security group can contain up to 2,000 instances. An advanced security group can contain up to 65,536 instances.
-        The security group and the instance must reside in the same region.
-        The security group and the instance must be of the same network type. If the network type is Virtual Private Cloud (VPC), the security group and the instance must reside in the same VPC.
+        @description > This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](https://help.aliyun.com/document_detail/25503.html) operation to add an instance to or remove an instance from a security group, and call the [ModifyNetworkInterfaceAttribute](https://help.aliyun.com/document_detail/58513.html) operation to add an ENI to or remove an ENI from a security group.
         An instance and an ENI cannot be added to a security group at the same time. You cannot specify `InstanceId` and `NetworkInterfaceId` at the same time in a request.
-        For more information, see [Limits](https://help.aliyun.com/document_detail/25412.html).
+        The security group and the ECS instance to be added to the security group must reside in the same region.
+        The security group and the instance must be of the same network type. If the network type is Virtual Private Cloud (VPC), the security group and the instance must reside in the same VPC.
+        Before you add an instance to a security group, the instance must be in the **Stopped** or **Running** state.
+        An instance can be added to up to five security groups by default. For more information, see [Security group limits](~~25412#SecurityGroupQuota1~~).
         
         @param request: JoinSecurityGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -38445,19 +38443,14 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.JoinSecurityGroupRequest,
     ) -> ecs_20140526_models.JoinSecurityGroupResponse:
         """
-        @summary Adds an Elastic Compute Service (ECS) instance or an elastic network interface (ENI) to a security group. When you call this operation, you can specify parameters, such as SecurityGroupId, InstanceId, and NetworkInterfaceId, in the request.
+        @summary Adds an Elastic Compute Service (ECS) instance or an elastic network interface (ENI) to a specified security group.
         
-        @description ## [](#)Usage notes
-        >  This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](https://help.aliyun.com/document_detail/25503.html) operation to add an instance to or remove an instance from a security group, and call the [ModifyNetworkInterfaceAttribute](https://help.aliyun.com/document_detail/58513.html) operation to add an ENI to or remove an ENI from a security group.
-        Take note of the following items:
-        Before you add an instance to a security group, the instance must be in the **Stopped** (Stopped) or **Running** (Running) state.
-        An instance can be added to up to five security groups by default.
-        You can [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex) to change the maximum number of security groups to which an instance can be added to 4 or 10.
-        A basic security group can contain up to 2,000 instances. An advanced security group can contain up to 65,536 instances.
-        The security group and the instance must reside in the same region.
-        The security group and the instance must be of the same network type. If the network type is Virtual Private Cloud (VPC), the security group and the instance must reside in the same VPC.
+        @description > This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](https://help.aliyun.com/document_detail/25503.html) operation to add an instance to or remove an instance from a security group, and call the [ModifyNetworkInterfaceAttribute](https://help.aliyun.com/document_detail/58513.html) operation to add an ENI to or remove an ENI from a security group.
         An instance and an ENI cannot be added to a security group at the same time. You cannot specify `InstanceId` and `NetworkInterfaceId` at the same time in a request.
-        For more information, see [Limits](https://help.aliyun.com/document_detail/25412.html).
+        The security group and the ECS instance to be added to the security group must reside in the same region.
+        The security group and the instance must be of the same network type. If the network type is Virtual Private Cloud (VPC), the security group and the instance must reside in the same VPC.
+        Before you add an instance to a security group, the instance must be in the **Stopped** or **Running** state.
+        An instance can be added to up to five security groups by default. For more information, see [Security group limits](~~25412#SecurityGroupQuota1~~).
         
         @param request: JoinSecurityGroupRequest
         @return: JoinSecurityGroupResponse
@@ -38470,19 +38463,14 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.JoinSecurityGroupRequest,
     ) -> ecs_20140526_models.JoinSecurityGroupResponse:
         """
-        @summary Adds an Elastic Compute Service (ECS) instance or an elastic network interface (ENI) to a security group. When you call this operation, you can specify parameters, such as SecurityGroupId, InstanceId, and NetworkInterfaceId, in the request.
+        @summary Adds an Elastic Compute Service (ECS) instance or an elastic network interface (ENI) to a specified security group.
         
-        @description ## [](#)Usage notes
-        >  This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](https://help.aliyun.com/document_detail/25503.html) operation to add an instance to or remove an instance from a security group, and call the [ModifyNetworkInterfaceAttribute](https://help.aliyun.com/document_detail/58513.html) operation to add an ENI to or remove an ENI from a security group.
-        Take note of the following items:
-        Before you add an instance to a security group, the instance must be in the **Stopped** (Stopped) or **Running** (Running) state.
-        An instance can be added to up to five security groups by default.
-        You can [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex) to change the maximum number of security groups to which an instance can be added to 4 or 10.
-        A basic security group can contain up to 2,000 instances. An advanced security group can contain up to 65,536 instances.
-        The security group and the instance must reside in the same region.
-        The security group and the instance must be of the same network type. If the network type is Virtual Private Cloud (VPC), the security group and the instance must reside in the same VPC.
+        @description > This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](https://help.aliyun.com/document_detail/25503.html) operation to add an instance to or remove an instance from a security group, and call the [ModifyNetworkInterfaceAttribute](https://help.aliyun.com/document_detail/58513.html) operation to add an ENI to or remove an ENI from a security group.
         An instance and an ENI cannot be added to a security group at the same time. You cannot specify `InstanceId` and `NetworkInterfaceId` at the same time in a request.
-        For more information, see [Limits](https://help.aliyun.com/document_detail/25412.html).
+        The security group and the ECS instance to be added to the security group must reside in the same region.
+        The security group and the instance must be of the same network type. If the network type is Virtual Private Cloud (VPC), the security group and the instance must reside in the same VPC.
+        Before you add an instance to a security group, the instance must be in the **Stopped** or **Running** state.
+        An instance can be added to up to five security groups by default. For more information, see [Security group limits](~~25412#SecurityGroupQuota1~~).
         
         @param request: JoinSecurityGroupRequest
         @return: JoinSecurityGroupResponse
@@ -40984,7 +40972,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyDiskChargeTypeResponse:
         """
-        @summary Changes the billing method of data disks that are attached to a subscription Elastic Compute Service (ECS) instance.
+        @summary Converts the billing method of a data disk attached to a subscription ECS instance between pay-as-you-go and subscription.
         
         @description For information about how to change the billing method of cloud disks, see [Change the billing methods of a disk](https://help.aliyun.com/document_detail/145018.html).
         Take note of the following items:
@@ -41045,7 +41033,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyDiskChargeTypeResponse:
         """
-        @summary Changes the billing method of data disks that are attached to a subscription Elastic Compute Service (ECS) instance.
+        @summary Converts the billing method of a data disk attached to a subscription ECS instance between pay-as-you-go and subscription.
         
         @description For information about how to change the billing method of cloud disks, see [Change the billing methods of a disk](https://help.aliyun.com/document_detail/145018.html).
         Take note of the following items:
@@ -41105,7 +41093,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyDiskChargeTypeRequest,
     ) -> ecs_20140526_models.ModifyDiskChargeTypeResponse:
         """
-        @summary Changes the billing method of data disks that are attached to a subscription Elastic Compute Service (ECS) instance.
+        @summary Converts the billing method of a data disk attached to a subscription ECS instance between pay-as-you-go and subscription.
         
         @description For information about how to change the billing method of cloud disks, see [Change the billing methods of a disk](https://help.aliyun.com/document_detail/145018.html).
         Take note of the following items:
@@ -41126,7 +41114,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyDiskChargeTypeRequest,
     ) -> ecs_20140526_models.ModifyDiskChargeTypeResponse:
         """
-        @summary Changes the billing method of data disks that are attached to a subscription Elastic Compute Service (ECS) instance.
+        @summary Converts the billing method of a data disk attached to a subscription ECS instance between pay-as-you-go and subscription.
         
         @description For information about how to change the billing method of cloud disks, see [Change the billing methods of a disk](https://help.aliyun.com/document_detail/145018.html).
         Take note of the following items:

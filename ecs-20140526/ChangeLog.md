@@ -1,3 +1,7 @@
+2025-07-24 Version: 7.0.17
+- Update API DescribeDeploymentSets: add response parameters Body.DeploymentSets.$.AccountId.
+
+
 2025-07-18 Version: 7.0.16
 - Update API DescribeCloudAssistantSettings: add response parameters Body.SessionManagerConfig.
 - Update API ModifyCloudAssistantSettings: add request parameters SessionManagerConfig.
