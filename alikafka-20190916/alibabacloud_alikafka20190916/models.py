@@ -7992,6 +7992,7 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         msg_retain: int = None,
         name: str = None,
         paid_type: int = None,
+        recommended_partition_count: int = None,
         region_id: str = None,
         reserved_publish_capacity: int = None,
         reserved_subscribe_capacity: int = None,
@@ -8082,6 +8083,7 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         # *   **3**: the pay-as-you-go billing method for serverless ApsaraMQ for Kafka V3 instances
         # *   **4**: the pay-as-you-go billing method for ApsaraMQ for Confluent instances
         self.paid_type = paid_type
+        self.recommended_partition_count = recommended_partition_count
         # The ID of the region where the instance resides.
         self.region_id = region_id
         # The traffic reserved for message publishing. Unit: MB/s.
@@ -8261,6 +8263,8 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
             result['Name'] = self.name
         if self.paid_type is not None:
             result['PaidType'] = self.paid_type
+        if self.recommended_partition_count is not None:
+            result['RecommendedPartitionCount'] = self.recommended_partition_count
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.reserved_publish_capacity is not None:
@@ -8364,6 +8368,8 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
             self.name = m.get('Name')
         if m.get('PaidType') is not None:
             self.paid_type = m.get('PaidType')
+        if m.get('RecommendedPartitionCount') is not None:
+            self.recommended_partition_count = m.get('RecommendedPartitionCount')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ReservedPublishCapacity') is not None:
