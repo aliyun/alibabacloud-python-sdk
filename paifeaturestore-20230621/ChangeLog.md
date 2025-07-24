@@ -1,3 +1,6 @@
+2025-07-24 Version: 6.0.3
+- Generated python 2023-06-21 for PaiFeatureStore.
+
 2025-07-17 Version: 6.0.2
 - Update API GetInstance: add response parameters Body.FeatureDBInfo.
 - Update API ListInstances: add response parameters Body.Instances.$.FeatureDBInfo.
