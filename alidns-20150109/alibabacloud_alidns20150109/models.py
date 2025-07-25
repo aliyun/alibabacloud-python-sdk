@@ -21282,6 +21282,7 @@ class DescribeDomainRecordsResponseBodyDomainRecordsRecord(TeaModel):
         self,
         create_timestamp: int = None,
         domain_name: str = None,
+        lba_status: bool = None,
         line: str = None,
         locked: bool = None,
         priority: int = None,
@@ -21299,6 +21300,7 @@ class DescribeDomainRecordsResponseBodyDomainRecordsRecord(TeaModel):
         self.create_timestamp = create_timestamp
         # The domain name.
         self.domain_name = domain_name
+        self.lba_status = lba_status
         # The resolution line.
         self.line = line
         # Indicates whether the DNS record is locked.
@@ -21337,6 +21339,8 @@ class DescribeDomainRecordsResponseBodyDomainRecordsRecord(TeaModel):
             result['CreateTimestamp'] = self.create_timestamp
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
+        if self.lba_status is not None:
+            result['LbaStatus'] = self.lba_status
         if self.line is not None:
             result['Line'] = self.line
         if self.locked is not None:
@@ -21369,6 +21373,8 @@ class DescribeDomainRecordsResponseBodyDomainRecordsRecord(TeaModel):
             self.create_timestamp = m.get('CreateTimestamp')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
+        if m.get('LbaStatus') is not None:
+            self.lba_status = m.get('LbaStatus')
         if m.get('Line') is not None:
             self.line = m.get('Line')
         if m.get('Locked') is not None:
