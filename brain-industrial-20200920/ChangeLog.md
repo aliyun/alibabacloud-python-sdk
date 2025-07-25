@@ -1,3 +1,8 @@
+2025-07-25 Version: 2.1.0
+- Support API CreateLoadForecastByFileUrlJob.
+- Support API CreatePowerForecastByFileUrlJob.
+
+
 2025-07-23 Version: 2.0.1
 - Update API CreateEssOptJob: add request parameters BusinessKey.
 - Update API CreateLoadForecastJob: add request parameters BusinessKey.

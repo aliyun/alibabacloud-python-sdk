@@ -1095,6 +1095,291 @@ class CreateEssOptJobResponse(TeaModel):
         return self
 
 
+class CreateLoadForecastByFileUrlJobRequest(TeaModel):
+    def __init__(
+        self,
+        business_key: str = None,
+        device_type: str = None,
+        duration: int = None,
+        freq: str = None,
+        history_url: str = None,
+        model_version: str = None,
+        run_date: str = None,
+        system_type: str = None,
+        time_column: str = None,
+        time_zone: str = None,
+        value_column: str = None,
+    ):
+        self.business_key = business_key
+        self.device_type = device_type
+        self.duration = duration
+        self.freq = freq
+        self.history_url = history_url
+        self.model_version = model_version
+        self.run_date = run_date
+        self.system_type = system_type
+        self.time_column = time_column
+        self.time_zone = time_zone
+        self.value_column = value_column
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_key is not None:
+            result['BusinessKey'] = self.business_key
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.freq is not None:
+            result['Freq'] = self.freq
+        if self.history_url is not None:
+            result['HistoryUrl'] = self.history_url
+        if self.model_version is not None:
+            result['ModelVersion'] = self.model_version
+        if self.run_date is not None:
+            result['RunDate'] = self.run_date
+        if self.system_type is not None:
+            result['SystemType'] = self.system_type
+        if self.time_column is not None:
+            result['TimeColumn'] = self.time_column
+        if self.time_zone is not None:
+            result['TimeZone'] = self.time_zone
+        if self.value_column is not None:
+            result['ValueColumn'] = self.value_column
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessKey') is not None:
+            self.business_key = m.get('BusinessKey')
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Freq') is not None:
+            self.freq = m.get('Freq')
+        if m.get('HistoryUrl') is not None:
+            self.history_url = m.get('HistoryUrl')
+        if m.get('ModelVersion') is not None:
+            self.model_version = m.get('ModelVersion')
+        if m.get('RunDate') is not None:
+            self.run_date = m.get('RunDate')
+        if m.get('SystemType') is not None:
+            self.system_type = m.get('SystemType')
+        if m.get('TimeColumn') is not None:
+            self.time_column = m.get('TimeColumn')
+        if m.get('TimeZone') is not None:
+            self.time_zone = m.get('TimeZone')
+        if m.get('ValueColumn') is not None:
+            self.value_column = m.get('ValueColumn')
+        return self
+
+
+class CreateLoadForecastByFileUrlJobResponseBodyDataResponse(TeaModel):
+    def __init__(
+        self,
+        debug_info: Any = None,
+        job_type: str = None,
+        result: Any = None,
+    ):
+        self.debug_info = debug_info
+        self.job_type = job_type
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.debug_info is not None:
+            result['DebugInfo'] = self.debug_info
+        if self.job_type is not None:
+            result['JobType'] = self.job_type
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DebugInfo') is not None:
+            self.debug_info = m.get('DebugInfo')
+        if m.get('JobType') is not None:
+            self.job_type = m.get('JobType')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class CreateLoadForecastByFileUrlJobResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        completed: bool = None,
+        create_time: str = None,
+        error: str = None,
+        job_id: str = None,
+        progress: int = None,
+        response: CreateLoadForecastByFileUrlJobResponseBodyDataResponse = None,
+        status: str = None,
+    ):
+        self.completed = completed
+        self.create_time = create_time
+        self.error = error
+        self.job_id = job_id
+        self.progress = progress
+        self.response = response
+        self.status = status
+
+    def validate(self):
+        if self.response:
+            self.response.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.completed is not None:
+            result['Completed'] = self.completed
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.error is not None:
+            result['Error'] = self.error
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.response is not None:
+            result['Response'] = self.response.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Completed') is not None:
+            self.completed = m.get('Completed')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Error') is not None:
+            self.error = m.get('Error')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('Response') is not None:
+            temp_model = CreateLoadForecastByFileUrlJobResponseBodyDataResponse()
+            self.response = temp_model.from_map(m['Response'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class CreateLoadForecastByFileUrlJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateLoadForecastByFileUrlJobResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreateLoadForecastByFileUrlJobResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateLoadForecastByFileUrlJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateLoadForecastByFileUrlJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateLoadForecastByFileUrlJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateLoadForecastJobRequestHistoryData(TeaModel):
     def __init__(
         self,
@@ -1481,6 +1766,431 @@ class CreateLoadForecastJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateLoadForecastJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreatePowerForecastByFileUrlJobRequestLocation(TeaModel):
+    def __init__(
+        self,
+        altitude: float = None,
+        latitude: float = None,
+        longitude: float = None,
+    ):
+        self.altitude = altitude
+        self.latitude = latitude
+        self.longitude = longitude
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.altitude is not None:
+            result['Altitude'] = self.altitude
+        if self.latitude is not None:
+            result['Latitude'] = self.latitude
+        if self.longitude is not None:
+            result['Longitude'] = self.longitude
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Altitude') is not None:
+            self.altitude = m.get('Altitude')
+        if m.get('Latitude') is not None:
+            self.latitude = m.get('Latitude')
+        if m.get('Longitude') is not None:
+            self.longitude = m.get('Longitude')
+        return self
+
+
+class CreatePowerForecastByFileUrlJobRequest(TeaModel):
+    def __init__(
+        self,
+        business_key: str = None,
+        device_type: str = None,
+        duration: int = None,
+        freq: str = None,
+        history_url: str = None,
+        location: CreatePowerForecastByFileUrlJobRequestLocation = None,
+        model_version: str = None,
+        run_date: str = None,
+        system_type: str = None,
+        time_column: str = None,
+        time_zone: str = None,
+        value_column: str = None,
+    ):
+        self.business_key = business_key
+        self.device_type = device_type
+        self.duration = duration
+        self.freq = freq
+        self.history_url = history_url
+        self.location = location
+        self.model_version = model_version
+        self.run_date = run_date
+        self.system_type = system_type
+        self.time_column = time_column
+        self.time_zone = time_zone
+        self.value_column = value_column
+
+    def validate(self):
+        if self.location:
+            self.location.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_key is not None:
+            result['BusinessKey'] = self.business_key
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.freq is not None:
+            result['Freq'] = self.freq
+        if self.history_url is not None:
+            result['HistoryUrl'] = self.history_url
+        if self.location is not None:
+            result['Location'] = self.location.to_map()
+        if self.model_version is not None:
+            result['ModelVersion'] = self.model_version
+        if self.run_date is not None:
+            result['RunDate'] = self.run_date
+        if self.system_type is not None:
+            result['SystemType'] = self.system_type
+        if self.time_column is not None:
+            result['TimeColumn'] = self.time_column
+        if self.time_zone is not None:
+            result['TimeZone'] = self.time_zone
+        if self.value_column is not None:
+            result['ValueColumn'] = self.value_column
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessKey') is not None:
+            self.business_key = m.get('BusinessKey')
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Freq') is not None:
+            self.freq = m.get('Freq')
+        if m.get('HistoryUrl') is not None:
+            self.history_url = m.get('HistoryUrl')
+        if m.get('Location') is not None:
+            temp_model = CreatePowerForecastByFileUrlJobRequestLocation()
+            self.location = temp_model.from_map(m['Location'])
+        if m.get('ModelVersion') is not None:
+            self.model_version = m.get('ModelVersion')
+        if m.get('RunDate') is not None:
+            self.run_date = m.get('RunDate')
+        if m.get('SystemType') is not None:
+            self.system_type = m.get('SystemType')
+        if m.get('TimeColumn') is not None:
+            self.time_column = m.get('TimeColumn')
+        if m.get('TimeZone') is not None:
+            self.time_zone = m.get('TimeZone')
+        if m.get('ValueColumn') is not None:
+            self.value_column = m.get('ValueColumn')
+        return self
+
+
+class CreatePowerForecastByFileUrlJobShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        business_key: str = None,
+        device_type: str = None,
+        duration: int = None,
+        freq: str = None,
+        history_url: str = None,
+        location_shrink: str = None,
+        model_version: str = None,
+        run_date: str = None,
+        system_type: str = None,
+        time_column: str = None,
+        time_zone: str = None,
+        value_column: str = None,
+    ):
+        self.business_key = business_key
+        self.device_type = device_type
+        self.duration = duration
+        self.freq = freq
+        self.history_url = history_url
+        self.location_shrink = location_shrink
+        self.model_version = model_version
+        self.run_date = run_date
+        self.system_type = system_type
+        self.time_column = time_column
+        self.time_zone = time_zone
+        self.value_column = value_column
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_key is not None:
+            result['BusinessKey'] = self.business_key
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.freq is not None:
+            result['Freq'] = self.freq
+        if self.history_url is not None:
+            result['HistoryUrl'] = self.history_url
+        if self.location_shrink is not None:
+            result['Location'] = self.location_shrink
+        if self.model_version is not None:
+            result['ModelVersion'] = self.model_version
+        if self.run_date is not None:
+            result['RunDate'] = self.run_date
+        if self.system_type is not None:
+            result['SystemType'] = self.system_type
+        if self.time_column is not None:
+            result['TimeColumn'] = self.time_column
+        if self.time_zone is not None:
+            result['TimeZone'] = self.time_zone
+        if self.value_column is not None:
+            result['ValueColumn'] = self.value_column
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessKey') is not None:
+            self.business_key = m.get('BusinessKey')
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Freq') is not None:
+            self.freq = m.get('Freq')
+        if m.get('HistoryUrl') is not None:
+            self.history_url = m.get('HistoryUrl')
+        if m.get('Location') is not None:
+            self.location_shrink = m.get('Location')
+        if m.get('ModelVersion') is not None:
+            self.model_version = m.get('ModelVersion')
+        if m.get('RunDate') is not None:
+            self.run_date = m.get('RunDate')
+        if m.get('SystemType') is not None:
+            self.system_type = m.get('SystemType')
+        if m.get('TimeColumn') is not None:
+            self.time_column = m.get('TimeColumn')
+        if m.get('TimeZone') is not None:
+            self.time_zone = m.get('TimeZone')
+        if m.get('ValueColumn') is not None:
+            self.value_column = m.get('ValueColumn')
+        return self
+
+
+class CreatePowerForecastByFileUrlJobResponseBodyDataResponse(TeaModel):
+    def __init__(
+        self,
+        debug_info: Any = None,
+        job_type: str = None,
+        result: Any = None,
+    ):
+        self.debug_info = debug_info
+        self.job_type = job_type
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.debug_info is not None:
+            result['DebugInfo'] = self.debug_info
+        if self.job_type is not None:
+            result['JobType'] = self.job_type
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DebugInfo') is not None:
+            self.debug_info = m.get('DebugInfo')
+        if m.get('JobType') is not None:
+            self.job_type = m.get('JobType')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class CreatePowerForecastByFileUrlJobResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        completed: bool = None,
+        create_time: str = None,
+        error: str = None,
+        job_id: str = None,
+        progress: int = None,
+        response: CreatePowerForecastByFileUrlJobResponseBodyDataResponse = None,
+        status: str = None,
+    ):
+        self.completed = completed
+        self.create_time = create_time
+        self.error = error
+        self.job_id = job_id
+        self.progress = progress
+        self.response = response
+        self.status = status
+
+    def validate(self):
+        if self.response:
+            self.response.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.completed is not None:
+            result['Completed'] = self.completed
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.error is not None:
+            result['Error'] = self.error
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.response is not None:
+            result['Response'] = self.response.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Completed') is not None:
+            self.completed = m.get('Completed')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Error') is not None:
+            self.error = m.get('Error')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('Response') is not None:
+            temp_model = CreatePowerForecastByFileUrlJobResponseBodyDataResponse()
+            self.response = temp_model.from_map(m['Response'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class CreatePowerForecastByFileUrlJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreatePowerForecastByFileUrlJobResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreatePowerForecastByFileUrlJobResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreatePowerForecastByFileUrlJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreatePowerForecastByFileUrlJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreatePowerForecastByFileUrlJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

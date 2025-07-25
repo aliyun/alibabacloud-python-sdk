@@ -425,6 +425,142 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_ess_opt_job_with_options_async(request, runtime)
 
+    def create_load_forecast_by_file_url_job_with_options(
+        self,
+        request: brain_industrial_20200920_models.CreateLoadForecastByFileUrlJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> brain_industrial_20200920_models.CreateLoadForecastByFileUrlJobResponse:
+        """
+        @summary 创建用电负荷预测任务，历史数据来自文件url
+        
+        @param request: CreateLoadForecastByFileUrlJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLoadForecastByFileUrlJobResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.business_key):
+            body['BusinessKey'] = request.business_key
+        if not UtilClient.is_unset(request.device_type):
+            body['DeviceType'] = request.device_type
+        if not UtilClient.is_unset(request.duration):
+            body['Duration'] = request.duration
+        if not UtilClient.is_unset(request.freq):
+            body['Freq'] = request.freq
+        if not UtilClient.is_unset(request.history_url):
+            body['HistoryUrl'] = request.history_url
+        if not UtilClient.is_unset(request.model_version):
+            body['ModelVersion'] = request.model_version
+        if not UtilClient.is_unset(request.run_date):
+            body['RunDate'] = request.run_date
+        if not UtilClient.is_unset(request.system_type):
+            body['SystemType'] = request.system_type
+        if not UtilClient.is_unset(request.time_column):
+            body['TimeColumn'] = request.time_column
+        if not UtilClient.is_unset(request.time_zone):
+            body['TimeZone'] = request.time_zone
+        if not UtilClient.is_unset(request.value_column):
+            body['ValueColumn'] = request.value_column
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateLoadForecastByFileUrlJob',
+            version='2020-09-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            brain_industrial_20200920_models.CreateLoadForecastByFileUrlJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_load_forecast_by_file_url_job_with_options_async(
+        self,
+        request: brain_industrial_20200920_models.CreateLoadForecastByFileUrlJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> brain_industrial_20200920_models.CreateLoadForecastByFileUrlJobResponse:
+        """
+        @summary 创建用电负荷预测任务，历史数据来自文件url
+        
+        @param request: CreateLoadForecastByFileUrlJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLoadForecastByFileUrlJobResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.business_key):
+            body['BusinessKey'] = request.business_key
+        if not UtilClient.is_unset(request.device_type):
+            body['DeviceType'] = request.device_type
+        if not UtilClient.is_unset(request.duration):
+            body['Duration'] = request.duration
+        if not UtilClient.is_unset(request.freq):
+            body['Freq'] = request.freq
+        if not UtilClient.is_unset(request.history_url):
+            body['HistoryUrl'] = request.history_url
+        if not UtilClient.is_unset(request.model_version):
+            body['ModelVersion'] = request.model_version
+        if not UtilClient.is_unset(request.run_date):
+            body['RunDate'] = request.run_date
+        if not UtilClient.is_unset(request.system_type):
+            body['SystemType'] = request.system_type
+        if not UtilClient.is_unset(request.time_column):
+            body['TimeColumn'] = request.time_column
+        if not UtilClient.is_unset(request.time_zone):
+            body['TimeZone'] = request.time_zone
+        if not UtilClient.is_unset(request.value_column):
+            body['ValueColumn'] = request.value_column
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateLoadForecastByFileUrlJob',
+            version='2020-09-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            brain_industrial_20200920_models.CreateLoadForecastByFileUrlJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_load_forecast_by_file_url_job(
+        self,
+        request: brain_industrial_20200920_models.CreateLoadForecastByFileUrlJobRequest,
+    ) -> brain_industrial_20200920_models.CreateLoadForecastByFileUrlJobResponse:
+        """
+        @summary 创建用电负荷预测任务，历史数据来自文件url
+        
+        @param request: CreateLoadForecastByFileUrlJobRequest
+        @return: CreateLoadForecastByFileUrlJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_load_forecast_by_file_url_job_with_options(request, runtime)
+
+    async def create_load_forecast_by_file_url_job_async(
+        self,
+        request: brain_industrial_20200920_models.CreateLoadForecastByFileUrlJobRequest,
+    ) -> brain_industrial_20200920_models.CreateLoadForecastByFileUrlJobResponse:
+        """
+        @summary 创建用电负荷预测任务，历史数据来自文件url
+        
+        @param request: CreateLoadForecastByFileUrlJobRequest
+        @return: CreateLoadForecastByFileUrlJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_load_forecast_by_file_url_job_with_options_async(request, runtime)
+
     def create_load_forecast_job_with_options(
         self,
         tmp_req: brain_industrial_20200920_models.CreateLoadForecastJobRequest,
@@ -560,6 +696,154 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_load_forecast_job_with_options_async(request, runtime)
+
+    def create_power_forecast_by_file_url_job_with_options(
+        self,
+        tmp_req: brain_industrial_20200920_models.CreatePowerForecastByFileUrlJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> brain_industrial_20200920_models.CreatePowerForecastByFileUrlJobResponse:
+        """
+        @summary 创建发电功率预测任务，历史数据来自文件url
+        
+        @param tmp_req: CreatePowerForecastByFileUrlJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePowerForecastByFileUrlJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = brain_industrial_20200920_models.CreatePowerForecastByFileUrlJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.location):
+            request.location_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.location, 'Location', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.business_key):
+            body['BusinessKey'] = request.business_key
+        if not UtilClient.is_unset(request.device_type):
+            body['DeviceType'] = request.device_type
+        if not UtilClient.is_unset(request.duration):
+            body['Duration'] = request.duration
+        if not UtilClient.is_unset(request.freq):
+            body['Freq'] = request.freq
+        if not UtilClient.is_unset(request.history_url):
+            body['HistoryUrl'] = request.history_url
+        if not UtilClient.is_unset(request.location_shrink):
+            body['Location'] = request.location_shrink
+        if not UtilClient.is_unset(request.model_version):
+            body['ModelVersion'] = request.model_version
+        if not UtilClient.is_unset(request.run_date):
+            body['RunDate'] = request.run_date
+        if not UtilClient.is_unset(request.system_type):
+            body['SystemType'] = request.system_type
+        if not UtilClient.is_unset(request.time_column):
+            body['TimeColumn'] = request.time_column
+        if not UtilClient.is_unset(request.time_zone):
+            body['TimeZone'] = request.time_zone
+        if not UtilClient.is_unset(request.value_column):
+            body['ValueColumn'] = request.value_column
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreatePowerForecastByFileUrlJob',
+            version='2020-09-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            brain_industrial_20200920_models.CreatePowerForecastByFileUrlJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_power_forecast_by_file_url_job_with_options_async(
+        self,
+        tmp_req: brain_industrial_20200920_models.CreatePowerForecastByFileUrlJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> brain_industrial_20200920_models.CreatePowerForecastByFileUrlJobResponse:
+        """
+        @summary 创建发电功率预测任务，历史数据来自文件url
+        
+        @param tmp_req: CreatePowerForecastByFileUrlJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePowerForecastByFileUrlJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = brain_industrial_20200920_models.CreatePowerForecastByFileUrlJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.location):
+            request.location_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.location, 'Location', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.business_key):
+            body['BusinessKey'] = request.business_key
+        if not UtilClient.is_unset(request.device_type):
+            body['DeviceType'] = request.device_type
+        if not UtilClient.is_unset(request.duration):
+            body['Duration'] = request.duration
+        if not UtilClient.is_unset(request.freq):
+            body['Freq'] = request.freq
+        if not UtilClient.is_unset(request.history_url):
+            body['HistoryUrl'] = request.history_url
+        if not UtilClient.is_unset(request.location_shrink):
+            body['Location'] = request.location_shrink
+        if not UtilClient.is_unset(request.model_version):
+            body['ModelVersion'] = request.model_version
+        if not UtilClient.is_unset(request.run_date):
+            body['RunDate'] = request.run_date
+        if not UtilClient.is_unset(request.system_type):
+            body['SystemType'] = request.system_type
+        if not UtilClient.is_unset(request.time_column):
+            body['TimeColumn'] = request.time_column
+        if not UtilClient.is_unset(request.time_zone):
+            body['TimeZone'] = request.time_zone
+        if not UtilClient.is_unset(request.value_column):
+            body['ValueColumn'] = request.value_column
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreatePowerForecastByFileUrlJob',
+            version='2020-09-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            brain_industrial_20200920_models.CreatePowerForecastByFileUrlJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_power_forecast_by_file_url_job(
+        self,
+        request: brain_industrial_20200920_models.CreatePowerForecastByFileUrlJobRequest,
+    ) -> brain_industrial_20200920_models.CreatePowerForecastByFileUrlJobResponse:
+        """
+        @summary 创建发电功率预测任务，历史数据来自文件url
+        
+        @param request: CreatePowerForecastByFileUrlJobRequest
+        @return: CreatePowerForecastByFileUrlJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_power_forecast_by_file_url_job_with_options(request, runtime)
+
+    async def create_power_forecast_by_file_url_job_async(
+        self,
+        request: brain_industrial_20200920_models.CreatePowerForecastByFileUrlJobRequest,
+    ) -> brain_industrial_20200920_models.CreatePowerForecastByFileUrlJobResponse:
+        """
+        @summary 创建发电功率预测任务，历史数据来自文件url
+        
+        @param request: CreatePowerForecastByFileUrlJobRequest
+        @return: CreatePowerForecastByFileUrlJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_power_forecast_by_file_url_job_with_options_async(request, runtime)
 
     def create_power_forecast_job_with_options(
         self,
