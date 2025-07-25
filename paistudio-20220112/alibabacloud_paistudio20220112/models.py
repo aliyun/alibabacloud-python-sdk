@@ -11912,6 +11912,7 @@ class ListQuotaWorkloadsResponse(TeaModel):
 class ListQuotasRequest(TeaModel):
     def __init__(
         self,
+        has_resource: str = None,
         labels: str = None,
         layout_mode: str = None,
         order: str = None,
@@ -11927,6 +11928,7 @@ class ListQuotasRequest(TeaModel):
         workspace_ids: str = None,
         workspace_name: str = None,
     ):
+        self.has_resource = has_resource
         self.labels = labels
         self.layout_mode = layout_mode
         self.order = order
@@ -11951,6 +11953,8 @@ class ListQuotasRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.has_resource is not None:
+            result['HasResource'] = self.has_resource
         if self.labels is not None:
             result['Labels'] = self.labels
         if self.layout_mode is not None:
@@ -11983,6 +11987,8 @@ class ListQuotasRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('HasResource') is not None:
+            self.has_resource = m.get('HasResource')
         if m.get('Labels') is not None:
             self.labels = m.get('Labels')
         if m.get('LayoutMode') is not None:
@@ -12293,6 +12299,7 @@ class ListResourceGroupsRequest(TeaModel):
     def __init__(
         self,
         computing_resource_provider: str = None,
+        has_resource: bool = None,
         name: str = None,
         order: str = None,
         page_number: int = None,
@@ -12304,6 +12311,7 @@ class ListResourceGroupsRequest(TeaModel):
         status: str = None,
     ):
         self.computing_resource_provider = computing_resource_provider
+        self.has_resource = has_resource
         self.name = name
         self.order = order
         self.page_number = page_number
@@ -12325,6 +12333,8 @@ class ListResourceGroupsRequest(TeaModel):
         result = dict()
         if self.computing_resource_provider is not None:
             result['ComputingResourceProvider'] = self.computing_resource_provider
+        if self.has_resource is not None:
+            result['HasResource'] = self.has_resource
         if self.name is not None:
             result['Name'] = self.name
         if self.order is not None:
@@ -12349,6 +12359,8 @@ class ListResourceGroupsRequest(TeaModel):
         m = m or dict()
         if m.get('ComputingResourceProvider') is not None:
             self.computing_resource_provider = m.get('ComputingResourceProvider')
+        if m.get('HasResource') is not None:
+            self.has_resource = m.get('HasResource')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Order') is not None:

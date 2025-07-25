@@ -1,3 +1,8 @@
+2025-07-25 Version: 2.1.7
+- Update API ListQuotas: add request parameters HasResource.
+- Update API ListResourceGroups: add request parameters HasResource.
+
+
 2025-06-30 Version: 2.1.6
 - Update API ListResourceGroups: add request parameters ResourceGroupIDs.
 

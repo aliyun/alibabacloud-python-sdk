@@ -3997,6 +3997,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.has_resource):
+            query['HasResource'] = request.has_resource
         if not UtilClient.is_unset(request.labels):
             query['Labels'] = request.labels
         if not UtilClient.is_unset(request.layout_mode):
@@ -4061,6 +4063,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.has_resource):
+            query['HasResource'] = request.has_resource
         if not UtilClient.is_unset(request.labels):
             query['Labels'] = request.labels
         if not UtilClient.is_unset(request.layout_mode):
@@ -4311,6 +4315,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.computing_resource_provider):
             query['ComputingResourceProvider'] = request.computing_resource_provider
+        if not UtilClient.is_unset(request.has_resource):
+            query['HasResource'] = request.has_resource
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.order):
@@ -4367,6 +4373,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.computing_resource_provider):
             query['ComputingResourceProvider'] = request.computing_resource_provider
+        if not UtilClient.is_unset(request.has_resource):
+            query['HasResource'] = request.has_resource
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.order):
