@@ -1,3 +1,12 @@
+2025-07-25 Version: 4.9.2
+- Update API DescribeAndroidInstances: add response parameters Body.InstanceModel.$.BizTags.
+- Update API DescribeAndroidInstances: add response parameters Body.InstanceModel.$.ServerType.
+- Update API DescribeCloudPhoneNodes: add response parameters Body.NodeModel.$.BizTags.
+- Update API DescribeImageList: add request parameters ImageBizTags.
+- Update API DescribeImageList: add request parameters InstanceType.
+- Update API DescribeImageList: add response parameters Body.Data.$.ImageBizTags.
+
+
 2025-07-15 Version: 4.9.1
 - Update API CreateCloudPhoneNode: add request parameters BandwidthPackageId.
 - Update API CreateCloudPhoneNode: add request parameters BandwidthPackageType.

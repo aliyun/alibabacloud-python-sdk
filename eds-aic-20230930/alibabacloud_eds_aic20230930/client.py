@@ -3340,8 +3340,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.image_biz_tags):
+            query['ImageBizTags'] = request.image_biz_tags
         if not UtilClient.is_unset(request.image_package_type):
             query['ImagePackageType'] = request.image_package_type
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
         body = {}
         if not UtilClient.is_unset(request.image_id):
             body['ImageId'] = request.image_id
@@ -3389,8 +3393,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.image_biz_tags):
+            query['ImageBizTags'] = request.image_biz_tags
         if not UtilClient.is_unset(request.image_package_type):
             query['ImagePackageType'] = request.image_package_type
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
         body = {}
         if not UtilClient.is_unset(request.image_id):
             body['ImageId'] = request.image_id

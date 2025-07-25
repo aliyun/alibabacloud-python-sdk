@@ -5251,6 +5251,39 @@ class DescribeAndroidInstancesResponseBodyInstanceModelAppManagePolicy(TeaModel)
         return self
 
 
+class DescribeAndroidInstancesResponseBodyInstanceModelBizTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeAndroidInstancesResponseBodyInstanceModelDisks(TeaModel):
     def __init__(
         self,
@@ -5420,6 +5453,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         bandwidth_package_id: str = None,
         bandwidth_package_type: str = None,
         bind_user_id: str = None,
+        biz_tags: List[DescribeAndroidInstancesResponseBodyInstanceModelBizTags] = None,
         charge_type: str = None,
         cpu: str = None,
         disks: List[DescribeAndroidInstancesResponseBodyInstanceModelDisks] = None,
@@ -5447,6 +5481,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         rate: int = None,
         region_id: str = None,
         rendering_type: str = None,
+        server_type: str = None,
         session_status: str = None,
         stream_mode: int = None,
         tags: List[DescribeAndroidInstancesResponseBodyInstanceModelTags] = None,
@@ -5475,6 +5510,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         self.bandwidth_package_type = bandwidth_package_type
         # The ID of the bound user.
         self.bind_user_id = bind_user_id
+        self.biz_tags = biz_tags
         # The billing method of the instance.
         self.charge_type = charge_type
         # The number of vCPUs.
@@ -5523,6 +5559,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         self.region_id = region_id
         # The rendering type.
         self.rendering_type = rendering_type
+        self.server_type = server_type
         # The session status.
         # 
         # Valid values:
@@ -5540,6 +5577,10 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
     def validate(self):
         if self.app_manage_policy:
             self.app_manage_policy.validate()
+        if self.biz_tags:
+            for k in self.biz_tags:
+                if k:
+                    k.validate()
         if self.disks:
             for k in self.disks:
                 if k:
@@ -5583,6 +5624,10 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             result['BandwidthPackageType'] = self.bandwidth_package_type
         if self.bind_user_id is not None:
             result['BindUserId'] = self.bind_user_id
+        result['BizTags'] = []
+        if self.biz_tags is not None:
+            for k in self.biz_tags:
+                result['BizTags'].append(k.to_map() if k else None)
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
         if self.cpu is not None:
@@ -5639,6 +5684,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             result['RegionId'] = self.region_id
         if self.rendering_type is not None:
             result['RenderingType'] = self.rendering_type
+        if self.server_type is not None:
+            result['ServerType'] = self.server_type
         if self.session_status is not None:
             result['SessionStatus'] = self.session_status
         if self.stream_mode is not None:
@@ -5682,6 +5729,11 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             self.bandwidth_package_type = m.get('BandwidthPackageType')
         if m.get('BindUserId') is not None:
             self.bind_user_id = m.get('BindUserId')
+        self.biz_tags = []
+        if m.get('BizTags') is not None:
+            for k in m.get('BizTags'):
+                temp_model = DescribeAndroidInstancesResponseBodyInstanceModelBizTags()
+                self.biz_tags.append(temp_model.from_map(k))
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
         if m.get('Cpu') is not None:
@@ -5741,6 +5793,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('RenderingType') is not None:
             self.rendering_type = m.get('RenderingType')
+        if m.get('ServerType') is not None:
+            self.server_type = m.get('ServerType')
         if m.get('SessionStatus') is not None:
             self.session_status = m.get('SessionStatus')
         if m.get('StreamMode') is not None:
@@ -6674,6 +6728,39 @@ class DescribeCloudPhoneNodesRequest(TeaModel):
         return self
 
 
+class DescribeCloudPhoneNodesResponseBodyNodeModelBizTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos(TeaModel):
     def __init__(
         self,
@@ -6763,6 +6850,7 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
         self,
         bandwidth_package_id: str = None,
         bandwidth_package_type: str = None,
+        biz_tags: List[DescribeCloudPhoneNodesResponseBodyNodeModelBizTags] = None,
         charge_type: str = None,
         cpu: str = None,
         gmt_create: str = None,
@@ -6787,6 +6875,7 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
     ):
         self.bandwidth_package_id = bandwidth_package_id
         self.bandwidth_package_type = bandwidth_package_type
+        self.biz_tags = biz_tags
         # The billing method.
         self.charge_type = charge_type
         # The number of CPU cores.
@@ -6827,6 +6916,10 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
         self.v_switch_id = v_switch_id
 
     def validate(self):
+        if self.biz_tags:
+            for k in self.biz_tags:
+                if k:
+                    k.validate()
         if self.network_infos:
             for k in self.network_infos:
                 if k:
@@ -6844,6 +6937,10 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
             result['BandwidthPackageId'] = self.bandwidth_package_id
         if self.bandwidth_package_type is not None:
             result['BandwidthPackageType'] = self.bandwidth_package_type
+        result['BizTags'] = []
+        if self.biz_tags is not None:
+            for k in self.biz_tags:
+                result['BizTags'].append(k.to_map() if k else None)
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
         if self.cpu is not None:
@@ -6896,6 +6993,11 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
             self.bandwidth_package_id = m.get('BandwidthPackageId')
         if m.get('BandwidthPackageType') is not None:
             self.bandwidth_package_type = m.get('BandwidthPackageType')
+        self.biz_tags = []
+        if m.get('BizTags') is not None:
+            for k in m.get('BizTags'):
+                temp_model = DescribeCloudPhoneNodesResponseBodyNodeModelBizTags()
+                self.biz_tags.append(temp_model.from_map(k))
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
         if m.get('Cpu') is not None:
@@ -7219,17 +7321,53 @@ class DescribeDisplayConfigResponse(TeaModel):
         return self
 
 
+class DescribeImageListRequestImageBizTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeImageListRequest(TeaModel):
     def __init__(
         self,
+        image_biz_tags: List[DescribeImageListRequestImageBizTags] = None,
         image_id: str = None,
         image_name: str = None,
         image_package_type: str = None,
         image_type: str = None,
+        instance_type: str = None,
         max_results: int = None,
         next_token: str = None,
         status: str = None,
     ):
+        self.image_biz_tags = image_biz_tags
         # The ID of the image.
         self.image_id = image_id
         # The name of the image.
@@ -7245,6 +7383,7 @@ class DescribeImageListRequest(TeaModel):
         # 
         # This parameter is required.
         self.image_type = image_type
+        self.instance_type = instance_type
         # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. If the parameter is left empty, the data is queried from the first entry.
@@ -7261,7 +7400,10 @@ class DescribeImageListRequest(TeaModel):
         self.status = status
 
     def validate(self):
-        pass
+        if self.image_biz_tags:
+            for k in self.image_biz_tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7269,6 +7411,10 @@ class DescribeImageListRequest(TeaModel):
             return _map
 
         result = dict()
+        result['ImageBizTags'] = []
+        if self.image_biz_tags is not None:
+            for k in self.image_biz_tags:
+                result['ImageBizTags'].append(k.to_map() if k else None)
         if self.image_id is not None:
             result['ImageId'] = self.image_id
         if self.image_name is not None:
@@ -7277,6 +7423,8 @@ class DescribeImageListRequest(TeaModel):
             result['ImagePackageType'] = self.image_package_type
         if self.image_type is not None:
             result['ImageType'] = self.image_type
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -7287,6 +7435,11 @@ class DescribeImageListRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.image_biz_tags = []
+        if m.get('ImageBizTags') is not None:
+            for k in m.get('ImageBizTags'):
+                temp_model = DescribeImageListRequestImageBizTags()
+                self.image_biz_tags.append(temp_model.from_map(k))
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
         if m.get('ImageName') is not None:
@@ -7295,12 +7448,47 @@ class DescribeImageListRequest(TeaModel):
             self.image_package_type = m.get('ImagePackageType')
         if m.get('ImageType') is not None:
             self.image_type = m.get('ImageType')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        return self
+
+
+class DescribeImageListResponseBodyDataImageBizTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -7311,6 +7499,7 @@ class DescribeImageListResponseBodyData(TeaModel):
         description: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
+        image_biz_tags: List[DescribeImageListResponseBodyDataImageBizTags] = None,
         image_id: str = None,
         image_name: str = None,
         image_region_distribute_map: Dict[str, DataImageRegionDistributeMapValue] = None,
@@ -7331,6 +7520,7 @@ class DescribeImageListResponseBodyData(TeaModel):
         self.gmt_create = gmt_create
         # The time when the image was last modified.
         self.gmt_modified = gmt_modified
+        self.image_biz_tags = image_biz_tags
         # The ID of the image.
         self.image_id = image_id
         # The name of the image.
@@ -7373,6 +7563,10 @@ class DescribeImageListResponseBodyData(TeaModel):
         self.system_type = system_type
 
     def validate(self):
+        if self.image_biz_tags:
+            for k in self.image_biz_tags:
+                if k:
+                    k.validate()
         if self.image_region_distribute_map:
             for v in self.image_region_distribute_map.values():
                 if v:
@@ -7392,6 +7586,10 @@ class DescribeImageListResponseBodyData(TeaModel):
             result['GmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
+        result['ImageBizTags'] = []
+        if self.image_biz_tags is not None:
+            for k in self.image_biz_tags:
+                result['ImageBizTags'].append(k.to_map() if k else None)
         if self.image_id is not None:
             result['ImageId'] = self.image_id
         if self.image_name is not None:
@@ -7428,6 +7626,11 @@ class DescribeImageListResponseBodyData(TeaModel):
             self.gmt_create = m.get('GmtCreate')
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
+        self.image_biz_tags = []
+        if m.get('ImageBizTags') is not None:
+            for k in m.get('ImageBizTags'):
+                temp_model = DescribeImageListResponseBodyDataImageBizTags()
+                self.image_biz_tags.append(temp_model.from_map(k))
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
         if m.get('ImageName') is not None:
