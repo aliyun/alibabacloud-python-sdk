@@ -37842,6 +37842,7 @@ class ScaleWithAdjustmentRequestOverrides(TeaModel):
         container_overrides: List[ScaleWithAdjustmentRequestOverridesContainerOverrides] = None,
         cpu: float = None,
         memory: float = None,
+        user_data: str = None,
     ):
         # The list of parameters that you want to use to override specific configurations for containers.
         self.container_overrides = container_overrides
@@ -37849,6 +37850,7 @@ class ScaleWithAdjustmentRequestOverrides(TeaModel):
         self.cpu = cpu
         # The memory size that you want to allocate to the instance. Unit: GiB.
         self.memory = memory
+        self.user_data = user_data
 
     def validate(self):
         if self.container_overrides:
@@ -37870,6 +37872,8 @@ class ScaleWithAdjustmentRequestOverrides(TeaModel):
             result['Cpu'] = self.cpu
         if self.memory is not None:
             result['Memory'] = self.memory
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
         return result
 
     def from_map(self, m: dict = None):
@@ -37883,6 +37887,8 @@ class ScaleWithAdjustmentRequestOverrides(TeaModel):
             self.cpu = m.get('Cpu')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
         return self
 
 

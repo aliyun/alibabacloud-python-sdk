@@ -1,3 +1,7 @@
+2025-07-25 Version: 1.10.17
+- Update API ScaleWithAdjustment: add request parameters Overrides.UserData.
+
+
 2025-07-17 Version: 1.10.16
 - Update API ScaleWithAdjustment: add request parameters ExecutionMode.
 - Update API ScaleWithAdjustment: add response parameters Body.PlanResult.
