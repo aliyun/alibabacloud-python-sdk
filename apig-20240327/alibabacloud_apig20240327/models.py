@@ -17806,12 +17806,15 @@ class ListPluginsResponse(TeaModel):
 class ListPolicyClassesRequest(TeaModel):
     def __init__(
         self,
+        attach_resource_id: str = None,
         attach_resource_type: str = None,
         direction: str = None,
+        gateway_id: str = None,
         page_number: int = None,
         page_size: int = None,
         type: str = None,
     ):
+        self.attach_resource_id = attach_resource_id
         # Types of attachment points supported by the policy.
         # 
         # - HttpApi: HttpApi.
@@ -17827,6 +17830,7 @@ class ListPolicyClassesRequest(TeaModel):
         # - Inbound: InBound.
         # - Both directions: Both.
         self.direction = direction
+        self.gateway_id = gateway_id
         # Page number, default is 1.
         self.page_number = page_number
         # Page size
@@ -17843,10 +17847,14 @@ class ListPolicyClassesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.attach_resource_id is not None:
+            result['attachResourceId'] = self.attach_resource_id
         if self.attach_resource_type is not None:
             result['attachResourceType'] = self.attach_resource_type
         if self.direction is not None:
             result['direction'] = self.direction
+        if self.gateway_id is not None:
+            result['gatewayId'] = self.gateway_id
         if self.page_number is not None:
             result['pageNumber'] = self.page_number
         if self.page_size is not None:
@@ -17857,10 +17865,14 @@ class ListPolicyClassesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('attachResourceId') is not None:
+            self.attach_resource_id = m.get('attachResourceId')
         if m.get('attachResourceType') is not None:
             self.attach_resource_type = m.get('attachResourceType')
         if m.get('direction') is not None:
             self.direction = m.get('direction')
+        if m.get('gatewayId') is not None:
+            self.gateway_id = m.get('gatewayId')
         if m.get('pageNumber') is not None:
             self.page_number = m.get('pageNumber')
         if m.get('pageSize') is not None:

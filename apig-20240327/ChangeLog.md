@@ -1,3 +1,8 @@
+2025-07-25 Version: 4.3.2
+- Update API ListPolicyClasses: add request parameters attachResourceId.
+- Update API ListPolicyClasses: add request parameters gatewayId.
+
+
 2025-07-24 Version: 4.3.1
 - Update API CreateConsumerAuthorizationRules: add request parameters body.authorizationRules.$.resourceIdentifier.parentResourceId.
 - Update API CreateConsumerAuthorizationRules: add request parameters body.authorizationRules.$.resourceIdentifier.resources.

@@ -6435,10 +6435,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.attach_resource_id):
+            query['attachResourceId'] = request.attach_resource_id
         if not UtilClient.is_unset(request.attach_resource_type):
             query['attachResourceType'] = request.attach_resource_type
         if not UtilClient.is_unset(request.direction):
             query['direction'] = request.direction
+        if not UtilClient.is_unset(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -6481,10 +6485,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.attach_resource_id):
+            query['attachResourceId'] = request.attach_resource_id
         if not UtilClient.is_unset(request.attach_resource_type):
             query['attachResourceType'] = request.attach_resource_type
         if not UtilClient.is_unset(request.direction):
             query['direction'] = request.direction
+        if not UtilClient.is_unset(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
