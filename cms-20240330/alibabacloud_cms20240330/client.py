@@ -411,6 +411,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_service_with_options_async(workspace, request, headers, runtime)
 
+    def create_ticket_with_options(
+        self,
+        request: cms_20240330_models.CreateTicketRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.CreateTicketResponse:
+        """
+        @summary 创建票据
+        
+        @param request: CreateTicketRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTicketResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token_expiration_time):
+            query['accessTokenExpirationTime'] = request.access_token_expiration_time
+        if not UtilClient.is_unset(request.expiration_time):
+            query['expirationTime'] = request.expiration_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTicket',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/tickets',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.CreateTicketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_ticket_with_options_async(
+        self,
+        request: cms_20240330_models.CreateTicketRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.CreateTicketResponse:
+        """
+        @summary 创建票据
+        
+        @param request: CreateTicketRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTicketResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token_expiration_time):
+            query['accessTokenExpirationTime'] = request.access_token_expiration_time
+        if not UtilClient.is_unset(request.expiration_time):
+            query['expirationTime'] = request.expiration_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTicket',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/tickets',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.CreateTicketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_ticket(
+        self,
+        request: cms_20240330_models.CreateTicketRequest,
+    ) -> cms_20240330_models.CreateTicketResponse:
+        """
+        @summary 创建票据
+        
+        @param request: CreateTicketRequest
+        @return: CreateTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_ticket_with_options(request, headers, runtime)
+
+    async def create_ticket_async(
+        self,
+        request: cms_20240330_models.CreateTicketRequest,
+    ) -> cms_20240330_models.CreateTicketResponse:
+        """
+        @summary 创建票据
+        
+        @param request: CreateTicketRequest
+        @return: CreateTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_ticket_with_options_async(request, headers, runtime)
+
     def create_umodel_with_options(
         self,
         workspace: str,

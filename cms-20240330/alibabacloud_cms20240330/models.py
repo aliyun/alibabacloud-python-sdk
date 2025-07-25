@@ -6348,6 +6348,107 @@ class CreateServiceResponse(TeaModel):
         return self
 
 
+class CreateTicketRequest(TeaModel):
+    def __init__(
+        self,
+        access_token_expiration_time: int = None,
+        expiration_time: int = None,
+    ):
+        self.access_token_expiration_time = access_token_expiration_time
+        self.expiration_time = expiration_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token_expiration_time is not None:
+            result['accessTokenExpirationTime'] = self.access_token_expiration_time
+        if self.expiration_time is not None:
+            result['expirationTime'] = self.expiration_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessTokenExpirationTime') is not None:
+            self.access_token_expiration_time = m.get('accessTokenExpirationTime')
+        if m.get('expirationTime') is not None:
+            self.expiration_time = m.get('expirationTime')
+        return self
+
+
+class CreateTicketResponseBody(TeaModel):
+    def __init__(
+        self,
+        ticket: str = None,
+    ):
+        self.ticket = ticket
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ticket is not None:
+            result['ticket'] = self.ticket
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ticket') is not None:
+            self.ticket = m.get('ticket')
+        return self
+
+
+class CreateTicketResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateTicketResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateTicketResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateUmodelRequestCommonSchemaRef(TeaModel):
     def __init__(
         self,

@@ -1,3 +1,7 @@
+2025-07-25 Version: 2.3.0
+- Support API CreateTicket.
+
+
 2025-07-24 Version: 2.2.0
 - Support API CreateService.
 - Support API DeleteService.
