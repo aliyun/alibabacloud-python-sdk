@@ -1,3 +1,12 @@
+2025-07-25 Version: 2.2.2
+- Update API AddIpamPoolCidr: add request parameters NetmaskLength.
+- Update API AddIpamPoolCidr: add response parameters Body.Cidr.
+- Update API CreateIpamPool: add request parameters Ipv6Isp.
+- Update API ListIpamPools: add request parameters IpVersion.
+- Update API ListIpamPools: add request parameters Ipv6Isp.
+- Update API ListIpamPools: add response parameters Body.IpamPools.$.Ipv6Isp.
+
+
 2025-07-02 Version: 2.2.1
 - Update API ListIpamDiscoveredResource: add response parameters Body.IpamDiscoveredResources.$.IpCountDetail.
 - Update API ListIpamResourceCidrs: add response parameters Body.IpamResourceCidrs.$.IpCountDetail.

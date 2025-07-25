@@ -71,6 +71,8 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.ipam_pool_id):
             query['IpamPoolId'] = request.ipam_pool_id
+        if not UtilClient.is_unset(request.netmask_length):
+            query['NetmaskLength'] = request.netmask_length
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -122,6 +124,8 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.ipam_pool_id):
             query['IpamPoolId'] = request.ipam_pool_id
+        if not UtilClient.is_unset(request.netmask_length):
+            query['NetmaskLength'] = request.netmask_length
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -643,6 +647,8 @@ class Client(OpenApiClient):
             query['IpamPoolName'] = request.ipam_pool_name
         if not UtilClient.is_unset(request.ipam_scope_id):
             query['IpamScopeId'] = request.ipam_scope_id
+        if not UtilClient.is_unset(request.ipv_6isp):
+            query['Ipv6Isp'] = request.ipv_6isp
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -714,6 +720,8 @@ class Client(OpenApiClient):
             query['IpamPoolName'] = request.ipam_pool_name
         if not UtilClient.is_unset(request.ipam_scope_id):
             query['IpamScopeId'] = request.ipam_scope_id
+        if not UtilClient.is_unset(request.ipv_6isp):
+            query['Ipv6Isp'] = request.ipv_6isp
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -2803,12 +2811,16 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
         if not UtilClient.is_unset(request.ipam_pool_ids):
             query['IpamPoolIds'] = request.ipam_pool_ids
         if not UtilClient.is_unset(request.ipam_pool_name):
             query['IpamPoolName'] = request.ipam_pool_name
         if not UtilClient.is_unset(request.ipam_scope_id):
             query['IpamScopeId'] = request.ipam_scope_id
+        if not UtilClient.is_unset(request.ipv_6isp):
+            query['Ipv6Isp'] = request.ipv_6isp
         if not UtilClient.is_unset(request.is_shared):
             query['IsShared'] = request.is_shared
         if not UtilClient.is_unset(request.max_results):
@@ -2866,12 +2878,16 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
         if not UtilClient.is_unset(request.ipam_pool_ids):
             query['IpamPoolIds'] = request.ipam_pool_ids
         if not UtilClient.is_unset(request.ipam_pool_name):
             query['IpamPoolName'] = request.ipam_pool_name
         if not UtilClient.is_unset(request.ipam_scope_id):
             query['IpamScopeId'] = request.ipam_scope_id
+        if not UtilClient.is_unset(request.ipv_6isp):
+            query['Ipv6Isp'] = request.ipv_6isp
         if not UtilClient.is_unset(request.is_shared):
             query['IsShared'] = request.is_shared
         if not UtilClient.is_unset(request.max_results):
@@ -4586,7 +4602,7 @@ class Client(OpenApiClient):
         @summary Modifies a resource discovery instance.
         
         @description    You can add or remove effective regions only for custom resource discovery instances.
-        When removing effective regions from a resource discovery instance, the managed region cannot be included.
+        When removing effective regions from a resource discovery instance, the hosted region cannot be included.
         
         @param request: UpdateIpamResourceDiscoveryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4646,7 +4662,7 @@ class Client(OpenApiClient):
         @summary Modifies a resource discovery instance.
         
         @description    You can add or remove effective regions only for custom resource discovery instances.
-        When removing effective regions from a resource discovery instance, the managed region cannot be included.
+        When removing effective regions from a resource discovery instance, the hosted region cannot be included.
         
         @param request: UpdateIpamResourceDiscoveryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4705,7 +4721,7 @@ class Client(OpenApiClient):
         @summary Modifies a resource discovery instance.
         
         @description    You can add or remove effective regions only for custom resource discovery instances.
-        When removing effective regions from a resource discovery instance, the managed region cannot be included.
+        When removing effective regions from a resource discovery instance, the hosted region cannot be included.
         
         @param request: UpdateIpamResourceDiscoveryRequest
         @return: UpdateIpamResourceDiscoveryResponse
@@ -4721,7 +4737,7 @@ class Client(OpenApiClient):
         @summary Modifies a resource discovery instance.
         
         @description    You can add or remove effective regions only for custom resource discovery instances.
-        When removing effective regions from a resource discovery instance, the managed region cannot be included.
+        When removing effective regions from a resource discovery instance, the hosted region cannot be included.
         
         @param request: UpdateIpamResourceDiscoveryRequest
         @return: UpdateIpamResourceDiscoveryResponse

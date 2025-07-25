@@ -11,13 +11,12 @@ class AddIpamPoolCidrRequest(TeaModel):
         client_token: str = None,
         dry_run: bool = None,
         ipam_pool_id: str = None,
+        netmask_length: int = None,
         region_id: str = None,
     ):
         # The CIDR block that you want to provision.
         # 
         # >  Only IPv4 CIDR blocks are supported.
-        # 
-        # This parameter is required.
         self.cidr = cidr
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
@@ -32,6 +31,7 @@ class AddIpamPoolCidrRequest(TeaModel):
         # 
         # This parameter is required.
         self.ipam_pool_id = ipam_pool_id
+        self.netmask_length = netmask_length
         # The ID of the region where the IPAM instance is hosted.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
@@ -56,6 +56,8 @@ class AddIpamPoolCidrRequest(TeaModel):
             result['DryRun'] = self.dry_run
         if self.ipam_pool_id is not None:
             result['IpamPoolId'] = self.ipam_pool_id
+        if self.netmask_length is not None:
+            result['NetmaskLength'] = self.netmask_length
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -70,6 +72,8 @@ class AddIpamPoolCidrRequest(TeaModel):
             self.dry_run = m.get('DryRun')
         if m.get('IpamPoolId') is not None:
             self.ipam_pool_id = m.get('IpamPoolId')
+        if m.get('NetmaskLength') is not None:
+            self.netmask_length = m.get('NetmaskLength')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -78,8 +82,10 @@ class AddIpamPoolCidrRequest(TeaModel):
 class AddIpamPoolCidrResponseBody(TeaModel):
     def __init__(
         self,
+        cidr: str = None,
         request_id: str = None,
     ):
+        self.cidr = cidr
         # The request ID.
         self.request_id = request_id
 
@@ -92,12 +98,16 @@ class AddIpamPoolCidrResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.cidr is not None:
+            result['Cidr'] = self.cidr
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Cidr') is not None:
+            self.cidr = m.get('Cidr')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -786,6 +796,7 @@ class CreateIpamPoolRequest(TeaModel):
         ipam_pool_description: str = None,
         ipam_pool_name: str = None,
         ipam_scope_id: str = None,
+        ipv_6isp: str = None,
         owner_account: str = None,
         owner_id: int = None,
         pool_region_id: str = None,
@@ -833,6 +844,7 @@ class CreateIpamPoolRequest(TeaModel):
         # 
         # This parameter is required.
         self.ipam_scope_id = ipam_scope_id
+        self.ipv_6isp = ipv_6isp
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The effective region of the IPAM pool.
@@ -884,6 +896,8 @@ class CreateIpamPoolRequest(TeaModel):
             result['IpamPoolName'] = self.ipam_pool_name
         if self.ipam_scope_id is not None:
             result['IpamScopeId'] = self.ipam_scope_id
+        if self.ipv_6isp is not None:
+            result['Ipv6Isp'] = self.ipv_6isp
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -928,6 +942,8 @@ class CreateIpamPoolRequest(TeaModel):
             self.ipam_pool_name = m.get('IpamPoolName')
         if m.get('IpamScopeId') is not None:
             self.ipam_scope_id = m.get('IpamScopeId')
+        if m.get('Ipv6Isp') is not None:
+            self.ipv_6isp = m.get('Ipv6Isp')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -1286,7 +1302,7 @@ class CreateIpamResourceDiscoveryRequest(TeaModel):
         self.owner_id = owner_id
         # The request region.
         # 
-        # >  The request region is the managed region of the resource discovery instance.
+        # >  The request region is the hosted region of the resource discovery instance.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -2741,7 +2757,7 @@ class GetIpamPoolAllocationRequest(TeaModel):
         self.ipam_pool_allocation_id = ipam_pool_allocation_id
         # The region of the IPAM pool.
         # 
-        # >  If the IPAM pool to which CIDR allocation belongs has the region attribute, this parameter is the region of the IPAM pool. If not, this parameter is the IPAM managed region.
+        # >  If the IPAM pool to which CIDR allocation belongs has the region attribute, this parameter is the region of the IPAM pool. If not, this parameter is the IPAM hosted region.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -2806,7 +2822,7 @@ class GetIpamPoolAllocationResponseBody(TeaModel):
         self.ipam_pool_id = ipam_pool_id
         # The region of the IPAM pool.
         # 
-        # >  If the IPAM pool to which the CIDR block allocation belongs has the region attribute, this parameter is the region of the IPAM pool. If not, this parameter is the IPAM managed region.
+        # >  If the IPAM pool to which the CIDR block allocation belongs has the region attribute, this parameter is the region of the IPAM pool. If not, this parameter is the IPAM hosted region.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
@@ -2970,7 +2986,7 @@ class GetIpamPoolNextAvailableCidrRequest(TeaModel):
         self.ipam_pool_id = ipam_pool_id
         # The region of the IPAM pool.
         # 
-        # >  If the IPAM pool has the region attribute, this parameter is set to the effective region of the IPAM pool. If not, this is set to the managed region.
+        # >  If the IPAM pool has the region attribute, this parameter is set to the effective region of the IPAM pool. If not, this is set to the hosted region.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -3252,7 +3268,7 @@ class ListIpamDiscoveredResourceRequest(TeaModel):
         # *   You do not need to specify this parameter for the first request.
         # *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
         self.next_token = next_token
-        # The ID of the managed region of the IPAM pool.
+        # The ID of the hosted region of the IPAM pool.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region list.
         # 
@@ -4159,9 +4175,11 @@ class ListIpamPoolsRequestTags(TeaModel):
 class ListIpamPoolsRequest(TeaModel):
     def __init__(
         self,
+        ip_version: str = None,
         ipam_pool_ids: List[str] = None,
         ipam_pool_name: str = None,
         ipam_scope_id: str = None,
+        ipv_6isp: str = None,
         is_shared: bool = None,
         max_results: int = None,
         next_token: str = None,
@@ -4175,6 +4193,7 @@ class ListIpamPoolsRequest(TeaModel):
         source_ipam_pool_id: str = None,
         tags: List[ListIpamPoolsRequestTags] = None,
     ):
+        self.ip_version = ip_version
         # The IDs of IPAM pools. Valid values of N: 1 to 100. A maximum of 100 IPAM pools can be queried at a time.
         self.ipam_pool_ids = ipam_pool_ids
         # The name of the IPAM pool. You can enter at most 20 names.
@@ -4183,6 +4202,7 @@ class ListIpamPoolsRequest(TeaModel):
         self.ipam_pool_name = ipam_pool_name
         # The ID of the IPAM scope.
         self.ipam_scope_id = ipam_scope_id
+        self.ipv_6isp = ipv_6isp
         # Whether it is a shared pool.
         self.is_shared = is_shared
         # The number of entries per page. Valid values: 1 to 100. Default value: 10.
@@ -4221,12 +4241,16 @@ class ListIpamPoolsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
         if self.ipam_pool_ids is not None:
             result['IpamPoolIds'] = self.ipam_pool_ids
         if self.ipam_pool_name is not None:
             result['IpamPoolName'] = self.ipam_pool_name
         if self.ipam_scope_id is not None:
             result['IpamScopeId'] = self.ipam_scope_id
+        if self.ipv_6isp is not None:
+            result['Ipv6Isp'] = self.ipv_6isp
         if self.is_shared is not None:
             result['IsShared'] = self.is_shared
         if self.max_results is not None:
@@ -4257,12 +4281,16 @@ class ListIpamPoolsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
         if m.get('IpamPoolIds') is not None:
             self.ipam_pool_ids = m.get('IpamPoolIds')
         if m.get('IpamPoolName') is not None:
             self.ipam_pool_name = m.get('IpamPoolName')
         if m.get('IpamScopeId') is not None:
             self.ipam_scope_id = m.get('IpamScopeId')
+        if m.get('Ipv6Isp') is not None:
+            self.ipv_6isp = m.get('Ipv6Isp')
         if m.get('IsShared') is not None:
             self.is_shared = m.get('IsShared')
         if m.get('MaxResults') is not None:
@@ -4345,6 +4373,7 @@ class ListIpamPoolsResponseBodyIpamPools(TeaModel):
         ipam_region_id: str = None,
         ipam_scope_id: str = None,
         ipam_scope_type: str = None,
+        ipv_6isp: str = None,
         is_shared: bool = None,
         owner_id: int = None,
         pool_depth: int = None,
@@ -4395,6 +4424,7 @@ class ListIpamPoolsResponseBodyIpamPools(TeaModel):
         # *   **public**\
         # *   **private**\
         self.ipam_scope_type = ipam_scope_type
+        self.ipv_6isp = ipv_6isp
         # Whether it is a shared pool.
         self.is_shared = is_shared
         # The Alibaba Cloud account of the owner for the IPAM pool.
@@ -4460,6 +4490,8 @@ class ListIpamPoolsResponseBodyIpamPools(TeaModel):
             result['IpamScopeId'] = self.ipam_scope_id
         if self.ipam_scope_type is not None:
             result['IpamScopeType'] = self.ipam_scope_type
+        if self.ipv_6isp is not None:
+            result['Ipv6Isp'] = self.ipv_6isp
         if self.is_shared is not None:
             result['IsShared'] = self.is_shared
         if self.owner_id is not None:
@@ -4512,6 +4544,8 @@ class ListIpamPoolsResponseBodyIpamPools(TeaModel):
             self.ipam_scope_id = m.get('IpamScopeId')
         if m.get('IpamScopeType') is not None:
             self.ipam_scope_type = m.get('IpamScopeType')
+        if m.get('Ipv6Isp') is not None:
+            self.ipv_6isp = m.get('Ipv6Isp')
         if m.get('IsShared') is not None:
             self.is_shared = m.get('IsShared')
         if m.get('OwnerId') is not None:
