@@ -26587,6 +26587,7 @@ class GetAlertRulesRequest(TeaModel):
         alert_names: str = None,
         alert_status: str = None,
         alert_type: str = None,
+        biz_region_id: str = None,
         cluster_id: str = None,
         page: int = None,
         product_code: str = None,
@@ -26620,6 +26621,7 @@ class GetAlertRulesRequest(TeaModel):
         # *   BROWSER_MONITORING_ALERT_RULE: alert rule for Browser Monitoring
         # *   PROMETHEUS_MONITORING_ALERT_RULE: alert rule for Managed Service for Prometheus
         self.alert_type = alert_type
+        self.biz_region_id = biz_region_id
         # The ID of the monitored cluster.
         self.cluster_id = cluster_id
         # The number of the page to return.
@@ -26659,6 +26661,8 @@ class GetAlertRulesRequest(TeaModel):
             result['AlertStatus'] = self.alert_status
         if self.alert_type is not None:
             result['AlertType'] = self.alert_type
+        if self.biz_region_id is not None:
+            result['BizRegionId'] = self.biz_region_id
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
         if self.page is not None:
@@ -26685,6 +26689,8 @@ class GetAlertRulesRequest(TeaModel):
             self.alert_status = m.get('AlertStatus')
         if m.get('AlertType') is not None:
             self.alert_type = m.get('AlertType')
+        if m.get('BizRegionId') is not None:
+            self.biz_region_id = m.get('BizRegionId')
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
         if m.get('Page') is not None:

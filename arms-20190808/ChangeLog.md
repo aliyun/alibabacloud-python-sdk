@@ -1,3 +1,7 @@
+2025-07-25 Version: 9.0.1
+- Update API GetAlertRules: add request parameters BizRegionId.
+
+
 2025-07-17 Version: 9.0.0
 - Support API DescribeEnvDropMetricsRule.
 - Support API UpdateEnvDropMetricsRule.

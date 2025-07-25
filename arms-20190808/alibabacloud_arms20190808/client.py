@@ -11831,6 +11831,8 @@ class Client(OpenApiClient):
             query['AlertStatus'] = request.alert_status
         if not UtilClient.is_unset(request.alert_type):
             query['AlertType'] = request.alert_type
+        if not UtilClient.is_unset(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.page):
@@ -11884,6 +11886,8 @@ class Client(OpenApiClient):
             query['AlertStatus'] = request.alert_status
         if not UtilClient.is_unset(request.alert_type):
             query['AlertType'] = request.alert_type
+        if not UtilClient.is_unset(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.page):
