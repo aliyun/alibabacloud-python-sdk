@@ -4146,6 +4146,127 @@ class ListCatalogsResponse(TeaModel):
         return self
 
 
+class ListDatabaseDetailsRequest(TeaModel):
+    def __init__(
+        self,
+        database_name_pattern: str = None,
+        max_results: int = None,
+        page_token: str = None,
+    ):
+        self.database_name_pattern = database_name_pattern
+        self.max_results = max_results
+        self.page_token = page_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.database_name_pattern is not None:
+            result['databaseNamePattern'] = self.database_name_pattern
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.page_token is not None:
+            result['pageToken'] = self.page_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('databaseNamePattern') is not None:
+            self.database_name_pattern = m.get('databaseNamePattern')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('pageToken') is not None:
+            self.page_token = m.get('pageToken')
+        return self
+
+
+class ListDatabaseDetailsResponseBody(TeaModel):
+    def __init__(
+        self,
+        database_details: List[Database] = None,
+        next_page_token: str = None,
+    ):
+        self.database_details = database_details
+        self.next_page_token = next_page_token
+
+    def validate(self):
+        if self.database_details:
+            for k in self.database_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['databaseDetails'] = []
+        if self.database_details is not None:
+            for k in self.database_details:
+                result['databaseDetails'].append(k.to_map() if k else None)
+        if self.next_page_token is not None:
+            result['nextPageToken'] = self.next_page_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.database_details = []
+        if m.get('databaseDetails') is not None:
+            for k in m.get('databaseDetails'):
+                temp_model = Database()
+                self.database_details.append(temp_model.from_map(k))
+        if m.get('nextPageToken') is not None:
+            self.next_page_token = m.get('nextPageToken')
+        return self
+
+
+class ListDatabaseDetailsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDatabaseDetailsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDatabaseDetailsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListDatabasesRequest(TeaModel):
     def __init__(
         self,

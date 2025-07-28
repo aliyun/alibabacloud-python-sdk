@@ -2797,6 +2797,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_catalogs_with_options_async(request, headers, runtime)
 
+    def list_database_details_with_options(
+        self,
+        catalog_id: str,
+        request: dlf_next_20250310_models.ListDatabaseDetailsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.ListDatabaseDetailsResponse:
+        """
+        @summary 查看数据库列表
+        
+        @param request: ListDatabaseDetailsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatabaseDetailsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_name_pattern):
+            query['databaseNamePattern'] = request.database_name_pattern
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.page_token):
+            query['pageToken'] = request.page_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatabaseDetails',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/database-details',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.ListDatabaseDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_database_details_with_options_async(
+        self,
+        catalog_id: str,
+        request: dlf_next_20250310_models.ListDatabaseDetailsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.ListDatabaseDetailsResponse:
+        """
+        @summary 查看数据库列表
+        
+        @param request: ListDatabaseDetailsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatabaseDetailsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_name_pattern):
+            query['databaseNamePattern'] = request.database_name_pattern
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.page_token):
+            query['pageToken'] = request.page_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatabaseDetails',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/database-details',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.ListDatabaseDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_database_details(
+        self,
+        catalog_id: str,
+        request: dlf_next_20250310_models.ListDatabaseDetailsRequest,
+    ) -> dlf_next_20250310_models.ListDatabaseDetailsResponse:
+        """
+        @summary 查看数据库列表
+        
+        @param request: ListDatabaseDetailsRequest
+        @return: ListDatabaseDetailsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_database_details_with_options(catalog_id, request, headers, runtime)
+
+    async def list_database_details_async(
+        self,
+        catalog_id: str,
+        request: dlf_next_20250310_models.ListDatabaseDetailsRequest,
+    ) -> dlf_next_20250310_models.ListDatabaseDetailsResponse:
+        """
+        @summary 查看数据库列表
+        
+        @param request: ListDatabaseDetailsRequest
+        @return: ListDatabaseDetailsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_database_details_with_options_async(catalog_id, request, headers, runtime)
+
     def list_databases_with_options(
         self,
         catalog_id: str,
