@@ -1,3 +1,8 @@
+2025-07-28 Version: 1.5.0
+- Support API ListBlockSending.
+- Update API DescAccountSummary: add response parameters Body.IpChannelType.
+
+
 2025-07-21 Version: 1.4.0
 - Support API DedicatedIpAutoRenewal.
 - Support API DedicatedIpChangeWarmupType.

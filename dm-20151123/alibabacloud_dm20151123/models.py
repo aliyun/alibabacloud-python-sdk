@@ -3609,6 +3609,7 @@ class DescAccountSummaryResponseBody(TeaModel):
         dayu_status: int = None,
         domains: int = None,
         enable_times: int = None,
+        ip_channel_type: str = None,
         mail_addresses: int = None,
         max_quota_level: int = None,
         month_quota: int = None,
@@ -3633,6 +3634,7 @@ class DescAccountSummaryResponseBody(TeaModel):
         self.domains = domains
         # Effective time
         self.enable_times = enable_times
+        self.ip_channel_type = ip_channel_type
         # Number of sending addresses
         self.mail_addresses = mail_addresses
         # Maximum level
@@ -3683,6 +3685,8 @@ class DescAccountSummaryResponseBody(TeaModel):
             result['Domains'] = self.domains
         if self.enable_times is not None:
             result['EnableTimes'] = self.enable_times
+        if self.ip_channel_type is not None:
+            result['IpChannelType'] = self.ip_channel_type
         if self.mail_addresses is not None:
             result['MailAddresses'] = self.mail_addresses
         if self.max_quota_level is not None:
@@ -3723,6 +3727,8 @@ class DescAccountSummaryResponseBody(TeaModel):
             self.domains = m.get('Domains')
         if m.get('EnableTimes') is not None:
             self.enable_times = m.get('EnableTimes')
+        if m.get('IpChannelType') is not None:
+            self.ip_channel_type = m.get('IpChannelType')
         if m.get('MailAddresses') is not None:
             self.mail_addresses = m.get('MailAddresses')
         if m.get('MaxQuotaLevel') is not None:
@@ -5425,6 +5431,215 @@ class GetUserResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetUserResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListBlockSendingRequest(TeaModel):
+    def __init__(
+        self,
+        begin_time: int = None,
+        block_email: str = None,
+        block_type: str = None,
+        end_time: int = None,
+        max_results: int = None,
+        next_token: str = None,
+        sender_email: str = None,
+    ):
+        self.begin_time = begin_time
+        self.block_email = block_email
+        # This parameter is required.
+        self.block_type = block_type
+        self.end_time = end_time
+        self.max_results = max_results
+        self.next_token = next_token
+        self.sender_email = sender_email
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.begin_time is not None:
+            result['BeginTime'] = self.begin_time
+        if self.block_email is not None:
+            result['BlockEmail'] = self.block_email
+        if self.block_type is not None:
+            result['BlockType'] = self.block_type
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.sender_email is not None:
+            result['SenderEmail'] = self.sender_email
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeginTime') is not None:
+            self.begin_time = m.get('BeginTime')
+        if m.get('BlockEmail') is not None:
+            self.block_email = m.get('BlockEmail')
+        if m.get('BlockType') is not None:
+            self.block_type = m.get('BlockType')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('SenderEmail') is not None:
+            self.sender_email = m.get('SenderEmail')
+        return self
+
+
+class ListBlockSendingResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        block_email: str = None,
+        block_time: int = None,
+        reason: int = None,
+        send_time: int = None,
+        sender_email: str = None,
+    ):
+        self.block_email = block_email
+        self.block_time = block_time
+        self.reason = reason
+        self.send_time = send_time
+        self.sender_email = sender_email
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.block_email is not None:
+            result['BlockEmail'] = self.block_email
+        if self.block_time is not None:
+            result['BlockTime'] = self.block_time
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.send_time is not None:
+            result['SendTime'] = self.send_time
+        if self.sender_email is not None:
+            result['SenderEmail'] = self.sender_email
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BlockEmail') is not None:
+            self.block_email = m.get('BlockEmail')
+        if m.get('BlockTime') is not None:
+            self.block_time = m.get('BlockTime')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('SendTime') is not None:
+            self.send_time = m.get('SendTime')
+        if m.get('SenderEmail') is not None:
+            self.sender_email = m.get('SenderEmail')
+        return self
+
+
+class ListBlockSendingResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[ListBlockSendingResponseBodyData] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListBlockSendingResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListBlockSendingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListBlockSendingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListBlockSendingResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

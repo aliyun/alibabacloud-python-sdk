@@ -3851,6 +3851,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_user_with_options_async(runtime)
 
+    def list_block_sending_with_options(
+        self,
+        request: dm_20151123_models.ListBlockSendingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.ListBlockSendingResponse:
+        """
+        @summary 获取发信的黑名单列表
+        
+        @param request: ListBlockSendingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBlockSendingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.begin_time):
+            query['BeginTime'] = request.begin_time
+        if not UtilClient.is_unset(request.block_email):
+            query['BlockEmail'] = request.block_email
+        if not UtilClient.is_unset(request.block_type):
+            query['BlockType'] = request.block_type
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.sender_email):
+            query['SenderEmail'] = request.sender_email
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBlockSending',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ListBlockSendingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_block_sending_with_options_async(
+        self,
+        request: dm_20151123_models.ListBlockSendingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.ListBlockSendingResponse:
+        """
+        @summary 获取发信的黑名单列表
+        
+        @param request: ListBlockSendingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBlockSendingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.begin_time):
+            query['BeginTime'] = request.begin_time
+        if not UtilClient.is_unset(request.block_email):
+            query['BlockEmail'] = request.block_email
+        if not UtilClient.is_unset(request.block_type):
+            query['BlockType'] = request.block_type
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.sender_email):
+            query['SenderEmail'] = request.sender_email
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBlockSending',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ListBlockSendingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_block_sending(
+        self,
+        request: dm_20151123_models.ListBlockSendingRequest,
+    ) -> dm_20151123_models.ListBlockSendingResponse:
+        """
+        @summary 获取发信的黑名单列表
+        
+        @param request: ListBlockSendingRequest
+        @return: ListBlockSendingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_block_sending_with_options(request, runtime)
+
+    async def list_block_sending_async(
+        self,
+        request: dm_20151123_models.ListBlockSendingRequest,
+    ) -> dm_20151123_models.ListBlockSendingResponse:
+        """
+        @summary 获取发信的黑名单列表
+        
+        @param request: ListBlockSendingRequest
+        @return: ListBlockSendingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_block_sending_with_options_async(request, runtime)
+
     def list_user_suppression_with_options(
         self,
         request: dm_20151123_models.ListUserSuppressionRequest,
