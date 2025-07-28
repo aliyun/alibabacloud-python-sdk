@@ -14863,6 +14863,7 @@ class DescribeDefenseRuleResponseBodyRule(TeaModel):
         config: str = None,
         defense_origin: str = None,
         defense_scene: str = None,
+        defense_type: str = None,
         gmt_modified: int = None,
         resource: str = None,
         rule_id: int = None,
@@ -14879,6 +14880,7 @@ class DescribeDefenseRuleResponseBodyRule(TeaModel):
         self.defense_origin = defense_origin
         # The scenario in which the protection rule is used. For more information, see the description of **DefenseScene** in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
         self.defense_scene = defense_scene
+        self.defense_type = defense_type
         # The most recent time when the protection rule was modified.
         self.gmt_modified = gmt_modified
         self.resource = resource
@@ -14909,6 +14911,8 @@ class DescribeDefenseRuleResponseBodyRule(TeaModel):
             result['DefenseOrigin'] = self.defense_origin
         if self.defense_scene is not None:
             result['DefenseScene'] = self.defense_scene
+        if self.defense_type is not None:
+            result['DefenseType'] = self.defense_type
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
         if self.resource is not None:
@@ -14931,6 +14935,8 @@ class DescribeDefenseRuleResponseBodyRule(TeaModel):
             self.defense_origin = m.get('DefenseOrigin')
         if m.get('DefenseScene') is not None:
             self.defense_scene = m.get('DefenseScene')
+        if m.get('DefenseType') is not None:
+            self.defense_type = m.get('DefenseType')
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
         if m.get('Resource') is not None:
@@ -15119,6 +15125,7 @@ class DescribeDefenseRulesResponseBodyRules(TeaModel):
         config: str = None,
         defense_origin: str = None,
         defense_scene: str = None,
+        defense_type: str = None,
         description: str = None,
         detail_rule_ids: str = None,
         external_info: str = None,
@@ -15155,6 +15162,7 @@ class DescribeDefenseRulesResponseBodyRules(TeaModel):
         # *   **dlp**: the data leakage prevention module.
         # *   **custom_response_block**: the custom response module.
         self.defense_scene = defense_scene
+        self.defense_type = defense_type
         self.description = description
         self.detail_rule_ids = detail_rule_ids
         self.external_info = external_info
@@ -15192,6 +15200,8 @@ class DescribeDefenseRulesResponseBodyRules(TeaModel):
             result['DefenseOrigin'] = self.defense_origin
         if self.defense_scene is not None:
             result['DefenseScene'] = self.defense_scene
+        if self.defense_type is not None:
+            result['DefenseType'] = self.defense_type
         if self.description is not None:
             result['Description'] = self.description
         if self.detail_rule_ids is not None:
@@ -15226,6 +15236,8 @@ class DescribeDefenseRulesResponseBodyRules(TeaModel):
             self.defense_origin = m.get('DefenseOrigin')
         if m.get('DefenseScene') is not None:
             self.defense_scene = m.get('DefenseScene')
+        if m.get('DefenseType') is not None:
+            self.defense_type = m.get('DefenseType')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('DetailRuleIds') is not None:
@@ -31446,6 +31458,7 @@ class DescribeTemplateResourcesResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
         resources: List[str] = None,
+        template_id: int = None,
         total_count: int = None,
     ):
         self.max_results = max_results
@@ -31454,6 +31467,7 @@ class DescribeTemplateResourcesResponseBody(TeaModel):
         self.request_id = request_id
         # An array of protected objects or protected object groups that are associated to the protection rule template.
         self.resources = resources
+        self.template_id = template_id
         self.total_count = total_count
 
     def validate(self):
@@ -31473,6 +31487,8 @@ class DescribeTemplateResourcesResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.resources is not None:
             result['Resources'] = self.resources
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         return result
@@ -31487,6 +31503,8 @@ class DescribeTemplateResourcesResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('Resources') is not None:
             self.resources = m.get('Resources')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
         return self
@@ -36361,8 +36379,6 @@ class ModifyDefenseRuleRequest(TeaModel):
         template_id: int = None,
     ):
         # The scenario in which you want to use the protection rule. For more information, see the description of the **DefenseScene** parameter in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
-        # 
-        # This parameter is required.
         self.defense_scene = defense_scene
         self.defense_type = defense_type
         # The ID of the Web Application Firewall (WAF) instance.
@@ -36640,6 +36656,7 @@ class ModifyDefenseRuleCacheResponse(TeaModel):
 class ModifyDefenseRuleStatusRequest(TeaModel):
     def __init__(
         self,
+        defense_type: str = None,
         instance_id: str = None,
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
@@ -36647,6 +36664,7 @@ class ModifyDefenseRuleStatusRequest(TeaModel):
         rule_status: int = None,
         template_id: int = None,
     ):
+        self.defense_type = defense_type
         # The ID of the Web Application Firewall (WAF) instance.
         # 
         # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
@@ -36672,8 +36690,6 @@ class ModifyDefenseRuleStatusRequest(TeaModel):
         # This parameter is required.
         self.rule_status = rule_status
         # The ID of the protection rule template to which the protection rule whose status you want to change belongs.
-        # 
-        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -36685,6 +36701,8 @@ class ModifyDefenseRuleStatusRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.defense_type is not None:
+            result['DefenseType'] = self.defense_type
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -36701,6 +36719,8 @@ class ModifyDefenseRuleStatusRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DefenseType') is not None:
+            self.defense_type = m.get('DefenseType')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:

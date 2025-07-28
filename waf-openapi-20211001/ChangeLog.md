@@ -1,3 +1,10 @@
+2025-07-28 Version: 6.1.1
+- Update API DescribeDefenseRule: add response parameters Body.Rule.DefenseType.
+- Update API DescribeDefenseRules: add response parameters Body.Rules.$.DefenseType.
+- Update API DescribeTemplateResources: add response parameters Body.TemplateId.
+- Update API ModifyDefenseRuleStatus: add request parameters DefenseType.
+
+
 2025-07-14 Version: 6.1.0
 - Support API CreateHybridCloudClusterRule.
 - Support API DeleteHybridCloudClusterRule.
