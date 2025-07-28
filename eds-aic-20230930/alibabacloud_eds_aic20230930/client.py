@@ -1176,6 +1176,8 @@ class Client(OpenApiClient):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.up_bandwidth_limit):
             query['UpBandwidthLimit'] = request.up_bandwidth_limit
+        if not UtilClient.is_unset(request.use_template):
+            query['UseTemplate'] = request.use_template
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         body = {}
@@ -1271,6 +1273,8 @@ class Client(OpenApiClient):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.up_bandwidth_limit):
             query['UpBandwidthLimit'] = request.up_bandwidth_limit
+        if not UtilClient.is_unset(request.use_template):
+            query['UseTemplate'] = request.use_template
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         body = {}
@@ -1797,6 +1801,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_screenshot_with_options_async(request, runtime)
+
+    def create_system_property_template_with_options(
+        self,
+        tmp_req: eds_aic_20230930_models.CreateSystemPropertyTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.CreateSystemPropertyTemplateResponse:
+        """
+        @summary 创建系统属性模板
+        
+        @param tmp_req: CreateSystemPropertyTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSystemPropertyTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eds_aic_20230930_models.CreateSystemPropertyTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.system_property_info):
+            request.system_property_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.system_property_info, 'SystemPropertyInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.enable_auto):
+            query['EnableAuto'] = request.enable_auto
+        if not UtilClient.is_unset(request.file_path):
+            query['FilePath'] = request.file_path
+        if not UtilClient.is_unset(request.system_property_info_shrink):
+            query['SystemPropertyInfo'] = request.system_property_info_shrink
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSystemPropertyTemplate',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.CreateSystemPropertyTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_system_property_template_with_options_async(
+        self,
+        tmp_req: eds_aic_20230930_models.CreateSystemPropertyTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.CreateSystemPropertyTemplateResponse:
+        """
+        @summary 创建系统属性模板
+        
+        @param tmp_req: CreateSystemPropertyTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSystemPropertyTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eds_aic_20230930_models.CreateSystemPropertyTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.system_property_info):
+            request.system_property_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.system_property_info, 'SystemPropertyInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.enable_auto):
+            query['EnableAuto'] = request.enable_auto
+        if not UtilClient.is_unset(request.file_path):
+            query['FilePath'] = request.file_path
+        if not UtilClient.is_unset(request.system_property_info_shrink):
+            query['SystemPropertyInfo'] = request.system_property_info_shrink
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSystemPropertyTemplate',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.CreateSystemPropertyTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_system_property_template(
+        self,
+        request: eds_aic_20230930_models.CreateSystemPropertyTemplateRequest,
+    ) -> eds_aic_20230930_models.CreateSystemPropertyTemplateResponse:
+        """
+        @summary 创建系统属性模板
+        
+        @param request: CreateSystemPropertyTemplateRequest
+        @return: CreateSystemPropertyTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_system_property_template_with_options(request, runtime)
+
+    async def create_system_property_template_async(
+        self,
+        request: eds_aic_20230930_models.CreateSystemPropertyTemplateRequest,
+    ) -> eds_aic_20230930_models.CreateSystemPropertyTemplateResponse:
+        """
+        @summary 创建系统属性模板
+        
+        @param request: CreateSystemPropertyTemplateRequest
+        @return: CreateSystemPropertyTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_system_property_template_with_options_async(request, runtime)
 
     def delete_android_instance_group_with_options(
         self,
@@ -2517,6 +2637,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_policy_group_with_options_async(request, runtime)
+
+    def delete_system_property_templates_with_options(
+        self,
+        request: eds_aic_20230930_models.DeleteSystemPropertyTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.DeleteSystemPropertyTemplatesResponse:
+        """
+        @summary 删除系统属性模板
+        
+        @param request: DeleteSystemPropertyTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSystemPropertyTemplatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.template_ids):
+            query['TemplateIds'] = request.template_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSystemPropertyTemplates',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.DeleteSystemPropertyTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_system_property_templates_with_options_async(
+        self,
+        request: eds_aic_20230930_models.DeleteSystemPropertyTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.DeleteSystemPropertyTemplatesResponse:
+        """
+        @summary 删除系统属性模板
+        
+        @param request: DeleteSystemPropertyTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSystemPropertyTemplatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.template_ids):
+            query['TemplateIds'] = request.template_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSystemPropertyTemplates',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.DeleteSystemPropertyTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_system_property_templates(
+        self,
+        request: eds_aic_20230930_models.DeleteSystemPropertyTemplatesRequest,
+    ) -> eds_aic_20230930_models.DeleteSystemPropertyTemplatesResponse:
+        """
+        @summary 删除系统属性模板
+        
+        @param request: DeleteSystemPropertyTemplatesRequest
+        @return: DeleteSystemPropertyTemplatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_system_property_templates_with_options(request, runtime)
+
+    async def delete_system_property_templates_async(
+        self,
+        request: eds_aic_20230930_models.DeleteSystemPropertyTemplatesRequest,
+    ) -> eds_aic_20230930_models.DeleteSystemPropertyTemplatesResponse:
+        """
+        @summary 删除系统属性模板
+        
+        @param request: DeleteSystemPropertyTemplatesRequest
+        @return: DeleteSystemPropertyTemplatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_system_property_templates_with_options_async(request, runtime)
 
     def describe_android_instance_groups_with_options(
         self,
@@ -4010,6 +4226,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_spec_with_options_async(request, runtime)
 
+    def describe_system_property_templates_with_options(
+        self,
+        request: eds_aic_20230930_models.DescribeSystemPropertyTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.DescribeSystemPropertyTemplatesResponse:
+        """
+        @summary 查询系统属性模板
+        
+        @param request: DescribeSystemPropertyTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSystemPropertyTemplatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.template_ids):
+            query['TemplateIds'] = request.template_ids
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSystemPropertyTemplates',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.DescribeSystemPropertyTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_system_property_templates_with_options_async(
+        self,
+        request: eds_aic_20230930_models.DescribeSystemPropertyTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.DescribeSystemPropertyTemplatesResponse:
+        """
+        @summary 查询系统属性模板
+        
+        @param request: DescribeSystemPropertyTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSystemPropertyTemplatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.template_ids):
+            query['TemplateIds'] = request.template_ids
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSystemPropertyTemplates',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.DescribeSystemPropertyTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_system_property_templates(
+        self,
+        request: eds_aic_20230930_models.DescribeSystemPropertyTemplatesRequest,
+    ) -> eds_aic_20230930_models.DescribeSystemPropertyTemplatesResponse:
+        """
+        @summary 查询系统属性模板
+        
+        @param request: DescribeSystemPropertyTemplatesRequest
+        @return: DescribeSystemPropertyTemplatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_system_property_templates_with_options(request, runtime)
+
+    async def describe_system_property_templates_async(
+        self,
+        request: eds_aic_20230930_models.DescribeSystemPropertyTemplatesRequest,
+    ) -> eds_aic_20230930_models.DescribeSystemPropertyTemplatesResponse:
+        """
+        @summary 查询系统属性模板
+        
+        @param request: DescribeSystemPropertyTemplatesRequest
+        @return: DescribeSystemPropertyTemplatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_system_property_templates_with_options_async(request, runtime)
+
     def describe_tasks_with_options(
         self,
         request: eds_aic_20230930_models.DescribeTasksRequest,
@@ -5049,6 +5373,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.generate_coordination_code_with_options_async(request, runtime)
+
+    def get_instance_properties_with_options(
+        self,
+        request: eds_aic_20230930_models.GetInstancePropertiesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.GetInstancePropertiesResponse:
+        """
+        @summary 获取属性模板信息
+        
+        @param request: GetInstancePropertiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstancePropertiesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetInstanceProperties',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.GetInstancePropertiesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_instance_properties_with_options_async(
+        self,
+        request: eds_aic_20230930_models.GetInstancePropertiesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.GetInstancePropertiesResponse:
+        """
+        @summary 获取属性模板信息
+        
+        @param request: GetInstancePropertiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstancePropertiesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetInstanceProperties',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.GetInstancePropertiesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_instance_properties(
+        self,
+        request: eds_aic_20230930_models.GetInstancePropertiesRequest,
+    ) -> eds_aic_20230930_models.GetInstancePropertiesResponse:
+        """
+        @summary 获取属性模板信息
+        
+        @param request: GetInstancePropertiesRequest
+        @return: GetInstancePropertiesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_instance_properties_with_options(request, runtime)
+
+    async def get_instance_properties_async(
+        self,
+        request: eds_aic_20230930_models.GetInstancePropertiesRequest,
+    ) -> eds_aic_20230930_models.GetInstancePropertiesResponse:
+        """
+        @summary 获取属性模板信息
+        
+        @param request: GetInstancePropertiesRequest
+        @return: GetInstancePropertiesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_instance_properties_with_options_async(request, runtime)
 
     def import_key_pair_with_options(
         self,
@@ -6282,6 +6702,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_policy_group_with_options_async(request, runtime)
 
+    def modify_system_property_template_with_options(
+        self,
+        tmp_req: eds_aic_20230930_models.ModifySystemPropertyTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.ModifySystemPropertyTemplateResponse:
+        """
+        @summary 修改属性模板
+        
+        @param tmp_req: ModifySystemPropertyTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySystemPropertyTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eds_aic_20230930_models.ModifySystemPropertyTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.system_property_info):
+            request.system_property_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.system_property_info, 'SystemPropertyInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.enable_auto):
+            query['EnableAuto'] = request.enable_auto
+        if not UtilClient.is_unset(request.file_path):
+            query['FilePath'] = request.file_path
+        if not UtilClient.is_unset(request.system_property_info_shrink):
+            query['SystemPropertyInfo'] = request.system_property_info_shrink
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySystemPropertyTemplate',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.ModifySystemPropertyTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_system_property_template_with_options_async(
+        self,
+        tmp_req: eds_aic_20230930_models.ModifySystemPropertyTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.ModifySystemPropertyTemplateResponse:
+        """
+        @summary 修改属性模板
+        
+        @param tmp_req: ModifySystemPropertyTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySystemPropertyTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eds_aic_20230930_models.ModifySystemPropertyTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.system_property_info):
+            request.system_property_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.system_property_info, 'SystemPropertyInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.enable_auto):
+            query['EnableAuto'] = request.enable_auto
+        if not UtilClient.is_unset(request.file_path):
+            query['FilePath'] = request.file_path
+        if not UtilClient.is_unset(request.system_property_info_shrink):
+            query['SystemPropertyInfo'] = request.system_property_info_shrink
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySystemPropertyTemplate',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.ModifySystemPropertyTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_system_property_template(
+        self,
+        request: eds_aic_20230930_models.ModifySystemPropertyTemplateRequest,
+    ) -> eds_aic_20230930_models.ModifySystemPropertyTemplateResponse:
+        """
+        @summary 修改属性模板
+        
+        @param request: ModifySystemPropertyTemplateRequest
+        @return: ModifySystemPropertyTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_system_property_template_with_options(request, runtime)
+
+    async def modify_system_property_template_async(
+        self,
+        request: eds_aic_20230930_models.ModifySystemPropertyTemplateRequest,
+    ) -> eds_aic_20230930_models.ModifySystemPropertyTemplateResponse:
+        """
+        @summary 修改属性模板
+        
+        @param request: ModifySystemPropertyTemplateRequest
+        @return: ModifySystemPropertyTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_system_property_template_with_options_async(request, runtime)
+
     def operate_app_with_options(
         self,
         request: eds_aic_20230930_models.OperateAppRequest,
@@ -7197,6 +7737,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.send_file_with_options_async(request, runtime)
+
+    def send_system_property_template_with_options(
+        self,
+        request: eds_aic_20230930_models.SendSystemPropertyTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.SendSystemPropertyTemplateResponse:
+        """
+        @summary 发送属性模板
+        
+        @param request: SendSystemPropertyTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendSystemPropertyTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_ids):
+            query['TemplateIds'] = request.template_ids
+        body = {}
+        if not UtilClient.is_unset(request.android_instance_ids):
+            body['AndroidInstanceIds'] = request.android_instance_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SendSystemPropertyTemplate',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.SendSystemPropertyTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def send_system_property_template_with_options_async(
+        self,
+        request: eds_aic_20230930_models.SendSystemPropertyTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.SendSystemPropertyTemplateResponse:
+        """
+        @summary 发送属性模板
+        
+        @param request: SendSystemPropertyTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendSystemPropertyTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_ids):
+            query['TemplateIds'] = request.template_ids
+        body = {}
+        if not UtilClient.is_unset(request.android_instance_ids):
+            body['AndroidInstanceIds'] = request.android_instance_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SendSystemPropertyTemplate',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.SendSystemPropertyTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def send_system_property_template(
+        self,
+        request: eds_aic_20230930_models.SendSystemPropertyTemplateRequest,
+    ) -> eds_aic_20230930_models.SendSystemPropertyTemplateResponse:
+        """
+        @summary 发送属性模板
+        
+        @param request: SendSystemPropertyTemplateRequest
+        @return: SendSystemPropertyTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.send_system_property_template_with_options(request, runtime)
+
+    async def send_system_property_template_async(
+        self,
+        request: eds_aic_20230930_models.SendSystemPropertyTemplateRequest,
+    ) -> eds_aic_20230930_models.SendSystemPropertyTemplateResponse:
+        """
+        @summary 发送属性模板
+        
+        @param request: SendSystemPropertyTemplateRequest
+        @return: SendSystemPropertyTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.send_system_property_template_with_options_async(request, runtime)
 
     def set_adb_secure_with_options(
         self,

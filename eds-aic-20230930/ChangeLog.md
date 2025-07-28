@@ -1,3 +1,13 @@
+2025-07-28 Version: 4.10.0
+- Support API CreateSystemPropertyTemplate.
+- Support API DeleteSystemPropertyTemplates.
+- Support API DescribeSystemPropertyTemplates.
+- Support API GetInstanceProperties.
+- Support API ModifySystemPropertyTemplate.
+- Support API SendSystemPropertyTemplate.
+- Update API CreateCloudPhoneNode: add request parameters UseTemplate.
+
+
 2025-07-25 Version: 4.9.2
 - Update API DescribeAndroidInstances: add response parameters Body.InstanceModel.$.BizTags.
 - Update API DescribeAndroidInstances: add response parameters Body.InstanceModel.$.ServerType.

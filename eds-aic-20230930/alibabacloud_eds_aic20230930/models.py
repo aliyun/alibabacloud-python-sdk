@@ -2109,6 +2109,7 @@ class CreateCloudPhoneNodeRequest(TeaModel):
         stream_mode: int = None,
         tag: List[CreateCloudPhoneNodeRequestTag] = None,
         up_bandwidth_limit: int = None,
+        use_template: str = None,
         v_switch_id: str = None,
     ):
         # Specifies whether to enable the auto-payment feature.
@@ -2185,6 +2186,7 @@ class CreateCloudPhoneNodeRequest(TeaModel):
         # The resource tags.
         self.tag = tag
         self.up_bandwidth_limit = up_bandwidth_limit
+        self.use_template = use_template
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
 
@@ -2258,6 +2260,8 @@ class CreateCloudPhoneNodeRequest(TeaModel):
                 result['Tag'].append(k.to_map() if k else None)
         if self.up_bandwidth_limit is not None:
             result['UpBandwidthLimit'] = self.up_bandwidth_limit
+        if self.use_template is not None:
+            result['UseTemplate'] = self.use_template
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         return result
@@ -2321,6 +2325,8 @@ class CreateCloudPhoneNodeRequest(TeaModel):
                 self.tag.append(temp_model.from_map(k))
         if m.get('UpBandwidthLimit') is not None:
             self.up_bandwidth_limit = m.get('UpBandwidthLimit')
+        if m.get('UseTemplate') is not None:
+            self.use_template = m.get('UseTemplate')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         return self
@@ -2390,6 +2396,7 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
         stream_mode: int = None,
         tag: List[CreateCloudPhoneNodeShrinkRequestTag] = None,
         up_bandwidth_limit: int = None,
+        use_template: str = None,
         v_switch_id: str = None,
     ):
         # Specifies whether to enable the auto-payment feature.
@@ -2466,6 +2473,7 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
         # The resource tags.
         self.tag = tag
         self.up_bandwidth_limit = up_bandwidth_limit
+        self.use_template = use_template
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
 
@@ -2535,6 +2543,8 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
                 result['Tag'].append(k.to_map() if k else None)
         if self.up_bandwidth_limit is not None:
             result['UpBandwidthLimit'] = self.up_bandwidth_limit
+        if self.use_template is not None:
+            result['UseTemplate'] = self.use_template
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         return result
@@ -2596,6 +2606,8 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
                 self.tag.append(temp_model.from_map(k))
         if m.get('UpBandwidthLimit') is not None:
             self.up_bandwidth_limit = m.get('UpBandwidthLimit')
+        if m.get('UseTemplate') is not None:
+            self.use_template = m.get('UseTemplate')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         return self
@@ -3745,6 +3757,331 @@ class CreateScreenshotResponse(TeaModel):
         return self
 
 
+class CreateSystemPropertyTemplateRequestSystemPropertyInfoCustomPropertyInfos(TeaModel):
+    def __init__(
+        self,
+        property_name: str = None,
+        property_value: str = None,
+    ):
+        self.property_name = property_name
+        self.property_value = property_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.property_name is not None:
+            result['PropertyName'] = self.property_name
+        if self.property_value is not None:
+            result['PropertyValue'] = self.property_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PropertyName') is not None:
+            self.property_name = m.get('PropertyName')
+        if m.get('PropertyValue') is not None:
+            self.property_value = m.get('PropertyValue')
+        return self
+
+
+class CreateSystemPropertyTemplateRequestSystemPropertyInfo(TeaModel):
+    def __init__(
+        self,
+        custom_property_infos: List[CreateSystemPropertyTemplateRequestSystemPropertyInfoCustomPropertyInfos] = None,
+        ro_bootloader: str = None,
+        ro_build_display_id: str = None,
+        ro_build_fingerprint: str = None,
+        ro_build_host: str = None,
+        ro_build_id: str = None,
+        ro_build_product: str = None,
+        ro_build_tags: str = None,
+        ro_build_type: str = None,
+        ro_build_user: str = None,
+        ro_product_board: str = None,
+        ro_product_brand: str = None,
+        ro_product_device: str = None,
+        ro_product_manufacturer: str = None,
+        ro_product_model: str = None,
+        rw_ro_serial_no: str = None,
+    ):
+        self.custom_property_infos = custom_property_infos
+        self.ro_bootloader = ro_bootloader
+        self.ro_build_display_id = ro_build_display_id
+        self.ro_build_fingerprint = ro_build_fingerprint
+        self.ro_build_host = ro_build_host
+        self.ro_build_id = ro_build_id
+        self.ro_build_product = ro_build_product
+        self.ro_build_tags = ro_build_tags
+        self.ro_build_type = ro_build_type
+        self.ro_build_user = ro_build_user
+        self.ro_product_board = ro_product_board
+        self.ro_product_brand = ro_product_brand
+        self.ro_product_device = ro_product_device
+        self.ro_product_manufacturer = ro_product_manufacturer
+        self.ro_product_model = ro_product_model
+        self.rw_ro_serial_no = rw_ro_serial_no
+
+    def validate(self):
+        if self.custom_property_infos:
+            for k in self.custom_property_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CustomPropertyInfos'] = []
+        if self.custom_property_infos is not None:
+            for k in self.custom_property_infos:
+                result['CustomPropertyInfos'].append(k.to_map() if k else None)
+        if self.ro_bootloader is not None:
+            result['RoBootloader'] = self.ro_bootloader
+        if self.ro_build_display_id is not None:
+            result['RoBuildDisplayId'] = self.ro_build_display_id
+        if self.ro_build_fingerprint is not None:
+            result['RoBuildFingerprint'] = self.ro_build_fingerprint
+        if self.ro_build_host is not None:
+            result['RoBuildHost'] = self.ro_build_host
+        if self.ro_build_id is not None:
+            result['RoBuildId'] = self.ro_build_id
+        if self.ro_build_product is not None:
+            result['RoBuildProduct'] = self.ro_build_product
+        if self.ro_build_tags is not None:
+            result['RoBuildTags'] = self.ro_build_tags
+        if self.ro_build_type is not None:
+            result['RoBuildType'] = self.ro_build_type
+        if self.ro_build_user is not None:
+            result['RoBuildUser'] = self.ro_build_user
+        if self.ro_product_board is not None:
+            result['RoProductBoard'] = self.ro_product_board
+        if self.ro_product_brand is not None:
+            result['RoProductBrand'] = self.ro_product_brand
+        if self.ro_product_device is not None:
+            result['RoProductDevice'] = self.ro_product_device
+        if self.ro_product_manufacturer is not None:
+            result['RoProductManufacturer'] = self.ro_product_manufacturer
+        if self.ro_product_model is not None:
+            result['RoProductModel'] = self.ro_product_model
+        if self.rw_ro_serial_no is not None:
+            result['RwRoSerialNo'] = self.rw_ro_serial_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.custom_property_infos = []
+        if m.get('CustomPropertyInfos') is not None:
+            for k in m.get('CustomPropertyInfos'):
+                temp_model = CreateSystemPropertyTemplateRequestSystemPropertyInfoCustomPropertyInfos()
+                self.custom_property_infos.append(temp_model.from_map(k))
+        if m.get('RoBootloader') is not None:
+            self.ro_bootloader = m.get('RoBootloader')
+        if m.get('RoBuildDisplayId') is not None:
+            self.ro_build_display_id = m.get('RoBuildDisplayId')
+        if m.get('RoBuildFingerprint') is not None:
+            self.ro_build_fingerprint = m.get('RoBuildFingerprint')
+        if m.get('RoBuildHost') is not None:
+            self.ro_build_host = m.get('RoBuildHost')
+        if m.get('RoBuildId') is not None:
+            self.ro_build_id = m.get('RoBuildId')
+        if m.get('RoBuildProduct') is not None:
+            self.ro_build_product = m.get('RoBuildProduct')
+        if m.get('RoBuildTags') is not None:
+            self.ro_build_tags = m.get('RoBuildTags')
+        if m.get('RoBuildType') is not None:
+            self.ro_build_type = m.get('RoBuildType')
+        if m.get('RoBuildUser') is not None:
+            self.ro_build_user = m.get('RoBuildUser')
+        if m.get('RoProductBoard') is not None:
+            self.ro_product_board = m.get('RoProductBoard')
+        if m.get('RoProductBrand') is not None:
+            self.ro_product_brand = m.get('RoProductBrand')
+        if m.get('RoProductDevice') is not None:
+            self.ro_product_device = m.get('RoProductDevice')
+        if m.get('RoProductManufacturer') is not None:
+            self.ro_product_manufacturer = m.get('RoProductManufacturer')
+        if m.get('RoProductModel') is not None:
+            self.ro_product_model = m.get('RoProductModel')
+        if m.get('RwRoSerialNo') is not None:
+            self.rw_ro_serial_no = m.get('RwRoSerialNo')
+        return self
+
+
+class CreateSystemPropertyTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        enable_auto: bool = None,
+        file_path: str = None,
+        system_property_info: CreateSystemPropertyTemplateRequestSystemPropertyInfo = None,
+        template_name: str = None,
+    ):
+        self.enable_auto = enable_auto
+        self.file_path = file_path
+        self.system_property_info = system_property_info
+        self.template_name = template_name
+
+    def validate(self):
+        if self.system_property_info:
+            self.system_property_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_auto is not None:
+            result['EnableAuto'] = self.enable_auto
+        if self.file_path is not None:
+            result['FilePath'] = self.file_path
+        if self.system_property_info is not None:
+            result['SystemPropertyInfo'] = self.system_property_info.to_map()
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableAuto') is not None:
+            self.enable_auto = m.get('EnableAuto')
+        if m.get('FilePath') is not None:
+            self.file_path = m.get('FilePath')
+        if m.get('SystemPropertyInfo') is not None:
+            temp_model = CreateSystemPropertyTemplateRequestSystemPropertyInfo()
+            self.system_property_info = temp_model.from_map(m['SystemPropertyInfo'])
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class CreateSystemPropertyTemplateShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        enable_auto: bool = None,
+        file_path: str = None,
+        system_property_info_shrink: str = None,
+        template_name: str = None,
+    ):
+        self.enable_auto = enable_auto
+        self.file_path = file_path
+        self.system_property_info_shrink = system_property_info_shrink
+        self.template_name = template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_auto is not None:
+            result['EnableAuto'] = self.enable_auto
+        if self.file_path is not None:
+            result['FilePath'] = self.file_path
+        if self.system_property_info_shrink is not None:
+            result['SystemPropertyInfo'] = self.system_property_info_shrink
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableAuto') is not None:
+            self.enable_auto = m.get('EnableAuto')
+        if m.get('FilePath') is not None:
+            self.file_path = m.get('FilePath')
+        if m.get('SystemPropertyInfo') is not None:
+            self.system_property_info_shrink = m.get('SystemPropertyInfo')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class CreateSystemPropertyTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        template_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class CreateSystemPropertyTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSystemPropertyTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSystemPropertyTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteAndroidInstanceGroupRequest(TeaModel):
     def __init__(
         self,
@@ -4497,6 +4834,114 @@ class DeletePolicyGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeletePolicyGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteSystemPropertyTemplatesRequest(TeaModel):
+    def __init__(
+        self,
+        template_ids: List[str] = None,
+    ):
+        self.template_ids = template_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.template_ids is not None:
+            result['TemplateIds'] = self.template_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TemplateIds') is not None:
+            self.template_ids = m.get('TemplateIds')
+        return self
+
+
+class DeleteSystemPropertyTemplatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteSystemPropertyTemplatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteSystemPropertyTemplatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteSystemPropertyTemplatesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8932,6 +9377,279 @@ class DescribeSpecResponse(TeaModel):
         return self
 
 
+class DescribeSystemPropertyTemplatesRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        template_ids: List[str] = None,
+        template_name: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.template_ids = template_ids
+        self.template_name = template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.template_ids is not None:
+            result['TemplateIds'] = self.template_ids
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('TemplateIds') is not None:
+            self.template_ids = m.get('TemplateIds')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSystemPropertyInfoCustomPropertyInfos(TeaModel):
+    def __init__(
+        self,
+        property_name: str = None,
+        property_value: str = None,
+    ):
+        self.property_name = property_name
+        self.property_value = property_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.property_name is not None:
+            result['PropertyName'] = self.property_name
+        if self.property_value is not None:
+            result['PropertyValue'] = self.property_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PropertyName') is not None:
+            self.property_name = m.get('PropertyName')
+        if m.get('PropertyValue') is not None:
+            self.property_value = m.get('PropertyValue')
+        return self
+
+
+class DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSystemPropertyInfo(TeaModel):
+    def __init__(
+        self,
+        custom_property_infos: List[DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSystemPropertyInfoCustomPropertyInfos] = None,
+        ro_product_device: str = None,
+    ):
+        self.custom_property_infos = custom_property_infos
+        self.ro_product_device = ro_product_device
+
+    def validate(self):
+        if self.custom_property_infos:
+            for k in self.custom_property_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CustomPropertyInfos'] = []
+        if self.custom_property_infos is not None:
+            for k in self.custom_property_infos:
+                result['CustomPropertyInfos'].append(k.to_map() if k else None)
+        if self.ro_product_device is not None:
+            result['RoProductDevice'] = self.ro_product_device
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.custom_property_infos = []
+        if m.get('CustomPropertyInfos') is not None:
+            for k in m.get('CustomPropertyInfos'):
+                temp_model = DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSystemPropertyInfoCustomPropertyInfos()
+                self.custom_property_infos.append(temp_model.from_map(k))
+        if m.get('RoProductDevice') is not None:
+            self.ro_product_device = m.get('RoProductDevice')
+        return self
+
+
+class DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModel(TeaModel):
+    def __init__(
+        self,
+        enable_auto: bool = None,
+        file_path: str = None,
+        status: str = None,
+        system_property_info: DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSystemPropertyInfo = None,
+        template_id: str = None,
+        template_name: str = None,
+    ):
+        self.enable_auto = enable_auto
+        self.file_path = file_path
+        self.status = status
+        self.system_property_info = system_property_info
+        self.template_id = template_id
+        self.template_name = template_name
+
+    def validate(self):
+        if self.system_property_info:
+            self.system_property_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_auto is not None:
+            result['EnableAuto'] = self.enable_auto
+        if self.file_path is not None:
+            result['FilePath'] = self.file_path
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.system_property_info is not None:
+            result['SystemPropertyInfo'] = self.system_property_info.to_map()
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableAuto') is not None:
+            self.enable_auto = m.get('EnableAuto')
+        if m.get('FilePath') is not None:
+            self.file_path = m.get('FilePath')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SystemPropertyInfo') is not None:
+            temp_model = DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSystemPropertyInfo()
+            self.system_property_info = temp_model.from_map(m['SystemPropertyInfo'])
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class DescribeSystemPropertyTemplatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        request_id: str = None,
+        system_property_template_model: List[DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModel] = None,
+        total_count: int = None,
+    ):
+        self.next_token = next_token
+        # Id of the request
+        self.request_id = request_id
+        self.system_property_template_model = system_property_template_model
+        self.total_count = total_count
+
+    def validate(self):
+        if self.system_property_template_model:
+            for k in self.system_property_template_model:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SystemPropertyTemplateModel'] = []
+        if self.system_property_template_model is not None:
+            for k in self.system_property_template_model:
+                result['SystemPropertyTemplateModel'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.system_property_template_model = []
+        if m.get('SystemPropertyTemplateModel') is not None:
+            for k in m.get('SystemPropertyTemplateModel'):
+                temp_model = DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModel()
+                self.system_property_template_model.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeSystemPropertyTemplatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSystemPropertyTemplatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSystemPropertyTemplatesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeTasksRequest(TeaModel):
     def __init__(
         self,
@@ -10379,6 +11097,137 @@ class GenerateCoordinationCodeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GenerateCoordinationCodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetInstancePropertiesRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class GetInstancePropertiesResponseBodyPropertyTemplateModel(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+    ):
+        self.content = content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        return self
+
+
+class GetInstancePropertiesResponseBody(TeaModel):
+    def __init__(
+        self,
+        property_template_model: GetInstancePropertiesResponseBodyPropertyTemplateModel = None,
+        request_id: str = None,
+    ):
+        self.property_template_model = property_template_model
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.property_template_model:
+            self.property_template_model.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.property_template_model is not None:
+            result['PropertyTemplateModel'] = self.property_template_model.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PropertyTemplateModel') is not None:
+            temp_model = GetInstancePropertiesResponseBodyPropertyTemplateModel()
+            self.property_template_model = temp_model.from_map(m['PropertyTemplateModel'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetInstancePropertiesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetInstancePropertiesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetInstancePropertiesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12620,6 +13469,343 @@ class ModifyPolicyGroupResponse(TeaModel):
         return self
 
 
+class ModifySystemPropertyTemplateRequestSystemPropertyInfoCustomPropertyInfos(TeaModel):
+    def __init__(
+        self,
+        property_name: str = None,
+        property_value: str = None,
+    ):
+        self.property_name = property_name
+        self.property_value = property_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.property_name is not None:
+            result['PropertyName'] = self.property_name
+        if self.property_value is not None:
+            result['PropertyValue'] = self.property_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PropertyName') is not None:
+            self.property_name = m.get('PropertyName')
+        if m.get('PropertyValue') is not None:
+            self.property_value = m.get('PropertyValue')
+        return self
+
+
+class ModifySystemPropertyTemplateRequestSystemPropertyInfo(TeaModel):
+    def __init__(
+        self,
+        custom_property_infos: List[ModifySystemPropertyTemplateRequestSystemPropertyInfoCustomPropertyInfos] = None,
+        ro_bootloader: str = None,
+        ro_build_display_id: str = None,
+        ro_build_fingerprint: str = None,
+        ro_build_host: str = None,
+        ro_build_id: str = None,
+        ro_build_product: str = None,
+        ro_build_tags: str = None,
+        ro_build_type: str = None,
+        ro_build_user: str = None,
+        ro_product_board: str = None,
+        ro_product_brand: str = None,
+        ro_product_device: str = None,
+        ro_product_manufacturer: str = None,
+        ro_product_model: str = None,
+        rw_ro_serial_no: str = None,
+    ):
+        self.custom_property_infos = custom_property_infos
+        self.ro_bootloader = ro_bootloader
+        self.ro_build_display_id = ro_build_display_id
+        self.ro_build_fingerprint = ro_build_fingerprint
+        self.ro_build_host = ro_build_host
+        self.ro_build_id = ro_build_id
+        self.ro_build_product = ro_build_product
+        self.ro_build_tags = ro_build_tags
+        self.ro_build_type = ro_build_type
+        self.ro_build_user = ro_build_user
+        self.ro_product_board = ro_product_board
+        self.ro_product_brand = ro_product_brand
+        self.ro_product_device = ro_product_device
+        self.ro_product_manufacturer = ro_product_manufacturer
+        self.ro_product_model = ro_product_model
+        self.rw_ro_serial_no = rw_ro_serial_no
+
+    def validate(self):
+        if self.custom_property_infos:
+            for k in self.custom_property_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CustomPropertyInfos'] = []
+        if self.custom_property_infos is not None:
+            for k in self.custom_property_infos:
+                result['CustomPropertyInfos'].append(k.to_map() if k else None)
+        if self.ro_bootloader is not None:
+            result['RoBootloader'] = self.ro_bootloader
+        if self.ro_build_display_id is not None:
+            result['RoBuildDisplayId'] = self.ro_build_display_id
+        if self.ro_build_fingerprint is not None:
+            result['RoBuildFingerprint'] = self.ro_build_fingerprint
+        if self.ro_build_host is not None:
+            result['RoBuildHost'] = self.ro_build_host
+        if self.ro_build_id is not None:
+            result['RoBuildId'] = self.ro_build_id
+        if self.ro_build_product is not None:
+            result['RoBuildProduct'] = self.ro_build_product
+        if self.ro_build_tags is not None:
+            result['RoBuildTags'] = self.ro_build_tags
+        if self.ro_build_type is not None:
+            result['RoBuildType'] = self.ro_build_type
+        if self.ro_build_user is not None:
+            result['RoBuildUser'] = self.ro_build_user
+        if self.ro_product_board is not None:
+            result['RoProductBoard'] = self.ro_product_board
+        if self.ro_product_brand is not None:
+            result['RoProductBrand'] = self.ro_product_brand
+        if self.ro_product_device is not None:
+            result['RoProductDevice'] = self.ro_product_device
+        if self.ro_product_manufacturer is not None:
+            result['RoProductManufacturer'] = self.ro_product_manufacturer
+        if self.ro_product_model is not None:
+            result['RoProductModel'] = self.ro_product_model
+        if self.rw_ro_serial_no is not None:
+            result['RwRoSerialNo'] = self.rw_ro_serial_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.custom_property_infos = []
+        if m.get('CustomPropertyInfos') is not None:
+            for k in m.get('CustomPropertyInfos'):
+                temp_model = ModifySystemPropertyTemplateRequestSystemPropertyInfoCustomPropertyInfos()
+                self.custom_property_infos.append(temp_model.from_map(k))
+        if m.get('RoBootloader') is not None:
+            self.ro_bootloader = m.get('RoBootloader')
+        if m.get('RoBuildDisplayId') is not None:
+            self.ro_build_display_id = m.get('RoBuildDisplayId')
+        if m.get('RoBuildFingerprint') is not None:
+            self.ro_build_fingerprint = m.get('RoBuildFingerprint')
+        if m.get('RoBuildHost') is not None:
+            self.ro_build_host = m.get('RoBuildHost')
+        if m.get('RoBuildId') is not None:
+            self.ro_build_id = m.get('RoBuildId')
+        if m.get('RoBuildProduct') is not None:
+            self.ro_build_product = m.get('RoBuildProduct')
+        if m.get('RoBuildTags') is not None:
+            self.ro_build_tags = m.get('RoBuildTags')
+        if m.get('RoBuildType') is not None:
+            self.ro_build_type = m.get('RoBuildType')
+        if m.get('RoBuildUser') is not None:
+            self.ro_build_user = m.get('RoBuildUser')
+        if m.get('RoProductBoard') is not None:
+            self.ro_product_board = m.get('RoProductBoard')
+        if m.get('RoProductBrand') is not None:
+            self.ro_product_brand = m.get('RoProductBrand')
+        if m.get('RoProductDevice') is not None:
+            self.ro_product_device = m.get('RoProductDevice')
+        if m.get('RoProductManufacturer') is not None:
+            self.ro_product_manufacturer = m.get('RoProductManufacturer')
+        if m.get('RoProductModel') is not None:
+            self.ro_product_model = m.get('RoProductModel')
+        if m.get('RwRoSerialNo') is not None:
+            self.rw_ro_serial_no = m.get('RwRoSerialNo')
+        return self
+
+
+class ModifySystemPropertyTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        enable_auto: bool = None,
+        file_path: str = None,
+        system_property_info: ModifySystemPropertyTemplateRequestSystemPropertyInfo = None,
+        template_id: str = None,
+        template_name: str = None,
+    ):
+        self.enable_auto = enable_auto
+        self.file_path = file_path
+        self.system_property_info = system_property_info
+        self.template_id = template_id
+        self.template_name = template_name
+
+    def validate(self):
+        if self.system_property_info:
+            self.system_property_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_auto is not None:
+            result['EnableAuto'] = self.enable_auto
+        if self.file_path is not None:
+            result['FilePath'] = self.file_path
+        if self.system_property_info is not None:
+            result['SystemPropertyInfo'] = self.system_property_info.to_map()
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableAuto') is not None:
+            self.enable_auto = m.get('EnableAuto')
+        if m.get('FilePath') is not None:
+            self.file_path = m.get('FilePath')
+        if m.get('SystemPropertyInfo') is not None:
+            temp_model = ModifySystemPropertyTemplateRequestSystemPropertyInfo()
+            self.system_property_info = temp_model.from_map(m['SystemPropertyInfo'])
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class ModifySystemPropertyTemplateShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        enable_auto: bool = None,
+        file_path: str = None,
+        system_property_info_shrink: str = None,
+        template_id: str = None,
+        template_name: str = None,
+    ):
+        self.enable_auto = enable_auto
+        self.file_path = file_path
+        self.system_property_info_shrink = system_property_info_shrink
+        self.template_id = template_id
+        self.template_name = template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_auto is not None:
+            result['EnableAuto'] = self.enable_auto
+        if self.file_path is not None:
+            result['FilePath'] = self.file_path
+        if self.system_property_info_shrink is not None:
+            result['SystemPropertyInfo'] = self.system_property_info_shrink
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableAuto') is not None:
+            self.enable_auto = m.get('EnableAuto')
+        if m.get('FilePath') is not None:
+            self.file_path = m.get('FilePath')
+        if m.get('SystemPropertyInfo') is not None:
+            self.system_property_info_shrink = m.get('SystemPropertyInfo')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class ModifySystemPropertyTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        template_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class ModifySystemPropertyTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifySystemPropertyTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifySystemPropertyTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class OperateAppRequest(TeaModel):
     def __init__(
         self,
@@ -13784,6 +14970,114 @@ class SendFileResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SendFileResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SendSystemPropertyTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        android_instance_ids: List[str] = None,
+        template_id: str = None,
+        template_ids: List[str] = None,
+    ):
+        self.android_instance_ids = android_instance_ids
+        self.template_id = template_id
+        self.template_ids = template_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.android_instance_ids is not None:
+            result['AndroidInstanceIds'] = self.android_instance_ids
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_ids is not None:
+            result['TemplateIds'] = self.template_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AndroidInstanceIds') is not None:
+            self.android_instance_ids = m.get('AndroidInstanceIds')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateIds') is not None:
+            self.template_ids = m.get('TemplateIds')
+        return self
+
+
+class SendSystemPropertyTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SendSystemPropertyTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SendSystemPropertyTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SendSystemPropertyTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
