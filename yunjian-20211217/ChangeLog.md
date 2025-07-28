@@ -1,3 +1,7 @@
+2025-07-28 Version: 1.2.0
+- Support API PageDemandPlanWithDemandInfo.
+
+
 2025-05-30 Version: 1.1.0
 - Support API acceptFulfillmentDecision.
 - Update API CreateDemandPlan: add request parameters body.targetCid.

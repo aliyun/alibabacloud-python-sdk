@@ -2153,6 +2153,388 @@ class GetUrgentDemandPlanListResponse(TeaModel):
         return self
 
 
+class PageDemandPlanWithDemandInfoHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        yun_user_id: str = None,
+    ):
+        self.common_headers = common_headers
+        # This parameter is required.
+        self.yun_user_id = yun_user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.yun_user_id is not None:
+            result['Yun-User-Id'] = self.yun_user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('Yun-User-Id') is not None:
+            self.yun_user_id = m.get('Yun-User-Id')
+        return self
+
+
+class PageDemandPlanWithDemandInfoRequest(TeaModel):
+    def __init__(
+        self,
+        approval_status: str = None,
+        create_time_end: str = None,
+        create_time_start: str = None,
+        creator_staff_id: str = None,
+        demand_delivery_status: str = None,
+        demand_id: List[int] = None,
+        demand_plan_id: List[int] = None,
+        demand_plan_status: str = None,
+        operator: str = None,
+        page_num: int = None,
+        page_size: int = None,
+        ro_code: str = None,
+    ):
+        self.approval_status = approval_status
+        self.create_time_end = create_time_end
+        self.create_time_start = create_time_start
+        self.creator_staff_id = creator_staff_id
+        self.demand_delivery_status = demand_delivery_status
+        self.demand_id = demand_id
+        self.demand_plan_id = demand_plan_id
+        self.demand_plan_status = demand_plan_status
+        # This parameter is required.
+        self.operator = operator
+        # This parameter is required.
+        self.page_num = page_num
+        # This parameter is required.
+        self.page_size = page_size
+        self.ro_code = ro_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.approval_status is not None:
+            result['approvalStatus'] = self.approval_status
+        if self.create_time_end is not None:
+            result['createTimeEnd'] = self.create_time_end
+        if self.create_time_start is not None:
+            result['createTimeStart'] = self.create_time_start
+        if self.creator_staff_id is not None:
+            result['creatorStaffId'] = self.creator_staff_id
+        if self.demand_delivery_status is not None:
+            result['demandDeliveryStatus'] = self.demand_delivery_status
+        if self.demand_id is not None:
+            result['demandId'] = self.demand_id
+        if self.demand_plan_id is not None:
+            result['demandPlanId'] = self.demand_plan_id
+        if self.demand_plan_status is not None:
+            result['demandPlanStatus'] = self.demand_plan_status
+        if self.operator is not None:
+            result['operator'] = self.operator
+        if self.page_num is not None:
+            result['pageNum'] = self.page_num
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.ro_code is not None:
+            result['roCode'] = self.ro_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('approvalStatus') is not None:
+            self.approval_status = m.get('approvalStatus')
+        if m.get('createTimeEnd') is not None:
+            self.create_time_end = m.get('createTimeEnd')
+        if m.get('createTimeStart') is not None:
+            self.create_time_start = m.get('createTimeStart')
+        if m.get('creatorStaffId') is not None:
+            self.creator_staff_id = m.get('creatorStaffId')
+        if m.get('demandDeliveryStatus') is not None:
+            self.demand_delivery_status = m.get('demandDeliveryStatus')
+        if m.get('demandId') is not None:
+            self.demand_id = m.get('demandId')
+        if m.get('demandPlanId') is not None:
+            self.demand_plan_id = m.get('demandPlanId')
+        if m.get('demandPlanStatus') is not None:
+            self.demand_plan_status = m.get('demandPlanStatus')
+        if m.get('operator') is not None:
+            self.operator = m.get('operator')
+        if m.get('pageNum') is not None:
+            self.page_num = m.get('pageNum')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('roCode') is not None:
+            self.ro_code = m.get('roCode')
+        return self
+
+
+class PageDemandPlanWithDemandInfoResponseBodyDataData(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        account_name: str = None,
+        approval_node_status: str = None,
+        approval_status: str = None,
+        creator: str = None,
+        delivery_plan_id: str = None,
+        delivery_status: str = None,
+        demand_desc: str = None,
+        demand_id: int = None,
+        demand_name: str = None,
+        demand_plan_id: float = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        modifier: str = None,
+        requirement_object_code: str = None,
+        uid: int = None,
+    ):
+        self.account_id = account_id
+        self.account_name = account_name
+        self.approval_node_status = approval_node_status
+        self.approval_status = approval_status
+        self.creator = creator
+        self.delivery_plan_id = delivery_plan_id
+        self.delivery_status = delivery_status
+        self.demand_desc = demand_desc
+        self.demand_id = demand_id
+        self.demand_name = demand_name
+        self.demand_plan_id = demand_plan_id
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.modifier = modifier
+        self.requirement_object_code = requirement_object_code
+        self.uid = uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        if self.account_name is not None:
+            result['accountName'] = self.account_name
+        if self.approval_node_status is not None:
+            result['approvalNodeStatus'] = self.approval_node_status
+        if self.approval_status is not None:
+            result['approvalStatus'] = self.approval_status
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.delivery_plan_id is not None:
+            result['deliveryPlanId'] = self.delivery_plan_id
+        if self.delivery_status is not None:
+            result['deliveryStatus'] = self.delivery_status
+        if self.demand_desc is not None:
+            result['demandDesc'] = self.demand_desc
+        if self.demand_id is not None:
+            result['demandId'] = self.demand_id
+        if self.demand_name is not None:
+            result['demandName'] = self.demand_name
+        if self.demand_plan_id is not None:
+            result['demandPlanId'] = self.demand_plan_id
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.modifier is not None:
+            result['modifier'] = self.modifier
+        if self.requirement_object_code is not None:
+            result['requirementObjectCode'] = self.requirement_object_code
+        if self.uid is not None:
+            result['uid'] = self.uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        if m.get('accountName') is not None:
+            self.account_name = m.get('accountName')
+        if m.get('approvalNodeStatus') is not None:
+            self.approval_node_status = m.get('approvalNodeStatus')
+        if m.get('approvalStatus') is not None:
+            self.approval_status = m.get('approvalStatus')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
+        if m.get('deliveryPlanId') is not None:
+            self.delivery_plan_id = m.get('deliveryPlanId')
+        if m.get('deliveryStatus') is not None:
+            self.delivery_status = m.get('deliveryStatus')
+        if m.get('demandDesc') is not None:
+            self.demand_desc = m.get('demandDesc')
+        if m.get('demandId') is not None:
+            self.demand_id = m.get('demandId')
+        if m.get('demandName') is not None:
+            self.demand_name = m.get('demandName')
+        if m.get('demandPlanId') is not None:
+            self.demand_plan_id = m.get('demandPlanId')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('modifier') is not None:
+            self.modifier = m.get('modifier')
+        if m.get('requirementObjectCode') is not None:
+            self.requirement_object_code = m.get('requirementObjectCode')
+        if m.get('uid') is not None:
+            self.uid = m.get('uid')
+        return self
+
+
+class PageDemandPlanWithDemandInfoResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        data: List[PageDemandPlanWithDemandInfoResponseBodyDataData] = None,
+        page_num: int = None,
+        page_size: int = None,
+        total: int = None,
+    ):
+        self.data = data
+        self.page_num = page_num
+        self.page_size = page_size
+        self.total = total
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.page_num is not None:
+            result['pageNum'] = self.page_num
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = PageDemandPlanWithDemandInfoResponseBodyDataData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('pageNum') is not None:
+            self.page_num = m.get('pageNum')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class PageDemandPlanWithDemandInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: PageDemandPlanWithDemandInfoResponseBodyData = None,
+        request_id: str = None,
+        trace_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = PageDemandPlanWithDemandInfoResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class PageDemandPlanWithDemandInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PageDemandPlanWithDemandInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PageDemandPlanWithDemandInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class PushResourcePlanHeaders(TeaModel):
     def __init__(
         self,

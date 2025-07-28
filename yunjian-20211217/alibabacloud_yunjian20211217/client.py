@@ -1065,6 +1065,164 @@ class Client(OpenApiClient):
         headers = yunjian_20211217_models.GetUrgentDemandPlanListHeaders()
         return await self.get_urgent_demand_plan_list_with_options_async(request, headers, runtime)
 
+    def page_demand_plan_with_demand_info_with_options(
+        self,
+        request: yunjian_20211217_models.PageDemandPlanWithDemandInfoRequest,
+        headers: yunjian_20211217_models.PageDemandPlanWithDemandInfoHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> yunjian_20211217_models.PageDemandPlanWithDemandInfoResponse:
+        """
+        @summary 报备列表查询
+        
+        @param request: PageDemandPlanWithDemandInfoRequest
+        @param headers: PageDemandPlanWithDemandInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PageDemandPlanWithDemandInfoResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.approval_status):
+            body['approvalStatus'] = request.approval_status
+        if not UtilClient.is_unset(request.create_time_end):
+            body['createTimeEnd'] = request.create_time_end
+        if not UtilClient.is_unset(request.create_time_start):
+            body['createTimeStart'] = request.create_time_start
+        if not UtilClient.is_unset(request.creator_staff_id):
+            body['creatorStaffId'] = request.creator_staff_id
+        if not UtilClient.is_unset(request.demand_delivery_status):
+            body['demandDeliveryStatus'] = request.demand_delivery_status
+        if not UtilClient.is_unset(request.demand_id):
+            body['demandId'] = request.demand_id
+        if not UtilClient.is_unset(request.demand_plan_id):
+            body['demandPlanId'] = request.demand_plan_id
+        if not UtilClient.is_unset(request.demand_plan_status):
+            body['demandPlanStatus'] = request.demand_plan_status
+        if not UtilClient.is_unset(request.operator):
+            body['operator'] = request.operator
+        if not UtilClient.is_unset(request.page_num):
+            body['pageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            body['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.ro_code):
+            body['roCode'] = request.ro_code
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.yun_user_id):
+            real_headers['Yun-User-Id'] = UtilClient.to_jsonstring(headers.yun_user_id)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PageDemandPlanWithDemandInfo',
+            version='2021-12-17',
+            protocol='HTTPS',
+            pathname=f'/api/demand/getDemandPlanList',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yunjian_20211217_models.PageDemandPlanWithDemandInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def page_demand_plan_with_demand_info_with_options_async(
+        self,
+        request: yunjian_20211217_models.PageDemandPlanWithDemandInfoRequest,
+        headers: yunjian_20211217_models.PageDemandPlanWithDemandInfoHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> yunjian_20211217_models.PageDemandPlanWithDemandInfoResponse:
+        """
+        @summary 报备列表查询
+        
+        @param request: PageDemandPlanWithDemandInfoRequest
+        @param headers: PageDemandPlanWithDemandInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PageDemandPlanWithDemandInfoResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.approval_status):
+            body['approvalStatus'] = request.approval_status
+        if not UtilClient.is_unset(request.create_time_end):
+            body['createTimeEnd'] = request.create_time_end
+        if not UtilClient.is_unset(request.create_time_start):
+            body['createTimeStart'] = request.create_time_start
+        if not UtilClient.is_unset(request.creator_staff_id):
+            body['creatorStaffId'] = request.creator_staff_id
+        if not UtilClient.is_unset(request.demand_delivery_status):
+            body['demandDeliveryStatus'] = request.demand_delivery_status
+        if not UtilClient.is_unset(request.demand_id):
+            body['demandId'] = request.demand_id
+        if not UtilClient.is_unset(request.demand_plan_id):
+            body['demandPlanId'] = request.demand_plan_id
+        if not UtilClient.is_unset(request.demand_plan_status):
+            body['demandPlanStatus'] = request.demand_plan_status
+        if not UtilClient.is_unset(request.operator):
+            body['operator'] = request.operator
+        if not UtilClient.is_unset(request.page_num):
+            body['pageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            body['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.ro_code):
+            body['roCode'] = request.ro_code
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.yun_user_id):
+            real_headers['Yun-User-Id'] = UtilClient.to_jsonstring(headers.yun_user_id)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PageDemandPlanWithDemandInfo',
+            version='2021-12-17',
+            protocol='HTTPS',
+            pathname=f'/api/demand/getDemandPlanList',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yunjian_20211217_models.PageDemandPlanWithDemandInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def page_demand_plan_with_demand_info(
+        self,
+        request: yunjian_20211217_models.PageDemandPlanWithDemandInfoRequest,
+    ) -> yunjian_20211217_models.PageDemandPlanWithDemandInfoResponse:
+        """
+        @summary 报备列表查询
+        
+        @param request: PageDemandPlanWithDemandInfoRequest
+        @return: PageDemandPlanWithDemandInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = yunjian_20211217_models.PageDemandPlanWithDemandInfoHeaders()
+        return self.page_demand_plan_with_demand_info_with_options(request, headers, runtime)
+
+    async def page_demand_plan_with_demand_info_async(
+        self,
+        request: yunjian_20211217_models.PageDemandPlanWithDemandInfoRequest,
+    ) -> yunjian_20211217_models.PageDemandPlanWithDemandInfoResponse:
+        """
+        @summary 报备列表查询
+        
+        @param request: PageDemandPlanWithDemandInfoRequest
+        @return: PageDemandPlanWithDemandInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = yunjian_20211217_models.PageDemandPlanWithDemandInfoHeaders()
+        return await self.page_demand_plan_with_demand_info_with_options_async(request, headers, runtime)
+
     def push_resource_plan_with_options(
         self,
         request: yunjian_20211217_models.PushResourcePlanRequest,
