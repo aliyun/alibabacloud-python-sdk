@@ -477,6 +477,230 @@ class CreateInstanceResponse(TeaModel):
         return self
 
 
+class CreateVCUInstanceRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # This parameter is required.
+        self.key = key
+        # This parameter is required.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateVCUInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        alias_name: str = None,
+        auto_renew_period_in_month: int = None,
+        cluster_type: str = None,
+        dry_run: bool = None,
+        enable_auto_renew: bool = None,
+        enable_elastic_vcu: bool = None,
+        instance_description: str = None,
+        period_in_month: int = None,
+        resource_group_id: str = None,
+        tags: List[CreateVCUInstanceRequestTags] = None,
+        vcu: int = None,
+    ):
+        self.alias_name = alias_name
+        self.auto_renew_period_in_month = auto_renew_period_in_month
+        # cluster type
+        # 
+        # This parameter is required.
+        self.cluster_type = cluster_type
+        self.dry_run = dry_run
+        self.enable_auto_renew = enable_auto_renew
+        self.enable_elastic_vcu = enable_elastic_vcu
+        self.instance_description = instance_description
+        # This parameter is required.
+        self.period_in_month = period_in_month
+        # resource group id
+        self.resource_group_id = resource_group_id
+        # tag
+        self.tags = tags
+        # This parameter is required.
+        self.vcu = vcu
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias_name is not None:
+            result['AliasName'] = self.alias_name
+        if self.auto_renew_period_in_month is not None:
+            result['AutoRenewPeriodInMonth'] = self.auto_renew_period_in_month
+        if self.cluster_type is not None:
+            result['ClusterType'] = self.cluster_type
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.enable_auto_renew is not None:
+            result['EnableAutoRenew'] = self.enable_auto_renew
+        if self.enable_elastic_vcu is not None:
+            result['EnableElasticVCU'] = self.enable_elastic_vcu
+        if self.instance_description is not None:
+            result['InstanceDescription'] = self.instance_description
+        if self.period_in_month is not None:
+            result['PeriodInMonth'] = self.period_in_month
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.vcu is not None:
+            result['VCU'] = self.vcu
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliasName') is not None:
+            self.alias_name = m.get('AliasName')
+        if m.get('AutoRenewPeriodInMonth') is not None:
+            self.auto_renew_period_in_month = m.get('AutoRenewPeriodInMonth')
+        if m.get('ClusterType') is not None:
+            self.cluster_type = m.get('ClusterType')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('EnableAutoRenew') is not None:
+            self.enable_auto_renew = m.get('EnableAutoRenew')
+        if m.get('EnableElasticVCU') is not None:
+            self.enable_elastic_vcu = m.get('EnableElasticVCU')
+        if m.get('InstanceDescription') is not None:
+            self.instance_description = m.get('InstanceDescription')
+        if m.get('PeriodInMonth') is not None:
+            self.period_in_month = m.get('PeriodInMonth')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = CreateVCUInstanceRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('VCU') is not None:
+            self.vcu = m.get('VCU')
+        return self
+
+
+class CreateVCUInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        instance_name: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.instance_name = instance_name
+        self.message = message
+        # request id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateVCUInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateVCUInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateVCUInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -1189,7 +1413,9 @@ class ListInstancesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -1237,8 +1463,9 @@ class ListInstancesRequest(TeaModel):
         self.next_token = next_token
         # The resource group ID. You can query the ID on the Resource Group page in the Resource Management console.
         self.resource_group_id = resource_group_id
-        # The instance status.
+        # The status of the instance.
         self.status = status
+        # The tags of the instance.
         self.tag = tag
 
     def validate(self):
@@ -1314,8 +1541,9 @@ class ListInstancesShrinkRequest(TeaModel):
         self.next_token = next_token
         # The resource group ID. You can query the ID on the Resource Group page in the Resource Management console.
         self.resource_group_id = resource_group_id
-        # The instance status.
+        # The status of the instance.
         self.status = status
+        # The tags of the instance.
         self.tag_shrink = tag_shrink
 
     def validate(self):
@@ -1393,11 +1621,11 @@ class ListInstancesResponseBodyInstances(TeaModel):
         # *   SSD: high-performance instance
         # *   HYBRID: capacity instance
         self.instance_specification = instance_specification
-        # The instance status.
+        # The status of the instance.
         # 
-        # *   normal: The instance works as expected.
+        # *   normal: The instance runs as expected.
         # *   forbidden: The instance is disabled.
-        # *   deleting: The instance is being deleted.
+        # *   Deleting: The instance is being released.
         self.instance_status = instance_status
         # Indicates whether zone-redundant storage (ZRS) is enabled for the instance.
         # 

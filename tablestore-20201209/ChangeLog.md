@@ -1,3 +1,7 @@
+2025-07-28 Version: 1.2.0
+- Support API CreateVCUInstance.
+
+
 2025-02-08 Version: 1.1.2
 - Update API ListInstances: add param Tag.
 
