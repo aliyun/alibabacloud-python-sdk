@@ -4959,6 +4959,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.dns_category):
+            query['DnsCategory'] = request.dns_category
         if not UtilClient.is_unset(request.ipv_4s):
             query['Ipv4s'] = request.ipv_4s
         if not UtilClient.is_unset(request.lang):
@@ -5000,6 +5002,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.dns_category):
+            query['DnsCategory'] = request.dns_category
         if not UtilClient.is_unset(request.ipv_4s):
             query['Ipv4s'] = request.ipv_4s
         if not UtilClient.is_unset(request.lang):

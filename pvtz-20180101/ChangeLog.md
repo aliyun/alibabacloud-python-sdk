@@ -1,3 +1,10 @@
+2025-07-28 Version: 1.3.2
+- Update API DescribeCustomLineInfo: add response parameters Body.Dnscategory.
+- Update API DescribeCustomLines: add response parameters Body.CustomLines.$.DnsCategory.
+- Update API SearchCustomLines: add response parameters Body.CustomLines.$.DnsCategory.
+- Update API UpdateCustomLine: add request parameters DnsCategory.
+
+
 2025-06-30 Version: 1.3.1
 - Update API AddResolverRule: add request parameters EdgeDnsClusters.
 - Update API AddResolverRule: add request parameters Vpcs.

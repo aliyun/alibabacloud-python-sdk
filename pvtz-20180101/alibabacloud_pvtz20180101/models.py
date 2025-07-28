@@ -2957,6 +2957,7 @@ class DescribeCustomLineInfoResponseBody(TeaModel):
         creator: str = None,
         creator_sub_type: str = None,
         creator_type: str = None,
+        dnscategory: str = None,
         ipv_4s: List[str] = None,
         line_id: str = None,
         name: str = None,
@@ -2982,6 +2983,7 @@ class DescribeCustomLineInfoResponseBody(TeaModel):
         # *   USER: user
         # *   SYSTEM: system
         self.creator_type = creator_type
+        self.dnscategory = dnscategory
         # The IPv4 CIDR blocks.
         self.ipv_4s = ipv_4s
         # The unique ID of the custom line.
@@ -3014,6 +3016,8 @@ class DescribeCustomLineInfoResponseBody(TeaModel):
             result['CreatorSubType'] = self.creator_sub_type
         if self.creator_type is not None:
             result['CreatorType'] = self.creator_type
+        if self.dnscategory is not None:
+            result['Dnscategory'] = self.dnscategory
         if self.ipv_4s is not None:
             result['Ipv4s'] = self.ipv_4s
         if self.line_id is not None:
@@ -3040,6 +3044,8 @@ class DescribeCustomLineInfoResponseBody(TeaModel):
             self.creator_sub_type = m.get('CreatorSubType')
         if m.get('CreatorType') is not None:
             self.creator_type = m.get('CreatorType')
+        if m.get('Dnscategory') is not None:
+            self.dnscategory = m.get('Dnscategory')
         if m.get('Ipv4s') is not None:
             self.ipv_4s = m.get('Ipv4s')
         if m.get('LineId') is not None:
@@ -3173,6 +3179,7 @@ class DescribeCustomLinesResponseBodyCustomLinesCustomLine(TeaModel):
         creator: str = None,
         creator_sub_type: str = None,
         creator_type: str = None,
+        dns_category: str = None,
         ipv_4s: DescribeCustomLinesResponseBodyCustomLinesCustomLineIpv4s = None,
         line_id: str = None,
         name: str = None,
@@ -3197,6 +3204,7 @@ class DescribeCustomLinesResponseBodyCustomLinesCustomLine(TeaModel):
         # *   USER: user
         # *   SYSTEM: system
         self.creator_type = creator_type
+        self.dns_category = dns_category
         # The IPv4 CIDR blocks.
         self.ipv_4s = ipv_4s
         # The unique ID of the custom line.
@@ -3228,6 +3236,8 @@ class DescribeCustomLinesResponseBodyCustomLinesCustomLine(TeaModel):
             result['CreatorSubType'] = self.creator_sub_type
         if self.creator_type is not None:
             result['CreatorType'] = self.creator_type
+        if self.dns_category is not None:
+            result['DnsCategory'] = self.dns_category
         if self.ipv_4s is not None:
             result['Ipv4s'] = self.ipv_4s.to_map()
         if self.line_id is not None:
@@ -3252,6 +3262,8 @@ class DescribeCustomLinesResponseBodyCustomLinesCustomLine(TeaModel):
             self.creator_sub_type = m.get('CreatorSubType')
         if m.get('CreatorType') is not None:
             self.creator_type = m.get('CreatorType')
+        if m.get('DnsCategory') is not None:
+            self.dns_category = m.get('DnsCategory')
         if m.get('Ipv4s') is not None:
             temp_model = DescribeCustomLinesResponseBodyCustomLinesCustomLineIpv4s()
             self.ipv_4s = temp_model.from_map(m['Ipv4s'])
@@ -9147,6 +9159,7 @@ class SearchCustomLinesResponseBodyCustomLinesCustomLine(TeaModel):
         creator: str = None,
         creator_sub_type: str = None,
         creator_type: str = None,
+        dns_category: str = None,
         ipv_4s: SearchCustomLinesResponseBodyCustomLinesCustomLineIpv4s = None,
         line_id: str = None,
         name: str = None,
@@ -9171,6 +9184,7 @@ class SearchCustomLinesResponseBodyCustomLinesCustomLine(TeaModel):
         # *   USER: user
         # *   SYSTEM: system
         self.creator_type = creator_type
+        self.dns_category = dns_category
         # The IPv4 CIDR blocks.
         self.ipv_4s = ipv_4s
         # The unique ID of the custom line.
@@ -9202,6 +9216,8 @@ class SearchCustomLinesResponseBodyCustomLinesCustomLine(TeaModel):
             result['CreatorSubType'] = self.creator_sub_type
         if self.creator_type is not None:
             result['CreatorType'] = self.creator_type
+        if self.dns_category is not None:
+            result['DnsCategory'] = self.dns_category
         if self.ipv_4s is not None:
             result['Ipv4s'] = self.ipv_4s.to_map()
         if self.line_id is not None:
@@ -9226,6 +9242,8 @@ class SearchCustomLinesResponseBodyCustomLinesCustomLine(TeaModel):
             self.creator_sub_type = m.get('CreatorSubType')
         if m.get('CreatorType') is not None:
             self.creator_type = m.get('CreatorType')
+        if m.get('DnsCategory') is not None:
+            self.dns_category = m.get('DnsCategory')
         if m.get('Ipv4s') is not None:
             temp_model = SearchCustomLinesResponseBodyCustomLinesCustomLineIpv4s()
             self.ipv_4s = temp_model.from_map(m['Ipv4s'])
@@ -10003,11 +10021,13 @@ class UntagResourcesResponse(TeaModel):
 class UpdateCustomLineRequest(TeaModel):
     def __init__(
         self,
+        dns_category: str = None,
         ipv_4s: List[str] = None,
         lang: str = None,
         line_id: str = None,
         name: str = None,
     ):
+        self.dns_category = dns_category
         # The IPv4 CIDR blocks.
         # 
         # This parameter is required.
@@ -10030,6 +10050,8 @@ class UpdateCustomLineRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.dns_category is not None:
+            result['DnsCategory'] = self.dns_category
         if self.ipv_4s is not None:
             result['Ipv4s'] = self.ipv_4s
         if self.lang is not None:
@@ -10042,6 +10064,8 @@ class UpdateCustomLineRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DnsCategory') is not None:
+            self.dns_category = m.get('DnsCategory')
         if m.get('Ipv4s') is not None:
             self.ipv_4s = m.get('Ipv4s')
         if m.get('Lang') is not None:
