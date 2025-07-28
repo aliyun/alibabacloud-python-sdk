@@ -1,3 +1,6 @@
+2025-07-28 Version: 4.8.7
+- Generated python 2016-07-14 for CloudAPI.
+
 2025-07-15 Version: 4.8.6
 - Update API DescribeInstances: add request parameters InstanceType.
 
