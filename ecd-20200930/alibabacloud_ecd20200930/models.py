@@ -27951,6 +27951,7 @@ class DescribeDesktopsRequest(TeaModel):
         gpu_instance_group_id: str = None,
         group_id: str = None,
         image_id: List[str] = None,
+        include_auto_snapshot_policy: bool = None,
         management_flag: str = None,
         max_results: int = None,
         multi_resource: bool = None,
@@ -28027,6 +28028,7 @@ class DescribeDesktopsRequest(TeaModel):
         self.group_id = group_id
         # The IDs of the images.
         self.image_id = image_id
+        self.include_auto_snapshot_policy = include_auto_snapshot_policy
         # The flag that is used to manage the cloud desktops.
         self.management_flag = management_flag
         # The number of entries per page.
@@ -28139,6 +28141,8 @@ class DescribeDesktopsRequest(TeaModel):
             result['GroupId'] = self.group_id
         if self.image_id is not None:
             result['ImageId'] = self.image_id
+        if self.include_auto_snapshot_policy is not None:
+            result['IncludeAutoSnapshotPolicy'] = self.include_auto_snapshot_policy
         if self.management_flag is not None:
             result['ManagementFlag'] = self.management_flag
         if self.max_results is not None:
@@ -28217,6 +28221,8 @@ class DescribeDesktopsRequest(TeaModel):
             self.group_id = m.get('GroupId')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
+        if m.get('IncludeAutoSnapshotPolicy') is not None:
+            self.include_auto_snapshot_policy = m.get('IncludeAutoSnapshotPolicy')
         if m.get('ManagementFlag') is not None:
             self.management_flag = m.get('ManagementFlag')
         if m.get('MaxResults') is not None:

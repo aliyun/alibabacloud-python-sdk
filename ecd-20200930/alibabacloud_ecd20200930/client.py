@@ -13994,6 +13994,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.include_auto_snapshot_policy):
+            query['IncludeAutoSnapshotPolicy'] = request.include_auto_snapshot_policy
         if not UtilClient.is_unset(request.management_flag):
             query['ManagementFlag'] = request.management_flag
         if not UtilClient.is_unset(request.max_results):
@@ -14099,6 +14101,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.include_auto_snapshot_policy):
+            query['IncludeAutoSnapshotPolicy'] = request.include_auto_snapshot_policy
         if not UtilClient.is_unset(request.management_flag):
             query['ManagementFlag'] = request.management_flag
         if not UtilClient.is_unset(request.max_results):

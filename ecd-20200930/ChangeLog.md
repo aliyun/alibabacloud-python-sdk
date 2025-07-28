@@ -1,3 +1,7 @@
+2025-07-28 Version: 4.12.2
+- Update API DescribeDesktops: add request parameters IncludeAutoSnapshotPolicy.
+
+
 2025-07-22 Version: 4.12.1
 - Update API ModifyDesktopChargeType: add response parameters Body.TaskId.
 
