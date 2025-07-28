@@ -1,3 +1,11 @@
+2025-07-28 Version: 7.1.0
+- Support API DescribeAutoSnapshotPolicyAssociations.
+- Support API ModifyInstanceNetworkOptions.
+- Update API CancelAutoSnapshotPolicy: add request parameters autoSnapshotPolicyId.
+- Update API DescribeInstanceAttribute: add response parameters Body.NetworkOptions.BandwidthWeighting.
+- Update API RunInstances: add request parameters NetworkOptions.BandwidthWeighting.
+
+
 2025-07-24 Version: 7.0.17
 - Update API DescribeDeploymentSets: add response parameters Body.DeploymentSets.$.AccountId.
 

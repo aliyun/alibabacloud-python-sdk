@@ -3406,6 +3406,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.auto_snapshot_policy_id):
+            query['autoSnapshotPolicyId'] = request.auto_snapshot_policy_id
         if not UtilClient.is_unset(request.disk_ids):
             query['diskIds'] = request.disk_ids
         if not UtilClient.is_unset(request.region_id):
@@ -3449,6 +3451,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.auto_snapshot_policy_id):
+            query['autoSnapshotPolicyId'] = request.auto_snapshot_policy_id
         if not UtilClient.is_unset(request.disk_ids):
             query['diskIds'] = request.disk_ids
         if not UtilClient.is_unset(request.region_id):
@@ -17625,6 +17629,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_auto_provisioning_groups_with_options_async(request, runtime)
+
+    def describe_auto_snapshot_policy_associations_with_options(
+        self,
+        request: ecs_20140526_models.DescribeAutoSnapshotPolicyAssociationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeAutoSnapshotPolicyAssociationsResponse:
+        """
+        @summary 查询自动快照策略的关联关系
+        
+        @param request: DescribeAutoSnapshotPolicyAssociationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAutoSnapshotPolicyAssociationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_snapshot_policy_id):
+            query['AutoSnapshotPolicyId'] = request.auto_snapshot_policy_id
+        if not UtilClient.is_unset(request.disk_id):
+            query['DiskId'] = request.disk_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAutoSnapshotPolicyAssociations',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeAutoSnapshotPolicyAssociationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_auto_snapshot_policy_associations_with_options_async(
+        self,
+        request: ecs_20140526_models.DescribeAutoSnapshotPolicyAssociationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeAutoSnapshotPolicyAssociationsResponse:
+        """
+        @summary 查询自动快照策略的关联关系
+        
+        @param request: DescribeAutoSnapshotPolicyAssociationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAutoSnapshotPolicyAssociationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_snapshot_policy_id):
+            query['AutoSnapshotPolicyId'] = request.auto_snapshot_policy_id
+        if not UtilClient.is_unset(request.disk_id):
+            query['DiskId'] = request.disk_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAutoSnapshotPolicyAssociations',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeAutoSnapshotPolicyAssociationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_auto_snapshot_policy_associations(
+        self,
+        request: ecs_20140526_models.DescribeAutoSnapshotPolicyAssociationsRequest,
+    ) -> ecs_20140526_models.DescribeAutoSnapshotPolicyAssociationsResponse:
+        """
+        @summary 查询自动快照策略的关联关系
+        
+        @param request: DescribeAutoSnapshotPolicyAssociationsRequest
+        @return: DescribeAutoSnapshotPolicyAssociationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_auto_snapshot_policy_associations_with_options(request, runtime)
+
+    async def describe_auto_snapshot_policy_associations_async(
+        self,
+        request: ecs_20140526_models.DescribeAutoSnapshotPolicyAssociationsRequest,
+    ) -> ecs_20140526_models.DescribeAutoSnapshotPolicyAssociationsResponse:
+        """
+        @summary 查询自动快照策略的关联关系
+        
+        @param request: DescribeAutoSnapshotPolicyAssociationsRequest
+        @return: DescribeAutoSnapshotPolicyAssociationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_auto_snapshot_policy_associations_with_options_async(request, runtime)
 
     def describe_auto_snapshot_policy_ex_with_options(
         self,
@@ -44153,6 +44285,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_metadata_options_with_options_async(request, runtime)
+
+    def modify_instance_network_options_with_options(
+        self,
+        request: ecs_20140526_models.ModifyInstanceNetworkOptionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ModifyInstanceNetworkOptionsResponse:
+        """
+        @summary 修改实例网络选项
+        
+        @param request: ModifyInstanceNetworkOptionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceNetworkOptionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bandwidth_weighting):
+            query['BandwidthWeighting'] = request.bandwidth_weighting
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceNetworkOptions',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyInstanceNetworkOptionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_instance_network_options_with_options_async(
+        self,
+        request: ecs_20140526_models.ModifyInstanceNetworkOptionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ModifyInstanceNetworkOptionsResponse:
+        """
+        @summary 修改实例网络选项
+        
+        @param request: ModifyInstanceNetworkOptionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceNetworkOptionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bandwidth_weighting):
+            query['BandwidthWeighting'] = request.bandwidth_weighting
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceNetworkOptions',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyInstanceNetworkOptionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_instance_network_options(
+        self,
+        request: ecs_20140526_models.ModifyInstanceNetworkOptionsRequest,
+    ) -> ecs_20140526_models.ModifyInstanceNetworkOptionsResponse:
+        """
+        @summary 修改实例网络选项
+        
+        @param request: ModifyInstanceNetworkOptionsRequest
+        @return: ModifyInstanceNetworkOptionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_instance_network_options_with_options(request, runtime)
+
+    async def modify_instance_network_options_async(
+        self,
+        request: ecs_20140526_models.ModifyInstanceNetworkOptionsRequest,
+    ) -> ecs_20140526_models.ModifyInstanceNetworkOptionsResponse:
+        """
+        @summary 修改实例网络选项
+        
+        @param request: ModifyInstanceNetworkOptionsRequest
+        @return: ModifyInstanceNetworkOptionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_instance_network_options_with_options_async(request, runtime)
 
     def modify_instance_network_spec_with_options(
         self,
