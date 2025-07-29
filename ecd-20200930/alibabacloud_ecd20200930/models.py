@@ -35254,6 +35254,7 @@ class DescribeModificationPriceRequest(TeaModel):
         bandwidth: int = None,
         instance_id: str = None,
         instance_type: str = None,
+        promotion_id: str = None,
         region_id: str = None,
         reseller_owner_uid: int = None,
         resource_specs: List[DescribeModificationPriceRequestResourceSpecs] = None,
@@ -35292,6 +35293,7 @@ class DescribeModificationPriceRequest(TeaModel):
         # 
         # *   You can skip this parameter if `ResourceType` is set to `NetworkPackage`.
         self.instance_type = instance_type
+        self.promotion_id = promotion_id
         # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         # 
         # This parameter is required.
@@ -35331,6 +35333,8 @@ class DescribeModificationPriceRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+        if self.promotion_id is not None:
+            result['PromotionId'] = self.promotion_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.reseller_owner_uid is not None:
@@ -35355,6 +35359,8 @@ class DescribeModificationPriceRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        if m.get('PromotionId') is not None:
+            self.promotion_id = m.get('PromotionId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResellerOwnerUid') is not None:
@@ -41172,6 +41178,7 @@ class DescribeRenewalPriceRequest(TeaModel):
         instance_ids: List[str] = None,
         period: int = None,
         period_unit: str = None,
+        promotion_id: str = None,
         region_id: str = None,
         reseller_owner_uid: int = None,
         resource_type: str = None,
@@ -41198,6 +41205,7 @@ class DescribeRenewalPriceRequest(TeaModel):
         # *   Month (default)
         # *   Year
         self.period_unit = period_unit
+        self.promotion_id = promotion_id
         # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         # 
         # This parameter is required.
@@ -41229,6 +41237,8 @@ class DescribeRenewalPriceRequest(TeaModel):
             result['Period'] = self.period
         if self.period_unit is not None:
             result['PeriodUnit'] = self.period_unit
+        if self.promotion_id is not None:
+            result['PromotionId'] = self.promotion_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.reseller_owner_uid is not None:
@@ -41247,6 +41257,8 @@ class DescribeRenewalPriceRequest(TeaModel):
             self.period = m.get('Period')
         if m.get('PeriodUnit') is not None:
             self.period_unit = m.get('PeriodUnit')
+        if m.get('PromotionId') is not None:
+            self.promotion_id = m.get('PromotionId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResellerOwnerUid') is not None:
