@@ -1,3 +1,6 @@
+2025-07-29 Version: 2.10.1
+- Generated python 2024-08-01 for QuanMiaoLightApp.
+
 2025-07-02 Version: 2.10.0
 - Support API GetEssayCorrectionTask.
 - Support API RunEssayCorrection.
