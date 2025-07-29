@@ -1353,6 +1353,7 @@ class NodepoolScalingGroup(TeaModel):
         image_id: str = None,
         image_type: str = None,
         instance_charge_type: str = None,
+        instance_metadata_options: InstanceMetadataOptions = None,
         instance_types: List[str] = None,
         internet_charge_type: str = None,
         internet_max_bandwidth_out: int = None,
@@ -1397,6 +1398,7 @@ class NodepoolScalingGroup(TeaModel):
         self.image_type = image_type
         # This parameter is required.
         self.instance_charge_type = instance_charge_type
+        self.instance_metadata_options = instance_metadata_options
         # This parameter is required.
         self.instance_types = instance_types
         self.internet_charge_type = internet_charge_type
@@ -1438,6 +1440,8 @@ class NodepoolScalingGroup(TeaModel):
             for k in self.data_disks:
                 if k:
                     k.validate()
+        if self.instance_metadata_options:
+            self.instance_metadata_options.validate()
         if self.private_pool_options:
             self.private_pool_options.validate()
         if self.spot_price_limit:
@@ -1475,6 +1479,8 @@ class NodepoolScalingGroup(TeaModel):
             result['image_type'] = self.image_type
         if self.instance_charge_type is not None:
             result['instance_charge_type'] = self.instance_charge_type
+        if self.instance_metadata_options is not None:
+            result['instance_metadata_options'] = self.instance_metadata_options.to_map()
         if self.instance_types is not None:
             result['instance_types'] = self.instance_types
         if self.internet_charge_type is not None:
@@ -1570,6 +1576,9 @@ class NodepoolScalingGroup(TeaModel):
             self.image_type = m.get('image_type')
         if m.get('instance_charge_type') is not None:
             self.instance_charge_type = m.get('instance_charge_type')
+        if m.get('instance_metadata_options') is not None:
+            temp_model = InstanceMetadataOptions()
+            self.instance_metadata_options = temp_model.from_map(m['instance_metadata_options'])
         if m.get('instance_types') is not None:
             self.instance_types = m.get('instance_types')
         if m.get('internet_charge_type') is not None:
@@ -3359,6 +3368,7 @@ class CreateClusterRequestControlPlaneConfig(TeaModel):
         deploymentset_id: str = None,
         image_id: str = None,
         image_type: str = None,
+        instance_metadata_options: InstanceMetadataOptions = None,
         instance_types: List[str] = None,
         key_pair: str = None,
         login_password: str = None,
@@ -3392,6 +3402,7 @@ class CreateClusterRequestControlPlaneConfig(TeaModel):
         self.image_id = image_id
         # The type of the OS image.
         self.image_type = image_type
+        self.instance_metadata_options = instance_metadata_options
         # The instance types of the nodes.
         self.instance_types = instance_types
         # The name of the key pair. You must set this parameter or login_password.
@@ -3426,7 +3437,8 @@ class CreateClusterRequestControlPlaneConfig(TeaModel):
         self.system_disk_snapshot_policy_id = system_disk_snapshot_policy_id
 
     def validate(self):
-        pass
+        if self.instance_metadata_options:
+            self.instance_metadata_options.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3450,6 +3462,8 @@ class CreateClusterRequestControlPlaneConfig(TeaModel):
             result['image_id'] = self.image_id
         if self.image_type is not None:
             result['image_type'] = self.image_type
+        if self.instance_metadata_options is not None:
+            result['instance_metadata_options'] = self.instance_metadata_options.to_map()
         if self.instance_types is not None:
             result['instance_types'] = self.instance_types
         if self.key_pair is not None:
@@ -3502,6 +3516,9 @@ class CreateClusterRequestControlPlaneConfig(TeaModel):
             self.image_id = m.get('image_id')
         if m.get('image_type') is not None:
             self.image_type = m.get('image_type')
+        if m.get('instance_metadata_options') is not None:
+            temp_model = InstanceMetadataOptions()
+            self.instance_metadata_options = temp_model.from_map(m['instance_metadata_options'])
         if m.get('instance_types') is not None:
             self.instance_types = m.get('instance_types')
         if m.get('key_pair') is not None:
@@ -6121,6 +6138,7 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         image_id: str = None,
         image_type: str = None,
         instance_charge_type: str = None,
+        instance_metadata_options: InstanceMetadataOptions = None,
         instance_patterns: List[InstancePatterns] = None,
         instance_types: List[str] = None,
         internet_charge_type: str = None,
@@ -6209,6 +6227,7 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         # 
         # This parameter is required.
         self.instance_charge_type = instance_charge_type
+        self.instance_metadata_options = instance_metadata_options
         # The instance attributes.
         self.instance_patterns = instance_patterns
         # The instance types of nodes in the node pool. When the system adds a node to the node pool, the system selects the most appropriate one from the specified instance types for the node. You can specify 1 to 10 instance types.
@@ -6385,6 +6404,8 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
             for k in self.data_disks:
                 if k:
                     k.validate()
+        if self.instance_metadata_options:
+            self.instance_metadata_options.validate()
         if self.instance_patterns:
             for k in self.instance_patterns:
                 if k:
@@ -6428,6 +6449,8 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
             result['image_type'] = self.image_type
         if self.instance_charge_type is not None:
             result['instance_charge_type'] = self.instance_charge_type
+        if self.instance_metadata_options is not None:
+            result['instance_metadata_options'] = self.instance_metadata_options.to_map()
         result['instance_patterns'] = []
         if self.instance_patterns is not None:
             for k in self.instance_patterns:
@@ -6533,6 +6556,9 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
             self.image_type = m.get('image_type')
         if m.get('instance_charge_type') is not None:
             self.instance_charge_type = m.get('instance_charge_type')
+        if m.get('instance_metadata_options') is not None:
+            temp_model = InstanceMetadataOptions()
+            self.instance_metadata_options = temp_model.from_map(m['instance_metadata_options'])
         self.instance_patterns = []
         if m.get('instance_patterns') is not None:
             for k in m.get('instance_patterns'):
@@ -9800,6 +9826,7 @@ class DescribeClusterDetailResponseBodyControlPlaneConfig(TeaModel):
         deploymentset_id: str = None,
         image_id: str = None,
         image_type: str = None,
+        instance_metadata_options: InstanceMetadataOptions = None,
         instance_types: List[str] = None,
         key_pair: str = None,
         node_port_range: str = None,
@@ -9832,6 +9859,7 @@ class DescribeClusterDetailResponseBodyControlPlaneConfig(TeaModel):
         self.image_id = image_id
         # The type of the OS image.
         self.image_type = image_type
+        self.instance_metadata_options = instance_metadata_options
         # The instance types of the nodes.
         self.instance_types = instance_types
         # The name of the key pair. You must set key_pair or login_password.
@@ -9864,7 +9892,8 @@ class DescribeClusterDetailResponseBodyControlPlaneConfig(TeaModel):
         self.system_disk_snapshot_policy_id = system_disk_snapshot_policy_id
 
     def validate(self):
-        pass
+        if self.instance_metadata_options:
+            self.instance_metadata_options.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -9888,6 +9917,8 @@ class DescribeClusterDetailResponseBodyControlPlaneConfig(TeaModel):
             result['image_id'] = self.image_id
         if self.image_type is not None:
             result['image_type'] = self.image_type
+        if self.instance_metadata_options is not None:
+            result['instance_metadata_options'] = self.instance_metadata_options.to_map()
         if self.instance_types is not None:
             result['instance_types'] = self.instance_types
         if self.key_pair is not None:
@@ -9938,6 +9969,9 @@ class DescribeClusterDetailResponseBodyControlPlaneConfig(TeaModel):
             self.image_id = m.get('image_id')
         if m.get('image_type') is not None:
             self.image_type = m.get('image_type')
+        if m.get('instance_metadata_options') is not None:
+            temp_model = InstanceMetadataOptions()
+            self.instance_metadata_options = temp_model.from_map(m['instance_metadata_options'])
         if m.get('instance_types') is not None:
             self.instance_types = m.get('instance_types')
         if m.get('key_pair') is not None:
@@ -11599,6 +11633,7 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         image_id: str = None,
         image_type: str = None,
         instance_charge_type: str = None,
+        instance_metadata_options: InstanceMetadataOptions = None,
         instance_patterns: List[InstancePatterns] = None,
         instance_types: List[str] = None,
         internet_charge_type: str = None,
@@ -11669,6 +11704,7 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         # *   `PrePaid`: the subscription billing method.
         # *   `PostPaid`: the pay-as-you-go billing method.
         self.instance_charge_type = instance_charge_type
+        self.instance_metadata_options = instance_metadata_options
         # The instance properties.
         self.instance_patterns = instance_patterns
         # A list of instance types. You can select multiple instance types. When the system needs to create a node, it starts from the first instance type until the node is created. The instance type that is used to create the node varies based on the actual instance stock.
@@ -11822,6 +11858,8 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
             for k in self.data_disks:
                 if k:
                     k.validate()
+        if self.instance_metadata_options:
+            self.instance_metadata_options.validate()
         if self.instance_patterns:
             for k in self.instance_patterns:
                 if k:
@@ -11865,6 +11903,8 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
             result['image_type'] = self.image_type
         if self.instance_charge_type is not None:
             result['instance_charge_type'] = self.instance_charge_type
+        if self.instance_metadata_options is not None:
+            result['instance_metadata_options'] = self.instance_metadata_options.to_map()
         result['instance_patterns'] = []
         if self.instance_patterns is not None:
             for k in self.instance_patterns:
@@ -11974,6 +12014,9 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
             self.image_type = m.get('image_type')
         if m.get('instance_charge_type') is not None:
             self.instance_charge_type = m.get('instance_charge_type')
+        if m.get('instance_metadata_options') is not None:
+            temp_model = InstanceMetadataOptions()
+            self.instance_metadata_options = temp_model.from_map(m['instance_metadata_options'])
         self.instance_patterns = []
         if m.get('instance_patterns') is not None:
             for k in m.get('instance_patterns'):

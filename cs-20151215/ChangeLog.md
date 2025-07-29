@@ -1,3 +1,10 @@
+2025-07-29 Version: 4.9.6
+- Update API CreateCluster: add request parameters body.control_plane_config.instance_metadata_options.
+- Update API CreateClusterNodePool: add request parameters body.scaling_group.instance_metadata_options.
+- Update API DescribeClusterDetail: add response parameters Body.control_plane_config.instance_metadata_options.
+- Update API DescribeClusterNodePoolDetail: add response parameters Body.scaling_group.instance_metadata_options.
+
+
 2025-07-04 Version: 4.9.5
 - Update API CreateCluster: add request parameters body.extra_sans.
 - Update API CreateCluster: add request parameters body.rrsa_config.
