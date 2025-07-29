@@ -887,6 +887,8 @@ class Client(OpenApiClient):
             query['Envs'] = request.envs
         if not UtilClient.is_unset(request.gpu_config):
             query['GpuConfig'] = request.gpu_config
+        if not UtilClient.is_unset(request.html):
+            query['Html'] = request.html
         if not UtilClient.is_unset(request.image_pull_secrets):
             query['ImagePullSecrets'] = request.image_pull_secrets
         if not UtilClient.is_unset(request.image_url):
@@ -1087,6 +1089,8 @@ class Client(OpenApiClient):
             query['Envs'] = request.envs
         if not UtilClient.is_unset(request.gpu_config):
             query['GpuConfig'] = request.gpu_config
+        if not UtilClient.is_unset(request.html):
+            query['Html'] = request.html
         if not UtilClient.is_unset(request.image_pull_secrets):
             query['ImagePullSecrets'] = request.image_pull_secrets
         if not UtilClient.is_unset(request.image_url):
@@ -4515,6 +4519,8 @@ class Client(OpenApiClient):
             query['Envs'] = request.envs
         if not UtilClient.is_unset(request.gpu_config):
             query['GpuConfig'] = request.gpu_config
+        if not UtilClient.is_unset(request.html):
+            query['Html'] = request.html
         if not UtilClient.is_unset(request.image_pull_secrets):
             query['ImagePullSecrets'] = request.image_pull_secrets
         if not UtilClient.is_unset(request.image_url):
@@ -4709,6 +4715,8 @@ class Client(OpenApiClient):
             query['Envs'] = request.envs
         if not UtilClient.is_unset(request.gpu_config):
             query['GpuConfig'] = request.gpu_config
+        if not UtilClient.is_unset(request.html):
+            query['Html'] = request.html
         if not UtilClient.is_unset(request.image_pull_secrets):
             query['ImagePullSecrets'] = request.image_pull_secrets
         if not UtilClient.is_unset(request.image_url):

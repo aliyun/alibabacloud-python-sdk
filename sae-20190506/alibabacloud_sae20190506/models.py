@@ -12406,6 +12406,7 @@ class CreateApplicationRequest(TeaModel):
         enable_sidecar_resource_isolated: bool = None,
         envs: str = None,
         gpu_config: str = None,
+        html: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
         init_containers_config: List[InitContainerConfig] = None,
@@ -12585,6 +12586,7 @@ class CreateApplicationRequest(TeaModel):
         #     *   **key**: the key. If you want to reference all key values, you do not need to configure this parameter.
         self.envs = envs
         self.gpu_config = gpu_config
+        self.html = html
         # The ID of the corresponding Secret.
         self.image_pull_secrets = image_pull_secrets
         # The URL of the image. This parameter is required if you set the `PackageType` parameter to `Image`.
@@ -12918,6 +12920,8 @@ class CreateApplicationRequest(TeaModel):
             result['Envs'] = self.envs
         if self.gpu_config is not None:
             result['GpuConfig'] = self.gpu_config
+        if self.html is not None:
+            result['Html'] = self.html
         if self.image_pull_secrets is not None:
             result['ImagePullSecrets'] = self.image_pull_secrets
         if self.image_url is not None:
@@ -13082,6 +13086,8 @@ class CreateApplicationRequest(TeaModel):
             self.envs = m.get('Envs')
         if m.get('GpuConfig') is not None:
             self.gpu_config = m.get('GpuConfig')
+        if m.get('Html') is not None:
+            self.html = m.get('Html')
         if m.get('ImagePullSecrets') is not None:
             self.image_pull_secrets = m.get('ImagePullSecrets')
         if m.get('ImageUrl') is not None:
@@ -13225,6 +13231,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         enable_sidecar_resource_isolated: bool = None,
         envs: str = None,
         gpu_config: str = None,
+        html: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
         init_containers_config_shrink: str = None,
@@ -13404,6 +13411,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         #     *   **key**: the key. If you want to reference all key values, you do not need to configure this parameter.
         self.envs = envs
         self.gpu_config = gpu_config
+        self.html = html
         # The ID of the corresponding Secret.
         self.image_pull_secrets = image_pull_secrets
         # The URL of the image. This parameter is required if you set the `PackageType` parameter to `Image`.
@@ -13730,6 +13738,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             result['Envs'] = self.envs
         if self.gpu_config is not None:
             result['GpuConfig'] = self.gpu_config
+        if self.html is not None:
+            result['Html'] = self.html
         if self.image_pull_secrets is not None:
             result['ImagePullSecrets'] = self.image_pull_secrets
         if self.image_url is not None:
@@ -13890,6 +13900,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             self.envs = m.get('Envs')
         if m.get('GpuConfig') is not None:
             self.gpu_config = m.get('GpuConfig')
+        if m.get('Html') is not None:
+            self.html = m.get('Html')
         if m.get('ImagePullSecrets') is not None:
             self.image_pull_secrets = m.get('ImagePullSecrets')
         if m.get('ImageUrl') is not None:
@@ -19643,6 +19655,7 @@ class DeployApplicationRequest(TeaModel):
         enable_sidecar_resource_isolated: bool = None,
         envs: str = None,
         gpu_config: str = None,
+        html: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
         init_containers_config: List[InitContainerConfig] = None,
@@ -19830,6 +19843,7 @@ class DeployApplicationRequest(TeaModel):
         #     *   **key**: the key. If you want to reference all keys, do not configure this parameter.
         self.envs = envs
         self.gpu_config = gpu_config
+        self.html = html
         # The ID of the corresponding Secret.
         self.image_pull_secrets = image_pull_secrets
         # The URL of the image. This parameter is returned only if the **PackageType** parameter is set to **Image**.
@@ -20202,6 +20216,8 @@ class DeployApplicationRequest(TeaModel):
             result['Envs'] = self.envs
         if self.gpu_config is not None:
             result['GpuConfig'] = self.gpu_config
+        if self.html is not None:
+            result['Html'] = self.html
         if self.image_pull_secrets is not None:
             result['ImagePullSecrets'] = self.image_pull_secrets
         if self.image_url is not None:
@@ -20360,6 +20376,8 @@ class DeployApplicationRequest(TeaModel):
             self.envs = m.get('Envs')
         if m.get('GpuConfig') is not None:
             self.gpu_config = m.get('GpuConfig')
+        if m.get('Html') is not None:
+            self.html = m.get('Html')
         if m.get('ImagePullSecrets') is not None:
             self.image_pull_secrets = m.get('ImagePullSecrets')
         if m.get('ImageUrl') is not None:
@@ -20498,6 +20516,7 @@ class DeployApplicationShrinkRequest(TeaModel):
         enable_sidecar_resource_isolated: bool = None,
         envs: str = None,
         gpu_config: str = None,
+        html: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
         init_containers_config_shrink: str = None,
@@ -20685,6 +20704,7 @@ class DeployApplicationShrinkRequest(TeaModel):
         #     *   **key**: the key. If you want to reference all keys, do not configure this parameter.
         self.envs = envs
         self.gpu_config = gpu_config
+        self.html = html
         # The ID of the corresponding Secret.
         self.image_pull_secrets = image_pull_secrets
         # The URL of the image. This parameter is returned only if the **PackageType** parameter is set to **Image**.
@@ -21050,6 +21070,8 @@ class DeployApplicationShrinkRequest(TeaModel):
             result['Envs'] = self.envs
         if self.gpu_config is not None:
             result['GpuConfig'] = self.gpu_config
+        if self.html is not None:
+            result['Html'] = self.html
         if self.image_pull_secrets is not None:
             result['ImagePullSecrets'] = self.image_pull_secrets
         if self.image_url is not None:
@@ -21204,6 +21226,8 @@ class DeployApplicationShrinkRequest(TeaModel):
             self.envs = m.get('Envs')
         if m.get('GpuConfig') is not None:
             self.gpu_config = m.get('GpuConfig')
+        if m.get('Html') is not None:
+            self.html = m.get('Html')
         if m.get('ImagePullSecrets') is not None:
             self.image_pull_secrets = m.get('ImagePullSecrets')
         if m.get('ImageUrl') is not None:
@@ -22594,6 +22618,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         envs: str = None,
         gpu_count: str = None,
         gpu_type: str = None,
+        html: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
         init_containers_config: List[DescribeApplicationConfigResponseBodyDataInitContainersConfig] = None,
@@ -22772,6 +22797,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self.envs = envs
         self.gpu_count = gpu_count
         self.gpu_type = gpu_type
+        self.html = html
         # The ID of the corresponding secret dictionary.
         self.image_pull_secrets = image_pull_secrets
         # The URL of the image. This parameter is returned only if the **PackageType** parameter is set to **Image**.
@@ -23143,6 +23169,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['GpuCount'] = self.gpu_count
         if self.gpu_type is not None:
             result['GpuType'] = self.gpu_type
+        if self.html is not None:
+            result['Html'] = self.html
         if self.image_pull_secrets is not None:
             result['ImagePullSecrets'] = self.image_pull_secrets
         if self.image_url is not None:
@@ -23338,6 +23366,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.gpu_count = m.get('GpuCount')
         if m.get('GpuType') is not None:
             self.gpu_type = m.get('GpuType')
+        if m.get('Html') is not None:
+            self.html = m.get('Html')
         if m.get('ImagePullSecrets') is not None:
             self.image_pull_secrets = m.get('ImagePullSecrets')
         if m.get('ImageUrl') is not None:

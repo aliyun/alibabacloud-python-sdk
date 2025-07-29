@@ -1,3 +1,9 @@
+2025-07-29 Version: 2.5.8
+- Update API CreateApplication: add request parameters Html.
+- Update API DeployApplication: add request parameters Html.
+- Update API DescribeApplicationConfig: add response parameters Body.Data.Html.
+
+
 2025-07-23 Version: 2.5.7
 - Update API UpdateAppMode: add request parameters AppIds.
 - Update API UpdateAppMode: add request parameters NamespaceId.
