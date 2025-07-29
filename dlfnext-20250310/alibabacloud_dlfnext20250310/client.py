@@ -1611,6 +1611,96 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_catalog_with_options_async(catalog, headers, runtime)
 
+    def get_catalog_by_id_with_options(
+        self,
+        id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.GetCatalogByIdResponse:
+        """
+        @summary 查看数据湖Catalog
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCatalogByIdResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetCatalogById',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/catalogs/id/{OpenApiUtilClient.get_encode_param(id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.GetCatalogByIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_catalog_by_id_with_options_async(
+        self,
+        id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.GetCatalogByIdResponse:
+        """
+        @summary 查看数据湖Catalog
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCatalogByIdResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetCatalogById',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/dlf/v1/catalogs/id/{OpenApiUtilClient.get_encode_param(id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.GetCatalogByIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_catalog_by_id(
+        self,
+        id: str,
+    ) -> dlf_next_20250310_models.GetCatalogByIdResponse:
+        """
+        @summary 查看数据湖Catalog
+        
+        @return: GetCatalogByIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_catalog_by_id_with_options(id, headers, runtime)
+
+    async def get_catalog_by_id_async(
+        self,
+        id: str,
+    ) -> dlf_next_20250310_models.GetCatalogByIdResponse:
+        """
+        @summary 查看数据湖Catalog
+        
+        @return: GetCatalogByIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_catalog_by_id_with_options_async(id, headers, runtime)
+
     def get_catalog_summary_with_options(
         self,
         catalog_id: str,
