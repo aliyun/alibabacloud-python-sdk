@@ -2752,6 +2752,145 @@ class GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateR
         return self
 
 
+class GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoRoleRecognitionResultVideoRolesTimeIntervals(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        start_time: int = None,
+        timestamp: int = None,
+        url: str = None,
+    ):
+        self.end_time = end_time
+        self.start_time = start_time
+        self.timestamp = timestamp
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.timestamp is not None:
+            result['timestamp'] = self.timestamp
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('timestamp') is not None:
+            self.timestamp = m.get('timestamp')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoRoleRecognitionResultVideoRoles(TeaModel):
+    def __init__(
+        self,
+        is_auto_recognition: bool = None,
+        ratio: float = None,
+        role_info: str = None,
+        role_name: str = None,
+        time_intervals: List[GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoRoleRecognitionResultVideoRolesTimeIntervals] = None,
+    ):
+        self.is_auto_recognition = is_auto_recognition
+        self.ratio = ratio
+        self.role_info = role_info
+        self.role_name = role_name
+        self.time_intervals = time_intervals
+
+    def validate(self):
+        if self.time_intervals:
+            for k in self.time_intervals:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_auto_recognition is not None:
+            result['isAutoRecognition'] = self.is_auto_recognition
+        if self.ratio is not None:
+            result['ratio'] = self.ratio
+        if self.role_info is not None:
+            result['roleInfo'] = self.role_info
+        if self.role_name is not None:
+            result['roleName'] = self.role_name
+        result['timeIntervals'] = []
+        if self.time_intervals is not None:
+            for k in self.time_intervals:
+                result['timeIntervals'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('isAutoRecognition') is not None:
+            self.is_auto_recognition = m.get('isAutoRecognition')
+        if m.get('ratio') is not None:
+            self.ratio = m.get('ratio')
+        if m.get('roleInfo') is not None:
+            self.role_info = m.get('roleInfo')
+        if m.get('roleName') is not None:
+            self.role_name = m.get('roleName')
+        self.time_intervals = []
+        if m.get('timeIntervals') is not None:
+            for k in m.get('timeIntervals'):
+                temp_model = GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoRoleRecognitionResultVideoRolesTimeIntervals()
+                self.time_intervals.append(temp_model.from_map(k))
+        return self
+
+
+class GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoRoleRecognitionResult(TeaModel):
+    def __init__(
+        self,
+        video_roles: List[GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoRoleRecognitionResultVideoRoles] = None,
+    ):
+        self.video_roles = video_roles
+
+    def validate(self):
+        if self.video_roles:
+            for k in self.video_roles:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['videoRoles'] = []
+        if self.video_roles is not None:
+            for k in self.video_roles:
+                result['videoRoles'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.video_roles = []
+        if m.get('videoRoles') is not None:
+            for k in m.get('videoRoles'):
+                temp_model = GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoRoleRecognitionResultVideoRoles()
+                self.video_roles.append(temp_model.from_map(k))
+        return self
+
+
 class GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResultUsage(TeaModel):
     def __init__(
         self,
@@ -2841,6 +2980,7 @@ class GetVideoAnalysisTaskResponseBodyDataPayloadOutput(TeaModel):
         video_generate_result: GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResult = None,
         video_generate_results: List[GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResults] = None,
         video_mind_mapping_generate_result: GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResult = None,
+        video_role_recognition_result: GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoRoleRecognitionResult = None,
         video_title_generate_result: GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResult = None,
     ):
         self.result_json_file_url = result_json_file_url
@@ -2849,6 +2989,7 @@ class GetVideoAnalysisTaskResponseBodyDataPayloadOutput(TeaModel):
         self.video_generate_result = video_generate_result
         self.video_generate_results = video_generate_results
         self.video_mind_mapping_generate_result = video_mind_mapping_generate_result
+        self.video_role_recognition_result = video_role_recognition_result
         self.video_title_generate_result = video_title_generate_result
 
     def validate(self):
@@ -2864,6 +3005,8 @@ class GetVideoAnalysisTaskResponseBodyDataPayloadOutput(TeaModel):
                     k.validate()
         if self.video_mind_mapping_generate_result:
             self.video_mind_mapping_generate_result.validate()
+        if self.video_role_recognition_result:
+            self.video_role_recognition_result.validate()
         if self.video_title_generate_result:
             self.video_title_generate_result.validate()
 
@@ -2887,6 +3030,8 @@ class GetVideoAnalysisTaskResponseBodyDataPayloadOutput(TeaModel):
                 result['videoGenerateResults'].append(k.to_map() if k else None)
         if self.video_mind_mapping_generate_result is not None:
             result['videoMindMappingGenerateResult'] = self.video_mind_mapping_generate_result.to_map()
+        if self.video_role_recognition_result is not None:
+            result['videoRoleRecognitionResult'] = self.video_role_recognition_result.to_map()
         if self.video_title_generate_result is not None:
             result['videoTitleGenerateResult'] = self.video_title_generate_result.to_map()
         return result
@@ -2912,6 +3057,9 @@ class GetVideoAnalysisTaskResponseBodyDataPayloadOutput(TeaModel):
         if m.get('videoMindMappingGenerateResult') is not None:
             temp_model = GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResult()
             self.video_mind_mapping_generate_result = temp_model.from_map(m['videoMindMappingGenerateResult'])
+        if m.get('videoRoleRecognitionResult') is not None:
+            temp_model = GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoRoleRecognitionResult()
+            self.video_role_recognition_result = temp_model.from_map(m['videoRoleRecognitionResult'])
         if m.get('videoTitleGenerateResult') is not None:
             temp_model = GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResult()
             self.video_title_generate_result = temp_model.from_map(m['videoTitleGenerateResult'])
@@ -9831,16 +9979,14 @@ class RunVideoAnalysisRequestVideoCaptionInfo(TeaModel):
         return self
 
 
-class RunVideoAnalysisRequestVideoRoles(TeaModel):
+class RunVideoAnalysisRequestVideoRolesTimeIntervals(TeaModel):
     def __init__(
         self,
-        role_info: str = None,
-        role_name: str = None,
-        urls: List[str] = None,
+        end_time: int = None,
+        start_time: int = None,
     ):
-        self.role_info = role_info
-        self.role_name = role_name
-        self.urls = urls
+        self.end_time = end_time
+        self.start_time = start_time
 
     def validate(self):
         pass
@@ -9851,20 +9997,75 @@ class RunVideoAnalysisRequestVideoRoles(TeaModel):
             return _map
 
         result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        return self
+
+
+class RunVideoAnalysisRequestVideoRoles(TeaModel):
+    def __init__(
+        self,
+        is_auto_recognition: bool = None,
+        role_info: str = None,
+        role_name: str = None,
+        time_intervals: List[RunVideoAnalysisRequestVideoRolesTimeIntervals] = None,
+        urls: List[str] = None,
+    ):
+        self.is_auto_recognition = is_auto_recognition
+        self.role_info = role_info
+        self.role_name = role_name
+        self.time_intervals = time_intervals
+        self.urls = urls
+
+    def validate(self):
+        if self.time_intervals:
+            for k in self.time_intervals:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_auto_recognition is not None:
+            result['isAutoRecognition'] = self.is_auto_recognition
         if self.role_info is not None:
             result['roleInfo'] = self.role_info
         if self.role_name is not None:
             result['roleName'] = self.role_name
+        result['timeIntervals'] = []
+        if self.time_intervals is not None:
+            for k in self.time_intervals:
+                result['timeIntervals'].append(k.to_map() if k else None)
         if self.urls is not None:
             result['urls'] = self.urls
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('isAutoRecognition') is not None:
+            self.is_auto_recognition = m.get('isAutoRecognition')
         if m.get('roleInfo') is not None:
             self.role_info = m.get('roleInfo')
         if m.get('roleName') is not None:
             self.role_name = m.get('roleName')
+        self.time_intervals = []
+        if m.get('timeIntervals') is not None:
+            for k in m.get('timeIntervals'):
+                temp_model = RunVideoAnalysisRequestVideoRolesTimeIntervals()
+                self.time_intervals.append(temp_model.from_map(k))
         if m.get('urls') is not None:
             self.urls = m.get('urls')
         return self
@@ -9873,6 +10074,7 @@ class RunVideoAnalysisRequestVideoRoles(TeaModel):
 class RunVideoAnalysisRequest(TeaModel):
     def __init__(
         self,
+        auto_role_recognition_video_url: str = None,
         exclude_generate_options: List[str] = None,
         face_identity_similarity_min_score: float = None,
         frame_sample_method: RunVideoAnalysisRequestFrameSampleMethod = None,
@@ -9894,6 +10096,7 @@ class RunVideoAnalysisRequest(TeaModel):
         video_shot_face_identity_count: int = None,
         video_url: str = None,
     ):
+        self.auto_role_recognition_video_url = auto_role_recognition_video_url
         self.exclude_generate_options = exclude_generate_options
         self.face_identity_similarity_min_score = face_identity_similarity_min_score
         self.frame_sample_method = frame_sample_method
@@ -9935,6 +10138,8 @@ class RunVideoAnalysisRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_role_recognition_video_url is not None:
+            result['autoRoleRecognitionVideoUrl'] = self.auto_role_recognition_video_url
         if self.exclude_generate_options is not None:
             result['excludeGenerateOptions'] = self.exclude_generate_options
         if self.face_identity_similarity_min_score is not None:
@@ -9983,6 +10188,8 @@ class RunVideoAnalysisRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('autoRoleRecognitionVideoUrl') is not None:
+            self.auto_role_recognition_video_url = m.get('autoRoleRecognitionVideoUrl')
         if m.get('excludeGenerateOptions') is not None:
             self.exclude_generate_options = m.get('excludeGenerateOptions')
         if m.get('faceIdentitySimilarityMinScore') is not None:
@@ -10037,6 +10244,7 @@ class RunVideoAnalysisRequest(TeaModel):
 class RunVideoAnalysisShrinkRequest(TeaModel):
     def __init__(
         self,
+        auto_role_recognition_video_url: str = None,
         exclude_generate_options_shrink: str = None,
         face_identity_similarity_min_score: float = None,
         frame_sample_method_shrink: str = None,
@@ -10058,6 +10266,7 @@ class RunVideoAnalysisShrinkRequest(TeaModel):
         video_shot_face_identity_count: int = None,
         video_url: str = None,
     ):
+        self.auto_role_recognition_video_url = auto_role_recognition_video_url
         self.exclude_generate_options_shrink = exclude_generate_options_shrink
         self.face_identity_similarity_min_score = face_identity_similarity_min_score
         self.frame_sample_method_shrink = frame_sample_method_shrink
@@ -10088,6 +10297,8 @@ class RunVideoAnalysisShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_role_recognition_video_url is not None:
+            result['autoRoleRecognitionVideoUrl'] = self.auto_role_recognition_video_url
         if self.exclude_generate_options_shrink is not None:
             result['excludeGenerateOptions'] = self.exclude_generate_options_shrink
         if self.face_identity_similarity_min_score is not None:
@@ -10132,6 +10343,8 @@ class RunVideoAnalysisShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('autoRoleRecognitionVideoUrl') is not None:
+            self.auto_role_recognition_video_url = m.get('autoRoleRecognitionVideoUrl')
         if m.get('excludeGenerateOptions') is not None:
             self.exclude_generate_options_shrink = m.get('excludeGenerateOptions')
         if m.get('faceIdentitySimilarityMinScore') is not None:
@@ -10894,6 +11107,145 @@ class RunVideoAnalysisResponseBodyPayloadOutputVideoMindMappingGenerateResult(Te
         return self
 
 
+class RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRolesTimeIntervals(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        start_time: int = None,
+        timestamp: int = None,
+        url: str = None,
+    ):
+        self.end_time = end_time
+        self.start_time = start_time
+        self.timestamp = timestamp
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.timestamp is not None:
+            result['timestamp'] = self.timestamp
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('timestamp') is not None:
+            self.timestamp = m.get('timestamp')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRoles(TeaModel):
+    def __init__(
+        self,
+        is_auto_recognition: bool = None,
+        ratio: float = None,
+        role_info: str = None,
+        role_name: str = None,
+        time_intervals: List[RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRolesTimeIntervals] = None,
+    ):
+        self.is_auto_recognition = is_auto_recognition
+        self.ratio = ratio
+        self.role_info = role_info
+        self.role_name = role_name
+        self.time_intervals = time_intervals
+
+    def validate(self):
+        if self.time_intervals:
+            for k in self.time_intervals:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_auto_recognition is not None:
+            result['isAutoRecognition'] = self.is_auto_recognition
+        if self.ratio is not None:
+            result['ratio'] = self.ratio
+        if self.role_info is not None:
+            result['roleInfo'] = self.role_info
+        if self.role_name is not None:
+            result['roleName'] = self.role_name
+        result['timeIntervals'] = []
+        if self.time_intervals is not None:
+            for k in self.time_intervals:
+                result['timeIntervals'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('isAutoRecognition') is not None:
+            self.is_auto_recognition = m.get('isAutoRecognition')
+        if m.get('ratio') is not None:
+            self.ratio = m.get('ratio')
+        if m.get('roleInfo') is not None:
+            self.role_info = m.get('roleInfo')
+        if m.get('roleName') is not None:
+            self.role_name = m.get('roleName')
+        self.time_intervals = []
+        if m.get('timeIntervals') is not None:
+            for k in m.get('timeIntervals'):
+                temp_model = RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRolesTimeIntervals()
+                self.time_intervals.append(temp_model.from_map(k))
+        return self
+
+
+class RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResult(TeaModel):
+    def __init__(
+        self,
+        video_roles: List[RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRoles] = None,
+    ):
+        self.video_roles = video_roles
+
+    def validate(self):
+        if self.video_roles:
+            for k in self.video_roles:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['videoRoles'] = []
+        if self.video_roles is not None:
+            for k in self.video_roles:
+                result['videoRoles'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.video_roles = []
+        if m.get('videoRoles') is not None:
+            for k in m.get('videoRoles'):
+                temp_model = RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRoles()
+                self.video_roles.append(temp_model.from_map(k))
+        return self
+
+
 class RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResultVideoShotsVideoSnapshots(TeaModel):
     def __init__(
         self,
@@ -11116,6 +11468,7 @@ class RunVideoAnalysisResponseBodyPayloadOutput(TeaModel):
         video_generate_result: RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResult = None,
         video_generate_results: List[RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResults] = None,
         video_mind_mapping_generate_result: RunVideoAnalysisResponseBodyPayloadOutputVideoMindMappingGenerateResult = None,
+        video_role_recognition_result: RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResult = None,
         video_shot_snapshot_result: RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResult = None,
         video_title_generate_result: RunVideoAnalysisResponseBodyPayloadOutputVideoTitleGenerateResult = None,
     ):
@@ -11125,6 +11478,7 @@ class RunVideoAnalysisResponseBodyPayloadOutput(TeaModel):
         self.video_generate_result = video_generate_result
         self.video_generate_results = video_generate_results
         self.video_mind_mapping_generate_result = video_mind_mapping_generate_result
+        self.video_role_recognition_result = video_role_recognition_result
         self.video_shot_snapshot_result = video_shot_snapshot_result
         self.video_title_generate_result = video_title_generate_result
 
@@ -11141,6 +11495,8 @@ class RunVideoAnalysisResponseBodyPayloadOutput(TeaModel):
                     k.validate()
         if self.video_mind_mapping_generate_result:
             self.video_mind_mapping_generate_result.validate()
+        if self.video_role_recognition_result:
+            self.video_role_recognition_result.validate()
         if self.video_shot_snapshot_result:
             self.video_shot_snapshot_result.validate()
         if self.video_title_generate_result:
@@ -11166,6 +11522,8 @@ class RunVideoAnalysisResponseBodyPayloadOutput(TeaModel):
                 result['videoGenerateResults'].append(k.to_map() if k else None)
         if self.video_mind_mapping_generate_result is not None:
             result['videoMindMappingGenerateResult'] = self.video_mind_mapping_generate_result.to_map()
+        if self.video_role_recognition_result is not None:
+            result['videoRoleRecognitionResult'] = self.video_role_recognition_result.to_map()
         if self.video_shot_snapshot_result is not None:
             result['videoShotSnapshotResult'] = self.video_shot_snapshot_result.to_map()
         if self.video_title_generate_result is not None:
@@ -11193,6 +11551,9 @@ class RunVideoAnalysisResponseBodyPayloadOutput(TeaModel):
         if m.get('videoMindMappingGenerateResult') is not None:
             temp_model = RunVideoAnalysisResponseBodyPayloadOutputVideoMindMappingGenerateResult()
             self.video_mind_mapping_generate_result = temp_model.from_map(m['videoMindMappingGenerateResult'])
+        if m.get('videoRoleRecognitionResult') is not None:
+            temp_model = RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResult()
+            self.video_role_recognition_result = temp_model.from_map(m['videoRoleRecognitionResult'])
         if m.get('videoShotSnapshotResult') is not None:
             temp_model = RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResult()
             self.video_shot_snapshot_result = temp_model.from_map(m['videoShotSnapshotResult'])
@@ -12592,16 +12953,14 @@ class SubmitVideoAnalysisTaskRequestVideoCaptionInfo(TeaModel):
         return self
 
 
-class SubmitVideoAnalysisTaskRequestVideoRoles(TeaModel):
+class SubmitVideoAnalysisTaskRequestVideoRolesTimeIntervals(TeaModel):
     def __init__(
         self,
-        role_info: str = None,
-        role_name: str = None,
-        urls: List[str] = None,
+        end_time: int = None,
+        start_time: int = None,
     ):
-        self.role_info = role_info
-        self.role_name = role_name
-        self.urls = urls
+        self.end_time = end_time
+        self.start_time = start_time
 
     def validate(self):
         pass
@@ -12612,20 +12971,75 @@ class SubmitVideoAnalysisTaskRequestVideoRoles(TeaModel):
             return _map
 
         result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        return self
+
+
+class SubmitVideoAnalysisTaskRequestVideoRoles(TeaModel):
+    def __init__(
+        self,
+        is_auto_recognition: bool = None,
+        role_info: str = None,
+        role_name: str = None,
+        time_intervals: List[SubmitVideoAnalysisTaskRequestVideoRolesTimeIntervals] = None,
+        urls: List[str] = None,
+    ):
+        self.is_auto_recognition = is_auto_recognition
+        self.role_info = role_info
+        self.role_name = role_name
+        self.time_intervals = time_intervals
+        self.urls = urls
+
+    def validate(self):
+        if self.time_intervals:
+            for k in self.time_intervals:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_auto_recognition is not None:
+            result['isAutoRecognition'] = self.is_auto_recognition
         if self.role_info is not None:
             result['roleInfo'] = self.role_info
         if self.role_name is not None:
             result['roleName'] = self.role_name
+        result['timeIntervals'] = []
+        if self.time_intervals is not None:
+            for k in self.time_intervals:
+                result['timeIntervals'].append(k.to_map() if k else None)
         if self.urls is not None:
             result['urls'] = self.urls
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('isAutoRecognition') is not None:
+            self.is_auto_recognition = m.get('isAutoRecognition')
         if m.get('roleInfo') is not None:
             self.role_info = m.get('roleInfo')
         if m.get('roleName') is not None:
             self.role_name = m.get('roleName')
+        self.time_intervals = []
+        if m.get('timeIntervals') is not None:
+            for k in m.get('timeIntervals'):
+                temp_model = SubmitVideoAnalysisTaskRequestVideoRolesTimeIntervals()
+                self.time_intervals.append(temp_model.from_map(k))
         if m.get('urls') is not None:
             self.urls = m.get('urls')
         return self
@@ -12634,6 +13048,7 @@ class SubmitVideoAnalysisTaskRequestVideoRoles(TeaModel):
 class SubmitVideoAnalysisTaskRequest(TeaModel):
     def __init__(
         self,
+        auto_role_recognition_video_url: str = None,
         deduplication_id: str = None,
         exclude_generate_options: List[str] = None,
         face_identity_similarity_min_score: float = None,
@@ -12654,6 +13069,7 @@ class SubmitVideoAnalysisTaskRequest(TeaModel):
         video_shot_face_identity_count: int = None,
         video_url: str = None,
     ):
+        self.auto_role_recognition_video_url = auto_role_recognition_video_url
         self.deduplication_id = deduplication_id
         self.exclude_generate_options = exclude_generate_options
         self.face_identity_similarity_min_score = face_identity_similarity_min_score
@@ -12695,6 +13111,8 @@ class SubmitVideoAnalysisTaskRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_role_recognition_video_url is not None:
+            result['autoRoleRecognitionVideoUrl'] = self.auto_role_recognition_video_url
         if self.deduplication_id is not None:
             result['deduplicationId'] = self.deduplication_id
         if self.exclude_generate_options is not None:
@@ -12741,6 +13159,8 @@ class SubmitVideoAnalysisTaskRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('autoRoleRecognitionVideoUrl') is not None:
+            self.auto_role_recognition_video_url = m.get('autoRoleRecognitionVideoUrl')
         if m.get('deduplicationId') is not None:
             self.deduplication_id = m.get('deduplicationId')
         if m.get('excludeGenerateOptions') is not None:
@@ -12793,6 +13213,7 @@ class SubmitVideoAnalysisTaskRequest(TeaModel):
 class SubmitVideoAnalysisTaskShrinkRequest(TeaModel):
     def __init__(
         self,
+        auto_role_recognition_video_url: str = None,
         deduplication_id: str = None,
         exclude_generate_options_shrink: str = None,
         face_identity_similarity_min_score: float = None,
@@ -12813,6 +13234,7 @@ class SubmitVideoAnalysisTaskShrinkRequest(TeaModel):
         video_shot_face_identity_count: int = None,
         video_url: str = None,
     ):
+        self.auto_role_recognition_video_url = auto_role_recognition_video_url
         self.deduplication_id = deduplication_id
         self.exclude_generate_options_shrink = exclude_generate_options_shrink
         self.face_identity_similarity_min_score = face_identity_similarity_min_score
@@ -12843,6 +13265,8 @@ class SubmitVideoAnalysisTaskShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_role_recognition_video_url is not None:
+            result['autoRoleRecognitionVideoUrl'] = self.auto_role_recognition_video_url
         if self.deduplication_id is not None:
             result['deduplicationId'] = self.deduplication_id
         if self.exclude_generate_options_shrink is not None:
@@ -12885,6 +13309,8 @@ class SubmitVideoAnalysisTaskShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('autoRoleRecognitionVideoUrl') is not None:
+            self.auto_role_recognition_video_url = m.get('autoRoleRecognitionVideoUrl')
         if m.get('deduplicationId') is not None:
             self.deduplication_id = m.get('deduplicationId')
         if m.get('excludeGenerateOptions') is not None:

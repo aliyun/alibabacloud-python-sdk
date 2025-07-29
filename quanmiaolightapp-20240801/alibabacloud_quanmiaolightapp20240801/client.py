@@ -3278,6 +3278,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.video_roles):
             request.video_roles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_roles, 'videoRoles', 'json')
         body = {}
+        if not UtilClient.is_unset(request.auto_role_recognition_video_url):
+            body['autoRoleRecognitionVideoUrl'] = request.auto_role_recognition_video_url
         if not UtilClient.is_unset(request.exclude_generate_options_shrink):
             body['excludeGenerateOptions'] = request.exclude_generate_options_shrink
         if not UtilClient.is_unset(request.face_identity_similarity_min_score):
@@ -3369,6 +3371,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.video_roles):
             request.video_roles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_roles, 'videoRoles', 'json')
         body = {}
+        if not UtilClient.is_unset(request.auto_role_recognition_video_url):
+            body['autoRoleRecognitionVideoUrl'] = request.auto_role_recognition_video_url
         if not UtilClient.is_unset(request.exclude_generate_options_shrink):
             body['excludeGenerateOptions'] = request.exclude_generate_options_shrink
         if not UtilClient.is_unset(request.face_identity_similarity_min_score):
@@ -3946,6 +3950,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.video_roles):
             request.video_roles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_roles, 'videoRoles', 'json')
         body = {}
+        if not UtilClient.is_unset(request.auto_role_recognition_video_url):
+            body['autoRoleRecognitionVideoUrl'] = request.auto_role_recognition_video_url
         if not UtilClient.is_unset(request.deduplication_id):
             body['deduplicationId'] = request.deduplication_id
         if not UtilClient.is_unset(request.exclude_generate_options_shrink):
@@ -4035,6 +4041,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.video_roles):
             request.video_roles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_roles, 'videoRoles', 'json')
         body = {}
+        if not UtilClient.is_unset(request.auto_role_recognition_video_url):
+            body['autoRoleRecognitionVideoUrl'] = request.auto_role_recognition_video_url
         if not UtilClient.is_unset(request.deduplication_id):
             body['deduplicationId'] = request.deduplication_id
         if not UtilClient.is_unset(request.exclude_generate_options_shrink):
