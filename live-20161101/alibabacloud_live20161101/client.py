@@ -33168,6 +33168,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_live_user_domains_with_options_async(request, runtime)
 
+    def describe_live_user_stream_metric_data_with_options(
+        self,
+        request: live_20161101_models.DescribeLiveUserStreamMetricDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.DescribeLiveUserStreamMetricDataResponse:
+        """
+        @summary  查询指定域名流粒度批量数据
+        
+        @param request: DescribeLiveUserStreamMetricDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLiveUserStreamMetricDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.stream_name):
+            query['StreamName'] = request.stream_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLiveUserStreamMetricData',
+            version='2016-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveUserStreamMetricDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_live_user_stream_metric_data_with_options_async(
+        self,
+        request: live_20161101_models.DescribeLiveUserStreamMetricDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.DescribeLiveUserStreamMetricDataResponse:
+        """
+        @summary  查询指定域名流粒度批量数据
+        
+        @param request: DescribeLiveUserStreamMetricDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLiveUserStreamMetricDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.stream_name):
+            query['StreamName'] = request.stream_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLiveUserStreamMetricData',
+            version='2016-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveUserStreamMetricDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_live_user_stream_metric_data(
+        self,
+        request: live_20161101_models.DescribeLiveUserStreamMetricDataRequest,
+    ) -> live_20161101_models.DescribeLiveUserStreamMetricDataResponse:
+        """
+        @summary  查询指定域名流粒度批量数据
+        
+        @param request: DescribeLiveUserStreamMetricDataRequest
+        @return: DescribeLiveUserStreamMetricDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_live_user_stream_metric_data_with_options(request, runtime)
+
+    async def describe_live_user_stream_metric_data_async(
+        self,
+        request: live_20161101_models.DescribeLiveUserStreamMetricDataRequest,
+    ) -> live_20161101_models.DescribeLiveUserStreamMetricDataResponse:
+        """
+        @summary  查询指定域名流粒度批量数据
+        
+        @param request: DescribeLiveUserStreamMetricDataRequest
+        @return: DescribeLiveUserStreamMetricDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_live_user_stream_metric_data_with_options_async(request, runtime)
+
     def describe_live_user_tags_with_options(
         self,
         request: live_20161101_models.DescribeLiveUserTagsRequest,

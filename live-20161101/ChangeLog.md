@@ -1,3 +1,7 @@
+2025-07-29 Version: 2.1.0
+- Support API DescribeLiveUserStreamMetricData.
+
+
 2025-07-15 Version: 2.0.0
 - Support API AddLiveAIProduceRules.
 - Support API AddLiveAISubtitle.
