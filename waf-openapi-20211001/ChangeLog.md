@@ -1,3 +1,16 @@
+2025-07-29 Version: 6.1.2
+- Update API DescribeApisecRules: add request parameters Lang.
+- Update API DescribeApisecStatistics: add request parameters EndTime.
+- Update API DescribeApisecStatistics: add request parameters StartTime.
+- Update API DescribeApisecStatistics: add request parameters UserStatusList.
+- Update API DescribeApisecStatistics: add response parameters Body.Data.NotFixed.
+- Update API DescribeApisecStatistics: add response parameters Body.Data.SystemFixed.
+- Update API DescribeApisecStatistics: add response parameters Body.Data.ToBeVerified.
+- Update API DescribeApisecUserOperations: add response parameters Body.Data.$.OperationSource.
+- Update API DescribeUserAbnormalType: add request parameters UserStatusList.
+- Update API DescribeUserEventType: add request parameters UserStatusList.
+
+
 2025-07-28 Version: 6.1.1
 - Update API DescribeDefenseRule: add response parameters Body.Rule.DefenseType.
 - Update API DescribeDefenseRules: add response parameters Body.Rules.$.DefenseType.

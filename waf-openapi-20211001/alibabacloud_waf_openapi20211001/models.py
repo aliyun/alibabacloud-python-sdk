@@ -9214,6 +9214,7 @@ class DescribeApisecRulesRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
+        lang: str = None,
         level: str = None,
         name: str = None,
         origin: str = None,
@@ -9230,6 +9231,7 @@ class DescribeApisecRulesRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.lang = lang
         # The level of the policy.
         # 
         # If Type is set to risk or event, you can set this parameter to one of the following values:
@@ -9294,6 +9296,8 @@ class DescribeApisecRulesRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.lang is not None:
+            result['Lang'] = self.lang
         if self.level is not None:
             result['Level'] = self.level
         if self.name is not None:
@@ -9318,6 +9322,8 @@ class DescribeApisecRulesRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
         if m.get('Level') is not None:
             self.level = m.get('Level')
         if m.get('Name') is not None:
@@ -10040,15 +10046,19 @@ class DescribeApisecStatisticsRequest(TeaModel):
     def __init__(
         self,
         cluster_id: str = None,
+        end_time: int = None,
         instance_id: str = None,
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
+        start_time: int = None,
         type: str = None,
+        user_status_list: List[str] = None,
     ):
         # The ID of the hybrid cloud cluster.
         # 
         # >  This parameter is available only in hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query hybrid cloud clusters.
         self.cluster_id = cluster_id
+        self.end_time = end_time
         # The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
         # 
         # * **cn-hangzhou**: Chinese mainland
@@ -10063,11 +10073,13 @@ class DescribeApisecStatisticsRequest(TeaModel):
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        self.start_time = start_time
         # The type of the statistics. Valid values:
         # 
         # *   **risk**: risk-related statistics.
         # *   **event**: event-related statistics.
         self.type = type
+        self.user_status_list = user_status_list
 
     def validate(self):
         pass
@@ -10080,28 +10092,40 @@ class DescribeApisecStatisticsRequest(TeaModel):
         result = dict()
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_manager_resource_group_id is not None:
             result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
         if self.type is not None:
             result['Type'] = self.type
+        if self.user_status_list is not None:
+            result['UserStatusList'] = self.user_status_list
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceManagerResourceGroupId') is not None:
             self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('UserStatusList') is not None:
+            self.user_status_list = m.get('UserStatusList')
         return self
 
 
@@ -10117,8 +10141,11 @@ class DescribeApisecStatisticsResponseBodyData(TeaModel):
         ignore: int = None,
         low: int = None,
         medium: int = None,
+        not_fixed: int = None,
+        system_fixed: int = None,
         to_be_confirmed: int = None,
         to_be_fixed: int = None,
+        to_be_verified: int = None,
         today_high: str = None,
         today_low: int = None,
         today_medium: str = None,
@@ -10143,10 +10170,13 @@ class DescribeApisecStatisticsResponseBodyData(TeaModel):
         self.low = low
         # The number of moderate-risk events.
         self.medium = medium
+        self.not_fixed = not_fixed
+        self.system_fixed = system_fixed
         # The number of events to be confirmed.
         self.to_be_confirmed = to_be_confirmed
         # The number of risks to be fixed.
         self.to_be_fixed = to_be_fixed
+        self.to_be_verified = to_be_verified
         # The number of new high-risk events today.
         self.today_high = today_high
         # The number of new low-risk events today.
@@ -10185,10 +10215,16 @@ class DescribeApisecStatisticsResponseBodyData(TeaModel):
             result['Low'] = self.low
         if self.medium is not None:
             result['Medium'] = self.medium
+        if self.not_fixed is not None:
+            result['NotFixed'] = self.not_fixed
+        if self.system_fixed is not None:
+            result['SystemFixed'] = self.system_fixed
         if self.to_be_confirmed is not None:
             result['ToBeConfirmed'] = self.to_be_confirmed
         if self.to_be_fixed is not None:
             result['ToBeFixed'] = self.to_be_fixed
+        if self.to_be_verified is not None:
+            result['ToBeVerified'] = self.to_be_verified
         if self.today_high is not None:
             result['TodayHigh'] = self.today_high
         if self.today_low is not None:
@@ -10221,10 +10257,16 @@ class DescribeApisecStatisticsResponseBodyData(TeaModel):
             self.low = m.get('Low')
         if m.get('Medium') is not None:
             self.medium = m.get('Medium')
+        if m.get('NotFixed') is not None:
+            self.not_fixed = m.get('NotFixed')
+        if m.get('SystemFixed') is not None:
+            self.system_fixed = m.get('SystemFixed')
         if m.get('ToBeConfirmed') is not None:
             self.to_be_confirmed = m.get('ToBeConfirmed')
         if m.get('ToBeFixed') is not None:
             self.to_be_fixed = m.get('ToBeFixed')
+        if m.get('ToBeVerified') is not None:
+            self.to_be_verified = m.get('ToBeVerified')
         if m.get('TodayHigh') is not None:
             self.today_high = m.get('TodayHigh')
         if m.get('TodayLow') is not None:
@@ -10622,6 +10664,7 @@ class DescribeApisecUserOperationsResponseBodyData(TeaModel):
         from_status: str = None,
         note: str = None,
         object_id: str = None,
+        operation_source: str = None,
         time: int = None,
         to_status: str = None,
         type: str = None,
@@ -10647,6 +10690,7 @@ class DescribeApisecUserOperationsResponseBodyData(TeaModel):
         self.note = note
         # The object ID of the operation record.
         self.object_id = object_id
+        self.operation_source = operation_source
         # The time at which the operation was performed. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         self.time = time
         # The state after the operation.
@@ -10688,6 +10732,8 @@ class DescribeApisecUserOperationsResponseBodyData(TeaModel):
             result['Note'] = self.note
         if self.object_id is not None:
             result['ObjectId'] = self.object_id
+        if self.operation_source is not None:
+            result['OperationSource'] = self.operation_source
         if self.time is not None:
             result['Time'] = self.time
         if self.to_status is not None:
@@ -10706,6 +10752,8 @@ class DescribeApisecUserOperationsResponseBodyData(TeaModel):
             self.note = m.get('Note')
         if m.get('ObjectId') is not None:
             self.object_id = m.get('ObjectId')
+        if m.get('OperationSource') is not None:
+            self.operation_source = m.get('OperationSource')
         if m.get('Time') is not None:
             self.time = m.get('Time')
         if m.get('ToStatus') is not None:
@@ -31759,6 +31807,7 @@ class DescribeUserAbnormalTypeRequest(TeaModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
         start_time: int = None,
+        user_status_list: List[str] = None,
     ):
         # The ID of the hybrid cloud cluster.
         # >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
@@ -31780,6 +31829,7 @@ class DescribeUserAbnormalTypeRequest(TeaModel):
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The beginning of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         self.start_time = start_time
+        self.user_status_list = user_status_list
 
     def validate(self):
         pass
@@ -31802,6 +31852,8 @@ class DescribeUserAbnormalTypeRequest(TeaModel):
             result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.user_status_list is not None:
+            result['UserStatusList'] = self.user_status_list
         return result
 
     def from_map(self, m: dict = None):
@@ -31818,6 +31870,8 @@ class DescribeUserAbnormalTypeRequest(TeaModel):
             self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('UserStatusList') is not None:
+            self.user_status_list = m.get('UserStatusList')
         return self
 
 
@@ -32589,6 +32643,7 @@ class DescribeUserEventTypeRequest(TeaModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
         start_time: int = None,
+        user_status_list: List[str] = None,
     ):
         # The ID of the hybrid cloud cluster.
         # >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
@@ -32610,6 +32665,7 @@ class DescribeUserEventTypeRequest(TeaModel):
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The beginning of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         self.start_time = start_time
+        self.user_status_list = user_status_list
 
     def validate(self):
         pass
@@ -32632,6 +32688,8 @@ class DescribeUserEventTypeRequest(TeaModel):
             result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.user_status_list is not None:
+            result['UserStatusList'] = self.user_status_list
         return result
 
     def from_map(self, m: dict = None):
@@ -32648,6 +32706,8 @@ class DescribeUserEventTypeRequest(TeaModel):
             self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('UserStatusList') is not None:
+            self.user_status_list = m.get('UserStatusList')
         return self
 
 
