@@ -184,6 +184,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ehpc_instant_20230701_models.CreateJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dependency_policy):
+            request.dependency_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dependency_policy, 'DependencyPolicy', 'json')
         if not UtilClient.is_unset(tmp_req.deployment_policy):
             request.deployment_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.deployment_policy, 'DeploymentPolicy', 'json')
         if not UtilClient.is_unset(tmp_req.security_policy):
@@ -191,6 +193,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tasks):
             request.tasks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tasks, 'Tasks', 'json')
         query = {}
+        if not UtilClient.is_unset(request.dependency_policy_shrink):
+            query['DependencyPolicy'] = request.dependency_policy_shrink
         if not UtilClient.is_unset(request.deployment_policy_shrink):
             query['DeploymentPolicy'] = request.deployment_policy_shrink
         if not UtilClient.is_unset(request.job_description):
@@ -237,6 +241,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ehpc_instant_20230701_models.CreateJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dependency_policy):
+            request.dependency_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dependency_policy, 'DependencyPolicy', 'json')
         if not UtilClient.is_unset(tmp_req.deployment_policy):
             request.deployment_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.deployment_policy, 'DeploymentPolicy', 'json')
         if not UtilClient.is_unset(tmp_req.security_policy):
@@ -244,6 +250,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tasks):
             request.tasks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tasks, 'Tasks', 'json')
         query = {}
+        if not UtilClient.is_unset(request.dependency_policy_shrink):
+            query['DependencyPolicy'] = request.dependency_policy_shrink
         if not UtilClient.is_unset(request.deployment_policy_shrink):
             query['DeploymentPolicy'] = request.deployment_policy_shrink
         if not UtilClient.is_unset(request.job_description):

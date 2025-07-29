@@ -324,6 +324,75 @@ class AddImageResponse(TeaModel):
         return self
 
 
+class CreateJobRequestDependencyPolicyJobDependency(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        type: str = None,
+    ):
+        # This parameter is required.
+        self.job_id = job_id
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreateJobRequestDependencyPolicy(TeaModel):
+    def __init__(
+        self,
+        job_dependency: List[CreateJobRequestDependencyPolicyJobDependency] = None,
+    ):
+        self.job_dependency = job_dependency
+
+    def validate(self):
+        if self.job_dependency:
+            for k in self.job_dependency:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['JobDependency'] = []
+        if self.job_dependency is not None:
+            for k in self.job_dependency:
+                result['JobDependency'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.job_dependency = []
+        if m.get('JobDependency') is not None:
+            for k in m.get('JobDependency'):
+                temp_model = CreateJobRequestDependencyPolicyJobDependency()
+                self.job_dependency.append(temp_model.from_map(k))
+        return self
+
+
 class CreateJobRequestDeploymentPolicyNetwork(TeaModel):
     def __init__(
         self,
@@ -675,6 +744,82 @@ class CreateJobRequestTasksTaskSpecResource(TeaModel):
         return self
 
 
+class CreateJobRequestTasksTaskSpecRetryPolicyExitCodeActions(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        exit_code: int = None,
+    ):
+        # This parameter is required.
+        self.action = action
+        # This parameter is required.
+        self.exit_code = exit_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.exit_code is not None:
+            result['ExitCode'] = self.exit_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('ExitCode') is not None:
+            self.exit_code = m.get('ExitCode')
+        return self
+
+
+class CreateJobRequestTasksTaskSpecRetryPolicy(TeaModel):
+    def __init__(
+        self,
+        exit_code_actions: List[CreateJobRequestTasksTaskSpecRetryPolicyExitCodeActions] = None,
+        retry_count: int = None,
+    ):
+        self.exit_code_actions = exit_code_actions
+        self.retry_count = retry_count
+
+    def validate(self):
+        if self.exit_code_actions:
+            for k in self.exit_code_actions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ExitCodeActions'] = []
+        if self.exit_code_actions is not None:
+            for k in self.exit_code_actions:
+                result['ExitCodeActions'].append(k.to_map() if k else None)
+        if self.retry_count is not None:
+            result['RetryCount'] = self.retry_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.exit_code_actions = []
+        if m.get('ExitCodeActions') is not None:
+            for k in m.get('ExitCodeActions'):
+                temp_model = CreateJobRequestTasksTaskSpecRetryPolicyExitCodeActions()
+                self.exit_code_actions.append(temp_model.from_map(k))
+        if m.get('RetryCount') is not None:
+            self.retry_count = m.get('RetryCount')
+        return self
+
+
 class CreateJobRequestTasksTaskSpecTaskExecutorContainerEnvironmentVars(TeaModel):
     def __init__(
         self,
@@ -913,10 +1058,12 @@ class CreateJobRequestTasksTaskSpec(TeaModel):
     def __init__(
         self,
         resource: CreateJobRequestTasksTaskSpecResource = None,
+        retry_policy: CreateJobRequestTasksTaskSpecRetryPolicy = None,
         task_executor: List[CreateJobRequestTasksTaskSpecTaskExecutor] = None,
         volume_mount: List[CreateJobRequestTasksTaskSpecVolumeMount] = None,
     ):
         self.resource = resource
+        self.retry_policy = retry_policy
         # This parameter is required.
         self.task_executor = task_executor
         self.volume_mount = volume_mount
@@ -924,6 +1071,8 @@ class CreateJobRequestTasksTaskSpec(TeaModel):
     def validate(self):
         if self.resource:
             self.resource.validate()
+        if self.retry_policy:
+            self.retry_policy.validate()
         if self.task_executor:
             for k in self.task_executor:
                 if k:
@@ -941,6 +1090,8 @@ class CreateJobRequestTasksTaskSpec(TeaModel):
         result = dict()
         if self.resource is not None:
             result['Resource'] = self.resource.to_map()
+        if self.retry_policy is not None:
+            result['RetryPolicy'] = self.retry_policy.to_map()
         result['TaskExecutor'] = []
         if self.task_executor is not None:
             for k in self.task_executor:
@@ -956,6 +1107,9 @@ class CreateJobRequestTasksTaskSpec(TeaModel):
         if m.get('Resource') is not None:
             temp_model = CreateJobRequestTasksTaskSpecResource()
             self.resource = temp_model.from_map(m['Resource'])
+        if m.get('RetryPolicy') is not None:
+            temp_model = CreateJobRequestTasksTaskSpecRetryPolicy()
+            self.retry_policy = temp_model.from_map(m['RetryPolicy'])
         self.task_executor = []
         if m.get('TaskExecutor') is not None:
             for k in m.get('TaskExecutor'):
@@ -1022,6 +1176,7 @@ class CreateJobRequestTasks(TeaModel):
 class CreateJobRequest(TeaModel):
     def __init__(
         self,
+        dependency_policy: CreateJobRequestDependencyPolicy = None,
         deployment_policy: CreateJobRequestDeploymentPolicy = None,
         job_description: str = None,
         job_name: str = None,
@@ -1029,6 +1184,7 @@ class CreateJobRequest(TeaModel):
         security_policy: CreateJobRequestSecurityPolicy = None,
         tasks: List[CreateJobRequestTasks] = None,
     ):
+        self.dependency_policy = dependency_policy
         self.deployment_policy = deployment_policy
         self.job_description = job_description
         # This parameter is required.
@@ -1039,6 +1195,8 @@ class CreateJobRequest(TeaModel):
         self.tasks = tasks
 
     def validate(self):
+        if self.dependency_policy:
+            self.dependency_policy.validate()
         if self.deployment_policy:
             self.deployment_policy.validate()
         if self.security_policy:
@@ -1054,6 +1212,8 @@ class CreateJobRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.dependency_policy is not None:
+            result['DependencyPolicy'] = self.dependency_policy.to_map()
         if self.deployment_policy is not None:
             result['DeploymentPolicy'] = self.deployment_policy.to_map()
         if self.job_description is not None:
@@ -1072,6 +1232,9 @@ class CreateJobRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DependencyPolicy') is not None:
+            temp_model = CreateJobRequestDependencyPolicy()
+            self.dependency_policy = temp_model.from_map(m['DependencyPolicy'])
         if m.get('DeploymentPolicy') is not None:
             temp_model = CreateJobRequestDeploymentPolicy()
             self.deployment_policy = temp_model.from_map(m['DeploymentPolicy'])
@@ -1095,6 +1258,7 @@ class CreateJobRequest(TeaModel):
 class CreateJobShrinkRequest(TeaModel):
     def __init__(
         self,
+        dependency_policy_shrink: str = None,
         deployment_policy_shrink: str = None,
         job_description: str = None,
         job_name: str = None,
@@ -1102,6 +1266,7 @@ class CreateJobShrinkRequest(TeaModel):
         security_policy_shrink: str = None,
         tasks_shrink: str = None,
     ):
+        self.dependency_policy_shrink = dependency_policy_shrink
         self.deployment_policy_shrink = deployment_policy_shrink
         self.job_description = job_description
         # This parameter is required.
@@ -1120,6 +1285,8 @@ class CreateJobShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.dependency_policy_shrink is not None:
+            result['DependencyPolicy'] = self.dependency_policy_shrink
         if self.deployment_policy_shrink is not None:
             result['DeploymentPolicy'] = self.deployment_policy_shrink
         if self.job_description is not None:
@@ -1136,6 +1303,8 @@ class CreateJobShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DependencyPolicy') is not None:
+            self.dependency_policy_shrink = m.get('DependencyPolicy')
         if m.get('DeploymentPolicy') is not None:
             self.deployment_policy_shrink = m.get('DeploymentPolicy')
         if m.get('JobDescription') is not None:
@@ -2885,6 +3054,74 @@ class GetJobRequest(TeaModel):
         return self
 
 
+class GetJobResponseBodyJobInfoDependencyPolicyJobDependency(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        type: str = None,
+    ):
+        self.job_id = job_id
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetJobResponseBodyJobInfoDependencyPolicy(TeaModel):
+    def __init__(
+        self,
+        job_dependency: List[GetJobResponseBodyJobInfoDependencyPolicyJobDependency] = None,
+    ):
+        self.job_dependency = job_dependency
+
+    def validate(self):
+        if self.job_dependency:
+            for k in self.job_dependency:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['JobDependency'] = []
+        if self.job_dependency is not None:
+            for k in self.job_dependency:
+                result['JobDependency'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.job_dependency = []
+        if m.get('JobDependency') is not None:
+            for k in m.get('JobDependency'):
+                temp_model = GetJobResponseBodyJobInfoDependencyPolicyJobDependency()
+                self.job_dependency.append(temp_model.from_map(k))
+        return self
+
+
 class GetJobResponseBodyJobInfoDeploymentPolicyNetwork(TeaModel):
     def __init__(
         self,
@@ -3230,6 +3467,80 @@ class GetJobResponseBodyJobInfoTasksTaskSpecResource(TeaModel):
         return self
 
 
+class GetJobResponseBodyJobInfoTasksTaskSpecRetryPolicyExitCodeActions(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        exit_code: int = None,
+    ):
+        self.action = action
+        self.exit_code = exit_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.exit_code is not None:
+            result['ExitCode'] = self.exit_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('ExitCode') is not None:
+            self.exit_code = m.get('ExitCode')
+        return self
+
+
+class GetJobResponseBodyJobInfoTasksTaskSpecRetryPolicy(TeaModel):
+    def __init__(
+        self,
+        exit_code_actions: List[GetJobResponseBodyJobInfoTasksTaskSpecRetryPolicyExitCodeActions] = None,
+        retry_count: int = None,
+    ):
+        self.exit_code_actions = exit_code_actions
+        self.retry_count = retry_count
+
+    def validate(self):
+        if self.exit_code_actions:
+            for k in self.exit_code_actions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ExitCodeActions'] = []
+        if self.exit_code_actions is not None:
+            for k in self.exit_code_actions:
+                result['ExitCodeActions'].append(k.to_map() if k else None)
+        if self.retry_count is not None:
+            result['RetryCount'] = self.retry_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.exit_code_actions = []
+        if m.get('ExitCodeActions') is not None:
+            for k in m.get('ExitCodeActions'):
+                temp_model = GetJobResponseBodyJobInfoTasksTaskSpecRetryPolicyExitCodeActions()
+                self.exit_code_actions.append(temp_model.from_map(k))
+        if m.get('RetryCount') is not None:
+            self.retry_count = m.get('RetryCount')
+        return self
+
+
 class GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM(TeaModel):
     def __init__(
         self,
@@ -3308,14 +3619,18 @@ class GetJobResponseBodyJobInfoTasksTaskSpec(TeaModel):
     def __init__(
         self,
         resource: GetJobResponseBodyJobInfoTasksTaskSpecResource = None,
+        retry_policy: GetJobResponseBodyJobInfoTasksTaskSpecRetryPolicy = None,
         task_executor: List[GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutor] = None,
     ):
         self.resource = resource
+        self.retry_policy = retry_policy
         self.task_executor = task_executor
 
     def validate(self):
         if self.resource:
             self.resource.validate()
+        if self.retry_policy:
+            self.retry_policy.validate()
         if self.task_executor:
             for k in self.task_executor:
                 if k:
@@ -3329,6 +3644,8 @@ class GetJobResponseBodyJobInfoTasksTaskSpec(TeaModel):
         result = dict()
         if self.resource is not None:
             result['Resource'] = self.resource.to_map()
+        if self.retry_policy is not None:
+            result['RetryPolicy'] = self.retry_policy.to_map()
         result['TaskExecutor'] = []
         if self.task_executor is not None:
             for k in self.task_executor:
@@ -3340,6 +3657,9 @@ class GetJobResponseBodyJobInfoTasksTaskSpec(TeaModel):
         if m.get('Resource') is not None:
             temp_model = GetJobResponseBodyJobInfoTasksTaskSpecResource()
             self.resource = temp_model.from_map(m['Resource'])
+        if m.get('RetryPolicy') is not None:
+            temp_model = GetJobResponseBodyJobInfoTasksTaskSpecRetryPolicy()
+            self.retry_policy = temp_model.from_map(m['RetryPolicy'])
         self.task_executor = []
         if m.get('TaskExecutor') is not None:
             for k in m.get('TaskExecutor'):
@@ -3418,6 +3738,7 @@ class GetJobResponseBodyJobInfo(TeaModel):
         self,
         app_extra_info: str = None,
         create_time: str = None,
+        dependency_policy: GetJobResponseBodyJobInfoDependencyPolicy = None,
         deployment_policy: GetJobResponseBodyJobInfoDeploymentPolicy = None,
         end_time: str = None,
         job_description: str = None,
@@ -3430,6 +3751,7 @@ class GetJobResponseBodyJobInfo(TeaModel):
     ):
         self.app_extra_info = app_extra_info
         self.create_time = create_time
+        self.dependency_policy = dependency_policy
         self.deployment_policy = deployment_policy
         self.end_time = end_time
         self.job_description = job_description
@@ -3441,6 +3763,8 @@ class GetJobResponseBodyJobInfo(TeaModel):
         self.tasks = tasks
 
     def validate(self):
+        if self.dependency_policy:
+            self.dependency_policy.validate()
         if self.deployment_policy:
             self.deployment_policy.validate()
         if self.tasks:
@@ -3458,6 +3782,8 @@ class GetJobResponseBodyJobInfo(TeaModel):
             result['AppExtraInfo'] = self.app_extra_info
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.dependency_policy is not None:
+            result['DependencyPolicy'] = self.dependency_policy.to_map()
         if self.deployment_policy is not None:
             result['DeploymentPolicy'] = self.deployment_policy.to_map()
         if self.end_time is not None:
@@ -3486,6 +3812,9 @@ class GetJobResponseBodyJobInfo(TeaModel):
             self.app_extra_info = m.get('AppExtraInfo')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('DependencyPolicy') is not None:
+            temp_model = GetJobResponseBodyJobInfoDependencyPolicy()
+            self.dependency_policy = temp_model.from_map(m['DependencyPolicy'])
         if m.get('DeploymentPolicy') is not None:
             temp_model = GetJobResponseBodyJobInfoDeploymentPolicy()
             self.deployment_policy = temp_model.from_map(m['DeploymentPolicy'])

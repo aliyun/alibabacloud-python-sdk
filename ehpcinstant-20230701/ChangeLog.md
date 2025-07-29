@@ -1,3 +1,10 @@
+2025-07-29 Version: 2.0.8
+- Update API CreateJob: add request parameters DependencyPolicy.
+- Update API CreateJob: add request parameters Tasks.$.TaskSpec.RetryPolicy.
+- Update API GetJob: add response parameters Body.JobInfo.DependencyPolicy.
+- Update API GetJob: add response parameters Body.JobInfo.Tasks.$.TaskSpec.RetryPolicy.
+
+
 2025-07-15 Version: 2.0.7
 - Update API ListExecutors: add response parameters Body.Executors.$.BlockDuration.
 - Update API ListExecutors: add response parameters Body.Executors.$.Preemptible.
