@@ -12406,6 +12406,7 @@ class CreateApplicationRequest(TeaModel):
         enable_sidecar_resource_isolated: bool = None,
         envs: str = None,
         gpu_config: str = None,
+        headless_pvtz_discovery_svc: str = None,
         html: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
@@ -12586,6 +12587,7 @@ class CreateApplicationRequest(TeaModel):
         #     *   **key**: the key. If you want to reference all key values, you do not need to configure this parameter.
         self.envs = envs
         self.gpu_config = gpu_config
+        self.headless_pvtz_discovery_svc = headless_pvtz_discovery_svc
         self.html = html
         # The ID of the corresponding Secret.
         self.image_pull_secrets = image_pull_secrets
@@ -12920,6 +12922,8 @@ class CreateApplicationRequest(TeaModel):
             result['Envs'] = self.envs
         if self.gpu_config is not None:
             result['GpuConfig'] = self.gpu_config
+        if self.headless_pvtz_discovery_svc is not None:
+            result['HeadlessPvtzDiscoverySvc'] = self.headless_pvtz_discovery_svc
         if self.html is not None:
             result['Html'] = self.html
         if self.image_pull_secrets is not None:
@@ -13086,6 +13090,8 @@ class CreateApplicationRequest(TeaModel):
             self.envs = m.get('Envs')
         if m.get('GpuConfig') is not None:
             self.gpu_config = m.get('GpuConfig')
+        if m.get('HeadlessPvtzDiscoverySvc') is not None:
+            self.headless_pvtz_discovery_svc = m.get('HeadlessPvtzDiscoverySvc')
         if m.get('Html') is not None:
             self.html = m.get('Html')
         if m.get('ImagePullSecrets') is not None:
@@ -13231,6 +13237,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         enable_sidecar_resource_isolated: bool = None,
         envs: str = None,
         gpu_config: str = None,
+        headless_pvtz_discovery_svc: str = None,
         html: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
@@ -13411,6 +13418,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         #     *   **key**: the key. If you want to reference all key values, you do not need to configure this parameter.
         self.envs = envs
         self.gpu_config = gpu_config
+        self.headless_pvtz_discovery_svc = headless_pvtz_discovery_svc
         self.html = html
         # The ID of the corresponding Secret.
         self.image_pull_secrets = image_pull_secrets
@@ -13738,6 +13746,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             result['Envs'] = self.envs
         if self.gpu_config is not None:
             result['GpuConfig'] = self.gpu_config
+        if self.headless_pvtz_discovery_svc is not None:
+            result['HeadlessPvtzDiscoverySvc'] = self.headless_pvtz_discovery_svc
         if self.html is not None:
             result['Html'] = self.html
         if self.image_pull_secrets is not None:
@@ -13900,6 +13910,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             self.envs = m.get('Envs')
         if m.get('GpuConfig') is not None:
             self.gpu_config = m.get('GpuConfig')
+        if m.get('HeadlessPvtzDiscoverySvc') is not None:
+            self.headless_pvtz_discovery_svc = m.get('HeadlessPvtzDiscoverySvc')
         if m.get('Html') is not None:
             self.html = m.get('Html')
         if m.get('ImagePullSecrets') is not None:
@@ -22600,6 +22612,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         base_app_id: str = None,
         batch_wait_time: int = None,
         cluster_id: str = None,
+        cms_service_id: str = None,
         command: str = None,
         command_args: str = None,
         config_map_mount_desc: List[DescribeApplicationConfigResponseBodyDataConfigMapMountDesc] = None,
@@ -22618,6 +22631,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         envs: str = None,
         gpu_count: str = None,
         gpu_type: str = None,
+        headless_pvtz_discovery: str = None,
         html: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
@@ -22707,6 +22721,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self.batch_wait_time = batch_wait_time
         # The cluster ID.
         self.cluster_id = cluster_id
+        self.cms_service_id = cms_service_id
         # The command that is used to start the image. The command must be an existing executable object in the container. Example:
         # 
         # ```
@@ -22797,6 +22812,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self.envs = envs
         self.gpu_count = gpu_count
         self.gpu_type = gpu_type
+        self.headless_pvtz_discovery = headless_pvtz_discovery
         self.html = html
         # The ID of the corresponding secret dictionary.
         self.image_pull_secrets = image_pull_secrets
@@ -23131,6 +23147,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['BatchWaitTime'] = self.batch_wait_time
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
+        if self.cms_service_id is not None:
+            result['CmsServiceId'] = self.cms_service_id
         if self.command is not None:
             result['Command'] = self.command
         if self.command_args is not None:
@@ -23169,6 +23187,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['GpuCount'] = self.gpu_count
         if self.gpu_type is not None:
             result['GpuType'] = self.gpu_type
+        if self.headless_pvtz_discovery is not None:
+            result['HeadlessPvtzDiscovery'] = self.headless_pvtz_discovery
         if self.html is not None:
             result['Html'] = self.html
         if self.image_pull_secrets is not None:
@@ -23327,6 +23347,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.batch_wait_time = m.get('BatchWaitTime')
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
+        if m.get('CmsServiceId') is not None:
+            self.cms_service_id = m.get('CmsServiceId')
         if m.get('Command') is not None:
             self.command = m.get('Command')
         if m.get('CommandArgs') is not None:
@@ -23366,6 +23388,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.gpu_count = m.get('GpuCount')
         if m.get('GpuType') is not None:
             self.gpu_type = m.get('GpuType')
+        if m.get('HeadlessPvtzDiscovery') is not None:
+            self.headless_pvtz_discovery = m.get('HeadlessPvtzDiscovery')
         if m.get('Html') is not None:
             self.html = m.get('Html')
         if m.get('ImagePullSecrets') is not None:

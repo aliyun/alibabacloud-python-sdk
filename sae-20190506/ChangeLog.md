@@ -1,3 +1,9 @@
+2025-07-30 Version: 2.5.9
+- Update API CreateApplication: add request parameters HeadlessPvtzDiscoverySvc.
+- Update API DescribeApplicationConfig: add response parameters Body.Data.CmsServiceId.
+- Update API DescribeApplicationConfig: add response parameters Body.Data.HeadlessPvtzDiscovery.
+
+
 2025-07-29 Version: 2.5.8
 - Update API CreateApplication: add request parameters Html.
 - Update API DeployApplication: add request parameters Html.

@@ -887,6 +887,8 @@ class Client(OpenApiClient):
             query['Envs'] = request.envs
         if not UtilClient.is_unset(request.gpu_config):
             query['GpuConfig'] = request.gpu_config
+        if not UtilClient.is_unset(request.headless_pvtz_discovery_svc):
+            query['HeadlessPvtzDiscoverySvc'] = request.headless_pvtz_discovery_svc
         if not UtilClient.is_unset(request.html):
             query['Html'] = request.html
         if not UtilClient.is_unset(request.image_pull_secrets):
@@ -1089,6 +1091,8 @@ class Client(OpenApiClient):
             query['Envs'] = request.envs
         if not UtilClient.is_unset(request.gpu_config):
             query['GpuConfig'] = request.gpu_config
+        if not UtilClient.is_unset(request.headless_pvtz_discovery_svc):
+            query['HeadlessPvtzDiscoverySvc'] = request.headless_pvtz_discovery_svc
         if not UtilClient.is_unset(request.html):
             query['Html'] = request.html
         if not UtilClient.is_unset(request.image_pull_secrets):
