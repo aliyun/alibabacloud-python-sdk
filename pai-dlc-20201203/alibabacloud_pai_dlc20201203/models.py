@@ -2052,7 +2052,7 @@ class ServiceSpec(TeaModel):
     def __init__(
         self,
         default_port: int = None,
-        extra_ports: int = None,
+        extra_ports: List[int] = None,
         service_mode: str = None,
     ):
         self.default_port = default_port
@@ -4201,6 +4201,7 @@ class CreateJobRequestDataSources(TeaModel):
         self,
         data_source_id: str = None,
         data_source_version: str = None,
+        enable_cache: bool = None,
         mount_access: str = None,
         mount_path: str = None,
         options: str = None,
@@ -4209,6 +4210,7 @@ class CreateJobRequestDataSources(TeaModel):
         # The data source ID.
         self.data_source_id = data_source_id
         self.data_source_version = data_source_version
+        self.enable_cache = enable_cache
         self.mount_access = mount_access
         # The path to which the job is mounted. By default, the mount path in the data source configuration is used. This parameter is optional.
         self.mount_path = mount_path
@@ -4230,6 +4232,8 @@ class CreateJobRequestDataSources(TeaModel):
             result['DataSourceId'] = self.data_source_id
         if self.data_source_version is not None:
             result['DataSourceVersion'] = self.data_source_version
+        if self.enable_cache is not None:
+            result['EnableCache'] = self.enable_cache
         if self.mount_access is not None:
             result['MountAccess'] = self.mount_access
         if self.mount_path is not None:
@@ -4246,6 +4250,8 @@ class CreateJobRequestDataSources(TeaModel):
             self.data_source_id = m.get('DataSourceId')
         if m.get('DataSourceVersion') is not None:
             self.data_source_version = m.get('DataSourceVersion')
+        if m.get('EnableCache') is not None:
+            self.enable_cache = m.get('EnableCache')
         if m.get('MountAccess') is not None:
             self.mount_access = m.get('MountAccess')
         if m.get('MountPath') is not None:
@@ -4269,7 +4275,7 @@ class CreateJobRequestUserVpc(TeaModel):
         # The default route. Default value: false. Valid values:
         # 
         # *   eth0: The default network interface is used to access the Internet through the public gateway.
-        # *   eth1: The user\\"s Elastic Network Interface is used to access the Internet through the private gateway. For more information about the configuration method, see [Enable Internet access for a DSW instance by using a private Internet NAT gateway](https://help.aliyun.com/document_detail/2525343.html).
+        # *   eth1: The user\\"s elastic network interface (ENI) is used to access the Internet through the private gateway. For more information about the configuration method, see [Enable Internet access for a DSW instance by using a private Internet NAT gateway](https://help.aliyun.com/document_detail/2525343.html).
         self.default_route = default_route
         # The extended CIDR block.
         # 
@@ -4373,7 +4379,7 @@ class CreateJobRequest(TeaModel):
         self.envs = envs
         # The maximum running duration of the job. Unit: minutes.
         self.job_max_running_time_minutes = job_max_running_time_minutes
-        # The configurations for job running, such as the image address, startup command, node resource declaration, and number of replicas.****\
+        # **JobSpecs** describes the configurations for job running, such as the image address, startup command, node resource declaration, and number of replicas.
         # 
         # A DLC job consists of different types of nodes. If nodes of the same type have exactly the same configuration, the configuration is called JobSpec. **JobSpecs** specifies the configurations of all types of nodes. The value is of the array type.
         # 
@@ -4390,7 +4396,7 @@ class CreateJobRequest(TeaModel):
         # *   SlurmJob
         # *   RayJob
         # 
-        # Valid values for each job type:
+        # Valid values and corresponding frameworks:
         # 
         # *   OneFlowJob: OneFlow.
         # *   PyTorchJob: PyTorch.
@@ -4407,7 +4413,7 @@ class CreateJobRequest(TeaModel):
         self.options = options
         # The priority of the job. Default value: 1. Valid values: 1 to 9.
         # 
-        # *   1: the lowest priority.
+        # *   1 is the lowest priority.
         # *   9: the highest priority.
         self.priority = priority
         # The ID of the resource group. This parameter is optional.
@@ -4667,15 +4673,14 @@ class CreateTensorboardRequest(TeaModel):
         uri: str = None,
         workspace_id: str = None,
     ):
-        # The visibility of the job. Valid values:
+        # The job visibility. Valid values:
         # 
-        # *   PUBLIC: The configuration is public in the workspace.
-        # *   PRIVATE: The configuration is visible only to you and the administrator of the workspace.
+        # *   PUBLIC: Visible to all members in the workspace.
+        # *   PRIVATE: Visible only to you and the administrator of the workspace.
         self.accessibility = accessibility
         # The number of vCPU cores.
         self.cpu = cpu
-        # The dataset ID. 
-        # <props="china">Call [ListDatasets](https://help.aliyun.com/document_detail/457222.html) to get the dataset ID.
+        # The dataset ID.
         self.data_source_id = data_source_id
         # The dataset type. Valid values:
         # 
@@ -4686,7 +4691,7 @@ class CreateTensorboardRequest(TeaModel):
         self.data_sources = data_sources
         # The TensorBoard name
         self.display_name = display_name
-        # The job ID. Call [ListJobs](https://help.aliyun.com/document_detail/459676.html) to get the job ID.
+        # The job ID. For more information about how to query the job ID, see [ListJobs](https://help.aliyun.com/document_detail/459676.html).
         self.job_id = job_id
         # The maximum running duration. Unit: minutes.
         self.max_running_time_minutes = max_running_time_minutes
@@ -4699,7 +4704,8 @@ class CreateTensorboardRequest(TeaModel):
         # *   1 is the lowest priority.
         # *   9 is the highest priority.
         self.priority = priority
-        # The resource quota ID. This parameter is required when you create a TensorBoard job by using a resource quota. <props="china">Call [ListQuotas](https://help.aliyun.com/document_detail/2628071.html) to get the quota ID. 
+        # The resource quota ID. This parameter is required when you create a TensorBoard job by using a resource quota.
+        # 
         # This feature is currently limited to whitelisted users. If you need to use this feature, contact us.
         self.quota_id = quota_id
         # The source ID.
@@ -4714,13 +4720,12 @@ class CreateTensorboardRequest(TeaModel):
         self.tensorboard_data_sources = tensorboard_data_sources
         # The pay-as-you-go configuration of TensorBoard, which is used to create TensorBoard jobs that use pay-as-you-go resources.
         self.tensorboard_spec = tensorboard_spec
-        # The dataset URI.
+        # The dataset URI:
         # 
         # *   Value format when DataSourceType is set to OSS: `oss://[oss-bucket].[endpoint]/[path]`.
         # *   Value format when DataSourceType is set to NAS:`nas://[nas-filesystem-id].[region]/[path]`.
         self.uri = uri
-        # The workspace ID. 
-        # <props="china">Call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -5010,8 +5015,7 @@ class DeleteTensorboardRequest(TeaModel):
         self,
         workspace_id: str = None,
     ):
-        # The workspace ID. 
-        # <props="china">For more information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -5580,7 +5584,7 @@ class GetJobResponseBody(TeaModel):
         self.gmt_successed_time = gmt_successed_time
         # The job ID.
         self.job_id = job_id
-        # The node configurations of the job, which is **JobSpecs** in the CreateJob operation.
+        # The node configuration of the job, which is **JobSpecs** in the CreateJob operation.
         self.job_specs = job_specs
         # The job type. Specified by the JobType parameter of the [CreateJob](https://help.aliyun.com/document_detail/459672.html) operation.
         self.job_type = job_type
@@ -5602,7 +5606,7 @@ class GetJobResponseBody(TeaModel):
         self.resource_type = resource_type
         # The number of retries and the maximum number of retries used by the job.
         self.restart_times = restart_times
-        # The settings of the additional parameters of the job.
+        # The additional parameter configurations of the job.
         self.settings = settings
         # The status of the job. Valid values:
         # 
@@ -6767,8 +6771,7 @@ class GetTensorboardRequest(TeaModel):
         self.jod_id = jod_id
         # The information about the shared token. You can specify this parameter to obtain the permission to view a TensorBoard job based on the shared token information. You can execute [GetTensorboardSharedUrl](https://help.aliyun.com/document_detail/2557813.html) and extract the shared token from the obtained information.
         self.token = token
-        # The workspace ID. 
-        # <props="china">For more information about how to query the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -8170,8 +8173,7 @@ class ListTensorboardsRequest(TeaModel):
         # *   true
         # *   false
         self.verbose = verbose
-        # The workspace ID. Obtain a list of TensorBoard instances based on the workspace ID. 
-        # <props="china">For more information, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+        # The workspace ID. Obtain a list of TensorBoard instances based on the workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -8546,8 +8548,7 @@ class StopTensorboardRequest(TeaModel):
         self,
         workspace_id: str = None,
     ):
-        # The workspace ID. 
-        # <props="china">For more information about how to query the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -8779,8 +8780,7 @@ class UpdateTensorboardRequest(TeaModel):
         # The maximum running time. Unit: minutes.
         self.max_running_time_minutes = max_running_time_minutes
         self.priority = priority
-        # The workspace ID. 
-        # <props="china">For more information about how to query the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

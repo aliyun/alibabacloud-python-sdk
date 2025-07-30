@@ -1,3 +1,7 @@
+2025-07-30 Version: 1.5.5
+- Update API CreateJob: add request parameters body.DataSources.$.EnableCache.
+
+
 2025-05-26 Version: 1.5.4
 - Generated python 2020-12-03 for pai-dlc.
 
