@@ -462,6 +462,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.biz_type):
             query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.parent_group_id):
@@ -503,6 +505,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.biz_type):
             query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.parent_group_id):
@@ -1210,8 +1214,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.biz_type):
             query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.solution_id):
             query['SolutionId'] = request.solution_id
         req = open_api_models.OpenApiRequest(
@@ -1249,8 +1259,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.biz_type):
             query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.solution_id):
             query['SolutionId'] = request.solution_id
         req = open_api_models.OpenApiRequest(
@@ -1318,8 +1334,14 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.solution_id):
             query['SolutionId'] = request.solution_id
+        if not UtilClient.is_unset(request.transfer_file_need_approval):
+            query['TransferFileNeedApproval'] = request.transfer_file_need_approval
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1359,8 +1381,14 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.solution_id):
             query['SolutionId'] = request.solution_id
+        if not UtilClient.is_unset(request.transfer_file_need_approval):
+            query['TransferFileNeedApproval'] = request.transfer_file_need_approval
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1874,14 +1902,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.filter):
             query['Filter'] = request.filter
-        if not UtilClient.is_unset(request.filter_with_assigned_resource_shrink):
-            query['FilterWithAssignedResource'] = request.filter_with_assigned_resource_shrink
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
         body = {}
         if not UtilClient.is_unset(request.biz_type):
             body['BizType'] = request.biz_type
@@ -1889,6 +1913,10 @@ class Client(OpenApiClient):
             body['EndUserIds'] = request.end_user_ids
         if not UtilClient.is_unset(request.exclude_end_user_ids):
             body['ExcludeEndUserIds'] = request.exclude_end_user_ids
+        if not UtilClient.is_unset(request.exclude_group_id):
+            body['ExcludeGroupId'] = request.exclude_group_id
+        if not UtilClient.is_unset(request.filter_with_assigned_resource_shrink):
+            body['FilterWithAssignedResource'] = request.filter_with_assigned_resource_shrink
         if not UtilClient.is_unset(request.filter_with_assigned_resources_shrink):
             body['FilterWithAssignedResources'] = request.filter_with_assigned_resources_shrink
         if not UtilClient.is_unset(request.group_id):
@@ -1901,6 +1929,8 @@ class Client(OpenApiClient):
             body['ShowExtras'] = request.show_extras_shrink
         if not UtilClient.is_unset(request.solution_id):
             body['SolutionId'] = request.solution_id
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1945,14 +1975,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.filter):
             query['Filter'] = request.filter
-        if not UtilClient.is_unset(request.filter_with_assigned_resource_shrink):
-            query['FilterWithAssignedResource'] = request.filter_with_assigned_resource_shrink
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
         body = {}
         if not UtilClient.is_unset(request.biz_type):
             body['BizType'] = request.biz_type
@@ -1960,6 +1986,10 @@ class Client(OpenApiClient):
             body['EndUserIds'] = request.end_user_ids
         if not UtilClient.is_unset(request.exclude_end_user_ids):
             body['ExcludeEndUserIds'] = request.exclude_end_user_ids
+        if not UtilClient.is_unset(request.exclude_group_id):
+            body['ExcludeGroupId'] = request.exclude_group_id
+        if not UtilClient.is_unset(request.filter_with_assigned_resource_shrink):
+            body['FilterWithAssignedResource'] = request.filter_with_assigned_resource_shrink
         if not UtilClient.is_unset(request.filter_with_assigned_resources_shrink):
             body['FilterWithAssignedResources'] = request.filter_with_assigned_resources_shrink
         if not UtilClient.is_unset(request.group_id):
@@ -1972,6 +2002,8 @@ class Client(OpenApiClient):
             body['ShowExtras'] = request.show_extras_shrink
         if not UtilClient.is_unset(request.solution_id):
             body['SolutionId'] = request.solution_id
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
@@ -2744,6 +2776,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.new_group_name):
@@ -2781,6 +2815,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.new_group_name):
@@ -3324,6 +3360,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.group_ids):
+            query['GroupIds'] = request.group_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3359,6 +3397,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.group_ids):
+            query['GroupIds'] = request.group_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

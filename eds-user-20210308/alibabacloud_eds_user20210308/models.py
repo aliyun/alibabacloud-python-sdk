@@ -777,11 +777,13 @@ class CreateGroupRequest(TeaModel):
     def __init__(
         self,
         biz_type: str = None,
+        description: str = None,
         group_name: str = None,
         parent_group_id: str = None,
         solution_id: str = None,
     ):
         self.biz_type = biz_type
+        self.description = description
         self.group_name = group_name
         self.parent_group_id = parent_group_id
         self.solution_id = solution_id
@@ -797,6 +799,8 @@ class CreateGroupRequest(TeaModel):
         result = dict()
         if self.biz_type is not None:
             result['BizType'] = self.biz_type
+        if self.description is not None:
+            result['Description'] = self.description
         if self.group_name is not None:
             result['GroupName'] = self.group_name
         if self.parent_group_id is not None:
@@ -809,6 +813,8 @@ class CreateGroupRequest(TeaModel):
         m = m or dict()
         if m.get('BizType') is not None:
             self.biz_type = m.get('BizType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')
         if m.get('ParentGroupId') is not None:
@@ -2036,11 +2042,17 @@ class DescribeGroupUserRequest(TeaModel):
     def __init__(
         self,
         biz_type: str = None,
+        filter: str = None,
         group_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
         solution_id: str = None,
     ):
         self.biz_type = biz_type
+        self.filter = filter
         self.group_id = group_id
+        self.max_results = max_results
+        self.next_token = next_token
         self.solution_id = solution_id
 
     def validate(self):
@@ -2054,8 +2066,14 @@ class DescribeGroupUserRequest(TeaModel):
         result = dict()
         if self.biz_type is not None:
             result['BizType'] = self.biz_type
+        if self.filter is not None:
+            result['Filter'] = self.filter
         if self.group_id is not None:
             result['GroupId'] = self.group_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         if self.solution_id is not None:
             result['SolutionId'] = self.solution_id
         return result
@@ -2064,8 +2082,14 @@ class DescribeGroupUserRequest(TeaModel):
         m = m or dict()
         if m.get('BizType') is not None:
             self.biz_type = m.get('BizType')
+        if m.get('Filter') is not None:
+            self.filter = m.get('Filter')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         if m.get('SolutionId') is not None:
             self.solution_id = m.get('SolutionId')
         return self
@@ -2122,6 +2146,7 @@ class DescribeGroupUserResponseBodyUsers(TeaModel):
         job_number: str = None,
         nick_name: str = None,
         phone: str = None,
+        remark: str = None,
     ):
         self.address = address
         self.avatar = avatar
@@ -2132,6 +2157,7 @@ class DescribeGroupUserResponseBodyUsers(TeaModel):
         self.job_number = job_number
         self.nick_name = nick_name
         self.phone = phone
+        self.remark = remark
 
     def validate(self):
         pass
@@ -2160,6 +2186,8 @@ class DescribeGroupUserResponseBodyUsers(TeaModel):
             result['NickName'] = self.nick_name
         if self.phone is not None:
             result['Phone'] = self.phone
+        if self.remark is not None:
+            result['Remark'] = self.remark
         return result
 
     def from_map(self, m: dict = None):
@@ -2182,6 +2210,8 @@ class DescribeGroupUserResponseBodyUsers(TeaModel):
             self.nick_name = m.get('NickName')
         if m.get('Phone') is not None:
             self.phone = m.get('Phone')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
         return self
 
 
@@ -2189,10 +2219,12 @@ class DescribeGroupUserResponseBody(TeaModel):
     def __init__(
         self,
         groups: List[DescribeGroupUserResponseBodyGroups] = None,
+        next_token: str = None,
         request_id: str = None,
         users: List[DescribeGroupUserResponseBodyUsers] = None,
     ):
         self.groups = groups
+        self.next_token = next_token
         self.request_id = request_id
         self.users = users
 
@@ -2216,6 +2248,8 @@ class DescribeGroupUserResponseBody(TeaModel):
         if self.groups is not None:
             for k in self.groups:
                 result['Groups'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         result['Users'] = []
@@ -2231,6 +2265,8 @@ class DescribeGroupUserResponseBody(TeaModel):
             for k in m.get('Groups'):
                 temp_model = DescribeGroupUserResponseBodyGroups()
                 self.groups.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         self.users = []
@@ -2288,12 +2324,18 @@ class DescribeGroupsRequest(TeaModel):
         biz_type: str = None,
         group_id: str = None,
         group_name: str = None,
+        page_number: int = None,
+        page_size: int = None,
         solution_id: str = None,
+        transfer_file_need_approval: bool = None,
     ):
         self.biz_type = biz_type
         self.group_id = group_id
         self.group_name = group_name
+        self.page_number = page_number
+        self.page_size = page_size
         self.solution_id = solution_id
+        self.transfer_file_need_approval = transfer_file_need_approval
 
     def validate(self):
         pass
@@ -2310,8 +2352,14 @@ class DescribeGroupsRequest(TeaModel):
             result['GroupId'] = self.group_id
         if self.group_name is not None:
             result['GroupName'] = self.group_name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.solution_id is not None:
             result['SolutionId'] = self.solution_id
+        if self.transfer_file_need_approval is not None:
+            result['TransferFileNeedApproval'] = self.transfer_file_need_approval
         return result
 
     def from_map(self, m: dict = None):
@@ -2322,19 +2370,35 @@ class DescribeGroupsRequest(TeaModel):
             self.group_id = m.get('GroupId')
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('SolutionId') is not None:
             self.solution_id = m.get('SolutionId')
+        if m.get('TransferFileNeedApproval') is not None:
+            self.transfer_file_need_approval = m.get('TransferFileNeedApproval')
         return self
 
 
 class DescribeGroupsResponseBodyGroups(TeaModel):
     def __init__(
         self,
+        authed_resources: Dict[str, str] = None,
+        create_time: str = None,
+        description: str = None,
         group_id: str = None,
         group_name: str = None,
+        transfer_file_need_approval: bool = None,
+        user_count: int = None,
     ):
+        self.authed_resources = authed_resources
+        self.create_time = create_time
+        self.description = description
         self.group_id = group_id
         self.group_name = group_name
+        self.transfer_file_need_approval = transfer_file_need_approval
+        self.user_count = user_count
 
     def validate(self):
         pass
@@ -2345,27 +2409,49 @@ class DescribeGroupsResponseBodyGroups(TeaModel):
             return _map
 
         result = dict()
+        if self.authed_resources is not None:
+            result['AuthedResources'] = self.authed_resources
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
         if self.group_id is not None:
             result['GroupId'] = self.group_id
         if self.group_name is not None:
             result['GroupName'] = self.group_name
+        if self.transfer_file_need_approval is not None:
+            result['TransferFileNeedApproval'] = self.transfer_file_need_approval
+        if self.user_count is not None:
+            result['UserCount'] = self.user_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthedResources') is not None:
+            self.authed_resources = m.get('AuthedResources')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')
+        if m.get('TransferFileNeedApproval') is not None:
+            self.transfer_file_need_approval = m.get('TransferFileNeedApproval')
+        if m.get('UserCount') is not None:
+            self.user_count = m.get('UserCount')
         return self
 
 
 class DescribeGroupsResponseBody(TeaModel):
     def __init__(
         self,
+        count: int = None,
         groups: List[DescribeGroupsResponseBodyGroups] = None,
         request_id: str = None,
     ):
+        self.count = count
         self.groups = groups
         self.request_id = request_id
 
@@ -2381,6 +2467,8 @@ class DescribeGroupsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
         result['Groups'] = []
         if self.groups is not None:
             for k in self.groups:
@@ -2391,6 +2479,8 @@ class DescribeGroupsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
         self.groups = []
         if m.get('Groups') is not None:
             for k in m.get('Groups'):
@@ -3406,6 +3496,7 @@ class DescribeUsersRequest(TeaModel):
         biz_type: str = None,
         end_user_ids: List[str] = None,
         exclude_end_user_ids: List[str] = None,
+        exclude_group_id: str = None,
         filter: str = None,
         filter_with_assigned_resource: Dict[str, str] = None,
         filter_with_assigned_resources: Dict[str, bool] = None,
@@ -3423,6 +3514,7 @@ class DescribeUsersRequest(TeaModel):
         self.end_user_ids = end_user_ids
         # The usernames that must be exactly excluded.
         self.exclude_end_user_ids = exclude_end_user_ids
+        self.exclude_group_id = exclude_group_id
         # The string that is used for fuzzy search. You perform fuzzy search by username (EndUserId) and email address (Email). Wildcard characters (\\*) are supported. For example, if you set this parameter to `a*m`, usernames or email addresses that start with `a` and end with `m` are returned.
         self.filter = filter
         self.filter_with_assigned_resource = filter_with_assigned_resource
@@ -3459,6 +3551,8 @@ class DescribeUsersRequest(TeaModel):
             result['EndUserIds'] = self.end_user_ids
         if self.exclude_end_user_ids is not None:
             result['ExcludeEndUserIds'] = self.exclude_end_user_ids
+        if self.exclude_group_id is not None:
+            result['ExcludeGroupId'] = self.exclude_group_id
         if self.filter is not None:
             result['Filter'] = self.filter
         if self.filter_with_assigned_resource is not None:
@@ -3491,6 +3585,8 @@ class DescribeUsersRequest(TeaModel):
             self.end_user_ids = m.get('EndUserIds')
         if m.get('ExcludeEndUserIds') is not None:
             self.exclude_end_user_ids = m.get('ExcludeEndUserIds')
+        if m.get('ExcludeGroupId') is not None:
+            self.exclude_group_id = m.get('ExcludeGroupId')
         if m.get('Filter') is not None:
             self.filter = m.get('Filter')
         if m.get('FilterWithAssignedResource') is not None:
@@ -3522,6 +3618,7 @@ class DescribeUsersShrinkRequest(TeaModel):
         biz_type: str = None,
         end_user_ids: List[str] = None,
         exclude_end_user_ids: List[str] = None,
+        exclude_group_id: str = None,
         filter: str = None,
         filter_with_assigned_resource_shrink: str = None,
         filter_with_assigned_resources_shrink: str = None,
@@ -3539,6 +3636,7 @@ class DescribeUsersShrinkRequest(TeaModel):
         self.end_user_ids = end_user_ids
         # The usernames that must be exactly excluded.
         self.exclude_end_user_ids = exclude_end_user_ids
+        self.exclude_group_id = exclude_group_id
         # The string that is used for fuzzy search. You perform fuzzy search by username (EndUserId) and email address (Email). Wildcard characters (\\*) are supported. For example, if you set this parameter to `a*m`, usernames or email addresses that start with `a` and end with `m` are returned.
         self.filter = filter
         self.filter_with_assigned_resource_shrink = filter_with_assigned_resource_shrink
@@ -3575,6 +3673,8 @@ class DescribeUsersShrinkRequest(TeaModel):
             result['EndUserIds'] = self.end_user_ids
         if self.exclude_end_user_ids is not None:
             result['ExcludeEndUserIds'] = self.exclude_end_user_ids
+        if self.exclude_group_id is not None:
+            result['ExcludeGroupId'] = self.exclude_group_id
         if self.filter is not None:
             result['Filter'] = self.filter
         if self.filter_with_assigned_resource_shrink is not None:
@@ -3607,6 +3707,8 @@ class DescribeUsersShrinkRequest(TeaModel):
             self.end_user_ids = m.get('EndUserIds')
         if m.get('ExcludeEndUserIds') is not None:
             self.exclude_end_user_ids = m.get('ExcludeEndUserIds')
+        if m.get('ExcludeGroupId') is not None:
+            self.exclude_group_id = m.get('ExcludeGroupId')
         if m.get('Filter') is not None:
             self.filter = m.get('Filter')
         if m.get('FilterWithAssignedResource') is not None:
@@ -3774,6 +3876,7 @@ class DescribeUsersResponseBodyUsers(TeaModel):
         address: str = None,
         avatar: str = None,
         email: str = None,
+        enable_admin_access: bool = None,
         end_user_id: str = None,
         external_name: str = None,
         extras: DescribeUsersResponseBodyUsersExtras = None,
@@ -3798,6 +3901,7 @@ class DescribeUsersResponseBodyUsers(TeaModel):
         self.avatar = avatar
         # The email address of the convenience user.
         self.email = email
+        self.enable_admin_access = enable_admin_access
         # The username of the convenience user.
         self.end_user_id = end_user_id
         self.external_name = external_name
@@ -3906,6 +4010,8 @@ class DescribeUsersResponseBodyUsers(TeaModel):
             result['Avatar'] = self.avatar
         if self.email is not None:
             result['Email'] = self.email
+        if self.enable_admin_access is not None:
+            result['EnableAdminAccess'] = self.enable_admin_access
         if self.end_user_id is not None:
             result['EndUserId'] = self.end_user_id
         if self.external_name is not None:
@@ -3956,6 +4062,8 @@ class DescribeUsersResponseBodyUsers(TeaModel):
             self.avatar = m.get('Avatar')
         if m.get('Email') is not None:
             self.email = m.get('Email')
+        if m.get('EnableAdminAccess') is not None:
+            self.enable_admin_access = m.get('EnableAdminAccess')
         if m.get('EndUserId') is not None:
             self.end_user_id = m.get('EndUserId')
         if m.get('ExternalName') is not None:
@@ -6068,9 +6176,11 @@ class LockUsersResponse(TeaModel):
 class ModifyGroupRequest(TeaModel):
     def __init__(
         self,
+        description: str = None,
         group_id: str = None,
         new_group_name: str = None,
     ):
+        self.description = description
         # This parameter is required.
         self.group_id = group_id
         # This parameter is required.
@@ -6085,6 +6195,8 @@ class ModifyGroupRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
         if self.group_id is not None:
             result['GroupId'] = self.group_id
         if self.new_group_name is not None:
@@ -6093,6 +6205,8 @@ class ModifyGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
         if m.get('NewGroupName') is not None:
@@ -6771,8 +6885,10 @@ class RemoveGroupRequest(TeaModel):
     def __init__(
         self,
         group_id: str = None,
+        group_ids: List[str] = None,
     ):
         self.group_id = group_id
+        self.group_ids = group_ids
 
     def validate(self):
         pass
@@ -6785,12 +6901,16 @@ class RemoveGroupRequest(TeaModel):
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
+        if self.group_ids is not None:
+            result['GroupIds'] = self.group_ids
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
+        if m.get('GroupIds') is not None:
+            self.group_ids = m.get('GroupIds')
         return self
 
 

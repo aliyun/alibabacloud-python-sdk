@@ -1,3 +1,25 @@
+2025-07-30 Version: 1.6.1
+- Update API CreateGroup: add request parameters Description.
+- Update API DescribeGroupUser: add request parameters Filter.
+- Update API DescribeGroupUser: add request parameters MaxResults.
+- Update API DescribeGroupUser: add request parameters NextToken.
+- Update API DescribeGroupUser: add response parameters Body.NextToken.
+- Update API DescribeGroupUser: add response parameters Body.Users.$.Remark.
+- Update API DescribeGroups: add request parameters PageNumber.
+- Update API DescribeGroups: add request parameters PageSize.
+- Update API DescribeGroups: add request parameters TransferFileNeedApproval.
+- Update API DescribeGroups: add response parameters Body.Count.
+- Update API DescribeGroups: add response parameters Body.Groups.$.AuthedResources.
+- Update API DescribeGroups: add response parameters Body.Groups.$.CreateTime.
+- Update API DescribeGroups: add response parameters Body.Groups.$.Description.
+- Update API DescribeGroups: add response parameters Body.Groups.$.TransferFileNeedApproval.
+- Update API DescribeGroups: add response parameters Body.Groups.$.UserCount.
+- Update API DescribeUsers: add request parameters ExcludeGroupId.
+- Update API DescribeUsers: add response parameters Body.Users.$.EnableAdminAccess.
+- Update API ModifyGroup: add request parameters Description.
+- Update API RemoveGroup: add request parameters GroupIds.
+
+
 2025-07-02 Version: 1.6.0
 - Support API CreateGroup.
 - Support API DescribeGroupUser.
