@@ -75,16 +75,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.AddUserToOrganizationalUnitsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.AddUserToOrganizationalUnitsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.AddUserToOrganizationalUnitsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def add_user_to_organizational_units_with_options_async(
         self,
@@ -120,16 +114,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.AddUserToOrganizationalUnitsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.AddUserToOrganizationalUnitsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.AddUserToOrganizationalUnitsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def add_user_to_organizational_units(
         self,
@@ -191,16 +179,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.AddUsersToGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.AddUsersToGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.AddUsersToGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def add_users_to_group_with_options_async(
         self,
@@ -236,16 +218,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.AddUsersToGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.AddUsersToGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.AddUsersToGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def add_users_to_group(
         self,
@@ -307,16 +283,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.AuthorizeApplicationToGroupsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.AuthorizeApplicationToGroupsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.AuthorizeApplicationToGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def authorize_application_to_groups_with_options_async(
         self,
@@ -352,16 +322,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.AuthorizeApplicationToGroupsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.AuthorizeApplicationToGroupsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.AuthorizeApplicationToGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def authorize_application_to_groups(
         self,
@@ -423,16 +387,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.AuthorizeApplicationToOrganizationalUnitsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.AuthorizeApplicationToOrganizationalUnitsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.AuthorizeApplicationToOrganizationalUnitsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def authorize_application_to_organizational_units_with_options_async(
         self,
@@ -468,16 +426,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.AuthorizeApplicationToOrganizationalUnitsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.AuthorizeApplicationToOrganizationalUnitsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.AuthorizeApplicationToOrganizationalUnitsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def authorize_application_to_organizational_units(
         self,
@@ -539,16 +491,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.AuthorizeApplicationToUsersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.AuthorizeApplicationToUsersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.AuthorizeApplicationToUsersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def authorize_application_to_users_with_options_async(
         self,
@@ -584,16 +530,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.AuthorizeApplicationToUsersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.AuthorizeApplicationToUsersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.AuthorizeApplicationToUsersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def authorize_application_to_users(
         self,
@@ -665,16 +605,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateApplicationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateApplicationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_application_with_options_async(
         self,
@@ -720,16 +654,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateApplicationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateApplicationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_application(
         self,
@@ -793,16 +721,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateApplicationClientSecretResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateApplicationClientSecretResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateApplicationClientSecretResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_application_client_secret_with_options_async(
         self,
@@ -836,16 +758,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateApplicationClientSecretResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateApplicationClientSecretResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateApplicationClientSecretResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_application_client_secret(
         self,
@@ -923,16 +839,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateConditionalAccessPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateConditionalAccessPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateConditionalAccessPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_conditional_access_policy_with_options_async(
         self,
@@ -984,16 +894,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateConditionalAccessPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateConditionalAccessPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateConditionalAccessPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_conditional_access_policy(
         self,
@@ -1031,7 +935,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.CreateDomainResponse:
         """
-        @summary 创建域名。
+        @summary Creates a custom domain name for an Employee Identity and Access Management (EIAM) instance.
         
         @param request: CreateDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1059,16 +963,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateDomainResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateDomainResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_domain_with_options_async(
         self,
@@ -1076,7 +974,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.CreateDomainResponse:
         """
-        @summary 创建域名。
+        @summary Creates a custom domain name for an Employee Identity and Access Management (EIAM) instance.
         
         @param request: CreateDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1104,23 +1002,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateDomainResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateDomainResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_domain(
         self,
         request: eiam_20211201_models.CreateDomainRequest,
     ) -> eiam_20211201_models.CreateDomainResponse:
         """
-        @summary 创建域名。
+        @summary Creates a custom domain name for an Employee Identity and Access Management (EIAM) instance.
         
         @param request: CreateDomainRequest
         @return: CreateDomainResponse
@@ -1133,7 +1025,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.CreateDomainRequest,
     ) -> eiam_20211201_models.CreateDomainResponse:
         """
-        @summary 创建域名。
+        @summary Creates a custom domain name for an Employee Identity and Access Management (EIAM) instance.
         
         @param request: CreateDomainRequest
         @return: CreateDomainResponse
@@ -1147,7 +1039,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.CreateDomainProxyTokenResponse:
         """
-        @summary 创建域名代理Token。
+        @summary Creates a proxy token for a domain name of an Employee Identity and Access Management (EIAM) instance.
         
         @param request: CreateDomainProxyTokenRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1173,16 +1065,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateDomainProxyTokenResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateDomainProxyTokenResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateDomainProxyTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_domain_proxy_token_with_options_async(
         self,
@@ -1190,7 +1076,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.CreateDomainProxyTokenResponse:
         """
-        @summary 创建域名代理Token。
+        @summary Creates a proxy token for a domain name of an Employee Identity and Access Management (EIAM) instance.
         
         @param request: CreateDomainProxyTokenRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1216,23 +1102,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateDomainProxyTokenResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateDomainProxyTokenResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateDomainProxyTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_domain_proxy_token(
         self,
         request: eiam_20211201_models.CreateDomainProxyTokenRequest,
     ) -> eiam_20211201_models.CreateDomainProxyTokenResponse:
         """
-        @summary 创建域名代理Token。
+        @summary Creates a proxy token for a domain name of an Employee Identity and Access Management (EIAM) instance.
         
         @param request: CreateDomainProxyTokenRequest
         @return: CreateDomainProxyTokenResponse
@@ -1245,7 +1125,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.CreateDomainProxyTokenRequest,
     ) -> eiam_20211201_models.CreateDomainProxyTokenResponse:
         """
-        @summary 创建域名代理Token。
+        @summary Creates a proxy token for a domain name of an Employee Identity and Access Management (EIAM) instance.
         
         @param request: CreateDomainProxyTokenRequest
         @return: CreateDomainProxyTokenResponse
@@ -1289,16 +1169,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_group_with_options_async(
         self,
@@ -1336,16 +1210,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_group(
         self,
@@ -1379,7 +1247,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.CreateIdentityProviderResponse:
         """
-        @summary 创建身份提供方
+        @summary Create Identity Provider
         
         @param request: CreateIdentityProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1395,6 +1263,8 @@ class Client(OpenApiClient):
             query['AutoUpdateUserConfig'] = request.auto_update_user_config
         if not UtilClient.is_unset(request.binding_config):
             query['BindingConfig'] = request.binding_config
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dingtalk_app_config):
             query['DingtalkAppConfig'] = request.dingtalk_app_config
         if not UtilClient.is_unset(request.identity_provider_name):
@@ -1433,16 +1303,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateIdentityProviderResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateIdentityProviderResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateIdentityProviderResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_identity_provider_with_options_async(
         self,
@@ -1450,7 +1314,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.CreateIdentityProviderResponse:
         """
-        @summary 创建身份提供方
+        @summary Create Identity Provider
         
         @param request: CreateIdentityProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1466,6 +1330,8 @@ class Client(OpenApiClient):
             query['AutoUpdateUserConfig'] = request.auto_update_user_config
         if not UtilClient.is_unset(request.binding_config):
             query['BindingConfig'] = request.binding_config
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dingtalk_app_config):
             query['DingtalkAppConfig'] = request.dingtalk_app_config
         if not UtilClient.is_unset(request.identity_provider_name):
@@ -1504,23 +1370,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateIdentityProviderResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateIdentityProviderResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateIdentityProviderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_identity_provider(
         self,
         request: eiam_20211201_models.CreateIdentityProviderRequest,
     ) -> eiam_20211201_models.CreateIdentityProviderResponse:
         """
-        @summary 创建身份提供方
+        @summary Create Identity Provider
         
         @param request: CreateIdentityProviderRequest
         @return: CreateIdentityProviderResponse
@@ -1533,7 +1393,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.CreateIdentityProviderRequest,
     ) -> eiam_20211201_models.CreateIdentityProviderResponse:
         """
-        @summary 创建身份提供方
+        @summary Create Identity Provider
         
         @param request: CreateIdentityProviderRequest
         @return: CreateIdentityProviderResponse
@@ -1571,16 +1431,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_instance_with_options_async(
         self,
@@ -1612,16 +1466,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_instance(
         self,
@@ -1655,7 +1503,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.CreateNetworkAccessEndpointResponse:
         """
-        @summary 创建一个专属网络端点。
+        @summary Creates a dedicated endpoint.
         
         @param request: CreateNetworkAccessEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1689,16 +1537,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateNetworkAccessEndpointResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateNetworkAccessEndpointResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateNetworkAccessEndpointResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_network_access_endpoint_with_options_async(
         self,
@@ -1706,7 +1548,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.CreateNetworkAccessEndpointResponse:
         """
-        @summary 创建一个专属网络端点。
+        @summary Creates a dedicated endpoint.
         
         @param request: CreateNetworkAccessEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1740,23 +1582,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateNetworkAccessEndpointResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateNetworkAccessEndpointResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateNetworkAccessEndpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_network_access_endpoint(
         self,
         request: eiam_20211201_models.CreateNetworkAccessEndpointRequest,
     ) -> eiam_20211201_models.CreateNetworkAccessEndpointResponse:
         """
-        @summary 创建一个专属网络端点。
+        @summary Creates a dedicated endpoint.
         
         @param request: CreateNetworkAccessEndpointRequest
         @return: CreateNetworkAccessEndpointResponse
@@ -1769,7 +1605,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.CreateNetworkAccessEndpointRequest,
     ) -> eiam_20211201_models.CreateNetworkAccessEndpointResponse:
         """
-        @summary 创建一个专属网络端点。
+        @summary Creates a dedicated endpoint.
         
         @param request: CreateNetworkAccessEndpointRequest
         @return: CreateNetworkAccessEndpointResponse
@@ -1815,16 +1651,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateOrganizationalUnitResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateOrganizationalUnitResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateOrganizationalUnitResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_organizational_unit_with_options_async(
         self,
@@ -1864,16 +1694,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateOrganizationalUnitResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateOrganizationalUnitResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateOrganizationalUnitResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_organizational_unit(
         self,
@@ -1915,6 +1739,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.custom_fields):
             query['CustomFields'] = request.custom_fields
         if not UtilClient.is_unset(request.description):
@@ -1959,16 +1785,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_user_with_options_async(
         self,
@@ -1984,6 +1804,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.custom_fields):
             query['CustomFields'] = request.custom_fields
         if not UtilClient.is_unset(request.description):
@@ -2028,16 +1850,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.CreateUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_user(
         self,
@@ -2099,16 +1915,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteApplicationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteApplicationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_application_with_options_async(
         self,
@@ -2144,16 +1954,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteApplicationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteApplicationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_application(
         self,
@@ -2219,16 +2023,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteApplicationClientSecretResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteApplicationClientSecretResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteApplicationClientSecretResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_application_client_secret_with_options_async(
         self,
@@ -2264,16 +2062,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteApplicationClientSecretResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteApplicationClientSecretResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteApplicationClientSecretResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_application_client_secret(
         self,
@@ -2335,16 +2127,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteConditionalAccessPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteConditionalAccessPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteConditionalAccessPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_conditional_access_policy_with_options_async(
         self,
@@ -2380,16 +2166,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteConditionalAccessPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteConditionalAccessPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteConditionalAccessPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_conditional_access_policy(
         self,
@@ -2427,7 +2207,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.DeleteDomainResponse:
         """
-        @summary 删除域名。
+        @summary Deletes a custom domain name of an Employee Identity and Access Management (EIAM) instance. You cannot delete the initial domain name and default domain name of the instance.
         
         @param request: DeleteDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2453,16 +2233,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteDomainResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteDomainResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_domain_with_options_async(
         self,
@@ -2470,7 +2244,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.DeleteDomainResponse:
         """
-        @summary 删除域名。
+        @summary Deletes a custom domain name of an Employee Identity and Access Management (EIAM) instance. You cannot delete the initial domain name and default domain name of the instance.
         
         @param request: DeleteDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2496,23 +2270,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteDomainResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteDomainResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_domain(
         self,
         request: eiam_20211201_models.DeleteDomainRequest,
     ) -> eiam_20211201_models.DeleteDomainResponse:
         """
-        @summary 删除域名。
+        @summary Deletes a custom domain name of an Employee Identity and Access Management (EIAM) instance. You cannot delete the initial domain name and default domain name of the instance.
         
         @param request: DeleteDomainRequest
         @return: DeleteDomainResponse
@@ -2525,7 +2293,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.DeleteDomainRequest,
     ) -> eiam_20211201_models.DeleteDomainResponse:
         """
-        @summary 删除域名。
+        @summary Deletes a custom domain name of an Employee Identity and Access Management (EIAM) instance. You cannot delete the initial domain name and default domain name of the instance.
         
         @param request: DeleteDomainRequest
         @return: DeleteDomainResponse
@@ -2539,7 +2307,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.DeleteDomainProxyTokenResponse:
         """
-        @summary 删除指定域名代理Token，删除之前请保证代理Token处于禁用状态。
+        @summary Deletes a proxy token for a domain name of an Employee Identity and Access Management (EIAM) instance. Only the proxy tokens in the disabled state can be deleted.
         
         @param request: DeleteDomainProxyTokenRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2567,16 +2335,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteDomainProxyTokenResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteDomainProxyTokenResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteDomainProxyTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_domain_proxy_token_with_options_async(
         self,
@@ -2584,7 +2346,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.DeleteDomainProxyTokenResponse:
         """
-        @summary 删除指定域名代理Token，删除之前请保证代理Token处于禁用状态。
+        @summary Deletes a proxy token for a domain name of an Employee Identity and Access Management (EIAM) instance. Only the proxy tokens in the disabled state can be deleted.
         
         @param request: DeleteDomainProxyTokenRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2612,23 +2374,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteDomainProxyTokenResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteDomainProxyTokenResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteDomainProxyTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_domain_proxy_token(
         self,
         request: eiam_20211201_models.DeleteDomainProxyTokenRequest,
     ) -> eiam_20211201_models.DeleteDomainProxyTokenResponse:
         """
-        @summary 删除指定域名代理Token，删除之前请保证代理Token处于禁用状态。
+        @summary Deletes a proxy token for a domain name of an Employee Identity and Access Management (EIAM) instance. Only the proxy tokens in the disabled state can be deleted.
         
         @param request: DeleteDomainProxyTokenRequest
         @return: DeleteDomainProxyTokenResponse
@@ -2641,7 +2397,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.DeleteDomainProxyTokenRequest,
     ) -> eiam_20211201_models.DeleteDomainProxyTokenResponse:
         """
-        @summary 删除指定域名代理Token，删除之前请保证代理Token处于禁用状态。
+        @summary Deletes a proxy token for a domain name of an Employee Identity and Access Management (EIAM) instance. Only the proxy tokens in the disabled state can be deleted.
         
         @param request: DeleteDomainProxyTokenRequest
         @return: DeleteDomainProxyTokenResponse
@@ -2681,16 +2437,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_group_with_options_async(
         self,
@@ -2724,16 +2474,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_group(
         self,
@@ -2767,7 +2511,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.DeleteIdentityProviderResponse:
         """
-        @summary 删除身份提供方
+        @summary Delete identity provider
         
         @param request: DeleteIdentityProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2793,16 +2537,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteIdentityProviderResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteIdentityProviderResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteIdentityProviderResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_identity_provider_with_options_async(
         self,
@@ -2810,7 +2548,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.DeleteIdentityProviderResponse:
         """
-        @summary 删除身份提供方
+        @summary Delete identity provider
         
         @param request: DeleteIdentityProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2836,23 +2574,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteIdentityProviderResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteIdentityProviderResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteIdentityProviderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_identity_provider(
         self,
         request: eiam_20211201_models.DeleteIdentityProviderRequest,
     ) -> eiam_20211201_models.DeleteIdentityProviderResponse:
         """
-        @summary 删除身份提供方
+        @summary Delete identity provider
         
         @param request: DeleteIdentityProviderRequest
         @return: DeleteIdentityProviderResponse
@@ -2865,7 +2597,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.DeleteIdentityProviderRequest,
     ) -> eiam_20211201_models.DeleteIdentityProviderResponse:
         """
-        @summary 删除身份提供方
+        @summary Delete identity provider
         
         @param request: DeleteIdentityProviderRequest
         @return: DeleteIdentityProviderResponse
@@ -2905,16 +2637,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_instance_with_options_async(
         self,
@@ -2948,16 +2674,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_instance(
         self,
@@ -2995,7 +2715,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.DeleteNetworkAccessEndpointResponse:
         """
-        @summary 删除一个专属网络端点。
+        @summary Delete a network endpoint of a specific type.
         
         @param request: DeleteNetworkAccessEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3021,16 +2741,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteNetworkAccessEndpointResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteNetworkAccessEndpointResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteNetworkAccessEndpointResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_network_access_endpoint_with_options_async(
         self,
@@ -3038,7 +2752,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.DeleteNetworkAccessEndpointResponse:
         """
-        @summary 删除一个专属网络端点。
+        @summary Delete a network endpoint of a specific type.
         
         @param request: DeleteNetworkAccessEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3064,23 +2778,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteNetworkAccessEndpointResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteNetworkAccessEndpointResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteNetworkAccessEndpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_network_access_endpoint(
         self,
         request: eiam_20211201_models.DeleteNetworkAccessEndpointRequest,
     ) -> eiam_20211201_models.DeleteNetworkAccessEndpointResponse:
         """
-        @summary 删除一个专属网络端点。
+        @summary Delete a network endpoint of a specific type.
         
         @param request: DeleteNetworkAccessEndpointRequest
         @return: DeleteNetworkAccessEndpointResponse
@@ -3093,7 +2801,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.DeleteNetworkAccessEndpointRequest,
     ) -> eiam_20211201_models.DeleteNetworkAccessEndpointResponse:
         """
-        @summary 删除一个专属网络端点。
+        @summary Delete a network endpoint of a specific type.
         
         @param request: DeleteNetworkAccessEndpointRequest
         @return: DeleteNetworkAccessEndpointResponse
@@ -3133,16 +2841,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteOrganizationalUnitResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteOrganizationalUnitResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteOrganizationalUnitResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_organizational_unit_with_options_async(
         self,
@@ -3176,16 +2878,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteOrganizationalUnitResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteOrganizationalUnitResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteOrganizationalUnitResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_organizational_unit(
         self,
@@ -3245,16 +2941,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteOrganizationalUnitChildrenResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteOrganizationalUnitChildrenResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteOrganizationalUnitChildrenResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_organizational_unit_children_with_options_async(
         self,
@@ -3288,16 +2978,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteOrganizationalUnitChildrenResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteOrganizationalUnitChildrenResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteOrganizationalUnitChildrenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_organizational_unit_children(
         self,
@@ -3357,16 +3041,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_user_with_options_async(
         self,
@@ -3400,16 +3078,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DeleteUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_user(
         self,
@@ -3471,16 +3143,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableApplicationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableApplicationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def disable_application_with_options_async(
         self,
@@ -3516,16 +3182,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableApplicationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableApplicationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def disable_application(
         self,
@@ -3589,16 +3249,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableApplicationApiInvokeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableApplicationApiInvokeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableApplicationApiInvokeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def disable_application_api_invoke_with_options_async(
         self,
@@ -3632,16 +3286,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableApplicationApiInvokeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableApplicationApiInvokeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableApplicationApiInvokeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def disable_application_api_invoke(
         self,
@@ -3703,16 +3351,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableApplicationClientSecretResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableApplicationClientSecretResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableApplicationClientSecretResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def disable_application_client_secret_with_options_async(
         self,
@@ -3748,16 +3390,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableApplicationClientSecretResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableApplicationClientSecretResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableApplicationClientSecretResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def disable_application_client_secret(
         self,
@@ -3817,16 +3453,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableApplicationProvisioningResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableApplicationProvisioningResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableApplicationProvisioningResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def disable_application_provisioning_with_options_async(
         self,
@@ -3860,16 +3490,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableApplicationProvisioningResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableApplicationProvisioningResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableApplicationProvisioningResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def disable_application_provisioning(
         self,
@@ -3903,7 +3527,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.DisableApplicationSsoResponse:
         """
-        @summary 禁用应用SSO能力
+        @summary Disables the single sign-on (SSO) feature for an Employee Identity and Access Management (EIAM) application. This way, employees cannot log on to the application by using SSO.
         
         @param request: DisableApplicationSsoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3929,16 +3553,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableApplicationSsoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableApplicationSsoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableApplicationSsoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def disable_application_sso_with_options_async(
         self,
@@ -3946,7 +3564,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.DisableApplicationSsoResponse:
         """
-        @summary 禁用应用SSO能力
+        @summary Disables the single sign-on (SSO) feature for an Employee Identity and Access Management (EIAM) application. This way, employees cannot log on to the application by using SSO.
         
         @param request: DisableApplicationSsoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3972,23 +3590,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableApplicationSsoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableApplicationSsoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableApplicationSsoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def disable_application_sso(
         self,
         request: eiam_20211201_models.DisableApplicationSsoRequest,
     ) -> eiam_20211201_models.DisableApplicationSsoResponse:
         """
-        @summary 禁用应用SSO能力
+        @summary Disables the single sign-on (SSO) feature for an Employee Identity and Access Management (EIAM) application. This way, employees cannot log on to the application by using SSO.
         
         @param request: DisableApplicationSsoRequest
         @return: DisableApplicationSsoResponse
@@ -4001,7 +3613,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.DisableApplicationSsoRequest,
     ) -> eiam_20211201_models.DisableApplicationSsoResponse:
         """
-        @summary 禁用应用SSO能力
+        @summary Disables the single sign-on (SSO) feature for an Employee Identity and Access Management (EIAM) application. This way, employees cannot log on to the application by using SSO.
         
         @param request: DisableApplicationSsoRequest
         @return: DisableApplicationSsoResponse
@@ -4043,16 +3655,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableConditionalAccessPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableConditionalAccessPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableConditionalAccessPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def disable_conditional_access_policy_with_options_async(
         self,
@@ -4088,16 +3694,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableConditionalAccessPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableConditionalAccessPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableConditionalAccessPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def disable_conditional_access_policy(
         self,
@@ -4135,7 +3735,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.DisableDomainProxyTokenResponse:
         """
-        @summary 禁用指定域名代理Token。
+        @summary Disables a proxy token for a domain name of an Employee Identity and Access Management (EIAM) instance. After the proxy token is disabled, the domain name may not be used as expected.
         
         @param request: DisableDomainProxyTokenRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4163,16 +3763,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableDomainProxyTokenResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableDomainProxyTokenResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableDomainProxyTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def disable_domain_proxy_token_with_options_async(
         self,
@@ -4180,7 +3774,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.DisableDomainProxyTokenResponse:
         """
-        @summary 禁用指定域名代理Token。
+        @summary Disables a proxy token for a domain name of an Employee Identity and Access Management (EIAM) instance. After the proxy token is disabled, the domain name may not be used as expected.
         
         @param request: DisableDomainProxyTokenRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4208,23 +3802,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableDomainProxyTokenResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableDomainProxyTokenResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableDomainProxyTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def disable_domain_proxy_token(
         self,
         request: eiam_20211201_models.DisableDomainProxyTokenRequest,
     ) -> eiam_20211201_models.DisableDomainProxyTokenResponse:
         """
-        @summary 禁用指定域名代理Token。
+        @summary Disables a proxy token for a domain name of an Employee Identity and Access Management (EIAM) instance. After the proxy token is disabled, the domain name may not be used as expected.
         
         @param request: DisableDomainProxyTokenRequest
         @return: DisableDomainProxyTokenResponse
@@ -4237,7 +3825,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.DisableDomainProxyTokenRequest,
     ) -> eiam_20211201_models.DisableDomainProxyTokenResponse:
         """
-        @summary 禁用指定域名代理Token。
+        @summary Disables a proxy token for a domain name of an Employee Identity and Access Management (EIAM) instance. After the proxy token is disabled, the domain name may not be used as expected.
         
         @param request: DisableDomainProxyTokenRequest
         @return: DisableDomainProxyTokenResponse
@@ -4251,7 +3839,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.DisableIdentityProviderUdPullResponse:
         """
-        @summary 禁用同步入
+        @summary Disable identity provider synchronization
         
         @param request: DisableIdentityProviderUdPullRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4277,16 +3865,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableIdentityProviderUdPullResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableIdentityProviderUdPullResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableIdentityProviderUdPullResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def disable_identity_provider_ud_pull_with_options_async(
         self,
@@ -4294,7 +3876,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.DisableIdentityProviderUdPullResponse:
         """
-        @summary 禁用同步入
+        @summary Disable identity provider synchronization
         
         @param request: DisableIdentityProviderUdPullRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4320,23 +3902,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableIdentityProviderUdPullResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableIdentityProviderUdPullResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableIdentityProviderUdPullResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def disable_identity_provider_ud_pull(
         self,
         request: eiam_20211201_models.DisableIdentityProviderUdPullRequest,
     ) -> eiam_20211201_models.DisableIdentityProviderUdPullResponse:
         """
-        @summary 禁用同步入
+        @summary Disable identity provider synchronization
         
         @param request: DisableIdentityProviderUdPullRequest
         @return: DisableIdentityProviderUdPullResponse
@@ -4349,7 +3925,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.DisableIdentityProviderUdPullRequest,
     ) -> eiam_20211201_models.DisableIdentityProviderUdPullResponse:
         """
-        @summary 禁用同步入
+        @summary Disable identity provider synchronization
         
         @param request: DisableIdentityProviderUdPullRequest
         @return: DisableIdentityProviderUdPullResponse
@@ -4363,7 +3939,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.DisableInitDomainAutoRedirectResponse:
         """
-        @summary 关闭初始化域名自动跳转。
+        @summary Disables the feature of automatically redirecting the initial domain name to the default domain name for an Employee Identity and Access Management (EIAM) instance. After the feature is disabled, users who visit the portal page by using the initial domain name are not redirected to the default domain name.
         
         @param request: DisableInitDomainAutoRedirectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4387,16 +3963,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableInitDomainAutoRedirectResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableInitDomainAutoRedirectResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableInitDomainAutoRedirectResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def disable_init_domain_auto_redirect_with_options_async(
         self,
@@ -4404,7 +3974,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.DisableInitDomainAutoRedirectResponse:
         """
-        @summary 关闭初始化域名自动跳转。
+        @summary Disables the feature of automatically redirecting the initial domain name to the default domain name for an Employee Identity and Access Management (EIAM) instance. After the feature is disabled, users who visit the portal page by using the initial domain name are not redirected to the default domain name.
         
         @param request: DisableInitDomainAutoRedirectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4428,23 +3998,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableInitDomainAutoRedirectResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableInitDomainAutoRedirectResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableInitDomainAutoRedirectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def disable_init_domain_auto_redirect(
         self,
         request: eiam_20211201_models.DisableInitDomainAutoRedirectRequest,
     ) -> eiam_20211201_models.DisableInitDomainAutoRedirectResponse:
         """
-        @summary 关闭初始化域名自动跳转。
+        @summary Disables the feature of automatically redirecting the initial domain name to the default domain name for an Employee Identity and Access Management (EIAM) instance. After the feature is disabled, users who visit the portal page by using the initial domain name are not redirected to the default domain name.
         
         @param request: DisableInitDomainAutoRedirectRequest
         @return: DisableInitDomainAutoRedirectResponse
@@ -4457,7 +4021,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.DisableInitDomainAutoRedirectRequest,
     ) -> eiam_20211201_models.DisableInitDomainAutoRedirectResponse:
         """
-        @summary 关闭初始化域名自动跳转。
+        @summary Disables the feature of automatically redirecting the initial domain name to the default domain name for an Employee Identity and Access Management (EIAM) instance. After the feature is disabled, users who visit the portal page by using the initial domain name are not redirected to the default domain name.
         
         @param request: DisableInitDomainAutoRedirectRequest
         @return: DisableInitDomainAutoRedirectResponse
@@ -4497,16 +4061,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def disable_user_with_options_async(
         self,
@@ -4540,16 +4098,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.DisableUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def disable_user(
         self,
@@ -4609,16 +4161,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableApplicationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableApplicationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def enable_application_with_options_async(
         self,
@@ -4652,16 +4198,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableApplicationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableApplicationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def enable_application(
         self,
@@ -4721,16 +4261,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableApplicationApiInvokeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableApplicationApiInvokeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableApplicationApiInvokeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def enable_application_api_invoke_with_options_async(
         self,
@@ -4764,16 +4298,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableApplicationApiInvokeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableApplicationApiInvokeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableApplicationApiInvokeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def enable_application_api_invoke(
         self,
@@ -4835,16 +4363,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableApplicationClientSecretResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableApplicationClientSecretResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableApplicationClientSecretResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def enable_application_client_secret_with_options_async(
         self,
@@ -4880,16 +4402,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableApplicationClientSecretResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableApplicationClientSecretResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableApplicationClientSecretResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def enable_application_client_secret(
         self,
@@ -4949,16 +4465,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableApplicationProvisioningResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableApplicationProvisioningResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableApplicationProvisioningResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def enable_application_provisioning_with_options_async(
         self,
@@ -4992,16 +4502,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableApplicationProvisioningResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableApplicationProvisioningResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableApplicationProvisioningResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def enable_application_provisioning(
         self,
@@ -5035,7 +4539,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.EnableApplicationSsoResponse:
         """
-        @summary 启用应用SSO能力
+        @summary Enables the single sign-on (SSO) feature for an Employee Identity and Access Management (EIAM) application.
         
         @param request: EnableApplicationSsoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5061,16 +4565,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableApplicationSsoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableApplicationSsoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableApplicationSsoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def enable_application_sso_with_options_async(
         self,
@@ -5078,7 +4576,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.EnableApplicationSsoResponse:
         """
-        @summary 启用应用SSO能力
+        @summary Enables the single sign-on (SSO) feature for an Employee Identity and Access Management (EIAM) application.
         
         @param request: EnableApplicationSsoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5104,23 +4602,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableApplicationSsoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableApplicationSsoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableApplicationSsoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def enable_application_sso(
         self,
         request: eiam_20211201_models.EnableApplicationSsoRequest,
     ) -> eiam_20211201_models.EnableApplicationSsoResponse:
         """
-        @summary 启用应用SSO能力
+        @summary Enables the single sign-on (SSO) feature for an Employee Identity and Access Management (EIAM) application.
         
         @param request: EnableApplicationSsoRequest
         @return: EnableApplicationSsoResponse
@@ -5133,7 +4625,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.EnableApplicationSsoRequest,
     ) -> eiam_20211201_models.EnableApplicationSsoResponse:
         """
-        @summary 启用应用SSO能力
+        @summary Enables the single sign-on (SSO) feature for an Employee Identity and Access Management (EIAM) application.
         
         @param request: EnableApplicationSsoRequest
         @return: EnableApplicationSsoResponse
@@ -5175,16 +4667,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableConditionalAccessPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableConditionalAccessPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableConditionalAccessPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def enable_conditional_access_policy_with_options_async(
         self,
@@ -5220,16 +4706,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableConditionalAccessPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableConditionalAccessPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableConditionalAccessPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def enable_conditional_access_policy(
         self,
@@ -5267,7 +4747,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.EnableDomainProxyTokenResponse:
         """
-        @summary 启用指定域名代理Token。
+        @summary Enables a proxy token for a domain name of an Employee Identity and Access Management (EIAM) instance. The proxy token is used to verify the security of the domain name.
         
         @param request: EnableDomainProxyTokenRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5295,16 +4775,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableDomainProxyTokenResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableDomainProxyTokenResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableDomainProxyTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def enable_domain_proxy_token_with_options_async(
         self,
@@ -5312,7 +4786,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.EnableDomainProxyTokenResponse:
         """
-        @summary 启用指定域名代理Token。
+        @summary Enables a proxy token for a domain name of an Employee Identity and Access Management (EIAM) instance. The proxy token is used to verify the security of the domain name.
         
         @param request: EnableDomainProxyTokenRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5340,23 +4814,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableDomainProxyTokenResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableDomainProxyTokenResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableDomainProxyTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def enable_domain_proxy_token(
         self,
         request: eiam_20211201_models.EnableDomainProxyTokenRequest,
     ) -> eiam_20211201_models.EnableDomainProxyTokenResponse:
         """
-        @summary 启用指定域名代理Token。
+        @summary Enables a proxy token for a domain name of an Employee Identity and Access Management (EIAM) instance. The proxy token is used to verify the security of the domain name.
         
         @param request: EnableDomainProxyTokenRequest
         @return: EnableDomainProxyTokenResponse
@@ -5369,7 +4837,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.EnableDomainProxyTokenRequest,
     ) -> eiam_20211201_models.EnableDomainProxyTokenResponse:
         """
-        @summary 启用指定域名代理Token。
+        @summary Enables a proxy token for a domain name of an Employee Identity and Access Management (EIAM) instance. The proxy token is used to verify the security of the domain name.
         
         @param request: EnableDomainProxyTokenRequest
         @return: EnableDomainProxyTokenResponse
@@ -5383,7 +4851,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.EnableIdentityProviderUdPullResponse:
         """
-        @summary 启用同步入
+        @summary Enable identity provider synchronization.
         
         @param request: EnableIdentityProviderUdPullRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5409,16 +4877,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableIdentityProviderUdPullResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableIdentityProviderUdPullResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableIdentityProviderUdPullResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def enable_identity_provider_ud_pull_with_options_async(
         self,
@@ -5426,7 +4888,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.EnableIdentityProviderUdPullResponse:
         """
-        @summary 启用同步入
+        @summary Enable identity provider synchronization.
         
         @param request: EnableIdentityProviderUdPullRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5452,23 +4914,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableIdentityProviderUdPullResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableIdentityProviderUdPullResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableIdentityProviderUdPullResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def enable_identity_provider_ud_pull(
         self,
         request: eiam_20211201_models.EnableIdentityProviderUdPullRequest,
     ) -> eiam_20211201_models.EnableIdentityProviderUdPullResponse:
         """
-        @summary 启用同步入
+        @summary Enable identity provider synchronization.
         
         @param request: EnableIdentityProviderUdPullRequest
         @return: EnableIdentityProviderUdPullResponse
@@ -5481,7 +4937,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.EnableIdentityProviderUdPullRequest,
     ) -> eiam_20211201_models.EnableIdentityProviderUdPullResponse:
         """
-        @summary 启用同步入
+        @summary Enable identity provider synchronization.
         
         @param request: EnableIdentityProviderUdPullRequest
         @return: EnableIdentityProviderUdPullResponse
@@ -5495,7 +4951,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.EnableInitDomainAutoRedirectResponse:
         """
-        @summary 开启初始化域名自动跳转。开启后，访问初始化域名将会自动跳转至默认域名。
+        @summary Enables the feature of automatically redirecting the initial domain name to the default domain name for an Employee Identity and Access Management (EIAM) instance.
         
         @param request: EnableInitDomainAutoRedirectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5519,16 +4975,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableInitDomainAutoRedirectResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableInitDomainAutoRedirectResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableInitDomainAutoRedirectResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def enable_init_domain_auto_redirect_with_options_async(
         self,
@@ -5536,7 +4986,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.EnableInitDomainAutoRedirectResponse:
         """
-        @summary 开启初始化域名自动跳转。开启后，访问初始化域名将会自动跳转至默认域名。
+        @summary Enables the feature of automatically redirecting the initial domain name to the default domain name for an Employee Identity and Access Management (EIAM) instance.
         
         @param request: EnableInitDomainAutoRedirectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5560,23 +5010,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableInitDomainAutoRedirectResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableInitDomainAutoRedirectResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableInitDomainAutoRedirectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def enable_init_domain_auto_redirect(
         self,
         request: eiam_20211201_models.EnableInitDomainAutoRedirectRequest,
     ) -> eiam_20211201_models.EnableInitDomainAutoRedirectResponse:
         """
-        @summary 开启初始化域名自动跳转。开启后，访问初始化域名将会自动跳转至默认域名。
+        @summary Enables the feature of automatically redirecting the initial domain name to the default domain name for an Employee Identity and Access Management (EIAM) instance.
         
         @param request: EnableInitDomainAutoRedirectRequest
         @return: EnableInitDomainAutoRedirectResponse
@@ -5589,7 +5033,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.EnableInitDomainAutoRedirectRequest,
     ) -> eiam_20211201_models.EnableInitDomainAutoRedirectResponse:
         """
-        @summary 开启初始化域名自动跳转。开启后，访问初始化域名将会自动跳转至默认域名。
+        @summary Enables the feature of automatically redirecting the initial domain name to the default domain name for an Employee Identity and Access Management (EIAM) instance.
         
         @param request: EnableInitDomainAutoRedirectRequest
         @return: EnableInitDomainAutoRedirectResponse
@@ -5629,16 +5073,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def enable_user_with_options_async(
         self,
@@ -5672,16 +5110,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.EnableUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def enable_user(
         self,
@@ -5741,16 +5173,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetApplicationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetApplicationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_application_with_options_async(
         self,
@@ -5784,16 +5210,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetApplicationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetApplicationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_application(
         self,
@@ -5853,16 +5273,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetApplicationGrantScopeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetApplicationGrantScopeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetApplicationGrantScopeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_application_grant_scope_with_options_async(
         self,
@@ -5896,16 +5310,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetApplicationGrantScopeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetApplicationGrantScopeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetApplicationGrantScopeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_application_grant_scope(
         self,
@@ -5965,16 +5373,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetApplicationProvisioningConfigResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetApplicationProvisioningConfigResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetApplicationProvisioningConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_application_provisioning_config_with_options_async(
         self,
@@ -6008,16 +5410,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetApplicationProvisioningConfigResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetApplicationProvisioningConfigResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetApplicationProvisioningConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_application_provisioning_config(
         self,
@@ -6077,16 +5473,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetApplicationProvisioningScopeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetApplicationProvisioningScopeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetApplicationProvisioningScopeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_application_provisioning_scope_with_options_async(
         self,
@@ -6120,16 +5510,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetApplicationProvisioningScopeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetApplicationProvisioningScopeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetApplicationProvisioningScopeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_application_provisioning_scope(
         self,
@@ -6189,16 +5573,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetApplicationSsoConfigResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetApplicationSsoConfigResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetApplicationSsoConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_application_sso_config_with_options_async(
         self,
@@ -6232,16 +5610,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetApplicationSsoConfigResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetApplicationSsoConfigResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetApplicationSsoConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_application_sso_config(
         self,
@@ -6303,16 +5675,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetConditionalAccessPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetConditionalAccessPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetConditionalAccessPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_conditional_access_policy_with_options_async(
         self,
@@ -6348,16 +5714,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetConditionalAccessPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetConditionalAccessPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetConditionalAccessPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_conditional_access_policy(
         self,
@@ -6395,7 +5755,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.GetDomainResponse:
         """
-        @summary 查询一个域名的详细信息。
+        @summary Queries the information about a domain name of an Employee Identity and Access Management (EIAM) instance.
         
         @param request: GetDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6421,16 +5781,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetDomainResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetDomainResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_domain_with_options_async(
         self,
@@ -6438,7 +5792,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.GetDomainResponse:
         """
-        @summary 查询一个域名的详细信息。
+        @summary Queries the information about a domain name of an Employee Identity and Access Management (EIAM) instance.
         
         @param request: GetDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6464,23 +5818,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetDomainResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetDomainResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_domain(
         self,
         request: eiam_20211201_models.GetDomainRequest,
     ) -> eiam_20211201_models.GetDomainResponse:
         """
-        @summary 查询一个域名的详细信息。
+        @summary Queries the information about a domain name of an Employee Identity and Access Management (EIAM) instance.
         
         @param request: GetDomainRequest
         @return: GetDomainResponse
@@ -6493,7 +5841,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.GetDomainRequest,
     ) -> eiam_20211201_models.GetDomainResponse:
         """
-        @summary 查询一个域名的详细信息。
+        @summary Queries the information about a domain name of an Employee Identity and Access Management (EIAM) instance.
         
         @param request: GetDomainRequest
         @return: GetDomainResponse
@@ -6507,7 +5855,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.GetDomainDnsChallengeResponse:
         """
-        @summary 查看域名的DNS Challenge记录。
+        @summary Queries the domain name system (DNS) challenge records of a domain name of an Employee Identity and Access Management (EIAM) instance. The generated records are used to verify the ownership of the domain name.
         
         @param request: GetDomainDnsChallengeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6533,16 +5881,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetDomainDnsChallengeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetDomainDnsChallengeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetDomainDnsChallengeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_domain_dns_challenge_with_options_async(
         self,
@@ -6550,7 +5892,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.GetDomainDnsChallengeResponse:
         """
-        @summary 查看域名的DNS Challenge记录。
+        @summary Queries the domain name system (DNS) challenge records of a domain name of an Employee Identity and Access Management (EIAM) instance. The generated records are used to verify the ownership of the domain name.
         
         @param request: GetDomainDnsChallengeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6576,23 +5918,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetDomainDnsChallengeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetDomainDnsChallengeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetDomainDnsChallengeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_domain_dns_challenge(
         self,
         request: eiam_20211201_models.GetDomainDnsChallengeRequest,
     ) -> eiam_20211201_models.GetDomainDnsChallengeResponse:
         """
-        @summary 查看域名的DNS Challenge记录。
+        @summary Queries the domain name system (DNS) challenge records of a domain name of an Employee Identity and Access Management (EIAM) instance. The generated records are used to verify the ownership of the domain name.
         
         @param request: GetDomainDnsChallengeRequest
         @return: GetDomainDnsChallengeResponse
@@ -6605,7 +5941,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.GetDomainDnsChallengeRequest,
     ) -> eiam_20211201_models.GetDomainDnsChallengeResponse:
         """
-        @summary 查看域名的DNS Challenge记录。
+        @summary Queries the domain name system (DNS) challenge records of a domain name of an Employee Identity and Access Management (EIAM) instance. The generated records are used to verify the ownership of the domain name.
         
         @param request: GetDomainDnsChallengeRequest
         @return: GetDomainDnsChallengeResponse
@@ -6643,16 +5979,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetForgetPasswordConfigurationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetForgetPasswordConfigurationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetForgetPasswordConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_forget_password_configuration_with_options_async(
         self,
@@ -6684,16 +6014,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetForgetPasswordConfigurationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetForgetPasswordConfigurationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetForgetPasswordConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_forget_password_configuration(
         self,
@@ -6753,16 +6077,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_group_with_options_async(
         self,
@@ -6796,16 +6114,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_group(
         self,
@@ -6839,7 +6151,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.GetIdentityProviderResponse:
         """
-        @summary 获取身份提供方
+        @summary Get identity provider
         
         @param request: GetIdentityProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6865,16 +6177,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetIdentityProviderResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetIdentityProviderResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetIdentityProviderResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_identity_provider_with_options_async(
         self,
@@ -6882,7 +6188,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.GetIdentityProviderResponse:
         """
-        @summary 获取身份提供方
+        @summary Get identity provider
         
         @param request: GetIdentityProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6908,23 +6214,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetIdentityProviderResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetIdentityProviderResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetIdentityProviderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_identity_provider(
         self,
         request: eiam_20211201_models.GetIdentityProviderRequest,
     ) -> eiam_20211201_models.GetIdentityProviderResponse:
         """
-        @summary 获取身份提供方
+        @summary Get identity provider
         
         @param request: GetIdentityProviderRequest
         @return: GetIdentityProviderResponse
@@ -6937,7 +6237,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.GetIdentityProviderRequest,
     ) -> eiam_20211201_models.GetIdentityProviderResponse:
         """
-        @summary 获取身份提供方
+        @summary Get identity provider
         
         @param request: GetIdentityProviderRequest
         @return: GetIdentityProviderResponse
@@ -6951,7 +6251,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.GetIdentityProviderUdPullConfigurationResponse:
         """
-        @summary 获取IdP同步入配置
+        @summary Get IdP Inbound Synchronization Configuration Information
         
         @param request: GetIdentityProviderUdPullConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6977,16 +6277,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetIdentityProviderUdPullConfigurationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetIdentityProviderUdPullConfigurationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetIdentityProviderUdPullConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_identity_provider_ud_pull_configuration_with_options_async(
         self,
@@ -6994,7 +6288,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.GetIdentityProviderUdPullConfigurationResponse:
         """
-        @summary 获取IdP同步入配置
+        @summary Get IdP Inbound Synchronization Configuration Information
         
         @param request: GetIdentityProviderUdPullConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7020,23 +6314,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetIdentityProviderUdPullConfigurationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetIdentityProviderUdPullConfigurationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetIdentityProviderUdPullConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_identity_provider_ud_pull_configuration(
         self,
         request: eiam_20211201_models.GetIdentityProviderUdPullConfigurationRequest,
     ) -> eiam_20211201_models.GetIdentityProviderUdPullConfigurationResponse:
         """
-        @summary 获取IdP同步入配置
+        @summary Get IdP Inbound Synchronization Configuration Information
         
         @param request: GetIdentityProviderUdPullConfigurationRequest
         @return: GetIdentityProviderUdPullConfigurationResponse
@@ -7049,7 +6337,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.GetIdentityProviderUdPullConfigurationRequest,
     ) -> eiam_20211201_models.GetIdentityProviderUdPullConfigurationResponse:
         """
-        @summary 获取IdP同步入配置
+        @summary Get IdP Inbound Synchronization Configuration Information
         
         @param request: GetIdentityProviderUdPullConfigurationRequest
         @return: GetIdentityProviderUdPullConfigurationResponse
@@ -7087,16 +6375,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_instance_with_options_async(
         self,
@@ -7128,16 +6410,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_instance(
         self,
@@ -7197,16 +6473,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetInstanceLicenseResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetInstanceLicenseResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetInstanceLicenseResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_instance_license_with_options_async(
         self,
@@ -7240,16 +6510,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetInstanceLicenseResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetInstanceLicenseResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetInstanceLicenseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_instance_license(
         self,
@@ -7287,7 +6551,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.GetNetworkAccessEndpointResponse:
         """
-        @summary 查询一个专属网络端点的详细信息。
+        @summary Get Network Endpoint Information
         
         @param request: GetNetworkAccessEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7313,16 +6577,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetNetworkAccessEndpointResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetNetworkAccessEndpointResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetNetworkAccessEndpointResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_network_access_endpoint_with_options_async(
         self,
@@ -7330,7 +6588,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.GetNetworkAccessEndpointResponse:
         """
-        @summary 查询一个专属网络端点的详细信息。
+        @summary Get Network Endpoint Information
         
         @param request: GetNetworkAccessEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7356,23 +6614,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetNetworkAccessEndpointResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetNetworkAccessEndpointResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetNetworkAccessEndpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_network_access_endpoint(
         self,
         request: eiam_20211201_models.GetNetworkAccessEndpointRequest,
     ) -> eiam_20211201_models.GetNetworkAccessEndpointResponse:
         """
-        @summary 查询一个专属网络端点的详细信息。
+        @summary Get Network Endpoint Information
         
         @param request: GetNetworkAccessEndpointRequest
         @return: GetNetworkAccessEndpointResponse
@@ -7385,7 +6637,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.GetNetworkAccessEndpointRequest,
     ) -> eiam_20211201_models.GetNetworkAccessEndpointResponse:
         """
-        @summary 查询一个专属网络端点的详细信息。
+        @summary Get Network Endpoint Information
         
         @param request: GetNetworkAccessEndpointRequest
         @return: GetNetworkAccessEndpointResponse
@@ -7425,16 +6677,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetOrganizationalUnitResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetOrganizationalUnitResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetOrganizationalUnitResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_organizational_unit_with_options_async(
         self,
@@ -7468,16 +6714,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetOrganizationalUnitResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetOrganizationalUnitResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetOrganizationalUnitResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_organizational_unit(
         self,
@@ -7535,16 +6775,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetPasswordComplexityConfigurationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetPasswordComplexityConfigurationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetPasswordComplexityConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_password_complexity_configuration_with_options_async(
         self,
@@ -7576,16 +6810,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetPasswordComplexityConfigurationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetPasswordComplexityConfigurationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetPasswordComplexityConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_password_complexity_configuration(
         self,
@@ -7643,16 +6871,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetPasswordExpirationConfigurationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetPasswordExpirationConfigurationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetPasswordExpirationConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_password_expiration_configuration_with_options_async(
         self,
@@ -7684,16 +6906,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetPasswordExpirationConfigurationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetPasswordExpirationConfigurationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetPasswordExpirationConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_password_expiration_configuration(
         self,
@@ -7751,16 +6967,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetPasswordHistoryConfigurationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetPasswordHistoryConfigurationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetPasswordHistoryConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_password_history_configuration_with_options_async(
         self,
@@ -7792,16 +7002,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetPasswordHistoryConfigurationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetPasswordHistoryConfigurationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetPasswordHistoryConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_password_history_configuration(
         self,
@@ -7859,16 +7063,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetPasswordInitializationConfigurationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetPasswordInitializationConfigurationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetPasswordInitializationConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_password_initialization_configuration_with_options_async(
         self,
@@ -7900,16 +7098,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetPasswordInitializationConfigurationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetPasswordInitializationConfigurationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetPasswordInitializationConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_password_initialization_configuration(
         self,
@@ -7967,16 +7159,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetRootOrganizationalUnitResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetRootOrganizationalUnitResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetRootOrganizationalUnitResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_root_organizational_unit_with_options_async(
         self,
@@ -8008,16 +7194,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetRootOrganizationalUnitResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetRootOrganizationalUnitResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetRootOrganizationalUnitResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_root_organizational_unit(
         self,
@@ -8051,7 +7231,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.GetSynchronizationJobResponse:
         """
-        @summary 查询同步任务
+        @summary Obtains the information about a single synchronization job.
         
         @param request: GetSynchronizationJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8077,16 +7257,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetSynchronizationJobResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetSynchronizationJobResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetSynchronizationJobResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_synchronization_job_with_options_async(
         self,
@@ -8094,7 +7268,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.GetSynchronizationJobResponse:
         """
-        @summary 查询同步任务
+        @summary Obtains the information about a single synchronization job.
         
         @param request: GetSynchronizationJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8120,23 +7294,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetSynchronizationJobResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetSynchronizationJobResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetSynchronizationJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_synchronization_job(
         self,
         request: eiam_20211201_models.GetSynchronizationJobRequest,
     ) -> eiam_20211201_models.GetSynchronizationJobResponse:
         """
-        @summary 查询同步任务
+        @summary Obtains the information about a single synchronization job.
         
         @param request: GetSynchronizationJobRequest
         @return: GetSynchronizationJobResponse
@@ -8149,7 +7317,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.GetSynchronizationJobRequest,
     ) -> eiam_20211201_models.GetSynchronizationJobResponse:
         """
-        @summary 查询同步任务
+        @summary Obtains the information about a single synchronization job.
         
         @param request: GetSynchronizationJobRequest
         @return: GetSynchronizationJobResponse
@@ -8189,16 +7357,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_user_with_options_async(
         self,
@@ -8232,16 +7394,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.GetUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.GetUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_user(
         self,
@@ -8301,16 +7457,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListApplicationClientSecretsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListApplicationClientSecretsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListApplicationClientSecretsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_application_client_secrets_with_options_async(
         self,
@@ -8344,16 +7494,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListApplicationClientSecretsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListApplicationClientSecretsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListApplicationClientSecretsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_application_client_secrets(
         self,
@@ -8429,16 +7573,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListApplicationsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListApplicationsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListApplicationsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_applications_with_options_async(
         self,
@@ -8488,16 +7626,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListApplicationsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListApplicationsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListApplicationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_applications(
         self,
@@ -8565,16 +7697,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListApplicationsForOrganizationalUnitResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListApplicationsForOrganizationalUnitResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListApplicationsForOrganizationalUnitResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_applications_for_organizational_unit_with_options_async(
         self,
@@ -8616,16 +7742,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListApplicationsForOrganizationalUnitResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListApplicationsForOrganizationalUnitResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListApplicationsForOrganizationalUnitResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_applications_for_organizational_unit(
         self,
@@ -8697,16 +7817,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListApplicationsForUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListApplicationsForUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListApplicationsForUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_applications_for_user_with_options_async(
         self,
@@ -8748,16 +7862,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListApplicationsForUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListApplicationsForUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListApplicationsForUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_applications_for_user(
         self,
@@ -8823,16 +7931,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListConditionalAccessPoliciesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListConditionalAccessPoliciesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListConditionalAccessPoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_conditional_access_policies_with_options_async(
         self,
@@ -8872,16 +7974,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListConditionalAccessPoliciesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListConditionalAccessPoliciesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListConditionalAccessPoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_conditional_access_policies(
         self,
@@ -8947,16 +8043,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListConditionalAccessPoliciesForNetworkZoneResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListConditionalAccessPoliciesForNetworkZoneResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListConditionalAccessPoliciesForNetworkZoneResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_conditional_access_policies_for_network_zone_with_options_async(
         self,
@@ -8992,16 +8082,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListConditionalAccessPoliciesForNetworkZoneResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListConditionalAccessPoliciesForNetworkZoneResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListConditionalAccessPoliciesForNetworkZoneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_conditional_access_policies_for_network_zone(
         self,
@@ -9039,7 +8123,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.ListDomainProxyTokensResponse:
         """
-        @summary 列表查询域名代理Token信息。
+        @summary Queries the proxy tokens of a domain name of an Employee Identity and Access Management (EIAM) instance.
         
         @param request: ListDomainProxyTokensRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9065,16 +8149,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListDomainProxyTokensResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListDomainProxyTokensResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListDomainProxyTokensResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_domain_proxy_tokens_with_options_async(
         self,
@@ -9082,7 +8160,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.ListDomainProxyTokensResponse:
         """
-        @summary 列表查询域名代理Token信息。
+        @summary Queries the proxy tokens of a domain name of an Employee Identity and Access Management (EIAM) instance.
         
         @param request: ListDomainProxyTokensRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9108,23 +8186,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListDomainProxyTokensResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListDomainProxyTokensResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListDomainProxyTokensResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_domain_proxy_tokens(
         self,
         request: eiam_20211201_models.ListDomainProxyTokensRequest,
     ) -> eiam_20211201_models.ListDomainProxyTokensResponse:
         """
-        @summary 列表查询域名代理Token信息。
+        @summary Queries the proxy tokens of a domain name of an Employee Identity and Access Management (EIAM) instance.
         
         @param request: ListDomainProxyTokensRequest
         @return: ListDomainProxyTokensResponse
@@ -9137,7 +8209,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.ListDomainProxyTokensRequest,
     ) -> eiam_20211201_models.ListDomainProxyTokensResponse:
         """
-        @summary 列表查询域名代理Token信息。
+        @summary Queries the proxy tokens of a domain name of an Employee Identity and Access Management (EIAM) instance.
         
         @param request: ListDomainProxyTokensRequest
         @return: ListDomainProxyTokensResponse
@@ -9151,7 +8223,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.ListDomainsResponse:
         """
-        @summary 列表查询域名记录。
+        @summary Queries a list of domain names of an Employee Identity and Access Management (EIAM) instance. The list contains the initial domain name and custom domain names.
         
         @param request: ListDomainsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9175,16 +8247,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListDomainsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListDomainsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListDomainsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_domains_with_options_async(
         self,
@@ -9192,7 +8258,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.ListDomainsResponse:
         """
-        @summary 列表查询域名记录。
+        @summary Queries a list of domain names of an Employee Identity and Access Management (EIAM) instance. The list contains the initial domain name and custom domain names.
         
         @param request: ListDomainsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9216,23 +8282,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListDomainsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListDomainsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListDomainsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_domains(
         self,
         request: eiam_20211201_models.ListDomainsRequest,
     ) -> eiam_20211201_models.ListDomainsResponse:
         """
-        @summary 列表查询域名记录。
+        @summary Queries a list of domain names of an Employee Identity and Access Management (EIAM) instance. The list contains the initial domain name and custom domain names.
         
         @param request: ListDomainsRequest
         @return: ListDomainsResponse
@@ -9245,7 +8305,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.ListDomainsRequest,
     ) -> eiam_20211201_models.ListDomainsResponse:
         """
-        @summary 列表查询域名记录。
+        @summary Queries a list of domain names of an Employee Identity and Access Management (EIAM) instance. The list contains the initial domain name and custom domain names.
         
         @param request: ListDomainsRequest
         @return: ListDomainsResponse
@@ -9259,7 +8319,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.ListEiamInstancesResponse:
         """
-        @summary 查询EIAM2.0/EIAM1.0实例列表
+        @summary Queries the information about Employee Identity and Access Management (EIAM) V1.0 instances or EIAM V2.0 instances.
         
         @param request: ListEiamInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9285,16 +8345,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListEiamInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListEiamInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListEiamInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_eiam_instances_with_options_async(
         self,
@@ -9302,7 +8356,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.ListEiamInstancesResponse:
         """
-        @summary 查询EIAM2.0/EIAM1.0实例列表
+        @summary Queries the information about Employee Identity and Access Management (EIAM) V1.0 instances or EIAM V2.0 instances.
         
         @param request: ListEiamInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9328,23 +8382,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListEiamInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListEiamInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListEiamInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_eiam_instances(
         self,
         request: eiam_20211201_models.ListEiamInstancesRequest,
     ) -> eiam_20211201_models.ListEiamInstancesResponse:
         """
-        @summary 查询EIAM2.0/EIAM1.0实例列表
+        @summary Queries the information about Employee Identity and Access Management (EIAM) V1.0 instances or EIAM V2.0 instances.
         
         @param request: ListEiamInstancesRequest
         @return: ListEiamInstancesResponse
@@ -9357,7 +8405,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.ListEiamInstancesRequest,
     ) -> eiam_20211201_models.ListEiamInstancesResponse:
         """
-        @summary 查询EIAM2.0/EIAM1.0实例列表
+        @summary Queries the information about Employee Identity and Access Management (EIAM) V1.0 instances or EIAM V2.0 instances.
         
         @param request: ListEiamInstancesRequest
         @return: ListEiamInstancesResponse
@@ -9370,7 +8418,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.ListEiamRegionsResponse:
         """
-        @summary 查询EIAM2.0/EIAM1.0地域列表
+        @summary Queries the regions in which Employee Identity and Access Management (EIAM) V1.0 instances or EIAM V2.0 instances reside.
         
         @param request: ListEiamRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9388,23 +8436,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListEiamRegionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListEiamRegionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListEiamRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_eiam_regions_with_options_async(
         self,
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.ListEiamRegionsResponse:
         """
-        @summary 查询EIAM2.0/EIAM1.0地域列表
+        @summary Queries the regions in which Employee Identity and Access Management (EIAM) V1.0 instances or EIAM V2.0 instances reside.
         
         @param request: ListEiamRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9422,20 +8464,14 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListEiamRegionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListEiamRegionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListEiamRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_eiam_regions(self) -> eiam_20211201_models.ListEiamRegionsResponse:
         """
-        @summary 查询EIAM2.0/EIAM1.0地域列表
+        @summary Queries the regions in which Employee Identity and Access Management (EIAM) V1.0 instances or EIAM V2.0 instances reside.
         
         @return: ListEiamRegionsResponse
         """
@@ -9444,7 +8480,7 @@ class Client(OpenApiClient):
 
     async def list_eiam_regions_async(self) -> eiam_20211201_models.ListEiamRegionsResponse:
         """
-        @summary 查询EIAM2.0/EIAM1.0地域列表
+        @summary Queries the regions in which Employee Identity and Access Management (EIAM) V1.0 instances or EIAM V2.0 instances reside.
         
         @return: ListEiamRegionsResponse
         """
@@ -9493,16 +8529,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListGroupsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListGroupsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_groups_with_options_async(
         self,
@@ -9546,16 +8576,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListGroupsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListGroupsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_groups(
         self,
@@ -9621,16 +8645,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListGroupsForApplicationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListGroupsForApplicationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListGroupsForApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_groups_for_application_with_options_async(
         self,
@@ -9670,16 +8688,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListGroupsForApplicationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListGroupsForApplicationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListGroupsForApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_groups_for_application(
         self,
@@ -9743,16 +8755,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListGroupsForUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListGroupsForUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListGroupsForUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_groups_for_user_with_options_async(
         self,
@@ -9790,16 +8796,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListGroupsForUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListGroupsForUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListGroupsForUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_groups_for_user(
         self,
@@ -9833,7 +8833,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.ListIdentityProvidersResponse:
         """
-        @summary 查询身份提供方
+        @summary Query the list of identity providers.
         
         @param request: ListIdentityProvidersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9861,16 +8861,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListIdentityProvidersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListIdentityProvidersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListIdentityProvidersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_identity_providers_with_options_async(
         self,
@@ -9878,7 +8872,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.ListIdentityProvidersResponse:
         """
-        @summary 查询身份提供方
+        @summary Query the list of identity providers.
         
         @param request: ListIdentityProvidersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9906,23 +8900,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListIdentityProvidersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListIdentityProvidersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListIdentityProvidersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_identity_providers(
         self,
         request: eiam_20211201_models.ListIdentityProvidersRequest,
     ) -> eiam_20211201_models.ListIdentityProvidersResponse:
         """
-        @summary 查询身份提供方
+        @summary Query the list of identity providers.
         
         @param request: ListIdentityProvidersRequest
         @return: ListIdentityProvidersResponse
@@ -9935,7 +8923,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.ListIdentityProvidersRequest,
     ) -> eiam_20211201_models.ListIdentityProvidersResponse:
         """
-        @summary 查询身份提供方
+        @summary Query the list of identity providers.
         
         @param request: ListIdentityProvidersRequest
         @return: ListIdentityProvidersResponse
@@ -9979,16 +8967,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_instances_with_options_async(
         self,
@@ -10026,16 +9008,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_instances(
         self,
@@ -10068,7 +9044,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.ListNetworkAccessEndpointAvailableRegionsResponse:
         """
-        @summary 获取支持专属端点的region列表
+        @summary Get a list of regions that support network access endpoints.
         
         @param request: ListNetworkAccessEndpointAvailableRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10086,23 +9062,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListNetworkAccessEndpointAvailableRegionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListNetworkAccessEndpointAvailableRegionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListNetworkAccessEndpointAvailableRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_network_access_endpoint_available_regions_with_options_async(
         self,
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.ListNetworkAccessEndpointAvailableRegionsResponse:
         """
-        @summary 获取支持专属端点的region列表
+        @summary Get a list of regions that support network access endpoints.
         
         @param request: ListNetworkAccessEndpointAvailableRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10120,20 +9090,14 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListNetworkAccessEndpointAvailableRegionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListNetworkAccessEndpointAvailableRegionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListNetworkAccessEndpointAvailableRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_network_access_endpoint_available_regions(self) -> eiam_20211201_models.ListNetworkAccessEndpointAvailableRegionsResponse:
         """
-        @summary 获取支持专属端点的region列表
+        @summary Get a list of regions that support network access endpoints.
         
         @return: ListNetworkAccessEndpointAvailableRegionsResponse
         """
@@ -10142,7 +9106,7 @@ class Client(OpenApiClient):
 
     async def list_network_access_endpoint_available_regions_async(self) -> eiam_20211201_models.ListNetworkAccessEndpointAvailableRegionsResponse:
         """
-        @summary 获取支持专属端点的region列表
+        @summary Get a list of regions that support network access endpoints.
         
         @return: ListNetworkAccessEndpointAvailableRegionsResponse
         """
@@ -10179,16 +9143,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListNetworkAccessEndpointAvailableZonesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListNetworkAccessEndpointAvailableZonesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListNetworkAccessEndpointAvailableZonesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_network_access_endpoint_available_zones_with_options_async(
         self,
@@ -10220,16 +9178,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListNetworkAccessEndpointAvailableZonesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListNetworkAccessEndpointAvailableZonesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListNetworkAccessEndpointAvailableZonesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_network_access_endpoint_available_zones(
         self,
@@ -10299,16 +9251,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListNetworkAccessEndpointsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListNetworkAccessEndpointsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListNetworkAccessEndpointsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_network_access_endpoints_with_options_async(
         self,
@@ -10352,16 +9298,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListNetworkAccessEndpointsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListNetworkAccessEndpointsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListNetworkAccessEndpointsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_network_access_endpoints(
         self,
@@ -10395,7 +9335,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.ListNetworkAccessPathsResponse:
         """
-        @summary 列表查询某个网络访问端点下的访问路径。
+        @summary List the access paths under a certain network access endpoint.
         
         @param request: ListNetworkAccessPathsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10421,16 +9361,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListNetworkAccessPathsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListNetworkAccessPathsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListNetworkAccessPathsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_network_access_paths_with_options_async(
         self,
@@ -10438,7 +9372,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.ListNetworkAccessPathsResponse:
         """
-        @summary 列表查询某个网络访问端点下的访问路径。
+        @summary List the access paths under a certain network access endpoint.
         
         @param request: ListNetworkAccessPathsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10464,23 +9398,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListNetworkAccessPathsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListNetworkAccessPathsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListNetworkAccessPathsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_network_access_paths(
         self,
         request: eiam_20211201_models.ListNetworkAccessPathsRequest,
     ) -> eiam_20211201_models.ListNetworkAccessPathsResponse:
         """
-        @summary 列表查询某个网络访问端点下的访问路径。
+        @summary List the access paths under a certain network access endpoint.
         
         @param request: ListNetworkAccessPathsRequest
         @return: ListNetworkAccessPathsResponse
@@ -10493,7 +9421,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.ListNetworkAccessPathsRequest,
     ) -> eiam_20211201_models.ListNetworkAccessPathsResponse:
         """
-        @summary 列表查询某个网络访问端点下的访问路径。
+        @summary List the access paths under a certain network access endpoint.
         
         @param request: ListNetworkAccessPathsRequest
         @return: ListNetworkAccessPathsResponse
@@ -10507,7 +9435,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.ListOrganizationalUnitParentsResponse:
         """
-        @summary 查询组织的所有父级路径
+        @summary Queries all parent organizations of an Employee Identity and Access Management (EIAM) organization.
         
         @param request: ListOrganizationalUnitParentsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10533,16 +9461,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListOrganizationalUnitParentsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListOrganizationalUnitParentsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListOrganizationalUnitParentsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_organizational_unit_parents_with_options_async(
         self,
@@ -10550,7 +9472,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.ListOrganizationalUnitParentsResponse:
         """
-        @summary 查询组织的所有父级路径
+        @summary Queries all parent organizations of an Employee Identity and Access Management (EIAM) organization.
         
         @param request: ListOrganizationalUnitParentsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10576,23 +9498,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListOrganizationalUnitParentsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListOrganizationalUnitParentsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListOrganizationalUnitParentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_organizational_unit_parents(
         self,
         request: eiam_20211201_models.ListOrganizationalUnitParentsRequest,
     ) -> eiam_20211201_models.ListOrganizationalUnitParentsResponse:
         """
-        @summary 查询组织的所有父级路径
+        @summary Queries all parent organizations of an Employee Identity and Access Management (EIAM) organization.
         
         @param request: ListOrganizationalUnitParentsRequest
         @return: ListOrganizationalUnitParentsResponse
@@ -10605,7 +9521,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.ListOrganizationalUnitParentsRequest,
     ) -> eiam_20211201_models.ListOrganizationalUnitParentsResponse:
         """
-        @summary 查询组织的所有父级路径
+        @summary Queries all parent organizations of an Employee Identity and Access Management (EIAM) organization.
         
         @param request: ListOrganizationalUnitParentsRequest
         @return: ListOrganizationalUnitParentsResponse
@@ -10655,16 +9571,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListOrganizationalUnitsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListOrganizationalUnitsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListOrganizationalUnitsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_organizational_units_with_options_async(
         self,
@@ -10708,16 +9618,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListOrganizationalUnitsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListOrganizationalUnitsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListOrganizationalUnitsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_organizational_units(
         self,
@@ -10783,16 +9687,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListOrganizationalUnitsForApplicationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListOrganizationalUnitsForApplicationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListOrganizationalUnitsForApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_organizational_units_for_application_with_options_async(
         self,
@@ -10832,16 +9730,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListOrganizationalUnitsForApplicationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListOrganizationalUnitsForApplicationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListOrganizationalUnitsForApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_organizational_units_for_application(
         self,
@@ -10892,16 +9784,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListRegionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListRegionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_regions_with_options_async(
         self,
@@ -10926,16 +9812,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListRegionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListRegionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_regions(self) -> eiam_20211201_models.ListRegionsResponse:
         """
@@ -11007,16 +9887,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListSynchronizationJobsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListSynchronizationJobsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListSynchronizationJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_synchronization_jobs_with_options_async(
         self,
@@ -11070,16 +9944,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListSynchronizationJobsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListSynchronizationJobsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListSynchronizationJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_synchronization_jobs(
         self,
@@ -11163,16 +10031,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListUsersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListUsersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListUsersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_users_with_options_async(
         self,
@@ -11230,16 +10092,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListUsersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListUsersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListUsersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_users(
         self,
@@ -11305,16 +10161,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListUsersForApplicationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListUsersForApplicationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListUsersForApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_users_for_application_with_options_async(
         self,
@@ -11354,16 +10204,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListUsersForApplicationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListUsersForApplicationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListUsersForApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_users_for_application(
         self,
@@ -11429,16 +10273,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListUsersForGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListUsersForGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListUsersForGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_users_for_group_with_options_async(
         self,
@@ -11478,16 +10316,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ListUsersForGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ListUsersForGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListUsersForGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_users_for_group(
         self,
@@ -11549,16 +10381,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ObtainApplicationClientSecretResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ObtainApplicationClientSecretResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ObtainApplicationClientSecretResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def obtain_application_client_secret_with_options_async(
         self,
@@ -11594,16 +10420,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ObtainApplicationClientSecretResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ObtainApplicationClientSecretResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ObtainApplicationClientSecretResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def obtain_application_client_secret(
         self,
@@ -11637,7 +10457,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.ObtainDomainProxyTokenResponse:
         """
-        @summary 查看指定域名安全代理Token。
+        @summary Queries the information about a proxy token of a domain name of an Employee Identity and Access Management (EIAM) instance.
         
         @param request: ObtainDomainProxyTokenRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11665,16 +10485,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ObtainDomainProxyTokenResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ObtainDomainProxyTokenResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ObtainDomainProxyTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def obtain_domain_proxy_token_with_options_async(
         self,
@@ -11682,7 +10496,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.ObtainDomainProxyTokenResponse:
         """
-        @summary 查看指定域名安全代理Token。
+        @summary Queries the information about a proxy token of a domain name of an Employee Identity and Access Management (EIAM) instance.
         
         @param request: ObtainDomainProxyTokenRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11710,23 +10524,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.ObtainDomainProxyTokenResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.ObtainDomainProxyTokenResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.ObtainDomainProxyTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def obtain_domain_proxy_token(
         self,
         request: eiam_20211201_models.ObtainDomainProxyTokenRequest,
     ) -> eiam_20211201_models.ObtainDomainProxyTokenResponse:
         """
-        @summary 查看指定域名安全代理Token。
+        @summary Queries the information about a proxy token of a domain name of an Employee Identity and Access Management (EIAM) instance.
         
         @param request: ObtainDomainProxyTokenRequest
         @return: ObtainDomainProxyTokenResponse
@@ -11739,7 +10547,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.ObtainDomainProxyTokenRequest,
     ) -> eiam_20211201_models.ObtainDomainProxyTokenResponse:
         """
-        @summary 查看指定域名安全代理Token。
+        @summary Queries the information about a proxy token of a domain name of an Employee Identity and Access Management (EIAM) instance.
         
         @param request: ObtainDomainProxyTokenRequest
         @return: ObtainDomainProxyTokenResponse
@@ -11781,16 +10589,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.RemoveUserFromOrganizationalUnitsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.RemoveUserFromOrganizationalUnitsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.RemoveUserFromOrganizationalUnitsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def remove_user_from_organizational_units_with_options_async(
         self,
@@ -11826,16 +10628,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.RemoveUserFromOrganizationalUnitsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.RemoveUserFromOrganizationalUnitsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.RemoveUserFromOrganizationalUnitsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def remove_user_from_organizational_units(
         self,
@@ -11897,16 +10693,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.RemoveUsersFromGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.RemoveUsersFromGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.RemoveUsersFromGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def remove_users_from_group_with_options_async(
         self,
@@ -11942,16 +10732,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.RemoveUsersFromGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.RemoveUsersFromGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.RemoveUsersFromGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def remove_users_from_group(
         self,
@@ -12013,16 +10797,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.RevokeApplicationFromGroupsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.RevokeApplicationFromGroupsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.RevokeApplicationFromGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def revoke_application_from_groups_with_options_async(
         self,
@@ -12058,16 +10836,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.RevokeApplicationFromGroupsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.RevokeApplicationFromGroupsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.RevokeApplicationFromGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def revoke_application_from_groups(
         self,
@@ -12129,16 +10901,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.RevokeApplicationFromOrganizationalUnitsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.RevokeApplicationFromOrganizationalUnitsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.RevokeApplicationFromOrganizationalUnitsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def revoke_application_from_organizational_units_with_options_async(
         self,
@@ -12174,16 +10940,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.RevokeApplicationFromOrganizationalUnitsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.RevokeApplicationFromOrganizationalUnitsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.RevokeApplicationFromOrganizationalUnitsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def revoke_application_from_organizational_units(
         self,
@@ -12245,16 +11005,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.RevokeApplicationFromUsersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.RevokeApplicationFromUsersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.RevokeApplicationFromUsersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def revoke_application_from_users_with_options_async(
         self,
@@ -12290,16 +11044,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.RevokeApplicationFromUsersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.RevokeApplicationFromUsersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.RevokeApplicationFromUsersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def revoke_application_from_users(
         self,
@@ -12333,7 +11081,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.RunSynchronizationJobResponse:
         """
-        @summary 运行同步任务
+        @summary Creates a synchronization job and immediately runs the job.
         
         @param request: RunSynchronizationJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12369,16 +11117,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.RunSynchronizationJobResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.RunSynchronizationJobResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.RunSynchronizationJobResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def run_synchronization_job_with_options_async(
         self,
@@ -12386,7 +11128,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.RunSynchronizationJobResponse:
         """
-        @summary 运行同步任务
+        @summary Creates a synchronization job and immediately runs the job.
         
         @param request: RunSynchronizationJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12422,23 +11164,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.RunSynchronizationJobResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.RunSynchronizationJobResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.RunSynchronizationJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def run_synchronization_job(
         self,
         request: eiam_20211201_models.RunSynchronizationJobRequest,
     ) -> eiam_20211201_models.RunSynchronizationJobResponse:
         """
-        @summary 运行同步任务
+        @summary Creates a synchronization job and immediately runs the job.
         
         @param request: RunSynchronizationJobRequest
         @return: RunSynchronizationJobResponse
@@ -12451,7 +11187,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.RunSynchronizationJobRequest,
     ) -> eiam_20211201_models.RunSynchronizationJobResponse:
         """
-        @summary 运行同步任务
+        @summary Creates a synchronization job and immediately runs the job.
         
         @param request: RunSynchronizationJobRequest
         @return: RunSynchronizationJobResponse
@@ -12493,16 +11229,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.SetApplicationGrantScopeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.SetApplicationGrantScopeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.SetApplicationGrantScopeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_application_grant_scope_with_options_async(
         self,
@@ -12538,16 +11268,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.SetApplicationGrantScopeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.SetApplicationGrantScopeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.SetApplicationGrantScopeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_application_grant_scope(
         self,
@@ -12615,16 +11339,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.SetApplicationProvisioningConfigResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.SetApplicationProvisioningConfigResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.SetApplicationProvisioningConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_application_provisioning_config_with_options_async(
         self,
@@ -12666,16 +11384,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.SetApplicationProvisioningConfigResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.SetApplicationProvisioningConfigResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.SetApplicationProvisioningConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_application_provisioning_config(
         self,
@@ -12739,16 +11451,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.SetApplicationProvisioningScopeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.SetApplicationProvisioningScopeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.SetApplicationProvisioningScopeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_application_provisioning_scope_with_options_async(
         self,
@@ -12786,16 +11492,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.SetApplicationProvisioningScopeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.SetApplicationProvisioningScopeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.SetApplicationProvisioningScopeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_application_provisioning_scope(
         self,
@@ -12867,16 +11567,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.SetApplicationSsoConfigResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.SetApplicationSsoConfigResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.SetApplicationSsoConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_application_sso_config_with_options_async(
         self,
@@ -12922,16 +11616,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.SetApplicationSsoConfigResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.SetApplicationSsoConfigResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.SetApplicationSsoConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_application_sso_config(
         self,
@@ -12969,7 +11657,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.SetDefaultDomainResponse:
         """
-        @summary 设置默认域名。
+        @summary Sets a domain name of an Employee Identity and Access Management (EIAM) instance as the default domain name.
         
         @param request: SetDefaultDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12995,16 +11683,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.SetDefaultDomainResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.SetDefaultDomainResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.SetDefaultDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_default_domain_with_options_async(
         self,
@@ -13012,7 +11694,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.SetDefaultDomainResponse:
         """
-        @summary 设置默认域名。
+        @summary Sets a domain name of an Employee Identity and Access Management (EIAM) instance as the default domain name.
         
         @param request: SetDefaultDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13038,23 +11720,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.SetDefaultDomainResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.SetDefaultDomainResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.SetDefaultDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_default_domain(
         self,
         request: eiam_20211201_models.SetDefaultDomainRequest,
     ) -> eiam_20211201_models.SetDefaultDomainResponse:
         """
-        @summary 设置默认域名。
+        @summary Sets a domain name of an Employee Identity and Access Management (EIAM) instance as the default domain name.
         
         @param request: SetDefaultDomainRequest
         @return: SetDefaultDomainResponse
@@ -13067,7 +11743,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.SetDefaultDomainRequest,
     ) -> eiam_20211201_models.SetDefaultDomainResponse:
         """
-        @summary 设置默认域名。
+        @summary Sets a domain name of an Employee Identity and Access Management (EIAM) instance as the default domain name.
         
         @param request: SetDefaultDomainRequest
         @return: SetDefaultDomainResponse
@@ -13109,16 +11785,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.SetForgetPasswordConfigurationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.SetForgetPasswordConfigurationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.SetForgetPasswordConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_forget_password_configuration_with_options_async(
         self,
@@ -13154,16 +11824,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.SetForgetPasswordConfigurationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.SetForgetPasswordConfigurationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.SetForgetPasswordConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_forget_password_configuration(
         self,
@@ -13197,7 +11861,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.SetIdentityProviderUdPullConfigurationResponse:
         """
-        @summary 修改IdP同步入配置
+        @summary Update IdP synchronization configuration.
         
         @param request: SetIdentityProviderUdPullConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13237,16 +11901,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.SetIdentityProviderUdPullConfigurationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.SetIdentityProviderUdPullConfigurationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.SetIdentityProviderUdPullConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_identity_provider_ud_pull_configuration_with_options_async(
         self,
@@ -13254,7 +11912,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.SetIdentityProviderUdPullConfigurationResponse:
         """
-        @summary 修改IdP同步入配置
+        @summary Update IdP synchronization configuration.
         
         @param request: SetIdentityProviderUdPullConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13294,23 +11952,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.SetIdentityProviderUdPullConfigurationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.SetIdentityProviderUdPullConfigurationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.SetIdentityProviderUdPullConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_identity_provider_ud_pull_configuration(
         self,
         request: eiam_20211201_models.SetIdentityProviderUdPullConfigurationRequest,
     ) -> eiam_20211201_models.SetIdentityProviderUdPullConfigurationResponse:
         """
-        @summary 修改IdP同步入配置
+        @summary Update IdP synchronization configuration.
         
         @param request: SetIdentityProviderUdPullConfigurationRequest
         @return: SetIdentityProviderUdPullConfigurationResponse
@@ -13323,7 +11975,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.SetIdentityProviderUdPullConfigurationRequest,
     ) -> eiam_20211201_models.SetIdentityProviderUdPullConfigurationResponse:
         """
-        @summary 修改IdP同步入配置
+        @summary Update IdP synchronization configuration.
         
         @param request: SetIdentityProviderUdPullConfigurationRequest
         @return: SetIdentityProviderUdPullConfigurationResponse
@@ -13365,16 +12017,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.SetPasswordComplexityConfigurationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.SetPasswordComplexityConfigurationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.SetPasswordComplexityConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_password_complexity_configuration_with_options_async(
         self,
@@ -13410,16 +12056,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.SetPasswordComplexityConfigurationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.SetPasswordComplexityConfigurationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.SetPasswordComplexityConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_password_complexity_configuration(
         self,
@@ -13493,16 +12133,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.SetPasswordExpirationConfigurationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.SetPasswordExpirationConfigurationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.SetPasswordExpirationConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_password_expiration_configuration_with_options_async(
         self,
@@ -13550,16 +12184,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.SetPasswordExpirationConfigurationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.SetPasswordExpirationConfigurationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.SetPasswordExpirationConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_password_expiration_configuration(
         self,
@@ -13621,16 +12249,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.SetPasswordHistoryConfigurationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.SetPasswordHistoryConfigurationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.SetPasswordHistoryConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_password_history_configuration_with_options_async(
         self,
@@ -13666,16 +12288,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.SetPasswordHistoryConfigurationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.SetPasswordHistoryConfigurationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.SetPasswordHistoryConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_password_history_configuration(
         self,
@@ -13741,16 +12357,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.SetPasswordInitializationConfigurationResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.SetPasswordInitializationConfigurationResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.SetPasswordInitializationConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_password_initialization_configuration_with_options_async(
         self,
@@ -13790,16 +12400,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.SetPasswordInitializationConfigurationResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.SetPasswordInitializationConfigurationResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.SetPasswordInitializationConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_password_initialization_configuration(
         self,
@@ -13861,16 +12465,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.SetUserPrimaryOrganizationalUnitResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.SetUserPrimaryOrganizationalUnitResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.SetUserPrimaryOrganizationalUnitResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_user_primary_organizational_unit_with_options_async(
         self,
@@ -13906,16 +12504,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.SetUserPrimaryOrganizationalUnitResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.SetUserPrimaryOrganizationalUnitResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.SetUserPrimaryOrganizationalUnitResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_user_primary_organizational_unit(
         self,
@@ -13975,16 +12567,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UnlockUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UnlockUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UnlockUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def unlock_user_with_options_async(
         self,
@@ -14018,16 +12604,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UnlockUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UnlockUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UnlockUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def unlock_user(
         self,
@@ -14089,16 +12669,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateApplicationAuthorizationTypeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateApplicationAuthorizationTypeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateApplicationAuthorizationTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_application_authorization_type_with_options_async(
         self,
@@ -14134,16 +12708,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateApplicationAuthorizationTypeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateApplicationAuthorizationTypeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateApplicationAuthorizationTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_application_authorization_type(
         self,
@@ -14205,16 +12773,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateApplicationDescriptionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateApplicationDescriptionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateApplicationDescriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_application_description_with_options_async(
         self,
@@ -14250,16 +12812,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateApplicationDescriptionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateApplicationDescriptionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateApplicationDescriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_application_description(
         self,
@@ -14303,6 +12859,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.conditional_access_policy_id):
             query['ConditionalAccessPolicyId'] = request.conditional_access_policy_id
         if not UtilClient.is_unset(request.conditional_access_policy_name):
@@ -14331,16 +12889,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateConditionalAccessPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateConditionalAccessPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateConditionalAccessPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_conditional_access_policy_with_options_async(
         self,
@@ -14358,6 +12910,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.conditional_access_policy_id):
             query['ConditionalAccessPolicyId'] = request.conditional_access_policy_id
         if not UtilClient.is_unset(request.conditional_access_policy_name):
@@ -14386,16 +12940,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateConditionalAccessPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateConditionalAccessPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateConditionalAccessPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_conditional_access_policy(
         self,
@@ -14443,6 +12991,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.conditional_access_policy_id):
             query['ConditionalAccessPolicyId'] = request.conditional_access_policy_id
         if not UtilClient.is_unset(request.description):
@@ -14463,16 +13013,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateConditionalAccessPolicyDescriptionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateConditionalAccessPolicyDescriptionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateConditionalAccessPolicyDescriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_conditional_access_policy_description_with_options_async(
         self,
@@ -14490,6 +13034,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.conditional_access_policy_id):
             query['ConditionalAccessPolicyId'] = request.conditional_access_policy_id
         if not UtilClient.is_unset(request.description):
@@ -14510,16 +13056,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateConditionalAccessPolicyDescriptionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateConditionalAccessPolicyDescriptionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateConditionalAccessPolicyDescriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_conditional_access_policy_description(
         self,
@@ -14587,16 +13127,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_group_with_options_async(
         self,
@@ -14634,16 +13168,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_group(
         self,
@@ -14705,16 +13233,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateGroupDescriptionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateGroupDescriptionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateGroupDescriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_group_description_with_options_async(
         self,
@@ -14750,16 +13272,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateGroupDescriptionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateGroupDescriptionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateGroupDescriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_group_description(
         self,
@@ -14801,6 +13317,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dingtalk_app_config):
             query['DingtalkAppConfig'] = request.dingtalk_app_config
         if not UtilClient.is_unset(request.identity_provider_id):
@@ -14835,16 +13353,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateIdentityProviderResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateIdentityProviderResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateIdentityProviderResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_identity_provider_with_options_async(
         self,
@@ -14860,6 +13372,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dingtalk_app_config):
             query['DingtalkAppConfig'] = request.dingtalk_app_config
         if not UtilClient.is_unset(request.identity_provider_id):
@@ -14894,16 +13408,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateIdentityProviderResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateIdentityProviderResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateIdentityProviderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_identity_provider(
         self,
@@ -14963,16 +13471,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateInstanceDescriptionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateInstanceDescriptionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateInstanceDescriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_instance_description_with_options_async(
         self,
@@ -15006,16 +13508,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateInstanceDescriptionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateInstanceDescriptionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateInstanceDescriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_instance_description(
         self,
@@ -15077,16 +13573,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateNetworkAccessEndpointNameResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateNetworkAccessEndpointNameResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateNetworkAccessEndpointNameResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_network_access_endpoint_name_with_options_async(
         self,
@@ -15122,16 +13612,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateNetworkAccessEndpointNameResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateNetworkAccessEndpointNameResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateNetworkAccessEndpointNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_network_access_endpoint_name(
         self,
@@ -15193,16 +13677,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateOrganizationalUnitResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateOrganizationalUnitResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateOrganizationalUnitResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_organizational_unit_with_options_async(
         self,
@@ -15238,16 +13716,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateOrganizationalUnitResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateOrganizationalUnitResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateOrganizationalUnitResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_organizational_unit(
         self,
@@ -15309,16 +13781,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateOrganizationalUnitDescriptionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateOrganizationalUnitDescriptionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateOrganizationalUnitDescriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_organizational_unit_description_with_options_async(
         self,
@@ -15354,16 +13820,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateOrganizationalUnitDescriptionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateOrganizationalUnitDescriptionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateOrganizationalUnitDescriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_organizational_unit_description(
         self,
@@ -15425,16 +13885,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateOrganizationalUnitParentIdResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateOrganizationalUnitParentIdResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateOrganizationalUnitParentIdResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_organizational_unit_parent_id_with_options_async(
         self,
@@ -15470,16 +13924,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateOrganizationalUnitParentIdResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateOrganizationalUnitParentIdResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateOrganizationalUnitParentIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_organizational_unit_parent_id(
         self,
@@ -15555,16 +14003,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_user_with_options_async(
         self,
@@ -15614,16 +14056,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_user(
         self,
@@ -15685,16 +14121,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateUserDescriptionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateUserDescriptionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateUserDescriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_user_description_with_options_async(
         self,
@@ -15730,16 +14160,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateUserDescriptionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateUserDescriptionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateUserDescriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_user_description(
         self,
@@ -15805,16 +14229,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateUserPasswordResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateUserPasswordResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateUserPasswordResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_user_password_with_options_async(
         self,
@@ -15854,16 +14272,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateUserPasswordResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eiam_20211201_models.UpdateUserPasswordResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateUserPasswordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_user_password(
         self,

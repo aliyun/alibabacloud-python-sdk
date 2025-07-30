@@ -1,3 +1,21 @@
+2025-07-30 Version: 2.0.0
+- Update API CreateIdentityProvider: add request parameters ClientToken.
+- Update API CreateIdentityProvider: add request parameters DingtalkAppConfig.EncryptKey.
+- Update API CreateIdentityProvider: add request parameters DingtalkAppConfig.VerificationToken.
+- Update API CreateUser: add request parameters ClientToken.
+- Update API GetApplication: add response parameters Body.Application.CustomSubjectStatus.
+- Update API GetIdentityProvider: add response parameters Body.IdentityProviderDetail.DingtalkAppConfig.EncryptKey.
+- Update API GetIdentityProvider: add response parameters Body.IdentityProviderDetail.DingtalkAppConfig.VerificationToken.
+- Update API ListApplications: delete response parameters Body.Applications.$.M2MClientStatus.
+- Update API ListApplications: delete response parameters Body.Applications.$.ResourceServerIdentifier.
+- Update API ListApplications: delete response parameters Body.Applications.$.ResourceServerStatus.
+- Update API UpdateConditionalAccessPolicy: add request parameters ClientToken.
+- Update API UpdateConditionalAccessPolicyDescription: add request parameters ClientToken.
+- Update API UpdateIdentityProvider: add request parameters ClientToken.
+- Update API UpdateIdentityProvider: add request parameters DingtalkAppConfig.EncryptKey.
+- Update API UpdateIdentityProvider: add request parameters DingtalkAppConfig.VerificationToken.
+
+
 2025-03-21 Version: 1.9.2
 - Generated python 2021-12-01 for Eiam.
 

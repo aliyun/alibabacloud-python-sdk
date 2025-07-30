@@ -1355,7 +1355,7 @@ class CreateDomainRequestFiling(TeaModel):
         self,
         icp_number: str = None,
     ):
-        # 域名关联的备案号，长度最大限制64。
+        # Record number associated with the domain name.
         self.icp_number = icp_number
 
     def validate(self):
@@ -1385,13 +1385,13 @@ class CreateDomainRequest(TeaModel):
         filing: CreateDomainRequestFiling = None,
         instance_id: str = None,
     ):
-        # 域名。最大长度限制255，格式由数字、字母、横线（-）点（.）组成;
+        # The domain name of the website.
         # 
         # This parameter is required.
         self.domain = domain
-        # 备案信息参数。
+        # Registration information parameters.
         self.filing = filing
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -1432,7 +1432,9 @@ class CreateDomainResponseBody(TeaModel):
         domain_id: str = None,
         request_id: str = None,
     ):
+        # Domain ID.
         self.domain_id = domain_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1506,11 +1508,11 @@ class CreateDomainProxyTokenRequest(TeaModel):
         domain_id: str = None,
         instance_id: str = None,
     ):
-        # 域名ID。
+        # The ID of the domain name.
         # 
         # This parameter is required.
         self.domain_id = domain_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -1545,7 +1547,9 @@ class CreateDomainProxyTokenResponseBody(TeaModel):
         domain_proxy_token_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the proxy token of the domain name.
         self.domain_proxy_token_id = domain_proxy_token_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1748,11 +1752,15 @@ class CreateIdentityProviderRequestAuthnConfig(TeaModel):
         authn_status: str = None,
         auto_update_password_status: str = None,
     ):
-        # 对应IdP是否支持认证
+        # Whether the corresponding IdP supports authentication. Value range:
+        # - Disabled: disabled
         # 
-        # This parameter is required.
+        # - Enabled: enabled
         self.authn_status = authn_status
-        # 是否支持自动更新密码
+        # Whether automatic password update is supported. Value range:
+        # - Disabled: disabled
+        # 
+        # - Enabled: enabled
         self.auto_update_password_status = auto_update_password_status
 
     def validate(self):
@@ -1785,8 +1793,12 @@ class CreateIdentityProviderRequestAutoCreateUserConfig(TeaModel):
         auto_create_user_status: str = None,
         target_organizational_unit_ids: List[str] = None,
     ):
-        # 自动创建账户是否开启
+        # Whether auto-creation of accounts is enabled. Possible values:
+        # - Disabled: disabled
+        # 
+        # - Enabled: enabled
         self.auto_create_user_status = auto_create_user_status
+        # Target organizational unit IDs collection.
         self.target_organizational_unit_ids = target_organizational_unit_ids
 
     def validate(self):
@@ -1818,7 +1830,10 @@ class CreateIdentityProviderRequestAutoUpdateUserConfig(TeaModel):
         self,
         auto_update_user_status: str = None,
     ):
-        # 自动更新账户是否开启
+        # Whether auto-updating of accounts is enabled. Possible values:
+        # - Disabled: disabled
+        # 
+        # - Enabled: enabled
         self.auto_update_user_status = auto_update_user_status
 
     def validate(self):
@@ -1849,19 +1864,17 @@ class CreateIdentityProviderRequestBindingConfigAutoMatchUserProfileExpressions(
         target_field: str = None,
         target_field_description: str = None,
     ):
-        # 表达式的类型
+        # Type of the expression. Value range:
         # 
-        # This parameter is required.
+        # - Field: filed
+        # 
+        # - Expression: expression
         self.expression_mapping_type = expression_mapping_type
-        # 映射属性取值表达式
-        # 
-        # This parameter is required.
+        # Expression for the mapped attribute value.
         self.source_value_expression = source_value_expression
-        # 映射目标属性名称
-        # 
-        # This parameter is required.
+        # Name of the target attribute.
         self.target_field = target_field
-        # 映射目标属性名称
+        # Description of the target attribute.
         self.target_field_description = target_field_description
 
     def validate(self):
@@ -1903,11 +1916,18 @@ class CreateIdentityProviderRequestBindingConfig(TeaModel):
         auto_match_user_status: str = None,
         mapping_binding_status: str = None,
     ):
-        # 自动匹配账户的规则
+        # List of rules for automatically matching accounts.
         self.auto_match_user_profile_expressions = auto_match_user_profile_expressions
-        # 自动匹配账户是否开启
+        # Whether automatic account matching is enabled. Value range:
+        # 
+        # - Disabled: disabled
+        # 
+        # - Enabled: enabled
         self.auto_match_user_status = auto_match_user_status
-        # 用户手动绑定账户功能是否开启
+        # Whether the user manual account binding function is enabled. Value range:
+        # - Disabled: disabled
+        # 
+        # - Enabled: enabled
         self.mapping_binding_status = mapping_binding_status
 
     def validate(self):
@@ -1953,15 +1973,25 @@ class CreateIdentityProviderRequestDingtalkAppConfig(TeaModel):
         app_secret: str = None,
         corp_id: str = None,
         dingtalk_version: str = None,
+        encrypt_key: str = None,
+        verification_token: str = None,
     ):
-        # 钉钉一方应用的AppKey
+        # AppKey of the DingTalk application.
         self.app_key = app_key
-        # 钉钉一方应用的AppSecret
+        # AppSecret of the DingTalk application.
         self.app_secret = app_secret
-        # 钉钉一方应用的corpId
+        # CorpId of the DingTalk application.
         self.corp_id = corp_id
-        # 钉钉版本
+        # DingTalk edition. Valid values:
+        # 
+        # public_dingtalk – Standard DingTalk.
+        # 
+        # private_dingtalk – Dedicated DingTalk.
         self.dingtalk_version = dingtalk_version
+        # DingTalk encrypt key.
+        self.encrypt_key = encrypt_key
+        # DingTalk verification token.
+        self.verification_token = verification_token
 
     def validate(self):
         pass
@@ -1980,6 +2010,10 @@ class CreateIdentityProviderRequestDingtalkAppConfig(TeaModel):
             result['CorpId'] = self.corp_id
         if self.dingtalk_version is not None:
             result['DingtalkVersion'] = self.dingtalk_version
+        if self.encrypt_key is not None:
+            result['EncryptKey'] = self.encrypt_key
+        if self.verification_token is not None:
+            result['VerificationToken'] = self.verification_token
         return result
 
     def from_map(self, m: dict = None):
@@ -1992,6 +2026,10 @@ class CreateIdentityProviderRequestDingtalkAppConfig(TeaModel):
             self.corp_id = m.get('CorpId')
         if m.get('DingtalkVersion') is not None:
             self.dingtalk_version = m.get('DingtalkVersion')
+        if m.get('EncryptKey') is not None:
+            self.encrypt_key = m.get('EncryptKey')
+        if m.get('VerificationToken') is not None:
+            self.verification_token = m.get('VerificationToken')
         return self
 
 
@@ -2004,10 +2042,15 @@ class CreateIdentityProviderRequestLarkConfig(TeaModel):
         enterprise_number: str = None,
         verification_token: str = None,
     ):
+        # Lark (Feishu) app appId.
         self.app_id = app_id
+        # Lark (Feishu) app secret.
         self.app_secret = app_secret
+        # Lark (Feishu) encrypt key.
         self.encrypt_key = encrypt_key
+        # Lark (Feishu) enterprise number.
         self.enterprise_number = enterprise_number
+        # Lark (Feishu)  verification token.
         self.verification_token = verification_token
 
     def validate(self):
@@ -2065,35 +2108,42 @@ class CreateIdentityProviderRequestLdapConfig(TeaModel):
         user_object_class: str = None,
         user_object_class_custom_filter: str = None,
     ):
-        # 管理员密码
+        # Administrator password.
         self.administrator_password = administrator_password
-        # 管理员账号
+        # Administrator username.
         self.administrator_username = administrator_username
-        # 是否验证指纹证书
+        # Whether to verify the certificate fingerprint. Value range:
+        # 
+        # - Disabled: disabled
+        # 
+        # - Enabled: enabled
         self.certificate_fingerprint_status = certificate_fingerprint_status
-        # 证书指纹列表
+        # List of certificate fingerprints.
         self.certificate_fingerprints = certificate_fingerprints
-        # 组成员标识
+        # Group member attribute name.
         self.group_member_attribute_name = group_member_attribute_name
-        # 组objectClass
+        # Group ObjectClass.
         self.group_object_class = group_object_class
-        # 组自定义Filter
+        # Custom filter for Group ObjectClass.
         self.group_object_class_custom_filter = group_object_class_custom_filter
-        # 通信协议
+        # Communication protocol.
         self.ldap_protocol = ldap_protocol
-        # ad/ldap 服务器地址
+        # AD/LDAP server address.
         self.ldap_server_host = ldap_server_host
-        # 端口号
+        # AD/LDAP port number.
         self.ldap_server_port = ldap_server_port
-        # 组织objectClass
+        # Organization Unit ObjectClass.
         self.organization_unit_object_class = organization_unit_object_class
-        # startTls是否开启
+        # Whether startTLS is enabled. Value range:
+        # - Disabled: disabled
+        # 
+        # - Enabled: enabled
         self.start_tls_status = start_tls_status
-        # 用户登录标识
+        # User login identifier.
         self.user_login_identifier = user_login_identifier
-        # 用户objectClass
+        # User ObjectClass.
         self.user_object_class = user_object_class
-        # 用户自定义Filter
+        # Custom filter for User ObjectClass.
         self.user_object_class_custom_filter = user_object_class_custom_filter
 
     def validate(self):
@@ -2179,11 +2229,15 @@ class CreateIdentityProviderRequestOidcConfigAuthnParam(TeaModel):
         client_id: str = None,
         client_secret: str = None,
     ):
-        # OIDC/oAuth2 认证方法。
+        # OIDC authentication method. Value range:
+        # 
+        # - client_secret_basic
+        # 
+        # - client_secret_post
         self.authn_method = authn_method
-        # OIDC/oAuth2 客户端ID。
+        # The ID of the client.
         self.client_id = client_id
-        # OIDC/oAuth2 客户端密钥。
+        # The  secret of the client.
         self.client_secret = client_secret
 
     def validate(self):
@@ -2223,15 +2277,15 @@ class CreateIdentityProviderRequestOidcConfigEndpointConfig(TeaModel):
         token_endpoint: str = None,
         userinfo_endpoint: str = None,
     ):
-        # oAuth2 授权端点。
+        # OIDC authorization endpoint.
         self.authorization_endpoint = authorization_endpoint
-        # OIDC issuer信息。
+        # OIDC issuer information.
         self.issuer = issuer
-        # OIDC jwks地址。
+        # OIDC jwks uri.
         self.jwks_uri = jwks_uri
-        # oAuth2 Token端点。
+        # OIDC token endpoint.
         self.token_endpoint = token_endpoint
-        # OIDC 用户信息端点。
+        # OIDC user info endpoint.
         self.userinfo_endpoint = userinfo_endpoint
 
     def validate(self):
@@ -2280,17 +2334,21 @@ class CreateIdentityProviderRequestOidcConfig(TeaModel):
         pkce_challenge_method: str = None,
         pkce_required: bool = None,
     ):
-        # OIDC客户端认证配置。
+        # OIDC client authentication configuration.
         self.authn_param = authn_param
-        # OIDC 端点配置。
+        # OIDC endpoint configuration.
         self.endpoint_config = endpoint_config
-        # OIDC标准参数，如profile、email等
+        # OIDC grant scopes collection.
         self.grant_scopes = grant_scopes
-        # OIDC授权类型。
+        # OIDC grant type.
         self.grant_type = grant_type
-        # 支持的PKCE算法类型。
+        # PKCE algorithm. Possible values:
+        # 
+        # - SHA256: S256
+        # 
+        # - Plain text: plain
         self.pkce_challenge_method = pkce_challenge_method
-        # AuthorizationCode授权模式下是否使用PKCE。
+        # Whether to use PKCE in the AuthorizationCode grant mode.
         self.pkce_required = pkce_required
 
     def validate(self):
@@ -2345,8 +2403,11 @@ class CreateIdentityProviderRequestUdPullConfigPeriodicSyncConfig(TeaModel):
         periodic_sync_times: List[int] = None,
         periodic_sync_type: str = None,
     ):
+        # cron expression.
         self.periodic_sync_cron = periodic_sync_cron
+        # Collection of time points.
         self.periodic_sync_times = periodic_sync_times
+        # type.
         self.periodic_sync_type = periodic_sync_type
 
     def validate(self):
@@ -2383,9 +2444,9 @@ class CreateIdentityProviderRequestUdPullConfigUdSyncScopeConfig(TeaModel):
         source_scopes: List[str] = None,
         target_scope: str = None,
     ):
-        # 同步来源节点
+        # List of source nodes for synchronization.
         self.source_scopes = source_scopes
-        # 同步目标节点
+        # Synchronize target node, and fill in the IDaaS organization ID.
         self.target_scope = target_scope
 
     def validate(self):
@@ -2421,15 +2482,26 @@ class CreateIdentityProviderRequestUdPullConfig(TeaModel):
         periodic_sync_status: str = None,
         ud_sync_scope_config: CreateIdentityProviderRequestUdPullConfigUdSyncScopeConfig = None,
     ):
-        # 是否支持组同步，默认为disabled
-        self.group_sync_status = group_sync_status
-        # 增量回调状态，是否处理来自IdP的增量回调数据
-        self.incremental_callback_status = incremental_callback_status
-        self.periodic_sync_config = periodic_sync_config
-        self.periodic_sync_status = periodic_sync_status
-        # 同步入配置信息
+        # Whether group synchronization is supported. The default value is disabled. Possible values:
         # 
-        # This parameter is required.
+        # - Disabled: disabled
+        # 
+        # - Enabled: enabled
+        self.group_sync_status = group_sync_status
+        # Incremental callback status, indicating whether to process incremental callback data from the IdP. Possible values:
+        # 
+        # - Disabled: disabled
+        # 
+        # - Enabled: enabled
+        self.incremental_callback_status = incremental_callback_status
+        # Scheduled configuration verification.
+        self.periodic_sync_config = periodic_sync_config
+        # Periodic check status, indicating whether to periodically check the data differences between EIAM and the identity provider. Possible values:
+        # - Disabled: disabled
+        # 
+        # - Enabled: enabled
+        self.periodic_sync_status = periodic_sync_status
+        # Synchronization scope configuration information.
         self.ud_sync_scope_config = ud_sync_scope_config
 
     def validate(self):
@@ -2479,9 +2551,9 @@ class CreateIdentityProviderRequestUdPushConfigUdSyncScopeConfigs(TeaModel):
         source_scopes: List[str] = None,
         target_scope: str = None,
     ):
-        # 同步来源节点
+        # List of source nodes for synchronization.
         self.source_scopes = source_scopes
-        # 同步目标节点
+        # Target node for synchronization.
         self.target_scope = target_scope
 
     def validate(self):
@@ -2515,10 +2587,11 @@ class CreateIdentityProviderRequestUdPushConfig(TeaModel):
         periodic_sync_status: str = None,
         ud_sync_scope_configs: List[CreateIdentityProviderRequestUdPushConfigUdSyncScopeConfigs] = None,
     ):
-        # 增量回调状态，是否处理来自IdP的增量回调数据
+        # Incremental callback status. This field is reserved and currently not in use; please ignore it.
         self.incremental_callback_status = incremental_callback_status
+        # Periodic check status. This field is currently not in use, please ignore it.
         self.periodic_sync_status = periodic_sync_status
-        # 同步出配置信息
+        # Outbound synchronization configuration information.
         self.ud_sync_scope_configs = ud_sync_scope_configs
 
     def validate(self):
@@ -2566,15 +2639,15 @@ class CreateIdentityProviderRequestWeComConfig(TeaModel):
         corp_secret: str = None,
         trustable_domain: str = None,
     ):
-        # 企业微信自建应用的Id
+        # Agent ID of the self-built WeCom application.
         self.agent_id = agent_id
-        # 授权回调域
+        # Authorization callback domain.
         self.authorize_callback_domain = authorize_callback_domain
-        # 企业微信自建应用的corpId
+        # Corp ID of the self-built WeCom application.
         self.corp_id = corp_id
-        # 企业微信自建应用的corpSecret
+        # Corp Secret of the self-built WeCom application.
         self.corp_secret = corp_secret
-        # 可信域名
+        # Trusted domain.
         self.trustable_domain = trustable_domain
 
     def validate(self):
@@ -2620,6 +2693,7 @@ class CreateIdentityProviderRequest(TeaModel):
         auto_create_user_config: CreateIdentityProviderRequestAutoCreateUserConfig = None,
         auto_update_user_config: CreateIdentityProviderRequestAutoUpdateUserConfig = None,
         binding_config: CreateIdentityProviderRequestBindingConfig = None,
+        client_token: str = None,
         dingtalk_app_config: CreateIdentityProviderRequestDingtalkAppConfig = None,
         identity_provider_name: str = None,
         identity_provider_type: str = None,
@@ -2633,42 +2707,61 @@ class CreateIdentityProviderRequest(TeaModel):
         ud_push_config: CreateIdentityProviderRequestUdPushConfig = None,
         we_com_config: CreateIdentityProviderRequestWeComConfig = None,
     ):
-        # 认证配置
+        # Authentication configuration information.
         self.authn_config = authn_config
-        # 自动创建账户账户规则配置。
+        # Auto-create account rule configuration.
         self.auto_create_user_config = auto_create_user_config
-        # 自动更新账户规则配置。
+        # Auto-update account rule configuration.
         self.auto_update_user_config = auto_update_user_config
-        # 账户绑定规则配置。
+        # OIDC identity provider account binding rule configuration.
         self.binding_config = binding_config
-        # 钉钉配置
+        # Idp client token.
+        self.client_token = client_token
+        # DingTalk configuration information.
         self.dingtalk_app_config = dingtalk_app_config
-        # 身份提供方名称
+        # Identity provider name.
         # 
         # This parameter is required.
         self.identity_provider_name = identity_provider_name
-        # 身份提供发类型
+        # Identity provider synchronization type.
+        # 
+        # - Inbound to DingTalk: urn:alibaba:idaas:idp:alibaba:dingtalk:pull
+        # 
+        # - Outbound to DingTalk: urn:alibaba:idaas:idp:alibaba:dingtalk:push
+        # 
+        # - Inbound to WeCom: urn:alibaba:idaas:idp:tencent:wecom:pull
+        # 
+        # - Inbound to Lark: urn:alibaba:idaas:idp:bytedance:lark:pull
+        # 
+        # - Inbound to AD: urn:alibaba:idaas:idp:microsoft:ad:pull
+        # 
+        # - Inbound to LDAP: urn:alibaba:idaas:idp:unknown:ldap:pull
+        # 
+        # - Standard OIDC: urn:alibaba:idaas:idp:standard:oidc
+        # 
+        # - SASE Custom OIDC: urn:alibaba:idaas:idp:alibaba:sase
         # 
         # This parameter is required.
         self.identity_provider_type = identity_provider_type
-        # IDaaS EIAM实例的ID。
+        # Instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 飞书配置
+        # Lark (Feishu) configuration information.
         self.lark_config = lark_config
-        # AD/LDAP配置
+        # AD/LDAP configuration information.
         self.ldap_config = ldap_config
+        # IdP logo url.
         self.logo_url = logo_url
-        # 网络端点ID
+        # The unique identifier of the network access endpoint.
         self.network_access_endpoint_id = network_access_endpoint_id
-        # OIDC IdP配置。
+        # OIDC IdP configuration.
         self.oidc_config = oidc_config
-        # 同步入配置
+        # Inbound synchronization configuration information.
         self.ud_pull_config = ud_pull_config
-        # 同步出配置
+        # Outbound synchronization configuration information.
         self.ud_push_config = ud_push_config
-        # WeCom配置
+        # WeCom configuration information.
         self.we_com_config = we_com_config
 
     def validate(self):
@@ -2709,6 +2802,8 @@ class CreateIdentityProviderRequest(TeaModel):
             result['AutoUpdateUserConfig'] = self.auto_update_user_config.to_map()
         if self.binding_config is not None:
             result['BindingConfig'] = self.binding_config.to_map()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.dingtalk_app_config is not None:
             result['DingtalkAppConfig'] = self.dingtalk_app_config.to_map()
         if self.identity_provider_name is not None:
@@ -2749,6 +2844,8 @@ class CreateIdentityProviderRequest(TeaModel):
         if m.get('BindingConfig') is not None:
             temp_model = CreateIdentityProviderRequestBindingConfig()
             self.binding_config = temp_model.from_map(m['BindingConfig'])
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('DingtalkAppConfig') is not None:
             temp_model = CreateIdentityProviderRequestDingtalkAppConfig()
             self.dingtalk_app_config = temp_model.from_map(m['DingtalkAppConfig'])
@@ -2789,7 +2886,9 @@ class CreateIdentityProviderResponseBody(TeaModel):
         identity_provider_id: str = None,
         request_id: str = None,
     ):
+        # Identity provider ID.
         self.identity_provider_id = identity_provider_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2971,23 +3070,23 @@ class CreateNetworkAccessEndpointRequest(TeaModel):
         vpc_id: str = None,
         vpc_region_id: str = None,
     ):
-        # 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
+        # Idempotent token.
         self.client_token = client_token
-        # IDaaS EIAM实例的ID。
+        # The region ID of the VPC.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 专属网络端点名称。
+        # Private network endpoint name.
         # 
         # This parameter is required.
         self.network_access_endpoint_name = network_access_endpoint_name
-        # 专属网络端点连接的指定vSwitch。
+        # The IDs of vSwitches.
         self.v_switch_ids = v_switch_ids
-        # 专属网络端点连接的VpcID。
+        # The ID of the VPC.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
-        # 专属网络端点连接的VpcID所属地域，该地域取值必须在ListNetworkAccessEndpointAvailableRegions接口中返回。
+        # The region ID of the outbound VPC.
         # 
         # This parameter is required.
         self.vpc_region_id = vpc_region_id
@@ -3038,7 +3137,9 @@ class CreateNetworkAccessEndpointResponseBody(TeaModel):
         network_access_endpoint_id: str = None,
         request_id: str = None,
     ):
+        # The unique identifier of the network access endpoint.
         self.network_access_endpoint_id = network_access_endpoint_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3288,20 +3389,17 @@ class CreateUserRequestPasswordInitializationConfig(TeaModel):
         user_notification_channels: List[str] = None,
     ):
         # Specifies whether to forcibly change the password status. Default value: disabled. Valid values:
-        # 
-        # *   enabled: forcibly changes the password status.
-        # *   disabled: does not forcibly change the password status.
+        # *   enabled:forcibly changes the password status.
+        # * disabled: does not forcibly change the password status.
         self.password_forced_update_status = password_forced_update_status
         # The priority of the password initialization policy. By default, this parameter does not take effect. Valid values:
-        # 
-        # *   global: The password initialization policy globally takes effect.
+        # *   global:The password initialization policy globally takes effect.
         # *   custom: The password initialization policy takes effect based on custom settings.
         self.password_initialization_policy_priority = password_initialization_policy_priority
         # The password initialization method. Set the value to random,
-        # 
-        # *   which indicates that the password is randomly generated.
+        # *   whichindicates that the password is randomly generated.
         self.password_initialization_type = password_initialization_type
-        # The password notification methods.
+        # The value of the extended field. The value follows the limits on the properties of the extended field.
         self.user_notification_channels = user_notification_channels
 
     def validate(self):
@@ -3339,6 +3437,7 @@ class CreateUserRequestPasswordInitializationConfig(TeaModel):
 class CreateUserRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
         custom_fields: List[CreateUserRequestCustomFields] = None,
         description: str = None,
         display_name: str = None,
@@ -3355,39 +3454,43 @@ class CreateUserRequest(TeaModel):
         user_external_id: str = None,
         username: str = None,
     ):
-        # The extended fields.
+        # The password initialization method. Set the value to random,
+        # 
+        # *   which indicates that the password is randomly generated.
+        self.client_token = client_token
+        # The custom extended fields.
         self.custom_fields = custom_fields
-        # The description of the organizational unit. The description can be up to 256 characters in length.
+        # The description of the organization. The value can be up to 256 characters in length.
         self.description = description
         # The display name of the account. The display name can be up to 64 characters in length.
         self.display_name = display_name
-        # The email address of the user who owns the account. The email address prefix can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+        # The name of the account. The name can be up to 64 characters in length and can contain letters, digits, underscores (_), periods (.), at signs (@), and hyphens (-).
         self.email = email
-        # Specifies whether the email address is a trusted email address. This parameter is required if the Email parameter is specified. If you have no special business requirements, set this parameter to true.
+        # The description of the account. The description can be up to 256 characters in length.
         self.email_verified = email_verified
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The IDs of organizational units to which the account belongs. An account can belong to multiple organizational units.
+        # Specifies whether the mobile phone number is a trusted mobile phone number. This parameter is required if the PhoneNumber parameter is specified. If you have no special business requirements, set this parameter to true.
         self.organizational_unit_ids = organizational_unit_ids
-        # The password of the account. For more information, view the password policy of the instance in the IDaaS console.
+        # The password of the account. For more information,view the password policyof the instanceinthe IDaaS console.
         self.password = password
         # The configurations for password initialization.
         self.password_initialization_config = password_initialization_config
-        # The mobile phone number, which contains 6 to 15 digits.
+        # The ID of the account.
         self.phone_number = phone_number
-        # Specifies whether the mobile phone number is a trusted mobile phone number. This parameter is required if the PhoneNumber parameter is specified. If you have no special business requirements, set this parameter to true.
+        # The email address of the user who owns the account. The email address prefix can contain letters, digits, underscores (_), periods (.), and hyphens (-).
         self.phone_number_verified = phone_number_verified
-        # The country code of the mobile phone number. The country code contains only digits and does not contain a plus sign (+).
+        # The IDs of organizational units to which the account belongs. An account can belong to multiple organizational units.
         self.phone_region = phone_region
-        # The ID of the primary organizational unit to which the account belongs.
+        # 主组织ID。
         # 
         # This parameter is required.
         self.primary_organizational_unit_id = primary_organizational_unit_id
-        # The external ID of the account. The external ID can be used to associate the account with an external system. The external ID can be up to 64 characters in length. If you do not specify an external ID for the account, the ID of the account is used as the external ID by default.
+        # The display name of the account. The display name can be up to 64 characters in length.
         self.user_external_id = user_external_id
-        # The name of the account. The name can be up to 64 characters in length and can contain letters, digits, underscores (_), periods (.), at signs (@), and hyphens (-).
+        # The name of the extended field. You must create the extended field in advance. To create an extended field, log on to the IDaaS console. In the left-side navigation pane, choose Accounts > Extended Fields, and then click Create Field on the Extended Fields page.
         # 
         # This parameter is required.
         self.username = username
@@ -3406,6 +3509,8 @@ class CreateUserRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         result['CustomFields'] = []
         if self.custom_fields is not None:
             for k in self.custom_fields:
@@ -3442,6 +3547,8 @@ class CreateUserRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         self.custom_fields = []
         if m.get('CustomFields') is not None:
             for k in m.get('CustomFields'):
@@ -3487,7 +3594,7 @@ class CreateUserResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The ID of the account.
+        # The ID of the request.
         self.user_id = user_id
 
     def validate(self):
@@ -3894,11 +4001,11 @@ class DeleteDomainRequest(TeaModel):
         domain_id: str = None,
         instance_id: str = None,
     ):
-        # 域名ID。
+        # The ID of the domain name.
         # 
         # This parameter is required.
         self.domain_id = domain_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -3932,6 +4039,7 @@ class DeleteDomainResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4002,15 +4110,15 @@ class DeleteDomainProxyTokenRequest(TeaModel):
         domain_proxy_token_id: str = None,
         instance_id: str = None,
     ):
-        # 域名ID。
+        # The ID of the domain name.
         # 
         # This parameter is required.
         self.domain_id = domain_id
-        # 域名代理Token ID。
+        # The ID of the proxy token of the domain name.
         # 
         # This parameter is required.
         self.domain_proxy_token_id = domain_proxy_token_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -4048,6 +4156,7 @@ class DeleteDomainProxyTokenResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4225,11 +4334,11 @@ class DeleteIdentityProviderRequest(TeaModel):
         identity_provider_id: str = None,
         instance_id: str = None,
     ):
-        # IDaaS的身份提供方主键id
+        # Identity provider ID.
         # 
         # This parameter is required.
         self.identity_provider_id = identity_provider_id
-        # IDaaS EIAM的实例id
+        # The ID of the instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -4263,6 +4372,7 @@ class DeleteIdentityProviderResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4431,11 +4541,11 @@ class DeleteNetworkAccessEndpointRequest(TeaModel):
         instance_id: str = None,
         network_access_endpoint_id: str = None,
     ):
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 专属网络端点ID。
+        # Network Access Endpoint ID.
         # 
         # This parameter is required.
         self.network_access_endpoint_id = network_access_endpoint_id
@@ -4469,6 +4579,7 @@ class DeleteNetworkAccessEndpointResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5303,11 +5414,11 @@ class DisableApplicationSsoRequest(TeaModel):
         application_id: str = None,
         instance_id: str = None,
     ):
-        # IDaaS的应用主键id
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # IDaaS EIAM的实例id
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -5341,6 +5452,7 @@ class DisableApplicationSsoResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5519,15 +5631,15 @@ class DisableDomainProxyTokenRequest(TeaModel):
         domain_proxy_token_id: str = None,
         instance_id: str = None,
     ):
-        # 域名ID。
+        # The ID of the domain name.
         # 
         # This parameter is required.
         self.domain_id = domain_id
-        # 域名代理Token ID。
+        # The ID of the proxy token of the domain name.
         # 
         # This parameter is required.
         self.domain_proxy_token_id = domain_proxy_token_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -5565,6 +5677,7 @@ class DisableDomainProxyTokenResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5634,11 +5747,11 @@ class DisableIdentityProviderUdPullRequest(TeaModel):
         identity_provider_id: str = None,
         instance_id: str = None,
     ):
-        # IDaaS的身份提供方主键id
+        # Identity provider ID.
         # 
         # This parameter is required.
         self.identity_provider_id = identity_provider_id
-        # IDaaS EIAM的实例id
+        # The ID of the instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -5672,6 +5785,7 @@ class DisableIdentityProviderUdPullResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5740,7 +5854,7 @@ class DisableInitDomainAutoRedirectRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -5770,6 +5884,7 @@ class DisableInitDomainAutoRedirectResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6388,11 +6503,11 @@ class EnableApplicationSsoRequest(TeaModel):
         application_id: str = None,
         instance_id: str = None,
     ):
-        # IDaaS的应用主键id
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # IDaaS EIAM的实例id
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -6426,6 +6541,7 @@ class EnableApplicationSsoResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6604,15 +6720,15 @@ class EnableDomainProxyTokenRequest(TeaModel):
         domain_proxy_token_id: str = None,
         instance_id: str = None,
     ):
-        # 域名ID。
+        # The ID of the domain name.
         # 
         # This parameter is required.
         self.domain_id = domain_id
-        # 域名代理Token ID。
+        # The ID of the proxy token of the domain name.
         # 
         # This parameter is required.
         self.domain_proxy_token_id = domain_proxy_token_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -6650,6 +6766,7 @@ class EnableDomainProxyTokenResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6719,11 +6836,11 @@ class EnableIdentityProviderUdPullRequest(TeaModel):
         identity_provider_id: str = None,
         instance_id: str = None,
     ):
-        # IDaaS的身份提供方主键id
+        # Identity provider ID.
         # 
         # This parameter is required.
         self.identity_provider_id = identity_provider_id
-        # IDaaS EIAM的实例id
+        # The ID of the instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -6757,6 +6874,7 @@ class EnableIdentityProviderUdPullResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6825,7 +6943,7 @@ class EnableInitDomainAutoRedirectRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -6855,6 +6973,7 @@ class EnableInitDomainAutoRedirectResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7077,6 +7196,7 @@ class GetApplicationResponseBodyApplication(TeaModel):
         authorization_type: str = None,
         client_id: str = None,
         create_time: int = None,
+        custom_subject_status: str = None,
         description: str = None,
         features: str = None,
         instance_id: str = None,
@@ -7106,6 +7226,7 @@ class GetApplicationResponseBodyApplication(TeaModel):
         self.application_source_type = application_source_type
         # The ID of the template based on which the application is created. This parameter is returned only if the application is created based on a template.
         self.application_template_id = application_template_id
+        # Application visibility
         self.application_visibility = application_visibility
         # The authorization type of the EIAM application. Valid values:
         # 
@@ -7116,6 +7237,7 @@ class GetApplicationResponseBodyApplication(TeaModel):
         self.client_id = client_id
         # The time when the application was created. The value is a UNIX timestamp. Unit: milliseconds.
         self.create_time = create_time
+        self.custom_subject_status = custom_subject_status
         # The description of the application.
         self.description = description
         # The features that are supported by the application. The value is a JSON array. Valid values:
@@ -7128,10 +7250,13 @@ class GetApplicationResponseBodyApplication(TeaModel):
         self.instance_id = instance_id
         # The URL of the application icon.
         self.logo_url = logo_url
+        # M2M client status.
         self.m_2mclient_status = m_2mclient_status
         # The service code of the cloud service that manages the application template.
         self.managed_service_code = managed_service_code
+        # Unique identifier of the resource server
         self.resource_server_identifier = resource_server_identifier
+        # Resource server status.
         self.resource_server_status = resource_server_status
         # Indicates whether the application template is managed by a cloud service.
         self.service_managed = service_managed
@@ -7175,6 +7300,8 @@ class GetApplicationResponseBodyApplication(TeaModel):
             result['ClientId'] = self.client_id
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.custom_subject_status is not None:
+            result['CustomSubjectStatus'] = self.custom_subject_status
         if self.description is not None:
             result['Description'] = self.description
         if self.features is not None:
@@ -7221,6 +7348,8 @@ class GetApplicationResponseBodyApplication(TeaModel):
             self.client_id = m.get('ClientId')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('CustomSubjectStatus') is not None:
+            self.custom_subject_status = m.get('CustomSubjectStatus')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('Features') is not None:
@@ -7956,13 +8085,13 @@ class GetApplicationProvisioningScopeResponseBodyApplicationProvisioningScope(Te
         organizational_unit_ids: List[str] = None,
         used_quota: int = None,
     ):
-        # Synchronize the list of authorized groups
+        # Synchronize the list of authorized groups.
         self.group_ids = group_ids
-        # Instance Indicates the maximum quota number of authorized agents
+        # Instance Indicates the maximum quota number of authorized agents.
         self.max_quota = max_quota
         # The list of organizational units that are authorized for account synchronization.
         self.organizational_unit_ids = organizational_unit_ids
-        # Indicates the quota number of used authorized agents
+        # Indicates the quota number of used authorized agents.
         self.used_quota = used_quota
 
     def validate(self):
@@ -9204,11 +9333,11 @@ class GetDomainRequest(TeaModel):
         domain_id: str = None,
         instance_id: str = None,
     ):
-        # 域名ID。
+        # Domain ID.
         # 
         # This parameter is required.
         self.domain_id = domain_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -9242,7 +9371,8 @@ class GetDomainResponseBodyDomainFiling(TeaModel):
         self,
         icp_number: str = None,
     ):
-        # 域名关联的备案号, 长度最大限制64。
+        # <notice>The ICP filing number is only applicable for services in the China region.  For non-China regions, no validation or display of this record number will be performed.</notice>
+        # The ICP filing number associated with the domain name, with a maximum length of 64 characters.
         self.icp_number = icp_number
 
     def validate(self):
@@ -9278,23 +9408,29 @@ class GetDomainResponseBodyDomain(TeaModel):
         lock_mode: str = None,
         update_time: int = None,
     ):
-        # 域名创建时间，Unix时间戳格式，单位为毫秒。
+        # The start time when the change order was created.
         self.create_time = create_time
-        # 是否默认域名。true表示实例默认域名，false表示非默认域名
+        # Whether it is the default domain.
         self.default_domain = default_domain
-        # 域名。
+        # The domain.
         self.domain = domain
-        # 域名ID。
+        # Domain ID.
         self.domain_id = domain_id
-        # 域名类型。枚举取值:system_init(系统初始化)、user_custom(用户自定义)。
+        # The type of the domain name. Valid values:
+        # 
+        # *   **system_init**: Initialize domain
+        # *   **user_custom**: user custom domain
         self.domain_type = domain_type
-        # 域名备案信息。
+        # Domain registration information.
         self.filing = filing
-        # 实例ID。
+        # The instance ID.
         self.instance_id = instance_id
-        # 域名锁定状态。枚举取值:unlock(正常)、lockByLicense(因License限制不可用)。
+        # The lock status of the instance. Valid values:
+        # 
+        # *   **Unlock**: The instance is normal.
+        # *   **lockByLicense**: Not available due to license restrictions.
         self.lock_mode = lock_mode
-        # 域名最近更新时间，Unix时间戳格式，单位为毫秒。
+        # The time when the service was updated.
         self.update_time = update_time
 
     def validate(self):
@@ -9357,7 +9493,9 @@ class GetDomainResponseBody(TeaModel):
         domain: GetDomainResponseBodyDomain = None,
         request_id: str = None,
     ):
+        # The domain name.
         self.domain = domain
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9433,11 +9571,11 @@ class GetDomainDnsChallengeRequest(TeaModel):
         domain: str = None,
         instance_id: str = None,
     ):
-        # 域名。
+        # The domain name.
         # 
         # This parameter is required.
         self.domain = domain
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -9473,11 +9611,11 @@ class GetDomainDnsChallengeResponseBodyDomainDnsChallenge(TeaModel):
         dns_challenge_value: str = None,
         dns_type: str = None,
     ):
-        # DNS challenge名称。
+        # The name of the DNS challenge record.
         self.dns_challenge_name = dns_challenge_name
-        # DNS challenge值。
+        # The value of the DNS challenge record.
         self.dns_challenge_value = dns_challenge_value
-        # DNS记录类型。
+        # The type of the DNS challenge record.
         self.dns_type = dns_type
 
     def validate(self):
@@ -9514,7 +9652,9 @@ class GetDomainDnsChallengeResponseBody(TeaModel):
         domain_dns_challenge: GetDomainDnsChallengeResponseBodyDomainDnsChallenge = None,
         request_id: str = None,
     ):
+        # The DNS challenge records.
         self.domain_dns_challenge = domain_dns_challenge
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9623,7 +9763,11 @@ class GetForgetPasswordConfigurationResponseBodyOpenForgetPasswordConfiguration(
         enable_sms: bool = None,
         forget_password_status: str = None,
     ):
-        # 表示忘记密码认证渠道。枚举取值:email(邮件)、sms(短信)
+        # The authentication channels. Valid values:  
+        # email  
+        # sms  
+        # totp  
+        # web_authn
         self.authentication_channels = authentication_channels
         # Indicates whether the forgot password feature is enabled.
         self.enable = enable
@@ -9631,7 +9775,7 @@ class GetForgetPasswordConfigurationResponseBodyOpenForgetPasswordConfiguration(
         self.enable_email = enable_email
         # Indicates whether Short Message Service (SMS) authentication is enabled for the forgot password feature.
         self.enable_sms = enable_sms
-        # 表示忘记密码配置状态。枚举取值:enabled(开启)、disabled(禁用)
+        # The status of the forgot password feature. Valid values: enabled and disabled.
         self.forget_password_status = forget_password_status
 
     def validate(self):
@@ -9957,11 +10101,11 @@ class GetIdentityProviderRequest(TeaModel):
         identity_provider_id: str = None,
         instance_id: str = None,
     ):
-        # IDaaS的身份提供方主键id
+        # Identity provider ID.
         # 
         # This parameter is required.
         self.identity_provider_id = identity_provider_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -9997,15 +10141,21 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig(Tea
         app_secret: str = None,
         corp_id: str = None,
         dingtalk_version: str = None,
+        encrypt_key: str = None,
+        verification_token: str = None,
     ):
-        # IDaaS EIAM 钉钉一方应用的AppKey
+        # The AppKey for the application.
         self.app_key = app_key
-        # IDaaS EIAM 钉钉一方应用的AppSecret
+        # The details of the application secret.
         self.app_secret = app_secret
-        # IDaaS EIAM 钉钉一方应用的corpId
+        # DingTalk corpId.
         self.corp_id = corp_id
-        # IDaaS EIAM 钉钉版本
+        # DingTalk Version.
         self.dingtalk_version = dingtalk_version
+        # DingTalk  encrypt key.
+        self.encrypt_key = encrypt_key
+        # DingTalk  verification token.
+        self.verification_token = verification_token
 
     def validate(self):
         pass
@@ -10024,6 +10174,10 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig(Tea
             result['CorpId'] = self.corp_id
         if self.dingtalk_version is not None:
             result['DingtalkVersion'] = self.dingtalk_version
+        if self.encrypt_key is not None:
+            result['EncryptKey'] = self.encrypt_key
+        if self.verification_token is not None:
+            result['VerificationToken'] = self.verification_token
         return result
 
     def from_map(self, m: dict = None):
@@ -10036,6 +10190,10 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig(Tea
             self.corp_id = m.get('CorpId')
         if m.get('DingtalkVersion') is not None:
             self.dingtalk_version = m.get('DingtalkVersion')
+        if m.get('EncryptKey') is not None:
+            self.encrypt_key = m.get('EncryptKey')
+        if m.get('VerificationToken') is not None:
+            self.verification_token = m.get('VerificationToken')
         return self
 
 
@@ -10045,9 +10203,9 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningC
         dept_id: str = None,
         dept_name: str = None,
     ):
-        # 钉钉部门Id
+        # Department ID.
         self.dept_id = dept_id
-        # 钉钉部门名称
+        # Department name.
         self.dept_name = dept_name
 
     def validate(self):
@@ -10080,9 +10238,9 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningC
         name: str = None,
         user_id: str = None,
     ):
-        # 钉钉用户名称
+        # DingTalk user name.
         self.name = name
-        # 钉钉用户userId
+        # DingTalk user id.
         self.user_id = user_id
 
     def validate(self):
@@ -10117,13 +10275,13 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningC
         corp_id: str = None,
         corp_name: str = None,
     ):
-        # 授权的钉钉部门
+        # List of authorized DingTalk departments.
         self.authed_department_ids = authed_department_ids
-        # 授权的钉钉账户列表
+        # Authorized DingTalk account list.
         self.authed_users = authed_users
-        # 钉钉企业corpId
+        # DingTalk enterprise corpId.
         self.corp_id = corp_id
-        # 钉钉企业名称
+        # The name of the company.
         self.corp_name = corp_name
 
     def validate(self):
@@ -10184,13 +10342,15 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig(TeaModel):
         enterprise_number: str = None,
         verification_token: str = None,
     ):
-        # IDaaS EIAM 飞书自建应用的corpId
+        # The application ID.
         self.app_id = app_id
-        # IDaaS EIAM 飞书自建应用的AppSecret
+        # The creation time.
         self.app_secret = app_secret
+        # Feishu encryptKey.
         self.encrypt_key = encrypt_key
-        # IDaaS EIAM 飞书企业编码
+        # Feishu enterprise code.
         self.enterprise_number = enterprise_number
+        # Feishu verificationToken.
         self.verification_token = verification_token
 
     def validate(self):
@@ -10241,21 +10401,21 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig(TeaModel):
         ldap_server_port: int = None,
         start_tls_status: str = None,
     ):
-        # 管理员密码
+        # Administrator password.
         self.administrator_password = administrator_password
-        # 管理员账号
+        # Administrator username.
         self.administrator_username = administrator_username
-        # 是否验证指纹证书
+        # Whether to verify the fingerprint certificate.
         self.certificate_fingerprint_status = certificate_fingerprint_status
-        # 证书指纹列表
+        # Certificate fingerprint list.
         self.certificate_fingerprints = certificate_fingerprints
-        # 通信协议
+        # Ldap protocol.
         self.ldap_protocol = ldap_protocol
-        # ad/ldap 服务器地址
+        # ldap server host.
         self.ldap_server_host = ldap_server_host
-        # ad/ldap 服务器地址
+        # ldap server port.
         self.ldap_server_port = ldap_server_port
-        # startTls是否开启
+        # StartTls status.
         self.start_tls_status = start_tls_status
 
     def validate(self):
@@ -10313,11 +10473,11 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigAuthnParam(
         client_id: str = None,
         client_secret: str = None,
     ):
-        # OIDC/oAuth2 认证方法。
+        # OIDC/OAuth2 authentication method.
         self.authn_method = authn_method
-        # OIDC/oAuth2 客户端ID。
+        # The client ID of the device whose access credential you want to query.
         self.client_id = client_id
-        # OIDC/oAuth2 客户端密钥。
+        # The application secret registered with the OIDC authentication service.
         self.client_secret = client_secret
 
     def validate(self):
@@ -10357,15 +10517,15 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigEndpointCon
         token_endpoint: str = None,
         userinfo_endpoint: str = None,
     ):
-        # oAuth2 授权端点。
+        # OAuth2 authorization endpoint.
         self.authorization_endpoint = authorization_endpoint
-        # OIDC issuer信息。
+        # The CA that issued the certificate.
         self.issuer = issuer
-        # OIDC jwks地址。
+        # Jwks uri.
         self.jwks_uri = jwks_uri
-        # oAuth2 Token端点。
+        # Token endpoint.
         self.token_endpoint = token_endpoint
-        # OIDC 用户信息端点。
+        # OIDC user info endpoint.
         self.userinfo_endpoint = userinfo_endpoint
 
     def validate(self):
@@ -10414,17 +10574,17 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig(TeaModel):
         pkce_challenge_method: str = None,
         pkce_required: bool = None,
     ):
-        # OIDC客户端认证配置。
+        # OIDC client authentication configuration.
         self.authn_param = authn_param
-        # OIDC 端点配置。
+        # OIDC endpoint configuration.
         self.endpoint_config = endpoint_config
-        # OIDC标准参数，如profile、email等
+        # OIDC authorization scope list.
         self.grant_scopes = grant_scopes
-        # OIDC授权类型。
+        # OIDC authorization grant type.
         self.grant_type = grant_type
-        # 支持的PKCE算法类型。
+        # Supported PKCE code challenge methods.
         self.pkce_challenge_method = pkce_challenge_method
-        # AuthorizationCode授权模式下是否使用PKCE。
+        # Whether to use PKCE in authorization code grant flow.
         self.pkce_required = pkce_required
 
     def validate(self):
@@ -10478,9 +10638,9 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfigUdSyncSco
         source_scopes: List[str] = None,
         target_scope: str = None,
     ):
-        # 同步来源节点
+        # Synchronization source node.
         self.source_scopes = source_scopes
-        # 同步目标节点
+        # Synchronization target node.
         self.target_scope = target_scope
 
     def validate(self):
@@ -10514,10 +10674,15 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig(TeaModel
         incremental_callback_status: str = None,
         ud_sync_scope_config: GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfigUdSyncScopeConfig = None,
     ):
+        # Whether to enable group synchronization. Possible values:
+        # 
+        # Disabled: disabled
+        # 
+        # Enabled: enabled
         self.group_sync_status = group_sync_status
-        # 增量回调状态，是否处理来自IdP的增量回调数据
+        # Incremental callback status: Whether to process incremental callback data from the IdP.
         self.incremental_callback_status = incremental_callback_status
-        # 同步入配置信息
+        # Inbound synchronization configuration Information.
         self.ud_sync_scope_config = ud_sync_scope_config
 
     def validate(self):
@@ -10556,9 +10721,9 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfigUdSyncSco
         source_scopes: List[str] = None,
         target_scope: str = None,
     ):
-        # 同步来源节点
+        # Synchronization source node.
         self.source_scopes = source_scopes
-        # 同步目标节点
+        # Synchronization target node.
         self.target_scope = target_scope
 
     def validate(self):
@@ -10591,9 +10756,9 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfig(TeaModel
         incremental_callback_status: str = None,
         ud_sync_scope_configs: List[GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfigUdSyncScopeConfigs] = None,
     ):
-        # 增量回调状态，是否处理来自IdP的增量回调数据
+        # Incremental callback status: Whether to process incremental callback data from the IdP.
         self.incremental_callback_status = incremental_callback_status
-        # 同步出配置信息
+        # Outbound synchronization configuration Information.
         self.ud_sync_scope_configs = ud_sync_scope_configs
 
     def validate(self):
@@ -10637,15 +10802,15 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig(TeaModel)
         corp_secret: str = None,
         trustable_domain: str = None,
     ):
-        # IDaaS EIAM 企业微信自建应用的Id
+        # The ID of the load generator. This parameter is disabled.
         self.agent_id = agent_id
-        # 授权回调域
+        # Authorization callback domain.
         self.authorize_callback_domain = authorize_callback_domain
-        # IDaaS EIAM 企业微信自建应用的corpId
+        # CorpId.
         self.corp_id = corp_id
-        # IDaaS EIAM 企业微信自建应用的corpSecret
+        # Corp secret.
         self.corp_secret = corp_secret
-        # 可信域名
+        # Trusted domain.
         self.trustable_domain = trustable_domain
 
     def validate(self):
@@ -10714,56 +10879,82 @@ class GetIdentityProviderResponseBodyIdentityProviderDetail(TeaModel):
         update_time: int = None,
         we_com_config: GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig = None,
     ):
-        # 高阶配置能力
+        # Advanced configuration capability. 
+        # Value range:  
+        # Disabled: disabled  
+        # Enable: enabled
         self.advanced_status = advanced_status
-        # IDaaS EIAM 对应的认证来源产品，okta or google or azure ad
+        # The corresponding identity provider product, e.g., Okta, Google, or Azure AD. Possible values:
+        # 
+        # DingTalk: urn:alibaba:idaas:idp:alibaba:dingtalk
+        # 
+        # LDAP: urn:alibaba:idaas:idp:unknown:ldap
+        # 
+        # Alibaba Cloud IDaaS: urn:alibaba:idaas:idp:alibaba:idaas
+        # 
+        # WeCom (Enterprise WeChat): urn:alibaba:idaas:idp:tencent:wecom
+        # 
+        # Lark (Feishu): urn:alibaba:idaas:idp:bytedance:lark
+        # 
+        # Active Directory: urn:alibaba:idaas:idp:microsoft:ad
+        # 
+        # Azure Active Directory: urn:alibaba:idaas:idp:microsoft:aad
+        # 
+        # Alibaba Cloud SASE: urn:alibaba:idaas:idp:alibaba:sase
         self.authn_source_supplier = authn_source_supplier
-        # IDaaS EIAM 认证方式类型 oidc or saml
+        # Authentication type — OIDC or SAML. Possible values:
+        # 
+        # OIDC: urn:alibaba:idaas:authntype:oidc
+        # 
+        # SAML: urn:alibaba:idaas:authntype:saml2
         self.authn_source_type = authn_source_type
-        # IDaaS EIAM 对应IdP是否支持认证
+        # Whether the corresponding IdP supports authentication. Value range: 
+        # Disabled: disabled  
+        # Enabled: enabled
         self.authn_status = authn_status
-        # 创建时间
+        # The time when the version was created.
         self.create_time = create_time
-        # IDaaS EIAM 身份提供方描述
+        # Identity provider description.
         self.description = description
-        # 钉钉基础配置
+        # DingTalk Basic Configuration
         self.dingtalk_app_config = dingtalk_app_config
-        # 钉钉同步配置
+        # DingTalk synchronous configuration.
         self.dingtalk_provisioning_config = dingtalk_provisioning_config
-        # IDaaS EIAM 身份提供方外部ID
+        # Identity provider external ID.
         self.identity_provider_external_id = identity_provider_external_id
-        # IDaaS EIAM 身份提供方ID
+        # Identity provider ID.
         self.identity_provider_id = identity_provider_id
-        # IDaaS EIAM 身份提供方名称
+        # Identity provider name.
         self.identity_provider_name = identity_provider_name
-        # 身份提供方同步类型
+        # Identity provider type.
         self.identity_provider_type = identity_provider_type
-        # IDaaS EIAM 实例Id
+        # Instance ID.
         self.instance_id = instance_id
-        # 飞书配置
+        # Lark configuration.
         self.lark_config = lark_config
-        # 最后一次状态检查结果
+        # Last status check result.
         self.last_status_check_job_result = last_status_check_job_result
-        # AD/LDAP身份提供方相关信息
+        # AD/LDAP Identity provider information.
         self.ldap_config = ldap_config
-        # 锁定原因
+        # The reason why write operations on the instance are locked.
         self.lock_reason = lock_reason
+        # The URL of the application logo.
         self.logo_url = logo_url
-        # 网络端点ID
+        # The unique identifier of the network access endpoint.
         self.network_access_endpoint_id = network_access_endpoint_id
-        # OIDC IdP配置。
+        # OIDC IdP configuration.
         self.oidc_config = oidc_config
-        # 同步入配置
+        # Sync in configuration.
         self.ud_pull_config = ud_pull_config
-        # IDaaS EIAM 是否支持UD同步
+        # Indicates whether the IDaaS EIAM system supports UD (User Directory) synchronization.
         self.ud_pull_status = ud_pull_status
-        # 同步出配置
+        # Outbound synchronization configuration.
         self.ud_push_config = ud_push_config
-        # 同步出能力
+        # Outbound synchronization capability.
         self.ud_push_status = ud_push_status
-        # 更新时间
+        # The time when the serviceInstance  was last updated.
         self.update_time = update_time
-        # 企业微信
+        # WeCom configuration.
         self.we_com_config = we_com_config
 
     def validate(self):
@@ -10915,7 +11106,9 @@ class GetIdentityProviderResponseBody(TeaModel):
         identity_provider_detail: GetIdentityProviderResponseBodyIdentityProviderDetail = None,
         request_id: str = None,
     ):
+        # Identity provider Information.
         self.identity_provider_detail = identity_provider_detail
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -10991,11 +11184,11 @@ class GetIdentityProviderUdPullConfigurationRequest(TeaModel):
         identity_provider_id: str = None,
         instance_id: str = None,
     ):
-        # IDaaS的身份提供方主键id
+        # Identity provider ID
         # 
         # This parameter is required.
         self.identity_provider_id = identity_provider_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -11034,17 +11227,17 @@ class GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapU
         user_object_class: str = None,
         user_object_class_custom_filter: str = None,
     ):
-        # 组成员标识
+        # Group Member Identifier
         self.group_member_attribute_name = group_member_attribute_name
-        # 组objectClass
+        # Group ObjectClass
         self.group_object_class = group_object_class
-        # 组自定义Filter
+        # Group Custom Filter
         self.group_object_class_custom_filter = group_object_class_custom_filter
-        # 组织objectClass
+        # Organization ObjectClass
         self.organization_unit_object_class = organization_unit_object_class
-        # 用户objectClass
+        # User ObjectClass
         self.user_object_class = user_object_class
-        # 用户自定义Filter
+        # User ObjectClass Custom Filter
         self.user_object_class_custom_filter = user_object_class_custom_filter
 
     def validate(self):
@@ -11094,8 +11287,11 @@ class GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPerio
         periodic_sync_times: int = None,
         periodic_sync_type: str = None,
     ):
+        # Cron expression
         self.periodic_sync_cron = periodic_sync_cron
+        # Execution time slots, for example 3,5, meaning the task runs once between 03:00–04:00 and once between 05:00–06:00.
         self.periodic_sync_times = periodic_sync_times
+        # type
         self.periodic_sync_type = periodic_sync_type
 
     def validate(self):
@@ -11133,11 +11329,11 @@ class GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPullP
         organizational_unit_deleted_threshold: int = None,
         user_deleted_threshold: int = None,
     ):
-        # 同步保护规则-删除组数量
+        # Group Deletion Threshold: If the number of deleted groups exceeds this value, the synchronization task will be terminated.
         self.group_deleted_threshold = group_deleted_threshold
-        # IDaaS EIAM 钉钉一方应用同步保护规则-删除组织数量
+        # Organization Deletion Threshold: If the number of deleted organizations exceeds this value, the synchronization task will be terminated.
         self.organizational_unit_deleted_threshold = organizational_unit_deleted_threshold
-        # IDaaS EIAM 钉钉一方应用同步保护规则-删除账户数量
+        # Account Deletion Threshold: If the number of deleted users exceeds this value, the synchronization task will be terminated.
         self.user_deleted_threshold = user_deleted_threshold
 
     def validate(self):
@@ -11174,9 +11370,9 @@ class GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationUdSyn
         source_scopes: List[str] = None,
         target_scope: str = None,
     ):
-        # 同步来源节点
+        # Synchronization Source Node
         self.source_scopes = source_scopes
-        # 同步目标节点
+        # Synchronization Target Node
         self.target_scope = target_scope
 
     def validate(self):
@@ -11216,21 +11412,32 @@ class GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration(TeaM
         pull_protected_rule: GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPullProtectedRule = None,
         ud_sync_scope_config: GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationUdSyncScopeConfig = None,
     ):
-        # 组同步状态
+        # Group Synchronization Status
+        # Possible values:
+        # 
+        # Disabled: disabled
+        # 
+        # Enabled: enabled
         self.group_sync_status = group_sync_status
-        # IDaaS EIAM 身份提供方ID
+        # Identity provider ID
         self.identity_provider_id = identity_provider_id
-        # 增量回调状态，是否处理来自IdP的增量回调数据
+        # Incremental Callback Status: Whether to process incremental callback data from the IdP
         self.incremental_callback_status = incremental_callback_status
-        # IDaaS EIAM 实例Id
+        # The ID of the instance.
         self.instance_id = instance_id
-        # ldap同步侧相关配置信息
+        # LDAP Synchronization Side Related Configuration Information
         self.ldap_ud_pull_config = ldap_ud_pull_config
+        # Scheduled sync configuration
         self.periodic_sync_config = periodic_sync_config
+        # Scheduled Validation Status: Whether to periodically validate data discrepancies between IDaaS and the Identity Provider. Possible values:
+        # 
+        # Disabled: disabled
+        # 
+        # Enabled: enabled
         self.periodic_sync_status = periodic_sync_status
-        # 同步入用户映射字段配置列表
+        # Inbound Synchronization Protection Rule Configuration
         self.pull_protected_rule = pull_protected_rule
-        # 同步入配置信息
+        # Synchronization Scope Configuration Information
         self.ud_sync_scope_config = ud_sync_scope_config
 
     def validate(self):
@@ -11302,7 +11509,9 @@ class GetIdentityProviderUdPullConfigurationResponseBody(TeaModel):
         request_id: str = None,
         ud_pull_configuration: GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Inbound Synchronization Configuration Information
         self.ud_pull_configuration = ud_pull_configuration
 
     def validate(self):
@@ -11853,11 +12062,11 @@ class GetNetworkAccessEndpointRequest(TeaModel):
         instance_id: str = None,
         network_access_endpoint_id: str = None,
     ):
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 专属网络端点ID。
+        # The unique identifier of the network access endpoint.
         # 
         # This parameter is required.
         self.network_access_endpoint_id = network_access_endpoint_id
@@ -11903,31 +12112,47 @@ class GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint(TeaModel):
         vpc_id: str = None,
         vpc_region_id: str = None,
     ):
-        # 专属网络端点创建时间，Unix时间戳格式，单位为毫秒。
+        # The time when the baseline was created.
         self.create_time = create_time
-        # 网络访问端私网出口IP地址列表。
+        # Public egress ip address range of the dedicated network endpoint
+        # This field is returned only when NetworkEndpointType is set to private.
         self.egress_private_ip_addresses = egress_private_ip_addresses
-        # 网络访问端点公网出口IP地址段
+        # Public egress ip address range of the shared network endpoint
+        # This field is returned only when networkEndpointType is set to shared.
         self.egress_public_ip_addresses = egress_public_ip_addresses
-        # 实例ID。
+        # Instance ID.
         self.instance_id = instance_id
-        # 专属网络端点ID。
+        # The unique identifier of the network access endpoint.
         self.network_access_endpoint_id = network_access_endpoint_id
-        # 专属网络端点名称。
+        # Private network endpoint name.
         self.network_access_endpoint_name = network_access_endpoint_name
-        # 专属网络端点连接的类型。
+        # Type of the Network Endpoint
+        # Possible values:
+        # 
+        # shared: Shared network endpoint
+        # 
+        # private: Dedicated network endpoint
         self.network_access_endpoint_type = network_access_endpoint_type
-        # 专属网络端点使用的安全组ID。
+        # The ID of the destination security group.
         self.security_group_id = security_group_id
-        # 专属网络端点状态。
+        # Status of the Network Endpoint
+        # Possible values:
+        # 
+        # pending: Pending initialization
+        # 
+        # creating: Being created
+        # 
+        # running: Running
+        # 
+        # deleting: Being deleted
         self.status = status
-        # 专属网络端点最近更新时间，Unix时间戳格式，单位为毫秒。
+        # The time when the endpoint was updated.
         self.update_time = update_time
-        # 专属网络端点连接的指定vSwitch列表。
+        # List of specified vSwitches associated with the dedicated network endpoint connection.
         self.v_switch_ids = v_switch_ids
-        # 专属网络端点连接的VpcID。
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
-        # 专属网络端点连接的Vpc所属地域。
+        # The region ID of the outbound virtual private cloud (VPC).
         self.vpc_region_id = vpc_region_id
 
     def validate(self):
@@ -12004,7 +12229,9 @@ class GetNetworkAccessEndpointResponseBody(TeaModel):
         network_access_endpoint: GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint = None,
         request_id: str = None,
     ):
+        # Network endpoint information.
         self.network_access_endpoint = network_access_endpoint
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -12142,7 +12369,7 @@ class GetOrganizationalUnitResponseBodyOrganizationalUnit(TeaModel):
         self.organizational_unit_external_id = organizational_unit_external_id
         # The ID of the organizational unit.
         self.organizational_unit_id = organizational_unit_id
-        # 组织名称。
+        # The Name of the organizational unit.
         self.organizational_unit_name = organizational_unit_name
         # The source ID of the organizational unit.
         # 
@@ -13179,11 +13406,11 @@ class GetSynchronizationJobRequest(TeaModel):
         instance_id: str = None,
         synchronization_job_id: str = None,
     ):
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 同步任务ID
+        # The ID of the synchronization job.
         # 
         # This parameter is required.
         self.synchronization_job_id = synchronization_job_id
@@ -13220,13 +13447,13 @@ class GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatis
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed items.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped items.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful items.
         self.success = success
-        # 总共数目
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -13269,13 +13496,13 @@ class GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatis
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed items.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped items.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful items.
         self.success = success
-        # 总共数目
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -13318,13 +13545,13 @@ class GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatis
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed items.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped items.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful items.
         self.success = success
-        # 总共数目
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -13367,13 +13594,13 @@ class GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatis
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed items.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped items.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful items.
         self.success = success
-        # 总共数目
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -13416,13 +13643,13 @@ class GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatis
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed items.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped items.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful items.
         self.success = success
-        # 总共数目
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -13465,13 +13692,13 @@ class GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatis
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed items.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped items.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful items.
         self.success = success
-        # 总共数目
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -13516,17 +13743,17 @@ class GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatis
         same: GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsSame = None,
         updated: GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsUpdated = None,
     ):
-        # 绑定结果统计
+        # The binding result statistics.
         self.binded = binded
-        # 创建结果统计
+        # The creation result statistics.
         self.created = created
-        # 删除结果统计
+        # The deletion result statistics.
         self.deleted = deleted
-        # 推送结果统计
+        # The notification result statistics.
         self.pushed = pushed
-        # 相同结果统计
+        # The result statistics about identical group members.
         self.same = same
-        # 更新结果统计
+        # The update result statistics.
         self.updated = updated
 
     def validate(self):
@@ -13594,13 +13821,13 @@ class GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsBi
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed items.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped items.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful items.
         self.success = success
-        # 总共数目
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -13643,13 +13870,13 @@ class GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsCr
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed items.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped items.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful items.
         self.success = success
-        # 总共数目
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -13692,13 +13919,13 @@ class GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsDe
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed items.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped items.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful items.
         self.success = success
-        # 总共数目
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -13741,13 +13968,13 @@ class GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsPu
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed items.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped items.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful items.
         self.success = success
-        # 总共数目
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -13790,13 +14017,13 @@ class GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsSa
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed items.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped items.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful items.
         self.success = success
-        # 总共数目
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -13839,13 +14066,13 @@ class GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsUp
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed items.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped items.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful items.
         self.success = success
-        # 总共数目
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -13890,17 +14117,17 @@ class GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatistics(T
         same: GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsSame = None,
         updated: GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsUpdated = None,
     ):
-        # 绑定结果统计
+        # The binding result statistics.
         self.binded = binded
-        # 创建结果统计
+        # The creation result statistics.
         self.created = created
-        # 删除结果统计
+        # The deletion result statistics.
         self.deleted = deleted
-        # 推送结果统计
+        # The notification result statistics.
         self.pushed = pushed
-        # 相同结果统计
+        # The result statistics about identical groups.
         self.same = same
-        # 更新结果统计
+        # The update result statistics.
         self.updated = updated
 
     def validate(self):
@@ -13968,13 +14195,13 @@ class GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUni
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed items.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped items.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful items.
         self.success = success
-        # 总共数目
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -14017,13 +14244,13 @@ class GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUni
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed items.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped items.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful items.
         self.success = success
-        # 总共数目
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -14066,13 +14293,13 @@ class GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUni
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed items.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped items.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful items.
         self.success = success
-        # 总共数目
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -14115,13 +14342,13 @@ class GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUni
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed items.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped items.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful items.
         self.success = success
-        # 总共数目
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -14164,13 +14391,13 @@ class GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUni
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed items.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped items.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful items.
         self.success = success
-        # 总共数目
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -14213,13 +14440,13 @@ class GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUni
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed items.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped items.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful items.
         self.success = success
-        # 总共数目
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -14264,17 +14491,17 @@ class GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUni
         same: GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsSame = None,
         updated: GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsUpdated = None,
     ):
-        # 绑定结果统计
+        # The binding result statistics.
         self.binded = binded
-        # 创建结果统计
+        # The creation result statistics.
         self.created = created
-        # 删除结果统计
+        # The deletion result statistics.
         self.deleted = deleted
-        # 推送结果统计
+        # The notification result statistics.
         self.pushed = pushed
-        # 相同结果统计
+        # The result statistics about identical organizations.
         self.same = same
-        # 更新结果统计
+        # The update result statistics.
         self.updated = updated
 
     def validate(self):
@@ -14342,13 +14569,13 @@ class GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsBin
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed items.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped items.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful items.
         self.success = success
-        # 总共数目
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -14391,13 +14618,13 @@ class GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsCre
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed items.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped items.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful items.
         self.success = success
-        # 总共数目
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -14440,13 +14667,13 @@ class GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsDel
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed items.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped items.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful items.
         self.success = success
-        # 总共数目
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -14489,13 +14716,13 @@ class GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsPus
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed items.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped items.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful items.
         self.success = success
-        # 总共数目
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -14538,13 +14765,13 @@ class GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsSam
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed items.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped items.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful items.
         self.success = success
-        # 总共数目
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -14587,13 +14814,13 @@ class GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsUpd
         success: int = None,
         total: int = None,
     ):
-        # 失败数目
+        # The number of failed items.
         self.failed = failed
-        # 跳过数目
+        # The number of skipped items.
         self.skipped = skipped
-        # 成功数目
+        # The number of successful items.
         self.success = success
-        # 总共数目
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -14638,17 +14865,17 @@ class GetSynchronizationJobResponseBodySynchronizationJobResultUserStatistics(Te
         same: GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsSame = None,
         updated: GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsUpdated = None,
     ):
-        # 绑定结果统计
+        # The binding result statistics.
         self.binded = binded
-        # 创建结果统计
+        # The creation result statistics.
         self.created = created
-        # 删除结果统计
+        # The deletion result statistics.
         self.deleted = deleted
-        # 推送结果统计
+        # The notification result statistics.
         self.pushed = pushed
-        # 相同结果统计
+        # The result statistics about identical users.
         self.same = same
-        # 更新结果统计
+        # The update result statistics.
         self.updated = updated
 
     def validate(self):
@@ -14718,17 +14945,17 @@ class GetSynchronizationJobResponseBodySynchronizationJobResult(TeaModel):
         organizational_unit_statistics: GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatistics = None,
         user_statistics: GetSynchronizationJobResponseBodySynchronizationJobResultUserStatistics = None,
     ):
-        # 同步结果错误码
+        # The error code corresponding to the error message.
         self.error_code = error_code
-        # 同步结果错误信息描述
+        # The error message returned in the case of an error.
         self.error_message = error_message
-        # 组成员同步结果统计
+        # The group member synchronization result statistics.
         self.group_member_statistics = group_member_statistics
-        # 组同步结果统计
+        # The group synchronization result statistics.
         self.group_statistics = group_statistics
-        # 组织同步结果统计
+        # The organization synchronization result statistics.
         self.organizational_unit_statistics = organizational_unit_statistics
-        # 用户同步结果统计
+        # The user synchronization result statistics.
         self.user_statistics = user_statistics
 
     def validate(self):
@@ -14795,23 +15022,38 @@ class GetSynchronizationJobResponseBodySynchronizationJob(TeaModel):
         target_type: str = None,
         trigger_type: str = None,
     ):
-        # 同步任务方向
+        # The direction of the synchronization job. Valid values:
+        # 
+        # *   ingress
+        # *   egress
         self.direction = direction
-        # 同步结束时间
+        # The end time of the synchronization. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
-        # 同步任务结果
+        # The result of the synchronization job.
         self.result = result
-        # 同步开始时间
+        # The start time of the synchronization. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
-        # 同步任务状态
+        # The status of the synchronization job. Valid values:
+        # 
+        # *   pending
+        # *   running
+        # *   failed
+        # *   partial_success
+        # *   success
         self.status = status
-        # 同步任务ID
+        # The ID of the synchronization job.
         self.synchronization_job_id = synchronization_job_id
-        # 同步目标ID
+        # The ID of the synchronization destination.
         self.target_id = target_id
-        # 同步目标类型
+        # The type of the synchronization destination. Valid values:
+        # 
+        # *   identity_provider
+        # *   application
         self.target_type = target_type
-        # 同步触发类型
+        # The trigger type of the synchronization. Valid values:
+        # 
+        # *   auto
+        # *   manual
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -14874,7 +15116,9 @@ class GetSynchronizationJobResponseBody(TeaModel):
         request_id: str = None,
         synchronization_job: GetSynchronizationJobResponseBodySynchronizationJob = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The information about the synchronization job.
         self.synchronization_job = synchronization_job
 
     def validate(self):
@@ -15655,12 +15899,22 @@ class ListApplicationsRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Used to determine whether M2M client identity is enabled.
+        # - enabled
+        # - disabled
         self.m_2mclient_status = m_2mclient_status
         # The number of the page to return.
         self.page_number = page_number
         # The number of entries to return on each page.
         self.page_size = page_size
+        # Used to determine whether the ResourceServer capability is enabled.
+        # - enabled
+        # - disabled
         self.resource_server_status = resource_server_status
+        # SSO type.
+        # - oidc
+        # - saml2
+        # - oauth2/m2m
         self.sso_type = sso_type
         # The status of the application. Valid values:
         # 
@@ -15737,10 +15991,7 @@ class ListApplicationsResponseBodyApplications(TeaModel):
         features: str = None,
         instance_id: str = None,
         logo_url: str = None,
-        m_2mclient_status: str = None,
         managed_service_code: str = None,
-        resource_server_identifier: str = None,
-        resource_server_status: str = None,
         service_managed: bool = None,
         sso_type: str = None,
         status: str = None,
@@ -15755,7 +16006,7 @@ class ListApplicationsResponseBodyApplications(TeaModel):
         # *   urn:alibaba:idaas:app:source:template: The application is created based on a template.
         # *   urn:alibaba:idaas: The application is created based on the standard protocol.
         self.application_source_type = application_source_type
-        # 应用模板ID
+        # The application template ID.
         self.application_template_id = application_template_id
         # The client ID of the application.
         self.client_id = client_id
@@ -15766,29 +16017,32 @@ class ListApplicationsResponseBodyApplications(TeaModel):
         # The features that are supported by the application. The value is a JSON array. Valid values:
         # 
         # *   sso: The application supports SSO.
+        # *   slo: The application supports SLO.
         # *   provision: The application supports account synchronization.
         # *   api_invoke: The application supports custom APIs.
+        # *   m2m_client: The application supports M2M Client.
+        # *   resource_server: The application supports Resource Server.
+        # *   other: undertake.
         self.features = features
         # The ID of the instance.
         self.instance_id = instance_id
         # The URL of the application icon.
         self.logo_url = logo_url
-        self.m_2mclient_status = m_2mclient_status
         # The service code of the cloud service that manages the application template.
         self.managed_service_code = managed_service_code
-        self.resource_server_identifier = resource_server_identifier
-        self.resource_server_status = resource_server_status
         # Indicates whether the application template is managed by a cloud service.
         self.service_managed = service_managed
         # The type of the single sign-on (SSO) protocol. Valid values:
         # 
         # *   saml2: the Security Assertion Markup Language (SAML) 2.0 protocol.
         # *   oidc: the OpenID Connect (OIDC) protocol.
+        # *   oauth2/m2m: the OAuth2.0  protocol M2M.
         self.sso_type = sso_type
         # The status of the application. Valid values:
         # 
-        # *   Enabled: The application is enabled.
-        # *   Disabled: The application is disabled.
+        # *   enabled: The application is enabled.
+        # *   disabled: The application is disabled.
+        # *   deleted: The application is deleted.
         self.status = status
         # The time when the application was last updated. The value is a UNIX timestamp. Unit: milliseconds.
         self.update_time = update_time
@@ -15822,14 +16076,8 @@ class ListApplicationsResponseBodyApplications(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.logo_url is not None:
             result['LogoUrl'] = self.logo_url
-        if self.m_2mclient_status is not None:
-            result['M2MClientStatus'] = self.m_2mclient_status
         if self.managed_service_code is not None:
             result['ManagedServiceCode'] = self.managed_service_code
-        if self.resource_server_identifier is not None:
-            result['ResourceServerIdentifier'] = self.resource_server_identifier
-        if self.resource_server_status is not None:
-            result['ResourceServerStatus'] = self.resource_server_status
         if self.service_managed is not None:
             result['ServiceManaged'] = self.service_managed
         if self.sso_type is not None:
@@ -15862,14 +16110,8 @@ class ListApplicationsResponseBodyApplications(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('LogoUrl') is not None:
             self.logo_url = m.get('LogoUrl')
-        if m.get('M2MClientStatus') is not None:
-            self.m_2mclient_status = m.get('M2MClientStatus')
         if m.get('ManagedServiceCode') is not None:
             self.managed_service_code = m.get('ManagedServiceCode')
-        if m.get('ResourceServerIdentifier') is not None:
-            self.resource_server_identifier = m.get('ResourceServerIdentifier')
-        if m.get('ResourceServerStatus') is not None:
-            self.resource_server_status = m.get('ResourceServerStatus')
         if m.get('ServiceManaged') is not None:
             self.service_managed = m.get('ServiceManaged')
         if m.get('SsoType') is not None:
@@ -17359,11 +17601,11 @@ class ListDomainProxyTokensRequest(TeaModel):
         domain_id: str = None,
         instance_id: str = None,
     ):
-        # 域名ID。
+        # The domain ID.
         # 
         # This parameter is required.
         self.domain_id = domain_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -17404,21 +17646,24 @@ class ListDomainProxyTokensResponseBodyDomainProxyTokens(TeaModel):
         status: str = None,
         update_time: int = None,
     ):
-        # 域名代理Token创建时间，Unix时间戳格式，单位为毫秒。
+        # The time when the proxy token of the domain name was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
-        # 域名ID。
+        # The domain ID.
         self.domain_id = domain_id
-        # 域名代理Token。
+        # The proxy token of the domain.
         self.domain_proxy_token = domain_proxy_token
-        # 域名代理Token ID。
+        # The ID of the proxy token of the domain.
         self.domain_proxy_token_id = domain_proxy_token_id
-        # 实例ID。
+        # The instance ID.
         self.instance_id = instance_id
-        # 域名代理Token最近使用时间，Unix时间戳格式，单位为毫秒。
+        # The time when the proxy token of the domain name was last used. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.last_used_time = last_used_time
-        # token状态，枚举类型：(enabled）启用,（disabled）禁用。
+        # The state of the proxy token. Valid values:
+        # 
+        # *   enabled
+        # *   disabled
         self.status = status
-        # 域名代理Token最近更新时间，Unix时间戳格式，单位为毫秒。
+        # The time when the proxy token of the domain name was last updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.update_time = update_time
 
     def validate(self):
@@ -17475,7 +17720,9 @@ class ListDomainProxyTokensResponseBody(TeaModel):
         domain_proxy_tokens: List[ListDomainProxyTokensResponseBodyDomainProxyTokens] = None,
         request_id: str = None,
     ):
+        # The proxy tokens of the domain name.
         self.domain_proxy_tokens = domain_proxy_tokens
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17556,7 +17803,7 @@ class ListDomainsRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -17586,7 +17833,7 @@ class ListDomainsResponseBodyDomainsFiling(TeaModel):
         self,
         icp_number: str = None,
     ):
-        # 域名关联的备案号, 长度最大限制64。
+        # The ICP number associated with the domain name. Both the entity ICP number and website ICP number are supported.
         self.icp_number = icp_number
 
     def validate(self):
@@ -17622,23 +17869,29 @@ class ListDomainsResponseBodyDomains(TeaModel):
         lock_mode: str = None,
         update_time: int = None,
     ):
-        # 域名创建时间，Unix时间戳格式，单位为毫秒。
+        # The time when the domain name was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
-        # 是否默认域名。true表示实例默认域名，false表示非默认域名
+        # Indicates whether the domain name is the default domain.
         self.default_domain = default_domain
-        # 域名。
+        # The domain.
         self.domain = domain
-        # 域名ID。
+        # The domain ID.
         self.domain_id = domain_id
-        # 域名类型。枚举取值:system_init(系统初始化)、user_custom(用户自定义)。
+        # The type of the domain name. Valid values:
+        # 
+        # *   system_init: an initial domain name.
+        # *   user_custom: a custom domain name.
         self.domain_type = domain_type
-        # 域名备案信息。
+        # The information about the Internet content provider (ICP) filing of the domain name.
         self.filing = filing
-        # 实例ID。
+        # The instance ID.
         self.instance_id = instance_id
-        # 域名锁定状态。枚举取值:unlock(正常)、lockByLicense(因License限制不可用)。
+        # Indicates whether the domain name is locked. Valid values:
+        # 
+        # *   unlock
+        # *   lockByLicense
         self.lock_mode = lock_mode
-        # 域名最近更新时间，Unix时间戳格式，单位为毫秒。
+        # The time when the domain name was last updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.update_time = update_time
 
     def validate(self):
@@ -17701,7 +17954,9 @@ class ListDomainsResponseBody(TeaModel):
         domains: List[ListDomainsResponseBodyDomains] = None,
         request_id: str = None,
     ):
+        # The information about the domain names.
         self.domains = domains
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17783,9 +18038,9 @@ class ListEiamInstancesRequest(TeaModel):
         instance_ids: List[str] = None,
         instance_region_id: str = None,
     ):
-        # 实例ID列表，支持0到100个
+        # The instance ID list.
         self.instance_ids = instance_ids
-        # 实例所属Region
+        # The region in which the instance resides.
         self.instance_region_id = instance_region_id
 
     def validate(self):
@@ -17826,25 +18081,30 @@ class ListEiamInstancesResponseBodyInstances(TeaModel):
         ssodomain: str = None,
         start_time: int = None,
     ):
-        # 实例描述信息
+        # The instance description.
         self.description = description
-        # 实例developer私网域名地址
+        # The private domain name of the instance Developer API.
         self.developer_apiprivate_domain = developer_apiprivate_domain
-        # 实例developer公网域名地址
+        # The public domain of the instance Developer API.
         self.developer_apipublic_domain = developer_apipublic_domain
-        # 实例id
+        # The instance ID.
         self.instance_id = instance_id
-        # 实例状态，Pending(初始状态)、Creating(创建中)、Running(运行中)、Disabled(禁用)、CreateFailed(创建失败)
+        # The instance status.
         self.instance_status = instance_status
-        # 实例版本，EIAM2.0/ EIAM1.0
+        # The instance version.
+        # 
+        # Valid values:
+        # 
+        # *   EIAM 2.0
+        # *   EIAM 1.0
         self.instance_version = instance_version
-        # 实例openApi私网域名地址
+        # The private domain of the instance OpenAPI.
         self.open_apiprivate_domain = open_apiprivate_domain
-        # 实例openApi公网域名地址
+        # The public domain of the instance OpenAPI.
         self.open_apipublic_domain = open_apipublic_domain
-        # 实例域名地址
+        # The single sign-on (SSO) domain  of the instance.
         self.ssodomain = ssodomain
-        # 实例的创建时间
+        # The time when the instance was created.
         self.start_time = start_time
 
     def validate(self):
@@ -17909,7 +18169,9 @@ class ListEiamInstancesResponseBody(TeaModel):
         instances: List[ListEiamInstancesResponseBodyInstances] = None,
         request_id: str = None,
     ):
+        # The instance list.
         self.instances = instances
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17991,9 +18253,9 @@ class ListEiamRegionsResponseBodyRegions(TeaModel):
         local_name: str = None,
         region_id: str = None,
     ):
-        # 地域名称
+        # The region name.
         self.local_name = local_name
-        # 地域ID
+        # The ID of the region in which the instance resides.
         self.region_id = region_id
 
     def validate(self):
@@ -18026,7 +18288,9 @@ class ListEiamRegionsResponseBody(TeaModel):
         regions: List[ListEiamRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
+        # The region list.
         self.regions = regions
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -18721,13 +18985,13 @@ class ListIdentityProvidersRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 当前查询的列表页码，默认为1。
+        # The number of the page to return.
         self.page_number = page_number
-        # 当前查询的列表页码，默认为20。
+        # The number of entries to return on each page.
         self.page_size = page_size
 
     def validate(self):
@@ -18782,40 +19046,74 @@ class ListIdentityProvidersResponseBodyIdentityProviders(TeaModel):
         ud_push_status: str = None,
         update_time: int = None,
     ):
-        # 高阶配置能力
+        # Advanced configuration capabilities
         self.advanced_status = advanced_status
-        # IDaaS EIAM 对应的认证来源产品，okta or google or azure ad
+        # Authentication source product.
+        # - urn:alibaba:idaas:idp:okta:okta
+        # - urn:alibaba:idaas:idp:google:account
+        # - urn:alibaba:idaas:idp:microsoft:aad
+        # - urn:alibaba:idaas:idp:microsoft:ad
+        # - urn:alibaba:idaas:idp:bytedance:lark
+        # - urn:alibaba:idaas:idp:unknown:ldap
+        # - urn:alibaba:idaas:idp:alibaba:idaas
+        # - urn:alibaba:idaas:idp:tencent:wecom
+        # - urn:alibaba:idaas:idp:alibaba:aliyunram
         self.authn_source_supplier = authn_source_supplier
-        # IDaaS EIAM 认证方式类型 oidc or saml
+        # Authentication method type.
+        # - urn:alibaba:idaas:authntype:oidc
+        # - urn:alibaba:idaas:authntype:saml2
         self.authn_source_type = authn_source_type
-        # IDaaS EIAM 对应IdP是否支持认证
+        # Does the corresponding IdP support authentication.
         self.authn_status = authn_status
+        # The time when the instance was created.
         self.create_time = create_time
-        # IDaaS EIAM 身份提供方描述
+        # The description of the Identity provider.
         self.description = description
-        # IDaaS EIAM 身份提供方外部ID
+        # Identity provider external ID.
         self.identity_provider_external_id = identity_provider_external_id
-        # IDaaS EIAM 身份提供方ID
+        # Identity provider ID.
         self.identity_provider_id = identity_provider_id
-        # IDaaS EIAM 身份提供方名称
+        # Identity provider name.
         self.identity_provider_name = identity_provider_name
-        # 身份提供方同步类型
+        # Identity provider synchronization type.
+        # 
+        # - Inbound to DingTalk: urn:alibaba:idaas:idp:alibaba:dingtalk:pull
+        # 
+        # - Outbound to DingTalk: urn:alibaba:idaas:idp:alibaba:dingtalk:push
+        # 
+        # - Inbound to WeCom: urn:alibaba:idaas:idp:tencent:wecom:pull
+        # 
+        # - Inbound to Lark: urn:alibaba:idaas:idp:bytedance:lark:pull
+        # 
+        # - Inbound to AD: urn:alibaba:idaas:idp:microsoft:ad:pull
+        # 
+        # - Inbound to LDAP: urn:alibaba:idaas:idp:unknown:ldap:pull
+        # 
+        # - Standard OIDC: urn:alibaba:idaas:idp:standard:oidc
+        # 
+        # - SASE Custom OIDC: urn:alibaba:idaas:idp:alibaba:sase
         self.identity_provider_type = identity_provider_type
-        # 增量回调状态，是否处理来自IdP的增量回调数据
+        # Incremental callback status, whether to process the incremental callback data from IdP.
         self.incremental_callback_status = incremental_callback_status
-        # IDaaS EIAM 实例Id
+        # The instance ID.
         self.instance_id = instance_id
+        # Last status check result.
         self.last_status_check_job_result = last_status_check_job_result
-        # 锁定原因
+        # The reason why write operations are locked.
         self.lock_reason = lock_reason
+        # IdP logo url.
         self.logo_url = logo_url
+        # Regular verification status.
         self.periodic_sync_status = periodic_sync_status
-        # IDaaS EIAM 是否支持UD同步
+        # Whether support UD synchronization.Values:
+        # - enabled
+        # - disabled
         self.ud_pull_status = ud_pull_status
-        # 当支持ud_pullIDaaS侧UD中的范围
+        # When supporting the range in the UD of ud_pullIDaaS side.
         self.ud_pull_target_scope = ud_pull_target_scope
-        # 同步出能力
+        # Synchronize capabilities
         self.ud_push_status = ud_push_status
+        # The time when the service was updated.
         self.update_time = update_time
 
     def validate(self):
@@ -18921,8 +19219,11 @@ class ListIdentityProvidersResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Identity provider information array.
         self.identity_providers = identity_providers
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -19250,9 +19551,9 @@ class ListNetworkAccessEndpointAvailableRegionsResponseBodyRegions(TeaModel):
         local_name: str = None,
         region_id: str = None,
     ):
-        # 地域名称。
+        # The name of the region.
         self.local_name = local_name
-        # 地域ID。
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -19285,7 +19586,9 @@ class ListNetworkAccessEndpointAvailableRegionsResponseBody(TeaModel):
         regions: List[ListNetworkAccessEndpointAvailableRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
+        # The information of region.
         self.regions = regions
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -19779,11 +20082,11 @@ class ListNetworkAccessPathsRequest(TeaModel):
         instance_id: str = None,
         network_access_endpoint_id: str = None,
     ):
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 专属网络端点ID。
+        # Network access endpoint ID.
         # 
         # This parameter is required.
         self.network_access_endpoint_id = network_access_endpoint_id
@@ -19825,23 +20128,23 @@ class ListNetworkAccessPathsResponseBodyNetworkAccessPaths(TeaModel):
         update_time: int = None,
         v_switch_id: str = None,
     ):
-        # 专属网络端点访问路径创建时间，Unix时间戳格式，单位为毫秒。
+        # The creation time.
         self.create_time = create_time
-        # 实例ID。
+        # The instance ID.
         self.instance_id = instance_id
-        # 专属网络端点ID。
+        # Network access endpoint ID.
         self.network_access_endpoint_id = network_access_endpoint_id
-        # 专属网络端点访问路径ID。
+        # Network access path ID
         self.network_access_path_id = network_access_path_id
-        # 专属网络端点访问路径使用的ENI ID。
+        # Network interface ID
         self.network_interface_id = network_interface_id
-        # 专属网络端点访问路径使用的ENI私网地址。
+        # The private IP address.
         self.private_ip_address = private_ip_address
-        # 专属网络端点访问路径状态。
+        # Network access path status
         self.status = status
-        # 专属网络端点访问路径最近更新时间，Unix时间戳格式，单位为毫秒。
+        # The update time.
         self.update_time = update_time
-        # 专属网络端点访问路径的ENI归属的交换机ID。
+        # The ID of a vSwitch.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -19902,7 +20205,9 @@ class ListNetworkAccessPathsResponseBody(TeaModel):
         network_access_paths: List[ListNetworkAccessPathsResponseBodyNetworkAccessPaths] = None,
         request_id: str = None,
     ):
+        # Network access paths
         self.network_access_paths = network_access_paths
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -19984,11 +20289,11 @@ class ListOrganizationalUnitParentsRequest(TeaModel):
         instance_id: str = None,
         organizational_unit_id: str = None,
     ):
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 组织ID。
+        # The organization ID.
         # 
         # This parameter is required.
         self.organizational_unit_id = organizational_unit_id
@@ -20023,9 +20328,9 @@ class ListOrganizationalUnitParentsResponseBodyParents(TeaModel):
         organizational_unit_id: str = None,
         parent_id: str = None,
     ):
-        # 组织ID
+        # The organization ID.
         self.organizational_unit_id = organizational_unit_id
-        # 父组织ID
+        # The parent organization ID.
         self.parent_id = parent_id
 
     def validate(self):
@@ -20058,7 +20363,9 @@ class ListOrganizationalUnitParentsResponseBody(TeaModel):
         parents: List[ListOrganizationalUnitParentsResponseBodyParents] = None,
         request_id: str = None,
     ):
+        # The parent organizations.
         self.parents = parents
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -23647,15 +23954,15 @@ class ObtainDomainProxyTokenRequest(TeaModel):
         domain_proxy_token_id: str = None,
         instance_id: str = None,
     ):
-        # 域名ID。
+        # The ID of the domain name.
         # 
         # This parameter is required.
         self.domain_id = domain_id
-        # 域名代理Token ID。
+        # The ID of the proxy token of the domain name.
         # 
         # This parameter is required.
         self.domain_proxy_token_id = domain_proxy_token_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -23700,21 +24007,24 @@ class ObtainDomainProxyTokenResponseBodyDomainProxyToken(TeaModel):
         status: str = None,
         update_time: int = None,
     ):
-        # 域名代理Token创建时间，Unix时间戳格式，单位为毫秒。
+        # The time when the proxy token of the domain name was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
-        # 域名ID。
+        # The ID of the domain name.
         self.domain_id = domain_id
-        # 域名代理Token。
+        # The proxy token of the domain name.
         self.domain_proxy_token = domain_proxy_token
-        # 域名代理Token ID。
+        # The ID of the proxy token of the domain name.
         self.domain_proxy_token_id = domain_proxy_token_id
-        # 实例ID。
+        # The instance ID.
         self.instance_id = instance_id
-        # 域名代理Token最近使用时间，Unix时间戳格式，单位为毫秒。
+        # The time when the proxy token of the domain name was last used. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.last_used_time = last_used_time
-        # token状态，枚举类型：(enabled）启用,（disabled）禁用。
+        # The state of the proxy token. Valid values:
+        # 
+        # *   enabled
+        # *   disabled
         self.status = status
-        # 域名代理Token最近更新时间，Unix时间戳格式，单位为毫秒。
+        # The time when the proxy token of the domain name was last updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.update_time = update_time
 
     def validate(self):
@@ -23771,7 +24081,9 @@ class ObtainDomainProxyTokenResponseBody(TeaModel):
         domain_proxy_token: ObtainDomainProxyTokenResponseBodyDomainProxyToken = None,
         request_id: str = None,
     ):
+        # The information about the proxy token.
         self.domain_proxy_token = domain_proxy_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -24433,8 +24745,11 @@ class RunSynchronizationJobRequestSynchronizationScopeConfig(TeaModel):
         organizational_unit_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
+        # The group IDs.
         self.group_ids = group_ids
+        # The IDs of organizational units.
         self.organizational_unit_ids = organizational_unit_ids
+        # UserIds
         self.user_ids = user_ids
 
     def validate(self):
@@ -24476,21 +24791,28 @@ class RunSynchronizationJobRequest(TeaModel):
         target_type: str = None,
         user_identity_types: List[str] = None,
     ):
+        # Synchronization task description
         self.description = description
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Whether initialize password
         self.password_initialization = password_initialization
+        # Synchronization scope
         self.synchronization_scope_config = synchronization_scope_config
-        # 同步目标ID
+        # The ID of the synchronization destination.
         # 
         # This parameter is required.
         self.target_id = target_id
-        # 同步目标类型
+        # The type of the synchronization destination. Valid values:
+        # 
+        # *   identity_provider
+        # *   application
         # 
         # This parameter is required.
         self.target_type = target_type
+        # User identity types
         self.user_identity_types = user_identity_types
 
     def validate(self):
@@ -24545,7 +24867,9 @@ class RunSynchronizationJobResponseBody(TeaModel):
         request_id: str = None,
         synchronization_job_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The ID of the synchronization job.
         self.synchronization_job_id = synchronization_job_id
 
     def validate(self):
@@ -25227,7 +25551,7 @@ class SetApplicationSsoConfigRequestOidcSsoConfigCustomClaims(TeaModel):
     ):
         # The claim name.
         self.claim_name = claim_name
-        # The expression that is used to generate the value of the claim.
+        # The expression that is used to calculate the value of the claim.
         self.claim_value_expression = claim_value_expression
 
     def validate(self):
@@ -25281,27 +25605,27 @@ class SetApplicationSsoConfigRequestOidcSsoConfig(TeaModel):
         self.custom_claims = custom_claims
         # The scopes of user attributes that can be returned for the UserInfo endpoint or ID token.
         self.grant_scopes = grant_scopes
-        # The list of grant types that are supported for OIDC protocols.
+        # The authorization types that are supported for OIDC protocols.
         self.grant_types = grant_types
         # The validity period of the issued ID token. Unit: seconds. Default value: 300.
         self.id_token_effective_time = id_token_effective_time
-        # The ID of the identity authentication source in password mode. Specify this parameter only when the value of the GrantTypes parameter includes the password mode.
+        # The ID of the identity authentication source in password mode. Configure this parameter only when the value of the GrantTypes parameter includes the password mode.
         self.password_authentication_source_id = password_authentication_source_id
-        # Specifies whether time-based one-time password (TOTP) authentication is required in password mode. Specify this parameter only when the value of the GrantTypes parameter includes the password mode.
+        # Specifies whether time-based one-time password (TOTP) authentication is required in password mode. Configure this parameter only when the value of the GrantTypes parameter includes the password mode.
         self.password_totp_mfa_required = password_totp_mfa_required
         # The algorithms that are used to calculate the code challenge for PKCE.
         self.pkce_challenge_methods = pkce_challenge_methods
         # Specifies whether the SSO of the application requires Proof Key for Code Exchange (PKCE) (RFC 7636).
         self.pkce_required = pkce_required
-        # The list of logout redirect URIs that are supported by the application.
+        # The logout redirect URIs that are supported by the application.
         self.post_logout_redirect_uris = post_logout_redirect_uris
-        # The list of redirect URIs that are supported by the application.
+        # The redirect URIs that are supported by the application.
         self.redirect_uris = redirect_uris
         # The validity period of the issued refresh token. Unit: seconds. Default value: 86400.
         self.refresh_token_effective = refresh_token_effective
-        # The response types that are supported by the application. Specify this parameter when the value of the GrantTypes parameter includes the implicit mode.
+        # The response types that are supported by the application. Configure this parameter when the value of the GrantTypes parameter includes the implicit mode.
         self.response_types = response_types
-        # The custom expression that is used to generate the subject ID returned for the ID token.
+        # The custom expression that is used to calculate the subject ID returned for the ID token.
         self.subject_id_expression = subject_id_expression
 
     def validate(self):
@@ -25394,9 +25718,9 @@ class SetApplicationSsoConfigRequestSamlSsoConfigAttributeStatements(TeaModel):
         attribute_name: str = None,
         attribute_value_expression: str = None,
     ):
-        # The attribute name.
+        # The name of the attribute in the SAML assertion.
         self.attribute_name = attribute_name
-        # The expression that is used to generate the value of the attribute.
+        # The expression that is used to generate the value of the attribute in the SAML assertion.
         self.attribute_value_expression = attribute_value_expression
 
     def validate(self):
@@ -25429,7 +25753,9 @@ class SetApplicationSsoConfigRequestSamlSsoConfigOptionalRelayStates(TeaModel):
         display_name: str = None,
         relay_state: str = None,
     ):
+        # RelayState displayName
         self.display_name = display_name
+        # RelayState value
         self.relay_state = relay_state
 
     def validate(self):
@@ -25471,7 +25797,7 @@ class SetApplicationSsoConfigRequestSamlSsoConfig(TeaModel):
         sp_entity_id: str = None,
         sp_sso_acs_url: str = None,
     ):
-        # Specifies whether to calculate the signature for the assertion. You cannot set ResponseSigned and AssertionSigned to false at the same time.
+        # Specifies whether to calculate the signature for the assertion. You cannot set the ResponseSigned and AssertionSigned parameters to false at the same time. Valid values:
         # 
         # *   true
         # *   false
@@ -25480,39 +25806,36 @@ class SetApplicationSsoConfigRequestSamlSsoConfig(TeaModel):
         self.attribute_statements = attribute_statements
         # The default value of the RelayState attribute. If the SSO request is initiated in EIAM, the RelayState attribute in the SAML response is set to this default value.
         self.default_relay_state = default_relay_state
+        # IdP entityId.
         self.id_pentity_id = id_pentity_id
-        # The Format attribute of the NameID element in the SAML assertion. Valid values:
+        # The format of the NameID element in the SAML assertion. Valid values:
         # 
         # *   urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified: No format is specified. How to resolve the NameID element depends on the application.
+        # *   urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress: The NameID element must be an email address.
+        # *   urn:oasis:names:tc:SAML:2.0:nameid-format:persistent: The NameID element must be persistent.
+        # *   urn:oasis:names:tc:SAML:2.0:nameid-format:transient: The NameID element must be transient.
+        # 
+        # Valid values:
+        # 
+        # *   urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified: No format is specified. This is the default value.
         # *   urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress: The NameID element must be an email address.
         # *   urn:oasis:names:tc:SAML:2.0:nameid-format:persistent: The NameID element must be persistent.
         # *   urn:oasis:names:tc:SAML:2.0:nameid-format:transient: The NameID element must be transient.
         self.name_id_format = name_id_format
         # The expression that is used to generate the value of NameID in the SAML assertion.
         self.name_id_value_expression = name_id_value_expression
+        # Optional relayStates
         self.optional_relay_states = optional_relay_states
-        # Specifies whether to calculate the signature for the response. You cannot set ResponseSigned and AssertionSigned to false at the same time.
+        # Specifies whether to calculate the signature for the response. You cannot set the ResponseSigned and AssertionSigned parameters to false at the same time. Valid values:
         # 
         # *   true
         # *   false
         self.response_signed = response_signed
         # The algorithm that is used to calculate the signature for the SAML assertion.
         # 
-        # Enumeration value:
+        # Valid value:
         # 
-        # *   RSA-SHA256
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     the Rivest-Shamir-Adleman (RSA)-Secure Hash Algorithm 256 (SHA-256) algorithm
-        # 
-        #     <!-- -->
-        # 
-        #     .
+        # *   RSA-SHA256: the Rivest-Shamir-Adleman (RSA)-Secure Hash Algorithm 256 (SHA-256) algorithm.
         self.signature_algorithm = signature_algorithm
         # The entity ID of the application in SAML.
         self.sp_entity_id = sp_entity_id
@@ -25611,6 +25934,7 @@ class SetApplicationSsoConfigRequest(TeaModel):
         # 
         # This parameter is required.
         self.application_id = application_id
+        # Idp client token.
         self.client_token = client_token
         # The initial SSO method. Valid values:
         # 
@@ -25625,7 +25949,7 @@ class SetApplicationSsoConfigRequest(TeaModel):
         self.instance_id = instance_id
         # The Open ID Connect (OIDC)-based SSO configuration attributes of the application.
         self.oidc_sso_config = oidc_sso_config
-        # The Security Assertion Markup Language (SAML)-based single sign-on (SSO) configuration attributes of the application.
+        # The Security Assertion Markup Language (SAML)-based SSO configuration attributes of the application.
         self.saml_sso_config = saml_sso_config
 
     def validate(self):
@@ -25752,11 +26076,11 @@ class SetDefaultDomainRequest(TeaModel):
         domain_id: str = None,
         instance_id: str = None,
     ):
-        # 域名ID。
+        # The ID of the domain name.
         # 
         # This parameter is required.
         self.domain_id = domain_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -25790,6 +26114,7 @@ class SetDefaultDomainResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -25978,17 +26303,17 @@ class SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig(TeaModel):
         user_object_class: str = None,
         user_object_class_custom_filter: str = None,
     ):
-        # 组成员标识
+        # Group member attribute name
         self.group_member_attribute_name = group_member_attribute_name
-        # 组objectClass
+        # GroupObjectClass
         self.group_object_class = group_object_class
-        # 组自定义Filter
+        # GroupObjectClass custom filter
         self.group_object_class_custom_filter = group_object_class_custom_filter
-        # 组织ObjectClass
+        # OrganizationUnitObjectClass
         self.organization_unit_object_class = organization_unit_object_class
-        # 用户ObjectClass
+        # UserObjectClass
         self.user_object_class = user_object_class
-        # 用户自定义Filter
+        # UserObjectClass custom filter
         self.user_object_class_custom_filter = user_object_class_custom_filter
 
     def validate(self):
@@ -26038,8 +26363,11 @@ class SetIdentityProviderUdPullConfigurationRequestPeriodicSyncConfig(TeaModel):
         periodic_sync_times: List[int] = None,
         periodic_sync_type: str = None,
     ):
+        # Periodic synchronize cron
         self.periodic_sync_cron = periodic_sync_cron
+        # Periodic synchronize times
         self.periodic_sync_times = periodic_sync_times
+        # Periodic synchronize type
         self.periodic_sync_type = periodic_sync_type
 
     def validate(self):
@@ -26077,11 +26405,11 @@ class SetIdentityProviderUdPullConfigurationRequestPullProtectedRule(TeaModel):
         organizational_unit_deleted_threshold: int = None,
         user_deleted_threshold: int = None,
     ):
-        # 同步保护规则-删除组数量
+        # Group deleted threshold
         self.group_deleted_threshold = group_deleted_threshold
-        # 钉钉一方应用同步保护规则-删除组织数量
+        # OrganizationalUnit deleted threshold
         self.organizational_unit_deleted_threshold = organizational_unit_deleted_threshold
-        # 钉钉一方应用同步保护规则-删除账户数量
+        # User deleted threshold
         self.user_deleted_threshold = user_deleted_threshold
 
     def validate(self):
@@ -26118,9 +26446,9 @@ class SetIdentityProviderUdPullConfigurationRequestUdSyncScopeConfig(TeaModel):
         source_scopes: List[str] = None,
         target_scope: str = None,
     ):
-        # 同步来源节点
+        # Synchronize source scopes
         self.source_scopes = source_scopes
-        # 同步目标节点
+        # Synchronize target scope
         self.target_scope = target_scope
 
     def validate(self):
@@ -26160,27 +26488,29 @@ class SetIdentityProviderUdPullConfigurationRequest(TeaModel):
         pull_protected_rule: SetIdentityProviderUdPullConfigurationRequestPullProtectedRule = None,
         ud_sync_scope_config: SetIdentityProviderUdPullConfigurationRequestUdSyncScopeConfig = None,
     ):
-        # 组同步状态
+        # Group synchronization status.
         self.group_sync_status = group_sync_status
-        # IDaaS的身份提供方主键id
+        # Identity provider ID
         # 
         # This parameter is required.
         self.identity_provider_id = identity_provider_id
-        # 增量回调状态，是否处理来自IdP的增量回调数据
+        # Incremental callback status, whether to process incremental callback data from IdP.
         # 
         # This parameter is required.
         self.incremental_callback_status = incremental_callback_status
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # ldap同步侧相关配置信息
+        # Ldap ud pull config
         self.ldap_ud_pull_config = ldap_ud_pull_config
+        # Periodic synchronize config
         self.periodic_sync_config = periodic_sync_config
+        # Periodic synchronize status
         self.periodic_sync_status = periodic_sync_status
-        # 同步入保护规则,根据IdP的type做解析
+        # Synchronize protected rule
         self.pull_protected_rule = pull_protected_rule
-        # 同步入配置信息
+        # Synchronize configuration information.
         self.ud_sync_scope_config = ud_sync_scope_config
 
     def validate(self):
@@ -26251,6 +26581,7 @@ class SetIdentityProviderUdPullConfigurationResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -26487,6 +26818,7 @@ class SetPasswordExpirationConfigurationRequest(TeaModel):
         password_forced_update_duration: int = None,
         password_valid_max_day: int = None,
     ):
+        # Effective authentication sourceIds
         self.effective_authentication_source_ids = effective_authentication_source_ids
         # The instance ID.
         # 
@@ -27597,6 +27929,7 @@ class UpdateConditionalAccessPolicyRequestDecisionConfig(TeaModel):
 class UpdateConditionalAccessPolicyRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
         conditional_access_policy_id: str = None,
         conditional_access_policy_name: str = None,
         conditions_config: UpdateConditionalAccessPolicyRequestConditionsConfig = None,
@@ -27605,6 +27938,8 @@ class UpdateConditionalAccessPolicyRequest(TeaModel):
         instance_id: str = None,
         priority: int = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        self.client_token = client_token
         # Conditional Access Policy ID
         # 
         # This parameter is required.
@@ -27640,6 +27975,8 @@ class UpdateConditionalAccessPolicyRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.conditional_access_policy_id is not None:
             result['ConditionalAccessPolicyId'] = self.conditional_access_policy_id
         if self.conditional_access_policy_name is not None:
@@ -27658,6 +27995,8 @@ class UpdateConditionalAccessPolicyRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('ConditionalAccessPolicyId') is not None:
             self.conditional_access_policy_id = m.get('ConditionalAccessPolicyId')
         if m.get('ConditionalAccessPolicyName') is not None:
@@ -27749,10 +28088,13 @@ class UpdateConditionalAccessPolicyResponse(TeaModel):
 class UpdateConditionalAccessPolicyDescriptionRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
         conditional_access_policy_id: str = None,
         description: str = None,
         instance_id: str = None,
     ):
+        # Idp client token.
+        self.client_token = client_token
         # Conditional Access Policy ID
         # 
         # This parameter is required.
@@ -27775,6 +28117,8 @@ class UpdateConditionalAccessPolicyDescriptionRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.conditional_access_policy_id is not None:
             result['ConditionalAccessPolicyId'] = self.conditional_access_policy_id
         if self.description is not None:
@@ -27785,6 +28129,8 @@ class UpdateConditionalAccessPolicyDescriptionRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('ConditionalAccessPolicyId') is not None:
             self.conditional_access_policy_id = m.get('ConditionalAccessPolicyId')
         if m.get('Description') is not None:
@@ -28105,15 +28451,15 @@ class UpdateIdentityProviderRequestDingtalkAppConfig(TeaModel):
         self,
         app_key: str = None,
         app_secret: str = None,
+        encrypt_key: str = None,
+        verification_token: str = None,
     ):
         # 钉钉一方应用的AppKey
-        # 
-        # This parameter is required.
         self.app_key = app_key
         # 钉钉一方应用的AppSecret
-        # 
-        # This parameter is required.
         self.app_secret = app_secret
+        self.encrypt_key = encrypt_key
+        self.verification_token = verification_token
 
     def validate(self):
         pass
@@ -28128,6 +28474,10 @@ class UpdateIdentityProviderRequestDingtalkAppConfig(TeaModel):
             result['AppKey'] = self.app_key
         if self.app_secret is not None:
             result['AppSecret'] = self.app_secret
+        if self.encrypt_key is not None:
+            result['EncryptKey'] = self.encrypt_key
+        if self.verification_token is not None:
+            result['VerificationToken'] = self.verification_token
         return result
 
     def from_map(self, m: dict = None):
@@ -28136,6 +28486,10 @@ class UpdateIdentityProviderRequestDingtalkAppConfig(TeaModel):
             self.app_key = m.get('AppKey')
         if m.get('AppSecret') is not None:
             self.app_secret = m.get('AppSecret')
+        if m.get('EncryptKey') is not None:
+            self.encrypt_key = m.get('EncryptKey')
+        if m.get('VerificationToken') is not None:
+            self.verification_token = m.get('VerificationToken')
         return self
 
 
@@ -28472,6 +28826,7 @@ class UpdateIdentityProviderRequestWeComConfig(TeaModel):
 class UpdateIdentityProviderRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
         dingtalk_app_config: UpdateIdentityProviderRequestDingtalkAppConfig = None,
         identity_provider_id: str = None,
         identity_provider_name: str = None,
@@ -28483,6 +28838,7 @@ class UpdateIdentityProviderRequest(TeaModel):
         oidc_config: UpdateIdentityProviderRequestOidcConfig = None,
         we_com_config: UpdateIdentityProviderRequestWeComConfig = None,
     ):
+        self.client_token = client_token
         # 钉钉出基本信息
         self.dingtalk_app_config = dingtalk_app_config
         # IDaaS的身份提供方主键id
@@ -28525,6 +28881,8 @@ class UpdateIdentityProviderRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.dingtalk_app_config is not None:
             result['DingtalkAppConfig'] = self.dingtalk_app_config.to_map()
         if self.identity_provider_id is not None:
@@ -28549,6 +28907,8 @@ class UpdateIdentityProviderRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('DingtalkAppConfig') is not None:
             temp_model = UpdateIdentityProviderRequestDingtalkAppConfig()
             self.dingtalk_app_config = temp_model.from_map(m['DingtalkAppConfig'])
