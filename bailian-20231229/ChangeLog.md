@@ -1,3 +1,12 @@
+2025-07-30 Version: 2.1.1
+- Update API CreateIndex: add request parameters CreateIndexType.
+- Update API CreateIndex: add request parameters EnableRewrite.
+- Update API CreateIndex: add request parameters TableIds.
+- Update API ListIndices: add response parameters Body.Data.Indices.$.ConfgModel.
+- Update API ListIndices: add response parameters Body.Data.Indices.$.EnableRewrite.
+- Update API SubmitIndexAddDocumentsJob: add request parameters EnableHeaders.
+
+
 2025-07-17 Version: 2.1.0
 - Support API AddFilesFromAuthorizedOss.
 

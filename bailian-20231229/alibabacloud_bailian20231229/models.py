@@ -1913,10 +1913,12 @@ class CreateIndexRequest(TeaModel):
         category_ids: List[str] = None,
         chunk_size: int = None,
         columns: List[CreateIndexRequestColumns] = None,
+        create_index_type: str = None,
         data_source: CreateIndexRequestDataSource = None,
         description: str = None,
         document_ids: List[str] = None,
         embedding_model_name: str = None,
+        enable_rewrite: bool = None,
         name: str = None,
         overlap_size: int = None,
         rerank_min_score: float = None,
@@ -1927,6 +1929,7 @@ class CreateIndexRequest(TeaModel):
         sink_type: str = None,
         source_type: str = None,
         structure_type: str = None,
+        table_ids: List[str] = None,
         chunk_mode: str = None,
         enable_headers: bool = None,
         meta_extract_columns: List[CreateIndexRequestMetaExtractColumns] = None,
@@ -1940,6 +1943,7 @@ class CreateIndexRequest(TeaModel):
         # >  If you specify the `ChunkSize` parameter, you must also specify the `OverlapSize` and `Separator` parameters. If you do not specify these three parameters, the system uses the intelligent splitting method by default.
         self.chunk_size = chunk_size
         self.columns = columns
+        self.create_index_type = create_index_type
         # >  This parameter is not available. Do not specify this parameter.
         self.data_source = data_source
         # The description of the knowledge base. The description must be 0 to 1,000 characters in length. This parameter is empty by default.
@@ -1952,6 +1956,7 @@ class CreateIndexRequest(TeaModel):
         # 
         # The default value is null, which means using the text-embedding-v2 model.
         self.embedding_model_name = embedding_model_name
+        self.enable_rewrite = enable_rewrite
         # The name of the knowledge base. The name must be 1 to 20 characters in length and can contain characters classified as letter in Unicode, including English letters, Chinese characters, digits, among others. The name can also contain colons (:), underscores (_), periods (.), and hyphens (-).
         # 
         # This parameter is required.
@@ -2019,6 +2024,7 @@ class CreateIndexRequest(TeaModel):
         # 
         # This parameter is required.
         self.structure_type = structure_type
+        self.table_ids = table_ids
         self.chunk_mode = chunk_mode
         self.enable_headers = enable_headers
         self.meta_extract_columns = meta_extract_columns
@@ -2049,6 +2055,8 @@ class CreateIndexRequest(TeaModel):
         if self.columns is not None:
             for k in self.columns:
                 result['Columns'].append(k.to_map() if k else None)
+        if self.create_index_type is not None:
+            result['CreateIndexType'] = self.create_index_type
         if self.data_source is not None:
             result['DataSource'] = self.data_source.to_map()
         if self.description is not None:
@@ -2057,6 +2065,8 @@ class CreateIndexRequest(TeaModel):
             result['DocumentIds'] = self.document_ids
         if self.embedding_model_name is not None:
             result['EmbeddingModelName'] = self.embedding_model_name
+        if self.enable_rewrite is not None:
+            result['EnableRewrite'] = self.enable_rewrite
         if self.name is not None:
             result['Name'] = self.name
         if self.overlap_size is not None:
@@ -2077,6 +2087,8 @@ class CreateIndexRequest(TeaModel):
             result['SourceType'] = self.source_type
         if self.structure_type is not None:
             result['StructureType'] = self.structure_type
+        if self.table_ids is not None:
+            result['TableIds'] = self.table_ids
         if self.chunk_mode is not None:
             result['chunkMode'] = self.chunk_mode
         if self.enable_headers is not None:
@@ -2098,6 +2110,8 @@ class CreateIndexRequest(TeaModel):
             for k in m.get('Columns'):
                 temp_model = CreateIndexRequestColumns()
                 self.columns.append(temp_model.from_map(k))
+        if m.get('CreateIndexType') is not None:
+            self.create_index_type = m.get('CreateIndexType')
         if m.get('DataSource') is not None:
             temp_model = CreateIndexRequestDataSource()
             self.data_source = temp_model.from_map(m['DataSource'])
@@ -2107,6 +2121,8 @@ class CreateIndexRequest(TeaModel):
             self.document_ids = m.get('DocumentIds')
         if m.get('EmbeddingModelName') is not None:
             self.embedding_model_name = m.get('EmbeddingModelName')
+        if m.get('EnableRewrite') is not None:
+            self.enable_rewrite = m.get('EnableRewrite')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('OverlapSize') is not None:
@@ -2127,6 +2143,8 @@ class CreateIndexRequest(TeaModel):
             self.source_type = m.get('SourceType')
         if m.get('StructureType') is not None:
             self.structure_type = m.get('StructureType')
+        if m.get('TableIds') is not None:
+            self.table_ids = m.get('TableIds')
         if m.get('chunkMode') is not None:
             self.chunk_mode = m.get('chunkMode')
         if m.get('enableHeaders') is not None:
@@ -2145,10 +2163,12 @@ class CreateIndexShrinkRequest(TeaModel):
         category_ids_shrink: str = None,
         chunk_size: int = None,
         columns_shrink: str = None,
+        create_index_type: str = None,
         data_source_shrink: str = None,
         description: str = None,
         document_ids_shrink: str = None,
         embedding_model_name: str = None,
+        enable_rewrite: bool = None,
         name: str = None,
         overlap_size: int = None,
         rerank_min_score: float = None,
@@ -2159,6 +2179,7 @@ class CreateIndexShrinkRequest(TeaModel):
         sink_type: str = None,
         source_type: str = None,
         structure_type: str = None,
+        table_ids_shrink: str = None,
         chunk_mode: str = None,
         enable_headers: bool = None,
         meta_extract_columns_shrink: str = None,
@@ -2172,6 +2193,7 @@ class CreateIndexShrinkRequest(TeaModel):
         # >  If you specify the `ChunkSize` parameter, you must also specify the `OverlapSize` and `Separator` parameters. If you do not specify these three parameters, the system uses the intelligent splitting method by default.
         self.chunk_size = chunk_size
         self.columns_shrink = columns_shrink
+        self.create_index_type = create_index_type
         # >  This parameter is not available. Do not specify this parameter.
         self.data_source_shrink = data_source_shrink
         # The description of the knowledge base. The description must be 0 to 1,000 characters in length. This parameter is empty by default.
@@ -2184,6 +2206,7 @@ class CreateIndexShrinkRequest(TeaModel):
         # 
         # The default value is null, which means using the text-embedding-v2 model.
         self.embedding_model_name = embedding_model_name
+        self.enable_rewrite = enable_rewrite
         # The name of the knowledge base. The name must be 1 to 20 characters in length and can contain characters classified as letter in Unicode, including English letters, Chinese characters, digits, among others. The name can also contain colons (:), underscores (_), periods (.), and hyphens (-).
         # 
         # This parameter is required.
@@ -2251,6 +2274,7 @@ class CreateIndexShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.structure_type = structure_type
+        self.table_ids_shrink = table_ids_shrink
         self.chunk_mode = chunk_mode
         self.enable_headers = enable_headers
         self.meta_extract_columns_shrink = meta_extract_columns_shrink
@@ -2270,6 +2294,8 @@ class CreateIndexShrinkRequest(TeaModel):
             result['ChunkSize'] = self.chunk_size
         if self.columns_shrink is not None:
             result['Columns'] = self.columns_shrink
+        if self.create_index_type is not None:
+            result['CreateIndexType'] = self.create_index_type
         if self.data_source_shrink is not None:
             result['DataSource'] = self.data_source_shrink
         if self.description is not None:
@@ -2278,6 +2304,8 @@ class CreateIndexShrinkRequest(TeaModel):
             result['DocumentIds'] = self.document_ids_shrink
         if self.embedding_model_name is not None:
             result['EmbeddingModelName'] = self.embedding_model_name
+        if self.enable_rewrite is not None:
+            result['EnableRewrite'] = self.enable_rewrite
         if self.name is not None:
             result['Name'] = self.name
         if self.overlap_size is not None:
@@ -2298,6 +2326,8 @@ class CreateIndexShrinkRequest(TeaModel):
             result['SourceType'] = self.source_type
         if self.structure_type is not None:
             result['StructureType'] = self.structure_type
+        if self.table_ids_shrink is not None:
+            result['TableIds'] = self.table_ids_shrink
         if self.chunk_mode is not None:
             result['chunkMode'] = self.chunk_mode
         if self.enable_headers is not None:
@@ -2314,6 +2344,8 @@ class CreateIndexShrinkRequest(TeaModel):
             self.chunk_size = m.get('ChunkSize')
         if m.get('Columns') is not None:
             self.columns_shrink = m.get('Columns')
+        if m.get('CreateIndexType') is not None:
+            self.create_index_type = m.get('CreateIndexType')
         if m.get('DataSource') is not None:
             self.data_source_shrink = m.get('DataSource')
         if m.get('Description') is not None:
@@ -2322,6 +2354,8 @@ class CreateIndexShrinkRequest(TeaModel):
             self.document_ids_shrink = m.get('DocumentIds')
         if m.get('EmbeddingModelName') is not None:
             self.embedding_model_name = m.get('EmbeddingModelName')
+        if m.get('EnableRewrite') is not None:
+            self.enable_rewrite = m.get('EnableRewrite')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('OverlapSize') is not None:
@@ -2342,6 +2376,8 @@ class CreateIndexShrinkRequest(TeaModel):
             self.source_type = m.get('SourceType')
         if m.get('StructureType') is not None:
             self.structure_type = m.get('StructureType')
+        if m.get('TableIds') is not None:
+            self.table_ids_shrink = m.get('TableIds')
         if m.get('chunkMode') is not None:
             self.chunk_mode = m.get('chunkMode')
         if m.get('enableHeaders') is not None:
@@ -6148,9 +6184,11 @@ class ListIndicesResponseBodyDataIndices(TeaModel):
     def __init__(
         self,
         chunk_size: int = None,
+        confg_model: str = None,
         description: str = None,
         document_ids: List[str] = None,
         embedding_model_name: str = None,
+        enable_rewrite: bool = None,
         id: str = None,
         name: str = None,
         overlap_size: int = None,
@@ -6165,6 +6203,7 @@ class ListIndicesResponseBodyDataIndices(TeaModel):
     ):
         # The estimated length of chunks. Valid values: [1-2048].
         self.chunk_size = chunk_size
+        self.confg_model = confg_model
         # The description of the knowledge base.
         self.description = description
         # The list of the primary key IDs of the documents.
@@ -6173,6 +6212,7 @@ class ListIndicesResponseBodyDataIndices(TeaModel):
         # 
         # *   text-embedding-v2
         self.embedding_model_name = embedding_model_name
+        self.enable_rewrite = enable_rewrite
         # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
         self.id = id
         # The name of the knowledge base.
@@ -6235,12 +6275,16 @@ class ListIndicesResponseBodyDataIndices(TeaModel):
         result = dict()
         if self.chunk_size is not None:
             result['ChunkSize'] = self.chunk_size
+        if self.confg_model is not None:
+            result['ConfgModel'] = self.confg_model
         if self.description is not None:
             result['Description'] = self.description
         if self.document_ids is not None:
             result['DocumentIds'] = self.document_ids
         if self.embedding_model_name is not None:
             result['EmbeddingModelName'] = self.embedding_model_name
+        if self.enable_rewrite is not None:
+            result['EnableRewrite'] = self.enable_rewrite
         if self.id is not None:
             result['Id'] = self.id
         if self.name is not None:
@@ -6269,12 +6313,16 @@ class ListIndicesResponseBodyDataIndices(TeaModel):
         m = m or dict()
         if m.get('ChunkSize') is not None:
             self.chunk_size = m.get('ChunkSize')
+        if m.get('ConfgModel') is not None:
+            self.confg_model = m.get('ConfgModel')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('DocumentIds') is not None:
             self.document_ids = m.get('DocumentIds')
         if m.get('EmbeddingModelName') is not None:
             self.embedding_model_name = m.get('EmbeddingModelName')
+        if m.get('EnableRewrite') is not None:
+            self.enable_rewrite = m.get('EnableRewrite')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('Name') is not None:
@@ -8194,6 +8242,7 @@ class SubmitIndexAddDocumentsJobRequest(TeaModel):
         chunk_mode: str = None,
         chunk_size: int = None,
         document_ids: List[str] = None,
+        enable_headers: bool = None,
         index_id: str = None,
         overlap_size: int = None,
         separator: str = None,
@@ -8205,6 +8254,7 @@ class SubmitIndexAddDocumentsJobRequest(TeaModel):
         self.chunk_size = chunk_size
         # The list of the primary key IDs of the documents.
         self.document_ids = document_ids
+        self.enable_headers = enable_headers
         # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
         # 
         # This parameter is required.
@@ -8238,6 +8288,8 @@ class SubmitIndexAddDocumentsJobRequest(TeaModel):
             result['ChunkSize'] = self.chunk_size
         if self.document_ids is not None:
             result['DocumentIds'] = self.document_ids
+        if self.enable_headers is not None:
+            result['EnableHeaders'] = self.enable_headers
         if self.index_id is not None:
             result['IndexId'] = self.index_id
         if self.overlap_size is not None:
@@ -8258,6 +8310,8 @@ class SubmitIndexAddDocumentsJobRequest(TeaModel):
             self.chunk_size = m.get('ChunkSize')
         if m.get('DocumentIds') is not None:
             self.document_ids = m.get('DocumentIds')
+        if m.get('EnableHeaders') is not None:
+            self.enable_headers = m.get('EnableHeaders')
         if m.get('IndexId') is not None:
             self.index_id = m.get('IndexId')
         if m.get('OverlapSize') is not None:
@@ -8276,6 +8330,7 @@ class SubmitIndexAddDocumentsJobShrinkRequest(TeaModel):
         chunk_mode: str = None,
         chunk_size: int = None,
         document_ids_shrink: str = None,
+        enable_headers: bool = None,
         index_id: str = None,
         overlap_size: int = None,
         separator: str = None,
@@ -8287,6 +8342,7 @@ class SubmitIndexAddDocumentsJobShrinkRequest(TeaModel):
         self.chunk_size = chunk_size
         # The list of the primary key IDs of the documents.
         self.document_ids_shrink = document_ids_shrink
+        self.enable_headers = enable_headers
         # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
         # 
         # This parameter is required.
@@ -8320,6 +8376,8 @@ class SubmitIndexAddDocumentsJobShrinkRequest(TeaModel):
             result['ChunkSize'] = self.chunk_size
         if self.document_ids_shrink is not None:
             result['DocumentIds'] = self.document_ids_shrink
+        if self.enable_headers is not None:
+            result['EnableHeaders'] = self.enable_headers
         if self.index_id is not None:
             result['IndexId'] = self.index_id
         if self.overlap_size is not None:
@@ -8340,6 +8398,8 @@ class SubmitIndexAddDocumentsJobShrinkRequest(TeaModel):
             self.chunk_size = m.get('ChunkSize')
         if m.get('DocumentIds') is not None:
             self.document_ids_shrink = m.get('DocumentIds')
+        if m.get('EnableHeaders') is not None:
+            self.enable_headers = m.get('EnableHeaders')
         if m.get('IndexId') is not None:
             self.index_id = m.get('IndexId')
         if m.get('OverlapSize') is not None:

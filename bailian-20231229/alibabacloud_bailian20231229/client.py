@@ -771,6 +771,8 @@ class Client(OpenApiClient):
             request.data_source_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_source, 'DataSource', 'json')
         if not UtilClient.is_unset(tmp_req.document_ids):
             request.document_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.document_ids, 'DocumentIds', 'json')
+        if not UtilClient.is_unset(tmp_req.table_ids):
+            request.table_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.table_ids, 'TableIds', 'json')
         if not UtilClient.is_unset(tmp_req.meta_extract_columns):
             request.meta_extract_columns_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.meta_extract_columns, 'metaExtractColumns', 'json')
         query = {}
@@ -780,6 +782,8 @@ class Client(OpenApiClient):
             query['ChunkSize'] = request.chunk_size
         if not UtilClient.is_unset(request.columns_shrink):
             query['Columns'] = request.columns_shrink
+        if not UtilClient.is_unset(request.create_index_type):
+            query['CreateIndexType'] = request.create_index_type
         if not UtilClient.is_unset(request.data_source_shrink):
             query['DataSource'] = request.data_source_shrink
         if not UtilClient.is_unset(request.description):
@@ -788,6 +792,8 @@ class Client(OpenApiClient):
             query['DocumentIds'] = request.document_ids_shrink
         if not UtilClient.is_unset(request.embedding_model_name):
             query['EmbeddingModelName'] = request.embedding_model_name
+        if not UtilClient.is_unset(request.enable_rewrite):
+            query['EnableRewrite'] = request.enable_rewrite
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.overlap_size):
@@ -808,6 +814,8 @@ class Client(OpenApiClient):
             query['SourceType'] = request.source_type
         if not UtilClient.is_unset(request.structure_type):
             query['StructureType'] = request.structure_type
+        if not UtilClient.is_unset(request.table_ids_shrink):
+            query['TableIds'] = request.table_ids_shrink
         if not UtilClient.is_unset(request.chunk_mode):
             query['chunkMode'] = request.chunk_mode
         if not UtilClient.is_unset(request.enable_headers):
@@ -864,6 +872,8 @@ class Client(OpenApiClient):
             request.data_source_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_source, 'DataSource', 'json')
         if not UtilClient.is_unset(tmp_req.document_ids):
             request.document_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.document_ids, 'DocumentIds', 'json')
+        if not UtilClient.is_unset(tmp_req.table_ids):
+            request.table_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.table_ids, 'TableIds', 'json')
         if not UtilClient.is_unset(tmp_req.meta_extract_columns):
             request.meta_extract_columns_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.meta_extract_columns, 'metaExtractColumns', 'json')
         query = {}
@@ -873,6 +883,8 @@ class Client(OpenApiClient):
             query['ChunkSize'] = request.chunk_size
         if not UtilClient.is_unset(request.columns_shrink):
             query['Columns'] = request.columns_shrink
+        if not UtilClient.is_unset(request.create_index_type):
+            query['CreateIndexType'] = request.create_index_type
         if not UtilClient.is_unset(request.data_source_shrink):
             query['DataSource'] = request.data_source_shrink
         if not UtilClient.is_unset(request.description):
@@ -881,6 +893,8 @@ class Client(OpenApiClient):
             query['DocumentIds'] = request.document_ids_shrink
         if not UtilClient.is_unset(request.embedding_model_name):
             query['EmbeddingModelName'] = request.embedding_model_name
+        if not UtilClient.is_unset(request.enable_rewrite):
+            query['EnableRewrite'] = request.enable_rewrite
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.overlap_size):
@@ -901,6 +915,8 @@ class Client(OpenApiClient):
             query['SourceType'] = request.source_type
         if not UtilClient.is_unset(request.structure_type):
             query['StructureType'] = request.structure_type
+        if not UtilClient.is_unset(request.table_ids_shrink):
+            query['TableIds'] = request.table_ids_shrink
         if not UtilClient.is_unset(request.chunk_mode):
             query['chunkMode'] = request.chunk_mode
         if not UtilClient.is_unset(request.enable_headers):
@@ -4115,6 +4131,8 @@ class Client(OpenApiClient):
             query['ChunkSize'] = request.chunk_size
         if not UtilClient.is_unset(request.document_ids_shrink):
             query['DocumentIds'] = request.document_ids_shrink
+        if not UtilClient.is_unset(request.enable_headers):
+            query['EnableHeaders'] = request.enable_headers
         if not UtilClient.is_unset(request.index_id):
             query['IndexId'] = request.index_id
         if not UtilClient.is_unset(request.overlap_size):
@@ -4179,6 +4197,8 @@ class Client(OpenApiClient):
             query['ChunkSize'] = request.chunk_size
         if not UtilClient.is_unset(request.document_ids_shrink):
             query['DocumentIds'] = request.document_ids_shrink
+        if not UtilClient.is_unset(request.enable_headers):
+            query['EnableHeaders'] = request.enable_headers
         if not UtilClient.is_unset(request.index_id):
             query['IndexId'] = request.index_id
         if not UtilClient.is_unset(request.overlap_size):
