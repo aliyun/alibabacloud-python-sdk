@@ -1769,7 +1769,7 @@ class CreateInstanceRequest(TeaModel):
         # 
         # > You must specify at least one of the **Capacity** and **InstanceClass** parameters when you call this operation.
         self.capacity = capacity
-        # The billing method. Valid values:
+        # The billing method of the instance. Valid values:
         # 
         # *   **PrePaid**: subscription
         # *   **PostPaid** (default): pay-as-you-go
@@ -1785,9 +1785,9 @@ class CreateInstanceRequest(TeaModel):
         self.coupon_no = coupon_no
         # The ID of the dedicated cluster. This parameter is required if you create an instance in a dedicated cluster.
         self.dedicated_host_group_id = dedicated_host_group_id
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: performs a dry run and does not create the instance. The system prechecks the request parameters, request format, service limits, and available resources. If the request fails the dry run, an error code is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # *   **true**: performs a dry run and does not create the instance. The system prechecks the request parameters, request format, service limits, and available resources. If the request fails to pass the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
         # *   **false**: performs a dry run and sends the request. If the request passes the dry run, the instance is created.
         self.dry_run = dry_run
         # The engine version. Valid values for **classic instances**:
@@ -1809,8 +1809,11 @@ class CreateInstanceRequest(TeaModel):
         # *   **true**: uses the new instance as the first child instance.
         # *   **false** (default): does not use the new instance as the first child instance.
         # 
-        # > *   If you want to create a Tair DRAM-based instance that runs Redis 5.0, you must set this parameter to **true**.
-        # > *   This parameter is available only on the China site (aliyun.com).
+        # > 
+        # 
+        # *   If you want to create a Tair DRAM-based instance that runs Redis 5.0, you must set this parameter to **true**.
+        # 
+        # *   This parameter is available only on the China site (aliyun.com).
         self.global_instance = global_instance
         # The ID of the distributed instance. This parameter is available only on the China site (aliyun.com).
         self.global_instance_id = global_instance_id
@@ -1829,7 +1832,7 @@ class CreateInstanceRequest(TeaModel):
         # *   **Redis** (default)
         # *   **Memcache**\
         self.instance_type = instance_type
-        # The network type. Valid values:
+        # The network type. Valid value:
         # 
         # *   **VPC** (default)
         self.network_type = network_type
@@ -1887,7 +1890,7 @@ class CreateInstanceRequest(TeaModel):
         self.secondary_zone_id = secondary_zone_id
         # 系统自动生成的安全 Token，无需传入
         self.security_token = security_token
-        # The number of shards. This parameter is applicable only to cloud-native cluster instances. You can use this parameter to customize the number of shards.
+        # The number of shards. This parameter applies only to cloud-native cluster instances.
         self.shard_count = shard_count
         # The number of read replicas in the secondary zone. This parameter is used to create a read/write splitting instance that is deployed across multiple zones. The sum of the values of this parameter and ReadOnlyCount cannot be greater than 9.
         # 

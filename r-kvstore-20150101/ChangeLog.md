@@ -1,3 +1,6 @@
+2025-07-30 Version: 6.0.1
+- Generated python 2015-01-01 for R-kvstore.
+
 2025-07-09 Version: 6.0.0
 - Support API DeleteBackup.
 - Support API ModifyBackupExpireTime.
