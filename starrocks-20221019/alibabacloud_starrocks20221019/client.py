@@ -41,6 +41,536 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def change_resource_group_with_options(
+        self,
+        request: starrocks_20221019_models.ChangeResourceGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> starrocks_20221019_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeResourceGroup',
+            version='2022-10-19',
+            protocol='HTTPS',
+            pathname=f'/webapi/resourceGroup/change',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            starrocks_20221019_models.ChangeResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_resource_group_with_options_async(
+        self,
+        request: starrocks_20221019_models.ChangeResourceGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> starrocks_20221019_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeResourceGroup',
+            version='2022-10-19',
+            protocol='HTTPS',
+            pathname=f'/webapi/resourceGroup/change',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            starrocks_20221019_models.ChangeResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_resource_group(
+        self,
+        request: starrocks_20221019_models.ChangeResourceGroupRequest,
+    ) -> starrocks_20221019_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.change_resource_group_with_options(request, headers, runtime)
+
+    async def change_resource_group_async(
+        self,
+        request: starrocks_20221019_models.ChangeResourceGroupRequest,
+    ) -> starrocks_20221019_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.change_resource_group_with_options_async(request, headers, runtime)
+
+    def create_instance_v1with_options(
+        self,
+        request: starrocks_20221019_models.CreateInstanceV1Request,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> starrocks_20221019_models.CreateInstanceV1Response:
+        """
+        @summary 创建StarRocks集群
+        
+        @param request: CreateInstanceV1Request
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceV1Response
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.admin_password):
+            body['AdminPassword'] = request.admin_password
+        if not UtilClient.is_unset(request.auto_renew):
+            body['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.backend_node_groups):
+            body['BackendNodeGroups'] = request.backend_node_groups
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.duration):
+            body['Duration'] = request.duration
+        if not UtilClient.is_unset(request.encrypted):
+            body['Encrypted'] = request.encrypted
+        if not UtilClient.is_unset(request.frontend_node_groups):
+            body['FrontendNodeGroups'] = request.frontend_node_groups
+        if not UtilClient.is_unset(request.instance_name):
+            body['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.kms_key_id):
+            body['KmsKeyId'] = request.kms_key_id
+        if not UtilClient.is_unset(request.observer_node_groups):
+            body['ObserverNodeGroups'] = request.observer_node_groups
+        if not UtilClient.is_unset(request.oss_accessing_role_name):
+            body['OssAccessingRoleName'] = request.oss_accessing_role_name
+        if not UtilClient.is_unset(request.package_type):
+            body['PackageType'] = request.package_type
+        if not UtilClient.is_unset(request.pay_type):
+            body['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.pricing_cycle):
+            body['PricingCycle'] = request.pricing_cycle
+        if not UtilClient.is_unset(request.promotion_option_no):
+            body['PromotionOptionNo'] = request.promotion_option_no
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.run_mode):
+            body['RunMode'] = request.run_mode
+        if not UtilClient.is_unset(request.tags):
+            body['Tags'] = request.tags
+        if not UtilClient.is_unset(request.v_switches):
+            body['VSwitches'] = request.v_switches
+        if not UtilClient.is_unset(request.version):
+            body['Version'] = request.version
+        if not UtilClient.is_unset(request.vpc_id):
+            body['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_id):
+            body['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateInstanceV1',
+            version='2022-10-19',
+            protocol='HTTPS',
+            pathname=f'/webapi/cluster/createV1',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            starrocks_20221019_models.CreateInstanceV1Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_instance_v1with_options_async(
+        self,
+        request: starrocks_20221019_models.CreateInstanceV1Request,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> starrocks_20221019_models.CreateInstanceV1Response:
+        """
+        @summary 创建StarRocks集群
+        
+        @param request: CreateInstanceV1Request
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceV1Response
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.admin_password):
+            body['AdminPassword'] = request.admin_password
+        if not UtilClient.is_unset(request.auto_renew):
+            body['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.backend_node_groups):
+            body['BackendNodeGroups'] = request.backend_node_groups
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.duration):
+            body['Duration'] = request.duration
+        if not UtilClient.is_unset(request.encrypted):
+            body['Encrypted'] = request.encrypted
+        if not UtilClient.is_unset(request.frontend_node_groups):
+            body['FrontendNodeGroups'] = request.frontend_node_groups
+        if not UtilClient.is_unset(request.instance_name):
+            body['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.kms_key_id):
+            body['KmsKeyId'] = request.kms_key_id
+        if not UtilClient.is_unset(request.observer_node_groups):
+            body['ObserverNodeGroups'] = request.observer_node_groups
+        if not UtilClient.is_unset(request.oss_accessing_role_name):
+            body['OssAccessingRoleName'] = request.oss_accessing_role_name
+        if not UtilClient.is_unset(request.package_type):
+            body['PackageType'] = request.package_type
+        if not UtilClient.is_unset(request.pay_type):
+            body['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.pricing_cycle):
+            body['PricingCycle'] = request.pricing_cycle
+        if not UtilClient.is_unset(request.promotion_option_no):
+            body['PromotionOptionNo'] = request.promotion_option_no
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.run_mode):
+            body['RunMode'] = request.run_mode
+        if not UtilClient.is_unset(request.tags):
+            body['Tags'] = request.tags
+        if not UtilClient.is_unset(request.v_switches):
+            body['VSwitches'] = request.v_switches
+        if not UtilClient.is_unset(request.version):
+            body['Version'] = request.version
+        if not UtilClient.is_unset(request.vpc_id):
+            body['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_id):
+            body['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateInstanceV1',
+            version='2022-10-19',
+            protocol='HTTPS',
+            pathname=f'/webapi/cluster/createV1',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            starrocks_20221019_models.CreateInstanceV1Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_instance_v1(
+        self,
+        request: starrocks_20221019_models.CreateInstanceV1Request,
+    ) -> starrocks_20221019_models.CreateInstanceV1Response:
+        """
+        @summary 创建StarRocks集群
+        
+        @param request: CreateInstanceV1Request
+        @return: CreateInstanceV1Response
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_instance_v1with_options(request, headers, runtime)
+
+    async def create_instance_v1_async(
+        self,
+        request: starrocks_20221019_models.CreateInstanceV1Request,
+    ) -> starrocks_20221019_models.CreateInstanceV1Response:
+        """
+        @summary 创建StarRocks集群
+        
+        @param request: CreateInstanceV1Request
+        @return: CreateInstanceV1Response
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_instance_v1with_options_async(request, headers, runtime)
+
+    def create_service_linked_role_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> starrocks_20221019_models.CreateServiceLinkedRoleResponse:
+        """
+        @summary 为用户创建AliyunServiceRoleForEMRStarRocks
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceLinkedRoleResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CreateServiceLinkedRole',
+            version='2022-10-19',
+            protocol='HTTPS',
+            pathname=f'/webapi/user/create_default_role',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            starrocks_20221019_models.CreateServiceLinkedRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_service_linked_role_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> starrocks_20221019_models.CreateServiceLinkedRoleResponse:
+        """
+        @summary 为用户创建AliyunServiceRoleForEMRStarRocks
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceLinkedRoleResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CreateServiceLinkedRole',
+            version='2022-10-19',
+            protocol='HTTPS',
+            pathname=f'/webapi/user/create_default_role',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            starrocks_20221019_models.CreateServiceLinkedRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_service_linked_role(self) -> starrocks_20221019_models.CreateServiceLinkedRoleResponse:
+        """
+        @summary 为用户创建AliyunServiceRoleForEMRStarRocks
+        
+        @return: CreateServiceLinkedRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_service_linked_role_with_options(headers, runtime)
+
+    async def create_service_linked_role_async(self) -> starrocks_20221019_models.CreateServiceLinkedRoleResponse:
+        """
+        @summary 为用户创建AliyunServiceRoleForEMRStarRocks
+        
+        @return: CreateServiceLinkedRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_service_linked_role_with_options_async(headers, runtime)
+
+    def describe_instances_with_options(
+        self,
+        tmp_req: starrocks_20221019_models.DescribeInstancesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> starrocks_20221019_models.DescribeInstancesResponse:
+        """
+        @summary 根据集群ID或者名称等信息过滤集群
+        
+        @param tmp_req: DescribeInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstancesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = starrocks_20221019_models.DescribeInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.instance_status):
+            query['InstanceStatus'] = request.instance_status
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstances',
+            version='2022-10-19',
+            protocol='HTTPS',
+            pathname=f'/webapi/starrocks/describeInstances',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            starrocks_20221019_models.DescribeInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instances_with_options_async(
+        self,
+        tmp_req: starrocks_20221019_models.DescribeInstancesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> starrocks_20221019_models.DescribeInstancesResponse:
+        """
+        @summary 根据集群ID或者名称等信息过滤集群
+        
+        @param tmp_req: DescribeInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstancesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = starrocks_20221019_models.DescribeInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.instance_status):
+            query['InstanceStatus'] = request.instance_status
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstances',
+            version='2022-10-19',
+            protocol='HTTPS',
+            pathname=f'/webapi/starrocks/describeInstances',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            starrocks_20221019_models.DescribeInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instances(
+        self,
+        request: starrocks_20221019_models.DescribeInstancesRequest,
+    ) -> starrocks_20221019_models.DescribeInstancesResponse:
+        """
+        @summary 根据集群ID或者名称等信息过滤集群
+        
+        @param request: DescribeInstancesRequest
+        @return: DescribeInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_instances_with_options(request, headers, runtime)
+
+    async def describe_instances_async(
+        self,
+        request: starrocks_20221019_models.DescribeInstancesRequest,
+    ) -> starrocks_20221019_models.DescribeInstancesResponse:
+        """
+        @summary 根据集群ID或者名称等信息过滤集群
+        
+        @param request: DescribeInstancesRequest
+        @return: DescribeInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_instances_with_options_async(request, headers, runtime)
+
     def modify_cu_with_options(
         self,
         request: starrocks_20221019_models.ModifyCuRequest,
@@ -1368,6 +1898,254 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.restart_instance_with_options_async(request, headers, runtime)
+
+    def tag_resources_with_options(
+        self,
+        request: starrocks_20221019_models.TagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> starrocks_20221019_models.TagResourcesResponse:
+        """
+        @summary 打标
+        
+        @param request: TagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            body['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2022-10-19',
+            protocol='HTTPS',
+            pathname=f'/webapi/tags',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            starrocks_20221019_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_resources_with_options_async(
+        self,
+        request: starrocks_20221019_models.TagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> starrocks_20221019_models.TagResourcesResponse:
+        """
+        @summary 打标
+        
+        @param request: TagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            body['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2022-10-19',
+            protocol='HTTPS',
+            pathname=f'/webapi/tags',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            starrocks_20221019_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag_resources(
+        self,
+        request: starrocks_20221019_models.TagResourcesRequest,
+    ) -> starrocks_20221019_models.TagResourcesResponse:
+        """
+        @summary 打标
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.tag_resources_with_options(request, headers, runtime)
+
+    async def tag_resources_async(
+        self,
+        request: starrocks_20221019_models.TagResourcesRequest,
+    ) -> starrocks_20221019_models.TagResourcesResponse:
+        """
+        @summary 打标
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.tag_resources_with_options_async(request, headers, runtime)
+
+    def un_tag_resources_with_options(
+        self,
+        tmp_req: starrocks_20221019_models.UnTagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> starrocks_20221019_models.UnTagResourcesResponse:
+        """
+        @summary 删除标签
+        
+        @param tmp_req: UnTagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnTagResourcesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = starrocks_20221019_models.UnTagResourcesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_id):
+            request.resource_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_id, 'ResourceId', 'json')
+        if not UtilClient.is_unset(tmp_req.tag_key):
+            request.tag_key_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_key, 'TagKey', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id_shrink):
+            query['ResourceId'] = request.resource_id_shrink
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key_shrink):
+            query['TagKey'] = request.tag_key_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnTagResources',
+            version='2022-10-19',
+            protocol='HTTPS',
+            pathname=f'/webapi/tags',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            starrocks_20221019_models.UnTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def un_tag_resources_with_options_async(
+        self,
+        tmp_req: starrocks_20221019_models.UnTagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> starrocks_20221019_models.UnTagResourcesResponse:
+        """
+        @summary 删除标签
+        
+        @param tmp_req: UnTagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnTagResourcesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = starrocks_20221019_models.UnTagResourcesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_id):
+            request.resource_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_id, 'ResourceId', 'json')
+        if not UtilClient.is_unset(tmp_req.tag_key):
+            request.tag_key_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_key, 'TagKey', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id_shrink):
+            query['ResourceId'] = request.resource_id_shrink
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key_shrink):
+            query['TagKey'] = request.tag_key_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnTagResources',
+            version='2022-10-19',
+            protocol='HTTPS',
+            pathname=f'/webapi/tags',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            starrocks_20221019_models.UnTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def un_tag_resources(
+        self,
+        request: starrocks_20221019_models.UnTagResourcesRequest,
+    ) -> starrocks_20221019_models.UnTagResourcesResponse:
+        """
+        @summary 删除标签
+        
+        @param request: UnTagResourcesRequest
+        @return: UnTagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.un_tag_resources_with_options(request, headers, runtime)
+
+    async def un_tag_resources_async(
+        self,
+        request: starrocks_20221019_models.UnTagResourcesRequest,
+    ) -> starrocks_20221019_models.UnTagResourcesResponse:
+        """
+        @summary 删除标签
+        
+        @param request: UnTagResourcesRequest
+        @return: UnTagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.un_tag_resources_with_options_async(request, headers, runtime)
 
     def update_instance_name_with_options(
         self,
