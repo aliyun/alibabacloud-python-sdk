@@ -18982,6 +18982,7 @@ class DescribeDocumentResponseBody(TeaModel):
         chunk_file_url: str = None,
         docs_count: int = None,
         document_loader: str = None,
+        document_loader_result_file_url: str = None,
         file_ext: str = None,
         file_md_5: str = None,
         file_mtime: str = None,
@@ -19002,6 +19003,7 @@ class DescribeDocumentResponseBody(TeaModel):
         self.docs_count = docs_count
         # Name of the document loader.
         self.document_loader = document_loader
+        self.document_loader_result_file_url = document_loader_result_file_url
         # File extension.
         self.file_ext = file_ext
         # MD5 value of the file.
@@ -19046,6 +19048,8 @@ class DescribeDocumentResponseBody(TeaModel):
             result['DocsCount'] = self.docs_count
         if self.document_loader is not None:
             result['DocumentLoader'] = self.document_loader
+        if self.document_loader_result_file_url is not None:
+            result['DocumentLoaderResultFileUrl'] = self.document_loader_result_file_url
         if self.file_ext is not None:
             result['FileExt'] = self.file_ext
         if self.file_md_5 is not None:
@@ -19082,6 +19086,8 @@ class DescribeDocumentResponseBody(TeaModel):
             self.docs_count = m.get('DocsCount')
         if m.get('DocumentLoader') is not None:
             self.document_loader = m.get('DocumentLoader')
+        if m.get('DocumentLoaderResultFileUrl') is not None:
+            self.document_loader_result_file_url = m.get('DocumentLoaderResultFileUrl')
         if m.get('FileExt') is not None:
             self.file_ext = m.get('FileExt')
         if m.get('FileMd5') is not None:
@@ -29159,10 +29165,12 @@ class GetUploadDocumentJobResponseBodyChunkResult(TeaModel):
     def __init__(
         self,
         chunk_file_url: str = None,
+        document_loader_result_file_url: str = None,
         plain_chunk_file_url: str = None,
     ):
         # The URL of the file after chunking. The validity period of the URL is 2 hours. The file is in the JSONL format. Each line is in the `{"page_content":"*****", "metadata": {"**":"***","**":"***"}` format.
         self.chunk_file_url = chunk_file_url
+        self.document_loader_result_file_url = document_loader_result_file_url
         # The URL of the file that does not contain metadata after chunking. The validity period of the URL is 2 hours. The file is in the TXT format. Each line is a chunk. The file can be easily used for embedding.
         self.plain_chunk_file_url = plain_chunk_file_url
 
@@ -29177,6 +29185,8 @@ class GetUploadDocumentJobResponseBodyChunkResult(TeaModel):
         result = dict()
         if self.chunk_file_url is not None:
             result['ChunkFileUrl'] = self.chunk_file_url
+        if self.document_loader_result_file_url is not None:
+            result['DocumentLoaderResultFileUrl'] = self.document_loader_result_file_url
         if self.plain_chunk_file_url is not None:
             result['PlainChunkFileUrl'] = self.plain_chunk_file_url
         return result
@@ -29185,6 +29195,8 @@ class GetUploadDocumentJobResponseBodyChunkResult(TeaModel):
         m = m or dict()
         if m.get('ChunkFileUrl') is not None:
             self.chunk_file_url = m.get('ChunkFileUrl')
+        if m.get('DocumentLoaderResultFileUrl') is not None:
+            self.document_loader_result_file_url = m.get('DocumentLoaderResultFileUrl')
         if m.get('PlainChunkFileUrl') is not None:
             self.plain_chunk_file_url = m.get('PlainChunkFileUrl')
         return self

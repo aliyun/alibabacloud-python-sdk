@@ -1,3 +1,8 @@
+2025-07-30 Version: 4.10.2
+- Update API DescribeDocument: add response parameters Body.DocumentLoaderResultFileUrl.
+- Update API GetUploadDocumentJob: add response parameters Body.ChunkResult.DocumentLoaderResultFileUrl.
+
+
 2025-07-18 Version: 4.10.1
 - Update API UploadDocumentAsync: add request parameters VlEnhance.
 
