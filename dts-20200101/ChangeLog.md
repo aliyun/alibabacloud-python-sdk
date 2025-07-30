@@ -1,3 +1,17 @@
+2025-07-30 Version: 5.9.0
+- Support API CreateDocParserJob.
+- Support API DescribeDocParserJobResult.
+- Support API DescribeDocParserJobStatus.
+- Update API DescribeGadInstances: add request parameters DbEngineTypes.
+- Update API DescribeGadInstances: add response parameters Body.Instances.$.MasterEngineArchType.
+- Update API PreCheckCreateGadOrder: add request parameters MasterDatabaseName.
+- Update API PreCheckCreateGadOrder: add request parameters MasterEngineArchType.
+- Update API PreCheckCreateGadOrder: add request parameters MasterShardAccountName.
+- Update API PreCheckCreateGadOrder: add request parameters MasterShardAccountPassword.
+- Update API PreCheckCreateGadOrder: add request parameters SlaveDatabaseName.
+- Update API PreCheckCreateGadOrder: add request parameters SlaveEngineArchType.
+
+
 2025-06-27 Version: 5.8.3
 - Update API ModifySubscription: add request parameters ModifyType.
 - Update API ModifySubscription: add request parameters Reserved.
