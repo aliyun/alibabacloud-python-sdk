@@ -9433,6 +9433,7 @@ class CreateFileRequest(TeaModel):
         self.project_identifier = project_identifier
         self.rerun_mode = rerun_mode
         self.resource_group_id = resource_group_id
+        # The resource group for the task deployed from the file. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page. In the left-side navigation pane, click **Resource Group** to obtain the ID of the resource group associated with the current workspace.
         self.resource_group_identifier = resource_group_identifier
         self.scheduler_type = scheduler_type
         self.start_effect_date = start_effect_date
@@ -12908,6 +12909,39 @@ class CreateWorkflowInstancesRequestPeriods(TeaModel):
         return self
 
 
+class CreateWorkflowInstancesRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateWorkflowInstancesRequest(TeaModel):
     def __init__(
         self,
@@ -12918,6 +12952,8 @@ class CreateWorkflowInstancesRequest(TeaModel):
         name: str = None,
         periods: CreateWorkflowInstancesRequestPeriods = None,
         project_id: int = None,
+        tag_creation_policy: str = None,
+        tags: List[CreateWorkflowInstancesRequestTags] = None,
         task_parameters: str = None,
         type: str = None,
         workflow_id: int = None,
@@ -12944,6 +12980,8 @@ class CreateWorkflowInstancesRequest(TeaModel):
         # 
         # This parameter is required.
         self.project_id = project_id
+        self.tag_creation_policy = tag_creation_policy
+        self.tags = tags
         # The task-specific parameters. The value is in the JSON format. The key specifies the task ID. You can call the GetTask operation to obtain the format of the value by querying the script parameters.
         self.task_parameters = task_parameters
         # The type of the workflow instance. Valid values:
@@ -12967,6 +13005,10 @@ class CreateWorkflowInstancesRequest(TeaModel):
             self.default_run_properties.validate()
         if self.periods:
             self.periods.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -12988,6 +13030,12 @@ class CreateWorkflowInstancesRequest(TeaModel):
             result['Periods'] = self.periods.to_map()
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
+        if self.tag_creation_policy is not None:
+            result['TagCreationPolicy'] = self.tag_creation_policy
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.task_parameters is not None:
             result['TaskParameters'] = self.task_parameters
         if self.type is not None:
@@ -13016,6 +13064,13 @@ class CreateWorkflowInstancesRequest(TeaModel):
             self.periods = temp_model.from_map(m['Periods'])
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
+        if m.get('TagCreationPolicy') is not None:
+            self.tag_creation_policy = m.get('TagCreationPolicy')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = CreateWorkflowInstancesRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TaskParameters') is not None:
             self.task_parameters = m.get('TaskParameters')
         if m.get('Type') is not None:
@@ -13037,6 +13092,8 @@ class CreateWorkflowInstancesShrinkRequest(TeaModel):
         name: str = None,
         periods_shrink: str = None,
         project_id: int = None,
+        tag_creation_policy: str = None,
+        tags_shrink: str = None,
         task_parameters: str = None,
         type: str = None,
         workflow_id: int = None,
@@ -13063,6 +13120,8 @@ class CreateWorkflowInstancesShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.project_id = project_id
+        self.tag_creation_policy = tag_creation_policy
+        self.tags_shrink = tags_shrink
         # The task-specific parameters. The value is in the JSON format. The key specifies the task ID. You can call the GetTask operation to obtain the format of the value by querying the script parameters.
         self.task_parameters = task_parameters
         # The type of the workflow instance. Valid values:
@@ -13104,6 +13163,10 @@ class CreateWorkflowInstancesShrinkRequest(TeaModel):
             result['Periods'] = self.periods_shrink
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
+        if self.tag_creation_policy is not None:
+            result['TagCreationPolicy'] = self.tag_creation_policy
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
         if self.task_parameters is not None:
             result['TaskParameters'] = self.task_parameters
         if self.type is not None:
@@ -13130,6 +13193,10 @@ class CreateWorkflowInstancesShrinkRequest(TeaModel):
             self.periods_shrink = m.get('Periods')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
+        if m.get('TagCreationPolicy') is not None:
+            self.tag_creation_policy = m.get('TagCreationPolicy')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
         if m.get('TaskParameters') is not None:
             self.task_parameters = m.get('TaskParameters')
         if m.get('Type') is not None:
@@ -42144,16 +42211,22 @@ class ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles(Tea
         self.project_id = project_id
         # The test status in the development environment.
         self.smoke_test_status = smoke_test_status
-        # The status of the code for the file of the current version. Valid values:
+        # The status of the code file of the current version. Valid values:
         # 
-        # *   10: committing
-        # *   11: committed to the development environment of the scheduling system
-        # *   20: review passed
-        # *   21: review failed
-        # *   80: deployment package creation succeeded
-        # *   100: deploying
-        # *   101: deployed to the production environment
-        # *   200: cancelled
+        # *   2: Commit check in progress.
+        # *   3: Commit check passed.
+        # *   4: Commit check failed.
+        # *   10: Committing.
+        # *   11: Committed.
+        # *   20: Approved.
+        # *   21: Rejected.
+        # *   22: Warning detected during checking.
+        # *   23: Under code review.
+        # *   24: Code review rejected.
+        # *   80: Deployment package created.
+        # *   100: Deploying.
+        # *   101: Deployed to the production environment.
+        # *   200: Cancelled.
         self.status = status
         # The DataWorks tenant ID.
         self.tenant_id = tenant_id
@@ -42263,7 +42336,7 @@ class ListDeploymentPackageFilesResponseBodyPagingInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The details of the versions of the files to be deployed.
+        # The list of files pending deployment.
         self.deployment_package_files = deployment_package_files
         # The page number. Pages start from page 1.
         self.page_number = page_number
@@ -42318,7 +42391,7 @@ class ListDeploymentPackageFilesResponseBody(TeaModel):
         paging_info: ListDeploymentPackageFilesResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
-        # The pagination information.
+        # The pagination details.
         self.paging_info = paging_info
         # The request ID.
         self.request_id = request_id
@@ -51963,7 +52036,7 @@ class ListResourceGroupsRequest(TeaModel):
         self.project_id = project_id
         # The types of resource groups to query. If you do not configure this parameter, only serverless resource groups are returned by default.
         self.resource_group_types = resource_group_types
-        # The fields used for sorting. Fields such as TriggerTime and StartedTime are supported. The value of this parameter is in the Sort field + Sort by (Desc/Asc) format. By default, results are sorted in ascending order. Valid values:
+        # The list of fields used for sorting. Fields such as TriggerTime and StartedTime are supported. You must configure this parameter in the Sorting field + Sort by (Desc/Asc). By default, results are sorted in ascending order. Valid values:
         # 
         # *   Id (Desc/Asc): the resource group ID
         # *   Name (Desc/Asc): the name of the resource group
@@ -52076,7 +52149,7 @@ class ListResourceGroupsShrinkRequest(TeaModel):
         self.project_id = project_id
         # The types of resource groups to query. If you do not configure this parameter, only serverless resource groups are returned by default.
         self.resource_group_types_shrink = resource_group_types_shrink
-        # The fields used for sorting. Fields such as TriggerTime and StartedTime are supported. The value of this parameter is in the Sort field + Sort by (Desc/Asc) format. By default, results are sorted in ascending order. Valid values:
+        # The list of fields used for sorting. Fields such as TriggerTime and StartedTime are supported. You must configure this parameter in the Sorting field + Sort by (Desc/Asc). By default, results are sorted in ascending order. Valid values:
         # 
         # *   Id (Desc/Asc): the resource group ID
         # *   Name (Desc/Asc): the name of the resource group
@@ -52258,12 +52331,12 @@ class ListResourceGroupsResponseBodyPagingInfoResourceGroupList(TeaModel):
         self.payment_type = payment_type
         # Remarks for resource groups
         self.remark = remark
-        # The type of the resource group. Valid values:
+        # Resource group types:
         # 
-        # *   CommonV2: serverless resource group
-        # *   ExclusiveDataIntegration: exclusive resource group for Data Integration
-        # *   ExclusiveScheduler: exclusive resource group for scheduling
-        # *   ExclusiveDataService: exclusive resource group for DataService Studio
+        # *   CommonV2: Serverless resource group
+        # *   ExclusiveDataIntegration: Exclusive resource group for Data Integration
+        # *   ExclusiveScheduler: Exclusive resource group for scheduling
+        # *   ExclusiveDataService: Exclusive resource group for DataService Studio
         self.resource_group_type = resource_group_type
         # Resource Group specifications
         self.spec = spec
@@ -70487,8 +70560,6 @@ class UpdateTaskRequestRuntimeResource(TeaModel):
         # The ID of the image configured for task running.
         self.image = image
         # The ID of the resource group for scheduling configured for task running.
-        # 
-        # This parameter is required.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -70616,8 +70687,6 @@ class UpdateTaskRequestTrigger(TeaModel):
         # 
         # *   Scheduler: scheduling cycle-based trigger
         # *   Manual: manual trigger
-        # 
-        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -70704,14 +70773,10 @@ class UpdateTaskRequest(TeaModel):
         # *   Immediately
         self.instance_mode = instance_mode
         # The name.
-        # 
-        # This parameter is required.
         self.name = name
         # The output information.
         self.outputs = outputs
         # The account ID of the task owner.
-        # 
-        # This parameter is required.
         self.owner = owner
         # The rerun interval. Unit: seconds.
         self.rerun_interval = rerun_interval
@@ -70720,14 +70785,10 @@ class UpdateTaskRequest(TeaModel):
         # *   AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
         # *   FailureAllowed: The task can be rerun only after it fails to run.
         # *   AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to run.
-        # 
-        # This parameter is required.
         self.rerun_mode = rerun_mode
         # The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
         self.rerun_times = rerun_times
         # The configurations of the runtime environment, such as the resource group information.
-        # 
-        # This parameter is required.
         self.runtime_resource = runtime_resource
         # The script information.
         self.script = script
@@ -70736,8 +70797,6 @@ class UpdateTaskRequest(TeaModel):
         # The timeout period of task running. Unit: seconds.
         self.timeout = timeout
         # The trigger method.
-        # 
-        # This parameter is required.
         self.trigger = trigger
 
     def validate(self):
@@ -70915,14 +70974,10 @@ class UpdateTaskShrinkRequest(TeaModel):
         # *   Immediately
         self.instance_mode = instance_mode
         # The name.
-        # 
-        # This parameter is required.
         self.name = name
         # The output information.
         self.outputs_shrink = outputs_shrink
         # The account ID of the task owner.
-        # 
-        # This parameter is required.
         self.owner = owner
         # The rerun interval. Unit: seconds.
         self.rerun_interval = rerun_interval
@@ -70931,14 +70986,10 @@ class UpdateTaskShrinkRequest(TeaModel):
         # *   AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
         # *   FailureAllowed: The task can be rerun only after it fails to run.
         # *   AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to run.
-        # 
-        # This parameter is required.
         self.rerun_mode = rerun_mode
         # The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
         self.rerun_times = rerun_times
         # The configurations of the runtime environment, such as the resource group information.
-        # 
-        # This parameter is required.
         self.runtime_resource_shrink = runtime_resource_shrink
         # The script information.
         self.script_shrink = script_shrink
@@ -70947,8 +70998,6 @@ class UpdateTaskShrinkRequest(TeaModel):
         # The timeout period of task running. Unit: seconds.
         self.timeout = timeout
         # The trigger method.
-        # 
-        # This parameter is required.
         self.trigger_shrink = trigger_shrink
 
     def validate(self):

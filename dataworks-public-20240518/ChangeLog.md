@@ -1,3 +1,8 @@
+2025-07-30 Version: 7.2.7
+- Update API CreateWorkflowInstances: add request parameters TagCreationPolicy.
+- Update API CreateWorkflowInstances: add request parameters Tags.
+
+
 2025-07-17 Version: 7.2.6
 - Update API GetProjectMember: add response parameters Body.ProjectMember.UserName.
 - Update API ListProjectMembers: add response parameters Body.PagingInfo.ProjectMembers.$.UserName.

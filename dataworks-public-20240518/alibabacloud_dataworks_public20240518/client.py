@@ -4667,6 +4667,8 @@ class Client(OpenApiClient):
             request.default_run_properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.default_run_properties, 'DefaultRunProperties', 'json')
         if not UtilClient.is_unset(tmp_req.periods):
             request.periods_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.periods, 'Periods', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         body = {}
         if not UtilClient.is_unset(request.auto_start_enabled):
             body['AutoStartEnabled'] = request.auto_start_enabled
@@ -4682,6 +4684,10 @@ class Client(OpenApiClient):
             body['Periods'] = request.periods_shrink
         if not UtilClient.is_unset(request.project_id):
             body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.tag_creation_policy):
+            body['TagCreationPolicy'] = request.tag_creation_policy
+        if not UtilClient.is_unset(request.tags_shrink):
+            body['Tags'] = request.tags_shrink
         if not UtilClient.is_unset(request.task_parameters):
             body['TaskParameters'] = request.task_parameters
         if not UtilClient.is_unset(request.type):
@@ -4728,6 +4734,8 @@ class Client(OpenApiClient):
             request.default_run_properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.default_run_properties, 'DefaultRunProperties', 'json')
         if not UtilClient.is_unset(tmp_req.periods):
             request.periods_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.periods, 'Periods', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         body = {}
         if not UtilClient.is_unset(request.auto_start_enabled):
             body['AutoStartEnabled'] = request.auto_start_enabled
@@ -4743,6 +4751,10 @@ class Client(OpenApiClient):
             body['Periods'] = request.periods_shrink
         if not UtilClient.is_unset(request.project_id):
             body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.tag_creation_policy):
+            body['TagCreationPolicy'] = request.tag_creation_policy
+        if not UtilClient.is_unset(request.tags_shrink):
+            body['Tags'] = request.tags_shrink
         if not UtilClient.is_unset(request.task_parameters):
             body['TaskParameters'] = request.task_parameters
         if not UtilClient.is_unset(request.type):
