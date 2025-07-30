@@ -937,6 +937,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_check_type_to_scheme_with_options_async(request, runtime)
 
+    def create_mining_task_with_options(
+        self,
+        request: qualitycheck_20190115_models.CreateMiningTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> qualitycheck_20190115_models.CreateMiningTaskResponse:
+        """
+        @summary 创建标签挖掘任务
+        
+        @param request: CreateMiningTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMiningTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
+        body = {}
+        if not UtilClient.is_unset(request.callback_url):
+            body['CallbackUrl'] = request.callback_url
+        if not UtilClient.is_unset(request.file_path):
+            body['FilePath'] = request.file_path
+        if not UtilClient.is_unset(request.param):
+            body['Param'] = request.param
+        if not UtilClient.is_unset(request.task_type):
+            body['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMiningTask',
+            version='2019-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            qualitycheck_20190115_models.CreateMiningTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_mining_task_with_options_async(
+        self,
+        request: qualitycheck_20190115_models.CreateMiningTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> qualitycheck_20190115_models.CreateMiningTaskResponse:
+        """
+        @summary 创建标签挖掘任务
+        
+        @param request: CreateMiningTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMiningTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
+        body = {}
+        if not UtilClient.is_unset(request.callback_url):
+            body['CallbackUrl'] = request.callback_url
+        if not UtilClient.is_unset(request.file_path):
+            body['FilePath'] = request.file_path
+        if not UtilClient.is_unset(request.param):
+            body['Param'] = request.param
+        if not UtilClient.is_unset(request.task_type):
+            body['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMiningTask',
+            version='2019-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            qualitycheck_20190115_models.CreateMiningTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_mining_task(
+        self,
+        request: qualitycheck_20190115_models.CreateMiningTaskRequest,
+    ) -> qualitycheck_20190115_models.CreateMiningTaskResponse:
+        """
+        @summary 创建标签挖掘任务
+        
+        @param request: CreateMiningTaskRequest
+        @return: CreateMiningTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_mining_task_with_options(request, runtime)
+
+    async def create_mining_task_async(
+        self,
+        request: qualitycheck_20190115_models.CreateMiningTaskRequest,
+    ) -> qualitycheck_20190115_models.CreateMiningTaskResponse:
+        """
+        @summary 创建标签挖掘任务
+        
+        @param request: CreateMiningTaskRequest
+        @return: CreateMiningTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_mining_task_with_options_async(request, runtime)
+
     def create_quality_check_scheme_with_options(
         self,
         request: qualitycheck_20190115_models.CreateQualityCheckSchemeRequest,
@@ -3292,6 +3408,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_customization_config_list_with_options_async(request, runtime)
+
+    def get_mining_task_result_with_options(
+        self,
+        request: qualitycheck_20190115_models.GetMiningTaskResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> qualitycheck_20190115_models.GetMiningTaskResultResponse:
+        """
+        @summary 获取标签挖掘任务结果
+        
+        @param request: GetMiningTaskResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMiningTaskResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMiningTaskResult',
+            version='2019-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            qualitycheck_20190115_models.GetMiningTaskResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_mining_task_result_with_options_async(
+        self,
+        request: qualitycheck_20190115_models.GetMiningTaskResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> qualitycheck_20190115_models.GetMiningTaskResultResponse:
+        """
+        @summary 获取标签挖掘任务结果
+        
+        @param request: GetMiningTaskResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMiningTaskResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMiningTaskResult',
+            version='2019-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            qualitycheck_20190115_models.GetMiningTaskResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_mining_task_result(
+        self,
+        request: qualitycheck_20190115_models.GetMiningTaskResultRequest,
+    ) -> qualitycheck_20190115_models.GetMiningTaskResultResponse:
+        """
+        @summary 获取标签挖掘任务结果
+        
+        @param request: GetMiningTaskResultRequest
+        @return: GetMiningTaskResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_mining_task_result_with_options(request, runtime)
+
+    async def get_mining_task_result_async(
+        self,
+        request: qualitycheck_20190115_models.GetMiningTaskResultRequest,
+    ) -> qualitycheck_20190115_models.GetMiningTaskResultResponse:
+        """
+        @summary 获取标签挖掘任务结果
+        
+        @param request: GetMiningTaskResultRequest
+        @return: GetMiningTaskResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_mining_task_result_with_options_async(request, runtime)
 
     def get_next_result_to_verify_with_options(
         self,

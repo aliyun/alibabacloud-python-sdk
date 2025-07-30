@@ -1,3 +1,8 @@
+2025-07-30 Version: 8.4.0
+- Support API CreateMiningTask.
+- Support API GetMiningTaskResult.
+
+
 2025-06-05 Version: 8.3.0
 - Support API GetSchemeTaskConfig.
 
