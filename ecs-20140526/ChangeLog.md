@@ -1,3 +1,7 @@
+2025-07-30 Version: 7.1.1
+- Update API DescribePrice: add request parameters SchedulerOptions.DeploymentSetStrategy.
+
+
 2025-07-28 Version: 7.1.0
 - Support API DescribeAutoSnapshotPolicyAssociations.
 - Support API ModifyInstanceNetworkOptions.
