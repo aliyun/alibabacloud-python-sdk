@@ -1,3 +1,11 @@
+2025-07-30 Version: 2.1.1
+- Update API AddLiveStreamMerge: add request parameters LiveMerger.
+- Update API AddLiveStreamMerge: add request parameters MergeParameters.
+- Update API AddLiveStreamMerge: add response parameters Body.Message.
+- Update API DescribeLiveStreamMerge: add response parameters Body.LiveStreamMergeList.$.LiveMerger.
+- Update API DescribeLiveStreamMerge: add response parameters Body.LiveStreamMergeList.$.MergeParameters.
+
+
 2025-07-29 Version: 2.1.0
 - Support API DescribeLiveUserStreamMetricData.
 

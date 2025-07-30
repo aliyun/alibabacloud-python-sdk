@@ -4062,6 +4062,10 @@ class Client(OpenApiClient):
             query['InStreamName1'] = request.in_stream_name_1
         if not UtilClient.is_unset(request.in_stream_name_2):
             query['InStreamName2'] = request.in_stream_name_2
+        if not UtilClient.is_unset(request.live_merger):
+            query['LiveMerger'] = request.live_merger
+        if not UtilClient.is_unset(request.merge_parameters):
+            query['MergeParameters'] = request.merge_parameters
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.protocol):
@@ -4121,6 +4125,10 @@ class Client(OpenApiClient):
             query['InStreamName1'] = request.in_stream_name_1
         if not UtilClient.is_unset(request.in_stream_name_2):
             query['InStreamName2'] = request.in_stream_name_2
+        if not UtilClient.is_unset(request.live_merger):
+            query['LiveMerger'] = request.live_merger
+        if not UtilClient.is_unset(request.merge_parameters):
+            query['MergeParameters'] = request.merge_parameters
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.protocol):

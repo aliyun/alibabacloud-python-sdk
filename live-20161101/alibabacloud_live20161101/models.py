@@ -5830,6 +5830,8 @@ class AddLiveStreamMergeRequest(TeaModel):
         in_app_name_2: str = None,
         in_stream_name_1: str = None,
         in_stream_name_2: str = None,
+        live_merger: str = None,
+        merge_parameters: str = None,
         owner_id: int = None,
         protocol: str = None,
         region_id: str = None,
@@ -5868,6 +5870,8 @@ class AddLiveStreamMergeRequest(TeaModel):
         # 
         # This parameter is required.
         self.in_stream_name_2 = in_stream_name_2
+        self.live_merger = live_merger
+        self.merge_parameters = merge_parameters
         self.owner_id = owner_id
         # The streaming protocol. Valid values:
         # 
@@ -5909,6 +5913,10 @@ class AddLiveStreamMergeRequest(TeaModel):
             result['InStreamName1'] = self.in_stream_name_1
         if self.in_stream_name_2 is not None:
             result['InStreamName2'] = self.in_stream_name_2
+        if self.live_merger is not None:
+            result['LiveMerger'] = self.live_merger
+        if self.merge_parameters is not None:
+            result['MergeParameters'] = self.merge_parameters
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.protocol is not None:
@@ -5937,6 +5945,10 @@ class AddLiveStreamMergeRequest(TeaModel):
             self.in_stream_name_1 = m.get('InStreamName1')
         if m.get('InStreamName2') is not None:
             self.in_stream_name_2 = m.get('InStreamName2')
+        if m.get('LiveMerger') is not None:
+            self.live_merger = m.get('LiveMerger')
+        if m.get('MergeParameters') is not None:
+            self.merge_parameters = m.get('MergeParameters')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('Protocol') is not None:
@@ -5953,8 +5965,10 @@ class AddLiveStreamMergeRequest(TeaModel):
 class AddLiveStreamMergeResponseBody(TeaModel):
     def __init__(
         self,
+        message: str = None,
         request_id: str = None,
     ):
+        self.message = message
         # The request ID.
         self.request_id = request_id
 
@@ -5967,12 +5981,16 @@ class AddLiveStreamMergeResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -47317,6 +47335,8 @@ class DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge(TeaM
         in_app_name_2: str = None,
         in_stream_name_1: str = None,
         in_stream_name_2: str = None,
+        live_merger: str = None,
+        merge_parameters: str = None,
         protocol: str = None,
         start_time: str = None,
         stream_name: str = None,
@@ -47340,6 +47360,8 @@ class DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge(TeaM
         self.in_stream_name_1 = in_stream_name_1
         # The name of the input secondary stream.
         self.in_stream_name_2 = in_stream_name_2
+        self.live_merger = live_merger
+        self.merge_parameters = merge_parameters
         # The streaming protocol.
         self.protocol = protocol
         # The start time of the stream mixing.
@@ -47376,6 +47398,10 @@ class DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge(TeaM
             result['InStreamName1'] = self.in_stream_name_1
         if self.in_stream_name_2 is not None:
             result['InStreamName2'] = self.in_stream_name_2
+        if self.live_merger is not None:
+            result['LiveMerger'] = self.live_merger
+        if self.merge_parameters is not None:
+            result['MergeParameters'] = self.merge_parameters
         if self.protocol is not None:
             result['Protocol'] = self.protocol
         if self.start_time is not None:
@@ -47406,6 +47432,10 @@ class DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge(TeaM
             self.in_stream_name_1 = m.get('InStreamName1')
         if m.get('InStreamName2') is not None:
             self.in_stream_name_2 = m.get('InStreamName2')
+        if m.get('LiveMerger') is not None:
+            self.live_merger = m.get('LiveMerger')
+        if m.get('MergeParameters') is not None:
+            self.merge_parameters = m.get('MergeParameters')
         if m.get('Protocol') is not None:
             self.protocol = m.get('Protocol')
         if m.get('StartTime') is not None:
