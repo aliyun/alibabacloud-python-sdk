@@ -1,3 +1,26 @@
+2025-07-30 Version: 4.3.1
+- Update API CreateDBCluster: add request parameters ClusterNodeCount.
+- Update API CreateDBCluster: add request parameters ClusterNodeType.
+- Update API CreateDBCluster: add request parameters ScaleMax.
+- Update API CreateDBCluster: add request parameters ScaleMin.
+- Update API CreateDBInstance: add request parameters ClusterNodeCount.
+- Update API CreateDBInstance: add request parameters ClusterNodeType.
+- Update API CreateDBInstance: add request parameters ScaleMax.
+- Update API CreateDBInstance: add request parameters ScaleMin.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.Serverless.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBClusterList.$.ClusterNodeCount.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBClusterList.$.ClusterNodeType.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBClusterList.$.ScaleMax.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBClusterList.$.ScaleMin.
+- Update API DescribeDBInstances: add response parameters Body.Items.$.Serverless.
+- Update API GetCreateBEClusterInquiry: add response parameters Body.Data.PricingRules.
+- Update API GetModifyBEClusterInquiry: add response parameters Body.Data.PricingRules.
+- Update API ModifyDBCluster: add request parameters ClusterNodeCount.
+- Update API ModifyDBCluster: add request parameters ClusterNodeType.
+- Update API ModifyDBCluster: add request parameters ScaleMax.
+- Update API ModifyDBCluster: add request parameters ScaleMin.
+
+
 2025-05-12 Version: 4.3.0
 - Support API CreateDBClusterBinding.
 - Support API DeleteDBClusterBinding.

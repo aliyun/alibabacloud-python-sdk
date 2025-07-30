@@ -433,6 +433,10 @@ class Client(OpenApiClient):
             query['CacheSize'] = request.cache_size
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.cluster_node_count):
+            query['ClusterNodeCount'] = request.cluster_node_count
+        if not UtilClient.is_unset(request.cluster_node_type):
+            query['ClusterNodeType'] = request.cluster_node_type
         if not UtilClient.is_unset(request.dbcluster_class):
             query['DBClusterClass'] = request.dbcluster_class
         if not UtilClient.is_unset(request.dbcluster_description):
@@ -447,6 +451,10 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scale_max):
+            query['ScaleMax'] = request.scale_max
+        if not UtilClient.is_unset(request.scale_min):
+            query['ScaleMin'] = request.scale_min
         if not UtilClient.is_unset(request.used_time):
             query['UsedTime'] = request.used_time
         if not UtilClient.is_unset(request.v_switch_id):
@@ -498,6 +506,10 @@ class Client(OpenApiClient):
             query['CacheSize'] = request.cache_size
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.cluster_node_count):
+            query['ClusterNodeCount'] = request.cluster_node_count
+        if not UtilClient.is_unset(request.cluster_node_type):
+            query['ClusterNodeType'] = request.cluster_node_type
         if not UtilClient.is_unset(request.dbcluster_class):
             query['DBClusterClass'] = request.dbcluster_class
         if not UtilClient.is_unset(request.dbcluster_description):
@@ -512,6 +524,10 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scale_max):
+            query['ScaleMax'] = request.scale_max
+        if not UtilClient.is_unset(request.scale_min):
+            query['ScaleMin'] = request.scale_min
         if not UtilClient.is_unset(request.used_time):
             query['UsedTime'] = request.used_time
         if not UtilClient.is_unset(request.v_switch_id):
@@ -725,6 +741,10 @@ class Client(OpenApiClient):
             query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cluster_node_count):
+            query['ClusterNodeCount'] = request.cluster_node_count
+        if not UtilClient.is_unset(request.cluster_node_type):
+            query['ClusterNodeType'] = request.cluster_node_type
         if not UtilClient.is_unset(request.connection_string):
             query['ConnectionString'] = request.connection_string
         if not UtilClient.is_unset(request.dbinstance_class):
@@ -745,6 +765,10 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scale_max):
+            query['ScaleMax'] = request.scale_max
+        if not UtilClient.is_unset(request.scale_min):
+            query['ScaleMin'] = request.scale_min
         if not UtilClient.is_unset(request.security_iplist):
             query['SecurityIPList'] = request.security_iplist
         if not UtilClient.is_unset(request.tag_shrink):
@@ -808,6 +832,10 @@ class Client(OpenApiClient):
             query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cluster_node_count):
+            query['ClusterNodeCount'] = request.cluster_node_count
+        if not UtilClient.is_unset(request.cluster_node_type):
+            query['ClusterNodeType'] = request.cluster_node_type
         if not UtilClient.is_unset(request.connection_string):
             query['ConnectionString'] = request.connection_string
         if not UtilClient.is_unset(request.dbinstance_class):
@@ -828,6 +856,10 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scale_max):
+            query['ScaleMax'] = request.scale_max
+        if not UtilClient.is_unset(request.scale_min):
+            query['ScaleMin'] = request.scale_min
         if not UtilClient.is_unset(request.security_iplist):
             query['SecurityIPList'] = request.security_iplist
         if not UtilClient.is_unset(request.tag_shrink):
@@ -2945,6 +2977,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cache_size):
             query['CacheSize'] = request.cache_size
+        if not UtilClient.is_unset(request.cluster_node_count):
+            query['ClusterNodeCount'] = request.cluster_node_count
+        if not UtilClient.is_unset(request.cluster_node_type):
+            query['ClusterNodeType'] = request.cluster_node_type
         if not UtilClient.is_unset(request.dbcluster_class):
             query['DBClusterClass'] = request.dbcluster_class
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -2957,6 +2993,10 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scale_max):
+            query['ScaleMax'] = request.scale_max
+        if not UtilClient.is_unset(request.scale_min):
+            query['ScaleMin'] = request.scale_min
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2992,6 +3032,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cache_size):
             query['CacheSize'] = request.cache_size
+        if not UtilClient.is_unset(request.cluster_node_count):
+            query['ClusterNodeCount'] = request.cluster_node_count
+        if not UtilClient.is_unset(request.cluster_node_type):
+            query['ClusterNodeType'] = request.cluster_node_type
         if not UtilClient.is_unset(request.dbcluster_class):
             query['DBClusterClass'] = request.dbcluster_class
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -3004,6 +3048,10 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scale_max):
+            query['ScaleMax'] = request.scale_max
+        if not UtilClient.is_unset(request.scale_min):
+            query['ScaleMin'] = request.scale_min
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

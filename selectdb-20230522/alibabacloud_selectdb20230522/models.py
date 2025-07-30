@@ -482,6 +482,8 @@ class CreateDBClusterRequest(TeaModel):
         self,
         cache_size: str = None,
         charge_type: str = None,
+        cluster_node_count: int = None,
+        cluster_node_type: str = None,
         dbcluster_class: str = None,
         dbcluster_description: str = None,
         dbinstance_id: str = None,
@@ -490,6 +492,8 @@ class CreateDBClusterRequest(TeaModel):
         period: str = None,
         region_id: str = None,
         resource_owner_id: int = None,
+        scale_max: float = None,
+        scale_min: float = None,
         used_time: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
@@ -499,6 +503,8 @@ class CreateDBClusterRequest(TeaModel):
         self.cache_size = cache_size
         # This parameter is required.
         self.charge_type = charge_type
+        self.cluster_node_count = cluster_node_count
+        self.cluster_node_type = cluster_node_type
         # This parameter is required.
         self.dbcluster_class = dbcluster_class
         # This parameter is required.
@@ -515,6 +521,8 @@ class CreateDBClusterRequest(TeaModel):
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_id = resource_owner_id
+        self.scale_max = scale_max
+        self.scale_min = scale_min
         self.used_time = used_time
         # This parameter is required.
         self.v_switch_id = v_switch_id
@@ -538,6 +546,10 @@ class CreateDBClusterRequest(TeaModel):
             result['CacheSize'] = self.cache_size
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
+        if self.cluster_node_count is not None:
+            result['ClusterNodeCount'] = self.cluster_node_count
+        if self.cluster_node_type is not None:
+            result['ClusterNodeType'] = self.cluster_node_type
         if self.dbcluster_class is not None:
             result['DBClusterClass'] = self.dbcluster_class
         if self.dbcluster_description is not None:
@@ -554,6 +566,10 @@ class CreateDBClusterRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.scale_max is not None:
+            result['ScaleMax'] = self.scale_max
+        if self.scale_min is not None:
+            result['ScaleMin'] = self.scale_min
         if self.used_time is not None:
             result['UsedTime'] = self.used_time
         if self.v_switch_id is not None:
@@ -570,6 +586,10 @@ class CreateDBClusterRequest(TeaModel):
             self.cache_size = m.get('CacheSize')
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
+        if m.get('ClusterNodeCount') is not None:
+            self.cluster_node_count = m.get('ClusterNodeCount')
+        if m.get('ClusterNodeType') is not None:
+            self.cluster_node_type = m.get('ClusterNodeType')
         if m.get('DBClusterClass') is not None:
             self.dbcluster_class = m.get('DBClusterClass')
         if m.get('DBClusterDescription') is not None:
@@ -586,6 +606,10 @@ class CreateDBClusterRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ScaleMax') is not None:
+            self.scale_max = m.get('ScaleMax')
+        if m.get('ScaleMin') is not None:
+            self.scale_min = m.get('ScaleMin')
         if m.get('UsedTime') is not None:
             self.used_time = m.get('UsedTime')
         if m.get('VSwitchId') is not None:
@@ -964,6 +988,8 @@ class CreateDBInstanceRequest(TeaModel):
         cache_size: int = None,
         charge_type: str = None,
         client_token: str = None,
+        cluster_node_count: int = None,
+        cluster_node_type: str = None,
         connection_string: str = None,
         dbinstance_class: str = None,
         dbinstance_description: str = None,
@@ -975,6 +1001,8 @@ class CreateDBInstanceRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
         resource_owner_id: int = None,
+        scale_max: float = None,
+        scale_min: float = None,
         security_iplist: str = None,
         tag: List[CreateDBInstanceRequestTag] = None,
         used_time: int = None,
@@ -982,6 +1010,10 @@ class CreateDBInstanceRequest(TeaModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # Specifies whether to add the virtual private cloud (VPC) CIDR block to the IP address whitelist. Valid values:
+        # 
+        # *   1: yes.
+        # *   0: no.
         self.add_vpcips = add_vpcips
         # The reserved cache size.
         # 
@@ -996,6 +1028,8 @@ class CreateDBInstanceRequest(TeaModel):
         self.charge_type = charge_type
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        self.cluster_node_count = cluster_node_count
+        self.cluster_node_type = cluster_node_type
         # The instance endpoint.
         self.connection_string = connection_string
         # The instance type. You can call the [DescribeAllDBInstanceClass](https://help.aliyun.com/document_detail/2853363.html) operation to query instance types.
@@ -1005,11 +1039,6 @@ class CreateDBInstanceRequest(TeaModel):
         # The instance description.
         self.dbinstance_description = dbinstance_description
         # The deployment method of the instance.
-        # 
-        # Valid values:
-        # 
-        # *   multi_az
-        # *   single_az
         self.deploy_scheme = deploy_scheme
         # The database engine of the instance. Default value: **selectdb**.
         self.engine = engine
@@ -1037,6 +1066,8 @@ class CreateDBInstanceRequest(TeaModel):
         # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
+        self.scale_max = scale_max
+        self.scale_min = scale_min
         # The IP addresses in the whitelist of the instance. Separate multiple IP addresses with commas (,).
         self.security_iplist = security_iplist
         # The instance tags.
@@ -1085,6 +1116,10 @@ class CreateDBInstanceRequest(TeaModel):
             result['ChargeType'] = self.charge_type
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.cluster_node_count is not None:
+            result['ClusterNodeCount'] = self.cluster_node_count
+        if self.cluster_node_type is not None:
+            result['ClusterNodeType'] = self.cluster_node_type
         if self.connection_string is not None:
             result['ConnectionString'] = self.connection_string
         if self.dbinstance_class is not None:
@@ -1109,6 +1144,10 @@ class CreateDBInstanceRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.scale_max is not None:
+            result['ScaleMax'] = self.scale_max
+        if self.scale_min is not None:
+            result['ScaleMin'] = self.scale_min
         if self.security_iplist is not None:
             result['SecurityIPList'] = self.security_iplist
         result['Tag'] = []
@@ -1135,6 +1174,10 @@ class CreateDBInstanceRequest(TeaModel):
             self.charge_type = m.get('ChargeType')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('ClusterNodeCount') is not None:
+            self.cluster_node_count = m.get('ClusterNodeCount')
+        if m.get('ClusterNodeType') is not None:
+            self.cluster_node_type = m.get('ClusterNodeType')
         if m.get('ConnectionString') is not None:
             self.connection_string = m.get('ConnectionString')
         if m.get('DBInstanceClass') is not None:
@@ -1160,6 +1203,10 @@ class CreateDBInstanceRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ScaleMax') is not None:
+            self.scale_max = m.get('ScaleMax')
+        if m.get('ScaleMin') is not None:
+            self.scale_min = m.get('ScaleMin')
         if m.get('SecurityIPList') is not None:
             self.security_iplist = m.get('SecurityIPList')
         self.tag = []
@@ -1185,6 +1232,8 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         cache_size: int = None,
         charge_type: str = None,
         client_token: str = None,
+        cluster_node_count: int = None,
+        cluster_node_type: str = None,
         connection_string: str = None,
         dbinstance_class: str = None,
         dbinstance_description: str = None,
@@ -1196,6 +1245,8 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
         resource_owner_id: int = None,
+        scale_max: float = None,
+        scale_min: float = None,
         security_iplist: str = None,
         tag_shrink: str = None,
         used_time: int = None,
@@ -1203,6 +1254,10 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # Specifies whether to add the virtual private cloud (VPC) CIDR block to the IP address whitelist. Valid values:
+        # 
+        # *   1: yes.
+        # *   0: no.
         self.add_vpcips = add_vpcips
         # The reserved cache size.
         # 
@@ -1217,6 +1272,8 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         self.charge_type = charge_type
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        self.cluster_node_count = cluster_node_count
+        self.cluster_node_type = cluster_node_type
         # The instance endpoint.
         self.connection_string = connection_string
         # The instance type. You can call the [DescribeAllDBInstanceClass](https://help.aliyun.com/document_detail/2853363.html) operation to query instance types.
@@ -1226,11 +1283,6 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # The instance description.
         self.dbinstance_description = dbinstance_description
         # The deployment method of the instance.
-        # 
-        # Valid values:
-        # 
-        # *   multi_az
-        # *   single_az
         self.deploy_scheme = deploy_scheme
         # The database engine of the instance. Default value: **selectdb**.
         self.engine = engine
@@ -1258,6 +1310,8 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
+        self.scale_max = scale_max
+        self.scale_min = scale_min
         # The IP addresses in the whitelist of the instance. Separate multiple IP addresses with commas (,).
         self.security_iplist = security_iplist
         # The instance tags.
@@ -1299,6 +1353,10 @@ class CreateDBInstanceShrinkRequest(TeaModel):
             result['ChargeType'] = self.charge_type
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.cluster_node_count is not None:
+            result['ClusterNodeCount'] = self.cluster_node_count
+        if self.cluster_node_type is not None:
+            result['ClusterNodeType'] = self.cluster_node_type
         if self.connection_string is not None:
             result['ConnectionString'] = self.connection_string
         if self.dbinstance_class is not None:
@@ -1321,6 +1379,10 @@ class CreateDBInstanceShrinkRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.scale_max is not None:
+            result['ScaleMax'] = self.scale_max
+        if self.scale_min is not None:
+            result['ScaleMin'] = self.scale_min
         if self.security_iplist is not None:
             result['SecurityIPList'] = self.security_iplist
         if self.tag_shrink is not None:
@@ -1345,6 +1407,10 @@ class CreateDBInstanceShrinkRequest(TeaModel):
             self.charge_type = m.get('ChargeType')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('ClusterNodeCount') is not None:
+            self.cluster_node_count = m.get('ClusterNodeCount')
+        if m.get('ClusterNodeType') is not None:
+            self.cluster_node_type = m.get('ClusterNodeType')
         if m.get('ConnectionString') is not None:
             self.connection_string = m.get('ConnectionString')
         if m.get('DBInstanceClass') is not None:
@@ -1367,6 +1433,10 @@ class CreateDBInstanceShrinkRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ScaleMax') is not None:
+            self.scale_max = m.get('ScaleMax')
+        if m.get('ScaleMin') is not None:
+            self.scale_min = m.get('ScaleMin')
         if m.get('SecurityIPList') is not None:
             self.security_iplist = m.get('SecurityIPList')
         if m.get('Tag') is not None:
@@ -3204,6 +3274,8 @@ class DescribeDBInstanceAttributeResponseBodyDBClusterList(TeaModel):
         cache_storage_type: str = None,
         charge_type: str = None,
         cluster_binding: str = None,
+        cluster_node_count: int = None,
+        cluster_node_type: str = None,
         cpu_cores: int = None,
         created_time: str = None,
         db_cluster_class: str = None,
@@ -3213,6 +3285,8 @@ class DescribeDBInstanceAttributeResponseBodyDBClusterList(TeaModel):
         memory: int = None,
         modified_time: str = None,
         performance_level: str = None,
+        scale_max: float = None,
+        scale_min: float = None,
         scaling_rules_enable: bool = None,
         start_time: str = None,
         status: str = None,
@@ -3230,6 +3304,8 @@ class DescribeDBInstanceAttributeResponseBodyDBClusterList(TeaModel):
         # *   **Prepaid**: subscription.
         self.charge_type = charge_type
         self.cluster_binding = cluster_binding
+        self.cluster_node_count = cluster_node_count
+        self.cluster_node_type = cluster_node_type
         # The number of CPU cores.
         self.cpu_cores = cpu_cores
         # The time when the cluster was created.
@@ -3256,6 +3332,8 @@ class DescribeDBInstanceAttributeResponseBodyDBClusterList(TeaModel):
         self.modified_time = modified_time
         # The performance level.
         self.performance_level = performance_level
+        self.scale_max = scale_max
+        self.scale_min = scale_min
         self.scaling_rules_enable = scaling_rules_enable
         # The time when the cluster started.
         self.start_time = start_time
@@ -3289,6 +3367,10 @@ class DescribeDBInstanceAttributeResponseBodyDBClusterList(TeaModel):
             result['ChargeType'] = self.charge_type
         if self.cluster_binding is not None:
             result['ClusterBinding'] = self.cluster_binding
+        if self.cluster_node_count is not None:
+            result['ClusterNodeCount'] = self.cluster_node_count
+        if self.cluster_node_type is not None:
+            result['ClusterNodeType'] = self.cluster_node_type
         if self.cpu_cores is not None:
             result['CpuCores'] = self.cpu_cores
         if self.created_time is not None:
@@ -3307,6 +3389,10 @@ class DescribeDBInstanceAttributeResponseBodyDBClusterList(TeaModel):
             result['ModifiedTime'] = self.modified_time
         if self.performance_level is not None:
             result['PerformanceLevel'] = self.performance_level
+        if self.scale_max is not None:
+            result['ScaleMax'] = self.scale_max
+        if self.scale_min is not None:
+            result['ScaleMin'] = self.scale_min
         if self.scaling_rules_enable is not None:
             result['ScalingRulesEnable'] = self.scaling_rules_enable
         if self.start_time is not None:
@@ -3331,6 +3417,10 @@ class DescribeDBInstanceAttributeResponseBodyDBClusterList(TeaModel):
             self.charge_type = m.get('ChargeType')
         if m.get('ClusterBinding') is not None:
             self.cluster_binding = m.get('ClusterBinding')
+        if m.get('ClusterNodeCount') is not None:
+            self.cluster_node_count = m.get('ClusterNodeCount')
+        if m.get('ClusterNodeType') is not None:
+            self.cluster_node_type = m.get('ClusterNodeType')
         if m.get('CpuCores') is not None:
             self.cpu_cores = m.get('CpuCores')
         if m.get('CreatedTime') is not None:
@@ -3349,6 +3439,10 @@ class DescribeDBInstanceAttributeResponseBodyDBClusterList(TeaModel):
             self.modified_time = m.get('ModifiedTime')
         if m.get('PerformanceLevel') is not None:
             self.performance_level = m.get('PerformanceLevel')
+        if m.get('ScaleMax') is not None:
+            self.scale_max = m.get('ScaleMax')
+        if m.get('ScaleMin') is not None:
+            self.scale_min = m.get('ScaleMin')
         if m.get('ScalingRulesEnable') is not None:
             self.scaling_rules_enable = m.get('ScalingRulesEnable')
         if m.get('StartTime') is not None:
@@ -3469,6 +3563,7 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
         request_id: str = None,
         resource_cpu: int = None,
         resource_group_id: str = None,
+        serverless: bool = None,
         status: str = None,
         storage_size: int = None,
         sub_domain: str = None,
@@ -3522,6 +3617,7 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
         self.resource_cpu = resource_cpu
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
+        self.serverless = serverless
         # The state of the instance. Valid values:
         # 
         # *   **CREATING**: The instance is being created.
@@ -3611,6 +3707,8 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
             result['ResourceCpu'] = self.resource_cpu
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.serverless is not None:
+            result['Serverless'] = self.serverless
         if self.status is not None:
             result['Status'] = self.status
         if self.storage_size is not None:
@@ -3681,6 +3779,8 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
             self.resource_cpu = m.get('ResourceCpu')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Serverless') is not None:
+            self.serverless = m.get('Serverless')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('StorageSize') is not None:
@@ -4479,6 +4579,7 @@ class DescribeDBInstancesResponseBodyItems(TeaModel):
         scale_max: int = None,
         scale_min: int = None,
         scale_replica: int = None,
+        serverless: bool = None,
         status: str = None,
         storage_size: int = None,
         storage_type: str = None,
@@ -4556,6 +4657,7 @@ class DescribeDBInstancesResponseBodyItems(TeaModel):
         self.scale_min = scale_min
         # This parameter is not returned.
         self.scale_replica = scale_replica
+        self.serverless = serverless
         # The state of the instance. Valid values:
         # 
         # *   **CREATING**: The instance is being created.
@@ -4664,6 +4766,8 @@ class DescribeDBInstancesResponseBodyItems(TeaModel):
             result['ScaleMin'] = self.scale_min
         if self.scale_replica is not None:
             result['ScaleReplica'] = self.scale_replica
+        if self.serverless is not None:
+            result['Serverless'] = self.serverless
         if self.status is not None:
             result['Status'] = self.status
         if self.storage_size is not None:
@@ -4755,6 +4859,8 @@ class DescribeDBInstancesResponseBodyItems(TeaModel):
             self.scale_min = m.get('ScaleMin')
         if m.get('ScaleReplica') is not None:
             self.scale_replica = m.get('ScaleReplica')
+        if m.get('Serverless') is not None:
+            self.serverless = m.get('Serverless')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('StorageSize') is not None:
@@ -5899,10 +6005,12 @@ class GetCreateBEClusterInquiryResponseBodyData(TeaModel):
     def __init__(
         self,
         currency: str = None,
+        pricing_rules: Dict[str, str] = None,
         trade_amount: str = None,
     ):
         # The currency.
         self.currency = currency
+        self.pricing_rules = pricing_rules
         # The amount of money.
         self.trade_amount = trade_amount
 
@@ -5917,6 +6025,8 @@ class GetCreateBEClusterInquiryResponseBodyData(TeaModel):
         result = dict()
         if self.currency is not None:
             result['Currency'] = self.currency
+        if self.pricing_rules is not None:
+            result['PricingRules'] = self.pricing_rules
         if self.trade_amount is not None:
             result['TradeAmount'] = self.trade_amount
         return result
@@ -5925,6 +6035,8 @@ class GetCreateBEClusterInquiryResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('Currency') is not None:
             self.currency = m.get('Currency')
+        if m.get('PricingRules') is not None:
+            self.pricing_rules = m.get('PricingRules')
         if m.get('TradeAmount') is not None:
             self.trade_amount = m.get('TradeAmount')
         return self
@@ -6055,6 +6167,7 @@ class GetModifyBEClusterInquiryRequest(TeaModel):
         # 
         # This parameter is required.
         self.db_instance_id = db_instance_id
+        # Specifies whether to change the billing method of the cluster.
         self.modify_cluster_charge_type = modify_cluster_charge_type
         # The size of the reserved cache.
         self.pre_cache_size = pre_cache_size
@@ -6154,11 +6267,14 @@ class GetModifyBEClusterInquiryResponseBodyData(TeaModel):
     def __init__(
         self,
         currency: str = None,
+        pricing_rules: Dict[str, str] = None,
         refund_amount: str = None,
         trade_amount: str = None,
     ):
         # The currency.
         self.currency = currency
+        self.pricing_rules = pricing_rules
+        # The estimated refund amount when the subscription cluster of a subscription instance is changed to a pay-as-you-go cluster.
         self.refund_amount = refund_amount
         # The amount of money.
         self.trade_amount = trade_amount
@@ -6174,6 +6290,8 @@ class GetModifyBEClusterInquiryResponseBodyData(TeaModel):
         result = dict()
         if self.currency is not None:
             result['Currency'] = self.currency
+        if self.pricing_rules is not None:
+            result['PricingRules'] = self.pricing_rules
         if self.refund_amount is not None:
             result['RefundAmount'] = self.refund_amount
         if self.trade_amount is not None:
@@ -6184,6 +6302,8 @@ class GetModifyBEClusterInquiryResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('Currency') is not None:
             self.currency = m.get('Currency')
+        if m.get('PricingRules') is not None:
+            self.pricing_rules = m.get('PricingRules')
         if m.get('RefundAmount') is not None:
             self.refund_amount = m.get('RefundAmount')
         if m.get('TradeAmount') is not None:
@@ -6412,15 +6532,21 @@ class ModifyDBClusterRequest(TeaModel):
     def __init__(
         self,
         cache_size: str = None,
+        cluster_node_count: int = None,
+        cluster_node_type: str = None,
         dbcluster_class: str = None,
         dbcluster_id: str = None,
         dbinstance_id: str = None,
         engine: str = None,
         region_id: str = None,
         resource_owner_id: int = None,
+        scale_max: float = None,
+        scale_min: float = None,
     ):
         # The size of the reserved cache.
         self.cache_size = cache_size
+        self.cluster_node_count = cluster_node_count
+        self.cluster_node_type = cluster_node_type
         # This parameter is required.
         self.dbcluster_class = dbcluster_class
         # This parameter is required.
@@ -6432,6 +6558,8 @@ class ModifyDBClusterRequest(TeaModel):
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_id = resource_owner_id
+        self.scale_max = scale_max
+        self.scale_min = scale_min
 
     def validate(self):
         pass
@@ -6444,6 +6572,10 @@ class ModifyDBClusterRequest(TeaModel):
         result = dict()
         if self.cache_size is not None:
             result['CacheSize'] = self.cache_size
+        if self.cluster_node_count is not None:
+            result['ClusterNodeCount'] = self.cluster_node_count
+        if self.cluster_node_type is not None:
+            result['ClusterNodeType'] = self.cluster_node_type
         if self.dbcluster_class is not None:
             result['DBClusterClass'] = self.dbcluster_class
         if self.dbcluster_id is not None:
@@ -6456,12 +6588,20 @@ class ModifyDBClusterRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.scale_max is not None:
+            result['ScaleMax'] = self.scale_max
+        if self.scale_min is not None:
+            result['ScaleMin'] = self.scale_min
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CacheSize') is not None:
             self.cache_size = m.get('CacheSize')
+        if m.get('ClusterNodeCount') is not None:
+            self.cluster_node_count = m.get('ClusterNodeCount')
+        if m.get('ClusterNodeType') is not None:
+            self.cluster_node_type = m.get('ClusterNodeType')
         if m.get('DBClusterClass') is not None:
             self.dbcluster_class = m.get('DBClusterClass')
         if m.get('DBClusterId') is not None:
@@ -6474,6 +6614,10 @@ class ModifyDBClusterRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ScaleMax') is not None:
+            self.scale_max = m.get('ScaleMax')
+        if m.get('ScaleMin') is not None:
+            self.scale_min = m.get('ScaleMin')
         return self
 
 
