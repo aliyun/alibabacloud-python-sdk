@@ -1,3 +1,11 @@
+2025-07-30 Version: 1.1.4
+- Update API CreateRootCACertificate: add request parameters ClientToken.
+- Update API DescribeCACertificate: add response parameters Body.Certificate.FullAlgorithm.
+- Update API DescribeCACertificate: add response parameters Body.Certificate.IssuerType.
+- Update API DescribeCACertificate: add response parameters Body.Certificate.Years.
+- Update API UpdateCACertificateStatus: add request parameters ClientToken.
+
+
 2025-07-02 Version: 1.1.3
 - Generated python 2020-06-30 for cas.
 

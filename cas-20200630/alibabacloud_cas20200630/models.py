@@ -1219,6 +1219,7 @@ class CreateRootCACertificateRequest(TeaModel):
     def __init__(
         self,
         algorithm: str = None,
+        client_token: str = None,
         common_name: str = None,
         country_code: str = None,
         locality: str = None,
@@ -1238,9 +1239,8 @@ class CreateRootCACertificateRequest(TeaModel):
         # *   **SM2_256**: The signature algorithm is SM3WithSM2.
         # 
         # The encryption algorithm of the root CA certificate must be consistent with the **encryption algorithm** of the private root CA instance that you purchase. For example, if the **encryption algorithm** of the private root CA instance that you purchase is **RSA**, the key algorithm of the root CA certificate must be **RSA_1024**, **RSA_2048**, or **RSA_4096**.
-        # 
-        # This parameter is required.
         self.algorithm = algorithm
+        self.client_token = client_token
         # The common name or abbreviation of the organization. The value can contain letters.
         # 
         # This parameter is required.
@@ -1283,6 +1283,8 @@ class CreateRootCACertificateRequest(TeaModel):
         result = dict()
         if self.algorithm is not None:
             result['Algorithm'] = self.algorithm
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.common_name is not None:
             result['CommonName'] = self.common_name
         if self.country_code is not None:
@@ -1303,6 +1305,8 @@ class CreateRootCACertificateRequest(TeaModel):
         m = m or dict()
         if m.get('Algorithm') is not None:
             self.algorithm = m.get('Algorithm')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('CommonName') is not None:
             self.common_name = m.get('CommonName')
         if m.get('CountryCode') is not None:
@@ -2348,7 +2352,9 @@ class DescribeCACertificateResponseBodyCertificate(TeaModel):
         crl_day: int = None,
         crl_status: str = None,
         crl_url: str = None,
+        full_algorithm: str = None,
         identifier: str = None,
+        issuer_type: str = None,
         key_size: int = None,
         locality: str = None,
         md_5: str = None,
@@ -2363,6 +2369,7 @@ class DescribeCACertificateResponseBodyCertificate(TeaModel):
         status: str = None,
         subject_dn: str = None,
         x_509certificate: str = None,
+        years: int = None,
     ):
         # The expiration date of the CA certificate. This value is a UNIX timestamp. Unit: milliseconds.
         self.after_date = after_date
@@ -2399,8 +2406,10 @@ class DescribeCACertificateResponseBodyCertificate(TeaModel):
         self.crl_status = crl_status
         # The address of the CRL.
         self.crl_url = crl_url
+        self.full_algorithm = full_algorithm
         # The unique identifier of the CA certificate.
         self.identifier = identifier
+        self.issuer_type = issuer_type
         # The key length of the CA certificate.
         self.key_size = key_size
         # The name of the city in which the organization is located.
@@ -2441,6 +2450,7 @@ class DescribeCACertificateResponseBodyCertificate(TeaModel):
         self.subject_dn = subject_dn
         # The content of the CA certificate.
         self.x_509certificate = x_509certificate
+        self.years = years
 
     def validate(self):
         pass
@@ -2477,8 +2487,12 @@ class DescribeCACertificateResponseBodyCertificate(TeaModel):
             result['CrlStatus'] = self.crl_status
         if self.crl_url is not None:
             result['CrlUrl'] = self.crl_url
+        if self.full_algorithm is not None:
+            result['FullAlgorithm'] = self.full_algorithm
         if self.identifier is not None:
             result['Identifier'] = self.identifier
+        if self.issuer_type is not None:
+            result['IssuerType'] = self.issuer_type
         if self.key_size is not None:
             result['KeySize'] = self.key_size
         if self.locality is not None:
@@ -2507,6 +2521,8 @@ class DescribeCACertificateResponseBodyCertificate(TeaModel):
             result['SubjectDN'] = self.subject_dn
         if self.x_509certificate is not None:
             result['X509Certificate'] = self.x_509certificate
+        if self.years is not None:
+            result['Years'] = self.years
         return result
 
     def from_map(self, m: dict = None):
@@ -2537,8 +2553,12 @@ class DescribeCACertificateResponseBodyCertificate(TeaModel):
             self.crl_status = m.get('CrlStatus')
         if m.get('CrlUrl') is not None:
             self.crl_url = m.get('CrlUrl')
+        if m.get('FullAlgorithm') is not None:
+            self.full_algorithm = m.get('FullAlgorithm')
         if m.get('Identifier') is not None:
             self.identifier = m.get('Identifier')
+        if m.get('IssuerType') is not None:
+            self.issuer_type = m.get('IssuerType')
         if m.get('KeySize') is not None:
             self.key_size = m.get('KeySize')
         if m.get('Locality') is not None:
@@ -2567,6 +2587,8 @@ class DescribeCACertificateResponseBodyCertificate(TeaModel):
             self.subject_dn = m.get('SubjectDN')
         if m.get('X509Certificate') is not None:
             self.x_509certificate = m.get('X509Certificate')
+        if m.get('Years') is not None:
+            self.years = m.get('Years')
         return self
 
 
@@ -4992,9 +5014,11 @@ class ListRevokeCertificateResponse(TeaModel):
 class UpdateCACertificateStatusRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
         identifier: str = None,
         status: str = None,
     ):
+        self.client_token = client_token
         # The unique identifier of the CA certificate whose status you want to change.
         # 
         # >  You can call the [DescribeCACertificateList](https://help.aliyun.com/document_detail/328095.html) operation to query the unique identifiers of all CA certificates.
@@ -5004,8 +5028,6 @@ class UpdateCACertificateStatusRequest(TeaModel):
         # The state to which you want to change the CA certificate. Set to the value to **REVOKE**. After this operation is called, the status of the CA certificate is changed to **REVOKE**.
         # 
         # >  You can call this operation only if the status of a CA certificate is **ISSUE**. You can call the [DescribeCACertificate](https://help.aliyun.com/document_detail/328096.html) operation to query the status of a CA certificate.
-        # 
-        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -5017,6 +5039,8 @@ class UpdateCACertificateStatusRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.identifier is not None:
             result['Identifier'] = self.identifier
         if self.status is not None:
@@ -5025,6 +5049,8 @@ class UpdateCACertificateStatusRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('Identifier') is not None:
             self.identifier = m.get('Identifier')
         if m.get('Status') is not None:

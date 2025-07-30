@@ -767,6 +767,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.algorithm):
             query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.common_name):
             query['CommonName'] = request.common_name
         if not UtilClient.is_unset(request.country_code):
@@ -821,6 +823,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.algorithm):
             query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.common_name):
             query['CommonName'] = request.common_name
         if not UtilClient.is_unset(request.country_code):
@@ -2751,6 +2755,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.identifier):
             query['Identifier'] = request.identifier
         if not UtilClient.is_unset(request.status):
@@ -2793,6 +2799,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.identifier):
             query['Identifier'] = request.identifier
         if not UtilClient.is_unset(request.status):
