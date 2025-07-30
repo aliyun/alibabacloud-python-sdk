@@ -1,3 +1,7 @@
+2025-07-30 Version: 1.2.6
+- Update API GetLoginToken: add request parameters AvailableFeatures.
+
+
 2025-05-08 Version: 1.2.5
 - Update API GetLoginToken: add response parameters Body.NickName.
 

@@ -1660,20 +1660,26 @@ class Client(OpenApiClient):
 
     def get_login_token_with_options(
         self,
-        request: ecd_20201002_models.GetLoginTokenRequest,
+        tmp_req: ecd_20201002_models.GetLoginTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.GetLoginTokenResponse:
         """
         @summary Obtains logon credentials.
         
-        @param request: GetLoginTokenRequest
+        @param tmp_req: GetLoginTokenRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetLoginTokenResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ecd_20201002_models.GetLoginTokenShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.available_features):
+            request.available_features_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.available_features, 'AvailableFeatures', 'json')
         query = {}
         if not UtilClient.is_unset(request.authentication_code):
             query['AuthenticationCode'] = request.authentication_code
+        if not UtilClient.is_unset(request.available_features_shrink):
+            query['AvailableFeatures'] = request.available_features_shrink
         if not UtilClient.is_unset(request.client_id):
             query['ClientId'] = request.client_id
         if not UtilClient.is_unset(request.client_os):
@@ -1729,20 +1735,26 @@ class Client(OpenApiClient):
 
     async def get_login_token_with_options_async(
         self,
-        request: ecd_20201002_models.GetLoginTokenRequest,
+        tmp_req: ecd_20201002_models.GetLoginTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.GetLoginTokenResponse:
         """
         @summary Obtains logon credentials.
         
-        @param request: GetLoginTokenRequest
+        @param tmp_req: GetLoginTokenRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetLoginTokenResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ecd_20201002_models.GetLoginTokenShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.available_features):
+            request.available_features_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.available_features, 'AvailableFeatures', 'json')
         query = {}
         if not UtilClient.is_unset(request.authentication_code):
             query['AuthenticationCode'] = request.authentication_code
+        if not UtilClient.is_unset(request.available_features_shrink):
+            query['AvailableFeatures'] = request.available_features_shrink
         if not UtilClient.is_unset(request.client_id):
             query['ClientId'] = request.client_id
         if not UtilClient.is_unset(request.client_os):
