@@ -973,6 +973,8 @@ class Client(OpenApiClient):
             query['FreezeMediumRisk1'] = request.freeze_medium_risk_1
         if not UtilClient.is_unset(request.freeze_medium_risk_2):
             query['FreezeMediumRisk2'] = request.freeze_medium_risk_2
+        if not UtilClient.is_unset(request.freeze_restore_path):
+            query['FreezeRestorePath'] = request.freeze_restore_path
         if not UtilClient.is_unset(request.freeze_type):
             query['FreezeType'] = request.freeze_type
         if not UtilClient.is_unset(request.is_inc):
@@ -985,6 +987,8 @@ class Client(OpenApiClient):
             query['PrefixFilters'] = request.prefix_filters
         if not UtilClient.is_unset(request.priority):
             query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.referer):
+            query['Referer'] = request.referer
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.scan_limit):
@@ -1058,6 +1062,8 @@ class Client(OpenApiClient):
             query['FreezeMediumRisk1'] = request.freeze_medium_risk_1
         if not UtilClient.is_unset(request.freeze_medium_risk_2):
             query['FreezeMediumRisk2'] = request.freeze_medium_risk_2
+        if not UtilClient.is_unset(request.freeze_restore_path):
+            query['FreezeRestorePath'] = request.freeze_restore_path
         if not UtilClient.is_unset(request.freeze_type):
             query['FreezeType'] = request.freeze_type
         if not UtilClient.is_unset(request.is_inc):
@@ -1070,6 +1076,8 @@ class Client(OpenApiClient):
             query['PrefixFilters'] = request.prefix_filters
         if not UtilClient.is_unset(request.priority):
             query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.referer):
+            query['Referer'] = request.referer
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.scan_limit):
@@ -1364,6 +1372,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_callback_with_options_async(request, runtime)
+
+    def create_online_test_with_options(
+        self,
+        request: green_20220926_models.CreateOnlineTestRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.CreateOnlineTestResponse:
+        """
+        @summary 在线测试
+        
+        @param request: CreateOnlineTestRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOnlineTestResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_id):
+            query['DataId'] = request.data_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOnlineTest',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.CreateOnlineTestResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_online_test_with_options_async(
+        self,
+        request: green_20220926_models.CreateOnlineTestRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.CreateOnlineTestResponse:
+        """
+        @summary 在线测试
+        
+        @param request: CreateOnlineTestRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOnlineTestResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_id):
+            query['DataId'] = request.data_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOnlineTest',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.CreateOnlineTestResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_online_test(
+        self,
+        request: green_20220926_models.CreateOnlineTestRequest,
+    ) -> green_20220926_models.CreateOnlineTestResponse:
+        """
+        @summary 在线测试
+        
+        @param request: CreateOnlineTestRequest
+        @return: CreateOnlineTestResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_online_test_with_options(request, runtime)
+
+    async def create_online_test_async(
+        self,
+        request: green_20220926_models.CreateOnlineTestRequest,
+    ) -> green_20220926_models.CreateOnlineTestResponse:
+        """
+        @summary 在线测试
+        
+        @param request: CreateOnlineTestRequest
+        @return: CreateOnlineTestResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_online_test_with_options_async(request, runtime)
 
     def create_pre_check_with_options(
         self,
@@ -2269,6 +2385,210 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_keyword_lib_with_options_async(request, runtime)
 
+    def delete_online_test_with_options(
+        self,
+        request: green_20220926_models.DeleteOnlineTestRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.DeleteOnlineTestResponse:
+        """
+        @summary 删除在线测试接口
+        
+        @param request: DeleteOnlineTestRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteOnlineTestResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteOnlineTest',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.DeleteOnlineTestResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_online_test_with_options_async(
+        self,
+        request: green_20220926_models.DeleteOnlineTestRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.DeleteOnlineTestResponse:
+        """
+        @summary 删除在线测试接口
+        
+        @param request: DeleteOnlineTestRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteOnlineTestResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteOnlineTest',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.DeleteOnlineTestResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_online_test(
+        self,
+        request: green_20220926_models.DeleteOnlineTestRequest,
+    ) -> green_20220926_models.DeleteOnlineTestResponse:
+        """
+        @summary 删除在线测试接口
+        
+        @param request: DeleteOnlineTestRequest
+        @return: DeleteOnlineTestResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_online_test_with_options(request, runtime)
+
+    async def delete_online_test_async(
+        self,
+        request: green_20220926_models.DeleteOnlineTestRequest,
+    ) -> green_20220926_models.DeleteOnlineTestResponse:
+        """
+        @summary 删除在线测试接口
+        
+        @param request: DeleteOnlineTestRequest
+        @return: DeleteOnlineTestResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_online_test_with_options_async(request, runtime)
+
+    def describe_online_test_result_with_options(
+        self,
+        request: green_20220926_models.DescribeOnlineTestResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.DescribeOnlineTestResultResponse:
+        """
+        @summary 查询在线测试结果
+        
+        @param request: DescribeOnlineTestResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOnlineTestResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOnlineTestResult',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.DescribeOnlineTestResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_online_test_result_with_options_async(
+        self,
+        request: green_20220926_models.DescribeOnlineTestResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.DescribeOnlineTestResultResponse:
+        """
+        @summary 查询在线测试结果
+        
+        @param request: DescribeOnlineTestResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOnlineTestResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOnlineTestResult',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.DescribeOnlineTestResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_online_test_result(
+        self,
+        request: green_20220926_models.DescribeOnlineTestResultRequest,
+    ) -> green_20220926_models.DescribeOnlineTestResultResponse:
+        """
+        @summary 查询在线测试结果
+        
+        @param request: DescribeOnlineTestResultRequest
+        @return: DescribeOnlineTestResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_online_test_result_with_options(request, runtime)
+
+    async def describe_online_test_result_async(
+        self,
+        request: green_20220926_models.DescribeOnlineTestResultRequest,
+    ) -> green_20220926_models.DescribeOnlineTestResultResponse:
+        """
+        @summary 查询在线测试结果
+        
+        @param request: DescribeOnlineTestResultRequest
+        @return: DescribeOnlineTestResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_online_test_result_with_options_async(request, runtime)
+
     def export_answer_sample_with_options(
         self,
         request: green_20220926_models.ExportAnswerSampleRequest,
@@ -2760,6 +3080,8 @@ class Client(OpenApiClient):
             body['Query'] = request.query
         if not UtilClient.is_unset(request.sort_shrink):
             body['Sort'] = request.sort_shrink
+        if not UtilClient.is_unset(request.source):
+            body['Source'] = request.source
         if not UtilClient.is_unset(request.start_date):
             body['StartDate'] = request.start_date
         req = open_api_models.OpenApiRequest(
@@ -2813,6 +3135,8 @@ class Client(OpenApiClient):
             body['Query'] = request.query
         if not UtilClient.is_unset(request.sort_shrink):
             body['Sort'] = request.sort_shrink
+        if not UtilClient.is_unset(request.source):
+            body['Source'] = request.source
         if not UtilClient.is_unset(request.start_date):
             body['StartDate'] = request.start_date
         req = open_api_models.OpenApiRequest(
@@ -3858,6 +4182,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         body = {}
+        if not UtilClient.is_unset(request.query):
+            body['Query'] = request.query
         if not UtilClient.is_unset(request.resource_type):
             body['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.service_code):
@@ -3901,6 +4227,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         body = {}
+        if not UtilClient.is_unset(request.query):
+            body['Query'] = request.query
         if not UtilClient.is_unset(request.resource_type):
             body['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.service_code):
@@ -4477,6 +4805,262 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_keyword_lib_with_options_async(request, runtime)
 
+    def get_oss_check_freeze_result_with_options(
+        self,
+        tmp_req: green_20220926_models.GetOssCheckFreezeResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.GetOssCheckFreezeResultResponse:
+        """
+        @summary oss冻结结果查询
+        
+        @param tmp_req: GetOssCheckFreezeResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOssCheckFreezeResultResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = green_20220926_models.GetOssCheckFreezeResultShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sort):
+            request.sort_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sort, 'Sort', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.finish_num):
+            query['FinishNum'] = request.finish_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sort_shrink):
+            query['Sort'] = request.sort_shrink
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOssCheckFreezeResult',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.GetOssCheckFreezeResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_oss_check_freeze_result_with_options_async(
+        self,
+        tmp_req: green_20220926_models.GetOssCheckFreezeResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.GetOssCheckFreezeResultResponse:
+        """
+        @summary oss冻结结果查询
+        
+        @param tmp_req: GetOssCheckFreezeResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOssCheckFreezeResultResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = green_20220926_models.GetOssCheckFreezeResultShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sort):
+            request.sort_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sort, 'Sort', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.finish_num):
+            query['FinishNum'] = request.finish_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sort_shrink):
+            query['Sort'] = request.sort_shrink
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOssCheckFreezeResult',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.GetOssCheckFreezeResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_oss_check_freeze_result(
+        self,
+        request: green_20220926_models.GetOssCheckFreezeResultRequest,
+    ) -> green_20220926_models.GetOssCheckFreezeResultResponse:
+        """
+        @summary oss冻结结果查询
+        
+        @param request: GetOssCheckFreezeResultRequest
+        @return: GetOssCheckFreezeResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_oss_check_freeze_result_with_options(request, runtime)
+
+    async def get_oss_check_freeze_result_async(
+        self,
+        request: green_20220926_models.GetOssCheckFreezeResultRequest,
+    ) -> green_20220926_models.GetOssCheckFreezeResultResponse:
+        """
+        @summary oss冻结结果查询
+        
+        @param request: GetOssCheckFreezeResultRequest
+        @return: GetOssCheckFreezeResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_oss_check_freeze_result_with_options_async(request, runtime)
+
+    def get_oss_check_result_detail_with_options(
+        self,
+        request: green_20220926_models.GetOssCheckResultDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.GetOssCheckResultDetailResponse:
+        """
+        @summary oss结果详情
+        
+        @param request: GetOssCheckResultDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOssCheckResultDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bucket):
+            query['Bucket'] = request.bucket
+        if not UtilClient.is_unset(request.media_type):
+            query['MediaType'] = request.media_type
+        if not UtilClient.is_unset(request.object):
+            query['Object'] = request.object
+        if not UtilClient.is_unset(request.parent_task_id):
+            query['ParentTaskId'] = request.parent_task_id
+        if not UtilClient.is_unset(request.query_request_id):
+            query['QueryRequestId'] = request.query_request_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOssCheckResultDetail',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.GetOssCheckResultDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_oss_check_result_detail_with_options_async(
+        self,
+        request: green_20220926_models.GetOssCheckResultDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.GetOssCheckResultDetailResponse:
+        """
+        @summary oss结果详情
+        
+        @param request: GetOssCheckResultDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOssCheckResultDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bucket):
+            query['Bucket'] = request.bucket
+        if not UtilClient.is_unset(request.media_type):
+            query['MediaType'] = request.media_type
+        if not UtilClient.is_unset(request.object):
+            query['Object'] = request.object
+        if not UtilClient.is_unset(request.parent_task_id):
+            query['ParentTaskId'] = request.parent_task_id
+        if not UtilClient.is_unset(request.query_request_id):
+            query['QueryRequestId'] = request.query_request_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOssCheckResultDetail',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.GetOssCheckResultDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_oss_check_result_detail(
+        self,
+        request: green_20220926_models.GetOssCheckResultDetailRequest,
+    ) -> green_20220926_models.GetOssCheckResultDetailResponse:
+        """
+        @summary oss结果详情
+        
+        @param request: GetOssCheckResultDetailRequest
+        @return: GetOssCheckResultDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_oss_check_result_detail_with_options(request, runtime)
+
+    async def get_oss_check_result_detail_async(
+        self,
+        request: green_20220926_models.GetOssCheckResultDetailRequest,
+    ) -> green_20220926_models.GetOssCheckResultDetailResponse:
+        """
+        @summary oss结果详情
+        
+        @param request: GetOssCheckResultDetailRequest
+        @return: GetOssCheckResultDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_oss_check_result_detail_with_options_async(request, runtime)
+
     def get_oss_check_stat_with_options(
         self,
         request: green_20220926_models.GetOssCheckStatRequest,
@@ -4688,6 +5272,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_oss_check_status_with_options_async(request, runtime)
+
+    def get_oss_check_task_info_with_options(
+        self,
+        request: green_20220926_models.GetOssCheckTaskInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.GetOssCheckTaskInfoResponse:
+        """
+        @summary 查询oss扫描任务详情
+        
+        @param request: GetOssCheckTaskInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOssCheckTaskInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.parent_task_id):
+            query['ParentTaskId'] = request.parent_task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOssCheckTaskInfo',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.GetOssCheckTaskInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_oss_check_task_info_with_options_async(
+        self,
+        request: green_20220926_models.GetOssCheckTaskInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.GetOssCheckTaskInfoResponse:
+        """
+        @summary 查询oss扫描任务详情
+        
+        @param request: GetOssCheckTaskInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOssCheckTaskInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.parent_task_id):
+            query['ParentTaskId'] = request.parent_task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOssCheckTaskInfo',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.GetOssCheckTaskInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_oss_check_task_info(
+        self,
+        request: green_20220926_models.GetOssCheckTaskInfoRequest,
+    ) -> green_20220926_models.GetOssCheckTaskInfoResponse:
+        """
+        @summary 查询oss扫描任务详情
+        
+        @param request: GetOssCheckTaskInfoRequest
+        @return: GetOssCheckTaskInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_oss_check_task_info_with_options(request, runtime)
+
+    async def get_oss_check_task_info_async(
+        self,
+        request: green_20220926_models.GetOssCheckTaskInfoRequest,
+    ) -> green_20220926_models.GetOssCheckTaskInfoResponse:
+        """
+        @summary 查询oss扫描任务详情
+        
+        @param request: GetOssCheckTaskInfoRequest
+        @return: GetOssCheckTaskInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_oss_check_task_info_with_options_async(request, runtime)
 
     def get_scan_num_with_options(
         self,
@@ -5648,6 +6328,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_upload_info_with_options_async(request, runtime)
+
+    def get_upload_link_with_options(
+        self,
+        request: green_20220926_models.GetUploadLinkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.GetUploadLinkResponse:
+        """
+        @summary 获取上传链接
+        
+        @param request: GetUploadLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUploadLinkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.upload_url):
+            query['UploadUrl'] = request.upload_url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUploadLink',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.GetUploadLinkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_upload_link_with_options_async(
+        self,
+        request: green_20220926_models.GetUploadLinkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.GetUploadLinkResponse:
+        """
+        @summary 获取上传链接
+        
+        @param request: GetUploadLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUploadLinkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.upload_url):
+            query['UploadUrl'] = request.upload_url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUploadLink',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.GetUploadLinkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_upload_link(
+        self,
+        request: green_20220926_models.GetUploadLinkRequest,
+    ) -> green_20220926_models.GetUploadLinkResponse:
+        """
+        @summary 获取上传链接
+        
+        @param request: GetUploadLinkRequest
+        @return: GetUploadLinkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_upload_link_with_options(request, runtime)
+
+    async def get_upload_link_async(
+        self,
+        request: green_20220926_models.GetUploadLinkRequest,
+    ) -> green_20220926_models.GetUploadLinkResponse:
+        """
+        @summary 获取上传链接
+        
+        @param request: GetUploadLinkRequest
+        @return: GetUploadLinkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_upload_link_with_options_async(request, runtime)
 
     def get_user_buy_status_with_options(
         self,
@@ -7217,6 +7993,142 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_service_info_with_options_async(request, runtime)
 
+    def oss_check_result_list_with_options(
+        self,
+        tmp_req: green_20220926_models.OssCheckResultListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.OssCheckResultListResponse:
+        """
+        @summary oss扫描结果查询
+        
+        @param tmp_req: OssCheckResultListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OssCheckResultListResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = green_20220926_models.OssCheckResultListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sort):
+            request.sort_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sort, 'Sort', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.finish_num):
+            query['FinishNum'] = request.finish_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sort_shrink):
+            query['Sort'] = request.sort_shrink
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OssCheckResultList',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.OssCheckResultListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def oss_check_result_list_with_options_async(
+        self,
+        tmp_req: green_20220926_models.OssCheckResultListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.OssCheckResultListResponse:
+        """
+        @summary oss扫描结果查询
+        
+        @param tmp_req: OssCheckResultListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OssCheckResultListResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = green_20220926_models.OssCheckResultListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sort):
+            request.sort_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sort, 'Sort', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.finish_num):
+            query['FinishNum'] = request.finish_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sort_shrink):
+            query['Sort'] = request.sort_shrink
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OssCheckResultList',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.OssCheckResultListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def oss_check_result_list(
+        self,
+        request: green_20220926_models.OssCheckResultListRequest,
+    ) -> green_20220926_models.OssCheckResultListResponse:
+        """
+        @summary oss扫描结果查询
+        
+        @param request: OssCheckResultListRequest
+        @return: OssCheckResultListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.oss_check_result_list_with_options(request, runtime)
+
+    async def oss_check_result_list_async(
+        self,
+        request: green_20220926_models.OssCheckResultListRequest,
+    ) -> green_20220926_models.OssCheckResultListResponse:
+        """
+        @summary oss扫描结果查询
+        
+        @param request: OssCheckResultListRequest
+        @return: OssCheckResultListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.oss_check_result_list_with_options_async(request, runtime)
+
     def query_answer_sample_by_page_with_options(
         self,
         tmp_req: green_20220926_models.QueryAnswerSampleByPageRequest,
@@ -7556,6 +8468,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.query_callback_by_page_with_options_async(request, runtime)
+
+    def stop_online_test_with_options(
+        self,
+        request: green_20220926_models.StopOnlineTestRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.StopOnlineTestResponse:
+        """
+        @summary 停止在线测试
+        
+        @param request: StopOnlineTestRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopOnlineTestResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopOnlineTest',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.StopOnlineTestResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_online_test_with_options_async(
+        self,
+        request: green_20220926_models.StopOnlineTestRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.StopOnlineTestResponse:
+        """
+        @summary 停止在线测试
+        
+        @param request: StopOnlineTestRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopOnlineTestResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopOnlineTest',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.StopOnlineTestResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_online_test(
+        self,
+        request: green_20220926_models.StopOnlineTestRequest,
+    ) -> green_20220926_models.StopOnlineTestResponse:
+        """
+        @summary 停止在线测试
+        
+        @param request: StopOnlineTestRequest
+        @return: StopOnlineTestResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.stop_online_test_with_options(request, runtime)
+
+    async def stop_online_test_async(
+        self,
+        request: green_20220926_models.StopOnlineTestRequest,
+    ) -> green_20220926_models.StopOnlineTestResponse:
+        """
+        @summary 停止在线测试
+        
+        @param request: StopOnlineTestRequest
+        @return: StopOnlineTestResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_online_test_with_options_async(request, runtime)
 
     def update_backup_config_with_options(
         self,
@@ -8000,6 +9016,454 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_keyword_lib_with_options_async(request, runtime)
+
+    def update_oss_check_results_batch_feedback_with_options(
+        self,
+        request: green_20220926_models.UpdateOssCheckResultsBatchFeedbackRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.UpdateOssCheckResultsBatchFeedbackResponse:
+        """
+        @summary 批量反馈任务
+        
+        @param request: UpdateOssCheckResultsBatchFeedbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateOssCheckResultsBatchFeedbackResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.feedback):
+            query['Feedback'] = request.feedback
+        if not UtilClient.is_unset(request.items):
+            query['Items'] = request.items
+        if not UtilClient.is_unset(request.parent_task_id):
+            query['ParentTaskId'] = request.parent_task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateOssCheckResultsBatchFeedback',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.UpdateOssCheckResultsBatchFeedbackResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_oss_check_results_batch_feedback_with_options_async(
+        self,
+        request: green_20220926_models.UpdateOssCheckResultsBatchFeedbackRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.UpdateOssCheckResultsBatchFeedbackResponse:
+        """
+        @summary 批量反馈任务
+        
+        @param request: UpdateOssCheckResultsBatchFeedbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateOssCheckResultsBatchFeedbackResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.feedback):
+            query['Feedback'] = request.feedback
+        if not UtilClient.is_unset(request.items):
+            query['Items'] = request.items
+        if not UtilClient.is_unset(request.parent_task_id):
+            query['ParentTaskId'] = request.parent_task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateOssCheckResultsBatchFeedback',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.UpdateOssCheckResultsBatchFeedbackResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_oss_check_results_batch_feedback(
+        self,
+        request: green_20220926_models.UpdateOssCheckResultsBatchFeedbackRequest,
+    ) -> green_20220926_models.UpdateOssCheckResultsBatchFeedbackResponse:
+        """
+        @summary 批量反馈任务
+        
+        @param request: UpdateOssCheckResultsBatchFeedbackRequest
+        @return: UpdateOssCheckResultsBatchFeedbackResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_oss_check_results_batch_feedback_with_options(request, runtime)
+
+    async def update_oss_check_results_batch_feedback_async(
+        self,
+        request: green_20220926_models.UpdateOssCheckResultsBatchFeedbackRequest,
+    ) -> green_20220926_models.UpdateOssCheckResultsBatchFeedbackResponse:
+        """
+        @summary 批量反馈任务
+        
+        @param request: UpdateOssCheckResultsBatchFeedbackRequest
+        @return: UpdateOssCheckResultsBatchFeedbackResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_oss_check_results_batch_feedback_with_options_async(request, runtime)
+
+    def update_oss_check_results_feed_back_with_options(
+        self,
+        request: green_20220926_models.UpdateOssCheckResultsFeedBackRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.UpdateOssCheckResultsFeedBackResponse:
+        """
+        @summary oss结果反馈
+        
+        @param request: UpdateOssCheckResultsFeedBackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateOssCheckResultsFeedBackResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.feedback):
+            query['Feedback'] = request.feedback
+        if not UtilClient.is_unset(request.query_request_id):
+            query['QueryRequestId'] = request.query_request_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateOssCheckResultsFeedBack',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.UpdateOssCheckResultsFeedBackResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_oss_check_results_feed_back_with_options_async(
+        self,
+        request: green_20220926_models.UpdateOssCheckResultsFeedBackRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.UpdateOssCheckResultsFeedBackResponse:
+        """
+        @summary oss结果反馈
+        
+        @param request: UpdateOssCheckResultsFeedBackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateOssCheckResultsFeedBackResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.feedback):
+            query['Feedback'] = request.feedback
+        if not UtilClient.is_unset(request.query_request_id):
+            query['QueryRequestId'] = request.query_request_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateOssCheckResultsFeedBack',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.UpdateOssCheckResultsFeedBackResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_oss_check_results_feed_back(
+        self,
+        request: green_20220926_models.UpdateOssCheckResultsFeedBackRequest,
+    ) -> green_20220926_models.UpdateOssCheckResultsFeedBackResponse:
+        """
+        @summary oss结果反馈
+        
+        @param request: UpdateOssCheckResultsFeedBackRequest
+        @return: UpdateOssCheckResultsFeedBackResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_oss_check_results_feed_back_with_options(request, runtime)
+
+    async def update_oss_check_results_feed_back_async(
+        self,
+        request: green_20220926_models.UpdateOssCheckResultsFeedBackRequest,
+    ) -> green_20220926_models.UpdateOssCheckResultsFeedBackResponse:
+        """
+        @summary oss结果反馈
+        
+        @param request: UpdateOssCheckResultsFeedBackRequest
+        @return: UpdateOssCheckResultsFeedBackResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_oss_check_results_feed_back_with_options_async(request, runtime)
+
+    def update_oss_check_results_freeze_with_options(
+        self,
+        request: green_20220926_models.UpdateOssCheckResultsFreezeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.UpdateOssCheckResultsFreezeResponse:
+        """
+        @summary 批量冻结任务
+        
+        @param request: UpdateOssCheckResultsFreezeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateOssCheckResultsFreezeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.freeze_items):
+            query['FreezeItems'] = request.freeze_items
+        if not UtilClient.is_unset(request.freeze_restore_path):
+            query['FreezeRestorePath'] = request.freeze_restore_path
+        if not UtilClient.is_unset(request.freeze_type):
+            query['FreezeType'] = request.freeze_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateOssCheckResultsFreeze',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.UpdateOssCheckResultsFreezeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_oss_check_results_freeze_with_options_async(
+        self,
+        request: green_20220926_models.UpdateOssCheckResultsFreezeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.UpdateOssCheckResultsFreezeResponse:
+        """
+        @summary 批量冻结任务
+        
+        @param request: UpdateOssCheckResultsFreezeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateOssCheckResultsFreezeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.freeze_items):
+            query['FreezeItems'] = request.freeze_items
+        if not UtilClient.is_unset(request.freeze_restore_path):
+            query['FreezeRestorePath'] = request.freeze_restore_path
+        if not UtilClient.is_unset(request.freeze_type):
+            query['FreezeType'] = request.freeze_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateOssCheckResultsFreeze',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.UpdateOssCheckResultsFreezeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_oss_check_results_freeze(
+        self,
+        request: green_20220926_models.UpdateOssCheckResultsFreezeRequest,
+    ) -> green_20220926_models.UpdateOssCheckResultsFreezeResponse:
+        """
+        @summary 批量冻结任务
+        
+        @param request: UpdateOssCheckResultsFreezeRequest
+        @return: UpdateOssCheckResultsFreezeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_oss_check_results_freeze_with_options(request, runtime)
+
+    async def update_oss_check_results_freeze_async(
+        self,
+        request: green_20220926_models.UpdateOssCheckResultsFreezeRequest,
+    ) -> green_20220926_models.UpdateOssCheckResultsFreezeResponse:
+        """
+        @summary 批量冻结任务
+        
+        @param request: UpdateOssCheckResultsFreezeRequest
+        @return: UpdateOssCheckResultsFreezeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_oss_check_results_freeze_with_options_async(request, runtime)
+
+    def update_oss_check_results_unfreeze_with_options(
+        self,
+        request: green_20220926_models.UpdateOssCheckResultsUnfreezeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.UpdateOssCheckResultsUnfreezeResponse:
+        """
+        @summary 批量解冻任务
+        
+        @param request: UpdateOssCheckResultsUnfreezeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateOssCheckResultsUnfreezeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.freeze_items):
+            query['FreezeItems'] = request.freeze_items
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateOssCheckResultsUnfreeze',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.UpdateOssCheckResultsUnfreezeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_oss_check_results_unfreeze_with_options_async(
+        self,
+        request: green_20220926_models.UpdateOssCheckResultsUnfreezeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.UpdateOssCheckResultsUnfreezeResponse:
+        """
+        @summary 批量解冻任务
+        
+        @param request: UpdateOssCheckResultsUnfreezeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateOssCheckResultsUnfreezeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.freeze_items):
+            query['FreezeItems'] = request.freeze_items
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateOssCheckResultsUnfreeze',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.UpdateOssCheckResultsUnfreezeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_oss_check_results_unfreeze(
+        self,
+        request: green_20220926_models.UpdateOssCheckResultsUnfreezeRequest,
+    ) -> green_20220926_models.UpdateOssCheckResultsUnfreezeResponse:
+        """
+        @summary 批量解冻任务
+        
+        @param request: UpdateOssCheckResultsUnfreezeRequest
+        @return: UpdateOssCheckResultsUnfreezeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_oss_check_results_unfreeze_with_options(request, runtime)
+
+    async def update_oss_check_results_unfreeze_async(
+        self,
+        request: green_20220926_models.UpdateOssCheckResultsUnfreezeRequest,
+    ) -> green_20220926_models.UpdateOssCheckResultsUnfreezeResponse:
+        """
+        @summary 批量解冻任务
+        
+        @param request: UpdateOssCheckResultsUnfreezeRequest
+        @return: UpdateOssCheckResultsUnfreezeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_oss_check_results_unfreeze_with_options_async(request, runtime)
 
     def update_scan_result_feedback_with_options(
         self,

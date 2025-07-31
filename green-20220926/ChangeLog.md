@@ -1,3 +1,26 @@
+2025-07-31 Version: 1.5.0
+- Support API CreateOnlineTest.
+- Support API DeleteOnlineTest.
+- Support API DescribeOnlineTestResult.
+- Support API GetOssCheckFreezeResult.
+- Support API GetOssCheckResultDetail.
+- Support API GetOssCheckTaskInfo.
+- Support API GetUploadLink.
+- Support API OssCheckResultList.
+- Support API StopOnlineTest.
+- Support API UpdateOssCheckResultsBatchFeedback.
+- Support API UpdateOssCheckResultsFeedBack.
+- Support API UpdateOssCheckResultsFreeze.
+- Support API UpdateOssCheckResultsUnfreeze.
+- Update API CreatStockOssCheckTask: add request parameters FreezeRestorePath.
+- Update API CreatStockOssCheckTask: add request parameters Referer.
+- Update API ExportResult: add request parameters Source.
+- Update API GetFeatureConfig: add request parameters Query.
+- Update API GetStockOssCheckTasksList: add response parameters Body.Items.$.Config.FreezeRestorePath.
+- Update API GetStockOssCheckTasksList: add response parameters Body.Items.$.Config.Referer.
+- Update API GetStockOssCheckTasksList: add response parameters Body.Items.$.Config.UserFreezeConfig.
+
+
 2025-06-27 Version: 1.4.0
 - Support API LlmStreamChat.
 - Update API GetScanResult: add response parameters Body.Data.Items.$.GuardFileUrls.

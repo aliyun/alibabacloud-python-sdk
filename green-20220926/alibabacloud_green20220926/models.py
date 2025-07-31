@@ -1538,12 +1538,14 @@ class CreatStockOssCheckTaskRequest(TeaModel):
         freeze_high_risk_2: bool = None,
         freeze_medium_risk_1: bool = None,
         freeze_medium_risk_2: bool = None,
+        freeze_restore_path: str = None,
         freeze_type: str = None,
         is_inc: bool = None,
         media_type: int = None,
         prefix_filter_type: str = None,
         prefix_filters: str = None,
         priority: int = None,
+        referer: str = None,
         region_id: str = None,
         scan_limit: int = None,
         scan_no_file_type: bool = None,
@@ -1565,12 +1567,14 @@ class CreatStockOssCheckTaskRequest(TeaModel):
         self.freeze_high_risk_2 = freeze_high_risk_2
         self.freeze_medium_risk_1 = freeze_medium_risk_1
         self.freeze_medium_risk_2 = freeze_medium_risk_2
+        self.freeze_restore_path = freeze_restore_path
         self.freeze_type = freeze_type
         self.is_inc = is_inc
         self.media_type = media_type
         self.prefix_filter_type = prefix_filter_type
         self.prefix_filters = prefix_filters
         self.priority = priority
+        self.referer = referer
         self.region_id = region_id
         self.scan_limit = scan_limit
         self.scan_no_file_type = scan_no_file_type
@@ -1612,6 +1616,8 @@ class CreatStockOssCheckTaskRequest(TeaModel):
             result['FreezeMediumRisk1'] = self.freeze_medium_risk_1
         if self.freeze_medium_risk_2 is not None:
             result['FreezeMediumRisk2'] = self.freeze_medium_risk_2
+        if self.freeze_restore_path is not None:
+            result['FreezeRestorePath'] = self.freeze_restore_path
         if self.freeze_type is not None:
             result['FreezeType'] = self.freeze_type
         if self.is_inc is not None:
@@ -1624,6 +1630,8 @@ class CreatStockOssCheckTaskRequest(TeaModel):
             result['PrefixFilters'] = self.prefix_filters
         if self.priority is not None:
             result['Priority'] = self.priority
+        if self.referer is not None:
+            result['Referer'] = self.referer
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.scan_limit is not None:
@@ -1668,6 +1676,8 @@ class CreatStockOssCheckTaskRequest(TeaModel):
             self.freeze_medium_risk_1 = m.get('FreezeMediumRisk1')
         if m.get('FreezeMediumRisk2') is not None:
             self.freeze_medium_risk_2 = m.get('FreezeMediumRisk2')
+        if m.get('FreezeRestorePath') is not None:
+            self.freeze_restore_path = m.get('FreezeRestorePath')
         if m.get('FreezeType') is not None:
             self.freeze_type = m.get('FreezeType')
         if m.get('IsInc') is not None:
@@ -1680,6 +1690,8 @@ class CreatStockOssCheckTaskRequest(TeaModel):
             self.prefix_filters = m.get('PrefixFilters')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
+        if m.get('Referer') is not None:
+            self.referer = m.get('Referer')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ScanLimit') is not None:
@@ -2116,6 +2128,143 @@ class CreateCallbackResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateCallbackResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateOnlineTestRequest(TeaModel):
+    def __init__(
+        self,
+        data_id: str = None,
+        resource_type: str = None,
+        service_code: str = None,
+        url: str = None,
+    ):
+        self.data_id = data_id
+        self.resource_type = resource_type
+        self.service_code = service_code
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class CreateOnlineTestResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        service_code: str = None,
+        task_id: str = None,
+        task_status: str = None,
+        url: str = None,
+    ):
+        self.request_id = request_id
+        self.service_code = service_code
+        self.task_id = task_id
+        self.task_status = task_status
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_status is not None:
+            result['TaskStatus'] = self.task_status
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskStatus') is not None:
+            self.task_status = m.get('TaskStatus')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class CreateOnlineTestResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateOnlineTestResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateOnlineTestResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3186,6 +3335,393 @@ class DeleteKeywordLibResponse(TeaModel):
         return self
 
 
+class DeleteOnlineTestRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        resource_type: str = None,
+    ):
+        self.region_id = region_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class DeleteOnlineTestResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteOnlineTestResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteOnlineTestResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteOnlineTestResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeOnlineTestResultRequest(TeaModel):
+    def __init__(
+        self,
+        resource_type: str = None,
+        service_code: str = None,
+        task_id: str = None,
+    ):
+        self.resource_type = resource_type
+        self.service_code = service_code
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class DescribeOnlineTestResultResponseBodyAudioData(TeaModel):
+    def __init__(
+        self,
+        time_stamp: str = None,
+    ):
+        self.time_stamp = time_stamp
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.time_stamp is not None:
+            result['TimeStamp'] = self.time_stamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TimeStamp') is not None:
+            self.time_stamp = m.get('TimeStamp')
+        return self
+
+
+class DescribeOnlineTestResultResponseBodyFrameData(TeaModel):
+    def __init__(
+        self,
+        time_stamp: str = None,
+        url: str = None,
+    ):
+        self.time_stamp = time_stamp
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.time_stamp is not None:
+            result['TimeStamp'] = self.time_stamp
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TimeStamp') is not None:
+            self.time_stamp = m.get('TimeStamp')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class DescribeOnlineTestResultResponseBodySummaryList(TeaModel):
+    def __init__(
+        self,
+        resource_type: str = None,
+        risk_level: str = None,
+        risk_level_summary: Dict[str, int] = None,
+        slice_count: int = None,
+    ):
+        self.resource_type = resource_type
+        self.risk_level = risk_level
+        self.risk_level_summary = risk_level_summary
+        self.slice_count = slice_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+        if self.risk_level_summary is not None:
+            result['RiskLevelSummary'] = self.risk_level_summary
+        if self.slice_count is not None:
+            result['SliceCount'] = self.slice_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+        if m.get('RiskLevelSummary') is not None:
+            self.risk_level_summary = m.get('RiskLevelSummary')
+        if m.get('SliceCount') is not None:
+            self.slice_count = m.get('SliceCount')
+        return self
+
+
+class DescribeOnlineTestResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        audio_data: DescribeOnlineTestResultResponseBodyAudioData = None,
+        frame_data: DescribeOnlineTestResultResponseBodyFrameData = None,
+        moderation_time: str = None,
+        request_id: str = None,
+        risk_level: str = None,
+        service_code: str = None,
+        summary_list: List[DescribeOnlineTestResultResponseBodySummaryList] = None,
+        task_id: str = None,
+        task_status: str = None,
+        url: str = None,
+    ):
+        self.audio_data = audio_data
+        self.frame_data = frame_data
+        self.moderation_time = moderation_time
+        self.request_id = request_id
+        self.risk_level = risk_level
+        self.service_code = service_code
+        self.summary_list = summary_list
+        self.task_id = task_id
+        self.task_status = task_status
+        self.url = url
+
+    def validate(self):
+        if self.audio_data:
+            self.audio_data.validate()
+        if self.frame_data:
+            self.frame_data.validate()
+        if self.summary_list:
+            for k in self.summary_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_data is not None:
+            result['AudioData'] = self.audio_data.to_map()
+        if self.frame_data is not None:
+            result['FrameData'] = self.frame_data.to_map()
+        if self.moderation_time is not None:
+            result['ModerationTime'] = self.moderation_time
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        result['SummaryList'] = []
+        if self.summary_list is not None:
+            for k in self.summary_list:
+                result['SummaryList'].append(k.to_map() if k else None)
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_status is not None:
+            result['TaskStatus'] = self.task_status
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioData') is not None:
+            temp_model = DescribeOnlineTestResultResponseBodyAudioData()
+            self.audio_data = temp_model.from_map(m['AudioData'])
+        if m.get('FrameData') is not None:
+            temp_model = DescribeOnlineTestResultResponseBodyFrameData()
+            self.frame_data = temp_model.from_map(m['FrameData'])
+        if m.get('ModerationTime') is not None:
+            self.moderation_time = m.get('ModerationTime')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        self.summary_list = []
+        if m.get('SummaryList') is not None:
+            for k in m.get('SummaryList'):
+                temp_model = DescribeOnlineTestResultResponseBodySummaryList()
+                self.summary_list.append(temp_model.from_map(k))
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskStatus') is not None:
+            self.task_status = m.get('TaskStatus')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class DescribeOnlineTestResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeOnlineTestResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeOnlineTestResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ExportAnswerSampleRequest(TeaModel):
     def __init__(
         self,
@@ -3731,6 +4267,7 @@ class ExportResultRequest(TeaModel):
         query: str = None,
         region_id: str = None,
         sort: Dict[str, str] = None,
+        source: str = None,
         start_date: str = None,
     ):
         self.current_page = current_page
@@ -3739,6 +4276,7 @@ class ExportResultRequest(TeaModel):
         self.query = query
         self.region_id = region_id
         self.sort = sort
+        self.source = source
         self.start_date = start_date
 
     def validate(self):
@@ -3762,6 +4300,8 @@ class ExportResultRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.sort is not None:
             result['Sort'] = self.sort
+        if self.source is not None:
+            result['Source'] = self.source
         if self.start_date is not None:
             result['StartDate'] = self.start_date
         return result
@@ -3780,6 +4320,8 @@ class ExportResultRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('Sort') is not None:
             self.sort = m.get('Sort')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
         if m.get('StartDate') is not None:
             self.start_date = m.get('StartDate')
         return self
@@ -3794,6 +4336,7 @@ class ExportResultShrinkRequest(TeaModel):
         query: str = None,
         region_id: str = None,
         sort_shrink: str = None,
+        source: str = None,
         start_date: str = None,
     ):
         self.current_page = current_page
@@ -3802,6 +4345,7 @@ class ExportResultShrinkRequest(TeaModel):
         self.query = query
         self.region_id = region_id
         self.sort_shrink = sort_shrink
+        self.source = source
         self.start_date = start_date
 
     def validate(self):
@@ -3825,6 +4369,8 @@ class ExportResultShrinkRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.sort_shrink is not None:
             result['Sort'] = self.sort_shrink
+        if self.source is not None:
+            result['Source'] = self.source
         if self.start_date is not None:
             result['StartDate'] = self.start_date
         return result
@@ -3843,6 +4389,8 @@ class ExportResultShrinkRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('Sort') is not None:
             self.sort_shrink = m.get('Sort')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
         if m.get('StartDate') is not None:
             self.start_date = m.get('StartDate')
         return self
@@ -5826,11 +6374,13 @@ class GetExecuteTimeResponse(TeaModel):
 class GetFeatureConfigRequest(TeaModel):
     def __init__(
         self,
+        query: str = None,
         region_id: str = None,
         resource_type: str = None,
         service_code: str = None,
         type: str = None,
     ):
+        self.query = query
         # Region ID
         self.region_id = region_id
         # Resource type.
@@ -5849,6 +6399,8 @@ class GetFeatureConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.query is not None:
+            result['Query'] = self.query
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_type is not None:
@@ -5861,6 +6413,8 @@ class GetFeatureConfigRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceType') is not None:
@@ -6834,6 +7388,999 @@ class GetKeywordLibResponse(TeaModel):
         return self
 
 
+class GetOssCheckFreezeResultRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        end_date: str = None,
+        finish_num: int = None,
+        page_size: int = None,
+        query: str = None,
+        region_id: str = None,
+        sort: Dict[str, str] = None,
+        start_date: str = None,
+        status: int = None,
+    ):
+        self.current_page = current_page
+        self.end_date = end_date
+        self.finish_num = finish_num
+        self.page_size = page_size
+        self.query = query
+        self.region_id = region_id
+        self.sort = sort
+        self.start_date = start_date
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.finish_num is not None:
+            result['FinishNum'] = self.finish_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.query is not None:
+            result['Query'] = self.query
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sort is not None:
+            result['Sort'] = self.sort
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('FinishNum') is not None:
+            self.finish_num = m.get('FinishNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Sort') is not None:
+            self.sort = m.get('Sort')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetOssCheckFreezeResultShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        end_date: str = None,
+        finish_num: int = None,
+        page_size: int = None,
+        query: str = None,
+        region_id: str = None,
+        sort_shrink: str = None,
+        start_date: str = None,
+        status: int = None,
+    ):
+        self.current_page = current_page
+        self.end_date = end_date
+        self.finish_num = finish_num
+        self.page_size = page_size
+        self.query = query
+        self.region_id = region_id
+        self.sort_shrink = sort_shrink
+        self.start_date = start_date
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.finish_num is not None:
+            result['FinishNum'] = self.finish_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.query is not None:
+            result['Query'] = self.query
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sort_shrink is not None:
+            result['Sort'] = self.sort_shrink
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('FinishNum') is not None:
+            self.finish_num = m.get('FinishNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Sort') is not None:
+            self.sort_shrink = m.get('Sort')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetOssCheckFreezeResultResponseBodyItemsLabelDetails(TeaModel):
+    def __init__(
+        self,
+        confidence: float = None,
+        description: str = None,
+        label: str = None,
+    ):
+        self.confidence = confidence
+        self.description = description
+        self.label = label
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.label is not None:
+            result['Label'] = self.label
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        return self
+
+
+class GetOssCheckFreezeResultResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        bucket: str = None,
+        code: str = None,
+        content_type: str = None,
+        copy_from: str = None,
+        feedback: str = None,
+        freeze: bool = None,
+        freeze_status: str = None,
+        freeze_type: str = None,
+        image_url: str = None,
+        is_copy: bool = None,
+        job_name: str = None,
+        label_details: List[GetOssCheckFreezeResultResponseBodyItemsLabelDetails] = None,
+        labels: List[str] = None,
+        labels_2: List[str] = None,
+        manual_freeze_action: str = None,
+        manual_operate_time: str = None,
+        manual_operator: str = None,
+        md_5: str = None,
+        msg: str = None,
+        object: str = None,
+        request_id: str = None,
+        risk_level: str = None,
+        risk_level_0: str = None,
+        risk_level_2: str = None,
+        scan_result: str = None,
+        service_code: str = None,
+        service_name: str = None,
+        sys_disposal_status: str = None,
+        task_id: str = None,
+        url: str = None,
+    ):
+        self.bucket = bucket
+        self.code = code
+        self.content_type = content_type
+        self.copy_from = copy_from
+        self.feedback = feedback
+        self.freeze = freeze
+        self.freeze_status = freeze_status
+        self.freeze_type = freeze_type
+        self.image_url = image_url
+        self.is_copy = is_copy
+        self.job_name = job_name
+        self.label_details = label_details
+        self.labels = labels
+        self.labels_2 = labels_2
+        self.manual_freeze_action = manual_freeze_action
+        self.manual_operate_time = manual_operate_time
+        self.manual_operator = manual_operator
+        self.md_5 = md_5
+        self.msg = msg
+        self.object = object
+        self.request_id = request_id
+        self.risk_level = risk_level
+        self.risk_level_0 = risk_level_0
+        self.risk_level_2 = risk_level_2
+        self.scan_result = scan_result
+        self.service_code = service_code
+        self.service_name = service_name
+        self.sys_disposal_status = sys_disposal_status
+        self.task_id = task_id
+        self.url = url
+
+    def validate(self):
+        if self.label_details:
+            for k in self.label_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket is not None:
+            result['Bucket'] = self.bucket
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.content_type is not None:
+            result['ContentType'] = self.content_type
+        if self.copy_from is not None:
+            result['CopyFrom'] = self.copy_from
+        if self.feedback is not None:
+            result['Feedback'] = self.feedback
+        if self.freeze is not None:
+            result['Freeze'] = self.freeze
+        if self.freeze_status is not None:
+            result['FreezeStatus'] = self.freeze_status
+        if self.freeze_type is not None:
+            result['FreezeType'] = self.freeze_type
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.is_copy is not None:
+            result['IsCopy'] = self.is_copy
+        if self.job_name is not None:
+            result['JobName'] = self.job_name
+        result['LabelDetails'] = []
+        if self.label_details is not None:
+            for k in self.label_details:
+                result['LabelDetails'].append(k.to_map() if k else None)
+        if self.labels is not None:
+            result['Labels'] = self.labels
+        if self.labels_2 is not None:
+            result['Labels2'] = self.labels_2
+        if self.manual_freeze_action is not None:
+            result['ManualFreezeAction'] = self.manual_freeze_action
+        if self.manual_operate_time is not None:
+            result['ManualOperateTime'] = self.manual_operate_time
+        if self.manual_operator is not None:
+            result['ManualOperator'] = self.manual_operator
+        if self.md_5 is not None:
+            result['Md5'] = self.md_5
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.object is not None:
+            result['Object'] = self.object
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+        if self.risk_level_0 is not None:
+            result['RiskLevel0'] = self.risk_level_0
+        if self.risk_level_2 is not None:
+            result['RiskLevel2'] = self.risk_level_2
+        if self.scan_result is not None:
+            result['ScanResult'] = self.scan_result
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
+        if self.sys_disposal_status is not None:
+            result['SysDisposalStatus'] = self.sys_disposal_status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bucket') is not None:
+            self.bucket = m.get('Bucket')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ContentType') is not None:
+            self.content_type = m.get('ContentType')
+        if m.get('CopyFrom') is not None:
+            self.copy_from = m.get('CopyFrom')
+        if m.get('Feedback') is not None:
+            self.feedback = m.get('Feedback')
+        if m.get('Freeze') is not None:
+            self.freeze = m.get('Freeze')
+        if m.get('FreezeStatus') is not None:
+            self.freeze_status = m.get('FreezeStatus')
+        if m.get('FreezeType') is not None:
+            self.freeze_type = m.get('FreezeType')
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        if m.get('IsCopy') is not None:
+            self.is_copy = m.get('IsCopy')
+        if m.get('JobName') is not None:
+            self.job_name = m.get('JobName')
+        self.label_details = []
+        if m.get('LabelDetails') is not None:
+            for k in m.get('LabelDetails'):
+                temp_model = GetOssCheckFreezeResultResponseBodyItemsLabelDetails()
+                self.label_details.append(temp_model.from_map(k))
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
+        if m.get('Labels2') is not None:
+            self.labels_2 = m.get('Labels2')
+        if m.get('ManualFreezeAction') is not None:
+            self.manual_freeze_action = m.get('ManualFreezeAction')
+        if m.get('ManualOperateTime') is not None:
+            self.manual_operate_time = m.get('ManualOperateTime')
+        if m.get('ManualOperator') is not None:
+            self.manual_operator = m.get('ManualOperator')
+        if m.get('Md5') is not None:
+            self.md_5 = m.get('Md5')
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('Object') is not None:
+            self.object = m.get('Object')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+        if m.get('RiskLevel0') is not None:
+            self.risk_level_0 = m.get('RiskLevel0')
+        if m.get('RiskLevel2') is not None:
+            self.risk_level_2 = m.get('RiskLevel2')
+        if m.get('ScanResult') is not None:
+            self.scan_result = m.get('ScanResult')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
+        if m.get('SysDisposalStatus') is not None:
+            self.sys_disposal_status = m.get('SysDisposalStatus')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class GetOssCheckFreezeResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        items: List[GetOssCheckFreezeResultResponseBodyItems] = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.current_page = current_page
+        self.items = items
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = GetOssCheckFreezeResultResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class GetOssCheckFreezeResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetOssCheckFreezeResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetOssCheckFreezeResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetOssCheckResultDetailRequest(TeaModel):
+    def __init__(
+        self,
+        bucket: str = None,
+        media_type: int = None,
+        object: str = None,
+        parent_task_id: str = None,
+        query_request_id: str = None,
+        region_id: str = None,
+        service_code: str = None,
+    ):
+        self.bucket = bucket
+        self.media_type = media_type
+        self.object = object
+        self.parent_task_id = parent_task_id
+        self.query_request_id = query_request_id
+        self.region_id = region_id
+        self.service_code = service_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket is not None:
+            result['Bucket'] = self.bucket
+        if self.media_type is not None:
+            result['MediaType'] = self.media_type
+        if self.object is not None:
+            result['Object'] = self.object
+        if self.parent_task_id is not None:
+            result['ParentTaskId'] = self.parent_task_id
+        if self.query_request_id is not None:
+            result['QueryRequestId'] = self.query_request_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bucket') is not None:
+            self.bucket = m.get('Bucket')
+        if m.get('MediaType') is not None:
+            self.media_type = m.get('MediaType')
+        if m.get('Object') is not None:
+            self.object = m.get('Object')
+        if m.get('ParentTaskId') is not None:
+            self.parent_task_id = m.get('ParentTaskId')
+        if m.get('QueryRequestId') is not None:
+            self.query_request_id = m.get('QueryRequestId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        return self
+
+
+class GetOssCheckResultDetailResponseBodyDataLabelDetails(TeaModel):
+    def __init__(
+        self,
+        confidence: float = None,
+        description: str = None,
+        label: str = None,
+    ):
+        self.confidence = confidence
+        self.description = description
+        self.label = label
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.label is not None:
+            result['Label'] = self.label
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        return self
+
+
+class GetOssCheckResultDetailResponseBodyDataLabelDetails2(TeaModel):
+    def __init__(
+        self,
+        confidence: float = None,
+        description: str = None,
+        label: str = None,
+    ):
+        self.confidence = confidence
+        self.description = description
+        self.label = label
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.label is not None:
+            result['Label'] = self.label
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        return self
+
+
+class GetOssCheckResultDetailResponseBodyDataScanServiceInfos(TeaModel):
+    def __init__(
+        self,
+        copy_from: str = None,
+        is_copy: bool = None,
+        service_code: str = None,
+        service_name: str = None,
+    ):
+        self.copy_from = copy_from
+        self.is_copy = is_copy
+        self.service_code = service_code
+        self.service_name = service_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.copy_from is not None:
+            result['CopyFrom'] = self.copy_from
+        if self.is_copy is not None:
+            result['IsCopy'] = self.is_copy
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CopyFrom') is not None:
+            self.copy_from = m.get('CopyFrom')
+        if m.get('IsCopy') is not None:
+            self.is_copy = m.get('IsCopy')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
+        return self
+
+
+class GetOssCheckResultDetailResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        bucket: str = None,
+        code: str = None,
+        content_type: str = None,
+        copy_from: str = None,
+        freeze_status: str = None,
+        freeze_type: str = None,
+        image_url: str = None,
+        is_copy: bool = None,
+        job_name: str = None,
+        label_details: List[GetOssCheckResultDetailResponseBodyDataLabelDetails] = None,
+        label_details_2: List[GetOssCheckResultDetailResponseBodyDataLabelDetails2] = None,
+        labels: List[str] = None,
+        labels_2: List[str] = None,
+        manual_freeze_action: str = None,
+        manual_operate_time: str = None,
+        manual_operator: str = None,
+        md_5: str = None,
+        msg: str = None,
+        object: str = None,
+        risk_level: str = None,
+        risk_level_0: str = None,
+        risk_level_2: str = None,
+        scan_result: str = None,
+        scan_service_infos: List[GetOssCheckResultDetailResponseBodyDataScanServiceInfos] = None,
+        service_code: str = None,
+        service_name: str = None,
+        task_id: str = None,
+        url: str = None,
+    ):
+        self.bucket = bucket
+        self.code = code
+        self.content_type = content_type
+        self.copy_from = copy_from
+        self.freeze_status = freeze_status
+        self.freeze_type = freeze_type
+        self.image_url = image_url
+        self.is_copy = is_copy
+        self.job_name = job_name
+        self.label_details = label_details
+        self.label_details_2 = label_details_2
+        self.labels = labels
+        self.labels_2 = labels_2
+        self.manual_freeze_action = manual_freeze_action
+        self.manual_operate_time = manual_operate_time
+        self.manual_operator = manual_operator
+        self.md_5 = md_5
+        self.msg = msg
+        self.object = object
+        self.risk_level = risk_level
+        self.risk_level_0 = risk_level_0
+        self.risk_level_2 = risk_level_2
+        self.scan_result = scan_result
+        self.scan_service_infos = scan_service_infos
+        self.service_code = service_code
+        self.service_name = service_name
+        self.task_id = task_id
+        self.url = url
+
+    def validate(self):
+        if self.label_details:
+            for k in self.label_details:
+                if k:
+                    k.validate()
+        if self.label_details_2:
+            for k in self.label_details_2:
+                if k:
+                    k.validate()
+        if self.scan_service_infos:
+            for k in self.scan_service_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket is not None:
+            result['Bucket'] = self.bucket
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.content_type is not None:
+            result['ContentType'] = self.content_type
+        if self.copy_from is not None:
+            result['CopyFrom'] = self.copy_from
+        if self.freeze_status is not None:
+            result['FreezeStatus'] = self.freeze_status
+        if self.freeze_type is not None:
+            result['FreezeType'] = self.freeze_type
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.is_copy is not None:
+            result['IsCopy'] = self.is_copy
+        if self.job_name is not None:
+            result['JobName'] = self.job_name
+        result['LabelDetails'] = []
+        if self.label_details is not None:
+            for k in self.label_details:
+                result['LabelDetails'].append(k.to_map() if k else None)
+        result['LabelDetails2'] = []
+        if self.label_details_2 is not None:
+            for k in self.label_details_2:
+                result['LabelDetails2'].append(k.to_map() if k else None)
+        if self.labels is not None:
+            result['Labels'] = self.labels
+        if self.labels_2 is not None:
+            result['Labels2'] = self.labels_2
+        if self.manual_freeze_action is not None:
+            result['ManualFreezeAction'] = self.manual_freeze_action
+        if self.manual_operate_time is not None:
+            result['ManualOperateTime'] = self.manual_operate_time
+        if self.manual_operator is not None:
+            result['ManualOperator'] = self.manual_operator
+        if self.md_5 is not None:
+            result['Md5'] = self.md_5
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.object is not None:
+            result['Object'] = self.object
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+        if self.risk_level_0 is not None:
+            result['RiskLevel0'] = self.risk_level_0
+        if self.risk_level_2 is not None:
+            result['RiskLevel2'] = self.risk_level_2
+        if self.scan_result is not None:
+            result['ScanResult'] = self.scan_result
+        result['ScanServiceInfos'] = []
+        if self.scan_service_infos is not None:
+            for k in self.scan_service_infos:
+                result['ScanServiceInfos'].append(k.to_map() if k else None)
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bucket') is not None:
+            self.bucket = m.get('Bucket')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ContentType') is not None:
+            self.content_type = m.get('ContentType')
+        if m.get('CopyFrom') is not None:
+            self.copy_from = m.get('CopyFrom')
+        if m.get('FreezeStatus') is not None:
+            self.freeze_status = m.get('FreezeStatus')
+        if m.get('FreezeType') is not None:
+            self.freeze_type = m.get('FreezeType')
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        if m.get('IsCopy') is not None:
+            self.is_copy = m.get('IsCopy')
+        if m.get('JobName') is not None:
+            self.job_name = m.get('JobName')
+        self.label_details = []
+        if m.get('LabelDetails') is not None:
+            for k in m.get('LabelDetails'):
+                temp_model = GetOssCheckResultDetailResponseBodyDataLabelDetails()
+                self.label_details.append(temp_model.from_map(k))
+        self.label_details_2 = []
+        if m.get('LabelDetails2') is not None:
+            for k in m.get('LabelDetails2'):
+                temp_model = GetOssCheckResultDetailResponseBodyDataLabelDetails2()
+                self.label_details_2.append(temp_model.from_map(k))
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
+        if m.get('Labels2') is not None:
+            self.labels_2 = m.get('Labels2')
+        if m.get('ManualFreezeAction') is not None:
+            self.manual_freeze_action = m.get('ManualFreezeAction')
+        if m.get('ManualOperateTime') is not None:
+            self.manual_operate_time = m.get('ManualOperateTime')
+        if m.get('ManualOperator') is not None:
+            self.manual_operator = m.get('ManualOperator')
+        if m.get('Md5') is not None:
+            self.md_5 = m.get('Md5')
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('Object') is not None:
+            self.object = m.get('Object')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+        if m.get('RiskLevel0') is not None:
+            self.risk_level_0 = m.get('RiskLevel0')
+        if m.get('RiskLevel2') is not None:
+            self.risk_level_2 = m.get('RiskLevel2')
+        if m.get('ScanResult') is not None:
+            self.scan_result = m.get('ScanResult')
+        self.scan_service_infos = []
+        if m.get('ScanServiceInfos') is not None:
+            for k in m.get('ScanServiceInfos'):
+                temp_model = GetOssCheckResultDetailResponseBodyDataScanServiceInfos()
+                self.scan_service_infos.append(temp_model.from_map(k))
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class GetOssCheckResultDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetOssCheckResultDetailResponseBodyData = None,
+        msg: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.msg = msg
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetOssCheckResultDetailResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetOssCheckResultDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetOssCheckResultDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetOssCheckResultDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetOssCheckStatRequest(TeaModel):
     def __init__(
         self,
@@ -7163,6 +8710,448 @@ class GetOssCheckStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetOssCheckStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetOssCheckTaskInfoRequest(TeaModel):
+    def __init__(
+        self,
+        parent_task_id: str = None,
+    ):
+        self.parent_task_id = parent_task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.parent_task_id is not None:
+            result['ParentTaskId'] = self.parent_task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParentTaskId') is not None:
+            self.parent_task_id = m.get('ParentTaskId')
+        return self
+
+
+class GetOssCheckTaskInfoResponseBodyConfigScanServiceInfos(TeaModel):
+    def __init__(
+        self,
+        copy_from: str = None,
+        is_copy: bool = None,
+        service_code: str = None,
+        service_name: str = None,
+    ):
+        self.copy_from = copy_from
+        self.is_copy = is_copy
+        self.service_code = service_code
+        self.service_name = service_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.copy_from is not None:
+            result['CopyFrom'] = self.copy_from
+        if self.is_copy is not None:
+            result['IsCopy'] = self.is_copy
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CopyFrom') is not None:
+            self.copy_from = m.get('CopyFrom')
+        if m.get('IsCopy') is not None:
+            self.is_copy = m.get('IsCopy')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
+        return self
+
+
+class GetOssCheckTaskInfoResponseBodyConfigUserFreezeConfig(TeaModel):
+    def __init__(
+        self,
+        freeze_restore_path: str = None,
+        freeze_type: str = None,
+    ):
+        self.freeze_restore_path = freeze_restore_path
+        self.freeze_type = freeze_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.freeze_restore_path is not None:
+            result['FreezeRestorePath'] = self.freeze_restore_path
+        if self.freeze_type is not None:
+            result['FreezeType'] = self.freeze_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FreezeRestorePath') is not None:
+            self.freeze_restore_path = m.get('FreezeRestorePath')
+        if m.get('FreezeType') is not None:
+            self.freeze_type = m.get('FreezeType')
+        return self
+
+
+class GetOssCheckTaskInfoResponseBodyConfig(TeaModel):
+    def __init__(
+        self,
+        callback_id: int = None,
+        distinct_history_tasks: bool = None,
+        end_time: str = None,
+        execute_date: int = None,
+        execute_time: str = None,
+        freeze: bool = None,
+        freeze_high_risk_1: bool = None,
+        freeze_high_risk_2: bool = None,
+        freeze_medium_risk_1: bool = None,
+        freeze_medium_risk_2: bool = None,
+        freeze_restore_path: str = None,
+        freeze_type: str = None,
+        prefix_filter_type: str = None,
+        prefix_filters: List[str] = None,
+        priority: int = None,
+        referer: str = None,
+        scan_limit: int = None,
+        scan_no_file_type: bool = None,
+        scan_resource_type: int = None,
+        scan_service: List[str] = None,
+        scan_service_infos: List[GetOssCheckTaskInfoResponseBodyConfigScanServiceInfos] = None,
+        start_time: str = None,
+        task_cycle: int = None,
+        user_freeze_config: GetOssCheckTaskInfoResponseBodyConfigUserFreezeConfig = None,
+    ):
+        self.callback_id = callback_id
+        self.distinct_history_tasks = distinct_history_tasks
+        self.end_time = end_time
+        self.execute_date = execute_date
+        self.execute_time = execute_time
+        self.freeze = freeze
+        self.freeze_high_risk_1 = freeze_high_risk_1
+        self.freeze_high_risk_2 = freeze_high_risk_2
+        self.freeze_medium_risk_1 = freeze_medium_risk_1
+        self.freeze_medium_risk_2 = freeze_medium_risk_2
+        self.freeze_restore_path = freeze_restore_path
+        self.freeze_type = freeze_type
+        self.prefix_filter_type = prefix_filter_type
+        self.prefix_filters = prefix_filters
+        self.priority = priority
+        # Referer。
+        self.referer = referer
+        self.scan_limit = scan_limit
+        self.scan_no_file_type = scan_no_file_type
+        self.scan_resource_type = scan_resource_type
+        self.scan_service = scan_service
+        self.scan_service_infos = scan_service_infos
+        self.start_time = start_time
+        self.task_cycle = task_cycle
+        self.user_freeze_config = user_freeze_config
+
+    def validate(self):
+        if self.scan_service_infos:
+            for k in self.scan_service_infos:
+                if k:
+                    k.validate()
+        if self.user_freeze_config:
+            self.user_freeze_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.callback_id is not None:
+            result['CallbackId'] = self.callback_id
+        if self.distinct_history_tasks is not None:
+            result['DistinctHistoryTasks'] = self.distinct_history_tasks
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.execute_date is not None:
+            result['ExecuteDate'] = self.execute_date
+        if self.execute_time is not None:
+            result['ExecuteTime'] = self.execute_time
+        if self.freeze is not None:
+            result['Freeze'] = self.freeze
+        if self.freeze_high_risk_1 is not None:
+            result['FreezeHighRisk1'] = self.freeze_high_risk_1
+        if self.freeze_high_risk_2 is not None:
+            result['FreezeHighRisk2'] = self.freeze_high_risk_2
+        if self.freeze_medium_risk_1 is not None:
+            result['FreezeMediumRisk1'] = self.freeze_medium_risk_1
+        if self.freeze_medium_risk_2 is not None:
+            result['FreezeMediumRisk2'] = self.freeze_medium_risk_2
+        if self.freeze_restore_path is not None:
+            result['FreezeRestorePath'] = self.freeze_restore_path
+        if self.freeze_type is not None:
+            result['FreezeType'] = self.freeze_type
+        if self.prefix_filter_type is not None:
+            result['PrefixFilterType'] = self.prefix_filter_type
+        if self.prefix_filters is not None:
+            result['PrefixFilters'] = self.prefix_filters
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.referer is not None:
+            result['Referer'] = self.referer
+        if self.scan_limit is not None:
+            result['ScanLimit'] = self.scan_limit
+        if self.scan_no_file_type is not None:
+            result['ScanNoFileType'] = self.scan_no_file_type
+        if self.scan_resource_type is not None:
+            result['ScanResourceType'] = self.scan_resource_type
+        if self.scan_service is not None:
+            result['ScanService'] = self.scan_service
+        result['ScanServiceInfos'] = []
+        if self.scan_service_infos is not None:
+            for k in self.scan_service_infos:
+                result['ScanServiceInfos'].append(k.to_map() if k else None)
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.task_cycle is not None:
+            result['TaskCycle'] = self.task_cycle
+        if self.user_freeze_config is not None:
+            result['UserFreezeConfig'] = self.user_freeze_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallbackId') is not None:
+            self.callback_id = m.get('CallbackId')
+        if m.get('DistinctHistoryTasks') is not None:
+            self.distinct_history_tasks = m.get('DistinctHistoryTasks')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('ExecuteDate') is not None:
+            self.execute_date = m.get('ExecuteDate')
+        if m.get('ExecuteTime') is not None:
+            self.execute_time = m.get('ExecuteTime')
+        if m.get('Freeze') is not None:
+            self.freeze = m.get('Freeze')
+        if m.get('FreezeHighRisk1') is not None:
+            self.freeze_high_risk_1 = m.get('FreezeHighRisk1')
+        if m.get('FreezeHighRisk2') is not None:
+            self.freeze_high_risk_2 = m.get('FreezeHighRisk2')
+        if m.get('FreezeMediumRisk1') is not None:
+            self.freeze_medium_risk_1 = m.get('FreezeMediumRisk1')
+        if m.get('FreezeMediumRisk2') is not None:
+            self.freeze_medium_risk_2 = m.get('FreezeMediumRisk2')
+        if m.get('FreezeRestorePath') is not None:
+            self.freeze_restore_path = m.get('FreezeRestorePath')
+        if m.get('FreezeType') is not None:
+            self.freeze_type = m.get('FreezeType')
+        if m.get('PrefixFilterType') is not None:
+            self.prefix_filter_type = m.get('PrefixFilterType')
+        if m.get('PrefixFilters') is not None:
+            self.prefix_filters = m.get('PrefixFilters')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('Referer') is not None:
+            self.referer = m.get('Referer')
+        if m.get('ScanLimit') is not None:
+            self.scan_limit = m.get('ScanLimit')
+        if m.get('ScanNoFileType') is not None:
+            self.scan_no_file_type = m.get('ScanNoFileType')
+        if m.get('ScanResourceType') is not None:
+            self.scan_resource_type = m.get('ScanResourceType')
+        if m.get('ScanService') is not None:
+            self.scan_service = m.get('ScanService')
+        self.scan_service_infos = []
+        if m.get('ScanServiceInfos') is not None:
+            for k in m.get('ScanServiceInfos'):
+                temp_model = GetOssCheckTaskInfoResponseBodyConfigScanServiceInfos()
+                self.scan_service_infos.append(temp_model.from_map(k))
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TaskCycle') is not None:
+            self.task_cycle = m.get('TaskCycle')
+        if m.get('UserFreezeConfig') is not None:
+            temp_model = GetOssCheckTaskInfoResponseBodyConfigUserFreezeConfig()
+            self.user_freeze_config = temp_model.from_map(m['UserFreezeConfig'])
+        return self
+
+
+class GetOssCheckTaskInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        buckets: str = None,
+        config: GetOssCheckTaskInfoResponseBodyConfig = None,
+        end_time: str = None,
+        finish_num: int = None,
+        is_inc: bool = None,
+        last_execute_date: str = None,
+        media_type: int = None,
+        next_execute_date: str = None,
+        object_num: int = None,
+        request_id: str = None,
+        search_num: int = None,
+        start_time: str = None,
+        status: int = None,
+        task_id: str = None,
+        task_name: str = None,
+        task_type: str = None,
+    ):
+        self.buckets = buckets
+        self.config = config
+        self.end_time = end_time
+        self.finish_num = finish_num
+        self.is_inc = is_inc
+        self.last_execute_date = last_execute_date
+        self.media_type = media_type
+        self.next_execute_date = next_execute_date
+        self.object_num = object_num
+        self.request_id = request_id
+        self.search_num = search_num
+        self.start_time = start_time
+        self.status = status
+        self.task_id = task_id
+        self.task_name = task_name
+        self.task_type = task_type
+
+    def validate(self):
+        if self.config:
+            self.config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.buckets is not None:
+            result['Buckets'] = self.buckets
+        if self.config is not None:
+            result['Config'] = self.config.to_map()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.finish_num is not None:
+            result['FinishNum'] = self.finish_num
+        if self.is_inc is not None:
+            result['IsInc'] = self.is_inc
+        if self.last_execute_date is not None:
+            result['LastExecuteDate'] = self.last_execute_date
+        if self.media_type is not None:
+            result['MediaType'] = self.media_type
+        if self.next_execute_date is not None:
+            result['NextExecuteDate'] = self.next_execute_date
+        if self.object_num is not None:
+            result['ObjectNum'] = self.object_num
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.search_num is not None:
+            result['SearchNum'] = self.search_num
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Buckets') is not None:
+            self.buckets = m.get('Buckets')
+        if m.get('Config') is not None:
+            temp_model = GetOssCheckTaskInfoResponseBodyConfig()
+            self.config = temp_model.from_map(m['Config'])
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('FinishNum') is not None:
+            self.finish_num = m.get('FinishNum')
+        if m.get('IsInc') is not None:
+            self.is_inc = m.get('IsInc')
+        if m.get('LastExecuteDate') is not None:
+            self.last_execute_date = m.get('LastExecuteDate')
+        if m.get('MediaType') is not None:
+            self.media_type = m.get('MediaType')
+        if m.get('NextExecuteDate') is not None:
+            self.next_execute_date = m.get('NextExecuteDate')
+        if m.get('ObjectNum') is not None:
+            self.object_num = m.get('ObjectNum')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SearchNum') is not None:
+            self.search_num = m.get('SearchNum')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        return self
+
+
+class GetOssCheckTaskInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetOssCheckTaskInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetOssCheckTaskInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8744,6 +10733,39 @@ class GetStockOssCheckTasksListResponseBodyItemsConfigScanServiceInfos(TeaModel)
         return self
 
 
+class GetStockOssCheckTasksListResponseBodyItemsConfigUserFreezeConfig(TeaModel):
+    def __init__(
+        self,
+        freeze_restore_path: str = None,
+        freeze_type: str = None,
+    ):
+        self.freeze_restore_path = freeze_restore_path
+        self.freeze_type = freeze_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.freeze_restore_path is not None:
+            result['FreezeRestorePath'] = self.freeze_restore_path
+        if self.freeze_type is not None:
+            result['FreezeType'] = self.freeze_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FreezeRestorePath') is not None:
+            self.freeze_restore_path = m.get('FreezeRestorePath')
+        if m.get('FreezeType') is not None:
+            self.freeze_type = m.get('FreezeType')
+        return self
+
+
 class GetStockOssCheckTasksListResponseBodyItemsConfig(TeaModel):
     def __init__(
         self,
@@ -8757,10 +10779,12 @@ class GetStockOssCheckTasksListResponseBodyItemsConfig(TeaModel):
         freeze_high_risk_2: bool = None,
         freeze_medium_risk_1: bool = None,
         freeze_medium_risk_2: bool = None,
+        freeze_restore_path: str = None,
         freeze_type: str = None,
         prefix_filter_type: str = None,
         prefix_filters: List[str] = None,
         priority: int = None,
+        referer: str = None,
         scan_limit: int = None,
         scan_no_file_type: bool = None,
         scan_resource_type: int = None,
@@ -8768,6 +10792,7 @@ class GetStockOssCheckTasksListResponseBodyItemsConfig(TeaModel):
         scan_service_infos: List[GetStockOssCheckTasksListResponseBodyItemsConfigScanServiceInfos] = None,
         start_time: str = None,
         task_cycle: int = None,
+        user_freeze_config: GetStockOssCheckTasksListResponseBodyItemsConfigUserFreezeConfig = None,
     ):
         self.callback_id = callback_id
         self.distinct_history_tasks = distinct_history_tasks
@@ -8779,10 +10804,12 @@ class GetStockOssCheckTasksListResponseBodyItemsConfig(TeaModel):
         self.freeze_high_risk_2 = freeze_high_risk_2
         self.freeze_medium_risk_1 = freeze_medium_risk_1
         self.freeze_medium_risk_2 = freeze_medium_risk_2
+        self.freeze_restore_path = freeze_restore_path
         self.freeze_type = freeze_type
         self.prefix_filter_type = prefix_filter_type
         self.prefix_filters = prefix_filters
         self.priority = priority
+        self.referer = referer
         self.scan_limit = scan_limit
         self.scan_no_file_type = scan_no_file_type
         self.scan_resource_type = scan_resource_type
@@ -8790,12 +10817,15 @@ class GetStockOssCheckTasksListResponseBodyItemsConfig(TeaModel):
         self.scan_service_infos = scan_service_infos
         self.start_time = start_time
         self.task_cycle = task_cycle
+        self.user_freeze_config = user_freeze_config
 
     def validate(self):
         if self.scan_service_infos:
             for k in self.scan_service_infos:
                 if k:
                     k.validate()
+        if self.user_freeze_config:
+            self.user_freeze_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -8823,6 +10853,8 @@ class GetStockOssCheckTasksListResponseBodyItemsConfig(TeaModel):
             result['FreezeMediumRisk1'] = self.freeze_medium_risk_1
         if self.freeze_medium_risk_2 is not None:
             result['FreezeMediumRisk2'] = self.freeze_medium_risk_2
+        if self.freeze_restore_path is not None:
+            result['FreezeRestorePath'] = self.freeze_restore_path
         if self.freeze_type is not None:
             result['FreezeType'] = self.freeze_type
         if self.prefix_filter_type is not None:
@@ -8831,6 +10863,8 @@ class GetStockOssCheckTasksListResponseBodyItemsConfig(TeaModel):
             result['PrefixFilters'] = self.prefix_filters
         if self.priority is not None:
             result['Priority'] = self.priority
+        if self.referer is not None:
+            result['Referer'] = self.referer
         if self.scan_limit is not None:
             result['ScanLimit'] = self.scan_limit
         if self.scan_no_file_type is not None:
@@ -8847,6 +10881,8 @@ class GetStockOssCheckTasksListResponseBodyItemsConfig(TeaModel):
             result['StartTime'] = self.start_time
         if self.task_cycle is not None:
             result['TaskCycle'] = self.task_cycle
+        if self.user_freeze_config is not None:
+            result['UserFreezeConfig'] = self.user_freeze_config.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -8871,6 +10907,8 @@ class GetStockOssCheckTasksListResponseBodyItemsConfig(TeaModel):
             self.freeze_medium_risk_1 = m.get('FreezeMediumRisk1')
         if m.get('FreezeMediumRisk2') is not None:
             self.freeze_medium_risk_2 = m.get('FreezeMediumRisk2')
+        if m.get('FreezeRestorePath') is not None:
+            self.freeze_restore_path = m.get('FreezeRestorePath')
         if m.get('FreezeType') is not None:
             self.freeze_type = m.get('FreezeType')
         if m.get('PrefixFilterType') is not None:
@@ -8879,6 +10917,8 @@ class GetStockOssCheckTasksListResponseBodyItemsConfig(TeaModel):
             self.prefix_filters = m.get('PrefixFilters')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
+        if m.get('Referer') is not None:
+            self.referer = m.get('Referer')
         if m.get('ScanLimit') is not None:
             self.scan_limit = m.get('ScanLimit')
         if m.get('ScanNoFileType') is not None:
@@ -8896,6 +10936,9 @@ class GetStockOssCheckTasksListResponseBodyItemsConfig(TeaModel):
             self.start_time = m.get('StartTime')
         if m.get('TaskCycle') is not None:
             self.task_cycle = m.get('TaskCycle')
+        if m.get('UserFreezeConfig') is not None:
+            temp_model = GetStockOssCheckTasksListResponseBodyItemsConfigUserFreezeConfig()
+            self.user_freeze_config = temp_model.from_map(m['UserFreezeConfig'])
         return self
 
 
@@ -9718,6 +11761,107 @@ class GetUploadInfoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetUploadInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetUploadLinkRequest(TeaModel):
+    def __init__(
+        self,
+        upload_url: str = None,
+    ):
+        self.upload_url = upload_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.upload_url is not None:
+            result['UploadUrl'] = self.upload_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UploadUrl') is not None:
+            self.upload_url = m.get('UploadUrl')
+        return self
+
+
+class GetUploadLinkResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetUploadLinkResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetUploadLinkResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetUploadLinkResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12890,6 +15034,385 @@ class ModifyServiceInfoResponse(TeaModel):
         return self
 
 
+class OssCheckResultListRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        end_date: str = None,
+        finish_num: int = None,
+        page_size: int = None,
+        query: str = None,
+        region_id: str = None,
+        sort: Dict[str, str] = None,
+        start_date: str = None,
+        status: int = None,
+    ):
+        self.current_page = current_page
+        self.end_date = end_date
+        self.finish_num = finish_num
+        self.page_size = page_size
+        self.query = query
+        self.region_id = region_id
+        self.sort = sort
+        self.start_date = start_date
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.finish_num is not None:
+            result['FinishNum'] = self.finish_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.query is not None:
+            result['Query'] = self.query
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sort is not None:
+            result['Sort'] = self.sort
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('FinishNum') is not None:
+            self.finish_num = m.get('FinishNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Sort') is not None:
+            self.sort = m.get('Sort')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class OssCheckResultListShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        end_date: str = None,
+        finish_num: int = None,
+        page_size: int = None,
+        query: str = None,
+        region_id: str = None,
+        sort_shrink: str = None,
+        start_date: str = None,
+        status: int = None,
+    ):
+        self.current_page = current_page
+        self.end_date = end_date
+        self.finish_num = finish_num
+        self.page_size = page_size
+        self.query = query
+        self.region_id = region_id
+        self.sort_shrink = sort_shrink
+        self.start_date = start_date
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.finish_num is not None:
+            result['FinishNum'] = self.finish_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.query is not None:
+            result['Query'] = self.query
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sort_shrink is not None:
+            result['Sort'] = self.sort_shrink
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('FinishNum') is not None:
+            self.finish_num = m.get('FinishNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Sort') is not None:
+            self.sort_shrink = m.get('Sort')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class OssCheckResultListResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        bucket: str = None,
+        code: str = None,
+        content_type: str = None,
+        copy_from: str = None,
+        image_url: str = None,
+        is_copy: bool = None,
+        job_name: str = None,
+        labels: List[str] = None,
+        labels_2: List[str] = None,
+        md_5: str = None,
+        msg: str = None,
+        object: str = None,
+        scan_result: str = None,
+        service_code: str = None,
+        service_name: str = None,
+        task_id: str = None,
+        url: str = None,
+    ):
+        self.bucket = bucket
+        self.code = code
+        self.content_type = content_type
+        self.copy_from = copy_from
+        self.image_url = image_url
+        self.is_copy = is_copy
+        self.job_name = job_name
+        self.labels = labels
+        self.labels_2 = labels_2
+        self.md_5 = md_5
+        self.msg = msg
+        self.object = object
+        self.scan_result = scan_result
+        self.service_code = service_code
+        self.service_name = service_name
+        self.task_id = task_id
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket is not None:
+            result['Bucket'] = self.bucket
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.content_type is not None:
+            result['ContentType'] = self.content_type
+        if self.copy_from is not None:
+            result['CopyFrom'] = self.copy_from
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.is_copy is not None:
+            result['IsCopy'] = self.is_copy
+        if self.job_name is not None:
+            result['JobName'] = self.job_name
+        if self.labels is not None:
+            result['Labels'] = self.labels
+        if self.labels_2 is not None:
+            result['Labels2'] = self.labels_2
+        if self.md_5 is not None:
+            result['Md5'] = self.md_5
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.object is not None:
+            result['Object'] = self.object
+        if self.scan_result is not None:
+            result['ScanResult'] = self.scan_result
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bucket') is not None:
+            self.bucket = m.get('Bucket')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ContentType') is not None:
+            self.content_type = m.get('ContentType')
+        if m.get('CopyFrom') is not None:
+            self.copy_from = m.get('CopyFrom')
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        if m.get('IsCopy') is not None:
+            self.is_copy = m.get('IsCopy')
+        if m.get('JobName') is not None:
+            self.job_name = m.get('JobName')
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
+        if m.get('Labels2') is not None:
+            self.labels_2 = m.get('Labels2')
+        if m.get('Md5') is not None:
+            self.md_5 = m.get('Md5')
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('Object') is not None:
+            self.object = m.get('Object')
+        if m.get('ScanResult') is not None:
+            self.scan_result = m.get('ScanResult')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class OssCheckResultListResponseBody(TeaModel):
+    def __init__(
+        self,
+        auth_status: str = None,
+        current_page: int = None,
+        items: List[OssCheckResultListResponseBodyItems] = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.auth_status = auth_status
+        self.current_page = current_page
+        self.items = items
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_status is not None:
+            result['AuthStatus'] = self.auth_status
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthStatus') is not None:
+            self.auth_status = m.get('AuthStatus')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = OssCheckResultListResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class OssCheckResultListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: OssCheckResultListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = OssCheckResultListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryAnswerSampleByPageRequest(TeaModel):
     def __init__(
         self,
@@ -13542,6 +16065,137 @@ class QueryCallbackByPageResponse(TeaModel):
         return self
 
 
+class StopOnlineTestRequest(TeaModel):
+    def __init__(
+        self,
+        resource_type: str = None,
+        service_code: str = None,
+        task_id: str = None,
+    ):
+        self.resource_type = resource_type
+        self.service_code = service_code
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class StopOnlineTestResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        service_code: str = None,
+        task_id: str = None,
+        task_status: str = None,
+        url: str = None,
+    ):
+        self.request_id = request_id
+        self.service_code = service_code
+        self.task_id = task_id
+        self.task_status = task_status
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_status is not None:
+            result['TaskStatus'] = self.task_status
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskStatus') is not None:
+            self.task_status = m.get('TaskStatus')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class StopOnlineTestResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopOnlineTestResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopOnlineTestResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateBackupConfigRequest(TeaModel):
     def __init__(
         self,
@@ -14101,6 +16755,624 @@ class UpdateKeywordLibResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateKeywordLibResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateOssCheckResultsBatchFeedbackRequest(TeaModel):
+    def __init__(
+        self,
+        feedback: str = None,
+        items: str = None,
+        parent_task_id: str = None,
+    ):
+        self.feedback = feedback
+        self.items = items
+        self.parent_task_id = parent_task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.feedback is not None:
+            result['Feedback'] = self.feedback
+        if self.items is not None:
+            result['Items'] = self.items
+        if self.parent_task_id is not None:
+            result['ParentTaskId'] = self.parent_task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Feedback') is not None:
+            self.feedback = m.get('Feedback')
+        if m.get('Items') is not None:
+            self.items = m.get('Items')
+        if m.get('ParentTaskId') is not None:
+            self.parent_task_id = m.get('ParentTaskId')
+        return self
+
+
+class UpdateOssCheckResultsBatchFeedbackResponseBody(TeaModel):
+    def __init__(
+        self,
+        invalid_count: int = None,
+        repeat_count: int = None,
+        request_id: str = None,
+        success_count: int = None,
+        tips: str = None,
+        total_count: int = None,
+    ):
+        self.invalid_count = invalid_count
+        self.repeat_count = repeat_count
+        self.request_id = request_id
+        self.success_count = success_count
+        self.tips = tips
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.invalid_count is not None:
+            result['InvalidCount'] = self.invalid_count
+        if self.repeat_count is not None:
+            result['RepeatCount'] = self.repeat_count
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success_count is not None:
+            result['SuccessCount'] = self.success_count
+        if self.tips is not None:
+            result['Tips'] = self.tips
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InvalidCount') is not None:
+            self.invalid_count = m.get('InvalidCount')
+        if m.get('RepeatCount') is not None:
+            self.repeat_count = m.get('RepeatCount')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SuccessCount') is not None:
+            self.success_count = m.get('SuccessCount')
+        if m.get('Tips') is not None:
+            self.tips = m.get('Tips')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class UpdateOssCheckResultsBatchFeedbackResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateOssCheckResultsBatchFeedbackResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateOssCheckResultsBatchFeedbackResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateOssCheckResultsFeedBackRequest(TeaModel):
+    def __init__(
+        self,
+        feedback: str = None,
+        query_request_id: str = None,
+        region_id: str = None,
+        service_code: str = None,
+        task_id: str = None,
+    ):
+        self.feedback = feedback
+        self.query_request_id = query_request_id
+        self.region_id = region_id
+        self.service_code = service_code
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.feedback is not None:
+            result['Feedback'] = self.feedback
+        if self.query_request_id is not None:
+            result['QueryRequestId'] = self.query_request_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Feedback') is not None:
+            self.feedback = m.get('Feedback')
+        if m.get('QueryRequestId') is not None:
+            self.query_request_id = m.get('QueryRequestId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class UpdateOssCheckResultsFeedBackResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateOssCheckResultsFeedBackResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateOssCheckResultsFeedBackResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateOssCheckResultsFeedBackResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateOssCheckResultsFreezeRequest(TeaModel):
+    def __init__(
+        self,
+        end_date: str = None,
+        freeze_items: str = None,
+        freeze_restore_path: str = None,
+        freeze_type: str = None,
+        region_id: str = None,
+        start_date: str = None,
+        task_id: str = None,
+    ):
+        self.end_date = end_date
+        self.freeze_items = freeze_items
+        self.freeze_restore_path = freeze_restore_path
+        self.freeze_type = freeze_type
+        self.region_id = region_id
+        self.start_date = start_date
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.freeze_items is not None:
+            result['FreezeItems'] = self.freeze_items
+        if self.freeze_restore_path is not None:
+            result['FreezeRestorePath'] = self.freeze_restore_path
+        if self.freeze_type is not None:
+            result['FreezeType'] = self.freeze_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('FreezeItems') is not None:
+            self.freeze_items = m.get('FreezeItems')
+        if m.get('FreezeRestorePath') is not None:
+            self.freeze_restore_path = m.get('FreezeRestorePath')
+        if m.get('FreezeType') is not None:
+            self.freeze_type = m.get('FreezeType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class UpdateOssCheckResultsFreezeResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        invalid_count: int = None,
+        repeat_count: int = None,
+        success_count: int = None,
+        total_count: int = None,
+    ):
+        self.invalid_count = invalid_count
+        self.repeat_count = repeat_count
+        self.success_count = success_count
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.invalid_count is not None:
+            result['InvalidCount'] = self.invalid_count
+        if self.repeat_count is not None:
+            result['RepeatCount'] = self.repeat_count
+        if self.success_count is not None:
+            result['SuccessCount'] = self.success_count
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InvalidCount') is not None:
+            self.invalid_count = m.get('InvalidCount')
+        if m.get('RepeatCount') is not None:
+            self.repeat_count = m.get('RepeatCount')
+        if m.get('SuccessCount') is not None:
+            self.success_count = m.get('SuccessCount')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class UpdateOssCheckResultsFreezeResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: UpdateOssCheckResultsFreezeResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = UpdateOssCheckResultsFreezeResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateOssCheckResultsFreezeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateOssCheckResultsFreezeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateOssCheckResultsFreezeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateOssCheckResultsUnfreezeRequest(TeaModel):
+    def __init__(
+        self,
+        end_date: str = None,
+        freeze_items: str = None,
+        region_id: str = None,
+        start_date: str = None,
+        task_id: str = None,
+    ):
+        self.end_date = end_date
+        self.freeze_items = freeze_items
+        self.region_id = region_id
+        self.start_date = start_date
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.freeze_items is not None:
+            result['FreezeItems'] = self.freeze_items
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('FreezeItems') is not None:
+            self.freeze_items = m.get('FreezeItems')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class UpdateOssCheckResultsUnfreezeResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        invalid_count: int = None,
+        repeat_count: int = None,
+        success_count: int = None,
+        total_count: int = None,
+    ):
+        self.invalid_count = invalid_count
+        self.repeat_count = repeat_count
+        self.success_count = success_count
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.invalid_count is not None:
+            result['InvalidCount'] = self.invalid_count
+        if self.repeat_count is not None:
+            result['RepeatCount'] = self.repeat_count
+        if self.success_count is not None:
+            result['SuccessCount'] = self.success_count
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InvalidCount') is not None:
+            self.invalid_count = m.get('InvalidCount')
+        if m.get('RepeatCount') is not None:
+            self.repeat_count = m.get('RepeatCount')
+        if m.get('SuccessCount') is not None:
+            self.success_count = m.get('SuccessCount')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class UpdateOssCheckResultsUnfreezeResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: UpdateOssCheckResultsUnfreezeResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = UpdateOssCheckResultsUnfreezeResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateOssCheckResultsUnfreezeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateOssCheckResultsUnfreezeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateOssCheckResultsUnfreezeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
